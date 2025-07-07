@@ -8,7 +8,9 @@ ChatGPTとClaudeのチャット履歴をMarkdownに変換するBun対応CLIツ�
 - Markdown形式に変換して保存
 - 詳細なスキーマ検証とエラーレポート
 - 未知のフィールドの検出（形式変更の検知）
-- 単一バイナリとしての配布が可能
+- Zodによる厳格な型安全性
+- 複数の形式を自動検出（ChatGPT、Claude JSON、Claude NDJSON）
+- 単一バイナリとしての配布が可能（Bunのコンパイル機能使用）
 
 ## セットアップ
 
@@ -25,7 +27,14 @@ bun install
 
 ### 2. データの準備
 
-エクスポートしたデータを以下の場所に配置：
+#### ChatGPTからのエクスポート
+1. ChatGPTの設定画面から「Data controls」→「Export data」を選択
+2. エクスポートされたZIPファイルを解凍
+3. `conversations.json`を`data/raw/chatgpt/`に配置
+
+#### Claudeからのエクスポート
+1. Claudeの設定画面から「Account」→「Export your data」を選択
+2. エクスポートされたJSONファイルを`data/raw/claude/conversations.json`として配置
 
 ```
 data/raw/
