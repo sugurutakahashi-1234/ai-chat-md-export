@@ -1,0 +1,32 @@
+{
+  "name": "chat-history-conv",
+  "version": "1.0.0",
+  "description": "ChatGPTとClaudeのチャット履歴をMarkdownに変換するCLIツール",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "chat-history-conv": "bin/chat-history-conv"
+  },
+  "scripts": {
+    "dev": "bun run src/cli.ts -h",
+    "typecheck": "bunx tsc --noEmit",
+    "build": "bun build src/cli.ts --compile --outfile bin/chat-history-conv",
+    "build:all": "bun run typecheck && bun run build",
+    "lint": "biome check --write ./src",
+    "lint:check": "biome check ./src",
+    "format": "biome format --write ./src",
+    "format:check": "biome format ./src"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.6",
+    "@types/bun": "latest",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^24.0.10",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "commander": "^14.0.0",
+    "markdown-it": "^14.1.0",
+    "zod": "^3.25.75"
+  }
+}
