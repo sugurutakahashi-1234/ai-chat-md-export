@@ -114,7 +114,8 @@
       "Bash(vite build:*)",
       "WebFetch(domain:vite.dev)",
       "WebFetch(domain:ja.vite.dev)",
-      "Bash(bun init:*)"
+      "Bash(bun init:*)",
+      "Bash(bun add:*)"
     ],
     "deny": []
   },
