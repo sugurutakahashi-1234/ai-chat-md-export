@@ -115,7 +115,11 @@
       "WebFetch(domain:vite.dev)",
       "WebFetch(domain:ja.vite.dev)",
       "Bash(bun init:*)",
-      "Bash(bun add:*)"
+      "Bash(bun add:*)",
+      "Bash(mkdir:*)",
+      "Bash(bun run:*)",
+      "Bash(bunx tsc:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   },

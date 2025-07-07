@@ -32,3 +32,24 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# Bun
+.bun/
+*.bun
+bun.lockb
+
+# binaries
+bin/
+
+# data files
+data/raw/
+data/md/
+exports/
+
+# editor
+.vscode/
+*.swp
+*.swo
+
+# cursor rules
+.cursor/

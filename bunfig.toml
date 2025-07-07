@@ -1,0 +1,10 @@
+# Bun設定ファイル
+
+[build]
+# ビルド時の設定
+target = "bun"
+minify = true
+
+[test]
+# テスト実行時の設定
+preload = ["./test/setup.ts"]

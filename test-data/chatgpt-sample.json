@@ -1,0 +1,108 @@
+[
+  {
+    "title": "Bunの使い方について",
+    "create_time": 1736226000,
+    "mapping": {
+      "node-1": {
+        "id": "node-1",
+        "message": null,
+        "children": ["node-2"]
+      },
+      "node-2": {
+        "id": "node-2",
+        "message": {
+          "id": "msg-1",
+          "author": {
+            "role": "user"
+          },
+          "content": {
+            "parts": ["Bunとは何ですか？Node.jsとの違いを教えてください。"]
+          },
+          "create_time": 1736226000
+        },
+        "children": ["node-3"]
+      },
+      "node-3": {
+        "id": "node-3",
+        "message": {
+          "id": "msg-2",
+          "author": {
+            "role": "assistant"
+          },
+          "content": {
+            "parts": ["Bunは、JavaScriptとTypeScriptのための高速なランタイムです。\n\n主な特徴：\n1. **高速な起動時間** - Zigで書かれており、Node.jsより起動が速い\n2. **TypeScript対応** - ネイティブでTypeScriptを実行可能\n3. **統合ツール** - パッケージマネージャー、バンドラー、テストランナーを内蔵\n\nNode.jsとの違い：\n- Bunは単一のバイナリで多機能を提供\n- npm/yarn/pnpmの代わりにbun installが使える\n- webpackやesbuildの代わりにbun buildが使える"]
+          },
+          "create_time": 1736226060
+        },
+        "children": ["node-4"]
+      },
+      "node-4": {
+        "id": "node-4",
+        "message": {
+          "id": "msg-3",
+          "author": {
+            "role": "user"
+          },
+          "content": {
+            "parts": ["実際のプロジェクトでBunを使うメリットは？"]
+          },
+          "create_time": 1736226120
+        },
+        "children": ["node-5"]
+      },
+      "node-5": {
+        "id": "node-5",
+        "message": {
+          "id": "msg-4",
+          "author": {
+            "role": "assistant"
+          },
+          "content": {
+            "parts": ["実プロジェクトでのBunのメリット：\n\n1. **開発効率の向上**\n   - TypeScriptの設定不要\n   - ホットリロードが高速\n   - 依存関係のインストールが高速\n\n2. **パフォーマンス**\n   - サーバー起動が速い\n   - テスト実行が速い\n   - ビルド時間の短縮\n\n3. **シンプルな設定**\n   ```bash\n   bun init\n   bun add express\n   bun run index.ts\n   ```\n\n4. **互換性**\n   - 既存のNode.jsプロジェクトとほぼ互換\n   - npm パッケージをそのまま使える"]
+          },
+          "create_time": 1736226180
+        },
+        "children": []
+      }
+    }
+  },
+  {
+    "title": "React開発の基礎",
+    "create_time": 1736140000,
+    "mapping": {
+      "node-a1": {
+        "id": "node-a1",
+        "message": null,
+        "children": ["node-a2"]
+      },
+      "node-a2": {
+        "id": "node-a2",
+        "message": {
+          "id": "msg-a1",
+          "author": {
+            "role": "user"
+          },
+          "content": {
+            "parts": ["Reactのフックについて説明してください"]
+          },
+          "create_time": 1736140000
+        },
+        "children": ["node-a3"]
+      },
+      "node-a3": {
+        "id": "node-a3",
+        "message": {
+          "id": "msg-a2",
+          "author": {
+            "role": "assistant"
+          },
+          "content": {
+            "parts": ["Reactフックは、関数コンポーネントで状態やライフサイクルを扱うための機能です。\n\n主要なフック：\n\n1. **useState** - 状態管理\n```jsx\nconst [count, setCount] = useState(0);\n```\n\n2. **useEffect** - 副作用の処理\n```jsx\nuseEffect(() => {\n  console.log('Component mounted');\n  return () => console.log('Cleanup');\n}, []);\n```\n\n3. **useContext** - コンテキストの利用\n4. **useReducer** - 複雑な状態管理\n5. **useMemo** - 計算結果のメモ化\n6. **useCallback** - 関数のメモ化"]
+          },
+          "create_time": 1736140060
+        },
+        "children": []
+      }
+    }
+  }
+]
