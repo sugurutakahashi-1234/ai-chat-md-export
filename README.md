@@ -16,7 +16,7 @@ ChatGPTとClaudeのチャット履歴をMarkdownに変換するBun対応CLIツ�
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/yourusername/chat-history-conv.git
+git clone https://github.com/suguruTakahashi-1234/chat-history-conv.git
 cd chat-history-conv
 
 # Bunで依存関係をインストール
@@ -32,7 +32,7 @@ data/raw/
 ├── chatgpt/
 │   └── conversations.json  # ChatGPTからエクスポートしたJSON
 └── claude/
-    └── *.json             # Claudeからエクスポートした複数のJSONファイル
+    └── conversations.json  # ClaudeからエクスポートしたJSON
 ```
 
 ## 使い方
@@ -147,8 +147,9 @@ bun run conv:chatgpt:watch
 
 ### Claudeのデータ形式について
 
-Claudeは以下の2つの形式をサポート：
+Claudeは以下の形式をサポート：
+- JSON配列形式（新形式）：`sender`フィールドで役割を判定
+- JSON配列形式（旧形式）：`role`フィールドで役割を判定
 - NDJSON形式（改行区切りJSON）
-- JSON配列形式
 
-形式は自動検出されます。
+形式は自動検出されます。最新のClaudeエクスポートでは、メッセージの役割が`sender`フィールド（"human"/"assistant"）で表現されています。
