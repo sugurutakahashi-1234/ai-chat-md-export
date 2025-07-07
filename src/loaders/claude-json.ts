@@ -21,6 +21,8 @@ export async function loadClaudeJSON(
 
   const conversations: Conversation[] = [];
   const validationErrors: string[] = [];
+  const skippedFields = new Set<string>();
+  let successCount = 0;
 
   for (let i = 0; i < data.length; i++) {
     const result = validateWithDetails(claudeJSONConversationSchema, data[i], {
@@ -34,8 +36,14 @@ export async function loadClaudeJSON(
     }
 
     if (result.warnings) {
-      console.warn(formatValidationReport(result));
+      // 未知のフィールドを収集
+      for (const warning of result.warnings) {
+        if (warning.unknownFields) {
+          warning.unknownFields.forEach((field) => skippedFields.add(field));
+        }
+      }
     }
+    successCount++;
 
     const parsed = result.data as ClaudeJSONConversation;
 
@@ -105,6 +113,15 @@ export async function loadClaudeJSON(
     throw new Error(
       `スキーマ検証エラーが発生しました:\n${validationErrors.join("\n\n")}`,
     );
+  }
+
+  // サマリー情報を表示
+  console.log(`\n✅ ${successCount}件の会話を正常に読み込みました`);
+
+  if (skippedFields.size > 0) {
+    console.log(`\n📋 変換時にスキップされたフィールド:`);
+    console.log(`  - ${Array.from(skippedFields).sort().join(", ")}`);
+    console.log(`    ※ これらのフィールドは変換後のMarkdownには含まれません`);
   }
 
   return conversations;

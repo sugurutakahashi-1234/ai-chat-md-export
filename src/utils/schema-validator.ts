@@ -103,12 +103,12 @@ export function formatValidationReport(
     lines.push("✅ スキーマ検証成功");
 
     if (result.warnings && result.warnings.length > 0) {
-      lines.push("\n⚠️  警告:");
+      lines.push("\n📋 変換時にスキップされたフィールド:");
       for (const warning of result.warnings) {
-        lines.push(`  - ${warning.message}`);
         if (warning.unknownFields) {
+          lines.push(`  - ${warning.unknownFields.join(", ")}`);
           lines.push(
-            `    未知のフィールド: ${warning.unknownFields.join(", ")}`,
+            `    ※ これらのフィールドは変換後のMarkdownには含まれません`,
           );
         }
       }
