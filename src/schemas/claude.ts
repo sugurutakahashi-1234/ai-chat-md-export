@@ -46,7 +46,9 @@ export const claudeJSONMessageSchema = z
     // 新形式（sender使用）と旧形式（role使用）の両方をサポート
     role: z.enum(["user", "assistant"]).optional(),
     sender: z.enum(["human", "assistant"]).optional(),
-    content: z.union([z.string(), z.array(claudeJSONMessageContentSchema)]).optional(),
+    content: z
+      .union([z.string(), z.array(claudeJSONMessageContentSchema)])
+      .optional(),
     text: z.string().optional(),
     uuid: z.string().optional(),
     created_at: z.string().optional(),

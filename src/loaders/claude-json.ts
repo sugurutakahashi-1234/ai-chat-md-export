@@ -59,7 +59,7 @@ export async function loadClaudeJSON(
       messages: parsed.chat_messages.map((msg) => {
         // textフィールドから内容を取得
         let content: string = "";
-        
+
         // 直接textフィールドがある場合
         if ("text" in msg && typeof msg.text === "string") {
           content = msg.text;
@@ -67,8 +67,13 @@ export async function loadClaudeJSON(
         // contentフィールドがある場合（配列形式）
         else if ("content" in msg && Array.isArray(msg.content)) {
           const texts = msg.content
-            .map((c: any) => c.text)
-            .filter((t: any): t is string => typeof t === "string");
+            .map((c) => {
+              if (typeof c === "object" && c !== null && "text" in c) {
+                return c.text;
+              }
+              return undefined;
+            })
+            .filter((t): t is string => typeof t === "string");
           content = texts.length > 0 ? texts.join("\n") : "";
         }
         // roleがある場合（旧形式）
@@ -80,7 +85,7 @@ export async function loadClaudeJSON(
         let role: "user" | "assistant";
         if ("sender" in msg) {
           role = msg.sender === "human" ? "user" : "assistant";
-        } else if ("role" in msg) {
+        } else if ("role" in msg && msg.role) {
           role = msg.role;
         } else {
           // デフォルト値
