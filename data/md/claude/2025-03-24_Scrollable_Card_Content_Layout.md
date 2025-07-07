@@ -17,6 +17,10 @@ Cardのコンテンツを新たに追加したが、これが大きすぎて入�
 Looking at the code and the image, I see the issue with the Card content overflowing. Currently, the layout doesn't accommodate the Card content properly when it's too large, causing the "BOTTOM OVERFLOWED BY 92 PIXELS" message visible in your screenshot.
 
 To make the content scrollable, you'll need to modify the Column inside the Stack to be wrapped in a scrollable widget. Here's how you can fix it:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 The main change I've made is wrapping the Column widget inside a SingleChildScrollView, which allows the content to be scrollable when it's too large to fit on the screen. 

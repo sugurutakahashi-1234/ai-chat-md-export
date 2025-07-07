@@ -17,6 +17,10 @@ slack-mcp を使って、#generalちゃんねるにとうこうしてほしい
 スラックの#generalチャンネルに投稿するお手伝いをします。投稿したい内容を教えていただけますか？
 
 まず、Slackチャンネルのリストを確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ありがとうございます。#generalチャンネルが確認できました。このチャンネルに何を投稿されたいですか？例えば、メッセージ内容や目的など教えていただければ、その内容を投稿するお手伝いができます。
@@ -34,6 +38,10 @@ slack-mcp を使って、#generalちゃんねるにとうこうしてほしい
 *2025/5/15 19:40:33*
 
 了解しました。「テスト」という内容を#generalチャンネルに投稿します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 #generalチャンネルに「テスト」というメッセージの投稿が完了しました。
@@ -127,6 +135,10 @@ slack-mcp を使って、#generalちゃんねるにとうこうしてほしい
 *2025/5/15 19:41:54*
 
 了解しました。#generalチャンネルに「テスト」と投稿します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 #generalチャンネルに「テスト」というメッセージを投稿しました。

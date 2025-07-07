@@ -15,6 +15,10 @@
 *2025/5/9 14:00:50*
 
 MCP "@anaisbetts/mcp-installer" が現在使用可能かどうか確認します。このような特定の技術的なステータスについては、最新の情報を確認するのが良いでしょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 はい、MCP "@anaisbetts/mcp-installer" は現在使用可能な状態です。正常にインストールすることができました。
@@ -34,6 +38,10 @@ MCPサーバーに"@modelcontextprotocol/server-filesystem",を導入して欲�
 *2025/5/9 14:33:38*
 
 承知しました。`@modelcontextprotocol/server-filesystem` MCPサーバーをインストールします。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 `@modelcontextprotocol/server-filesystem` MCPサーバーのインストールに成功しました！
@@ -53,9 +61,17 @@ MCPサーバーに"@modelcontextprotocol/server-filesystem",を導入して欲�
 *2025/5/9 14:34:09*
 
 ファイルシステムを確認するために、現在利用可能なJSONファイルを探してみます。まず、使用可能なファイルを確認しましょう。
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 JSONファイルを探そうとしましたが、現時点では特定のJSONファイルが見つかりませんでした。別のアプローチでファイルシステムを確認してみましょう。
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 現在のファイルシステム環境では、利用可能なメソッドは `readFile` のみであることが確認できました。ディレクトリ一覧を取得する機能は現時点では利用できないようです。
@@ -77,9 +93,17 @@ MCPサーバーの設定をjsonを見たいだけである
 *2025/5/9 14:34:50*
 
 MCPサーバーの設定JSONファイルを確認してみましょう。MCPの設定は通常、特定の場所に保存されています。いくつかの一般的な場所を試してみます。
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 MCPサーバーの設定ファイルを探しましたが、一般的な場所には見つかりませんでした。別のアプローチを試してみましょう。MCPサーバーがどのように構成されているか確認するため、インストールされたMCPサーバーに関する情報を取得してみます。
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 申し訳ありませんが、現在の環境ではMCPサーバーの設定JSONファイルに直接アクセスすることが難しいようです。インストールされたMCPサーバーのパッケージ情報も見つけることができませんでした。
@@ -91,6 +115,10 @@ MCPサーバーの設定ファイルを探しましたが、一般的な場所�
 3. MCPサーバーが別の方法で構成されている
 
 現在利用可能なMCPサーバーに関する基本情報を確認するために、以下の方法を試してみましょう：
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 現在のMCPサーバー環境に関する情報を一部収集することができました：
@@ -142,6 +170,10 @@ MCPサーバーに"@modelcontextprotocol/server-filesystem",を導入して欲�
 *2025/5/9 14:35:53*
 
 "@modelcontextprotocol/server-filesystem" MCP サーバーを指定のパスに導入します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 "@modelcontextprotocol/server-filesystem" MCP サーバーが正常にインストールされました。
@@ -163,6 +195,10 @@ MCPサーバーに"@modelcontextprotocol/server-filesystem",を導入して欲�
 *2025/5/9 14:36:46*
 
 ライブラリフォルダも見られるように設定します。macOSのライブラリフォルダ（/Users/sugurutakahashi/Library）にアクセスできるようにセットアップしますね。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありませんが、直接 `/Users/sugurutakahashi/Library` パスをインストールすることができませんでした。

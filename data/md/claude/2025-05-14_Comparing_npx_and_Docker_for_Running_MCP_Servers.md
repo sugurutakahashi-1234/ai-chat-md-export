@@ -15,12 +15,39 @@ mcpサーバーにはnpxで実行するものとdockerで実行するものが�
 *2025/5/14 15:55:00*
 
 npxで実行するMCPサーバーとDockerで実行するMCPサーバーの主な違いについて調査します。まず、MCPサーバー（Model Context Protocol）に関する基本的な情報を取得しましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 追加情報を検索して、npxとDockerの実行方法の違いについて詳しく調べます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 次に、特定のMCPサーバーの実装方法に関する情報を調べるために、いくつかのリポジトリを検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 これで十分な情報が集まりました。以上の情報を基に、npxで実行するMCPサーバーとDockerで実行するMCPサーバーの違いについて説明します。
@@ -205,9 +232,17 @@ Dockerを使用するMCPサーバーは環境の一貫性、セキュリティ�
 *2025/5/14 16:17:48*
 
 markitdown-mcpを使用して結果をまとめるため、まずこのMCPサーバーが利用可能かどうか確認します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 見つかった情報を基に、まずMicrosoft製のmarkitdown MCPサーバーを使って、MCPサーバーのnpxとDocker実行の違いに関する内容をMarkdownにまとめましょう。Microsoft Markitdownは文書を様々な形式からMarkdownに変換するのに役立つMCPサーバーです。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 Markdownにまとめました。このドキュメントでは、MCPサーバーのnpx実行とDocker実行の主な違いを表形式で整理し、各アプローチの長所と短所、使用シナリオなどを詳しく説明しています。性能、セキュリティ、使いやすさなどの観点から比較しているので、どちらの方法が自分のニーズに合っているか判断する際の参考になるでしょう。

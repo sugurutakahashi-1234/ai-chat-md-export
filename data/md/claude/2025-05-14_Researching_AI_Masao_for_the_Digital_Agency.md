@@ -15,24 +15,52 @@ fetch mcp をつかってAIまさおについて調べて欲しい
 *2025/5/14 13:38:11*
 
 AIまさおについて調べますね。MCPを使って情報を取得します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 AIまさおについての情報を探します。もう少し広く検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 AIまさおについてもう少し特定して検索してみます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 AIまさおについて特定の情報を見つけるために、もう少し直接的な検索を試みます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 さらにもう少し探してみましょう。「AIまさお」と「デジタル庁」の関連情報を特定するために別の検索も試みます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 もう一度AIまさおに特化した検索を行います。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 直接URLを確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果から得られた情報を整理して、お伝えします。

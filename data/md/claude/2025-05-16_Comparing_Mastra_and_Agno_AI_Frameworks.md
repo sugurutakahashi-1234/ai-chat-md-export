@@ -19,6 +19,40 @@ MastraとAgnoの違い
 *2025/5/16 14:18:45*
 
 マストラ（Mastra）とアグノ（Agno）の違いについて調べてみます。両方ともGitHubでオープンソースプロジェクトとして公開されているようですね。それぞれのリポジトリを確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 マストラ（Mastra）とアグノ（Agno）の違いについて調査した結果をまとめます。両方とも人工知能エージェントを構築するためのフレームワークですが、いくつかの重要な違いがあります。
@@ -26,32 +60,32 @@ MastraとAgnoの違い
 ## 基本的な違い
 
 ### 言語と技術スタック
-- \*\*Mastra\*\*: TypeScriptベースのフレームワークで、JavaScript/TypeScriptエコシステムで開発したい人向け
-- \*\*Agno\*\*: Pythonベースのフレームワークで、Pythonエコシステムで開発したい人向け
+- **Mastra**: TypeScriptベースのフレームワークで、JavaScript/TypeScriptエコシステムで開発したい人向け
+- **Agno**: Pythonベースのフレームワークで、Pythonエコシステムで開発したい人向け
 
 ### パフォーマンスと設計思想
-- \*\*Mastra\*\*: TypeScriptのエコシステムを活用し、Vercel AI SDKと統合されたフレームワーク
-- \*\*Agno\*\*: 非常に高速で軽量なエージェントを構築できるように設計されており、マイクロ秒単位でエージェントをインスタンス化でき、メモリ使用量も最小限
+- **Mastra**: TypeScriptのエコシステムを活用し、Vercel AI SDKと統合されたフレームワーク
+- **Agno**: 非常に高速で軽量なエージェントを構築できるように設計されており、マイクロ秒単位でエージェントをインスタンス化でき、メモリ使用量も最小限
 
 ## 主な機能比較
 
 ### Mastraの特徴
-1. \*\*ワークフロー\*\*: グラフベースのステートマシンでフロー制御が可能
-2. \*\*AIモデル統合\*\*: Vercel AI SDKを使用し、OpenAI、Anthropic、Google Geminiなど様々なLLMプロバイダーと連携
-3. \*\*エージェント\*\*: LLMモデルによるツール、ワークフロー、同期データの利用
-4. \*\*ツール\*\*: 型付き関数でエージェントやワークフローから実行可能
-5. \*\*RAG（検索拡張生成）\*\*: 知識ベース構築のためのETLパイプライン
-6. \*\*インテグレーション\*\*: サードパーティサービス用の自動生成された型安全APIクライアント
-7. \*\*評価\*\*: LLM出力を評価する自動テスト
+1. **ワークフロー**: グラフベースのステートマシンでフロー制御が可能
+2. **AIモデル統合**: Vercel AI SDKを使用し、OpenAI、Anthropic、Google Geminiなど様々なLLMプロバイダーと連携
+3. **エージェント**: LLMモデルによるツール、ワークフロー、同期データの利用
+4. **ツール**: 型付き関数でエージェントやワークフローから実行可能
+5. **RAG（検索拡張生成）**: 知識ベース構築のためのETLパイプライン
+6. **インテグレーション**: サードパーティサービス用の自動生成された型安全APIクライアント
+7. **評価**: LLM出力を評価する自動テスト
 
 ### Agnoの特徴
-1. \*\*モデル不可知性\*\*: 23以上のモデルプロバイダーと連携可能でロックインなし
-2. \*\*超高速\*\*: エージェントは約3マイクロ秒でインスタンス化、メモリ使用量約5KB
-3. \*\*推論重視\*\*: ReasoningToolsやカスタムChain-of-Thoughtアプローチでエージェントに「思考」能力を付与
-4. \*\*マルチモーダル対応\*\*: テキスト、画像、音声、動画などの入出力に対応
-5. \*\*高度なマルチエージェント\*\*: ルート、コラボレート、コーディネートの3つのモード
-6. \*\*エージェント検索\*\*: 20以上のベクトルデータベースによる情報検索
-7. \*\*長期記憶とセッションストレージ\*\*: エージェントに長期記憶を提供
+1. **モデル不可知性**: 23以上のモデルプロバイダーと連携可能でロックインなし
+2. **超高速**: エージェントは約3マイクロ秒でインスタンス化、メモリ使用量約5KB
+3. **推論重視**: ReasoningToolsやカスタムChain-of-Thoughtアプローチでエージェントに「思考」能力を付与
+4. **マルチモーダル対応**: テキスト、画像、音声、動画などの入出力に対応
+5. **高度なマルチエージェント**: ルート、コラボレート、コーディネートの3つのモード
+6. **エージェント検索**: 20以上のベクトルデータベースによる情報検索
+7. **長期記憶とセッションストレージ**: エージェントに長期記憶を提供
 
 ## 利用シーン
 
@@ -87,6 +121,20 @@ TypeScriptでMastra以外の選択肢はあるか？
 *2025/5/16 14:19:55*
 
 TypeScriptで開発できるAIエージェントフレームワークについて調査します。Mastra以外にもTypeScriptで使用できるフレームワークがあるか確認しましょう。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 TypeScriptで開発できるAIエージェントフレームワークについて調査した結果、Mastra以外にもいくつかの選択肢があります。主な選択肢は以下の通りです：
@@ -134,11 +182,11 @@ AIエージェントとブラウザオートメーションを組み合わせる
 
 フレームワークを選択する際は、以下の点を考慮するとよいでしょう：
 
-1. \*\*プロジェクトの要件\*\*: 単純なエージェントか複雑なワークフローが必要か
-2. \*\*開発経験\*\*: チームのTypeScript/JavaScript経験レベル
-3. \*\*統合要件\*\*: 特定のAIモデルやサードパーティサービスとの統合が必要か
-4. \*\*スケーラビリティ\*\*: 大規模な並行処理が必要か
-5. \*\*ドキュメントとコミュニティ\*\*: サポートリソースの充実度
+1. **プロジェクトの要件**: 単純なエージェントか複雑なワークフローが必要か
+2. **開発経験**: チームのTypeScript/JavaScript経験レベル
+3. **統合要件**: 特定のAIモデルやサードパーティサービスとの統合が必要か
+4. **スケーラビリティ**: 大規模な並行処理が必要か
+5. **ドキュメントとコミュニティ**: サポートリソースの充実度
 
 Mastraは、VercelチームによるAIフレームワークでワークフローとエージェントの統合に強みがありますが、LangChain.js/LangGraph.jsはより大きなコミュニティと幅広い採用実績があります。プロジェクトの具体的なニーズに基づいて選択することをお勧めします。
 
@@ -259,6 +307,20 @@ LangChain.jsとMastraの比較について、それぞれの強みと弱みを�
 *2025/5/16 14:25:32*
 
 SwiftでのAIエージェントフレームワークやSDKについて調査しましょう。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Swift言語でのAIエージェントフレームワークについて調査した結果、TypeScriptのようなエコシステムはまだ発展途上ですが、いくつかの選択肢が存在します。以下に主なSwift用AIフレームワークとそれぞれの特徴をまとめます。
@@ -266,27 +328,27 @@ Swift言語でのAIエージェントフレームワークについて調査し�
 ## Swift用AIエージェントフレームワーク
 
 ### 1. LangChain for Swift
-- \*\*概要\*\*: Python版LangChainのSwiftポート版
-- \*\*リポジトリ\*\*: https://github.com/buhe/langchain-swift
-- \*\*特徴\*\*: 
+- **概要**: Python版LangChainのSwiftポート版
+- **リポジトリ**: https://github.com/buhe/langchain-swift
+- **特徴**: 
   - iOS、macOS、watchOS、visionOSに対応
   - OpenAI、Googleなど複数のLLMプロバイダー対応
   - SwiftのRAG（検索拡張生成）実装
   - ベクトルデータベース統合
-- \*\*状態\*\*: コミュニティドリブンのプロジェクト
+- **状態**: コミュニティドリブンのプロジェクト
 
 ### 2. LangGraph for Swift
-- \*\*概要\*\*: LangChain for Swiftの拡張として、エージェント協調のための循環グラフを可能にするフレームワーク
-- \*\*リポジトリ\*\*: パブリックリポジトリなし、開発者のブログから情報取得可能: https://bsorrentino.github.io/bsorrentino/ai/2024/03/21/langgraph-for-swift.html
-- \*\*特徴\*\*:
+- **概要**: LangChain for Swiftの拡張として、エージェント協調のための循環グラフを可能にするフレームワーク
+- **リポジトリ**: パブリックリポジトリなし、開発者のブログから情報取得可能: https://bsorrentino.github.io/bsorrentino/ai/2024/03/21/langgraph-for-swift.html
+- **特徴**:
   - Python版LangGraphのSwift実装
   - エージェント間協調を簡素化
   - LangChain for Swiftと連携して動作
 
 ### 3. swift-transformers
-- \*\*概要\*\*: Hugging FaceによるSwiftアプリでの言語モデル採用を支援するライブラリ
-- \*\*リポジトリ\*\*: https://github.com/huggingface/swift-transformers
-- \*\*特徴\*\*:
+- **概要**: Hugging FaceによるSwiftアプリでの言語モデル採用を支援するライブラリ
+- **リポジトリ**: https://github.com/huggingface/swift-transformers
+- **特徴**:
   - Python transformersライブラリのAPIと抽象化に準拠
   - オンデバイスLLM実行のためのCore ML統合
   - トークナイザーとHubユーティリティを含む
@@ -294,18 +356,18 @@ Swift言語でのAIエージェントフレームワークについて調査し�
   - サンプルアプリ：swift-chat
 
 ### 4. Stream Chat AI SDK (商用)
-- \*\*概要\*\*: StreamによるiOSアプリケーション用AIチャットボットアシスタント構築SDK
-- \*\*ウェブサイト\*\*: https://getstream.io/
-- \*\*特徴\*\*:
+- **概要**: StreamによるiOSアプリケーション用AIチャットボットアシスタント構築SDK
+- **ウェブサイト**: https://getstream.io/
+- **特徴**:
   - AIエージェントとチャットUIの統合
   - OpenAI、Anthropicなどとの連携
   - SwiftUIコンポーネント提供
   - iOS 15以上をサポート
 
 ### 5. Apple Intelligence / Swift Assist (2025年発表予定)
-- \*\*概要\*\*: Apple公式のLLM統合およびAIアシスト機能
-- \*\*状態\*\*: 開発中/発表済み
-- \*\*特徴\*\*:
+- **概要**: Apple公式のLLM統合およびAIアシスト機能
+- **状態**: 開発中/発表済み
+- **特徴**:
   - iOS、iPadOS、macOSに深く統合
   - オンデバイスと(Private Cloud Compute経由の)サーバーベースのハイブリッドモデル
   - 約30億パラメータのオンデバイスモデル
@@ -315,13 +377,13 @@ Swift言語でのAIエージェントフレームワークについて調査し�
 
 Swiftでのエージェントフレームワークエコシステムは、TypeScriptやPythonと比較するとまだ発展途上です。特に注目すべき点として：
 
-1. \*\*コミュニティ主導の開発\*\*: 大半のフレームワークはコミュニティによって開発されており、公式サポートが限られています。
+1. **コミュニティ主導の開発**: 大半のフレームワークはコミュニティによって開発されており、公式サポートが限られています。
 
-2. \*\*機能の限定性\*\*: 現時点では、Python版やTypeScript版のフレームワークと比較して機能が限定的です。
+2. **機能の限定性**: 現時点では、Python版やTypeScript版のフレームワークと比較して機能が限定的です。
 
-3. \*\*Apple公式サポートの期待\*\*: Apple Intelligenceと2025年に発表予定のSwift Assistが正式リリースされれば、エコシステムが大きく変わる可能性があります。
+3. **Apple公式サポートの期待**: Apple Intelligenceと2025年に発表予定のSwift Assistが正式リリースされれば、エコシステムが大きく変わる可能性があります。
 
-4. \*\*オンデバイス処理の強み\*\*: Core MLとの統合により、プライバシーに配慮したオンデバイス処理に強みがあります。
+4. **オンデバイス処理の強み**: Core MLとの統合により、プライバシーに配慮したオンデバイス処理に強みがあります。
 
 もし現時点でSwiftでAIエージェントを開発する必要がある場合は、LangChain for SwiftとHugging Faceのswift-transformersが最も成熟したオプションと言えます。2025年以降はApple公式のフレームワークとの連携も視野に入れるとよいでしょう。
 

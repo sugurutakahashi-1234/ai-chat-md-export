@@ -52,12 +52,20 @@ obsidian\_get\_file\_contentsで撮って欲しい
 ## 🤖 アシスタント
 *2025/5/16 17:58:21*
 
-Obsidian統合機能を使用して、ファイルの内容を取得してみます。`obsidian\_get\_file\_contents`ツールを使用するには、取得したいファイルのパスが必要です。
+Obsidian統合機能を使用して、ファイルの内容を取得してみます。`obsidian_get_file_contents`ツールを使用するには、取得したいファイルのパスが必要です。
 
 まず、Obsidianのvault内にあるファイルを確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Obsidianのvault内には「Untitled.md」というファイルがあります。このファイルの内容を取得してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 「Untitled.md」の内容は「test 」と書かれています。

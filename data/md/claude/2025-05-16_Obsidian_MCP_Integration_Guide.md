@@ -15,6 +15,10 @@ obsidian mcp 連携手順
 *2025/5/16 17:29:41*
 
 ObiridianとModel Context Protocol（MCP）の連携手順について調べてみましょう。情報を収集します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果に基づいて、ObsidianとModel Context Protocol (MCP)の連携手順をご説明します。

@@ -17,6 +17,10 @@
 iOSのKeychainからアクセストークンを削除する方法についてご説明します。
 
 ## SwiftUIを使用したコード例
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## 使用方法

@@ -15,6 +15,10 @@
 *2025/4/18 21:38:22*
 
 I'd be happy to search for information about how figure skating performance scores are calculated, particularly for men's free skate programs and what constitutes a perfect score. Let me look that up for you.
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Based on my search, I can explain how the figure skating performance component scoring works for men's free skate programs and what constitutes a perfect score.

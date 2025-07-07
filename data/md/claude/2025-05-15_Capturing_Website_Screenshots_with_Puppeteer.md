@@ -8,9 +8,17 @@
 *2025/5/15 17:56:23*
 
 スクリーンショットを撮影するために、まず指定されたURLにナビゲートします。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ページにナビゲートできました。次に、スクリーンショットを撮影します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 スクリーンショットの撮影が完了しました。ブログ記事「Dockerでモデルコンテキストプロトコルのツールキットを実行する」のスクリーンショットを表示しています。記事では、モデルコンテキストプロトコル（MCP）のツールキットをDockerで実行する方法について説明されています。

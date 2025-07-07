@@ -15,6 +15,10 @@
 *2025/3/10 12:26:05*
 
 2000個の円で日本の陸地面積のどれくらいをカバーできるか計算してみましょう。
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 日本の陸地面積のうち、わずか2000個の円（半径100mの円）でカバーできる面積は次のようになります：
@@ -42,6 +46,10 @@
 *2025/3/10 12:26:41*
 
 約1,316万個の円の中から2000個の円を選ぶと、それはどのような意味を持つのか考えてみましょう。
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 約1,316万個の円の中から2000個を選ぶと、それは全体のおよそ0.015%、つまり約6600分の1に相当します。
@@ -68,6 +76,10 @@
 *2025/3/10 12:25:11*
 
 日本の領土を100mの半径を持つ円で覆った場合の円の数を計算してみましょう。
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 日本の領土を半径100mの円で覆った場合、約1,203万個の円が必要になります。
@@ -92,6 +104,10 @@
 *2025/3/10 12:25:36*
 
 日本の陸地面積だけを考慮して計算し直します。
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 日本の陸地面積のみを半径100mの円で覆った場合、約1,193万個の円が必要になります。

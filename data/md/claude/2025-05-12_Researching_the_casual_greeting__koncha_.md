@@ -10,45 +10,77 @@
 ご依頼ありがとうございます。Playwrightを使ってブラウザを自動で動かす例を作成します。まず、Playwrightの使い方とブラウザ自動化の基本例をお示しします。
 
 ブラウザを自動で操作するシンプルな例を作成しましょう。これはGoogleで検索を行い、結果を表示する例です。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Googleのページが開きました。次に検索ボックスに何か入力して検索を実行してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果が表示されました。次にPlaywrightのサンプルページについて詳細を見るために、最初の検索結果をクリックしてみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 サンプルコードが含まれたページを見ることができました。このページではPlaywrightを使ったテスト自動化のサンプルコードが紹介されています。
 
 スクリーンショットを撮影して、現在の状態を確認しましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 これで、Playwrightを使ってブラウザを自動操作する基本的な流れが確認できました。最後に、このブラウザセッションを閉じましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ブラウザが既に閉じられているようです。
 
 以上の内容を基に、Playwrightを使ったブラウザ自動化の簡単なJavaScriptコードを作成してみましょう。以下はWebサイトを自動操作するための基本的なサンプルコードです：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 また、Playwrightを使ったテスト自動化のサンプルコードも作成してみましょう：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 さらに、Playwrightのテストプロジェクトの設定ファイル（playwright.config.js）のサンプルも作成します：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 以上で、Playwrightを使ったブラウザ自動化の基本的なサンプルを作成しました。主に以下の内容を提供しました：
 
-1. \*\*ブラウザ自動化サンプル\*\*：
+1. **ブラウザ自動化サンプル**：
    - Googleを開き、検索を実行し、検索結果の最初のリンクをクリックして、スクリーンショットを撮影する基本的な自動化スクリプト
 
-2. \*\*テスト自動化サンプル\*\*：
+2. **テスト自動化サンプル**：
    - Google検索のテスト
    - 要素の表示・非表示を確認するテスト
    - 特定のテキストが複数存在することを確認するテスト
    - 日時を使った一意の文字列生成とフォーム入力テスト
 
-3. \*\*Playwright設定ファイル\*\*：
+3. **Playwright設定ファイル**：
    - テスト実行環境の設定
    - 複数ブラウザ（Chrome、Firefox、Safari）でのテスト設定
    - モバイルデバイスエミュレーションの設定
@@ -83,6 +115,10 @@ playwrightでこんちはを調べて欲しい
 「こんちは」は恐らく「こんにちは」（Hello/Good afternoon）のことかもしれませんが、念のため検索してみます。
 
 まず、Playwrightを使ってブラウザを起動し、検索を実行します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果によると、「こんちは」は「こんにちは」の音変化であることがわかりました。以下が「こんちは」についての情報です：

@@ -15,6 +15,10 @@ flutter アプリの位置情報精度をアプリ画面に表示したい
 *2025/3/31 11:53:40*
 
 Flutterアプリで位置情報の精度を画面に表示する機能を実装しましょう。以下のコードを使って実現できます。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 このコードを実装するには、以下の手順が必要です：
@@ -62,6 +66,10 @@ dependencies:
 *2025/3/31 11:57:26*
 
 端末側で設定している位置情報の精度設定を取得し、Riverpod と ConsumerWidget を使用して実装しましょう。Flutterでは `LocationAccuracy` の設定を確認できます。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 このコードでは、Riverpodと`ConsumerWidget`を使用して、端末の位置情報精度設定を取得・表示する機能を実装しました。主な特徴は以下の通りです：

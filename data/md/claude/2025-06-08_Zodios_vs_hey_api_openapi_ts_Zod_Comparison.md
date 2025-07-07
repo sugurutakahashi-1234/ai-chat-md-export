@@ -39,7 +39,13 @@
 それでは、OpenAPIスキーマからTypeScriptクライアントを生成する際の、Zodiosとhey-api/openapi-ts（Zodオプション使用時）の違いについて詳しく調査します。
 
 型安全性、バリデーション機能、実装方法の違いなど、包括的な比較を行います。
+```
+This block is not supported on your current device yet.
+```
 
 Your TypeScript API client comparison report is ready. It provides a detailed analysis of Zodios and Hey API openapi-ts with Zod options, covering type safety implementations, validation features, code generation patterns, and practical examples. The report includes executive summary, implementation comparisons, code samples, pros and cons of each tool, and recommendations based on different project requirements.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 ---

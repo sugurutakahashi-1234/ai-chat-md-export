@@ -15,9 +15,17 @@ fnmのインストール手順 nodebrewをインストールしているので�
 *2025/4/23 14:23:19*
 
 I'll search for information about uninstalling nodebrew and installing fnm, as you requested.
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Now, let me search for information about installing fnm:
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Based on my search results, I can now provide you with instructions on how to uninstall nodebrew and install fnm:
@@ -104,6 +112,25 @@ error: Can't create the symlink for multishells at "/Users/sugurutakahashi/.loca
 *2025/4/23 14:28:14*
 
 このエラーについて調べてみましょう。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 表示されているエラーに基づいて、問題を解決する方法を説明します。
@@ -167,21 +194,25 @@ macOSでは、`.local/state`ディレクトリが時々rootによって所有さ
 *2025/4/23 14:47:28*
 
 nodebrewとfnmの違いについて調べてみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 fnmがnodebrewと比較して優れている点は主に以下の通りです：
 
-1. \*\*高速な動作\*\*: fnmは他のバージョン管理ツールよりも高速に動作し、バージョンの切り替えが迅速に行えます。これはRustで実装されているため、処理速度が向上しています。
+1. **高速な動作**: fnmは他のバージョン管理ツールよりも高速に動作し、バージョンの切り替えが迅速に行えます。これはRustで実装されているため、処理速度が向上しています。
 
-2. \*\*自動バージョン切り替え機能\*\*: fnmは`.node-version`ファイルを配置したプロジェクトディレクトリにcdで移動すると、自動的にそのバージョンのNode.jsに切り替えてくれます。nodebrewではこのような自動切り替え機能はありません。
+2. **自動バージョン切り替え機能**: fnmは`.node-version`ファイルを配置したプロジェクトディレクトリにcdで移動すると、自動的にそのバージョンのNode.jsに切り替えてくれます。nodebrewではこのような自動切り替え機能はありません。
 
-3. \*\*クロスプラットフォームのサポート\*\*: fnmはmacOS、Windows、Linuxすべてのプラットフォームで問題なく動作します。一方でnodebrewはmacOSが主な対象で、Windowsでは別のツール（nodist）が必要です。
+3. **クロスプラットフォームのサポート**: fnmはmacOS、Windows、Linuxすべてのプラットフォームで問題なく動作します。一方でnodebrewはmacOSが主な対象で、Windowsでは別のツール（nodist）が必要です。
 
-4. \*\*柔軟な互換性\*\*: fnmは`.node-version`ファイルだけでなく、`.nvmrc`ファイルも認識するので、他のNode.jsバージョン管理ツール（nvm）で設定したプロジェクトとの互換性があります。
+4. **柔軟な互換性**: fnmは`.node-version`ファイルだけでなく、`.nvmrc`ファイルも認識するので、他のNode.jsバージョン管理ツール（nvm）で設定したプロジェクトとの互換性があります。
 
-5. \*\*モダンな設計\*\*: Rustで実装されていることで、メモリ安全性が高く、バグやクラッシュのリスクが低減されています。
+5. **モダンな設計**: Rustで実装されていることで、メモリ安全性が高く、バグやクラッシュのリスクが低減されています。
 
-6. \*\*パフォーマンス向上\*\*: Rustによる高速なバージョン管理機能により、システム全体のパフォーマンスが向上します。
+6. **パフォーマンス向上**: Rustによる高速なバージョン管理機能により、システム全体のパフォーマンスが向上します。
 
 最も大きな違いは、速度と自動バージョン切り替え機能でしょう。fnmを使えば、プロジェクトフォルダに移動するだけで適切なNode.jsバージョンが自動的に設定されるため、手動でバージョンを切り替える手間が省けます。これにより開発の効率が大幅に向上します。
 

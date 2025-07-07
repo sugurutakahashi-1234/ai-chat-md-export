@@ -18,17 +18,33 @@ https://github.com/modelcontextprotocol/servers/tree/main/src/postgres
 PostgreSQLのModel Context Protocol (MCP) サーバーを試してみるための手順を案内します。
 
 まず、GitHub リポジトリを確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 READMEの内容を確認しました。PostgreSQLのMCPサーバーをセットアップするための詳しい手順があります。
 
 次に、package.jsonも確認しましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 続いて、index.tsファイルも確認しましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 最後にDockerfileも確認しましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 よく確認できました。では、PostgreSQLのMCPサーバーをセットアップするための手順を説明します。

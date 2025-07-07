@@ -56,6 +56,10 @@ export function decrypt(encryptedData: string): EncryptDataType {
 *2025/3/27 11:12:43*
 
 TypeScriptのコードをNode.jsの環境でコンソールから引数を渡して実行できるようにしますね。以下に必要な修正を加えたコードを作成します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 コードを作成しました。このスクリプトを使うと、コマンドラインから緯度・経度のデータを暗号化したり、暗号化されたデータを復号化したりできます。
@@ -106,6 +110,10 @@ ts-node crypto-cli.ts decrypt "暗号化された文字列"
 *2025/3/27 11:19:42*
 
 開発環境と本番環境で異なる鍵文字列を使えるように修正しますね。環境（dev/prd）を引数として受け取り、それに応じて鍵を切り替える機能を追加します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 コードを修正しました。これで開発環境と本番環境で異なる鍵を使用できます。

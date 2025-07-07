@@ -55,6 +55,10 @@ braveで私について検索して欲しい
 *2025/5/12 17:31:01*
 
 Braveで「挨拶」について検索してみますね。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 挨拶について検索した結果をご紹介します。

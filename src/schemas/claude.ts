@@ -34,17 +34,25 @@ export const claudeNDJSONSchema = z
 // Claude JSON配列形式のスキーマ
 export const claudeJSONMessageContentSchema = z
   .object({
-    type: z.literal("text"),
+    type: z.string(), // "text", "thinking" など複数のタイプをサポート
     text: z.string().optional(),
+    thinking: z.string().optional(),
+    // その他のフィールドも許可
   })
   .passthrough() satisfies z.ZodSchema;
 
 export const claudeJSONMessageSchema = z
   .object({
-    role: z.enum(["user", "assistant"]),
-    content: z.union([z.string(), z.array(claudeJSONMessageContentSchema)]),
+    // 新形式（sender使用）と旧形式（role使用）の両方をサポート
+    role: z.enum(["user", "assistant"]).optional(),
+    sender: z.enum(["human", "assistant"]).optional(),
+    content: z.union([z.string(), z.array(claudeJSONMessageContentSchema)]).optional(),
+    text: z.string().optional(),
+    uuid: z.string().optional(),
     created_at: z.string().optional(),
     updated_at: z.string().optional(),
+    attachments: z.array(z.unknown()).optional(),
+    files: z.array(z.unknown()).optional(),
   })
   .passthrough() satisfies z.ZodSchema;
 

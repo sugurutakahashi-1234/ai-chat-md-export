@@ -18,6 +18,10 @@ mcp の 設定 ファイルが claude desk top で作成しているが、それ
 MCPの設定ファイルをClaude Desktopから他の環境（Windowsサーフィンなど）でも使いたいということですね。
 
 MCPの設定ファイルをプラットフォーム間で変換するための専用ツールについて調べてみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 MCPの設定ファイルをClaude DesktopからWindowsやその他のプラットフォームで使用するための情報を調べました。結果として、以下のことがわかりました：

@@ -568,6 +568,15 @@ Supabase Authの良さは、Supabase SDKとRLSとセットで使ってこそ発�
 2025年の認証サービスの状況と、あなたの要望について整理してみます。
 
 ## 2025年の主流認証サービス
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 2025年の認証サービスの現状と、あなたの要望を踏まえて整理します。
 
 ## 認証テーブルを管理したくない理由は正当

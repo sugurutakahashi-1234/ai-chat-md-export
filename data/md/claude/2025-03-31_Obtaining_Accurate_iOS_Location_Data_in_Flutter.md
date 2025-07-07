@@ -94,6 +94,10 @@ iOSデバイスでは、アプリに「正確な位置情報」のON/OFFを設�
 ## iOSの「正確な位置情報」設定の確認方法
 
 Flutterで、iOSの「正確な位置情報」設定（Precise Location）のON/OFF状態を確認するには、`geolocator`パッケージを使用できます。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## 解説

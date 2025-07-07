@@ -15,9 +15,17 @@ uv インストール手順、今はpyenvを使っているのでそれをアン
 *2025/4/23 14:55:00*
 
 I'll help you with the UV installation procedure after uninstalling pyenv. Let me search for the most up-to-date information on this.
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Now I'll search for information about UV installation.
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Based on my research, I'll provide you with instructions for uninstalling pyenv and then installing UV as a new Python package manager.
@@ -122,12 +130,24 @@ Would you like more information about specific UV features or commands?
 *2025/4/23 15:00:58*
 
 uvを使ってPython開発環境でバージョンを指定する方法についてご説明します。uvは異なるPythonバージョンを管理するための優れたツールです。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 追加情報のために、もう少し検索しましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 さらに詳細なプロジェクト管理の情報を探しましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 # uvでPythonバージョンを指定する方法
@@ -223,6 +243,15 @@ uvを使えば、以前のpyenvのような複雑な設定なしでPythonバー�
 *2025/4/23 15:01:50*
 
 グローバルインストールしてどの環境でも特定のPythonバージョンを使えるようにする方法について調べてみます。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 # uvを使ったPythonのグローバルインストール方法

@@ -15,6 +15,10 @@
 *2025/5/6 15:16:04*
 
 Terraformとオープントーフのどちらを採用すべきかについて検討したいと思います。最新の状況を確認するために、まず現在の両ツールの状況を調査してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 TerraformとOpenTofuの比較に基づいて、新規IaCツール選定のための判断材料をまとめました。
@@ -22,21 +26,21 @@ TerraformとOpenTofuの比較に基づいて、新規IaCツール選定のため
 ## TerraformとOpenTofuの主な違い
 
 ### ライセンス
-- \*\*Terraform\*\*: ビジネスソースライセンス(BSL)を採用 オープンソースではなく、Business Source Licenseモデルを使用
-- \*\*OpenTofu\*\*: Mozilla Public License 2.0(MPL)のオープンソースライセンス 完全にオープンソースのツールです。Mozilla Public Licenseの下で運営され、Linux Foundationの一部
+- **Terraform**: ビジネスソースライセンス(BSL)を採用 オープンソースではなく、Business Source Licenseモデルを使用
+- **OpenTofu**: Mozilla Public License 2.0(MPL)のオープンソースライセンス 完全にオープンソースのツールです。Mozilla Public Licenseの下で運営され、Linux Foundationの一部
 
 ### コミュニティとガバナンス
-- \*\*Terraform\*\*: HashiCorpが単独で所有・開発 Terraformは2023年8月までオープンソースでしたが、現在はBSL IaCツールです
-- \*\*OpenTofu\*\*: Linux Foundationの下でコミュニティ主導 OpenTofuプロジェクトは「コミュニティの願望と要件のみによって導かれ、個々の企業の影響を受けない」
+- **Terraform**: HashiCorpが単独で所有・開発 Terraformは2023年8月までオープンソースでしたが、現在はBSL IaCツールです
+- **OpenTofu**: Linux Foundationの下でコミュニティ主導 OpenTofuプロジェクトは「コミュニティの願望と要件のみによって導かれ、個々の企業の影響を受けない」
 
 ### 機能の違い
-- \*\*状態の暗号化\*\*: OpenTofuはステート暗号化をサポート OpenTofuは状態暗号化を提供しています。これはTerraformコミュニティが過去5年間要求していたものの、実現しなかった機能です
-- \*\*初期変数評価\*\*: OpenTofu 1.8では、terraformブロック内やモジュールソース内で変数とローカル変数を利用可能 OpenTofu 1.8では、早期変数評価を活用できます
-- \*\*互換性\*\*: OpenTofuはTerraform 1.6と完全互換 OpenTofu v1.6はTerraform v1.6と完全に互換性があります
+- **状態の暗号化**: OpenTofuはステート暗号化をサポート OpenTofuは状態暗号化を提供しています。これはTerraformコミュニティが過去5年間要求していたものの、実現しなかった機能です
+- **初期変数評価**: OpenTofu 1.8では、terraformブロック内やモジュールソース内で変数とローカル変数を利用可能 OpenTofu 1.8では、早期変数評価を活用できます
+- **互換性**: OpenTofuはTerraform 1.6と完全互換 OpenTofu v1.6はTerraform v1.6と完全に互換性があります
 
 ### 将来性
-- \*\*開発の方向性\*\*: 時間の経過とともに両者の差異は拡大する可能性あり OpenTofuとTerraformが進化するにつれて、おそらく分岐し、将来的にはより多くの主要な違いが現れるでしょう
-- \*\*コミュニティ投資\*\*: OpenTofuには複数企業からの投資がある 「言語への投資額はHashiCorpの現在の投資を上回っています」
+- **開発の方向性**: 時間の経過とともに両者の差異は拡大する可能性あり OpenTofuとTerraformが進化するにつれて、おそらく分岐し、将来的にはより多くの主要な違いが現れるでしょう
+- **コミュニティ投資**: OpenTofuには複数企業からの投資がある 「言語への投資額はHashiCorpの現在の投資を上回っています」
 
 ## 移行の容易さ
 - Terraform 1.5.xまたはそれ以前のバージョンを使用している場合、コード変更なしでOpenTofuに切り替え可能 Terraform 1.5.xまたはそれ以前を実行している場合、OpenTofuをドロップインして、コードを変更せずに実行できるはずです
@@ -44,11 +48,11 @@ TerraformとOpenTofuの比較に基づいて、新規IaCツール選定のため
 
 ## 採用すべきツールの判断基準
 
-1. \*\*ライセンスの重要性\*\*: 長期的なライセンスの安定性を重視するならOpenTofu
-2. \*\*コミュニティサポート\*\*: 現状ではTerraformのエコシステムが成熟しているが、OpenTofuも急速に拡大中
-3. \*\*機能要件\*\*: 状態暗号化や最新の機能が必要ならOpenTofu
-4. \*\*エコシステム\*\*: 両方とも3,000以上のプロバイダーをサポートし、多くの点で同等
-5. \*\*長期的な開発方向性\*\*: コミュニティ主導の開発モデルを好むならOpenTofu
+1. **ライセンスの重要性**: 長期的なライセンスの安定性を重視するならOpenTofu
+2. **コミュニティサポート**: 現状ではTerraformのエコシステムが成熟しているが、OpenTofuも急速に拡大中
+3. **機能要件**: 状態暗号化や最新の機能が必要ならOpenTofu
+4. **エコシステム**: 両方とも3,000以上のプロバイダーをサポートし、多くの点で同等
+5. **長期的な開発方向性**: コミュニティ主導の開発モデルを好むならOpenTofu
 
 ## 結論と推奨
 

@@ -15,6 +15,20 @@ huskyの使い方や最近使われているかどうか？
 *2025/5/21 21:21:36*
 
 huskyについてご質問いただきありがとうございます。huskyはGitフックを簡単に設定するためのツールです。最新の情報を確認するために検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 huskyについての情報をまとめました。

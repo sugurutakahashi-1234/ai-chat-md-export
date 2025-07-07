@@ -16,8 +16,14 @@ https://docs.npmjs.com/cli/v11/commands/npm-completion https://pnpm.io/completio
 *2025/7/4 22:22:48*
 
 I'll help you find information about command completion support in Bun. Let me do some research on this topic.
+```
+This block is not supported on your current device yet.
+```
 
 Your Bun shell completions analysis is ready. It covers Bun's automatic completion setup for Zsh and Fish shells, the dynamic completion generation system, comparisons with npm and pnpm, current limitations including incomplete Bash support, and community feedback driving improvements. The report highlights how Bun's approach to shell completions demonstrates its focus on superior developer experience.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 ---
 

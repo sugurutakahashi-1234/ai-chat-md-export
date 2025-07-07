@@ -76,6 +76,20 @@ package.json でマウスでオーバーレイすると、 昔はスクリプト
 ## 🤖 アシスタント
 *2025/6/21 8:46:03*
 
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 その機能はCodeLens（コードレンズ）と呼ばれる機能ですね。package.jsonのスクリプト行にマウスをホバーすると表示される実行・デバッグボタンが消えてしまった場合の解決方法をご紹介します：
 
 ## 1. CodeLens機能の有効化確認
@@ -134,6 +148,20 @@ package.json でマウスでオーバーレイすると、 昔はスクリプト
 
 ## 🤖 アシスタント
 *2025/6/21 8:48:52*
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
 
 その推測は正しいかもしれません。JSONファイルの読み込み設定を確認してみましょう。
 

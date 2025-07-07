@@ -29,9 +29,17 @@
 *2025/5/15 19:22:22*
 
 Slackの#generalチャンネルの最近の会話を確認するために、まずチャンネル情報を取得します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 #generalチャンネルのIDを確認できました。それでは、このチャンネルの最近のメッセージを取得します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありません。チャンネルにアクセスするための権限がないようです。現在、#generalチャンネルに参加していないため、メッセージ履歴を取得できません。
@@ -226,6 +234,10 @@ joinDefaultChannels();
 *2025/5/15 19:29:25*
 
 #generalチャンネルの最近の会話を確認します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 #generalチャンネルの最近の会話を要約します：
@@ -235,7 +247,7 @@ joinDefaultChannels();
    - タイムスタンプ: 1747304889.056869（2025年5月15日）
 
 2. 2025年4月30日頃:
-   - ユーザー「U08LT7S9PCL」がチャンネル名を「samonikura100\_gmail\_comの-ワークスペース-のすべて」から「general」に変更しました
+   - ユーザー「U08LT7S9PCL」がチャンネル名を「samonikura100_gmail_comの-ワークスペース-のすべて」から「general」に変更しました
    - タイムスタンプ: 1746082490.087359（2025年4月30日）
 
 3. 最初のアクティビティ（2025年3月31日頃）:
@@ -257,11 +269,15 @@ joinDefaultChannels();
 *2025/5/15 19:29:57*
 
 #generalチャンネルにメッセージを投稿します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 #generalチャンネルへのメッセージ投稿が成功しました！
 
-メッセージは正常に送信されましたが、レスポンスには文字化けが発生しているようです。これは「missing\_charset」という警告が表示されていることから、文字エンコーディングの問題と思われます。
+メッセージは正常に送信されましたが、レスポンスには文字化けが発生しているようです。これは「missing_charset」という警告が表示されていることから、文字エンコーディングの問題と思われます。
 
 ただし、実際のSlackチャンネル上では正しく日本語が表示されている可能性が高いです。Slack APIのレスポンスの表示の問題であり、実際のメッセージには影響していないと思われます。
 
@@ -284,25 +300,37 @@ joinDefaultChannels();
 *2025/5/15 19:30:49*
 
 文字エンコーディングの問題を解決するために、UTF-8エンコーディングを明示的に指定してメッセージを投稿してみます。英数字のみのメッセージでテストしてみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ASCII文字のみのメッセージは正しく表示されていますね。では、日本語メッセージを別の方法で試してみましょう。
 
 Unicode文字のエスケープシーケンスを使って日本語メッセージを送信してみます：
+```
+This block is not supported on your current device yet.
+```
 
 
-依然として「missing\_charset」警告が表示されています。APIのレスポンスには文字化けして表示されていますが、実際のSlackチャンネルでは正しく表示されている可能性があります。
+
+依然として「missing_charset」警告が表示されています。APIのレスポンスには文字化けして表示されていますが、実際のSlackチャンネルでは正しく表示されている可能性があります。
 
 最後にもう一つ試してみましょう。日本語と英語を混合して、より短いメッセージを送信します：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 興味深いことに、APIレスポンスでは日本語部分が「?」に置き換えられていますが、英語部分（"Test:"）は正しく表示されています。
 
 重要なポイント:
 1. これはAPIレスポンスの表示の問題であり、実際のSlackチャンネルでのメッセージ表示には影響していない可能性が高いです
-2. 「missing\_charset」警告は、APIレスポンスのエンコーディング指定が欠けていることを示しています
+2. 「missing_charset」警告は、APIレスポンスのエンコーディング指定が欠けていることを示しています
 
-\*\*実際のSlackチャンネルを確認すると、メッセージは正しく表示されている可能性が高いです。\*\*
+**実際のSlackチャンネルを確認すると、メッセージは正しく表示されている可能性が高いです。**
 
 この問題はSlack APIの仕様に関連していて、APIのレスポンスデータの文字エンコーディングの問題であり、実際のメッセージ送信機能には影響していないと考えられます。
 
@@ -354,15 +382,31 @@ ASCIIメッセージは正しく表示されているため、当面は英語で
 コードブロックや別の書式を使って日本語の文字化けを回避できるか試してみましょう。
 
 まず、Slackのマークダウン形式のコードブロック（```で囲む）を使ってメッセージを送信してみます：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 次に、リッチテキスト形式（太字やイタリックなど）を試してみましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 続いて、Unicode文字エスケープシーケンスを使ってみましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 最後に、絵文字と記号を使った簡単な代替方法を試してみましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 試してみた結果、残念ながらコードブロックや他の書式を使用しても日本語文字の文字化けは回避できないようです。APIとSlackボットの設定自体に問題があると考えられます。

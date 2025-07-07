@@ -18,15 +18,19 @@ https://pdf-web-markdown.pages.dev/
 *2025/7/3 1:49:51*
 
 そのサイトのAPIキーの安全性をチェックする方法をいくつか提案します。
+```
+This block is not supported on your current device yet.
+```
+
 サイトに直接アクセスできませんでしたが、APIキーの安全性をチェックする方法をご案内します：
 
 ## 確認方法
 
 ### 1. ブラウザの開発者ツールで確認
 - Chrome/Edgeで`F12`キーを押して開発者ツールを開く
-- \*\*Network\*\*タブでAPIリクエストを監視
-- \*\*Sources\*\*タブでJavaScriptファイルを確認
-- \*\*Application\*\*タブでLocal StorageやSession Storageをチェック
+- **Network**タブでAPIリクエストを監視
+- **Sources**タブでJavaScriptファイルを確認
+- **Application**タブでLocal StorageやSession Storageをチェック
 
 ### 2. ページのソースコードを確認
 - ページ上で右クリック→「ページのソースを表示」
@@ -41,15 +45,15 @@ Pages.devはCloudflare Pagesなので、もしGitHubで公開されていれば�
 
 もしAPIキーが露出している場合は、以下の方法で保護できます：
 
-1. \*\*サーバーサイドプロキシの使用\*\*
+1. **サーバーサイドプロキシの使用**
    - Cloudflare WorkersやFunctionsを使ってAPIキーをサーバー側に保管
    - クライアントからはプロキシ経由でアクセス
 
-2. \*\*環境変数の使用\*\*
+2. **環境変数の使用**
    - Cloudflare Pagesの環境変数にAPIキーを設定
    - ビルド時にのみ使用し、クライアントには露出させない
 
-3. \*\*APIキーの制限\*\*
+3. **APIキーの制限**
    - Google Cloud ConsoleでAPIキーに制限を設定
    - 特定のドメインからのみアクセス可能にする
 

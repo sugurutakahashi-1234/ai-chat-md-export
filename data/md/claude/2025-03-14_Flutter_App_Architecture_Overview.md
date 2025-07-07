@@ -16,6 +16,10 @@
 *2025/3/14 12:49:02*
 
 フォルダ構成から、クリーンアーキテクチャを採用したFlutterアプリケーションのアーキテクチャ概要を作成します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ご確認いただいたフォルダ構成を元に、アプリケーションのアーキテクチャ概要文書を作成しました。このドキュメントでは以下の点について説明しています：

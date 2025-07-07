@@ -62,6 +62,12 @@ TypeScriptモノレポでOpenAPI駆動開発をしている場合、段階的な
 ## 🤖 アシスタント
 *2025/5/22 22:46:38*
 
+```
+This block is not supported on your current device yet.
+```
+
+
+
 OpenAPI/TypeScriptモノレポでの下位互換性維持には、いくつかの戦略があります。
 
 ## APIバージョニング戦略
@@ -232,6 +238,22 @@ apiのバージョンをインクリメントするのが楽であるがうま�
 
 ## 🤖 アシスタント
 *2025/5/22 22:49:13*
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
 
 APIバージョニングの移行方法には、それぞれ異なるメリットがあります。実用性を考慮した具体的なアプローチを紹介します。
 
@@ -418,6 +440,22 @@ RESTfulな設計ではどうするのが理想とされているのか？
 
 ## 🤖 アシスタント
 *2025/5/22 22:52:48*
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
 
 RESTfulな設計では、理論的には**コンテントネゴシエーション**が理想とされていますが、実際の業界実装との間にギャップがあります。
 
@@ -1065,6 +1103,22 @@ class WebApiClient {
 ## 🤖 アシスタント
 *2025/5/22 22:57:39*
 
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+
 マイクロフロントエンドは、**フロントエンドアプリケーションを独立してデプロイ可能な小さな部品に分割する**アーキテクチャパターンです。
 
 ## 基本概念
@@ -1681,6 +1735,10 @@ monorepo/
 │   ├── server/              # サーバーアプリ
 │   └── web-client/          # Webアプリ
 ```
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## シェアード分割の実用的基準
@@ -1891,6 +1949,12 @@ export async function createUser(name: string, email: string) {
 
 ## 🤖 アシスタント
 *2025/5/23 0:09:42*
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
 
 推奨構成でのpackage.json設定と別環境デプロイ方法を説明します。
 

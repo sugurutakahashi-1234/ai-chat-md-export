@@ -600,22 +600,42 @@ enum SearchType {
 I'll help you implement the target switching functionality with SharedPreferences storage. Based on your code and image, you need to create a UI with toggle buttons for "Spots" and "Mystery box" targets, and save the selected option using SharedPreferences.
 
 First, let's create the SharedPreferences service provider if you haven't already:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 Now, let's implement the target selection UI component:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 Now, let's update the `OnExploringNotifier` to use the selected search type:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 
 
 Finally, let's modify the Explorer screen to include our target selection widget:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 
 
 Let's also create the file that will hold the SearchType enum (you provided it earlier in your code, but let's make sure it's in the proper location):
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## Implementation Overview
@@ -668,6 +688,9 @@ After this implementation, your app will be able to switch between "Spots" and "
 I'll help you implement the target switching feature for the ExplorerListPage, saving the selection to SharedPreferences. Based on your code and screenshot, you want to add a UI element to switch between "Spots" and "Mystery box" search types.
 
 Here's my implementation:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 ---
 
@@ -682,19 +705,39 @@ I'll help you implement the target switching feature in the ExplorerListPage. Le
 *2025/3/11 16:29:06*
 
 I'll create a modified version of the ExplorerListPage to implement target switching between "Spots" and "Mystery box" according to the UI in the image. The selection will be saved using SharedPreferences through the SearchTypeNotifier.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 Now I'll update the OnExploringNotifier to use the selected search type when performing the search:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I'll also create the SearchTypeNotifier to handle the SharedPreferences storage:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 
 
 Finally, I'll create the SearchType enum and the PreferencesKeys class:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 
 
@@ -704,21 +747,21 @@ Finally, I'll create the SearchType enum and the PreferencesKeys class:
 
 Based on your requirements, I've implemented the following changes:
 
-1. \*\*Modified ExplorerListPage:\*\*
+1. **Modified ExplorerListPage:**
    - Added a "Target" section with two selectable buttons: "Spots" and "Mystery box"
    - The buttons reflect the currently selected SearchType from SharedPreferences
    - Updated the UI to match the provided image with proper styling and icons
    - Connected the selection to the SearchTypeNotifier
 
-2. \*\*Updated OnExploringNotifier:\*\*
+2. **Updated OnExploringNotifier:**
    - Modified the search method to use the selected SearchType from the provider
    - This ensures the correct target type is used when starting an exploration
 
-3. \*\*Created SearchTypeNotifier:\*\*
+3. **Created SearchTypeNotifier:**
    - Implemented a Riverpod notifier that loads and saves the search type selection to SharedPreferences
    - Provides the current search type to other parts of the application
 
-4. \*\*Added Supporting Files:\*\*
+4. **Added Supporting Files:**
    - SearchType enum with spot and itemBox values (corresponding to "Spots" and "Mystery box" in the UI)
    - PreferencesKeys class to maintain the keys used with SharedPreferences
 
@@ -745,17 +788,41 @@ OnExploringNotifierの中でfinal searchType = await ref.read(searchTypeNotifier
 *2025/3/11 16:32:10*
 
 You're right - moving the SearchType to an argument for the ExplorerListPage would improve the code structure. I'll modify the code to make this change.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've made the requested changes to improve the code structure:
 
-1. \*\*Modified OnExploringNotifier:\*\*
-   - Added a `\_searchType` field to store the selected search type
+1. **Modified OnExploringNotifier:**
+   - Added a `_searchType` field to store the selected search type
    - Updated `startLoading` method to take two required parameters: `selectedExplorer` and `searchType`
-   - Modified the `search` method to use the stored `\_searchType` instead of fetching it from the provider
-   - Updated the `clear` method to also reset the `\_searchType`
+   - Modified the `search` method to use the stored `_searchType` instead of fetching it from the provider
+   - Updated the `clear` method to also reset the `_searchType`
 
-2. \*\*Updated ExplorerListPage:\*\*
+2. **Updated ExplorerListPage:**
    - Modified the `onTapStartExplore` method to get the current search type from the UI state
    - Now passes both the selected explorer and search type to the `startLoading` method
 
@@ -780,29 +847,68 @@ This approach improves the code structure by making the dependencies clear and e
 *2025/3/11 16:33:21*
 
 You're absolutely right. That would be a more complete approach, since we should keep the SearchType in the state for consistency and clarity. Let me update the code.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 You're absolutely right. Including the SearchType directly in the OnExploringState is a much better approach. I've made the following improvements:
 
-1. \*\*Updated OnExploringState:\*\*
+1. **Updated OnExploringState:**
    - Added `searchType` as a required field in the state class
    - This makes the selected search type part of the official state, improving visibility and traceability
 
-2. \*\*Simplified OnExploringNotifier:\*\*
-   - Removed the separate `\_searchType` field since it's now part of the state
+2. **Simplified OnExploringNotifier:**
+   - Removed the separate `_searchType` field since it's now part of the state
    - Updated all state creation points to include the searchType property
    - Modified the search method to use `state.searchType` instead of a class field
 
-3. \*\*Maintained state consistency:\*\*
+3. **Maintained state consistency:**
    - The searchType is now preserved across all state transitions
    - When updating state during exploration, the searchType is properly carried forward
 
 This approach offers several advantages:
 
-1. \*\*Better state management:\*\* All related data is now in a single state object
-2. \*\*Improved debugging:\*\* The search type is visible in the state, making it easier to track
-3. \*\*More consistent:\*\* The pattern matches how other state properties are handled
-4. \*\*More reactive:\*\* Other widgets can now react to changes in the search type through the state
+1. **Better state management:** All related data is now in a single state object
+2. **Improved debugging:** The search type is visible in the state, making it easier to track
+3. **More consistent:** The pattern matches how other state properties are handled
+4. **More reactive:** Other widgets can now react to changes in the search type through the state
 
 This is definitely a cleaner architecture. The state now fully represents all the information needed for the exploring process, and the flow of data is more transparent.
 
@@ -820,41 +926,64 @@ This is definitely a cleaner architecture. The state now fully represents all th
 
 I'll check for potential errors in the code. Let me review each file to identify issues:
 
-1. \*\*OnExploringNotifier (on-exploring-notifier)\*\*:
+1. **OnExploringNotifier (on-exploring-notifier)**:
    - When I look at the modified code, there's a potential issue with how we're handling the state updates. Let me review this more closely.
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 After reviewing the code, I've identified several potential issues that could be causing errors:
 
-1. \*\*Missing imports in the OnExploringNotifier file:\*\*
+1. **Missing imports in the OnExploringNotifier file:**
    - It seems we didn't properly import the SharedPreferencesServiceProvider
    - Make sure the SearchType enum import is correct
 
-2. \*\*Explorer List Page issues:\*\*
+2. **Explorer List Page issues:**
    - The way we're accessing `searchTypeAsyncValue.value` could cause null safety errors
 
-3. \*\*State mutation issues:\*\*
+3. **State mutation issues:**
    - When updating state in the Timer callback, we're using `state.searchType` which could be problematic if state is changing elsewhere
 
 Let me fix these issues:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 
 
 After reviewing the code, I identified and fixed several issues that could potentially cause errors:
 
-1. \*\*OnExploringNotifier Improvements:\*\*
+1. **OnExploringNotifier Improvements:**
    - Improved handling of async state by capturing currentSearchType to a local variable
    - Added safety checks to prevent issues with state changing during async operations
    - Made sure to capture state.searchType before each state update to prevent data loss
    - Ensures safety in the Timer callback by using a local variable
 
-2. \*\*ExplorerListPage Fixes:\*\*
+2. **ExplorerListPage Fixes:**
    - Fixed an issue with how we're accessing searchTypeAsyncValue.value
    - Added proper AsyncValue state handling (AsyncError, AsyncLoading, etc.)
    - More robust error messaging for different failure scenarios
 
-3. \*\*SearchTypeNotifier Fixes:\*\*
+3. **SearchTypeNotifier Fixes:**
    - Added import for flutter/foundation.dart for debugPrint
    - Improved error handling in the build method
    - Added null check for searchTypeString
@@ -862,9 +991,9 @@ After reviewing the code, I identified and fixed several issues that could poten
 
 These changes should resolve the potential errors in the implementation. The key improvements are:
 
-1. \*\*Better Async Handling:\*\* More robust handling of asynchronous state and potential race conditions
-2. \*\*Improved Null Safety:\*\* Better handling of nullable values and error conditions
-3. \*\*More Defensive Code:\*\* Capturing state at critical points to prevent loss of data
+1. **Better Async Handling:** More robust handling of asynchronous state and potential race conditions
+2. **Improved Null Safety:** Better handling of nullable values and error conditions
+3. **More Defensive Code:** Capturing state at critical points to prevent loss of data
 
 The overall structure remains the same, but these improvements should make the code more stable and less prone to errors.
 
@@ -881,6 +1010,10 @@ The overall structure remains the same, but these improvements should make the c
 *2025/3/11 17:03:29*
 
 I'll modify the ExplorerListPage to keep the target selector inline without extracting it to a separate method. This will make the code flow more visible in one place.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've updated the ExplorerListPage as requested, keeping all the UI code inline without extracting the target selector into a separate method. 
@@ -906,22 +1039,26 @@ Does this implementation look better for your needs?
 *2025/3/11 17:32:56*
 
 I'll help you modify the ExplorerListPage to extend the CarouselSlider to the edges of the screen while keeping the rest of the functionality intact. The key issue is the current padding and viewportFraction settings.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've updated the ExplorerListPage to make the CarouselSlider extend to the edges of the screen. Here are the key changes I made:
 
-1. \*\*CarouselSlider Configuration:\*\*
+1. **CarouselSlider Configuration:**
    - Changed `viewportFraction: 0.85` to `viewportFraction: 1.0` so each item takes the full screen width
    - Added `padEnds: false` to remove the default padding at the edges of the carousel
    - Added `aspectRatio: 16 / 9` to maintain a consistent height
-   - Added `enableInfiniteScroll: explorerList.length &gt; 1` to only enable infinite scrolling when there's more than one explorer
+   - Added `enableInfiniteScroll: explorerList.length > 1` to only enable infinite scrolling when there's more than one explorer
 
-2. \*\*Card Styling:\*\*
+2. **Card Styling:**
    - Removed the `Center` widget that was wrapping the Card
    - Added internal margin to the Card with `margin: const EdgeInsets.symmetric(horizontal: 16)` to keep consistent spacing inside the viewport
    - This approach gives you full-width control of the carousel while keeping appropriate spacing inside each card
 
-3. \*\*Other Improvements:\*\*
+3. **Other Improvements:**
    - Added a proper button style for the "Start explore" button to match the UI in the image
    - Added spacing at the bottom of the page with `const SizedBox(height: 16)`
 

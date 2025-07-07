@@ -1741,6 +1741,22 @@ baseにもあるのに個別で記述している理由はなぜか？
 ## 🤖 アシスタント
 *2025/5/22 13:08:52*
 
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+
 優れた指摘です！確かに不要な重複が多数ありました。`extends` で継承している場合、基底設定と同じ内容を個別で記述する必要はありません。以下が正しい設定方法です。
 
 # 正しい TSConfig 設定（重複を排除）

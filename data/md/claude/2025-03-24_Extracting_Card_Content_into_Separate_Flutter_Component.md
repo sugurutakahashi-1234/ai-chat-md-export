@@ -15,16 +15,24 @@ Padding(                             padding: const EdgeInsets.all(16),         
 *2025/3/24 22:53:48*
 
 I'll help you extract that section into a separate component. Let me create a Flutter component for you that encapsulates the card content.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 Now, here's how you can use this component in your original code:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've created two components for you:
 
-1. \*\*ExplorerCardContent Widget\*\*: This is a separate Flutter widget that contains the padding, row layout, and all the card content you wanted to extract.
+1. **ExplorerCardContent Widget**: This is a separate Flutter widget that contains the padding, row layout, and all the card content you wanted to extract.
 
-2. \*\*Using ExplorerCardContent\*\*: This shows how to use the new component in your original code.
+2. **Using ExplorerCardContent**: This shows how to use the new component in your original code.
 
 The `ExplorerCardContent` widget takes all the necessary parameters:
 - `imageUrl` for the explorer image
@@ -34,7 +42,7 @@ The `ExplorerCardContent` widget takes all the necessary parameters:
 
 To implement this in your project:
 
-1. Create a new file (e.g., `explorer\_card\_content.dart`) and paste the `ExplorerCardContent` class there.
+1. Create a new file (e.g., `explorer_card_content.dart`) and paste the `ExplorerCardContent` class there.
 2. Import this new file wherever you're using the explorer list.
 3. Replace the original nested content with the `ExplorerCardContent` widget as shown in the second snippet.
 
@@ -65,19 +73,33 @@ final explorer = explorerList\[index\];
 *2025/3/24 23:04:15*
 
 おっしゃる通りですね。ExplorerDTOを直接引数として受け取る方が、データの受け渡しがシンプルになり、メンテナンス性も向上します。修正したコンポーネントを作成します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ExplorerDTOを引数に取るように修正しました。こちらの方が以下のようなメリットがあります：
 
-1. \*\*シンプルな引数渡し\*\*: パラメータが1つだけになり、コードがスッキリします
-2. \*\*データの一貫性\*\*: プロパティの計算ロジックをコンポーネント内に閉じ込められます
-3. \*\*変更に強い\*\*: ExplorerDTOの構造が変わっても、利用側のコードを変更する必要がありません
+1. **シンプルな引数渡し**: パラメータが1つだけになり、コードがスッキリします
+2. **データの一貫性**: プロパティの計算ロジックをコンポーネント内に閉じ込められます
+3. **変更に強い**: ExplorerDTOの構造が変わっても、利用側のコードを変更する必要がありません
 
 修正したコードでは：
 
 - ExplorerCardContentは単にExplorerDTOオブジェクトを受け取るだけになりました
 - コンポーネント内で必要なデータ（imageUrl、energy、attack等）を計算するようにしました
-- 元々のコメント（TODO: \[v0.3.0\] \[weave\] 攻撃力の反映）も維持しています
+- 元々のコメント（TODO: [v0.3.0] [weave] 攻撃力の反映）も維持しています
 
 この実装方法であれば、今後ExplorerDTOの構造や計算方法が変わっても、ExplorerCardContentコンポーネント内の修正だけで済むようになります。またコンポーネントの呼び出し側もシンプルになっています。
 

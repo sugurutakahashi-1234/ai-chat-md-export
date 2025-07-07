@@ -31,9 +31,17 @@ expoを使った実装例
 *2025/5/12 16:01:33*
 
 ExpoでのReactNative実装をお手伝いしましょう。まず、Expoに関する最新のドキュメントを取得してみます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Expoの公式ライブラリIDが見つかりました。メインのライブラリを使って、詳細なドキュメントを取得します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ありがとうございます。情報が揃いましたので、Expoを使った実装例をいくつか作成していきます。シンプルなものから複雑なものまで、段階的に紹介します。
@@ -41,22 +49,71 @@ Expoの公式ライブラリIDが見つかりました。メインのライブ�
 ## 1. 基本的なExpoアプリの作成と実行
 
 まず、新しいExpoプロジェクトを作成し、基本的なHello Worldアプリを実装します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 アプリが作成されると、デフォルトで`App.js`ファイルが生成されます。これを編集して簡単なUIを作成してみましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## 2. 画像ピッカーを使った実装例
 
 次に、`expo-image-picker`を使って画像を選択し表示するアプリを作成します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## 3. Expo Routerを使ったナビゲーション実装
 
 Expo Router は最新のファイルベースのナビゲーションを提供します。マルチ画面のアプリを実装してみましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 以下に各ファイルの実装例を示します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 ---
 
@@ -71,13 +128,39 @@ Expo Router は最新のファイルベースのナビゲーションを提供�
 *2025/5/12 16:03:46*
 
 続けて設定画面の実装を完成させます。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 次に、詳細画面とモーダル画面を実装します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## 4. 位置情報と地図を使った実装例
 
 次に、Expoの位置情報APIとReact Native Mapsを使った例を紹介します。まず必要なパッケージをインストールします。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 ---

@@ -16,6 +16,10 @@ https://github.com/modelcontextprotocol/swift-sdk を使ってmcpサーバーを
 *2025/6/30 15:33:04*
 
 Swift SDKを使って新しいMCPサーバープロジェクトを作成する手順を説明します。
+```
+This block is not supported on your current device yet.
+```
+
 Swift SDKを使ってMCPサーバーの新規プロジェクトを作成する手順は以下の通りです：
 
 ## 1. 新規Swiftパッケージプロジェクトの作成
@@ -359,6 +363,15 @@ MCPサーバーは：
 *2025/6/30 15:37:08*
 
 MCPサーバーのDockerでの運用について説明します。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 はい、MCPサーバーにはDockerで運用する方法があります。MCPの実装には大きく2つのアプローチがあります：
 
 ## 1. **通常のMCPサーバー（Stdioトランスポート）**

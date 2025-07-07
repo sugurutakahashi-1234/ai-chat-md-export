@@ -15,6 +15,10 @@
 *2025/4/20 20:33:43*
 
 I'll search for information about highly regarded AI for singing or voice synthesis.
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Based on my search, here are some of the most highly regarded AI singing voice synthesis technologies available today:

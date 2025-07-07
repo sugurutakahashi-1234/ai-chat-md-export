@@ -15,6 +15,15 @@
 *2025/3/18 19:55:15*
 
 I'll implement an extension for SpotBaseInfoDTO that accesses `.adminPhotoUrl` and `.adminPhotoId` with error handling as requested.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've created an extension for the `SpotBaseInfoDTO` class that provides getters for `.adminPhotoUrl` and `.adminPhotoId`. Here's how it works:
@@ -98,22 +107,42 @@ extension SpotWithLocationInfoDtoX on SpotWithLocationInfoDTO {
 *2025/3/18 23:28:02*
 
 そうですね、コードの重複を避けるために共通化するのは良い考えです。`spotPhotos`を持つインターフェースを作成して、両方のクラスで使用できるようにしましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 この共通化アプローチでは問題があります。Dartではクラスに後からミックスインを適用することができません。より適切な方法を考えましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 上記の方法でも重複が残るので、もう少し改善しましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 
 
 上記の解決策は少し複雑すぎるようです。より単純でシンプルな方法に変更しましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 
 
 こちらのアプローチでもまだ重複が多いので、もっとシンプルにしましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 

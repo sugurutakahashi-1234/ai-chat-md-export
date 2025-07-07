@@ -17,6 +17,10 @@ Flutter で位置情報をトラッキングしながら追跡する方法
 Flutterで位置情報をトラッキングしながら追跡する方法をご紹介します。Flutterアプリで位置情報を追跡するには、主に以下の手順が必要です。
 
 まず、位置情報を取得するためのプラグインをセットアップし、そのデータを使って位置の更新をリアルタイムで監視します。以下にコード例を示します：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 このコードを実装するには、以下の手順に従います：
@@ -98,6 +102,10 @@ dependencies:
 ```
 
 ## 実装手順
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## プロジェクトのセットアップ

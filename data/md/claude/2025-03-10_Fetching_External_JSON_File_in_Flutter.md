@@ -27,6 +27,10 @@ https://storage.googleapis.com/guild-dev-public/maintenance.json には
 Flutter で外部の JSON ファイルを型安全に取得して扱うためのコードを作成します。
 
 まず、Maintenance 情報を格納するモデルクラスを作成し、その後 HTTP リクエストを使って JSON ファイルを取得する方法を実装しましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 このコードは次の3つの主要なファイルで構成されています：
@@ -78,6 +82,10 @@ dependencies:
 *2025/3/10 13:11:44*
 
 Riverpod と freezed を使って、よりクリーンなコードを作成しましょう。型安全な JSON 変換には freezed を使用して自動生成コードを活用し、状態管理には Riverpod を使用します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 このコードでは、Riverpod と Freezed を使ってよりクリーンな実装にしました。コードの主要コンポーネントは以下の通りです：
@@ -186,6 +194,10 @@ class MaintenanceAwareWidget extends ConsumerWidget {
 *2025/3/10 13:13:39*
 
 メンテナンス情報だけでなく、今後追加される可能性のある他の設定情報も含めて対応できるように、モデルの名前とプロパティを拡張しましょう。`AppConfig` という名前にしてみます：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 はい、Freezed を使用する場合は、最低限このようなコードを書く必要があります。ただし、今回は将来の拡張性を考慮して、全体的に改善しました。
@@ -262,6 +274,10 @@ MaintenanceRepository は必要なのか？
 *2025/3/10 13:59:54*
 
 リポジトリクラスは厳密には必要ではありません。Riverpod を使った実装では、リポジトリ層をスキップして、プロバイダー内で直接データを取得することも可能です。コードをさらに簡素化しましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 いいえ、`MaintenanceRepository`（または `AppConfigRepository`）は厳密には必要ありません。コードをさらに簡素化して、リポジトリ層を省略することができます。
@@ -370,18 +386,22 @@ https://storage.googleapis.com/guild-dev-public/maintenance.json
 *2025/3/10 14:58:46*
 
 HTTPリクエストにキャッシュを使わずにアクセスするには、キャッシュ制御用のヘッダーを追加する方法があります。Flutter/Dartの`http`パッケージを使用して実装できます。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 キャッシュを使わずに Google Cloud Storage のファイルにアクセスするために、2つの手法を組み合わせました：
 
-1. \*\*キャッシュ制御ヘッダーの追加\*\*
+1. **キャッシュ制御ヘッダーの追加**
    - `Cache-Control: no-cache, no-store, must-revalidate` - キャッシュを使用せず、必ず再検証するよう指示
    - `Pragma: no-cache` - HTTP/1.0互換のキャッシュ制御
    - `Expires: 0` - 即時期限切れにする
 
-2. \*\*キャッシュバスティング\*\*
+2. **キャッシュバスティング**
    - URLに現在のタイムスタンプをクエリパラメータとして追加
-   - `?\_t=1715338921563` のようなパラメータが追加され、毎回異なるURLとしてリクエストされる
+   - `?_t=1715338921563` のようなパラメータが追加され、毎回異なるURLとしてリクエストされる
 
 これにより、ブラウザキャッシュやCDNキャッシュ、さらにHTTPクライアントのキャッシュを回避し、常に最新のデータを取得します。
 

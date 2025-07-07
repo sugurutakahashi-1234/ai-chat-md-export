@@ -15,6 +15,20 @@
 *2025/6/25 0:30:00*
 
 日本の技術系情報共有プラットフォームであるZennとQiitaの現在の人気度について、最新の情報を調べてみます。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 日本の技術系情報共有プラットフォームであるZennとQiitaの人気度の最新状況についてお答えします。
 
 ## 現在の人気度・利用状況の比較

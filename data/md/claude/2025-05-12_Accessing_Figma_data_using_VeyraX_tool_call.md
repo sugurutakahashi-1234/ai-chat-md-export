@@ -23,23 +23,27 @@ VeyraXのtool\_callでFigmaを参照して欲しい
 ## 🤖 アシスタント
 *2025/5/12 14:33:14*
 
-Figmaを参照するためにVeyraXのtool\_callを使いたいということですね。まず、どのようなツールが利用可能か確認してみましょう。
+Figmaを参照するためにVeyraXのtool_callを使いたいということですね。まず、どのようなツールが利用可能か確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
 
 
-Figmaのツールが利用可能なことが確認できました。ではFigmaのデータを取得するために、tool\_callを使用してみましょう。
+
+Figmaのツールが利用可能なことが確認できました。ではFigmaのデータを取得するために、tool_callを使用してみましょう。
 
 Figmaファイルを参照するためには、まずファイルキーが必要です。Figmaのファイルキーをお持ちでしたら教えていただけますか？通常、Figmaのリンクは `https://www.figma.com/file/XXXXX/...` のような形式になっており、XXXXXの部分がファイルキーです。
 
 もしファイルキーをお持ちでしたら、以下のような形でFigmaデータを取得できます：
 
-1. ファイルの全体情報を取得: figma\_get\_file
-2. 特定のノード情報を取得: figma\_get\_file\_nodes
-3. 画像としてレンダリング: figma\_get\_images
-4. コメントを取得: figma\_get\_comments
+1. ファイルの全体情報を取得: figma_get_file
+2. 特定のノード情報を取得: figma_get_file_nodes
+3. 画像としてレンダリング: figma_get_images
+4. コメントを取得: figma_get_comments
 
 また、特定の要素（コンポーネント、スタイルなど）に関する情報も取得できます。
 
-ご希望の操作内容を教えていただければ、適切なtool\_callを実行できます。
+ご希望の操作内容を教えていただければ、適切なtool_callを実行できます。
 
 ---
 
@@ -82,32 +86,40 @@ https://www.figma.com/design/9Y1kGRlyladEXqqXI01cCy/mcp-test?node-id=2005-2&t=V3
 ノードID: `2005-2`
 
 これらの情報を使って、Figmaから指定されたノードの画像を取得してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありません。ツールの呼び出し方に問題があったようです。VeyraXでFigmaツールを使用するための正しい形式で再度試してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Figmaデータの取得に成功しました。以下が取得したデータの詳細です：
 
 ### ファイル情報
-- \*\*ファイル名\*\*: mcp-test
-- \*\*最終更新日\*\*: 2025年5月9日
-- \*\*サムネイルURL\*\*: 提供されています
+- **ファイル名**: mcp-test
+- **最終更新日**: 2025年5月9日
+- **サムネイルURL**: 提供されています
 
 ### ノード情報 (ID: 2005-2)
-- \*\*名前\*\*: iPhone 16 - 1
-- \*\*タイプ\*\*: FRAME (フレーム)
-- \*\*塗りつぶし\*\*: #FFFFFF (白色)
-- \*\*レイアウトモード\*\*: none
+- **名前**: iPhone 16 - 1
+- **タイプ**: FRAME (フレーム)
+- **塗りつぶし**: #FFFFFF (白色)
+- **レイアウトモード**: none
 
 ### 子要素
-- \*\*名前\*\*: Rectangle 1 (ID: 2005:3)
-- \*\*タイプ\*\*: RECTANGLE (長方形)
-- \*\*塗りつぶし\*\*: #D9D9D9 (グレー)
+- **名前**: Rectangle 1 (ID: 2005:3)
+- **タイプ**: RECTANGLE (長方形)
+- **塗りつぶし**: #D9D9D9 (グレー)
 
 このフレームは「iPhone 16 - 1」という名前で、中に「Rectangle 1」という灰色の長方形が含まれているシンプルなデザインです。
 
-このノードの画像をダウンロードして表示したい場合は、`download\_figma\_images`ツールを使用できます。試してみましょうか？また、他に取得したい特定のノードやデータはありますか？
+このノードの画像をダウンロードして表示したい場合は、`download_figma_images`ツールを使用できます。試してみましょうか？また、他に取得したい特定のノードやデータはありますか？
 
 ---
 
@@ -121,17 +133,21 @@ download\_figma\_images
 ## 🤖 アシスタント
 *2025/5/12 14:35:29*
 
-`download\_figma\_images`ツールを使って、先ほど取得したFigmaデザインの画像をダウンロードしてみましょう。このツールを使用するには、fileKey、ノードID、保存先のローカルパスが必要です。
+`download_figma_images`ツールを使って、先ほど取得したFigmaデザインの画像をダウンロードしてみましょう。このツールを使用するには、fileKey、ノードID、保存先のローカルパスが必要です。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 素晴らしいです！Figmaの画像のダウンロードに成功しました。
 
 ### ダウンロード結果
-- \*\*ステータス\*\*: 成功
-- \*\*ダウンロードされた画像\*\*: 1枚
-- \*\*保存場所\*\*: `/tmp/figma\_images/iphone16\_frame.png`
+- **ステータス**: 成功
+- **ダウンロードされた画像**: 1枚
+- **保存場所**: `/tmp/figma_images/iphone16_frame.png`
 
-「iPhone 16 - 1」フレーム（ノードID: 2005:2）の画像が、指定したディレクトリ `/tmp/figma\_images` に「iphone16\_frame.png」という名前で保存されました。
+「iPhone 16 - 1」フレーム（ノードID: 2005:2）の画像が、指定したディレクトリ `/tmp/figma_images` に「iphone16_frame.png」という名前で保存されました。
 
 このファイルはシステムの一時ディレクトリに保存されているため、必要に応じて他の場所に移動するか、直接アクセスすることができます。
 
@@ -150,16 +166,20 @@ download\_figma\_images
 *2025/5/12 14:36:37*
 
 了解しました。指定された出力先に画像をダウンロードし直します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 素晴らしいです！指定された新しい出力先へのダウンロードが成功しました。
 
 ### ダウンロード結果
-- \*\*ステータス\*\*: 成功
-- \*\*ダウンロードされた画像\*\*: 1枚
-- \*\*保存場所\*\*: `/Users/sugurutakahashi/Desktop/work/ai/iphone16\_frame.png`
+- **ステータス**: 成功
+- **ダウンロードされた画像**: 1枚
+- **保存場所**: `/Users/sugurutakahashi/Desktop/work/ai/iphone16_frame.png`
 
-「iPhone 16 - 1」フレーム（ノードID: 2005:2）の画像が、指定したディレクトリ `/Users/sugurutakahashi/Desktop/work/ai` に「iphone16\_frame.png」という名前で保存されました。
+「iPhone 16 - 1」フレーム（ノードID: 2005:2）の画像が、指定したディレクトリ `/Users/sugurutakahashi/Desktop/work/ai` に「iphone16_frame.png」という名前で保存されました。
 
 これで、デスクトップの作業ディレクトリから直接アクセスできるようになりました。他にダウンロードしたいノードや、別の形式で保存したい画像などはありますか？
 
@@ -175,80 +195,92 @@ tool\_call でできることの一覧を教えて欲しい
 ## 🤖 アシスタント
 *2025/5/12 14:38:28*
 
-VeyraXの`tool\_call`を使用してできることの一覧を取得しましょう。利用可能なツールの一覧を確認するために`get\_tools`を使用します。
+VeyraXの`tool_call`を使用してできることの一覧を取得しましょう。利用可能なツールの一覧を確認するために`get_tools`を使用します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 現在、利用可能なツールが限られているようです。今のところ、主に以下のツールが使えることがわかりました：
 
 ### 現在利用可能なツール
-1. \*\*veyrax-auth\*\*
-   - `generate\_connection\_link`: ツールへの接続リンクを生成
-   - `get\_tools\_connection\_status`: ツール接続状態を確認
+1. **veyrax-auth**
+   - `generate_connection_link`: ツールへの接続リンクを生成
+   - `get_tools_connection_status`: ツール接続状態を確認
 
 ### 接続ツールの確認
 ツール接続状態を確認してみましょう：
+```
+This block is not supported on your current device yet.
+```
 
 
-VeyraXの`tool\_call`でできることの一覧を調査した結果、多くの統合ツールが利用可能ですが、現在はどのツールも接続されていない状態です。
+
+VeyraXの`tool_call`でできることの一覧を調査した結果、多くの統合ツールが利用可能ですが、現在はどのツールも接続されていない状態です。
 
 ### 利用可能なツールカテゴリー
 以下のような多様なツールに接続できる可能性があります：
 
 #### 一般的なツール (抜粋)
-1. \*\*コラボレーション/ドキュメント管理\*\*
+1. **コラボレーション/ドキュメント管理**
    - Google Drive, Google Docs, Google Sheets
    - Notion, Confluence, Airtable
    - Dropbox, Coda
 
-2. \*\*開発ツール\*\*
+2. **開発ツール**
    - GitHub, Figma, Vercel
    - Supabase, Replicate, Postman
    - PostgreSQL, Sentry
 
-3. \*\*コミュニケーション\*\*
+3. **コミュニケーション**
    - Slack, WhatsApp, Mail
    - Discord (MCP経由)
 
-4. \*\*タスク管理\*\*
+4. **タスク管理**
    - Asana, Trello, Linear, Jira, Todoist
 
-5. \*\*検索/データツール\*\*
+5. **検索/データツール**
    - Google Maps, Tavily, Perplexity, DuckDuckGo
    - Brave, Exa, Browser-use
 
-6. \*\*SNS/メディア\*\*
+6. **SNS/メディア**
    - YouTube, X(Twitter), Instagram, LinkedIn, Reddit
 
 #### MCPサーバー (Model Context Protocol)
 Figmaに関しては、`figma-api-mcp-server`も利用可能ですが、現在接続されていません。
 
 ### Figma接続について
-すでにClaudeの内蔵ツール`get\_figma\_data`と`download\_figma\_images`を使って正常にFigmaデータを取得できています。これは、VeyraXのツールとは別の仕組みで提供されているものです。
+すでにClaudeの内蔵ツール`get_figma_data`と`download_figma_images`を使って正常にFigmaデータを取得できています。これは、VeyraXのツールとは別の仕組みで提供されているものです。
 
 VeyraXでFigmaを使いたい場合は、まず接続設定が必要です。以下のように接続リンクを生成できます：
+```
+This block is not supported on your current device yet.
+```
 
 
-### まとめ：`tool\_call`でできること
 
-1. \*\*認証/ツール管理\*\*
-   - ツール接続状態の確認 (`get\_tools\_connection\_status`)
-   - 新しいツール接続リンクの生成 (`generate\_connection\_link`)
+### まとめ：`tool_call`でできること
 
-2. \*\*ツールを使ったタスク\*\*
+1. **認証/ツール管理**
+   - ツール接続状態の確認 (`get_tools_connection_status`)
+   - 新しいツール接続リンクの生成 (`generate_connection_link`)
+
+2. **ツールを使ったタスク**
    - 70以上のさまざまなツール接続が可能
    - 接続後にそれぞれのツールの機能を利用できる
    
-3. \*\*Figma関連\*\*
+3. **Figma関連**
    - Claudeの内蔵ツールとして：
-     - `get\_figma\_data`: Figmaデータの取得
-     - `download\_figma\_images`: Figma画像のダウンロード
+     - `get_figma_data`: Figmaデータの取得
+     - `download_figma_images`: Figma画像のダウンロード
    - VeyraX経由：
      - `figma-api-mcp-server`: 接続後に使用可能（現在未接続）
 
 ### Figmaへの接続
 上記の接続リンク（`https://www.veyrax.com/user/figma/auth?code=...`）にアクセスすることで、VeyraXの統合システムを通じてFigmaに接続できます。接続後、より多くのFigma API機能が利用可能になるでしょう。
 
-現在の設定でも、`get\_figma\_data`と`download\_figma\_images`のツールを使用して基本的なFigmaデータの取得と画像のダウンロードは問題なく行えています。
+現在の設定でも、`get_figma_data`と`download_figma_images`のツールを使用して基本的なFigmaデータの取得と画像のダウンロードは問題なく行えています。
 
 ---
 

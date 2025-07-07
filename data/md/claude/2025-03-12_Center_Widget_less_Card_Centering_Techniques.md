@@ -99,6 +99,10 @@ Widget buildExplorerCard(ExplorerDTO explorer, {required bool isSelected}) {
 *2025/3/12 12:50:40*
 
 中央寄せを`Center`ウィジェットを使わずに実現するには、`Card`ウィジェットを直接返し、親要素のレイアウト制約に依存させる方法があります。以下のように修正してみましょう：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 カードを中央寄せするためのいくつかの方法があります：

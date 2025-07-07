@@ -21,6 +21,10 @@ Looking at the code, I can see you already have the foundation for this feature:
 2. There's an `isFavorite` variable that's set to false
 
 Let's implement the bookmark button in the same style as shown in the image:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 主な変更点は以下の通りです：
@@ -100,6 +104,10 @@ Stack(
 *2025/3/14 11:52:04*
 
 わかりました。ブックマークボタンをご指示のデザインに変更します。以下のようにコードを修正します：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 指示いただいたデザインに基づいてブックマークボタンを修正しました。主な変更点は以下の通りです：

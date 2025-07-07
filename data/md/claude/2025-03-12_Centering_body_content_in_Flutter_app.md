@@ -32,6 +32,10 @@ return Center(
 2. But by default, a `Column` tries to be as big as its parent allows in the cross axis (horizontal direction in this case), which means it's already expanding to fill the width even without the `Center` widget.
 
 Here's how you can fix it:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 The issue is that even though you're using a `Center` widget, the `Column` inside it is expanding to take the full width of the screen. Here's what's happening:

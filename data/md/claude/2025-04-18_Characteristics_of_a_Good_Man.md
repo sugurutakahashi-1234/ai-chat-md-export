@@ -15,6 +15,10 @@
 *2025/4/18 17:59:00*
 
 I'll search for information about characteristics of good men in Japanese.
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果によると、いい男性の特徴には以下のような要素があります：
@@ -46,6 +50,10 @@ I'll search for information about characteristics of good men in Japanese.
 *2025/4/18 17:59:53*
 
 いい男性になるため、または良い男性を見分けるために気をつけるべきポイントについて、もう少し詳しく検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 いい男性になるため、または良い男性を見分けるために気をつけるべきポイントについて、以下にまとめました：
@@ -86,6 +94,10 @@ I'll search for information about characteristics of good men in Japanese.
 *2025/4/18 18:01:03*
 
 いい女性の特徴について検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 いい女性の特徴について検索した結果をまとめます：

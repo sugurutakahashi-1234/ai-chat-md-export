@@ -45,14 +45,26 @@ GitHub APIを使ってissueを作成するために、まずはリポジトリ�
 まずは、指定されたGitHubプロジェクトに関連するリポジトリを特定してissueを作成します。ユーザー名は「suguruTakahashi-1234」のようですね。
 
 テスト用のissueを作成します：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 すみません、指定されたリポジトリが見つからないようです。ユーザーの別のリポジトリを探してみましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果から複数のリポジトリを確認できました。GitHub Projectsに対してissueを追加するには、まずそのプロジェクトに関連付けられたリポジトリを選ぶ必要があります。テスト用のissueを作成したいとのことなので、適切なリポジトリを選択します。
 
 オープンなissueが多いリポジトリの一つである「fia-practical-sample」を選択します：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 テスト用のissueを正常に作成しました！issueの詳細は以下の通りです：
@@ -88,6 +100,10 @@ GitHub ProjectsのIssueを特定のレーンに移動させることについて
 残念ながら、標準のGitHub REST APIを通じてMCPサーバーから直接プロジェクトのレーン（ステータス）を変更する機能は限られています。現在のMCPツールセットでは、GraphQL APIへの直接アクセスが提供されていないようです。
 
 以下に、利用可能な機能で試してみましょう。まず、指定されたプロジェクトについて確認します：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 プロジェクト情報を直接取得するAPIがないようなので、別の方法を試してみます。
@@ -101,6 +117,10 @@ GitHub ProjectsのIssueを特定のレーンに移動させることについて
 3. これには通常、GraphQL APIを使用する必要があります
 
 代わりにIssueの状態（オープン/クローズ）を変更することは可能です：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 残念ながら、現在のMCPサーバーの機能を使ってGitHub Projectsの特定のレーンにIssueを直接移動させることはできません。技術的な理由は以下の通りです：
@@ -138,6 +158,10 @@ closeしてみてほしい
 *2025/5/9 16:10:12*
 
 わかりました。Issueをcloseしてみます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 Issueの閉じる操作に成功しました！

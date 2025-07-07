@@ -15,7 +15,12 @@
     "lint": "biome check --write ./src",
     "lint:check": "biome check ./src",
     "format": "biome format --write ./src",
-    "format:check": "biome format ./src"
+    "format:check": "biome format ./src",
+    "conv:chatgpt": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt --format chatgpt",
+    "conv:claude": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude",
+    "conv:all": "bun run conv:chatgpt && bun run conv:claude",
+    "conv:chatgpt:watch": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt --format chatgpt 2>&1 | tee chatgpt-warnings.log",
+    "conv:claude:watch": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude 2>&1 | tee claude-warnings.log"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.6",

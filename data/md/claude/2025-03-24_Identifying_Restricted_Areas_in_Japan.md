@@ -15,6 +15,10 @@
 *2025/3/24 11:16:17*
 
 日本の立ち入り禁止エリアを特定できるプログラムを作成しましょう。緯度経度を入力すると、その場所が立ち入り禁止エリアかどうかを確認するbool値を返すコードを作成します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 このプログラムでは、日本の主な立ち入り禁止エリアを定義し、緯度経度を入力するとその場所が制限区域内かどうかを判定します。
@@ -446,11 +450,19 @@ app.listen(port, () => {
 ### 5. クラウドサービスを使う場合の例（AWS）
 
 AWS RDS for PostgreSQL + AWS Lambdaを使う例：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ### 6. 管理用のデータ追加スクリプト
 
 新しい立ち入り禁止エリアを手動で追加するスクリプトの例:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 ## GISデータの登録する際のポイント

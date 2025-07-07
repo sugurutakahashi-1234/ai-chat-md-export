@@ -17,6 +17,10 @@ GoogleMapAPIを使う際のAndroidのフィンガープリントは開発者全�
 GoogleマップAPIを使用する際のAndroidのフィンガープリントについてのご質問ですね。開発者全員分のフィンガープリントが必要かどうかについて、調査してお答えします。
 
 この質問に正確にお答えするため、最新の情報を検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果に基づいて、GoogleマップAPIを使用する際のAndroidのフィンガープリント（SHA-1）について説明します。
@@ -33,7 +37,7 @@ GoogleマップAPIのキーは、アプリケーションのデジタル証明�
 
 2. デバッグ用と本番用（リリース用）で異なるフィンガープリントが存在します。デバッグフィンガープリントはAndroid SDKツールが自動的に生成する証明書から取得され、通常は「~/.android/debug.keystore」ファイルに含まれています。一方、リリースフィンガープリントは本番環境用に手動で生成する必要があります。
 
-3. Play App Signing（Android App Bundleを使用する場合の要件）を使用してアプリを公開している場合は、Google Play Console の「リリース &gt; 設定 &gt; アプリの整合性」ページでSHA-1を取得できます。
+3. Play App Signing（Android App Bundleを使用する場合の要件）を使用してアプリを公開している場合は、Google Play Console の「リリース > 設定 > アプリの整合性」ページでSHA-1を取得できます。
 
 4. Google Play ConsoleでApp Signing機能を有効にしている場合、アップロード証明書はGoogleによる認証にのみ必要であり、アプリがユーザーの端末にインストールされる前にそのアップロード証明書は削除されます。そのため、GoogleマップAPIに対して有効にしたキーの下にApp Signing証明書のSHA-1も追加する必要があります。
 

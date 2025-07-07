@@ -53,6 +53,10 @@
 *2025/3/27 22:49:49*
 
 テストフライトのリリース中止とダウングレードについてのアナウンス文言を作成します。テスターに状況をわかりやすく説明し、必要な対応を丁寧に伝える内容にしました。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 このアナウンス文は以下の点を意識して作成しました：
@@ -82,6 +86,15 @@
 すでに最新版（中止予定のバージョン）をインストールしたユーザーは、基本的にはそのアプリを引き続き使用することができます。テストフライトでの配信中止は、新規インストールや再インストールができなくなるだけで、すでにインストールされているアプリが強制的に停止したり削除されたりすることはありません。
 
 このポイントをアナウンス文に追加しましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 アナウンス文を更新し、以下の点を明確にしました：
@@ -106,6 +119,22 @@ v0.0.90 と v0.0.89にしてほしい
 ## 🤖 アシスタント
 *2025/3/28 0:00:02*
 
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+
 バージョン番号を具体的に更新しました。アナウンス文では、バージョン 0.0.90 の配信中止と、バージョン 0.0.89 への切り替え方法を明確に記載しています。必要に応じて他の部分も編集可能ですので、お知らせください。
 
 ---
@@ -121,6 +150,50 @@ iOS のユーザーのみのアナウンスにしてほしい。またテスト�
 *2025/3/28 0:01:01*
 
 iOSユーザー向けに特化させ、テストフライト関連の表記を英語にしたアナウンス文に更新します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 
@@ -149,6 +222,19 @@ iOSユーザー向けに特化させ、テストフライト関連の表記を�
 *2025/3/28 0:01:52*
 
 変更理由を削除し、「Build」を「バージョン」に戻し、お勧めの表現を変更したいとのことですね。アナウンス文を修正します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 ---
 
@@ -163,6 +249,25 @@ iOSユーザー向けに特化させ、テストフライト関連の表記を�
 *2025/3/28 0:02:32*
 
 アナウンス文を指示に従って更新します。変更理由を削除し、「Build」を「バージョン」に戻し、推奨ではなく変更を求める表現に修正します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 指示通りにアナウンス文を更新しました。変更理由を削除し、「Build」を「バージョン」に戻しました。また、推奨ではなく変更を求める表現に修正しました。
@@ -181,6 +286,12 @@ iOSユーザー向けに特化させ、テストフライト関連の表記を�
 ## 🤖 アシスタント
 *2025/3/28 0:04:37*
 
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+
 ご注意事項に「アンインストールしても、アプリのデータは正しく引き継がれます」という内容を追加しました。また、バージョン表記も具体的な数字（0.0.90と0.0.89）に統一して、より明確になるよう修正しました。
 
 これにより、テスターはアンインストール時のデータ保持について安心できます。一方で、バージョン間の互換性については依然として注意を促す内容も残しています。
@@ -198,6 +309,15 @@ Android版はそのままお使いくださいみたいなもんごんもほし�
 *2025/3/28 0:32:00*
 
 Android版に関する文言を追加します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 

@@ -151,6 +151,10 @@ https://eslint.org/docs/latest/use/configure/configuration-files#typescript-conf
 *2025/5/19 19:26:15*
 
 この公式ドキュメントの内容を見てみましょう。リンク先の情報を確認します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ESLintの公式ドキュメントを確認したところ、「TypeScript Configuration Files」のセクションに関する情報が見つかりました。このセクションでは、ESLintでTypeScript形式の設定ファイルを使用する方法について説明しています。

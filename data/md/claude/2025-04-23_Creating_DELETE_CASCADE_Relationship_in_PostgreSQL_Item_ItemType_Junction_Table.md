@@ -17,6 +17,10 @@ POstgreSQLでItemとItemTypeの中間テーブルでdeletecascadeのリレーシ
 お手伝いいたします。PostgreSQLでItemとItemTypeの中間テーブルでDELETE CASCADEのリレーションを作成することについて説明します。
 
 まず、このような関係を作るために必要なSQLコマンドを調査しましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 PostgreSQLでItemとItemTypeの中間テーブルを作成し、DELETE CASCADEのリレーションを設定する方法について説明します。

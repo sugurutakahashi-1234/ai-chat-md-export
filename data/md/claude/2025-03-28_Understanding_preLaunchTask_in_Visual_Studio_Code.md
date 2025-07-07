@@ -97,13 +97,17 @@ preLaunchTask とは？
 ## 🤖 アシスタント
 *2025/3/28 14:39:05*
 
-なるほど、tasks.jsonファイルに`./scripts/generate\_env.sh`スクリプトを環境ごとに実行するためのタスク定義を作成すればいいですね。以下のようにtasks.jsonファイルを作成または編集してみてください：
+なるほど、tasks.jsonファイルに`./scripts/generate_env.sh`スクリプトを環境ごとに実行するためのタスク定義を作成すればいいですね。以下のようにtasks.jsonファイルを作成または編集してみてください：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 このtasks.jsonファイルをプロジェクトの`.vscode`ディレクトリ内に配置してください（既に存在する場合は内容を更新）。これにより：
 
 1. あなたが共有したlaunch.jsonの各構成で指定されている`preLaunchTask`（例：`generate-env-dev`）が実行されると
-2. 対応するタスクが起動し、正しい引数（例：`dev`）を渡して`./scripts/generate\_env.sh`スクリプトを実行します
+2. 対応するタスクが起動し、正しい引数（例：`dev`）を渡して`./scripts/generate_env.sh`スクリプトを実行します
 
 各タスクでは:
 - `"reveal": "silent"`はタスク実行時にターミナルを表示しないようにします

@@ -15,18 +15,53 @@ claude-code-mcp で"/Users/sugurutakahashi/Desktop/work/ai"に適当なコード
 *2025/5/15 19:54:20*
 
 こんにちは！"/Users/sugurutakahashi/Desktop/work/ai"ディレクトリに適当なコードを書くお手伝いをします。まずはどのようなコードが書かれているか確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 現在のディレクトリには`.DS_Store`ファイルとMarkdownファイル`github-issues.md`があるようです。このディレクトリに簡単なPythonスクリプトを作成してみましょう。例えば、AIに関連する簡単なテキスト分析ツールを作ってみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 さらに、簡単なWebアプリケーションも作成してみましょう。FlaskとHTMLを使って、テキスト分析ツールのWebインターフェースを実装します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 次に、HTMLテンプレートを作成します。まずテンプレートディレクトリを作成しましょう。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 最後に、使い方を説明するREADMEファイルを作成しましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 これで、AIテキスト分析ツールのセットアップが完了しました！以下のファイルを作成しました：

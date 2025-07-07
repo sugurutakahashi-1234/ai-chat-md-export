@@ -15,6 +15,9 @@ VeyraXのMCPでなにかできることを教えて欲しい
 *2025/5/12 14:26:48*
 
 VeyraXのMCPでできることについて調べてみますね。まず、利用可能なツールを確認したいと思います。
+```
+This block is not supported on your current device yet.
+```
 
 ---
 
@@ -29,6 +32,10 @@ VeyraXのMCPでなにかできることを教えて欲しい
 *2025/5/12 14:26:59*
 
 VeyraXのMCPについて情報を調べたいと思いましたが、現時点でVeyraXに関する詳細情報を取得できませんでした。VeyraXのMCPの具体的な機能やできることについては、ウェブ検索を通して最新の情報を確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ウェブ検索を行った結果、VeyraXのMCPで出来ることについて以下の情報が得られました。

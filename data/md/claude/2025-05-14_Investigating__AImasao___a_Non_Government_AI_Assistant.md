@@ -17,21 +17,70 @@ fetch-mcp で AIまさおについて調べて欲しい。公務員ではない�
 AIまさおについて調べてみます。公務員ではない「AIまさお」について情報を集め、sequential thinkingを使って分析していきましょう。
 
 まず、AIまさおについての情報をウェブから取得します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 AIまさおに関する情報が見つからないようですので、もう少し検索を続けてみます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 具体的なAIまさおに関する情報が見つからないようです。もう少し検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 まだAIまさおについての具体的な情報が見つかりません。別の角度から検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果で「マサルくん」というAIエージェントについての情報が見つかりました。もう少し「AIまさお」に関連する情報を探しましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 これで十分な情報が集まりました。検索結果から「AIまさお」というキャラクターについては直接的な情報は見つかりませんでしたが、似た「マサルくん」という公務員向けのAIが見つかりました。この情報をもとにシーケンシャルシンキングを使って分析してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 # AIまさおについての調査結果

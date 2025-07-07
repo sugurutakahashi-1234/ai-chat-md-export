@@ -15,6 +15,10 @@ YouTubeについて調べて欲しい
 *2025/5/10 18:32:36*
 
 YouTubeについて調べますね。YouTubeに関する情報を収集するために、まずウェブ検索を使ってみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 それでは、検索結果からYouTubeの最新情報についてまとめました。
@@ -37,21 +41,45 @@ ComposioのMCPを使ってYouTubeでなにができそう？
 *2025/5/10 18:33:43*
 
 ComposioのMCPを使ってYouTubeでできることについて調べてみましょう。まず、ComposioとMCPについての情報を探します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 YouTubeの機能に関する情報が見つからなかったので、ComposioのMCPとYouTubeの連携について具体的に検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 YouTubeとComposio MCPの直接的な連携に関する情報が見つからなかったので、もう少し具体的に検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果から、ComposioのMCPとYouTubeの直接的な連携に関する具体的な情報は見つかりませんでした。しかし、Composioが提供する250以上のツールの中にYouTube APIが含まれている可能性はあります。さらに具体的に検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 大変朗報です！検索結果で、ZubeidHendricksが開発したYouTube MCP Serverというプロジェクトを見つけました。これはYouTube APIのためのModel Context Protocol（MCP）サーバー実装で、AIがYouTubeコンテンツと標準化されたインターフェースを通じて対話できるようにするものです。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索をもう一度行い、ZubeidHendricksのYouTube MCP Serverの具体的な機能を詳しく調べてみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果に基づき、ComposioのMCPを使ってYouTubeでできることについてまとめました。
@@ -60,7 +88,7 @@ YouTubeとComposio MCPの直接的な連携に関する情報が見つからな�
 
 ComposioのModel Context Protocol（MCP）を使うと、AIを通じてYouTube APIと連携できます。具体的には：
 
-1. \*\*ZubeidHendricksのYouTube MCP Server\*\*：
+1. **ZubeidHendricksのYouTube MCP Server**：
    - 動画の詳細情報（タイトル、説明、再生時間など）の取得
    - 動画のトランスクリプト（字幕）の取得
    - キーワードによる動画検索
@@ -69,17 +97,17 @@ ComposioのModel Context Protocol（MCP）を使うと、AIを通じてYouTube A
    - プレイリスト詳細・アイテムの取得
    - 動画管理、Shorts作成、高度な分析が可能
 
-2. \*\*YouTube API連携の利点\*\*：
+2. **YouTube API連携の利点**：
    - AIからYouTubeへのシームレスなアクセス
    - 自然言語でYouTube操作が可能
    - 複雑なAPIコールを抽象化
 
-3. \*\*設定方法\*\*：
+3. **設定方法**：
    - YouTube API Keyを取得する必要あり
    - MCPクライアント（Claude、Cursor、Windsurf等）に設定を追加
    - 例：`npx @composio/mcp@latest setup "https://mcp.composio.dev/youtube/XXX" --client cursor`
 
-4. \*\*他の選択肢\*\*：
+4. **他の選択肢**：
    - anaisbetts/mcp-youtube
    - instructa/mcp-youtube-music（音楽検索・再生に特化）
    - Apifyの「Youtube Search Api MCP server」
@@ -98,27 +126,31 @@ YOUTUBE\_LIST\_CAPTIONとかMCP連携しているはずなんだけど
 ## 🤖 アシスタント
 *2025/5/10 18:34:22*
 
-ご指摘ありがとうございます。確かに、`YOUTUBE\_LIST\_CAPTION\_TRACK`という関数が存在しているようですね。検索結果にはこの特定の関数について詳細な情報が含まれていませんでした。このYouTubeキャプション関連の機能について詳しく調べてみましょう。
+ご指摘ありがとうございます。確かに、`YOUTUBE_LIST_CAPTION_TRACK`という関数が存在しているようですね。検索結果にはこの特定の関数について詳細な情報が含まれていませんでした。このYouTubeキャプション関連の機能について詳しく調べてみましょう。
+```
+This block is not supported on your current device yet.
+```
 
 
-確かに、ご指摘の通り`YOUTUBE\_LIST\_CAPTION\_TRACK`機能が存在しています。検索結果から、YouTube動画のキャプション（字幕）に関連するMCP機能について多くの情報が見つかりました。
+
+確かに、ご指摘の通り`YOUTUBE_LIST_CAPTION_TRACK`機能が存在しています。検索結果から、YouTube動画のキャプション（字幕）に関連するMCP機能について多くの情報が見つかりました。
 
 ## YouTubeキャプション関連のMCP機能について
 
-`YOUTUBE\_LIST\_CAPTION\_TRACK`は、YouTube動画のキャプション（字幕）トラックをリスト表示する機能です。これは、Model Context Protocol（MCP）を通じてYouTube Data APIと連携し、以下のような機能を提供します：
+`YOUTUBE_LIST_CAPTION_TRACK`は、YouTube動画のキャプション（字幕）トラックをリスト表示する機能です。これは、Model Context Protocol（MCP）を通じてYouTube Data APIと連携し、以下のような機能を提供します：
 
-1. \*\*キャプション取得機能\*\*：
+1. **キャプション取得機能**：
    - 特定の動画IDに関連付けられたキャプショントラックのリストを取得
    - 異なる言語のキャプションを取得可能
    - 自動生成されたキャプションや手動で追加されたキャプションの取得
    - 特定のキャプショントラックをダウンロード
 
-2. \*\*特化したMCPサーバー実装\*\*：
+2. **特化したMCPサーバー実装**：
    - nattyrazの「youtube-mcp」：動画メタデータ、キャプション抽出、マークダウン変換機能
    - kimtaeyoon83の「mcp-server-youtube-transcript」：字幕直接ダウンロード専用サーバー
    - ApifyのYouTube字幕スクレイパーMCPサーバー
 
-3. \*\*応用例\*\*：
+3. **応用例**：
    - コンテンツ分析
    - テキスト検索（特定の動画内で言及されたキーワードの検索）
    - 複数言語での字幕取得
@@ -143,6 +175,10 @@ https://www.youtube.com/watch?v=MhllIM-P\_vsをYOUTUBE\_LIST\_CAPTION\_TRACKや�
 YouTubeの動画キャプションを取得するリクエストを理解しました。
 
 `YOUTUBE_LIST_CAPTION_TRACK`関数を使って、指定された動画（https://www.youtube.com/watch?v=MhllIM-P_vs）のキャプショントラックを取得してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありませんが、YouTubeとの接続がまだ確立されていないようです。エラーメッセージによると「YouTubeアプリへの接続が見つかりません」とあります。

@@ -57,21 +57,38 @@ export async function loadClaudeJSON(
       title: parsed.name || "無題の会話",
       date,
       messages: parsed.chat_messages.map((msg) => {
-        // contentがある場合はその中のtextを結合
-        let content: string;
-        if (typeof msg.content === "string") {
-          content = msg.content;
-        } else if (Array.isArray(msg.content)) {
+        // textフィールドから内容を取得
+        let content: string = "";
+        
+        // 直接textフィールドがある場合
+        if ("text" in msg && typeof msg.text === "string") {
+          content = msg.text;
+        }
+        // contentフィールドがある場合（配列形式）
+        else if ("content" in msg && Array.isArray(msg.content)) {
           const texts = msg.content
-            .map((c) => c.text)
-            .filter((t): t is string => t !== undefined);
+            .map((c: any) => c.text)
+            .filter((t: any): t is string => typeof t === "string");
           content = texts.length > 0 ? texts.join("\n") : "";
+        }
+        // roleがある場合（旧形式）
+        else if ("role" in msg && "content" in msg) {
+          content = typeof msg.content === "string" ? msg.content : "";
+        }
+
+        // senderフィールドからroleを判定
+        let role: "user" | "assistant";
+        if ("sender" in msg) {
+          role = msg.sender === "human" ? "user" : "assistant";
+        } else if ("role" in msg) {
+          role = msg.role;
         } else {
-          content = "";
+          // デフォルト値
+          role = "user";
         }
 
         return {
-          role: msg.role,
+          role,
           content,
           timestamp: msg.created_at || new Date().toISOString(),
         };

@@ -24,6 +24,15 @@ GitHub Copilotで mcp 連携したい。VScodede
 *2025/5/20 18:56:35*
 
 GitHub Copilotと Model Context Protocolを連携させたいとのことですね。VSCodeで設定したいようですね。現状の情報を調べて最新の方法をご案内します。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 調査結果に基づき、GitHub CopilotでModel Context Protocol (MCP)連携を行う方法について説明します。

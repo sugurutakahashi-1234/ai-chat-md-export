@@ -29,6 +29,10 @@ hoge
 *2025/5/16 18:25:43*
 
 LINEに「hoge」というメッセージを送信します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 メッセージ「hoge」が正常にLINEに送信されました。何か他にお手伝いできることはありますか？

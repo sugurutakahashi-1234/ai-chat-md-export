@@ -132,9 +132,16 @@ class FlagStatus extends EnumClass {
 *2025/4/15 10:17:45*
 
 I'll help you modify the code to change the "Put up this flag" button text based on the flag's state. Let me analyze the code first to understand how the flag state is currently managed.
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 Based on my analysis, I'll modify the code to change the "Put up this flag" button text according to the flag's state. Since the current code doesn't explicitly show how flag states are tracked, I'll add that functionality.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 ---
 
@@ -149,6 +156,10 @@ The button text should be:
 - "This flag is destroyed" when destroyed (disabled)
 
 Here's the implementation:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've updated the FlagListPage widget to change the button text and state based on the flag's status. Here's what I modified:

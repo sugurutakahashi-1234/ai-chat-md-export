@@ -81,9 +81,37 @@ NVMは以下の順序でファイルを探します：
 *2025/5/8 22:38:52*
 
 NVMが`.node-version`をサポートしていることの公式ソースは、NVMの公式GitHubリポジトリにあります。具体的には以下の場所で確認できます：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 NVMが`.node-version`をサポートしているという公式の情報を探しましたが、結果は少し混在しています。より詳細に確認するために、NVMの公式リポジトリを直接調べてみます。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 
 
 調査した結果、NVMは確かに`.node-version`ファイルをサポートしていますが、このサポートが導入されたのは一定のバージョン以降であることがわかりました。

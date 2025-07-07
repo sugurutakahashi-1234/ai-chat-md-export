@@ -15,11 +15,15 @@ macのメモ帳をObsidianに移行したい
 *2025/7/7 12:08:10*
 
 macのメモ帳（Apple Notes）からObsidianへの移行をお手伝いします。まず、現在のメモ帳の内容を確認して、最適な移行方法を提案させていただきます。
+```
+This block is not supported on your current device yet.
+```
+
 Obsidianの設定でLocal REST APIが有効になっていないようです。まず、Obsidianの移行準備として以下の手順を行ってください：
 
 ## Obsidianの準備
 
-1. \*\*ObsidianでLocal REST APIを有効化\*\*
+1. **ObsidianでLocal REST APIを有効化**
    - Obsidianを開く
    - 設定（⚙️）→ コミュニティプラグイン → ブラウズ
    - 「Local REST API」を検索してインストール・有効化

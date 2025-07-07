@@ -16,6 +16,10 @@ https://github.com/suguruTakahashi-1234/hono-learning/issues
 *2025/6/12 9:56:24*
 
 GitHubのMCPツールを使って、添付された内容に基づいてイシューを作成します。
+```
+This block is not supported on your current device yet.
+```
+
 GitHubのMCPツールが利用できないようです。代わりに、イシューの内容をMarkdown形式で作成しました。これをコピーして、以下のURLから手動でイシューを作成してください：
 
 https://github.com/suguruTakahashi-1234/hono-learning/issues/new

@@ -15,6 +15,10 @@
 *2025/3/11 15:57:57*
 
 I'll add a bookmark icon to the spot detail page. Let me implement that for you.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've added bookmark functionality to the SpotDetailPage with the following key changes:
@@ -33,7 +37,7 @@ I've added bookmark functionality to the SpotDetailPage with the following key c
    - Previously it was only setting to `true`
    - Now it properly toggles between states with `!currentFavoriteStatus`
 
-4. Made the function no longer ignored with the removal of the `// ignore: unused\_element` comment
+4. Made the function no longer ignored with the removal of the `// ignore: unused_element` comment
 
 The bookmark functionality works by reading the `isFavorite` property from the SpotDetailDTO and using the `updateFavoriteStatus` method from the `updateSpotDetailNotifierProvider` to toggle the status.
 

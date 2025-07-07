@@ -23,11 +23,15 @@
 *2025/3/11 13:44:27*
 
 Looking at your requirements, I'll implement the two filter chips (Favorite and Within 100km radius) for your Flutter application using the official FilterChip widget, and make sure they're stored in SharedPreferences.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've implemented the filter chips feature for your Flutter application according to your requirements. Here's what I've done:
 
-1. Added a `\_FilterChipsRow` widget that contains both filter chips:
+1. Added a `_FilterChipsRow` widget that contains both filter chips:
    - "Favorite" filter with a bookmark icon when not selected
    - "Within 100km radius" filter
 
@@ -66,12 +70,16 @@ The implementation maintains the original layout and functionality while adding 
 ## 🤖 アシスタント
 *2025/3/11 13:47:43*
 
-了解しました。`\_FilterChipsRow`を分けずに直接SpotListPageに統合し、FilterChipを左側に配置するように修正します。
+了解しました。`_FilterChipsRow`を分けずに直接SpotListPageに統合し、FilterChipを左側に配置するように修正します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 コードを修正しました。変更点は以下の通りです：
 
-1. `\_FilterChipsRow` を分けていた実装を削除し、直接 `SpotListPage` に統合しました
+1. `_FilterChipsRow` を分けていた実装を削除し、直接 `SpotListPage` に統合しました
 2. FilterChipの配置を左寄せにするために以下の変更を加えました：
    - `Align` ウィジェットを追加し、`alignment: Alignment.centerLeft` を設定
    - `Row` の `mainAxisAlignment` を `MainAxisAlignment.start` に設定
@@ -100,6 +108,20 @@ useEffect(() { if (isFavoriteFilterMode.hasValue) { isFavoriteSelected.value = i
 *2025/3/11 13:52:24*
 
 了解しました。`onSelected` 処理を別の `onTapXXX` 関数に抽出し、useEffect を削除します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 コードを修正しました。以下の変更を行いました：
@@ -143,6 +165,20 @@ useEffect(() { if (isFavoriteFilterMode.hasValue) { isFavoriteSelected.value = i
 *2025/3/11 13:57:13*
 
 了解しました。関数呼び出しにはアロー関数を使用して明示的に非同期処理を記述し、フィルター選択の条件もチェックします。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 フィルターの実装を確認し、以下の点を修正しました：

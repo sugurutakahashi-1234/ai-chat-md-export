@@ -15,9 +15,17 @@
 *2025/4/21 1:05:39*
 
 I'd be happy to help you with information about experiencing a nasal voice at night. Let me search for some relevant information about this phenomenon.
+```
+This block is not supported on your current device yet.
+```
+
 
 
 I notice that the search results aren't providing much relevant information about the phenomenon of developing a nasal voice at night. Let me search for more specific information.
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ありがとうございます。夜になると鼻声になる現象について調べた情報をまとめます。

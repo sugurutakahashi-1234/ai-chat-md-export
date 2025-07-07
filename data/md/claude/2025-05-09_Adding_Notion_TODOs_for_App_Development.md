@@ -52,12 +52,24 @@ notionにtodoを追加して欲しい
 *2025/5/9 13:37:04*
 
 NotionのTODOリストに追加しますね。まずは利用可能なデータベースを検索して、適切なTODOリストを見つけます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 見つかったTODOページを確認します。これは「TODO アプリ開発」というページのようです。このページの内容を確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 親ページも確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 確認しました。以下の情報でTODOを作成します：
@@ -66,24 +78,52 @@ NotionのTODOリストに追加しますね。まずは利用可能なデータ�
 2. サブページID（TODO アプリ開発）: `1ed2ea0f-04ac-8059-bf03-c8a882990ac8`
 
 メインのToDoページに新しくリストを作成するために、まずデータベースがあるか確認してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 データベースは見つかりませんでした。既存のTODOページ（TODO アプリ開発）にリストを追加しましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 残りのアイテムも追加します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 最後の項目も追加します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 残りのアイテムを追加します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 残りのアイテムも追加します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 最後のアイテムを追加します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 TODOリストへの追加が完了しました。以下の項目をNotionのTODOリストに追加しました：

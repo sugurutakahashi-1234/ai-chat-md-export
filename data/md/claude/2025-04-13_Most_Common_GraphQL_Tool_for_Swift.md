@@ -14,6 +14,14 @@ GraphQLでSwiftを採用する場合に最も一般的なツールは？
 ## 🤖 アシスタント
 *2025/4/13 18:48:01*
 
+The human is asking me in Japanese about the most common tools when adopting GraphQL with Swift. Let me translate the question first.
+
+"What are the most common tools when adopting GraphQL with Swift?"
+
+Now I'll provide an answer about GraphQL tools for Swift development.
+
+For Swift developers who want to work with GraphQL, there are several popular tools and libraries. I'll focus on the most widely used ones in the Swift ecosystem that help with GraphQL integration.
+
 Swift と GraphQL を組み合わせる場合、最も一般的に使用されるツールは Apollo iOS です。このライブラリは Swift アプリケーションで GraphQL を実装するための包括的なソリューションを提供しています。
 
 主な GraphQL/Swift ツール:
@@ -39,6 +47,12 @@ Apollo iOS は特に機能が豊富で、型安全なクエリ、自動コード
 
 ## 🤖 アシスタント
 *2025/4/13 18:50:53*
+
+The user is asking "What is GraphQL Swift?" I'll provide information about what GraphQL Swift is as a concept or library.
+
+GraphQL Swift typically refers to using GraphQL in Swift applications. There isn't a single standard library called "GraphQL Swift," but rather several implementations of GraphQL clients for Swift. However, there is a library called "GraphQL Swift" which is one of the options I mentioned in my previous response.
+
+I'll explain what GraphQL Swift is as a concept (using GraphQL with Swift), and I'll provide specific information about the "GraphQL Swift" library itself.
 
 GraphQL Swift は、Swift プログラミング言語で GraphQL を使用するためのネイティブな実装を提供するライブラリです。これは Swift での GraphQL 開発をサポートするいくつかのライブラリの一つです。
 

@@ -129,26 +129,30 @@ class GetSpotListNotifier extends \_$GetSpotListNotifier {
 *2025/3/10 19:21:52*
 
 I'll help you implement the tab layout for your SpotListPage with the All and Favorite tabs, along with the filter functionality using the IsSpotFilterModeNotifier. Here's how we'll modify your code:
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 I've updated the SpotListPage component to include tabs for 'All' and 'Favorite' as requested. Here are the key changes I made:
 
-1. \*\*Added TabController and TabBar\*\*:
+1. **Added TabController and TabBar**:
    - Used `useTabController` hook to manage the tabs
    - Created a TabBar with 'All' and 'Favorite' tabs in the AppBar
 
-2. \*\*Implemented the Tab Views\*\*:
+2. **Implemented the Tab Views**:
    - The 'All' tab contains the original spot list functionality
    - The 'Favorite' tab just shows a "Coming soon" message as requested
 
-3. \*\*Added Filter Functionality\*\*:
+3. **Added Filter Functionality**:
    - Created a filter button that toggles the `isSpotFilterMode` state
    - Connected to the `IsSpotFilterModeNotifier` to persist the filter state
    - Modified the `getAllSpotList` call to use a range of 100km when filter is active (3000km otherwise)
    - Added visual indication when the filter is active
 
-4. \*\*Improved Code Organization\*\*:
-   - Created a separate `\_AllSpotsTab` widget for better code structure
+4. **Improved Code Organization**:
+   - Created a separate `_AllSpotsTab` widget for better code structure
    - Extracted common parameters to pass down to the tab component
 
 The filter toggles between showing spots within 100km or the default 3000km range, persisting the user's preference using the IsSpotFilterModeNotifier as required.
@@ -178,6 +182,20 @@ labelColor: ColorToken.text,
 3. メソッド名を `onTapXXX` の形式に変更
 4. `_AllSpotsTab` を同じクラス内に実装し、メソッドを引数として渡すことを避ける
 5. 型の問題を修正
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
+
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 変更点は以下のとおりです：

@@ -228,6 +228,10 @@ base64Encodeするとどうなるのか
 Base64エンコードを行うと、任意のバイナリデータを ASCII 文字（A-Z, a-z, 0-9, +, /）のみで表現できるようになります。
 
 具体的に `abcdあいうえ123😄` という文字列をBase64エンコードした場合の例を示します：
+```
+Analysis Tool outputs from the web feature preview aren’t yet supported on mobile.
+```
+
 
 
 例として `abcdあいうえ123😄` をBase64エンコードすると、`YWJjZOOBguOBhOOBhuOBiDEyM/CfmIQ=` という文字列になります。
@@ -371,6 +375,10 @@ String makeSafeForHeader(String input) {
 *2025/3/28 15:38:04*
 
 Dartでは拡張メソッドを使ってStringクラスに機能を追加できます。以下のように実装できます：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 この拡張メソッドを使用するには、まずファイル（例えば `string_extensions.dart`）を作成して上記のコードを配置し、使いたい場所でインポートします：

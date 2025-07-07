@@ -21,16 +21,20 @@ TypeScriptの`isolatedDeclarations: true`での型定義の重複問題につい
 2. `isolatedDeclarations: true`では、明示的な型注釈が必要なため、このような重複が発生
 
 zodを使った解決策を提案します：
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 結論として、残念ながら`isolatedDeclarations: true`の制約下では、zodを使っても型定義の重複を完全に回避することは難しいです。理由は以下の通りです：
 
 ## なぜ難しいか
 
-1. \*\*isolatedDeclarationsの制約\*\*
+1. **isolatedDeclarationsの制約**
    - 明示的な型注釈が必要
    - 型推論に依存できない
    - エクスポートされる定数には完全な型定義が必要
 
-2. \*\*Zodの限界\*\*
+2. **Zodの限界**
    - Zodのスキーマから型を推論する際も、最終的には明示的な型定義が必要
    - `z.infer`を使っても、エクスポート時には型を明示する必要がある
 

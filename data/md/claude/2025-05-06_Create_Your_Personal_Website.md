@@ -302,20 +302,24 @@ suguru-takahashi.com が使えるかどうか調べたい。昔AWSで作った�
 *2025/5/6 13:59:36*
 
 suguru-takahashi.comのドメイン利用可能性を確認してみましょう。AWSで以前作成された可能性もあるとのことなので、まずはドメイン検索をして現在の状況を確認します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果を確認したところ、suguru-takahashi.comの利用可能性を直接確認する情報は見つかりませんでした。AWSで以前作成されたかどうかを確認するためには、以下の方法をお勧めします：
 
-1. \*\*ドメイン検索ツールで確認する\*\*
+1. **ドメイン検索ツールで確認する**
    ドメインレジストラ（お名前.com、ムームードメイン、GoDaddyなど）のサイトで「suguru-takahashi.com」を検索すると、そのドメインが利用可能かどうかがすぐに分かります。
 
-2. \*\*ICANNルックアップを使用する\*\*
+2. **ICANNルックアップを使用する**
    ICANN（Internet Corporation for Assigned Names and Numbers）の公式サイト（https://lookup.icann.org/）で「suguru-takahashi.com」を検索すると、そのドメインの登録情報を確認できます。
 
-3. \*\*AWSアカウントを確認する\*\*
+3. **AWSアカウントを確認する**
    以前AWSで作成した可能性があるとのことなので、AWSのRoute 53サービスにログインして、登録済みドメインを確認することをお勧めします。
 
-4. \*\*Whois検索サービスを利用する\*\*
+4. **Whois検索サービスを利用する**
    whois.comなどのサービスで「suguru-takahashi.com」を検索すると、そのドメインの所有者情報や利用可能性を確認できます。
 
 インスタグラムのアカウントが検索結果に表示されていますが（@suguru.takahashi.587）、これはドメインとは別のものです。最も確実な方法は、ドメインレジストラでの直接検索です。

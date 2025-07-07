@@ -15,6 +15,15 @@
 *2025/6/17 1:22:25*
 
 Biome の CSS 設定に Tailwind CSS 専用の設定があるかを調べてみます。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 検索結果から、Biome の CSS 設定における Tailwind CSS のサポート状況について分かりました：
 
 **はい、Biome には Tailwind CSS に関連する設定があります。**

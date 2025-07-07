@@ -45,24 +45,52 @@ MCPサーバーを使ってgithubにあるpublicなリポジトリについて�
 *2025/5/9 16:01:18*
 
 MCPサーバーを使用して、GitHubの公開リポジトリについて調査してみましょう。まず、MCPサーバーをインストールして、GitHubの公開リポジトリを検索するために準備します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 MCPサーバーのセットアップが必要なようです。まずはGitHubのトレンドリポジトリなど、公開リポジトリを検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 人気のあるGitHubリポジトリをいくつか見つけました。それぞれのリポジトリについて詳しく調べてみましょう。まず、最初のリポジトリの詳細を確認します：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 次に、2番目のリポジトリの詳細も確認してみましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 3番目のリポジトリも見てみましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 それでは5番目のリポジトリも確認しましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 最後に4番目のリポジトリも見てみましょう：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 これらの情報をもとに、人気のあるGitHubリポジトリについて紹介します。
@@ -73,11 +101,11 @@ GitHubには多くの有用なオープンソースプロジェクトがあり�
 
 ## 1. GitHub-Trending-Repos
 
-\*\*リポジトリ\*\*: \[vitalets/github-trending-repos\](https://github.com/vitalets/github-trending-repos)  
-\*\*スター数\*\*: 2,752+  
-\*\*概要\*\*: このリポジトリは、GitHubのトレンドリポジトリを追跡し、通知を受け取るためのツールです。お気に入りのプログラミング言語のトレンドを日次または週次で通知として受け取ることができます。
+**リポジトリ**: [vitalets/github-trending-repos](https://github.com/vitalets/github-trending-repos)  
+**スター数**: 2,752+  
+**概要**: このリポジトリは、GitHubのトレンドリポジトリを追跡し、通知を受け取るためのツールです。お気に入りのプログラミング言語のトレンドを日次または週次で通知として受け取ることができます。
 
-\*\*主な機能\*\*:
+**主な機能**:
 - 各プログラミング言語ごとに対応するイシューがあり、そこに新しいトレンドがコメントとして投稿される
 - GitHub通知機能を利用し、ウェブインターフェースまたはメールで通知を受け取る
 - 多数のプログラミング言語をサポート（JavaScript, Python, Java, C++, Rustなど）
@@ -87,11 +115,11 @@ GitHubには多くの有用なオープンソースプロジェクトがあり�
 
 ## 2. LeetHub
 
-\*\*リポジトリ\*\*: \[QasimWani/LeetHub\](https://github.com/QasimWani/LeetHub)  
-\*\*スター数\*\*: 4,158+  
-\*\*概要\*\*: LeetHubは、LeetCodeで問題を解いた際に自動的にGitHubリポジトリにコードを同期するChromeエクステンションです。
+**リポジトリ**: [QasimWani/LeetHub](https://github.com/QasimWani/LeetHub)  
+**スター数**: 4,158+  
+**概要**: LeetHubは、LeetCodeで問題を解いた際に自動的にGitHubリポジトリにコードを同期するChromeエクステンションです。
 
-\*\*主な機能\*\*:
+**主な機能**:
 - LeetCodeで問題を解くと、解答が自動的にGitHubリポジトリに保存される
 - コーディング面接の準備をしながら、自分のGitHubポートフォリオも充実させることができる
 - GitHubアカウントと連携し、シンプルなセットアップで利用可能
@@ -101,11 +129,11 @@ GitHubには多くの有用なオープンソースプロジェクトがあり�
 
 ## 3. Reddit-Stock-Trends
 
-\*\*リポジトリ\*\*: \[iam-abbas/Reddit-Stock-Trends\](https://github.com/iam-abbas/Reddit-Stock-Trends)  
-\*\*スター数\*\*: 1,550+  
-\*\*概要\*\*: Reddit上でトレンドになっている株式銘柄を取得して、その株価パフォーマンスを確認するツールです。
+**リポジトリ**: [iam-abbas/Reddit-Stock-Trends](https://github.com/iam-abbas/Reddit-Stock-Trends)  
+**スター数**: 1,550+  
+**概要**: Reddit上でトレンドになっている株式銘柄を取得して、その株価パフォーマンスを確認するツールです。
 
-\*\*主な機能\*\*:
+**主な機能**:
 - RedditのAPIを使用してトレンド銘柄を取得
 - 収集したデータを分析し、可視化する機能
 - バックエンドとフロントエンドの両方を提供（Vue.jsとReactの両バージョンあり）
@@ -115,11 +143,11 @@ GitHubには多くの有用なオープンソースプロジェクトがあり�
 
 ## 4. pytrends
 
-\*\*リポジトリ\*\*: \[GeneralMills/pytrends\](https://github.com/GeneralMills/pytrends)  
-\*\*スター数\*\*: 3,446+  
-\*\*概要\*\*: Google Trendsの非公式APIをPythonで利用するためのライブラリです。
+**リポジトリ**: [GeneralMills/pytrends](https://github.com/GeneralMills/pytrends)  
+**スター数**: 3,446+  
+**概要**: Google Trendsの非公式APIをPythonで利用するためのライブラリです。
 
-\*\*主な機能\*\*:
+**主な機能**:
 - Google Trendsからのデータ自動ダウンロード機能
 - 「関心の推移」、「地域ごとの関心」、「関連トピック」などのGoogle Trendsデータを取得可能
 - pandas DataFrameとして結果を返すため、データ分析との統合が容易
@@ -129,11 +157,11 @@ GitHubには多くの有用なオープンソースプロジェクトがあり�
 
 ## 5. LLMDataHub
 
-\*\*リポジトリ\*\*: \[Zjh-819/LLMDataHub\](https://github.com/Zjh-819/LLMDataHub)  
-\*\*スター数\*\*: 3,047+  
-\*\*概要\*\*: 大規模言語モデル（LLM）のトレーニングに使用できるデータセットを包括的に集めたレポジトリです。
+**リポジトリ**: [Zjh-819/LLMDataHub](https://github.com/Zjh-819/LLMDataHub)  
+**スター数**: 3,047+  
+**概要**: 大規模言語モデル（LLM）のトレーニングに使用できるデータセットを包括的に集めたレポジトリです。
 
-\*\*主な機能\*\*:
+**主な機能**:
 - LLMのアライメント、プレトレーニング、ドメイン特化型、マルチモーダルデータセット集
 - 各データセットの言語、サイズ、使用目的などの情報を提供
 - 一般的なデータセットからドメイン特化型まで幅広くカバー
@@ -188,13 +216,24 @@ MCPサーバーを使ってもできないか？
 *2025/5/9 16:04:16*
 
 MCPサーバーを使ってGitHubのプロジェクトボードにアクセスしてみましょう。suguruTakahashi-1234さんのプロジェクトボードにアクセスを試みます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 認証されました。現在、suguruTakahashi-1234さんとしてアクセスしています。次に、指定されたプロジェクトボードの情報を取得しましょう。
 
 まず、このユーザーのリポジトリを確認してみます：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありません。このツール名が見つかりませんでした。代わりの方法を試してみましょう：
+```
+This block is not supported on your current device yet.
+```
 
 ---

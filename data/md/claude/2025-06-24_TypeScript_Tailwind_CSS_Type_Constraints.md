@@ -116,49 +116,73 @@ const className = classnames(
 *2025/6/24 23:05:23*
 
 各ライブラリのGitHubスター数や勢いを調べてみます。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 各ライブラリのGitHubスター数と現在の勢いをまとめます：
 
 ## 📊 GitHubスター数と人気度（2025年6月時点）
 
-### 1. \*\*tailwind-merge\*\* ⭐
-- \*\*GitHubスター数\*\*: 5.2k
-- \*\*npm週間ダウンロード数\*\*: 7212 other projects in the npm registry using tailwind-merge
-- \*\*特徴\*\*: Tailwind CSS v4対応済み、活発にメンテナンスされている
-- \*\*勢い\*\*: 最も人気があり、shadcn/uiでも採用されている標準的な選択肢
+### 1. **tailwind-merge** ⭐
+- **GitHubスター数**: 5.2k
+- **npm週間ダウンロード数**: 7212 other projects in the npm registry using tailwind-merge
+- **特徴**: Tailwind CSS v4対応済み、活発にメンテナンスされている
+- **勢い**: 最も人気があり、shadcn/uiでも採用されている標準的な選択肢
 
-### 2. \*\*clsx\*\* 🚀
-- \*\*GitHubスター数\*\*: 9.2k
-- \*\*npm週間ダウンロード数\*\*: 34,641,022 weekly downloads
-- \*\*特徴\*\*: 超軽量（239B）、高速、シンプルなAPI
-- \*\*勢い\*\*: 最もダウンロード数が多く、Reactコミュニティで広く採用
+### 2. **clsx** 🚀
+- **GitHubスター数**: 9.2k
+- **npm週間ダウンロード数**: 34,641,022 weekly downloads
+- **特徴**: 超軽量（239B）、高速、シンプルなAPI
+- **勢い**: 最もダウンロード数が多く、Reactコミュニティで広く採用
 
-### 3. \*\*class-variance-authority (cva)\*\* 💎
-- \*\*GitHubスター数\*\*: 5.4k（GitHubトピックより）
-- \*\*npm週間ダウンロード数\*\*: 7,884,710 weekly downloads
-- \*\*特徴\*\*: コンポーネントバリアント管理に特化、型安全性が高い
-- \*\*勢い\*\*: 急速に成長中、モダンなプロジェクトで人気
+### 3. **class-variance-authority (cva)** 💎
+- **GitHubスター数**: 5.4k（GitHubトピックより）
+- **npm週間ダウンロード数**: 7,884,710 weekly downloads
+- **特徴**: コンポーネントバリアント管理に特化、型安全性が高い
+- **勢い**: 急速に成長中、モダンなプロジェクトで人気
 
-### 4. \*\*tailwind-variants\*\* 🦄
-- \*\*GitHubスター数\*\*: 2.8k
-- \*\*特徴\*\*: Tailwindcss V4 no longer supports the config.content.transform so we remove the responsive variants feature
-- \*\*勢い\*\*: HeroUIチームが開発、slots APIなど高度な機能を提供
+### 4. **tailwind-variants** 🦄
+- **GitHubスター数**: 2.8k
+- **特徴**: Tailwindcss V4 no longer supports the config.content.transform so we remove the responsive variants feature
+- **勢い**: HeroUIチームが開発、slots APIなど高度な機能を提供
 
-### 5. \*\*tailwindcss-classnames\*\* 📝
-- \*\*GitHubスター数\*\*: 672
-- \*\*特徴\*\*: 完全型付けされたAPI、TypeScript特化
-- \*\*勢い\*\*: 更新頻度は低め、ニッチな需要に対応
+### 5. **tailwindcss-classnames** 📝
+- **GitHubスター数**: 672
+- **特徴**: 完全型付けされたAPI、TypeScript特化
+- **勢い**: 更新頻度は低め、ニッチな需要に対応
 
 ## 🎯 推奨される選択
 
-1. \*\*シンプルさ重視\*\*: `clsx` + `tailwind-merge`の組み合わせ
+1. **シンプルさ重視**: `clsx` + `tailwind-merge`の組み合わせ
    - 最も人気があり、コミュニティサポートが充実
    - 軽量で高速
 
-2. \*\*コンポーネント設計重視\*\*: `cva` または `tailwind-variants`
+2. **コンポーネント設計重視**: `cva` または `tailwind-variants`
    - バリアント管理が優れている
    - 大規模プロジェクトに適している
 
-3. \*\*型安全性最重視\*\*: `tailwindcss-classnames`
+3. **型安全性最重視**: `tailwindcss-classnames`
    - 完全な型補完が必要な場合
 
 現在の勢いとしては、`clsx`が圧倒的なダウンロード数を誇り、`tailwind-merge`との組み合わせが最も一般的です。一方で、`cva`は急速に成長しており、モダンなプロジェクトでの採用が増えています。
@@ -270,6 +294,20 @@ tw-classedはどのくらい人気なのか？
 
 ## 🤖 アシスタント
 *2025/6/24 23:08:26*
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
 
 `tw-classed`の人気度についてまとめます：
 
@@ -668,6 +706,15 @@ export const Button = ({ className, variant, ...props }) => (
 ## 🤖 アシスタント
 *2025/6/24 23:12:56*
 
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 `@tailwindcss/typescript-plugin`が提供する機能について説明します。
 
 ## 🎯 @tailwindcss/typescript-plugin の機能
@@ -857,6 +904,15 @@ export const Button = ({ className, variant, size, ...props }) => {
 *2025/6/24 23:16:02*
 
 まさにその通りです！Tailwindでゼロからデザインシステムを構築するのは大変です。そこで、色を指定するだけでデザインシステムを自動生成するツールやサービスがいくつか存在します。
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 素晴らしい質問です！実は、色を指定するだけでデザインシステムを自動生成できるツールが多数存在します。
 
 ## 🎨 色からデザインシステムを自動生成するツール
@@ -899,6 +955,10 @@ Find or add your primary brand color, adjust a couple of nobs, and create a sens
 ### 4. **shadcn/ui テーマジェネレーター** - 完全自動化 🚀
 
 これが最も実用的です！
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 ## 🚀 実用的な自動化ワークフロー
 
 ### 1. **即座に使えるshadcn/uiテーマ生成**
@@ -1014,6 +1074,10 @@ classnames('bg-primary', 'text-primary-foreground'); // ❌ 型エラー
 ```
 
 ### 2. **解決策：ハイブリッドアプローチ**
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 ## 🎯 実用的な統合方法
 
 ### 1. **ベストプラクティス：2層アプローチ**
@@ -1225,6 +1289,10 @@ graph TD
 ```
 
 ## 🎯 実践的な構成例
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 ## 🎯 最終的な判断基準
 
 ### **カスタムコンポーネントを作るべき3つの条件**

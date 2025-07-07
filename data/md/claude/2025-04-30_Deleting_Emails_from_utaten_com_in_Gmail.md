@@ -17,15 +17,31 @@ Gmailでutaten.comのアドレスから来るメールを全部削除したいMC
 日本語でお返事いたします。Gmail からの特定のメールを削除したいとのことですね。utaten.com のアドレスから来るメールをすべて削除したいとのご要望を承りました。
 
 まず、Gmailのプロフィール情報を確認し、その後メールの検索と削除の方法をご案内いたします。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 次に、utaten.comからのメールを確認します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 ドメイン名で検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 別の形式で検索してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 検索結果から、utaten.comからのメールが見つかりませんでした。これには以下の可能性が考えられます：
@@ -36,7 +52,7 @@ Gmailでutaten.comのアドレスから来るメールを全部削除したいMC
 
 Gmail内でutaten.comからのメールを削除するための手順は以下の通りです：
 
-1. Gmail画面の上部にある検索ボックスに「from:\*@utaten.com」と入力して検索
+1. Gmail画面の上部にある検索ボックスに「from:*@utaten.com」と入力して検索
 2. 検索結果が表示されたら、すべてのメールを選択（チェックボックスをクリック）
 3. 上部のゴミ箱アイコンをクリックして削除
 
@@ -59,9 +75,17 @@ utaten.com を含むアドレスから来るメールである
 *2025/4/30 9:19:04*
 
 utaten.comを含むアドレスからのメールを検索してみましょう。もう少し広範囲に検索してみます。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 別の検索キーワードも試してみましょう。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありませんが、「utaten」または「utaten.com」を含むメールアドレスからのメールが見つかりませんでした。これには以下の理由が考えられます：
@@ -73,7 +97,7 @@ utaten.comを含むアドレスからのメールを検索してみましょう�
 
 Gmailで特定のドメインからのメールをすべて削除する方法は以下の通りです：
 
-1. Gmail画面の検索ボックスに「from:\*@utaten.com」と入力
+1. Gmail画面の検索ボックスに「from:*@utaten.com」と入力
 2. 検索結果が表示されたら、すべてのメールを選択（左上のチェックボックスをクリック）
 3. 上部のゴミ箱アイコンをクリックして削除
 

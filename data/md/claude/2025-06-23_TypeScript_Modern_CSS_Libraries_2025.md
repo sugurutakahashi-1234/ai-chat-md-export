@@ -44,8 +44,14 @@ Reactです。デザインシステムの完成度かな。個人プロジェク
 *2025/6/24 1:06:12*
 
 Reactで基本的なCRUD操作を学習する目的なら、最適なライブラリをご提案できます！最新のモダンなUIライブラリについて詳しく調査してみますね。
+```
+This block is not supported on your current device yet.
+```
 
 Your React UI library comparison guide for 2025 is ready. It includes TypeScript support analysis, design system evaluations, CRUD functionality assessments, and suitability for personal projects across 8 libraries. The report highlights shadcn/ui's explosive growth, NextUI's rebranding to HeroUI, and provides specific recommendations based on project requirements.
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
 
 ---
 
@@ -154,6 +160,25 @@ tailwindCSSについてもすごい気になっていて、これを使ったよ
 *2025/6/24 1:25:05*
 
 GitHubスター数やダウンロード数、Tailwind CSSとの親和性について詳しく調査して比較表を作成しますね！
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
+
+```
+This block is not supported on your current device yet.
+```
+
 GitHubスター数、npmダウンロード数、Tailwind CSSとの親和性について、詳細な比較表を作成しました！
 
 ## 📊 2025年6月版 React UIライブラリ完全比較表
@@ -290,8 +315,20 @@ Ant Design   ██ +10%
 ## 🚀 推奨ライブラリの実装例とメリット
 
 ### 1. **shadcn/ui + Tailwind CSS** - カスタマイズ重視の最新アプローチ
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 ### 2. **Mantine** - 個人プロジェクト最適解
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 ### 3. **Ant Design** - エンタープライズ向け
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 ## 📋 各ライブラリのメリット比較
 
 ### **shadcn/ui + Tailwind CSS**
@@ -390,13 +427,17 @@ Next.js使用？
 *2025/6/24 1:37:13*
 
 Mantineの実装例を修正して、ライブラリを使わない形に書き換えます。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 Mantineの実装例を修正しました。外部ライブラリを使わずに、Mantineのスタイルと機能を再現したバージョンになっています。
 
 主な特徴：
-- \*\*通知システム\*\*: 成功/エラーメッセージを表示
-- \*\*フォームバリデーション\*\*: 必須項目とメール形式のチェック
-- \*\*Mantineらしいスタイル\*\*: 角丸、ホバーエフェクト、色使い
-- \*\*アクセシブルなUI\*\*: フォーカス状態、ラベル、エラー表示
+- **通知システム**: 成功/エラーメッセージを表示
+- **フォームバリデーション**: 必須項目とメール形式のチェック
+- **Mantineらしいスタイル**: 角丸、ホバーエフェクト、色使い
+- **アクセシブルなUI**: フォーカス状態、ラベル、エラー表示
 
 これで3つの主要なライブラリの実装例が揃いました。それぞれの特徴を活かしたCRUD実装になっています！
 
@@ -530,6 +571,10 @@ Radix UIとHeadless UIの違いを詳しく解説します！
 | **Tailwind CSS** | 任意（どのCSSでも可） | 公式推奨 |
 
 ### 🎯 コンポーネント比較
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 ### 🔧 実装の違い（実際のコード比較）
 
 #### **Radix UI の実装例**
@@ -681,6 +726,10 @@ shadcn/uiにもRadix UIが含まれているがどういうことか？
 ## 🔍 shadcn/ui の構造を理解する
 
 ### 📦 shadcn/ui = Tailwind CSS + Radix UI のハイブリッド
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 ## 📝 まとめ：shadcn/ui の本質
 
 ### shadcn/ui = ベストプラクティスの集合体
@@ -748,6 +797,10 @@ npx shadcn-ui add dialog
 *2025/6/24 2:01:29*
 
 shadcn/uiのアーキテクチャ解説を、外部ライブラリを使わない形に修正します。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 修正しました！外部ライブラリへの依存を削除し、実際のコード例も含めて、shadcn/uiのアーキテクチャを分かりやすく解説しています。
 
 主なポイント：

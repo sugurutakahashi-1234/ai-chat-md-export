@@ -15,6 +15,10 @@ iOSアプリのコマンドラインからのマルチプロジェクトの作�
 *2025/4/10 18:47:42*
 
 iOSアプリの複数プロジェクトをコマンドラインから作成する方法について説明いたします。この方法は、大規模な開発環境や自動化されたワークフローに特に役立ちます。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 iOSアプリの複数プロジェクト（マルチプロジェクト）をコマンドラインから作成する方法をガイドにまとめました。

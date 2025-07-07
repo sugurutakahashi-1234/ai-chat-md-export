@@ -110,20 +110,24 @@ https://github.com/suguruTakahashi-1234/mac-setup
 *2025/5/14 15:34:38*
 
 リポジトリのURLをいただいたので、そのリポジトリのissue一覧を取得します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 `suguruTakahashi-1234/mac-setup`リポジトリのIssue一覧を取得しました。現在、以下の1件のIssueがあります：
 
 ### Issue #1: node22と node24 フォルダの削除
-- \*\*状態\*\*: オープン
-- \*\*作成日\*\*: 2025年5月9日
-- \*\*作成者\*\*: suguruTakahashi-1234（リポジトリのオーナー）
-- \*\*ラベル\*\*: enhancement, cleanup
+- **状態**: オープン
+- **作成日**: 2025年5月9日
+- **作成者**: suguruTakahashi-1234（リポジトリのオーナー）
+- **ラベル**: enhancement, cleanup
 
-\*\*概要\*\*:
+**概要**:
 リポジトリ内の `node22` および `node24` フォルダを削除する必要があります。
 
-\*\*詳細\*\*:
+**詳細**:
 現在、リポジトリには以下の2つのNode.jsバージョン用のフォルダが含まれています：
 - `node22` フォルダ：Node.js v22 用の設定ファイル
 - `node24` フォルダ：Node.js v24 用の設定ファイル
@@ -134,10 +138,10 @@ https://github.com/suguruTakahashi-1234/mac-setup
 - `package.json`
 - `package-lock.json`
 
-\*\*削除理由\*\*:
+**削除理由**:
 これらのフォルダは現在不要であり、リポジトリをクリーンに保つために削除することが推奨されています。Node.jsの設定については、将来必要に応じて専用のリポジトリまたはより適切な方法で管理することができます。
 
-\*\*提案されるアクション\*\*:
+**提案されるアクション**:
 - `node22` フォルダを完全に削除
 - `node24` フォルダを完全に削除
 
@@ -156,12 +160,24 @@ https://github.com/suguruTakahashi-1234/mac-setup
 *2025/5/14 15:46:01*
 
 結果をMarkdownファイルとして指定の場所に出力します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありません。ファイルのパスに問題があったようです。正しいパスを指定して再度実行します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 エラーが続いています。APIの仕様に問題があるようです。別のツールを使って試してみましょう。Bashコマンドを使ってファイルを作成します。
+```
+This block is not supported on your current device yet.
+```
+
 
 
 マークダウンファイルの作成が完了しました。指定されたパスにファイルが正常に作成されました：
@@ -193,6 +209,10 @@ markitdownでやってみることはできますか？できなかったら終�
 *2025/5/14 15:46:40*
 
 すみません、先ほどのエラーはパラメータの指定方法に問題があったようです。正しく`markdown`で出力してみましょう。
+```
+Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
+```
+
 
 
 マークダウン形式のアーティファクトを作成しました。これは要求された内容を満たしています。

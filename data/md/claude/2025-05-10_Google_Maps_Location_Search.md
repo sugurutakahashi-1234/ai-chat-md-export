@@ -39,12 +39,24 @@ GoogleMapのMCPでなんかｓて欲しい
 周辺地域を調べるためには、Google Mapsツールとの接続が必要です。まず接続を確立して、その後周辺情報を検索したいと思います。
 
 まず、Google Mapsツールに必要なパラメータを確認します：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 次に、Google Mapsツールへの接続を確立します：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありません。接続方法に問題がありました。もう一度試してみます：
+```
+This block is not supported on your current device yet.
+```
+
 
 
 申し訳ありませんが、Google Maps MCPツールの接続に問題が発生しています。現在、このインターフェースからGoogle Maps情報を直接取得することができない状態のようです。
