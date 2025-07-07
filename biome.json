@@ -2,37 +2,73 @@
   "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
   "vcs": {
     "enabled": true,
-    "clientKind": "git",
-    "defaultBranch": "main"
-  },
-  "files": {
-    "include": ["src/**/*.ts", "src/**/*.tsx", "*.json"],
-    "ignore": ["node_modules/", "bin/", "data/", "*.min.js", "dist/"]
+    "clientKind": "git"
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 100
+    "indentStyle": "space"
   },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "suspicious": {
-        "noExplicitAny": "warn"
-      },
-      "style": {
-        "useConst": "error",
-        "useTemplate": "warn"
-      }
+      "recommended": true
     }
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "double",
-      "semicolons": "always",
-      "trailingCommas": "all"
+      "quoteStyle": "double"
     }
-  }
+  },
+  "json": {
+    "parser": {
+      "allowComments": true
+    }
+  },
+  "css": {
+    "formatter": {
+      "indentStyle": "space"
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "**/src/generated/**",
+        "**/generated/**",
+        "**/dist/**",
+        ".claude/settings.local.json",
+        "**/dist-storybook/**",
+        "**/coverage/**",
+        "**/docs/**",
+        "**/routeTree.gen.ts",
+        "**/.react-router/**"
+      ],
+      "linter": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      },
+      "assist": {
+        "enabled": false
+      }
+    },
+    {
+      "includes": ["**/vite-env.d.ts"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedVariables": "off"
+          }
+        }
+      }
+    }
+  ]
 }

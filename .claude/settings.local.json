@@ -120,7 +120,10 @@
       "Bash(bun run:*)",
       "Bash(bunx tsc:*)",
       "Bash(ls:*)",
-      "Bash(git filter-branch:*)"
+      "Bash(git filter-branch:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run:*)",
+      "Bash(npm test)"
     ],
     "deny": []
   },
