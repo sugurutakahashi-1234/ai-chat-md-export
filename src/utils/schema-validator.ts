@@ -22,18 +22,18 @@ export interface ValidationWarning {
 export function validateWithDetails<T>(
   schema: z.ZodSchema<T>,
   data: unknown,
-  options: { name: string } = { name: "データ" },
+  options: { name: string } = { name: "Data" },
 ): ValidationResult<T> {
   try {
     const result = schema.parse(data);
 
-    // passthroughを使用している場合、未知のフィールドを検出
+    // Detect unknown fields when using passthrough
     const warnings: ValidationWarning[] = [];
     if (typeof data === "object" && data !== null) {
       const unknownFields = detectUnknownFields(schema, data);
       if (unknownFields.length > 0) {
         warnings.push({
-          message: `${options.name}に未知のフィールドが含まれています`,
+          message: `${options.name} contains unknown fields`,
           unknownFields,
         });
       }
@@ -52,7 +52,7 @@ export function validateWithDetails<T>(
           message: e.message,
         };
 
-        // ZodIssueの型によってはexpectedとreceivedが存在しない場合がある
+        // expected and received may not exist depending on ZodIssue type
         if ("expected" in e && e.expected !== undefined) {
           baseError.expected = String(e.expected);
         }
@@ -74,10 +74,10 @@ export function validateWithDetails<T>(
 }
 
 function detectUnknownFields(schema: z.ZodSchema, data: unknown): string[] {
-  // この実装は簡略化されています。実際にはより複雑な実装が必要です
+  // This implementation is simplified. A more complex implementation is needed in practice
   const unknownFields: string[] = [];
 
-  // スキーマがオブジェクトの場合のみチェック
+  // Check only if schema is an object
   if (schema instanceof z.ZodObject) {
     const shape = schema.shape;
     const knownKeys = Object.keys(shape);
@@ -100,32 +100,32 @@ export function formatValidationReport(
   const lines: string[] = [];
 
   if (result.success) {
-    lines.push("✅ スキーマ検証成功");
+    lines.push("✅ Schema validation successful");
 
     if (result.warnings && result.warnings.length > 0) {
-      lines.push("\n📋 変換時にスキップされたフィールド:");
+      lines.push("\n📋 Skipped fields during conversion:");
       for (const warning of result.warnings) {
         if (warning.unknownFields) {
           lines.push(`  - ${warning.unknownFields.join(", ")}`);
           lines.push(
-            `    ※ これらのフィールドは変換後のMarkdownには含まれません`,
+            `    * These fields are not included in the converted Markdown`,
           );
         }
       }
     }
   } else {
-    lines.push("❌ スキーマ検証失敗");
+    lines.push("❌ Schema validation failed");
 
     if (result.errors && result.errors.length > 0) {
-      lines.push("\nエラー:");
+      lines.push("\nErrors:");
       for (const error of result.errors) {
-        lines.push(`  - パス: ${error.path || "ルート"}`);
+        lines.push(`  - Path: ${error.path || "root"}`);
         lines.push(`    ${error.message}`);
         if (error.expected) {
-          lines.push(`    期待: ${error.expected}`);
+          lines.push(`    Expected: ${error.expected}`);
         }
         if (error.received) {
-          lines.push(`    受信: ${error.received}`);
+          lines.push(`    Received: ${error.received}`);
         }
       }
     }

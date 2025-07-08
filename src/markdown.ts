@@ -5,7 +5,7 @@ export function convertToMarkdown(conversation: Conversation): string {
 
   lines.push(`# ${conversation.title}`);
   lines.push("");
-  lines.push(`日付: ${conversation.date}`);
+  lines.push(`Date: ${conversation.date}`);
   lines.push("");
   lines.push("---");
   lines.push("");
@@ -13,12 +13,12 @@ export function convertToMarkdown(conversation: Conversation): string {
   for (const message of conversation.messages) {
     const roleLabel =
       message.role === "user"
-        ? "👤 ユーザー"
+        ? "👤 User"
         : message.role === "assistant"
-          ? "🤖 アシスタント"
+          ? "🤖 Assistant"
           : message.role === "system"
-            ? "⚙️ システム"
-            : "🔧 ツール";
+            ? "⚙️ System"
+            : "🔧 Tool";
 
     lines.push(`## ${roleLabel}`);
     if (message.timestamp) {
@@ -38,15 +38,15 @@ export function convertToMarkdown(conversation: Conversation): string {
 }
 
 function processContent(text: string): string {
-  // "This block is not supported" メッセージの処理
+  // Process "This block is not supported" messages
   if (text.includes("This block is not supported")) {
     return text.replace(
       /```\s*This block is not supported.*?```/gs,
-      "*[ツール使用: 対応していないブロック]*"
+      "*[Tool Use: Unsupported Block]*",
     );
   }
 
-  // コードブロックを保護
+  // Protect code blocks
   const codeBlocks: string[] = [];
   let processedText = text.replace(/```[\s\S]*?```/g, (match) => {
     const index = codeBlocks.length;
@@ -54,7 +54,7 @@ function processContent(text: string): string {
     return `__CODE_BLOCK_${index}__`;
   });
 
-  // インラインコードを保護
+  // Protect inline code
   const inlineCodes: string[] = [];
   processedText = processedText.replace(/`[^`]+`/g, (match) => {
     const index = inlineCodes.length;
@@ -62,13 +62,16 @@ function processContent(text: string): string {
     return `__INLINE_CODE_${index}__`;
   });
 
-  // エスケープ処理
+  // Escape processing
   processedText = escapeMarkdown(processedText);
 
-  // 保護したコードを復元
-  processedText = processedText.replace(/__INLINE_CODE_(\d+)__/g, (_, index) => {
-    return inlineCodes[Number(index)] || "";
-  });
+  // Restore protected code
+  processedText = processedText.replace(
+    /__INLINE_CODE_(\d+)__/g,
+    (_, index) => {
+      return inlineCodes[Number(index)] || "";
+    },
+  );
 
   processedText = processedText.replace(/__CODE_BLOCK_(\d+)__/g, (_, index) => {
     return codeBlocks[Number(index)] || "";
@@ -78,20 +81,22 @@ function processContent(text: string): string {
 }
 
 function escapeMarkdown(text: string): string {
-  // HTMLタグのみエスケープし、マークダウン記法は保持
-  return text
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    // 既にエスケープされた文字を修正
-    .replace(/\\\*/g, "*")
-    .replace(/\\_/g, "_")
-    .replace(/\\\[/g, "[")
-    .replace(/\\\]/g, "]");
+  // Escape only HTML tags, preserve markdown syntax
+  return (
+    text
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      // Fix already escaped characters
+      .replace(/\\\*/g, "*")
+      .replace(/\\_/g, "_")
+      .replace(/\\\[/g, "[")
+      .replace(/\\\]/g, "]")
+  );
 }
 
 function formatTimestamp(timestamp: string): string {
   const date = new Date(timestamp);
-  // 日本時間（JST）で表示
+  // Display in Japan time (JST)
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "2-digit",
@@ -102,6 +107,6 @@ function formatTimestamp(timestamp: string): string {
     timeZone: "Asia/Tokyo",
     hour12: false,
   };
-  
-  return new Intl.DateTimeFormat("ja-JP", options).format(date);
+
+  return new Intl.DateTimeFormat("en-US", options).format(date);
 }

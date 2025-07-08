@@ -15,7 +15,7 @@ export async function loadChatGPT(filePath: string): Promise<Conversation[]> {
   const data = JSON.parse(content);
 
   if (!Array.isArray(data)) {
-    throw new Error("ChatGPTのエクスポートデータは配列である必要があります");
+    throw new Error("ChatGPT export data must be an array");
   }
 
   const conversations: Conversation[] = [];
@@ -25,17 +25,17 @@ export async function loadChatGPT(filePath: string): Promise<Conversation[]> {
 
   for (let i = 0; i < data.length; i++) {
     const result = validateWithDetails(chatGPTConversationSchema, data[i], {
-      name: `会話 #${i + 1}`,
+      name: `Conversation #${i + 1}`,
     });
 
     if (!result.success) {
       const report = formatValidationReport(result);
-      validationErrors.push(`会話 #${i + 1}:\n${report}`);
+      validationErrors.push(`Conversation #${i + 1}:\n${report}`);
       continue;
     }
 
     if (result.warnings) {
-      // 未知のフィールドを収集
+      // Collect unknown fields
       for (const warning of result.warnings) {
         if (warning.unknownFields) {
           warning.unknownFields.forEach((field) => skippedFields.add(field));
@@ -53,7 +53,7 @@ export async function loadChatGPT(filePath: string): Promise<Conversation[]> {
 
     conversations.push({
       id: parsed.id || Object.keys(parsed.mapping)[0] || "unknown",
-      title: parsed.title || "無題の会話",
+      title: parsed.title || "Untitled Conversation",
       date: date as string,
       messages,
     });
@@ -61,17 +61,19 @@ export async function loadChatGPT(filePath: string): Promise<Conversation[]> {
 
   if (validationErrors.length > 0) {
     throw new Error(
-      `スキーマ検証エラーが発生しました:\n${validationErrors.join("\n\n")}`,
+      `Schema validation error:\n${validationErrors.join("\n\n")}`,
     );
   }
 
   // サマリー情報を表示
-  console.log(`\n✅ ${successCount}件の会話を正常に読み込みました`);
+  console.log(`\n✅ Successfully loaded ${successCount} conversations`);
 
   if (skippedFields.size > 0) {
-    console.log(`\n📋 変換時にスキップされたフィールド:`);
+    console.log(`\n📋 Skipped fields during conversion:`);
     console.log(`  - ${Array.from(skippedFields).sort().join(", ")}`);
-    console.log(`    ※ これらのフィールドは変換後のMarkdownには含まれません`);
+    console.log(
+      `    * These fields are not included in the converted Markdown`,
+    );
   }
 
   return conversations;

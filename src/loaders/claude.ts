@@ -9,14 +9,12 @@ import {
   validateWithDetails,
 } from "../utils/schema-validator.js";
 
-export async function loadClaude(
-  filePath: string,
-): Promise<Conversation[]> {
+export async function loadClaude(filePath: string): Promise<Conversation[]> {
   const content = await fs.readFile(filePath, "utf-8");
   const data = JSON.parse(content);
 
   if (!Array.isArray(data)) {
-    throw new Error("Claudeのエクスポートデータは配列である必要があります");
+    throw new Error("Claude export data must be an array");
   }
 
   const conversations: Conversation[] = [];
@@ -26,17 +24,17 @@ export async function loadClaude(
 
   for (let i = 0; i < data.length; i++) {
     const result = validateWithDetails(claudeConversationSchema, data[i], {
-      name: `会話 #${i + 1}`,
+      name: `Conversation #${i + 1}`,
     });
 
     if (!result.success) {
       const report = formatValidationReport(result);
-      validationErrors.push(`会話 #${i + 1}:\n${report}`);
+      validationErrors.push(`Conversation #${i + 1}:\n${report}`);
       continue;
     }
 
     if (result.warnings) {
-      // 未知のフィールドを収集
+      // Collect unknown fields
       for (const warning of result.warnings) {
         if (warning.unknownFields) {
           warning.unknownFields.forEach((field) => skippedFields.add(field));
@@ -47,7 +45,7 @@ export async function loadClaude(
 
     const parsed = result.data as ClaudeConversation;
 
-    // 日付の処理を安全に行う
+    // Safely process date
     let date: string;
     try {
       const parsedDate = new Date(parsed.created_at);
@@ -62,17 +60,17 @@ export async function loadClaude(
 
     conversations.push({
       id: parsed.uuid,
-      title: parsed.name || "無題の会話",
+      title: parsed.name || "Untitled Conversation",
       date,
       messages: parsed.chat_messages.map((msg) => {
-        // textフィールドから内容を取得
+        // Get content from text field
         let content: string = "";
 
-        // 直接textフィールドがある場合
+        // Direct text field exists
         if ("text" in msg && typeof msg.text === "string") {
           content = msg.text;
         }
-        // contentフィールドがある場合（配列形式）
+        // Content field exists (array format)
         else if ("content" in msg && Array.isArray(msg.content)) {
           const texts = msg.content
             .map((c) => {
@@ -84,19 +82,19 @@ export async function loadClaude(
             .filter((t): t is string => typeof t === "string");
           content = texts.length > 0 ? texts.join("\n") : "";
         }
-        // roleがある場合（旧形式）
+        // Role exists (old format)
         else if ("role" in msg && "content" in msg) {
           content = typeof msg.content === "string" ? msg.content : "";
         }
 
-        // senderフィールドからroleを判定
+        // Determine role from sender field
         let role: "user" | "assistant";
         if ("sender" in msg) {
           role = msg.sender === "human" ? "user" : "assistant";
         } else if ("role" in msg && msg.role) {
           role = msg.role;
         } else {
-          // デフォルト値
+          // Default value
           role = "user";
         }
 
@@ -111,17 +109,19 @@ export async function loadClaude(
 
   if (validationErrors.length > 0) {
     throw new Error(
-      `スキーマ検証エラーが発生しました:\n${validationErrors.join("\n\n")}`,
+      `Schema validation error:\n${validationErrors.join("\n\n")}`,
     );
   }
 
-  // サマリー情報を表示
-  console.log(`\n✅ ${successCount}件の会話を正常に読み込みました`);
+  // Display summary information
+  console.log(`\n✅ Successfully loaded ${successCount} conversations`);
 
   if (skippedFields.size > 0) {
-    console.log(`\n📋 変換時にスキップされたフィールド:`);
+    console.log(`\n📋 Skipped fields during conversion:`);
     console.log(`  - ${Array.from(skippedFields).sort().join(", ")}`);
-    console.log(`    ※ これらのフィールドは変換後のMarkdownには含まれません`);
+    console.log(
+      `    * These fields are not included in the converted Markdown`,
+    );
   }
 
   return conversations;

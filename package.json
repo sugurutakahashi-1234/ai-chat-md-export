@@ -1,7 +1,7 @@
 {
   "name": "chat-history-conv",
-  "version": "1.0.0",
-  "description": "ChatGPTとClaudeのチャット履歴をMarkdownに変換するCLIツール",
+  "version": "0.1.0",
+  "description": "CLI tool to convert ChatGPT and Claude chat history to Markdown",
   "type": "module",
   "private": true,
   "bin": {
@@ -20,16 +20,18 @@
     "conv:claude": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude",
     "conv:all": "bun run conv:chatgpt && bun run conv:claude",
     "conv:chatgpt:watch": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt --format chatgpt 2>&1 | tee chatgpt-warnings.log",
-    "conv:claude:watch": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude 2>&1 | tee claude-warnings.log"
+    "conv:claude:watch": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude 2>&1 | tee claude-warnings.log",
+    "test": "bun test",
+    "test:watch": "bun test --watch"
+  },
+  "dependencies": {
+    "commander": "^14.0.0",
+    "zod": "^3.25.75"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.6",
     "@types/bun": "latest",
     "@types/node": "^24.0.10",
     "typescript": "^5.8.3"
-  },
-  "dependencies": {
-    "commander": "^14.0.0",
-    "zod": "^3.25.75"
   }
 }

@@ -1,18 +1,18 @@
 import { z } from "zod";
 
-// Claudeのメッセージコンテンツスキーマ
+// Claude message content schema
 export const claudeMessageContentSchema = z
   .object({
-    type: z.string(), // "text", "thinking" など複数のタイプをサポート
+    type: z.string(), // Supports multiple types like "text", "thinking"
     text: z.string().optional(),
     thinking: z.string().optional(),
-    // その他のフィールドも許可
+    // Allow other fields
   })
   .passthrough() satisfies z.ZodSchema;
 
 export const claudeMessageSchema = z
   .object({
-    // 新形式（sender使用）と旧形式（role使用）の両方をサポート
+    // Support both new format (using sender) and old format (using role)
     role: z.enum(["user", "assistant"]).optional(),
     sender: z.enum(["human", "assistant"]).optional(),
     content: z
@@ -41,6 +41,6 @@ export const claudeConversationSchema = z
   })
   .passthrough() satisfies z.ZodSchema;
 
-// 型定義のエクスポート
+// Export type definitions
 export type ClaudeConversation = z.infer<typeof claudeConversationSchema>;
 export type ClaudeMessage = z.infer<typeof claudeMessageSchema>;

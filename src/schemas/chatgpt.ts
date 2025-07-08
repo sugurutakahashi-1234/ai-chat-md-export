@@ -1,13 +1,13 @@
 import { z } from "zod";
 
-// 詳細なChatGPTスキーマ定義
+// Detailed ChatGPT schema definitions
 export const chatGPTContentPartSchema = z.union([
   z.string(),
   z
     .object({
       content_type: z.string().optional(),
       text: z.string().optional(),
-      // 将来的な拡張に対応
+      // Support for future extensions
     })
     .passthrough(),
 ]) satisfies z.ZodSchema;
@@ -35,7 +35,7 @@ export const chatGPTMessageSchema = z
     metadata: z.record(z.unknown()).optional(),
     recipient: z.string().optional(),
   })
-  .passthrough() satisfies z.ZodSchema; // 未知のフィールドを許可
+  .passthrough() satisfies z.ZodSchema; // Allow unknown fields
 
 export const chatGPTNodeSchema = z
   .object({
@@ -61,7 +61,7 @@ export const chatGPTConversationSchema = z
   })
   .passthrough() satisfies z.ZodSchema;
 
-// 型定義のエクスポート
+// Export type definitions
 export type ChatGPTConversation = z.infer<typeof chatGPTConversationSchema>;
 export type ChatGPTNode = z.infer<typeof chatGPTNodeSchema>;
 export type ChatGPTMessage = z.infer<typeof chatGPTMessageSchema>;

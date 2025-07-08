@@ -17,9 +17,7 @@ const optionsSchema = z.object({
 
 type Options = z.infer<typeof optionsSchema>;
 
-async function detectFormat(
-  filePath: string,
-): Promise<"chatgpt" | "claude"> {
+async function detectFormat(filePath: string): Promise<"chatgpt" | "claude"> {
   const content = await fs.readFile(filePath, "utf-8");
 
   // Try parsing as JSON first
@@ -36,25 +34,22 @@ async function detectFormat(
     // Not a valid JSON
   }
 
-  throw new Error("不明なファイル形式です");
+  throw new Error("Unknown file format");
 }
 
 async function main() {
   program
     .name("chat-history-conv")
-    .description("ChatGPTとClaudeのエクスポートデータをMarkdownに変換します")
+    .description("Convert ChatGPT and Claude export data to Markdown")
     .version("1.0.0")
-    .requiredOption(
-      "-i, --input <path>",
-      "入力ファイルまたはディレクトリのパス",
-    )
-    .option("-o, --output <path>", "出力ディレクトリ (デフォルト: data/md/)")
+    .requiredOption("-i, --input <path>", "Input file or directory path")
+    .option("-o, --output <path>", "Output directory (default: data/md/)")
     .option(
       "-f, --format <format>",
-      "入力形式 (chatgpt, claude, auto)",
+      "Input format (chatgpt, claude, auto)",
       "auto",
     )
-    .option("--copy-raw", "生データをdata/raw/にコピー", false)
+    .option("--copy-raw", "Copy raw data to data/raw/", false)
     .parse();
 
   const options = optionsSchema.parse(program.opts());
@@ -62,7 +57,7 @@ async function main() {
   try {
     await processInput(options);
   } catch (error) {
-    console.error("エラー:", error instanceof Error ? error.message : error);
+    console.error("Error:", error instanceof Error ? error.message : error);
     process.exit(1);
   }
 }
@@ -78,7 +73,7 @@ async function processInput(options: Options) {
   } else if (stat.isDirectory()) {
     await processDirectory(inputPath, outputDir, options);
   } else {
-    throw new Error("入力パスはファイルまたはディレクトリである必要があります");
+    throw new Error("Input path must be a file or directory");
   }
 }
 
@@ -87,15 +82,16 @@ async function processFile(
   outputDir: string,
   options: Options,
 ) {
-  console.log(`処理中: ${filePath}`);
+  console.log(`Processing: ${filePath}`);
 
   let format: string;
   try {
-    format = options.format === "auto" ? await detectFormat(filePath) : options.format;
+    format =
+      options.format === "auto" ? await detectFormat(filePath) : options.format;
   } catch (error) {
     throw new Error(
-      `ファイル形式の検出に失敗しました: ${error instanceof Error ? error.message : "不明なエラー"}\n` +
-      `ファイル: ${filePath}`
+      `Failed to detect file format: ${error instanceof Error ? error.message : "Unknown error"}\n` +
+        `File: ${filePath}`,
     );
   }
 
@@ -106,16 +102,19 @@ async function processFile(
     } else if (format === "claude") {
       conversations = await loadClaude(filePath);
     } else {
-      throw new Error(`サポートされていない形式: ${format}`);
+      throw new Error(`Unsupported format: ${format}`);
     }
   } catch (error) {
-    if (error instanceof Error && error.message.includes("スキーマ検証エラー")) {
+    if (
+      error instanceof Error &&
+      error.message.includes("Schema validation error")
+    ) {
       throw error;
     }
     throw new Error(
-      `ファイルの読み込みに失敗しました: ${error instanceof Error ? error.message : "不明なエラー"}\n` +
-      `ファイル: ${filePath}\n` +
-      `形式: ${format}`
+      `Failed to load file: ${error instanceof Error ? error.message : "Unknown error"}\n` +
+        `File: ${filePath}\n` +
+        `Format: ${format}`,
     );
   }
 
@@ -131,8 +130,8 @@ async function processFile(
       console.log(`  → ${outputPath}`);
     } catch (error) {
       console.error(
-        `警告: ファイルの書き込みに失敗しました: ${outputPath}\n` +
-        `理由: ${error instanceof Error ? error.message : "不明なエラー"}`
+        `Warning: Failed to write file: ${outputPath}\n` +
+          `Reason: ${error instanceof Error ? error.message : "Unknown error"}`,
       );
     }
   }
@@ -144,7 +143,7 @@ async function processFile(
     const rawFileName = `${new Date().toISOString().split("T")[0]}_${path.basename(filePath)}`;
     const rawPath = path.join(rawDir, rawFileName);
     await fs.copyFile(filePath, rawPath);
-    console.log(`  → 生データをコピー: ${rawPath}`);
+    console.log(`  → Copied raw data: ${rawPath}`);
   }
 }
 
