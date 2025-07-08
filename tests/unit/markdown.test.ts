@@ -140,23 +140,50 @@ describe("convertToMarkdown", () => {
   });
 
   test("handles 'This block is not supported' messages", () => {
-    const conversation: Conversation = {
-      id: "test-123",
-      title: "Test",
-      date: "2024-01-01",
-      messages: [
-        {
-          role: "assistant",
-          content:
-            "Some text\n```\nThis block is not supported by the current environment.\n```\nMore text",
-        },
-      ],
-    };
+    const testCases = [
+      {
+        content:
+          "```\nThis block is not supported by the current environment.\n```",
+        expected:
+          "*[Unsupported: This block is not supported by the current environment.]*",
+      },
+      {
+        content: "```\nThis block is not supported: Image Generation\n```",
+        expected:
+          "*[Unsupported: This block is not supported: Image Generation]*",
+      },
+      {
+        content: "```\nThis block is not supported for DALL-E\n```",
+        expected: "*[Unsupported: This block is not supported for DALL-E]*",
+      },
+      {
+        content: "```\nThis block is not supported with Code Interpreter.\n```",
+        expected:
+          "*[Unsupported: This block is not supported with Code Interpreter.]*",
+      },
+      {
+        content: "```\nThis block is not supported\n```",
+        expected: "*[Unsupported: This block is not supported]*",
+      },
+    ];
 
-    const markdown = convertToMarkdown(conversation);
+    for (const testCase of testCases) {
+      const conversation: Conversation = {
+        id: "test-123",
+        title: "Test",
+        date: "2024-01-01",
+        messages: [
+          {
+            role: "assistant",
+            content: testCase.content,
+          },
+        ],
+      };
 
-    expect(markdown).toContain("*[Tool Use: Unsupported Block]*");
-    expect(markdown).not.toContain("This block is not supported");
+      const markdown = convertToMarkdown(conversation);
+      expect(markdown).toContain(testCase.expected);
+      expect(markdown).not.toContain("```");
+    }
   });
 
   test("fixes escaped markdown characters", () => {

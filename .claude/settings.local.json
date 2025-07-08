@@ -124,20 +124,17 @@
       "Bash(npm run:*)",
       "Bash(npm test)",
       "Bash(jq:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(chat-history-conv:*)"
     ],
     "deny": []
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "playwright"
-  ],
+  "enabledMcpjsonServers": ["playwright"],
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
+      "args": ["@playwright/mcp@latest"]
     }
   }
 }
