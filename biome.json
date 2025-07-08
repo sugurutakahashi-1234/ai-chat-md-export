@@ -14,19 +14,9 @@
       "recommended": true
     }
   },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double"
-    }
-  },
   "json": {
     "parser": {
       "allowComments": true
-    }
-  },
-  "css": {
-    "formatter": {
-      "indentStyle": "space"
     }
   },
   "assist": {
@@ -36,39 +26,5 @@
         "organizeImports": "on"
       }
     }
-  },
-  "overrides": [
-    {
-      "includes": [
-        "**/src/generated/**",
-        "**/generated/**",
-        "**/dist/**",
-        ".claude/settings.local.json",
-        "**/dist-storybook/**",
-        "**/coverage/**",
-        "**/docs/**",
-        "**/routeTree.gen.ts",
-        "**/.react-router/**"
-      ],
-      "linter": {
-        "enabled": false
-      },
-      "formatter": {
-        "enabled": false
-      },
-      "assist": {
-        "enabled": false
-      }
-    },
-    {
-      "includes": ["**/vite-env.d.ts"],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "noUnusedVariables": "off"
-          }
-        }
-      }
-    }
-  ]
+  }
 }
