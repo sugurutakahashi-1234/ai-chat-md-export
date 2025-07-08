@@ -1,11 +1,11 @@
 # Docker Compose Version Warning
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 11:57:54*
+## 👤 User
+*2024-12-18 11:57:54*
 
 $ docker-compose ps
 WARN[0000] /Users/sugurutakahashi/git/gallusys/snpit_guild_server/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
@@ -17,8 +17,8 @@ guild_postgres   postgres:14-alpine                "docker-entrypoint.s…"   db
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 11:58:16*
+## 🤖 Assistant
+*2024-12-18 11:58:16*
 
 The warning in your `docker-compose ps` output indicates that the `version` attribute in your `docker-compose.yml` file is obsolete and is no longer necessary in the latest Docker Compose versions. Docker Compose V2 has deprecated the use of the `version` attribute, and it will simply be ignored if present.
 

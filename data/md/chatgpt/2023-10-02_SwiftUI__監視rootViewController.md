@@ -1,18 +1,18 @@
 # SwiftUI: 監視rootViewController
 
-日付: 2023-10-02
+Date: 2023-10-02
 
 ---
 
-## 👤 ユーザー
-*2023/10/02 11:06:27*
+## 👤 User
+*2023-10-02 11:06:27*
 
 SwiftUIでのwindowScenes?.keyWindow?.rootViewControllerの更新のかんしってどうやればできますか？
 
 ---
 
-## 🤖 アシスタント
-*2023/10/02 11:06:45*
+## 🤖 Assistant
+*2023-10-02 11:06:45*
 
 SwiftUIでの`windowScenes?.keyWindow?.rootViewController`を変更するためには、`UIApplicationDelegate`を利用し、直接`UIWindow`オブジェクトにアクセスする必要があります。以下はその基本的な手順です。
 

@@ -1,11 +1,11 @@
 # Function Naming Suggestions
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 16:08:18*
+## 👤 User
+*2024-12-18 16:08:18*
 
 以下について、fetchGuildInfo という処理名はclass名と一致していて、あんまり嬉しくない
 他のapiリクエストごとにこの手の定義したいと思っていて、それらで使えるような関数名がいい
@@ -40,8 +40,8 @@ class GetGuildInfoNotifier extends _$GetGuildInfoNotifier {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 16:08:32*
+## 🤖 Assistant
+*2024-12-18 16:08:32*
 
 以下のような名前を提案します。この名前は、API リクエスト全般に使える汎用的な名称であり、`fetchGuildInfo` の代わりとして適切です。
 
@@ -93,15 +93,15 @@ class GetGuildInfoNotifier extends _$GetGuildInfoNotifier {
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 16:09:25*
+## 👤 User
+*2024-12-18 16:09:25*
 
 get put post deleteなどで使えるようにしたい
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 16:09:57*
+## 🤖 Assistant
+*2024-12-18 16:09:57*
 
 get、put、post、delete のようなさまざまな HTTP メソッドに対応可能な汎用的な関数名を考える場合、関数自体の役割を抽象化し、呼び出し時に HTTP メソッドを引数として渡す形がよいでしょう。以下はそのための設計案です。
 

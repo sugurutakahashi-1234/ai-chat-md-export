@@ -1,11 +1,11 @@
 # Password Field Update
 
-日付: 2024-07-25
+Date: 2024-07-25
 
 ---
 
-## 👤 ユーザー
-*2024/07/25 15:17:57*
+## 👤 User
+*2024-07-25 15:17:57*
 
 .onChange(of: text) { oldValue, newValue in
             if newValue.count == 1 && isFirstEntryAfterToggle {
@@ -74,8 +74,8 @@ struct PasswordField: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/07/25 15:18:14*
+## 🤖 Assistant
+*2024-07-25 15:18:14*
 
 以下のコードを `PasswordField` に追加することで、 `text` が変更されたときに通知フィードバックを生成する機能を追加できます。 `.onChange(of:)` モディファイアを使い、 `text` の変更を監視します。
 
@@ -166,15 +166,15 @@ struct MyApp: App {
 
 ---
 
-## 👤 ユーザー
-*2024/07/25 15:18:50*
+## 👤 User
+*2024-07-25 15:18:50*
 
 @available(iOS 17.0, *) となってしまう、
 
 ---
 
-## 🤖 アシスタント
-*2024/07/25 15:19:12*
+## 🤖 Assistant
+*2024-07-25 15:19:12*
 
 以下は、iOS 16 以降でも動作するように修正したコードです。`UITextField` のデリゲートメソッドを使って変更を監視し、 `UINotificationFeedbackGenerator` を呼び出します。
 

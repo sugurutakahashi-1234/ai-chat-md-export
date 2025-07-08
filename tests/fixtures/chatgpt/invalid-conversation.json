@@ -1,0 +1,13 @@
+[
+  {
+    "title": "Invalid Conversation",
+    "mapping": {
+      "aaa-111": {
+        "id": "aaa-111",
+        "message": {
+          "author": { "role": "invalid_role" }
+        }
+      }
+    }
+  }
+]

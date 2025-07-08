@@ -1,11 +1,11 @@
 # Duplicate Enum Key Fix
 
-日付: 2025-03-06
+Date: 2025-03-06
 
 ---
 
-## 👤 ユーザー
-*2025/03/06 15:20:25*
+## 👤 User
+*2025-03-06 15:20:25*
 
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 guild_api/lib/src/model/api_error_response_dto.g.dart:1354:48: Error: Constant evaluation error:
@@ -2693,8 +2693,8 @@ class ApiErrorResponseDTOBuilder
 
 ---
 
-## 🔧 ツール
-*2025/03/06 15:20:29*
+## 🔧 Tool
+*2025-03-06 15:20:29*
 
 **エラーの発見と原因明確化**
 
@@ -2702,8 +2702,8 @@ class ApiErrorResponseDTOBuilder
 
 ---
 
-## 🤖 アシスタント
-*2025/03/06 15:20:26*
+## 🤖 Assistant
+*2025-03-06 15:20:26*
 
 This error typically happens because in your OpenAPI spec, you have the exact same error code appearing twice in the **enum** list. When the Dart code generator (via `built_value` or a similar tool) sees duplicate enum entries, it can’t create a valid `Map< Object, String >`, so you end up with a collision in `_fromWire`.
 

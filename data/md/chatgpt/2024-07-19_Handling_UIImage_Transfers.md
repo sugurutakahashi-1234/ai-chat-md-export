@@ -1,11 +1,11 @@
 # Handling UIImage Transfers
 
-日付: 2024-07-19
+Date: 2024-07-19
 
 ---
 
-## 👤 ユーザー
-*2024/07/19 21:05:20*
+## 👤 User
+*2024-07-19 21:05:20*
 
 importing の中身を書いてほしい
 
@@ -140,8 +140,8 @@ public enum FileManageStaticDriver {
 
 ---
 
-## 🤖 アシスタント
-*2024/07/19 21:05:30*
+## 🤖 Assistant
+*2024-07-19 21:05:30*
 
 Here is the completed `importing` closure for your `TransferableUIImage` struct. This closure will handle the process of importing the transferred image and saving it to a desired location.
 

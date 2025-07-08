@@ -1,18 +1,18 @@
 # SwiftUI Photo Picker Views
 
-日付: 2024-07-24
+Date: 2024-07-24
 
 ---
 
-## 👤 ユーザー
-*2024/07/24 11:04:14*
+## 👤 User
+*2024-07-24 11:04:14*
 
 SwiftUIでカメラロール or その場写真のViewを出すViewの実装
 
 ---
 
-## 🤖 アシスタント
-*2024/07/24 11:04:44*
+## 🤖 Assistant
+*2024-07-24 11:04:44*
 
 SwiftUIでカメラロール（フォトライブラリ）やその場で写真を撮る機能を実装するには、`UIImagePickerController`を使って実装します。SwiftUIとUIKitの連携が必要となりますので、`UIViewControllerRepresentable`を使います。
 

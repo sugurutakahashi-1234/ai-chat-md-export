@@ -1,18 +1,18 @@
 # Integrating MFMailCompose SwiftUI
 
-日付: 2024-08-26
+Date: 2024-08-26
 
 ---
 
-## 👤 ユーザー
-*2024/08/26 19:27:28*
+## 👤 User
+*2024-08-26 19:27:28*
 
 MFMailComposeViewController SwiftUI
 
 ---
 
-## 🤖 アシスタント
-*2024/08/26 19:28:03*
+## 🤖 Assistant
+*2024-08-26 19:28:03*
 
 To use `MFMailComposeViewController` in a SwiftUI view, you'll need to integrate it using `UIViewControllerRepresentable`. This allows you to wrap a UIKit view controller and use it within SwiftUI. Here’s how you can do it:
 

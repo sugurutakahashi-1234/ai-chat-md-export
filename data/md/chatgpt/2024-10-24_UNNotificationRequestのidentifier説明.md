@@ -1,18 +1,18 @@
 # UNNotificationRequestのidentifier説明
 
-日付: 2024-10-24
+Date: 2024-10-24
 
 ---
 
-## 👤 ユーザー
-*2024/10/24 18:35:57*
+## 👤 User
+*2024-10-24 18:35:57*
 
 UNNotificationRequest の identifier について教えて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2024/10/24 18:36:02*
+## 🤖 Assistant
+*2024-10-24 18:36:02*
 
 `UNNotificationRequest` の `identifier` は、特定の通知リクエストを識別するための一意の文字列です。この `identifier` を使用することで、既存の通知の更新や削除、重複の防止が可能になります。
 

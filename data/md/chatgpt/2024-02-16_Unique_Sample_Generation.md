@@ -1,11 +1,11 @@
 # Unique Sample Generation
 
-日付: 2024-02-16
+Date: 2024-02-16
 
 ---
 
-## 👤 ユーザー
-*2024/02/17 03:40:49*
+## 👤 User
+*2024-02-17 03:40:49*
 
 同じものをリピートするのではなく、毎回試行するように変更してほしい
 
@@ -38,8 +38,8 @@ public extension Array where Element: SampleValueProvidable {
 
 ---
 
-## 🤖 アシスタント
-*2024/02/17 03:41:52*
+## 🤖 Assistant
+*2024-02-17 03:41:52*
 
 指定されたコードは、`SampleValueProvidable`プロトコルを満たす要素の配列を生成するいくつかの方法を提供しますが、すべてのメソッドが`Element.sample`を使用して配列内の要素を繰り返すことに基づいています。これを改善して、毎回異なるサンプルを生成するように変更するには、`Element`が生成可能な新しいインスタンスを提供するように`SampleValueProvidable`を拡張する必要があります。ただし、Swiftの静的プロパティやメソッドでは、新しいインスタンスを毎回生成することが直接はできません。代わりに、工場メソッドパターンやジェネリック関数を使用して、この問題を解決できます。
 
@@ -78,8 +78,8 @@ public extension Array where Element: SampleValueProvidable {
 
 ---
 
-## 👤 ユーザー
-*2024/02/17 03:43:00*
+## 👤 User
+*2024-02-17 03:43:00*
 
 public struct License: Identifiable {
     public let id: String

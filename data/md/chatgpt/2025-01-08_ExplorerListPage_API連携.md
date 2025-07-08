@@ -1,11 +1,11 @@
 # ExplorerListPage API連携
 
-日付: 2025-01-08
+Date: 2025-01-08
 
 ---
 
-## 👤 ユーザー
-*2025/01/08 15:43:53*
+## 👤 User
+*2025-01-08 15:43:53*
 
 ExplorerListPage を表示したときに毎回取得APIをコールしてほしい。またリバーポッドとhooksを使ってほしい
 
@@ -104,8 +104,8 @@ class GetExplorerNotifier extends _$GetExplorerNotifier {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/08 15:44:17*
+## 🤖 Assistant
+*2025-01-08 15:44:17*
 
 リバーポッドを使って `ExplorerListPage` を実装し、ページが表示されるたびに取得APIを呼び出すようにするには、以下の手順で修正できます。
 
@@ -233,8 +233,8 @@ class ExplorerListPage extends HookConsumerWidget {
 
 ---
 
-## 👤 ユーザー
-*2025/01/08 17:19:50*
+## 👤 User
+*2025-01-08 17:19:50*
 
 こういうエラーになった
 
@@ -438,8 +438,8 @@ class ExplorerListPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/08 17:20:17*
+## 🤖 Assistant
+*2025-01-08 17:20:17*
 
 このエラーは、アプリがネットワーク画像をロードしようとして無効なドメイン（例: `armani.name`）にアクセスしようとしているために発生しています。以下の解決策を試してみてください。
 
@@ -559,8 +559,8 @@ Widget buildExplorerCard(ExplorerDTO explorer) {
 
 ---
 
-## 👤 ユーザー
-*2025/01/08 17:27:40*
+## 👤 User
+*2025-01-08 17:27:40*
 
 {
   "content_type": "image_asset_pointer",
@@ -733,8 +733,8 @@ class ExplorerListPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/08 17:28:28*
+## 🤖 Assistant
+*2025-01-08 17:28:28*
 
 Thank you for sharing the updated details and design image. Here's how to refine the implementation to match the provided UI:
 

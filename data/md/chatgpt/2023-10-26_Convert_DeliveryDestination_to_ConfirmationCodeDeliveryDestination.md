@@ -1,11 +1,11 @@
 # Convert DeliveryDestination to ConfirmationCodeDeliveryDestination
 
-日付: 2023-10-26
+Date: 2023-10-26
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 11:48:36*
+## 👤 User
+*2023-10-26 11:48:36*
 
 ConfirmationCodeDeliveryDestination の extension の init で DeliveryDestination を引数にとって変換する処理を書いて欲しい。
 sms を phoneNumber、emailをemailAddress にしてほしい。それ以外はthrowするようにしてほしい。
@@ -34,8 +34,8 @@ public enum DeliveryDestination {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 11:49:05*
+## 🤖 Assistant
+*2023-10-26 11:49:05*
 
 To convert from `DeliveryDestination` to `ConfirmationCodeDeliveryDestination`, we need to handle different cases and throw an error if the provided `DeliveryDestination` is not among the allowed cases (`sms` or `email`). Here's the implementation:
 
@@ -83,8 +83,8 @@ With the above implementation:
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 12:05:44*
+## 👤 User
+*2023-10-26 12:05:44*
 
 日本語にしてほしい。また、Destinationがnilの場合は空文字を入れて欲しい
 
@@ -95,8 +95,8 @@ enum ConfirmationCodeDeliveryDestination {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 12:06:15*
+## 🤖 Assistant
+*2023-10-26 12:06:15*
 
 了解しました。以下のように`DeliveryDestination`から`ConfirmationCodeDeliveryDestination`への変換を行う拡張を作成します。
 

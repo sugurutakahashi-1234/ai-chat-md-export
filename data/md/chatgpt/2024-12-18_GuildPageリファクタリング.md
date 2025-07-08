@@ -1,11 +1,11 @@
 # GuildPageリファクタリング
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 16:12:38*
+## 👤 User
+*2024-12-18 16:12:38*
 
 GuildPageをgetGuildInfoNotifierProviderを使うようにして書き換えて欲しい
 
@@ -99,29 +99,29 @@ class GuildPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 16:13:00*
+## 🤖 Assistant
+*2024-12-18 16:13:00*
 
 以下は `GuildPage` を `GetGuildInfoNotifierProvider` を使用して書き換えたコードです。
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 16:13:00*
+## 🤖 Assistant
+*2024-12-18 16:13:00*
 
 {"name": "guild_page_refactor", "type": "code/dart", "content": "import 'package:flutter/material.dart';\nimport 'package:go_router/go_router.dart';\nimport 'package:hooks_riverpod/hooks_riverpod.dart';\nimport 'package:snpit_guild_app/domain/screen.dart';\nimport 'package:snpit_guild_app/presentation/providers/get_guild_info_notifier_provider.dart';\n\nclass GuildPage extends HookConsumerWidget {\n  const GuildPage({super.key});\n\n  @override\n  Widget build(BuildContext context, WidgetRef ref) {\n    final guildInfoAsync = ref.watch(getGuildInfoNotifierProvider);\n\n    return Scaffold(\n      appBar: AppBar(title: const Text('Guild Page')),\n      body: guildInfoAsync.when(\n        data: (guildInfo) =&gt; Center(\n          child: Column(\n            mainAxisAlignment: MainAxisAlignment.center,\n            children: [\n              if (guildInfo != null)\n                Text('Guild Info: ${guildInfo.name ?? \"No Name\"}'),\n              const SizedBox(height: 16),\n              ElevatedButton(\n                onPressed: () {\n                  context.push(Screen.guildCode.path);\n                },\n                child: const Text('Go To Guild Code'),\n              ),\n              ElevatedButton(\n                onPressed: () {\n                  context.push(Screen.guildCreate.path);\n                },\n                child: const Text('Go To Guild Create'),\n              ),\n            ],\n          ),\n        ),\n        loading: () =&gt; const Center(child: CircularProgressIndicator()),\n        error: (error, stackTrace) =&gt; Center(\n          child: Column(\n            mainAxisAlignment: MainAxisAlignment.center,\n            children: [\n              Text('Error: $error'),\n              const SizedBox(height: 16),\n              ElevatedButton(\n                onPressed: () =&gt; ref.read(getGuildInfoNotifierProvider.notifier).executeRequest(),\n                child: const Text('Retry'),\n              ),\n            ],\n          ),\n        ),\n      ),\n    );\n  }\n}"}
 
 ---
 
-## 🔧 ツール
-*2024/12/18 16:13:00*
+## 🔧 Tool
+*2024-12-18 16:13:00*
 
 {"result": "Successfully created text document 'guild_page_refactor' which will be referenced in all future messages with the unique identifier textdoc_id: '676275f4d0b481918822abdfdc824702'", "textdoc_id": "676275f4d0b481918822abdfdc824702", "name": "guild_page_refactor"}
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 16:13:00*
+## 🤖 Assistant
+*2024-12-18 16:13:00*
 
 ### 主な変更点
 1. **`GetGuildInfoNotifier` の利用**:

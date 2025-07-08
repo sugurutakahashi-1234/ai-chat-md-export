@@ -1,11 +1,11 @@
 # Organize audio display.
 
-日付: 2024-05-17
+Date: 2024-05-17
 
 ---
 
-## 👤 ユーザー
-*2024/05/17 11:46:45*
+## 👤 User
+*2024-05-17 11:46:45*
 
 今このような実装です。
 日付ごとにうまくわかるように分けて欲しいのと、DisclosureGroup をやめてfileSize とduration をいい感じに表現したい。
@@ -116,22 +116,22 @@ extension URL: Identifiable {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/17 11:47:21*
+## 🤖 Assistant
+*2024-05-17 11:47:21*
 
 User is working on an AudioListView implementation in SwiftUI and wants to organize the audio data by date and improve the representation of fileSize and duration.
 
 ---
 
-## 🔧 ツール
-*2024/05/17 11:47:21*
+## 🔧 Tool
+*2024-05-17 11:47:21*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/05/17 11:47:21*
+## 🤖 Assistant
+*2024-05-17 11:47:21*
 
 To achieve better organization by date and improve the display of `fileSize` and `duration` without using `DisclosureGroup`, you can refactor the `AudioListView` to group audio files by date and present the `fileSize` and `duration` more clearly. Here's a revised implementation:
 
@@ -342,15 +342,15 @@ This should provide a more organized and user-friendly presentation of the audio
 
 ---
 
-## 👤 ユーザー
-*2024/05/17 11:49:00*
+## 👤 User
+*2024-05-17 11:49:00*
 
 辞書型を使うのはやめてほしい。もっとスマートにできないのかな？
 
 ---
 
-## 🤖 アシスタント
-*2024/05/17 11:49:41*
+## 🤖 Assistant
+*2024-05-17 11:49:41*
 
 辞書型を使わずに、もっとスマートに日付ごとにオーディオデータを表示する方法として、`ForEach`の使い方を工夫して、セクションを作成することができます。以下のように`AudioData`を日付ごとにグループ化し、各日付のセクションごとにオーディオデータを表示する実装です。
 
@@ -574,16 +574,16 @@ struct AudioPlayerView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/05/17 11:50:55*
+## 👤 User
+*2024-05-17 11:50:55*
 
 Dictionary の処理を極力なくしたいんだ。
 まず、AudioDataのリストから有効な日付一覧を取得して、それをForEachで回して、同じ日付のものをヒットさせて表示させるイメージ
 
 ---
 
-## 🤖 アシスタント
-*2024/05/17 11:51:31*
+## 🤖 Assistant
+*2024-05-17 11:51:31*
 
 辞書を使用せず、`AudioData`のリストから有効な日付一覧を取得し、それを`ForEach`で回して同じ日付のものを表示する方法を実装します。これにより、コードがよりシンプルになります。
 
@@ -799,8 +799,8 @@ struct AudioPlayerView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/05/17 12:15:51*
+## 👤 User
+*2024-05-17 12:15:51*
 
 こんなふうにしたい。ユニークにするオペレーターやソートするオペレーターはないのか？
 
@@ -841,8 +841,8 @@ final class AudioListPresenter: ObservableObject {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/17 12:16:40*
+## 🤖 Assistant
+*2024-05-17 12:16:40*
 
 `Combine`フレームワークを使用して、`Publisher`を作成し、ユニークな日付を生成し、オーディオデータをソートする方法を以下に示します。`map`、`removeDuplicates`、および`sorted`オペレーターを使用します。
 
@@ -1082,15 +1082,15 @@ struct AudioPlayerView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/05/17 12:17:12*
+## 👤 User
+*2024-05-17 12:17:12*
 
 .map { Array(Set($0)) } No exact matches in call to initializer  となった
 
 ---
 
-## 🤖 アシスタント
-*2024/05/17 12:17:52*
+## 🤖 Assistant
+*2024-05-17 12:17:52*
 
 `Array(Set($0))`はコンパイルエラーを引き起こします。これは、SetがDateの配列をユニーク化する際に必要ですが、型の問題があります。このエラーを解決するために、代わりに`NSOrderedSet`を使用してユニークな日付を取得し、それをソートする方法を使用します。
 

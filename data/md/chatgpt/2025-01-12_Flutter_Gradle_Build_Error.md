@@ -1,11 +1,11 @@
 # Flutter Gradle Build Error
 
-日付: 2025-01-12
+Date: 2025-01-12
 
 ---
 
-## 👤 ユーザー
-*2025/01/12 22:52:29*
+## 👤 User
+*2025-01-12 22:52:29*
 
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 Running Gradle task 'assembleDebug'...
@@ -27,8 +27,8 @@ Error: Gradle task assembleDebug failed with exit code 1
 
 ---
 
-## 🤖 アシスタント
-*2025/01/12 22:52:59*
+## 🤖 Assistant
+*2025-01-12 22:52:59*
 
 The error you're encountering suggests an issue with the Flutter command or the environment setup during the Gradle task execution. Here are some steps to resolve this issue:
 

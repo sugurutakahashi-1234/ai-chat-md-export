@@ -1,11 +1,11 @@
 # Incorrect ParentDataWidget Usage
 
-日付: 2025-02-01
+Date: 2025-02-01
 
 ---
 
-## 👤 ユーザー
-*2025/02/01 15:07:43*
+## 👤 User
+*2025-02-01 15:07:43*
 
 以下の画面を表示したときに以下のエラーになる
 
@@ -347,8 +347,8 @@ class WalletPage extends HookConsumerWidget {
 
 ---
 
-## 🔧 ツール
-*2025/02/01 15:07:56*
+## 🔧 Tool
+*2025-02-01 15:07:56*
 
 **Diagnosing expansion misuse**
 
@@ -372,8 +372,8 @@ I’m analyzing the structure: a `Column` containing another `Column`, which inc
 
 ---
 
-## 🤖 アシスタント
-*2025/02/01 15:07:56*
+## 🤖 Assistant
+*2025-02-01 15:07:56*
 
 「Incorrect use of ParentDataWidget.」というエラーは、主に **`Expanded` ウィジェットを `Row` や `Column` など適切な親（Flex系のウィジェット）の直下で使っていない** ことが原因で発生します。
 

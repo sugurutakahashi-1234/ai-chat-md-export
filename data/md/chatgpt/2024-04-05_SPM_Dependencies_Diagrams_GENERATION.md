@@ -1,11 +1,11 @@
 # SPM Dependencies Diagrams_GENERATION
 
-日付: 2024-04-05
+Date: 2024-04-05
 
 ---
 
-## 👤 ユーザー
-*2024/04/05 17:35:36*
+## 👤 User
+*2024-04-05 17:35:36*
 
 以下を英語で記述してほしい。
 
@@ -20,8 +20,8 @@ $ make spm-dependencies-mermaid-gen
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 17:35:44*
+## 🤖 Assistant
+*2024-04-05 17:35:44*
 
 ### Swift Package Manager Dependencies Diagrams
 

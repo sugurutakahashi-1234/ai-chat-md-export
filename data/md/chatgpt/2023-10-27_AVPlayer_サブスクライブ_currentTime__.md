@@ -1,18 +1,18 @@
 # AVPlayer サブスクライブ currentTime()
 
-日付: 2023-10-27
+Date: 2023-10-27
 
 ---
 
-## 👤 ユーザー
-*2023/10/27 20:52:30*
+## 👤 User
+*2023-10-27 20:52:30*
 
 avplayer currentTime() seconds サブスクライブ
 
 ---
 
-## 🤖 アシスタント
-*2023/10/27 20:53:13*
+## 🤖 Assistant
+*2023-10-27 20:53:13*
 
 It seems like you're asking how to subscribe (or observe) the `currentTime()` of an `AVPlayer` instance in Swift. You can use `AVPlayer`'s `addPeriodicTimeObserver(forInterval:queue:using:)` method to periodically observe the current time of the player.
 

@@ -1,11 +1,11 @@
 # UserDefaultsWrapper 更新案
 
-日付: 2024-03-14
+Date: 2024-03-14
 
 ---
 
-## 👤 ユーザー
-*2024/03/14 17:06:19*
+## 👤 User
+*2024-03-14 17:06:19*
 
 UserDefaultsWrapper から引数のdefaultValue: Tを省略したい。UserDefaultsKeyの型とデフォルト値を使ってほしい。
 
@@ -97,8 +97,8 @@ extension Bool: UserDefaultsCodable {}
 
 ---
 
-## 🤖 アシスタント
-*2024/03/14 17:07:22*
+## 🤖 Assistant
+*2024-03-14 17:07:22*
 
 UserDefaultsWrapperの定義を修正して、`defaultValue: T` 引数を省略できるようにするには、`UserDefaultsKey` にデフォルト値の情報を持たせていますので、この情報を利用して `UserDefaultsWrapper` を改善することができます。具体的には、`UserDefaultsWrapper` の初期化時に `UserDefaultsKey` のみを受け取り、その `UserDefaultsKey` から型とデフォルト値を取得するように変更します。
 
@@ -152,22 +152,22 @@ public struct UserDefaultsWrapper<T: UserDefaultsCodable> {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/14 17:07:27*
+## 🤖 Assistant
+*2024-03-14 17:07:27*
 
 の実装を目指します。
 
 ---
 
-## 👤 ユーザー
-*2024/03/14 17:08:53*
+## 👤 User
+*2024-03-14 17:08:53*
 
 これを使う時はどうなるのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/03/14 17:09:35*
+## 🤖 Assistant
+*2024-03-14 17:09:35*
 
 この改良された`UserDefaultsWrapper`を使用すると、利用者は`UserDefaultsKey`を指定するだけで、関連するデフォルト値と型を自動で扱うことができます。つまり、プロパティラッパーの初期化時に`defaultValue`を明示的に指定する必要がなくなります。これはコードをよりシンプルにし、誤りの可能性を減らす助けとなります。
 
@@ -191,8 +191,8 @@ struct Preferences {
 
 ---
 
-## 👤 ユーザー
-*2024/03/14 17:12:00*
+## 👤 User
+*2024-03-14 17:12:00*
 
 public enum UserDefaultsKey: Sendable {
     case launchAppCount
@@ -225,8 +225,8 @@ as! Tを使わずにこの defaultValue をtypeの型であることは指定で
 
 ---
 
-## 🤖 アシスタント
-*2024/03/14 17:12:59*
+## 🤖 Assistant
+*2024-03-14 17:12:59*
 
 Swift の現在の型システムでは、`UserDefaultsKey` のような enum 内で、異なる型を持つ値を返す `defaultValue` を直接、ジェネリックスを使用して型安全に扱うことは難しいです。`any UserDefaultsCodable` は型の情報をある程度抽象化していますが、コンパイル時に `T` の具体的な型を保証する方法は提供していません。
 

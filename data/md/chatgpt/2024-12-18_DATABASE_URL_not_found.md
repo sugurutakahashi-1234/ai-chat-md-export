@@ -1,11 +1,11 @@
 # DATABASE_URL not found
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 11:43:03*
+## 👤 User
+*2024-12-18 11:43:03*
 
 $ npx prisma migrate dev --name init
 Prisma schema loaded from prisma/schema.prisma
@@ -27,8 +27,8 @@ Prisma CLI Version : 6.1.0
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 11:43:17*
+## 🤖 Assistant
+*2024-12-18 11:43:17*
 
 The error indicates that the `DATABASE_URL` environment variable is not set, which is required for Prisma to connect to your PostgreSQL database.
 

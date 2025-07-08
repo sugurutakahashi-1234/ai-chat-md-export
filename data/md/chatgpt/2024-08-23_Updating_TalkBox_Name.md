@@ -1,11 +1,11 @@
 # Updating TalkBox Name
 
-日付: 2024-08-23
+Date: 2024-08-23
 
 ---
 
-## 👤 ユーザー
-*2024/08/23 16:48:33*
+## 👤 User
+*2024-08-23 16:48:33*
 
 public struct TalkBox: Sendable, Identifiable, Hashable {
     public let id: String
@@ -27,8 +27,8 @@ extension TalkBox {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/23 16:48:45*
+## 🤖 Assistant
+*2024-08-23 16:48:45*
 
 To implement the `updatedName` method in the `TalkBox` struct, you can create a new instance of `TalkBox` with the updated name while keeping the rest of the properties unchanged. Here's how you can do it:
 
@@ -54,15 +54,15 @@ This method returns a new `TalkBox` instance with the `name` updated to `newName
 
 ---
 
-## 👤 ユーザー
-*2024/08/23 16:57:14*
+## 👤 User
+*2024-08-23 16:57:14*
 
 func updatedIsMuted(_ newIsMuted: Bool) -&gt; TalkBox {}
 
 ---
 
-## 🤖 アシスタント
-*2024/08/23 16:57:23*
+## 🤖 Assistant
+*2024-08-23 16:57:23*
 
 To implement the `updatedIsMuted` method in the `TalkBox` struct, you can follow a similar approach to the `updatedName` method. Here's how you can do it:
 

@@ -1,11 +1,11 @@
 # Display Color Based on Scroll
 
-日付: 2024-06-25
+Date: 2024-06-25
 
 ---
 
-## 👤 ユーザー
-*2024/06/25 10:11:27*
+## 👤 User
+*2024-06-25 10:11:27*
 
 これは画面の幅の大部分をバナーなのようなコンテンツで表示するスクロールViewである。このときに画面の大部分を覆っているカラー名を表示させたい。
 
@@ -52,8 +52,8 @@ public struct SimpleScrollDesignView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/25 10:11:54*
+## 🤖 Assistant
+*2024-06-25 10:11:54*
 
 To display the name of the color covering the majority of the screen width, you can use the `GeometryReader` to detect the position of each item and find which one is in the center of the screen. Then, display the color name accordingly.
 
@@ -149,8 +149,8 @@ With these changes, the color name covering the majority of the screen width wil
 
 ---
 
-## 👤 ユーザー
-*2024/06/25 10:57:13*
+## 👤 User
+*2024-06-25 10:57:13*
 
 以下についてもなにをtab表示しているかを表示してほしい
 
@@ -173,8 +173,8 @@ public struct PositionPagingTabView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/25 10:57:26*
+## 🤖 Assistant
+*2024-06-25 10:57:26*
 
 To display the name of the currently visible tab in the `PositionPagingTabView`, you can use a state variable to keep track of the selected tab and display its name above the `TabView`.
 
@@ -217,15 +217,15 @@ This will display the name of the currently visible tab above the `TabView`.
 
 ---
 
-## 👤 ユーザー
-*2024/06/25 11:02:08*
+## 👤 User
+*2024-06-25 11:02:08*
 
 ちなみに TabViewの次のコンテンツを少しだけ表示されることは可能なのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/25 11:02:44*
+## 🤖 Assistant
+*2024-06-25 11:02:44*
 
 Yes, it is possible to slightly reveal the next tab in a `TabView` by customizing the `TabView` style. While `TabView` does not support this directly, you can achieve a similar effect by using a `ScrollView` with horizontal paging enabled and manually managing the snap points.
 

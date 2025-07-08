@@ -1,11 +1,11 @@
 # Fix for Localization Issue
 
-日付: 2024-03-27
+Date: 2024-03-27
 
 ---
 
-## 👤 ユーザー
-*2024/03/27 17:28:57*
+## 👤 User
+*2024-03-27 17:28:57*
 
 以下の投稿を添削してほしいgithubissseuにコメントするんだ。
 
@@ -27,8 +27,8 @@ Translated with www.DeepL.com/Translator (free version)
 
 ---
 
-## 🤖 アシスタント
-*2024/03/27 17:29:12*
+## 🤖 Assistant
+*2024-03-27 17:29:12*
 
 Your message for a GitHub issue comment looks like a constructive contribution with clear steps to solve a problem. However, there are some minor typographical errors and areas where the message could be clarified for better understanding. Here's a revised version:
 
@@ -56,15 +56,15 @@ I corrected "Produnction" to "Production" and changed "xcstrings" to "strings", 
 
 ---
 
-## 👤 ユーザー
-*2024/03/27 17:31:52*
+## 👤 User
+*2024-03-27 17:31:52*
 
 最後にもし公式に書いてある情報だったらすみませんとつけたい。
 
 ---
 
-## 🤖 アシスタント
-*2024/03/27 17:31:57*
+## 🤖 Assistant
+*2024-03-27 17:31:57*
 
 Certainly! Adding a polite note at the end to acknowledge the possibility of repeating official information is thoughtful. Here's how you could conclude your comment:
 
@@ -76,15 +76,15 @@ Certainly! Adding a polite note at the end to acknowledge the possibility of rep
 
 ---
 
-## 👤 ユーザー
-*2024/03/27 17:32:24*
+## 👤 User
+*2024-03-27 17:32:24*
 
 もうちょっとラフに書いてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/03/27 17:32:30*
+## 🤖 Assistant
+*2024-03-27 17:32:30*
 
 了解です！もっとカジュアルに表現してみましょう：
 
@@ -94,15 +94,15 @@ Certainly! Adding a polite note at the end to acknowledge the possibility of rep
 
 ---
 
-## 👤 ユーザー
-*2024/03/27 17:32:36*
+## 👤 User
+*2024-03-27 17:32:36*
 
 これを英語で書いて。
 
 ---
 
-## 🤖 アシスタント
-*2024/03/27 17:32:39*
+## 🤖 Assistant
+*2024-03-27 17:32:39*
 
 Sure, here's a more casual way to phrase your note in English:
 

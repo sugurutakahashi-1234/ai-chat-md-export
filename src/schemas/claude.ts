@@ -30,7 +30,7 @@ export const claudeMessageSchema = z
 export const claudeConversationSchema = z
   .object({
     uuid: z.string(),
-    name: z.string(),
+    name: z.string().nullable().optional(),
     summary: z.string().optional().nullable(),
     created_at: z.string(),
     updated_at: z.string().optional(),

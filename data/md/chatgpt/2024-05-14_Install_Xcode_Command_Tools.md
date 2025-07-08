@@ -1,11 +1,11 @@
 # Install Xcode Command Tools
 
-日付: 2024-05-14
+Date: 2024-05-14
 
 ---
 
-## 👤 ユーザー
-*2024/05/14 17:43:05*
+## 👤 User
+*2024-05-14 17:43:05*
 
 xcode-select: note: No developer tools were found, requesting install.
 If developer tools are located at a non-default location on disk, use `sudo xcode-select --switch path/to/Xcode.app` to specify the Xcode that you wish to use for command line developer tools, and cancel the installation dialog.
@@ -13,8 +13,8 @@ See `man xcode-select` for more details.
 
 ---
 
-## 🤖 アシスタント
-*2024/05/14 17:43:11*
+## 🤖 Assistant
+*2024-05-14 17:43:11*
 
 It looks like your system is trying to access the Xcode developer tools, but they are either not installed or not set up properly. Here are a few steps you can follow to resolve this issue:
 
@@ -46,15 +46,15 @@ If you follow these steps and still encounter issues, please provide more detail
 
 ---
 
-## 👤 ユーザー
-*2024/05/14 17:45:50*
+## 👤 User
+*2024-05-14 17:45:50*
 
 アプリケーションフォルダにXcode_15.4.appがある
 
 ---
 
-## 🤖 アシスタント
-*2024/05/14 17:45:57*
+## 🤖 Assistant
+*2024-05-14 17:45:57*
 
 もしアプリケーションフォルダに `Xcode_15.4.app` が存在する場合、そのパスを使用して Xcode を設定することができます。以下の手順を試してみてください：
 

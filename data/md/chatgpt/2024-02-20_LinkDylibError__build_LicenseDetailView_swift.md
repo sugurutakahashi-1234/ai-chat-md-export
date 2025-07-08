@@ -1,11 +1,11 @@
 # LinkDylibError: build LicenseDetailView.swift
 
-日付: 2024-02-20
+Date: 2024-02-20
 
 ---
 
-## 👤 ユーザー
-*2024/02/20 20:42:52*
+## 👤 User
+*2024-02-20 20:42:52*
 
 == DATE:
 
@@ -259,8 +259,8 @@
 
 ---
 
-## 🤖 アシスタント
-*2024/02/20 20:43:42*
+## 🤖 Assistant
+*2024-02-20 20:43:42*
 
 The error messages you're encountering during the preview update in Xcode suggest a problem with linking and building the `LicenseDetailView.swift` component of your project. Specifically, the compiler cannot find a required file or directory related to a package or framework named `DISampleApp_-6E9130D61472A3E5_PackageProduct`. Here's a breakdown of the issues and some potential solutions to consider:
 
@@ -288,15 +288,15 @@ If these steps do not resolve the issue, consider revisiting your project's depe
 
 ---
 
-## 👤 ユーザー
-*2024/02/20 20:43:46*
+## 👤 User
+*2024-02-20 20:43:46*
 
 日本語に翻訳して
 
 ---
 
-## 🤖 アシスタント
-*2024/02/20 20:45:06*
+## 🤖 Assistant
+*2024-02-20 20:45:06*
 
 Xcodeでのプレビュー更新中に遭遇しているエラーメッセージは、プロジェクトの`LicenseDetailView.swift`コンポーネントのリンクとビルドに関する問題を示しています。特に、コンパイラーは`DISampleApp_-6E9130D61472A3E5_PackageProduct`という名前のパッケージまたはフレームワークに関連する必要なファイルまたはディレクトリを見つけることができません。ここでは、問題の分析と検討すべきいくつかの解決策を説明します。
 

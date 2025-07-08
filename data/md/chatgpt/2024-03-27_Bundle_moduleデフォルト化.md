@@ -1,18 +1,18 @@
 # Bundle.moduleデフォルト化
 
-日付: 2024-03-27
+Date: 2024-03-27
 
 ---
 
-## 👤 ユーザー
-*2024/03/27 10:57:34*
+## 👤 User
+*2024-03-27 10:57:34*
 
 Swiftでbundle: .moduleを指定するのが面倒なのですべての設定においてbundle: .moduleをデフォルトで指定する方法はないのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/03/27 10:58:25*
+## 🤖 Assistant
+*2024-03-27 10:58:25*
 
 Swiftで`Bundle.module`を頻繁に指定する必要があるのは、Swift Package Manager (SPM) を使用してリソースをパッケージに組み込む場合が多いです。この設定は、テストやフレームワーク内でリソースファイルにアクセスする際に必要となります。しかし、残念ながら、SwiftやSwift Package Managerの現在のバージョンでは、`bundle: .module`をデフォルトで設定する直接的な方法は提供されていません。
 
@@ -45,8 +45,8 @@ extension Bundle {
 
 ---
 
-## 👤 ユーザー
-*2024/03/27 14:10:30*
+## 👤 User
+*2024-03-27 14:10:30*
 
 こういうことがしたいが、Value of type 'String' has no member 'localized'のようなエラーになった
 
@@ -60,8 +60,8 @@ extension String.LocalizationValue {
 
 ---
 
-## 👤 ユーザー
-*2024/03/27 14:11:27*
+## 👤 User
+*2024-03-27 14:11:27*
 
 LocalizationValue は存在する型です。
 

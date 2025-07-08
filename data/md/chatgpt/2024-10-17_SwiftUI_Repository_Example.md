@@ -1,11 +1,11 @@
 # SwiftUI Repository Example
 
-日付: 2024-10-17
+Date: 2024-10-17
 
 ---
 
-## 👤 ユーザー
-*2024/10/17 15:08:22*
+## 👤 User
+*2024-10-17 15:08:22*
 
 playground で両方動かしたい
 
@@ -111,8 +111,8 @@ class HogeViewModelDependencyInjectorError: HogeViewModelDependency {
 
 ---
 
-## 🤖 アシスタント
-*2024/10/17 15:08:47*
+## 🤖 Assistant
+*2024-10-17 15:08:47*
 
 Here's how you can modify your code to work in a Swift Playground by using `HogeView` with either a successful or error-prone repository setup. The key modification is adding a `View` wrapper for testing both scenarios and updating how `HogeView` is called.
 

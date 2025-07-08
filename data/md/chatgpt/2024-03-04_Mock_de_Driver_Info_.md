@@ -1,11 +1,11 @@
 # Mock de Driver Info.
 
-日付: 2024-03-04
+Date: 2024-03-04
 
 ---
 
-## 👤 ユーザー
-*2024/03/04 12:14:28*
+## 👤 User
+*2024-03-04 12:14:28*
 
 以下について appVersion appBuildNumber 以降も同じように値を入れてほしい
 
@@ -63,8 +63,8 @@ public protocol DeviceInfoDriverProtocol {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/04 12:15:10*
+## 🤖 Assistant
+*2024-03-04 12:15:10*
 
 以下のコードは、`DeviceInfoDriverProtocolMock`クラスの初期化子を修正し、プロトコル`DeviceInfoDriverProtocol`で定義されたすべてのプロパティにデフォルト値を提供するように拡張します。この変更により、モックオブジェクトの初期化時に任意のプロパティの値を指定できるようになり、テストの柔軟性が向上します。
 
@@ -106,8 +106,8 @@ extension DeviceInfoDriverProtocolMock {
 
 ---
 
-## 👤 ユーザー
-*2024/03/04 12:17:03*
+## 👤 User
+*2024-03-04 12:17:03*
 
 上の convenience init でもいいのだが、下のように記述してほしい
 
@@ -138,8 +138,8 @@ extension DeviceInfoDriverProtocolMock {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/04 12:17:50*
+## 🤖 Assistant
+*2024-03-04 12:17:50*
 
 理解しました。指定された形式に従って、`DeviceInfoDriverProtocolMock`の拡張を再構成します。ただし、提供されたコードには同じシグネチャを持つ2つの`convenience init`が含まれており、これはコンパイルエラーを引き起こします。Swiftでは、同じクラス内に同じパラメータリストを持つ複数のイニシャライザを定義することはできません。
 
@@ -172,8 +172,8 @@ extension DeviceInfoDriverProtocolMock {
 
 ---
 
-## 👤 ユーザー
-*2024/03/04 12:17:52*
+## 👤 User
+*2024-03-04 12:17:52*
 
 この形式でも書いてほしい
     convenience init(deviceInfoDriver: DeviceInfoDriver&lt;DeviceNameDriverProtocolMock&gt;) {

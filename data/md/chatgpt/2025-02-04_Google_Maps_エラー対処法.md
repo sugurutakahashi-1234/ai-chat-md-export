@@ -1,11 +1,11 @@
 # Google Maps エラー対処法
 
-日付: 2025-02-04
+Date: 2025-02-04
 
 ---
 
-## 👤 ユーザー
-*2025/02/04 16:25:47*
+## 👤 User
+*2025-02-04 16:25:47*
 
 lutterのgoogleMapを使ったアプリを開発しているが以下のようなエラーがどこかで発生している理由はなんだと思いますか？
 
@@ -788,8 +788,8 @@ class _LifecycleObserver extends WidgetsBindingObserver {
 
 ---
 
-## 🔧 ツール
-*2025/02/04 16:26:17*
+## 🔧 Tool
+*2025-02-04 16:26:17*
 
 **Piecing together cause of error**
 
@@ -829,8 +829,8 @@ To avoid errors, I’m ensuring the map is loaded and in the widget tree before 
 
 ---
 
-## 🤖 アシスタント
-*2025/02/04 16:26:17*
+## 🤖 Assistant
+*2025-02-04 16:26:17*
 
 Google Map プラグインでは、iOS 側の「platform channel」が何らかの理由で無効になった（マップが破棄されている／まだ初期化されていない等）状態で `animateCamera` が呼ばれると、このようなエラーが出ることがあります。  
 特に以下のようなケースが多いです。
@@ -883,8 +883,8 @@ Google Map プラグインでは、iOS 側の「platform channel」が何らか�
 
 ---
 
-## 👤 ユーザー
-*2025/02/04 16:35:42*
+## 👤 User
+*2025-02-04 16:35:42*
 
 onTapNearMe を実施したときに発生していることがわかった。
 
@@ -958,8 +958,8 @@ Future&lt;LatLng&gt; getCurrentLocation({required Flavor flavor}) async {
 
 ---
 
-## 🔧 ツール
-*2025/02/04 16:36:06*
+## 🔧 Tool
+*2025-02-04 16:36:06*
 
 **Pinpointing the problem**
 
@@ -979,8 +979,8 @@ Considering the app may go to the background with "openLocationSettings()", risk
 
 ---
 
-## 🤖 アシスタント
-*2025/02/04 16:36:06*
+## 🤖 Assistant
+*2025-02-04 16:36:06*
 
 iOS の Google Maps は、**「ネイティブのマップチャネルが有効でないタイミングで `animateCamera` が呼ばれる」** と `PlatformException(channel-error, Unable to establish connection...)` が発生しがちです。  
 とくに現在のコードだと、`onTapNearMe` 内で
@@ -1036,15 +1036,15 @@ iOS の Google Maps は、**「ネイティブのマップチャネルが有効�
 
 ---
 
-## 👤 ユーザー
-*2025/02/04 16:36:51*
+## 👤 User
+*2025-02-04 16:36:51*
 
 どうもopenLocationSettingsにはいっていないんだ、。普通に許可している時でも発生する。
 
 ---
 
-## 🔧 ツール
-*2025/02/04 16:37:13*
+## 🔧 Tool
+*2025-02-04 16:37:13*
 
 **Analyzing the error**
 
@@ -1068,8 +1068,8 @@ OK, let's figure these out: `animateCamera` might be called too early, the map's
 
 ---
 
-## 🤖 アシスタント
-*2025/02/04 16:37:13*
+## 🤖 Assistant
+*2025-02-04 16:37:13*
 
 実はこのエラーは「位置設定画面に遷移する・しない」に限らず、「iOS 側の Google Maps ネイティブチャネルが無効になっているタイミングで `animateCamera` が呼ばれる」場合に起こるものです。  
 ユーザーが `openLocationSettings()` に飛んでいない場合でも、**何かしらのタイミングでネイティブマップが無効化 or 再初期化中**になっている可能性があります。  

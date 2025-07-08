@@ -1,18 +1,18 @@
 # MFMailComposeViewController 使用方法
 
-日付: 2024-08-26
+Date: 2024-08-26
 
 ---
 
-## 👤 ユーザー
-*2024/08/26 19:48:59*
+## 👤 User
+*2024-08-26 19:48:59*
 
 MFMailComposeViewController メール送信まで呼べるのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/08/26 19:49:09*
+## 🤖 Assistant
+*2024-08-26 19:49:09*
 
 `MFMailComposeViewController`を使ってiOSアプリ内からメールの送信画面を表示することができますが、実際のメール送信はユーザーの操作が必要です。つまり、`MFMailComposeViewController`を使用してメールの作成画面を開き、宛先、件名、本文、添付ファイルなどを設定することはできますが、ユーザーが「送信」ボタンをタップして初めてメールが送信されます。
 
@@ -56,15 +56,15 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
 ---
 
-## 👤 ユーザー
-*2024/08/26 19:49:46*
+## 👤 User
+*2024-08-26 19:49:46*
 
 MFMailComposeViewControllerから直接送信する窓口は用意されていないですかね。
 
 ---
 
-## 🤖 アシスタント
-*2024/08/26 19:50:02*
+## 🤖 Assistant
+*2024-08-26 19:50:02*
 
 `MFMailComposeViewController`には、メールを自動的に送信するための直接的な窓口は用意されていません。Appleの設計として、ユーザーの明示的な同意と操作を必要とする形でメール送信を行うようにしています。これにより、アプリがユーザーの意図に反して勝手にメールを送信することを防ぐことが目的です。
 

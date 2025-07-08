@@ -1,11 +1,11 @@
 # RecordingDriverProtocol Definition
 
-日付: 2024-06-12
+Date: 2024-06-12
 
 ---
 
-## 👤 ユーザー
-*2024/06/12 15:21:49*
+## 👤 User
+*2024-06-12 15:21:49*
 
 RecordingDriverProtocol を定義してほしい。
 

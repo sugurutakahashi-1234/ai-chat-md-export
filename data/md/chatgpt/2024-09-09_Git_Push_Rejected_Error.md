@@ -1,11 +1,11 @@
 # Git Push Rejected Error
 
-日付: 2024-09-09
+Date: 2024-09-09
 
 ---
 
-## 👤 ユーザー
-*2024/09/10 00:05:32*
+## 👤 User
+*2024-09-10 00:05:32*
 
 Run git config --global user.name "github-actions[bot]"
   git config --global user.name "github-actions[bot]"
@@ -31,8 +31,8 @@ Error: Process completed with exit code 1.
 
 ---
 
-## 🤖 アシスタント
-*2024/09/10 00:05:45*
+## 🤖 Assistant
+*2024-09-10 00:05:45*
 
 The error you're encountering is due to a situation where the remote repository (`main` branch) has changes that you do not have locally, so Git is rejecting your push. The best approach is to fetch and integrate these remote changes before pushing your local changes.
 

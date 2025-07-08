@@ -1,11 +1,11 @@
 # TextField テーマ定義
 
-日付: 2024-12-19
+Date: 2024-12-19
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 17:06:44*
+## 👤 User
+*2024-12-19 17:06:44*
 
 TextField のテーマを抽出して定義してほしい
 
@@ -99,8 +99,8 @@ final ThemeData appTheme = ThemeData(
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 17:07:13*
+## 🤖 Assistant
+*2024-12-19 17:07:13*
 
 以下のように `TextField` のスタイルを抽出して `InputDecorationTheme` として `appTheme` に追加することができます。また、カスタムなスタイルが必要な場合には、`TextField` を使う際にテーマを適用することで再利用性が向上します。
 
@@ -204,8 +204,8 @@ TextField(
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 17:08:34*
+## 👤 User
+*2024-12-19 17:08:34*
 
 prefix という定義はないらしい
 
@@ -234,8 +234,8 @@ inputDecorationTheme: InputDecorationTheme(
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 17:08:44*
+## 🤖 Assistant
+*2024-12-19 17:08:44*
 
 確かに、`InputDecorationTheme` に `prefix` というプロパティはありません。正しいプロパティは `prefixIcon` です。`prefixIcon` はアイコンやウィジェットを TextField の左側に配置するために使用します。
 
@@ -270,8 +270,8 @@ inputDecorationTheme: InputDecorationTheme(
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 17:15:27*
+## 👤 User
+*2024-12-19 17:15:27*
 
 カーソルの色を白にしたい
 
@@ -296,8 +296,8 @@ inputDecorationTheme: InputDecorationTheme(
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 17:15:41*
+## 🤖 Assistant
+*2024-12-19 17:15:41*
 
 カーソルの色を変更するには、`TextField` または `TextFormField` の `cursorColor` プロパティを使用します。テーマに基づいて統一する場合は、`ThemeData` の `textSelectionTheme` を使用します。
 

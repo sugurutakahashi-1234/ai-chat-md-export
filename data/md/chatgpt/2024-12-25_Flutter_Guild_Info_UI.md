@@ -1,11 +1,11 @@
 # Flutter Guild Info UI
 
-日付: 2024-12-25
+Date: 2024-12-25
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 10:53:29*
+## 👤 User
+*2024-12-25 10:53:29*
 
 {
   "content_type": "image_asset_pointer",
@@ -71,36 +71,36 @@ GuildInfoResponseDtoDataはAPIで取得できるとするその処理は省略�
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 10:53:48*
+## 🤖 Assistant
+*2024-12-25 10:53:48*
 
 以下は、あなたがFlutterとRiverpodを使用して、指定されたデザインのギルド情報画面を作成するためのコードのサンプルです。タブの切り替えとギルドメンバーリストの表示を含んでいます。
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 10:53:48*
+## 🤖 Assistant
+*2024-12-25 10:53:48*
 
 {"name": "guild_info_screen", "type": "code/dart", "content": "import 'package:flutter/material.dart';\nimport 'package:flutter_hooks/flutter_hooks.dart';\nimport 'package:hooks_riverpod/hooks_riverpod.dart';\n\nclass GuildInfoScreen extends HookConsumerWidget {\n  const GuildInfoScreen({Key? key}) : super(key: key);\n\n  @override\n  Widget build(BuildContext context, WidgetRef ref) {\n    final selectedTab = useState(0);\n\n    final guildInfo = GuildInfoResponseDtoData(\n      guildId: '4234623876',\n      guildName: 'SNPIT Guilds',\n      guildDescription: 'A sample guild description.',\n      guildOwner: 'ownerId',\n      guildAvatar: 'https://via.placeholder.com/150',\n      guildBanner: 'https://via.placeholder.com/150',\n      guildMembers: List.generate(\n        12,\n        (index) =&gt; GuildMemberDto(\n          userId: 'user_$index',\n          role: GuildMemberDtoRole.member,\n          memberStatus: GuildMemberDtoMemberStatus.active,\n          teamId: 'team_$index',\n          active: true,\n        ),\n      ),\n    );\n\n    return Scaffold(\n      appBar: AppBar(\n        title: Text(guildInfo.guildName ?? 'Guild'),\n        centerTitle: true,\n      ),\n      body: Column(\n        children: [\n          Container(\n            padding: const EdgeInsets.all(16.0),\n            child: Column(\n              children: [\n                Text(\n                  guildInfo.guildName ?? '',\n                  style: Theme.of(context).textTheme.headline6,\n                ),\n                Text(\n                  'ID: ${guildInfo.guildId}',\n                  style: Theme.of(context).textTheme.bodyText2,\n                ),\n                const SizedBox(height: 16),\n                Row(\n                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,\n                  children: [\n                    _buildStatColumn('Search', '3,879', 'Q'),\n                    _buildStatColumn('Attack', '1,230', 'E'),\n                    _buildStatColumn('Luck', '893', 'L'),\n                    _buildStatColumn('Defence', '905', 'B'),\n                  ],\n                ),\n              ],\n            ),\n          ),\n          const Divider(),\n          TabBar(\n            indicatorColor: Theme.of(context).primaryColor,\n            labelColor: Theme.of(context).primaryColor,\n            unselectedLabelColor: Colors.grey,\n            tabs: const [\n              Tab(text: 'Members'),\n              Tab(text: 'Spots'),\n            ],\n            onTap: (index) {\n              selectedTab.value = index;\n            },\n          ),\n          Expanded(\n            child: selectedTab.value == 0\n                ? ListView.builder(\n                    itemCount: guildInfo.guildMembers?.length ?? 0,\n                    itemBuilder: (context, index) {\n                      final member = guildInfo.guildMembers![index];\n                      return ListTile(\n                        leading: CircleAvatar(\n                          backgroundColor: Colors.grey[300],\n                          child: Text(member.userId?.substring(0, 2) ?? ''),\n                        ),\n                        title: Text(member.userId ?? ''),\n                        subtitle: Row(\n                          children: const [\n                            Icon(Icons.search),\n                            SizedBox(width: 8),\n                            Icon(Icons.shield),\n                          ],\n                        ),\n                      );\n                    },\n                  )\n                : Center(\n                    child: Text('Spots tab content here'),\n                  ),\n          ),\n        ],\n      ),\n    );\n  }\n\n  Widget _buildStatColumn(String title, String value, String subtext) {\n    return Column(\n      children: [\n        Text(\n          value,\n          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),\n        ),\n        Text(title),\n        Text(\n          subtext,\n          style: const TextStyle(color: Colors.grey, fontSize: 12),\n        ),\n      ],\n    );\n  }\n}\n\n// Mock classes for GuildInfoResponseDtoData and GuildMemberDto\nclass GuildInfoResponseDtoData {\n  final String? guildId;\n  final String? guildName;\n  final String? guildDescription;\n  final String? guildOwner;\n  final String? guildAvatar;\n  final String? guildBanner;\n  final List&lt;GuildMemberDto&gt;? guildMembers;\n\n  GuildInfoResponseDtoData({\n    required this.guildId,\n    required this.guildName,\n    this.guildDescription,\n    required this.guildOwner,\n    this.guildAvatar,\n    this.guildBanner,\n    required this.guildMembers,\n  });\n}\n\nclass GuildMemberDto {\n  final String? userId;\n  final GuildMemberDtoRole? role;\n  final GuildMemberDtoMemberStatus? memberStatus;\n  final String? teamId;\n  final bool? active;\n\n  GuildMemberDto({\n    required this.userId,\n    required this.role,\n    required this.memberStatus,\n    this.teamId,\n    this.active,\n  });\n}\n\nenum GuildMemberDtoRole { member, admin }\nenum GuildMemberDtoMemberStatus { active, inactive }"}
 
 ---
 
-## 🔧 ツール
-*2024/12/25 10:53:48*
+## 🔧 Tool
+*2024-12-25 10:53:48*
 
 {"result": "Successfully created text document 'guild_info_screen' which will be referenced in all future messages with the unique identifier textdoc_id: '676b65aa91448191a121ffe4983bc547'", "textdoc_id": "676b65aa91448191a121ffe4983bc547", "name": "guild_info_screen"}
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 10:53:48*
+## 🤖 Assistant
+*2024-12-25 10:53:48*
 
 このコードは、指定されたUIデザインに基づいてFlutterでギルド情報画面を作成する方法を示しています。Riverpodを使用し、タブの切り替えとメンバーリストの表示を簡単に構築できるようにしました。必要に応じてデザインの細部をさらに調整してください。
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 10:57:46*
+## 👤 User
+*2024-12-25 10:57:46*
 
 ここでエラーにナタ
 
@@ -112,8 +112,8 @@ void _drawFrame() {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 10:57:54*
+## 🤖 Assistant
+*2024-12-25 10:57:54*
 
 このエラーは、Flutter または Dart VM の内部実装に関連する問題が発生している場合に起こります。このエラーを解消するために、以下を試してみてください。
 

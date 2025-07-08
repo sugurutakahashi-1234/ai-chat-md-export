@@ -1,19 +1,19 @@
 # Generate GitHub App Token
 
-日付: 2024-05-18
+Date: 2024-05-18
 
 ---
 
-## 👤 ユーザー
-*2024/05/18 12:44:45*
+## 👤 User
+*2024-05-18 12:44:45*
 
 以下を使った
 https://github.com/actions/create-github-app-token
 
 ---
 
-## 🤖 アシスタント
-*2024/05/18 12:44:48*
+## 🤖 Assistant
+*2024-05-18 12:44:48*
 
 To use the `actions/create-github-app-token` GitHub Action, follow these steps to generate a GitHub App Installation Access Token for your workflows:
 
@@ -21,15 +21,15 @@ To use the `actions/create-github-app-token` GitHub Action, follow these steps t
 
 ---
 
-## 👤 ユーザー
-*2024/05/18 12:44:49*
+## 👤 User
+*2024-05-18 12:44:49*
 
 ｋ
 
 ---
 
-## 🤖 アシスタント
-*2024/05/18 12:45:06*
+## 🤖 Assistant
+*2024-05-18 12:45:06*
 
 To use the `actions/create-github-app-token` GitHub Action for generating a GitHub App Installation Access Token in your workflows, follow these steps:
 

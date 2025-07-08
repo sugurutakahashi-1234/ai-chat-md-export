@@ -1,19 +1,19 @@
 # GoRoute vs ShellRoute
 
-日付: 2024-12-06
+Date: 2024-12-06
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 15:00:33*
+## 👤 User
+*2024-12-06 15:00:33*
 
 import 'package:go_router/go_router.dart';
 のShellRouteとRouteの違いを教えてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 15:00:56*
+## 🤖 Assistant
+*2024-12-06 15:00:56*
 
 `ShellRoute`と`GoRoute`（一般的にRouteとして言及されることがあります）は、`go_router`パッケージでルート管理に使用されます。それぞれ異なる役割を持ち、以下のように特徴が分かれます。
 

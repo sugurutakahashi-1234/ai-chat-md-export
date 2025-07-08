@@ -1,11 +1,11 @@
 # Enhance Contribution Guidelines
 
-日付: 2024-04-05
+Date: 2024-04-05
 
 ---
 
-## 👤 ユーザー
-*2024/04/05 17:06:26*
+## 👤 User
+*2024-04-05 17:06:26*
 
 ContributingのReadmeの記載をもうすこし記述してほしい。
 
@@ -24,8 +24,8 @@ See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 17:07:02*
+## 🤖 Assistant
+*2024-04-05 17:07:02*
 
 To enhance your `README.md` with a more detailed `Contributing` section, you can elaborate on how potential contributors can participate in the project, guidelines for submitting issues or pull requests, and the process for contributing to the code or documentation. Here's an enriched version of the `Contributing` section that you might find useful:
 
@@ -68,16 +68,16 @@ Make sure to replace `[project name]` with the actual name of your project. This
 
 ---
 
-## 👤 ユーザー
-*2024/04/05 17:07:46*
+## 👤 User
+*2024-04-05 17:07:46*
 
 もうちょっと簡素でいいんだ。
 CONTRIBUTING と CODE_OF_CONDUCT を見てね。ぐらいで。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 17:08:06*
+## 🤖 Assistant
+*2024-04-05 17:08:06*
 
 了解です！もっと簡素な形での`Contributing`セクションの案をこちらに示します。
 
@@ -99,15 +99,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-## 👤 ユーザー
-*2024/04/05 17:10:07*
+## 👤 User
+*2024-04-05 17:10:07*
 
 もっと簡素でいい。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 17:10:26*
+## 🤖 Assistant
+*2024-04-05 17:10:26*
 
 なるほど、よりシンプルにまとめましょう。
 

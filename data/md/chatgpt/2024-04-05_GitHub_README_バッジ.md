@@ -1,11 +1,11 @@
 # GitHub README バッジ
 
-日付: 2024-04-05
+Date: 2024-04-05
 
 ---
 
-## 👤 ユーザー
-*2024/04/05 13:32:36*
+## 👤 User
+*2024-04-05 13:32:36*
 
 https://github.com/suguruTakahashi-1234/DISample のリポジトリのreadmeにShields.ioを使って色々なメトリクスを表示させたい。
 
@@ -13,8 +13,8 @@ README.md を作成してほしい。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 13:33:41*
+## 🤖 Assistant
+*2024-04-05 13:33:41*
 
 Shields.ioを使ってGitHubのREADMEに様々なバッジを表示することは、プロジェクトの視認性を高め、情報を簡潔に伝える効果的な方法です。`suguruTakahashi-1234/DISample`リポジトリのREADMEに含める可能性があるメトリクスやステータスの例を挙げて、それに基づいたREADME.mdの雛形を作成します。
 
@@ -79,8 +79,8 @@ Shields.ioを使ってGitHubのREADMEに様々なバッジを表示すること�
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 13:35:51*
+## 🤖 Assistant
+*2024-04-05 13:35:51*
 
 受けたプロジェクトへの感謝を記載します。）
 ```
@@ -89,16 +89,16 @@ Shields.ioを使ってGitHubのREADMEに様々なバッジを表示すること�
 
 ---
 
-## 👤 ユーザー
-*2024/04/05 13:36:15*
+## 👤 User
+*2024-04-05 13:36:15*
 
 Shields.io で取れそうなGitHubの情報は一通りとりたい。
 それを羅列してほしい。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 13:37:04*
+## 🤖 Assistant
+*2024-04-05 13:37:04*
 
 Shields.ioは、GitHubリポジトリの様々な情報をビジュアル化するバッジを提供しています。GitHubに関連するバッジとして取得可能な情報は多岐にわたります。以下に一般的に利用可能な情報のリストを提供します。各項目をREADME.mdにバッジとして追加するには、Shields.ioのウェブサイトで生成されたURLを使用してMarkdownに組み込みます。
 
@@ -137,15 +137,15 @@ Shields.ioは、GitHubリポジトリの様々な情報をビジュアル化す�
 
 ---
 
-## 👤 ユーザー
-*2024/04/05 13:37:24*
+## 👤 User
+*2024-04-05 13:37:24*
 
 それらすべてを https://github.com/suguruTakahashi-1234/DISample のリポジトリについて取得するような readme.md 形式で出力してほしい。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 13:38:28*
+## 🤖 Assistant
+*2024-04-05 13:38:28*
 
 GitHubリポジトリ`suguruTakahashi-1234/DISample`に関する情報を含むREADME.mdの例を以下に示します。この例では、上記で述べたShields.ioから取得可能なGitHub関連の情報を全てカバーしています。各バッジのURLは、`suguruTakahashi-1234`（ユーザー名）と`DISample`（リポジトリ名）に基づいてカスタマイズされています。
 
@@ -196,8 +196,8 @@ GitHubリポジトリ`suguruTakahashi-1234/DISample`に関する情報を含むR
 
 ---
 
-## 👤 ユーザー
-*2024/04/05 13:41:29*
+## 👤 User
+*2024-04-05 13:41:29*
 
 この辺りの情報も # DISample に加えてほしい
 
@@ -213,8 +213,8 @@ GitHub Activity: リポジトリの最近のアクティビティ状況。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 13:42:40*
+## 🤖 Assistant
+*2024-04-05 13:42:40*
 
 以下に、GitHubユーザー・組織関連およびその他のメトリクスを含む、拡張された`DISample`リポジトリのREADME.mdの例を示します。これには、特定のGitHubユーザー（この場合は`suguruTakahashi-1234`）に関連する情報とリポジトリに関連する追加のメトリクスが含まれています。
 
@@ -244,8 +244,8 @@ GitHub Activity: リポジトリの最近のアクティビティ状況。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/05 13:44:33*
+## 🤖 Assistant
+*2024-04-05 13:44:33*
 
 -1234)
 [![GitHub Repositories](https://img.shields.io/github/repositories/suguruTakahashi-1234?label=repositories)](https://github.com/suguruTakahashi-1234?tab=repositories)

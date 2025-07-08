@@ -1,11 +1,11 @@
 # OpenAPI Validation Errors
 
-日付: 2024-12-26
+Date: 2024-12-26
 
 ---
 
-## 👤 ユーザー
-*2024/12/26 11:45:27*
+## 👤 User
+*2024-12-26 11:45:27*
 
 openapi-generator validate -i ./lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.yaml                                                                                                              130 ↵
 Validating spec (./lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.yaml)
@@ -333,8 +333,8 @@ components:
 
 ---
 
-## 🤖 アシスタント
-*2024/12/26 11:45:39*
+## 🤖 Assistant
+*2024-12-26 11:45:39*
 
 The OpenAPI validation errors point to specific issues in your API definition. Here’s a breakdown of the errors and how to fix them:
 

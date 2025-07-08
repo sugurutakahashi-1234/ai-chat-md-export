@@ -1,11 +1,11 @@
 # Guard and Try Usage
 
-日付: 2024-07-04
+Date: 2024-07-04
 
 ---
 
-## 👤 ユーザー
-*2024/07/04 14:11:30*
+## 👤 User
+*2024-07-04 14:11:30*
 
 guard文にするのと try? を try に買えてほしい
 
@@ -45,8 +45,8 @@ public final class CacheFileDriver: CacheFileDriverProtocol {
 
 ---
 
-## 🤖 アシスタント
-*2024/07/04 14:11:43*
+## 🤖 Assistant
+*2024-07-04 14:11:43*
 
 Here is your updated `CacheFileDriver` class with `guard` statements and `try?` replaced with `try`.
 

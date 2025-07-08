@@ -1,18 +1,18 @@
 # Flutter GoogleFonts Lexend使用法
 
-日付: 2025-01-25
+Date: 2025-01-25
 
 ---
 
-## 👤 ユーザー
-*2025/01/25 20:52:47*
+## 👤 User
+*2025-01-25 20:52:47*
 
 FlutterでGoogleFonts.lexendを使いたい
 
 ---
 
-## 🤖 アシスタント
-*2025/01/25 20:53:16*
+## 🤖 Assistant
+*2025-01-25 20:53:16*
 
 Flutterで`GoogleFonts.lexend`を使うには、`google_fonts`パッケージを使用します。このパッケージはGoogle Fontsのフォントを簡単にアプリに取り込むためのものです。以下はセットアップと使用方法の手順です。
 

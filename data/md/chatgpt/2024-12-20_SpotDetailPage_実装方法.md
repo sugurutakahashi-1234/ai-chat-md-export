@@ -1,11 +1,11 @@
 # SpotDetailPage 実装方法
 
-日付: 2024-12-20
+Date: 2024-12-20
 
 ---
 
-## 👤 ユーザー
-*2024/12/20 14:19:15*
+## 👤 User
+*2024-12-20 14:19:15*
 
 {
   "content_type": "image_asset_pointer",
@@ -81,8 +81,8 @@ Hooksやリバーポッドは導入済みだと思って欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2024/12/20 14:19:31*
+## 🤖 Assistant
+*2024-12-20 14:19:31*
 
 以下のコードは、提供されたデザインに基づいて `SpotDetailPage` を実装するサンプルです。この例では `Flutter Hooks` と `Riverpod` を使用しています。また、指定された画像ローディングロジックを含めています。
 
@@ -251,8 +251,8 @@ class SpotDetailPage extends HookConsumerWidget {
 
 ---
 
-## 👤 ユーザー
-*2024/12/20 14:22:46*
+## 👤 User
+*2024-12-20 14:22:46*
 
 GestureDetector は使わなくていいよ。
 Divider は使って欲しくない。Listをうまくつかってレイアウトして欲しい。
@@ -403,8 +403,8 @@ class SpotDetailPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/20 14:23:01*
+## 🤖 Assistant
+*2024-12-20 14:23:01*
 
 以下は修正後のコードです。`GestureDetector` を削除し、`Divider` を使わずに `ListView` を使用してレイアウトを作成しました。
 

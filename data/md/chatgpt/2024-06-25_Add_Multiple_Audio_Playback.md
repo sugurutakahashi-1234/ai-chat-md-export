@@ -1,11 +1,11 @@
 # Add Multiple Audio Playback
 
-日付: 2024-06-25
+Date: 2024-06-25
 
 ---
 
-## 👤 ユーザー
-*2024/06/25 19:01:31*
+## 👤 User
+*2024-06-25 19:01:31*
 
 以下に prepareToPlayAndPlay(audioSources: AudioSource) async throws のような複数の音声ファイルを連続再生する機能を追加したい
 
@@ -157,8 +157,8 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/25 19:01:42*
+## 🤖 Assistant
+*2024-06-25 19:01:42*
 
 `prepareToPlayAndPlay(audioSources: [AudioSource]) async throws` のような複数の音声ファイルを連続再生する機能を追加するために、以下の変更を行います：
 

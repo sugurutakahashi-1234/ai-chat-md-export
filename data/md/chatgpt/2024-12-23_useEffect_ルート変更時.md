@@ -1,11 +1,11 @@
 # useEffect ルート変更時
 
-日付: 2024-12-23
+Date: 2024-12-23
 
 ---
 
-## 👤 ユーザー
-*2024/12/23 20:48:03*
+## 👤 User
+*2024-12-23 20:48:03*
 
 この画面でpopだったり、訪れるたびにuseEffectの処理を行いたい
 
@@ -177,8 +177,8 @@ class _NoGuildWidget extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/23 20:48:48*
+## 🤖 Assistant
+*2024-12-23 20:48:48*
 
 訪れるたびに `useEffect` の処理を行うには、画面が表示されるたびに実行する仕組みを作る必要があります。この場合、`GoRouter` のリスナーやページスタックの管理を活用して、ページが `pop` されたり、再訪問されたタイミングで `useEffect` をトリガーする方法が考えられます。
 
@@ -382,15 +382,15 @@ class _NoGuildWidget extends StatelessWidget {
 
 ---
 
-## 👤 ユーザー
-*2024/12/23 20:49:27*
+## 👤 User
+*2024-12-23 20:49:27*
 
 goRouter に location もaddListener もない・。
 
 ---
 
-## 🤖 アシスタント
-*2024/12/23 20:50:04*
+## 🤖 Assistant
+*2024-12-23 20:50:04*
 
 `GoRouter` に直接 `location` や `addListener` がない場合は、Flutter Hooks を活用して画面遷移やリビジット時の処理を管理する方法に変更する必要があります。
 

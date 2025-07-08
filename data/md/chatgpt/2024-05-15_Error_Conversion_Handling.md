@@ -1,11 +1,11 @@
 # Error Conversion Handling
 
-日付: 2024-05-15
+Date: 2024-05-15
 
 ---
 
-## 👤 ユーザー
-*2024/05/15 13:50:49*
+## 👤 User
+*2024-05-15 13:50:49*
 
 以下のエラーになった
 Initializer 'init(_:bufferingPolicy:_:)' requires the types 'AppError' and 'any Error' be equivalent
@@ -43,8 +43,8 @@ final class TranscriptionDriver {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 13:50:58*
+## 🤖 Assistant
+*2024-05-15 13:50:58*
 
 エラーが発生する原因は、`AsyncThrowingStream`に渡すエラーの型が`AppError`であり、`catch`ブロックで捕捉されるエラーの型が一般的な`Error`であることです。これにより、型の不一致が発生します。
 
@@ -99,8 +99,8 @@ final class TranscriptionDriver {
 
 ---
 
-## 👤 ユーザー
-*2024/05/15 13:51:31*
+## 👤 User
+*2024-05-15 13:51:31*
 
 すでにtoAppErrorは定義しているんだ
 
@@ -117,8 +117,8 @@ public extension Error {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 13:51:39*
+## 🤖 Assistant
+*2024-05-15 13:51:39*
 
 `toAppError`がすでに定義されているので、それを利用してエラーを適切に変換するコードに問題はないようです。しかし、エラーを`toAppError`メソッドを使って`AppError`に変換する際に、スイッチケースの各分岐で`return`が欠けているようです。修正後のコードは以下の通りです。
 
@@ -174,15 +174,15 @@ final class TranscriptionDriver {
 
 ---
 
-## 👤 ユーザー
-*2024/05/15 13:51:48*
+## 👤 User
+*2024-05-15 13:51:48*
 
 それもやっている
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 13:52:04*
+## 🤖 Assistant
+*2024-05-15 13:52:04*
 
 すでにその修正がされている場合、`AppError`と`Error`の型不一致の原因が他にある可能性があります。`AsyncThrowingStream`を正しく初期化しているか、`AppError`の型が一致しているか確認しましょう。
 
@@ -284,15 +284,15 @@ final class TranscriptionDriver {
 
 ---
 
-## 👤 ユーザー
-*2024/05/15 13:53:03*
+## 👤 User
+*2024-05-15 13:53:03*
 
 エラー文のbufferingPolicyの記述が必要なのかもしれない
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 13:53:15*
+## 🤖 Assistant
+*2024-05-15 13:53:15*
 
 `AsyncThrowingStream`のイニシャライザには、バッファリングポリシーを指定するオプションがあります。バッファリングポリシーを明示的に指定してみましょう。
 

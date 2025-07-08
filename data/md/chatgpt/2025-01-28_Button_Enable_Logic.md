@@ -1,11 +1,11 @@
 # Button Enable Logic
 
-日付: 2025-01-28
+Date: 2025-01-28
 
 ---
 
-## 👤 ユーザー
-*2025/01/28 15:15:47*
+## 👤 User
+*2025-01-28 15:15:47*
 
 hasChanged を Text('Save') の ElevatedButton でもリアルタイムに反映して、その Bool によって変更がなかったら null にしたい。そして変更があった場合はタップできるようにしたい。
 
@@ -322,8 +322,8 @@ class DeckDetailPage extends HookConsumerWidget {
 
 ---
 
-## 🔧 ツール
-*2025/01/28 15:16:38*
+## 🔧 Tool
+*2025-01-28 15:16:38*
 
 **Adjusting button state**
 
@@ -347,8 +347,8 @@ I’m outlining the steps to implement `isDifferent`, stabilize `initialCameraLi
 
 ---
 
-## 🤖 アシスタント
-*2025/01/28 15:16:38*
+## 🤖 Assistant
+*2025-01-28 15:16:38*
 
 `ElevatedButton` を「変更があるときだけ押せる／ないときは押せない」状態にするには、  
 `onPressed` に「変更があるかどうかを判定する bool 値（hasChanged）が true のときにのみ実行する関数、false のときは null」を渡せばOKです。
@@ -664,15 +664,15 @@ class DeckDetailPage extends HookConsumerWidget {
 
 ---
 
-## 👤 ユーザー
-*2025/01/28 15:29:59*
+## 👤 User
+*2025-01-28 15:29:59*
 
 どうして、final hasChanged = isDifferent(initialCameraList, editingCameraListStateValue); の処理が毎回計算され直されるの？
 
 ---
 
-## 🤖 アシスタント
-*2025/01/28 15:30:33*
+## 🤖 Assistant
+*2025-01-28 15:30:33*
 
 `final hasChanged = isDifferent(initialCameraList, editingCameraListStateValue);` の処理が **毎回計算され直される理由** は、このコードが **`build` メソッド内に記述されている** からです。
 
@@ -734,8 +734,8 @@ final hasChanged = useMemoized(
 
 ---
 
-## 👤 ユーザー
-*2025/01/28 15:30:56*
+## 👤 User
+*2025-01-28 15:30:56*
 
 final hasChanged = useMemoized(
   () =&gt; isDifferent(initialCameraList, editingCameraListStateValue),
@@ -745,8 +745,8 @@ final hasChanged = useMemoized(
 
 ---
 
-## 🤖 アシスタント
-*2025/01/28 15:31:11*
+## 🤖 Assistant
+*2025-01-28 15:31:11*
 
 はい、確かに **`useMemoized` を使う方法の方が良い選択** です！特に、以下の理由から `useMemoized` を利用することでコードがより効率的かつシンプルになります：
 

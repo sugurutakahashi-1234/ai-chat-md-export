@@ -1,11 +1,11 @@
 # Bun Shell Completion Status
 
-日付: 2025-07-04
+Date: 2025-07-04
 
 ---
 
-## 👤 ユーザー
-*2025/07/04 22:21:37*
+## 👤 User
+*2025-07-04 22:21:37*
 
 これってbunにもないの？
 
@@ -14,13 +14,13 @@ https://pnpm.io/completion
 
 ---
 
-## 🤖 アシスタント
-*2025/07/04 22:21:58*
+## 🤖 Assistant
+*2025-07-04 22:21:58*
 
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 残念ながら、現在のところBunにはnpmやpnpmのような公式のシェル補完（shell completion）機能は提供されていません。
 

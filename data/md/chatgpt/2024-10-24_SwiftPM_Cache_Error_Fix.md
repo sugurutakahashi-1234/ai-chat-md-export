@@ -1,11 +1,11 @@
 # SwiftPM Cache Error Fix
 
-日付: 2024-10-24
+Date: 2024-10-24
 
 ---
 
-## 👤 ユーザー
-*2024/10/24 14:15:19*
+## 👤 User
+*2024-10-24 14:15:19*
 
 warning: 'rainbow': skipping cache due to an error: Couldn’t fetch updates from remote repositories:
     fatal: cannot use bare repository '/Users/sugurutakahashi/Library/Caches/org.swift.swiftpm/repositories/Rainbow-64aa5363' (safe.bareRepository is 'explicit')
@@ -22,8 +22,8 @@ warning: 'swiftcli': skipping cache due to an error: Couldn’t fetch updates fr
 
 ---
 
-## 🤖 アシスタント
-*2024/10/24 14:15:25*
+## 🤖 Assistant
+*2024-10-24 14:15:25*
 
 The error messages indicate that Swift Package Manager (SwiftPM) is having trouble accessing cached repositories due to the setting `'safe.bareRepository'` being set to `'explicit'`. This issue typically arises from Git’s configuration or SwiftPM's handling of repository caching.
 

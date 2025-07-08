@@ -1,18 +1,18 @@
 # SDK XML Version Mismatch
 
-日付: 2024-12-11
+Date: 2024-12-11
 
 ---
 
-## 👤 ユーザー
-*2024/12/11 22:28:48*
+## 👤 User
+*2024-12-11 22:28:48*
 
 Warning: This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/11 22:29:12*
+## 🤖 Assistant
+*2024-12-11 22:29:12*
 
 The error indicates that the tools you're using (e.g., `sdkmanager` or `avdmanager`) are outdated and don't recognize the newer SDK XML version 4. This mismatch often occurs when you're using an older version of the Android command-line tools with a newer version of Android Studio or SDK.
 

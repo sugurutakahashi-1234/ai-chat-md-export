@@ -1,45 +1,45 @@
 # Posting Japanese Text to Slack
 
-日付: 2025-05-15
+Date: 2025-05-15
 
 ---
 
-## 👤 ユーザー
-*2025/05/15 19:42:14*
+## 👤 User
+*2025-05-15 19:42:14*
 
 slack-mcpにテストと投稿して欲しい
 
 ---
 
-## 🤖 アシスタント
-*2025/05/15 19:42:53*
+## 🤖 Assistant
+*2025-05-15 19:42:53*
 
 I'll help you post a test message to the Slack MCP. Let me post a message with the text "テスト" (test) to your Slack channel.
 
 First, I need to identify the available channels:
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 I found the "mcp-test" channel in your Slack workspace. Now I'll post your test message to this channel:
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 I apologize, but it seems I'm not a member of the "mcp-test" channel yet. Let me try the "general" channel where I am already a member:
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 I've posted a message to the "general" channel in your Slack workspace. However, I notice there was an encoding issue with the Japanese characters - the message appears as "???" instead of "テスト".
 
 Let me try again with explicit encoding:
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 I'm still experiencing an encoding issue with the Japanese characters. Let me try with a simple English test message to confirm the functionality is working:
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
@@ -51,15 +51,15 @@ Is there anything else you'd like me to try posting to your Slack workspace?
 
 ---
 
-## 👤 ユーザー
-*2025/05/15 19:48:07*
+## 👤 User
+*2025-05-15 19:48:07*
 
 なんで文字化けすると思う？
 
 ---
 
-## 🤖 アシスタント
-*2025/05/15 19:48:18*
+## 🤖 Assistant
+*2025-05-15 19:48:18*
 
 文字化けの原因について考えてみましょう。
 

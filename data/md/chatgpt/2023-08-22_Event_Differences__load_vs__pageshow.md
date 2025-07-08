@@ -1,18 +1,18 @@
 # Event Differences: load vs. pageshow
 
-日付: 2023-08-22
+Date: 2023-08-22
 
 ---
 
-## 👤 ユーザー
-*2023/08/22 14:07:28*
+## 👤 User
+*2023-08-22 14:07:28*
 
 window.addEventListener()での"load"と"pageshow"の違いを教えて欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2023/08/22 14:08:20*
+## 🤖 Assistant
+*2023-08-22 14:08:20*
 
 `window.addEventListener()` は、特定のイベントが発生した際に関数や指定した動作を実行するためのメソッドです。ここでの `"load"` と `"pageshow"` は、異なるイベントを指すので、それぞれの違いを説明します。
 

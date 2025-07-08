@@ -1,11 +1,11 @@
 # Gradle Build Issue Fix
 
-日付: 2024-12-11
+Date: 2024-12-11
 
 ---
 
-## 👤 ユーザー
-*2024/12/11 21:57:42*
+## 👤 User
+*2024-12-11 21:57:42*
 
 &lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"&gt;
     &lt;!-- This comment indicates that this is an original description. --&gt;
@@ -85,8 +85,8 @@ Error: Gradle task assembleDebug failed with exit code 1
 
 ---
 
-## 🤖 アシスタント
-*2024/12/11 21:58:29*
+## 🤖 Assistant
+*2024-12-11 21:58:29*
 
 The error you encountered suggests an issue with the Android SDK or Java environment during the Gradle build process for your Flutter project. Specifically, it fails while trying to transform `core-for-system-modules.jar`, which is related to the JDK image transformation. Here's how to resolve this issue:
 

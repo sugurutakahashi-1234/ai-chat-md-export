@@ -48,7 +48,7 @@ export const chatGPTNodeSchema = z
 
 export const chatGPTConversationSchema = z
   .object({
-    title: z.string(),
+    title: z.string().nullable().optional(),
     create_time: z.number().nullable(),
     update_time: z.number().optional(),
     mapping: z.record(chatGPTNodeSchema),

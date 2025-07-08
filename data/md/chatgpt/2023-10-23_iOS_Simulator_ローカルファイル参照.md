@@ -1,18 +1,18 @@
 # iOS Simulator ローカルファイル参照
 
-日付: 2023-10-23
+Date: 2023-10-23
 
 ---
 
-## 👤 ユーザー
-*2023/10/23 22:48:06*
+## 👤 User
+*2023-10-23 22:48:06*
 
 iOS simulatorからローカルファイルを参照して実行する方法
 
 ---
 
-## 🤖 アシスタント
-*2023/10/23 22:49:07*
+## 🤖 Assistant
+*2023-10-23 22:49:07*
 
 iOS Simulatorを使用して開発しているとき、特定のローカルファイルやデータにアクセスする必要がある場合があります。XcodeのiOS Simulatorでこれを行うには、いくつかの手順を実行する必要があります。
 
@@ -46,15 +46,15 @@ iOS Simulatorを使用して開発しているとき、特定のローカルフ�
 
 ---
 
-## 👤 ユーザー
-*2023/10/23 22:49:44*
+## 👤 User
+*2023-10-23 22:49:44*
 
 iOS Simulator から macOSのFinderにアクセスしたいんだ
 
 ---
 
-## 🤖 アシスタント
-*2023/10/23 22:50:37*
+## 🤖 Assistant
+*2023-10-23 22:50:37*
 
 iOS Simulatorから直接macOSのFinderやその他のシステムファイルにアクセスすることは基本的にはできません。iOS Simulatorは、実際のiOSデバイスのように動作するように設計されており、サンドボックス環境内で実行されるため、ホストシステムのファイルにはアクセスできません。ただし、特定のファイルやデータをSimulatorに転送する方法はいくつかあります。
 
@@ -78,8 +78,8 @@ iOS Simulatorから直接macOSのFinderやその他のシステムファイル�
 
 ---
 
-## 👤 ユーザー
-*2023/10/23 22:50:39*
+## 👤 User
+*2023-10-23 22:50:39*
 
 この処理の#if os(macOS) を取った場合でもiOSで動くようにしたいんだ。
 
@@ -159,8 +159,8 @@ private func saveJSONToFile(_ data: some Encodable, filePath: String) {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/23 22:51:29*
+## 🤖 Assistant
+*2023-10-23 22:51:29*
 
 コードをiOSで動作するように変更するには、いくつかの修正と更新が必要です。最も重要なのは、`NSImage`の代わりに`UIImage`を使用し、ファイルのパスと取り扱いをiOSに適合させることです。
 
@@ -203,8 +203,8 @@ private func saveJSONToFile(_ data: some Encodable, filePath: String) {
 
 ---
 
-## 👤 ユーザー
-*2023/10/23 22:56:16*
+## 👤 User
+*2023-10-23 22:56:16*
 
 こうなっていて、executableTarget のEmotionAnalysisValidationで実行する。EmotionAnalysisValidation/main.swiftがあって、EmotionAnalysisValidation/TestImages/以下のフォルダに対して解析を行う
 
@@ -288,8 +288,8 @@ let package = Package(
 
 ---
 
-## 🤖 アシスタント
-*2023/10/23 22:57:14*
+## 🤖 Assistant
+*2023-10-23 22:57:14*
 
 ご提供いただいた情報に基づくと、`EmotionAnalysisValidation`はmacOS上で動作するCLI（コマンドラインインターフェース）ツールであり、特定のディレクトリ内の画像に対して感情分析を行います。このツールは、iOSではなく、macOS上でのみ動作するように設計されています。しかし、同じコア機能（`EmotionAnalysisCore`）を使用してiOSアプリを作成することは可能です。
 

@@ -1,11 +1,11 @@
 # OnCreatedGuildNotifier 実装
 
-日付: 2024-12-23
+Date: 2024-12-23
 
 ---
 
-## 👤 ユーザー
-*2024/12/23 22:00:00*
+## 👤 User
+*2024-12-23 22:00:00*
 
 on_created_guild を作って欲しい
 
@@ -25,8 +25,8 @@ class OnPopSnapConfirmNotifier extends _$OnPopSnapConfirmNotifier {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/23 22:00:12*
+## 🤖 Assistant
+*2024-12-23 22:00:12*
 
 `on_created_guild` の作成は、現在の `on_pop_snap_confirm` に似たパターンで作成できます。以下は、Riverpodの `OnCreatedGuildNotifier` を定義する例です。
 

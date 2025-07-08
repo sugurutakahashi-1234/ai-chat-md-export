@@ -1,26 +1,26 @@
 # Nasal Voice at Night
 
-日付: 2025-04-20
+Date: 2025-04-20
 
 ---
 
-## 👤 ユーザー
-*2025/04/21 01:05:13*
+## 👤 User
+*2025-04-21 01:05:13*
 
 夜になると鼻声になる現象
 
 ---
 
-## 🤖 アシスタント
-*2025/04/21 01:05:39*
+## 🤖 Assistant
+*2025-04-21 01:05:39*
 
 I'd be happy to help you with information about experiencing a nasal voice at night. Let me search for some relevant information about this phenomenon.
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 I notice that the search results aren't providing much relevant information about the phenomenon of developing a nasal voice at night. Let me search for more specific information.
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 

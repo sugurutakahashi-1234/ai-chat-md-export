@@ -1,18 +1,18 @@
 # Xcode Pre-build Actions Setup
 
-日付: 2024-10-16
+Date: 2024-10-16
 
 ---
 
-## 👤 ユーザー
-*2024/10/16 17:25:54*
+## 👤 User
+*2024-10-16 17:25:54*
 
 Xcode &gt; Scheme &gt; Build &gt; Pre-action
 
 ---
 
-## 🤖 アシスタント
-*2024/10/16 17:26:05*
+## 🤖 Assistant
+*2024-10-16 17:26:05*
 
 In Xcode, you can set up pre-build actions for a scheme by following these steps:
 

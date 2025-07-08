@@ -1,11 +1,11 @@
 # ExplorerDTOと範囲設定
 
-日付: 2025-01-29
+Date: 2025-01-29
 
 ---
 
-## 👤 ユーザー
-*2025/01/29 16:15:43*
+## 👤 User
+*2025-01-29 16:15:43*
 
 onExploringNotifierProvider について、bool でコントロールしていたが、ExplorerDTOも持たせて、そのrangeをinal circle = Circle(のradiusに指定したい。rangeはKmなので、m変換してほしい。つまり1000倍です。
 
@@ -113,8 +113,8 @@ class OnExploringNotifier extends _$OnExploringNotifier {
 
 ---
 
-## 🔧 ツール
-*2025/01/29 16:16:50*
+## 🔧 Tool
+*2025-01-29 16:16:50*
 
 It's clear the user is working through how to store and update the ExplorerDTO within OnExploringNotifier. Their goal is to adjust the circle's radius to match the ExplorerDTO's range (converted to meters).
 
@@ -140,8 +140,8 @@ I’m working through a state separation method, with the Notifier managing flag
 
 ---
 
-## 🤖 アシスタント
-*2025/01/29 16:16:50*
+## 🤖 Assistant
+*2025-01-29 16:16:50*
 
 下記のように、「探索中かどうか」という `bool` 状態だけでなく、実際に使用する `ExplorerDTO` も一緒に持てるような状態クラス (`OnExploringState`) と、それを操作する Notifier (`OnExploringNotifier`) を用意するとスムーズに管理できます。`range` は km 単位なので、実際に `Circle` の radius に反映するときはメートル換算 (×1000) して使います。
 

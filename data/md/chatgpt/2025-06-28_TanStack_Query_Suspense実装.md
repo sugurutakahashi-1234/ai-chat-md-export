@@ -1,11 +1,11 @@
 # TanStack Query Suspense実装
 
-日付: 2025-06-28
+Date: 2025-06-28
 
 ---
 
-## 👤 ユーザー
-*2025/06/28 12:47:59*
+## 👤 User
+*2025-06-28 12:47:59*
 
 TanStack QueryxRouterのSuspenceという機能について調べてほしい
 
@@ -13,8 +13,8 @@ TanStack QueryxRouterのSuspenceという機能について調べてほしい
 
 ---
 
-## 🤖 アシスタント
-*2025/06/28 12:48:38*
+## 🤖 Assistant
+*2025-06-28 12:48:38*
 
 ### 「Suspense」とは？
 
@@ -174,15 +174,15 @@ export function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 
 ---
 
-## 👤 ユーザー
-*2025/06/28 12:51:32*
+## 👤 User
+*2025-06-28 12:51:32*
 
 これはSSRなのか？また別の技術なのか？
 
 ---
 
-## 🤖 アシスタント
-*2025/06/28 12:51:59*
+## 🤖 Assistant
+*2025-06-28 12:51:59*
 
 ### TL;DR  
 - **React Suspense** は「コンポーネントの描画を一時停止する仕組み」で、クライアント／サーバどちらでも動く **“振る舞い”**。  

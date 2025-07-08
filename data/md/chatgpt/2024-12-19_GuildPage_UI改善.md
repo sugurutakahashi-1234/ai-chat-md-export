@@ -1,11 +1,11 @@
 # GuildPage UI改善
 
-日付: 2024-12-19
+Date: 2024-12-19
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 22:06:36*
+## 👤 User
+*2024-12-19 22:06:36*
 
 {
   "content_type": "image_asset_pointer",
@@ -92,8 +92,8 @@ class GuildPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 22:06:43*
+## 🤖 Assistant
+*2024-12-19 22:06:43*
 
 Here’s an updated implementation of your `GuildPage` that better aligns with the provided design:
 
@@ -104,8 +104,8 @@ Here’s an updated implementation of your `GuildPage` that better aligns with t
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 22:13:21*
+## 👤 User
+*2024-12-19 22:13:21*
 
 {
   "content_type": "image_asset_pointer",
@@ -196,8 +196,8 @@ class GuildPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 22:14:02*
+## 🤖 Assistant
+*2024-12-19 22:14:02*
 
 Here is the updated implementation of your `GuildPage` that aligns more closely with the design in your second image, including horizontal padding set to `24` and placeholder images for the buttons:
 
@@ -340,8 +340,8 @@ Let me know if you need further adjustments!
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 22:17:13*
+## 👤 User
+*2024-12-19 22:17:13*
 
 ボタンの領域は全体ではなくていいよ。
 また、ElevatedButtonのフォントなどは指定されている。また関数化しないでいいよ。
@@ -431,8 +431,8 @@ final ThemeData appTheme = ThemeData(
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 22:17:51*
+## 🤖 Assistant
+*2024-12-19 22:17:51*
 
 以下は、指定されたデザインと要件を考慮した `GuildPage` の実装例です。
 

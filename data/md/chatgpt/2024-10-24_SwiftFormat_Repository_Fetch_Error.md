@@ -1,11 +1,11 @@
 # SwiftFormat Repository Fetch Error
 
-日付: 2024-10-24
+Date: 2024-10-24
 
 ---
 
-## 👤 ユーザー
-*2024/10/24 19:49:21*
+## 👤 User
+*2024-10-24 19:49:21*
 
 swift run --package-path ./DaVinciDevToolsPackage swiftformat .
 Fetching https://github.com/kylef/Spectre.git
@@ -28,8 +28,8 @@ make: *** [swiftformat-run] Error 1
 
 ---
 
-## 🤖 アシスタント
-*2024/10/24 19:49:26*
+## 🤖 Assistant
+*2024-10-24 19:49:26*
 
 The error message indicates that the SwiftFormat repository is recognized as a "bare repository," preventing Mint from fetching tags. This typically happens when the `.build/repositories/SwiftFormat-<hash>` directory is in a corrupted or incomplete state.
 

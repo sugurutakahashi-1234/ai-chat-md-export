@@ -1,18 +1,18 @@
 # GitHub Repo Clone Script
 
-日付: 2024-11-01
+Date: 2024-11-01
 
 ---
 
-## 👤 ユーザー
-*2024/11/01 21:59:30*
+## 👤 User
+*2024-11-01 21:59:30*
 
 my github repository all clone one liner
 
 ---
 
-## 🤖 アシスタント
-*2024/11/01 21:59:34*
+## 🤖 Assistant
+*2024-11-01 21:59:34*
 
 To clone all repositories from your GitHub account in one line, you can use the following script. This requires GitHub's CLI (`gh`) tool. First, ensure it’s installed and authenticated:
 
@@ -24,15 +24,15 @@ Replace `<username>` with your GitHub username. This command will list all your 
 
 ---
 
-## 👤 ユーザー
-*2024/11/01 22:03:52*
+## 👤 User
+*2024-11-01 22:03:52*
 
 clone submodule
 
 ---
 
-## 🤖 アシスタント
-*2024/11/01 22:03:56*
+## 🤖 Assistant
+*2024-11-01 22:03:56*
 
 To clone a repository with its submodules, you can use the following command:
 

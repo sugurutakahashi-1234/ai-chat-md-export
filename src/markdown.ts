@@ -96,17 +96,13 @@ function escapeMarkdown(text: string): string {
 
 function formatTimestamp(timestamp: string): string {
   const date = new Date(timestamp);
-  // Display in Japan time (JST)
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    timeZone: "Asia/Tokyo",
-    hour12: false,
-  };
+  // Format in ISO 8601 style for international compatibility
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
 
-  return new Intl.DateTimeFormat("en-US", options).format(date);
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }

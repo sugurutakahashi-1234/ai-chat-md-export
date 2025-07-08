@@ -1,11 +1,11 @@
 # Deprecated Ref Replacement
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 15:48:48*
+## 👤 User
+*2024-12-18 15:48:48*
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -21,8 +21,8 @@ Try replacing the use of the deprecated member with the replacement.dartdeprecat
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 15:48:55*
+## 🤖 Assistant
+*2024-12-18 15:48:55*
 
 To address the deprecation warning, you should replace `BaseUriRef` with `Ref`. Here’s the updated code:
 
@@ -44,15 +44,15 @@ This should resolve the warning, and the provider will now use the recommended `
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 15:50:23*
+## 👤 User
+*2024-12-18 15:50:23*
 
 これってイニシャライズでできないか?
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 15:50:28*
+## 🤖 Assistant
+*2024-12-18 15:50:28*
 
 Riverpod の `@riverpod` を使ったプロバイダー定義では、デフォルトでプロバイダーの値を定義することはできますが、質問の文脈では「初期化時に直接設定できないか？」ということを考えているようですね。
 

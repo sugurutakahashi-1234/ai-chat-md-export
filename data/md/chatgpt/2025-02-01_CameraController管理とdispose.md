@@ -1,11 +1,11 @@
 # CameraController管理とdispose
 
-日付: 2025-02-01
+Date: 2025-02-01
 
 ---
 
-## 👤 ユーザー
-*2025/02/01 11:17:03*
+## 👤 User
+*2025-02-01 11:17:03*
 
 以下によって撮影画面を作成しているが、カメラをdisposeする処理がない。
 どうやってカメラを管理してdisposeするのがよいか検討して欲しい。
@@ -327,8 +327,8 @@ class ShootingPage extends HookConsumerWidget {
 
 ---
 
-## 🔧 ツール
-*2025/02/01 11:17:26*
+## 🔧 Tool
+*2025-02-01 11:17:26*
 
 **Managing CameraController disposal**
 
@@ -348,8 +348,8 @@ I’m mapping out best practices for storing CameraController in a separate @riv
 
 ---
 
-## 🤖 アシスタント
-*2025/02/01 11:17:26*
+## 🤖 Assistant
+*2025-02-01 11:17:26*
 
 Riverpod（あるいは hooks_riverpod）で `CameraController` を管理する場合の最大のポイントは、**「ライフサイクル管理（dispose）」** をどうやって行うかです。
 
@@ -547,8 +547,8 @@ Future<CameraController?> getCameraController(Ref ref) async {
 
 ---
 
-## 👤 ユーザー
-*2025/02/01 11:21:08*
+## 👤 User
+*2025-02-01 11:21:08*
 
 @riverpod アノテーションの以下の記述のどちらを使った方がいいのか？
 現状プロジェクトではAsyncNotifierとはせずに_$の表記を使っている。
@@ -564,8 +564,8 @@ class MyCameraControllerNotifier extends _$MyCameraControllerNotifier {}
 
 ---
 
-## 🔧 ツール
-*2025/02/01 11:21:30*
+## 🔧 Tool
+*2025-02-01 11:21:30*
 
 **Deciding between Riverpod approaches**
 
@@ -589,8 +589,8 @@ I’m leaning towards naming classes with a `$` prefix to prevent conflicts. Def
 
 ---
 
-## 🤖 アシスタント
-*2025/02/01 11:21:30*
+## 🤖 Assistant
+*2025-02-01 11:21:30*
 
 Riverpod 2.x 以降のドキュメントでは、**大きく2種類の書き方**が紹介されています。
 
@@ -707,8 +707,8 @@ Riverpod 2.x 以降のドキュメントでは、**大きく2種類の書き方*
 
 ---
 
-## 👤 ユーザー
-*2025/02/01 12:50:32*
+## 👤 User
+*2025-02-01 12:50:32*
 
 以下で参照されなくなったタイミングでautoDisposeeしてほしい
 
@@ -735,8 +735,8 @@ class CameraControllerNotifier extends _$CameraControllerNotifier {
 
 ---
 
-## 🔧 ツール
-*2025/02/01 12:51:03*
+## 🔧 Tool
+*2025-02-01 12:51:03*
 
 **Maximizing the code**  
 I’m enhancing the code snippet for `CameraControllerNotifier` with an auto-dispose mechanism using the `@riverpod` annotation and `ref.onDispose` to manage resources effectively.
@@ -769,8 +769,8 @@ This marks a shift towards using `ref.onDispose` for resource management in Rive
 
 ---
 
-## 🤖 アシスタント
-*2025/02/01 12:51:03*
+## 🤖 Assistant
+*2025-02-01 12:51:03*
 
 `Riverpod` で「参照されなくなったタイミングで自動的に dispose したい」場合は、**autoDispose を有効にする**のがポイントです。  
 Riverpod 2.x のアノテーションでは、`@Riverpod(autoDispose: true)` を付けるか、`@riverpodAutoDispose` を使う方法があります。

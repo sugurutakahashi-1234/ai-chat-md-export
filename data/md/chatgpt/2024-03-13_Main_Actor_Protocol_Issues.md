@@ -1,11 +1,11 @@
 # Main Actor Protocol Issues
 
-日付: 2024-03-13
+Date: 2024-03-13
 
 ---
 
-## 👤 ユーザー
-*2024/03/13 13:39:54*
+## 👤 User
+*2024-03-13 13:39:54*
 
 swiftでMain actor-isolated static property 'snapshots' cannot be used to satisfy nonisolated protocol requirement というエラーになってしまう
 
@@ -29,8 +29,8 @@ struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/13 13:40:52*
+## 🤖 Assistant
+*2024-03-13 13:40:52*
 
 このエラーは、Swiftの並列処理におけるMain Actorとプロトコルの要件に関する問題から生じています。`@MainActor`でマークされたプロパティやメソッドは、UI更新などメインスレッドでのみ実行されるべき操作を保証します。しかし、非アイソレートされた（`nonisolated`）プロトコル要件を満たす際に`@MainActor`でアイソレートされたプロパティやメソッドを使用すると、コンパイラはエラーを報告します。これは、プロトコルがアイソレートのコンテキストを強制しないため、その要件を満たすプロパティやメソッドもまた非アイソレートである必要があるためです。
 

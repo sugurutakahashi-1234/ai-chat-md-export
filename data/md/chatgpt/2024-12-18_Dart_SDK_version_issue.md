@@ -1,11 +1,11 @@
 # Dart SDK version issue
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 14:13:12*
+## 👤 User
+*2024-12-18 14:13:12*
 
 $ make build                        
 fvm flutter pub run build_runner build --delete-conflicting-outputs
@@ -18,8 +18,8 @@ make: *** [build] Error 1
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 14:13:18*
+## 🤖 Assistant
+*2024-12-18 14:13:18*
 
 The error message you're encountering indicates that the `json_serializable` package you're using requires a Dart SDK version that is higher than the one you have installed. Specifically, it requires Dart SDK version `>=3.6.0 <4.0.0`, but you have version `3.5.4`.
 

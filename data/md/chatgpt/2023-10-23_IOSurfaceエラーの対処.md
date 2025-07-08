@@ -1,11 +1,11 @@
 # IOSurfaceエラーの対処
 
-日付: 2023-10-23
+Date: 2023-10-23
 
 ---
 
-## 👤 ユーザー
-*2023/10/23 23:33:20*
+## 👤 User
+*2023-10-23 23:33:20*
 
 以下のエラーになった
 
@@ -24,8 +24,8 @@ IOSurface creation failed: e00002be parentID: 0 properties: {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/23 23:34:14*
+## 🤖 Assistant
+*2023-10-23 23:34:14*
 
 エラーメッセージによると、"IOSurface creation failed: e00002be" というエラーが発生しており、これは通常、iOSデバイス上でIOSurfaceの作成が制限または上限に達したことを示しています。エラーメッセージに「likely per client IOSurface limit of 16384 reached」と記載されていることから、おそらくアプリケーションが許可されているリソースの上限に達したため、新しいIOSurfaceを作成できない状況が発生しているようです。
 

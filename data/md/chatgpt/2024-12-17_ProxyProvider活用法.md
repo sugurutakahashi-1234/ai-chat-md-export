@@ -1,11 +1,11 @@
 # ProxyProvider活用法
 
-日付: 2024-12-17
+Date: 2024-12-17
 
 ---
 
-## 👤 ユーザー
-*2024/12/17 22:28:06*
+## 👤 User
+*2024-12-17 22:28:06*
 
 ref
       ..listen&lt;bool&gt;(showShootableSpotDetailNotifierProvider, (previous, next) {
@@ -28,8 +28,8 @@ ref
 
 ---
 
-## 🤖 アシスタント
-*2024/12/17 22:28:38*
+## 🤖 Assistant
+*2024-12-17 22:28:38*
 
 `ProxyProvider` を使うことによって、複数の `Provider` の状態をまとめて効率的に管理し、コードの再利用性と可読性を向上させることができます。
 

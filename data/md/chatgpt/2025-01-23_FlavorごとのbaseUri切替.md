@@ -1,11 +1,11 @@
 # FlavorごとのbaseUri切替
 
-日付: 2025-01-23
+Date: 2025-01-23
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 13:31:58*
+## 👤 User
+*2025-01-23 13:31:58*
 
 enum Flavor {
   prd,
@@ -62,29 +62,29 @@ Future&lt;Uri&gt; baseUri(Ref ref) async {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:32:28*
+## 🤖 Assistant
+*2025-01-23 13:32:28*
 
 以下のように `Flavor` に応じて `baseUri` を切り替える実装を追加しました。また、`switch` 文を用いて整理しました。
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:32:28*
+## 🤖 Assistant
+*2025-01-23 13:32:28*
 
 {"name": "flavor_base_uri", "type": "code/dart", "content": "enum Flavor {\n  prd,\n  stg,\n  dev,\n}\n\n@Riverpod(keepAlive: true)\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\n  const defaultBaseUri = 'http://localhost';\n  const hostPcIpAddress = '192.168.1.139';\n  const port = 4010; // prism mock server\n\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\n\n  final deviceInfo = DeviceInfoPlugin();\n\n  // Flavor による base URI の切り替え\n  String environmentBaseUri;\n  switch (flavor) {\n    case Flavor.prd:\n      environmentBaseUri = 'https://guild-api.snpit.xyz';\n      break;\n    case Flavor.stg:\n      environmentBaseUri = 'https://dev-guild-api.snpit.xyz';\n      break;\n    case Flavor.dev:\n      environmentBaseUri = defaultBaseUri;\n      break;\n  }\n\n  if (Platform.isIOS) {\n    final iosInfo = await deviceInfo.iosInfo;\n    if (iosInfo.isPhysicalDevice) {\n      // iOS 実機\n      return Uri.parse('http://$hostPcIpAddress:$port');\n    } else {\n      // iOS シミュレーター\n      return Uri.parse('$environmentBaseUri:$port');\n    }\n  } else if (Platform.isAndroid) {\n    final androidInfo = await deviceInfo.androidInfo;\n    if (androidInfo.isPhysicalDevice) {\n      // Android 実機\n      return Uri.parse('http://$hostPcIpAddress:$port');\n    } else {\n      // Android エミュレーター\n      return Uri.parse('http://10.0.2.2:$port');\n    }\n  } else {\n    // その他のプラットフォーム\n    return Uri.parse('$environmentBaseUri:$port');\n  }\n}"}
 
 ---
 
-## 🔧 ツール
-*2025/01/23 13:32:28*
+## 🔧 Tool
+*2025-01-23 13:32:28*
 
 {"result": "Successfully created text document 'flavor_base_uri' which will be referenced in all future messages with the unique identifier textdoc_id: '6791c6535128819193f30fe3bd46ac9d'", "textdoc_id": "6791c6535128819193f30fe3bd46ac9d", "name": "flavor_base_uri"}
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:32:28*
+## 🤖 Assistant
+*2025-01-23 13:32:28*
 
 このコードでは、`Flavor` に基づいて適切な `baseUri` を切り替えています。`Flavor.dev` の場合は、ローカル環境のアドレスを使用し、`Flavor.stg` や `Flavor.prd` の場合は指定された URL を返します。
 
@@ -92,71 +92,71 @@ Future&lt;Uri&gt; baseUri(Ref ref) async {
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 13:32:42*
+## 👤 User
+*2025-01-23 13:32:42*
 
 そもそもportが必要なのはdevだけなんだ。if Platformの判定もdevしか必要ない
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:33:03*
+## 🤖 Assistant
+*2025-01-23 13:33:03*
 
 {"updates":[{"pattern":".*", "replacement":"enum Flavor {\n  prd,\n  stg,\n  dev,\n}\n\n@Riverpod(keepAlive: true)\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\n  const defaultBaseUri = 'http://localhost';\n  const hostPcIpAddress = '192.168.1.139';\n  const port = 4010; // prism mock server\n\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\n\n  // Flavor による base URI の切り替え\n  String environmentBaseUri;\n  switch (flavor) {\n    case Flavor.prd:\n      return Uri.parse('https://guild-api.snpit.xyz');\n    case Flavor.stg:\n      return Uri.parse('https://dev-guild-api.snpit.xyz');\n    case Flavor.dev:\n      environmentBaseUri = defaultBaseUri;\n      break;\n  }\n\n  if (flavor == Flavor.dev) {\n    final deviceInfo = DeviceInfoPlugin();\n\n    if (Platform.isIOS) {\n      final iosInfo = await deviceInfo.iosInfo;\n      if (iosInfo.isPhysicalDevice) {\n        // iOS 実機\n        return Uri.parse('http://$hostPcIpAddress:$port');\n      } else {\n        // iOS シミュレーター\n        return Uri.parse('$environmentBaseUri:$port');\n      }\n    } else if (Platform.isAndroid) {\n      final androidInfo = await deviceInfo.androidInfo;\n      if (androidInfo.isPhysicalDevice) {\n        // Android 実機\n        return Uri.parse('http://$hostPcIpAddress:$port');\n      } else {\n        // Android エミュレーター\n        return Uri.parse('http://10.0.2.2:$port');\n      }\n    } else {\n      // その他のプラットフォーム\n      return Uri.parse('$environmentBaseUri:$port');\n    }\n  }\n\n  // デフォルトの値を返す\n  return Uri.parse(defaultBaseUri);\n}"}]}
 
 ---
 
-## 🔧 ツール
-*2025/01/23 13:33:03*
+## 🔧 Tool
+*2025-01-23 13:33:03*
 
 {"result": "Successfully updated text document with textdoc_id '6791c6535128819193f30fe3bd46ac9d'", "textdoc_id": "6791c6535128819193f30fe3bd46ac9d"}
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:33:03*
+## 🤖 Assistant
+*2025-01-23 13:33:03*
 
 修正しました。`port` や `Platform` 判定が必要なのは `Flavor.dev` の場合のみとし、それ以外の環境では直接 `Uri` を返すようにしました。このようにすることでコードがシンプルになり、他の環境では余分な判定が発生しないようになっています。
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 13:33:47*
+## 👤 User
+*2025-01-23 13:33:47*
 
 case Flavor.dev: 内で return して breakしない方が見通しがいい気がする
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:34:11*
+## 🤖 Assistant
+*2025-01-23 13:34:11*
 
 {"updates":[{"pattern":".*", "replacement":"enum Flavor {\n  prd,\n  stg,\n  dev,\n}\n\n@Riverpod(keepAlive: true)\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\n  const defaultBaseUri = 'http://localhost';\n  const hostPcIpAddress = '192.168.1.139';\n  const port = 4010; // prism mock server\n\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\n\n  // Flavor による base URI の切り替え\n  switch (flavor) {\n    case Flavor.prd:\n      return Uri.parse('https://guild-api.snpit.xyz');\n    case Flavor.stg:\n      return Uri.parse('https://dev-guild-api.snpit.xyz');\n    case Flavor.dev:\n      final deviceInfo = DeviceInfoPlugin();\n\n      if (Platform.isIOS) {\n        final iosInfo = await deviceInfo.iosInfo;\n        if (iosInfo.isPhysicalDevice) {\n          // iOS 実機\n          return Uri.parse('http://$hostPcIpAddress:$port');\n        } else {\n          // iOS シミュレーター\n          return Uri.parse('$defaultBaseUri:$port');\n        }\n      } else if (Platform.isAndroid) {\n        final androidInfo = await deviceInfo.androidInfo;\n        if (androidInfo.isPhysicalDevice) {\n          // Android 実機\n          return Uri.parse('http://$hostPcIpAddress:$port');\n        } else {\n          // Android エミュレーター\n          return Uri.parse('http://10.0.2.2:$port');\n        }\n      } else {\n        // その他のプラットフォーム\n        return Uri.parse('$defaultBaseUri:$port');\n      }\n  }\n\n  // デフォルトの値を返す\n  return Uri.parse(defaultBaseUri);\n}"}]}
 
 ---
 
-## 🔧 ツール
-*2025/01/23 13:34:11*
+## 🔧 Tool
+*2025-01-23 13:34:11*
 
 {"result": "Successfully updated text document with textdoc_id '6791c6535128819193f30fe3bd46ac9d'", "textdoc_id": "6791c6535128819193f30fe3bd46ac9d"}
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:34:11*
+## 🤖 Assistant
+*2025-01-23 13:34:11*
 
 `Flavor.dev` 内で直接 `return` を用いることで、見通しを良くしました。これにより、`break` の必要がなくなり、各 `case` の処理が一貫して読みやすくなっています。ご確認ください！
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 13:49:43*
+## 👤 User
+*2025-01-23 13:49:43*
 
 ちなみにワイヤレスでバックしているAndorid実機からこれだと接続できなかったなぜか？
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:50:22*
+## 🤖 Assistant
+*2025-01-23 13:50:22*
 
 Android 実機がワイヤレスでバックされている場合に接続できない理由はいくつか考えられます。以下の点を確認してください：
 
@@ -197,15 +197,15 @@ Android 実機がワイヤレスでバックされている場合に接続でき
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 13:52:59*
+## 👤 User
+*2025-01-23 13:52:59*
 
 そもそもhttp://192.168.1.139でアクセス失敗してしまう
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:53:11*
+## 🤖 Assistant
+*2025-01-23 13:53:11*
 
 `http://192.168.1.139` でアクセス失敗する場合、以下のポイントを確認してください：
 
@@ -285,15 +285,15 @@ Android 実機とホストPCが同一ネットワークに接続されている�
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 13:55:35*
+## 👤 User
+*2025-01-23 13:55:35*
 
 -h 0.0.0.0 -p 4010 についてどういう意味なの？
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:56:04*
+## 🤖 Assistant
+*2025-01-23 13:56:04*
 
 `-h 0.0.0.0 -p 4010` はサーバーを起動する際のオプションで、次のような意味があります：
 
@@ -330,16 +330,16 @@ Android 実機とホストPCが同一ネットワークに接続されている�
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 13:57:10*
+## 👤 User
+*2025-01-23 13:57:10*
 
 うまくいった、
 prism mockについてもっと色々使いたい。例えばレスポンスの配列を増やしたりしたい
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 13:57:53*
+## 🤖 Assistant
+*2025-01-23 13:57:53*
 
 Prism Mock Server を使ってレスポンスの配列を増やしたり、複雑な動作を設定することができます。以下に、基本的な使用方法とカスタマイズ例を説明します。
 
@@ -516,15 +516,15 @@ prism mock openapi.yaml -h 0.0.0.0 -p 4010
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 14:01:15*
+## 👤 User
+*2025-01-23 14:01:15*
 
 -d で色々カスタマイズできるらしいが、どうすればいいのか？
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 14:02:12*
+## 🤖 Assistant
+*2025-01-23 14:02:12*
 
 Prism Mock Server では、`-d` オプションを使ってレスポンスデータの動的なカスタマイズが可能です。このオプションを利用することで、クライアントのリクエスト内容に応じてレスポンスを変化させるなど、より柔軟なモックサーバーを構築できます。
 
@@ -649,15 +649,15 @@ module.exports = {
 
 ---
 
-## 👤 ユーザー
-*2025/01/23 14:04:20*
+## 👤 User
+*2025-01-23 14:04:20*
 
 -d hooks.js についてわかりやすい記事
 
 ---
 
-## 🤖 アシスタント
-*2025/01/23 14:04:28*
+## 🤖 Assistant
+*2025-01-23 14:04:28*
 
 Prism Mock Server の `-d` オプションを活用して、レスポンスを動的にカスタマイズする方法について、以下のような記事が参考になります。
 

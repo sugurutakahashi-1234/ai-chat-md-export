@@ -1,18 +1,18 @@
 # Unable to Boot Device
 
-日付: 2024-07-09
+Date: 2024-07-09
 
 ---
 
-## 👤 ユーザー
-*2024/07/09 18:26:54*
+## 👤 User
+*2024-07-09 18:26:54*
 
 Failed to launch process. Unable to boot device because it cannot be located on disk.
 
 ---
 
-## 🤖 アシスタント
-*2024/07/09 18:27:20*
+## 🤖 Assistant
+*2024-07-09 18:27:20*
 
 The error "Unable to boot device because it cannot be located on disk" usually indicates an issue with your iOS Simulator setup or the Xcode installation. Here are some steps to troubleshoot and resolve this issue:
 
@@ -50,15 +50,15 @@ If you've tried all of the above steps and still encounter the issue, you might 
 
 ---
 
-## 👤 ユーザー
-*2024/07/09 18:27:54*
+## 👤 User
+*2024-07-09 18:27:54*
 
 日本語で
 
 ---
 
-## 🤖 アシスタント
-*2024/07/09 18:28:29*
+## 🤖 Assistant
+*2024-07-09 18:28:29*
 
 以下の手順を試して、問題を解決してみてください：
 

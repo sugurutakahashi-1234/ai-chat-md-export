@@ -1,18 +1,18 @@
 # Link Issues to PR
 
-日付: 2024-05-16
+Date: 2024-05-16
 
 ---
 
-## 👤 ユーザー
-*2024/05/16 12:23:20*
+## 👤 User
+*2024-05-16 12:23:20*
 
 commit メッセージに含まれる issue を PR にリンクする GitHub Actions
 
 ---
 
-## 🤖 アシスタント
-*2024/05/16 12:23:38*
+## 🤖 Assistant
+*2024-05-16 12:23:38*
 
 To create a GitHub Action that links issues mentioned in commit messages to the corresponding pull request (PR), you can use the GitHub API to update the PR description with links to the issues. Here’s how you can set up a GitHub Action to achieve this:
 
@@ -125,15 +125,15 @@ With this setup, whenever a PR is opened or updated with new commits, the GitHub
 
 ---
 
-## 👤 ユーザー
-*2024/05/16 12:23:59*
+## 👤 User
+*2024-05-16 12:23:59*
 
 これを実行するパッケージは存在しないの？
 
 ---
 
-## 🤖 アシスタント
-*2024/05/16 12:24:17*
+## 🤖 Assistant
+*2024-05-16 12:24:17*
 
 現時点では、GitHub Actions Marketplaceに特化したパッケージが存在しない可能性がありますが、次の方法で問題を解決できます。
 
@@ -257,15 +257,15 @@ Marketplaceで既存のアクションを探す場合、次のキーワードで
 
 ---
 
-## 👤 ユーザー
-*2024/05/16 13:03:26*
+## 👤 User
+*2024-05-16 13:03:26*
 
 探してみてくれないかな？
 
 ---
 
-## 🤖 アシスタント
-*2024/05/16 13:03:37*
+## 🤖 Assistant
+*2024-05-16 13:03:37*
 
 Yes, there are existing GitHub Actions that can help link issues mentioned in commit messages to the corresponding pull request.
 

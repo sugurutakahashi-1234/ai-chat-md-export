@@ -1,11 +1,11 @@
 # Sendable Dependency Issue
 
-日付: 2024-11-14
+Date: 2024-11-14
 
 ---
 
-## 👤 ユーザー
-*2024/11/14 18:39:01*
+## 👤 User
+*2024-11-14 18:39:01*
 
 Showing All Issues
 Resolving package dependencies…
@@ -17,8 +17,8 @@ Showing All Issues
 
 ---
 
-## 🤖 アシスタント
-*2024/11/14 18:39:10*
+## 🤖 Assistant
+*2024-11-14 18:39:10*
 
 The error you're seeing stems from the fact that in Swift's concurrency model, types that conform to `Sendable` must contain only other `Sendable` types. In this case, the `dependencies` property in your `DependencyLibrary` struct contains a type (`[Target.Dependency]`) that isn’t marked as `Sendable`, which causes the compiler to complain.
 

@@ -1,11 +1,11 @@
 # Uninstalling Node.js packages with NVM
 
-日付: 2025-05-08
+Date: 2025-05-08
 
 ---
 
-## 👤 ユーザー
-*2025/05/08 22:46:12*
+## 👤 User
+*2025-05-08 22:46:12*
 
 どうすればいいか
 
@@ -22,8 +22,8 @@ export NVM_DIR="$HOME/.nvm"
 
 ---
 
-## 🤖 アシスタント
-*2025/05/08 22:46:16*
+## 🤖 Assistant
+*2025-05-08 22:46:16*
 
 こんにちは。何かお手伝いできることはありますか？どのような状況についてアドバイスが必要なのでしょうか？
 
@@ -33,15 +33,15 @@ export NVM_DIR="$HOME/.nvm"
 
 ---
 
-## 👤 ユーザー
-*2025/05/08 22:46:30*
+## 👤 User
+*2025-05-08 22:46:30*
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bashしたらその出力があった
 
 ---
 
-## 🤖 アシスタント
-*2025/05/08 22:46:38*
+## 🤖 Assistant
+*2025-05-08 22:46:38*
 
 なるほど、`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash` コマンドを実行して、Node Version Manager (NVM) v0.40.3をインストールされたのですね。表示された出力は正常で、インストールが成功したことを示しています。
 

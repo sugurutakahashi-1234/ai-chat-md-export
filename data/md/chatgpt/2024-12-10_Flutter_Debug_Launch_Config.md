@@ -1,18 +1,18 @@
 # Flutter Debug Launch Config
 
-日付: 2024-12-10
+Date: 2024-12-10
 
 ---
 
-## 👤 ユーザー
-*2024/12/10 18:13:54*
+## 👤 User
+*2024-12-10 18:13:54*
 
 vscode flutter debug launch json
 
 ---
 
-## 🤖 アシスタント
-*2024/12/10 18:14:15*
+## 🤖 Assistant
+*2024-12-10 18:14:15*
 
 To configure the Flutter debugging environment in Visual Studio Code (VS Code), you need to define the launch configuration in a `launch.json` file. This file allows you to specify how you want to run or debug your Flutter application.
 

@@ -1,18 +1,18 @@
 # Xcode Overview
 
-日付: 2024-11-15
+Date: 2024-11-15
 
 ---
 
-## 👤 ユーザー
-*2024/11/15 15:58:19*
+## 👤 User
+*2024-11-15 15:58:19*
 
 Xcode
 
 ---
 
-## 🤖 アシスタント
-*2024/11/15 15:58:24*
+## 🤖 Assistant
+*2024-11-15 15:58:24*
 
 ​summaryXcode - Apple Developerturn0navigation0
 Xcode is Apple's integrated development environment (IDE) for macOS, designed to create applications for Apple's platforms, including macOS, iOS, iPadOS, watchOS, tvOS, and visionOS. It offers a comprehensive suite of tools for user interface design, coding, testing, debugging, and app distribution, all within a unified workflow. citeturn0search2

@@ -1,11 +1,11 @@
 # Enum para nombres de escenarios.
 
-日付: 2024-02-20
+Date: 2024-02-20
 
 ---
 
-## 👤 ユーザー
-*2024/02/20 15:33:26*
+## 👤 User
+*2024-02-20 15:33:26*
 
 シナリオ名をenumで定義したい。struct Scenarioはライブラリ製なので直接変更はできません。
 
@@ -98,8 +98,8 @@ public struct Scenario {
 
 ---
 
-## 🤖 アシスタント
-*2024/02/20 15:34:02*
+## 🤖 Assistant
+*2024-02-20 15:34:02*
 
 シナリオ名を`enum`で定義するには、`ScenarioName`を文字列ではなく、`enum`の値として使用する方法を検討する必要があります。ただし、`Scenario`構造体はライブラリに含まれているため直接変更することはできませんが、`ScenarioName`を`enum`として扱うためには、間接的な方法を用いることができます。
 
@@ -140,15 +140,15 @@ struct LicenseListScenarios: ScenarioProvider {
 
 ---
 
-## 👤 ユーザー
-*2024/02/20 15:34:30*
+## 👤 User
+*2024-02-20 15:34:30*
 
 Scenarioのイニシャライザを増やす方法はないのか？LicenseListScenarioNameではなくて、ScenarioTypeとしてほしい。
 
 ---
 
-## 🤖 アシスタント
-*2024/02/20 15:35:18*
+## 🤖 Assistant
+*2024-02-20 15:35:18*
 
 `Scenario`のイニシャライザを直接変更することはできませんが、`Scenario`の機能を拡張して、`enum`でシナリオタイプを指定できるようなイニシャライザを追加することは可能です。この方法では、拡張機能を使用して既存の`Scenario`構造体に新しいイニシャライザを追加し、`enum`で定義されたシナリオタイプを直接使用できるようにします。
 
@@ -210,8 +210,8 @@ struct LicenseListScenarios: ScenarioProvider {
 
 ---
 
-## 👤 ユーザー
-*2024/02/20 15:40:43*
+## 👤 User
+*2024-02-20 15:40:43*
 
 Contextual type for closure argument list expects 1 argument, which cannot be implicitly ignored
 
@@ -269,8 +269,8 @@ extension Scenario {
 
 ---
 
-## 🤖 アシスタント
-*2024/02/20 15:42:05*
+## 🤖 Assistant
+*2024-02-20 15:42:05*
 
 あなたが直面しているエラーは、主に2つの理由によるものです：
 
@@ -331,8 +331,8 @@ struct LicenseListScenarios: ScenarioProvider {
 
 ---
 
-## 👤 ユーザー
-*2024/02/20 16:58:15*
+## 👤 User
+*2024-02-20 16:58:15*
 
 やりたいこととしては、以下の出力を同じにしたいんだ。
 
@@ -378,8 +378,8 @@ struct LicenseListScenarios: ScenarioProvider {
 
 ---
 
-## 🤖 アシスタント
-*2024/02/20 16:59:09*
+## 🤖 Assistant
+*2024-02-20 16:59:09*
 
 理解しました。あなたが目指しているのは、`Scenario`の初期化時に`type`パラメータを用いて、シナリオタイプを指定しやすくすることのようです。これを実現するためには、`Scenario`の初期化メソッドをオーバーロードし、`ScenarioType`を直接引数として受け取ることができるようにする必要があります。しかし、`Scenario`構造体がライブラリに含まれており、直接変更できないため、`Scenario`を拡張して新しい初期化メソッドを追加することはできません。
 

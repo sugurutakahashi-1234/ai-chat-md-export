@@ -1,11 +1,11 @@
 # Flutter slang 設定方法
 
-日付: 2025-02-01
+Date: 2025-02-01
 
 ---
 
-## 👤 ユーザー
-*2025/02/01 22:41:32*
+## 👤 User
+*2025-02-01 22:41:32*
 
 Flutterでslangを導入してみたい。
 行う設定だったり、以下を試してみたいので、それを検証する方法だったりを教えて欲しい。
@@ -38,8 +38,8 @@ jp.i18n.json
 
 ---
 
-## 🔧 ツール
-*2025/02/01 22:42:03*
+## 🔧 Tool
+*2025-02-01 22:42:03*
 
 Understanding Slang in Flutter
 
@@ -47,8 +47,8 @@ Formulating the steps
 
 ---
 
-## 🤖 アシスタント
-*2025/02/01 22:42:03*
+## 🤖 Assistant
+*2025-02-01 22:42:03*
 
 以下では、**Flutter + slang** を使った多言語対応の手順や検証方法を、できるだけ詳しく解説します。
 
@@ -355,15 +355,15 @@ void main() {
 
 ---
 
-## 👤 ユーザー
-*2025/02/01 22:43:27*
+## 👤 User
+*2025-02-01 22:43:27*
 
 DebugLocalizationPageみたいなところで言語の切り替えの検証ページを作って欲しい、
 
 ---
 
-## 🔧 ツール
-*2025/02/01 22:43:40*
+## 🔧 Tool
+*2025-02-01 22:43:40*
 
 **Setting up the interface**
 
@@ -371,8 +371,8 @@ I’m constructing a UI with Slang’s i18n and translation provider, adding Ele
 
 ---
 
-## 🤖 アシスタント
-*2025/02/01 22:43:40*
+## 🤖 Assistant
+*2025-02-01 22:43:40*
 
 以下は、`DebugLocalizationPage` の例実装です。  
 簡易的に **言語切り替えボタン** を配置して、切り替え状況を確認できるページを作成しています。
@@ -491,15 +491,15 @@ class _DebugLocalizationPageState extends State<DebugLocalizationPage> {
 
 ---
 
-## 👤 ユーザー
-*2025/02/01 22:44:24*
+## 👤 User
+*2025-02-01 22:44:24*
 
 StatefulWidgetではなくて、リバーポッドやhooksを使って欲しい。
 
 ---
 
-## 🔧 ツール
-*2025/02/01 22:45:08*
+## 🔧 Tool
+*2025-02-01 22:45:08*
 
 **Weighing state management options**
 
@@ -535,8 +535,8 @@ I’m working through the manual update of the current locale in a "HookConsumer
 
 ---
 
-## 🤖 アシスタント
-*2025/02/01 22:45:08*
+## 🤖 Assistant
+*2025-02-01 22:45:08*
 
 以下では、`DebugLocalizationPage` を **Riverpod**（あるいは `hooks_riverpod`）を使ったサンプルとして実装してみます。  
 言語の切り替えボタンを押すと、**Slang** が提供する `LocaleSettings.setLocale(...)` を呼び出し、UI が即座に再ビルドされて翻訳が切り替わる様子を確認できます。
@@ -765,8 +765,8 @@ class MyApp extends StatelessWidget {
 
 ---
 
-## 👤 ユーザー
-*2025/02/01 22:47:38*
+## 👤 User
+*2025-02-01 22:47:38*
 
 final currentLocaleCode =
         useState(LocaleSettings.currentLocale.languageCode);
@@ -776,8 +776,8 @@ jsonに locale を持つのはどうだろうか？
 
 ---
 
-## 🔧 ツール
-*2025/02/01 22:48:03*
+## 🔧 Tool
+*2025-02-01 22:48:03*
 
 **Weighing storage options**
 
@@ -793,8 +793,8 @@ I’m evaluating storing the selected locale in a JSON file versus SharedPrefere
 
 ---
 
-## 🤖 アシスタント
-*2025/02/01 22:48:03*
+## 🤖 Assistant
+*2025-02-01 22:48:03*
 
 「現在選択中のロケール（言語）」を **JSON** などの外部データとして持たせたい、という意図だと理解しました。以下でその方法や考え方について解説します。
 

@@ -1,11 +1,11 @@
 # Audio App Development Strategy
 
-日付: 2024-05-10
+Date: 2024-05-10
 
 ---
 
-## 👤 ユーザー
-*2024/05/10 11:07:11*
+## 👤 User
+*2024-05-10 11:07:11*
 
 User
 presenter.audioData がひとつもなかった時の簡単な画面を作りたい。からであることを画像で表せればいいよSFSymbolつかってほしい

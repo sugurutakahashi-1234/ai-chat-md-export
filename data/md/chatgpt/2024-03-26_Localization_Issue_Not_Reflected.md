@@ -1,11 +1,11 @@
 # Localization Issue Not Reflected
 
-日付: 2024-03-26
+Date: 2024-03-26
 
 ---
 
-## 👤 ユーザー
-*2024/03/26 13:03:07*
+## 👤 User
+*2024-03-26 13:03:07*
 
 Githubのイシューを英語であげたい。
 
@@ -23,8 +23,8 @@ Edit Scheme(Selected Production) &gt; Options &gt; App Language &gt; English の
 
 ---
 
-## 🤖 アシスタント
-*2024/03/26 13:03:16*
+## 🤖 Assistant
+*2024-03-26 13:03:16*
 
 Here's how you can raise an issue on GitHub in English regarding the localization not being reflected in a specific region:
 

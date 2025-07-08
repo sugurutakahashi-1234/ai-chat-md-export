@@ -1,11 +1,11 @@
 # AlertDialog 見やすさ改善
 
-日付: 2024-12-25
+Date: 2024-12-25
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 15:57:29*
+## 👤 User
+*2024-12-25 15:57:29*
 
 {
   "content_type": "image_asset_pointer",
@@ -133,8 +133,8 @@ final ThemeData appTheme = ThemeData(
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 15:57:39*
+## 🤖 Assistant
+*2024-12-25 15:57:39*
 
 Your `AlertDialog` is hard to read because the `ThemeData` and background colors make the text and dialog itself less distinct. To improve its visibility and readability, you can customize the `AlertDialog` theme using Flutter's `ThemeData` or by directly applying style overrides. Here's how you can address this issue:
 
@@ -215,15 +215,15 @@ Let me know if you’d like further assistance with these adjustments!
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 15:58:03*
+## 👤 User
+*2024-12-25 15:58:03*
 
 同じ回答を日本語で
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 15:58:12*
+## 🤖 Assistant
+*2024-12-25 15:58:12*
 
 `AlertDialog` が見づらい原因は、現在の `ThemeData` 設定や背景色によってテキストやダイアログ自体が十分に目立たなくなっていることです。これを改善するために、`AlertDialog` のテーマやスタイルをカスタマイズできます。以下に具体的な方法を説明します。
 
@@ -314,8 +314,8 @@ AlertDialog(
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 16:12:30*
+## 👤 User
+*2024-12-25 16:12:30*
 
 {
   "content_type": "image_asset_pointer",
@@ -341,8 +341,8 @@ AlertDialog(
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 16:12:40*
+## 🤖 Assistant
+*2024-12-25 16:12:40*
 
 選択肢の色が見づらい場合、`TextButton` のスタイルをカスタマイズすることで改善できます。以下は選択肢のテキスト色を変更する方法です。
 

@@ -1,11 +1,11 @@
 # CodableでUserDefaults管理
 
-日付: 2024-03-14
+Date: 2024-03-14
 
 ---
 
-## 👤 ユーザー
-*2024/03/14 21:46:53*
+## 👤 User
+*2024-03-14 21:46:53*
 
 実はこのUserDefaultsCodableって必要なくて、Codable の機能があればできることなのかな？
 
@@ -27,8 +27,8 @@ public extension UserDefaultsCodable {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/14 21:47:46*
+## 🤖 Assistant
+*2024-03-14 21:47:46*
 
 はい、おっしゃる通りで、`UserDefaultsCodable` というプロトコルを定義する必要は特になく、Swift の `Codable` プロトコルだけでも UserDefaults でのデータの保存と読み込みを実装できます。`Codable` は Swift の標準ライブラリに含まれるプロトコルで、データを簡単に JSON 形式などのデータ形式に変換（エンコード）したり、その形式からデータ構造に戻す（デコード）ことが可能です。
 
@@ -62,15 +62,15 @@ if let savedData = UserDefaults.standard.data(forKey: "myDataKey"),
 
 ---
 
-## 👤 ユーザー
-*2024/03/14 21:50:34*
+## 👤 User
+*2024-03-14 21:50:34*
 
 JSON専用のCodableとしての活用するメリットはあるかな？
 
 ---
 
-## 🤖 アシスタント
-*2024/03/14 21:51:50*
+## 🤖 Assistant
+*2024-03-14 21:51:50*
 
 JSON専用の`Codable`を活用するメリットは、確かにいくつかあります。`Codable`は、Swiftの型をエンコード（データをJSONなどの形式に変換）およびデコード（JSONなどのデータからSwiftの型に戻す）するためのプロトコルであり、JSONとの相互作用を中心に設計されています。以下に、JSON専用の`Codable`を活用するメリットを挙げます。
 

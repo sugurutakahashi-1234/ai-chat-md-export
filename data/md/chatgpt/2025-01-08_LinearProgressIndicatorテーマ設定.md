@@ -1,11 +1,11 @@
 # LinearProgressIndicatorテーマ設定
 
-日付: 2025-01-08
+Date: 2025-01-08
 
 ---
 
-## 👤 ユーザー
-*2025/01/08 18:13:48*
+## 👤 User
+*2025-01-08 18:13:48*
 
 flutterでLinearProgressIndicatorのThemaを指定したい。
 
@@ -137,8 +137,8 @@ final ThemeData appTheme = ThemeData(
 
 ---
 
-## 🤖 アシスタント
-*2025/01/08 18:14:05*
+## 🤖 Assistant
+*2025-01-08 18:14:05*
 
 `LinearProgressIndicator` をテーマ化するには、`ProgressIndicatorThemeData` を使用します。`ThemeData` にカスタム `ProgressIndicatorThemeData` を追加して、`LinearProgressIndicator` に対して一貫したスタイルを適用できます。以下に実装例を示します。
 

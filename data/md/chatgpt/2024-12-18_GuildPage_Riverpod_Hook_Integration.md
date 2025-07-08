@@ -1,11 +1,11 @@
 # GuildPage Riverpod Hook Integration
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 15:02:17*
+## 👤 User
+*2024-12-18 15:02:17*
 
 hooksとリバーポッドを使って欲しい
 
@@ -55,8 +55,8 @@ class GuildPage extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 15:02:41*
+## 🤖 Assistant
+*2024-12-18 15:02:41*
 
 `hooks` と `Riverpod` を利用したリファクタリングを行います。以下のコードは `flutter_hooks` を使って `HookConsumerWidget` をベースにし、API コールを非同期で行うように変更します。また、状態管理には `Riverpod` を使用します。
 
@@ -64,22 +64,22 @@ class GuildPage extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 15:02:41*
+## 🤖 Assistant
+*2024-12-18 15:02:41*
 
 {"name": "guild_page_hooks_riverpod", "type": "code/dart", "content": "import 'package:dio/dio.dart';\nimport 'package:flutter/material.dart';\nimport 'package:flutter_hooks/flutter_hooks.dart';\nimport 'package:go_router/go_router.dart';\nimport 'package:hooks_riverpod/hooks_riverpod.dart';\nimport 'package:snpit_guild_app/domain/screen.dart';\nimport 'package:snpit_guild_app/lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';\n\n// API Client Provider\nfinal guildApiProvider = Provider&lt;GuildApi&gt;((ref) {\n  return GuildApi(\n    Dio(),\n    Uri.parse('https://virtserver.swaggerhub.com/hpoul/Testapi/1.0.0'),\n  );\n});\n\n// Guild Info Future Provider\nfinal guildInfoProvider = FutureProvider((ref) async {\n  final client = ref.read(guildApiProvider);\n  final guildInfo = await client.guildControllerGetGuildInfo();\n  return guildInfo.data;\n});\n\nclass GuildPage extends HookConsumerWidget {\n  const GuildPage({Key? key}) : super(key: key);\n\n  @override\n  Widget build(BuildContext context, WidgetRef ref) {\n    final guildInfoAsync = ref.watch(guildInfoProvider);\n\n    return Scaffold(\n      appBar: AppBar(title: const Text('Guild Page')),\n      body: guildInfoAsync.when(\n        data: (guildInfo) =&gt; Center(\n          child: Column(\n            mainAxisAlignment: MainAxisAlignment.center,\n            children: [\n              Text('Guild Info: $guildInfo'),\n              const SizedBox(height: 16),\n              ElevatedButton(\n                onPressed: () {\n                  context.push(Screen.guildCode.path);\n                },\n                child: const Text('Go To Guild Code'),\n              ),\n              ElevatedButton(\n                onPressed: () {\n                  context.push(Screen.guildCreate.path);\n                },\n                child: const Text('Go To Guild Create'),\n              ),\n            ],\n          ),\n        ),\n        loading: () =&gt; const Center(child: CircularProgressIndicator()),\n        error: (error, stackTrace) =&gt; Center(\n          child: Text('Error: $error'),\n        ),\n      ),\n    );\n  }\n}"}
 
 ---
 
-## 🔧 ツール
-*2024/12/18 15:02:41*
+## 🔧 Tool
+*2024-12-18 15:02:41*
 
 {"result": "Successfully created text document 'guild_page_hooks_riverpod' which will be referenced in all future messages with the unique identifier textdoc_id: '67626578f4448191a0b5c32855bcc75b'", "textdoc_id": "67626578f4448191a0b5c32855bcc75b", "name": "guild_page_hooks_riverpod"}
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 15:02:41*
+## 🤖 Assistant
+*2024-12-18 15:02:41*
 
 このコードでは以下の変更を行いました：
 

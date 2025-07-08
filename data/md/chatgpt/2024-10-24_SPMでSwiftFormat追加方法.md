@@ -1,18 +1,18 @@
 # SPMでSwiftFormat追加方法
 
-日付: 2024-10-24
+Date: 2024-10-24
 
 ---
 
-## 👤 ユーザー
-*2024/10/24 19:09:39*
+## 👤 User
+*2024-10-24 19:09:39*
 
 SPMでnicklockwood/SwiftFormat@0.54.6
 
 ---
 
-## 🤖 アシスタント
-*2024/10/24 19:09:43*
+## 🤖 Assistant
+*2024-10-24 19:09:43*
 
 `nicklockwood/SwiftFormat`をバージョン`0.54.6`としてSwift Package Manager（SPM）でプロジェクトに追加するには、`Package.swift`ファイルに以下のように依存関係を追加します。
 

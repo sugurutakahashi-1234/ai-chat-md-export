@@ -1,11 +1,11 @@
 # SwiftUI AsyncImageErrorView Instructions
 
-日付: 2024-07-04
+Date: 2024-07-04
 
 ---
 
-## 👤 ユーザー
-*2024/07/04 16:39:15*
+## 👤 User
+*2024-07-04 16:39:15*
 
 struct AsyncImageErrorView: View {
     let retryAction: (() -&gt; Void)? = nil
@@ -43,8 +43,8 @@ struct AsyncImageErrorView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/07/04 16:39:41*
+## 🤖 Assistant
+*2024-07-04 16:39:41*
 
 `AsyncImageErrorView` is a SwiftUI view component designed to display an error message when an image fails to load. It includes an optional retry button that executes a given action when pressed. Below is an example of how to use this view in a SwiftUI application:
 
@@ -144,15 +144,15 @@ This setup ensures that your error view is displayed when an image fetch fails a
 
 ---
 
-## 👤 ユーザー
-*2024/07/04 16:41:47*
+## 👤 User
+*2024-07-04 16:41:47*
 
 AsyncImageErrorView { _ in } だったり書けない
 
 ---
 
-## 🤖 アシスタント
-*2024/07/04 16:42:10*
+## 🤖 Assistant
+*2024-07-04 16:42:10*
 
 To make `AsyncImageErrorView` more flexible and allow usage like `AsyncImageErrorView { }`, you can update the initializer to accept a closure for the retry action. Here is the revised `AsyncImageErrorView` and an example of its usage:
 

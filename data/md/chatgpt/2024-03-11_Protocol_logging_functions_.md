@@ -1,11 +1,11 @@
 # Protocol logging functions.
 
-日付: 2024-03-11
+Date: 2024-03-11
 
 ---
 
-## 👤 ユーザー
-*2024/03/11 13:45:31*
+## 👤 User
+*2024-03-11 13:45:31*
 
 以下をprotocolで定義してほしい。
 
@@ -43,8 +43,8 @@ public func debugLog(_ message: String = "", level: LogLevel = .info, file: Stri
 
 ---
 
-## 🤖 アシスタント
-*2024/03/11 13:45:33*
+## 🤖 Assistant
+*2024-03-11 13:45:33*
 
 以下は、要求された関数をプロトコルで定義したものです。
 
@@ -64,8 +64,8 @@ protocol Logging {
 
 ---
 
-## 👤 ユーザー
-*2024/03/11 14:00:49*
+## 👤 User
+*2024-03-11 14:00:49*
 
 Swiftでxxxの変数を保持している protocol名を考えてほしい。LogDriverInterface であまりしっくりきていない。
 
@@ -77,8 +77,8 @@ protocol LogDriverInterface: LogDriverDependency {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/11 14:00:50*
+## 🤖 Assistant
+*2024-03-11 14:00:50*
 
 提案として、"Loggable" という名前のプロトコルを考えてみます。このプロトコルはログ関連の操作や振る舞いを定義します。
 

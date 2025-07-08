@@ -1,11 +1,11 @@
 # SwiftUI Pinterest Grid
 
-日付: 2024-07-30
+Date: 2024-07-30
 
 ---
 
-## 👤 ユーザー
-*2024/07/30 15:42:59*
+## 👤 User
+*2024-07-30 15:42:59*
 
 Pinterest風なグリッドデザインをSwiftUIで実装したい。2列の縦スクロールのViewで横の大きさは一定で縦の大きさが5段階に分かれている、その際に各列では縦の間を詰めて実装したい
 
@@ -28,22 +28,22 @@ private extension TalkBoxSize {
 
 ---
 
-## 🤖 アシスタント
-*2024/07/30 15:43:17*
+## 🤖 Assistant
+*2024-07-30 15:43:17*
 
 User wants to implement a Pinterest-like grid design in SwiftUI with a vertically scrolling view with 2 columns, where the width is fixed and the height is divided into 5 sizes. They want to reduce vertical spacing between items within each column.
 
 ---
 
-## 🔧 ツール
-*2024/07/30 15:43:17*
+## 🔧 Tool
+*2024-07-30 15:43:17*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/07/30 15:43:17*
+## 🤖 Assistant
+*2024-07-30 15:43:17*
 
 Pinterest風のグリッドデザインをSwiftUIで実装するには、`LazyVGrid`を使用し、カスタムサイズのアイテムを配置する方法が効果的です。以下はその実装例です。
 
@@ -109,15 +109,15 @@ struct PinterestGridView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2024/07/30 15:45:43*
+## 👤 User
+*2024-07-30 15:45:43*
 
 これだと横の塊で同じ高さを取ってしまっていて、一つ一つの列では垂直方向に詰まっていない
 
 ---
 
-## 🤖 アシスタント
-*2024/07/30 15:45:53*
+## 🤖 Assistant
+*2024-07-30 15:45:53*
 
 アイテムをPinterest風に配置するために、各列が独立して高さを決定し、垂直方向に詰めるようにするには、カスタムレイアウトを使用する必要があります。以下のコードはその実装例です。
 

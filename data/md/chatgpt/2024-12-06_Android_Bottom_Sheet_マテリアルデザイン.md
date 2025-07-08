@@ -1,18 +1,18 @@
 # Android Bottom Sheet マテリアルデザイン
 
-日付: 2024-12-06
+Date: 2024-12-06
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 19:25:31*
+## 👤 User
+*2024-12-06 19:25:31*
 
 Android sheet遷移
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 19:25:43*
+## 🤖 Assistant
+*2024-12-06 19:25:43*
 
 Androidでボトムシートの遷移を実装する場合、`BottomSheetDialogFragment` や `BottomSheetBehavior` を使用する方法があります。以下は基本的な遷移の手順について解説します。
 

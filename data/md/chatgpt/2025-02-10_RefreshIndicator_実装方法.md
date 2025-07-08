@@ -1,11 +1,11 @@
 # RefreshIndicator 実装方法
 
-日付: 2025-02-10
+Date: 2025-02-10
 
 ---
 
-## 👤 ユーザー
-*2025/02/11 08:58:34*
+## 👤 User
+*2025-02-11 08:58:34*
 
 RefreshIndicatorをつけたい
 
@@ -600,8 +600,8 @@ class GuildManagePage extends HookConsumerWidget {
 
 ---
 
-## 🔧 ツール
-*2025/02/11 08:58:50*
+## 🔧 Tool
+*2025-02-11 08:58:50*
 
 **探し求めている**
 
@@ -609,8 +609,8 @@ UserさんがRefreshIndicatorをSingleChildScrollViewに加える方法を探し
 
 ---
 
-## 🤖 アシスタント
-*2025/02/11 08:58:50*
+## 🤖 Assistant
+*2025-02-11 08:58:50*
 
 `RefreshIndicator` を使うには、**スクロール可能なウィジェット**を子に持たせる必要があります。  
 `SingleChildScrollView` でも実現可能ですが、以下の 2 点に気をつける必要があります:
@@ -779,8 +779,8 @@ return Scaffold(
 
 ---
 
-## 👤 ユーザー
-*2025/02/11 09:04:20*
+## 👤 User
+*2025-02-11 09:04:20*
 
 {
   "content_type": "image_asset_pointer",
@@ -1403,8 +1403,8 @@ class GuildManagePage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2025/02/11 09:04:41*
+## 🤖 Assistant
+*2025-02-11 09:04:41*
 
 通常、Pull-to-Refresh は「スクロールできる領域がある前提」で機能します。  
 今回のようにコンテンツが画面の高さ以下で、オーバースクロールが起きないケースでも画面上部から引っ張ってリフレッシュをしたい場合は、**スクロール領域を強制的に画面の高さ以上にする**方法が一般的です。
@@ -1523,8 +1523,8 @@ return Scaffold(
 
 ---
 
-## 👤 ユーザー
-*2025/02/11 09:26:02*
+## 👤 User
+*2025-02-11 09:26:02*
 
 以下の画面にRefreshIndicatorをつけたい
 
@@ -1767,8 +1767,8 @@ class _GuildLabel extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2025/02/11 09:26:20*
+## 🤖 Assistant
+*2025-02-11 09:26:20*
 
 Flutter の `RefreshIndicator` は、**スクロールできる領域がある場合**にのみ画面上端から引っ張ってリフレッシュできる仕組みです。  
 そのため、画面の高さよりコンテンツが少ない状況だと「引っ張り」動作が発生しません。
@@ -1943,15 +1943,15 @@ class _SpotTile extends StatelessWidget {
 
 ---
 
-## 👤 ユーザー
-*2025/02/11 09:27:18*
+## 👤 User
+*2025-02-11 09:27:18*
 
 LayoutBuilder はいいや
 
 ---
 
-## 🤖 アシスタント
-*2025/02/11 09:27:31*
+## 🤖 Assistant
+*2025-02-11 09:27:31*
 
 `LayoutBuilder` を使わずに実現したい場合、**`MediaQuery` を使って画面の高さ以上にコンテンツを広げる**方法がお手軽です。  
 `SingleChildScrollView` + `AlwaysScrollableScrollPhysics` で「常にスクロール可能」にしつつ、  

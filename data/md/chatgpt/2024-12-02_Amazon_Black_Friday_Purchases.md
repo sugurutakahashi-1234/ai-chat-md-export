@@ -1,18 +1,18 @@
 # Amazon Black Friday Purchases
 
-日付: 2024-12-02
+Date: 2024-12-02
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:20:03*
+## 👤 User
+*2024-12-02 20:20:03*
 
 I want to practice English. The theme is about what I bought on Amazon Black Friday this month.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:20:03*
+## 🤖 Assistant
+*2024-12-02 20:20:03*
 
 Great idea! Let's practice talking about your Amazon Black Friday purchases. Here's a possible structure for your English practice:
 
@@ -32,15 +32,15 @@ Would you like me to help you expand this, or do you want to write a short parag
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:20:29*
+## 👤 User
+*2024-12-02 20:20:29*
 
 I would like to practice Amazon Black Friday in English.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:20:29*
+## 🤖 Assistant
+*2024-12-02 20:20:29*
 
 Sure! Let’s practice. Try saying a few sentences about your experience. For example:  
 
@@ -50,15 +50,15 @@ You can give it a try now. What did you buy during Black Friday?
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:20:57*
+## 👤 User
+*2024-12-02 20:20:57*
 
 And I buy cable.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:20:57*
+## 🤖 Assistant
+*2024-12-02 20:20:57*
 
 That's a good start! You can expand it like this:  
 
@@ -68,15 +68,15 @@ Want to try saying it yourself? Or tell me more about the cable—what kind was 
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:21:27*
+## 👤 User
+*2024-12-02 20:21:27*
 
 please this display.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:21:27*
+## 🤖 Assistant
+*2024-12-02 20:21:27*
 
 Sure! Here's how it could look:  
 
@@ -86,15 +86,15 @@ Would you like to add more details about the cable, such as its type or brand? O
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:21:57*
+## 👤 User
+*2024-12-02 20:21:57*
 
 I like Anka, or Ugreen, or Elcon.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:21:57*
+## 🤖 Assistant
+*2024-12-02 20:21:57*
 
 Nice! Here's an example using your favorite brands:  
 
@@ -104,15 +104,15 @@ Would you like to try saying it yourself? Or share which brand you chose?
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:22:24*
+## 👤 User
+*2024-12-02 20:22:24*
 
 Please throw in English.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:22:24*
+## 🤖 Assistant
+*2024-12-02 20:22:24*
 
 Of course! Here's a polished version:  
 
@@ -122,15 +122,15 @@ How does that sound? Would you like to practice more?
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:22:48*
+## 👤 User
+*2024-12-02 20:22:48*
 
 Please speak in Japanese after English. And I want you to speak in simple English.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:22:49*
+## 🤖 Assistant
+*2024-12-02 20:22:49*
 
 Sure! Here’s a simple version with Japanese translation:
 
@@ -142,15 +142,15 @@ Does this help? Would you like to add more details?
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:23:27*
+## 👤 User
+*2024-12-02 20:23:27*
 
 I want you to display the content of the conversation. Can you do that?
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:23:27*
+## 🤖 Assistant
+*2024-12-02 20:23:27*
 
 Here’s the full content of the conversation so far:
 
@@ -192,29 +192,29 @@ Let me know if this works for you or if you want anything changed!
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:24:22*
+## 👤 User
+*2024-12-02 20:24:22*
 
 I talk...
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:24:22*
+## 🤖 Assistant
+*2024-12-02 20:24:22*
 
 Great! Go ahead and share what you want to say. If you need help or corrections, I’m here to support you! 😊
 
 ---
 
-## 👤 ユーザー
-*2024/12/02 20:24:49*
+## 👤 User
+*2024-12-02 20:24:49*
 
 Please Japanese translation after you speak in English.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/02 20:24:49*
+## 🤖 Assistant
+*2024-12-02 20:24:49*
 
 Got it! Share what you’d like to say, and I’ll respond in English followed by the Japanese translation. Let’s practice!
 

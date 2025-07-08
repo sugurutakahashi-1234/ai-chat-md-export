@@ -1,11 +1,11 @@
 # Update isLoading on MainActor
 
-日付: 2024-06-17
+Date: 2024-06-17
 
 ---
 
-## 👤 ユーザー
-*2024/06/17 11:26:51*
+## 👤 User
+*2024-06-17 11:26:51*
 
 parent.isLoading = true
 Main actor-isolated property 'isLoading' can not be mutated from a non-isolated context; this is an error in the Swift 6 language mode
@@ -66,8 +66,8 @@ public struct SimpleWebView: UIViewRepresentable {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/17 11:27:05*
+## 🤖 Assistant
+*2024-06-17 11:27:05*
 
 The error occurs because the `isLoading` property is a `@Binding` and is actor-isolated to the `MainActor`, while the `webView(_:didStartProvisionalNavigation:)` and `webView(_:didFinish:)` methods are nonisolated. To fix this, you need to ensure that the access to `isLoading` happens on the main actor. You can do this by using `DispatchQueue.main.async` or by making the functions isolated to `MainActor`.
 

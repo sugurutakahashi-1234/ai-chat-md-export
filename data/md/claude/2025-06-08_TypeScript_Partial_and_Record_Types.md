@@ -1,11 +1,11 @@
 # TypeScript Partial and Record Types
 
-日付: 2025-06-08
+Date: 2025-06-08
 
 ---
 
-## 👤 ユーザー
-*2025/06/08 18:29:44*
+## 👤 User
+*2025-06-08 18:29:44*
 
 TypeScriptのPartialとRecordの型について教えて欲しい
 
@@ -28,8 +28,8 @@ const prismaErrorMapping: Partial&lt;Record&lt;PrismaErrorCode, ApiErrorType&gt;
 
 ---
 
-## 🤖 アシスタント
-*2025/06/08 18:30:05*
+## 🤖 Assistant
+*2025-06-08 18:30:05*
 
 TypeScriptの`Partial`と`Record`型について、コード例を交えて説明します。
 

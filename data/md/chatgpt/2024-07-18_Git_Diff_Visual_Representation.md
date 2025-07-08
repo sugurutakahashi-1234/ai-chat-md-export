@@ -1,18 +1,18 @@
 # Git Diff Visual Representation
 
-日付: 2024-07-18
+Date: 2024-07-18
 
 ---
 
-## 👤 ユーザー
-*2024/07/18 14:13:56*
+## 👤 User
+*2024-07-18 14:13:56*
 
 git diff 画像
 
 ---
 
-## 🤖 アシスタント
-*2024/07/18 14:14:02*
+## 🤖 Assistant
+*2024-07-18 14:14:02*
 
 Git diff is a command used to show the changes between commits, commit and working tree, etc. However, it does not generate images but text output. If you want to visualize your Git diffs as images or more graphically, you might use tools like GitKraken, Sourcetree, or other Git GUIs.
 

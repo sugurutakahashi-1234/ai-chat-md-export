@@ -1,11 +1,11 @@
 # Guild Member Tile Widget
 
-日付: 2024-12-25
+Date: 2024-12-25
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 14:16:42*
+## 👤 User
+*2024-12-25 14:16:42*
 
 _GuildMemberTile を定義してほしい
 
@@ -508,29 +508,29 @@ class _NoGuildWidget extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 14:17:01*
+## 🤖 Assistant
+*2024-12-25 14:17:01*
 
 Here's the implementation for `_GuildMemberTile`, following the conventions and design patterns in your existing code:
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 14:17:01*
+## 🤖 Assistant
+*2024-12-25 14:17:01*
 
 {"name": "guild_member_tile", "type": "code/dart", "content": "import 'package:flutter/material.dart';\nimport 'package:flutter_hooks/flutter_hooks.dart';\nimport 'package:flutter_svg/svg.dart';\nimport 'package:snpit_guild_app/presentation/design_token/color_token.dart';\nimport 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';\n\nclass GuildMemberTile extends StatelessWidget {\n  final String userId;\n  final String avatarUrl;\n  final Map&lt;String, int&gt; stats;\n\n  const GuildMemberTile({\n    Key? key,\n    required this.userId,\n    required this.avatarUrl,\n    required this.stats,\n  }) : super(key: key);\n\n  @override\n  Widget build(BuildContext context) {\n    return Padding(\n      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),\n      child: DecoratedBox(\n        decoration: BoxDecoration(\n          borderRadius: BorderRadius.circular(4),\n          border: Border.all(color: ColorToken.secondary),\n        ),\n        child: Padding(\n          padding: const EdgeInsets.all(12),\n          child: Row(\n            children: [\n              CircleAvatar(\n                radius: 16,\n                backgroundImage: NetworkImage(avatarUrl),\n              ),\n              const SizedBox(width: 12),\n              Expanded(\n                child: Column(\n                  crossAxisAlignment: CrossAxisAlignment.start,\n                  children: [\n                    Text(\n                      userId,\n                      maxLines: 1,\n                      overflow: TextOverflow.ellipsis,\n                      style: const TextStyle(\n                        color: Colors.white,\n                        fontSize: 16,\n                        fontWeight: FontWeight.bold,\n                      ),\n                    ),\n                    const SizedBox(height: 8),\n                    Row(\n                      children: List.generate(\n                        4,\n                        (badgeIndex) =&gt; Padding(\n                          padding: const EdgeInsets.only(right: 4),\n                          child: ClipRRect(\n                            borderRadius: BorderRadius.circular(4),\n                            child: SizedBox(\n                              width: 28,\n                              height: 28,\n                              child: Image.network(\n                                UriExtensions.randomImageUrl.toString(),\n                                fit: BoxFit.cover,\n                              ),\n                            ),\n                          ),\n                        ),\n                      ),\n                    ),\n                  ],\n                ),\n              ),\n              const SizedBox(width: 12),\n              Column(\n                crossAxisAlignment: CrossAxisAlignment.end,\n                children: stats.entries\n                    .map((entry) =&gt; _buildStatRow(entry.key, entry.value))\n                    .toList(),\n              ),\n            ],\n          ),\n        ),\n      ),\n    );\n  }\n\n  Widget _buildStatRow(String label, int value) {\n    return Padding(\n      padding: const EdgeInsets.symmetric(vertical: 4),\n      child: Row(\n        children: [\n          Text(\n            label,\n            style: const TextStyle(\n              color: Colors.white,\n              fontSize: 14,\n            ),\n          ),\n          const SizedBox(width: 4),\n          Text(\n            value.toString(),\n            style: const TextStyle(\n              color: Colors.white,\n              fontSize: 14,\n            ),\n          ),\n          const SizedBox(width: 4),\n          SizedBox(\n            width: 50,\n            child: LinearProgressIndicator(\n              value: value / 100,\n              color: ColorToken.primary,\n              backgroundColor: ColorToken.bg,\n            ),\n          ),\n        ],\n      ),\n    );\n  }\n}"}
 
 ---
 
-## 🔧 ツール
-*2024/12/25 14:17:01*
+## 🔧 Tool
+*2024-12-25 14:17:01*
 
 {"result": "Successfully created text document 'guild_member_tile' which will be referenced in all future messages with the unique identifier textdoc_id: '676b954907bc8191b0ce02888962c41c'", "textdoc_id": "676b954907bc8191b0ce02888962c41c", "name": "guild_member_tile"}
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 14:17:01*
+## 🤖 Assistant
+*2024-12-25 14:17:01*
 
 ### Usage
 You can use the `_GuildMemberTile` within your `ListView.builder` as follows:

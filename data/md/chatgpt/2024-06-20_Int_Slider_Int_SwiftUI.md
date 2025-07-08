@@ -1,19 +1,19 @@
 # Int Slider Int SwiftUI
 
-日付: 2024-06-20
+Date: 2024-06-20
 
 ---
 
-## 👤 ユーザー
-*2024/06/20 12:33:25*
+## 👤 User
+*2024-06-20 12:33:25*
 
 SwiftUIでSliderでIntを扱いたい。
 Slider(value: $presenter.recordingVolumeLevelsSize, in: 10...100)
 
 ---
 
-## 🤖 アシスタント
-*2024/06/20 12:33:36*
+## 🤖 Assistant
+*2024-06-20 12:33:36*
 
 `Slider` in SwiftUI typically works with `Double` values. To handle `Int` values, you can create a computed property to convert between `Double` and `Int`. Here's an example of how to achieve this:
 
@@ -67,15 +67,15 @@ This way, you can handle `Int` values with a `Slider` in SwiftUI.
 
 ---
 
-## 👤 ユーザー
-*2024/06/20 12:33:54*
+## 👤 User
+*2024-06-20 12:33:54*
 
 get や、setを使いたくない。
 
 ---
 
-## 🤖 アシスタント
-*2024/06/20 12:34:06*
+## 🤖 Assistant
+*2024-06-20 12:34:06*
 
 If you prefer not to use `get` and `set` for computed properties, you can achieve the same functionality by using a separate `Int` property that updates a `Double` property in its `didSet` and `willSet` observers. Here's an example:
 
@@ -125,15 +125,15 @@ This way, you avoid using `get` and `set` directly while keeping the `Int` and `
 
 ---
 
-## 👤 ユーザー
-*2024/06/20 12:34:15*
+## 👤 User
+*2024-06-20 12:34:15*
 
 didSet も WillSetも使いたくない。
 
 ---
 
-## 🤖 アシスタント
-*2024/06/20 12:34:25*
+## 🤖 Assistant
+*2024-06-20 12:34:25*
 
 If you want to avoid using `get`, `set`, `didSet`, and `willSet`, you can achieve the same result by updating the `Int` property manually within the `Slider`'s action. Here's an example:
 

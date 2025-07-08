@@ -1,11 +1,11 @@
 # Dependency conflict resolution
 
-日付: 2025-03-06
+Date: 2025-03-06
 
 ---
 
-## 👤 ユーザー
-*2025/03/06 13:23:21*
+## 👤 User
+*2025-03-06 13:23:21*
 
 ~/git/gallusys/snpit_guild_app  ‹feature/315*› $ make get                                                                 2 ↵
 /Applications/Xcode_16.3_beta_1.app/Contents/Developer/usr/bin/make clean
@@ -180,8 +180,8 @@ flutter_native_splash:
 
 ---
 
-## 🤖 アシスタント
-*2025/03/06 13:23:22*
+## 🤖 Assistant
+*2025-03-06 13:23:22*
 
 Your dependency conflict is caused by `openapi_generator` (`^6.1.0`) requiring `analyzer >=2.0.0 <7.0.0`, while `riverpod_generator` (`^2.6.4`) requires `analyzer ^7.0.0`. This means that both dependencies have incompatible `analyzer` versions.
 
@@ -253,8 +253,8 @@ Let me know if you need further debugging! 🚀
 
 ---
 
-## 👤 ユーザー
-*2025/03/06 13:25:08*
+## 👤 User
+*2025-03-06 13:25:08*
 
 make get                                                                 2 ↵
 /Applications/Xcode_16.3_beta_1.app/Contents/Developer/usr/bin/make clean
@@ -280,8 +280,8 @@ make: *** [get] Error 1
 
 ---
 
-## 🤖 アシスタント
-*2025/03/06 13:25:09*
+## 🤖 Assistant
+*2025-03-06 13:25:09*
 
 Your dependency conflict now involves `json_serializable`, `riverpod_generator`, and `openapi_generator`. The issue arises because:
 

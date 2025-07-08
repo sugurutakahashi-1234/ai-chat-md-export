@@ -1,11 +1,11 @@
 # Swift: Handle AuthError enum
 
-日付: 2023-10-26
+Date: 2023-10-26
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 09:06:12*
+## 👤 User
+*2023-10-26 09:06:12*
 
 以下の AuthError を switch 文で case でそれぞれのパラメーターをprintするような処理を書いて欲しい
 
@@ -38,8 +38,8 @@ public enum AuthError {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 09:06:43*
+## 🤖 Assistant
+*2023-10-26 09:06:43*
 
 こちらが、指定された `AuthError` enum を扱う `switch` 文を使用したコードのサンプルです：
 
@@ -93,15 +93,15 @@ func handleAuthError(error: AuthError) {
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 09:06:53*
+## 👤 User
+*2023-10-26 09:06:53*
 
 ごめん。print文は1行にして欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 09:07:22*
+## 🤖 Assistant
+*2023-10-26 09:07:22*
 
 了解しました。それぞれのエラーケースを1行で出力するように修正します：
 
@@ -139,15 +139,15 @@ func handleAuthError(error: AuthError) {
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 09:08:16*
+## 👤 User
+*2023-10-26 09:08:16*
 
 underlyingError は error に renameして、 handleAuthError(authError: AuthError) { にして、さらにmap と $0 はわかりにくいからもっと簡単に処理して欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 09:08:41*
+## 🤖 Assistant
+*2023-10-26 09:08:41*
 
 了解しました。以下のように修正します：
 
@@ -193,15 +193,15 @@ func errorDescription(from error: Error?) -> String {
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 09:08:54*
+## 👤 User
+*2023-10-26 09:08:54*
 
 errorDescription(from error: Error?) も使わずに書けないかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 09:09:25*
+## 🤖 Assistant
+*2023-10-26 09:09:25*
 
 もちろん、`errorDescription(from:)` 関数を使用しないでコードを書くことも可能です。以下のように修正できます：
 
@@ -239,15 +239,15 @@ func handleAuthError(authError: AuthError) {
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 10:26:13*
+## 👤 User
+*2023-10-26 10:26:13*
 
 AuthError は SDK 側の型でクリーンアーキテクチャを採用しているので、AuthDetailErrorという型を新たに作ってそれにマップするような処理を書いて欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 10:26:29*
+## 🤖 Assistant
+*2023-10-26 10:26:29*
 
 了解しました。`AuthDetailError`という新しい型を作成し、`AuthError`からこの新しい型にマップする関数を提供します。
 

@@ -1,11 +1,11 @@
 # Upgrade Xcode for Swift
 
-日付: 2024-06-23
+Date: 2024-06-23
 
 ---
 
-## 👤 ユーザー
-*2024/06/23 13:40:10*
+## 👤 User
+*2024-06-23 13:40:10*
 
 swift run --package-path ./MintCLIPackage mint run mockolo -s ././SmallTalkPackage/Sources -d ././SmallTalkPackage/Sources/Presentation/Domain/Entity/Mocks.swift --custom-imports DomainLayer Combine -x Images Strings --mock-final
 warning: could not determine XCTest paths: terminated(1): /usr/bin/xcrun --sdk macosx --show-sdk-platform-path output:
@@ -17,8 +17,8 @@ make: *** [mockolo-code-gen] Error 1
 
 ---
 
-## 🤖 アシスタント
-*2024/06/23 13:40:23*
+## 🤖 Assistant
+*2024-06-23 13:40:23*
 
 The error you're encountering is due to the `mintclipackage` requiring Swift tools version 6.0.0, while your installed version is 5.10.0. Additionally, there is an issue with the `xcrun` command, which is not able to find the platform path for macOS SDK.
 

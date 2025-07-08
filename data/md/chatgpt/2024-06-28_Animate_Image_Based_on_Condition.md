@@ -1,11 +1,11 @@
 # Animate Image Based on Condition
 
-日付: 2024-06-28
+Date: 2024-06-28
 
 ---
 
-## 👤 ユーザー
-*2024/06/28 12:43:40*
+## 👤 User
+*2024-06-28 12:43:40*
 
 以下をisZero ではないときにずっと動かし続けたい
 
@@ -17,8 +17,8 @@ SFSymbols.waveform.image
 
 ---
 
-## 🤖 アシスタント
-*2024/06/28 12:43:49*
+## 🤖 Assistant
+*2024-06-28 12:43:49*
 
 `symbolEffect` modifier can be applied conditionally to the `Image` to animate it continuously when `isZero` is false. Here’s how you can achieve that:
 

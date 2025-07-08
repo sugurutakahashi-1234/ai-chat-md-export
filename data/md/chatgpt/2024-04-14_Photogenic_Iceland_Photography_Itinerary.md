@@ -1,18 +1,18 @@
 # Photogenic Iceland Photography Itinerary
 
-日付: 2024-04-14
+Date: 2024-04-14
 
 ---
 
-## 👤 ユーザー
-*2024/04/14 11:31:44*
+## 👤 User
+*2024-04-14 11:31:44*
 
 I love taking photos of nature. Can you come up with a 3-day itinerary visiting the most photogenic places in Iceland?
 
 ---
 
-## 🤖 アシスタント
-*2024/04/14 11:31:49*
+## 🤖 Assistant
+*2024-04-14 11:31:49*
 
 Absolutely! Iceland is a photographer's paradise with its stunning landscapes. Here's a suggested 3-day itinerary:
 

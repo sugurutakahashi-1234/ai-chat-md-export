@@ -1,11 +1,11 @@
 # Conversation Summary Title
 
-日付: 2024-10-30
+Date: 2024-10-30
 
 ---
 
-## 👤 ユーザー
-*2024/10/30 09:48:05*
+## 👤 User
+*2024-10-30 09:48:05*
 
 {
   "content_type": "real_time_user_audio_video_asset_pointer",
@@ -36,8 +36,8 @@
 
 ---
 
-## 🤖 アシスタント
-*2024/10/30 09:48:05*
+## 🤖 Assistant
+*2024-10-30 09:48:05*
 
 Hey! How can I help you today?
 {

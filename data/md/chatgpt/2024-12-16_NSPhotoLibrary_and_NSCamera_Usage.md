@@ -1,19 +1,19 @@
 # NSPhotoLibrary and NSCamera Usage
 
-日付: 2024-12-16
+Date: 2024-12-16
 
 ---
 
-## 👤 ユーザー
-*2024/12/16 15:43:37*
+## 👤 User
+*2024-12-16 15:43:37*
 
 NSPhotoLibraryUsageDescription
 NSCameraUsageDescription
 
 ---
 
-## 🤖 アシスタント
-*2024/12/16 15:43:46*
+## 🤖 Assistant
+*2024-12-16 15:43:46*
 
 In iOS development, `NSPhotoLibraryUsageDescription` and `NSCameraUsageDescription` are keys used in the app's `Info.plist` file to request permissions for accessing the photo library and camera, respectively. They are mandatory if your app interacts with these features. Without these descriptions, your app will crash when attempting to access these resources.
 
@@ -35,15 +35,15 @@ Do you need help writing or localizing the descriptions for your app?
 
 ---
 
-## 👤 ユーザー
-*2024/12/16 15:44:03*
+## 👤 User
+*2024-12-16 15:44:03*
 
 適当な一般的な理由を記述して欲しい
 
 ---
 
-## 🤖 アシスタント
-*2024/12/16 15:44:10*
+## 🤖 Assistant
+*2024-12-16 15:44:10*
 
 以下は、一般的な理由として使える記述例です。用途に応じて調整してください。
 
@@ -73,15 +73,15 @@ Do you need help writing or localizing the descriptions for your app?
 
 ---
 
-## 👤 ユーザー
-*2024/12/16 15:44:12*
+## 👤 User
+*2024-12-16 15:44:12*
 
 英語で
 
 ---
 
-## 🤖 アシスタント
-*2024/12/16 15:44:17*
+## 🤖 Assistant
+*2024-12-16 15:44:17*
 
 以下は、英語での一般的な記述例です。アプリの目的に合わせて調整してください。
 
@@ -109,15 +109,15 @@ These explanations are concise and user-friendly. If you'd like more tailored or
 
 ---
 
-## 👤 ユーザー
-*2024/12/16 15:44:55*
+## 👤 User
+*2024-12-16 15:44:55*
 
 Privacy - Location When In Use Usage Descriptionも
 
 ---
 
-## 🤖 アシスタント
-*2024/12/16 15:45:03*
+## 🤖 Assistant
+*2024-12-16 15:45:03*
 
 以下は、`Privacy - Location When In Use Usage Description` (`NSLocationWhenInUseUsageDescription`) の英語での一般的な記述例です。
 

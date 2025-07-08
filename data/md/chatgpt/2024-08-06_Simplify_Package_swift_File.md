@@ -1,11 +1,11 @@
 # Simplify Package.swift File
 
-日付: 2024-08-06
+Date: 2024-08-06
 
 ---
 
-## 👤 ユーザー
-*2024/08/06 13:58:00*
+## 👤 User
+*2024-08-06 13:58:00*
 
 typesafeな記述にしているがシンプルな記述に直したい
 
@@ -306,8 +306,8 @@ private extension String {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/06 13:58:30*
+## 🤖 Assistant
+*2024-08-06 13:58:30*
 
 The given `Package.swift` file defines a Swift package with a comprehensive setup using enums and extensions for better organization and type safety. However, if you want to simplify it, we can reduce the use of enums and extensions while keeping the core functionality intact.
 
@@ -502,15 +502,15 @@ This approach maintains the core functionality but simplifies the structure, mak
 
 ---
 
-## 👤 ユーザー
-*2024/08/06 14:01:44*
+## 👤 User
+*2024-08-06 14:01:44*
 
 path を指定しているので気をつけて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2024/08/06 14:02:11*
+## 🤖 Assistant
+*2024-08-06 14:02:11*
 
 了解しました。パスの指定を考慮した上でシンプルな記述に改めます。
 

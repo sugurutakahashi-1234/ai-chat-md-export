@@ -1,11 +1,11 @@
 # GestureDetector 修正方法
 
-日付: 2024-12-23
+Date: 2024-12-23
 
 ---
 
-## 👤 ユーザー
-*2024/12/23 20:27:39*
+## 👤 User
+*2024-12-23 20:27:39*
 
 GestureDetector(
       onTap: () {
@@ -83,8 +83,8 @@ class LoginPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/23 20:27:53*
+## 🤖 Assistant
+*2024-12-23 20:27:53*
 
 If you want to simplify your `GestureDetector` to wrap only the `body` of the `Scaffold`, you can move it to wrap around the `Padding` inside the `Scaffold`. Here's the updated code:
 

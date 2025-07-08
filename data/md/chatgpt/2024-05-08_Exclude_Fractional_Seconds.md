@@ -1,11 +1,11 @@
 # Exclude Fractional Seconds
 
-日付: 2024-05-08
+Date: 2024-05-08
 
 ---
 
-## 👤 ユーザー
-*2024/05/08 19:44:14*
+## 👤 User
+*2024-05-08 19:44:14*
 
 以下だとFractionalSecondsも含むようになってしまうので含まない形式で出力するようにしたい。
 
@@ -21,8 +21,8 @@ public extension ISO8601DateFormatter {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/08 19:44:35*
+## 🤖 Assistant
+*2024-05-08 19:44:35*
 
 以下のコードは、`ISO8601DateFormatter`を使用して日付をフォーマットする際に、秒の小数部（Fractional Seconds）を含まないように設定する方法です。`.withFractionalSeconds` オプションを除去しています。
 

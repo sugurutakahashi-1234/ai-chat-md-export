@@ -1,11 +1,11 @@
 # GuildCodePage Improvements
 
-日付: 2024-12-24
+Date: 2024-12-24
 
 ---
 
-## 👤 ユーザー
-*2024/12/24 14:06:16*
+## 👤 User
+*2024-12-24 14:06:16*
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -72,8 +72,8 @@ class GuildCodePage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/24 14:06:22*
+## 🤖 Assistant
+*2024-12-24 14:06:22*
 
 Your implementation of the `GuildCodePage` is clean and well-structured. Here's a quick review and some potential improvements or considerations:
 

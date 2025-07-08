@@ -1,11 +1,11 @@
 # AAPT2 Build Error Fix
 
-日付: 2024-12-11
+Date: 2024-12-11
 
 ---
 
-## 👤 ユーザー
-*2024/12/11 22:49:24*
+## 👤 User
+*2024-12-11 22:49:24*
 
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 Running Gradle task 'assembleDebug'...
@@ -28,8 +28,8 @@ Error: Gradle task assembleDebug failed with exit code 1
 
 ---
 
-## 🤖 アシスタント
-*2024/12/11 22:49:37*
+## 🤖 Assistant
+*2024-12-11 22:49:37*
 
 The error you're encountering is related to the missing or incorrect path for the `aapt2` executable in your Android build process. This tool is responsible for packaging and linking Android resources, and its absence is causing the build failure.
 
@@ -84,8 +84,8 @@ After trying these steps, try rebuilding the project again using `flutter run` t
 
 ---
 
-## 👤 ユーザー
-*2024/12/11 22:51:22*
+## 👤 User
+*2024-12-11 22:51:22*
 
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 
@@ -107,8 +107,8 @@ Error: Gradle task assembleDebug failed with exit code 1
 
 ---
 
-## 🤖 アシスタント
-*2024/12/11 22:51:36*
+## 🤖 Assistant
+*2024-12-11 22:51:36*
 
 The error you're encountering (`No such file or directory` related to `aar-metadata.properties`) suggests that there might be a missing or corrupted `.aar` file (Android Archive) or metadata associated with it. This can sometimes happen when the Gradle cache or project dependencies are not properly synchronized.
 
@@ -157,8 +157,8 @@ After trying these steps, rebuild your project and check if the error is resolve
 
 ---
 
-## 👤 ユーザー
-*2024/12/11 23:03:31*
+## 👤 User
+*2024-12-11 23:03:31*
 
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 
@@ -182,8 +182,8 @@ Exited (1).
 
 ---
 
-## 🤖 アシスタント
-*2024/12/11 23:03:43*
+## 🤖 Assistant
+*2024-12-11 23:03:43*
 
 The error you're encountering is related to a missing `aar-metadata.properties` file for the `fragment-1.7.1` dependency. This typically happens when there is an issue with the Gradle cache or a problem with the dependency metadata.
 

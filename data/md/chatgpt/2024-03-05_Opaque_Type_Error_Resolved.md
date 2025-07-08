@@ -1,11 +1,11 @@
 # Opaque Type Error Resolved
 
-日付: 2024-03-05
+Date: 2024-03-05
 
 ---
 
-## 👤 ユーザー
-*2024/03/06 00:50:22*
+## 👤 User
+*2024-03-06 00:50:22*
 
 @MainActor
 final class DeviceInfoPresenter&lt;Dependency: DeviceInfoPresenterDependency&gt;: ObservableObject {
@@ -38,15 +38,15 @@ Cannot assign value of type 'DeviceInfoInteractor&lt;Dependency.BuildEnvReposito
 
 ---
 
-## 👤 ユーザー
-*2024/03/06 00:52:00*
+## 👤 User
+*2024-03-06 00:52:00*
 
 これだと any になって、some よりも処理性能が落ちてしまう。、
 
 ---
 
-## 🤖 アシスタント
-*2024/03/06 00:53:23*
+## 🤖 Assistant
+*2024-03-06 00:53:23*
 
 Swiftの`some`キーワードは、コンパイル時に具体的な型を確定させるために使用されます。これにより、`some`を使用することで、ジェネリックスやプロトコルに対する型の曖昧さを解消し、型安全性を高めることができます。しかし、`some`キーランタイム時の型の柔軟性は制限され、コンパイル時にその型が何であるかを確定させる必要があります。
 
@@ -62,15 +62,15 @@ private let deviceInfoUsecase: any DeviceInfoUsecase
 
 ---
 
-## 👤 ユーザー
-*2024/03/06 01:00:46*
+## 👤 User
+*2024-03-06 01:00:46*
 
 どうしてもanyキーワードを使いたくない。今回のケースとしてはDeviceInfoInteractorとわかっているのだけれども、DeviceInfoInteractor側が公開している変数を意図せずに呼べてしまうのがよくないんだ。
 
 ---
 
-## 🤖 アシスタント
-*2024/03/06 01:02:06*
+## 🤖 Assistant
+*2024-03-06 01:02:06*
 
 理解しました。`any`キーワードを避け、かつ`DeviceInfoInteractor`の具体的な実装を隠蔽しつつ、`DeviceInfoUsecase`プロトコルを通じてのみアクセスを許可したい場合、Swiftの型システム内で解決する方法が必要です。`some`キーワードを使用している場合、コンパイラはそのプロパティが一貫して同じ型を返すことを期待しますが、プロパティの宣言時に具体的な型を推論できる必要があります。
 
@@ -105,16 +105,16 @@ let usecaseWrapper = DeviceInfoUsecaseWrapper(interactor: DeviceInfoInteractor(.
 
 ---
 
-## 👤 ユーザー
-*2024/03/06 01:14:41*
+## 👤 User
+*2024-03-06 01:14:41*
 
 これは求めているものではなかった。
 whereとかを用いてうまく解決できないのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/03/06 01:16:31*
+## 🤖 Assistant
+*2024-03-06 01:16:31*
 
 了解しました。`where`句を使用して、ジェネリック型の制約を指定する方法で問題を解決しようとするアプローチについて考えてみましょう。ただし、`some`キーワードを使用した場合の主な課題は、プロパティが一貫して同じ型を返すことを保証する必要がある点です。これは、プロパティ宣言時には直接解決できない問題です。
 

@@ -1,11 +1,11 @@
 # Add NSMicrophoneUsageDescription Key
 
-日付: 2024-05-09
+Date: 2024-05-09
 
 ---
 
-## 👤 ユーザー
-*2024/05/09 17:54:38*
+## 👤 User
+*2024-05-09 17:54:38*
 
 Preview でこのようなエラーになってしまった
 
@@ -13,8 +13,8 @@ This app has crashed because it attempted to access privacy-sensitive data witho
 
 ---
 
-## 🤖 アシスタント
-*2024/05/09 17:55:08*
+## 🤖 Assistant
+*2024-05-09 17:55:08*
 
 このエラーメッセージは、アプリがマイクロフォンのデータへのアクセスを試みたが、`Info.plist` ファイルに必要な説明がないためにクラッシュしたことを示しています。ユーザーのプライバシーに関わるデータへアクセスする場合、iOSは開発者がその理由をユーザーに説明することを義務付けています。
 
@@ -30,15 +30,15 @@ This app has crashed because it attempted to access privacy-sensitive data witho
 
 ---
 
-## 👤 ユーザー
-*2024/05/09 17:56:05*
+## 👤 User
+*2024-05-09 17:56:05*
 
 これはSwiftUIのPreviewなんだ info.plistでは設定できない
 
 ---
 
-## 🤖 アシスタント
-*2024/05/09 17:56:53*
+## 🤖 Assistant
+*2024-05-09 17:56:53*
 
 SwiftUIのプレビューで `NSMicrophoneUsageDescription` のエラーが発生している場合、Xcodeのプレビュー環境に適用される `Info.plist` は異なる扱いになります。このような状況に対処する一つの方法は、プレビュー専用の設定を行うことです。
 
@@ -77,15 +77,15 @@ struct ContentView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2024/05/09 17:57:17*
+## 👤 User
+*2024-05-09 17:57:17*
 
 #if Preview などはできないのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/05/09 17:58:02*
+## 🤖 Assistant
+*2024-05-09 17:58:02*
 
 SwiftUIで `#if Preview` のようなプリプロセッサディレクティブを使用して直接プレビュー状態を判定する方法は用意されていません。Swift のプリプロセッサディレクティブはコンパイル時に評価されるため、ランタイム状態（例えばXcodeのプレビューがアクティブかどうか）に基づいた条件分岐を直接行うことはできません。
 

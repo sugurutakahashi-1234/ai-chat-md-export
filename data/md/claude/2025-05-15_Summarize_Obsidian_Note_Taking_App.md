@@ -1,26 +1,26 @@
 # Summarize Obsidian Note-Taking App
 
-日付: 2025-05-15
+Date: 2025-05-15
 
 ---
 
-## 👤 ユーザー
-*2025/05/16 00:28:22*
+## 👤 User
+*2025-05-16 00:28:22*
 
 brave-web-searchでObshibianについて調べてまとめて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2025/05/16 00:28:57*
+## 🤖 Assistant
+*2025-05-16 00:28:57*
 
 Obsidianについて調べて要約いたします。まず検索を行います。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 もう少し詳しい情報を集めるために、別の検索も行います。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 

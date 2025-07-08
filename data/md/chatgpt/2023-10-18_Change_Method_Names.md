@@ -1,11 +1,11 @@
 # Change Method Names
 
-日付: 2023-10-18
+Date: 2023-10-18
 
 ---
 
-## 👤 ユーザー
-*2023/10/18 22:07:08*
+## 👤 User
+*2023-10-18 22:07:08*
 
 format の命名を変えたい。いくつか候補をだしてほしい
 
@@ -34,8 +34,8 @@ public protocol PhoneNumberDriverProtocol: AnyObject {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/18 22:07:34*
+## 🤖 Assistant
+*2023-10-18 22:07:34*
 
 メソッド名を変更すると、そのメソッドの意図や行う作業がより明確に理解でき、コードの可読性が向上します。以下、`formatPartial` および `format` のメソッド名について、いくつかの代替案を提案します。
 
@@ -53,15 +53,15 @@ public protocol PhoneNumberDriverProtocol: AnyObject {
 
 ---
 
-## 👤 ユーザー
-*2023/10/18 22:08:20*
+## 👤 User
+*2023-10-18 22:08:20*
 
 formatToInternational は文法として正しい？
 
 ---
 
-## 🤖 アシスタント
-*2023/10/18 22:08:46*
+## 🤖 Assistant
+*2023-10-18 22:08:46*
 
 "formatToInternational" というメソッド名は、機能的には明確ですが、英語の文法的には少し不自然に感じられるかもしれません。これは、"format" が通常、"format something as something" または "format something in(to) some way" という文脈で使用される動詞であるためです。したがって、"to" の使用はこのコンテキストでは少し不適切に思われるかもしれません。
 
@@ -75,15 +75,15 @@ formatToInternational は文法として正しい？
 
 ---
 
-## 👤 ユーザー
-*2023/10/18 22:09:48*
+## 👤 User
+*2023-10-18 22:09:48*
 
 formatAsInternational は文法的に正しいの？
 
 ---
 
-## 🤖 アシスタント
-*2023/10/18 22:10:00*
+## 🤖 Assistant
+*2023-10-18 22:10:00*
 
 はい、"formatAsInternational" は文法的に正しいです。このメソッド名は、「国際的な形式としてフォーマットする」というアクションを示しています。
 

@@ -1,67 +1,67 @@
 # Framework-Independent Testable Architecture
 
-日付: 2024-04-08
+Date: 2024-04-08
 
 ---
 
-## 👤 ユーザー
-*2024/04/08 21:55:50*
+## 👤 User
+*2024-04-08 21:55:50*
 
 フレームワークに依存しないテスト可能なアーキテクチャー これを英語で表現してほしい。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/08 21:55:52*
+## 🤖 Assistant
+*2024-04-08 21:55:52*
 
 "Framework-independent testable architecture"
 
 ---
 
-## 👤 ユーザー
-*2024/04/08 21:56:16*
+## 👤 User
+*2024-04-08 21:56:16*
 
 これの略語を考えてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/04/08 21:56:18*
+## 🤖 Assistant
+*2024-04-08 21:56:18*
 
 "FITA" (Framework-Independent Testable Architecture)
 
 ---
 
-## 👤 ユーザー
-*2024/04/08 21:56:34*
+## 👤 User
+*2024-04-08 21:56:34*
 
 発音も考えてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/04/08 21:56:38*
+## 🤖 Assistant
+*2024-04-08 21:56:38*
 
 FITA could be pronounced as "FEE-tah". This pronunciation is straightforward, easy to remember, and avoids confusion with other acronyms.
 
 ---
 
-## 👤 ユーザー
-*2024/04/08 21:57:59*
+## 👤 User
+*2024-04-08 21:57:59*
 
 英語でメリットデメリットは道標お言される
 
 ---
 
-## 🤖 アシスタント
-*2024/04/08 21:58:01*
+## 🤖 Assistant
+*2024-04-08 21:58:01*
 
 In English, the advantages and disadvantages are often referred to as "pros and cons."
 
 ---
 
-## 👤 ユーザー
-*2024/04/08 21:58:24*
+## 👤 User
+*2024-04-08 21:58:24*
 
 READMEに書きたい。
 
@@ -73,8 +73,8 @@ READMEに書きたい。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/08 21:59:12*
+## 🤖 Assistant
+*2024-04-08 21:59:12*
 
 For your README, you might consider structuring the section on the Framework-Independent Testable Architecture (FITA) to introduce the concept, briefly describe it using the diagram you mentioned, and then list its pros and cons. Here's how you could write it:
 
@@ -107,15 +107,15 @@ This template outlines the key benefits and potential drawbacks of adopting FITA
 
 ---
 
-## 👤 ユーザー
-*2024/04/08 21:59:20*
+## 👤 User
+*2024-04-08 21:59:20*
 
 日本語で表現して。
 
 ---
 
-## 🤖 アシスタント
-*2024/04/08 22:01:22*
+## 🤖 Assistant
+*2024-04-08 22:01:22*
 
 READMEに書くための、Framework-Independent Testable Architecture (FITA)に関するセクションを日本語での構成を提案します。このコンセプトを紹介し、言及した図を使って簡単に説明した後、そのメリットとデメリットをリストアップする方法です。
 

@@ -1,11 +1,11 @@
 # GitHub Metrics Setup Guide
 
-日付: 2024-06-14
+Date: 2024-06-14
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 10:24:12*
+## 👤 User
+*2024-06-14 10:24:12*
 
 github/issue-metrics を使って GitHub Actions を設置してメトリクスを計測したい。以下のサンプルのどれを使ったら良さそうか教えてほしい。
 
@@ -13,22 +13,22 @@ https://github.com/github/issue-metrics/tree/a22b9da19a49939fe2d000cfe2e7f8caca7
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 10:24:30*
+## 🤖 Assistant
+*2024-06-14 10:24:30*
 
 User wants to use GitHub Actions with `github/issue-metrics` to measure metrics.
 
 ---
 
-## 🔧 ツール
-*2024/06/14 10:24:30*
+## 🔧 Tool
+*2024-06-14 10:24:30*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 10:24:30*
+## 🤖 Assistant
+*2024-06-14 10:24:30*
 
 To use `github/issue-metrics` for setting up GitHub Actions to measure metrics, you can follow the example provided in the repository documentation. Here's a step-by-step guide based on the information from the sources:
 
@@ -96,15 +96,15 @@ For more detailed information, refer to the [issue-metrics GitHub repository](ht
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 10:24:39*
+## 👤 User
+*2024-06-14 10:24:39*
 
 日本語でお願い。
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 10:24:56*
+## 🤖 Assistant
+*2024-06-14 10:24:56*
 
 `github/issue-metrics` を使用して GitHub Actions を設置し、メトリクスを計測する方法について日本語で説明します。
 
@@ -174,8 +174,8 @@ For more detailed information, refer to the [issue-metrics GitHub repository](ht
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 10:30:27*
+## 👤 User
+*2024-06-14 10:30:27*
 
 例えば以下のリポジトリだったらどうなる？
 
@@ -183,8 +183,8 @@ https://github.com/suguruTakahashi-1234/fia-practical-sample
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 10:30:49*
+## 🤖 Assistant
+*2024-06-14 10:30:49*
 
 `github/issue-metrics` を使用して `suguruTakahashi-1234/fia-practical-sample` リポジトリのメトリクスを計測する GitHub Actions を設定するための手順を以下に示します。
 
@@ -254,15 +254,15 @@ https://github.com/suguruTakahashi-1234/fia-practical-sample
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 10:33:50*
+## 👤 User
+*2024-06-14 10:33:50*
 
 ちなみに cron: '3 2 1 * *' はどう言う意味
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 10:33:57*
+## 🤖 Assistant
+*2024-06-14 10:33:57*
 
 `cron: '3 2 1 * *'` は、cron スケジュール表記を使用して、特定の時間にジョブを実行するための設定です。この例の意味を分解すると以下のようになります：
 
@@ -291,15 +291,15 @@ cron のスケジュール表記についての詳細は [Crontab.guru](https://
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 10:34:12*
+## 👤 User
+*2024-06-14 10:34:12*
 
 毎月1日に実行する場合はどうするの
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 10:34:29*
+## 🤖 Assistant
+*2024-06-14 10:34:29*
 
 毎月1日に実行する場合、cron スケジュールを以下のように設定します：
 
@@ -368,15 +368,15 @@ jobs:
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 10:35:16*
+## 👤 User
+*2024-06-14 10:35:16*
 
 content-filepath: ./issue_metrics.md はどう言う意味？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 10:35:39*
+## 🤖 Assistant
+*2024-06-14 10:35:39*
 
 `content-filepath: ./issue_metrics.md` は、GitHub Actions ワークフローの中で生成されたレポートの内容を指定されたファイルパスから読み込むことを意味します。具体的には、次のような手順で使用されます。
 
@@ -457,15 +457,15 @@ jobs:
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 10:36:39*
+## 👤 User
+*2024-06-14 10:36:39*
 
 repo 名を env を定義したい。
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 10:36:56*
+## 🤖 Assistant
+*2024-06-14 10:36:56*
 
 `repo` 名を環境変数として定義することで、ワークフローの柔軟性を向上させることができます。これを実現するためには、GitHub Actions の環境変数を使用します。
 
@@ -538,8 +538,8 @@ jobs:
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 11:43:46*
+## 👤 User
+*2024-06-14 11:43:46*
 
 以下になった。issue のタイトルに集計期間をつけたい
 
@@ -596,8 +596,8 @@ jobs:
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 11:44:06*
+## 🤖 Assistant
+*2024-06-14 11:44:06*
 
 issue のタイトルに集計期間を付けるためには、環境変数を使用して集計期間を生成し、その値をタイトルに追加することができます。以下のように設定を修正します。
 
@@ -668,15 +668,15 @@ jobs:
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 11:44:53*
+## 👤 User
+*2024-06-14 11:44:53*
 
 どんなタイトルになりそうですか？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 11:44:59*
+## 🤖 Assistant
+*2024-06-14 11:44:59*
 
 修正されたワークフローファイルを実行すると、例えば2024年6月1日にジョブが実行される場合、タイトルは以下のようになります：
 
@@ -698,15 +698,15 @@ jobs:
 
 ---
 
-## 👤 ユーザー
-*2024/06/14 11:51:50*
+## 👤 User
+*2024-06-14 11:51:50*
 
 issue だけではなくて、prだけ集計したい場合はどうすればいいの？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/14 11:52:08*
+## 🤖 Assistant
+*2024-06-14 11:52:08*
 
 Pull requests (PR) のみを集計する場合、`SEARCH_QUERY` を変更して PR に絞り込むことができます。以下のようにワークフローファイルを修正します。
 

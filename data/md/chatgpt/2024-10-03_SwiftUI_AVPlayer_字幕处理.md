@@ -1,18 +1,18 @@
 # SwiftUI AVPlayer 字幕处理
 
-日付: 2024-10-03
+Date: 2024-10-03
 
 ---
 
-## 👤 ユーザー
-*2024/10/03 16:09:31*
+## 👤 User
+*2024-10-03 16:09:31*
 
 SwiftUI avplayer 字幕
 
 ---
 
-## 🤖 アシスタント
-*2024/10/03 16:09:46*
+## 🤖 Assistant
+*2024-10-03 16:09:46*
 
 SwiftUI does not have a direct API for handling subtitles with `AVPlayer`. However, you can leverage `AVPlayer` and `AVPlayerLayer` from AVKit in combination with SwiftUI views to manage video playback with subtitles. Here's how you can display subtitles for a video using `AVPlayer` and `AVPlayerItemLegibleOutput` in SwiftUI.
 

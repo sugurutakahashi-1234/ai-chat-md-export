@@ -1,11 +1,11 @@
 # Applying Dart Fix and Formatting with Analysis Options
 
-日付: 2025-03-12
+Date: 2025-03-12
 
 ---
 
-## 👤 ユーザー
-*2025/03/12 16:37:48*
+## 👤 User
+*2025-03-12 16:37:48*
 
 dart fix --apply lib
 	find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/snpit_guild_api/snpit_guild_api_openapi_config.dart" ! -path "lib/guild_api/*" | xargs dart format
@@ -16,8 +16,8 @@ analysis_options.yaml
 
 ---
 
-## 🤖 アシスタント
-*2025/03/12 16:37:55*
+## 🤖 Assistant
+*2025-03-12 16:37:55*
 
 現在のコマンドは Fix の適用と Dart ファイルのフォーマットを行っていますが、analysis_options.yaml の設定を読み込んで実行することも可能です。
 
@@ -39,8 +39,8 @@ find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/
 
 ---
 
-## 👤 ユーザー
-*2025/03/12 16:39:09*
+## 👤 User
+*2025-03-12 16:39:09*
 
 $ find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/snpit_guild_api/snpit_guild_api_openapi_config.dart" ! -path "lib/guild_api/*" | xargs dart format --options=analysis_options.yaml
 Could not find an option named "--options".
@@ -66,8 +66,8 @@ Run "dart help" to see global options.
 
 ---
 
-## 🤖 アシスタント
-*2025/03/12 16:39:17*
+## 🤖 Assistant
+*2025-03-12 16:39:17*
 
 申し訳ありません、私の情報が古かったようです。`dart format` と `dart fix` コマンドには `--options` フラグがないようですね。
 
@@ -87,8 +87,8 @@ find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/
 
 ---
 
-## 👤 ユーザー
-*2025/03/12 16:42:21*
+## 👤 User
+*2025-03-12 16:42:21*
 
 わかったlefthook.ymlで実行するときにanalysis_options.yamlが読み込まれていないように思える
 
@@ -103,8 +103,8 @@ pre-commit:
 
 ---
 
-## 🤖 アシスタント
-*2025/03/12 16:42:29*
+## 🤖 Assistant
+*2025-03-12 16:42:29*
 
 なるほど、lefthook.yml での実行時に analysis_options.yaml の設定が読み込まれていない問題ですね。
 
@@ -134,15 +134,15 @@ linter:
 
 ---
 
-## 👤 ユーザー
-*2025/03/12 17:03:06*
+## 👤 User
+*2025-03-12 17:03:06*
 
 そもそもdart formatってanalysis_options.yaml の設定を読み込むのか？
 
 ---
 
-## 🤖 アシスタント
-*2025/03/12 17:03:14*
+## 🤖 Assistant
+*2025-03-12 17:03:14*
 
 実際のところ、`dart format` コマンドは `analysis_options.yaml` ファイルから設定を読み込みません。
 
@@ -160,8 +160,8 @@ lefthook.yml の問題については、コマンドの実行場所を確認す�
 
 ---
 
-## 👤 ユーザー
-*2025/03/12 17:06:40*
+## 👤 User
+*2025-03-12 17:06:40*
 
 このファイルのexcludeをしていしたい
 
@@ -200,8 +200,8 @@ linter:
 
 ---
 
-## 🤖 アシスタント
-*2025/03/12 17:06:49*
+## 🤖 Assistant
+*2025-03-12 17:06:49*
 
 ご理解していただきたいのは、`dart format` コマンドは `analysis_options.yaml` の `exclude` 設定を読み込みません。
 

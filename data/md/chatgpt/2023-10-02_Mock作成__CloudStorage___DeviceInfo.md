@@ -1,11 +1,11 @@
 # Mock作成: CloudStorage & DeviceInfo
 
-日付: 2023-10-02
+Date: 2023-10-02
 
 ---
 
-## 👤 ユーザー
-*2023/10/02 15:19:08*
+## 👤 User
+*2023-10-02 15:19:08*
 
 CloudStorageManagerProtocolとDeviceInfoManagerProtocolのMockを作ってほしい何も動作しなくていいんだ。
 
@@ -132,8 +132,8 @@ final class ServiceStatusInteractor: ServiceStatusUseCase {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/02 15:19:39*
+## 🤖 Assistant
+*2023-10-02 15:19:39*
 
 あなたが求めている`CloudStorageManagerProtocol`と`DeviceInfoManagerProtocol`のMockクラスは以下の通りです。
 
@@ -177,15 +177,15 @@ let serviceStatusInteractor = ServiceStatusInteractor(
 
 ---
 
-## 👤 ユーザー
-*2023/10/02 15:20:15*
+## 👤 User
+*2023-10-02 15:20:15*
 
 ServiceStatusInteractor の挙動をテストする実装を書いてほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/10/02 15:21:23*
+## 🤖 Assistant
+*2023-10-02 15:21:23*
 
 `ServiceStatusInteractor`の挙動をテストするために、`XCTest`フレームワークを使用してテストケースを作成できます。以下は、その例です。
 

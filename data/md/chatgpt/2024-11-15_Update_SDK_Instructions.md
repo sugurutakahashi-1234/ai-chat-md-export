@@ -1,11 +1,11 @@
 # Update SDK Instructions
 
-日付: 2024-11-15
+Date: 2024-11-15
 
 ---
 
-## 👤 ユーザー
-*2024/11/15 16:05:14*
+## 👤 User
+*2024-11-15 16:05:14*
 
 &lt;windows&gt;
 &lt;instructions&gt;
@@ -359,15 +359,15 @@ extension TestTargetType {
 
 ---
 
-## 👤 ユーザー
-*2024/11/15 16:05:14*
+## 👤 User
+*2024-11-15 16:05:14*
 
 update sdk
 
 ---
 
-## 🤖 アシスタント
-*2024/11/15 16:05:19*
+## 🤖 Assistant
+*2024-11-15 16:05:19*
 
 To update the SDK for the `https://github.com/apple/swift-testing.git` package:
 
@@ -395,43 +395,43 @@ Would you like me to confirm the latest version for you?
 
 ---
 
-## 👤 ユーザー
-*2024/11/15 16:08:47*
+## 👤 User
+*2024-11-15 16:08:47*
 
 Hey!
 
 ---
 
-## 🤖 アシスタント
-*2024/11/15 16:08:48*
+## 🤖 Assistant
+*2024-11-15 16:08:48*
 
 Hey! What's on your mind? 😊
 
 ---
 
-## 👤 ユーザー
-*2024/11/15 16:09:04*
+## 👤 User
+*2024-11-15 16:09:04*
 
 I study English. Please...
 
 ---
 
-## 🤖 アシスタント
-*2024/11/15 16:09:05*
+## 🤖 Assistant
+*2024-11-15 16:09:05*
 
 That's great! Are you looking for help with vocabulary, grammar, or practicing conversations? Let me know how I can support you! 😊
 
 ---
 
-## 👤 ユーザー
-*2024/11/15 16:09:20*
+## 👤 User
+*2024-11-15 16:09:20*
 
 I practice, I want to practice grammar.
 
 ---
 
-## 🤖 アシスタント
-*2024/11/15 16:09:21*
+## 🤖 Assistant
+*2024-11-15 16:09:21*
 
 Perfect! What kind of grammar do you want to practice? For example, verb tenses, articles, prepositions, or sentence structure? Let’s start with something simple! 😊
 

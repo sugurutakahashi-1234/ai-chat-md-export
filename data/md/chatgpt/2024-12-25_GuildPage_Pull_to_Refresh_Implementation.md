@@ -1,11 +1,11 @@
 # GuildPage Pull-to-Refresh Implementation
 
-日付: 2024-12-25
+Date: 2024-12-25
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 15:24:43*
+## 👤 User
+*2024-12-25 15:24:43*
 
 // ギルド情報がある場合でもpull-to- refreshを実装したい
 
@@ -522,8 +522,8 @@ class _NoGuildWidget extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 15:24:56*
+## 🤖 Assistant
+*2024-12-25 15:24:56*
 
 This `GuildPage` implementation includes a `RefreshIndicator` to enable pull-to-refresh functionality regardless of whether guild information exists. Here's how it works:
 

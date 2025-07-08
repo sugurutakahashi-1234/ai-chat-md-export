@@ -1,18 +1,18 @@
 # Install Lefthook with Brew
 
-日付: 2024-12-07
+Date: 2024-12-07
 
 ---
 
-## 👤 ユーザー
-*2024/12/07 23:17:42*
+## 👤 User
+*2024-12-07 23:17:42*
 
 brew install lefthook
 
 ---
 
-## 🤖 アシスタント
-*2024/12/07 23:17:45*
+## 🤖 Assistant
+*2024-12-07 23:17:45*
 
 To install `lefthook` using Homebrew, run the following command in your terminal:
 

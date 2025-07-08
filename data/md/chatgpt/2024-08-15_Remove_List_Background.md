@@ -1,11 +1,11 @@
 # Remove List Background
 
-日付: 2024-08-15
+Date: 2024-08-15
 
 ---
 
-## 👤 ユーザー
-*2024/08/15 15:11:24*
+## 👤 User
+*2024-08-15 15:11:24*
 
 {
   "content_type": "image_asset_pointer",
@@ -132,8 +132,8 @@ public struct ProfilePostView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/15 15:11:37*
+## 🤖 Assistant
+*2024-08-15 15:11:37*
 
 To remove the default gray background of the `List` while keeping the necessary padding, you can modify your `ProfilePostView` by wrapping the `List` in a `ZStack` and applying the `background` modifier to the `List` itself instead of its container. Here's how you can adjust your code:
 
@@ -254,15 +254,15 @@ This should remove the gray background while maintaining the desired padding and
 
 ---
 
-## 👤 ユーザー
-*2024/08/15 15:12:06*
+## 👤 User
+*2024-08-15 15:12:06*
 
 変わらずパディングをとっていた
 
 ---
 
-## 🤖 アシスタント
-*2024/08/15 15:12:19*
+## 🤖 Assistant
+*2024-08-15 15:12:19*
 
 `List` のデフォルトのパディングを完全に削除するために、`Section` を使わず、`List` を直接利用しない方法があります。また、`List` の代わりに他のレイアウト方法を使ってパディングを制御することも考えられます。
 

@@ -1,18 +1,18 @@
 # Adjust SDK 概要説明
 
-日付: 2024-09-27
+Date: 2024-09-27
 
 ---
 
-## 👤 ユーザー
-*2024/09/27 13:37:51*
+## 👤 User
+*2024-09-27 13:37:51*
 
 AdjustSdk についておしえてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/09/27 13:38:04*
+## 🤖 Assistant
+*2024-09-27 13:38:04*
 
 Adjust SDK is a mobile analytics and tracking tool that helps developers measure and attribute app performance, track user engagement, and optimize marketing efforts. It's commonly used for mobile app marketing to measure installs, track in-app events, and provide data on how users interact with apps.
 
@@ -30,15 +30,15 @@ If you'd like to explore further, including code samples and specific setup inst
 
 ---
 
-## 👤 ユーザー
-*2024/09/27 13:38:07*
+## 👤 User
+*2024-09-27 13:38:07*
 
 日本語でお願い
 
 ---
 
-## 🤖 アシスタント
-*2024/09/27 13:38:22*
+## 🤖 Assistant
+*2024-09-27 13:38:22*
 
 Adjust SDKは、モバイルアプリのマーケティングやユーザー行動の解析を支援するツールです。アプリのインストール数やユーザーのアクティビティをトラッキングし、広告キャンペーンの効果を測定するために広く使われています。特に、ユーザー獲得やインアプリイベントの計測、広告詐欺の防止などが主な機能です。
 

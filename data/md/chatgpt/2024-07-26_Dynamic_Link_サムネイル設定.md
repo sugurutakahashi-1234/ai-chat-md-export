@@ -1,18 +1,18 @@
 # Dynamic Link サムネイル設定
 
-日付: 2024-07-26
+Date: 2024-07-26
 
 ---
 
-## 👤 ユーザー
-*2024/07/26 11:25:26*
+## 👤 User
+*2024-07-26 11:25:26*
 
 firebase の ダイナミックリンクで生成した URL について、URLを使った際にのサムネイルを設定したい。どうすればいいか？
 
 ---
 
-## 🤖 アシスタント
-*2024/07/26 11:25:37*
+## 🤖 Assistant
+*2024-07-26 11:25:37*
 
 Firebase Dynamic Linksで生成したURLにサムネイルを設定するには、URLのメタタグを使用してOpen Graphプロトコルを利用する方法が一般的です。以下の手順に従って、サムネイルを設定できます。
 
@@ -60,15 +60,15 @@ Firebase Dynamic Linksで生成したURLにサムネイルを設定するには�
 
 ---
 
-## 👤 ユーザー
-*2024/07/26 11:32:08*
+## 👤 User
+*2024-07-26 11:32:08*
 
 Firebase Dynamic Links x Open Graph Protocol x Swiftで実装したい。
 
 ---
 
-## 🤖 アシスタント
-*2024/07/26 11:32:22*
+## 🤖 Assistant
+*2024-07-26 11:32:22*
 
 Firebase Dynamic LinksとOpen Graph Protocolを使用して、Swiftで実装する手順を以下に示します。
 

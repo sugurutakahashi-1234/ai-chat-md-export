@@ -1,11 +1,11 @@
 # Google Maps エラー 解決
 
-日付: 2025-02-04
+Date: 2025-02-04
 
 ---
 
-## 👤 ユーザー
-*2025/02/04 16:18:33*
+## 👤 User
+*2025-02-04 16:18:33*
 
 FlutterのgoogleMapを使ったアプリを開発しているが以下のようなエラーがどこかで発生している理由雨はなんだと思いますか？
 
@@ -14,8 +14,8 @@ Unable to establish connection on channel: "d ev.flutter.pigeon.google_maps_flut
 
 ---
 
-## 🤖 アシスタント
-*2025/02/04 16:19:10*
+## 🤖 Assistant
+*2025-02-04 16:19:10*
 
 このエラーは、Flutterの`google_maps_flutter`プラグインで、iOSのネイティブプラグインとの通信がうまく確立できていないことを示しています。以下の可能性が考えられます。
 

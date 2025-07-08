@@ -1,11 +1,11 @@
 # Replace List with State
 
-日付: 2025-01-08
+Date: 2025-01-08
 
 ---
 
-## 👤 ユーザー
-*2025/01/08 15:47:22*
+## 👤 User
+*2025-01-08 15:47:22*
 
 final cards = List.generateを消してexplorerStateを使ってほしい。
 
@@ -114,8 +114,8 @@ class ExplorerListPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/08 15:47:44*
+## 🤖 Assistant
+*2025-01-08 15:47:44*
 
 To replace the `List.generate` logic with `explorerState`, you can dynamically generate the carousel items based on the data fetched from the `getExplorerNotifierProvider`. Below is the updated implementation: 
 
@@ -256,8 +256,8 @@ class ExplorerListPage extends HookConsumerWidget {
 
 ---
 
-## 👤 ユーザー
-*2025/01/08 15:49:24*
+## 👤 User
+*2025-01-08 15:49:24*
 
 The method 'map' can't be unconditionally invoked because the receiver can be 'null'.
 Try making the call conditional (using '?.') or adding a null check to the target ('!').dartunchecked_use_of_nullable_value
@@ -266,8 +266,8 @@ items: explorers.map(buildExplorerCard).toList(),
 
 ---
 
-## 🤖 アシスタント
-*2025/01/08 15:49:29*
+## 🤖 Assistant
+*2025-01-08 15:49:29*
 
 To handle the nullable nature of the `explorers` list, you should ensure it is non-null before mapping its contents. You can achieve this by using a null-aware operator (`?.`) and providing an empty list as a fallback if `explorers` is `null`.
 
@@ -305,8 +305,8 @@ This will resolve the error while ensuring the app remains robust against null d
 
 ---
 
-## 👤 ユーザー
-*2025/01/08 15:50:05*
+## 👤 User
+*2025-01-08 15:50:05*
 
 if (explorers.isEmpty) {
 
@@ -316,8 +316,8 @@ Try making the access conditional (using '?.') or adding a null check to the tar
 
 ---
 
-## 🤖 アシスタント
-*2025/01/08 15:50:16*
+## 🤖 Assistant
+*2025-01-08 15:50:16*
 
 To address the nullable `explorers` issue when checking `isEmpty`, you can use a null-aware operator (`??`) to provide a fallback value. Here's how you can handle it safely:
 

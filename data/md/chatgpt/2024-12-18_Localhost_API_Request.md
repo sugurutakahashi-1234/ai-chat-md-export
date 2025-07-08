@@ -1,11 +1,11 @@
 # Localhost API Request
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/18 15:04:30*
+## 👤 User
+*2024-12-18 15:04:30*
 
 localhost:3002/v1/guildsにリクエストするようにしてほしい
 
@@ -73,8 +73,8 @@ class GuildPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/18 15:04:46*
+## 🤖 Assistant
+*2024-12-18 15:04:46*
 
 以下の変更を加えることで、`localhost:3002/v1/guilds`にリクエストを送信できるようにします。
 

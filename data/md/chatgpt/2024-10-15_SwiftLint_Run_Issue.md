@@ -1,11 +1,11 @@
 # SwiftLint Run Issue
 
-日付: 2024-10-15
+Date: 2024-10-15
 
 ---
 
-## 👤 ユーザー
-*2024/10/15 12:13:57*
+## 👤 User
+*2024-10-15 12:13:57*
 
 ~/git/daVinciAppIOS  ‹feature/43› $ make swiftlint-run                                                                                              2 ↵
 swift run --package-path ./DaVinciDevToolsPackage mint run swiftlint --fix
@@ -149,8 +149,8 @@ make: *** [swiftlint-run] Abort trap: 6
 
 ---
 
-## 🤖 アシスタント
-*2024/10/15 12:14:14*
+## 🤖 Assistant
+*2024-10-15 12:14:14*
 
 It looks like you encountered an issue during the execution of the `swiftlint-run` process, specifically with a crash related to SwiftLint's handling of regex in `SwiftLintFile+Regex.swift`. The error message mentions that it cannot write to a specific path, which indicates a potential issue with file access or processing.
 

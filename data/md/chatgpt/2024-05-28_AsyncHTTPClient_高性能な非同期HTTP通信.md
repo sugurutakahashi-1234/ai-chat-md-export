@@ -1,11 +1,11 @@
 # AsyncHTTPClient 高性能な非同期HTTP通信
 
-日付: 2024-05-28
+Date: 2024-05-28
 
 ---
 
-## 👤 ユーザー
-*2024/05/28 10:05:18*
+## 👤 User
+*2024-05-28 10:05:18*
 
 AsyncHTTPClient とは
 
@@ -13,8 +13,8 @@ https://github.com/swift-server/async-http-client
 
 ---
 
-## 🤖 アシスタント
-*2024/05/28 10:05:27*
+## 🤖 Assistant
+*2024-05-28 10:05:27*
 
 AsyncHTTPClientは、Swiftプログラムで非同期HTTPリクエストを行うためのライブラリです。このライブラリは、Swift Server Work Group（SSWG）によって開発および維持されており、高性能でスケーラブルなHTTPクライアントを提供します。
 
@@ -55,15 +55,15 @@ AsyncHTTPClientは、非同期処理を活用した高性能なHTTP通信を必�
 
 ---
 
-## 👤 ユーザー
-*2024/05/28 10:05:46*
+## 👤 User
+*2024-05-28 10:05:46*
 
 URLSession との違いは？
 
 ---
 
-## 🤖 アシスタント
-*2024/05/28 10:06:09*
+## 🤖 Assistant
+*2024-05-28 10:06:09*
 
 AsyncHTTPClientとURLSessionはどちらもSwiftでHTTPリクエストを送信するためのライブラリですが、それぞれの設計目的や機能にいくつかの違いがあります。
 

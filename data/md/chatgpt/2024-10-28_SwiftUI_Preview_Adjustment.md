@@ -1,11 +1,11 @@
 # SwiftUI Preview Adjustment
 
-日付: 2024-10-28
+Date: 2024-10-28
 
 ---
 
-## 👤 ユーザー
-*2024/10/28 13:34:37*
+## 👤 User
+*2024-10-28 13:34:37*
 
 #available(iOS 17.0, *)
 #Preview {
@@ -18,8 +18,8 @@
 
 ---
 
-## 🤖 アシスタント
-*2024/10/28 13:34:43*
+## 🤖 Assistant
+*2024-10-28 13:34:43*
 
 The `#Preview` snippet you provided can be modified to conform more closely to SwiftUI's standard `#Preview` and ensure a clean and functional SwiftUI preview. Here's a revised version:
 
@@ -46,15 +46,15 @@ This should now work correctly in the SwiftUI preview. Let me know if you need f
 
 ---
 
-## 👤 ユーザー
-*2024/10/28 13:34:58*
+## 👤 User
+*2024-10-28 13:34:58*
 
 #available(iOS 17.0, *) の書き方が間違っている
 
 ---
 
-## 🤖 アシスタント
-*2024/10/28 13:35:03*
+## 🤖 Assistant
+*2024-10-28 13:35:03*
 
 `#available(iOS 17.0, *)` は、条件付きコンパイルディレクティブではなく、関数やビューの中で使用する条件文です。プレビューでは次のように書く必要があります。
 

@@ -1,11 +1,11 @@
 # Common Sort Method
 
-日付: 2024-05-24
+Date: 2024-05-24
 
 ---
 
-## 👤 ユーザー
-*2024/05/24 18:42:42*
+## 👤 User
+*2024-05-24 18:42:42*
 
 @MainActor
 final class TalkBoxListPresenter: ObservableObject {
@@ -138,8 +138,8 @@ public extension Sequence {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/24 18:43:21*
+## 🤖 Assistant
+*2024-05-24 18:43:21*
 
 ソートの共通化とソート条件を配列で渡す方法について、以下のようにして対応できます。
 
@@ -302,8 +302,8 @@ final class TalkBoxListPresenter: ObservableObject {
 
 ---
 
-## 👤 ユーザー
-*2024/05/24 18:44:47*
+## 👤 User
+*2024-05-24 18:44:47*
 
 配列でまとめなくていいや、以下の処理を繰り返しているのでどうにか共通化できないか？
 
@@ -313,8 +313,8 @@ final class TalkBoxListPresenter: ObservableObject {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/24 18:45:19*
+## 🤖 Assistant
+*2024-05-24 18:45:19*
 
 配列でまとめるのではなく、共通のソートロジックをメソッドに抽出することで、繰り返しのコードを共通化できます。以下のように、`sortTalkBoxes` という共通のソートメソッドを作成し、それを必要な場所で呼び出すように変更します。
 
@@ -441,16 +441,16 @@ final class TalkBoxListPresenter: ObservableObject {
 
 ---
 
-## 👤 ユーザー
-*2024/05/24 18:46:37*
+## 👤 User
+*2024-05-24 18:46:37*
 
 以下を作るだけの方がスマートでは？
 private func sortTalkBoxes(talkBox: TalkBox) -&gt; [TalkBox] {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/24 18:47:11*
+## 🤖 Assistant
+*2024-05-24 18:47:11*
 
 その通りです。関数にソートロジックをまとめる方法はシンプルで効果的です。以下のように、ソート関数を定義し、それを必要な箇所で呼び出すように変更します。
 

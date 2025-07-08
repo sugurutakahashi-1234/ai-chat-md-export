@@ -1,18 +1,18 @@
 # Shake Detection SwiftUI
 
-日付: 2024-05-23
+Date: 2024-05-23
 
 ---
 
-## 👤 ユーザー
-*2024/05/23 11:11:18*
+## 👤 User
+*2024-05-23 11:11:18*
 
 SwiftUIでshakeを検知する 最新のiOS
 
 ---
 
-## 🤖 アシスタント
-*2024/05/23 11:11:38*
+## 🤖 Assistant
+*2024-05-23 11:11:38*
 
 最新のiOSでSwiftUIを使用してデバイスのシェイクを検知するには、UIKitの`UIResponder`の`motionEnded(_:with:)`メソッドを利用する必要があります。SwiftUIには直接シェイクを検知する機能がないため、UIKitの機能を使ってカスタムのビューコントローラーを作成し、それをSwiftUIでラップする方法を取ります。
 
@@ -110,15 +110,15 @@ SwiftUIでshakeを検知する 最新のiOS
 
 ---
 
-## 👤 ユーザー
-*2024/05/23 11:11:41*
+## 👤 User
+*2024-05-23 11:11:41*
 
 UIViewControllerRepresentable は使わないでほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/05/23 11:12:01*
+## 🤖 Assistant
+*2024-05-23 11:12:01*
 
 `UIViewControllerRepresentable`を使わずにSwiftUIでシェイクを検知するには、`UIApplication`のカスタムデリゲートを使う方法があります。この方法では、シェイクイベントをアプリ全体で検知し、SwiftUIビューに通知することができます。
 

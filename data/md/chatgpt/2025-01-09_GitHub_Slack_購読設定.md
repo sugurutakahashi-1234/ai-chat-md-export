@@ -1,18 +1,18 @@
 # GitHub Slack 購読設定
 
-日付: 2025-01-09
+Date: 2025-01-09
 
 ---
 
-## 👤 ユーザー
-*2025/01/09 13:05:12*
+## 👤 User
+*2025-01-09 13:05:12*
 
 slack での github の /github subscribe 設定確認
 
 ---
 
-## 🔧 ツール
-*2025/01/09 13:05:27*
+## 🔧 Tool
+*2025-01-09 13:05:27*
 
 **Confirming subscription settings**
 
@@ -36,8 +36,8 @@ OK, let me see: using `/github subscriptions` to view current repository subscri
 
 ---
 
-## 🤖 アシスタント
-*2025/01/09 13:05:27*
+## 🤖 Assistant
+*2025-01-09 13:05:27*
 
 Slack の GitHub アプリでは、特定のチャンネルがどのリポジトリに対してどのイベントを購読しているかを、次のような手順で確認できます。
 
@@ -131,15 +131,15 @@ GitHub の Slack アプリでは、以下のように購読するイベントを
 
 ---
 
-## 👤 ユーザー
-*2025/01/09 13:06:04*
+## 👤 User
+*2025-01-09 13:06:04*
 
 /github subscribe list の詳細をしりたい
 
 ---
 
-## 🔧 ツール
-*2025/01/09 13:06:22*
+## 🔧 Tool
+*2025-01-09 13:06:22*
 
 **Gathering information**
 
@@ -155,8 +155,8 @@ I’m explaining that the default list command shows channel-specific subscripti
 
 ---
 
-## 🤖 アシスタント
-*2025/01/09 13:06:22*
+## 🤖 Assistant
+*2025-01-09 13:06:22*
 
 Slack の GitHub アプリにおける **`/github subscribe list`** コマンドは、**「いまこのチャンネルでどのリポジトリを購読しているか、その購読内容を一覧で確認する」**ためのコマンドです。  
 このコマンドを実行すると、以下のような情報が表示されます（バージョン・設定によって多少異なります）。

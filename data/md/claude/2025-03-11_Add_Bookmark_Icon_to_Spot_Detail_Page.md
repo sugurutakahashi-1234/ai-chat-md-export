@@ -1,18 +1,18 @@
 # Add Bookmark Icon to Spot Detail Page
 
-日付: 2025-03-11
+Date: 2025-03-11
 
 ---
 
-## 👤 ユーザー
-*2025/03/11 15:57:09*
+## 👤 User
+*2025-03-11 15:57:09*
 
 ブックマークアイコンを追加してほしい。ブックマーク情報はgetSpotDetailのSpotDetailDTOにisFavoriteという変数名で入っている。
 
 ---
 
-## 🤖 アシスタント
-*2025/03/11 15:57:57*
+## 🤖 Assistant
+*2025-03-11 15:57:57*
 
 I'll add a bookmark icon to the spot detail page. Let me implement that for you.
 ```

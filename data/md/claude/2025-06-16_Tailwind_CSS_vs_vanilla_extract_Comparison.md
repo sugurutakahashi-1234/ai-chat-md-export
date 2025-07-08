@@ -1,18 +1,18 @@
 # Tailwind CSS vs vanilla-extract Comparison
 
-日付: 2025-06-16
+Date: 2025-06-16
 
 ---
 
-## 👤 ユーザー
-*2025/06/17 00:20:46*
+## 👤 User
+*2025-06-17 00:20:46*
 
 タイプスクリプトでフロントを開発している **Tailwind CSSと**vanilla-extractで開発体験やメンテナンス性がいいのはどちらか、またメリット・デメリットを比較してほしい。
 
 ---
 
-## 🤖 アシスタント
-*2025/06/17 00:21:14*
+## 🤖 Assistant
+*2025-06-17 00:21:14*
 
 TypeScriptのフロントエンド開発において、Tailwind CSSとvanilla-extractの比較をまとめます。
 

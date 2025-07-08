@@ -1,18 +1,18 @@
 # Delete GitHub Commit History
 
-日付: 2023-11-08
+Date: 2023-11-08
 
 ---
 
-## 👤 ユーザー
-*2023/11/09 01:21:12*
+## 👤 User
+*2023-11-09 01:21:12*
 
 GitHub でコミット履歴をすべて消すことができるか？
 
 ---
 
-## 🤖 アシスタント
-*2023/11/09 01:21:53*
+## 🤖 Assistant
+*2023-11-09 01:21:53*
 
 Yes, it is possible to delete all commit history in a GitHub repository, but it's important to note that this action is irreversible, so it should be done with caution and preferably with a backup. Here are some methods you can use:
 
@@ -28,15 +28,15 @@ Before proceeding with any of these actions, it is highly recommended to have a 
 
 ---
 
-## 👤 ユーザー
-*2023/11/09 01:21:54*
+## 👤 User
+*2023-11-09 01:21:54*
 
 日本語でお願い。
 
 ---
 
-## 🤖 アシスタント
-*2023/11/09 01:22:43*
+## 🤖 Assistant
+*2023-11-09 01:22:43*
 
 GitHubリポジトリからすべてのコミット履歴を削除することは可能ですが、この操作は元に戻せないため、慎重に行う必要があります。バックアップを取っておくことを強くお勧めします。以下にいくつかの方法を紹介します：
 

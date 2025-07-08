@@ -1,22 +1,22 @@
 # Bun CLI Command Completion
 
-日付: 2025-07-04
+Date: 2025-07-04
 
 ---
 
-## 👤 ユーザー
-*2025/07/04 22:22:37*
+## 👤 User
+*2025-07-04 22:22:37*
 
 これってbunにもないの？
 https://docs.npmjs.com/cli/v11/commands/npm-completion https://pnpm.io/completion
 
 ---
 
-## 🤖 アシスタント
-*2025/07/04 22:22:48*
+## 🤖 Assistant
+*2025-07-04 22:22:48*
 
 I'll help you find information about command completion support in Bun. Let me do some research on this topic.
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 Your Bun shell completions analysis is ready. It covers Bun's automatic completion setup for Zsh and Fish shells, the dynamic completion generation system, comparisons with npm and pnpm, current limitations including incomplete Bash support, and community feedback driving improvements. The report highlights how Bun's approach to shell completions demonstrates its focus on superior developer experience.
 ```
@@ -25,15 +25,15 @@ Viewing artifacts created via the Analysis Tool web feature preview isn’t yet 
 
 ---
 
-## 👤 ユーザー
-*2025/07/04 22:26:55*
+## 👤 User
+*2025-07-04 22:26:55*
 
 日本語でお願い。
 
 ---
 
-## 🤖 アシスタント
-*2025/07/04 22:27:20*
+## 🤖 Assistant
+*2025-07-04 22:27:20*
 
 はい、Bunのシェル補完機能について日本語で説明します。
 
@@ -86,15 +86,15 @@ Bunの補完機能は、開発者体験を重視した設計により、npmやpn
 
 ---
 
-## 👤 ユーザー
-*2025/07/04 22:28:13*
+## 👤 User
+*2025-07-04 22:28:13*
 
 bun completions &gt; ~/.local/share/zsh/site-functions/_bunこれってどこに書かれているの?
 
 ---
 
-## 🤖 アシスタント
-*2025/07/04 22:28:33*
+## 🤖 Assistant
+*2025-07-04 22:28:33*
 
 `bun completions > ~/.local/share/zsh/site-functions/_bun` というコマンドについて、提供された検索結果を確認しましたが、このコマンドは実際にはドキュメントに記載されていないようです。
 
@@ -120,16 +120,16 @@ bun completions &gt; ~/.local/share/zsh/site-functions/_bunこれってどこに
 
 ---
 
-## 👤 ユーザー
-*2025/07/04 22:28:48*
+## 👤 User
+*2025-07-04 22:28:48*
 
 bun completions --help
 error: accessing /Users/sugurutakahashi/--help errored FileNotFound
 
 ---
 
-## 🤖 アシスタント
-*2025/07/04 22:29:01*
+## 🤖 Assistant
+*2025-07-04 22:29:01*
 
 エラーメッセージから、`bun completions`コマンドは`--help`オプションをサポートしていないようですね。代わりにファイルパスとして解釈されてしまっています。
 
@@ -165,8 +165,8 @@ Bunは自動的に補完をインストールするので、すでにどこか�
 
 ---
 
-## 👤 ユーザー
-*2025/07/04 22:29:07*
+## 👤 User
+*2025-07-04 22:29:07*
 
 bun completions                                                                                                                                                                         1 ↵
 Enabled loading bun's completions in .zshrc
@@ -174,8 +174,8 @@ Installed completions to /Users/sugurutakahashi/.bun/_bun
 
 ---
 
-## 🤖 アシスタント
-*2025/07/04 22:29:19*
+## 🤖 Assistant
+*2025-07-04 22:29:19*
 
 素晴らしい！`bun completions`を実行すると、Bunが自動的に以下の処理を行ったことがわかります：
 
@@ -210,16 +210,16 @@ source ~/.zshrc
 
 ---
 
-## 👤 ユーザー
-*2025/07/04 22:30:16*
+## 👤 User
+*2025-07-04 22:30:16*
 
 つまりこれをコマンドしただけでよかったってことか。 
 手順書を書いてて、NPMではどんなコマンド、PNPMではどんなコマンド、版ではどんなコマンドを打つべきか教えてほしい。
 
 ---
 
-## 🤖 アシスタント
-*2025/07/04 22:30:41*
+## 🤖 Assistant
+*2025-07-04 22:30:41*
 
 はい、その通りです！それぞれのパッケージマネージャーでシェル補完を有効にするコマンドをまとめます。
 
@@ -297,15 +297,15 @@ source ~/.zshrc
 
 ---
 
-## 👤 ユーザー
-*2025/07/04 22:30:55*
+## 👤 User
+*2025-07-04 22:30:55*
 
 zshrcだけでいいよ 3行教えて
 
 ---
 
-## 🤖 アシスタント
-*2025/07/04 22:31:00*
+## 🤖 Assistant
+*2025-07-04 22:31:00*
 
 ```bash
 # Bun

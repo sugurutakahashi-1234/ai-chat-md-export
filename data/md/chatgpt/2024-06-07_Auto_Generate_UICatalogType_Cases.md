@@ -1,11 +1,11 @@
 # Auto-Generate UICatalogType Cases
 
-日付: 2024-06-07
+Date: 2024-06-07
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 14:52:25*
+## 👤 User
+*2024-06-07 14:52:25*
 
 UICatalogType.swift について、ViewTestCase以下にあるフォルダを解析してenumのcaseを定義していきたい。
 
@@ -136,8 +136,8 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 14:52:46*
+## 🤖 Assistant
+*2024-06-07 14:52:46*
 
 `UICatalogType` を更新し、 `ViewTestCase` 以下にあるファイルを基に `enum` のケースを定義する方法について説明します。
 
@@ -218,8 +218,8 @@ bash generate_cases.sh
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 14:53:57*
+## 👤 User
+*2024-06-07 14:53:57*
 
 できるだけ stencil の処理を使いたい。
 
@@ -231,8 +231,8 @@ UICatalogType.stencil を定義したい。
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 14:54:19*
+## 🤖 Assistant
+*2024-06-07 14:54:19*
 
 Stencilを使って `UICatalogType` のケースを生成するためのテンプレートを作成する方法について説明します。これにより、`ViewTestCase` フォルダ内のファイルに基づいて `enum` ケースを自動的に生成できます。
 
@@ -317,8 +317,8 @@ bash generate_uicatalog_type.sh
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 14:56:19*
+## 👤 User
+*2024-06-07 14:56:19*
 
 このスクリプトの最後方に処理を入れてほしい。なるべく他と揃えてほしい
 
@@ -412,8 +412,8 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 14:56:50*
+## 🤖 Assistant
+*2024-06-07 14:56:50*
 
 以下に、`UICatalogType` に関する処理を追加した完全なスクリプトを示します。このスクリプトは、他の処理と揃えた形で最後に `UICatalogType` の生成処理を追加しています。
 
@@ -537,8 +537,8 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 14:59:21*
+## 👤 User
+*2024-06-07 14:59:21*
 
 シェルスクリプト上で処理するのではなく、以下のようにstencil側の処理でhasSuffixがViewTestCaseの型名を取得してfor文を回してほしい
 
@@ -546,8 +546,8 @@ public protocol {{ argument.diContainerName }}DIContainerDependency: AnyObject, 
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 14:59:57*
+## 🤖 Assistant
+*2024-06-07 14:59:57*
 
 `UICatalogType` のケースを生成するための `stencil` テンプレートを使用して、`ViewTestCase` の型名を取得して `enum` ケースを生成する方法を説明します。
 
@@ -685,8 +685,8 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 15:07:34*
+## 👤 User
+*2024-06-07 15:07:34*
 
 以下になった
 
@@ -694,8 +694,8 @@ error: ./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown 
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 15:08:10*
+## 🤖 Assistant
+*2024-06-07 15:08:10*
 
 `lowercaseFirst` というフィルタが存在しないため、テンプレートエンジンで利用可能なフィルタを使用して代替する必要があります。`lowercase` フィルタを使用して対応する方法を以下に示します。
 
@@ -833,8 +833,8 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 15:09:38*
+## 👤 User
+*2024-06-07 15:09:38*
 
 以下の出力になってしまった
 
@@ -853,8 +853,8 @@ public enum UICatalogType: SwiftUIForEachable {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 15:10:13*
+## 🤖 Assistant
+*2024-06-07 15:10:13*
 
 以下の手順で修正します。
 
@@ -999,8 +999,8 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 15:10:50*
+## 👤 User
+*2024-06-07 15:10:50*
 
 以下のエラーになった
 
@@ -1008,8 +1008,8 @@ error: ./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown 
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 15:11:26*
+## 🤖 Assistant
+*2024-06-07 15:11:26*
 
 `endsWith` フィルタが存在しないため、Sourcery で使用可能なフィルタを使用して `ViewTestCase` のクラス名を正しくフィルタリングする必要があります。代わりに、`hasSuffix` フィルタを使用します。
 
@@ -1145,8 +1145,8 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 15:27:16*
+## 👤 User
+*2024-06-07 15:27:16*
 
 UICatalogType.stencil がまちがっている
 
@@ -1171,8 +1171,8 @@ public enum APIRequestViewTestCase: UICatalogTestCaseProvider {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 15:27:55*
+## 🤖 Assistant
+*2024-06-07 15:27:55*
 
 `UICatalogType.stencil` でクラスではなく、`enum` タイプの `ViewTestCase` を認識するように修正します。以下に修正したテンプレートとスクリプトを示します。
 
@@ -1306,15 +1306,15 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 15:31:30*
+## 👤 User
+*2024-06-07 15:31:30*
 
 stencilには lowercase 意外にどんな変換が指定できるの？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 15:32:00*
+## 🤖 Assistant
+*2024-06-07 15:32:00*
 
 Stencil テンプレートエンジンでは、いくつかの標準的なフィルタを使用して文字列を変換できます。以下は Stencil で使用可能な一般的なフィルタのリストです。
 
@@ -1397,15 +1397,15 @@ public enum UICatalogType: SwiftUIForEachable {
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 15:32:18*
+## 👤 User
+*2024-06-07 15:32:18*
 
 これだと全部小文字になってしまって、先頭の頭文字だけ小文字にしたいんだ
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 15:32:45*
+## 🤖 Assistant
+*2024-06-07 15:32:45*
 
 Stencil には直接 `lowercaseFirst` フィルタがありませんが、カスタムフィルタを使用してこの機能を実現できます。ただし、カスタムフィルタを作成するためには、Stencil テンプレートエンジンの拡張が必要です。以下に、その手順を示します。
 
@@ -1510,8 +1510,8 @@ public enum UICatalogType: SwiftUIForEachable {
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 15:36:03*
+## 👤 User
+*2024-06-07 15:36:03*
 
 カスタムフィルタなしのアプローチがよくて、以下のエラーになった
 
@@ -1522,8 +1522,8 @@ https://stencil.fuller.li/en/latest/builtins.html#built-in-filters-1
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 15:36:40*
+## 🤖 Assistant
+*2024-06-07 15:36:40*
 
 `slice` フィルタが利用できないため、テンプレートのロジックを修正して、組み込みのフィルタのみを使用して先頭の文字を小文字に変換する方法を検討します。`map` フィルタを使用して配列操作を行い、文字列を操作する方法を次に示します。
 
@@ -1663,8 +1663,8 @@ echo "Sourcery DONE!!"
 
 ---
 
-## 👤 ユーザー
-*2024/06/07 15:37:49*
+## 👤 User
+*2024-06-07 15:37:49*
 
 以下になった
 
@@ -1673,8 +1673,8 @@ error: ./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown 
 
 ---
 
-## 🤖 アシスタント
-*2024/06/07 15:38:01*
+## 🤖 Assistant
+*2024-06-07 15:38:01*
 
 Stencil テンプレートエンジンの組み込みフィルタだけを使用して、文字列の最初の文字を小文字に変換し、残りの部分をそのまま保持するためには、いくつかのトリックを使う必要があります。組み込みの `split` フィルタとテンプレートロジックを組み合わせて実現できます。
 

@@ -1,11 +1,11 @@
 # Create SwiftUI WebView View
 
-日付: 2024-07-18
+Date: 2024-07-18
 
 ---
 
-## 👤 ユーザー
-*2024/07/18 18:15:31*
+## 👤 User
+*2024-07-18 18:15:31*
 
 これをラップした。左上に×ボタンを設置して、dismissで消すようなViewを作成したい
 
@@ -67,8 +67,8 @@ public struct SimpleWebView: UIViewRepresentable {
 
 ---
 
-## 🤖 アシスタント
-*2024/07/18 18:16:04*
+## 🤖 Assistant
+*2024-07-18 18:16:04*
 
 `SimpleWebView`をラップし、左上に×ボタンを配置して、ボタンをタップすると`dismiss`で消すようなSwiftUIのビューを作成するには、`SimpleWebView`を使って新しいSwiftUIビューを作成し、その中に×ボタンと`SimpleWebView`を配置する方法を取ります。以下はそのサンプルコードです。
 

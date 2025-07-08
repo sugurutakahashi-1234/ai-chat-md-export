@@ -1,11 +1,11 @@
 # Update Deployment for iOS18.0
 
-日付: 2024-06-13
+Date: 2024-06-13
 
 ---
 
-## 👤 ユーザー
-*2024/06/13 15:09:18*
+## 👤 User
+*2024-06-13 15:09:18*
 
 'Previewable()' is only available in iOS 18.0 or newer こうなった
 
@@ -30,8 +30,8 @@
 
 ---
 
-## 🤖 アシスタント
-*2024/06/13 15:09:35*
+## 🤖 Assistant
+*2024-06-13 15:09:35*
 
 The error you're encountering is because `Previewable` is only available in iOS 18.0 or newer, and your deployment target might be set to an older version. Here are a few steps you can take to resolve this:
 

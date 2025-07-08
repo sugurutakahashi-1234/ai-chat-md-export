@@ -1,11 +1,11 @@
 # Show Spot Detail Sheet
 
-日付: 2024-12-20
+Date: 2024-12-20
 
 ---
 
-## 👤 ユーザー
-*2024/12/20 16:02:39*
+## 👤 User
+*2024-12-20 16:02:39*
 
 以下を_showOurSpotDetailSheetとしてほしい。
 
@@ -36,8 +36,8 @@ void _showSpotListSheet(BuildContext context, WidgetRef ref) {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/20 16:02:51*
+## 🤖 Assistant
+*2024-12-20 16:02:51*
 
 以下は、`_showSpotListSheet` を `_showOurSpotDetailSheet` として変更したコードです。`spotListRouter` や `Screen.spotList.path` を適切な名前やパスに置き換える必要がある場合は、それに応じて修正してください。
 

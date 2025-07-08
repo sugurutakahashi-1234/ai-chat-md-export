@@ -1,32 +1,32 @@
 # Crop UIImage with TOCropViewController
 
-日付: 2024-08-16
+Date: 2024-08-16
 
 ---
 
-## 👤 ユーザー
-*2024/08/16 13:46:42*
+## 👤 User
+*2024-08-16 13:46:42*
 
 TOCropViewController を使ってSwiftUIでUIImageを円に切り抜く処理を実装して欲しい
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 13:46:58*
+## 🤖 Assistant
+*2024-08-16 13:46:58*
 
 User wants to implement a process using TOCropViewController in SwiftUI to crop a UIImage into a circle.
 
 ---
 
-## 🔧 ツール
-*2024/08/16 13:46:58*
+## 🔧 Tool
+*2024-08-16 13:46:58*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 13:46:58*
+## 🤖 Assistant
+*2024-08-16 13:46:58*
 
 To implement cropping a UIImage into a circle using TOCropViewController in SwiftUI, you can follow these steps:
 
@@ -123,15 +123,15 @@ This setup will allow you to present the TOCropViewController within your SwiftU
 
 ---
 
-## 👤 ユーザー
-*2024/08/16 13:47:21*
+## 👤 User
+*2024-08-16 13:47:21*
 
 CropViewController のオプションについて、日本語でコメントをいれてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 13:47:40*
+## 🤖 Assistant
+*2024-08-16 13:47:40*
 
 以下は、`CropViewController` のオプションについて日本語でコメントを追加したコードです。
 
@@ -207,29 +207,29 @@ struct CropViewController: UIViewControllerRepresentable {
 
 ---
 
-## 👤 ユーザー
-*2024/08/16 13:48:11*
+## 👤 User
+*2024-08-16 13:48:11*
 
 @Environment(\.presentationMode) private var presentationMode ではなくて、dissmisを使って欲しい
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 13:48:27*
+## 🤖 Assistant
+*2024-08-16 13:48:27*
 
 User prefers to use `dismiss` instead of `@Environment(\.presentationMode) private var presentationMode`.
 
 ---
 
-## 🔧 ツール
-*2024/08/16 13:48:27*
+## 🔧 Tool
+*2024-08-16 13:48:27*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 13:48:27*
+## 🤖 Assistant
+*2024-08-16 13:48:27*
 
 `@Environment(\.presentationMode)` を `dismiss` に置き換えたコードを以下に示します。
 
@@ -300,15 +300,15 @@ struct CropViewController: UIViewControllerRepresentable {
 
 ---
 
-## 👤 ユーザー
-*2024/08/16 13:49:34*
+## 👤 User
+*2024-08-16 13:49:34*
 
 circle できりぬくような感じになるのかな？
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 13:49:44*
+## 🤖 Assistant
+*2024-08-16 13:49:44*
 
 現状のコードでは、`TOCropViewController` のデフォルト機能を使って円形に切り抜く設定がされています。この設定により、正方形に固定されたアスペクト比の中でユーザーが画像を切り抜き、その後にその画像を円形にトリミングします。
 

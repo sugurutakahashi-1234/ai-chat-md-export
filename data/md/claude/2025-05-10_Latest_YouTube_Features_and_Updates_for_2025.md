@@ -1,21 +1,21 @@
 # Latest YouTube Features and Updates for 2025
 
-日付: 2025-05-10
+Date: 2025-05-10
 
 ---
 
-## 👤 ユーザー
-*2025/05/10 18:32:26*
+## 👤 User
+*2025-05-10 18:32:26*
 
 YouTubeについて調べて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2025/05/10 18:32:36*
+## 🤖 Assistant
+*2025-05-10 18:32:36*
 
 YouTubeについて調べますね。YouTubeに関する情報を収集するために、まずウェブ検索を使ってみましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
@@ -28,43 +28,43 @@ YouTubeはクリエイターがより良い動画を作成し、ファンと繋�
 
 ---
 
-## 👤 ユーザー
-*2025/05/10 18:32:57*
+## 👤 User
+*2025-05-10 18:32:57*
 
 ComposioのMCPを使ってYouTubeでなにができそう？
 
 ---
 
-## 🤖 アシスタント
-*2025/05/10 18:33:43*
+## 🤖 Assistant
+*2025-05-10 18:33:43*
 
 ComposioのMCPを使ってYouTubeでできることについて調べてみましょう。まず、ComposioとMCPについての情報を探します。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 YouTubeの機能に関する情報が見つからなかったので、ComposioのMCPとYouTubeの連携について具体的に検索してみましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 YouTubeとComposio MCPの直接的な連携に関する情報が見つからなかったので、もう少し具体的に検索してみましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 検索結果から、ComposioのMCPとYouTubeの直接的な連携に関する具体的な情報は見つかりませんでした。しかし、Composioが提供する250以上のツールの中にYouTube APIが含まれている可能性はあります。さらに具体的に検索してみましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 大変朗報です！検索結果で、ZubeidHendricksが開発したYouTube MCP Serverというプロジェクトを見つけました。これはYouTube APIのためのModel Context Protocol（MCP）サーバー実装で、AIがYouTubeコンテンツと標準化されたインターフェースを通じて対話できるようにするものです。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 検索をもう一度行い、ZubeidHendricksのYouTube MCP Serverの具体的な機能を詳しく調べてみましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
@@ -102,18 +102,18 @@ MCPはAIがYouTubeを含む様々なアプリとシームレスに連携する�
 
 ---
 
-## 👤 ユーザー
-*2025/05/10 18:34:06*
+## 👤 User
+*2025-05-10 18:34:06*
 
 YOUTUBE_LIST_CAPTIONとかMCP連携しているはずなんだけど
 
 ---
 
-## 🤖 アシスタント
-*2025/05/10 18:34:22*
+## 🤖 Assistant
+*2025-05-10 18:34:22*
 
 ご指摘ありがとうございます。確かに、`YOUTUBE_LIST_CAPTION_TRACK`という関数が存在しているようですね。検索結果にはこの特定の関数について詳細な情報が含まれていませんでした。このYouTubeキャプション関連の機能について詳しく調べてみましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
@@ -146,20 +146,20 @@ YOUTUBE_LIST_CAPTIONとかMCP連携しているはずなんだけど
 
 ---
 
-## 👤 ユーザー
-*2025/05/10 18:34:39*
+## 👤 User
+*2025-05-10 18:34:39*
 
 https://www.youtube.com/watch?v=MhllIM-P_vsをYOUTUBE_LIST_CAPTION_TRACKやってほしい
 
 ---
 
-## 🤖 アシスタント
-*2025/05/10 18:34:56*
+## 🤖 Assistant
+*2025-05-10 18:34:56*
 
 YouTubeの動画キャプションを取得するリクエストを理解しました。
 
 `YOUTUBE_LIST_CAPTION_TRACK`関数を使って、指定された動画（https://www.youtube.com/watch?v=MhllIM-P_vs）のキャプショントラックを取得してみましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 

@@ -1,18 +1,18 @@
 # Centering body content in Flutter app
 
-日付: 2025-03-12
+Date: 2025-03-12
 
 ---
 
-## 👤 ユーザー
-*2025/03/12 13:12:32*
+## 👤 User
+*2025-03-12 13:12:32*
 
 body のセンターが効かない
 
 ---
 
-## 🤖 アシスタント
-*2025/03/12 13:12:52*
+## 🤖 Assistant
+*2025-03-12 13:12:52*
 
 I see you're having an issue with centering the body content in your Flutter app. Looking at your code and the screenshot, I can identify what's happening with the `Center` widget in your `ExplorerListPage`.
 

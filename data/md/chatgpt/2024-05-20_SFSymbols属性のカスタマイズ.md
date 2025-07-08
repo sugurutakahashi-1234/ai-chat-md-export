@@ -1,11 +1,11 @@
 # SFSymbols属性のカスタマイズ
 
-日付: 2024-05-20
+Date: 2024-05-20
 
 ---
 
-## 👤 ユーザー
-*2024/05/20 19:42:52*
+## 👤 User
+*2024-05-20 19:42:52*
 
 本当はHStack全体にかかるのではなくSFSymbolsRowView内にsymbolRenderingModeやforegroundStyleを指定したいどうすればできるのか？
 
@@ -46,8 +46,8 @@ struct SFSymbolsRowView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/20 19:42:57*
+## 🤖 Assistant
+*2024-05-20 19:42:57*
 
 `SFSymbolsRowView`を更新して、`symbolRenderingMode`や`foregroundStyle`を指定できるようにします。そのために、`symbolRenderingMode`と`foregroundStyle`を`SFSymbolsRowView`のプロパティとして受け取り、それらを適用します。以下がその方法です。
 
@@ -88,15 +88,15 @@ struct SFSymbolsRowView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/05/20 19:43:47*
+## 👤 User
+*2024-05-20 19:43:47*
 
 モディファイアみたく設定したい
 
 ---
 
-## 🤖 アシスタント
-*2024/05/20 19:43:54*
+## 🤖 Assistant
+*2024-05-20 19:43:54*
 
 理解しました。`SFSymbolsRowView`内でモディファイアのように設定できるようにするために、関数型のモディファイアを定義します。これにより、`SFSymbolsRowView`のインスタンスに対して直接呼び出すことができます。以下がその方法です。
 
@@ -155,8 +155,8 @@ struct SFSymbolsRowView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/05/20 19:44:29*
+## 👤 User
+*2024-05-20 19:44:29*
 
 わかりずらいから全部Hstackを複数回記述するようにしたい。
 struct SFSymbolsVariationView: View {
@@ -195,8 +195,8 @@ struct SFSymbolsRowView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/20 19:44:34*
+## 🤖 Assistant
+*2024-05-20 19:44:34*
 
 理解しました。各種の設定を適用するために、`SFSymbolsRowView`を複数回使用する方法を示します。
 

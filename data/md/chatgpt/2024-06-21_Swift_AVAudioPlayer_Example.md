@@ -1,18 +1,18 @@
 # Swift AVAudioPlayer Example
 
-日付: 2024-06-21
+Date: 2024-06-21
 
 ---
 
-## 👤 ユーザー
-*2024/06/21 13:26:54*
+## 👤 User
+*2024-06-21 13:26:54*
 
 SwiftでAVAudio prayer no
 
 ---
 
-## 🤖 アシスタント
-*2024/06/21 13:27:10*
+## 🤖 Assistant
+*2024-06-21 13:27:10*
 
 SwiftでAVAudioPlayerを使用するには、まずAVFoundationフレームワークをインポートし、次にAVAudioPlayerのインスタンスを作成して音声ファイルを再生するコードを記述します。以下に、AVAudioPlayerを使用して音声ファイルを再生する基本的な例を示します。
 

@@ -1,18 +1,18 @@
 # File Sharing Troubleshooting
 
-日付: 2024-05-17
+Date: 2024-05-17
 
 ---
 
-## 👤 ユーザー
-*2024/05/17 15:53:31*
+## 👤 User
+*2024-05-17 15:53:31*
 
 Failed to request default share mode for fileURL:file:///private/var/mobile/Containers/Data/Application/DE41726A-EC1E-447C-8A80-582666CAC2B6/tmp/2024-05-16T20:31:21+09:00.m4a error:Error Domain=NSOSStatusErrorDomain Code=-10814 "(null)" UserInfo={_LSLine=1741, _LSFunction=runEvaluator}
 
 ---
 
-## 🤖 アシスタント
-*2024/05/17 15:53:52*
+## 🤖 Assistant
+*2024-05-17 15:53:52*
 
 The error you're encountering, `NSOSStatusErrorDomain Code=-10814`, typically relates to issues with accessing or sharing a file. Here are a few steps you can take to diagnose and resolve the issue:
 

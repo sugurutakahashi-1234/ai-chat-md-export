@@ -1,18 +1,18 @@
 # Swift String Extension: Masked Password
 
-日付: 2023-10-27
+Date: 2023-10-27
 
 ---
 
-## 👤 ユーザー
-*2023/10/27 15:19:13*
+## 👤 User
+*2023-10-27 15:19:13*
 
 Swiftでパスワードをマスクしたい。パスワード.maskedPassword で同じ桁すうで記号でマスクしたパワスワードを表示したい。Stringのextension を記述して欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2023/10/27 15:19:36*
+## 🤖 Assistant
+*2023-10-27 15:19:36*
 
 Swiftで、指定された要件に基づいて`String`の拡張(extension)を作成することができます。以下に、`.maskedPassword`プロパティを使用して文字列をマスクするための`String`の拡張を示します。
 

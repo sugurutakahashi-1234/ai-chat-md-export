@@ -1,11 +1,11 @@
 # SwiftLint Trailing Whitespace Violation
 
-日付: 2024-10-15
+Date: 2024-10-15
 
 ---
 
-## 👤 ユーザー
-*2024/10/15 12:35:25*
+## 👤 User
+*2024-10-15 12:35:25*
 
 $ swift run --package-path DaVinciDevToolsPackage mint run swiftlint autocorrect daVinci/Source/UI/FreeTrialPromotion/CreditExplanation/CreditExplanationView.swift
 Building for debugging...
@@ -19,8 +19,8 @@ Done linting! Found 1 violation, 0 serious in 1 file.
 
 ---
 
-## 🤖 アシスタント
-*2024/10/15 12:35:30*
+## 🤖 Assistant
+*2024-10-15 12:35:30*
 
 It looks like the linting process was completed successfully, but there was a single violation in your `CreditExplanationView.swift` file. The violation is related to trailing whitespace on line 11. You can fix it by removing any unnecessary spaces at the end of that line.
 
@@ -28,15 +28,15 @@ If you'd like to automatically fix such issues in the future, running SwiftLint 
 
 ---
 
-## 👤 ユーザー
-*2024/10/15 12:35:42*
+## 👤 User
+*2024-10-15 12:35:42*
 
 どういうこと？
 
 ---
 
-## 🤖 アシスタント
-*2024/10/15 12:35:50*
+## 🤖 Assistant
+*2024-10-15 12:35:50*
 
 すみません、説明が不十分でした。
 
@@ -55,15 +55,15 @@ validates_start_with_lowercase:
 
 ---
 
-## 👤 ユーザー
-*2024/10/15 12:36:17*
+## 👤 User
+*2024-10-15 12:36:17*
 
 これも自動で修正してほしいんだけど
 
 ---
 
-## 🤖 アシスタント
-*2024/10/15 12:36:32*
+## 🤖 Assistant
+*2024-10-15 12:36:32*
 
 `swiftlint autocorrect` で自動修正されなかった場合、**Trailing Whitespace** のような簡単な違反は通常、SwiftLint の自動修正機能で解決されるはずです。ただし、時には `.swiftlint.yml` の設定や SwiftLint のバージョンによって動作が異なることがあります。
 
@@ -93,15 +93,15 @@ swift run --package-path DaVinciDevToolsPackage mint run swiftlint autocorrect d
 
 ---
 
-## 👤 ユーザー
-*2024/10/15 12:40:04*
+## 👤 User
+*2024-10-15 12:40:04*
 
 オプションでyamlファイルを指定したい
 
 ---
 
-## 🤖 アシスタント
-*2024/10/15 12:40:23*
+## 🤖 Assistant
+*2024-10-15 12:40:23*
 
 `swiftlint` コマンドでは、`.swiftlint.yml` の設定ファイルをオプションとして指定することができます。これにより、複数の設定ファイルを使い分けたり、特定のプロジェクトに対して異なるルールを適用することが可能です。
 

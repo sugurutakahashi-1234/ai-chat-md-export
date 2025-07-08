@@ -1,11 +1,11 @@
 # Objective-C Swift Forward Declaration
 
-日付: 2024-10-28
+Date: 2024-10-28
 
 ---
 
-## 👤 ユーザー
-*2024/10/28 16:05:54*
+## 👤 User
+*2024-10-28 16:05:54*
 
 日本語でどういう場合に対応すべきか教えて欲しい
 
@@ -186,8 +186,8 @@ Thank you to @drodriguez and @rmaz for h
 
 ---
 
-## 🤖 アシスタント
-*2024/10/28 16:06:06*
+## 🤖 Assistant
+*2024-10-28 16:06:06*
 
 Swift 5.9の新機能として導入された、Objective-Cの**forward declaration**をSwiftで扱う提案「SE-0384」では、次のような状況で対応が必要です。
 

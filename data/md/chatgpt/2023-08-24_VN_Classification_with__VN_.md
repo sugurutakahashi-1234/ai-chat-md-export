@@ -1,18 +1,18 @@
 # VN Classification with "VN"
 
-日付: 2023-08-24
+Date: 2023-08-24
 
 ---
 
-## 👤 ユーザー
-*2023/08/25 01:09:21*
+## 👤 User
+*2023-08-25 01:09:21*
 
 VNClassificationObservations のVNってどういう意味
 
 ---
 
-## 🤖 アシスタント
-*2023/08/25 01:09:42*
+## 🤖 Assistant
+*2023-08-25 01:09:42*
 
 `VNClassificationObservations` における `VN` は、AppleのVisionフレームワークに関連しています。このフレームワークは、iOS, macOS, tvOS, および watchOSのための画像解析タスクを助けるものです。
 

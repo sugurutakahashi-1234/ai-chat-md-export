@@ -1,18 +1,18 @@
 # Android ID取得方法
 
-日付: 2024-12-12
+Date: 2024-12-12
 
 ---
 
-## 👤 ユーザー
-*2024/12/12 16:03:37*
+## 👤 User
+*2024-12-12 16:03:37*
 
 Flutter でAndroidの idを取得したい
 
 ---
 
-## 🤖 アシスタント
-*2024/12/12 16:04:02*
+## 🤖 Assistant
+*2024-12-12 16:04:02*
 
 Flutter で Android デバイスの ID（例えば Android ID）を取得するには、[**`device_info_plus`**](https://pub.dev/packages/device_info_plus) パッケージを使うのが一般的です。このパッケージはデバイスの情報を簡単に取得できるようにする便利な API を提供しています。
 

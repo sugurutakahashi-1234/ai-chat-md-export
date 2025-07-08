@@ -1,11 +1,11 @@
 # json_serializable build error
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 00:25:48*
+## 👤 User
+*2024-12-19 00:25:48*
 
 make build                                                                                                                    2 ↵
 fvm flutter pub run build_runner build --delete-conflicting-outputs
@@ -26,8 +26,8 @@ make: *** [build] Error 1
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 00:26:00*
+## 🤖 Assistant
+*2024-12-19 00:26:00*
 
 The error you're encountering seems to be related to the `json_serializable` package processing a type it doesn't know how to handle in the file `snapit_guild_api.openapi.dart`. Here are the steps you can take to debug and fix the issue:
 
@@ -63,8 +63,8 @@ The error you're encountering seems to be related to the `json_serializable` pac
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 00:27:30*
+## 👤 User
+*2024-12-19 00:27:30*
 
 どこにエラーがありそうか？
 
@@ -323,8 +323,8 @@ components:
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 00:28:13*
+## 🤖 Assistant
+*2024-12-19 00:28:13*
 
 The error appears to originate from an unsupported or unrecognized type in the `snapit_guild_api.openapi.dart` file during code generation using `json_serializable`. Here's a step-by-step analysis and likely problematic areas:
 
@@ -445,8 +445,8 @@ Let me know if you need further assistance!
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 00:31:15*
+## 👤 User
+*2024-12-19 00:31:15*
 
 ```
 [FINE] json_serializable on lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart:Running JsonSerializableGenerator - 1 of 2
@@ -1271,8 +1271,8 @@ T _throwStateError<T>(String message) => throw StateError(message);
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 00:32:16*
+## 🤖 Assistant
+*2024-12-19 00:32:16*
 
 From the information provided, the root cause of the error seems to be related to how `json_serializable` handles specific types or structures in the generated Dart code. Let's pinpoint the issues:
 

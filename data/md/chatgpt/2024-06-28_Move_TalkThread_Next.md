@@ -1,11 +1,11 @@
 # Move TalkThread Next
 
-日付: 2024-06-28
+Date: 2024-06-28
 
 ---
 
-## 👤 ユーザー
-*2024/06/28 10:02:40*
+## 👤 User
+*2024-06-28 10:02:40*
 
 selectedTalkThread  を次の TalkThread へ移行する処理
 
@@ -14,8 +14,8 @@ selectedTalkThread  を次の TalkThread へ移行する処理
 
 ---
 
-## 🤖 アシスタント
-*2024/06/28 10:02:59*
+## 🤖 Assistant
+*2024-06-28 10:02:59*
 
 `selectedTalkThread` を次の `TalkThread` に移行する処理を実装するには、`selectedTalkThread` が現在の `talkThreads` リストのどこにあるかを特定し、それを次の `TalkThread` に設定するロジックを追加する必要があります。以下にその実装例を示します。
 
@@ -71,15 +71,15 @@ struct TalkThread: Identifiable, Equatable {
 
 ---
 
-## 👤 ユーザー
-*2024/06/28 10:05:25*
+## 👤 User
+*2024-06-28 10:05:25*
 
 もっとスマートな方法ってある？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/28 10:05:41*
+## 🤖 Assistant
+*2024-06-28 10:05:41*
 
 もう少しスマートな方法として、`selectedTalkThread` を直接インデックスベースで管理し、次のスレッドに移行する際のエラーハンドリングをシンプルにする方法があります。以下にその実装例を示します。
 

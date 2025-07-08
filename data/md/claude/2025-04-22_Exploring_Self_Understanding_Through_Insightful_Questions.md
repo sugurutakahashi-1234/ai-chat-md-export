@@ -1,18 +1,18 @@
 # Exploring Self-Understanding Through Insightful Questions
 
-日付: 2025-04-22
+Date: 2025-04-22
 
 ---
 
-## 👤 ユーザー
-*2025/04/22 22:26:45*
+## 👤 User
+*2025-04-22 22:26:45*
 
 いっぱい自己理解を助ける上の質問して欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2025/04/22 22:26:53*
+## 🤖 Assistant
+*2025-04-22 22:26:53*
 
 The person is asking me in Japanese to ask them lots of questions that help with self-understanding. They want me to help them explore themselves through thoughtful questions.
 

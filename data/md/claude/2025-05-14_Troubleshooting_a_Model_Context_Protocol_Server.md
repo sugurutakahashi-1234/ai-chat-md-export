@@ -1,11 +1,11 @@
 # Troubleshooting a Model Context Protocol Server
 
-日付: 2025-05-14
+Date: 2025-05-14
 
 ---
 
-## 👤 ユーザー
-*2025/05/14 15:36:01*
+## 👤 User
+*2025-05-14 15:36:01*
 
 2025-05-14T06:30:46.668Z [markitdown] [info] Initializing server...
 2025-05-14T06:30:46.726Z [markitdown] [info] Server started and connected successfully
@@ -32,8 +32,8 @@ Run 'docker run --help' for more information
 
 ---
 
-## 🤖 アシスタント
-*2025/05/14 15:36:11*
+## 🤖 Assistant
+*2025-05-14 15:36:11*
 
 I see you're experiencing issues with a Docker container for a Model Context Protocol (MCP) server called "markitdown". There are a few errors in the logs:
 
@@ -56,8 +56,8 @@ Would you like me to help you troubleshoot further or explain what Model Context
 
 ---
 
-## 👤 ユーザー
-*2025/05/14 15:40:09*
+## 👤 User
+*2025-05-14 15:40:09*
 
 どうしてだとおもう？
 
@@ -76,8 +76,8 @@ docker/welcome-to-docker           latest      eedaff45e3c7   18 months ago   29
 
 ---
 
-## 🤖 アシスタント
-*2025/05/14 15:40:30*
+## 🤖 Assistant
+*2025-05-14 15:40:30*
 
 イメージの確認から問題点が見えてきました。エラーメッセージと実際のDockerイメージを比較すると、イメージ名に違いがあることがわかります。
 
@@ -101,8 +101,8 @@ docker/welcome-to-docker           latest      eedaff45e3c7   18 months ago   29
 
 ---
 
-## 👤 ユーザー
-*2025/05/14 15:41:22*
+## 👤 User
+*2025-05-14 15:41:22*
 
 nename前も消したい
 
@@ -123,8 +123,8 @@ docker/welcome-to-docker           latest      eedaff45e3c7   18 months ago   29
 
 ---
 
-## 🤖 アシスタント
-*2025/05/14 15:41:29*
+## 🤖 Assistant
+*2025-05-14 15:41:29*
 
 &lt;none&gt;というタグとリポジトリ名のイメージ（ダングリングイメージ）を削除するには、以下のコマンドを使用できます：
 

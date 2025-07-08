@@ -1,18 +1,18 @@
 # SwiftUI SFSymbols Slider 示例
 
-日付: 2024-05-21
+Date: 2024-05-21
 
 ---
 
-## 👤 ユーザー
-*2024/05/21 14:38:21*
+## 👤 User
+*2024-05-21 14:38:21*
 
 SwiftUI の SFSymbols で　variableValue とスライダーを使ったサンプル
 
 ---
 
-## 🤖 アシスタント
-*2024/05/21 14:38:40*
+## 🤖 Assistant
+*2024-05-21 14:38:40*
 
 以下は、SwiftUI で `SFSymbols` の `variableValue` とスライダーを使ったサンプルコードです。このコードでは、スライダーの値に応じて `SFSymbols` のアイコンが変化する様子を示しています。
 
@@ -67,15 +67,15 @@ struct VariableValueApp: App {
 
 ---
 
-## 👤 ユーザー
-*2024/05/21 14:39:23*
+## 👤 User
+*2024-05-21 14:39:23*
 
 variableValue はそこであっている？iOS17の情報を取得してほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/05/21 14:39:38*
+## 🤖 Assistant
+*2024-05-21 14:39:38*
 
 In iOS 17, SwiftUI introduced new features for working with SF Symbols, including enhanced support for variable values and symbol effects. Here's an updated example demonstrating how to use a slider to control an SF Symbol's variable value:
 

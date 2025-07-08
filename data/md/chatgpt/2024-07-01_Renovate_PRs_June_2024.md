@@ -1,11 +1,11 @@
 # Renovate PRs June 2024
 
-日付: 2024-07-01
+Date: 2024-07-01
 
 ---
 
-## 👤 ユーザー
-*2024/07/01 09:40:45*
+## 👤 User
+*2024-07-01 09:40:45*
 
 author:app/renovate を否定系にしたい
 
@@ -13,8 +13,8 @@ is:pr created:2024-06-01..2024-06-30 -reason:"not planned" author:app/renovate
 
 ---
 
-## 🤖 アシスタント
-*2024/07/01 09:40:49*
+## 🤖 Assistant
+*2024-07-01 09:40:49*
 
 To achieve the goal of creating a GitHub query that finds all pull requests created by `app/renovate` in June 2024 but excludes those with the reason "not planned," you can use the following search query:
 
@@ -29,15 +29,15 @@ This query specifies:
 
 ---
 
-## 👤 ユーザー
-*2024/07/01 09:41:05*
+## 👤 User
+*2024-07-01 09:41:05*
 
 author:app/renovate  が含まれないようにしたい
 
 ---
 
-## 🤖 アシスタント
-*2024/07/01 09:41:11*
+## 🤖 Assistant
+*2024-07-01 09:41:11*
 
 To exclude pull requests created by `app/renovate` in your GitHub query, you can use the `-author` filter. Here's how you can adjust the query to exclude PRs by `app/renovate`:
 
@@ -51,15 +51,15 @@ This query specifies:
 
 ---
 
-## 👤 ユーザー
-*2024/07/01 09:43:29*
+## 👤 User
+*2024-07-01 09:43:29*
 
 追加でapp/github-actions も含めたくない
 
 ---
 
-## 🤖 アシスタント
-*2024/07/01 09:43:35*
+## 🤖 Assistant
+*2024-07-01 09:43:35*
 
 To exclude pull requests created by both `app/renovate` and `app/github-actions` within June 2024, you can adjust the query as follows:
 
@@ -74,15 +74,15 @@ This query specifies:
 
 ---
 
-## 👤 ユーザー
-*2024/07/01 09:45:09*
+## 👤 User
+*2024-07-01 09:45:09*
 
 最初に書いた一つしか反映されない
 
 ---
 
-## 🤖 アシスタント
-*2024/07/01 09:45:17*
+## 🤖 Assistant
+*2024-07-01 09:45:17*
 
 GitHub's search query syntax allows combining multiple exclusions. To exclude pull requests created by both `app/renovate` and `app/github-actions` within June 2024, you can combine the conditions correctly:
 

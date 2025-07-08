@@ -1,11 +1,11 @@
 # Adjusting Non-Displayed Items
 
-日付: 2024-08-16
+Date: 2024-08-16
 
 ---
 
-## 👤 ユーザー
-*2024/08/16 11:01:38*
+## 👤 User
+*2024-08-16 11:01:38*
 
 以下について、displayedItemでない要素のサイズを少し小さくしたり暗くすることは可能なのか？
 
@@ -55,8 +55,8 @@ public struct SimplePositionScrollDesignView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 11:01:59*
+## 🤖 Assistant
+*2024-08-16 11:01:59*
 
 はい、`displayedItem`でない要素のサイズを少し小さくしたり、暗くすることは可能です。`displayedItem`と比較して他の要素のスタイルを調整するためには、`item`が`displayedItem`と一致しているかどうかを確認し、その結果に基づいてスタイルを変更する必要があります。
 
@@ -115,29 +115,29 @@ public struct SimplePositionScrollDesignView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/08/16 11:36:29*
+## 👤 User
+*2024-08-16 11:36:29*
 
 変化が急なので自然なアニメーションを入れて欲しいのと、次や一つ前のコンテンツが前の実装だと見えていたので、それを維持して欲しい
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 11:36:50*
+## 🤖 Assistant
+*2024-08-16 11:36:50*
 
 User prefers natural animations for transitions and wants to maintain visibility of the next and previous content when implementing changes.
 
 ---
 
-## 🔧 ツール
-*2024/08/16 11:36:50*
+## 🔧 Tool
+*2024-08-16 11:36:50*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/08/16 11:36:50*
+## 🤖 Assistant
+*2024-08-16 11:36:50*
 
 自然なアニメーションを追加し、次や一つ前のコンテンツが見えるように調整した実装は以下の通りです。`withAnimation`を使用して、サイズ変更や不透明度の変化をアニメーション化しています。
 

@@ -1,11 +1,11 @@
 # SwiftでenumのrawValueを使用
 
-日付: 2023-09-06
+Date: 2023-09-06
 
 ---
 
-## 👤 ユーザー
-*2023/09/06 16:37:08*
+## 👤 User
+*2023-09-06 16:37:08*
 
 SwiftでenumのrawValueがある場合はそのrawValueで判定するようにして欲しいんだけどどうすればいいかな
 
@@ -42,8 +42,8 @@ extension ConvertibleToProtoBufValue {
 
 ---
 
-## 🤖 アシスタント
-*2023/09/06 16:38:04*
+## 🤖 Assistant
+*2023-09-06 16:38:04*
 
 Swiftのenumが`rawValue`を持っている場合、その`rawValue`で判定するようにするには、まず該当のenumが`RawRepresentable`を準拠していることを確認してください。
 

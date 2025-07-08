@@ -1,11 +1,11 @@
 # Asynchronous Image Loading
 
-日付: 2024-08-20
+Date: 2024-08-20
 
 ---
 
-## 👤 ユーザー
-*2024/08/20 17:42:24*
+## 👤 User
+*2024-08-20 17:42:24*
 
 Synchronous URL loading of https://picsum.photos/586/592 should not occur on this application's main thread as it may lead to UI unresponsiveness. Please switch to an asynchronous networking API such as URLSession.
 extension UIImage {
@@ -25,8 +25,8 @@ extension UIImage {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/20 17:42:38*
+## 🤖 Assistant
+*2024-08-20 17:42:38*
 
 To avoid blocking the main thread when loading images from a URL, you should use `URLSession` to fetch the image data asynchronously. Here's an updated version of your code that leverages `URLSession` and async/await, which is available in Swift 5.5 and later.
 

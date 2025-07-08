@@ -1,11 +1,11 @@
 # Swift JSON models creation.
 
-日付: 2024-03-07
+Date: 2024-03-07
 
 ---
 
-## 👤 ユーザー
-*2024/03/07 23:48:49*
+## 👤 User
+*2024-03-07 23:48:49*
 
 VariantTest と AppInfo の JSON を作成してほしい
 
@@ -46,8 +46,8 @@ public struct MaintenanceInfo: Codable {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/07 23:49:02*
+## 🤖 Assistant
+*2024-03-07 23:49:02*
 
 Based on the provided Swift structures, I'll create JSON representations for both `VariantTest` and `AppInfo`. These JSON structures are designed to match the properties defined in your Swift code, which can be useful for configuring remote feature flags, app update requirements, and maintenance information.
 
@@ -91,8 +91,8 @@ These JSON examples are designed to be directly compatible with the Swift struct
 
 ---
 
-## 👤 ユーザー
-*2024/03/08 00:15:17*
+## 👤 User
+*2024-03-08 00:15:17*
 
 以下のenumに対して、StringがkeyNameと一致している場合はそのRemoteConfigTypeを返却するメソッドをRemoteConfigTypeに生やしてほしい。
 
@@ -120,8 +120,8 @@ public enum RemoteConfigType: CaseIterable {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/08 00:15:51*
+## 🤖 Assistant
+*2024-03-08 00:15:51*
 
 To add a method to the `RemoteConfigType` enum that returns a `RemoteConfigType` if a given `String` matches its `keyName`, you can leverage the `CaseIterable` protocol that `RemoteConfigType` conforms to. This allows you to iterate over all cases of the enum. Here's how you can implement such a method:
 
@@ -145,8 +145,8 @@ This method is useful for dynamically determining the remote configuration type 
 
 ---
 
-## 👤 ユーザー
-*2024/03/08 00:16:42*
+## 👤 User
+*2024-03-08 00:16:42*
 
 こんな感じのイニシャライザがいいかも。
 
@@ -156,8 +156,8 @@ public init(keyName: String) {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/08 00:17:16*
+## 🤖 Assistant
+*2024-03-08 00:17:16*
 
 To implement an initializer for the `RemoteConfigType` enum that initializes an instance based on a `keyName` string, you would ideally want the initializer to either successfully create an instance or fail gracefully if the provided `keyName` does not match any of the enum's cases. However, enum initializers in Swift cannot fail in the traditional sense (i.e., they cannot return `nil`), unless you use a failable initializer. But, enums do not support failable initializers directly in the way classes do.
 
@@ -205,29 +205,29 @@ While Swift's type system and enum capabilities are quite powerful, they do have
 
 ---
 
-## 👤 ユーザー
-*2024/03/08 00:17:31*
+## 👤 User
+*2024-03-08 00:17:31*
 
 throwしたほうがいいね
 
 ---
 
-## 👤 ユーザー
-*2024/03/08 00:18:51*
+## 👤 User
+*2024-03-08 00:18:51*
 
 英語で回答してほしいのと、Swiftで適当なシンプルなエラーを返したいときはどうすればいいの？
 
 ---
 
-## 👤 ユーザー
-*2024/03/08 00:19:01*
+## 👤 User
+*2024-03-08 00:19:01*
 
 日本語で回答してほしいのと、Swiftで適当なシンプルなエラーを返したいときはどうすればいいの？
 
 ---
 
-## 🤖 アシスタント
-*2024/03/08 00:20:04*
+## 🤖 Assistant
+*2024-03-08 00:20:04*
 
 Swiftで簡単なエラーを返したい場合、まずはエラーを表現するために`Error`プロトコルに準拠するカスタムエラー型を定義する必要があります。エラーを投げる（throw）機能を使うには、関数が`throws`キーワードを使ってエラーを投げる可能性があることを示す必要があります。そして、実際にエラー状況で`throw`を使ってエラーを投げます。
 

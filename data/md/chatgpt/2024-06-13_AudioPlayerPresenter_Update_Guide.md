@@ -1,11 +1,11 @@
 # AudioPlayerPresenter Update Guide
 
-日付: 2024-06-13
+Date: 2024-06-13
 
 ---
 
-## 👤 ユーザー
-*2024/06/13 15:26:28*
+## 👤 User
+*2024-06-13 15:26:28*
 
 Swift6へのmigrationをしている。
 
@@ -158,8 +158,8 @@ player?.seek(to: cmTime) { [weak self] completed in
 
 ---
 
-## 🤖 アシスタント
-*2024/06/13 15:26:38*
+## 🤖 Assistant
+*2024-06-13 15:26:38*
 
 Swift 6 introduces stricter concurrency rules, and capturing `self` in an escaping closure now requires explicit handling when `self` is not `Sendable`. You can address this error by explicitly marking the closure as `@MainActor` if you know the code will always be executed on the main thread, or by capturing `self` in a way that ensures safety across concurrency contexts.
 

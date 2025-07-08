@@ -1,11 +1,11 @@
 # Release Note URL Fix
 
-日付: 2024-04-07
+Date: 2024-04-07
 
 ---
 
-## 👤 ユーザー
-*2024/04/07 12:15:03*
+## 👤 User
+*2024-04-07 12:15:03*
 
 Slackの通知で$(RELEASE_NOTE_URL) が解決されなかった。
 
@@ -66,8 +66,8 @@ jobs:
 
 ---
 
-## 🤖 アシスタント
-*2024/04/07 12:15:29*
+## 🤖 Assistant
+*2024-04-07 12:15:29*
 
 The issue you're encountering with the `$(RELEASE_NOTE_URL)` not being resolved in your Slack notification step seems to be due to the way environment variables are referenced within the GitHub Actions workflow, especially when used with external actions like `rtCamp/action-slack-notify`.
 
@@ -101,15 +101,15 @@ In this correction, `SLACK_MESSAGE: "${{ env.RELEASE_NOTE_URL }}"` properly refe
 
 ---
 
-## 👤 ユーザー
-*2024/04/07 12:18:22*
+## 👤 User
+*2024-04-07 12:18:22*
 
 env を使わない方法はあるのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/04/07 12:19:00*
+## 🤖 Assistant
+*2024-04-07 12:19:00*
 
 `env`を使わない方法として、直接`steps`の出力を利用して環境変数のような値を参照する方法があります。GitHub Actionsでは、あるステップの出力を後続のステップで使用することが可能です。この機能を利用して、`RELEASE_NOTE_URL`をステップの出力として設定し、それをSlack通知ステップで使用することができます。
 
@@ -148,15 +148,15 @@ jobs:
 
 ---
 
-## 👤 ユーザー
-*2024/04/07 12:19:19*
+## 👤 User
+*2024-04-07 12:19:19*
 
 どちらの記述の方が一般的？
 
 ---
 
-## 🤖 アシスタント
-*2024/04/07 12:20:04*
+## 🤖 Assistant
+*2024-04-07 12:20:04*
 
 GitHub Actionsで情報をステップ間で共有する方法としては、`env`（環境変数）を使う方法と`outputs`（ステップの出力）を使う方法の二つがありますが、どちらが一般的かは、使用するシナリオによって異なります。それぞれの方法には利点と適用シナリオがあります。
 

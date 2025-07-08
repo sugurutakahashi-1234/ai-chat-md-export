@@ -1,11 +1,11 @@
 # Fill Missing Volume Levels
 
-日付: 2024-06-26
+Date: 2024-06-26
 
 ---
 
-## 👤 ユーザー
-*2024/06/26 16:46:04*
+## 👤 User
+*2024-06-26 16:46:04*
 
 maxColumnCount がある場合に、volumeLevels が maxColumnCount に達していなければ、前方に 0 で埋めてあげてほしい
 
@@ -46,8 +46,8 @@ struct WaveformView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/26 16:46:23*
+## 🤖 Assistant
+*2024-06-26 16:46:23*
 
 `maxColumnCount`が指定されている場合、`volumeLevels`が`maxColumnCount`に達していない場合は、`volumeLevels`の前方を0で埋めるようにするために、次のように`init`メソッドを修正します。
 

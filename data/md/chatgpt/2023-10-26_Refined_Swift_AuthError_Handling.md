@@ -1,11 +1,11 @@
 # Refined Swift AuthError Handling
 
-日付: 2023-10-26
+Date: 2023-10-26
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 16:56:47*
+## 👤 User
+*2023-10-26 16:56:47*
 
 以下のswitch文をまとめられないのか？
 特に .service のところ
@@ -52,8 +52,8 @@ private extension AuthDetailError {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 16:57:31*
+## 🤖 Assistant
+*2023-10-26 16:57:31*
 
 Your `switch` statement can be simplified to reduce redundancy and make it more concise, especially for the `.service` case. Here's a refined version of your code:
 
@@ -108,8 +108,8 @@ This results in a more concise `switch` statement.
 
 ---
 
-## 👤 ユーザー
-*2023/10/26 17:03:47*
+## 👤 User
+*2023-10-26 17:03:47*
 
 日本語で回答して欲しい
 AuthManagerErrorのAuthDetailErrorを持つものの中に、AuthDetailErrorのcase alreadyExistsPhoneNumberもしくは case alreadyExistsEmailAddress が含まれていれば、AuthManagerErrorのalreadyExistsPhoneNumberもしくは alreadyExistsEmailAddress に変換する処理を書いて欲しいい。
@@ -143,8 +143,8 @@ public enum AuthDetailError {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/26 17:04:19*
+## 🤖 Assistant
+*2023-10-26 17:04:19*
 
 指定された要件に基づいて、`AuthManagerError`を`AuthManagerError`の`alreadyExistsPhoneNumber` または `alreadyExistsEmailAddress`に変換する処理を以下に示します。
 

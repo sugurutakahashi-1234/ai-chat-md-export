@@ -1,11 +1,11 @@
 # Swift Notification Permission Async
 
-日付: 2024-10-29
+Date: 2024-10-29
 
 ---
 
-## 👤 ユーザー
-*2024/10/29 19:21:59*
+## 👤 User
+*2024-10-29 19:21:59*
 
 Sending 'completion' risks causing data races; this is an error in the Swift 6 language mode
 
@@ -32,8 +32,8 @@ class NotificationPermission {
 
 ---
 
-## 🤖 アシスタント
-*2024/10/29 19:22:05*
+## 🤖 Assistant
+*2024-10-29 19:22:05*
 
 To eliminate the potential for data races in Swift 6, you can replace the use of completion handlers with Swift's Concurrency features, such as `async/await`. This will make the functions more safe and modern, aligning with Swift's concurrency model. Here’s how you can refactor the `NotificationPermission` class:
 
@@ -75,15 +75,15 @@ This refactoring aligns with Swift 6's enhanced concurrency safety and avoids da
 
 ---
 
-## 👤 ユーザー
-*2024/10/29 19:22:29*
+## 👤 User
+*2024-10-29 19:22:29*
 
 sending とかで対応できないの？
 
 ---
 
-## 🤖 アシスタント
-*2024/10/29 19:22:33*
+## 🤖 Assistant
+*2024-10-29 19:22:33*
 
 Swift 6 では `completion` をそのまま使うとデータ競合のリスクが生じる可能性がありますが、`completion` を直接非同期メソッドで置き換えるのではなく、`sending` を使って値を非同期に渡すことができます。以下のように書き換えると、Swift Concurrency に対応しつつ、データ競合を避けられます。
 

@@ -1,11 +1,11 @@
 # GuildInfoWidget エラー解決
 
-日付: 2024-12-25
+Date: 2024-12-25
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 12:37:22*
+## 👤 User
+*2024-12-25 12:37:22*
 
 GuildInfoWidget のように外に出したらエラーになってしまった
 
@@ -338,8 +338,8 @@ class GuildInfoWidget extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 12:37:38*
+## 🤖 Assistant
+*2024-12-25 12:37:38*
 
 `GuildInfoWidget` を外に出した際にエラーが発生した理由として、以下の点を確認してください。
 
@@ -394,15 +394,15 @@ import 'package:snpit_guild_app/presentation/widgets/guild_info_widget.dart';
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 12:38:04*
+## 👤 User
+*2024-12-25 12:38:04*
 
 [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: Unable to load asset: "assets/images/triangle_dots.svg".
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 12:38:19*
+## 🤖 Assistant
+*2024-12-25 12:38:19*
 
 このエラーは、Flutter アプリが指定されたアセット (`assets/images/triangle_dots.svg`) をロードできないことを示しています。この問題を解決するためには、以下の手順を確認してください。
 

@@ -1,18 +1,18 @@
 # Navigating Between Modal Sheets and Full-Screen Pages
 
-日付: 2025-03-24
+Date: 2025-03-24
 
 ---
 
-## 👤 ユーザー
-*2025/03/24 22:13:04*
+## 👤 User
+*2025-03-24 22:13:04*
 
 もしかして、ShootingPageとWeaveSpotPageの遷移はtabPageからもともとのルーターのpush遷移させるようにすれば、shootableSpotDetailRouterからはShootingPageとWeaveSpotPageの記述は削除できるのかな
 
 ---
 
-## 👤 ユーザー
-*2025/03/24 22:07:36*
+## 👤 User
+*2025-03-24 22:07:36*
 
 ShootableSpotDetailPage と AttackerListPage は
 
@@ -82,8 +82,8 @@ final shootableSpotDetailRouter = GoRouter(
 
 ---
 
-## 🤖 アシスタント
-*2025/03/24 22:08:01*
+## 🤖 Assistant
+*2025-03-24 22:08:01*
 
 I see you're trying to implement a navigation flow where `ShootableSpotDetailPage` and `AttackerListPage` should appear in a modal bottom sheet, while `ShootingPage` and `WeaveSpotPage` should navigate as full-screen pages. Here's how you can modify your approach to achieve this.
 
@@ -233,15 +233,15 @@ Where `MyNavigatorObserver` is a custom observer that detects route changes and 
 
 ---
 
-## 👤 ユーザー
-*2025/03/24 22:08:51*
+## 👤 User
+*2025-03-24 22:08:51*
 
 日本語で
 
 ---
 
-## 🤖 アシスタント
-*2025/03/24 22:09:15*
+## 🤖 Assistant
+*2025-03-24 22:09:15*
 
 ShootableSpotDetailPageとAttackerListPageをモーダルボトムシートで表示し、ShootingPageとWeaveSpotPageを全画面で表示したい問題について解決策をご説明します。
 
@@ -381,8 +381,8 @@ navigatorObservers: [
 
 ---
 
-## 🤖 アシスタント
-*2025/03/24 22:13:18*
+## 🤖 Assistant
+*2025-03-24 22:13:18*
 
 そうですね、その考え方は正解です。ShootingPageとWeaveSpotPageはモーダルボトムシートから全画面遷移させるのが目的であれば、shootableSpotDetailRouterからそれらの記述を削除し、代わりにメインルーター（router）を使って遷移させる方法が効果的です。
 

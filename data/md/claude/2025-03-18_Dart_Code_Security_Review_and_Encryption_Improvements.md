@@ -1,11 +1,11 @@
 # Dart Code Security Review and Encryption Improvements
 
-日付: 2025-03-18
+Date: 2025-03-18
 
 ---
 
-## 👤 ユーザー
-*2025/03/18 16:48:10*
+## 👤 User
+*2025-03-18 16:48:10*
 
 問題点は
 
@@ -71,8 +71,8 @@ Map&lt;String, dynamic&gt; decryptLocationData(String encryptedData) {
 
 ---
 
-## 🤖 アシスタント
-*2025/03/18 16:48:27*
+## 🤖 Assistant
+*2025-03-18 16:48:27*
 
 Let me review the Dart code for potential issues and suggest improvements:
 
@@ -186,15 +186,15 @@ Would you like me to elaborate on any of these points or discuss potential secur
 
 ---
 
-## 👤 ユーザー
-*2025/03/18 16:48:34*
+## 👤 User
+*2025-03-18 16:48:34*
 
 日本語でお願い
 
 ---
 
-## 🤖 アシスタント
-*2025/03/18 16:49:01*
+## 🤖 Assistant
+*2025-03-18 16:49:01*
 
 もちろんです。元のDartコードの問題点と改善点を日本語で説明します：
 

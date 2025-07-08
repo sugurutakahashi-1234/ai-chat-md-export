@@ -1,11 +1,11 @@
 # SwiftUIForEachable
 
-日付: 2024-05-08
+Date: 2024-05-08
 
 ---
 
-## 👤 ユーザー
-*2024/05/08 18:08:29*
+## 👤 User
+*2024-05-08 18:08:29*
 
 Swift で 以下の Identifiable ,CaseIterable を提供する SwiftUIForEachable という protocol を用意してほしい
 
@@ -21,8 +21,8 @@ extension AudioFormat: Identifiable ,CaseIterable {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/08 18:09:12*
+## 🤖 Assistant
+*2024-05-08 18:09:12*
 
 Swiftで`Identifiable`と`CaseIterable`プロトコルを提供する`SwiftUIForEachable`というプロトコルを作成するコード例は以下の通りです。ここでは、`AudioFormat`という列挙型が`SwiftUIForEachable`プロトコルに準拠していると仮定しています。まず、`SwiftUIForEachable`プロトコルを定義し、それから`AudioFormat`にこのプロトコルの準拠を拡張する方法を示します。
 
@@ -58,8 +58,8 @@ enum AudioFormat: String, SwiftUIForEachable {
 
 ---
 
-## 👤 ユーザー
-*2024/05/08 18:09:15*
+## 👤 User
+*2024-05-08 18:09:15*
 
 extension SwiftUIForEachable で以下を提供してほしい
 
@@ -74,8 +74,8 @@ extension SwiftUIForEachable で以下を提供してほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/05/08 18:09:59*
+## 🤖 Assistant
+*2024-05-08 18:09:59*
 
 `SwiftUIForEachable` プロトコルを拡張して、デフォルト実装として `id` と `name` プロパティを提供する方法は以下のようになります。この拡張機能により、プロトコルに準拠するすべての型は、特別な実装を追加しなくても、これらのプロパティを自動的に利用できるようになります。
 

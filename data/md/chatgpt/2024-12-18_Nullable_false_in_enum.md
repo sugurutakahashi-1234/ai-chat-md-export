@@ -1,11 +1,11 @@
 # Nullable false in enum
 
-日付: 2024-12-18
+Date: 2024-12-18
 
 ---
 
-## 👤 ユーザー
-*2024/12/19 08:20:11*
+## 👤 User
+*2024-12-19 08:20:11*
 
 openapiでenumって nullable false って意味あるの？
 
@@ -13,8 +13,8 @@ properties: {username: {type: string, description: 'The username of the account'
 
 ---
 
-## 🤖 アシスタント
-*2024/12/19 08:20:21*
+## 🤖 Assistant
+*2024-12-19 08:20:21*
 
 `nullable: false` in OpenAPI has a specific meaning, even when applied to an `enum`. Let's break it down:
 

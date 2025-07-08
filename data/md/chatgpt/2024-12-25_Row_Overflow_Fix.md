@@ -1,11 +1,11 @@
 # Row Overflow Fix
 
-日付: 2024-12-25
+Date: 2024-12-25
 
 ---
 
-## 👤 ユーザー
-*2024/12/25 15:12:48*
+## 👤 User
+*2024-12-25 15:12:48*
 
 {
   "content_type": "image_asset_pointer",
@@ -108,8 +108,8 @@ child: Row(
 
 ---
 
-## 🤖 アシスタント
-*2024/12/25 15:12:57*
+## 🤖 Assistant
+*2024-12-25 15:12:57*
 
 The issue in your Flutter code is that the `Row` widget's content exceeds the available horizontal space, causing the "RIGHT OVERFLOWED BY 255 PX" error. Here are some potential solutions to address this:
 

@@ -1,11 +1,11 @@
 # Creating RecordingDriverProtocol
 
-日付: 2024-07-29
+Date: 2024-07-29
 
 ---
 
-## 👤 ユーザー
-*2024/07/29 18:19:55*
+## 👤 User
+*2024-07-29 18:19:55*
 
 以下、RecordingDriverProtocol を作って欲しい
 
@@ -139,22 +139,22 @@ public final class RecordingDriver: Sendable {
 
 ---
 
-## 🤖 アシスタント
-*2024/07/29 18:20:49*
+## 🤖 Assistant
+*2024-07-29 18:20:49*
 
 User is working on implementing a RecordingDriver in Swift that uses AVAudioRecorder to handle audio recording functionalities.
 
 ---
 
-## 🔧 ツール
-*2024/07/29 18:20:49*
+## 🔧 Tool
+*2024-07-29 18:20:49*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/07/29 18:20:49*
+## 🤖 Assistant
+*2024-07-29 18:20:49*
 
 以下の `RecordingDriverProtocol` を作成しました。このプロトコルに基づいて `RecordingDriver` クラスが実装されるべきです。
 

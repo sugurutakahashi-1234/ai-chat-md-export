@@ -1,11 +1,11 @@
 # Flutter Hooks Riverpod Example
 
-日付: 2024-12-24
+Date: 2024-12-24
 
 ---
 
-## 👤 ユーザー
-*2024/12/24 15:04:26*
+## 👤 User
+*2024-12-24 15:04:26*
 
 hooksとリバーポッドを使って欲しい
 
@@ -25,8 +25,8 @@ class WalletPage extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/24 15:04:37*
+## 🤖 Assistant
+*2024-12-24 15:04:37*
 
 以下は、`flutter_hooks` と `riverpod` を使ったリファクタリング例です。`WalletPage` を `HookConsumerWidget` に変更し、プロバイダーの例を追加しています。
 

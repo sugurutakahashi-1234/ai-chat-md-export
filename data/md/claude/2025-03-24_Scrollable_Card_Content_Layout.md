@@ -1,18 +1,18 @@
 # Scrollable Card Content Layout
 
-日付: 2025-03-24
+Date: 2025-03-24
 
 ---
 
-## 👤 ユーザー
-*2025/03/24 23:47:51*
+## 👤 User
+*2025-03-24 23:47:51*
 
 Cardのコンテンツを新たに追加したが、これが大きすぎて入らないことがわかった。スクロール可能にしたい。
 
 ---
 
-## 🤖 アシスタント
-*2025/03/24 23:48:36*
+## 🤖 Assistant
+*2025-03-24 23:48:36*
 
 Looking at the code and the image, I see the issue with the Card content overflowing. Currently, the layout doesn't accommodate the Card content properly when it's too large, causing the "BOTTOM OVERFLOWED BY 92 PIXELS" message visible in your screenshot.
 

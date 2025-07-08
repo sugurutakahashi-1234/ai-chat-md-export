@@ -1,11 +1,11 @@
 # SelectedTalkThread Not Updating
 
-日付: 2024-08-01
+Date: 2024-08-01
 
 ---
 
-## 👤 ユーザー
-*2024/08/01 16:43:40*
+## 👤 User
+*2024-08-01 16:43:40*
 
 selectedTalkThread がスワイプによって格納できていない。どうしてだろう。
 
@@ -257,8 +257,8 @@ struct ThreadListScrollView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/01 16:43:50*
+## 🤖 Assistant
+*2024-08-01 16:43:50*
 
 `selectedTalkThread`がスワイプによって設定されない原因はいくつか考えられます。以下の点を確認してみてください：
 
@@ -524,8 +524,8 @@ struct ThreadListScrollView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/01 16:46:56*
+## 🤖 Assistant
+*2024-08-01 16:46:56*
 
 s.faceSmiling.image
                                 }
@@ -549,8 +549,8 @@ s.faceSmiling.image
 
 ---
 
-## 👤 ユーザー
-*2024/08/01 16:48:01*
+## 👤 User
+*2024-08-01 16:48:01*
 
 simultaneousGesture を gesture に変えたら横スクロールができなくなった。
 横スクロールと.scrollPosition(id: $selectedTalkThread)を共存させたい
@@ -803,8 +803,8 @@ struct ThreadListScrollView: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/01 16:48:51*
+## 🤖 Assistant
+*2024-08-01 16:48:51*
 
 `simultaneousGesture`を`gesture`に変更すると、横スクロールができなくなる問題は、ジェスチャがスクロールと競合するためです。これを解決するために、スワイプとスクロールを共存させる方法として、カスタムジェスチャーを使用して横スクロールを保持しつつ、スワイプを処理する方法を検討します。
 
@@ -988,8 +988,8 @@ struct ThreadListScrollView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/08/01 16:50:55*
+## 👤 User
+*2024-08-01 16:50:55*
 
 .scrollPosition(id: $selectedTalkThread) で処理するのは諦めて、スクロール位置で判定するのはどうですか？
 

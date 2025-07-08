@@ -1,11 +1,11 @@
 # TransferableUIImage TransferRepresentation Examples
 
-日付: 2024-07-19
+Date: 2024-07-19
 
 ---
 
-## 👤 ユーザー
-*2024/07/19 20:55:06*
+## 👤 User
+*2024-07-19 20:55:06*
 
 public struct TransferableUIImage: Transferable {
     public let imageUrl: URL
@@ -23,8 +23,8 @@ FileRepresentation など他のTransferRepresentationをいくつか試してほ
 
 ---
 
-## 🤖 アシスタント
-*2024/07/19 20:55:20*
+## 🤖 Assistant
+*2024-07-19 20:55:20*
 
 `TransferableUIImage`構造体で異なる`TransferRepresentation`を試すために、以下にいくつかの例を示します。それぞれの例では、`ProxyRepresentation`以外の異なる`TransferRepresentation`を使用しています。
 

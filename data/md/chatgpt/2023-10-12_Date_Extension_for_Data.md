@@ -1,11 +1,11 @@
 # Date Extension for Data
 
-日付: 2023-10-12
+Date: 2023-10-12
 
 ---
 
-## 👤 ユーザー
-*2023/10/12 09:41:03*
+## 👤 User
+*2023-10-12 09:41:03*
 
 これをDate型のextensionにしてみてほしい
 
@@ -17,8 +17,8 @@ public extension String {
 
 ---
 
-## 🤖 アシスタント
-*2023/10/12 09:41:21*
+## 🤖 Assistant
+*2023-10-12 09:41:21*
 
 The code you've provided is a `String` extension initializer that takes a `Data` instance, typically representing a device token, and converts it to a hexadecimal string. If you want to create a similar extension for the `Date` type, it's important to consider what kind of data or value you want to initialize a `Date` object with.
 

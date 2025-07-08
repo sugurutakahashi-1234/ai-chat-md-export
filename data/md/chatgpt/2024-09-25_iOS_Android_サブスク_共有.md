@@ -1,18 +1,18 @@
 # iOS Android サブスク 共有
 
-日付: 2024-09-25
+Date: 2024-09-25
 
 ---
 
-## 👤 ユーザー
-*2024/09/25 14:50:32*
+## 👤 User
+*2024-09-25 14:50:32*
 
 iOSでAppサブスクしたユーザーがAndroidでもそのサブスクが使えるのか。また、その逆もしかり。
 
 ---
 
-## 🤖 アシスタント
-*2024/09/25 14:50:52*
+## 🤖 Assistant
+*2024-09-25 14:50:52*
 
 iOSとAndroid間でサブスクリプションを共有することは、基本的には直接できません。それぞれのプラットフォーム（iOSはApple App Store、AndroidはGoogle Play）は独自の決済システムとサブスクリプション管理を持っており、同一のサブスクリプションを異なるプラットフォーム間で共有することは標準的にはサポートされていません。
 
@@ -32,15 +32,15 @@ iOSとAndroid間でサブスクリプションを共有することは、基本�
 
 ---
 
-## 👤 ユーザー
-*2024/09/25 14:52:31*
+## 👤 User
+*2024-09-25 14:52:31*
 
 Apple や Googleのガイドラインを確認してほしい。たとえばYouTubeプレミアムとかどうなのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/09/25 14:52:40*
+## 🤖 Assistant
+*2024-09-25 14:52:40*
 
 In general, Apple and Google do not support sharing subscriptions directly between iOS and Android devices. When a subscription is purchased through Apple's App Store or Google Play, it is tied to that specific platform. This means that an iOS user would not be able to use their Apple subscription on an Android device, and vice versa, without implementing a more complex solution.
 
@@ -50,15 +50,15 @@ To achieve this in other apps, developers would need to create a centralized aut
 
 ---
 
-## 👤 ユーザー
-*2024/09/25 14:52:50*
+## 👤 User
+*2024-09-25 14:52:50*
 
 日本語でお願い。
 
 ---
 
-## 🤖 アシスタント
-*2024/09/25 14:53:04*
+## 🤖 Assistant
+*2024-09-25 14:53:04*
 
 AppleとGoogleでは、基本的に**iOSとAndroid間でサブスクリプションを直接共有することはサポートされていません**。それぞれのプラットフォームで購入したサブスクリプションは、そのプラットフォームに紐づけられています。つまり、iOSでAppleのApp Storeを通じて購入したサブスクリプションはAndroidデバイスで利用できず、逆も同様です。
 
@@ -70,15 +70,15 @@ AppleとGoogleでは、基本的に**iOSとAndroid間でサブスクリプショ
 
 ---
 
-## 👤 ユーザー
-*2024/09/25 14:53:46*
+## 👤 User
+*2024-09-25 14:53:46*
 
 ユーザーアカウントシステムにWebで課金 = stripe、Androidでの課金、iOSでの課金を共存できるのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/09/25 14:54:13*
+## 🤖 Assistant
+*2024-09-25 14:54:13*
 
 ユーザーアカウントシステムにおいて、Webでの課金（例: **Stripe**）、Androidでの課金（**Google Play**）、iOSでの課金（**Apple App Store**）を共存させることは技術的に可能です。ただし、各プラットフォームでの課金システムとガイドラインに従い、統一的に管理するためにはいくつかの重要な要素を考慮する必要があります。
 

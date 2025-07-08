@@ -1,23 +1,23 @@
 # Creating DELETE CASCADE Relationship in PostgreSQL Item-ItemType Junction Table
 
-日付: 2025-04-23
+Date: 2025-04-23
 
 ---
 
-## 👤 ユーザー
-*2025/04/23 12:33:25*
+## 👤 User
+*2025-04-23 12:33:25*
 
 POstgreSQLでItemとItemTypeの中間テーブルでdeletecascadeのリレーションを作りたい
 
 ---
 
-## 🤖 アシスタント
-*2025/04/23 12:34:05*
+## 🤖 Assistant
+*2025-04-23 12:34:05*
 
 お手伝いいたします。PostgreSQLでItemとItemTypeの中間テーブルでDELETE CASCADEのリレーションを作成することについて説明します。
 
 まず、このような関係を作るために必要なSQLコマンドを調査しましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 

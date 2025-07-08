@@ -1,11 +1,11 @@
 # SFSpeechRecognizer Authorization Status
 
-日付: 2024-07-29
+Date: 2024-07-29
 
 ---
 
-## 👤 ユーザー
-*2024/07/29 16:40:08*
+## 👤 User
+*2024-07-29 16:40:08*
 
 SFSpeechRecognizer.requestAuthorization { authStatus in
             OSLogger.debugLog("\(authStatus)")
@@ -22,8 +22,8 @@ SFSpeechRecognizer.requestAuthorization { authStatus in
 
 ---
 
-## 🤖 アシスタント
-*2024/07/29 16:40:18*
+## 🤖 Assistant
+*2024-07-29 16:40:18*
 
 `SFSpeechRecognizer.requestAuthorization`メソッドの`authStatus`は、音声認識の使用許可のステータスを表します。それぞれのステータスの違いは以下の通りです：
 
@@ -56,15 +56,15 @@ SFSpeechRecognizer.requestAuthorization { authStatus in
 
 ---
 
-## 👤 ユーザー
-*2024/07/29 16:40:41*
+## 👤 User
+*2024-07-29 16:40:41*
 
 restricted とはどういうシチュエーションで使われるの？
 
 ---
 
-## 🤖 アシスタント
-*2024/07/29 16:40:59*
+## 🤖 Assistant
+*2024-07-29 16:40:59*
 
 `restricted` ステータスは、以下のような特定のシチュエーションで発生します：
 
@@ -84,15 +84,15 @@ restricted とはどういうシチュエーションで使われるの？
 
 ---
 
-## 👤 ユーザー
-*2024/07/29 16:44:37*
+## 👤 User
+*2024-07-29 16:44:37*
 
 SFSpeechRecognizer  の制限ってあったりしますか？
 
 ---
 
-## 🤖 アシスタント
-*2024/07/29 16:44:57*
+## 🤖 Assistant
+*2024-07-29 16:44:57*
 
 はい、`SFSpeechRecognizer` にはいくつかの制限や制約があります。以下にその主な制限を挙げます：
 
@@ -118,15 +118,15 @@ SFSpeechRecognizer  の制限ってあったりしますか？
 
 ---
 
-## 👤 ユーザー
-*2024/07/29 16:45:01*
+## 👤 User
+*2024-07-29 16:45:01*
 
 使用制限の目安を教えて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2024/07/29 16:45:22*
+## 🤖 Assistant
+*2024-07-29 16:45:22*
 
 `SFSpeechRecognizer` の使用制限についての公式な目安はAppleから詳細に公開されていませんが、一般的な目安や注意点として以下の点が挙げられます：
 

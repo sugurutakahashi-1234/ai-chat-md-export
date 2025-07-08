@@ -1,11 +1,11 @@
 # SwiftUI MVVM API Pagination
 
-日付: 2024-09-23
+Date: 2024-09-23
 
 ---
 
-## 👤 ユーザー
-*2024/09/23 09:34:20*
+## 👤 User
+*2024-09-23 09:34:20*
 
 swiftのMVVMでAPIをコールしたいがlist形式で下までスクロールすると追加読み込みをする
 
@@ -17,8 +17,8 @@ APIはカーソルページネーションの思想で設計されている
 
 ---
 
-## 🤖 アシスタント
-*2024/09/23 09:35:14*
+## 🤖 Assistant
+*2024-09-23 09:35:14*
 
 SwiftUIのMVVMでカーソルページネーションを使用したAPIコールを行い、スクロールした際に追加データを読み込む実装例を紹介します。ここでは、iOS 16以上の新しい機能も活用します。
 
@@ -161,8 +161,8 @@ extension View {
 
 ---
 
-## 👤 ユーザー
-*2024/09/23 09:37:02*
+## 👤 User
+*2024-09-23 09:37:02*
 
 View側でTaskを使いたくないViewModel側でTaskを使ってほしい
 
@@ -170,22 +170,22 @@ UseCaseを作ってカーソルをViewModel側で意識したくない
 
 ---
 
-## 🤖 アシスタント
-*2024/09/23 09:37:44*
+## 🤖 Assistant
+*2024-09-23 09:37:44*
 
 User prefers to handle `Task` in the ViewModel instead of the View and wants to implement a `UseCase` so that the ViewModel doesn't need to be aware of pagination cursors.
 
 ---
 
-## 🔧 ツール
-*2024/09/23 09:37:44*
+## 🔧 Tool
+*2024-09-23 09:37:44*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/09/23 09:37:44*
+## 🤖 Assistant
+*2024-09-23 09:37:44*
 
 了解しました。それでは、`UseCase`を使ってカーソルの管理を抽象化し、`ViewModel`側では直接カーソルを意識しない設計に変更します。`Task`も`ViewModel`内で処理するようにします。
 
@@ -287,15 +287,15 @@ struct ItemListView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/09/23 09:37:51*
+## 👤 User
+*2024-09-23 09:37:51*
 
 カーソルをViewModelで保持しないようにしてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/09/23 09:38:49*
+## 🤖 Assistant
+*2024-09-23 09:38:49*
 
 カーソルを`ViewModel`で保持せず、`UseCase`側でページネーションに関するロジックをすべて管理するように変更します。`ViewModel`は、ページネーションの詳細を一切意識せず、データ取得の処理のみを行います。
 
@@ -405,29 +405,29 @@ struct ItemListView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/09/23 11:24:24*
+## 👤 User
+*2024-09-23 11:24:24*
 
 hasMoreもUseCase側に隠蔽できないか？
 
 ---
 
-## 🤖 アシスタント
-*2024/09/23 11:25:24*
+## 🤖 Assistant
+*2024-09-23 11:25:24*
 
 User prefers to hide `hasMore` in the UseCase as well.
 
 ---
 
-## 🔧 ツール
-*2024/09/23 11:25:24*
+## 🔧 Tool
+*2024-09-23 11:25:24*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/09/23 11:25:24*
+## 🤖 Assistant
+*2024-09-23 11:25:24*
 
 `hasMore`も`UseCase`側に隠蔽し、`ViewModel`は完全にページネーションやカーソルの管理から解放されるように実装を改良します。これにより、`ViewModel`は単純にデータ取得をトリガーする役割に集中できます。
 

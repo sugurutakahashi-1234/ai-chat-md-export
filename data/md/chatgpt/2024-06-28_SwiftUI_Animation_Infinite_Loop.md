@@ -1,11 +1,11 @@
 # SwiftUI Animation Infinite Loop
 
-日付: 2024-06-28
+Date: 2024-06-28
 
 ---
 
-## 👤 ユーザー
-*2024/06/28 12:37:03*
+## 👤 User
+*2024-06-28 12:37:03*
 
 これの無限リピート
 
@@ -13,8 +13,8 @@ sfSymbol.image.symbolEffect(.variableColor.iterative, value: isActiveEffect)
 
 ---
 
-## 🤖 アシスタント
-*2024/06/28 12:37:11*
+## 🤖 Assistant
+*2024-06-28 12:37:11*
 
 SwiftUI で無限リピート効果を実現するために、`withAnimation`を使って、条件が変わるたびにアニメーションをトリガーする方法があります。以下はその一例です：
 
@@ -48,15 +48,15 @@ struct ContentView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2024/06/28 12:37:26*
+## 👤 User
+*2024-06-28 12:37:26*
 
 symbolEffect に repeatの項目はないの？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/28 12:37:33*
+## 🤖 Assistant
+*2024-06-28 12:37:33*
 
 `symbolEffect` に直接リピートのオプションはありませんが、`Animation` と状態変数を組み合わせることで同様の効果を得ることができます。以下はその実装例です：
 

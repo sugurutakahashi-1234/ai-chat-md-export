@@ -1,11 +1,11 @@
 # Package.swift への移行
 
-日付: 2024-10-18
+Date: 2024-10-18
 
 ---
 
-## 👤 ユーザー
-*2024/10/18 20:10:47*
+## 👤 User
+*2024-10-18 20:10:47*
 
 {
   "content_type": "image_asset_pointer",
@@ -31,8 +31,8 @@
 
 ---
 
-## 🤖 アシスタント
-*2024/10/18 20:11:12*
+## 🤖 Assistant
+*2024-10-18 20:11:12*
 
 Here’s an example of how you can convert the dependencies shown in your image to a `Package.swift` file for Swift Package Manager:
 
@@ -79,16 +79,16 @@ You can adjust the target name (`YourProjectTarget`) to match your actual target
 
 ---
 
-## 👤 ユーザー
-*2024/10/18 20:12:15*
+## 👤 User
+*2024-10-18 20:12:15*
 
 revisionはコミットにしていしたい。
 fromではなくexsact
 
 ---
 
-## 🤖 アシスタント
-*2024/10/18 20:12:27*
+## 🤖 Assistant
+*2024-10-18 20:12:27*
 
 Understood! Here's the updated `Package.swift` file using `exact` versions and specifying the `revision` for the `OpenAPIClient` package:
 
@@ -133,8 +133,8 @@ This setup will ensure that each dependency is locked to the exact version or co
 
 ---
 
-## 👤 ユーザー
-*2024/10/18 20:18:40*
+## 👤 User
+*2024-10-18 20:18:40*
 
 targets のディペンデンシーに加えて欲しい
 
@@ -166,8 +166,8 @@ let package = Package(
 
 ---
 
-## 🤖 アシスタント
-*2024/10/18 20:18:52*
+## 🤖 Assistant
+*2024-10-18 20:18:52*
 
 Here’s how you can update the `targets` section to include all the dependencies you've mentioned in the `dependencies` block:
 
@@ -214,15 +214,15 @@ Now the `DaVinciPackage` target has all the necessary dependencies included!
 
 ---
 
-## 👤 ユーザー
-*2024/10/18 20:20:58*
+## 👤 User
+*2024-10-18 20:20:58*
 
 書き方間違えているのでは？
 
 ---
 
-## 🤖 アシスタント
-*2024/10/18 20:21:17*
+## 🤖 Assistant
+*2024-10-18 20:21:17*
 
 You're absolutely right! The correct way to add the dependencies to the `targets` section should reference the exact names of the imported packages where needed. For example, `OpenAPIClient` should match the name provided in the dependency definition.
 

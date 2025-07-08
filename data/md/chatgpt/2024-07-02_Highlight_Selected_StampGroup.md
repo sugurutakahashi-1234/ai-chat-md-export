@@ -1,11 +1,11 @@
 # Highlight Selected StampGroup
 
-日付: 2024-07-02
+Date: 2024-07-02
 
 ---
 
-## 👤 ユーザー
-*2024/07/02 18:50:26*
+## 👤 User
+*2024-07-02 18:50:26*
 
 選択中のstampGroupが選択中であることをUIで示したい。
 
@@ -135,8 +135,8 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
 
 ---
 
-## 🤖 アシスタント
-*2024/07/02 18:50:38*
+## 🤖 Assistant
+*2024-07-02 18:50:38*
 
 To indicate which `stampGroup` is currently selected in the UI, you can modify the `StampListView` to highlight the selected group. This can be done by changing the appearance of the button when the `stampGroup` is selected. One common way to indicate selection is by changing the background color or adding a border around the selected item.
 
@@ -286,15 +286,15 @@ These visual cues will help indicate which `stampGroup` is currently selected.
 
 ---
 
-## 👤 ユーザー
-*2024/07/02 18:53:18*
+## 👤 User
+*2024-07-02 18:53:18*
 
 背景がハイライトしているだけでいいよ　枠線は入れなくていいよ
 
 ---
 
-## 🤖 アシスタント
-*2024/07/02 18:54:00*
+## 🤖 Assistant
+*2024-07-02 18:54:00*
 
 Understood. I'll remove the border and only add a highlighted background for the selected `stampGroup`. Here’s the updated implementation:
 
@@ -430,15 +430,15 @@ In this updated code:
 
 ---
 
-## 👤 ユーザー
-*2024/07/02 18:54:03*
+## 👤 User
+*2024-07-02 18:54:03*
 
 少しだけ背景の枠を大きくしたい
 
 ---
 
-## 🤖 アシスタント
-*2024/07/02 18:54:45*
+## 🤖 Assistant
+*2024-07-02 18:54:45*
 
 To make the background highlight slightly larger, you can use a padding modifier to increase the size of the background. Here’s the updated implementation:
 

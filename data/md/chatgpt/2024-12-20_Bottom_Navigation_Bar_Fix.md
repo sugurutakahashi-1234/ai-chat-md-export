@@ -1,11 +1,11 @@
 # Bottom Navigation Bar Fix
 
-日付: 2024-12-20
+Date: 2024-12-20
 
 ---
 
-## 👤 ユーザー
-*2024/12/20 16:57:58*
+## 👤 User
+*2024-12-20 16:57:58*
 
 bottomNavigationBar: SafeArea(
         child: Padding(
@@ -44,8 +44,8 @@ class DeckDetailPage extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2024/12/20 16:58:09*
+## 🤖 Assistant
+*2024-12-20 16:58:09*
 
 `bottomNavigationBar` を `SafeArea` と `Padding` を用いて実装するには、以下のようにコードを変更する必要があります。
 

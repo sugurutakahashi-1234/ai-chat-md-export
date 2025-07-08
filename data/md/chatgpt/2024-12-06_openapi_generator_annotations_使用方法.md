@@ -1,18 +1,18 @@
 # openapi_generator_annotations 使用方法
 
-日付: 2024-12-06
+Date: 2024-12-06
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:02:46*
+## 👤 User
+*2024-12-06 16:02:46*
 
 openapi_generator_annotations: ^6.0.0 の使い方。
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:02:54*
+## 🤖 Assistant
+*2024-12-06 16:02:54*
 
 `openapi_generator_annotations`は、DartやFlutterプロジェクト内でOpenAPI仕様からクライアントSDKを自動生成するためのライブラリです。バージョン6.0.0では、以下の手順で使用できます。
 
@@ -53,15 +53,15 @@ openapi_generator_annotations: ^6.0.0 の使い方。
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:04:54*
+## 👤 User
+*2024-12-06 16:04:54*
 
 path/to/your は schema というディレクトリにしようと思う
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:05:03*
+## 🤖 Assistant
+*2024-12-06 16:05:03*
 
 `openapi_generator_annotations`を使用して、OpenAPI仕様ファイルを`schema`ディレクトリに配置する場合、以下の手順で設定を行います。
 
@@ -104,15 +104,15 @@ path/to/your は schema というディレクトリにしようと思う
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:05:51*
+## 👤 User
+*2024-12-06 16:05:51*
 
 --delete-conflicting-outputs が必要な場合とそうでない場合
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:05:59*
+## 🤖 Assistant
+*2024-12-06 16:05:59*
 
 `build_runner`を使用してコード生成を行う際、既存の生成ファイルと新たに生成されるファイルが競合（コンフリクト）することがあります。このような場合、`--delete-conflicting-outputs`オプションを付加することで、競合する古いファイルを自動的に削除し、新しいファイルを生成することができます。
 
@@ -136,8 +136,8 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:06:52*
+## 👤 User
+*2024-12-06 16:06:52*
 
 以下のコードはどこに記述したほうがいいのか？
 
@@ -152,8 +152,8 @@ class ApiClient extends OpenapiGeneratorConfig {}
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:06:57*
+## 🤖 Assistant
+*2024-12-06 16:06:57*
 
 `openapi_generator_annotations`の`@Openapi`アノテーションは、DartやFlutterプロジェクトにおいて、OpenAPI仕様からクライアントSDKを自動生成するための設定を行います。このアノテーションは、通常、プロジェクト内の任意のDartファイルに記述します。例えば、`lib`ディレクトリ内に`api_client.dart`というファイルを作成し、以下のように記述します。
 
@@ -178,15 +178,15 @@ dart run build_runner build --delete-conflicting-outputs
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:07:43*
+## 👤 User
+*2024-12-06 16:07:43*
 
 lib 配下にあるべきかどうかわからない。ymal と同じ場所にってもよいのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:07:53*
+## 🤖 Assistant
+*2024-12-06 16:07:53*
 
 `@Openapi`アノテーションを含むDartファイルは、通常、プロジェクトの`lib`ディレクトリ内に配置します。これは、DartやFlutterの一般的なコード配置の慣習に従ったものです。例えば、`lib/api_client.dart`というファイルを作成し、以下のコードを記述します。
 
@@ -215,15 +215,15 @@ dart run build_runner build --delete-conflicting-outputs
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:08:12*
+## 👤 User
+*2024-12-06 16:08:12*
 
 lib直下はやだな
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:08:19*
+## 🤖 Assistant
+*2024-12-06 16:08:19*
 
 `@Openapi`アノテーションを含むDartファイルの配置場所について、`lib`ディレクトリ直下を避けたい場合は、`lib`内に適切なサブディレクトリを作成し、その中に配置することが一般的です。例えば、以下のようにディレクトリを構成できます。
 
@@ -245,15 +245,15 @@ dart run build_runner build --delete-conflicting-outputs
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:08:46*
+## 👤 User
+*2024-12-06 16:08:46*
 
 api の直接的なコードではないからもっと命名を工夫したい
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:08:54*
+## 🤖 Assistant
+*2024-12-06 16:08:54*
 
 `@Openapi`アノテーションを含むDartファイルの配置場所について、APIクライアントの生成設定を行うコードであることから、`lib`ディレクトリ内の適切なサブディレクトリに配置することが推奨されます。
 
@@ -279,15 +279,15 @@ dart run build_runner build --delete-conflicting-outputs
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:09:26*
+## 👤 User
+*2024-12-06 16:09:26*
 
 api_client_config というよりもopneapiからコード生成のための記述としたい。
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:09:35*
+## 🤖 Assistant
+*2024-12-06 16:09:35*
 
 `@Openapi`アノテーションを含むDartファイルは、OpenAPI仕様からコードを生成するための設定を行うものです。この設定ファイルは、プロジェクト内で適切に配置することで、コードの整理やメンテナンス性が向上します。
 
@@ -325,15 +325,15 @@ dart run build_runner build --delete-conflicting-outputs
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:10:22*
+## 👤 User
+*2024-12-06 16:10:22*
 
 configs で open_api_generate_config としよう
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:10:32*
+## 🤖 Assistant
+*2024-12-06 16:10:32*
 
 `@Openapi`アノテーションを使用してOpenAPI仕様からコードを生成する設定ファイルの配置場所と命名について、以下のように整理することをおすすめします。
 
@@ -369,8 +369,8 @@ dart run build_runner build --delete-conflicting-outputs
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:15:06*
+## 👤 User
+*2024-12-06 16:15:06*
 
 {
   "content_type": "image_asset_pointer",
@@ -535,8 +535,8 @@ components:
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:15:19*
+## 🤖 Assistant
+*2024-12-06 16:15:19*
 
 `openapi_generator`パッケージを使用して、OpenAPI仕様からDartクライアントSDKを生成する際の設定方法について説明します。
 
@@ -598,8 +598,8 @@ dart run build_runner build --delete-conflicting-outputs
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:24:10*
+## 👤 User
+*2024-12-06 16:24:10*
 
 source_gen とはなんですか
 generatorName の選択肢は他にもあるんですか？
@@ -607,8 +607,8 @@ pubName はなんですか❓
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:24:18*
+## 🤖 Assistant
+*2024-12-06 16:24:18*
 
 `openapi_generator`パッケージを使用してOpenAPI仕様からDartクライアントSDKを生成する際、以下の点について詳しく説明します。
 
@@ -633,15 +633,15 @@ pubName はなんですか❓
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:25:20*
+## 👤 User
+*2024-12-06 16:25:20*
 
 additionalProperties や typeMappings が入らない場合
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:25:30*
+## 🤖 Assistant
+*2024-12-06 16:25:30*
 
 `openapi_generator_annotations`パッケージを使用してOpenAPI仕様からDartクライアントSDKを生成する際、`additionalProperties`や`typeMappings`を省略した場合の挙動について説明します。
 
@@ -670,8 +670,8 @@ additionalProperties や typeMappings が入らない場合
 
 ---
 
-## 👤 ユーザー
-*2024/12/06 16:26:49*
+## 👤 User
+*2024-12-06 16:26:49*
 
 以下になって生成が終わらないんだが
 
@@ -682,8 +682,8 @@ additionalProperties や typeMappings が入らない場合
 
 ---
 
-## 🤖 アシスタント
-*2024/12/06 16:26:59*
+## 🤖 Assistant
+*2024-12-06 16:26:59*
 
 `build_runner`を使用してコード生成を行う際、以下のような警告や情報メッセージが表示され、処理が進まない場合があります。
 

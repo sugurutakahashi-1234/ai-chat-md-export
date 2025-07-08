@@ -1,11 +1,11 @@
 # whenOrNull vs useEffect
 
-日付: 2025-01-11
+Date: 2025-01-11
 
 ---
 
-## 👤 ユーザー
-*2025/01/11 17:22:59*
+## 👤 User
+*2025-01-11 17:22:59*
 
 accountState.whenOrNull(
       data: (data) {
@@ -116,8 +116,8 @@ class LoginPage extends HookConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/11 17:23:12*
+## 🤖 Assistant
+*2025-01-11 17:23:12*
 
 `accountState.whenOrNull` を用いてログイン状態を確認し、画面遷移する処理と、`useEffect` で `accountState` を監視して遷移する処理のどちらを選ぶべきかは、次のポイントに依存します。
 
@@ -174,8 +174,8 @@ useEffect(
 
 ---
 
-## 👤 ユーザー
-*2025/01/11 18:37:29*
+## 👤 User
+*2025-01-11 18:37:29*
 
 これがある状態でログアウトするとクラッシュしてしまう。
 
@@ -193,8 +193,8 @@ useEffect(
 
 ---
 
-## 🤖 アシスタント
-*2025/01/11 18:37:42*
+## 🤖 Assistant
+*2025-01-11 18:37:42*
 
 ログアウト時にクラッシュが発生する理由は、`useEffect` 内で `context.go` を呼び出しているタイミングで、`context` または `WidgetsBinding.instance` の状態が無効になっている可能性があります。たとえば、画面遷移中やウィジェットツリーが破棄されている際にこれが発生します。
 
@@ -312,15 +312,15 @@ if (accountState is AsyncData && accountState.value != null) {
 
 ---
 
-## 👤 ユーザー
-*2025/01/11 18:42:20*
+## 👤 User
+*2025-01-11 18:42:20*
 
 isMounted ではだめだｔった
 
 ---
 
-## 🤖 アシスタント
-*2025/01/11 18:42:40*
+## 🤖 Assistant
+*2025-01-11 18:42:40*
 
 `isMounted` が効果的でない場合、問題は別の箇所にある可能性があります。特に以下のようなケースが考えられます。
 
@@ -463,8 +463,8 @@ ProviderListener<AsyncValue<Account?>>(
 
 ---
 
-## 👤 ユーザー
-*2025/01/11 18:48:59*
+## 👤 User
+*2025-01-11 18:48:59*
 
 なんかそもそもこの画面に戻ってきたときにいかのFuture.microtask(() {のブロックに入ってしまうのが問題な気がする
 
@@ -484,8 +484,8 @@ ProviderListener<AsyncValue<Account?>>(
 
 ---
 
-## 🤖 アシスタント
-*2025/01/11 18:49:17*
+## 🤖 Assistant
+*2025-01-11 18:49:17*
 
 確かに、問題の本質は「戻ってきたときに `Future.microtask` のブロックが再び実行されてしまう」ことにある可能性があります。この挙動は、`useEffect` が `accountState` の変更をトリガーとして常に実行されるためです。
 
@@ -586,8 +586,8 @@ class MyAccountNotifier extends StateNotifier<AsyncValue<Account?>> {
 
 ---
 
-## 👤 ユーザー
-*2025/01/11 18:54:15*
+## 👤 User
+*2025-01-11 18:54:15*
 
 resetState(); みたいない処理をさせたい
 
@@ -614,8 +614,8 @@ class GetMyAccountNotifier extends _$GetMyAccountNotifier {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/11 18:54:22*
+## 🤖 Assistant
+*2025-01-11 18:54:22*
 
 `resetState` メソッドを追加して `state` をリセットするように実装できます。このメソッドを使えば、ログアウト時などに `state` を初期化することができます。
 

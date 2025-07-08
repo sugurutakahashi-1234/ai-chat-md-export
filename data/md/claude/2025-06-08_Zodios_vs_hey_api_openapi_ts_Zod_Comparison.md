@@ -1,18 +1,18 @@
 # Zodios vs hey-api/openapi-ts Zod Comparison
 
-日付: 2025-06-08
+Date: 2025-06-08
 
 ---
 
-## 👤 ユーザー
-*2025/06/09 00:53:16*
+## 👤 User
+*2025-06-09 00:53:16*
 
 **Zodios vs hey-api/openapi-ts で zod を指定したときの違い**
 
 ---
 
-## 🤖 アシスタント
-*2025/06/09 00:53:28*
+## 🤖 Assistant
+*2025-06-09 00:53:28*
 
 この技術的な質問についてより詳しく調査を行いますが、まず以下の点を確認させてください：
 
@@ -26,20 +26,20 @@
 
 ---
 
-## 👤 ユーザー
-*2025/06/09 00:53:35*
+## 👤 User
+*2025-06-09 00:53:35*
 
 **使用目的**: OpenAPIスキーマからTypeScriptクライアントを生成する際の、型安全性やバリデーション機能の比較をお探しですか？それとも実装方法の違いに焦点を当てていますか？
 
 ---
 
-## 🤖 アシスタント
-*2025/06/09 00:53:52*
+## 🤖 Assistant
+*2025-06-09 00:53:52*
 
 それでは、OpenAPIスキーマからTypeScriptクライアントを生成する際の、Zodiosとhey-api/openapi-ts（Zodオプション使用時）の違いについて詳しく調査します。
 
 型安全性、バリデーション機能、実装方法の違いなど、包括的な比較を行います。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 Your TypeScript API client comparison report is ready. It provides a detailed analysis of Zodios and Hey API openapi-ts with Zod options, covering type safety implementations, validation features, code generation patterns, and practical examples. The report includes executive summary, implementation comparisons, code samples, pros and cons of each tool, and recommendations based on different project requirements.
 ```

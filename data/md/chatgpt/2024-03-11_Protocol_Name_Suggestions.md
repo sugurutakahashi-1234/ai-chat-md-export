@@ -1,11 +1,11 @@
 # Protocol Name Suggestions
 
-日付: 2024-03-11
+Date: 2024-03-11
 
 ---
 
-## 👤 ユーザー
-*2024/03/11 14:01:33*
+## 👤 User
+*2024-03-11 14:01:33*
 
 LogDriverInterface ではなくて、logDriverという変数を持っているという意味のprotocol名に変えたい。候補をいくつか挙げてほしい。
 
@@ -17,8 +17,8 @@ protocol LogDriverInterface: LogDriverDependency {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/11 14:01:57*
+## 🤖 Assistant
+*2024-03-11 14:01:57*
 
 `LogDriverInterface` プロトコル名を、`logDriver` 変数を持つことを明確に示す名前に変更する場合、以下のような候補を考えることができます。これらの名前は、プロトコルが `logDriver` 変数を持つことをより直接的に反映しています。
 

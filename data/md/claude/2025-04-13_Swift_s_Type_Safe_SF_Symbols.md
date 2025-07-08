@@ -1,18 +1,18 @@
 # Swift's Type-Safe SF Symbols
 
-日付: 2025-04-13
+Date: 2025-04-13
 
 ---
 
-## 👤 ユーザー
-*2025/04/13 19:31:58*
+## 👤 User
+*2025-04-13 19:31:58*
 
 SwiftってSFSYmbole is Typesage
 
 ---
 
-## 🤖 アシスタント
-*2025/04/13 19:32:05*
+## 🤖 Assistant
+*2025-04-13 19:32:05*
 
 I'd be happy to discuss Swift and its type safety features, especially in relation to SFSymbols.
 

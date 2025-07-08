@@ -1,11 +1,11 @@
 # Git pull fast-forward issue
 
-日付: 2024-12-16
+Date: 2024-12-16
 
 ---
 
-## 👤 ユーザー
-*2024/12/16 22:29:42*
+## 👤 User
+*2024-12-16 22:29:42*
 
 $ git pull origin develop                                                                                                                              128 ↵
 From https://github.com/Gallusys/snpit_guild_app
@@ -14,8 +14,8 @@ fatal: Not possible to fast-forward, aborting.
 
 ---
 
-## 🤖 アシスタント
-*2024/12/16 22:29:56*
+## 🤖 Assistant
+*2024-12-16 22:29:56*
 
 The error message indicates that a **fast-forward merge** isn't possible. This usually happens when your local branch and the remote `develop` branch have diverged—meaning there are new commits on both branches.
 

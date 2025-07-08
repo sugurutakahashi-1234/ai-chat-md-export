@@ -1,18 +1,18 @@
 # Relative Time Formatters
 
-日付: 2024-07-07
+Date: 2024-07-07
 
 ---
 
-## 👤 ユーザー
-*2024/07/07 12:03:36*
+## 👤 User
+*2024-07-07 12:03:36*
 
 n分前などをSwiftでうまく表したい。DateComponentsFormatterやRelativeDateTimeFormatter などformatterをうまく活用して欲しい
 
 ---
 
-## 🤖 アシスタント
-*2024/07/07 12:03:56*
+## 🤖 Assistant
+*2024-07-07 12:03:56*
 
 Swiftでは、`DateComponentsFormatter`や`RelativeDateTimeFormatter`を使用して、「n分前」や「n日前」のような相対的な日時表現を行うことができます。以下に具体的な例を示します。
 
@@ -71,15 +71,15 @@ print(timeAgoWithRelativeDateTimeFormatter(from: pastDate)) // 10分前
 
 ---
 
-## 👤 ユーザー
-*2024/07/07 12:04:15*
+## 👤 User
+*2024-07-07 12:04:15*
 
 日本語でうまく表現したい。どちらがいいか？
 
 ---
 
-## 🤖 アシスタント
-*2024/07/07 12:04:31*
+## 🤖 Assistant
+*2024-07-07 12:04:31*
 
 日本語での相対的な日時表現を行う場合、`RelativeDateTimeFormatter`の方が自然な日本語表現を提供してくれます。`DateComponentsFormatter`は特定の単位を表示するのに優れていますが、日本語での自然な表現はやや難しい場合があります。
 
@@ -136,15 +136,15 @@ print(timeAgoWithDateComponentsFormatter(from: pastDate)) // 10分
 
 ---
 
-## 👤 ユーザー
-*2024/07/07 12:05:04*
+## 👤 User
+*2024-07-07 12:05:04*
 
 RelativeDateTimeFormatterでいろいろな表現の例を確認できるような、SwiftUIのプレビューで確認できるコードを書いて欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2024/07/07 12:05:23*
+## 🤖 Assistant
+*2024-07-07 12:05:23*
 
 SwiftUIで`RelativeDateTimeFormatter`を使用してさまざまな相対的な日時表現を確認できるコードを以下に示します。このコードを使用すると、SwiftUIのプレビューで日時表現を簡単に確認することができます。
 
@@ -202,15 +202,15 @@ struct RelativeTimeView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2024/07/08 17:23:42*
+## 👤 User
+*2024-07-08 17:23:42*
 
 RelativeDateTimeFormatter を使うようなDate側のextension を作成してほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/07/08 17:24:11*
+## 🤖 Assistant
+*2024-07-08 17:24:11*
 
 `RelativeDateTimeFormatter`を使用して日時の相対的な表現を返す`Date`のエクステンションを作成することができます。以下にその実装例を示します。
 
@@ -283,15 +283,15 @@ struct RelativeTimeView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2024/07/08 17:25:34*
+## 👤 User
+*2024-07-08 17:25:34*
 
 Locale.preferredLanguages の先頭を使うようにしてほしい言語設定を使ってほしい。
 
 ---
 
-## 🤖 アシスタント
-*2024/07/08 17:26:02*
+## 🤖 Assistant
+*2024-07-08 17:26:02*
 
 `Locale.preferredLanguages`の先頭の言語設定を使用して、相対的な日時表現を行うように`Date`のエクステンションを修正することができます。以下にその実装例を示します。
 

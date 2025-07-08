@@ -1,42 +1,42 @@
 # Finding a .gitignore Template for TypeScript Projects
 
-日付: 2025-05-19
+Date: 2025-05-19
 
 ---
 
-## 👤 ユーザー
-*2025/05/19 15:24:37*
+## 👤 User
+*2025-05-19 15:24:37*
 
 Typescriptのプロジェクトのgitignoreの探しから
 
 ---
 
-## 🤖 アシスタント
-*2025/05/19 15:25:22*
+## 🤖 Assistant
+*2025-05-19 15:25:22*
 
 TypeScriptプロジェクト用の.gitignoreファイルをお探しですね。GitHubが提供している標準的なTypeScript用の.gitignoreテンプレートを探して、ご提供します。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 GitHubには標準的なTypeScript用の.gitignoreテンプレートがあります。これをもとに、TypeScriptプロジェクトに最適な.gitignoreファイルを作成しましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 GitHubのTypeScript用.gitignoreテンプレートをもう一度検索します：
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 いくつかのリポジトリで実際に使われているTypeScript用の.gitignoreファイルを確認してみます：
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 

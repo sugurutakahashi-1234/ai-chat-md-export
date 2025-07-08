@@ -1,11 +1,11 @@
 # Navigate on Login Success
 
-日付: 2025-01-06
+Date: 2025-01-06
 
 ---
 
-## 👤 ユーザー
-*2025/01/06 21:19:47*
+## 👤 User
+*2025-01-06 21:19:47*
 
 LoginPage に入った瞬間に GetMyAccountNotifier でリクエストに成功したら、context.go(Screen.map.path); で mapに飛んでほしい
 
@@ -115,8 +115,8 @@ class GetMyAccountNotifier extends _$GetMyAccountNotifier {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/06 21:20:14*
+## 🤖 Assistant
+*2025-01-06 21:20:14*
 
 To implement the desired behavior of navigating to the map screen upon successful completion of the `GetMyAccountNotifier` request when entering the `LoginPage`, you can use the following approach:
 
@@ -239,8 +239,8 @@ This implementation ensures the user is redirected to the `map` screen when the 
 
 ---
 
-## 👤 ユーザー
-*2025/01/06 21:44:37*
+## 👤 User
+*2025-01-06 21:44:37*
 
 この画面で 'Manage this guild',のボタンについて、GetMyAccountNotifier のもっている account情報のuserIdが、GetMyGuildNotifierのguildMembersで同じuserIdのroleがadminもしくはownerの場合のみに表示してほしい
 
@@ -879,8 +879,8 @@ class _NoGuildWidget extends StatelessWidget {
 
 ---
 
-## 🤖 アシスタント
-*2025/01/06 21:45:19*
+## 🤖 Assistant
+*2025-01-06 21:45:19*
 
 To display the "Manage this guild" button only if the `GetMyAccountNotifier`'s `userId` matches a `GetMyGuildNotifier` guild member's `userId` with a role of `ADMIN` or `OWNER`, you can follow these steps:
 

@@ -1,11 +1,11 @@
 # Swift 6 DaVinci Bearer Fix
 
-日付: 2024-10-31
+Date: 2024-10-31
 
 ---
 
-## 👤 ユーザー
-*2024/10/31 10:15:33*
+## 👤 User
+*2024-10-31 10:15:33*
 
 DaVinciBearerRequestBuilder について
 
@@ -282,8 +282,8 @@ open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecke
 
 ---
 
-## 🤖 アシスタント
-*2024/10/31 10:15:46*
+## 🤖 Assistant
+*2024-10-31 10:15:46*
 
 The errors you're encountering are due to changes in Swift 6 regarding concurrency and type safety. Swift 6 introduces stricter requirements around `@Sendable` closures and the proper usage of async APIs. Here are the adjustments you can make to align with Swift 6’s requirements:
 
@@ -347,15 +347,15 @@ This should resolve the type compatibility and `@Sendable`-related errors introd
 
 ---
 
-## 👤 ユーザー
-*2024/10/31 10:16:47*
+## 👤 User
+*2024-10-31 10:16:47*
 
 Method does not override any method from its superclass とお超えられる
 
 ---
 
-## 🤖 アシスタント
-*2024/10/31 10:16:58*
+## 🤖 Assistant
+*2024-10-31 10:16:58*
 
 The `Method does not override any method from its superclass` error means that Swift doesn't recognize `execute` in `DaVinciBearerRequestBuilder` as an overridden method from `URLSessionRequestBuilder`. This error often happens due to either a mismatch in the method signature or a Swift version change that altered method expectations.
 

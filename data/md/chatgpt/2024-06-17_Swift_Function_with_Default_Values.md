@@ -1,11 +1,11 @@
 # Swift Function with Default Values
 
-日付: 2024-06-17
+Date: 2024-06-17
 
 ---
 
-## 👤 ユーザー
-*2024/06/17 16:21:37*
+## 👤 User
+*2024-06-17 16:21:37*
 
 qrCodeDriver: .placeholder,
             apiRequestDriver: .placeholder をデフォルト値とするようなcreateを使う関数を作成してほしい
@@ -123,8 +123,8 @@ public extension RootDIContainerDependencyMock {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/17 16:22:06*
+## 🤖 Assistant
+*2024-06-17 16:22:06*
 
 To create a function `static func placeholder()` that uses `RootDIContainerDependencyMock.create` with default values for `qrCodeDriver` and `apiRequestDriver` set to `.placeholder`, you can implement it as follows:
 
@@ -238,8 +238,8 @@ In this implementation, the `placeholder()` function is added to the `RootDICont
 
 ---
 
-## 👤 ユーザー
-*2024/06/17 16:22:48*
+## 👤 User
+*2024-06-17 16:22:48*
 
 こう言う感じでつかいたんだ。
 
@@ -251,8 +251,8 @@ In this implementation, the `placeholder()` function is added to the `RootDICont
 
 ---
 
-## 🤖 アシスタント
-*2024/06/17 16:23:05*
+## 🤖 Assistant
+*2024-06-17 16:23:05*
 
 Understood. You want to use the `placeholder` method to allow overriding specific parameters while keeping the default values for the rest. Here's how you can define the `placeholder` function and use it in the way you described:
 
@@ -298,15 +298,15 @@ In this implementation, the `placeholder` function initializes the `RootDIContai
 
 ---
 
-## 👤 ユーザー
-*2024/06/17 16:23:45*
+## 👤 User
+*2024-06-17 16:23:45*
 
 static func placeholder( で .placeholder をデフォルトに指定しているものは引数設定しないようにしてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/06/17 16:23:58*
+## 🤖 Assistant
+*2024-06-17 16:23:58*
 
 了解しました。引数設定が必要ないものは省略し、`placeholder`関数の中でデフォルトの`.placeholder`値を設定するようにします。
 
@@ -350,15 +350,15 @@ public extension RootDIContainerDependencyMock {
 
 ---
 
-## 👤 ユーザー
-*2024/06/17 16:24:26*
+## 👤 User
+*2024-06-17 16:24:26*
 
 中でうまく create のデフォルト値を使ってほしい。
 
 ---
 
-## 🤖 アシスタント
-*2024/06/17 16:24:54*
+## 🤖 Assistant
+*2024-06-17 16:24:54*
 
 了解しました。`placeholder`メソッドの中で`create`のデフォルト値を利用して`.placeholder`を設定するように変更します。
 

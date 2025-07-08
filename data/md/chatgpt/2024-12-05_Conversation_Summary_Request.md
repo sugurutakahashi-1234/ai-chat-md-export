@@ -1,11 +1,11 @@
 # Conversation Summary Request
 
-日付: 2024-12-05
+Date: 2024-12-05
 
 ---
 
-## 👤 ユーザー
-*2024/12/05 14:30:39*
+## 👤 User
+*2024-12-05 14:30:39*
 
 {
   "content_type": "image_asset_pointer",
@@ -30,8 +30,8 @@
 
 ---
 
-## 🤖 アシスタント
-*2024/12/05 14:30:45*
+## 🤖 Assistant
+*2024-12-05 14:30:45*
 
 It looks like you’ve uploaded
 

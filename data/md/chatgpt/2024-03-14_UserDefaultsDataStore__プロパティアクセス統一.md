@@ -1,11 +1,11 @@
 # UserDefaultsDataStore: プロパティアクセス統一
 
-日付: 2024-03-14
+Date: 2024-03-14
 
 ---
 
-## 👤 ユーザー
-*2024/03/14 16:38:11*
+## 👤 User
+*2024-03-14 16:38:11*
 
 以下のようになっているときに、UserDefaultsKey をうまく拡張して、    var launchAppCount: Int { get } var isFirstLaunch: Bool { get } func update(launchAppCount: Int) func update(isFirstLaunch: Bool) を廃止して、func get(key: UserDefaultsKey) func set(key: UserDefaultsKey) に統一したい。どうすればよいか？
 
@@ -134,8 +134,8 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
 
 ---
 
-## 🤖 アシスタント
-*2024/03/14 16:39:22*
+## 🤖 Assistant
+*2024-03-14 16:39:22*
 
 あなたの要求に応えるために、`UserDefaultsDataStore`内の`get`と`set`メソッドを拡張して、`launchAppCount`と`isFirstLaunch`のプロパティアクセスを`get(key:)`と`set(key:value:)`メソッドに統一することが可能です。`UserDefaultsWrapper`プロパティラッパーを使用していますが、これを直接利用する形で`get`と`set`メソッドを実装することは難しいため、`UserDefaultsDataStore`内で直接`UserDefaults`を利用する形に変更し、型安全性を確保しつつ`UserDefaults`へのアクセスを抽象化します。
 

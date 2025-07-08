@@ -1,18 +1,18 @@
 # Bottom Sheet Push 遷移
 
-日付: 2024-12-10
+Date: 2024-12-10
 
 ---
 
-## 👤 ユーザー
-*2024/12/10 16:57:50*
+## 👤 User
+*2024-12-10 16:57:50*
 
 flutter でbottom sheet 上で push 遷移させたい
 
 ---
 
-## 🤖 アシスタント
-*2024/12/10 16:58:11*
+## 🤖 Assistant
+*2024-12-10 16:58:11*
 
 FlutterでBottom Sheet上で`push`遷移を実現するには、以下のようなアプローチが考えられます。特に、`showModalBottomSheet`や`PersistentBottomSheet`の上でさらにページを`Navigator`で`push`する場合を考慮しています。
 
@@ -127,15 +127,15 @@ Flutterの`ScaffoldState`の`showBottomSheet`を使う場合も、上記の`Navi
 
 ---
 
-## 👤 ユーザー
-*2024/12/10 16:58:44*
+## 👤 User
+*2024-12-10 16:58:44*
 
 それを go_routerで管理できないのか？
 
 ---
 
-## 🤖 アシスタント
-*2024/12/10 16:59:17*
+## 🤖 Assistant
+*2024-12-10 16:59:17*
 
 Flutterの`go_router`を使って、Bottom Sheet上での`push`遷移を管理することは可能です。`go_router`はルート管理を効率化するためのライブラリであり、Bottom Sheetを表示するルートを追加し、その中で遷移を定義することで対応できます。
 
@@ -301,15 +301,15 @@ class BottomSheetDetailPage extends StatelessWidget {
 
 ---
 
-## 👤 ユーザー
-*2024/12/10 16:59:39*
+## 👤 User
+*2024-12-10 16:59:39*
 
 それが書かれている記事や公式ドキュメントを教えてほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/12/10 16:59:48*
+## 🤖 Assistant
+*2024-12-10 16:59:48*
 
 Flutterで`go_router`を使用してBottom Sheet上でのページ遷移を管理する方法について、参考になる記事や公式ドキュメントを以下にまとめました。
 

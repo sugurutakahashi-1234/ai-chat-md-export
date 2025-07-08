@@ -1,18 +1,18 @@
 # Figma MCP Server Scopes
 
-日付: 2025-04-08
+Date: 2025-04-08
 
 ---
 
-## 👤 ユーザー
-*2025/04/08 18:31:27*
+## 👤 User
+*2025-04-08 18:31:27*
 
 Figma のMCPサーバーで利用する際のスコープは？
 
 ---
 
-## 🤖 アシスタント
-*2025/04/08 18:31:40*
+## 🤖 Assistant
+*2025-04-08 18:31:40*
 
 This image shows a dialog for creating a new personal access token in Figma. The image is in Japanese, and it's showing the scopes (permissions) that can be granted to the token. The user is asking about what scopes are used for MCP (Multi-Company Platform) server in Figma.
 

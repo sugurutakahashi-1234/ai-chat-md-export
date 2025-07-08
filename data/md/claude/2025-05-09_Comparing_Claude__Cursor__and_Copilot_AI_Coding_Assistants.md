@@ -1,18 +1,18 @@
 # Comparing Claude, Cursor, and Copilot AI Coding Assistants
 
-日付: 2025-05-09
+Date: 2025-05-09
 
 ---
 
-## 👤 ユーザー
-*2025/05/09 17:39:23*
+## 👤 User
+*2025-05-09 17:39:23*
 
 ClaudeCodeと他のcursorやCopilotとの違い
 
 ---
 
-## 🤖 アシスタント
-*2025/05/09 17:39:37*
+## 🤖 Assistant
+*2025-05-09 17:39:37*
 
 Claude 3.5 Sonnet（以下、Claudeと呼びます）と他のコーディング支援ツールであるCursorやCopilotの主な違いについて、いくつかの重要なポイントを説明します：
 

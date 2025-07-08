@@ -1,11 +1,11 @@
 # MultipartFile への修正
 
-日付: 2025-02-04
+Date: 2025-02-04
 
 ---
 
-## 👤 ユーザー
-*2025/02/04 20:14:57*
+## 👤 User
+*2025-02-04 20:14:57*
 
 型に合わせて欲しい
 ResponseBodyが指定なんだ。
@@ -66,8 +66,8 @@ class UploadPhotoNotifier extends _$UploadPhotoNotifier {
 
 ---
 
-## 🤖 アシスタント
-*2025/02/04 20:15:09*
+## 🤖 Assistant
+*2025-02-04 20:15:09*
 
 `ResponseBody` を正しく `FormData` に含めるためには、`MultipartFile` の形でデータを扱う必要があります。現在の `uploadPhoto` メソッドで `ResponseBody.fromBytes()` を使っていますが、Dio の `FormData` に対応する `MultipartFile` に変更する必要があります。
 

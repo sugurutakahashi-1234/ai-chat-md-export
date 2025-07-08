@@ -1,11 +1,11 @@
 # OpenAPI Mock Generation with MSW and TypeScript
 
-日付: 2025-06-23
+Date: 2025-06-23
 
 ---
 
-## 👤 ユーザー
-*2025/06/23 18:08:45*
+## 👤 User
+*2025-06-23 18:08:45*
 
 orvalでmswを使っていてfakerがデフォルトでOpenAPIのスキーマに合わせたモックを生成してくれる
 
@@ -15,8 +15,8 @@ orvalでmswを使っていてfakerがデフォルトでOpenAPIのスキーマに
 
 ---
 
-## 🤖 アシスタント
-*2025/06/23 18:09:12*
+## 🤖 Assistant
+*2025-06-23 18:09:12*
 
 OpenAPI TypeScriptクライアントとMSWを組み合わせて、Orvalのような自動モック生成を実現する方法をいくつか提案します。
 

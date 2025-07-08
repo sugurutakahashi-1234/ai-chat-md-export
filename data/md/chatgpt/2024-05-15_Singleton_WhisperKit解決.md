@@ -1,11 +1,11 @@
 # Singleton WhisperKit解決
 
-日付: 2024-05-15
+Date: 2024-05-15
 
 ---
 
-## 👤 ユーザー
-*2024/05/15 17:06:32*
+## 👤 User
+*2024-05-15 17:06:32*
 
 let whisper = try await WhisperKit() の初期化に時間がかかっていることが判明した。
 シングルトンをうまく使って解消したい。
@@ -28,8 +28,8 @@ final class TranscriptionDriver: Sendable {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 17:06:43*
+## 🤖 Assistant
+*2024-05-15 17:06:43*
 
 `WhisperKit` の初期化に時間がかかる場合、シングルトンパターンを使ってインスタンスを一度だけ生成し、それを再利用する方法が有効です。以下のように `WhisperKit` のインスタンスをシングルトンとして管理するように `TranscriptionDriver` クラスを変更できます。
 
@@ -67,15 +67,15 @@ final class TranscriptionDriver: Sendable {
 
 ---
 
-## 👤 ユーザー
-*2024/05/15 17:07:59*
+## 👤 User
+*2024-05-15 17:07:59*
 
 アプリ生成時に作成しておいてほしいんだ。。
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 17:08:16*
+## 🤖 Assistant
+*2024-05-15 17:08:16*
 
 アプリの起動時に `WhisperKit` のインスタンスを生成しておき、後でそれを使用するように変更することができます。以下のように `TranscriptionDriver` クラスを更新し、`WhisperKit` のインスタンスをアプリの起動時に生成する方法を示します。
 
@@ -147,29 +147,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ---
 
-## 👤 ユーザー
-*2024/05/15 17:08:34*
+## 👤 User
+*2024-05-15 17:08:34*
 
 TranscriptionDriver をシングルトンにする必要はなくてWhisperKitだけでいいんだ
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 17:08:54*
+## 🤖 Assistant
+*2024-05-15 17:08:54*
 
 User wants to use WhisperKit as a singleton, not TranscriptionDriver.
 
 ---
 
-## 🔧 ツール
-*2024/05/15 17:08:54*
+## 🔧 Tool
+*2024-05-15 17:08:54*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 17:08:54*
+## 🤖 Assistant
+*2024-05-15 17:08:54*
 
 `WhisperKit` をシングルトンにする場合は、以下のように `WhisperKit` のシングルトンクラスを実装し、`TranscriptionDriver` でそのシングルトンインスタンスを使用するように変更できます。
 
@@ -243,8 +243,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ---
 
-## 👤 ユーザー
-*2024/05/15 17:10:29*
+## 👤 User
+*2024-05-15 17:10:29*
 
 実行時ではなくinit時に生成しておきたい
 
@@ -279,8 +279,8 @@ final class TranscriptionDriver: Sendable {
 
 ---
 
-## 🤖 アシスタント
-*2024/05/15 17:10:49*
+## 🤖 Assistant
+*2024-05-15 17:10:49*
 
 `WhisperKit` のインスタンスをアプリの初期化時に生成し、`TranscriptionDriver` でそれを使用するように変更します。これにより、`WhisperKit` の初期化が遅延することを防ぎます。以下のようにコードを変更してください。
 

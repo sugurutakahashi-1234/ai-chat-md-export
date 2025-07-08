@@ -1,11 +1,11 @@
 # Error Handling with Snackbar
 
-日付: 2025-01-19
+Date: 2025-01-19
 
 ---
 
-## 👤 ユーザー
-*2025/01/19 17:07:07*
+## 👤 User
+*2025-01-19 17:07:07*
 
 Future onTapReject() async {}
 
@@ -557,8 +557,8 @@ class GuildManagePage extends HookConsumerWidget {
 
 ---
 
-## 🔧 ツール
-*2025/01/19 17:07:22*
+## 🔧 Tool
+*2025-01-19 17:07:22*
 
 **Creating async methods**
 
@@ -598,8 +598,8 @@ I’m integrating `onTapReject` and `onTapApprove` methods with error handling a
 
 ---
 
-## 🤖 アシスタント
-*2025/01/19 17:07:48*
+## 🤖 Assistant
+*2025-01-19 17:07:48*
 
 以下のサンプルでは、`onTapReject` と `onTapApprove` を try-catch でラップし、エラー時にスナックバーを表示する実装例を示します。  
 同時に、既存の `_buildRequestedMembers` 内の承認/却下ボタンで呼び出す部分を、作成したメソッドに置き換えています。

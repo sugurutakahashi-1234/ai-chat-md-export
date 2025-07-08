@@ -1,18 +1,18 @@
 # SwiftUI QRコードスキャン
 
-日付: 2024-06-17
+Date: 2024-06-17
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 05:45:14*
+## 👤 User
+*2024-06-18 05:45:14*
 
 swiftUIでQRコードをスキャンしたい なるべく最新のiOSでも使えるやつでやりたい
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 05:45:31*
+## 🤖 Assistant
+*2024-06-18 05:45:31*
 
 SwiftUIでQRコードをスキャンするには、`AVFoundation`を使ってカメラを制御し、QRコードの検出を行うことができます。iOS 16以降では、さらにシンプルに実装できる`DataScannerViewController`が使えます。以下に、iOS 16以降で利用可能な方法を示します。
 
@@ -99,29 +99,29 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 05:47:23*
+## 👤 User
+*2024-06-18 05:47:23*
 
 1番の方法でやりたい。MVPで実装したい。ビジネスロジックをViewから取り出したい。例えばQRを読み取って、特定のパターンのURLが出るまでスキャンし続けたい。
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 05:47:40*
+## 🤖 Assistant
+*2024-06-18 05:47:40*
 
 User wants to implement QR code scanning in SwiftUI using DataScannerViewController with MVP pattern, where the business logic is separated from the view, such as continuously scanning until a specific pattern of URL is detected.
 
 ---
 
-## 🔧 ツール
-*2024/06/18 05:47:40*
+## 🔧 Tool
+*2024-06-18 05:47:40*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 05:47:40*
+## 🤖 Assistant
+*2024-06-18 05:47:40*
 
 MVPパターンを使用して、SwiftUIでQRコードスキャンを実装する方法を示します。この例では、QRコードを読み取り、特定のパターンのURLが出るまでスキャンし続けます。
 
@@ -225,15 +225,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 05:49:55*
+## 👤 User
+*2024-06-18 05:49:55*
 
 タップではなくて、読み込んだQRを自動判定したい。今読み込んでるQRが特定のURLを含むパターンかそうでないパターンでViewを変えたい
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 05:50:15*
+## 🤖 Assistant
+*2024-06-18 05:50:15*
 
 QRコードを自動で判定し、特定のパターンのURLが含まれるかどうかでビューを変更する実装をMVPパターンで行います。以下にその実装方法を示します。
 
@@ -342,15 +342,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 05:53:14*
+## 👤 User
+*2024-06-18 05:53:14*
 
 StateObjectかobserved objectのどっちがいいんだっけ？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 05:53:30*
+## 🤖 Assistant
+*2024-06-18 05:53:30*
 
 `@StateObject`と`@ObservedObject`の使い分けについては、以下のように考えると良いです。
 
@@ -434,15 +434,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 06:04:37*
+## 👤 User
+*2024-06-18 06:04:37*
 
 ちなみにdidAdd addedItems: と didRecognize items: のどちらがいいと思う？
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 06:05:01*
+## 🤖 Assistant
+*2024-06-18 06:05:01*
 
 `DataScannerViewController`のデリゲートメソッドには、`didAdd`と`didRecognize`の2つがあります。用途に応じてどちらを選ぶかが決まりますが、以下のように使い分けると良いです。
 
@@ -530,8 +530,8 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 06:28:42*
+## 👤 User
+*2024-06-18 06:28:42*
 
 修正して以下のようになった。Presenter を修正して、https://www.google.com/ が先頭に含まれる場合は外部WebViewを開いて遷移してほしい。
 
@@ -643,22 +643,22 @@ final class QRCodeScannerPresenter&lt;Dependency: QRCodeScannerPresenterDependen
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 06:29:11*
+## 🤖 Assistant
+*2024-06-18 06:29:11*
 
 User wants to update the Presenter to open an external WebView and navigate when the scanned QR code starts with "https://www.google.com/".
 
 ---
 
-## 🔧 ツール
-*2024/06/18 06:29:11*
+## 🔧 Tool
+*2024-06-18 06:29:11*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 06:29:11*
+## 🤖 Assistant
+*2024-06-18 06:29:11*
 
 Presenterを修正して、特定のURLパターンにマッチした場合に外部WebViewを開くようにするには、以下のように実装を変更します。
 
@@ -804,15 +804,15 @@ final class QRCodeScannerPresenter<Dependency: QRCodeScannerPresenterDependency>
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 06:30:12*
+## 👤 User
+*2024-06-18 06:30:12*
 
 .onChange ではなくて presenter の init で Combineで処理してほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 06:30:53*
+## 🤖 Assistant
+*2024-06-18 06:30:53*
 
 `Combine`を使って`QRCodeScannerPresenter`の初期化時にスキャンされたコードの変更を監視し、特定のパターンに一致する場合に外部WebViewを開くようにするには、`Combine`の`Publisher`を使用します。
 
@@ -964,8 +964,8 @@ final class QRCodeScannerPresenter<Dependency: QRCodeScannerPresenterDependency>
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 06:43:00*
+## 👤 User
+*2024-06-18 06:43:00*
 
 QRコードの読み込み画面によくあるガイドの枠線を実装してほしい。
 
@@ -999,8 +999,8 @@ public struct QRCodeScannerView&lt;Dependency: RootDIContainerDependency&gt;: Vi
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 06:43:53*
+## 🤖 Assistant
+*2024-06-18 06:43:53*
 
 QRコードの読み込み画面にガイドの枠線を追加するには、SwiftUIでオーバーレイとしてガイドラインを描画することができます。以下はその実装例です。
 
@@ -1176,15 +1176,15 @@ final class QRCodeScannerPresenter<Dependency: QRCodeScannerPresenterDependency>
 
 ---
 
-## 👤 ユーザー
-*2024/06/18 06:49:10*
+## 👤 User
+*2024-06-18 06:49:10*
 
 角丸で枠外がグレーでカバーされているイメージ
 
 ---
 
-## 🤖 アシスタント
-*2024/06/18 06:49:20*
+## 🤖 Assistant
+*2024-06-18 06:49:20*
 
 角丸で枠外がグレーでカバーされているイメージを実現するには、`GuideOverlayView`内で`RoundedRectangle`を使って枠線を描画し、その外側にグレーのカバーを追加する方法が考えられます。以下に具体的なコードを示します。
 

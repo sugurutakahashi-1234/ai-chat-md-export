@@ -1,11 +1,11 @@
 # Fetching External JSON File in Flutter
 
-日付: 2025-03-10
+Date: 2025-03-10
 
 ---
 
-## 👤 ユーザー
-*2025/03/10 13:08:35*
+## 👤 User
+*2025-03-10 13:08:35*
 
 https://storage.googleapis.com/guild-dev-public/maintenance.json には
 
@@ -21,8 +21,8 @@ https://storage.googleapis.com/guild-dev-public/maintenance.json には
 
 ---
 
-## 🤖 アシスタント
-*2025/03/10 13:09:02*
+## 🤖 Assistant
+*2025-03-10 13:09:02*
 
 Flutter で外部の JSON ファイルを型安全に取得して扱うためのコードを作成します。
 
@@ -65,8 +65,8 @@ dependencies:
 
 ---
 
-## 👤 ユーザー
-*2025/03/10 13:11:17*
+## 👤 User
+*2025-03-10 13:11:17*
 
 ハンドリングする処理はなるべくリバーポッドアノテーション側に隠蔽したい
 
@@ -78,8 +78,8 @@ dependencies:
 
 ---
 
-## 🤖 アシスタント
-*2025/03/10 13:11:44*
+## 🤖 Assistant
+*2025-03-10 13:11:44*
 
 Riverpod と freezed を使って、よりクリーンなコードを作成しましょう。型安全な JSON 変換には freezed を使用して自動生成コードを活用し、状態管理には Riverpod を使用します。
 ```
@@ -181,8 +181,8 @@ class MaintenanceAwareWidget extends ConsumerWidget {
 
 ---
 
-## 👤 ユーザー
-*2025/03/10 13:13:09*
+## 👤 User
+*2025-03-10 13:13:09*
 
 これは最低でも書かなければいけないのか？MaintenanceModelより、これから他のbool値や最低アプリバージョンとかも含まれるかもしれないので、それを見越した名前にしてほしい。
 
@@ -190,8 +190,8 @@ class MaintenanceAwareWidget extends ConsumerWidget {
 
 ---
 
-## 🤖 アシスタント
-*2025/03/10 13:13:39*
+## 🤖 Assistant
+*2025-03-10 13:13:39*
 
 メンテナンス情報だけでなく、今後追加される可能性のある他の設定情報も含めて対応できるように、モデルの名前とプロパティを拡張しましょう。`AppConfig` という名前にしてみます：
 ```
@@ -263,15 +263,15 @@ appConfig.when(
 
 ---
 
-## 👤 ユーザー
-*2025/03/10 13:59:28*
+## 👤 User
+*2025-03-10 13:59:28*
 
 MaintenanceRepository は必要なのか？
 
 ---
 
-## 🤖 アシスタント
-*2025/03/10 13:59:54*
+## 🤖 Assistant
+*2025-03-10 13:59:54*
 
 リポジトリクラスは厳密には必要ではありません。Riverpod を使った実装では、リポジトリ層をスキップして、プロバイダー内で直接データを取得することも可能です。コードをさらに簡素化しましょう。
 ```
@@ -332,15 +332,15 @@ isInMaintenance.when(
 
 ---
 
-## 👤 ユーザー
-*2025/03/10 14:05:29*
+## 👤 User
+*2025-03-10 14:05:29*
 
 import 'package:http/http.dart' as http; とは
 
 ---
 
-## 🤖 アシスタント
-*2025/03/10 14:05:37*
+## 🤖 Assistant
+*2025-03-10 14:05:37*
 
 `import 'package:http/http.dart' as http;` は Dart/Flutter で HTTP リクエストを行うための記述です。
 
@@ -373,8 +373,8 @@ dependencies:
 
 ---
 
-## 👤 ユーザー
-*2025/03/10 14:58:18*
+## 👤 User
+*2025-03-10 14:58:18*
 
 接続先にキャッシュを使わずにアクセスしたいんだけどできるの？
 
@@ -382,8 +382,8 @@ https://storage.googleapis.com/guild-dev-public/maintenance.json
 
 ---
 
-## 🤖 アシスタント
-*2025/03/10 14:58:46*
+## 🤖 Assistant
+*2025-03-10 14:58:46*
 
 HTTPリクエストにキャッシュを使わずにアクセスするには、キャッシュ制御用のヘッダーを追加する方法があります。Flutter/Dartの`http`パッケージを使用して実装できます。
 ```

@@ -1,11 +1,11 @@
 # HStackとSpacerを切り出す
 
-日付: 2024-06-03
+Date: 2024-06-03
 
 ---
 
-## 👤 ユーザー
-*2024/06/03 17:34:12*
+## 👤 User
+*2024-06-03 17:34:12*
 
 以下について、HStack(alignment: .top) と Spacer() の組み合わせの画面を別のStructとして切り出したい
 
@@ -114,8 +114,8 @@ struct PropertyView&lt;T: Encodable&gt;: View {
 
 ---
 
-## 🤖 アシスタント
-*2024/06/03 17:34:39*
+## 🤖 Assistant
+*2024-06-03 17:34:39*
 
 以下のように、`HStack(alignment: .top)` と `Spacer()` の組み合わせを別のStructに切り出すことができます。
 
@@ -219,15 +219,15 @@ struct PropertyHStackView: View {
 
 ---
 
-## 👤 ユーザー
-*2024/06/03 17:40:25*
+## 👤 User
+*2024-06-03 17:40:25*
 
 onTapElement(object: )としたい
 
 ---
 
-## 🤖 アシスタント
-*2024/06/03 17:40:54*
+## 🤖 Assistant
+*2024-06-03 17:40:54*
 
 `onTapElement` を `PropertyHStackView` に渡すように変更し、タップされたときに `onTapElement` を呼び出すようにすることができます。以下のようにコードを修正します。
 

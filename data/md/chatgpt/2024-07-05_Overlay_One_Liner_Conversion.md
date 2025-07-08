@@ -1,11 +1,11 @@
 # Overlay One-Liner Conversion
 
-日付: 2024-07-05
+Date: 2024-07-05
 
 ---
 
-## 👤 ユーザー
-*2024/07/05 14:02:05*
+## 👤 User
+*2024-07-05 14:02:05*
 
 overlay のコードをワンライナーで描けるようにしたい
 
@@ -54,8 +54,8 @@ extension SimpleToastOptions {
 
 ---
 
-## 🤖 アシスタント
-*2024/07/05 14:02:10*
+## 🤖 Assistant
+*2024-07-05 14:02:10*
 
 You can achieve a one-liner overlay by directly using the `if let` syntax to unwrap `presenter.toastType` and providing default values for the options and view content. Here's how you can do it:
 
@@ -74,15 +74,15 @@ This code checks if `presenter.toastType` is non-nil and then uses it to configu
 
 ---
 
-## 👤 ユーザー
-*2024/07/05 14:03:57*
+## 👤 User
+*2024-07-05 14:03:57*
 
 そうじゃなくて、.overlayToast(toastType: $presenter.toastType) のような記述にしたい。
 
 ---
 
-## 🤖 アシスタント
-*2024/07/05 14:04:17*
+## 🤖 Assistant
+*2024-07-05 14:04:17*
 
 なるほど、それでしたら、カスタム修飾子を作成することで、`.overlayToast(toastType: $presenter.toastType)` のような記述を実現できます。以下にその実装例を示します：
 
@@ -169,15 +169,15 @@ extension SimpleToastOptions {
 
 ---
 
-## 👤 ユーザー
-*2024/07/05 14:04:52*
+## 👤 User
+*2024-07-05 14:04:52*
 
 Cannot convert value of type 'ToastType' to expected argument type 'Binding&lt;Item?&gt;?'
 
 ---
 
-## 🤖 アシスタント
-*2024/07/05 14:05:11*
+## 🤖 Assistant
+*2024-07-05 14:05:11*
 
 修正するために、`simpleToast`が`Binding<Item?>`を期待していることを考慮してカスタム修飾子を調整します。具体的には、`simpleToast`にバインディングを渡す必要があります。
 

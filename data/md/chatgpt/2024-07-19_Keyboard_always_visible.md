@@ -1,11 +1,11 @@
 # Keyboard always visible
 
-日付: 2024-07-19
+Date: 2024-07-19
 
 ---
 
-## 👤 ユーザー
-*2024/07/19 13:34:21*
+## 👤 User
+*2024-07-19 13:34:21*
 
 常にキーボードを立ち上げた状態にしたい
 
@@ -50,8 +50,8 @@ public struct PhoneNumberInputView&lt;Dependency: RootDIContainerDependency&gt;:
 
 ---
 
-## 🤖 アシスタント
-*2024/07/19 13:34:35*
+## 🤖 Assistant
+*2024-07-19 13:34:35*
 
 常にキーボードを立ち上げた状態にするためには、SwiftUIでは通常の方法では難しいですが、`UIViewControllerRepresentable`を使用してカスタムのビューを作成し、キーボードを強制的に表示させることができます。以下はその方法の例です。
 

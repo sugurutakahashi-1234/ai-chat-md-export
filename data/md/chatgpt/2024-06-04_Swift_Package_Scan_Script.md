@@ -1,11 +1,11 @@
 # Swift Package Scan Script
 
-日付: 2024-06-04
+Date: 2024-06-04
 
 ---
 
-## 👤 ユーザー
-*2024/06/04 11:47:13*
+## 👤 User
+*2024-06-04 11:47:13*
 
 以下を変数宣言したい
 "DomainLayer" "PresentationLayer" "DependencyInjectionLayer" "DeviceFramework" "FirebaseFramework" "LicenseFramework"
@@ -59,8 +59,8 @@ echo "Periphery Scan Completed!!!!"
 
 ---
 
-## 🤖 アシスタント
-*2024/06/04 11:47:36*
+## 🤖 Assistant
+*2024-06-04 11:47:36*
 
 以下のスクリプトは、変数宣言を追加し、指定されたターゲットのビルドとスキャンを行うスクリプトです。
 
@@ -125,15 +125,15 @@ echo "Periphery Scan Completed!!!!"
 
 ---
 
-## 👤 ユーザー
-*2024/06/04 11:47:48*
+## 👤 User
+*2024-06-04 11:47:48*
 
 そうではなくて、一つの変数としたいんだ
 
 ---
 
-## 🤖 アシスタント
-*2024/06/04 11:48:11*
+## 🤖 Assistant
+*2024-06-04 11:48:11*
 
 了解しました。一つの変数にターゲットをまとめて宣言します。
 

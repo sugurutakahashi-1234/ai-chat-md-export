@@ -1,18 +1,18 @@
 # OpenAPI JSON to YAML
 
-日付: 2024-09-28
+Date: 2024-09-28
 
 ---
 
-## 👤 ユーザー
-*2024/09/28 11:37:46*
+## 👤 User
+*2024-09-28 11:37:46*
 
 openapi json を ymlに変換するワンライナー npx使ってほしい
 
 ---
 
-## 🤖 アシスタント
-*2024/09/28 11:37:48*
+## 🤖 Assistant
+*2024-09-28 11:37:48*
 
 以下のワンライナーで、OpenAPI JSONファイルをYAML形式に変換できます。`npx`を使って、`@openapitools/openapi-generator-cli`を実行します。
 
@@ -24,15 +24,15 @@ npx @openapitools/openapi-generator-cli generate -i openapi.json -g openapi-yaml
 
 ---
 
-## 👤 ユーザー
-*2024/09/28 11:37:58*
+## 👤 User
+*2024-09-28 11:37:58*
 
 その他の選択肢は？
 
 ---
 
-## 🤖 アシスタント
-*2024/09/28 11:38:03*
+## 🤖 Assistant
+*2024-09-28 11:38:03*
 
 他にもいくつか選択肢があります。`npx`を使って、OpenAPI JSONをYAMLに変換する方法として、以下のツールやアプローチが考えられます。
 
@@ -68,8 +68,8 @@ npx oas-normalize openapi.json --format yaml > openapi.yaml
 
 ---
 
-## 👤 ユーザー
-*2024/09/30 10:05:38*
+## 👤 User
+*2024-09-30 10:05:38*
 
 こういうエラーになった。これを直すコマンドラインはあるか？
 
@@ -78,8 +78,8 @@ warning: Schema "null" is not supported, reason: "schema type", skipping [contex
 
 ---
 
-## 🤖 アシスタント
-*2024/09/30 10:05:51*
+## 🤖 Assistant
+*2024-09-30 10:05:51*
 
 このエラーは、OpenAPIドキュメント内で`null`型がサポートされていない場合に発生するもので、特にスキーマ定義で`null`が使われている箇所に関連しています。OpenAPI 3.0では`null`型はサポートされておらず、`nullable: true`で`null`許容を指定する必要があります。
 
@@ -126,29 +126,29 @@ sed -i '' 's/type: null/type: string\nnullable: true/g' openapi.json
 
 ---
 
-## 👤 ユーザー
-*2024/09/30 10:06:46*
+## 👤 User
+*2024-09-30 10:06:46*
 
 そもそも3.1.0版を使っているんだ
 
 ---
 
-## 🤖 アシスタント
-*2024/09/30 10:06:55*
+## 🤖 Assistant
+*2024-09-30 10:06:55*
 
 User is using OpenAPI 3.1.0.
 
 ---
 
-## 🔧 ツール
-*2024/09/30 10:06:55*
+## 🔧 Tool
+*2024-09-30 10:06:55*
 
 Model set context updated.
 
 ---
 
-## 🤖 アシスタント
-*2024/09/30 10:06:55*
+## 🤖 Assistant
+*2024-09-30 10:06:55*
 
 OpenAPI 3.1.0では、`null`が正式にサポートされているため、以前のように`nullable: true`を使用する必要はなく、`null`型を直接使用できるはずです。しかし、ツールによってはまだ3.1.0の`null`型を正しく処理できない場合があります。
 

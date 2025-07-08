@@ -1,11 +1,11 @@
 # Extract User Auth Protocol
 
-日付: 2023-10-18
+Date: 2023-10-18
 
 ---
 
-## 👤 ユーザー
-*2023/10/18 11:56:03*
+## 👤 User
+*2023-10-18 11:56:03*
 
 protocolを抽出して欲しい
 
@@ -50,8 +50,8 @@ protocolを抽出して欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/10/18 11:56:20*
+## 🤖 Assistant
+*2023-10-18 11:56:20*
 
 It appears that you're asking to extract a protocol from the provided Swift code, which includes methods for signing up, confirming sign-up, resending a sign-up code, and resetting a password. These methods seem to be part of a user authentication system, possibly using the Amplify library.
 

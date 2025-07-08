@@ -1,18 +1,18 @@
 # Swift OpenAPI Gen CLI
 
-日付: 2024-05-31
+Date: 2024-05-31
 
 ---
 
-## 👤 ユーザー
-*2024/05/31 15:09:00*
+## 👤 User
+*2024-05-31 15:09:00*
 
 Swift_Open_API_Gen_CLI_PACKAGE を大文字に
 
 ---
 
-## 🤖 アシスタント
-*2024/05/31 15:09:07*
+## 🤖 Assistant
+*2024-05-31 15:09:07*
 
 以下は、Swift OpenAPI Generator CLI パッケージを大文字に変換したコード例です。
 

@@ -1,37 +1,37 @@
 # MCP Server Reference Implementations
 
-日付: 2025-05-14
+Date: 2025-05-14
 
 ---
 
-## 👤 ユーザー
-*2025/05/14 15:28:43*
+## 👤 User
+*2025-05-14 15:28:43*
 
 git-mcp-modelcontextprotocol-servers で内容をまとめてほしい
 
 ---
 
-## 🤖 アシスタント
-*2025/05/14 15:30:01*
+## 🤖 Assistant
+*2025-05-14 15:30:01*
 
 お役に立ちますね。GitHub リポジトリ「modelcontextprotocol/servers」の内容について要約したいと思います。まず、このリポジトリの詳細な情報を取得しましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 レスポンスが長すぎたため、切り詰められましたが、重要な情報が得られましたので要約をお作りします。さらに詳細情報を検索しましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 
 MCP (Model Context Protocol)に関する基本情報を理解するために、公式サイトを確認してみましょう。
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
-*[ツール使用: 対応していないブロック]*
+*[Tool Use: Unsupported Block]*
 
 
 

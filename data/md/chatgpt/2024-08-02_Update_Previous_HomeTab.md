@@ -1,11 +1,11 @@
 # Update Previous HomeTab
 
-日付: 2024-08-02
+Date: 2024-08-02
 
 ---
 
-## 👤 ユーザー
-*2024/08/02 17:53:27*
+## 👤 User
+*2024-08-02 17:53:27*
 
 previousHomeTab を プレゼンターのselectedHomeTab の検知で更新できないか
 
@@ -99,8 +99,8 @@ final class HomeTabPresenter: ObservableObject {
 
 ---
 
-## 🤖 アシスタント
-*2024/08/02 17:53:54*
+## 🤖 Assistant
+*2024-08-02 17:53:54*
 
 `selectedHomeTab` の変更を監視して `previousHomeTab` を更新するためには、`selectedHomeTab` の変更を検知するたびに `previousHomeTab` を更新する必要があります。これを実現するには、`$selectedHomeTab` の変更を監視して、その変更が `previousHomeTab` に反映されるようにします。以下のように修正できます。
 
@@ -202,15 +202,15 @@ final class HomeTabPresenter: ObservableObject {
 
 ---
 
-## 👤 ユーザー
-*2024/08/02 17:54:37*
+## 👤 User
+*2024-08-02 17:54:37*
 
 でもこれだと postタブにならない？
 
 ---
 
-## 🤖 アシスタント
-*2024/08/02 17:55:03*
+## 🤖 Assistant
+*2024-08-02 17:55:03*
 
 ご指摘ありがとうございます。`post` タブに移動した後、`previousHomeTab` に戻してしまうので、`post` タブにならない問題があります。この問題を解決するには、`post` タブに移動した後、`previousHomeTab` に戻す前に一時的に `showBoxPost` をトリガーするようにします。
 
