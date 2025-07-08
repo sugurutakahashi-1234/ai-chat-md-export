@@ -22,7 +22,7 @@
     "deps:update": "bunx npm-check-updates -u --deep && bun install",
     "knip": "knip",
     "knip:fix": "knip --fix",
-    "ci": "bun run typecheck && bun run lint:check && bun run test && bun run knip",
+    "ci": "bun run typecheck && bun run lint:check && bun run test && bun run knip && bun run build",
     "conv:chatgpt": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt -f chatgpt",
     "conv:claude": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude -f claude",
     "conv:all": "bun run conv:chatgpt && bun run conv:claude",
