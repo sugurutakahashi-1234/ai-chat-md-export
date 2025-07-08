@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import {
-  type ClaudeNDJSONConversation,
-  claudeNDJSONSchema,
+  type ClaudeJSONConversation,
+  claudeJSONConversationSchema,
 } from "../schemas/claude.js";
 import type { Conversation } from "../types.js";
 import {
@@ -9,62 +9,104 @@ import {
   validateWithDetails,
 } from "../utils/schema-validator.js";
 
-export async function loadClaude(filePath: string): Promise<Conversation[]> {
+export async function loadClaudeJSON(
+  filePath: string,
+): Promise<Conversation[]> {
   const content = await fs.readFile(filePath, "utf-8");
+  const data = JSON.parse(content);
 
-  const lines = content.trim().split("\n");
+  if (!Array.isArray(data)) {
+    throw new Error("Claudeのエクスポートデータは配列である必要があります");
+  }
+
   const conversations: Conversation[] = [];
   const validationErrors: string[] = [];
   const skippedFields = new Set<string>();
   let successCount = 0;
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    if (!line || !line.trim()) continue;
+  for (let i = 0; i < data.length; i++) {
+    const result = validateWithDetails(claudeJSONConversationSchema, data[i], {
+      name: `会話 #${i + 1}`,
+    });
 
-    try {
-      const data = JSON.parse(line);
-      const result = validateWithDetails(claudeNDJSONSchema, data, {
-        name: `行 #${i + 1}`,
-      });
+    if (!result.success) {
+      const report = formatValidationReport(result);
+      validationErrors.push(`会話 #${i + 1}:\n${report}`);
+      continue;
+    }
 
-      if (!result.success) {
-        const report = formatValidationReport(result);
-        validationErrors.push(`行 #${i + 1}:\n${report}`);
-        continue;
-      }
-
-      if (result.warnings) {
-        // 未知のフィールドを収集
-        for (const warning of result.warnings) {
-          if (warning.unknownFields) {
-            warning.unknownFields.forEach((field) => skippedFields.add(field));
-          }
+    if (result.warnings) {
+      // 未知のフィールドを収集
+      for (const warning of result.warnings) {
+        if (warning.unknownFields) {
+          warning.unknownFields.forEach((field) => skippedFields.add(field));
         }
       }
-      successCount++;
-
-      const parsed = result.data as ClaudeNDJSONConversation;
-
-      const date = parsed.created_at
-        ? new Date(parsed.created_at).toISOString().split("T")[0]
-        : new Date().toISOString().split("T")[0];
-
-      conversations.push({
-        id: parsed.uuid,
-        title: parsed.name || "無題の会話",
-        date: date as string,
-        messages: parsed.chat_messages.map((msg) => ({
-          role: msg.sender === "human" ? "user" : "assistant",
-          content: msg.text,
-          timestamp: msg.created_at,
-        })),
-      });
-    } catch (error) {
-      validationErrors.push(
-        `行 #${i + 1}: JSONパースエラー - ${error instanceof Error ? error.message : "不明なエラー"}`,
-      );
     }
+    successCount++;
+
+    const parsed = result.data as ClaudeJSONConversation;
+
+    // 日付の処理を安全に行う
+    let date: string;
+    try {
+      const parsedDate = new Date(parsed.created_at);
+      if (!Number.isNaN(parsedDate.getTime())) {
+        date = parsedDate.toISOString().split("T")[0] as string;
+      } else {
+        date = new Date().toISOString().split("T")[0] as string;
+      }
+    } catch {
+      date = new Date().toISOString().split("T")[0] as string;
+    }
+
+    conversations.push({
+      id: parsed.uuid,
+      title: parsed.name || "無題の会話",
+      date,
+      messages: parsed.chat_messages.map((msg) => {
+        // textフィールドから内容を取得
+        let content: string = "";
+
+        // 直接textフィールドがある場合
+        if ("text" in msg && typeof msg.text === "string") {
+          content = msg.text;
+        }
+        // contentフィールドがある場合（配列形式）
+        else if ("content" in msg && Array.isArray(msg.content)) {
+          const texts = msg.content
+            .map((c) => {
+              if (typeof c === "object" && c !== null && "text" in c) {
+                return c.text;
+              }
+              return undefined;
+            })
+            .filter((t): t is string => typeof t === "string");
+          content = texts.length > 0 ? texts.join("\n") : "";
+        }
+        // roleがある場合（旧形式）
+        else if ("role" in msg && "content" in msg) {
+          content = typeof msg.content === "string" ? msg.content : "";
+        }
+
+        // senderフィールドからroleを判定
+        let role: "user" | "assistant";
+        if ("sender" in msg) {
+          role = msg.sender === "human" ? "user" : "assistant";
+        } else if ("role" in msg && msg.role) {
+          role = msg.role;
+        } else {
+          // デフォルト値
+          role = "user";
+        }
+
+        return {
+          role,
+          content,
+          timestamp: msg.created_at || new Date().toISOString(),
+        };
+      }),
+    });
   }
 
   if (validationErrors.length > 0) {
