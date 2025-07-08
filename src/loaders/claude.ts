@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import {
-  type ClaudeJSONConversation,
-  claudeJSONConversationSchema,
+  type ClaudeConversation,
+  claudeConversationSchema,
 } from "../schemas/claude.js";
 import type { Conversation } from "../types.js";
 import {
@@ -9,7 +9,7 @@ import {
   validateWithDetails,
 } from "../utils/schema-validator.js";
 
-export async function loadClaudeJSON(
+export async function loadClaude(
   filePath: string,
 ): Promise<Conversation[]> {
   const content = await fs.readFile(filePath, "utf-8");
@@ -25,7 +25,7 @@ export async function loadClaudeJSON(
   let successCount = 0;
 
   for (let i = 0; i < data.length; i++) {
-    const result = validateWithDetails(claudeJSONConversationSchema, data[i], {
+    const result = validateWithDetails(claudeConversationSchema, data[i], {
       name: `会話 #${i + 1}`,
     });
 
@@ -45,7 +45,7 @@ export async function loadClaudeJSON(
     }
     successCount++;
 
-    const parsed = result.data as ClaudeJSONConversation;
+    const parsed = result.data as ClaudeConversation;
 
     // 日付の処理を安全に行う
     let date: string;

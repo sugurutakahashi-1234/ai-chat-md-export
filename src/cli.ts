@@ -5,14 +5,13 @@ import { program } from "commander";
 import { z } from "zod";
 import { loadChatGPT } from "./loaders/chatgpt.js";
 import { loadClaude } from "./loaders/claude.js";
-import { loadClaudeJSON } from "./loaders/claude-json.js";
 import { convertToMarkdown } from "./markdown.js";
 import type { Conversation } from "./types.js";
 
 const optionsSchema = z.object({
   input: z.string(),
   output: z.string().optional(),
-  format: z.enum(["chatgpt", "claude", "claude-json", "auto"]).default("auto"),
+  format: z.enum(["chatgpt", "claude", "auto"]).default("auto"),
   copyRaw: z.boolean().default(false),
 });
 
@@ -20,7 +19,7 @@ type Options = z.infer<typeof optionsSchema>;
 
 async function detectFormat(
   filePath: string,
-): Promise<"chatgpt" | "claude" | "claude-json"> {
+): Promise<"chatgpt" | "claude"> {
   const content = await fs.readFile(filePath, "utf-8");
 
   // Try parsing as JSON first
@@ -30,24 +29,11 @@ async function detectFormat(
       if (data[0]?.mapping) {
         return "chatgpt";
       } else if (data[0]?.chat_messages && data[0]?.uuid) {
-        return "claude-json";
+        return "claude";
       }
     }
   } catch {
-    // Not a valid JSON, might be NDJSON
-  }
-
-  // Try parsing as NDJSON (Claude format)
-  const lines = content.trim().split("\n");
-  if (lines.length > 0 && lines[0]) {
-    try {
-      const firstLine = JSON.parse(lines[0]);
-      if (firstLine.type === "chat" && firstLine.chat_messages) {
-        return "claude";
-      }
-    } catch {
-      // Not a valid NDJSON
-    }
+    // Not a valid JSON
   }
 
   throw new Error("不明なファイル形式です");
@@ -65,7 +51,7 @@ async function main() {
     .option("-o, --output <path>", "出力ディレクトリ (デフォルト: data/md/)")
     .option(
       "-f, --format <format>",
-      "入力形式 (chatgpt, claude, claude-json, auto)",
+      "入力形式 (chatgpt, claude, auto)",
       "auto",
     )
     .option("--copy-raw", "生データをdata/raw/にコピー", false)
@@ -111,8 +97,6 @@ async function processFile(
     conversations = await loadChatGPT(filePath);
   } else if (format === "claude") {
     conversations = await loadClaude(filePath);
-  } else if (format === "claude-json") {
-    conversations = await loadClaudeJSON(filePath);
   } else {
     throw new Error(`サポートされていない形式: ${format}`);
   }
@@ -129,7 +113,7 @@ async function processFile(
   }
 
   if (options.copyRaw) {
-    const formatDir = format === "claude-json" ? "claude" : format;
+    const formatDir = format;
     const rawDir = path.join("data/raw", formatDir);
     await fs.mkdir(rawDir, { recursive: true });
     const rawFileName = `${new Date().toISOString().split("T")[0]}_${path.basename(filePath)}`;
