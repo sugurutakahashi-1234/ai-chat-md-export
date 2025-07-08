@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/4/25 11:40:13*
+*2024/04/25 11:40:13*
 
 日本語版と英語版を比べて表現が異なる部分があれば教えてほしい。
 
@@ -120,11 +120,11 @@ let package = Package(
 
 ```mermaid
 graph TD;
-    DependencyInjectionLayer-->FrameworkLayer;
-    DependencyInjectionLayer-->PresentationLayer;
-    PresentationLayer-->DomainLayer;
-    FrameworkLayer-->DomainLayer;
-    FrameworkLayer-->LicensesPlugin;
+    DependencyInjectionLayer--&gt;FrameworkLayer;
+    DependencyInjectionLayer--&gt;PresentationLayer;
+    PresentationLayer--&gt;DomainLayer;
+    FrameworkLayer--&gt;DomainLayer;
+    FrameworkLayer--&gt;LicensesPlugin;
 ```
 
 </details>
@@ -151,7 +151,7 @@ public struct License: Identifiable, Equatable {
 
 ```swift
 public protocol LicenseDriverProtocol {
-    func getLicenses() -> [License]
+    func getLicenses() -&gt; [License]
 }
 ```
 
@@ -162,9 +162,9 @@ public protocol LicenseDriverProtocol {
 #### View
 
 ```swift
-public struct LicenseListView<DIContainer: DIContainerDependency>: View {
+public struct LicenseListView&lt;DIContainer: DIContainerDependency&gt;: View {
     private let diContainer: DIContainer
-    @State private var presenter: LicenseListPresenter<DIContainer>
+    @State private var presenter: LicenseListPresenter&lt;DIContainer&gt;
 
     public init(diContainer: DIContainer) {
         self.diContainer = diContainer
@@ -211,7 +211,7 @@ public protocol LicenseListPresenterDependency {
 
 ```swift
 @Observable
-final class LicenseListPresenter<DIContainer: LicenseListPresenterDependency> {
+final class LicenseListPresenter&lt;DIContainer: LicenseListPresenterDependency&gt; {
     private(set) var licenses: [License] = []
     var selectedLicense: License?
     
@@ -240,7 +240,7 @@ public protocol DIContainerDependency: LicenseListPresenterDependency {}
 #### Mock DI Container
 
 ```swift
-public final class MockDIContainer<LicenseDriver: LicenseDriverProtocol>: DIContainerDependency {
+public final class MockDIContainer&lt;LicenseDriver: LicenseDriverProtocol&gt;: DIContainerDependency {
     public let licenseDriver: LicenseDriver
     
     public init(licenseDriver: LicenseDriver = MockLicenseDriver(getLicenses: [
@@ -259,7 +259,7 @@ public final class MockLicenseDriver: LicenseDriverProtocol {
         self._getLicenses = getLicenses
     }
 
-    public func getLicenses() -> [License] {
+    public func getLicenses() -&gt; [License] {
         return _getLicenses
     }
 }
@@ -275,7 +275,7 @@ public final class MockLicenseDriver: LicenseDriverProtocol {
 public class LicenseDriver: LicenseDriverProtocol {
     public init() {}
     
-    public func getLicenses() -> [DomainLayer.License] {
+    public func getLicenses() -&gt; [DomainLayer.License] {
         LicensesPlugin.licenses.map { library in
             License(from: library)
         }
@@ -299,7 +299,7 @@ extension DomainLayer.License {
 #### DI Container
 
 ```swift
-public final class DIContainer<LicenseDriver: LicenseDriverProtocol>: DIContainerDependency {
+public final class DIContainer&lt;LicenseDriver: LicenseDriverProtocol&gt;: DIContainerDependency {
     public let licenseDriver: LicenseDriver
     
     public init(licenseDriver: LicenseDriver = FrameworkLayer.LicenseDriver()) {
@@ -524,11 +524,11 @@ let package = Package(
 
 ```mermaid
 graph TD;
-    DependencyInjectionLayer-->FrameworkLayer;
-    DependencyInjectionLayer-->PresentationLayer;
-    PresentationLayer-->DomainLayer;
-    FrameworkLayer-->DomainLayer;
-    FrameworkLayer-->LicensesPlugin;
+    DependencyInjectionLayer--&gt;FrameworkLayer;
+    DependencyInjectionLayer--&gt;PresentationLayer;
+    PresentationLayer--&gt;DomainLayer;
+    FrameworkLayer--&gt;DomainLayer;
+    FrameworkLayer--&gt;LicensesPlugin;
 ```
 
 </details>
@@ -555,7 +555,7 @@ public struct License: Identifiable, Equatable {
 
 ```swift
 public protocol LicenseDriverProtocol {
-    func getLicenses() -> [License]
+    func getLicenses() -&gt; [License]
 }
 ```
 
@@ -566,9 +566,9 @@ public protocol LicenseDriverProtocol {
 #### View
 
 ```swift
-public struct LicenseListView<DIContainer: DIContainerDependency>: View {
+public struct LicenseListView&lt;DIContainer: DIContainerDependency&gt;: View {
     private let diContainer: DIContainer
-    @State private var presenter: LicenseListPresenter<DIContainer>
+    @State private var presenter: LicenseListPresenter&lt;DIContainer&gt;
 
     public init(diContainer: DIContainer) {
         self.diContainer = diContainer
@@ -615,7 +615,7 @@ public protocol LicenseListPresenterDependency {
 
 ```swift
 @Observable
-final class LicenseListPresenter<DIContainer: LicenseListPresenterDependency> {
+final class LicenseListPresenter&lt;DIContainer: LicenseListPresenterDependency&gt; {
     private(set) var licenses: [License] = []
     var selectedLicense: License?
     
@@ -644,7 +644,7 @@ public protocol DIContainerDependency: LicenseListPresenterDependency {}
 #### Mock DI Container
 
 ```swift
-public final class MockDIContainer<LicenseDriver: LicenseDriverProtocol>: DIContainerDependency {
+public final class MockDIContainer&lt;LicenseDriver: LicenseDriverProtocol&gt;: DIContainerDependency {
     public let licenseDriver: LicenseDriver
     
     public init(licenseDriver: LicenseDriver = MockLicenseDriver(getLicenses: [
@@ -663,7 +663,7 @@ public final class MockLicenseDriver: LicenseDriverProtocol {
         self._getLicenses = getLicenses
     }
 
-    public func getLicenses() -> [License] {
+    public func getLicenses() -&gt; [License] {
         return _getLicenses
     }
 }
@@ -679,7 +679,7 @@ public final class MockLicenseDriver: LicenseDriverProtocol {
 public class LicenseDriver: LicenseDriverProtocol {
     public init() {}
     
-    public func getLicenses() -> [DomainLayer.License] {
+    public func getLicenses() -&gt; [DomainLayer.License] {
         LicensesPlugin.licenses.map { library in
             License(from: library)
         }
@@ -703,7 +703,7 @@ extension DomainLayer.License {
 #### DI Container
 
 ```swift
-public final class DIContainer<LicenseDriver: LicenseDriverProtocol>: DIContainerDependency {
+public final class DIContainer&lt;LicenseDriver: LicenseDriverProtocol&gt;: DIContainerDependency {
     public let licenseDriver: LicenseDriver
     
     public init(licenseDriver: LicenseDriver = FrameworkLayer.LicenseDriver()) {
@@ -821,7 +821,7 @@ FIA について補足する日本語の Speaker Deck スライドを以下で�
 ---
 
 ## 🤖 アシスタント
-*2024/4/25 11:40:46*
+*2024/04/25 11:40:46*
 
 The English and Japanese versions of the document about Framework-Independent Architecture (FIA) are quite consistent in content. However, there are subtle differences in the phrasing and some additional clarifications in the Japanese text which might be reflective of language-specific preferences for explaining technical concepts. Here are some key differences and nuances:
 
@@ -854,14 +854,14 @@ These differences reflect a tendency in the Japanese version to provide more det
 ---
 
 ## 👤 ユーザー
-*2024/4/25 11:40:57*
+*2024/04/25 11:40:57*
 
 日本語で解説してほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2024/4/25 11:42:04*
+*2024/04/25 11:42:04*
 
 もちろんです。英語版と日本語版のドキュメントの違いについて、以下に詳細な日本語での解説を提供します：
 
@@ -894,14 +894,14 @@ These differences reflect a tendency in the Japanese version to provide more det
 ---
 
 ## 👤 ユーザー
-*2024/4/25 11:43:10*
+*2024/04/25 11:43:10*
 
 すべて日本語が正しいので、英語の修正案を出してほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2024/4/25 11:43:49*
+*2024/04/25 11:43:49*
 
 英語版のテキストを、日本語版のニュアンスや詳細な説明に合わせて修正するためには、いくつかの部分を強調し、より具体的な情報を提供する必要があります。以下に、修正案を提案します。
 
@@ -938,14 +938,14 @@ These revisions aim to clarify and expand on the explanations to align more clos
 ---
 
 ## 👤 ユーザー
-*2024/4/25 11:47:10*
+*2024/04/25 11:47:10*
 
 This architecture incorporates a multi-module, multi-project structure using the Swift Package Manager and is based on the design principles of the Clean Architecture. は 取り入れるのではなくて、採用するのようなニュアンスである。
 
 ---
 
 ## 🤖 アシスタント
-*2024/4/25 11:47:30*
+*2024/04/25 11:47:30*
 
 指摘の通り、「取り入れる」よりも「採用する」という表現の方が、意図的で積極的な選択を反映しています。そのため、英語の表現を以下のように修正すると良いでしょう：
 
@@ -960,7 +960,7 @@ This architecture incorporates a multi-module, multi-project structure using the
 ---
 
 ## 👤 ユーザー
-*2024/4/25 11:48:36*
+*2024/04/25 11:48:36*
 
 全体的に英文として正しいか、不自然な表現がないかを確認してほしい。
 
@@ -1075,11 +1075,11 @@ let package = Package(
 
 ```mermaid
 graph TD;
-    DependencyInjectionLayer-->FrameworkLayer;
-    DependencyInjectionLayer-->PresentationLayer;
-    PresentationLayer-->DomainLayer;
-    FrameworkLayer-->DomainLayer;
-    FrameworkLayer-->LicensesPlugin;
+    DependencyInjectionLayer--&gt;FrameworkLayer;
+    DependencyInjectionLayer--&gt;PresentationLayer;
+    PresentationLayer--&gt;DomainLayer;
+    FrameworkLayer--&gt;DomainLayer;
+    FrameworkLayer--&gt;LicensesPlugin;
 ```
 
 </details>
@@ -1106,7 +1106,7 @@ public struct License: Identifiable, Equatable {
 
 ```swift
 public protocol LicenseDriverProtocol {
-    func getLicenses() -> [License]
+    func getLicenses() -&gt; [License]
 }
 ```
 
@@ -1117,9 +1117,9 @@ public protocol LicenseDriverProtocol {
 #### View
 
 ```swift
-public struct LicenseListView<DIContainer: DIContainerDependency>: View {
+public struct LicenseListView&lt;DIContainer: DIContainerDependency&gt;: View {
     private let diContainer: DIContainer
-    @State private var presenter: LicenseListPresenter<DIContainer>
+    @State private var presenter: LicenseListPresenter&lt;DIContainer&gt;
 
     public init(diContainer: DIContainer) {
         self.diContainer = diContainer
@@ -1166,7 +1166,7 @@ public protocol LicenseListPresenterDependency {
 
 ```swift
 @Observable
-final class LicenseListPresenter<DIContainer: LicenseListPresenterDependency> {
+final class LicenseListPresenter&lt;DIContainer: LicenseListPresenterDependency&gt; {
     private(set) var licenses: [License] = []
     var selectedLicense: License?
     
@@ -1195,7 +1195,7 @@ public protocol DIContainerDependency: LicenseListPresenterDependency {}
 #### Mock DI Container
 
 ```swift
-public final class MockDIContainer<LicenseDriver: LicenseDriverProtocol>: DIContainerDependency {
+public final class MockDIContainer&lt;LicenseDriver: LicenseDriverProtocol&gt;: DIContainerDependency {
     public let licenseDriver: LicenseDriver
     
     public init(licenseDriver: LicenseDriver = MockLicenseDriver(getLicenses: [
@@ -1214,7 +1214,7 @@ public final class MockLicenseDriver: LicenseDriverProtocol {
         self._getLicenses = getLicenses
     }
 
-    public func getLicenses() -> [License] {
+    public func getLicenses() -&gt; [License] {
         return _getLicenses
     }
 }
@@ -1230,7 +1230,7 @@ public final class MockLicenseDriver: LicenseDriverProtocol {
 public class LicenseDriver: LicenseDriverProtocol {
     public init() {}
     
-    public func getLicenses() -> [DomainLayer.License] {
+    public func getLicenses() -&gt; [DomainLayer.License] {
         LicensesPlugin.licenses.map { library in
             License(from: library)
         }
@@ -1254,7 +1254,7 @@ extension DomainLayer.License {
 #### DI Container
 
 ```swift
-public final class DIContainer<LicenseDriver: LicenseDriverProtocol>: DIContainerDependency {
+public final class DIContainer&lt;LicenseDriver: LicenseDriverProtocol&gt;: DIContainerDependency {
     public let licenseDriver: LicenseDriver
     
     public init(licenseDriver: LicenseDriver = FrameworkLayer.LicenseDriver()) {
@@ -1372,7 +1372,7 @@ For questions or collaboration, please contact us at [![X URL](https://img.shiel
 ---
 
 ## 🤖 アシスタント
-*2024/4/25 11:49:27*
+*2024/04/25 11:49:27*
 
 Your English document is largely well-constructed and clear. However, there are a few areas where the phrasing could be improved for clarity and fluency. Here are some suggestions:
 
@@ -1410,14 +1410,14 @@ These adjustments refine the document's clarity and professional tone while ensu
 ---
 
 ## 👤 ユーザー
-*2024/4/25 12:09:32*
+*2024/04/25 12:09:32*
 
 このGithubのaboutとしての説明文を英語で記述してほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2024/4/25 12:09:41*
+*2024/04/25 12:09:41*
 
 Here’s a succinct and clear description for the GitHub repository "about" section that summarizes the Framework-Independent Architecture (FIA) project:
 

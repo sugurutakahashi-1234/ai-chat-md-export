@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/4 18:29:19*
+*2024/06/04 18:29:19*
 
 GitHub Pages を pdf 化する GitHub Actions はないか？
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/4 18:29:40*
+*2024/06/04 18:29:40*
 
 There are several GitHub Actions available to convert GitHub Pages or markdown files into PDF documents:
 

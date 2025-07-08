@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/28 12:35:56*
+*2024/05/28 12:35:56*
 
 日本語で解説してほしい
 
@@ -16,27 +16,27 @@ generate:
 - client
 ```
 
-USAGE: swift-openapi-generator generate <doc-path> [--config <config>] [--mode <mode> ...] [--access-modifier <access-modifier>] [--additional-import <additional-import> ...] [--feature-flag <feature-flag> ...] [--diagnostics-output-path <diagnostics-output-path>] [--output-directory <output-directory>] [--plugin-source <plugin-source>] [--dry-run]
+USAGE: swift-openapi-generator generate &lt;doc-path&gt; [--config &lt;config&gt;] [--mode &lt;mode&gt; ...] [--access-modifier &lt;access-modifier&gt;] [--additional-import &lt;additional-import&gt; ...] [--feature-flag &lt;feature-flag&gt; ...] [--diagnostics-output-path &lt;diagnostics-output-path&gt;] [--output-directory &lt;output-directory&gt;] [--plugin-source &lt;plugin-source&gt;] [--dry-run]
 
 ARGUMENTS:
-  <doc-path>              Path to the OpenAPI document, either in YAML or JSON.
+  &lt;doc-path&gt;              Path to the OpenAPI document, either in YAML or JSON.
 
 OPTIONS:
-  --config <config>       Path to a YAML configuration file.
-  --mode <mode>           The Swift files to generate. Options: types, client, server. Note that 'client' and 'server' depend on declarations in 'types'. (values: types, client,
+  --config &lt;config&gt;       Path to a YAML configuration file.
+  --mode &lt;mode&gt;           The Swift files to generate. Options: types, client, server. Note that 'client' and 'server' depend on declarations in 'types'. (values: types, client,
                           server)
-  --access-modifier <access-modifier>
+  --access-modifier &lt;access-modifier&gt;
                           The access modifier to use for the API of generated code. Default: internal
-  --additional-import <additional-import>
+  --additional-import &lt;additional-import&gt;
                           Additional import to add to all generated files.
-  --feature-flag <feature-flag>
+  --feature-flag &lt;feature-flag&gt;
                           Pre-release feature to enable. Options: empty. (values: empty)
-  --diagnostics-output-path <diagnostics-output-path>
+  --diagnostics-output-path &lt;diagnostics-output-path&gt;
                           When specified, writes out the diagnostics into a YAML file instead of emitting them to standard error.
-  --output-directory <output-directory>
+  --output-directory &lt;output-directory&gt;
                           Output directory where the generated files are written. Warning: Replaces any existing files with the same filename. Reserved filenames: Types.swift,
                           Client.swift, Server.swift (default: file:///Users/sugurutakahashi/git/swift-openapi-gen-sample/)
-  --plugin-source <plugin-source>
+  --plugin-source &lt;plugin-source&gt;
                           Source of invocation if by a plugin. The generator needs to produce all files when invoked as a build plugin, so non-requested modes produce empty files.
   --dry-run               Simulate the command and print the operations, without actually affecting the file system.
   -h, --help              Show help information.
@@ -44,7 +44,7 @@ OPTIONS:
 ---
 
 ## 🤖 アシスタント
-*2024/5/28 12:36:22*
+*2024/05/28 12:36:22*
 
 `swift-openapi-generator`の使い方と設定ファイルの内容について日本語で解説します。
 
@@ -86,7 +86,7 @@ swift-openapi-generator generate <doc-path> [--config <config>] [--mode <mode> .
 ---
 
 ## 👤 ユーザー
-*2024/5/28 16:04:52*
+*2024/05/28 16:04:52*
 
 以下について生成してみると、値が全てオプショナルであったり、client.get_sol_users() や client.get_sol_users_sol__lcub_id_rcub_() といった名前の関数しか用意されず、なにか変である。
 
@@ -176,7 +176,7 @@ components:
 ---
 
 ## 🤖 アシスタント
-*2024/5/28 16:05:28*
+*2024/05/28 16:05:28*
 
 生成されたSwiftコードが意図通りにならない原因を探るため、いくつかのポイントを確認していきます。
 
@@ -349,14 +349,14 @@ components:
 ---
 
 ## 👤 ユーザー
-*2024/5/28 16:07:19*
+*2024/05/28 16:07:19*
 
 全てのパラメーターをrequiredにしてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/28 16:07:40*
+*2024/05/28 16:07:40*
 
 全てのパラメーターを必須にするために、`required`フィールドに全てのプロパティを追加します。以下は修正後のOpenAPIドキュメントです：
 

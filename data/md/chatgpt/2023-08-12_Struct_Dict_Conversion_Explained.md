@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/8/12 22:28:53*
+*2023/08/12 22:28:53*
 
 zennを使って記事を書いているのだけれども解説が少ないので追記してほしい
 
@@ -40,7 +40,7 @@ extension Encodable {
 }
 ```
 
-## Dictionary -> Struct の変換の記述
+## Dictionary -&gt; Struct の変換の記述
 
 ```swift
 extension Decodable {
@@ -78,7 +78,7 @@ enum SampleEnum: Codable {
 }
 ```
 
-## Struct -> Dictionary の変換
+## Struct -&gt; Dictionary の変換
 
 ```swift
 let sample = Sample(sampleInt: 1, sampleString: "a", sampleDouble: 2.0, sampleFloat: 3.0, sampleBool: true, sampleDate: Date(), sampleStruct: SampleStruct(hogeProperty: 4), sampleEnum: .hogeCase)
@@ -131,7 +131,7 @@ do {
 ]
 ```
 
-## Dictionary -> Struct の変換
+## Dictionary -&gt; Struct の変換
 
 ```swift
 let sample = Sample(sampleInt: 1, sampleString: "a", sampleDouble: 2.0, sampleFloat: 3.0, sampleBool: true, sampleDate: Date(), sampleStruct: SampleStruct(hogeProperty: 4), sampleEnum: .hogeCase)
@@ -148,7 +148,7 @@ do {
 }
 ```
 
-## Dictionary -> Struct の変換（エラーの検証）
+## Dictionary -&gt; Struct の変換（エラーの検証）
 
 ```swift
 let sample = Sample(sampleInt: 1, sampleString: "a", sampleDouble: 2.0, sampleFloat: 3.0, sampleBool: true, sampleDate: Date(), sampleStruct: SampleStruct(hogeProperty: 4), sampleEnum: .hogeCase)
@@ -302,7 +302,7 @@ extension ISO8601DateFormatter {
 ---
 
 ## 🤖 アシスタント
-*2023/8/12 22:29:49*
+*2023/08/12 22:29:49*
 
 Swiftのコードとそれに関する説明を提供していただきましたが、確かにこのままでは初見の方は背景や具体的な問題点、そして解決方法の理解が難しいかと思います。
 
@@ -338,14 +338,14 @@ SwiftでJSONを扱う場合、`Codable`プロトコルや`JSONSerialization`ク�
 ---
 
 ## 👤 ユーザー
-*2023/8/12 22:30:58*
+*2023/08/12 22:30:58*
 
 マークダウンでコピペできるように記載して欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/8/12 22:32:01*
+*2023/08/12 22:32:01*
 
 了解しました！以下に詳細な解説と共にマークダウン形式で記述します。
 

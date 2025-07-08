@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/10 18:53:49*
+*2025/01/10 18:53:49*
 
 Null check operator used on a null value
 package:openapi_freezed_dio_builder/src/openapi_code_builder.dart 552:33  OpenApiLibraryGenerator._createSchemaClass
@@ -771,7 +771,7 @@ components:
 ---
 
 ## 🔧 ツール
-*2025/1/10 18:55:02*
+*2025/01/10 18:55:02*
 
 **Identifying potential causes**
 
@@ -784,7 +784,7 @@ The issue might arise from the absence of a content or schema for the "200" resp
 ---
 
 ## 🤖 アシスタント
-*2025/1/10 18:55:02*
+*2025/01/10 18:55:02*
 
 原因として考えられるケースはいくつかありますが、最も多いのが以下のような「スキーマまわりで null が返ってきてしまう」ケースです。
 
@@ -878,7 +878,7 @@ OpenAPI 的には `description` だけしか書かれていない「スキーマ
 ---
 
 ## 👤 ユーザー
-*2025/1/10 18:58:03*
+*2025/01/10 18:58:03*
 
 変更場所が以下のときにエラーになったので変更点に注目して欲しい
 
@@ -1137,7 +1137,7 @@ index 3cece54..3a9d58c 100644
 ---
 
 ## 🔧 ツール
-*2025/1/10 18:59:01*
+*2025/01/10 18:59:01*
 
 **Triaging the complexities**
 I'm piecing together how the transition from inline definition to referencing external schemas might be causing issues. The placement, omissions, or duplicates can all complicate the process, especially with the openapi_freezed_dio_builder.
@@ -1161,7 +1161,7 @@ I'm considering whether openapi_freezed_dio_builder struggles with "allOf" refer
 ---
 
 ## 🤖 アシスタント
-*2025/1/10 18:59:01*
+*2025/01/10 18:59:01*
 
 まず、今回の差分を見ると、**従来はフィールド定義の中に直接 `type: string` と `enum: [...]` を記述していた**部分を、**`#/components/schemas/XXX` への参照 (allOf での参照)** へ切り替えている、という変更が多く見られます。  
 この変更自体は OpenAPI の文法上は問題なく記述できるケースが多いですが、**コード生成ツール(ここでは `openapi_freezed_dio_builder` など)** によっては「`allOf` でスカラー型 (string) + enum を参照している構造」を正しく扱えず、内部的に `null` を返してしまうケースがあり得ます。  
@@ -1194,8 +1194,8 @@ OpenAPI の定義上は、**`allOf` を使ってスカラー型や enum 型を�
 ところが、**`openapi_freezed_dio_builder` などのコード生成ツールが “スカラー型 + enum” を参照で取り込むパターンを想定していない**場合があります。  
 つまり、**`allOf` でスカラー (string) を受け取る場合**に「内部的に `type: object` とみなそうとしてパースに失敗している」「あるいは `allOf` スキーマの階層を追う過程で `null` を返してしまう」などの不具合が発生する場合があるのです。
 
-> **補足**  
-> allOf は通常「オブジェクトのマージ」によく使われますが、`type: string` + `enum: [...]` のスカラー定義にも一応使えるものの、ツールチェーンとの相性が悪いこともあります。
+&gt; **補足**  
+&gt; allOf は通常「オブジェクトのマージ」によく使われますが、`type: string` + `enum: [...]` のスカラー定義にも一応使えるものの、ツールチェーンとの相性が悪いこともあります。
 
 ---
 
@@ -1211,7 +1211,7 @@ OpenApiLibraryGenerator._schemaReference
 OpenApiLibraryGenerator._createSchemaClass
 ```
 
-といった箇所で「想定していた型情報が入ってこない -> `null` を無理やり `!` 演算子で取り出してしまう -> 例外発生」という流れになっていると考えられます。
+といった箇所で「想定していた型情報が入ってこない -&gt; `null` を無理やり `!` 演算子で取り出してしまう -&gt; 例外発生」という流れになっていると考えられます。
 
 ---
 
@@ -1269,14 +1269,14 @@ OpenApiLibraryGenerator._createSchemaClass
 ---
 
 ## 👤 ユーザー
-*2025/1/10 19:05:31*
+*2025/01/10 19:05:31*
 
 oneOf と allOf の違いは？
 
 ---
 
 ## 🤖 アシスタント
-*2025/1/10 19:05:59*
+*2025/01/10 19:05:59*
 
 OpenAPI で複数のスキーマを組み合わせる際に登場する **`allOf`** と **`oneOf`** は、**「定義したい型をどのように満たすべきか」** という条件が異なるものです。簡単に言うと:
 

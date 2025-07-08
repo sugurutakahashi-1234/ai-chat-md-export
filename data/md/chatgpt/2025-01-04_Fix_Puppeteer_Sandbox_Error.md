@@ -5,13 +5,13 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/4 17:03:41*
+*2025/01/04 17:03:41*
 
 0s
 Run npm run generate-diagram
 
-> finance@1.0.0 generate-diagram
-> mmdc -i assets/mermaid/finance.mmd -o docs/diagrams/finance.png -f 'Noto Sans JP'
+&gt; finance@1.0.0 generate-diagram
+&gt; mmdc -i assets/mermaid/finance.mmd -o docs/diagrams/finance.png -f 'Noto Sans JP'
 
 Generating single mermaid chart
 
@@ -126,7 +126,7 @@ jobs:
 ---
 
 ## 🤖 アシスタント
-*2025/1/4 17:03:54*
+*2025/01/04 17:03:54*
 
 The error occurs because the `puppeteer` library (used by `mmdc` for rendering Mermaid diagrams) cannot launch the browser due to missing or restricted sandboxing permissions. This is common on modern Linux distributions, including the latest Ubuntu versions, where unprivileged user namespaces may be restricted by AppArmor.
 
@@ -238,14 +238,14 @@ This should resolve the issue and allow the workflow to complete successfully.
 ---
 
 ## 👤 ユーザー
-*2025/1/4 17:04:06*
+*2025/01/04 17:04:06*
 
 日本ンゴで
 
 ---
 
 ## 🤖 アシスタント
-*2025/1/4 17:04:19*
+*2025/01/04 17:04:19*
 
 以下は、日本語での説明と修正版のGitHub Actionsワークフローです。
 
@@ -351,14 +351,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2025/1/4 17:04:56*
+*2025/01/04 17:04:56*
 
 サンドボックスの制限とはなに？
 
 ---
 
 ## 🤖 アシスタント
-*2025/1/4 17:05:12*
+*2025/01/04 17:05:12*
 
 サンドボックスの制限とは、セキュリティを高めるためにプロセスやアプリケーションを制御された環境（＝サンドボックス）内で動作させる仕組みの制約を指します。以下で詳しく説明します。
 
@@ -429,7 +429,7 @@ GitHub Actionsを使用しているため、`--no-sandbox` オプションを追
 ---
 
 ## 👤 ユーザー
-*2025/1/4 17:06:33*
+*2025/01/04 17:06:33*
 
 npm run generate-diagram                                                                                                                                                                                                                                            1 ↵
 
@@ -441,7 +441,7 @@ error: unknown option '--no-sandbox'
 ---
 
 ## 🤖 アシスタント
-*2025/1/4 17:06:51*
+*2025/01/04 17:06:51*
 
 `--no-sandbox` オプションが `mmdc` (Mermaid CLI) に認識されないのは、`mmdc` がそのオプションを直接サポートしていないためです。この場合、`puppeteer` を直接設定する必要があります。
 

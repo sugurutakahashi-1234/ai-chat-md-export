@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/4/23 10:32:44*
+*2024/04/23 10:32:44*
 
 What are two important aspects of Clean Architecture's design philosophy?
 
 ---
 
 ## 🤖 アシスタント
-*2024/4/23 10:33:09*
+*2024/04/23 10:33:09*
 
 Clean Architecture, as introduced by Robert C. Martin (often referred to as Uncle Bob), emphasizes principles designed to keep software systems robust, testable, and maintainable over time. Two important aspects of its design philosophy are:
 
@@ -25,14 +25,14 @@ These principles work in tandem to ensure that applications remain easy to test,
 ---
 
 ## 👤 ユーザー
-*2024/4/23 10:33:11*
+*2024/04/23 10:33:11*
 
 日本語にしてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2024/4/23 10:34:07*
+*2024/04/23 10:34:07*
 
 クリーンアーキテクチャの設計哲学には、ソフトウェアシステムを長期にわたって堅牢でテスト可能で保守しやすく保つための原則が強調されています。その設計哲学の重要な二つの側面は以下の通りです：
 
@@ -45,14 +45,14 @@ These principles work in tandem to ensure that applications remain easy to test,
 ---
 
 ## 👤 ユーザー
-*2024/4/23 10:34:49*
+*2024/04/23 10:34:49*
 
 Dependency Rule の約の候補をいくつか挙げてほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2024/4/23 10:35:23*
+*2024/04/23 10:35:23*
 
 「Dependency Rule」を日本語に訳す際には、その原則の本質を的確に伝える言葉を選ぶことが重要です。以下にいくつかの訳語候補を挙げます：
 

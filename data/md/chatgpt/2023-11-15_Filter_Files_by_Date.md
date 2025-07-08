@@ -100,7 +100,7 @@ ls /Users/sugurutakahashi/git/zenn-connects/articles | grep -E '^[0-9]{4}-[0-9]{
 ## 👤 ユーザー
 *2023/11/15 17:43:23*
 
-その出力結果に対して、1行づつ `npx qiita new &lt;出力結果&gt;` を実行するようにして欲しい。
+その出力結果に対して、1行づつ `npx qiita new <出力結果>` を実行するようにして欲しい。
 
 ---
 
@@ -284,7 +284,7 @@ npx qiita new "$(basename "$FILE" .md)" &lt; $QIITA_TEMP_FILE で作成できる
 
 `npx qiita new` コマンドは、新しい記事を作成するためのコマンドですが、通常の使い方では標準入力からの内容をそのまま記事の本文として受け付ける機能はありません。このコマンドは主に記事のタイトルを引数として受け取り、新しい記事のベースを作成するために使われます。記事の本文は通常、生成されたファイルに直接編集を加える形で行います。
 
-したがって、`npx qiita new "$(basename "$FILE" .md)" &lt; $QIITA_TEMP_FILE` というコマンドは、おそらく期待通りに動作しないでしょう。Qiitaの記事をコマンドラインから自動的に生成・更新するには、QiitaのAPIを使用する必要があります。
+したがって、`npx qiita new "$(basename "$FILE" .md)" < $QIITA_TEMP_FILE` というコマンドは、おそらく期待通りに動作しないでしょう。Qiitaの記事をコマンドラインから自動的に生成・更新するには、QiitaのAPIを使用する必要があります。
 
 QiitaのAPIを使用して記事を投稿する場合、以下のステップを踏むことになります：
 
@@ -913,11 +913,11 @@ for FILE in $(ls $ZENN_DIR | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}'); do
     fi
 
     # Zenn の記事を読み込み
-    ZENN_ARTICLE=$(<"$ZENN_DIR/$FILE")
+    ZENN_ARTICLE=$(&lt;"$ZENN_DIR/$FILE")
 
     # Zenn のヘッダー情報（YAML形式）を解析
     ZENN_TITLE=$(echo "$ZENN_ARTICLE" | grep '^title:' | sed 's/title: "\(.*\)"/\1/')
-    ZENN_TOPICS=$(echo "$ZENN_ARTICLE" | grep '^topics:' | sed 's/topics: \[\(.*\)\]/\1/')
+    ZENN_TOPICS=$(echo "$ZENN_ARTICLE" | grep '^topics:' | sed 's/topics: [\(.*\)]/\1/')
 
     # Qiita の記事
 

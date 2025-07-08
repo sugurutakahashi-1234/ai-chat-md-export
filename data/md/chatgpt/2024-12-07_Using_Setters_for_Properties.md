@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/12/7 22:30:38*
+*2024/12/07 22:30:38*
 
 he method is used to change a property.
 Try converting the method to a setter.dartuse_setters_to_change_properties
@@ -14,7 +14,7 @@ v
 ---
 
 ## 🤖 アシスタント
-*2024/12/7 22:30:46*
+*2024/12/07 22:30:46*
 
 In Dart, when a method is primarily used to change a property, it's often more idiomatic to use a **setter** instead of a method. Here's how you can achieve this:
 

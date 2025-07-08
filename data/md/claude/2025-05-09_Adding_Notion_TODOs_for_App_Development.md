@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/9 13:35:53*
+*2025/05/09 13:35:53*
 
 notionにtodoを追加して欲しい
 
@@ -49,26 +49,20 @@ notionにtodoを追加して欲しい
 ---
 
 ## 🤖 アシスタント
-*2025/5/9 13:37:04*
+*2025/05/09 13:37:04*
 
 NotionのTODOリストに追加しますね。まずは利用可能なデータベースを検索して、適切なTODOリストを見つけます。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 見つかったTODOページを確認します。これは「TODO アプリ開発」というページのようです。このページの内容を確認してみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 親ページも確認してみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -78,51 +72,37 @@ This block is not supported on your current device yet.
 2. サブページID（TODO アプリ開発）: `1ed2ea0f-04ac-8059-bf03-c8a882990ac8`
 
 メインのToDoページに新しくリストを作成するために、まずデータベースがあるか確認してみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 データベースは見つかりませんでした。既存のTODOページ（TODO アプリ開発）にリストを追加しましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 残りのアイテムも追加します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 最後の項目も追加します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 残りのアイテムを追加します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 残りのアイテムも追加します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 最後のアイテムを追加します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -163,14 +143,14 @@ TODOリストへの追加が完了しました。以下の項目をNotionのTODO
 ---
 
 ## 👤 ユーザー
-*2025/5/9 13:37:24*
+*2025/05/09 13:37:24*
 
 そこのページのurlを教えて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/9 13:37:29*
+*2025/05/09 13:37:29*
 
 「TODO アプリ開発」ページのURLは以下になります：
 
@@ -181,14 +161,14 @@ https://www.notion.so/TODO-1ed2ea0f04ac8059bf03c8a882990ac8
 ---
 
 ## 👤 ユーザー
-*2025/5/9 13:38:11*
+*2025/05/09 13:38:11*
 
 ローカルにあるアプリケーションを参照して、適切にチェックマークをつけて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/9 13:38:21*
+*2025/05/09 13:38:21*
 
 ローカルにあるアプリケーションを確認するために、まず何らかの方法でローカルアプリケーションのリストを取得する必要があります。残念ながら、Notionの統合だけでは直接あなたのローカルコンピュータ上のアプリケーションにアクセスしたり、確認したりすることはできません。
 

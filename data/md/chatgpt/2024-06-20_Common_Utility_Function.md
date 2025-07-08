@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/20 17:54:41*
+*2024/06/20 17:54:41*
 
 以下の normalized(decibel:) の関数をstaticな関数として共通化して、どこでも使いたい。この手の便利関数はどこに定義すべきか？
 
@@ -191,7 +191,7 @@ public final class RecordingDriver: Sendable {
 ---
 
 ## 🤖 アシスタント
-*2024/6/20 17:54:51*
+*2024/06/20 17:54:51*
 
 共通化してどこでも使えるようにするためには、ユーティリティ関数を専用のユーティリティクラスに定義するのが良いでしょう。以下のように、`AudioUtils` というクラスを作成し、その中に `normalized(decibel:)` を `static` 関数として定義します。
 
@@ -201,7 +201,7 @@ public final class RecordingDriver: Sendable {
 public final class AudioUtils {
 
     /// 0.0 ... 1.0
-    public static func normalized(decibel: Double) -> Double {
+    public static func normalized(decibel: Double) -&gt; Double {
         let minDecibel: Double = -80.0 // -80dB を最小値として使用
         let maxDecibel: Double = 0.0 // 0dB を最大値として使用
 

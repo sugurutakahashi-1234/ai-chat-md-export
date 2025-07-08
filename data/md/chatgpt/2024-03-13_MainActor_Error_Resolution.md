@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/13 11:40:01*
+*2024/03/13 11:40:01*
 
 こうしたいのだが // Main actor-isolated class property 'current' can not be referenced from a non-isolated context; this is an error in Swift 6 というエラーになる。どうすればいいか？
 
@@ -18,7 +18,7 @@
 ---
 
 ## 🤖 アシスタント
-*2024/3/13 11:40:40*
+*2024/03/13 11:40:40*
 
 Swift 6のアクターモデルによる変更の一環として、`UIDevice.current`のようなメインアクターに隔離されたプロパティに、非隔離コンテキストからアクセスすることがエラーとなっています。これは、Swiftの並行性モデルがUIや他のメインスレッドでのみ安全にアクセスできるプロパティやメソッドを保護しようとするものです。
 
@@ -57,7 +57,7 @@ public var deviceIdentifier: String {
 ---
 
 ## 👤 ユーザー
-*2024/3/13 11:41:07*
+*2024/03/13 11:41:07*
 
 @MainActor を var deviceIdentifier の外で使うのではなく、内部だけで使用するにはどうすればいいか？
 

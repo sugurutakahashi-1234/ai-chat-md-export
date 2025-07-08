@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/9 18:12:49*
+*2024/05/09 18:12:49*
 
 recording 中かどうかの bool の Any publisher を提供したい
 どうすればいいか？
@@ -68,7 +68,7 @@ final class RecordingDriver {
 ---
 
 ## 🤖 アシスタント
-*2024/5/9 18:13:28*
+*2024/05/09 18:13:28*
 
 For your `RecordingDriver` class in Swift, if you want to provide an `AnyPublisher` that publishes a boolean indicating whether recording is ongoing, you can use Combine to achieve this. Here’s a step-by-step way to do it:
 
@@ -148,14 +148,14 @@ This code now includes a `PassthroughSubject` to track and publish the recording
 ---
 
 ## 👤 ユーザー
-*2024/5/9 18:14:04*
+*2024/05/09 18:14:04*
 
 audioRecorder?.isRecording をそのままサブスクライブできないのか？
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/9 18:14:44*
+*2024/05/09 18:14:44*
 
 `AVAudioRecorder` の `isRecording` プロパティは、Combine フレームワークと直接統合されているわけではないため、そのプロパティを直接 `AnyPublisher` としてサブスクライブすることはできません。`isRecording` はただの Bool 型の値であり、イベントや状態の変更を通知するメカニズムを持っていません。
 

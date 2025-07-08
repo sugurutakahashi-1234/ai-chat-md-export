@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/22 11:47:17*
+*2024/03/22 11:47:17*
 
 Swift package manager の依存を図式もしくはumlで記述してくれるSDKなどは存在しますか？
 
 ---
 
 ## 🤖 アシスタント
-*2024/3/22 11:47:43*
+*2024/03/22 11:47:43*
 
 Yes, there are tools available to help visualize Swift Package Manager dependencies:
 

@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/8 22:32:25*
+*2023/05/08 22:32:25*
 
 https://github.com/integrations/slack#branch-filters-for-commit でデフォルトの通知をOFFにしてreviews, comments だけを通知する方法はありませんか？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 22:33:31*
+*2023/05/08 22:33:31*
 
 SlackのGitHub integrationでは、リポジトリ内の特定のイベントの通知を設定できます。デフォルトの通知をオフにして、reviewsやcommentsのみを通知する方法は以下の手順で設定できます。
 

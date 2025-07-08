@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/18 18:47:43*
+*2023/06/18 18:47:43*
 
 subscribeInitializationDelegate() {} で .sink(receiveValue: のところで、 errorを throw したりうまくハンドリングする方法を教えて欲しい。
 
@@ -204,7 +204,7 @@ extension SeeSoGazeTrackManager: UserStatusDelegate {
 ---
 
 ## 🤖 アシスタント
-*2023/6/18 18:48:37*
+*2023/06/18 18:48:37*
 
 あなたのコードを見ると、あなたが`subscribeInitializationDelegate`メソッドでCombineを使用していることがわかります。しかし、現在の実装では`.sink(receiveValue:)`クロージャ内でエラーをスローしようとしていますが、それは正常に動作しません。なぜなら、`.sink`メソッドはエラーを投げることをサポートしていないからです。
 
@@ -277,14 +277,14 @@ private func subscribeInitializationDelegate() {
 ---
 
 ## 🤖 アシスタント
-*2023/6/18 18:49:35*
+*2023/06/18 18:49:35*
 
 ンドリングし、エラーが発生した場合にそれをストリームにプッシュすることができます。ただし、エラーをthrowする代わりに、それを適切にハンドルする必要があります。
 
 ---
 
 ## 👤 ユーザー
-*2023/6/18 18:49:46*
+*2023/06/18 18:49:46*
 
 いかが気になります。
 / Note: This won't actually throw an error, it'll crash your program. You need to handle the error here.
@@ -292,7 +292,7 @@ private func subscribeInitializationDelegate() {
 ---
 
 ## 🤖 アシスタント
-*2023/6/18 18:50:07*
+*2023/06/18 18:50:07*
 
 すみません、そのコメントは誤解を招くものでした。`do-catch`ステートメントの中でエラーをthrowすることはできますが、そのエラーは`do-catch`ステートメントの外側には伝播しないという意味でした。
 
@@ -324,14 +324,14 @@ do {
 ---
 
 ## 👤 ユーザー
-*2023/6/18 19:10:54*
+*2023/06/18 19:10:54*
 
 以下のclass内には多くのPassthroughSubjectがあるが、それぞれのOutputを連想値を持つenumに定義して、それらを別の1つのAnyPublisher&lt;連想値を持つenum, Never&gt;をつくることはできないかな？
 
 ---
 
 ## 🤖 アシスタント
-*2023/6/18 19:11:23*
+*2023/06/18 19:11:23*
 
 はい、それは可能です。そのために、すべてのイベントを表す新しいenumを定義し、それぞれのイベントタイプを表すためのcaseとそれに対応する連想値を用意します。その後、すべてのイベントをこの新しいenumの値としてpublishする共通の`PassthroughSubject`を作成します。
 
@@ -366,14 +366,14 @@ extension SeeSoGazeTrackManager: ImageDelegate {
 ---
 
 ## 👤 ユーザー
-*2023/6/18 19:11:50*
+*2023/06/18 19:11:50*
 
 今の一つ一つ公開しているpublisherも残しておきたいんだ
 
 ---
 
 ## 🤖 アシスタント
-*2023/6/18 19:12:24*
+*2023/06/18 19:12:24*
 
 その場合、それぞれの`PassthroughSubject`を保持し、同時に新しい`GazeTrackEvent`を出力する共通の`PassthroughSubject`も作成することができます。これにより、各イベントタイプに対して専用のPublisherと、すべてのイベントを出力する一般的なPublisherの両方を持つことができます。
 
@@ -412,14 +412,14 @@ extension SeeSoGazeTrackManager: ImageDelegate {
 ---
 
 ## 👤 ユーザー
-*2023/6/18 19:14:08*
+*2023/06/18 19:14:08*
 
 ありがとう！その容量で全部を記述してほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/6/18 19:15:02*
+*2023/06/18 19:15:02*
 
 すべての`PassthroughSubject`に対して同様の設定を行うと、コードは次のようになります。
 
@@ -447,30 +447,30 @@ public enum GazeTrackEvent {
 final class SeeSoGazeTrackManager {
     // ... omitting the rest of your properties for brevity
 
-    public let eventPublisher = PassthroughSubject<GazeTrackEvent, Never>()
+    public let eventPublisher = PassthroughSubject&lt;GazeTrackEvent, Never&gt;()
 
     // InitializationDelegate
-    private let onInitializedSubject = PassthroughSubject<(tracker: SeeSo.GazeTracker?, error: SeeSo.InitializationError), Never>()
+    private let onInitializedSubject = PassthroughSubject&lt;(tracker: SeeSo.GazeTracker?, error: SeeSo.InitializationError), Never&gt;()
 
     // InitializationDelegate
-    private let onImageSubject = PassthroughSubject<(timestamp: Double, image: CMSampleBuffer), Never>()
+    private let onImageSubject = PassthroughSubject&lt;(timestamp: Double, image: CMSampleBuffer), Never&gt;()
 
     // GazeDelegate
-    private let onGazeSubject = PassthroughSubject<SeeSo.GazeInfo, Never>()
+    private let onGazeSubject = PassthroughSubject&lt;SeeSo.GazeInfo, Never&gt;()
 
     // CalibrationDelegate
-    private let onCalibrationNextPointSubject = PassthroughSubject<(x: Double, y: Double), Never>()
-    private let onCalibrationProgressSubject = PassthroughSubject<Double, Never>()
-    private let onCalibrationFinishedSubject = PassthroughSubject<[Double], Never>()
+    private let onCalibrationNextPointSubject = PassthroughSubject&lt;(x: Double, y: Double), Never&gt;()
+    private let onCalibrationProgressSubject = PassthroughSubject&lt;Double, Never&gt;()
+    private let onCalibrationFinishedSubject = PassthroughSubject&lt;[Double], Never&gt;()
 
     // UserStatusDelegate
-    private let onAttentionSubject = PassthroughSubject<(timestampBegin: Int, timestampEnd: Int, score: Double), Never>()
-    private let onBlinkSubject = PassthroughSubject<(timestamp: Int, isBlinkLeft: Bool, isBlinkRight: Bool, isBlink: Bool, eyeOpenness: Double), Never>()
-    private let onDrowsinessSubject = PassthroughSubject<(timestamp: Int, isDrowsiness: Bool), Never>()
+    private let onAttentionSubject = PassthroughSubject&lt;(timestampBegin: Int, timestampEnd: Int, score: Double), Never&gt;()
+    private let onBlinkSubject = PassthroughSubject&lt;(timestamp: Int, isBlinkLeft: Bool, isBlinkRight: Bool, isBlink: Bool, eyeOpenness: Double), Never&gt;()
+    private let onDrowsinessSubject = PassthroughSubject&lt;(timestamp: Int, isDrowsiness: Bool), Never&gt;()
 
     // GazeTrackerDelegate
-    private let onStartedSubject = PassthroughSubject<Void, Never>()
-    private let onStoppedSubject = PassthroughSubject<SeeSo.StatusError, Never>()
+    private let onStartedSubject = PassthroughSubject&lt;Void, Never&gt;()
+    private let onStoppedSubject = PassthroughSubject&lt;SeeSo.StatusError, Never&gt;()
 
     // ... the rest of your class here
 }

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/9/15 20:30:47*
+*2023/09/15 20:30:47*
 
 以下の処理で、
 .sink { [weak self] _ in
@@ -44,7 +44,7 @@
 ---
 
 ## 🤖 アシスタント
-*2023/9/15 20:31:59*
+*2023/09/15 20:31:59*
 
 指定された処理に基づいて、`.sink` ブロックが一度呼び出された後に、他の `.sink` ブロックを実行しないようにする方法を示します。
 
@@ -96,7 +96,7 @@ interactionConditionMatchingDriver.matchedInteractionConditionIdsPublisher
 ---
 
 ## 👤 ユーザー
-*2023/9/15 20:32:04*
+*2023/09/15 20:32:04*
 
 状態変数を使わずにうまくCombineの仕組みを使って制御したい。
 たとえば、.prefix(untilOutputFrom:) だったり、他にもいい方法があればそれを使って欲しい。
@@ -104,7 +104,7 @@ interactionConditionMatchingDriver.matchedInteractionConditionIdsPublisher
 ---
 
 ## 🤖 アシスタント
-*2023/9/15 20:32:54*
+*2023/09/15 20:32:54*
 
 Combineフレームワークを使用して状態変数を使わずに制御を行いたい場合、`.prefix(untilOutputFrom:)` を使って特定のイベントが発生するまで他のストリームからの出力を制限することができます。
 

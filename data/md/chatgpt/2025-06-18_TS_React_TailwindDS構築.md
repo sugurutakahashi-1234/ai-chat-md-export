@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/18 16:41:06*
+*2025/06/18 16:41:06*
 
 TailwindCSS v4 でtype script x react のプロジェクトでデザインシステムを構築していきたい。 ゼロからの新規のプロジェクトである。 どういう戦略を取るのがいいと思うかな。 なるべく軽量であると嬉しい。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/18 16:41:18*
+*2025/06/18 16:41:18*
 
 以下は **「TypeScript × React + Tailwind CSS v4」** という最小構成でデザインシステムを育てるときの、実践的・軽量志向のロードマップです。
 
@@ -29,7 +29,7 @@ TailwindCSS v4 でtype script x react のプロジェクトでデザインシス
 | Lint/整形 | `eslint-plugin-tailwindcss`, `biome` または `prettier-plugin-tailwindcss` | クラス並び順と静的エラーを CI で統一 |
 | UI プリミティブ (任意) | **Radix UI** or **Ariakit** (headless) | スタイルレスなので Tailwind で軽量に着色可能 |
 
-<small>※Storybook が重い場合は 0-config で速い **Ladle** を代替として検討。</small>
+&lt;small&gt;※Storybook が重い場合は 0-config で速い **Ladle** を代替として検討。&lt;/small&gt;
 
 ---
 
@@ -178,20 +178,20 @@ Button.displayName = "Button";
 ---
 
 ## 👤 ユーザー
-*2025/6/18 16:47:21*
+*2025/06/18 16:47:21*
 
 これの問題点はあるのか。 ちなみにストーリーブックとは何か。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/18 16:47:30*
+*2025/06/18 16:47:30*
 
 ### 想定構成の「落とし穴」チェックリスト
 
 | 分類 | 気に なる点 | 補足・回避策 |
 |------|------------|--------------|
-| **Tailwind v4 そのもの** | **⧗ エコシステムが追い付いていない** - 一部公式プラグイン・サードパーティは v3 系のみ対応。&lt;br&gt;**⚙ ネイティブ依存が CI で詰まる** - Oxide エンジンは Rust バイナリを落とすので、Alpine Linux など GLIBC 非互換環境ではビルドエラーになるケースあり。 | `--legacy` オプションで旧ビルドにフォールバック、または Docker イメージで実行環境を揃える。&lt;br&gt;新規プラグイン採用時は **`npm info &lt;pkg&gt; peerDependencies`** で v4 対応を確認。 citeturn0search1turn0search7 |
+| **Tailwind v4 そのもの** | **⧗ エコシステムが追い付いていない** - 一部公式プラグイン・サードパーティは v3 系のみ対応。&lt;br&gt;**⚙ ネイティブ依存が CI で詰まる** - Oxide エンジンは Rust バイナリを落とすので、Alpine Linux など GLIBC 非互換環境ではビルドエラーになるケースあり。 | `--legacy` オプションで旧ビルドにフォールバック、または Docker イメージで実行環境を揃える。&lt;br&gt;新規プラグイン採用時は **`npm info <pkg> peerDependencies`** で v4 対応を確認。 citeturn0search1turn0search7 |
 | **トークンを CSS 変数化** | **🎨 “静的パージ” が効きにくい** - `var(--color-primary)` のような変数は Tailwind の未使用クラス絞り込み対象外。テーマ数が増えると最終 CSS が肥大しやすい。 | 変数名自体を Tailwind の `--tw` プリフィクスに統一し、`@supports (color: oklch(0 0 0)) {}` 内で追加テーマを遅延ロードすると軽量化可。 |
 | **CVA + tailwind-merge** | **⚖ 機能差** - Tailwind-variants には「スロット」「複合 variant」など高度な API があるが、CVA は最小限。後から要求が増えると乗り換えコストが発生。&lt;br&gt;**🏷 ランタイム結合コスト** - `buttonStyles({size})` がレンダー毎に走る。実測では 1 µs 未満だが、数千ノードを仮想 DOM 外で生成する SSR ではベンチ必須。 | 高機能が欲しくなった時点で tailwind-variants へ移行可能かを PoC しておくと安心。比較記事も参考に長期運用を判断。 citeturn0search2turn0search5 |
 | **Ladle 採用 (Storybook なし)** | **📚 ドキュメント機能が薄い** - MDX Docs、Design Token アドオン、Figma 組み込み等は Ladle に無い。&lt;br&gt;**👥 周囲の慣れ** - 大規模チームや業務委託メンバーは「Storybook 前提」で作業するケースが多い。 | *ライト版* と割り切り「Ladle → Storybook」のマイグレーション手順を README に残す。Storybook を “docs only” モードで後付け導入する方法もある。 |
@@ -239,20 +239,20 @@ Button.displayName = "Button";
 ---
 
 ## 👤 ユーザー
-*2025/6/18 16:50:19*
+*2025/06/18 16:50:19*
 
 @headlessui/reactのインストールはやった方がいいか、それともない方がいいのか、やっぱり。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/18 16:50:24*
+*2025/06/18 16:50:24*
 
 ### どんな場面で **@headlessui/react** を入れるか──結論早わかり
 
 | 推したいケース | 見送る／別ライブラリを検討したいケース |
 |----------------|------------------------------------------|
-| - **Tailwind CSS 前提** で “抜群の親和性” を重視する<br>- “ボタン以外のインタラクティブ要素（Dialog, Listbox, Menu…）を**最短でアクセシブル**に実装したい”<br>- 社内に Tailwind 文化が浸透していて、API の “render-prop” スタイルに抵抗がない | - **Radix UI や Ariakit** で十分／より細粒度の API が欲しい<br>- React Server Components (RSC) 前提で “全部 Server 側” に乗せたい<br>- ライブラリを極限まで削りたい（gzip ±15 kB でも気になる）<br>- “外部依存の無い純 Hooks 実装” で揃えたい |
+| - **Tailwind CSS 前提** で “抜群の親和性” を重視する&lt;br&gt;- “ボタン以外のインタラクティブ要素（Dialog, Listbox, Menu…）を**最短でアクセシブル**に実装したい”&lt;br&gt;- 社内に Tailwind 文化が浸透していて、API の “render-prop” スタイルに抵抗がない | - **Radix UI や Ariakit** で十分／より細粒度の API が欲しい&lt;br&gt;- React Server Components (RSC) 前提で “全部 Server 側” に乗せたい&lt;br&gt;- ライブラリを極限まで削りたい（gzip ±15 kB でも気になる）&lt;br&gt;- “外部依存の無い純 Hooks 実装” で揃えたい |
 
 ---
 
@@ -353,13 +353,13 @@ export function Modal({ title, children }: { title: string; children: ReactNode 
    - Hooks API・Compound Slot など大型システム向き。
 3. **超軽量・RSC オンリー →** 自家製 Hooks + Type-safe 洗練を検討。
 
-> **まとめ**:  
-> “Tailwind CSS に寄り添った最短手” を優先するなら **@headlessui/react は“アリ”**。ただし **機能カバー範囲と RSC 対応の限界** を把握したうえで、後々 Radix/Ariakit へ“部分的に”乗り換えられる構成（adapter hooks やコンポ内抽象化）を仕込んでおくと、将来の分岐にも耐えられます。
+&gt; **まとめ**:  
+&gt; “Tailwind CSS に寄り添った最短手” を優先するなら **@headlessui/react は“アリ”**。ただし **機能カバー範囲と RSC 対応の限界** を把握したうえで、後々 Radix/Ariakit へ“部分的に”乗り換えられる構成（adapter hooks やコンポ内抽象化）を仕込んでおくと、将来の分岐にも耐えられます。
 
 ---
 
 ## 👤 ユーザー
-*2025/6/18 16:58:35*
+*2025/06/18 16:58:35*
 
 LadleとStorybookをもっと比較して欲しい。
 環境の設定やできることできないことをまとめて欲しい
@@ -367,7 +367,7 @@ LadleとStorybookをもっと比較して欲しい。
 ---
 
 ## 🤖 アシスタント
-*2025/6/18 16:59:16*
+*2025/06/18 16:59:16*
 
 以下では **Ladle v3** と **Storybook 8 / 9** を軸に、導入手順・設定ファイル・パフォーマンス・拡張性などを網羅的に比較します。  
 （🗓 2025-06 時点の最新安定版／プレリリース情報を含みます）
@@ -377,11 +377,11 @@ LadleとStorybookをもっと比較して欲しい。
 | **インストール** | `pnpm add @ladle/react` だけ。React が既にあればほぼゼロ設定で動作【6view0†L1-L4】 | `npm create storybook@latest` で CLI がフレームワーク検出→必要パッケージを自動導入【7search0†L1-L4】 |
 | **設定ファイル** | 省略可。カスタマイズ時は `.ladle/config.mjs`（ESM）を追加するだけ | `.storybook/` ディレクトリに `main.(js|ts)`・`preview.(js|ts)`・`manager.(js|ts)` など複数ファイル |
 | **ビルド基盤** | Vite + SWC 固定。SSR/i18n など最新 Vite 機能をそのまま享受 | ビルダーを **Webpack** か **Vite** から選択。`react-vite` フレームワークで高速化可【4search0†L0-L3】【4search3†L0-L4】 |
-| **起動速度** | コールド 6 s → ホット 3 s 未満。HMR は < 100 ms【0search6†L0-L4】 | Vite 版でも 10 s 前後。Webpack 版は 20–25 s 規模【0search6†L0-L4】 |
+| **起動速度** | コールド 6 s → ホット 3 s 未満。HMR は &lt; 100 ms【0search6†L0-L4】 | Vite 版でも 10 s 前後。Webpack 版は 20–25 s 規模【0search6†L0-L4】 |
 | **生成サイズ** | デフォルト静的ビルド ≒ 1 MB。コード分割は自動 | アドオン数に比例して数 MB〜10 MB。`--test` フラグで最小ビルド 2-4× 短縮【7search7†L0-L4】 |
 | **アドオン／プラグイン** | サードパーティ不可。内蔵 10 種（A11y、MSW、Width など）【2view0†L2-L4】 | 公式＋外部アドオン 100 +。A11y Realtime, Vitest, Chromatic, RTL など豊富【0search7†L0-L4】【7search8†L0-L3】 |
 | **MDX / ドキュメント** | Stories もドキュメントも **MDX 標準対応**【0search2†L0-L3】 | Storybook 8 で “MDX 内にストーリーを直接書く” 機能は廃止だが Docs ページ用 MDX は維持【0search4†L0-L2】 |
-| **新機能ロードマップ** | Controls の TS 型自動生成・外部アドオン API をロードマップで検討中【2view0†L5-L6】 | 8.5: Realtime A11y / Code-Coverage / RN-Web Vite 等【0search7†L0-L4】<br>9.x: UI からの Story & Test 生成【7search1†L0-L4】 |
+| **新機能ロードマップ** | Controls の TS 型自動生成・外部アドオン API をロードマップで検討中【2view0†L5-L6】 | 8.5: Realtime A11y / Code-Coverage / RN-Web Vite 等【0search7†L0-L4】&lt;br&gt;9.x: UI からの Story & Test 生成【7search1†L0-L4】 |
 | **アクセシビリティ** | axe-core アドオン内蔵、URL 共有で状態保持【1search1†L0-L5】 | 8.5 で「リアルタイム A11y テスト」が公式アドオン入り【0search7†L0-L4】 |
 | **テスト連携** | Lost Pixel 等で VRT、Vitest／Playwright とは手動組み込み【1search8†L0-L3】 | Test Runner・Playwright・Vitest アドオンを公式提供。Chromatic とネイティブ連携 |
 | **RSC / サーバー環境** | すべて Client Component として動く―RSC 分割は不可 | フレームワーク別プリセットが RSC 向け builder を実験的サポート（Next.js, Remix 等） |

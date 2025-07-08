@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/5 15:28:51*
+*2024/07/05 15:28:51*
 
 isHidden の 逆を作って欲しい
 
@@ -42,7 +42,7 @@ public extension View {
 ---
 
 ## 🤖 アシスタント
-*2024/7/5 15:29:02*
+*2024/07/05 15:29:02*
 
 To create the reverse functionality of `isHidden`, which would be a `isVisible` modifier, you can use the same logic but with the condition reversed. Here is how you can implement it:
 

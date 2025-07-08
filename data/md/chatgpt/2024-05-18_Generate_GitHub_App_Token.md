@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/18 12:44:45*
+*2024/05/18 12:44:45*
 
 以下を使った
 https://github.com/actions/create-github-app-token
@@ -13,7 +13,7 @@ https://github.com/actions/create-github-app-token
 ---
 
 ## 🤖 アシスタント
-*2024/5/18 12:44:48*
+*2024/05/18 12:44:48*
 
 To use the `actions/create-github-app-token` GitHub Action, follow these steps to generate a GitHub App Installation Access Token for your workflows:
 
@@ -22,25 +22,25 @@ To use the `actions/create-github-app-token` GitHub Action, follow these steps t
 ---
 
 ## 👤 ユーザー
-*2024/5/18 12:44:49*
+*2024/05/18 12:44:49*
 
 ｋ
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/18 12:45:06*
+*2024/05/18 12:45:06*
 
 To use the `actions/create-github-app-token` GitHub Action for generating a GitHub App Installation Access Token in your workflows, follow these steps:
 
 1. **Register a GitHub App**: 
-   - Go to your GitHub account settings and navigate to **Developer settings** > **GitHub Apps**.
+   - Go to your GitHub account settings and navigate to **Developer settings** &gt; **GitHub Apps**.
    - Click on **New GitHub App** and fill in the required details.
    - Set the necessary permissions for your app to access the required resources.
    - Generate a private key for your app and download it.
 
 2. **Store the App ID and Private Key**:
-   - In your repository, go to **Settings** > **Secrets and variables** > **Actions**.
+   - In your repository, go to **Settings** &gt; **Secrets and variables** &gt; **Actions**.
    - Add a new secret with the name `PRIVATE_KEY` and paste the contents of the private key file (including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` lines).
    - Add a new repository variable with the name `APP_ID` and enter the App ID from the GitHub App settings page.
 

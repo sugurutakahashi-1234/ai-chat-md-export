@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/22 11:01:09*
+*2023/06/22 11:01:09*
 
 以下のコードについてまずは読んで欲しい。
 
@@ -243,7 +243,7 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
 ---
 
 ## 🤖 アシスタント
-*2023/6/22 11:01:54*
+*2023/06/22 11:01:54*
 
 このコードは、Swiftで書かれたコードで、主にUserDefaultsの操作を管理する機能を提供します。以下に主要な部分の説明をします。
 
@@ -264,7 +264,7 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
 ---
 
 ## 👤 ユーザー
-*2023/6/22 11:02:17*
+*2023/06/22 11:02:17*
 
 extension [Double]?: UserDefaultsCodable {} のところで以下のエラーが表示されているのでどうしたらいいか教えて欲しい
 
@@ -273,7 +273,7 @@ Conflicting conformance of 'Optional&lt;Wrapped&gt;' to protocol 'UserDefaultsCo
 ---
 
 ## 🤖 アシスタント
-*2023/6/22 11:02:51*
+*2023/06/22 11:02:51*
 
 Swiftでは、同じ型（ここではOptional）が同じプロトコル（ここではUserDefaultsCodable）に複数回準拠することはできません。そのため、Swiftがエラーをスローしています。
 
@@ -312,14 +312,14 @@ public var optionalDoubleArray: OptionalDoubleArray
 ---
 
 ## 👤 ユーザー
-*2023/6/22 11:03:07*
+*2023/06/22 11:03:07*
 
 extension String?: UserDefaultsCodable {} も同様なことをした方がいいのかな？
 
 ---
 
 ## 🤖 アシスタント
-*2023/6/22 11:03:31*
+*2023/06/22 11:03:31*
 
 はい、その通りです。あなたが`String?`を`UserDefaultsCodable`に準拠させたいのであれば、上記の`[Double]?`と同様に、新しい型を作成し、その新しい型を`UserDefaultsCodable`に準拠させる必要があります。
 
@@ -356,14 +356,14 @@ public var optionalString: OptionalString
 ---
 
 ## 👤 ユーザー
-*2023/6/22 11:03:49*
+*2023/06/22 11:03:49*
 
 それを解決する方法はあるの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/6/22 11:04:17*
+*2023/06/22 11:04:17*
 
 Swiftでは現状、特定のOptional型を直接プロトコルに準拠させることはできません。そのため、既述したような型のラッピングが必要になります。それが、言語設計上の制約からくる現状最良の解決策となります。
 

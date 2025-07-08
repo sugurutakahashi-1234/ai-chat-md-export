@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/7/19 19:28:33*
+*2023/07/19 19:28:33*
 
 FrameCoordinate を
 
@@ -35,7 +35,7 @@ public enum FrameCoordinate: Codable {
 ---
 
 ## 🤖 アシスタント
-*2023/7/19 19:28:38*
+*2023/07/19 19:28:38*
 
 The `FrameCoordinate` enum you provided is written in Swift and is defined with two cases: `cgPoint` and `pixel`. Each case has associated data of type `Double`.
 

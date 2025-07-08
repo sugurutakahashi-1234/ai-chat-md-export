@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/12/19 0:25:48*
+*2024/12/19 00:25:48*
 
 make build                                                                                                                    2 ↵
 fvm flutter pub run build_runner build --delete-conflicting-outputs
@@ -27,7 +27,7 @@ make: *** [build] Error 1
 ---
 
 ## 🤖 アシスタント
-*2024/12/19 0:26:00*
+*2024/12/19 00:26:00*
 
 The error you're encountering seems to be related to the `json_serializable` package processing a type it doesn't know how to handle in the file `snapit_guild_api.openapi.dart`. Here are the steps you can take to debug and fix the issue:
 
@@ -64,7 +64,7 @@ The error you're encountering seems to be related to the `json_serializable` pac
 ---
 
 ## 👤 ユーザー
-*2024/12/19 0:27:30*
+*2024/12/19 00:27:30*
 
 どこにエラーがありそうか？
 
@@ -75,7 +75,7 @@ package:json_serializable/src/utils.dart 231:3              typeToCode
 package:json_serializable/src/helper_core.dart 78:44        createInvalidGenerationError
 package:json_serializable/src/decode_helper.dart 241:13     DecodeHelper._deserializeForField
 package:json_serializable/src/decode_helper.dart 56:9       DecodeHelper.createFactory.deserializeFun
-package:json_serializable/src/decode_helper.dart 335:32     _writeConstructorInvocation.<fn>
+package:json_serializable/src/decode_helper.dart 335:32     _writeConstructorInvocation.&lt;fn&gt;
 dart:core                                                   StringBuffer.writeAll
 package:json_serializable/src/decode_helper.dart 333:9      _writeConstructorInvocation
 package:json_serializable/src/decode_helper.dart 59:18      DecodeHelper.createFactory
@@ -83,7 +83,7 @@ package:json_serializable/src/generator_helper.dart 86:28   GeneratorHelper.gene
 dart:_internal                                              WhereIterator.moveNext
 package:json_serializable/src/json_part_builder.dart 64:27  _UnifiedGenerator.generate
 package:source_gen/src/builder.dart 342:23                  _generate
-dart:async                                                  Stream.toList.<fn>
+dart:async                                                  Stream.toList.&lt;fn&gt;
 package:source_gen/src/builder.dart 107:9                   _Builder._generateForLibrary
 package:source_gen/src/builder.dart 99:5                    _Builder.build
 
@@ -105,29 +105,29 @@ MSG : Logs written to /Users/sugurutakahashi/.pub-cache/log/pub_log.txt.
 [        ] 
            #0      throwToolExit (package:flutter_tools/src/base/common.dart:10:3)
            #1      _DefaultPub._runWithStdioInherited (package:flutter_tools/src/dart/pub.dart:503:7)
-           <asynchronous suspension>
+           &lt;asynchronous suspension&gt;
            #2      _DefaultPub.interactively (package:flutter_tools/src/dart/pub.dart:589:5)
-           <asynchronous suspension>
+           &lt;asynchronous suspension&gt;
            #3      PackagesForwardCommand.runCommand (package:flutter_tools/src/commands/packages.dart:137:5)
-           <asynchronous suspension>
-           #4      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1450:27)
-           <asynchronous suspension>
-           #5      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
-           <asynchronous suspension>
+           &lt;asynchronous suspension&gt;
+           #4      FlutterCommand.run.&lt;anonymous closure&gt; (package:flutter_tools/src/runner/flutter_command.dart:1450:27)
+           &lt;asynchronous suspension&gt;
+           #5      AppContext.run.&lt;anonymous closure&gt; (package:flutter_tools/src/base/context.dart:153:19)
+           &lt;asynchronous suspension&gt;
            #6      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
-           <asynchronous suspension>
-           #7      FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:421:9)
-           <asynchronous suspension>
-           #8      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
-           <asynchronous suspension>
+           &lt;asynchronous suspension&gt;
+           #7      FlutterCommandRunner.runCommand.&lt;anonymous closure&gt; (package:flutter_tools/src/runner/flutter_command_runner.dart:421:9)
+           &lt;asynchronous suspension&gt;
+           #8      AppContext.run.&lt;anonymous closure&gt; (package:flutter_tools/src/base/context.dart:153:19)
+           &lt;asynchronous suspension&gt;
            #9      FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:364:5)
-           <asynchronous suspension>
-           #10     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:131:9)
-           <asynchronous suspension>
-           #11     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
-           <asynchronous suspension>
+           &lt;asynchronous suspension&gt;
+           #10     run.&lt;anonymous closure&gt;.&lt;anonymous closure&gt; (package:flutter_tools/runner.dart:131:9)
+           &lt;asynchronous suspension&gt;
+           #11     AppContext.run.&lt;anonymous closure&gt; (package:flutter_tools/src/base/context.dart:153:19)
+           &lt;asynchronous suspension&gt;
            #12     main (package:flutter_tools/executable.dart:94:3)
-           <asynchronous suspension>
+           &lt;asynchronous suspension&gt;
            
            
 [ +159 ms] ensureAnalyticsSent: 158ms
@@ -324,7 +324,7 @@ components:
 ---
 
 ## 🤖 アシスタント
-*2024/12/19 0:28:13*
+*2024/12/19 00:28:13*
 
 The error appears to originate from an unsupported or unrecognized type in the `snapit_guild_api.openapi.dart` file during code generation using `json_serializable`. Here's a step-by-step analysis and likely problematic areas:
 
@@ -446,7 +446,7 @@ Let me know if you need further assistance!
 ---
 
 ## 👤 ユーザー
-*2024/12/19 0:31:15*
+*2024/12/19 00:31:15*
 
 ```
 [FINE] json_serializable on lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart:Running JsonSerializableGenerator - 1 of 2
@@ -1272,7 +1272,7 @@ T _throwStateError<T>(String message) => throw StateError(message);
 ---
 
 ## 🤖 アシスタント
-*2024/12/19 0:32:16*
+*2024/12/19 00:32:16*
 
 From the information provided, the root cause of the error seems to be related to how `json_serializable` handles specific types or structures in the generated Dart code. Let's pinpoint the issues:
 

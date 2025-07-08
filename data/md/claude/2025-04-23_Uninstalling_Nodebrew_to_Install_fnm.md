@@ -5,26 +5,22 @@
 ---
 
 ## 👤 ユーザー
-*2025/4/23 14:22:55*
+*2025/04/23 14:22:55*
 
 fnmのインストール手順 nodebrewをインストールしているのでそれのアンインストール
 
 ---
 
 ## 🤖 アシスタント
-*2025/4/23 14:23:19*
+*2025/04/23 14:23:19*
 
 I'll search for information about uninstalling nodebrew and installing fnm, as you requested.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 Now, let me search for information about installing fnm:
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -100,7 +96,7 @@ Would you like more specific information about any of these steps?
 ---
 
 ## 👤 ユーザー
-*2025/4/23 14:27:33*
+*2025/04/23 14:27:33*
 
 このようなエラーが表示される
 
@@ -109,27 +105,19 @@ error: Can't create the symlink for multishells at "/Users/sugurutakahashi/.loca
 ---
 
 ## 🤖 アシスタント
-*2025/4/23 14:28:14*
+*2025/04/23 14:28:14*
 
 このエラーについて調べてみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -184,19 +172,17 @@ macOSでは、`.local/state`ディレクトリが時々rootによって所有さ
 ---
 
 ## 👤 ユーザー
-*2025/4/23 14:46:57*
+*2025/04/23 14:46:57*
 
 ちなみにnodebrewに比べて何が早くなるの？
 
 ---
 
 ## 🤖 アシスタント
-*2025/4/23 14:47:28*
+*2025/04/23 14:47:28*
 
 nodebrewとfnmの違いについて調べてみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 

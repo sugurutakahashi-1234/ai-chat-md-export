@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/15 18:01:32*
+*2023/06/15 18:01:32*
 
 SwiftUIで共通のアラートを実装したい。
 
@@ -34,7 +34,7 @@ struct ContentView: View {
 ---
 
 ## 🤖 アシスタント
-*2023/6/15 18:02:22*
+*2023/06/15 18:02:22*
 
 共通のアラートを実装するためには、まず新しい`ViewModifier`を作成して、その中でアラートを表示するロジックを定義します。その後、特定の`View`に対して新しく作成した`ViewModifier`を適用することで、共通のアラートを表示することができます。
 
@@ -93,22 +93,22 @@ struct ContentView: View {
 ---
 
 ## 👤 ユーザー
-*2023/6/15 20:35:26*
+*2023/06/15 20:35:26*
 
 ```swift
 
 ```swift
-.alert(isPresented: <#T##Binding<Bool>#>, error: <#T##LocalizedError?#>) { <#LocalizedError#> in
-            <#code#>
-        } message: { <#LocalizedError#> in
-            <#code#>
+.alert(isPresented: &lt;#T##Binding&lt;Bool&gt;#&gt;, error: &lt;#T##LocalizedError?#&gt;) { &lt;#LocalizedError#&gt; in
+            &lt;#code#&gt;
+        } message: { &lt;#LocalizedError#&gt; in
+            &lt;#code#&gt;
         }
 ```
 
 ---
 
 ## 🤖 アシスタント
-*2023/6/15 20:36:31*
+*2023/06/15 20:36:31*
 
 SwiftUIでは直接エラーオブジェクトを扱うアラートのメソッドは提供されていませんが、`LocalizedError`プロトコルを利用することでエラーメッセージを扱うことができます。このプロトコルはエラーのローカライズされた説明を提供します。
 
@@ -157,7 +157,7 @@ enum MyError: LocalizedError {
 struct ErrorAlertModifier: ViewModifier {
     @Binding var error: LocalizedError?
     
-    func body(content: Content) -> some View {
+    func body(content: Content) -&gt; some View {
         content
             .alert(item: $error) { error in
                 Alert(
@@ -174,13 +174,13 @@ struct ErrorAlertModifier: ViewModifier {
 
 // ユーザ定義のextensionを作成し、ViewModifierを適用するメソッドを提供
 extension View {
-    func commonErrorAlert(error: Binding<LocalizedError?>) -> some View {
+    func commonErrorAlert(error: Binding&lt;LocalizedError?&gt;) -&gt; some View {
         self.mod
 
 ---
 
 ## 🤖 アシスタント
-*2023/6/15 20:37:20*
+*2023/06/15 20:37:20*
 
 ifier(ErrorAlertModifier(error: error))
     }

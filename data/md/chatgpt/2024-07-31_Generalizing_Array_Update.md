@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/31 16:51:01*
+*2024/07/31 16:51:01*
 
 以下の処理を一般化してどんなidをもつようなどんな配列でも使えるようにしたい
 
@@ -24,7 +24,7 @@ private func addOrUpdateTalkBoxes(existing: [TalkBox], new: [TalkBox]) -&gt; [Ta
 ---
 
 ## 🤖 アシスタント
-*2024/7/31 16:51:18*
+*2024/07/31 16:51:18*
 
 以下のように、ジェネリクスとプロトコルを使用して、どんなIDを持つどんな配列にも対応できるように一般化することができます。
 
@@ -78,7 +78,7 @@ let updatedTalkBoxes = addOrUpdate(existing: existingTalkBoxes, new: newTalkBoxe
 ---
 
 ## 👤 ユーザー
-*2024/7/31 16:51:46*
+*2024/07/31 16:51:46*
 
 これは Arrayやcollectionの拡張にできないかな？
 
@@ -97,7 +97,7 @@ private func addOrUpdate&lt;T: Identifiable&gt;(existing: [T], new: [T]) -&gt; [
 ---
 
 ## 🤖 アシスタント
-*2024/7/31 16:51:54*
+*2024/07/31 16:51:54*
 
 もちろん、`Array`の拡張として実装することも可能です。以下のように`Array`の拡張を定義できます。
 
@@ -130,14 +130,14 @@ let updatedTalkBoxes = existingTalkBoxes.addOrUpdate(newElements: newTalkBoxes)
 ---
 
 ## 👤 ユーザー
-*2024/7/31 17:03:39*
+*2024/07/31 17:03:39*
 
 addOrUpdate ってそもそもないの？
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/31 17:03:56*
+*2024/07/31 17:03:56*
 
 標準ライブラリには `addOrUpdate` というメソッドは存在しませんが、拡張として実装することで、`Array` 型にその機能を追加できます。以下のように、`Array` の拡張として `addOrUpdate` メソッドを定義します。
 

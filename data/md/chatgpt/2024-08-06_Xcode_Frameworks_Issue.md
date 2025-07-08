@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/8/6 15:10:48*
+*2024/08/06 15:10:48*
 
 Frameworks, Libraries, and Embedded Content の候補が出てこない
 
 ---
 
 ## 🤖 アシスタント
-*2024/8/6 15:11:05*
+*2024/08/06 15:11:05*
 
 XcodeでFrameworks, Libraries, and Embedded Contentの候補が表示されない場合、いくつかの原因とその対処方法があります。以下の手順を試してみてください：
 
@@ -49,7 +49,7 @@ XcodeでFrameworks, Libraries, and Embedded Contentの候補が表示されな�
 ---
 
 ## 👤 ユーザー
-*2024/8/6 15:16:01*
+*2024/08/06 15:16:01*
 
 直接記述する方法はないのか？
 
@@ -58,7 +58,7 @@ pbxproj
 ---
 
 ## 🤖 アシスタント
-*2024/8/6 15:16:24*
+*2024/08/06 15:16:24*
 
 `project.pbxproj`ファイルを直接編集して、Frameworks, Libraries, and Embedded Contentを手動で追加する方法があります。これには細心の注意が必要です。以下の手順で行ってください：
 

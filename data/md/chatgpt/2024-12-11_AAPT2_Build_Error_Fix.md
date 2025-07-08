@@ -68,7 +68,7 @@ Here are a few steps to resolve this issue:
 
 ### 5. **Check for Android SDK and Build Tools**
    Ensure your Android SDK and build tools are correctly installed and updated. You can update them using:
-   - **Android Studio**: Check for updates under Preferences > SDK Manager.
+   - **Android Studio**: Check for updates under Preferences &gt; SDK Manager.
    - Or, using the command line:
    ```bash
    sdkmanager --update
@@ -128,7 +128,7 @@ Here are steps to resolve the issue:
 
 ### 2. **Invalidate and Restart Android Studio**
    If you're using Android Studio, try invalidating the caches and restarting:
-   - Go to `File` > `Invalidate Caches / Restart` > `Invalidate and Restart`.
+   - Go to `File` &gt; `Invalidate Caches / Restart` &gt; `Invalidate and Restart`.
    - This can help resolve issues related to outdated or corrupted project files.
 
 ### 3. **Update Dependencies**
@@ -148,7 +148,7 @@ Here are steps to resolve the issue:
 
 ### 5. **Sync Project with Gradle Files**
    If you're using Android Studio, you can also try syncing your project with Gradle files:
-   - Go to `File` > `Sync Project with Gradle Files`.
+   - Go to `File` &gt; `Sync Project with Gradle Files`.
 
 ### 6. **Check the AAR Dependency**
    The specific dependency causing the error (`jetified-window-1.2.0`) may be missing required metadata. Check if this dependency is added correctly in your `build.gradle` files, or consider removing or updating it if it's no longer necessary.
@@ -203,7 +203,7 @@ Here are the steps to resolve this issue:
 
 ### 2. **Invalidate Caches and Restart Android Studio**
    If you're using Android Studio, invalidating the caches and restarting the IDE might resolve the issue:
-   - Go to `File` > `Invalidate Caches / Restart` > `Invalidate and Restart`.
+   - Go to `File` &gt; `Invalidate Caches / Restart` &gt; `Invalidate and Restart`.
 
 ### 3. **Delete the Specific Transformed AAR**
    You can manually delete the cached `fragment-1.7.1` `.aar` file:
@@ -222,7 +222,7 @@ Here are the steps to resolve this issue:
 
 ### 5. **Sync Gradle Files**
    If you're using Android Studio, sync the project with the Gradle files:
-   - Go to `File` > `Sync Project with Gradle Files`.
+   - Go to `File` &gt; `Sync Project with Gradle Files`.
 
 ### 6. **Update Gradle and Dependencies**
    Ensure your Gradle wrapper and dependencies are up to date. You can update your Gradle wrapper with the following command:

@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/4 15:27:13*
+*2024/06/04 15:27:13*
 
 MOCKOLO_custom-imports 大文字あんなだースコア
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/4 15:27:18*
+*2024/06/04 15:27:18*
 
 The naming convention for `MOCKOLO_custom-imports` suggests that it is likely a module or section in your project related to custom imports in a mocking framework. For the function or constant name `大文字あんなだースコア`, it can be translated to something like `UpperCaseAnnaScore`.
 

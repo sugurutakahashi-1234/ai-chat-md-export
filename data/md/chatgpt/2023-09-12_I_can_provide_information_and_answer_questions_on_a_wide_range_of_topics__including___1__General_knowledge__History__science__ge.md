@@ -7,7 +7,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/9/12 18:10:53*
+*2023/09/12 18:10:53*
 
 roundMessageView について、こううするとroundMessageViewのお願い終了条件の文字列が中央揃えになってしまう。
 
@@ -60,7 +60,7 @@ struct WebsiteMeasurementInstructionView: View {
 ---
 
 ## 🤖 アシスタント
-*2023/9/12 18:11:53*
+*2023/09/12 18:11:53*
 
 SwiftUI の `VStack` において、中身のテキストの揃え方を指定するために `alignment: .leading` を使用しています。この場合、テキストは左揃えになるはずですが、`Text(message)` の内容によっては、文字列が中央揃えに見えることがあります。
 

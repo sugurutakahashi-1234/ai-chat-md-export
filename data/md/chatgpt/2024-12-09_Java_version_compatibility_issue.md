@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/12/9 15:43:42*
+*2024/12/09 15:43:42*
 
 FAILURE: Build failed with an exception.
 
@@ -16,7 +16,7 @@ Could not open cp_settings generic class cache for settings file '/Users/sugurut
 ---
 
 ## 🤖 アシスタント
-*2024/12/9 15:43:55*
+*2024/12/09 15:43:55*
 
 The error indicates that the Gradle build is encountering an issue due to an unsupported class file major version. This usually happens when the Java version used to compile the code is newer than the version supported by the Gradle version being used. In this case, class file major version 65 corresponds to **Java 21**.
 

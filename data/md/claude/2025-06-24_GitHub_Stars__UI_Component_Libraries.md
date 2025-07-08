@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/25 3:23:23*
+*2025/06/25 03:23:23*
 
 この5つのサービスのGitHubのSTARSを調べてほしい。 
 
@@ -18,82 +18,52 @@ daisyUI
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 3:25:06*
+*2025/06/25 03:25:06*
 
 I'll help you find the GitHub stars for these 5 UI libraries. Let me search for each one.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Let me get the exact star count for shadcn/ui by fetching the GitHub page directly.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Let me search for Headless UI next.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Now let me search for HeroUI (assuming this is NextUI).
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Let me fetch the HeroUI/NextUI GitHub page to get the exact star count.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Now let me search for Radix UI.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Finally, let me search for daisyUI.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Based on my searches, I found that I need to visit each GitHub repository page directly to get the exact star counts. Let me search for more specific information about the current star counts.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Let me check a different source for current star counts.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 Unfortunately, I cannot see the exact star counts from the pages I fetched. Let me try one more approach to get the current star counts.
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 From my research, I found some information about the star counts. Here's what I've gathered:
 

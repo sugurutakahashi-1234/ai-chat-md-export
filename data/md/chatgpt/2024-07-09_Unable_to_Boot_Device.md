@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/9 18:26:54*
+*2024/07/09 18:26:54*
 
 Failed to launch process. Unable to boot device because it cannot be located on disk.
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/9 18:27:20*
+*2024/07/09 18:27:20*
 
 The error "Unable to boot device because it cannot be located on disk" usually indicates an issue with your iOS Simulator setup or the Xcode installation. Here are some steps to troubleshoot and resolve this issue:
 
@@ -20,13 +20,13 @@ The error "Unable to boot device because it cannot be located on disk" usually i
    - Ensure that your Xcode version is up to date and compatible with your macOS version.
 
 2. **Resetting the iOS Simulator**:
-   - Open the iOS Simulator, go to the menu bar, and select `Device &gt; Erase All Content and Settings`. This will reset the simulator and might resolve any corruption issues.
+   - Open the iOS Simulator, go to the menu bar, and select `Device > Erase All Content and Settings`. This will reset the simulator and might resolve any corruption issues.
 
 3. **Delete Derived Data**:
-   - Sometimes, derived data can cause issues. You can delete it by going to `Xcode &gt; Preferences &gt; Locations` and clicking on the arrow next to the `Derived Data` path. Delete the contents of the derived data folder.
+   - Sometimes, derived data can cause issues. You can delete it by going to `Xcode > Preferences > Locations` and clicking on the arrow next to the `Derived Data` path. Delete the contents of the derived data folder.
 
 4. **Reinstall the iOS Simulator**:
-   - You can reinstall the simulator by opening Xcode and going to `Preferences &gt; Components`. Find the simulator you are using, uninstall it, and then reinstall it.
+   - You can reinstall the simulator by opening Xcode and going to `Preferences > Components`. Find the simulator you are using, uninstall it, and then reinstall it.
 
 5. **Check Disk Space**:
    - Ensure that you have sufficient disk space available on your Mac, as low disk space can sometimes cause issues with the simulator.
@@ -51,14 +51,14 @@ If you've tried all of the above steps and still encounter the issue, you might 
 ---
 
 ## 👤 ユーザー
-*2024/7/9 18:27:54*
+*2024/07/09 18:27:54*
 
 日本語で
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/9 18:28:29*
+*2024/07/09 18:28:29*
 
 以下の手順を試して、問題を解決してみてください：
 
@@ -66,13 +66,13 @@ If you've tried all of the above steps and still encounter the issue, you might 
    - Xcodeのバージョンが最新であり、macOSのバージョンと互換性があることを確認してください。
 
 2. **iOSシミュレーターのリセット**：
-   - iOSシミュレーターを開き、メニューバーから`デバイス &gt; コンテンツと設定を消去`を選択します。これにより、シミュレーターがリセットされ、破損したデータが解決される可能性があります。
+   - iOSシミュレーターを開き、メニューバーから`デバイス > コンテンツと設定を消去`を選択します。これにより、シミュレーターがリセットされ、破損したデータが解決される可能性があります。
 
 3. **Derived Dataの削除**：
-   - Derived Dataが原因で問題が発生することがあります。Xcodeの`Preferences &gt; Locations`に移動し、`Derived Data`のパスの横にある矢印をクリックしてフォルダーを開き、その内容を削除してください。
+   - Derived Dataが原因で問題が発生することがあります。Xcodeの`Preferences > Locations`に移動し、`Derived Data`のパスの横にある矢印をクリックしてフォルダーを開き、その内容を削除してください。
 
 4. **iOSシミュレーターの再インストール**：
-   - Xcodeを開き、`Preferences &gt; Components`に移動します。使用しているシミュレーターを見つけてアンインストールし、再インストールしてください。
+   - Xcodeを開き、`Preferences > Components`に移動します。使用しているシミュレーターを見つけてアンインストールし、再インストールしてください。
 
 5. **ディスクスペースの確認**：
    - Macに十分なディスクスペースがあることを確認してください。ディスクスペースが不足していると、シミュレーターが正常に動作しないことがあります。

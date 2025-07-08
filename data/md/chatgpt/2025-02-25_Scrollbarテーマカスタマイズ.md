@@ -5,21 +5,21 @@
 ---
 
 ## 👤 ユーザー
-*2025/2/25 20:01:19*
+*2025/02/25 20:01:19*
 
 ScrollbarThemeData で黒背景で会うぐらいの明るさのグレーにしたい
 
 ---
 
 ## 🔧 ツール
-*2025/2/25 20:01:38*
+*2025/02/25 20:01:38*
 
 This cut into the code snippet shows how to customize a ScrollbarThemeData in Flutter for a dark theme. It adjusts thumbColor and trackColor to shades of gray that are suitable for a black background.
 
 ---
 
 ## 🤖 アシスタント
-*2025/2/25 20:01:38*
+*2025/02/25 20:01:38*
 
 Flutter の `ScrollbarThemeData` を使って、黒背景にマッチするような程よい明るさのグレーでスクロールバーをカスタマイズする例を紹介します。  
 たとえば以下のように `MaterialApp` の `theme` プロパティ内で `scrollbarTheme` を指定すると、すべてのスクロールバーにそのテーマが適用されるようになります。

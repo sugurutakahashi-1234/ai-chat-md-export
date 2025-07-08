@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/15 15:28:26*
+*2024/03/15 15:28:26*
 
 FirebaseApp.configure() で 環境に合わせて GoogleService-Info.plist だったりそれに相当する情報を与えたい。
 
@@ -22,13 +22,13 @@ FirebaseApp.configure()
 ---
 
 ## 🤖 アシスタント
-*2024/3/15 15:29:44*
+*2024/03/15 15:29:44*
 
 Swift Package Manager (SPM) のテストターゲットで `FirebaseApp.configure()` を使用して環境に応じた設定（`GoogleService-Info.plist`）をロードする方法は少し工夫が必要です。テストターゲットではアプリケーションのフォルダ構成とは異なるため、`GoogleService-Info.plist` ファイルを直接読み込むことができないのです。以下に、この問題を解決する方法を提案します。
 
 ### 1. リソースとして `GoogleService-Info.plist` を追加
 
-テストターゲットに `GoogleService-Info.plist` をリソースとして追加します。これにより、テストの実行時にファイルにアクセスできるようになります。Xcode のプロジェクトナビゲータでテストターゲットを選択し、"Build Phases" > "Copy Bundle Resources" にファイルを追加してください。
+テストターゲットに `GoogleService-Info.plist` をリソースとして追加します。これにより、テストの実行時にファイルにアクセスできるようになります。Xcode のプロジェクトナビゲータでテストターゲットを選択し、"Build Phases" &gt; "Copy Bundle Resources" にファイルを追加してください。
 
 ### 2. 環境に応じた設定の選択
 

@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/9/28 11:16:34*
+*2023/09/28 11:16:34*
 
 SwiftUI UIActivity 閉じられたことを検知する
 
 ---
 
 ## 🤖 アシスタント
-*2023/9/28 11:17:16*
+*2023/09/28 11:17:16*
 
 `UIActivityViewController`をSwiftUIで使用する場合、通常はUIViewControllerRepresentableを使ってラップします。このUIActivityViewControllerが閉じられたかどうかを検知するには、`completionWithItemsHandler`を使用できます。
 

@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/31 18:51:41*
+*2024/05/31 18:51:41*
 
 https://github.com/Legion2/swagger-ui-action に OpenAPI v3.1.0 に対応するようにお願いする issue を作成してほしいです。
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/31 18:51:56*
+*2024/05/31 18:51:56*
 
 Here's an issue request for updating the `swagger-ui-action` to support OpenAPI v3.1.0:
 
@@ -54,14 +54,14 @@ You can submit this issue on the [swagger-ui-action GitHub Issues page](https://
 ---
 
 ## 👤 ユーザー
-*2024/5/31 18:52:06*
+*2024/05/31 18:52:06*
 
 もっとシンプルでいいよ。
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/31 18:52:10*
+*2024/05/31 18:52:10*
 
 Here's a simplified version for requesting OpenAPI v3.1.0 support:
 

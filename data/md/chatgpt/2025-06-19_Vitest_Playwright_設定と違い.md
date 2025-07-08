@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/19 10:59:18*
+*2025/06/19 10:59:18*
 
 ストーリーブックを導入したら、 vitest.shims.d.tsというファイル名で、 いかが記述されたファイルが作られた。 
 ```
@@ -14,7 +14,7 @@
 
 ストーリーブック導入前からBテストを使っていたので、設定ファイルはあったが、いろいろ追記されてこのような形になった。 |
 
-/// <reference types="vitest/config" />
+/// &lt;reference types="vitest/config" /&gt;
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -78,9 +78,9 @@ export default defineConfig({
 もしかするとまだ、 playwright の設定は行ってないかもしれない。設定ファイルすらない。 
 
 ちなみに今このようなテストを書いている。 
-const meta: Meta<
-  ForwardRefExoticComponent<ButtonProps & RefAttributes<HTMLButtonElement>>
-> = {
+const meta: Meta&lt;
+  ForwardRefExoticComponent&lt;ButtonProps & RefAttributes&lt;HTMLButtonElement&gt;&gt;
+&gt; = {
   title: "Design System/UI/Button",
   component: Button,
   parameters: {
@@ -106,10 +106,10 @@ const meta: Meta<
       control: { type: "boolean" },
     },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta&lt;typeof Button&gt;;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj&lt;typeof meta&gt;;
 
 // 基本的なボタン
 export const Primary: Story = {
@@ -122,7 +122,7 @@ export const Primary: Story = {
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 10:59:35*
+*2025/06/19 10:59:35*
 
 ### なぜ *vitest.shims.d.ts* が作られたのか
 
@@ -157,10 +157,10 @@ export const Primary: Story = {
 | **弱点** | 本物のブラウザ API 差異・レスポンシブ検証は不得手 | 細かいユニットテストにはオーバーキル、実行コスト高 |
 | **典型例** | React コンポーネントのクリック動作、関数の戻り値検証 | サインアップ→ログイン→ダッシュボード表示の一連フロー |
 
-> **ポイント**  
-> *Storybook × Vitest* の “ブラウザプロジェクト” は  
-> **「ランナー＝Vitest」「ブラウザ起動＝Playwright」** というハイブリッド構成です。  
-> Playwright 独自の *playwright.config.ts* が無くても、Vitest 側の `test.browser` 設定（質問文にある `provider:"playwright"` ブロック）だけで動きます。citeturn0search0turn0search8
+&gt; **ポイント**  
+&gt; *Storybook × Vitest* の “ブラウザプロジェクト” は  
+&gt; **「ランナー＝Vitest」「ブラウザ起動＝Playwright」** というハイブリッド構成です。  
+&gt; Playwright 独自の *playwright.config.ts* が無くても、Vitest 側の `test.browser` 設定（質問文にある `provider:"playwright"` ブロック）だけで動きます。citeturn0search0turn0search8
 
 ---
 

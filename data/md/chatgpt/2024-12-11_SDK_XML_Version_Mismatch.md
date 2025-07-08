@@ -24,7 +24,7 @@ Here’s how you can resolve this issue:
 Ensure that your command-line tools are up to date.
 
 1. Open the SDK Manager:
-   - In Android Studio: Go to **Tools > SDK Manager**.
+   - In Android Studio: Go to **Tools &gt; SDK Manager**.
    - Alternatively, locate it in your Android SDK directory.
 
 2. Update the command-line tools:

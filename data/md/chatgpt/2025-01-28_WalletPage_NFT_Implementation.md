@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/28 19:03:06*
+*2025/01/28 19:03:06*
 
 {
   "content_type": "image_asset_pointer",
@@ -193,7 +193,7 @@ class GetNftsNotifier extends _$GetNftsNotifier {
 ---
 
 ## 🤖 アシスタント
-*2025/1/28 19:03:17*
+*2025/01/28 19:03:17*
 
 Here is the `WalletPage` implementation based on your requirements. This implementation defines the `NFT` class to abstract `ExplorerDTO` and `FlagDTO`, including an `NftType` enum. It also displays the list of NFTs in the UI and defines an `onTapNft` function for handling taps.
 

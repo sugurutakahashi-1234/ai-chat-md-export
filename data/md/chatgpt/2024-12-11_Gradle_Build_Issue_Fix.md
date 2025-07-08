@@ -107,7 +107,7 @@ The error you encountered suggests an issue with the Android SDK or Java environ
      - Android SDK Platform Tools
      - Android Emulator
      - Android SDK Build-Tools
-   - Go to **File > Settings > Appearance & Behavior > System Settings > Android SDK**, and make sure the **Android 34 SDK** is installed.
+   - Go to **File &gt; Settings &gt; Appearance & Behavior &gt; System Settings &gt; Android SDK**, and make sure the **Android 34 SDK** is installed.
 
 ### 3. **Clean and Rebuild the Project**
    - Clean your Flutter project:
@@ -142,7 +142,7 @@ The error you encountered suggests an issue with the Android SDK or Java environ
 ### 5. **Reinstall Android SDK**
    - If the issue persists, the `core-for-system-modules.jar` file might be corrupted. Reinstall the Android SDK:
      1. Open Android Studio.
-     2. Navigate to **SDK Manager > SDK Platforms > Show Package Details**.
+     2. Navigate to **SDK Manager &gt; SDK Platforms &gt; Show Package Details**.
      3. Uninstall and reinstall the affected SDK (e.g., Android 34).
 
 ### 6. **Verify Flutter and Dart Environment**

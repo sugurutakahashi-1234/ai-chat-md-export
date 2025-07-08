@@ -138,43 +138,43 @@ OPTIONS:
 
 1. `--allow-set-call-count`: このオプションを設定すると、生成された*CallCount変数を手動で設定できるようになります。これにより、テスト中にメソッドが呼び出された回数をカスタマイズできます。
 
-2. `--annotation &lt;annotation&gt;`: モック化する型を示すために使用されるカスタムアノテーション文字列。デフォルトは`@mockable`です。
+2. `--annotation <annotation>`: モック化する型を示すために使用されるカスタムアノテーション文字列。デフォルトは`@mockable`です。
 
-3. `-j, --concurrency-limit &lt;n&gt;`: 同時に実行できるスレッドの最大数。デフォルトは実行マシンのコア数です。
+3. `-j, --concurrency-limit <n>`: 同時に実行できるスレッドの最大数。デフォルトは実行マシンのコア数です。
 
-4. `--custom-imports &lt;custom-imports&gt;`: 設定されている場合、カスタムモジュールのインポート（スペースで区切られている）が最終的なimport文リストに追加されます。
+4. `--custom-imports <custom-imports>`: 設定されている場合、カスタムモジュールのインポート（スペースで区切られている）が最終的なimport文リストに追加されます。
 
 5. `--enable-args-history`: すべての関数の引数履歴を有効にするかどうか。関数ごとに履歴を有効にするには、アノテーション引数で`history`キーワードを使用します。
 
 6. `--disable-combine-default-values`: Combineストリームの生成をモックで無効にするかどうか。モック内のストリームの作成方法を制御するためにこの設定をtrueにします。
 
-7. `--exclude-imports &lt;exclude-imports&gt;`: 設定すると、リストされたモジュール（スペースで区切られている）がモック出力のimport文から除外されます。
+7. `--exclude-imports <exclude-imports>`: 設定すると、リストされたモジュール（スペースで区切られている）がモック出力のimport文から除外されます。
 
-8. `-x, --exclude-suffixes &lt;exclude-suffixes&gt;`: パースから除外するファイル名のサフィックスのリスト（スペースで区切る）。拡張子は含まれません。
+8. `-x, --exclude-suffixes <exclude-suffixes>`: パースから除外するファイル名のサフィックスのリスト（スペースで区切る）。拡張子は含まれません。
 
-9. `--header &lt;header&gt;`: 生成されたモックファイルの始めに追加されるカスタムヘッダードキュメント。
+9. `--header <header>`: 生成されたモックファイルの始めに追加されるカスタムヘッダードキュメント。
 
-10. `-l, --logging-level &lt;n&gt;`: 使用するログレベル。デフォルトは0（情報のみ）です。1は詳細、2は警告、3はエラーです。
+10. `-l, --logging-level <n>`: 使用するログレベル。デフォルトは0（情報のみ）です。1は詳細、2は警告、3はエラーです。
 
-11. `--macro &lt;macro&gt;`: 設定すると、生成されたモックファイルの内容を守るために、`#if [macro] / #endif`が追加されます。
+11. `--macro <macro>`: 設定すると、生成されたモックファイルの内容を守るために、`#if [macro] / #endif`が追加されます。
 
 12. `--mock-all`: 設定すると、すべての型（プロトコルとクラス）がモックアノテーションと共にモックされます（デフォルトはfalseで、モックアノテーションと共にプロトコルのみがモックされます）。
 
-13. `--mock-filelist &lt;mock-filelist&gt;`: このターゲットが依存するモジュールの依存ファイルのリスト（新しい行で区切られている）が含まれるファイルへのパス。
+13. `--mock-filelist <mock-filelist>`: このターゲットが依存するモジュールの依存ファイルのリスト（新しい行で区切られている）が含まれるファイルへのパス。
 
 14. `--mock-final`: 設定すると、生成されたモッククラスに`final`属性が付与されます（デフォルトはfalseです）。
 
-15. `-mocks, --mockfiles &lt;mocks&gt;`: このターゲットが依存するモジュールからのモックファイルのリスト（スペースで区切る）。`--mock-filelist`値が存在する場合、これは無視されます。
+15. `-mocks, --mockfiles <mocks>`: このターゲットが依存するモジュールからのモックファイルのリスト（スペースで区切る）。`--mock-filelist`値が存在する場合、これは無視されます。
 
-16. `-d, --destination &lt;destination&gt;`: 生成されたSwiftモッククラスを含む出力ファイルのパス。値が与えられない場合、プログラムは終了します。
+16. `-d, --destination <destination>`: 生成されたSwiftモッククラスを含む出力ファイルのパス。値が与えられない場合、プログラムは終了します。
 
-17. `-s, --sourcedirs &lt;sourcedirs&gt;`: モックを生成するためのソースファイルが含まれるディレクトリへのパス（スペースで区切る）。`--filelist`または`--sourcefiles`の値が存在する場合、それらは無視されます。
+17. `-s, --sourcedirs <sourcedirs>`: モックを生成するためのソースファイルが含まれるディレクトリへのパス（スペースで区切る）。`--filelist`または`--sourcefiles`の値が存在する場合、それらは無視されます。
 
-18. `-f, --filelist &lt;filelist&gt;`: ソースファイルパスのリストを含むファイルへのパス（新しい行で区切る）。`--sourcedirs`値が存在する場合、これは無視されます。
+18. `-f, --filelist <filelist>`: ソースファイルパスのリストを含むファイルへのパス（新しい行で区切る）。`--sourcedirs`値が存在する場合、これは無視されます。
 
-19. `-srcs, --sourcefiles &lt;srcs&gt;`: モックを生成するためのソースファイルのリスト（スペースで区切る）。`--sourcedirs`または`--filelist`の値が存在する場合、これは無視されます。
+19. `-srcs, --sourcefiles <srcs>`: モックを生成するためのソースファイルのリスト（スペースで区切る）。`--sourcedirs`または`--filelist`の値が存在する場合、これは無視されます。
 
-20. `-i, --testable-imports &lt;testable-imports&gt;`: 設定されている場合、このリストの各モジュール名に対して`@testable import`文が追加されます（スペースで区切る）。
+20. `-i, --testable-imports <testable-imports>`: 設定されている場合、このリストの各モジュール名に対して`@testable import`文が追加されます（スペースで区切る）。
 
 21. `--use-mock-observable`: 設定すると、プロパティラッパーがRxSwift Observable変数をモックするために使用されます（デフォルトはfalseです）。
 

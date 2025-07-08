@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/10 14:27:20*
+*2024/07/10 14:27:20*
 
 ⚠️ Error(appError: DomainLayer.AppError.customError("Error Domain=com.google.fcm Code=505 \"No APNS token specified before fetching FCM Token\" UserInfo={NSLocalizedFailureReason=No APNS token specified before fetching FCM Token}"), errorName: "customError(\"Error Domain=com.google.fcm Code=505 \\\"No APNS token specified before fetching FCM Token\\\" UserInfo={NSLocalizedFailureReason=No APNS token specified before fetching FCM Token}\")"), file: AppRootDIContainer.swift, function: init(buildScheme:), line: 122
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/10 14:27:46*
+*2024/07/10 14:27:46*
 
 The error message indicates that there's an issue with fetching the FCM (Firebase Cloud Messaging) token due to the absence of an APNS (Apple Push Notification Service) token. Here are steps to troubleshoot and resolve this issue:
 

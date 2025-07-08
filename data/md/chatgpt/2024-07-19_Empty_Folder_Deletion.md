@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/19 14:18:23*
+*2024/07/19 14:18:23*
 
 最後にadd delete diff についてフォルダが空であれば消してほしい
 
@@ -103,7 +103,7 @@ parsedDiff.files.forEach(file =&gt; {
     // 削除されたファイルを除外してチェックアウト
     if (file.type !== 'AddedFile') {
         try {
-            execSync(`git show ${targetBranch}:${relativePath} &gt; ${tempFilePath}`, { cwd: projectRoot });
+            execSync(`git show ${targetBranch}:${relativePath} > ${tempFilePath}`, { cwd: projectRoot });
         } catch (error) {
             console.error(`Skipping ${relativePath} as it doesn't exist in ${targetBranch}`);
         }
@@ -150,7 +150,7 @@ fs.rmSync(tempDir, { recursive: true, force: true });
 ---
 
 ## 🤖 アシスタント
-*2024/7/19 14:19:02*
+*2024/07/19 14:19:02*
 
 フォルダが空であれば削除する処理を追加するには、最後にフォルダの内容をチェックして、空の場合は削除するコードを追加します。以下に修正したスクリプトを示します：
 

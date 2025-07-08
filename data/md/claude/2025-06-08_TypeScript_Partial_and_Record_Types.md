@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/8 18:29:44*
+*2025/06/08 18:29:44*
 
 TypeScriptのPartialとRecordの型について教えて欲しい
 
@@ -29,7 +29,7 @@ const prismaErrorMapping: Partial&lt;Record&lt;PrismaErrorCode, ApiErrorType&gt;
 ---
 
 ## 🤖 アシスタント
-*2025/6/8 18:30:05*
+*2025/06/08 18:30:05*
 
 TypeScriptの`Partial`と`Record`型について、コード例を交えて説明します。
 
@@ -70,7 +70,7 @@ type PartialUser = Partial<User>;
 // }
 ```
 
-## Partial<Record<K, T>>の組み合わせ
+## Partial&lt;Record&lt;K, T&gt;&gt;の組み合わせ
 
 あなたのコードでは、この2つを組み合わせています：
 

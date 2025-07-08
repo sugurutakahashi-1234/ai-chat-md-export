@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/9 14:50:55*
+*2023/05/09 14:50:55*
 
 https://github.com/awslabs/aws-sdk-swift とhttps://github.com/aws-amplify/amplify-swift の違いを教えて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 14:51:55*
+*2023/05/09 14:51:55*
 
 `aws-sdk-swift` と `amplify-swift` は、共に Amazon Web Services (AWS) を Swift プログラミング言語で使用するためのライブラリですが、目的と機能が異なります。
 
@@ -31,14 +31,14 @@ Amplify は、AWS が提供するフロントエンド開発フレームワー�
 ---
 
 ## 👤 ユーザー
-*2023/5/9 14:55:24*
+*2023/05/09 14:55:24*
 
 Firebase Authの認証フローで得たトークンIDを利用して、Cognitoからクレデンシャルをつど取得して、それを用いて、S3にファイルをアップロードするようなことを実装したくて、その場合はどっちがいいでしょうか？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 14:56:02*
+*2023/05/09 14:56:02*
 
 このケースでは、`aws-sdk-swift`がより適切な選択です。`aws-sdk-swift`を使用すると、Amazon CognitoやAmazon S3などの各AWSサービスを個別に操作できます。これにより、Firebase Authから得たトークンIDをAmazon Cognitoに渡してクレデンシャルを取得し、そのクレデンシャルを使用してAmazon S3にファイルをアップロードするといったフローを実装できます。
 
@@ -49,14 +49,14 @@ Firebase Authの認証フローで得たトークンIDを利用して、Cognito�
 ---
 
 ## 👤 ユーザー
-*2023/5/9 14:56:34*
+*2023/05/09 14:56:34*
 
 ちなみにそれぞれでサンプルコードをかいてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 14:58:14*
+*2023/05/09 14:58:14*
 
 以下に、それぞれのライブラリを使用して、Firebase Auth の ID トークンを Amazon Cognito に渡し、クレデンシャルを取得して Amazon S3 にファイルをアップロードするサンプルコードを示します。
 
@@ -98,7 +98,7 @@ func uploadToS3() {
         getCredentialsInput?.identityId = "YOUR_COGNITO_IDENTITY_ID"
         getCredentialsInput?.logins = logins
 
-        cognitoIdentity.getCredentialsForIdentity(getCredentialsInput!).continueWith { (task) -> Any? in
+        cognitoIdentity.getCredentialsForIdentity(getCredentialsInput!).continueWith { (task) -&gt; Any? in
             if let error = task.error {
                 print("Error getting Cognito credentials: \(error)")
                 return nil
@@ -121,21 +121,21 @@ func uploadToS3() {
             uploadRequest?.body = "YOUR_FILE_URL"
             uploadRequest?.contentType = "YOUR_CONTENT_TYPE"
 
-            return s3.putObject(uploadRequest!).continueWith { (task) -> Any? in
+            return s3.putObject(uploadRequest!).continueWith { (task) -&gt; Any? in
                 if let error = task.error {
                     print("Error uploading to
 
 ---
 
 ## 👤 ユーザー
-*2023/5/9 14:58:27*
+*2023/05/09 14:58:27*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 14:59:53*
+*2023/05/09 14:59:53*
 
 S3: \(error)")
                     return nil

@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/1 15:38:48*
+*2024/07/01 15:38:48*
 
 Query to find PRs created by user A and user B on github
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/1 15:38:58*
+*2024/07/01 15:38:58*
 
 To find PRs created by user A and user B on GitHub, you can use the following query syntax directly on the GitHub search bar:
 
@@ -83,7 +83,7 @@ While GitHub's search bar doesn't support multiple `author:` filters in a single
 ---
 
 ## 👤 ユーザー
-*2024/7/1 15:41:18*
+*2024/07/01 15:41:18*
 
 これだとこの2つのauthorによって作成されたPRだけを表示したいがそうはならなかった
 is:pr author:app/renovate  author:app/github-actions
@@ -91,7 +91,7 @@ is:pr author:app/renovate  author:app/github-actions
 ---
 
 ## 🤖 アシスタント
-*2024/7/1 15:41:41*
+*2024/07/01 15:41:41*
 
 確かに、GitHubの検索バーでは複数の`author:`フィルターを同時に使用できませんが、2つの異なるユーザーが作成したPRを表示するには、GitHubのAPIを使用するか、個別に検索して結果を手動で組み合わせる方法があります。
 

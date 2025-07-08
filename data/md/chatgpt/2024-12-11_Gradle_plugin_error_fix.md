@@ -451,8 +451,8 @@ flutter run
 2. **Android StudioのJDKが見つからない場合**  
    Android Studioの設定から確認できます：
    - Android Studioを開く
-   - **Preferences**（macOSの場合）または **File > Settings**（Windows/Linuxの場合）
-   - 左メニューで **Build, Execution, Deployment > Build Tools > Gradle** を選択
+   - **Preferences**（macOSの場合）または **File &gt; Settings**（Windows/Linuxの場合）
+   - 左メニューで **Build, Execution, Deployment &gt; Build Tools &gt; Gradle** を選択
    - 「Gradle JDK」のパスが表示されるので、それを利用してください。
 
 ---

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/15 18:18:35*
+*2025/01/15 18:18:35*
 
 class PhotoData {
   PhotoData({required this.path, required this.location});
@@ -17,7 +17,7 @@ class PhotoData {
 ---
 
 ## 🤖 アシスタント
-*2025/1/15 18:18:37*
+*2025/01/15 18:18:37*
 
 The `PhotoData` class defines a simple structure with two properties:
 

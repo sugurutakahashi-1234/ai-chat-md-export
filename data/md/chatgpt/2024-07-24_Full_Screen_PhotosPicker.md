@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/24 13:26:03*
+*2024/07/24 13:26:03*
 
 SwiftUI PhotosPicker をfull screen cover で表示する方法
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/24 13:26:15*
+*2024/07/24 13:26:15*
 
 `PhotosPicker` を SwiftUI の full screen cover で表示するには、`PhotosPicker` をラップするカスタムビューを作成し、それを `fullScreenCover` モディファイアで表示する方法があります。以下にその手順を示します。
 

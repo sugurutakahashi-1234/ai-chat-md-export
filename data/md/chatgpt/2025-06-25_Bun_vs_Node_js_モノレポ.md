@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/25 11:09:36*
+*2025/06/25 11:09:36*
 
 nodejsよりもbunの方が早いらしくpnpmを今使ってモノレポを開発しているがこれをbunに乗り換えられるのか？
 もしくは最初に選択するものとして選択可能か？
@@ -15,7 +15,7 @@ nodejsよりもbunの方が早いらしくpnpmを今使ってモノレポを開�
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 11:10:13*
+*2025/06/25 11:10:13*
 
 ### 1. pnpm モノレポ → Bun への移行は「可能」か？
 
@@ -24,10 +24,10 @@ nodejsよりもbunの方が早いらしくpnpmを今使ってモノレポを開�
 | 概要 | `pnpm` のワークスペースはそのまま残し、`node` → `bun` で実行 | `bun install` へ全面移行し、Bun のワークスペース機能を使う |
 | 手順 | ```bash<br># 1) Bun を入れる<br>curl -fsSL https://bun.sh/install | bash<br><br># 2) スクリプト書換<br>"start": "bun src/index.ts"<br>"test":  "bun test"<br>``` | ```bash<br># bunfig.toml を追加してレジストリ設定<br># 例) private scope も可<br>[install.scopes]<br>"@my-org" = { url = "https://npm.pkg.github.com", token="$GITHUB_TOKEN" }<br><br># 既存 lockfile を削除して<br>rm -f pnpm-lock.yaml<br>bun install<br>``` |
 | ワークスペース対応 | Bun でも `package.json` の `"workspaces"` が認識される **(公式 docs)** citeturn3search2 | Bun v1.2 以降は `--filter` などの **workspace-filtering** も実装済みで、大規模レポでも実用レベル citeturn3search1 |
-| つまずきやすい点 | * `node-gyp` でビルドする **ネイティブアドオン**は動かないことがある<br>* ts-node 等のツールが不要になるので script を整理 | * lockfile が `bun.lockb` に変わる（CI 変更必要）<br>* 未実装の npm スクリプトフックや postinstall に依存していると失敗しやすい |
+| つまずきやすい点 | * `node-gyp` でビルドする **ネイティブアドオン**は動かないことがある&lt;br&gt;* ts-node 等のツールが不要になるので script を整理 | * lockfile が `bun.lockb` に変わる（CI 変更必要）&lt;br&gt;* 未実装の npm スクリプトフックや postinstall に依存していると失敗しやすい |
 
-> **結論**: 既に pnpm × Node で安定稼働しているモノレポなら、まず **方法A**（ランタイムだけ差し替え）で段階的に様子を見るのが安全です。  
-> 新規プロジェクトなら最初から方法Bを選んでも大きな障害は少なくなっています。
+&gt; **結論**: 既に pnpm × Node で安定稼働しているモノレポなら、まず **方法A**（ランタイムだけ差し替え）で段階的に様子を見るのが安全です。  
+&gt; 新規プロジェクトなら最初から方法Bを選んでも大きな障害は少なくなっています。
 
 ---
 
@@ -49,7 +49,7 @@ nodejsよりもbunの方が早いらしくpnpmを今使ってモノレポを開�
 | **I/O** | libuv + io_uring 強化で高並列 I/O でのレイテンシが低下 citeturn1search2 | epoll/kqueue を直接叩く Rust 実装 |
 | **ツール統合** | npm/ecosystem が引き続き最大 | テスト・バンドラがバンドル済み |
 
-> **見通し**: Node.js は **Snapshot + io_uring** で確実に差を詰めていますが、エンジン（V8 vs JSC）の設計差と「単一バイナリで道具を全部入れる」という思想が根本的に異なるため、**完全に並ぶにはまだ時間がかかりそう**です。
+&gt; **見通し**: Node.js は **Snapshot + io_uring** で確実に差を詰めていますが、エンジン（V8 vs JSC）の設計差と「単一バイナリで道具を全部入れる」という思想が根本的に異なるため、**完全に並ぶにはまだ時間がかかりそう**です。
 
 ---
 
@@ -87,7 +87,7 @@ nodejsよりもbunの方が早いらしくpnpmを今使ってモノレポを開�
 ---
 
 ## 👤 ユーザー
-*2025/6/25 11:12:47*
+*2025/06/25 11:12:47*
 
 Bunが覇権を取ることはないか？
 またBunをサポートするモノレポツールはないか？
@@ -95,7 +95,7 @@ Bunが覇権を取ることはないか？
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 11:13:45*
+*2025/06/25 11:13:45*
 
 ## 1. Bun が “覇権” を握る可能性は？
 
@@ -124,7 +124,7 @@ Bunが覇権を取ることはないか？
 
 | ツール | Bun 対応状況 | 導入ポイント |
 |---|---|---|
-| **Bun Workspaces（公式）** | `package.json &gt; workspaces` をネイティブ解釈。依存に `workspace:*` が使える。citeturn1search4 | 小〜中規模なら単体で完結。外部ツール不要。 |
+| **Bun Workspaces（公式）** | `package.json > workspaces` をネイティブ解釈。依存に `workspace:*` が使える。citeturn1search4 | 小〜中規模なら単体で完結。外部ツール不要。 |
 | **Nx 18+** | `nx init --pm bun` で初期化可。TypeScript Project References + Bun ワークスペースを組み合わせた新テンプレートが提供。citeturn1search0 | キャッシュ & affected タスク解析も Bun で動作。 |
 | **moonrepo 1.16+** | `.moon/toolchain.yml` に `bun: {}` を書くだけでタスク実行・依存解決を Bun に切替。citeturn1search7 | Rust 製キャッシュが速く、大規模でも安定。 |
 | **Turborepo 2.5** | `turbo prune` など一部コマンドが Bun 専用モードを実装。公式テンプレートでも *Bun (beta)* を選択可能。citeturn1search2 | Turbo の Remote Cache と併用可。 |
@@ -157,7 +157,7 @@ Bunが覇権を取ることはないか？
 ---
 
 ## 👤 ユーザー
-*2025/6/25 11:16:01*
+*2025/06/25 11:16:01*
 
 公式とモノレポツールについて比較して欲しい
 これから始めようとするプロジェクトで採用すべきはどれか
@@ -165,7 +165,7 @@ Bunが覇権を取ることはないか？
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 11:16:26*
+*2025/06/25 11:16:26*
 
 ### 公式（Bun Workspaces） vs 主要モノレポツール比較
 
@@ -221,14 +221,14 @@ Bunが覇権を取ることはないか？
 ---
 
 ## 👤 ユーザー
-*2025/6/25 11:17:55*
+*2025/06/25 11:17:55*
 
 例えばReactとかReactNativeはサポートしていないのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 11:18:21*
+*2025/06/25 11:18:21*
 
 ### React / React Native 対応早見表（2025-06 時点）
 

@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/12 10:27:00*
+*2023/05/12 10:27:00*
 
 UIViewRepresentable とは
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/12 10:28:04*
+*2023/05/12 10:28:04*
 
 UIViewRepresentable は、SwiftUI で UIKit ベースのビューと相互運用するためのプロトコルです。SwiftUI は、Apple の iOS、macOS、watchOS、および tvOS 用の新しい UI フレームワークで、Swift 言語で記述されます。しかし、現在のプロジェクトやライブラリでは、UIKit（iOS）や AppKit（macOS）のコンポーネントがまだ広く使用されています。
 
@@ -27,14 +27,14 @@ UIViewRepresentable プロトコルを使用することで、SwiftUI のプロ�
 ---
 
 ## 👤 ユーザー
-*2023/5/12 10:28:54*
+*2023/05/12 10:28:54*
 
 UIViewRepresentable でも ViewModel みたいなものとつなげることはできる？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/12 10:30:18*
+*2023/05/12 10:30:18*
 
 はい、UIViewRepresentable を使って ViewModel と連携することは可能です。ViewModel は、ビューに表示されるデータとビジネスロジックを管理する役割を担っています。SwiftUI では、データのバインディングと状態の管理が簡単に行えるため、UIViewRepresentable と ViewModel を組み合わせることで、UIKit ベースのビューも SwiftUI のデータフローに統合できます。
 
@@ -53,14 +53,14 @@ UIViewRepresentable の実装に ViewModel を組み込むためには、次の�
 ---
 
 ## 👤 ユーザー
-*2023/5/12 14:13:17*
+*2023/05/12 14:13:17*
 
 UIViewRepresentable 側で宣言している @State や @Binding の変数を更新するとどうなるの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/12 14:14:41*
+*2023/05/12 14:14:41*
 
 UIViewRepresentable を実装する際に、@State や @Binding などの SwiftUI のプロパティラッパーを使用することができます。これらのプロパティラッパーは、ビューの状態を管理するための仕組みを提供します。
 
@@ -78,14 +78,14 @@ UIViewRepresentable を使用する際に @State や @Binding の変数を更新
 ---
 
 ## 👤 ユーザー
-*2023/5/12 14:16:46*
+*2023/05/12 14:16:46*
 
 Combine ストリームで流れてくる値でUIViewRepresentableで宣言された@Binding な変数を更新するコード
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/12 14:18:33*
+*2023/05/12 14:18:33*
 
 Combine ストリームを使用して UIViewRepresentable で宣言された @Binding プロパティを更新するには、次の手順を実行します。
 

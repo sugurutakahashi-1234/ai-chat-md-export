@@ -44,7 +44,7 @@ Exited (1).
 ### 1. **Android SDK のバージョン確認**
 - SDK プラットフォームが最新かを確認します。
   1. Android Studio を開きます。
-  2. **Preferences > Appearance & Behavior > System Settings > Android SDK** を選択します。
+  2. **Preferences &gt; Appearance & Behavior &gt; System Settings &gt; Android SDK** を選択します。
   3. `SDK Platforms` タブで、 **Android 34 (最新のバージョン)** がインストールされていることを確認してください。
   4. **SDK Tools** タブで、 **Android SDK Build-Tools** と **Android SDK Command-line Tools** が最新であることを確認してください。
 
@@ -248,7 +248,7 @@ rm -rf ~/.gradle/caches/
 
 ### **5. Android Studio の設定確認**
 - Android Studio の Java SDK が正しく設定されているか確認します：
-  1. **File > Project Structure** に移動。
+  1. **File &gt; Project Structure** に移動。
   2. **SDK Location** を開きます。
   3. **JDK Location** が `/Applications/Android Studio.app/Contents/jbr/Contents/Home` になっていることを確認してください。
 
@@ -286,13 +286,13 @@ FAILURE: Build failed with an exception.
 
 * What went wrong:
 Execution failed for task ':app:processDebugMainManifest'.
-> com.android.manifmerger.ManifestMerger2$MergeFailureException: java.io.FileNotFoundException: /Users/sugurutakahashi/.gradle/caches/transforms-3/7a67c1502b7ba145b7d59007c2edc4df/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml (No such file or directory)
+&gt; com.android.manifmerger.ManifestMerger2$MergeFailureException: java.io.FileNotFoundException: /Users/sugurutakahashi/.gradle/caches/transforms-3/7a67c1502b7ba145b7d59007c2edc4df/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml (No such file or directory)
 
 * Try:
-> Run with --stacktrace option to get the stack trace.
-> Run with --info or --debug option to get more log output.
-> Run with --scan to get full insights.
-> Get more help at https://help.gradle.org.
+&gt; Run with --stacktrace option to get the stack trace.
+&gt; Run with --info or --debug option to get more log output.
+&gt; Run with --scan to get full insights.
+&gt; Get more help at https://help.gradle.org.
 
 BUILD FAILED in 815ms
 Retrying Gradle Build: #1, wait time: 100ms
@@ -303,13 +303,13 @@ FAILURE: Build failed with an exception.
 
 * What went wrong:
 Execution failed for task ':app:processDebugMainManifest'.
-> com.android.manifmerger.ManifestMerger2$MergeFailureException: java.io.FileNotFoundException: /Users/sugurutakahashi/.gradle/caches/transforms-3/7a67c1502b7ba145b7d59007c2edc4df/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml (No such file or directory)
+&gt; com.android.manifmerger.ManifestMerger2$MergeFailureException: java.io.FileNotFoundException: /Users/sugurutakahashi/.gradle/caches/transforms-3/7a67c1502b7ba145b7d59007c2edc4df/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml (No such file or directory)
 
 * Try:
-> Run with --stacktrace option to get the stack trace.
-> Run with --info or --debug option to get more log output.
-> Run with --scan to get full insights.
-> Get more help at https://help.gradle.org.
+&gt; Run with --stacktrace option to get the stack trace.
+&gt; Run with --info or --debug option to get more log output.
+&gt; Run with --scan to get full insights.
+&gt; Get more help at https://help.gradle.org.
 
 BUILD FAILED in 797ms
 [!] Gradle threw an error while downloading artifacts from the network.
@@ -427,7 +427,7 @@ Gradle ラッパーに問題がある可能性があるため、以下を実行�
 ### **4. Android SDK Manager で Google Play Services を確認**
 Android Studio を開き、以下を確認してください：
 
-1. **Preferences > Appearance & Behavior > System Settings > Android SDK** に移動します。
+1. **Preferences &gt; Appearance & Behavior &gt; System Settings &gt; Android SDK** に移動します。
 2. **SDK Platforms** タブで、インストールされているプラットフォームが最新であることを確認します。
 3. **SDK Tools** タブで、以下の項目がインストールされていることを確認します：
     - Google Play services

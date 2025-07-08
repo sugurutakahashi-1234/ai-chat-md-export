@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/18 21:14:37*
+*2025/01/18 21:14:37*
 
 $ git pull origin feature/32
 Found existing alias for "git pull". You should use: "gl"
@@ -16,7 +16,7 @@ fatal: Exiting because of unfinished merge.
 ---
 
 ## 🤖 アシスタント
-*2025/1/18 21:14:42*
+*2025/01/18 21:14:42*
 
 The error indicates that there's an ongoing merge conflict that has not been resolved. Here's how you can address it:
 
@@ -72,7 +72,7 @@ The error indicates that there's an ongoing merge conflict that has not been res
 ---
 
 ## 👤 ユーザー
-*2025/1/18 21:14:50*
+*2025/01/18 21:14:50*
 
 $ git status
 Found existing alias for "git status". You should use: "gst"
@@ -87,7 +87,7 @@ All conflicts fixed but you are still merging.
 ---
 
 ## 🤖 アシスタント
-*2025/1/18 21:14:56*
+*2025/01/18 21:14:56*
 
 Your message indicates that you've resolved all merge conflicts, but the merge process isn't complete. You just need to finalize the merge with a commit. Follow these steps:
 

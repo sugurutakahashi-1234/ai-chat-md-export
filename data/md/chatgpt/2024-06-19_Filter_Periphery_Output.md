@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/19 12:52:21*
+*2024/06/19 12:52:21*
 
 `warning: Imported module 'DomainLayer' is unused`または`warning: Property 'dependency' is assigned, but never used`が含まれている行は出力するファイルに表示して欲しくない。スクリプトを修正してほしい。
 
@@ -98,7 +98,7 @@ SmallTalkPackage/Sources/Presentation/ViewComponent/SelectableTextView.swift:6:1
 ---
 
 ## 🤖 アシスタント
-*2024/6/19 12:52:36*
+*2024/06/19 12:52:36*
 
 特定の警告メッセージを除外するために、`grep`を使って不要な行をフィルタリングする方法があります。以下のスクリプトは、その警告メッセージを除外して出力ファイルに書き込むように修正されています。
 
@@ -158,14 +158,14 @@ echo "Periphery Scan Completed!!!!"
 ---
 
 ## 👤 ユーザー
-*2024/6/19 12:54:47*
+*2024/06/19 12:54:47*
 
 filtered_result.txt を作らずにできないか？
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/19 12:54:58*
+*2024/06/19 12:54:58*
 
 もちろん、`filtered_result.txt`を作成せずに直接ファイルをフィルタリングして出力することも可能です。以下は、`filtered_result.txt`を作成せずに直接結果をフィルタリングするスクリプトです。
 

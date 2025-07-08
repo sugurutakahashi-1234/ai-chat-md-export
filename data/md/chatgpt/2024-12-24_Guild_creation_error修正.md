@@ -274,7 +274,7 @@ final response = await api.guildControllerCreateGuild(
 ### 注意点
 エラーに含まれる以下の警告メッセージ：
 
-> `_$CreateGuildRequestDtoImpl cannot be used to imply a default content-type`
+&gt; `_$CreateGuildRequestDtoImpl cannot be used to imply a default content-type`
 
 この警告は、リクエストボディのエンコード方式が明示されていない可能性を示唆しています。したがって、`Content-Type` を正しく設定することで解消されるはずです。
 

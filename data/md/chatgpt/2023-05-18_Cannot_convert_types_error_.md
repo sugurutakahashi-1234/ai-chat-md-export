@@ -5,9 +5,9 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/18 13:45:30*
+*2023/05/18 13:45:30*
 
-どうして、Cannot convert value of type '[OpenPageType]' to expected argument type 'Binding<C>' や Generic parameter 'C' could not be inferred や Cannot assign value of type 'Binding<_>' to type 'OpenPageType' のようなエラーがでるの？
+どうして、Cannot convert value of type '[OpenPageType]' to expected argument type 'Binding&lt;C&gt;' や Generic parameter 'C' could not be inferred や Cannot assign value of type 'Binding&lt;_&gt;' to type 'OpenPageType' のようなエラーがでるの？
 
 ```
 protocol DebugMenuTypeProtocol: Identifiable, CaseIterable where Self: RawRepresentable, Self.RawValue == String {
@@ -66,15 +66,15 @@ struct OpenPageView: View {
 ---
 
 ## 🤖 アシスタント
-*2023/5/18 13:47:11*
+*2023/05/18 13:47:11*
 
 このエラーはSwiftの型システムとSwiftUIのビュービルダーの仕組みに関連しています。
 
-まず、「Cannot convert value of type '[OpenPageType]' to expected argument type 'Binding<C>'」というエラーは、ForEachの中で、Binding型を期待している箇所に非Binding型が渡されているために発生している可能性があります。
+まず、「Cannot convert value of type '[OpenPageType]' to expected argument type 'Binding&lt;C&gt;'」というエラーは、ForEachの中で、Binding型を期待している箇所に非Binding型が渡されているために発生している可能性があります。
 
 次に、「Generic parameter 'C' could not be inferred」というエラーは、Swiftがジェネリックパラメータ 'C' を推論できないということを意味します。これは、コンパイラが特定のコードの意図を正確に理解できず、適切な型を決定できない場合に発生します。
 
-また、「Cannot assign value of type 'Binding<_>' to type 'OpenPageType'」というエラーは、Binding型の値をOpenPageType型の変数に代入しようとしたときに発生します。これはSwiftが強く型付けされている言語であるため、一方の型から他方の型への暗黙的な変換は許可されていません。
+また、「Cannot assign value of type 'Binding&lt;_&gt;' to type 'OpenPageType'」というエラーは、Binding型の値をOpenPageType型の変数に代入しようとしたときに発生します。これはSwiftが強く型付けされている言語であるため、一方の型から他方の型への暗黙的な変換は許可されていません。
 
 ソースコードを見たところ、エラーが発生する原因は.sheet()メソッドを使っている部分にあるようです。以下のように修正してみてください：
 

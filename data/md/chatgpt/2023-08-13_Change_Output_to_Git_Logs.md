@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/8/13 20:44:02*
+*2023/08/13 20:44:02*
 
 In ci_post_xcodebuild.sh of Xcode Cloud, currently it outputs the 5 latest git logs, but I would like to change this to output the difference git logs since the last distribution.
 
@@ -29,7 +29,7 @@ fi
 ---
 
 ## 🤖 アシスタント
-*2023/8/13 20:44:39*
+*2023/08/13 20:44:39*
 
 If you want to capture the difference in git logs since the last distribution, you'll need to identify the commit hash of the last distribution. Assuming you're using git tags to mark your distributions, you can compare the current commit with the latest tag to achieve this.
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/5 18:24:38*
+*2024/07/05 18:24:38*
 
 selectedStampが変更されても画像が変わらない
 
@@ -197,7 +197,7 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
 ---
 
 ## 🤖 アシスタント
-*2024/7/5 18:25:05*
+*2024/07/05 18:25:05*
 
 To ensure that the image updates correctly when `selectedStamp` changes, you should make sure that the `CachedAsyncImageView` properly reacts to changes in its `imageUrl` property. One potential issue could be that `CachedAsyncImageView` is not resetting its state when `imageUrl` changes.
 

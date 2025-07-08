@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/30 17:44:06*
+*2024/05/30 17:44:06*
 
 以下を小文字変換
 
@@ -15,7 +15,7 @@
 ---
 
 ## 🤖 アシスタント
-*2024/5/30 17:44:08*
+*2024/05/30 17:44:08*
 
 ```
 client_openapi_path: client-repo/path/to/openapi.yaml
@@ -25,7 +25,7 @@ server_openapi_path: server-repo/path/to/openapi.yaml
 ---
 
 ## 👤 ユーザー
-*2024/5/30 17:48:31*
+*2024/05/30 17:48:31*
 
 こういうことってできないの？
 
@@ -47,7 +47,7 @@ env:
 ---
 
 ## 🤖 アシスタント
-*2024/5/30 17:48:46*
+*2024/05/30 17:48:46*
 
 You can use environment variables in a GitHub Actions workflow file, but you need to reference them correctly within the workflow. Here's an example of how you can define and use environment variables in your workflow:
 
@@ -91,14 +91,14 @@ Make sure to replace `actions/checkout@v2` with the appropriate action version o
 ---
 
 ## 👤 ユーザー
-*2024/5/30 17:50:08*
+*2024/05/30 17:50:08*
 
 GitHubActionsでactions/checkout@v4して作られるディレクトリ構成は？
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/30 17:50:29*
+*2024/05/30 17:50:29*
 
 `actions/checkout@v4` はリポジトリのコードをクローンして、デフォルトでは GitHub Actions runner のルートディレクトリに配置します。具体的なディレクトリ構成は、通常次のようになります。
 

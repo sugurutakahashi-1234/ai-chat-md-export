@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/25 19:53:51*
+*2024/06/25 19:53:51*
 
 Equatableを実装してほしい idが同じであればイコール
 
@@ -56,7 +56,7 @@ public struct TalkAudioStamp: Sendable, Identifiable {
 ---
 
 ## 🤖 アシスタント
-*2024/6/25 19:54:09*
+*2024/06/25 19:54:09*
 
 `TalkPostType` に `Equatable` プロトコルを実装するためには、各ケースの `id` プロパティを比較する必要があります。 `TalkAudio`, `TalkStamp`, `TalkAudioStamp` はすべて `Identifiable` プロトコルに準拠しているため、これを利用して比較を行います。以下はその実装例です。
 
@@ -120,14 +120,14 @@ public struct TalkAudioStamp: Sendable, Identifiable {
 ---
 
 ## 👤 ユーザー
-*2024/6/25 19:55:38*
+*2024/06/25 19:55:38*
 
 TalkAudio と TalkStamp と TalkAudioStamp のEquatableを実装してほしい
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/25 19:55:54*
+*2024/06/25 19:55:54*
 
 `TalkAudio`, `TalkStamp`, `TalkAudioStamp` の `Equatable` プロトコルの実装は、 `id` プロパティを比較するようにします。以下にそれぞれの `Equatable` 実装を示します。
 

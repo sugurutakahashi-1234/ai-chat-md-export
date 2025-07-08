@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/30 14:52:13*
+*2024/05/30 14:52:13*
 
 ResponseView(objects: responseObjects) Type 'any Encodable' cannot conform to 'Encodable' となった。なぜか？
 
@@ -241,7 +241,7 @@ public struct ContentView: View {
 ---
 
 ## 🤖 アシスタント
-*2024/5/30 14:52:49*
+*2024/05/30 14:52:49*
 
 The issue `Type 'any Encodable' cannot conform to 'Encodable'` arises because Swift's type system doesn't allow existential types (like `any Encodable`) to conform to protocols (`Encodable`). In other words, `any Encodable` means "some type that conforms to `Encodable`", but Swift can't guarantee how to encode that type at runtime because it doesn't know the specific type.
 
@@ -493,14 +493,14 @@ By using `AnyEncodable`, you can now handle different `Encodable` types within t
 ---
 
 ## 👤 ユーザー
-*2024/5/30 14:52:51*
+*2024/05/30 14:52:51*
 
 AnyEncodable は使いたくない。
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/30 14:53:31*
+*2024/05/30 14:53:31*
 
 If you prefer not to use `AnyEncodable`, another approach is to keep the type information intact throughout your code by ensuring that the types conform to `Encodable` and are used consistently. Here's how you can modify your implementation to avoid `AnyEncodable` while still achieving the desired functionality:
 

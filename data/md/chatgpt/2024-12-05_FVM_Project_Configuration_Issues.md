@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/12/5 17:40:47*
+*2024/12/05 17:40:47*
 
 fvm doctor                                                                                                                              74 ↵
 FVM Doctor:                                                                                                                                                                     
@@ -46,7 +46,7 @@ Path: /Users/sugurutakahashi/git/flutter_sample_app/.fvm/versions
 ---
 
 ## 🤖 アシスタント
-*2024/12/5 17:41:07*
+*2024/12/05 17:41:07*
 
 It seems like you're running `fvm doctor` to check the state of your Flutter project managed with FVM (Flutter Version Management). The output shows that some configurations are incomplete or have issues. Here's an analysis and suggestions to address the points:
 

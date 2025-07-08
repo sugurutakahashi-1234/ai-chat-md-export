@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/10 12:17:54*
+*2023/05/10 12:17:54*
 
 `git config --global pull.ff only`と実行したんだけど解除した
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/10 12:18:17*
+*2023/05/10 12:18:17*
 
 `git config --global pull.ff only` は、git pull コマンドを実行する際に、fast-forward（高速転送）のみを許可するように設定します。これにより、履歴がリポジトリで分岐している場合、git pull が失敗するようになります。
 
@@ -27,7 +27,7 @@ git config --global --unset pull.ff
 ---
 
 ## 👤 ユーザー
-*2023/5/10 12:19:17*
+*2023/05/10 12:19:17*
 
 From github.com:Viagate/emomil-app-ios
  * branch            feature/2-swift-format -&gt; FETCH_HEAD
@@ -49,7 +49,7 @@ fatal: Need to specify how to reconcile divergent branches.
 ---
 
 ## 🤖 アシスタント
-*2023/5/10 12:20:07*
+*2023/05/10 12:20:07*
 
 このエラーメッセージは、ローカルブランチとリモートブランチが分岐しており、どのようにそれらを統合するか指定する必要があることを示しています。git がどの方法を使用してブランチを統合するかを設定するには、次の3つのオプションがあります。
 

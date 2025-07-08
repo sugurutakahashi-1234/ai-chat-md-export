@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/10/2 11:06:27*
+*2023/10/02 11:06:27*
 
 SwiftUIでのwindowScenes?.keyWindow?.rootViewControllerの更新のかんしってどうやればできますか？
 
 ---
 
 ## 🤖 アシスタント
-*2023/10/2 11:06:45*
+*2023/10/02 11:06:45*
 
 SwiftUIでの`windowScenes?.keyWindow?.rootViewController`を変更するためには、`UIApplicationDelegate`を利用し、直接`UIWindow`オブジェクトにアクセスする必要があります。以下はその基本的な手順です。
 
@@ -22,7 +22,7 @@ SwiftUIでの`windowScenes?.keyWindow?.rootViewController`を変更するため�
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool {
         // Override point for customization after application launch.
         return true
     }

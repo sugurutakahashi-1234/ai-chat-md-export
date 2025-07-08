@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2025/4/13 18:47:53*
+*2025/04/13 18:47:53*
 
 GraphQLでSwiftを採用する場合に最も一般的なツールは？
 
 ---
 
 ## 🤖 アシスタント
-*2025/4/13 18:48:01*
+*2025/04/13 18:48:01*
 
 The human is asking me in Japanese about the most common tools when adopting GraphQL with Swift. Let me translate the question first.
 
@@ -39,14 +39,14 @@ Apollo iOS は特に機能が豊富で、型安全なクエリ、自動コード
 ---
 
 ## 👤 ユーザー
-*2025/4/13 18:50:44*
+*2025/04/13 18:50:44*
 
 **GraphQL Swiftとは？**
 
 ---
 
 ## 🤖 アシスタント
-*2025/4/13 18:50:53*
+*2025/04/13 18:50:53*
 
 The user is asking "What is GraphQL Swift?" I'll provide information about what GraphQL Swift is as a concept or library.
 

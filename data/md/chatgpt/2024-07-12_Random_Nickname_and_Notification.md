@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/12 15:34:16*
+*2024/07/12 15:34:16*
 
 randomNickname のように SNSのサービスのrandomNotificationTitle を定義してほしい。
 
@@ -22,7 +22,7 @@ extension String {
 ---
 
 ## 🤖 アシスタント
-*2024/7/12 15:34:22*
+*2024/07/12 15:34:22*
 
 以下のように `randomNotificationTitle` を定義できます。
 

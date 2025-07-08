@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/8 12:08:13*
+*2024/07/08 12:08:13*
 
 AudioServicesPlaySystemSoundWithCompletion を swift Concurrency 対応に
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/8 12:08:29*
+*2024/07/08 12:08:29*
 
 `AudioServicesPlaySystemSoundWithCompletion` は、特定のシステムサウンドを再生した後にコールバックを実行するための関数です。これを Swift Concurrency に対応させるために、`async`/`await` を利用する方法を考えます。`async` 関数としてラップすることで、コールバックを `await` を使って待機できるようになります。
 
@@ -56,14 +56,14 @@ func playSound() async {
 ---
 
 ## 👤 ユーザー
-*2024/7/8 12:09:00*
+*2024/07/08 12:09:00*
 
 SystemSoundDriver という enum に static で定義してほしい
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/8 12:09:14*
+*2024/07/08 12:09:14*
 
 `SystemSoundDriver` という enum に `AudioServicesPlaySystemSoundWithCompletion` を `static` メソッドとして定義する方法を以下に示します。
 
@@ -104,14 +104,14 @@ func playSound() async {
 ---
 
 ## 👤 ユーザー
-*2024/7/8 12:09:30*
+*2024/07/08 12:09:30*
 
 soundID: Int を引数にして欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/8 12:09:45*
+*2024/07/08 12:09:45*
 
 `SystemSoundDriver` enum の `playSystemSound` メソッドを `soundID: Int` を引数に取るように変更し、内部で `SystemSoundID` 型に変換するようにします。以下にその実装を示します。
 
@@ -154,7 +154,7 @@ func playSound() async {
 ---
 
 ## 👤 ユーザー
-*2024/7/8 12:10:38*
+*2024/07/08 12:10:38*
 
 static func play(systemSoundType: SystemSoundType) に買えてほしい
 
@@ -207,7 +207,7 @@ public enum SystemSoundType: Int, CaseIterable {
 ---
 
 ## 🤖 アシスタント
-*2024/7/8 12:11:19*
+*2024/07/08 12:11:19*
 
 `SystemSoundDriver` enum を更新し、`SystemSoundType` を引数に取る `play` メソッドを定義します。以下のコードはその実装例です：
 

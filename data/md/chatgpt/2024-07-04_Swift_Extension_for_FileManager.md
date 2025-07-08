@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/4 14:01:13*
+*2024/07/04 14:01:13*
 
 public enum FileManageDriver {
     public static func getDirectoryUrl(directoryType: LocalDiskDirectoryType) -&gt; URL {
@@ -30,7 +30,7 @@ public enum LocalDiskDirectoryType {
 ---
 
 ## 🤖 アシスタント
-*2024/7/4 14:01:21*
+*2024/07/04 14:01:21*
 
 Certainly! To follow your request, I'll move the `getDirectoryUrl` method into an extension of `FileManageDriver` enum. Additionally, I'll provide the implementation for the `LocalDiskDirectoryType` enum. Here's the revised code:
 
@@ -62,7 +62,7 @@ This setup places the `getDirectoryUrl` function within an extension of `FileMan
 ---
 
 ## 👤 ユーザー
-*2024/7/4 14:01:57*
+*2024/07/04 14:01:57*
 
 public enum LocalDiskDirectoryType {
     case documents
@@ -75,7 +75,7 @@ public enum LocalDiskDirectoryType {
 ---
 
 ## 🤖 アシスタント
-*2024/7/4 14:02:06*
+*2024/07/04 14:02:06*
 
 Certainly! You can add a computed property `directoryUrl` to the `LocalDiskDirectoryType` enum to return the appropriate URL for each case. Here's how you can do it:
 

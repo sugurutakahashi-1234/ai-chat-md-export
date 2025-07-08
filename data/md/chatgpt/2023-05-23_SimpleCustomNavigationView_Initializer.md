@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/23 23:36:54*
+*2023/05/23 23:36:54*
 
 以下のコードのイニシャライザをつくってほしい
 
@@ -32,7 +32,7 @@ public struct SimpleCustomNavigationView<Content: View>: View {
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 23:37:27*
+*2023/05/23 23:37:27*
 
 SwiftのStructには暗黙的にMemberwise Initializerが生成されます。このため、`SimpleCustomNavigationView` には初期化子が自動的に提供されています。そのため、初期化するときには以下のように行います：
 

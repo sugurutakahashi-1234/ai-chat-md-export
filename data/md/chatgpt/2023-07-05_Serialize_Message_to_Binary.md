@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/7/5 10:02:16*
+*2023/07/05 10:02:16*
 
 SwiftのSwiftProtobufでproto定義にしたがって、バイナリデータにする方法を教えて欲しい。配列のMessageに対してはBinaryDelimited.serialize を行っているが、単体のMessageに対しては通常の方法でバイナリデータに変換して欲しい。
  func serializeToBinaryData(message: some Message) throws -&gt; Data {} に記述してください。
@@ -62,7 +62,7 @@ import SwiftProtobufPluginLibrary
 ---
 
 ## 🤖 アシスタント
-*2023/7/5 10:02:32*
+*2023/07/05 10:02:32*
 
 SwiftProtobufでは、単体のMessageをバイナリデータにシリアライズするための方法はシンプルです。それは `serializedData()` メソッドを使うことです。以下にその具体的な方法を示します。
 
@@ -85,7 +85,7 @@ func serializeToBinaryData(message: Message) throws -> Data {
 ---
 
 ## 👤 ユーザー
-*2023/7/5 10:04:37*
+*2023/07/05 10:04:37*
 
 Json変換についても単体のものをつくってほしい
 
@@ -94,7 +94,7 @@ func serializeToJSONData(message: some Message) throws -&gt; Data {}
 ---
 
 ## 🤖 アシスタント
-*2023/7/5 10:04:52*
+*2023/07/05 10:04:52*
 
 SwiftProtobufで単体のMessageをJSONデータにシリアライズするための方法は以下の通りです。それは `jsonUTF8Data()` メソッドを使用することです。以下に具体的な方法を示します。
 

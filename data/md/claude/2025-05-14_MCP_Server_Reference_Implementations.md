@@ -5,43 +5,33 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/14 15:28:43*
+*2025/05/14 15:28:43*
 
 git-mcp-modelcontextprotocol-servers で内容をまとめてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/14 15:30:01*
+*2025/05/14 15:30:01*
 
 お役に立ちますね。GitHub リポジトリ「modelcontextprotocol/servers」の内容について要約したいと思います。まず、このリポジトリの詳細な情報を取得しましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 レスポンスが長すぎたため、切り詰められましたが、重要な情報が得られましたので要約をお作りします。さらに詳細情報を検索しましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 MCP (Model Context Protocol)に関する基本情報を理解するために、公式サイトを確認してみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 

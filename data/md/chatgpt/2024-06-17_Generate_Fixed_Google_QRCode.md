@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/17 15:52:13*
+*2024/06/17 15:52:13*
 
 このスタブでGoogleのホームページのQRCodeを固定で返却するようにしたい。
 
@@ -27,7 +27,7 @@ public final class QRCodeDriverProtocolMock: QRCodeDriverProtocol {
 ---
 
 ## 🤖 アシスタント
-*2024/6/17 15:52:27*
+*2024/06/17 15:52:27*
 
 以下のコードを使って、QRCodeDriverProtocolMockのgenerateQRCodeメソッドがGoogleのホームページのQRCodeを固定で返却するようにすることができます。`CIImage`を生成するために`CoreImage`をインポートし、スタブ内で固定のQRCode画像を返すように設定します。
 
@@ -78,14 +78,14 @@ public final class QRCodeDriverProtocolMock: QRCodeDriverProtocol {
 ---
 
 ## 👤 ユーザー
-*2024/6/17 15:52:46*
+*2024/06/17 15:52:46*
 
 QRCodeDriverProtocolMock の内容を変えるのではなく、外から設定したい。
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/17 15:53:03*
+*2024/06/17 15:53:03*
 
 外部から設定するために、`QRCodeDriverProtocolMock`の`generateQRCodeHandler`に固定のGoogle QRコードを返すクロージャを設定することができます。以下のように使用するコード例を示します。
 

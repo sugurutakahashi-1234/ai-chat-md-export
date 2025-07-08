@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/19 19:54:05*
+*2025/01/19 19:54:05*
 
 SpotPhotoCarousel について  List&lt;String&gt; spotPhotoUrls と SpotOwnership spotOwnership; について引数を設定しているが、
 spotPhotoUrlとspotOwnership を持つような別のclassを作ってそれの配列を渡すように修正してほしい。
@@ -121,7 +121,7 @@ class SpotPhotoCarousel extends HookWidget {
 ---
 
 ## 🔧 ツール
-*2025/1/19 19:54:30*
+*2025/01/19 19:54:30*
 
 **Reimagining photo display**
 
@@ -182,7 +182,7 @@ I’m finalizing the `SpotPhotoCarousel` class by embedding dynamic titles and a
 ---
 
 ## 🤖 アシスタント
-*2025/1/19 19:54:30*
+*2025/01/19 19:54:30*
 
 ```dart
 import 'package:carousel_slider/carousel_slider.dart';
@@ -307,7 +307,7 @@ class SpotPhotoCarousel extends HookWidget {
 ---
 
 ## 👤 ユーザー
-*2025/1/19 21:09:37*
+*2025/01/19 21:09:37*
 
 でまた、SpotPhotoCarouselを使う際に、現在選択中のspotOwnership に連動して、SpotPhotoCarousel の上に表示しているタイトルを変更させたい。
 いい方法を考えてほしい。なるべくシンプルがいいです。
@@ -317,7 +317,7 @@ class SpotPhotoCarousel extends HookWidget {
 ---
 
 ## 🔧 ツール
-*2025/1/19 21:10:30*
+*2025/01/19 21:10:30*
 
 **Customizing titles**
 
@@ -350,7 +350,7 @@ I’m working through SpotPhotoCarousel's parent widget, integrating ownership b
 ---
 
 ## 🤖 アシスタント
-*2025/1/19 21:10:30*
+*2025/01/19 21:10:30*
 
 ```dart
 import 'package:carousel_slider/carousel_slider.dart';

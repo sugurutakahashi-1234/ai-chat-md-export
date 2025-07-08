@@ -5,19 +5,15 @@
 ---
 
 ## 🤖 アシスタント
-*2025/5/15 17:56:23*
+*2025/05/15 17:56:23*
 
 スクリーンショットを撮影するために、まず指定されたURLにナビゲートします。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 ページにナビゲートできました。次に、スクリーンショットを撮影します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -28,14 +24,14 @@ This block is not supported on your current device yet.
 ---
 
 ## 👤 ユーザー
-*2025/5/15 17:55:46*
+*2025/05/15 17:55:46*
 
 puppeteer_screenshotしてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/15 17:55:52*
+*2025/05/15 17:55:52*
 
 こんにちは！`puppeteer_screenshot`ツールを使用してスクリーンショットを撮りたいとのことですね。このツールを使用するには、まず対象のウェブページをロードするために`puppeteer_navigate`を実行し、その後スクリーンショットを撮影する必要があります。
 
@@ -44,7 +40,7 @@ puppeteer_screenshotしてほしい
 ---
 
 ## 👤 ユーザー
-*2025/5/15 17:55:59*
+*2025/05/15 17:55:59*
 
 https://azukiazusa.dev/blog/docker-mcp-toolkit/
 

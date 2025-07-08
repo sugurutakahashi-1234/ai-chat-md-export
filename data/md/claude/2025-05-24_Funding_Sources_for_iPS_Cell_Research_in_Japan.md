@@ -5,26 +5,22 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/24 9:29:24*
+*2025/05/24 09:29:24*
 
 iPS細胞の研究費はどこが1番出しているのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/24 9:29:45*
+*2025/05/24 09:29:45*
 
 iPS細胞の研究費について、最新の状況を調べてみますね。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 さらに最新の研究資金の状況を調べてみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -52,53 +48,39 @@ CiRAの再生医療用iPS細胞の備蓄事業はその中の目玉と位置付�
 ---
 
 ## 👤 ユーザー
-*2025/5/24 9:30:31*
+*2025/05/24 09:30:31*
 
 これは他の研究対象の研究費に比べて大きいのか少ないのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/24 9:31:10*
+*2025/05/24 09:31:10*
 
 iPS細胞の研究費が他の研究分野と比べてどの程度の規模なのか、比較データを調べてみますね。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 より具体的な科研費の予算規模を調べてみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 他の国際的な研究費との比較も調べてみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -134,29 +116,23 @@ iPS細胞の研究費が他の研究分野と比べて大きいか小さいか�
 ---
 
 ## 👤 ユーザー
-*2025/5/24 9:31:51*
+*2025/05/24 09:31:51*
 
 日本での他の研究対象の具体例を教えてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/24 9:32:22*
+*2025/05/24 09:32:22*
 
 日本での他の研究対象の具体例と予算規模を調べてみますね。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -217,19 +193,17 @@ This block is not supported on your current device yet.
 ---
 
 ## 👤 ユーザー
-*2025/5/24 9:33:21*
+*2025/05/24 09:33:21*
 
 ランキングとか出せないか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/24 9:34:12*
+*2025/05/24 09:34:12*
 
 日本の研究分野別予算ランキングを作成するために、より詳細なデータを調べてみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 ```

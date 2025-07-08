@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/20 0:48:26*
+*2023/05/20 00:48:26*
 
 以下のコードってジェネリクス使っているけど綺麗にかけない？
 
@@ -39,7 +39,7 @@ struct BackgroundColorSectionView<BackgroundColorAssets: BackgroundColorAssetsLi
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 0:49:32*
+*2023/05/20 00:49:32*
 
 上記のSwiftUIのコードは全体的にクリーンですが、HStackの中でテキスト部分を重複しているので、これをリファクタリングすることができます。以下に示すように、新たな `footnoteText` 関数を作成して、それを使用することでコードを短くすることができます。
 
@@ -77,14 +77,14 @@ struct BackgroundColorSectionView<BackgroundColorAssets: BackgroundColorAssetsLi
 ---
 
 ## 👤 ユーザー
-*2023/5/20 0:49:36*
+*2023/05/20 00:49:36*
 
 これは struct で宣言しているけど関数化したらどうかくことができるかな？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 0:50:52*
+*2023/05/20 00:50:52*
 
 SwiftUI の View は一般的に struct で宣言されますが、View を作成する関数を作成することも可能です。ただし、この場合でも、View 本体は関数内のローカル struct として定義されます。
 

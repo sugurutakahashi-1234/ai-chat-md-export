@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/6 16:09:37*
+*2025/01/06 16:09:37*
 
 {
   "content_type": "image_asset_pointer",
@@ -49,7 +49,7 @@ ElevatedButtonではなくてOutlinedButtonで設定したい。
 ---
 
 ## 🤖 アシスタント
-*2025/1/6 16:09:49*
+*2025/01/06 16:09:49*
 
 以下は、Flutterでアウトラインボタン (`OutlinedButton`) を使用して、添付画像に近いデザインを作成するコード例です。`ButtonStyle` をカスタマイズして、ボーダーや背景色、テキストスタイルを調整しています。
 
@@ -144,14 +144,14 @@ void main() {
 ---
 
 ## 👤 ユーザー
-*2025/1/6 16:10:06*
+*2025/01/06 16:10:06*
 
 ThemeDataで設定したい
 
 ---
 
 ## 🤖 アシスタント
-*2025/1/6 16:10:26*
+*2025/01/06 16:10:26*
 
 `ThemeData`で`OutlinedButton`のスタイルを設定する方法を以下に示します。`OutlinedButtonThemeData`を使用して、アプリ全体で適用できるテーマを定義します。
 
@@ -259,7 +259,7 @@ class GuildManagementScreen extends StatelessWidget {
 ---
 
 ## 👤 ユーザー
-*2025/1/6 16:21:59*
+*2025/01/06 16:21:59*
 
 このボタンだけ32にしたい
 
@@ -276,7 +276,7 @@ class GuildManagementScreen extends StatelessWidget {
 ---
 
 ## 🤖 アシスタント
-*2025/1/6 16:22:10*
+*2025/01/06 16:22:10*
 
 特定のボタンにだけ高さ (`minimumSize`) を指定する場合は、`OutlinedButton.styleFrom` を使用して、そのボタンにスタイルを上書きできます。
 

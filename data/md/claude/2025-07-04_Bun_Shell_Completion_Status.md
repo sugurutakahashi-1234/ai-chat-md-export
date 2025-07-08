@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/7/4 22:21:37*
+*2025/07/04 22:21:37*
 
 これってbunにもないの？
 
@@ -15,16 +15,12 @@ https://pnpm.io/completion
 ---
 
 ## 🤖 アシスタント
-*2025/7/4 22:21:58*
+*2025/07/04 22:21:58*
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 残念ながら、現在のところBunにはnpmやpnpmのような公式のシェル補完（shell completion）機能は提供されていません。
 

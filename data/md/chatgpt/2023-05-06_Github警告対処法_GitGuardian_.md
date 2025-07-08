@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/6 14:51:34*
+*2023/05/06 14:51:34*
 
 publicなGithubリポジトリにGoogleService-Info.plist をpushしたらgitguardianから警告がきた。
 GoogleService-Info.plist  をpushするリスクと解決方法を教えて欲しい
@@ -13,7 +13,7 @@ GoogleService-Info.plist  をpushするリスクと解決方法を教えて欲�
 ---
 
 ## 🤖 アシスタント
-*2023/5/6 14:52:18*
+*2023/05/06 14:52:18*
 
 `GoogleService-Info.plist` ファイルは、FirebaseやGoogleサービスを利用するiOSアプリで使用される設定ファイルです。このファイルには、APIキーやアプリIDなど、機密性のある情報が含まれているため、publicなGitHubリポジトリにpushすることはセキュリティ上のリスクがあります。GitGuardian は、このような機密情報の流出を検出し、アラートを送るセキュリティツールです。
 
@@ -43,14 +43,14 @@ git commit -m "Add GoogleService-Info.plist to .gitignore"
 ---
 
 ## 👤 ユーザー
-*2023/5/6 14:53:38*
+*2023/05/06 14:53:38*
 
 でもXcode CloudにてビルドやTestFlightにアップロードするときにGoogleService-Info.plist は読み込ませる必要があるんだけどどうすればいい？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/6 14:54:40*
+*2023/05/06 14:54:40*
 
 Xcode Cloudを使用してビルドやTestFlightへのアップロードを行う場合、`GoogleService-Info.plist` をセキュアに扱う方法がいくつかあります。
 
@@ -91,14 +91,14 @@ Xcode Cloudを使用してビルドやTestFlightへのアップロードを行�
 ---
 
 ## 👤 ユーザー
-*2023/5/6 14:55:09*
+*2023/05/06 14:55:09*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/6 14:55:17*
+*2023/05/06 14:55:17*
 
 できます。
 

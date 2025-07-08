@@ -5,25 +5,25 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/5 1:07:48*
+*2025/06/05 01:07:48*
 
 openapi.yaml から npm ツールで、swagger uiでのサーバーを建てられるツールの候補の比較をして欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/5 1:09:07*
+*2025/06/05 01:09:07*
 
 以下では、**「既存の openapi.yaml を読み取り、Swagger UI つきの HTTP サーバーを npm だけで手早く立てられる代表的ツール」**を 5 つ選び、特徴・向き／不向き・メンテ状況を比較しました。  
 ──いずれも *npm install* だけで利用でき、「ブラウザで `/docs` 等にアクセスすると Swagger UI が表示され、そこから API を試せる」レベルまで最短数行で到達できます。
 
 | ツール | タイプ | 1 行で起動例 | 主な強み | 注意点 | 最終リリース |
 |-------|-------|-------------|---------|--------|-------------|
-| **swagger-ui-express** | Express ミドルウェア | ```app.use('/docs', swaggerUi.serve, swaggerUi.setup(spec))``` | - Express プロジェクトなら追加 3 行で導入可能<br>- ミドルウェアなので認証や CORS 設定も既存コードで一元管理 | Express 以外だと使いにくい | 「last year」＝ 1 年以上更新なし citeturn0search0 |
-| **@fastify/swagger-ui** | Fastify プラグイン | ```await fastify.register(require('@fastify/swagger-ui'), {spec})``` | - Fastify v4/5 に公式に対応<br>- CDN ではなくローカルに UI を配備するのでオフラインでも動作 | Fastify 依存。プラグイン一式を `await` で登録する必要がある | 3 日前に更新（活発） citeturn0search3 |
-| **@hono/swagger-ui** | Hono ミドルウェア | ```app.get('/docs/*', serveSwaggerUI({ spec }))``` | - Cloudflare Workers など Edge ランタイム向けフレームワーク Hono と親和性◎<br>- ほぼゼロ設定で UI 付き | Hono 専用。Node/Express の代替にはならない | 3 か月前に更新 citeturn0search4 |
-| **swagger-ui-watcher** | スタンドアロン CLI | ```npx swagger-ui-watcher openapi.yaml``` | - **開発時に便利**：yaml を監視してホットリロード、ブラウザ自動オープン<br>- Express などのコードは一切不要 | 本番向け機能（認証・圧縮など）は自前で用意する必要 | `npm install -g` 方式。OAS 3対応 citeturn0search1 |
-| **swagger-ui-dist (+ 任意の静的サーバー)** | 純粋な静的アセット | ```npx http-server ./node_modules/swagger-ui-dist``` | - 一番シンプル＆フレームワーク非依存<br>- HTML を直接編集すればテーマ変更も容易 | - yaml→json 変換や UI オプション注入は自分でスクリプトを書く必要<br>- ホットリロードなし | npm 公式配布モジュール citeturn2search4 |
+| **swagger-ui-express** | Express ミドルウェア | ```app.use('/docs', swaggerUi.serve, swaggerUi.setup(spec))``` | - Express プロジェクトなら追加 3 行で導入可能&lt;br&gt;- ミドルウェアなので認証や CORS 設定も既存コードで一元管理 | Express 以外だと使いにくい | 「last year」＝ 1 年以上更新なし citeturn0search0 |
+| **@fastify/swagger-ui** | Fastify プラグイン | ```await fastify.register(require('@fastify/swagger-ui'), {spec})``` | - Fastify v4/5 に公式に対応&lt;br&gt;- CDN ではなくローカルに UI を配備するのでオフラインでも動作 | Fastify 依存。プラグイン一式を `await` で登録する必要がある | 3 日前に更新（活発） citeturn0search3 |
+| **@hono/swagger-ui** | Hono ミドルウェア | ```app.get('/docs/*', serveSwaggerUI({ spec }))``` | - Cloudflare Workers など Edge ランタイム向けフレームワーク Hono と親和性◎&lt;br&gt;- ほぼゼロ設定で UI 付き | Hono 専用。Node/Express の代替にはならない | 3 か月前に更新 citeturn0search4 |
+| **swagger-ui-watcher** | スタンドアロン CLI | ```npx swagger-ui-watcher openapi.yaml``` | - **開発時に便利**：yaml を監視してホットリロード、ブラウザ自動オープン&lt;br&gt;- Express などのコードは一切不要 | 本番向け機能（認証・圧縮など）は自前で用意する必要 | `npm install -g` 方式。OAS 3対応 citeturn0search1 |
+| **swagger-ui-dist (+ 任意の静的サーバー)** | 純粋な静的アセット | ```npx http-server ./node_modules/swagger-ui-dist``` | - 一番シンプル＆フレームワーク非依存&lt;br&gt;- HTML を直接編集すればテーマ変更も容易 | - yaml→json 変換や UI オプション注入は自分でスクリプトを書く必要&lt;br&gt;- ホットリロードなし | npm 公式配布モジュール citeturn2search4 |
 
 ---
 
@@ -68,14 +68,14 @@ openapi.yaml から npm ツールで、swagger uiでのサーバーを建てら�
 ---
 
 ## 👤 ユーザー
-*2025/6/5 1:10:13*
+*2025/06/05 01:10:13*
 
 @hono/swagger-ui 使っている
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/5 1:10:14*
+*2025/06/05 01:10:14*
 
 了解しました！  
 では **既存の `openapi.yaml` を読み込み、`@hono/swagger-ui` で `/docs` 配下に Swagger UI を公開する最小～実運用向け構成** をサンプルコード付きで解説します。  

@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/8 23:39:44*
+*2023/05/08 23:39:44*
 
 GitHubのPRでstatus checkが全部成功したときに、設定されているreviewersに対して、Slackのとあるチャンネルでメンションをつけて通知する方法を教えてほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 23:41:46*
+*2023/05/08 23:41:46*
 
 GitHubのPRでstatus checkが全て成功したときに、設定されているreviewersに対してSlackのとあるチャンネルでメンションをつけて通知する方法を実現するには、GitHub ActionsとSlack APIを利用することで実現できます。
 
@@ -20,7 +20,7 @@ GitHubのPRでstatus checkが全て成功したときに、設定されている
 まず、Slackでアプリを作成し、`chat:write`権限を持ったBotトークンを取得してください。詳しい手順は[こちら](https://api.slack.com/authentication/basics)を参照してください。
 
 2. GitHubリポジトリにSlack APIトークンを追加
-取得したBotトークンをGitHubリポジトリのSecretsに追加します。リポジトリのSettings > Secretsに移動し、`SLACK_API_TOKEN`という名前でBotトークンを追加してください。
+取得したBotトークンをGitHubリポジトリのSecretsに追加します。リポジトリのSettings &gt; Secretsに移動し、`SLACK_API_TOKEN`という名前でBotトークンを追加してください。
 
 3. GitHub Actionsの設定
 次に、GitHubリポジトリに`.github/workflows/notify_reviewers_on_successful_checks.yml`という名前のファイルを作成し、以下の内容を記述します。
@@ -64,14 +64,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/8 23:41:52*
+*2023/05/08 23:41:52*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 23:43:09*
+*2023/05/08 23:43:09*
 
 チャンネルのIDに置き換えてください。SlackチャンネルIDを取得するには、WebブラウザでSlackにログインし、対象チャンネルを開き、URLを確認してください。URLの末尾にある `CXXXXXXXX` の形式で表されるIDがチャンネルIDです。
 
@@ -88,14 +88,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/8 23:48:37*
+*2023/05/08 23:48:37*
 
 chat:write権限を持ったBotトークンを取得方法を教えて
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 23:50:02*
+*2023/05/08 23:50:02*
 
 `chat:write`権限を持ったBotトークンを取得するには、以下の手順を実行してください。
 
@@ -119,14 +119,14 @@ chat:write権限を持ったBotトークンを取得方法を教えて
 ---
 
 ## 👤 ユーザー
-*2023/5/8 23:58:41*
+*2023/05/08 23:58:41*
 
 ちなみにSlack側にはどんな感じで送られるの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 23:59:42*
+*2023/05/08 23:59:42*
 
 GitHub ActionsからSlackに通知が送られると、指定したチャンネルでメッセージが表示されます。このメッセージには、プルリクエストで設定されたレビュワーのメンションが含まれており、レビュワーが通知を受け取ることができます。
 
@@ -144,7 +144,7 @@ https://github.com/your_repository/pull/123
 ---
 
 ## 👤 ユーザー
-*2023/5/9 0:03:09*
+*2023/05/09 00:03:09*
 
 1行目がメンションされたレビュワー
 2行目が"PR の CI が通りました。レビューのお願いします。"
@@ -153,7 +153,7 @@ https://github.com/your_repository/pull/123
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 0:04:55*
+*2023/05/09 00:04:55*
 
 ご要望に沿って、GitHub Actionsのワークフロー設定ファイル（`.github/workflows/notify_reviewers_on_successful_checks.yml`）を書き換えます。
 
@@ -212,7 +212,7 @@ https://github.com/your_repository/pull/123
 ---
 
 ## 👤 ユーザー
-*2023/5/9 0:05:53*
+*2023/05/09 00:05:53*
 
 2行目を
 
@@ -223,7 +223,7 @@ PR の CI が通りました。レビューのお願いします。 by @送信�
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 0:07:41*
+*2023/05/09 00:07:41*
 
 要望に沿って、GitHub Actionsのワークフロー設定ファイル（`.github/workflows/notify_reviewers_on_successful_checks.yml`）を再度書き換えます。
 
@@ -281,28 +281,28 @@ https://github.com/your_repository/pull/123
 ---
 
 ## 👤 ユーザー
-*2023/5/9 0:07:50*
+*2023/05/09 00:07:50*
 
 天才だ！ありがとう！
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 0:08:02*
+*2023/05/09 00:08:02*
 
 どういたしまして！お力になれてうれしいです。もし他に質問やお助けが必要なことがありましたら、いつでもお気軽にお聞きください。お手伝いできることがあれば喜んで対応します！
 
 ---
 
 ## 👤 ユーザー
-*2023/5/9 0:12:23*
+*2023/05/09 00:12:23*
 
 もしかして、このワークフローはPRを作成したときに動くCIがないと動かないのかな？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 0:13:35*
+*2023/05/09 00:13:35*
 
 はい、その通りです。このワークフローは、`check_suite`イベントの`completed`タイプをトリガーにしているため、プルリクエストに関連するCI（Continuous Integration）がない場合は実行されません。CIが終了し、すべてのチェックが成功した場合にのみ、このワークフローが実行され、Slack通知が送信されます。
 
@@ -329,14 +329,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 0:15:37*
+*2023/05/09 00:15:37*
 
 レビューワーでもレビュー済みの人はメンションに含めたくないんだけどどうすればいい？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 0:17:35*
+*2023/05/09 00:17:35*
 
 レビュー済みの人をメンションから除外するには、プルリクエストのレビュー情報を取得し、レビュー済みのユーザーを特定して除外する処理を追加する必要があります。GitHub Actionsのワークフロー設定ファイル（`.github/workflows/notify_reviewers_on_successful_checks.yml`）を以下のように書き換えます。
 
@@ -389,14 +389,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 0:17:41*
+*2023/05/09 00:17:41*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 0:18:21*
+*2023/05/09 00:18:21*
 
 （続き）レビュー済みのユーザーを特定（`USERS_REVIEWED`変数）し、彼らをメンションから除外するように変更しました。`for`ループ内で、ユーザーがレビュー済みでないことを確認してから、メンションを生成しています。
 
@@ -405,14 +405,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 0:19:22*
+*2023/05/09 00:19:22*
 
 レビュー済み じゃなくて Approved のレビュワーだけのぞいて欲しいんだ
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 0:21:09*
+*2023/05/09 00:21:09*
 
 了解しました。Approvedのレビュワーのみを除外するように、GitHub Actionsのワークフロー設定ファイル（`.github/workflows/notify_reviewers_on_successful_checks.yml`）を以下のように書き換えます。
 
@@ -465,7 +465,7 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 0:54:26*
+*2023/05/09 00:54:26*
 
 https://slack.com/api/chat.postMessage を送信したら、
 
@@ -477,7 +477,7 @@ SLACK_CHANNEL_ID: "C05736775AM" を指定したけど。
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 0:55:29*
+*2023/05/09 00:55:29*
 
 このエラーメッセージは、ボットが指定されたチャンネルに参加していないため、メッセージの送信ができなかったことを示しています。ボットをチャンネルに招待することで、この問題を解決できます。
 
@@ -500,7 +500,7 @@ Slackで、対象のチャンネル（この場合は `C05736775AM`）に移動�
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:00:57*
+*2023/05/09 01:00:57*
 
 今度は以下のエラーがでた
 
@@ -511,7 +511,7 @@ Slackで、対象のチャンネル（この場合は `C05736775AM`）に移動�
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:02:15*
+*2023/05/09 01:02:15*
 
 このエラーは、送信しようとしているメッセージの`blocks`がSlack APIの要求に適合していないことを示しています。エラーによれば、`blocks[0].text`が一致せず、`blocks[0].text.text`が0文字以上である必要があると指摘されています。
 
@@ -536,14 +536,14 @@ fi
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:03:27*
+*2023/05/09 01:03:27*
 
 それを踏まえて、ymlを修正してほしい。あとMENTIONSが空の場合は、レビューワーが設定されていませんという意味合いのメッセージを加えて欲しい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:05:22*
+*2023/05/09 01:05:22*
 
 ご指示に従って、GitHub Actionsのワークフロー設定ファイル（`.github/workflows/notify_reviewers_on_successful_checks.yml`）を以下のように修正しました。`MENTIONS`が空の場合に、「レビュワーが設定されていません」という意味合いのメッセージを追加しています。
 
@@ -568,21 +568,21 @@ jobs:
         SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
         SLACK_CHANNEL_ID: "C05736775AM"
       run: |
-        PR_ID=$(jq .pull_requests[0].number <(curl -s https://api.github.com/repos/${{ github.repository }}/check-suites/${{ github.event.check_suite.id }}))
+        PR_ID=$(jq .pull_requests[0].number &lt;(curl -s https://api.github.com/repos/${{ github.repository }}/check-suites/${{ github.event.check_suite.id }}))
         PR_DATA=$(curl -s https://api.github.com/repos/${{ github.repository }}/pulls/$PR_ID)
-        USERS=$(jq -r '.requested_reviewers | map(.login) | join(", ")' <<< $PR_DATA)
+        USERS=$(jq -r '.requested_reviewers | map(.login) | join(", ")' &lt;&lt;&lt; $PR_DATA)
         REVIEWS=$(curl -s https://api.github.com/repos/${{ github.repository }}/pulls/$PR_ID/reviews)
-        USERS_APPROVED=$(jq -r '[.[] | select(.state=="APPROVED") | .user.login] | unique | join(", ")' <<< $REVIEWS)
+        USERS_APPROVED=$(jq -r '[.[] | select(.state=="APPROVED") | .user.login] | unique | join(", ")' &lt;&lt;&lt; $REVIEWS)
 
-        PR_TITLE=$(jq -r '.title' <<< $PR_DATA)
-        PR_SENDER=$(jq -r '.user.login' <<< $PR_DATA)
-        PR_LINK=$(jq -r '.html_url' <<< $PR_DATA)
+        PR_TITLE=$(jq -r '.title' &lt;&lt;&lt; $PR_DATA)
+        PR_SENDER=$(jq -r '.user.login' &lt;&lt;&lt; $PR_DATA)
+        PR_LINK=$(jq -r '.html_url' &lt;&lt;&lt; $PR_DATA)
 
         MENTIONS=""
         for user in $USERS; do
           if [[ ! $USERS_APPROVED =~ (^|[[:space:]])$user($|[[:space:]]) ]]; then
             SLACK_USER_ID=$(curl -s -X POST -H "Authorization: Bearer $SLACK_API_TOKEN" -H "Content-type: application/json; charset=utf-8" --data '{"username": "'$user'"}' https://slack.com/api/users.lookupByEmail | jq -r '.user.id')
-            MENTIONS="$MENTIONS <@$SLACK_USER_ID>"
+            MENTIONS="$MENTIONS &lt;@$SLACK_USER_ID&gt;"
           fi
         done
 
@@ -597,14 +597,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:06:06*
+*2023/05/09 01:06:06*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:07:42*
+*2023/05/09 01:07:42*
 
 続きです。以下が修正されたGitHub Actionsのワークフロー設定ファイル（`.github/workflows/notify_reviewers_on_successful_checks.yml`）です。`MENTIONS`が空の場合に、「レビュワーが設定されていません」という意味合いのメッセージを追加しています。
 
@@ -629,21 +629,21 @@ jobs:
         SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
         SLACK_CHANNEL_ID: "C05736775AM"
       run: |
-        PR_ID=$(jq .pull_requests[0].number <(curl -s https://api.github.com/repos/${{ github.repository }}/check-suites/${{ github.event.check_suite.id }}))
+        PR_ID=$(jq .pull_requests[0].number &lt;(curl -s https://api.github.com/repos/${{ github.repository }}/check-suites/${{ github.event.check_suite.id }}))
         PR_DATA=$(curl -s https://api.github.com/repos/${{ github.repository }}/pulls/$PR_ID)
-        USERS=$(jq -r '.requested_reviewers | map(.login) | join(", ")' <<< $PR_DATA)
+        USERS=$(jq -r '.requested_reviewers | map(.login) | join(", ")' &lt;&lt;&lt; $PR_DATA)
         REVIEWS=$(curl -s https://api.github.com/repos/${{ github.repository }}/pulls/$PR_ID/reviews)
-        USERS_APPROVED=$(jq -r '[.[] | select(.state=="APPROVED") | .user.login] | unique | join(", ")' <<< $REVIEWS)
+        USERS_APPROVED=$(jq -r '[.[] | select(.state=="APPROVED") | .user.login] | unique | join(", ")' &lt;&lt;&lt; $REVIEWS)
 
-        PR_TITLE=$(jq -r '.title' <<< $PR_DATA)
-        PR_SENDER=$(jq -r '.user.login' <<< $PR_DATA)
-        PR_LINK=$(jq -r '.html_url' <<< $PR_DATA)
+        PR_TITLE=$(jq -r '.title' &lt;&lt;&lt; $PR_DATA)
+        PR_SENDER=$(jq -r '.user.login' &lt;&lt;&lt; $PR_DATA)
+        PR_LINK=$(jq -r '.html_url' &lt;&lt;&lt; $PR_DATA)
 
         MENTIONS=""
         for user in $USERS; do
           if [[ ! $USERS_APPROVED =~ (^|[[:space:]])$user($|[[:space:]]) ]]; then
             SLACK_USER_ID=$(curl -s -X POST -H "Authorization: Bearer $SLACK_API_TOKEN" -H "Content-type: application/json; charset=utf-8" --data '{"username": "'$user'"}' https://slack.com/api/users.lookupByEmail | jq -r '.user.id')
-            MENTIONS="$MENTIONS <@$SLACK_USER_ID>"
+            MENTIONS="$MENTIONS &lt;@$SLACK_USER_ID&gt;"
           fi
         done
 
@@ -658,14 +658,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:08:12*
+*2023/05/09 01:08:12*
 
 途中で止まっちゃったから、続きから教えて
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:08:39*
+*2023/05/09 01:08:39*
 
 すみません。続きを以下に示します。
 
@@ -679,14 +679,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:09:04*
+*2023/05/09 01:09:04*
 
 curl -s -X POST が2箇所書かれているんだけど1つになるようにリファクタリングできないの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:09:58*
+*2023/05/09 01:09:58*
 
 もちろん、リファクタリングして1つの`curl`コマンドにまとめることができます。以下のように変更して、`MENTIONS`が空の場合とそれ以外の場合で`blocks`の内容を分岐させることができます。
 
@@ -706,14 +706,14 @@ curl -s -X POST -H "Authorization: Bearer $SLACK_API_TOKEN" -H "Content-type: ap
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:10:42*
+*2023/05/09 01:10:42*
 
 ちなみに、MENTIONSが空の場合はどんなメッセージになるの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:11:14*
+*2023/05/09 01:11:14*
 
 `MENTIONS`が空の場合、メッセージは以下のようになります。
 
@@ -731,7 +731,7 @@ PR の CI が通りました。レビューのお願いします。 by @送信�
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:21:05*
+*2023/05/09 01:21:05*
 
 なるほど。
 
@@ -761,7 +761,7 @@ by @送信者の名前
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:22:43*
+*2023/05/09 01:22:43*
 
 了解しました。指定されたフォーマットに従って、GitHub Actionsのワークフロー設定ファイルを変更してみます。
 
@@ -818,14 +818,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:31:03*
+*2023/05/09 01:31:03*
 
 これと同じことをWebhooksを使って行うこともできないの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:33:13*
+*2023/05/09 01:33:13*
 
 はい、Webhooksを使って同様の通知を実現することもできます。GitHubとSlackの連携には、[GitHubの公式Slackアプリ](https://slack.github.com/)を使用する方法がありますが、カスタムメッセージフォーマットを使用するためには、代わりに独自のWebhookを設定する必要があります。
 
@@ -870,14 +870,14 @@ app.listen(port, () => {
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:36:03*
+*2023/05/09 01:36:03*
 
 ごめん、思ったのと違くて、Incoming Webhook を使ってできないのかなと思った。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:37:52*
+*2023/05/09 01:37:52*
 
 すみません、Incoming Webhookについて理解しました。Incoming Webhookを使用してSlackに通知を送ることは可能ですが、GitHub Actionsのワークフローで実行されるシェルスクリプトから直接Slackにメッセージを送信する方法と比べて、承認済みのレビュワーを除外するなどのカスタマイズが難しくなります。
 
@@ -922,7 +922,7 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:46:31*
+*2023/05/09 01:46:31*
 
 そんなことないはずなんだけど、なんでIncoming Webhooks では承認済みのレビュワーを除外したり、メンションをカスタマイズしたりすることはできないの？
 
@@ -931,7 +931,7 @@ jobs:
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:48:40*
+*2023/05/09 01:48:40*
 
 失礼しました。Incoming Webhooksを使っても、承認済みのレビュワーを除外したり、メンションをカスタマイズしたりすることは可能です。先程の説明が不正確でしたので、修正いたします。
 
@@ -992,28 +992,28 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:49:16*
+*2023/05/09 01:49:16*
 
 これだと、Botトークンはいらないよね？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:49:36*
+*2023/05/09 01:49:36*
 
 はい、その通りです。Incoming Webhooksを使用する場合、Botトークンは必要ありません。代わりに、SlackでIncoming Webhookを設定してURLを取得し、そのURLを使ってGitHub Actionsワークフローで通知を送ります。この方法では、Slackに通知を送るためにBotトークンを使わずに済みます。
 
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:50:09*
+*2023/05/09 01:50:09*
 
 このymlファイルをカスタマイズする場所ってある？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:51:03*
+*2023/05/09 01:51:03*
 
 GitHub ActionsワークフローのYAMLファイルは、GitHubリポジトリ内の特定のディレクトリに配置する必要があります。その場所は、リポジトリのルートディレクトリにある`.github/workflows`ディレクトリです。YAMLファイルは、このディレクトリ内に置かれたものがGitHub Actionsで認識され、ワークフローとして実行されます。
 
@@ -1031,14 +1031,14 @@ your-repo/
 ---
 
 ## 👤 ユーザー
-*2023/5/9 1:51:41*
+*2023/05/09 01:51:41*
 
 Incoming Webhooks の作り方を教えて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 1:53:04*
+*2023/05/09 01:53:04*
 
 SlackのIncoming Webhookを設定する方法を説明します。Incoming Webhookを使うと、外部ソースから簡単にSlackチャンネルにメッセージを送信できます。
 
@@ -1057,7 +1057,7 @@ GitHub ActionsのワークフローでこのURLを使用する場合、`SLACK_WE
 ---
 
 ## 👤 ユーザー
-*2023/5/9 2:07:20*
+*2023/05/09 02:07:20*
 
 on:
   check_suite:
@@ -1069,7 +1069,7 @@ on:
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 2:08:48*
+*2023/05/09 02:08:48*
 
 確かに、複数のチェックがある場合、`check_suite`イベントがいくつか発生する可能性があります。これを解決する方法の1つは、GitHub Actionsワークフローをプルリクエストのマージ時にトリガーするように変更することです。これにより、すべてのチェックが完了してマージが可能になったときにのみ、Slackへの通知が行われます。
 
@@ -1097,7 +1097,7 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 2:10:31*
+*2023/05/09 02:10:31*
 
 逆転の発想で、以下のようなワークフローを作って必ず5秒ぐらいかかるCIをつくるのはどう？
 
@@ -1115,7 +1115,7 @@ on:
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 2:12:00*
+*2023/05/09 02:12:00*
 
 5秒ほどかかるCIワークフローを追加することで、他のすぐに完了するチェックが終わる前に通知が送信されるのを防ぐことができます。以下のYAMLファイルは、指定されたプルリクエストイベントでトリガーされ、5秒間スリープするジョブを含みます。
 
@@ -1144,7 +1144,7 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 2:12:49*
+*2023/05/09 02:12:49*
 
 わかった。ありがとうございます。
 5秒ほどかかるCIワークフローをいい感じのymlファイル名を定義して、nameも変更して
@@ -1152,7 +1152,7 @@ jobs:
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 2:13:47*
+*2023/05/09 02:13:47*
 
 以下に、適切な名前でYAMLファイル名とワークフロー名を設定した5秒間スリープするCIワークフローの例を示します。
 
@@ -1180,14 +1180,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 2:58:13*
+*2023/05/09 02:58:13*
 
 最終的な notify_reviewers_on_successful_checks.yml なんだけど、これの出力の具体例を教えて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 2:59:25*
+*2023/05/09 02:59:25*
 
 `notify_reviewers_on_successful_checks.yml` ワークフローによる最終的な出力は、以下のようになります。
 
@@ -1242,14 +1242,14 @@ by @author_name
 ---
 
 ## 👤 ユーザー
-*2023/5/9 3:07:16*
+*2023/05/09 03:07:16*
 
 レビューワーをアサインしたときにCIが通ってたら同じようなメッセージを送りたいんだけど、そういうことってできる？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 3:08:52*
+*2023/05/09 03:08:52*
 
 はい、それが可能です。プルリクエストにレビュアーがアサインされたときにトリガーされるワークフローを作成し、CIがすでに通っているかどうかを確認する必要があります。その後、同様のメッセージを送信できます。
 
@@ -1294,14 +1294,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:19:14*
+*2023/05/09 04:19:14*
 
 なるほど。その場合、notify_reviewers_on_successful_checks.yml と同じ通知を送りたいんだけど、ymlを書いて欲しい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:20:57*
+*2023/05/09 04:20:57*
 
 もちろんです。以下に、レビュアーがアサインされたときにトリガーされ、すでにCIが成功している場合に、同じ通知を送る`notify_reviewers_on_assign.yml`ワークフローを示します。
 
@@ -1368,14 +1368,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:21:15*
+*2023/05/09 04:21:15*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:21:45*
+*2023/05/09 04:21:45*
 
 その後、`notify_reviewers`ステップで、プルリクエストの情報とアサインされたレビュアーを取得し、メンションを作成してSlackに通知を送ります。メンションがない場合、「レビューワーが設定されていません。」というメッセージが表示されます。
 
@@ -1384,14 +1384,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:22:07*
+*2023/05/09 04:22:07*
 
 メンションがない場合は通知を送らないようにymlを書き換えて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:23:44*
+*2023/05/09 04:23:44*
 
 もちろんです。以下に、メンションがない場合に通知を送らないようにした`notify_reviewers_on_assign.yml`を示します。
 
@@ -1454,14 +1454,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:24:51*
+*2023/05/09 04:24:51*
 
 notify_reviewers_on_successful_checks.ymlと同様にIncoming Webhookを使うように変更してほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:26:06*
+*2023/05/09 04:26:06*
 
 `notify_reviewers_on_assign.yml` を Incoming Webhook を使用するように変更しました。以下が変更後の内容です：
 
@@ -1522,14 +1522,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:26:34*
+*2023/05/09 04:26:34*
 
 これを使うとどんなメッセージになるの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:26:58*
+*2023/05/09 04:26:58*
 
 これを使って通知が送信されると、以下のようなメッセージが Slack チャンネルに投稿されます。
 
@@ -1549,14 +1549,14 @@ by @送信者の名前
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:28:16*
+*2023/05/09 04:28:16*
 
 notify_reviewers_on_successful_checks.yml では PR_ID を使っていたので、notify_reviewers_on_assign.ymlでも同じように PR_ID を使って処理して欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:29:22*
+*2023/05/09 04:29:22*
 
 `notify_reviewers_on_assign.yml` を修正し、`PR_ID` を使用するように変更しました。以下が変更後の内容です：
 
@@ -1617,14 +1617,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:29:56*
+*2023/05/09 04:29:56*
 
 notify_reviewers_on_successful_checks.yml もメンションが存在しない場合に通知をおくらないように修正したい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:31:13*
+*2023/05/09 04:31:13*
 
 `notify_reviewers_on_successful_checks.yml` を修正して、メンションが存在しない場合に通知が送られないようにしました。以下が変更後の内容です：
 
@@ -1681,14 +1681,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:32:22*
+*2023/05/09 04:32:22*
 
 notify_reviewers_on_assign.yml でもnotify_reviewers_on_successful_checks.yml と同様にAPPROVEDじゃない人にメンションするようにしたい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:33:40*
+*2023/05/09 04:33:40*
 
 `notify_reviewers_on_assign.yml`を修正して、`APPROVED`ではない人にメンションするように変更しました。以下が変更後の内容です：
 
@@ -1750,14 +1750,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:35:16*
+*2023/05/09 04:35:16*
 
 notify_reviewers_on_assign.yml と notify_reviewers_on_successful_checks.yml で似ている処理があるから共通化できたりしないの？。コードが見づらくなるなら、しなくてもいいんだけど。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:35:53*
+*2023/05/09 04:35:53*
 
 GitHub Actionsでは、共通化するために[composite run steps actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-run-steps-action)という機能を使うことができます。これを使用して共通の処理を別のリポジトリで管理し、それらのアクションを利用することで、処理を共通化できます。
 
@@ -1768,7 +1768,7 @@ GitHub Actionsでは、共通化するために[composite run steps actions](htt
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:48:05*
+*2023/05/09 04:48:05*
 
 わかったありがとう。
 
@@ -1777,7 +1777,7 @@ GitHub Actionsでは、共通化するために[composite run steps actions](htt
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:49:44*
+*2023/05/09 04:49:44*
 
 GitHubとSlackのユーザー名が異なる場合、ユーザー名をマッピングする方法を使って対応できます。以下のように、GitHubユーザー名と対応するSlackユーザー名のマッピングを定義し、そのマッピングに基づいてメンションを送ることができます。
 
@@ -1847,7 +1847,7 @@ jobs:
           MENTIONS=""
           for reviewer in $REVIEWER_DATA; do
             SLACK_USERNAME=$(echo "$GITHUB_TO_SLACK_MAPPING" | jq -r ".${reviewer}")
-            MENTIONS+="<@$SLACK_USERNAME> "
+            MENTIONS+="&lt;@$SLACK_USERNAME&gt; "
           done
 
           if [ -n "$MENTIONS" ]; then
@@ -1856,14 +1856,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:53:43*
+*2023/05/09 04:53:43*
 
 notify_reviewers_on_assign.yml を最初からとgithub_to_slack_mapping.jsonをリポジトリのルートではなく、.github/github_to_slack_mapping.json においたからそれも加味して、修正してほしい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:55:20*
+*2023/05/09 04:55:20*
 
 もちろん、そのように修正できます。以下の手順に従って、`.github` ディレクトリに `github_to_slack_mapping.json` を配置し、`notify_reviewers_on_assign.yml` を変更して読み込むようにしてください。
 
@@ -1914,11 +1914,11 @@ jobs:
           MENTIONS=""
           for reviewer in $REVIEWER_DATA; do
             SLACK_USERNAME=$(echo "$GITHUB_TO_SLACK_MAPPING" | jq -r ".${reviewer}")
-            MENTIONS+="<@$SLACK_USERNAME> "
+            MENTIONS+="&lt;@$SLACK_USERNAME&gt; "
           done
 
           if [ -n "$MENTIONS" ]; then
-            SLACK_MESSAGE=$(cat <<-EOF
+            SLACK_MESSAGE=$(cat &lt;&lt;-EOF
             {
               "blocks": [
                 {
@@ -1932,7 +1932,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*<$PR_URL|$PR_TITLE>*\nby @$AUTHOR_NAME"
+                    "text": "*&lt;$PR_URL|$PR_TITLE&gt;*\nby @$AUTHOR_NAME"
                   }
                 }
               ]
@@ -1944,14 +1944,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:55:36*
+*2023/05/09 04:55:36*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:55:56*
+*2023/05/09 04:55:56*
 
 以下は、`notify_reviewers_on_assign.yml` の続きです。
 
@@ -1967,14 +1967,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 4:56:20*
+*2023/05/09 04:56:20*
 
 ありがとう。notify_reviewers_on_successful_checks.yml についても notify_reviewers_on_assign.yml  と同じ対応をしてほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 4:57:47*
+*2023/05/09 04:57:47*
 
 `notify_reviewers_on_successful_checks.yml` についても、`.github/github_to_slack_mapping.json` からマッピングを読み込むように修正します。
 
@@ -2045,14 +2045,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:00:24*
+*2023/05/09 05:00:24*
 
 なんか、記述量が前より、増えているので、あんまり増えないようにしながらマッピング処理だけ追加して欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:02:01*
+*2023/05/09 05:02:01*
 
 すみません、確かに記述量が増えていました。以下に、`notify_reviewers_on_successful_checks.yml` のマッピング処理を追加するだけで記述量が増えないように修正したバージョンを示します。
 
@@ -2126,7 +2126,7 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:03:52*
+*2023/05/09 05:03:52*
 
 いやいや、以前は以下のような感じだったから、それにマッピング処理を追加するだけにしてほしい。
 
@@ -2180,7 +2180,7 @@ jobs:
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:05:17*
+*2023/05/09 05:05:17*
 
 すみません、理解しました。以下が、以前のバージョンにマッピング処理だけを追加したバージョンです。
 
@@ -2249,14 +2249,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:05:31*
+*2023/05/09 05:05:31*
 
 ありがとう。もう一度、notify_reviewers_on_assign.yml を表示して欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:06:38*
+*2023/05/09 05:06:38*
 
 もちろんです。以下が `notify_reviewers_on_assign.yml` の内容です:
 
@@ -2323,7 +2323,7 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:07:37*
+*2023/05/09 05:07:37*
 
 on:
   pull_request:
@@ -2335,7 +2335,7 @@ on:
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:08:50*
+*2023/05/09 05:08:50*
 
 おっしゃる通り、`pull_request_review` の代わりに `pull_request` を使って、`types` に `review_requested` を設定する方が正しいです。すみません、ミスがありました。以下が修正後の `notify_reviewers_on_assign.yml` です。
 
@@ -2402,14 +2402,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:19:10*
+*2023/05/09 05:19:10*
 
 ワークフローを実行したら、This job was skipped という表示が出た、理由と対策方法を教えて欲しい、
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:20:13*
+*2023/05/09 05:20:13*
 
 `This job was skipped` という表示が出る理由は、ワークフローの実行条件が満たされなかった場合です。`notify_reviewers_on_assign.yml` のワークフローでは、`steps` の中で `if` 条件を使用しています。この条件が満たされない場合、そのステップがスキップされます。
 
@@ -2432,14 +2432,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:20:48*
+*2023/05/09 05:20:48*
 
 なるほど、ではその場合に原因を出力して、終了して欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:22:15*
+*2023/05/09 05:22:15*
 
 `Get PR data` ステップで PR のデータが取得できなかった場合や、`MENTIONS` が空の場合に、それぞれ原因を出力するようにワークフローを修正します。それぞれのステップで、適切なエラーメッセージを `echo` コマンドを使って表示します。
 
@@ -2503,14 +2503,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:22:27*
+*2023/05/09 05:22:27*
 
 ちなみにエラーじゃなくて、想定の範囲内なんだ。そのように修正して欲しい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:23:50*
+*2023/05/09 05:23:50*
 
 すみません。エラーではなく、想定内のケースとして扱いたい場合は、単にメッセージを出力して終了コードを変更せずにスキップするように修正します。
 
@@ -2574,14 +2574,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:24:07*
+*2023/05/09 05:24:07*
 
 notify_reviewers_on_successful_checks.yml についても、 同様にメッセージを出力して終了コードを変更せずにスキップするように修正してほしい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:25:29*
+*2023/05/09 05:25:29*
 
 `notify_reviewers_on_successful_checks.yml` を、同様にメッセージを出力して終了コードを変更せずにスキップするように修正しました。
 
@@ -2644,7 +2644,7 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:39:08*
+*2023/05/09 05:39:08*
 
 name: Notify Reviewers on Successful Checks
 
@@ -2701,7 +2701,7 @@ jobs:
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:40:38*
+*2023/05/09 05:40:38*
 
 申し訳ありませんが、以前のバージョンの `notify_reviewers_on_successful_checks.yml` を提供してしまいました。以下が修正済みのバージョンです。想定内のケースで処理がスキップされる場合、適切なメッセージが表示されます。
 
@@ -2764,7 +2764,7 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:41:20*
+*2023/05/09 05:41:20*
 
 notify_reviewers_on_successful_checks.yml が実行されないんだけど、どうしてかな？
 
@@ -2773,7 +2773,7 @@ if: github.event.check_suite.conclusion == 'success' && github.event.check_suite
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:42:37*
+*2023/05/09 05:42:37*
 
 すみません、`if` 条件を見直す必要がありそうです。`github.event.check_suite.app.slug` の代わりに `github.event.check_suite.pull_requests` で PR に関連するチェックスイートが完了したかどうかを確認することができます。以下の修正されたバージョンを試してみてください。
 
@@ -2836,14 +2836,14 @@ jobs:
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:42:46*
+*2023/05/09 05:42:46*
 
 github.event.check_suite.conclusion == 'success' だけじゃダメなの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:43:31*
+*2023/05/09 05:43:31*
 
 すみません、説明が不十分でした。`github.event.check_suite.conclusion == 'success'` だけでも機能することがありますが、チェックスイートがプルリクエストに関連しているかどうかを確認するために、追加の条件を加えた方がより正確です。
 
@@ -2854,14 +2854,14 @@ github.event.check_suite.conclusion == 'success' だけじゃダメなの？
 ---
 
 ## 👤 ユーザー
-*2023/5/9 5:47:17*
+*2023/05/09 05:47:17*
 
 やっぱり動かなかった、if: github.event.check_suite.conclusion == 'success' && github.event.check_suite.pull_requests を修正したほうがいい気がする
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/9 5:47:41*
+*2023/05/09 05:47:41*
 
 すみません、問題が解決しなかったようで。では、`if` 条件を以下のように修正しましょう。
 

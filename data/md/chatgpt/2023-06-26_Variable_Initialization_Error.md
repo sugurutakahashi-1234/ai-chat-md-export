@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/26 14:12:58*
+*2023/06/26 14:12:58*
 
 calibrationData = try getCalibrationData(orientation: orientation, userDefaultsManager: userDefaultsManager) で以下のエラーが出てしまってる。どうして？
 Variable 'self.calibrationData' used before being initialized
@@ -209,7 +209,7 @@ private extension ImageItem {
 ---
 
 ## 🤖 アシスタント
-*2023/6/26 14:13:36*
+*2023/06/26 14:13:36*
 
 コード内でエラーが発生する箇所はここです：
 
@@ -245,14 +245,14 @@ try interactor.initializeGazeTracking()
 ---
 
 ## 👤 ユーザー
-*2023/6/26 14:14:10*
+*2023/06/26 14:14:10*
 
 interactorからそとから関数を実行させたくない
 
 ---
 
 ## 🤖 アシスタント
-*2023/6/26 14:14:44*
+*2023/06/26 14:14:44*
 
 それなら、最初にキャリブレーションデータを一時変数に格納し、その後インスタンスプロパティに代入することで問題を解決できます。これにより、メソッド内で`self`を使用せずにキャリブレーションデータを取得でき、`gazeTrackManager.setCalibrationData(calibrationData:)`メソッドの引数として利用することが可能になります。以下に、修正した`init`メソッドを示します。
 
@@ -299,7 +299,7 @@ public init(
 ---
 
 ## 👤 ユーザー
-*2023/6/26 14:23:52*
+*2023/06/26 14:23:52*
 
 そのように対応しても以下のエラーになってしまう。
 
@@ -308,7 +308,7 @@ Variable 'self.calibrationData' used before being initialized
 ---
 
 ## 🤖 アシスタント
-*2023/6/26 14:24:36*
+*2023/06/26 14:24:36*
 
 大変申し訳ありません。理解が深まりました。イベントを購読する部分で`self.calibrationData`を使用しているため、それがまだ初期化されていないという問題が発生しています。
 
@@ -363,7 +363,7 @@ private func subscribeToGazeTrackEvents() {
 ---
 
 ## 👤 ユーザー
-*2023/6/26 14:34:19*
+*2023/06/26 14:34:19*
 
 移行しても発生してしまっております。
 
@@ -372,7 +372,7 @@ Variable 'self.calibrationData' used before being initialized
 ---
 
 ## 🤖 アシスタント
-*2023/6/26 14:34:58*
+*2023/06/26 14:34:58*
 
 申し訳ありませんが、理解が間違っておりました。Swift の初期化は、全てのプロパティが初期化される前に、インスタンスメソッドを呼び出すことができません。そのため、キャリブレーションデータを取得する処理を init 内に直接記述することで問題を解決することが可能です。
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/10/11 0:02:34*
+*2023/10/11 00:02:34*
 
 以下の処理を一つのアップロードをするViewとViewModelに変更してほしい
 
@@ -166,7 +166,7 @@ PlaygroundPage.current.setLiveView(view)
 ---
 
 ## 🤖 アシスタント
-*2023/10/11 0:02:47*
+*2023/10/11 00:02:47*
 
 以下は、指定されたPlaygroundの内容を、一つのアップロードだけをするViewとViewModelに変更したコードです：
 
@@ -176,11 +176,11 @@ import PlaygroundSupport
 import SwiftUI
 
 protocol CloudStorageManagerProtocol: AnyObject {
-    func upload(key: String, data: Data) async throws -> AsyncStream<Progress>
+    func upload(key: String, data: Data) async throws -&gt; AsyncStream&lt;Progress&gt;
 }
 
 final class MockCloudStorageManager: CloudStorageManagerProtocol {
-    func upload(key _: String, data _: Data) async throws -> AsyncStream<Progress> {
+    func upload(key _: String, data _: Data) async throws -&gt; AsyncStream&lt;Progress&gt; {
         AsyncStream { continuation in
             Task {
                 let totalUnitCount = Int64.random(in: 7...13)

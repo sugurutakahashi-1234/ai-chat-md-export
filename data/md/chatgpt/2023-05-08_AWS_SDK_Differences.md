@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/8 16:04:20*
+*2023/05/08 16:04:20*
 
 https://github.com/aws-amplify/aws-sdk-ios とhttps://github.com/awslabs/aws-sdk-swift の違いを教えて
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 16:05:56*
+*2023/05/08 16:05:56*
 
 `https://github.com/aws-amplify/aws-sdk-ios` と `https://github.com/awslabs/aws-sdk-swift` は、どちらも Amazon Web Services (AWS) のSDK (Software Development Kit) ですが、それぞれ異なるプログラミング言語とプラットフォームに対応しています。
 
@@ -27,14 +27,14 @@ https://github.com/aws-amplify/aws-sdk-ios とhttps://github.com/awslabs/aws-sdk
 ---
 
 ## 👤 ユーザー
-*2023/5/8 16:10:02*
+*2023/05/08 16:10:02*
 
 https://github.com/soto-project/soto とはどういう関係性？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 16:10:50*
+*2023/05/08 16:10:50*
 
 `https://github.com/soto-project/soto` は、Swift言語で書かれたAmazon Web Services (AWS) SDKです。`soto` は、以前は `aws-sdk-swift` と呼ばれていましたが、名前が変更されて、現在は Soto プロジェクトとして開発が継続されています。
 
@@ -47,14 +47,14 @@ https://github.com/soto-project/soto とはどういう関係性？
 ---
 
 ## 👤 ユーザー
-*2023/5/8 16:11:56*
+*2023/05/08 16:11:56*
 
 https://github.com/soto-project/soto をプロダクションのコードとして採用しようと思うんだけどありかな？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 16:13:17*
+*2023/05/08 16:13:17*
 
 `soto` は、Swift言語でAmazon Web Services (AWS) を使用するためのSDKとして、非同期プログラミングと高いパフォーマンスが特徴であり、多くのAWSサービスをサポートしています。プロジェクトは活発に開発が行われており、コミュニティからのサポートも得られています。
 
@@ -73,14 +73,14 @@ https://github.com/soto-project/soto をプロダクションのコードとし�
 ---
 
 ## 👤 ユーザー
-*2023/5/8 16:15:55*
+*2023/05/08 16:15:55*
 
 https://github.com/aws-amplify/aws-sdk-ios と https://github.com/soto-project/soto どちらとも 非同期プログラミングできるかな？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 16:16:49*
+*2023/05/08 16:16:49*
 
 はい、`https://github.com/aws-amplify/aws-sdk-ios` と `https://github.com/soto-project/soto` の両方とも非同期プログラミングに対応しています。
 
@@ -95,14 +95,14 @@ https://github.com/aws-amplify/aws-sdk-ios と https://github.com/soto-project/s
 ---
 
 ## 👤 ユーザー
-*2023/5/8 16:18:23*
+*2023/05/08 16:18:23*
 
 両方ともasync await対応していますか？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 16:19:25*
+*2023/05/08 16:19:25*
 
 `aws-sdk-ios` と `soto` の両方とも、Swift 5.5で導入された `async`/`await` 機能をサポートしていますが、対応状況は異なります。
 
@@ -117,14 +117,14 @@ https://github.com/aws-amplify/aws-sdk-ios と https://github.com/soto-project/s
 ---
 
 ## 👤 ユーザー
-*2023/5/8 16:19:57*
+*2023/05/08 16:19:57*
 
 それぞれでS3に対して、CSVファイルをアップロードするコードを書いてみて
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 16:20:10*
+*2023/05/08 16:20:10*
 
 以下に、`aws-sdk-ios` と `soto` を使用して、Amazon S3にCSVファイルをアップロードするSwiftコードの例を示します。
 
@@ -144,14 +144,14 @@ end
 ---
 
 ## 👤 ユーザー
-*2023/5/8 16:20:37*
+*2023/05/08 16:20:37*
 
 両方ともSwift Package Manager で書いて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 16:22:02*
+*2023/05/08 16:22:02*
 
 申し訳ありません。Swift Package Managerを使用した例を以下に示します。
 
@@ -243,14 +243,14 @@ App.main()
 ---
 
 ## 👤 ユーザー
-*2023/5/8 16:27:47*
+*2023/05/08 16:27:47*
 
 aws-sdk-ios を使って同じことをしようとするとどうやって書けばいい？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/8 16:28:10*
+*2023/05/08 16:28:10*
 
 `aws-sdk-ios`は、Swift Package Managerでの直接のインストールはサポートしていません。しかし、代わりに[AWSSDKSwift](https://github.com/swift-aws/aws-sdk-swift)（現在は[soto](https://github.com/soto-project/soto)として知られています）を使用することができます。これは、`aws-sdk-ios`と同様にiOSプラットフォームで利用でき、Swift Package Managerに対応しています。
 

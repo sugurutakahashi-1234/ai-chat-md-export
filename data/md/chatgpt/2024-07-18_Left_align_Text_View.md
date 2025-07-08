@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/18 15:06:16*
+*2024/07/18 15:06:16*
 
 テキストを左寄せにしたい
 
@@ -36,7 +36,7 @@ public struct LicenseDetailView&lt;Dependency: RootDIContainerDependency&gt;: Vi
 ---
 
 ## 🤖 アシスタント
-*2024/7/18 15:06:25*
+*2024/07/18 15:06:25*
 
 テキストを左寄せにするには、`Text`ビューに`multilineTextAlignment(.leading)`を追加します。これにより、テキストの複数行が左寄せになります。以下に修正したコードを示します。
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/17 13:53:32*
+*2024/05/17 13:53:32*
 
 Text(audioData.audioUrl.lastPathComponent) がタイトルでfileSizeやdurationは細く情報なのでそれがわかるようにAudioFileRowを変えたい
 
@@ -46,7 +46,7 @@ struct AudioFileRow: View {
 ---
 
 ## 🤖 アシスタント
-*2024/5/17 13:53:40*
+*2024/05/17 13:53:40*
 
 To enhance the representation of `AudioFileRow` by distinguishing the title from the file size and duration, you can adjust the layout and styling to make the additional details more subtle. Here’s how you can update your code:
 

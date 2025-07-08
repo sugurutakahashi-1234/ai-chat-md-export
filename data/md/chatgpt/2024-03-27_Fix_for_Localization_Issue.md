@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/27 17:28:57*
+*2024/03/27 17:28:57*
 
 以下の投稿を添削してほしいgithubissseuにコメントするんだ。
 
@@ -28,7 +28,7 @@ Translated with www.DeepL.com/Translator (free version)
 ---
 
 ## 🤖 アシスタント
-*2024/3/27 17:29:12*
+*2024/03/27 17:29:12*
 
 Your message for a GitHub issue comment looks like a constructive contribution with clear steps to solve a problem. However, there are some minor typographical errors and areas where the message could be clarified for better understanding. Here's a revised version:
 
@@ -39,7 +39,7 @@ Your message for a GitHub issue comment looks like a constructive contribution w
 I have verified that the following steps resolve the issue:
 
 **Step 1: Add InfoPlist.strings**
-- Navigate to `Production &gt; Production &gt; Resources`.
+- Navigate to `Production > Production > Resources`.
 - Choose "Add New File…" and create `InfoPlist.strings`.
 
 **Step 2: Extract String Catalogs**
@@ -57,14 +57,14 @@ I corrected "Produnction" to "Production" and changed "xcstrings" to "strings", 
 ---
 
 ## 👤 ユーザー
-*2024/3/27 17:31:52*
+*2024/03/27 17:31:52*
 
 最後にもし公式に書いてある情報だったらすみませんとつけたい。
 
 ---
 
 ## 🤖 アシスタント
-*2024/3/27 17:31:57*
+*2024/03/27 17:31:57*
 
 Certainly! Adding a polite note at the end to acknowledge the possibility of repeating official information is thoughtful. Here's how you could conclude your comment:
 
@@ -77,14 +77,14 @@ Certainly! Adding a polite note at the end to acknowledge the possibility of rep
 ---
 
 ## 👤 ユーザー
-*2024/3/27 17:32:24*
+*2024/03/27 17:32:24*
 
 もうちょっとラフに書いてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2024/3/27 17:32:30*
+*2024/03/27 17:32:30*
 
 了解です！もっとカジュアルに表現してみましょう：
 
@@ -95,14 +95,14 @@ Certainly! Adding a polite note at the end to acknowledge the possibility of rep
 ---
 
 ## 👤 ユーザー
-*2024/3/27 17:32:36*
+*2024/03/27 17:32:36*
 
 これを英語で書いて。
 
 ---
 
 ## 🤖 アシスタント
-*2024/3/27 17:32:39*
+*2024/03/27 17:32:39*
 
 Sure, here's a more casual way to phrase your note in English:
 

@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:01:35*
+*2025/06/19 18:01:35*
 
 両方とも最新のSDKを使ったとして、 React Router vs TanStack Routerどちらが型安全か、またどちらが使いやすいか。 単スタッククエリも一緒に使う予定なんだ。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:01:55*
+*2025/06/19 18:01:55*
 
 ### 結論を先に  
 - **型安全性** : どちらも近年大幅に強化されましたが、`100 % typesafe` を掲げる **TanStack Router** が検索パラメータやネスト構造まで静的型で保証するぶん一歩リードします。  
@@ -36,7 +36,7 @@
 ## 2. 使い勝手・学習コスト
 
 ### React Router
-* 旧来の `&lt;BrowserRouter&gt;&lt;Routes&gt;&lt;Route … /&gt;&lt;/Routes&gt;&lt;/BrowserRouter&gt;` 形式も、ファイルベースの *Route Module* 形式も選択可。既存記事が非常に多くオンボーディングが速い。  
+* 旧来の `<BrowserRouter><Routes><Route … /></Routes></BrowserRouter>` 形式も、ファイルベースの *Route Module* 形式も選択可。既存記事が非常に多くオンボーディングが速い。  
 * v7 で公式に TypeScript スターター / 自動型生成が整備され、従来の「JS 寄り」イメージは薄れた citeturn0search3。  
 * データフェッチは自由度が高い反面「どこで呼ぶか」の設計を自前で決める必要がある。
 
@@ -50,7 +50,7 @@
 
 ## 3. TanStack Query との統合
 
-- **TanStack Router** には `loader: ({params}) =&gt; queryClient.ensureQueryData(['post', params.id], fetchPost)` のような **一行連携サンプル** が公式に用意されており、キャッシュキーも自然に一致 citeturn0search2。  
+- **TanStack Router** には `loader: ({params}) => queryClient.ensureQueryData(['post', params.id], fetchPost)` のような **一行連携サンプル** が公式に用意されており、キャッシュキーも自然に一致 citeturn0search2。  
 - **React Router** でも `loader` 内で `queryClient.fetchQuery` を呼べますが、キャッシュ・プリフェッチ・ガーベジコレクションを「ルーター側で最適化」する仕組みは標準ではありません。
 
 ---
@@ -98,7 +98,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:04:21*
+*2025/06/19 18:04:21*
 
 isolatedDeclarations を設定しているのだが、これと相性がいいのはどちらか。 
 ちなみにWebFrontでこの設定は無理があるのか、それとも頑張って設定した方がいいのか、
@@ -106,14 +106,14 @@ isolatedDeclarations を設定しているのだが、これと相性がいい�
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:05:27*
+*2025/06/19 18:05:27*
 
 ### どちらが `isolatedDeclarations` と相性が良いか
 
 |                               | React Router v7 | TanStack Router v1 |
 |-------------------------------|-----------------|--------------------|
 | **`isolatedDeclarations` でのビルド** | 公式 CLI (`react-router typegen`) が各ルートごとに *.d.ts* を生成し、エクスポートに **型注釈が必須** になる点もドキュメントで案内済み。追加の手作業はほぼ「戻り値に型を書く」だけ citeturn11search1 | `createRouter()` が推論した巨大な型を “そのまま再エクスポート” しており、**型注釈が不足** → TS 5.5 以降は `TS9006/TS9007` を大量出力。公式 Issue #1630 は *wontfix* citeturn1view0 |
-| **回避策** | - loader / action / component など **export する関数だけ明示型**<br>- `react-router typegen` を CI で自動実行 | - ルートごとに `as const` & `satisfies` で手動注釈するしかなく、現状は **`isolatedDeclarations` を外す** 方が楽 |
+| **回避策** | - loader / action / component など **export する関数だけ明示型**&lt;br&gt;- `react-router typegen` を CI で自動実行 | - ルートごとに `as const` & `satisfies` で手動注釈するしかなく、現状は **`isolatedDeclarations` を外す** 方が楽 |
 | **結論** | **React Router** の方が負荷が小さく、実用レベルで運用可能 | 本番ビルドに `isolatedDeclarations` を入れるなら現状は不向き |
 
 ---
@@ -129,9 +129,9 @@ TypeScript 5.5 公式ブログの立場は **「ケースバイケースで採�
 | **既存型の隠れバグ検出** | 推論任せだった export に警告が出る＝品質向上につながる面も大きい。 |
 | **IDE 補完/リファクタの負荷** | VS Code なら `ctrl+.` のクイックフィックスで自動挿入できるため、実装スピードはそこまで落ちない。 |
 
-> **結論**  
-> - **社内専用フロントのみ** で速度優先 → 無理に入れず、CI だけ `isolatedDeclarations` を有効にして型崩れを検知するハイブリッド運用がおすすめ。  
-> - **ライブラリ配布や長期運用の大規模リポジトリ** → 手間を払ってでも導入する価値あり。
+&gt; **結論**  
+&gt; - **社内専用フロントのみ** で速度優先 → 無理に入れず、CI だけ `isolatedDeclarations` を有効にして型崩れを検知するハイブリッド運用がおすすめ。  
+&gt; - **ライブラリ配布や長期運用の大規模リポジトリ** → 手間を払ってでも導入する価値あり。
 
 ---
 
@@ -164,7 +164,7 @@ TypeScript 5.5 公式ブログの立場は **「ケースバイケースで採�
 
 ## まとめ
 
-- **`isolatedDeclarations` との親和性** は **React Router v7 > TanStack Router**。  
+- **`isolatedDeclarations` との親和性** は **React Router v7 &gt; TanStack Router**。  
   TanStack Router は現状エラー多発で実用が難しい。  
 - Web フロントでも **「CI だけ有効」にする段階導入** が現実的。  
   本格導入はライブラリ化・モノレポ化・並列ビルド最適化など “効果が見込めるケース” で検討するのがおすすめです。
@@ -172,31 +172,31 @@ TypeScript 5.5 公式ブログの立場は **「ケースバイケースで採�
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:08:29*
+*2025/06/19 18:08:29*
 
 続く実装の違いを見せてほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:08:31*
+*2025/06/19 18:08:31*
 
 以下では **「/products/:id を詳細ページとして持つ SPA」** を例に、  
 `isolatedDeclarations: true` を満たす **React Router v7（Route Modules + typegen）** と **TanStack Router v1** の実装を ― “差が見えやすい最小構成のみ” ― 並べます。  
 
-> *共通前提*  
-> - `pnpm`／`ESM`／`TypeScript 5.5`  
-> - API 取得は **TanStack Query** を使用  
-> - ルート定義は 2 つだけ  
->   - `/`         … Product 一覧  
->   - `/products/:id` … Product 詳細  
+&gt; *共通前提*  
+&gt; - `pnpm`／`ESM`／`TypeScript 5.5`  
+&gt; - API 取得は **TanStack Query** を使用  
+&gt; - ルート定義は 2 つだけ  
+&gt;   - `/`         … Product 一覧  
+&gt;   - `/products/:id` … Product 詳細  
 
 ---
 
 ## 1. ディレクトリ構成
 
-<details>
-<summary>React Router</summary>
+&lt;details&gt;
+&lt;summary&gt;React Router&lt;/summary&gt;
 
 ```
 src/
@@ -215,10 +215,10 @@ src/
     products/index.d.ts
     products/$id.d.ts
 ```
-</details>
+&lt;/details&gt;
 
-<details>
-<summary>TanStack Router</summary>
+&lt;details&gt;
+&lt;summary&gt;TanStack Router&lt;/summary&gt;
 
 ```
 src/
@@ -231,7 +231,7 @@ src/
   router.tsx           # createRouter()
   main.tsx
 ```
-</details>
+&lt;/details&gt;
 
 ---
 
@@ -271,7 +271,7 @@ import rootRoute from './routes/+root';
 export const router = createBrowserRouter([rootRoute]);
 ```
 
-> **ポイント** : ルートは *ファイル名ベース*。 CLI が型生成。
+&gt; **ポイント** : ルートは *ファイル名ベース*。 CLI が型生成。
 
 #### 2-2-b `routes/+root.tsx`
 
@@ -327,10 +327,10 @@ export default function ProductPage(): Rt.ComponentElement {
 }
 ```
 
-> **`isolatedDeclarations` で必要なこと**  
-> 1. `loader` / `action` / `Component` すべてに **戻り値型** を明示  
-> 2. `import type * as Rt` で CLI 生成型を参照  
-> 3. 以上で `tsc --noEmit` が通る
+&gt; **`isolatedDeclarations` で必要なこと**  
+&gt; 1. `loader` / `action` / `Component` すべてに **戻り値型** を明示  
+&gt; 2. `import type * as Rt` で CLI 生成型を参照  
+&gt; 3. 以上で `tsc --noEmit` が通る
 
 ---
 
@@ -389,7 +389,7 @@ export const productRoute = createRoute({
 });
 ```
 
-> **注** : `validateSearch` を書くと **search .tab が自動的に型付き** になります。
+&gt; **注** : `validateSearch` を書くと **search .tab が自動的に型付き** になります。
 
 #### 2-3-c `routes/products.tsx`
 
@@ -440,7 +440,7 @@ export type Router = typeof import('./router').router;
 | 項目 | React Router | TanStack Router |
 |------|--------------|-----------------|
 | **生成型の取り込み** | CLI 生成 *.d.ts* を import するだけ | ルートオブジェクト自体が “巨大な推論型” |
-| **export への型注釈** | `loader(): Rt.LoaderData` の一行追記で済む | `export const productRoute = createRoute(...)` が<br>`isolatedDeclarations` で怒られやすい |
+| **export への型注釈** | `loader(): Rt.LoaderData` の一行追記で済む | `export const productRoute = createRoute(...)` が&lt;br&gt;`isolatedDeclarations` で怒られやすい |
 | **URLParam / SearchParam 型** | param は型付き、search は string | param + search ともにスキーマで完全型 |
 | **`isolatedDeclarations` での警告** | 少、ごく軽微 | 多、現状は *現実的に厳しい* |
 | **記述量** | ルート毎に 3 ファイル（*.tsx + *.d.ts*） | ルート毎に 1 ファイルだがコード長多め |
@@ -483,25 +483,25 @@ pnpm add @tanstack/react-router zod
 * **`isolatedDeclarations` を厳格運用したい** → **React Router v7** で Route Module + Typegen を使うほうが確実に静か。  
 * **URL 検索パラメータを型安全に使い倒したい**／**`isolatedDeclarations` を外すことに抵抗がない** → **TanStack Router** がローコードで強力。  
 
-> **Tip** : 大規模モノレポでは「アプリ部分は `isolatedDeclarations=false`、共有ライブラリだけ true」などスコープ分けも現実的です。
+&gt; **Tip** : 大規模モノレポでは「アプリ部分は `isolatedDeclarations=false`、共有ライブラリだけ true」などスコープ分けも現実的です。
 
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:10:42*
+*2025/06/19 18:10:42*
 
 isolatedDeclarations を有効にしないと開発に困らないのか。 例えばビルド時に多くエラーになったりするのか。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:10:43*
+*2025/06/19 18:10:43*
 
 ## `isolatedDeclarations` とは何をしているか
 
 * **目的** ― 各 *.ts/tsx* ファイル単独で *.d.ts* を生成できるかどうかを前提にチェックします。  
   * 戻り値に匿名のオブジェクトを返していないか  
-  * 省略型 (`export const foo = () =&gt; …`) が外部公開 API になっていないか  
+  * 省略型 (`export const foo = () => …`) が外部公開 API になっていないか  
   * ジェネリック型パラメータがファイルをまたいで “暗黙に” 伝播していないか  
 * **副作用** ― この前提が崩れると `TS9006`, `TS9007`, `TS2742` などのエラーを出して **ビルド停止**。  
   * 逆に言えば *d.ts を出力しない* **Web フロント専用 SPA** では、本来なくても実行バイナリは出来ます。  
@@ -514,7 +514,7 @@ isolatedDeclarations を有効にしないと開発に困らないのか。 例�
 |----------|------|
 | **vite / webpack / swc で単にバンドルして実行** | **問題なし**。`isolatedDeclarations` が false でも JS は生成される。|
 | **`tsc --noEmit` で型チェックだけ走らせる** | 追加エラーは出ません。CI の赤字は増えない。|
-| **ライブラリ化して `declaration:true` で *.d.ts* を配布** | *ファイル単独で書けていない export* が後から **エラー化**。例：`export const useFoo = () =&gt; ({…})` の戻り値型が匿名だと失敗。|
+| **ライブラリ化して `declaration:true` で *.d.ts* を配布** | *ファイル単独で書けていない export* が後から **エラー化**。例：`export const useFoo = () => ({…})` の戻り値型が匿名だと失敗。|
 | **モノレポで `tsc -b`（プロジェクト参照ビルド）を利用** | `--build` は内部的に *d.ts 前提* で最適化するため、**true にしておいた方が並列ビルドが安定**。false でも通るが “ある日突然” 依存先パッケージだけ壊れることがある。|
 
 &gt; ✔ **まとめ** — *アプリだけを vite で動かす* 限りは「今すぐ困る」ことはまずありません。  
@@ -572,14 +572,14 @@ isolatedDeclarations を有効にしないと開発に困らないのか。 例�
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:13:07*
+*2025/06/19 18:13:07*
 
 例えば将来的にタイプスクリプト7になって、 劇的に状況が変わったりすることはあるか。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:13:16*
+*2025/06/19 18:13:16*
 
 ### 1. TypeScript のリリースサイクルと「メジャー番号」の意味
 
@@ -634,7 +634,7 @@ isolatedDeclarations を有効にしないと開発に困らないのか。 例�
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:32:02*
+*2025/06/19 18:32:02*
 
 今こうしているのだけれども、なんか良くないことがあるか。 --noEmitがtrueとfalseで何が違うのかよくわかってない。 
 
@@ -686,7 +686,7 @@ isolatedDeclarations を有効にしないと開発に困らないのか。 例�
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:32:24*
+*2025/06/19 18:32:24*
 
 ### `--noEmit` とは何か — 一行で
 `tsc` に **「型チェックだけして、.js/.d.ts/.map は一切書き出さない」** と指示するフラグです。citeturn0search0  
@@ -720,10 +720,10 @@ tsconfig.json           (開発用)       <= --noEmit を CLI で強制
 
 | 気になる点 | どうなるか | 改善アイディア |
 |------------|-----------|---------------|
-| **① エラーがあっても `build` は JS を出す** | `noEmitOnError` が *false* なので、<br>`dist/` に壊れた JS が混入する恐れ | `tsconfig.build.json` に<br>`"noEmitOnError": true` を追加 |
-| **② 厳格フラグを緩めたまま prod もビルド** | `isolatedDeclarations:false` などは<br>build 側でも継承される | 生成物だけ別 tsconfig (例: `tsconfig.gen.json`) に分離し、<br>`tsconfig.build.json` では厳格設定を戻す |
-| **③ 開発中に .js が散らばる事故** | ルート側は常に `--noEmit` なので安全 | もし CLI を忘れた運用が不安なら<br>`tsconfig.json` 自体に `"noEmit": true` を書き込んでおく |
-| **④ 型チェック用とビルド用で “対象ファイル” が食い違う** | ルート tsconfig はテストを含むため、<br>テスト起因のエラーでも CI が落ちる | テストコードも品質ゲートに含めるなら OK。<br>分離したい場合は `tsconfig.typecheck.json` を用意 |
+| **① エラーがあっても `build` は JS を出す** | `noEmitOnError` が *false* なので、&lt;br&gt;`dist/` に壊れた JS が混入する恐れ | `tsconfig.build.json` に&lt;br&gt;`"noEmitOnError": true` を追加 |
+| **② 厳格フラグを緩めたまま prod もビルド** | `isolatedDeclarations:false` などは&lt;br&gt;build 側でも継承される | 生成物だけ別 tsconfig (例: `tsconfig.gen.json`) に分離し、&lt;br&gt;`tsconfig.build.json` では厳格設定を戻す |
+| **③ 開発中に .js が散らばる事故** | ルート側は常に `--noEmit` なので安全 | もし CLI を忘れた運用が不安なら&lt;br&gt;`tsconfig.json` 自体に `"noEmit": true` を書き込んでおく |
+| **④ 型チェック用とビルド用で “対象ファイル” が食い違う** | ルート tsconfig はテストを含むため、&lt;br&gt;テスト起因のエラーでも CI が落ちる | テストコードも品質ゲートに含めるなら OK。&lt;br&gt;分離したい場合は `tsconfig.typecheck.json` を用意 |
 
 ---
 
@@ -732,10 +732,10 @@ tsconfig.json           (開発用)       <= --noEmit を CLI で強制
 | 挙動 | `noEmit: true` | `noEmit: false` *(デフォルト)* |
 |------|---------------|--------------------------------|
 | **.js / .jsx** 出力 | なし | 生成される |
-| **.d.ts** 出力 | なし<br>（`emitDeclarationOnly` も無視） | `declaration: true` なら生成 |
+| **.d.ts** 出力 | なし&lt;br&gt;（`emitDeclarationOnly` も無視） | `declaration: true` なら生成 |
 | **watch モード** | 型エラーだけを見る用途に向く | ウォッチ＋ JS ホットリロード用途に向く |
 | **ビルド失敗時** | そもそもファイルを出さない | `noEmitOnError` が *false* ならエラーがあっても出力 |
-| **CI での利用** | ✅ 型チェック専用<br>（Next.js なども推奨）citeturn0search11 | ライブラリ配布・本番 JS 生成 |
+| **CI での利用** | ✅ 型チェック専用&lt;br&gt;（Next.js なども推奨）citeturn0search11 | ライブラリ配布・本番 JS 生成 |
 
 ---
 
@@ -809,7 +809,7 @@ tsconfig.json           (開発用)       <= --noEmit を CLI で強制
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:35:53*
+*2025/06/19 18:35:53*
 
 例えばこうすることは間違っているか。 
 
@@ -831,7 +831,7 @@ tsconfig.json           (開発用)       <= --noEmit を CLI で強制
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:35:54*
+*2025/06/19 18:35:54*
 
 ### その `tsconfig.build.json` は「間違い」ではないか？
 
@@ -882,7 +882,7 @@ tsconfig.json           (開発用)       <= --noEmit を CLI で強制
 
 | 課題 | 症状 | 回避策 |
 |------|------|--------|
-| 生成コードがエラーになる | @hey-api の生成ファイルが `isolatedDeclarations` や `noUnusedParameters` に抵触 | ① 生成ファイルを **別 tsconfig** に分離し緩める（`tsconfig.gen.json`）<br>② あるいは `exclude` で生成ディレクトリを外す |
+| 生成コードがエラーになる | @hey-api の生成ファイルが `isolatedDeclarations` や `noUnusedParameters` に抵触 | ① 生成ファイルを **別 tsconfig** に分離し緩める（`tsconfig.gen.json`）&lt;br&gt;② あるいは `exclude` で生成ディレクトリを外す |
 | 変更加えるたびに大量警告 | チーム全員が厳格フラグを理解していない | まず `typecheck` 用 CI だけ厳格にして、ローカルは緩めた設定で開発する段階導入が現実的 |
 | “エラーを無視して JS が出来た” 事故 | `noEmitOnError` 未設定 | `"noEmitOnError": true` を build 側に必ず入れる |
 
@@ -900,14 +900,14 @@ tsconfig.json           (開発用)       <= --noEmit を CLI で強制
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:36:42*
+*2025/06/19 18:36:42*
 
 結局、これは全部ビルドできなかった。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:36:42*
+*2025/06/19 18:36:42*
 
 ### まず「全部ビルドできなかった」原因を切り分けよう
 `isolatedDeclarations` や `noUnusedParameters` を **一気に true にすると**、  
@@ -922,7 +922,7 @@ tsconfig.json           (開発用)       <= --noEmit を CLI で強制
 
 | 落ちるフラグ | 生成コードでよく起きるパターン | 最速回避策 |
 |--------------|--------------------------------|-----------|
-| `isolatedDeclarations` | 匿名オブジェクトの export<br>`export const foo = () => ({ bar: 1 })` | ① 生成物を **別 tsconfig** に切り出す<br>② 生成ツール側に `--isolatedDeclarations` 対応オプションがあれば有効化 |
+| `isolatedDeclarations` | 匿名オブジェクトの export&lt;br&gt;`export const foo = () => ({ bar: 1 })` | ① 生成物を **別 tsconfig** に切り出す&lt;br&gt;② 生成ツール側に `--isolatedDeclarations` 対応オプションがあれば有効化 |
 | `exactOptionalPropertyTypes` | `allowReserved?: boolean` に `undefined` を代入 | 生成物 tsconfig 側だけ `exactOptionalPropertyTypes:false` |
 | `noImplicitReturns` | `if (...) return x;` **else ブロック無し** | 生成側の PR/Issue を待つか、**生成ディレクトリを exclude** |
 | `noUnusedParameters` | `(key, _value) => …` の未使用引数 | 同上。Lint では許すが ts では怒られるケース |
@@ -1035,14 +1035,14 @@ pnpm tsc -b tsconfig.build.json      # ← まず生成物 dist/gen → 次に a
 ---
 
 ## 👤 ユーザー
-*2025/6/19 18:38:13*
+*2025/06/19 18:38:13*
 
 Zodなどを生成するようなSDKを使っていると、 isolatedDeclarationsいつもエラーになるが、 世の中全体的な流れとして、 isolatedDeclarationsここを対応するような流れはあるのか。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/19 18:38:44*
+*2025/06/19 18:38:44*
 
 ### ざっくり答え  
 * **流れは “確実に true 寄り”**：TypeScript 5.5 以降、`--isolatedDeclarations` を有効にして **高速ビルド + 正確な d.ts を配布** するのが “推奨パス” になりつつあります。コンパイラ本体でも *デフォルト化* を視野に入れた議論が進行中です。citeturn0search4  
@@ -1062,7 +1062,7 @@ Zodなどを生成するようなSDKを使っていると、 isolatedDeclaration
 | **2024 (TS 5.5)** | “状態把握” Issue (#58944) で **「デフォルト化を検討」** が明言citeturn0search4 | 段階的にエラー種類を明示化、VS Code でもクイックフィックス拡充 |
 | **2025 ロードマップ** | PR で “`--noIsolatedDeclarations` に名称反転” 提案 | まだ RFC 段階だがコアチームは前向き |
 
-> **結論**：今後 1 - 2 年で「対応しないとパッケージが警告まみれ」になる可能性が高いです。
+&gt; **結論**：今後 1 - 2 年で「対応しないとパッケージが警告まみれ」になる可能性が高いです。
 
 ---
 

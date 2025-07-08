@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/6 12:51:50*
+*2024/06/06 12:51:50*
 
 getUsers と getUserById のレスポンスを自分で決めたい。
 正常系とエラー系をそれぞれ設定してほしい
@@ -38,7 +38,7 @@ public final class APIRequestDriverProtocolMock: APIRequestDriverProtocol, @unch
 ---
 
 ## 🤖 アシスタント
-*2024/6/6 12:52:00*
+*2024/06/06 12:52:00*
 
 `APIRequestDriverProtocolMock`の`getUsers`と`getUserById`メソッドに対する正常系とエラー系のレスポンスを設定するために、以下のコードを使用できます。このコードでは、正常系とエラー系のハンドラーを設定する例を示しています。
 

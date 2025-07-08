@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/23 5:49:09*
+*2023/06/23 05:49:09*
 
 public struct GazeTrackCalibrationView: View {
     @Environment(\.dismiss) private var dismiss
@@ -84,7 +84,7 @@ public struct GazeTrackCalibrationView: View {
 ---
 
 ## 🤖 アシスタント
-*2023/6/23 5:49:17*
+*2023/06/23 05:49:17*
 
 This is a `SwiftUI` view that handles the calibration for gaze tracking, represented by the `GazeTrackCalibrationView` struct. Let me explain the main parts of this code:
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/28 12:47:59*
+*2025/06/28 12:47:59*
 
 TanStack QueryxRouterのSuspenceという機能について調べてほしい
 
@@ -14,7 +14,7 @@ TanStack QueryxRouterのSuspenceという機能について調べてほしい
 ---
 
 ## 🤖 アシスタント
-*2025/6/28 12:48:38*
+*2025/06/28 12:48:38*
 
 ### 「Suspense」とは？
 
@@ -23,13 +23,13 @@ TanStack QueryxRouterのSuspenceという機能について調べてほしい
 | **TanStack Query** | `useSuspenseQuery`（v5～）または`useQuery({ suspense:true })`（v4）で、データ取得中は `React.Suspense` に「待機」を委譲する。ローディング UI は最寄りの `<Suspense fallback>` が受け持ち、失敗は ErrorBoundary に伝播する。citeturn0search2 |
 | **TanStack Router** | ルートの `loader` が Promise を返すと内部で自動的に Suspense を使い、データ取得完了までルート描画を停止。1 秒を超えると `pendingComponent` を表示するなどの制御も可能。citeturn4view0 |
 
-> つまり **Query が「データ取得を止める仕組み」を提供し、Router が「ルート遷移全体を止める仕組み」を担う**――この 2 つを組み合わせることで、ページ遷移とデータフェッチを“まとめて”Suspense に任せられます。
+&gt; つまり **Query が「データ取得を止める仕組み」を提供し、Router が「ルート遷移全体を止める仕組み」を担う**――この 2 つを組み合わせることで、ページ遷移とデータフェッチを“まとめて”Suspense に任せられます。
 
 ---
 
 ## 実装ステップ（React 18 + TypeScript）
 
-> ※以下は **TanStack Query v5** を前提にした最小構成例です（v4 を使う場合は `useQuery({ suspense:true })` を使用）。
+&gt; ※以下は **TanStack Query v5** を前提にした最小構成例です（v4 を使う場合は `useQuery({ suspense:true })` を使用）。
 
 ### 1. プロバイダのセットアップ
 
@@ -175,14 +175,14 @@ export function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 ---
 
 ## 👤 ユーザー
-*2025/6/28 12:51:32*
+*2025/06/28 12:51:32*
 
 これはSSRなのか？また別の技術なのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/28 12:51:59*
+*2025/06/28 12:51:59*
 
 ### TL;DR  
 - **React Suspense** は「コンポーネントの描画を一時停止する仕組み」で、クライアント／サーバどちらでも動く **“振る舞い”**。  
@@ -220,10 +220,10 @@ export function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 
 ## 3. もし SSR したい場合は “もう 1 ファイル” 追加
 
-> Vite + Express ライクな Node 環境を想定した **最小構成** 例を示します。  
-> - **Non-Streaming SSR**（全部描画してから返す）と  
-> - **Streaming SSR**（fallback を送りながら順次埋める）  
-> の 2 パターンを対比します。
+&gt; Vite + Express ライクな Node 環境を想定した **最小構成** 例を示します。  
+&gt; - **Non-Streaming SSR**（全部描画してから返す）と  
+&gt; - **Streaming SSR**（fallback を送りながら順次埋める）  
+&gt; の 2 パターンを対比します。
 
 ### 3-1 サーバエントリ (non-streaming)
 
@@ -362,9 +362,9 @@ const stream = renderToPipeableStream(
 | **CSR コードをそのまま SSR に転用できる？** | 可能。`router.load()` で Promise を事前決着させ、`dehydrate/hydrate` でキャッシュを埋め込むだけでよい。citeturn0search2 |
 | **Streaming SSR の利点は？** | Suspense 境界単位で HTML をリアルタイム送信でき、ローディング状態でも即座にファーストバイトを返せる。 |
 
-> 💡 **覚え方**  
-> - **Suspense**: “待ってね”  
-> - **SSR**: “書いとくね”  
-> 別々の技術だけど、一緒に使うと「書いたけどまだ待ってね」を流れるように実現できます。
+&gt; 💡 **覚え方**  
+&gt; - **Suspense**: “待ってね”  
+&gt; - **SSR**: “書いとくね”  
+&gt; 別々の技術だけど、一緒に使うと「書いたけどまだ待ってね」を流れるように実現できます。
 
 ---

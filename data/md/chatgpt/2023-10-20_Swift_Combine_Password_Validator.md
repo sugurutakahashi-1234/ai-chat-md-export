@@ -601,7 +601,7 @@ error: Execution was interrupted, reason: EXC_BREAKPOINT (code=1, subcode=0x1926
 The process has been left at the point where it was interrupted, use "thread return -x" to return to the state before expression evaluation.
 
 * thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x1926abbe8)
-    frame #0: 0x00000001926abbe8 libswiftCore.dylib`Swift._assertionFailure(_: Swift.StaticString, _: Swift.String, file: Swift.StaticString, line: Swift.UInt, flags: Swift.UInt32) -&gt; Swift.Never + 248
+    frame #0: 0x00000001926abbe8 libswiftCore.dylib`Swift._assertionFailure(_: Swift.StaticString, _: Swift.String, file: Swift.StaticString, line: Swift.UInt, flags: Swift.UInt32) -> Swift.Never + 248
     frame #1: 0x0000000101c61920 $__lldb_expr24`main at #849_PasswordValidateDriver.playground:0
     frame #2: 0x0000000100cb67f8 #849_PasswordValidateDriver`linkResources + 264
     frame #3: 0x00000001803ee464 CoreFoundation`__CFRUNLOOP_IS_CALLING_OUT_TO_A_BLOCK__ + 20

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/26 15:50:51*
+*2024/06/26 15:50:51*
 
 play 中に onAudioPlayerDidFinishPlaying から true がくるまで処理を終わらないようにしたい。
 
@@ -56,7 +56,7 @@ public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol {
 ---
 
 ## 🤖 アシスタント
-*2024/6/26 15:51:25*
+*2024/06/26 15:51:25*
 
 `play` メソッドが `onAudioPlayerDidFinishPlaying` から `true` が返されるまで処理を終了しないようにするためには、 `play` メソッドを非同期で実行し、 `PassthroughSubject` を `await` する必要があります。
 
@@ -133,7 +133,7 @@ public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol, AVAudioPl
 ---
 
 ## 👤 ユーザー
-*2024/6/26 15:51:57*
+*2024/06/26 15:51:57*
 
 ちなみにこういうデリゲートからくるんだけど、もっといい実装方法はあったりする？
 
@@ -149,7 +149,7 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 ---
 
 ## 🤖 アシスタント
-*2024/6/26 15:52:24*
+*2024/06/26 15:52:24*
 
 `audioPlayerDidFinishPlaying` デリゲートメソッドの実装自体は正しいですが、いくつかの改善点を提案できます。以下は、コードの可読性と保守性を向上させるための方法です。
 
@@ -235,14 +235,14 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 ---
 
 ## 👤 ユーザー
-*2024/6/26 15:54:16*
+*2024/06/26 15:54:16*
 
 さっきと何が違うの？
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/26 15:54:40*
+*2024/06/26 15:54:40*
 
 おっしゃる通り、先ほどのコードと大きな違いはありませんでした。ここでは、元のコードをそのまま活かしつつ、さらなる改善点を加えます。
 
@@ -328,7 +328,7 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 ---
 
 ## 👤 ユーザー
-*2024/6/26 15:56:07*
+*2024/06/26 15:56:07*
 
 こうなった
 
@@ -337,7 +337,7 @@ Thread 1: Fatal error: SWIFT TASK CONTINUATION MISUSE: play(audioSource:) tried 
 ---
 
 ## 🤖 アシスタント
-*2024/6/26 15:56:34*
+*2024/06/26 15:56:34*
 
 `withCheckedThrowingContinuation` を使用している場合、Continuationは一度だけ再開する必要があります。 `onAudioPlayerDidFinishPlaying` が複数回呼び出される可能性がある場合、そのContinuationを複数回再開しようとしてエラーが発生します。この問題を解決するために、Continuationを再開する前に、Continuationが再開されていないかどうかを確認する必要があります。
 
@@ -432,14 +432,14 @@ private extension CheckedContinuation {
 ---
 
 ## 👤 ユーザー
-*2024/6/26 15:57:35*
+*2024/06/26 15:57:35*
 
 withCheckedContinuation に isResumed なんてなかった
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/26 15:57:55*
+*2024/06/26 15:57:55*
 
 確かに、`withCheckedContinuation` には `isResumed` のようなプロパティは存在しません。そのため、代わりに `onAudioPlayerDidFinishPlaying` が複数回送信されないようにするロジックを組み込みましょう。以下はその実装例です。
 
@@ -521,7 +521,7 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 ---
 
 ## 👤 ユーザー
-*2024/6/26 16:03:58*
+*2024/06/26 16:03:58*
 
 public func play(audioSource: AudioSource) async throws {
         isPlayingSubject.send(true)
@@ -549,7 +549,7 @@ public func play(audioSource: AudioSource) async throws {
 ---
 
 ## 🤖 アシスタント
-*2024/6/26 16:04:29*
+*2024/06/26 16:04:29*
 
 確かに、`withCheckedContinuation` が複数回呼ばれるたびに新しいContinuationが作成され、以前のContinuationが残ってしまう可能性があります。この問題を解決するためには、`onAudioPlayerDidFinishPlaying` のサブスクリプションを管理し、再生が終了するたびに古いサブスクリプションをキャンセルする必要があります。
 
@@ -635,7 +635,7 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 ---
 
 ## 👤 ユーザー
-*2024/6/27 16:35:24*
+*2024/06/27 16:35:24*
 
 これでも2回continuation.resume()呼ばれる時がある
 
@@ -660,7 +660,7 @@ public func play(audioSource: AudioSource) async throws {
 ---
 
 ## 🤖 アシスタント
-*2024/6/27 16:35:49*
+*2024/06/27 16:35:49*
 
 Continuationが複数回再開される問題を解決するためには、Continuationが再開される前に再開済みかどうかをチェックする必要があります。これを行うには、Continuationを再開したかどうかを追跡するフラグを使用します。
 

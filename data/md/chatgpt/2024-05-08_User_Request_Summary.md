@@ -5,21 +5,21 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/8 10:04:52*
+*2024/05/08 10:04:52*
 
 ｆｆ
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/8 10:04:54*
+*2024/05/08 10:04:54*
 
 Hello! How can I assist you today?
 
 ---
 
 ## 👤 ユーザー
-*2024/5/8 10:13:00*
+*2024/05/08 10:13:00*
 
 クリーンアーキテクチャを採用している
 これらの型はDomainEntityである
@@ -69,7 +69,7 @@ extension AVAudioQuality {
 ---
 
 ## 🤖 アシスタント
-*2024/5/8 10:13:55*
+*2024/05/08 10:13:55*
 
 Swift で `DomainEntity` の型を `FrameworkEntity` の型に変換するコードを書く際、Swift の強力な型システムを活用して、`AudioEncodeQuality`, `AudioSessionCategory`, `AudioSessionMode` それぞれに対する拡張を作成し、それらを AVFoundation の `AVAudioQuality`, `AVAudioSession.Category`, `AVAudioSession.Mode` に変換することができます。
 

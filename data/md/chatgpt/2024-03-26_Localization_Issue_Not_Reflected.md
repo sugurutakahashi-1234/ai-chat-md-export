@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/26 13:03:07*
+*2024/03/26 13:03:07*
 
 Githubのイシューを英語であげたい。
 
@@ -24,7 +24,7 @@ Edit Scheme(Selected Production) &gt; Options &gt; App Language &gt; English の
 ---
 
 ## 🤖 アシスタント
-*2024/3/26 13:03:16*
+*2024/03/26 13:03:16*
 
 Here's how you can raise an issue on GitHub in English regarding the localization not being reflected in a specific region:
 

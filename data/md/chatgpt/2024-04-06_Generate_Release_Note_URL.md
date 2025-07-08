@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/4/6 11:33:16*
+*2024/04/06 11:33:16*
 
 Slack Notification on Success で release note のURLをメッセージに設定したい。
 Generate Release Note URL and Validate Tagで作成したURLをstepを超えて変数を格納したい。
@@ -70,7 +70,7 @@ jobs:
 ---
 
 ## 🤖 アシスタント
-*2024/4/6 11:33:49*
+*2024/04/06 11:33:49*
 
 To pass variables, such as your release note URL, between steps in a GitHub Actions workflow, you can use output parameters of a job or set environment variables. However, in the case of dynamically generated content that needs to be used in a different step within the same job, GitHub Actions provides a feature to create and use environment variables via the `echo` command and the `GITHUB_ENV` file.
 

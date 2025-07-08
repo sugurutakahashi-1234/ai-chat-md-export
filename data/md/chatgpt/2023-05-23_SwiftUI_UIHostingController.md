@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:42:35*
+*2023/05/23 11:42:35*
 
 SwiftUIでUIHostingControllerを継承したViewを表示する方法をおしえてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:42:58*
+*2023/05/23 11:42:58*
 
 `UIHostingController`を継承することにより、SwiftUI ViewをUIKit環境で扱うことができます。以下に基本的な使い方を示します：
 
@@ -47,14 +47,14 @@ class ExampleViewController: UIHostingController<ExampleView> {
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:43:19*
+*2023/05/23 11:43:19*
 
 ExampleViewController をせいせいするところもおしえてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:43:51*
+*2023/05/23 11:43:51*
 
 `ExampleViewController`を生成するには、基本的には他の任意の`UIViewController`と同様に生成できます。ただし、`UIHostingController`の場合、初期化時に`rootView`として表示したいSwiftUIの`View`を指定する必要があります。
 
@@ -83,14 +83,14 @@ class SomeViewController: UIViewController {
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:44:26*
+*2023/05/23 11:44:26*
 
 ごめん、UIViewController で画面遷移をしたくなくて、SwiftUIのNavigationViewを使って遷移させたいんだ
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:45:00*
+*2023/05/23 11:45:00*
 
 SwiftUIの`NavigationView`を使用して`UIHostingController`を継承したViewに遷移する方法は、`NavigationView`と`NavigationLink`を使用するだけです。以下に、`ExampleViewController`を使用してその方法を示します：
 
@@ -129,14 +129,14 @@ SwiftUIの`NavigationView`はUIKitの`UINavigationController`に相当します�
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:45:30*
+*2023/05/23 11:45:30*
 
 となるとExampleViewControllerは不要なのでは？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:45:57*
+*2023/05/23 11:45:57*
 
 おっしゃる通りです、申し訳ありません。ご指摘の通り、SwiftUIの`NavigationView`と`NavigationLink`を使って全てSwiftUIのView間での画面遷移を行う場合、`UIHostingController`のサブクラスを作成する必要はありません。
 
@@ -167,14 +167,14 @@ struct ExampleView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:46:23*
+*2023/05/23 11:46:23*
 
 UIHostingController を使う理由は override var supportedInterfaceOrientations: UIInterfaceOrientationMask を使いたいためなんだ。もし、これをしなくても縦画面と横画面の制御ができるのであればUIHostingControllerを使いたくない
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:47:08*
+*2023/05/23 11:47:08*
 
 SwiftUIでは、UIKitで利用できる`supportedInterfaceOrientations`と同等の機能は直接提供されていませんが、異なるアプローチで同様の機能を達成することが可能です。
 
@@ -212,14 +212,14 @@ struct ContentView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:47:50*
+*2023/05/23 11:47:50*
 
 デバイスの向きを検出するのではなくて、事前にViewModel側に縦向きか横向きの情報を設定させて次にfull screen coverで遷移する先を横画面か縦画面かをきめたいんだ
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:48:37*
+*2023/05/23 11:48:37*
 
 SwiftUI で特定の画面の向きを強制的に変更する直接的な方法はありませんが、この要件を実現するために、現時点では、まだ `UIHostingController` のサブクラスを使って `supportedInterfaceOrientations` をオーバーライドすることが最善の方法となります。
 
@@ -277,7 +277,7 @@ struct DestinationView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:49:40*
+*2023/05/23 11:49:40*
 
 この記述もっと綺麗にならないの？
 
@@ -296,7 +296,7 @@ class LandscapeHostingController&lt;Content&gt;: UIHostingController&lt;Content&
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:50:19*
+*2023/05/23 11:50:19*
 
 SwiftUIのビューに対して縦向きか横向きの制約を適用するために、それぞれ別の`UIHostingController`のサブクラスを作成するのは少し冗長に感じるかもしれません。同じ効果を得るために、一つの`UIHostingController`サブクラスを作成し、初期化時に方向を指定することもできます。
 
@@ -332,14 +332,14 @@ CustomHostingController(rootView: DestinationView(), supportedInterfaceOrientati
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:50:57*
+*2023/05/23 11:50:57*
 
 rootView: Content は 特定のViewだと決まっている場合はどうかけばいい？例えばDestinationView()だとして書いて欲しい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:51:25*
+*2023/05/23 11:51:25*
 
 `CustomHostingController`が特定のSwiftUIビュー、この場合は`DestinationView`のみを扱うように設定するには、ジェネリック型パラメータ`Content`を削除し、直接`DestinationView`を使うように変更します。
 
@@ -373,14 +373,14 @@ CustomHostingController(supportedInterfaceOrientations: .landscape)
 ---
 
 ## 👤 ユーザー
-*2023/5/23 11:52:38*
+*2023/05/23 11:52:38*
 
 ありがとう！そしてこれを使って.fullScreenCover で遷移するコードを書いて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/23 11:53:27*
+*2023/05/23 11:53:27*
 
 `.fullScreenCover`メソッドを使用して、`CustomHostingController`のインスタンスを全画面で表示するコードは次のようになります。
 

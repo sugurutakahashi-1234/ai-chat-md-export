@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/13 10:26:44*
+*2024/06/13 10:26:44*
 
 複数の名前のワークフローを検知したい。Swift-DocC Hostも咥えたい
 
@@ -14,21 +14,21 @@
 ---
 
 ## 🤖 アシスタント
-*2024/6/13 10:26:49*
+*2024/06/13 10:26:49*
 
 User wants to detect multiple workflow names and include Swift-DocC Host in the monitoring.
 
 ---
 
 ## 🔧 ツール
-*2024/6/13 10:26:49*
+*2024/06/13 10:26:49*
 
 Model set context updated.
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/13 10:26:49*
+*2024/06/13 10:26:49*
 
 To set up the GitHub subscription to monitor multiple workflows, including the Swift-DocC Host, you can use the following GitHub CLI command:
 
@@ -41,14 +41,14 @@ This command subscribes to the specified repository (`crage-inc/Project-SoftBank
 ---
 
 ## 👤 ユーザー
-*2024/6/13 10:33:28*
+*2024/06/13 10:33:28*
 
 nameを複数書く場合その記述で合ってるの？
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/13 10:33:34*
+*2024/06/13 10:33:34*
 
 複数のワークフロー名を記述する場合、フォーマットが正しいかどうかを確認する必要があります。通常、GitHub CLIや統合ツールのドキュメントを確認するのがベストですが、一般的な構文を基に以下のように修正してみてください。
 

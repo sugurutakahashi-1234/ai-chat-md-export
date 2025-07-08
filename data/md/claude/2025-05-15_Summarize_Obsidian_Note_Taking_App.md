@@ -5,26 +5,22 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/16 0:28:22*
+*2025/05/16 00:28:22*
 
 brave-web-searchでObshibianについて調べてまとめて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/16 0:28:57*
+*2025/05/16 00:28:57*
 
 Obsidianについて調べて要約いたします。まず検索を行います。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 もう少し詳しい情報を集めるために、別の検索も行います。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 

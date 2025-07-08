@@ -5,19 +5,17 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/16 17:29:19*
+*2025/05/16 17:29:19*
 
 obsidian mcp 連携手順
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/16 17:29:41*
+*2025/05/16 17:29:41*
 
 ObiridianとModel Context Protocol（MCP）の連携手順について調べてみましょう。情報を収集します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 

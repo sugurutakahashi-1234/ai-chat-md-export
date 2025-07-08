@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/23 12:21:30*
+*2024/05/23 12:21:30*
 
 LazyVGrid で 以下の TalkBoxの配列を2列で表現したい
 
@@ -30,7 +30,7 @@ extension TalkBox: RandomValueProvider {
 ---
 
 ## 🤖 アシスタント
-*2024/5/23 12:21:48*
+*2024/05/23 12:21:48*
 
 To display a `LazyVGrid` with `TalkBox` items in two columns, you can use SwiftUI's `LazyVGrid` and define a two-column grid layout. Below is an example implementation to help you achieve this:
 

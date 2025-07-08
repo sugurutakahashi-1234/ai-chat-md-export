@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/19 17:07:07*
+*2025/01/19 17:07:07*
 
 Future onTapReject() async {}
 
@@ -558,7 +558,7 @@ class GuildManagePage extends HookConsumerWidget {
 ---
 
 ## 🔧 ツール
-*2025/1/19 17:07:22*
+*2025/01/19 17:07:22*
 
 **Creating async methods**
 
@@ -599,7 +599,7 @@ I’m integrating `onTapReject` and `onTapApprove` methods with error handling a
 ---
 
 ## 🤖 アシスタント
-*2025/1/19 17:07:48*
+*2025/01/19 17:07:48*
 
 以下のサンプルでは、`onTapReject` と `onTapApprove` を try-catch でラップし、エラー時にスナックバーを表示する実装例を示します。  
 同時に、既存の `_buildRequestedMembers` 内の承認/却下ボタンで呼び出す部分を、作成したメソッドに置き換えています。
@@ -630,11 +630,11 @@ class GuildManagePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final imageFile = useState<File?>(null);
+    final imageFile = useState&lt;File?&gt;(null);
     final picker = useMemoized(ImagePicker.new);
     final guildInfoState = ref.watch(getMyGuildNotifierProvider);
 
-    Future<void> pickAndCropImage() async {
+    Future&lt;void&gt; pickAndCropImage() async {
       final pickedFile = await picker.pickImage(source: ImageSource.gallery);
       if (pickedFile == null) {
         debugPrint('Image selection cancelled');
@@ -687,7 +687,7 @@ class GuildManagePage extends HookConsumerWidget {
     /// --- ここから追加/修正部分 ---
 
     /// 申請を却下する際の処理
-    Future<void> onTapReject(
+    Future&lt;void&gt; onTapReject(
       BuildContext context,
       WidgetRef ref, {
       required String guildId,
@@ -722,7 +722,7 @@ class GuildManagePage extends HookConsumerWidget {
     }
 
     /// 申請を承認する際の処理
-    Future<void> onTapApprove(
+    Future&lt;void&gt; onTapApprove(
       BuildContext context,
       WidgetRef ref, {
       required String guildId,
@@ -761,8 +761,8 @@ class GuildManagePage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Guild management')),
       body: guildInfoState.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) => Center(child: Text('Error: $error')),
+        loading: () =&gt; const Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) =&gt; Center(child: Text('Error: $error')),
         data: (guildInfo) {
           if (guildInfo == null) {
             return const Center(child: Text('No guild info available.'));
@@ -771,7 +771,7 @@ class GuildManagePage extends HookConsumerWidget {
           final guildId = guildInfo.guildId ?? 'Unknown';
           final guildName = guildInfo.guildName ?? 'No Name';
           final guildAvatar = guildInfo.guildAvatar ?? '';
-          final guildMembers = guildInfo.guildMembers ?? <GuildMemberDto>[];
+          final guildMembers = guildInfo.guildMembers ?? &lt;GuildMemberDto&gt;[];
 
           return _buildGuildManagementContent(
             context: context,
@@ -794,12 +794,12 @@ class GuildManagePage extends HookConsumerWidget {
   Widget _buildGuildManagementContent({
     required BuildContext context,
     required WidgetRef ref,
-    required Future<void> Function() pickAndCropImage,
+    required Future&lt;void&gt; Function() pickAndCropImage,
     required String guildId,
     required String guildName,
     required String guildAvatar,
-    required List<GuildMemberDto> guildMembers,
-    required Future<void> Function(
+    required List&lt;GuildMemberDto&gt; guildMembers,
+    required Future&lt;void&gt; Function(
       BuildContext context,
       WidgetRef ref, {
       required String guildId,
@@ -807,7 +807,7 @@ class GuildManagePage extends HookConsumerWidget {
       required String userName,
     })
         onTapReject,
-    required Future<void> Function(
+    required Future&lt;void&gt; Function(
       BuildContext context,
       WidgetRef ref, {
       required String guildId,

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/16 14:17:43*
+*2025/05/16 14:17:43*
 
 MastraとAgnoの違い
 * Mastra
@@ -16,42 +16,28 @@ MastraとAgnoの違い
 ---
 
 ## 🤖 アシスタント
-*2025/5/16 14:18:45*
+*2025/05/16 14:18:45*
 
 マストラ（Mastra）とアグノ（Agno）の違いについて調べてみます。両方ともGitHubでオープンソースプロジェクトとして公開されているようですね。それぞれのリポジトリを確認してみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -111,29 +97,23 @@ This block is not supported on your current device yet.
 ---
 
 ## 👤 ユーザー
-*2025/5/16 14:19:17*
+*2025/05/16 14:19:17*
 
 TypeScriptでMastra以外の選択肢はあるか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/16 14:19:55*
+*2025/05/16 14:19:55*
 
 TypeScriptで開発できるAIエージェントフレームワークについて調査します。Mastra以外にもTypeScriptで使用できるフレームワークがあるか確認しましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -193,14 +173,14 @@ Mastraは、VercelチームによるAIフレームワークでワークフロー
 ---
 
 ## 👤 ユーザー
-*2025/5/16 14:20:07*
+*2025/05/16 14:20:07*
 
 それぞれのURLを教えて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/16 14:20:16*
+*2025/05/16 14:20:16*
 
 それぞれのAIエージェントフレームワークの公式URLを以下にまとめます：
 
@@ -232,14 +212,14 @@ Mastraは、VercelチームによるAIフレームワークでワークフロー
 ---
 
 ## 👤 ユーザー
-*2025/5/16 14:21:40*
+*2025/05/16 14:21:40*
 
 langchainjsとMastraだとどちらがよいか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/16 14:21:57*
+*2025/05/16 14:21:57*
 
 LangChain.jsとMastraの比較について、それぞれの強みと弱みを整理してみましょう。
 
@@ -297,29 +277,23 @@ LangChain.jsとMastraの比較について、それぞれの強みと弱みを�
 ---
 
 ## 👤 ユーザー
-*2025/5/16 14:24:57*
+*2025/05/16 14:24:57*
 
 この手のSDKでSwiftで対応しているものはあるのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/16 14:25:32*
+*2025/05/16 14:25:32*
 
 SwiftでのAIエージェントフレームワークやSDKについて調査しましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 

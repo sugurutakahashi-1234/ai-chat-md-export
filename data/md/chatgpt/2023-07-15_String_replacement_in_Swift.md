@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/7/15 17:03:07*
+*2023/07/15 17:03:07*
 
 Swiftで以下のようなoutputDirectoryPathの文字列について/をすべて_に変更する処理を書いて欲しい。
 
@@ -18,7 +18,7 @@ let measurementId = "measurement_id_1"
 ---
 
 ## 🤖 アシスタント
-*2023/7/15 17:03:19*
+*2023/07/15 17:03:19*
 
 Swiftの`String`クラスは、`replacingOccurrences(of:with:)`メソッドを提供しており、文字列の特定の部分を置換することができます。以下に、指定された`outputDirectoryPath`の文字列で`/`を`_`に置き換えるSwiftコードを示します。
 

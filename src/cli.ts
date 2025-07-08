@@ -89,16 +89,34 @@ async function processFile(
 ) {
   console.log(`処理中: ${filePath}`);
 
-  const format =
-    options.format === "auto" ? await detectFormat(filePath) : options.format;
+  let format: string;
+  try {
+    format = options.format === "auto" ? await detectFormat(filePath) : options.format;
+  } catch (error) {
+    throw new Error(
+      `ファイル形式の検出に失敗しました: ${error instanceof Error ? error.message : "不明なエラー"}\n` +
+      `ファイル: ${filePath}`
+    );
+  }
 
   let conversations: Conversation[];
-  if (format === "chatgpt") {
-    conversations = await loadChatGPT(filePath);
-  } else if (format === "claude") {
-    conversations = await loadClaude(filePath);
-  } else {
-    throw new Error(`サポートされていない形式: ${format}`);
+  try {
+    if (format === "chatgpt") {
+      conversations = await loadChatGPT(filePath);
+    } else if (format === "claude") {
+      conversations = await loadClaude(filePath);
+    } else {
+      throw new Error(`サポートされていない形式: ${format}`);
+    }
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("スキーマ検証エラー")) {
+      throw error;
+    }
+    throw new Error(
+      `ファイルの読み込みに失敗しました: ${error instanceof Error ? error.message : "不明なエラー"}\n` +
+      `ファイル: ${filePath}\n` +
+      `形式: ${format}`
+    );
   }
 
   await fs.mkdir(outputDir, { recursive: true });
@@ -108,8 +126,15 @@ async function processFile(
     const fileName = `${conv.date}_${conv.title.replace(/[^a-zA-Z0-9ぁ-んァ-ヶー一-龠]/g, "_")}.md`;
     const outputPath = path.join(outputDir, fileName);
 
-    await fs.writeFile(outputPath, markdown, "utf-8");
-    console.log(`  → ${outputPath}`);
+    try {
+      await fs.writeFile(outputPath, markdown, "utf-8");
+      console.log(`  → ${outputPath}`);
+    } catch (error) {
+      console.error(
+        `警告: ファイルの書き込みに失敗しました: ${outputPath}\n` +
+        `理由: ${error instanceof Error ? error.message : "不明なエラー"}`
+      );
+    }
   }
 
   if (options.copyRaw) {

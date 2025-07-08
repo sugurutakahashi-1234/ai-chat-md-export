@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/22 18:30:15*
+*2025/06/22 18:30:15*
 
 Zod と Valibot を比較して欲しい。
 その他のTypeScriptでのバリデーションの有名なライブラリとも比較してほしい。GitHubのスター数や勢いなども比較してほしい。
@@ -13,7 +13,7 @@ Zod と Valibot を比較して欲しい。
 ---
 
 ## 🤖 アシスタント
-*2025/6/22 18:32:10*
+*2025/06/22 18:32:10*
 
 ## TL;DR
 
@@ -62,7 +62,7 @@ Zod と Valibot を比較して欲しい。
   TS トランスフォーマで**コード生成**→実行時 10〜20 000× 高速。バリデーションだけでなく JSON Schema/ProtoBuf/LLM スキーマも生成する“多機能オールインワン”。ビルドパイプラインが許すなら最速。citeturn27view0  
 
 - **ArkType**  
-  `number&int&gt;0` のように“型＝文字列 DSL”で書け、IDE 補完も効く。高度だが直感的でない人も。バンドル軽量。citeturn28view0  
+  `number&int>0` のように“型＝文字列 DSL”で書け、IDE 補完も効く。高度だが直感的でない人も。バンドル軽量。citeturn28view0  
 
 - **Superstruct**  
   API が極めてシンプルでカスタム validator を作りやすい。「フォームで軽量に済ませたい」場合のミニマム選択肢。citeturn29view0  
@@ -106,14 +106,14 @@ Zod と Valibot を比較して欲しい。
 ---
 
 ## 👤 ユーザー
-*2025/6/22 20:45:59*
+*2025/06/22 20:45:59*
 
 Openapi からバリデータを生成するようなものとして、流行りそうなのどれか。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/22 20:46:39*
+*2025/06/22 20:46:39*
 
 ## OpenAPI → バリデータ生成界隈の “推しツール” 一覧
 
@@ -160,7 +160,7 @@ Openapi からバリデータを生成するようなものとして、流行り
 ---
 
 ## 👤 ユーザー
-*2025/6/22 21:27:51*
+*2025/06/22 21:27:51*
 
 Valibotの型のバリデーターを生成する OpenAPIの生成系ライブラリはないか。 
 openapi-typescriptを使っていて、バリテーターだけ別のライブラリから生成したいんだ。
@@ -168,7 +168,7 @@ openapi-typescriptを使っていて、バリテーターだけ別のライブ�
 ---
 
 ## 🤖 アシスタント
-*2025/6/22 21:28:35*
+*2025/06/22 21:28:35*
 
 ### 結論だけ先に
 - **Valibot スキーマを自動生成できる OpenAPI コードジェネレータ**は **2 強＋1**  
@@ -206,7 +206,7 @@ export default defineConfig({
 });
 ```
 
-<details><summary>実行例</summary>
+&lt;details&gt;&lt;summary&gt;実行例&lt;/summary&gt;
 
 ```bash
 # 型 (すでに運用中)
@@ -233,7 +233,7 @@ export const vGetUserResponse = v.union([
   v.object({ error: v.literal('NotFound') })
 ]);
 ```
-</details>
+&lt;/details&gt;
 
 ### 使い回しパターン
 ```ts
@@ -291,12 +291,12 @@ export const vGetUsersResponse = v.array(
 | **新規＆とにかく軽量** | typed-openapi `--runtime valibot` |
 | **SDK もまとめて生成し、TanStack Query 等も自動化** | openapi-ts (+ React Query / Fastify plugins) |
 
-> β とはいえ **openapi-ts の Valibot plugin** は公式ドキュメント付きでメンテも活発。型とバリデータを分離したい構成でも最も手数が少なく、今後の主流になりそうです。 citeturn1view0turn2view0
+&gt; β とはいえ **openapi-ts の Valibot plugin** は公式ドキュメント付きでメンテも活発。型とバリデータを分離したい構成でも最も手数が少なく、今後の主流になりそうです。 citeturn1view0turn2view0
 
 ---
 
 ## 👤 ユーザー
-*2025/6/23 1:16:53*
+*2025/06/23 01:16:53*
 
 リクエスト時のバリデーションについて
 
@@ -313,7 +313,7 @@ export const vGetUsersResponse = v.array(
 ---
 
 ## 🤖 アシスタント
-*2025/6/23 1:17:22*
+*2025/06/23 01:17:22*
 
 ### そもそも「どこで」バリデーションするか――5 層で整理  
 ```
@@ -405,7 +405,7 @@ schemathesis run --checks all http://localhost:3000/openapi.yaml
 ---
 
 ## 👤 ユーザー
-*2025/6/23 1:20:45*
+*2025/06/23 01:20:45*
 
 そもそもクライアント側の責務としてはどういったことが求められるのか。 
 つまり、クライアント側でのゾットでの バリデーションとかって必要だと思う。 どうせサーバー側がエラーを返却するからそれでいいんじゃないかという節がちょっとある。
@@ -413,24 +413,24 @@ schemathesis run --checks all http://localhost:3000/openapi.yaml
 ---
 
 ## 🤖 アシスタント
-*2025/6/23 1:20:46*
+*2025/06/23 01:20:46*
 
 ### クライアントの“本来の責務”を整理すると
 
 | 層 | 主目的 | 具体例 | **Zod 等のバリデータが担うか？** |
 |----|--------|--------|-------------------------------|
-| **① UI／入力体験** | 誤入力を速攻で気付かせる<br>（書式・必須チェック・逐次変換） | メール形式、文字数制限、数値のみ etc. | **◎ 必須**<br>ユーザー体験そのもの |
-| **② アプリ状態／ビジネスルール** | 画面間で一貫した状態を保つ<br>ビジネス条件を満たす | 在庫数≧注文数、重複登録禁止 | **◯ あった方が安全**<br>ロジック誤りを早期発見 |
-| **③ API 呼び出し前の整形** | DTO へ変換・型保証 | `Date` ⇄ ISO 文字列, null → undefined | **△ 開発・テスト用で十分**<br>本番は tree-shake 可 |
+| **① UI／入力体験** | 誤入力を速攻で気付かせる&lt;br&gt;（書式・必須チェック・逐次変換） | メール形式、文字数制限、数値のみ etc. | **◎ 必須**&lt;br&gt;ユーザー体験そのもの |
+| **② アプリ状態／ビジネスルール** | 画面間で一貫した状態を保つ&lt;br&gt;ビジネス条件を満たす | 在庫数≧注文数、重複登録禁止 | **◯ あった方が安全**&lt;br&gt;ロジック誤りを早期発見 |
+| **③ API 呼び出し前の整形** | DTO へ変換・型保証 | `Date` ⇄ ISO 文字列, null → undefined | **△ 開発・テスト用で十分**&lt;br&gt;本番は tree-shake 可 |
 | **④ ネットワーク／リトライ** | 通信再送・CSRF 付与など | fetch ラッパー, TanStack Query | ― バリデータ不要 |
-| **⑤ サーバー I/F 保護** | サーバー境界で最終検証 | OpenAPI + AJV / Zod | **サーバー側が必須**<br>“信頼できない入力”対策 |
+| **⑤ サーバー I/F 保護** | サーバー境界で最終検証 | OpenAPI + AJV / Zod | **サーバー側が必須**&lt;br&gt;“信頼できない入力”対策 |
 
 ---
 
 ## なぜ「クライアントでも Zod を書きたくなる」のか
 
 1. **型とランタイムがズレる瞬間が怖い**  
-   *生成型 (`openapi-typescript` など) だけだと*<br>ビルドは通るが実行時は崩れることがある。  
+   *生成型 (`openapi-typescript` など) だけだと*&lt;br&gt;ビルドは通るが実行時は崩れることがある。  
 2. **開発スピードを保ちたい**  
    API 仕様が揺れるフェーズでは、リクエスト検証で**すぐ気付ける**メリットが大きい。  
 3. **フォームが複雑**  
@@ -443,7 +443,7 @@ schemathesis run --checks all http://localhost:3000/openapi.yaml
 | 反論 | 実際の対策 |
 |------|-----------|
 | **バンドルが太る** | `process.env.NODE_ENV!=='production'` の分岐で validator を drop (openapi-ts, tRPC, Remix などが採用) |
-| **どうせサーバーが弾く** | ①UIで基本チェック済み<br>②サーバーは**必ず**全量検証する＝二重チェックになる<br>→ **本番では log だけ残せば十分** |
+| **どうせサーバーが弾く** | ①UIで基本チェック済み&lt;br&gt;②サーバーは**必ず**全量検証する＝二重チェックになる&lt;br&gt;→ **本番では log だけ残せば十分** |
 | **例外が UX を壊す** | `try/catch` で握りつぶし、Sentry 送信 → ユーザーにはフラットな通知だけ |
 
 ---
@@ -454,7 +454,7 @@ schemathesis run --checks all http://localhost:3000/openapi.yaml
 |------|-----------------------------|------|
 | **開発 (local / PR)** | Zod/Valibot を *on* で即崩れ検知 | API 変更に気付く、人手 QA 減 |
 | **CI / Contract Test** | Schemathesis などで**大量 fuzz** | 仕様逸脱をビルドで落とす |
-| **本番 build** | バリデータを tree-shake<br>レスポンスだけ try/catch & log | バンドル軽量、UX を保ちつつ異常検知 |
+| **本番 build** | バリデータを tree-shake&lt;br&gt;レスポンスだけ try/catch & log | バンドル軽量、UX を保ちつつ異常検知 |
 
 ```ts
 // hey-api 例
@@ -477,14 +477,14 @@ plugins: [
 3. **最終防衛ライン**はサーバーが必ず持つ  
    - クライアント側は **失敗ログ＋フォールバック表示**で UX を壊さない
 
-> **結論**  
-> - “全く要らない”わけではないが、**クライアントのランタイム検証は環境依存で薄くする**のが今のベストプラクティス。  
-> - フォーム体験とビジネスロジックの安全性を担保しつつ、**本番ユーザーには不要な例外を見せない**設計が落としどころです。
+&gt; **結論**  
+&gt; - “全く要らない”わけではないが、**クライアントのランタイム検証は環境依存で薄くする**のが今のベストプラクティス。  
+&gt; - フォーム体験とビジネスロジックの安全性を担保しつつ、**本番ユーザーには不要な例外を見せない**設計が落としどころです。
 
 ---
 
 ## 👤 ユーザー
-*2025/6/23 1:22:48*
+*2025/06/23 01:22:48*
 
 TypeSricpt版のSchemathesisのような現役のツールはないのか？
 それに変わるような手段はないか？
@@ -492,7 +492,7 @@ TypeSricpt版のSchemathesisのような現役のツールはないのか？
 ---
 
 ## 🤖 アシスタント
-*2025/6/23 1:24:08*
+*2025/06/23 01:24:08*
 
 ## 「Schemathesis 的」な体験を TypeScript で――現状まとめ
 
@@ -506,11 +506,11 @@ TypeSricpt版のSchemathesisのような現役のツールはないのか？
 | **Fuzzmatic** | JSON-Schema→データセット生成 | ◯（バリデーション別途） | × | JSON Schema | 2025-01 | CLI/JS API。OpenAPI 内部の schema 抜き出し→fuzz に便利 citeturn14view0 |
 | **GitLab API Fuzzing (CI ジョブ)** | SaaS/CI スキャナ | ◯ | ◯ | v2/3 | SaaS | Node 製ではないが「テストコードを書かずに」代替可 citeturn18view0 |
 
-> **結論**  
-> - **完全に Schemathesis と同等**の “OpenAPI ⇒ 何千ものリクエストを自動生成して property-based にぶつける” ツールは **TypeScript エコシステムにはまだ無い**。  
-> - とはいえ **PactumJS + openapi-fuzzer-core** が最も近い立ち位置。現状は Swagger 2 が中心・機能も実験段階だが、JS テストランナーに自然に溶け込む利点がある。  
-> - “仕様ずれの検知” だけなら **jest-openapi** か **Prism** を Jest から呼び出す構成がシンプル。  
-> - **生成データを自前でコントロールしたい**場合は `fast-check` と **Fuzzmatic** を組み合わせて “TS で JSON-Schema → Arbitrary 生成” するのが柔軟。
+&gt; **結論**  
+&gt; - **完全に Schemathesis と同等**の “OpenAPI ⇒ 何千ものリクエストを自動生成して property-based にぶつける” ツールは **TypeScript エコシステムにはまだ無い**。  
+&gt; - とはいえ **PactumJS + openapi-fuzzer-core** が最も近い立ち位置。現状は Swagger 2 が中心・機能も実験段階だが、JS テストランナーに自然に溶け込む利点がある。  
+&gt; - “仕様ずれの検知” だけなら **jest-openapi** か **Prism** を Jest から呼び出す構成がシンプル。  
+&gt; - **生成データを自前でコントロールしたい**場合は `fast-check` と **Fuzzmatic** を組み合わせて “TS で JSON-Schema → Arbitrary 生成” するのが柔軟。
 
 ---
 
@@ -594,38 +594,38 @@ test('POST /posts fuzz', async () => {
 | **セキュリティ面の fuzz（DDoS/SQLi など）** | SaaS スキャナ (GitLab Ultimate, StackHawk) で pipeline 実行 |
 | **型安全な property-based をコードで制御** | `fast-check` + `openapi-typescript` or **Fuzzmatic** |
 
-> 🔮 **期待値**  
-> 2025 年内に PactumJS の OAS 3 完全対応がマージされれば、**「純 TS 版 Schemathesis」**にいちばん近いポジションになると見られています。現時点では **Prism or jest-openapi で検証 → fast-check で生成** のハイブリッドが実務ではバランス良い選択です。
+&gt; 🔮 **期待値**  
+&gt; 2025 年内に PactumJS の OAS 3 完全対応がマージされれば、**「純 TS 版 Schemathesis」**にいちばん近いポジションになると見られています。現時点では **Prism or jest-openapi で検証 → fast-check で生成** のハイブリッドが実務ではバランス良い選択です。
 
 ---
 
 ## 👤 ユーザー
-*2025/6/23 1:28:45*
+*2025/06/23 01:28:45*
 
 ちょっとそれぞれのSDKについて、Gitのスター数とページのリンクを貼ってほしい。 どっちかというと、オープンAPI仕様に応じたリクエストを送って、それがまともに配当って、レスポンスもオープンAPI仕様のレスポンスが入ってくることを期待したいみたいなテストを書きたい。特に、イグザンプルとかを使用したテストが書ければ嬉しい。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/23 1:29:04*
+*2025/06/23 01:29:04*
 
 以下の主要ツールについて、**GitHub スター数（2025-06-23 時点）と公式リポジトリへのリンク**を一覧化しました。  
 「OpenAPI 定義どおりのリクエスト → レスポンス検証」を自動化できるか、**例 ( `example` / `examples` フィールド) をテスト入力として使えるか**もあわせて整理しています。
 
 | ツール | ⭐ | リポジトリ | リクエスト自動生成 | レスポンス検証 | `examples` 活用 |
 |--------|---:|-----------|-------------------|----------------|-----------------|
-| PactumJS | 574 | <https://github.com/pactumjs/pactum> citeturn1view0 | `fuzz().onSwagger()` で Swagger 2 ➜ ○／OAS 3 は開発中 | 手書き `expect` or `.expect('schema', true)` | `fuzz().useExamples(true)` (β) |
-| Prism | 4.6k | <https://github.com/stoplightio/prism> citeturn2view0 | Proxy/MOCK が OAS 2/3.1 を自動整形 | **◎** リク/レス両方を仕様でバリデート | Mock サーバーが `examples` を返却（テストで流用可） |
-| OpenAPI Validators (Jest/Chai) | 192 | <https://github.com/openapi-library/OpenAPIValidators> citeturn3view0 | ×（自前で fetch） | `expect(res).toSatisfyApiSpec()` で楽 | 例を取得する API なし（外部で読み込み可） |
-| OpenAPI Fuzzer (Rust CLI) | 561 | <https://github.com/matusf/openapi-fuzzer> citeturn4view0 | **◎** OAS 3 fuzz (property-based) | △（エラー/クラッシュ検知のみ） | なし |
-| Fuzzmatic | 3 | <https://github.com/ashleydavis/fuzzmatic> citeturn5view0 | JSON-Schema→データ生成 | △（生成だけ） | Schema に `examples` を含めれば取り込める |
-| Dredd (アーカイブ) | 4.2k | <https://github.com/apiaryio/dredd> citeturn6view0 | 定義内サンプルを再生 (OAS2/3 =実験) | ◎ | `--dry-run` でサンプル確認可 |
-| Schemathesis (Py) | 2.6k | <https://github.com/schemathesis/schemathesis> citeturn7view0 | ◎ OAS3/GraphQL fuzz | ◎ | `--hypothesis-examples` で例重視テスト |
+| PactumJS | 574 | &lt;https://github.com/pactumjs/pactum&gt; citeturn1view0 | `fuzz().onSwagger()` で Swagger 2 ➜ ○／OAS 3 は開発中 | 手書き `expect` or `.expect('schema', true)` | `fuzz().useExamples(true)` (β) |
+| Prism | 4.6k | &lt;https://github.com/stoplightio/prism&gt; citeturn2view0 | Proxy/MOCK が OAS 2/3.1 を自動整形 | **◎** リク/レス両方を仕様でバリデート | Mock サーバーが `examples` を返却（テストで流用可） |
+| OpenAPI Validators (Jest/Chai) | 192 | &lt;https://github.com/openapi-library/OpenAPIValidators&gt; citeturn3view0 | ×（自前で fetch） | `expect(res).toSatisfyApiSpec()` で楽 | 例を取得する API なし（外部で読み込み可） |
+| OpenAPI Fuzzer (Rust CLI) | 561 | &lt;https://github.com/matusf/openapi-fuzzer&gt; citeturn4view0 | **◎** OAS 3 fuzz (property-based) | △（エラー/クラッシュ検知のみ） | なし |
+| Fuzzmatic | 3 | &lt;https://github.com/ashleydavis/fuzzmatic&gt; citeturn5view0 | JSON-Schema→データ生成 | △（生成だけ） | Schema に `examples` を含めれば取り込める |
+| Dredd (アーカイブ) | 4.2k | &lt;https://github.com/apiaryio/dredd&gt; citeturn6view0 | 定義内サンプルを再生 (OAS2/3 =実験) | ◎ | `--dry-run` でサンプル確認可 |
+| Schemathesis (Py) | 2.6k | &lt;https://github.com/schemathesis/schemathesis&gt; citeturn7view0 | ◎ OAS3/GraphQL fuzz | ◎ | `--hypothesis-examples` で例重視テスト |
 
-> **TypeScript 生態系で “例ベース＋自動検証” を完結できる現役 OSS は ──**  
-> - **Prism** (Proxy or Mock)  
-> - **PactumJS + fuzz() API**  
-> の 2 択が実質本命です。  
+&gt; **TypeScript 生態系で “例ベース＋自動検証” を完結できる現役 OSS は ──**  
+&gt; - **Prism** (Proxy or Mock)  
+&gt; - **PactumJS + fuzz() API**  
+&gt; の 2 択が実質本命です。  
 
 ---
 
@@ -712,25 +712,25 @@ test('POST /posts – example payload', async () => {
 | **自前クライアント + Jest で assertion だけ** | OpenAPI Validators (`jest-openapi`) |
 | **本気の fuzz / property-based** | Schemathesis (Python) or OpenAPI Fuzzer (Rust CLI) |
 
-> 今後、**PactumJS が OAS 3 に正式対応**すれば「完全 TS 版 Schemathesis」的立ち位置に近づく見込みです。現時点では **Prism + Jest** が TypeScript 場で最もラクに “例ベース契約テスト” を構築できる組み合わせと言えます。
+&gt; 今後、**PactumJS が OAS 3 に正式対応**すれば「完全 TS 版 Schemathesis」的立ち位置に近づく見込みです。現時点では **Prism + Jest** が TypeScript 場で最もラクに “例ベース契約テスト” を構築できる組み合わせと言えます。
 
 ---
 
 ## 👤 ユーザー
-*2025/6/23 1:31:42*
+*2025/06/23 01:31:42*
 
 うまくリクエストを自動生成したいんだけど、そういったツールはないのか。もう1個だけでいいんだ。 エグザンプルの1個だけでいいんだ。 それを元にテストをかければめっちゃ楽。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/23 1:31:59*
+*2025/06/23 01:31:59*
 
 ### 「1 ツールだけで “サンプル 1 個” を取り出す」なら **openapi-sampler** が最短ルート
 
 | ツール | ⭐ (2025-06-23) | GitHub |
 |--------|---------------|--------|
-| **openapi-sampler** | **199** citeturn0search0 | <https://github.com/Redocly/openapi-sampler> |
+| **openapi-sampler** | **199** citeturn0search0 | &lt;https://github.com/Redocly/openapi-sampler&gt; |
 
 #### 特徴 (50 秒で把握)
 
@@ -773,9 +773,9 @@ it('example request round-trips', async () => {
 });
 ```
 
-> *ポイント*  
-> - **`sample()`** は `skipReadOnly`, `skipWriteOnly` など細粒度オプションあり。  
-> - JSON Pointer で schema を直接渡すことも出来るので、Jest table test で *全エンドポイントを網羅* するのも簡単。
+&gt; *ポイント*  
+&gt; - **`sample()`** は `skipReadOnly`, `skipWriteOnly` など細粒度オプションあり。  
+&gt; - JSON Pointer で schema を直接渡すことも出来るので、Jest table test で *全エンドポイントを網羅* するのも簡単。
 
 ---
 
@@ -792,14 +792,14 @@ it('example request round-trips', async () => {
 ---
 
 ## 👤 ユーザー
-*2025/6/23 1:33:21*
+*2025/06/23 01:33:21*
 
 Swagger 2 仕様とOAS2とOAS 3は何が違うのか。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/23 1:33:22*
+*2025/06/23 01:33:22*
 
 ### まず整理：「Swagger 2.0 ≒ OpenAPI 2.0」
 
@@ -860,7 +860,7 @@ Swagger 2 仕様とOAS2とOAS 3は何が違うのか。
 ---
 
 ## 👤 ユーザー
-*2025/6/23 1:36:22*
+*2025/06/23 01:36:22*
 
 ZodやValibotの範囲で リクエストをランダム生産するような方法はあるのか。
 例えば今、OpenAPI YAMLから、 オープンAPI TypeScriptやHeyAPIなどでクライアントコードはもう作っていて、Zodの スキーマも自動生成できているので、 そこまで手間ではない。
@@ -868,19 +868,19 @@ ZodやValibotの範囲で リクエストをランダム生産するような方
 ---
 
 ## 🤖 アシスタント
-*2025/6/23 1:37:08*
+*2025/06/23 01:37:08*
 
 ## Zod / Valibot で “ランダムなリクエスト⽣成” を実現する 5 つの OSS
 
 | ライブラリ | ⭐ (2025-06-23) | GitHub | タイプ | 生成のしくみ |
 |-----------|--------------:|--------|--------|-------------|
-| **zod-fast-check** | 116 citeturn2view0 | <https://github.com/DavidTimms/zod-fast-check> | property-based | Zod → **fast-check Arbitrary** を自動導出 |
-| **zod-fixture** | 133 citeturn13view0 | <https://github.com/timdeschryver/zod-fixture> | fixture | `fixture(schema)` で 1 レコード生成（faker 組み込み） |
-| **@anatine/zod-mock** | 751* citeturn4search5 | <https://github.com/anatine/zod-plugins/tree/main/packages/zod-mock> | faker mock | `generateMock(schema)` で faker ベースのダミー |
-| **zod-schema-faker** | 63 citeturn1view0 | <https://github.com/soc221b/zod-schema-faker> | faker mock | `fake(schema)` ／ `fakeSchema()` |
-| **valimock** (Valibot) | 33 citeturn11view0 | <https://github.com/Saeris/valimock> | faker mock | `new Valimock().mock(schema)` |
+| **zod-fast-check** | 116 citeturn2view0 | &lt;https://github.com/DavidTimms/zod-fast-check&gt; | property-based | Zod → **fast-check Arbitrary** を自動導出 |
+| **zod-fixture** | 133 citeturn13view0 | &lt;https://github.com/timdeschryver/zod-fixture&gt; | fixture | `fixture(schema)` で 1 レコード生成（faker 組み込み） |
+| **@anatine/zod-mock** | 751* citeturn4search5 | &lt;https://github.com/anatine/zod-plugins/tree/main/packages/zod-mock&gt; | faker mock | `generateMock(schema)` で faker ベースのダミー |
+| **zod-schema-faker** | 63 citeturn1view0 | &lt;https://github.com/soc221b/zod-schema-faker&gt; | faker mock | `fake(schema)` ／ `fakeSchema()` |
+| **valimock** (Valibot) | 33 citeturn11view0 | &lt;https://github.com/Saeris/valimock&gt; | faker mock | `new Valimock().mock(schema)` |
 
-\*zod-mock はモノレポ単位のスター数。
+*zod-mock はモノレポ単位のスター数。
 
 ---
 
@@ -933,8 +933,8 @@ const payload = new Valimock().mock(UserSchema);
 await api.POST('/users', payload);
 ```
 
-> Valibot → fast-check 変換の公式パッケージは **まだ無い** ため、  
-> faker モックなら **valimock**、プロパティテストをしたい場合は **JSON Schema に経由変換 → json-schema-fast-check** が実用ルートです。
+&gt; Valibot → fast-check 変換の公式パッケージは **まだ無い** ため、  
+&gt; faker モックなら **valimock**、プロパティテストをしたい場合は **JSON Schema に経由変換 → json-schema-fast-check** が実用ルートです。
 
 ---
 

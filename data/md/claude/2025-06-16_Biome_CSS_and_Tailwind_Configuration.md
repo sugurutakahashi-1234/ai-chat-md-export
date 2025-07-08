@@ -5,24 +5,20 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/17 1:21:56*
+*2025/06/17 01:21:56*
 
 「biomeのCSSの設定」に「TailwindのCSSの設定」はあるか。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/17 1:22:25*
+*2025/06/17 01:22:25*
 
 Biome の CSS 設定に Tailwind CSS 専用の設定があるかを調べてみます。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 検索結果から、Biome の CSS 設定における Tailwind CSS のサポート状況について分かりました：
 

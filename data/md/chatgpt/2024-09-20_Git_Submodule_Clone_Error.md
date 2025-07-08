@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/9/20 15:56:13*
+*2024/09/20 15:56:13*
 
 git --no-optional-locks -c color.branch=false -c color.diff=false -c color.status=false -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree checkout marge/shared-module-ios-marge-develop-240920 
 Your branch is up to date with 'origin/marge/shared-module-ios-marge-develop-240920'.
@@ -33,7 +33,7 @@ Failed to clone 'shared-module-ios' a second time, aborting
 ---
 
 ## 🤖 アシスタント
-*2024/9/20 15:56:25*
+*2024/09/20 15:56:25*
 
 The error message indicates that the repository `git@github.com:progrit/shared-module-ios.git` is either not available or you don't have the correct access rights to clone it.
 

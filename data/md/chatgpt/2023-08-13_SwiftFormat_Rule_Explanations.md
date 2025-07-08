@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/8/13 20:22:36*
+*2023/08/13 20:22:36*
 
 現在のSwif formatの設定項目は以下で在る。
 
@@ -108,7 +108,7 @@
 ---
 
 ## 🤖 アシスタント
-*2023/8/13 20:23:12*
+*2023/08/13 20:23:12*
 
 The list you've provided appears to be a detailed breakdown of rules for a Swift formatting tool, likely "SwiftFormat." SwiftFormat is a tool for automatically reformatting Swift code to conform to a set of style rules. The tool is extremely configurable and supports a broad array of rules.
 
@@ -143,7 +143,7 @@ For a detailed description of each rule, you'd likely need to refer to SwiftForm
 ---
 
 ## 👤 ユーザー
-*2023/8/13 20:23:26*
+*2023/08/13 20:23:26*
 
 ここから、以下の一覧で上記に記載がないルールをおしえてほしい。
 
@@ -248,7 +248,7 @@ For a detailed description of each rule, you'd likely need to refer to SwiftForm
 ---
 
 ## 🤖 アシスタント
-*2023/8/13 20:23:53*
+*2023/08/13 20:23:53*
 
 上記のリストに基づいて、デフォルトで有効になっているルールのうち、コメントアウトが解除されているルールは以下の2つです：
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/17 10:17:32*
+*2024/06/17 10:17:32*
 
 以下の情報を
 
@@ -176,7 +176,7 @@ Suguru Takahashi
 ---
 
 ## 🤖 アシスタント
-*2024/6/17 10:18:01*
+*2024/06/17 10:18:01*
 
 Here is the attendance data formatted for your spreadsheet. It includes the start and end times for each day.
 
@@ -187,14 +187,14 @@ If you need any adjustments or additional details, please let me know!
 ---
 
 ## 👤 ユーザー
-*2024/6/17 10:18:29*
+*2024/06/17 10:18:29*
 
 14日までは埋めれるはず
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/17 10:18:44*
+*2024/06/17 10:18:44*
 
 Here is the updated attendance data for the first 14 days of June, including the start and end times. If you need any further modifications or additional data, please let me know!
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/17 18:54:46*
+*2024/05/17 18:54:46*
 
 この画面でWhisperKitによる文字起こしと、Apple の Speech Framework による文字起こしを比較できるような画面を作ってほしい。
 
@@ -131,21 +131,21 @@ final class TranscriptionDriver: Sendable {
 ---
 
 ## 🤖 アシスタント
-*2024/5/17 18:55:13*
+*2024/05/17 18:55:13*
 
 User wants to create a screen to compare transcriptions using WhisperKit and Apple's Speech Framework, and they need an implementation for SpeechFrameworkranscriptionDriver to handle transcriptions with the Apple Speech Framework.
 
 ---
 
 ## 🔧 ツール
-*2024/5/17 18:55:13*
+*2024/05/17 18:55:13*
 
 Model set context updated.
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/17 18:55:13*
+*2024/05/17 18:55:13*
 
 To implement a screen that allows comparing transcriptions using WhisperKit and Apple's Speech Framework, you need to create a `SpeechFrameworkTranscriptionDriver` and modify your `TranscriptionPresenter` and `TranscriptionView` to handle both transcription methods. Here’s how you can do it:
 
@@ -278,14 +278,14 @@ This implementation will allow you to compare the transcriptions from WhisperKit
 ---
 
 ## 👤 ユーザー
-*2024/5/17 19:02:36*
+*2024/05/17 19:02:36*
 
 SpeechFrameworkTranscriptionDriver は func transcribe(audioUrl: URL) async throws -&gt; SFSpeechRecognitionRequest のインターフェースで一旦大丈夫
 
 ---
 
 ## 🤖 アシスタント
-*2024/5/17 19:02:54*
+*2024/05/17 19:02:54*
 
 了解しました。では、`SpeechFrameworkTranscriptionDriver` をシンプルにして、`SFSpeechRecognitionRequest` を返すように変更します。また、`TranscriptionPresenter` と `TranscriptionView` を対応させます。
 

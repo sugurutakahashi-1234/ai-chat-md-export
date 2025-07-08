@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/25 15:59:22*
+*2024/07/25 15:59:22*
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 extension View {
@@ -26,7 +26,7 @@ private extension View {
 ---
 
 ## 🤖 アシスタント
-*2024/7/25 15:59:34*
+*2024/07/25 15:59:34*
 
 以下は、`onChangeIfAvailable`の実装例です。この実装では、iOS 17.0以上のバージョンで`onChange(of:initial:_:)`メソッドを呼び出し、古いバージョンではそのままビューを返します。
 

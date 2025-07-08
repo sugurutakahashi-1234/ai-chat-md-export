@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/12 23:02:45*
+*2025/01/12 23:02:45*
 
 FlutterからAndroid端末からstoreページを立ち上げる
 https://play.google.com/store/apps/details?id=com.snapitonline.snap_it
@@ -13,7 +13,7 @@ https://play.google.com/store/apps/details?id=com.snapitonline.snap_it
 ---
 
 ## 🤖 アシスタント
-*2025/1/12 23:03:00*
+*2025/01/12 23:03:00*
 
 FlutterアプリからAndroid端末で指定されたGoogle Playストアのページを立ち上げるには、`url_launcher` パッケージを使用できます。以下の手順で実装できます。
 

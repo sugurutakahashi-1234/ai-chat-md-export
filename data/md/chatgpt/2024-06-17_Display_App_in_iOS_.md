@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/17 17:27:57*
+*2024/06/17 17:27:57*
 
 2つ教えてほしい。
 1. iPhoneでシェアしようとするときに、今から開発するアプリがその候補になる方法
@@ -14,7 +14,7 @@
 ---
 
 ## 🤖 アシスタント
-*2024/6/17 17:28:07*
+*2024/06/17 17:28:07*
 
 ### 1. アプリをシェア候補に表示する方法
 
@@ -49,7 +49,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -&gt; Bool {
         // URLを受け取り、適切に処理する
         handleIncomingURL(url)
         return true

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/5 17:43:56*
+*2024/06/05 17:43:56*
 
 以下のprotocol を定義してほしい
 
@@ -73,7 +73,7 @@ final public class APIRequestDriver: Sendable {
 ---
 
 ## 🤖 アシスタント
-*2024/6/5 17:44:14*
+*2024/06/05 17:44:14*
 
 以下のプロトコル `APIRequestable` を定義し、それに準拠する形で `APIRequestDriver` クラスを修正します。
 

@@ -5,44 +5,34 @@
 ---
 
 ## 🤖 アシスタント
-*2025/5/12 15:50:13*
+*2025/05/12 15:50:13*
 
 ご依頼ありがとうございます。Playwrightを使ってブラウザを自動で動かす例を作成します。まず、Playwrightの使い方とブラウザ自動化の基本例をお示しします。
 
 ブラウザを自動で操作するシンプルな例を作成しましょう。これはGoogleで検索を行い、結果を表示する例です。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 Googleのページが開きました。次に検索ボックスに何か入力して検索を実行してみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 検索結果が表示されました。次にPlaywrightのサンプルページについて詳細を見るために、最初の検索結果をクリックしてみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 サンプルコードが含まれたページを見ることができました。このページではPlaywrightを使ったテスト自動化のサンプルコードが紹介されています。
 
 スクリーンショットを撮影して、現在の状態を確認しましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 これで、Playwrightを使ってブラウザを自動操作する基本的な流れが確認できました。最後に、このブラウザセッションを閉じましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -101,23 +91,21 @@ Viewing artifacts created via the Analysis Tool web feature preview isn’t yet 
 ---
 
 ## 👤 ユーザー
-*2025/5/12 15:47:14*
+*2025/05/12 15:47:14*
 
 playwrightでこんちはを調べて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/12 15:47:45*
+*2025/05/12 15:47:45*
 
 こんにちは！「こんちは」について調べるのをお手伝いします。Playwrightを使ってウェブで「こんちは」を検索してみましょう。
 
 「こんちは」は恐らく「こんにちは」（Hello/Good afternoon）のことかもしれませんが、念のため検索してみます。
 
 まず、Playwrightを使ってブラウザを起動し、検索を実行します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -138,7 +126,7 @@ This block is not supported on your current device yet.
 ---
 
 ## 👤 ユーザー
-*2025/5/12 15:47:59*
+*2025/05/12 15:47:59*
 
 Playwrightをつかってブラウザを自動で動かして欲しい
 

@@ -5,61 +5,47 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/14 13:37:26*
+*2025/05/14 13:37:26*
 
 fetch mcp をつかってAIまさおについて調べて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/14 13:38:11*
+*2025/05/14 13:38:11*
 
 AIまさおについて調べますね。MCPを使って情報を取得します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 AIまさおについての情報を探します。もう少し広く検索してみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 AIまさおについてもう少し特定して検索してみます。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 AIまさおについて特定の情報を見つけるために、もう少し直接的な検索を試みます。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 さらにもう少し探してみましょう。「AIまさお」と「デジタル庁」の関連情報を特定するために別の検索も試みます。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 もう一度AIまさおに特化した検索を行います。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 直接URLを確認してみましょう。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 

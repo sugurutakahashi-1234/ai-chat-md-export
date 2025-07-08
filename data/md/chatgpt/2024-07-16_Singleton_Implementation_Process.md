@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/16 18:58:33*
+*2024/07/16 18:58:33*
 
 シングルトンにしてほしい
 
@@ -61,7 +61,7 @@ public final class UserNotificationCenterDriver: NSObject, UNUserNotificationCen
 ---
 
 ## 🤖 アシスタント
-*2024/7/16 18:58:57*
+*2024/07/16 18:58:57*
 
 UserNotificationCenterDriverクラスをシングルトンにするために、次のように実装を変更します。
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/22 19:29:14*
+*2025/05/22 19:29:14*
 
 TypeScriptでのフロントエンド開発について質問がある。
 
@@ -20,7 +20,7 @@ React Router v7とNext.js の比較を行って欲しい。
 ---
 
 ## 🤖 アシスタント
-*2025/5/22 19:30:04*
+*2025/05/22 19:30:04*
 
 ### ざっくり⽐較 ― 概念の違い
 | 項目 | **React Router v7（RR v7）** | **Next.js 15.x** |
@@ -72,23 +72,23 @@ React Router v7とNext.js の比較を行って欲しい。
 ---
 
 ## 👤 ユーザー
-*2025/5/22 19:38:29*
+*2025/05/22 19:38:29*
 
 SSRは難しいのか？また実装するコードも変わってくるのか？SEO対応もReact Routerでは大変なのか？ 実装したことがないのでその辺も教えてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/22 19:38:56*
+*2025/05/22 19:38:56*
 
 ## 1. まず「SSR は何が増えるのか？」
 
 | 役割 | CSR (従来) | SSR を足すと増えるもの |
 |---|---|---|
 | **実行場所** | すべてブラウザ | ①**Node/Edge サーバー**で `renderToPipeableStream()` などを実行 |
-| **ビルド** | `vite build` → 静的 bundle | ②**サーバーエントリ**（`entry-server.tsx` など）と<br>③**クライアントエントリ**（`entry-client.tsx`）を出力 |
-| **データ取得** | `useEffect` / SWR | ④**リクエスト時データ取得 API**<br>　Next: `getServerSideProps()` / RSC<br>　RR v7: `loader()` |
-| **HTML テンプレート** | `index.html` だけ | ⑤サーバー側で HTML をストリーム生成し <br>　クライアントで **hydration** |
+| **ビルド** | `vite build` → 静的 bundle | ②**サーバーエントリ**（`entry-server.tsx` など）と&lt;br&gt;③**クライアントエントリ**（`entry-client.tsx`）を出力 |
+| **データ取得** | `useEffect` / SWR | ④**リクエスト時データ取得 API**&lt;br&gt;　Next: `getServerSideProps()` / RSC&lt;br&gt;　RR v7: `loader()` |
+| **HTML テンプレート** | `index.html` だけ | ⑤サーバー側で HTML をストリーム生成し &lt;br&gt;　クライアントで **hydration** |
 
 SSR の「難しさ」は、①〜⑤を自前で配線するか、フレームワークが肩代わりしてくれるかで決まります。
 
@@ -108,7 +108,7 @@ export default async function Page() {
 * SEO は `export const metadata = { title: "トップ", description: "…" }` の 1 行で `<title>` や `<meta>` が HTML に直書きされる。  
 * デプロイは `next build && next start`、または Vercel に push するだけ。  
 
-> “SSR が難しい” という作業は Next がすでに隠蔽しており、コードは通常の React 関数コンポーネントとほぼ同じです。citeturn0search2
+&gt; “SSR が難しい” という作業は Next がすでに隠蔽しており、コードは通常の React 関数コンポーネントとほぼ同じです。citeturn0search2
 
 ---
 
@@ -196,9 +196,9 @@ import { Helmet } from "react-helmet-async";
 | Sitemap / robots.txt | `next-sitemap` プラグイン多数 | `vite-plugin-pages-sitemap` 等を自前導入 |
 | CLS, LCP 最適化 | Vercel 分析ツールをワンクリック | Lighthouse など外部導入 |
 
-> **結論**:  
-> *「SEO 設定 → ビルド → 配信」までをワンストップで済ませたい場合は Next.js が圧倒的に楽*。  
-> React Router でも全て可能ですが、**プラグイン選定とサーバー設定**を自分で行う必要があります。
+&gt; **結論**:  
+&gt; *「SEO 設定 → ビルド → 配信」までをワンストップで済ませたい場合は Next.js が圧倒的に楽*。  
+&gt; React Router でも全て可能ですが、**プラグイン選定とサーバー設定**を自分で行う必要があります。
 
 ---
 
@@ -210,22 +210,22 @@ import { Helmet } from "react-helmet-async";
 | コードの変化量 | ページ内に `metadata` を追加する程度 | ルートファイル＋サーバーエントリを追加 |
 | SEO 作業量 | 最小（公式 API & Vercel） | ヘッダ管理・SiteMap 生成を自前で構成 |
 
-> *「SSR ＝難しい」というよりは、**Next.js がそれを代行している**か、  
-> **自分でレイヤーを積み上げるか**の違い*です。  
-> Vite×React Router の Framework mode なら **以前ほどは大変ではない**ものの、  
-> **“なんでも自分で選びたい or Vercel ロックインを避けたい”** 場合に向いています。
+&gt; *「SSR ＝難しい」というよりは、**Next.js がそれを代行している**か、  
+&gt; **自分でレイヤーを積み上げるか**の違い*です。  
+&gt; Vite×React Router の Framework mode なら **以前ほどは大変ではない**ものの、  
+&gt; **“なんでも自分で選びたい or Vercel ロックインを避けたい”** 場合に向いています。
 
 ---
 
 ## 👤 ユーザー
-*2025/5/22 19:44:09*
+*2025/05/22 19:44:09*
 
 NextjsもVercelを採用しないとその辺の恩恵を得られないのか？ React  Router も何か恩恵を受けられるサービスはあるのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/22 19:45:21*
+*2025/05/22 19:45:21*
 
 ### 1. Next.js × ホスティングサービスの関係
 
@@ -290,14 +290,14 @@ NextjsもVercelを採用しないとその辺の恩恵を得られないのか�
 ---
 
 ## 👤 ユーザー
-*2025/5/22 19:51:30*
+*2025/05/22 19:51:30*
 
 Nextjsを採用する明確なデメリットは？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/22 19:53:03*
+*2025/05/22 19:53:03*
 
 ### Next .js を採用する前に知っておきたい “ハッキリした” デメリット
 

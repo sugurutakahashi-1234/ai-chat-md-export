@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/14 15:19:50*
+*2024/03/14 15:19:50*
 
 UserDefaultsDataStore のpublic func clear(key: UserDefaultsKey) からうまくそのキーのユーザーデフォルトの値を削除したい、そうすればいいか？
 
@@ -114,7 +114,7 @@ public protocol ActionUserDefault {
 ---
 
 ## 🤖 アシスタント
-*2024/3/14 15:20:27*
+*2024/03/14 15:20:27*
 
 To effectively remove a value associated with a specific `UserDefaultsKey` in your `UserDefaultsDataStore` class, you should leverage the `UserDefaultsWrapper`'s `clear` method. However, there seems to be a slight misalignment in how the `clear` method within your `UserDefaultsWrapper` is implemented and how it's intended to be used from your `UserDefaultsDataStore`.
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/25 22:01:04*
+*2025/06/25 22:01:04*
 
 Nextjsを使わずにシンプルなViteでのReactでTanStack QueryでAPIリクエストをするとして簡単なhooksを定義してSSRやRSCをする価値は実装コストとなどを考えたときにする必要はありそうか？
 全部最新のSDkとして考えて欲しい
@@ -13,7 +13,7 @@ Nextjsを使わずにシンプルなViteでのReactでTanStack QueryでAPIリク
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 22:01:23*
+*2025/06/25 22:01:23*
 
 ### 結論（TL;DR）
 
@@ -136,14 +136,14 @@ app.listen(5173)
 ---
 
 ## 👤 ユーザー
-*2025/6/25 22:07:55*
+*2025/06/25 22:07:55*
 
 SEOやらないとどうなるのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 22:08:07*
+*2025/06/25 22:08:07*
 
 ## “SEO をやらない”と起こること
 
@@ -199,7 +199,7 @@ SEOやらないとどうなるのか？
 ---
 
 ## 👤 ユーザー
-*2025/6/25 22:10:13*
+*2025/06/25 22:10:13*
 
 ViteSSRはTan Stack Queryと相性いいのか？
 またTan StackStartという選択肢もあるのか？
@@ -207,7 +207,7 @@ ViteSSRはTan Stack Queryと相性いいのか？
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 22:10:32*
+*2025/06/25 22:10:32*
 
 ### 1. Vite SSR × TanStack Query ― 相性は “◎”
 
@@ -217,7 +217,7 @@ ViteSSRはTan Stack Queryと相性いいのか？
 | **実装コスト** | 低い | 追加ファイルは最大 3 つ程度（`server.ts`, `entry-client.tsx`, `entry-server.tsx`）。TanStack Query のみでキャッシュ共有が完結し、Redux などを別途導入する必要もない。チュートリアル例も豊富。citeturn0search2 |
 | **落とし穴** | ほぼなし | Hydration mismatch は **「ルーティングをサーバ側でも完全決定しておく」**ことで解消可。TanStack Router を組み合わせる場合は `router.load()` を server で await してから `renderToString` すれば OK。Stack Overflow でもこの手順が推奨。citeturn0search3 |
 
-> **まとめ**: Vite SSR と TanStack Query は公式の Next.js サポートと同等レベルで噛み合う。**“自前で SSR を書きたい派” には一番コスパが良い組み合わせ**です。
+&gt; **まとめ**: Vite SSR と TanStack Query は公式の Next.js サポートと同等レベルで噛み合う。**“自前で SSR を書きたい派” には一番コスパが良い組み合わせ**です。
 
 ---
 
@@ -230,7 +230,7 @@ ViteSSRはTan Stack Queryと相性いいのか？
 | **DX** | `npm create tanstack` で雛形生成 → すぐ Netlify/Vercel/Nitro へデプロイ可能。Query Devtools がレイアウトに組込済み。 |
 | **成熟度 (2025-06)** | **β → RC 段階**。本番運用事例は少数だが、公式ドキュメントとコミュニティが急速に拡大中。LogRocket など技術ブログでも “Next.js の対抗馬” と注目。citeturn0search7 |
 
-> **まとめ**: **“TanStack 製品で統一して、RSC まで一気に乗りたい”**なら Start が最短ルート。逆に「既存 SPA を段階的に SSR 化したい」なら、無駄なく Vite SSR を足した方がシンプルです。
+&gt; **まとめ**: **“TanStack 製品で統一して、RSC まで一気に乗りたい”**なら Start が最短ルート。逆に「既存 SPA を段階的に SSR 化したい」なら、無駄なく Vite SSR を足した方がシンプルです。
 
 ---
 
@@ -238,7 +238,7 @@ ViteSSRはTan Stack Queryと相性いいのか？
 
 | プロジェクト像 | ベストチョイス |
 |----------------|----------------|
-| 既存 Vite SPA／SSR だけ追加したい | **Vite SSR + TanStack Query**<br>（Query の de/hydrate を 2〜3 ファイル追加するだけ） |
+| 既存 Vite SPA／SSR だけ追加したい | **Vite SSR + TanStack Query**&lt;br&gt;（Query の de/hydrate を 2〜3 ファイル追加するだけ） |
 | これから新規 & “TanStack 一色” で行く／RSC に本気 | **TanStack Start** |
 | 小規模・SEO 不要（社内ツール等） | **CSR のみ**：SSR コストは回収しづらい |
 
@@ -295,14 +295,14 @@ app.listen(5173)
 ---
 
 ## 👤 ユーザー
-*2025/6/25 22:12:32*
+*2025/06/25 22:12:32*
 
 TanStack Start はSSRメインなのかRSCメインなのかSEO対策はどちらが効くか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 22:12:54*
+*2025/06/25 22:12:54*
 
 ### TanStack Start の立ち位置  
 | 視点 | 現状 (2025-06) | 典拠 |
@@ -322,7 +322,7 @@ TanStack Start はSSRメインなのかRSCメインなのかSEO対策はどち�
 | **Google/Bing へのインデックス** | ◎ ほぼ確実 | ◎ ストリームでも HTML が届けばインデックス可 | Google はストリーミング対応済み citeturn1search5 |
 | **クロール完了までの安定性** | ◎ 実運用例が多く安全 | ▲ RSC 部分のマークアップが “後流し” になるため、実装ミスで空 HTML を返すと未インデックスリスク | ― |
 | **LCP/TTFB などパフォーマンス指標** | ◯ 初期 HTML 送信で高速だが、JS 量は多め | ◎ JS 0 byte の「Server Only」領域を作れる | パフォ改善が検索順位に間接効果 |
-| **メタタグ挿入の容易さ** | ◎ `serverFn` で自由に `&lt;head&gt;` 生成 | ◎ 同様 | ― |
+| **メタタグ挿入の容易さ** | ◎ `serverFn` で自由に `<head>` 生成 | ◎ 同様 | ― |
 | **開発・運用安定度** | ◎ 枯れている | ▲ まだ RC／バグ報告あり | citeturn0search6turn0search8 |
 
 #### まとめ
@@ -334,7 +334,7 @@ TanStack Start はSSRメインなのかRSCメインなのかSEO対策はどち�
 ### 実装指針
 
 1. **まず SSR 版で投入**  
-   - `data$` サーバ関数で `queryClient.prefetchQuery()` → `dehydrate()` し、`&lt;HydrationBoundary&gt;` へ。  
+   - `data$` サーバ関数で `queryClient.prefetchQuery()` → `dehydrate()` し、`<HydrationBoundary>` へ。  
 2. 将来 **RSC へ段階移行**したくなったら、  
    - ページ/ルート単位で `.server.tsx` → `.client.tsx` に分割。  
    - SSR と RSC を同居させつつ KPI を比較（LCP/CLS・クロール完了率など）。  

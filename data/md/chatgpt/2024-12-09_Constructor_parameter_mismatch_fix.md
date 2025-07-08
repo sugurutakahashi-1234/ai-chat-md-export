@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/12/9 16:39:49*
+*2024/12/09 16:39:49*
 
 The super parameter named 'swatch'' does not share the same name as the corresponding parameter in the super constructor, '_swatch'.
 Try using the name of the corresponding parameter in the super constructor.
@@ -36,7 +36,7 @@ class _MaterialColor extends ColorSwatch&lt;int&gt; {
 ---
 
 ## 🤖 アシスタント
-*2024/12/9 16:40:03*
+*2024/12/09 16:40:03*
 
 The issue occurs because the parameter name `super.swatch` does not match the name expected by the `ColorSwatch` superclass constructor. The `ColorSwatch` constructor uses `_swatch` as the parameter name. To resolve the issue, you need to use the parameter name `_swatch` when calling the superclass constructor.
 

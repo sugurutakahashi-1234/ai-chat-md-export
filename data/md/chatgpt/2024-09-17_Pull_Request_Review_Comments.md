@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/9/17 15:04:09*
+*2024/09/17 15:04:09*
 
 pull_request_review_comment
 
 ---
 
 ## 🤖 アシスタント
-*2024/9/17 15:04:20*
+*2024/09/17 15:04:20*
 
 In GitHub, a `pull_request_review_comment` refers to a comment left on the code changes in a pull request during the review process. These comments can provide feedback, ask questions, or suggest improvements regarding specific lines of code in the pull request. Here's how it's typically used:
 

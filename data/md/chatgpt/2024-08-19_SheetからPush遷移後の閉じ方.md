@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/8/19 15:10:24*
+*2024/08/19 15:10:24*
 
 swiftUIでsheetを立ち上げてそこからpush遷移させてOKボタンを押すと一つ前に戻るのではなく、sheetを閉じるようにしたい。
 
 ---
 
 ## 🤖 アシスタント
-*2024/8/19 15:10:40*
+*2024/08/19 15:10:40*
 
 SwiftUIでSheetからPush遷移した後、OKボタンを押すとSheet全体を閉じるようにするためには、`@Environment(\.dismiss)`を利用してSheetを閉じる操作を行います。
 
@@ -76,28 +76,28 @@ struct ContentView_Previews: PreviewProvider {
 ---
 
 ## 👤 ユーザー
-*2024/8/19 15:10:52*
+*2024/08/19 15:10:52*
 
 これだと一つ前のpush元に戻ってしまう
 
 ---
 
 ## 🤖 アシスタント
-*2024/8/19 15:11:13*
+*2024/08/19 15:11:13*
 
 User wants to close the sheet entirely, even when navigating through push transitions within the sheet, without returning to the previous push view.
 
 ---
 
 ## 🔧 ツール
-*2024/8/19 15:11:13*
+*2024/08/19 15:11:13*
 
 Model set context updated.
 
 ---
 
 ## 🤖 アシスタント
-*2024/8/19 15:11:13*
+*2024/08/19 15:11:13*
 
 Sheet内でPush遷移を行った後、OKボタンを押した際に、一つ前の画面に戻るのではなく、Sheet全体を閉じたい場合、Sheet内のビュー階層の状態を管理する必要があります。
 

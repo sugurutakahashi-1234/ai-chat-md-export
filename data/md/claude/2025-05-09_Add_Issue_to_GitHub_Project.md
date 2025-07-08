@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/9 16:05:00*
+*2025/05/09 16:05:00*
 
 MCP サーバーを使って https://github.com/users/suguruTakahashi-1234/projects/15 に issueを追加して欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/9 16:05:09*
+*2025/05/09 16:05:09*
 
 こんにちは！GitHubのプロジェクトにissueを追加するお手伝いをします。まず、指定されたリポジトリの状態を確認しましょう。
 
@@ -31,39 +31,33 @@ GitHub APIを使ってissueを作成するために、まずはリポジトリ�
 ---
 
 ## 👤 ユーザー
-*2025/5/9 16:05:29*
+*2025/05/09 16:05:29*
 
 テストなので適当に埋めて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/9 16:06:12*
+*2025/05/09 16:06:12*
 
 承知しました。テスト用にGitHubプロジェクトに適当な内容でissueを作成します。
 
 まずは、指定されたGitHubプロジェクトに関連するリポジトリを特定してissueを作成します。ユーザー名は「suguruTakahashi-1234」のようですね。
 
 テスト用のissueを作成します：
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 すみません、指定されたリポジトリが見つからないようです。ユーザーの別のリポジトリを探してみましょう：
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 検索結果から複数のリポジトリを確認できました。GitHub Projectsに対してissueを追加するには、まずそのプロジェクトに関連付けられたリポジトリを選ぶ必要があります。テスト用のissueを作成したいとのことなので、適切なリポジトリを選択します。
 
 オープンなissueが多いリポジトリの一つである「fia-practical-sample」を選択します：
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -84,7 +78,7 @@ This block is not supported on your current device yet.
 ---
 
 ## 👤 ユーザー
-*2025/5/9 16:09:13*
+*2025/05/09 16:09:13*
 
 この作ったissueを適切なレーンに移動させることは可能か？可能ならやってみて欲しい
 
@@ -93,16 +87,14 @@ https://github.com/users/suguruTakahashi-1234/projects/12
 ---
 
 ## 🤖 アシスタント
-*2025/5/9 16:09:40*
+*2025/05/09 16:09:40*
 
 GitHub ProjectsのIssueを特定のレーンに移動させることについて確認します。GitHub Projects（特に新しいプロジェクト形式）では、REST APIよりもGraphQL APIを使う必要があることが多いです。
 
 残念ながら、標準のGitHub REST APIを通じてMCPサーバーから直接プロジェクトのレーン（ステータス）を変更する機能は限られています。現在のMCPツールセットでは、GraphQL APIへの直接アクセスが提供されていないようです。
 
 以下に、利用可能な機能で試してみましょう。まず、指定されたプロジェクトについて確認します：
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -117,9 +109,7 @@ This block is not supported on your current device yet.
 3. これには通常、GraphQL APIを使用する必要があります
 
 代わりにIssueの状態（オープン/クローズ）を変更することは可能です：
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -148,19 +138,17 @@ Issueの内容は更新しましたが、残念ながらプロジェクトのレ
 ---
 
 ## 👤 ユーザー
-*2025/5/9 16:09:48*
+*2025/05/09 16:09:48*
 
 closeしてみてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/9 16:10:12*
+*2025/05/09 16:10:12*
 
 わかりました。Issueをcloseしてみます。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -182,14 +170,14 @@ Issueの詳細情報：
 ---
 
 ## 👤 ユーザー
-*2025/5/9 16:19:39*
+*2025/05/09 16:19:39*
 
 このようにMCP連携することでどのような業務改善ができそうか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/9 16:19:59*
+*2025/05/09 16:19:59*
 
 MCP（Mission Control Platform）連携による業務改善の可能性について、いくつかの重要なポイントをご紹介します：
 

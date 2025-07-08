@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/21 10:15:31*
+*2024/06/21 10:15:31*
 
 AVAudioPlayer が再生可能になったことを検知する
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/21 10:15:45*
+*2024/06/21 10:15:45*
 
 `AVAudioPlayer` が再生可能になったことを検知するためには、`AVAudioPlayerDelegate` を使用します。`audioPlayerDidFinishPlaying(_:successfully:)` メソッドや `audioPlayerDecodeErrorDidOccur(_:error:)` メソッドを実装することで、再生の開始、終了、エラーなどのイベントを検知できます。以下は具体的な実装例です。
 

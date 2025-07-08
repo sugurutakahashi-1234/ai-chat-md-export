@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/14 16:58:30*
+*2024/03/14 16:58:30*
 
 ここで、RemoteConfigType.defaultValue は自分が持っているentityTypeの型であることを指定できないのか？
 
@@ -45,7 +45,7 @@ public protocol RemoteConfigurable: Codable {
 ---
 
 ## 🤖 アシスタント
-*2024/3/14 16:59:16*
+*2024/03/14 16:59:16*
 
 `RemoteConfigType.defaultValue`の型を、`RemoteConfigType`が持っている`entityType`の型に指定することは、Swiftの現在の型システムでは直接的にはできません。`any RemoteConfigurable`はプロトコルに適合する任意の型を示していますが、この場合、`defaultValue`の型を具体的な`RemoteConfigurable`の実装に限定する方法は静的な型安全性を維持しながら実現するのが難しいです。
 

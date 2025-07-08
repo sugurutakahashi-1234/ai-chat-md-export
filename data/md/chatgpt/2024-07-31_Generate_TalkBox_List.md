@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/31 17:53:18*
+*2024/07/31 17:53:18*
 
 limitの数だけ返したい
     public func getTalkBoxs(limit: Int, nextCursor: String?, previousCursor: String?) async throws -&gt; [TalkBox] {
@@ -18,7 +18,7 @@ limitの数だけ返したい
 ---
 
 ## 🤖 アシスタント
-*2024/7/31 17:53:30*
+*2024/07/31 17:53:30*
 
 `getTalkBoxs`関数で`limit`の数だけ`TalkBox`を返すために、以下のように実装できます。
 

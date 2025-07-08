@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2025/1/12 19:18:21*
+*2025/01/12 19:18:21*
 
 Flutterでshared_preferencesでjsonで簡単に扱うことのできるライブラリ
 
 ---
 
 ## 🔧 ツール
-*2025/1/12 19:18:37*
+*2025/01/12 19:18:37*
 
 **Piecing together solutions**
 
@@ -41,7 +41,7 @@ Considering "shared_preferences_helper" for simplifying shared_preferences opera
 ---
 
 ## 🤖 アシスタント
-*2025/1/12 19:18:37*
+*2025/01/12 19:18:37*
 
 Flutterで、`shared_preferences`自体は文字列や数値などのプリミティブ型しかサポートしていませんが、Dartの標準ライブラリである `dart:convert` の `jsonEncode` / `jsonDecode` を組み合わせることで、JSON形式でデータの保存・取得が可能になります。しかし、これらの処理をラッピングして、より簡潔に扱えるようにしてくれるライブラリもいくつか存在します。
 

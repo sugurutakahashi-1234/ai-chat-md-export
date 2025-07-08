@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/28 12:43:40*
+*2024/06/28 12:43:40*
 
 以下をisZero ではないときにずっと動かし続けたい
 
@@ -18,7 +18,7 @@ SFSymbols.waveform.image
 ---
 
 ## 🤖 アシスタント
-*2024/6/28 12:43:49*
+*2024/06/28 12:43:49*
 
 `symbolEffect` modifier can be applied conditionally to the `Image` to animate it continuously when `isZero` is false. Here’s how you can achieve that:
 

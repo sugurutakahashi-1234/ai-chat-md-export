@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/2/4 20:15:42*
+*2025/02/04 20:15:42*
 
 型に合わせて欲しい
 ResponseBodyが指定なんだ。ResponseBodyは変えらなれない。MultipartFileを変換してResponseBodyに変えて欲しい
@@ -69,7 +69,7 @@ ChatGPT
 ---
 
 ## 🤖 アシスタント
-*2025/2/4 20:15:56*
+*2025/02/04 20:15:56*
 
 `MultipartFile` を `ResponseBody` に変換するには、 `MultipartFile` のストリームをバイト配列に変換し、それを `ResponseBody.fromBytes` に渡す形にする必要があります。
 

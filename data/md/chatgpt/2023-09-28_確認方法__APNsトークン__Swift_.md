@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/9/28 11:49:38*
+*2023/09/28 11:49:38*
 
 Swiftで登録したapnsTokenの確認方法
 
 ---
 
 ## 🤖 アシスタント
-*2023/9/28 11:50:25*
+*2023/09/28 11:50:25*
 
 SwiftでAPNs（Apple Push Notification service）のTokenを登録して確認するには、`didRegisterForRemoteNotificationsWithDeviceToken` メソッドを使用してデバイスのAPNsトークンを取得します。このトークンは、リモート通知をデバイスに送信するために使用されます。
 

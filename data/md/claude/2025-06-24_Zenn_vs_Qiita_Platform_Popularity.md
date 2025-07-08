@@ -5,29 +5,23 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/25 0:29:00*
+*2025/06/25 00:29:00*
 
 日本でのzennとQiitaの人気度の差を教えてほしい。 特に今どうなっているか、最近の状況について教えてほしい。
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/25 0:30:00*
+*2025/06/25 00:30:00*
 
 日本の技術系情報共有プラットフォームであるZennとQiitaの現在の人気度について、最新の情報を調べてみます。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 日本の技術系情報共有プラットフォームであるZennとQiitaの人気度の最新状況についてお答えします。
 

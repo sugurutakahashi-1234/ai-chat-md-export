@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/22 14:09:40*
+*2024/07/22 14:09:40*
 
 iOSパスワードの自動人力
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/22 14:09:50*
+*2024/07/22 14:09:50*
 
 iOSでパスワードの自動入力機能を実装するには、`UITextField`や`UITextView`に対して、適切な設定を行う必要があります。これにより、ユーザーが簡単に保存されたパスワードを入力できるようになります。以下にその方法を示します。
 
@@ -58,7 +58,7 @@ func savePassword(service: String, account: String, data: String) -> OSStatus {
 #### キーチェーンからの読み込み
 
 ```swift
-func loadPassword(service: String, account: String) -> String? {
+func loadPassword(service: String, account: String) -&gt; String? {
     let keychainQuery: [String: Any] = [
         kSecClass as String: kSecClassGeneric
 

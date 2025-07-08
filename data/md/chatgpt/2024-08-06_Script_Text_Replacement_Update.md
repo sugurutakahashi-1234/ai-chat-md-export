@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/8/6 14:22:03*
+*2024/08/06 14:22:03*
 
 以下のスクリプトに
 private let dependency: RootDIContainer
@@ -45,7 +45,7 @@ echo "🎉 Completed all replace_text operations"
 ---
 
 ## 🤖 アシスタント
-*2024/8/6 14:22:11*
+*2024/08/06 14:22:11*
 
 以下は `private let dependency: RootDIContainer` と `import DependencyInjectionLayer` の削除を加えたスクリプトです。
 

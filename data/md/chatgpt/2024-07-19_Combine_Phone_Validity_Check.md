@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/19 13:20:56*
+*2024/07/19 13:20:56*
 
 $rawPhoneNumber
             .combineLatest($isValidPhoneNumber)
@@ -21,7 +21,7 @@ $rawPhoneNumber
 ---
 
 ## 🤖 アシスタント
-*2024/7/19 13:21:03*
+*2024/07/19 13:21:03*
 
 To handle the combination of `$rawPhoneNumber` and `$isValidPhoneNumber` and update the state of `$isHiddenInvalidMessage`, you can fill in the switch statement to cover different cases based on whether the phone number is empty and whether it is valid. Here's an example implementation:
 

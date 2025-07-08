@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/10 18:46:40*
+*2024/06/10 18:46:40*
 
 shields.io private github repo
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/10 18:47:03*
+*2024/06/10 18:47:03*
 
 Shields.io is a popular service for generating badges that display various statuses (e.g., build status, coverage, etc.) for your projects. However, accessing private GitHub repositories with Shields.io requires additional configuration. Here's how you can set it up:
 
@@ -74,14 +74,14 @@ By following these steps, you can display dynamic Shields.io badges for private 
 ---
 
 ## 👤 ユーザー
-*2024/6/10 18:47:12*
+*2024/06/10 18:47:12*
 
 GitHub Actions use
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/10 18:47:42*
+*2024/06/10 18:47:42*
 
 To use GitHub Actions with Shields.io for a private GitHub repository, you can set up a workflow to generate a badge based on the results of your actions (like build status, test coverage, etc.). Below is a step-by-step guide to achieve this.
 
@@ -93,7 +93,7 @@ To use GitHub Actions with Shields.io for a private GitHub repository, you can s
 
 2. **Store the Token in GitHub Secrets**
    - Go to your repository on GitHub.
-   - Navigate to `Settings` > `Secrets and variables` > `Actions`.
+   - Navigate to `Settings` &gt; `Secrets and variables` &gt; `Actions`.
    - Click `New repository secret` and add your token (e.g., `GH_TOKEN`).
 
 3. **Create a GitHub Actions Workflow**
@@ -190,14 +190,14 @@ By setting up GitHub Actions with Shields.io and storing the badge in your repos
 ---
 
 ## 👤 ユーザー
-*2024/6/10 18:47:45*
+*2024/06/10 18:47:45*
 
 search github actions Marketplace
 
 ---
 
 ## 🤖 アシスタント
-*2024/6/10 18:48:17*
+*2024/06/10 18:48:17*
 
 You can leverage GitHub Actions from the GitHub Marketplace to enhance and automate various aspects of your development workflow. Here are some key areas and examples of popular actions:
 

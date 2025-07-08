@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/20 21:07:19*
+*2024/06/20 21:07:19*
 
 AudioPlayDriver にも RecordingDriver の recordingVolumeLevelsPublisher を提供するようにしたい。setMeteringTimerInterval も変更できるようにしたい。
 
@@ -275,7 +275,7 @@ public final class AudioPlayDriver: AudioPlayDriverProtocol {
 ---
 
 ## 🤖 アシスタント
-*2024/6/20 21:07:29*
+*2024/06/20 21:07:29*
 
 以下の変更を加えることで、`AudioPlayDriver` にも `recordingVolumeLevelsPublisher` を提供し、`setMeteringTimerInterval` メソッドも変更できるようにします。
 

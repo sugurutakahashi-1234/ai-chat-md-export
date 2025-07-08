@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/2/4 20:14:57*
+*2025/02/04 20:14:57*
 
 型に合わせて欲しい
 ResponseBodyが指定なんだ。
@@ -67,7 +67,7 @@ class UploadPhotoNotifier extends _$UploadPhotoNotifier {
 ---
 
 ## 🤖 アシスタント
-*2025/2/4 20:15:09*
+*2025/02/04 20:15:09*
 
 `ResponseBody` を正しく `FormData` に含めるためには、`MultipartFile` の形でデータを扱う必要があります。現在の `uploadPhoto` メソッドで `ResponseBody.fromBytes()` を使っていますが、Dio の `FormData` に対応する `MultipartFile` に変更する必要があります。
 
@@ -82,9 +82,9 @@ class UploadPhotoNotifier extends _$UploadPhotoNotifier {
 @riverpod
 class UploadPhotoNotifier extends _$UploadPhotoNotifier {
   @override
-  Future<UploadedPhoto?> build() async => null;
+  Future&lt;UploadedPhoto?&gt; build() async =&gt; null;
 
-  Future<UploadedPhoto> uploadPhoto(
+  Future&lt;UploadedPhoto&gt; uploadPhoto(
     MultipartFile multipartFile,
     LatLng location,
   ) async {

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/22 14:27:23*
+*2023/06/22 14:27:23*
 
 以下のauthUserAttributesから.custom("user_id") で一致する場合のvalueを取得したい
 var authUserAttributes: [AuthUserAttribute]
@@ -95,7 +95,7 @@ public enum AuthUserAttributeKey {
 ---
 
 ## 🤖 アシスタント
-*2023/6/22 14:27:46*
+*2023/06/22 14:27:46*
 
 `AuthUserAttributeKey` は Swift の enum で、その中に `.custom(String)` というケースが含まれています。ある特定のカスタムキーを持つ属性の値を探すには、以下のように Swift の `first(where:)` 関数を使用できます。この関数は配列の各要素を評価し、最初に `true` を返す要素を返します。
 

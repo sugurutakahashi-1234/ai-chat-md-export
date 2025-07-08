@@ -227,7 +227,7 @@ flutter run
 
 1. Android Studio を開きます。
 2. `android` ディレクトリを開きます（Flutter プロジェクト全体を開いても OK）。
-3. Gradle Scripts > `build.gradle (Project)` をクリックします。
+3. Gradle Scripts &gt; `build.gradle (Project)` をクリックします。
 
 ---
 

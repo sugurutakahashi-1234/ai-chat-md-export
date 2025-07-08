@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/8/25 1:09:21*
+*2023/08/25 01:09:21*
 
 VNClassificationObservations のVNってどういう意味
 
 ---
 
 ## 🤖 アシスタント
-*2023/8/25 1:09:42*
+*2023/08/25 01:09:42*
 
 `VNClassificationObservations` における `VN` は、AppleのVisionフレームワークに関連しています。このフレームワークは、iOS, macOS, tvOS, および watchOSのための画像解析タスクを助けるものです。
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/10/6 16:06:08*
+*2023/10/06 16:06:08*
 
 以下の時、VideoExportQualityPresetにUserDefaultsCodableを適応させてほしい
 
@@ -45,7 +45,7 @@ public extension UserDefaultsCodable {
 ---
 
 ## 🤖 アシスタント
-*2023/10/6 16:06:34*
+*2023/10/06 16:06:34*
 
 `VideoExportQualityPreset` enum を `UserDefaultsCodable` に適応させるには、まずその enum が `Codable` である必要があります。enum の値に関連する情報がない場合、Swift は自動的にこの enum を `Codable` にすることができます。しかし、カスタムの encoding/decoding 挙動が必要な場合は、明示的に `Codable` のメソッドを実装する必要があります。
 
@@ -93,14 +93,14 @@ public extension UserDefaultsCodable {
 ---
 
 ## 👤 ユーザー
-*2023/10/6 16:07:19*
+*2023/10/06 16:07:19*
 
 extension VideoExportQualityPreset: UserDefaultsCodable としたいけどだめなのか？
 
 ---
 
 ## 🤖 アシスタント
-*2023/10/6 16:07:41*
+*2023/10/06 16:07:41*
 
 もちろん、それも可能です。`VideoExportQualityPreset` enum に直接 `UserDefaultsCodable` を採用するのではなく、extension を使用して追加することができます。
 
@@ -153,7 +153,7 @@ public extension UserDefaultsCodable {
 ---
 
 ## 👤 ユーザー
-*2023/10/6 16:07:56*
+*2023/10/06 16:07:56*
 
 以下のようなエラーになってしまった
 
@@ -162,7 +162,7 @@ Extension outside of file declaring enum 'VideoExportQualityPreset' prevents aut
 ---
 
 ## 🤖 アシスタント
-*2023/10/6 16:08:37*
+*2023/10/06 16:08:37*
 
 このエラーは、Swiftの自動合成の機能が、enumやstructの定義とは別の場所での`Codable`の採用の場合には働かないことを示しています。これは、extensionで`Codable`を採用した場合、Swiftが自動的にエンコードとデコードの方法を生成できないためです。
 
@@ -262,7 +262,7 @@ extension VideoExportQualityPreset: Codable {
 ---
 
 ## 👤 ユーザー
-*2023/10/6 16:08:39*
+*2023/10/06 16:08:39*
 
 Swiftの自動合成の機能が、enumやstructの定義とは別の場所でのCodableの採用の場合には働かないことを示しています。
 
@@ -271,7 +271,7 @@ Swiftの自動合成の機能が、enumやstructの定義とは別の場所で�
 ---
 
 ## 🤖 アシスタント
-*2023/10/6 16:09:07*
+*2023/10/06 16:09:07*
 
 Swiftの`Codable`の自動合成は、型の内部の情報に基づいて動作します。具体的には、型が持っているプロパティや値のリストに基づいて、その型のためのエンコードとデコードのロジックが自動的に生成されます。この自動合成のメカニズムは非常に強力であり、多くのケースで手動での`Codable`の実装を不要にしています。
 

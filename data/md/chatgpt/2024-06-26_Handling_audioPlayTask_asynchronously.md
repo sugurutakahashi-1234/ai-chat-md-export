@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/26 15:43:25*
+*2024/06/26 15:43:25*
 
 onTapTalkThread を実行しているときに、audioPlayTaskが完了していない状態の時の処理を別で実行したい。
 
@@ -150,7 +150,7 @@ final class TalkThreadListPresenter&lt;Dependency: TalkThreadListPresenterDepend
 ---
 
 ## 🤖 アシスタント
-*2024/6/26 15:44:12*
+*2024/06/26 15:44:12*
 
 `onTapTalkThread` 実行中に `audioPlayTask` が完了していない状態の時に特定の処理を実行するためには、既存のタスクが進行中であるかどうかをチェックし、その状態に基づいて別の処理を実行するロジックを追加します。以下のように実装できます。
 

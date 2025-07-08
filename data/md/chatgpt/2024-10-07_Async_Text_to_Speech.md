@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/10/7 13:32:24*
+*2024/10/07 13:32:24*
 
 func startTextToSpeech(speechText: SpeechText, speed: SpeechSpeed, speaker: Speaker) async throws { にしたい。
 
@@ -64,7 +64,7 @@ func startTextToSpeech(speechText: SpeechText, speed: SpeechSpeed, speaker: Spea
 ---
 
 ## 🤖 アシスタント
-*2024/10/7 13:32:40*
+*2024/10/07 13:32:40*
 
 To convert the `startTextToSpeech` method into an `async throws` function, you need to adapt the existing code to remove the `completion` block and instead handle success and error cases using Swift's `async` and `throws` mechanisms. Here's how you can modify the function:
 
@@ -128,14 +128,14 @@ This makes the function work in an async-await context and conforms to modern Sw
 ---
 
 ## 👤 ユーザー
-*2024/10/7 13:33:26*
+*2024/10/07 13:33:26*
 
 try await api.getToken() は Task ブロックでないと呼べないのでは？
 
 ---
 
 ## 🤖 アシスタント
-*2024/10/7 13:33:44*
+*2024/10/07 13:33:44*
 
 You're correct! Since `try await` can only be used inside an asynchronous context like a `Task` block or within an `async` function, and the Azure SDK you're working with might require running certain tasks on the main thread, you’ll need to properly manage the context. If `api.getToken()` or other async functions require being called in a separate task, here’s how you can adjust the code:
 

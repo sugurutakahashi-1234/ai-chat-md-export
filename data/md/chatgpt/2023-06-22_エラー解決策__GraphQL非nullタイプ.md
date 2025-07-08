@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/22 23:17:22*
+*2023/06/22 23:17:22*
 
 このエラーメッセージから何をすべきか教えて欲しい
 
@@ -18,7 +18,7 @@ Recovery suggestion: The list of `GraphQLError` contains service-specific messag
 ---
 
 ## 🤖 アシスタント
-*2023/6/22 23:18:09*
+*2023/06/22 23:18:09*
 
 エラーメッセージから理解するに、GraphQL APIを使用して 'get_research'クエリを実行しようとしているようですが、各'research measurements'（調査測定）オブジェクトで 'MeasurementType'（測定タイプ）が必要とされている一方で、その値が null になっているため、エラーが発生しています。
 

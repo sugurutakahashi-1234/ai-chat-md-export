@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/5 1:55:00*
+*2025/06/05 01:55:00*
 
 ...defaultPlugins, の意味についてよくわかっていない。教えて欲しい
 
@@ -49,7 +49,7 @@ export default defineConfig({
 ---
 
 ## 🤖 アシスタント
-*2025/6/5 1:55:55*
+*2025/06/05 01:55:55*
 
 ### `defaultPlugins` とは？
 
@@ -63,8 +63,8 @@ export default defineConfig({
 
 この「標準セット」を配列にまとめてエクスポートしたのが **`defaultPlugins`** です。ドキュメントでは「デフォルト出力を維持したいなら `...defaultPlugins` を指定してね」と繰り返し示されています。citeturn5search3turn7search2
 
-> **補足**  
-> 以前のバージョン (v0.57 以前) では `@hey-api/schemas` も標準に含まれていましたが、v0.58.0 で外されました。必要なら自分で追加します。citeturn5search7
+&gt; **補足**  
+&gt; 以前のバージョン (v0.57 以前) では `@hey-api/schemas` も標準に含まれていましたが、v0.58.0 で外されました。必要なら自分で追加します。citeturn5search7
 
 ---
 
@@ -72,8 +72,8 @@ export default defineConfig({
 
 | 設定 | `plugins` 配列の中身 | 生成される主なファイル |
 |------|---------------------|------------------------|
-| **例①** `...defaultPlugins` を展開 | `@hey-api/typescript` + `@hey-api/sdk` **に加えて**<br>`@hey-api/schemas`, `@hey-api/client-next`, `@tanstack/react-query`, `zod` など | - `types.gen.ts`<br>- `sdk.gen.ts`<br>- `schemas.gen.ts`<br>- Next.js 用クライアントコード など |
-| **例②** 明示的に並べる | `@hey-api/client-fetch`, `@tanstack/react-query`, `zod`, `@hey-api/sdk` … **のみ**<br>（`@hey-api/typescript` がない） | - `sdk.gen.ts` のみ<br>（型ファイル `types.gen.ts` は出ない） |
+| **例①** `...defaultPlugins` を展開 | `@hey-api/typescript` + `@hey-api/sdk` **に加えて**&lt;br&gt;`@hey-api/schemas`, `@hey-api/client-next`, `@tanstack/react-query`, `zod` など | - `types.gen.ts`&lt;br&gt;- `sdk.gen.ts`&lt;br&gt;- `schemas.gen.ts`&lt;br&gt;- Next.js 用クライアントコード など |
+| **例②** 明示的に並べる | `@hey-api/client-fetch`, `@tanstack/react-query`, `zod`, `@hey-api/sdk` … **のみ**&lt;br&gt;（`@hey-api/typescript` がない） | - `sdk.gen.ts` のみ&lt;br&gt;（型ファイル `types.gen.ts` は出ない） |
 
 つまり **`defaultPlugins` を外すと標準の型定義が生成されなくなる** ので、  
 

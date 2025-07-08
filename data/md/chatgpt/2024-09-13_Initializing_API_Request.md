@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/9/13 14:52:13*
+*2024/09/13 14:52:13*
 
 let _ = try await client.postAppleSubscribe(.init(body: .jsonPayload(receipt_data: receiptData, app_id: .davinci)))
         
@@ -15,7 +15,7 @@ Member 'init(receipt_data:app_id:)' in 'Operations.postAppleSubscribe.Input.Body
 ---
 
 ## 🤖 アシスタント
-*2024/9/13 14:52:24*
+*2024/09/13 14:52:24*
 
 The error you're encountering indicates that you're trying to initialize a `jsonPayload` when the context expects a `Body` object, not a `jsonPayload`. You likely need to initialize the `Body` type correctly. The `jsonPayload` might be a nested type within the `Body`, so you'll need to wrap it properly.
 

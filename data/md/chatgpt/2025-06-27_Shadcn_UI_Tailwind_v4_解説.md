@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/27 13:12:38*
+*2025/06/27 13:12:38*
 
 これを日本語で解説して欲しい
 
@@ -14,7 +14,7 @@ https://ui.shadcn.com/docs/tailwind-v4
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 13:12:50*
+*2025/06/27 13:12:50*
 
 ## Shadcn UI × Tailwind CSS v4 解説（日本語）
 
@@ -78,7 +78,7 @@ https://ui.shadcn.com/docs/tailwind-v4
 ---
 
 ## 👤 ユーザー
-*2025/6/27 13:14:00*
+*2025/06/27 13:14:00*
 
 テーマはどうやって適応されるのか？
 いまいちよくわかっていない。
@@ -86,7 +86,7 @@ https://ui.shadcn.com/docs/tailwind-v4
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 13:14:47*
+*2025/06/27 13:14:47*
 
 ### Shadcn UI の「テーマ」が切り替わる仕組み
 
@@ -200,24 +200,24 @@ Tailwind v4 は `bg-primary`, `text-primary-foreground` といった **カスタ
 ---
 
 ## 👤 ユーザー
-*2025/6/27 13:25:15*
+*2025/06/27 13:25:15*
 
 ちなみにReact Nativeでも使えるのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 13:25:57*
+*2025/06/27 13:25:57*
 
 ### 結論 ― 公式には未対応
 
 - **shadcn/ui 本体は Web 向け（DOM + Radix UI 前提）**で開発されており、React Native（RN）用の公式ビルドや CLI オプションはありません。GitHub でも「RN をサポートしてほしい」という要望 Issue が上がったままクローズしていませんciteturn4search0。  
 - Expo で直接インストールしようとするとモジュール解決エラーになる、という報告も複数ありますciteturn11view0。
 
-> **理由**  
-> 1. Radix UI プリミティブが HTML / DOM API に依存  
-> 2. Tailwind v4 の CSS 変数・擬似要素・アニメーションをそのまま RN では解釈できない  
-> 3. `@theme inline` など PostCSS / TwMerge 依存のビルド処理が Metro バンドラでは動かない
+&gt; **理由**  
+&gt; 1. Radix UI プリミティブが HTML / DOM API に依存  
+&gt; 2. Tailwind v4 の CSS 変数・擬似要素・アニメーションをそのまま RN では解釈できない  
+&gt; 3. `@theme inline` など PostCSS / TwMerge 依存のビルド処理が Metro バンドラでは動かない
 
 ---
 
@@ -295,7 +295,7 @@ npx @react-native-reusables/cli add button
 ---
 
 ## 👤 ユーザー
-*2025/6/27 13:27:09*
+*2025/06/27 13:27:09*
 
 どうしてReactNativeでは使えないのか？
 あんまりわかっていないのだけれどもdivとかの概念がないのか？
@@ -303,13 +303,13 @@ npx @react-native-reusables/cli add button
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 13:27:58*
+*2025/06/27 13:27:58*
 
 ### なぜ **shadcn/ui** は React Native でそのまま動かないのか？
 
 | 障壁 | Web（React DOM + shadcn/ui） | React Native |
 |------|-----------------------------|--------------|
-| **UI プリミティブ** | `&lt;div&gt;`, `&lt;button&gt;`, `&lt;input&gt;` など HTML 要素 | `&lt;View&gt;`, `&lt;Text&gt;`, `&lt;Pressable&gt;` などネイティブ・ラッパー（HTML は存在しない）citeturn10view0turn13view0 |
+| **UI プリミティブ** | `<div>`, `<button>`, `<input>` など HTML 要素 | `<View>`, `<Text>`, `<Pressable>` などネイティブ・ラッパー（HTML は存在しない）citeturn10view0turn13view0 |
 | **スタイル方式** | Tailwind CSS のクラス＋ CSS 変数（`--primary`) ＋ 擬似要素 `::before` など | JS オブジェクトによるインライン風スタイル。CSS・擬似要素・カスケード・CSS 変数なしciteturn10view0turn11search4 |
 | **依存ライブラリ** | Radix UI Primitives（ポータル・フォーカストラップ・ARIA 属性など DOM API 前提） | Radix 側が RN を公式にサポートしておらず「今のところ計画なし」と明言citeturn15view0 |
 | **ビルドパイプライン** | PostCSS／Tailwind CLI で `.css` を生成し Vite/Next.js が読み込む | Metro バンドラは `.css` を解釈せず、PostCSS プラグインも動かない |
@@ -319,7 +319,7 @@ npx @react-native-reusables/cli add button
 
 #### 1. 「div がない」＝ DOM がない
 React Native は **DOM を操作せず**、JS ➜ ブリッジ ➜ ネイティブ UI という構造です。そのため HTML タグも CSS も直接は使えません。turn10view0  
-`&lt;div&gt;` 相当のコンテナはありますが（`&lt;View&gt;`）、動作もレイアウト仕様も別物です。citeturn13view0
+`<div>` 相当のコンテナはありますが（`<View>`）、動作もレイアウト仕様も別物です。citeturn13view0
 
 #### 2. CSS クラスと変数が解釈できない
 shadcn/ui は Tailwind v4 のクラスと `@theme inline` が生成する **CSS 変数**で色やサイズを切り替えます。しかし React Native には  
@@ -369,14 +369,14 @@ Web 版は PostCSS ➜ バンドラ（Vite/Next.js）で CSS を注入します�
 ---
 
 ## 👤 ユーザー
-*2025/6/27 13:29:06*
+*2025/06/27 13:29:06*
 
 なるほど、TanStack Queryとかは使えるのか？その辺も使えないのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 13:30:20*
+*2025/06/27 13:30:20*
 
 ## TanStack Query は **React Native でもそのまま使える**
 
@@ -409,10 +409,10 @@ export default function App() {
 
 | 課題 | ベストプラクティス |
 |------|--------------------|
-| **DevTools** | Web 版 DevTools は使えないが、<br>・macOS ネイティブ版<br>・Flipper プラグイン<br>などサードパーティが用意されているciteturn8search3 |
+| **DevTools** | Web 版 DevTools は使えないが、&lt;br&gt;・macOS ネイティブ版&lt;br&gt;・Flipper プラグイン&lt;br&gt;などサードパーティが用意されているciteturn8search3 |
 | **永続キャッシュ** | `@tanstack/react-query-persist-client` の `createAsyncStoragePersister` を使うと `AsyncStorage` に書き出せる |
 | **フォーカス/オンライン検知** | 上記サンプルのように `focusManager` と `onlineManager` を RN の API にフックさせる |
-| **AbortController** | RN >= 0.72 ならネイティブ実装が入っている。旧バージョンは `abort-controller` Polyfill を追加 |
+| **AbortController** | RN &gt;= 0.72 ならネイティブ実装が入っている。旧バージョンは `abort-controller` Polyfill を追加 |
 
 ---
 
@@ -438,7 +438,7 @@ export default function App() {
 ---
 
 ## 👤 ユーザー
-*2025/6/27 15:43:21*
+*2025/06/27 15:43:21*
 
 なんか定義が重複しているように思えるがどういうことかわかりますか？
 
@@ -626,7 +626,7 @@ export default function App() {
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 15:43:22*
+*2025/06/27 15:43:22*
 
 ### どこが「重複」しているのか ― 俯瞰図
 
@@ -642,16 +642,16 @@ export default function App() {
 
 | 番号 | 意味 | 何がかぶっているか |
 |------|------|--------------------|
-| ①② vs ④⑤⑥ | **同じ色トークンを 2 系統で定義**<br>`--color-primary` を直接数値で決める旧スタイルと、<br>`--primary → --color-primary` に紐付ける新スタイルが共存 |
+| ①② vs ④⑤⑥ | **同じ色トークンを 2 系統で定義**&lt;br&gt;`--color-primary` を直接数値で決める旧スタイルと、&lt;br&gt;`--primary → --color-primary` に紐付ける新スタイルが共存 |
 | ③ vs ⑤ | `--radius` が両方にある（最後の宣言⑤が優先） |
 | ③ vs ⑦ | `@layer base` が二重。`* { @apply border-border }` と `body { @apply bg-background … }` が重複 |
 | ①② の HSL 値 vs ⑤⑥ の OKLCH 値 | **色空間そのものが異なる**（Tailwind v3 時代＝HSL / v4＝OKLCH） |
 
-> **要するに**  
-> *v3 時代のテーマ断片* と *v4 で自動生成されたテーマ* を **同じファイルにマージしてしまった** ため、  
-> - 同名の CSS 変数  
-> - 同じベースレイヤ  
-> が 2 セットずつ存在している、という状況です。
+&gt; **要するに**  
+&gt; *v3 時代のテーマ断片* と *v4 で自動生成されたテーマ* を **同じファイルにマージしてしまった** ため、  
+&gt; - 同名の CSS 変数  
+&gt; - 同じベースレイヤ  
+&gt; が 2 セットずつ存在している、という状況です。
 
 ---
 
@@ -678,8 +678,8 @@ export default function App() {
 | 4 | **`@theme inline` マッピング（④）は残す** | これが v4 新機能。Tailwind クラス `bg-primary` などと結び付ける要 |
 | 5 | 💡 **ダークモードの切替方法を 1 つに統一** | `prefers-color-scheme` が要るなら `.dark { … }` は不要、逆も然り |
 
-> **最小構成のイメージ**
-> ```css
+&gt; **最小構成のイメージ**
+&gt; ```css
 > @import "tailwindcss";
 > @import "tw-animate-css";
 >
@@ -718,7 +718,7 @@ export default function App() {
 ---
 
 ## 👤 ユーザー
-*2025/6/27 15:45:48*
+*2025/06/27 15:45:48*
 
 bunx --bun shadcn@latest initでこれが作られた
 どこをどう編集するとどこに反映されるのだろう？
@@ -847,7 +847,7 @@ bunx --bun shadcn@latest initでこれが作られた
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 15:45:57*
+*2025/06/27 15:45:57*
 
 ### ファイル全体の役割をまず整理
 
@@ -857,7 +857,7 @@ bunx --bun shadcn@latest initでこれが作られた
 | **`@custom-variant dark`** | 先頭 | Tailwind v4 の新機能。`dark:bg-…` などの *dark* ユーティリティを「`.dark …` だけでなく `prefers-color-scheme: dark` にも効かせる」カスタムバリアント定義。ふだん触らない。 |
 | **`@theme inline { … }`** | 中盤① | ここは **“マッピング表”**。&lt;br&gt;クラス名 `bg-primary` → 実際の CSS 変数 `--primary` へ橋渡しするだけ。&lt;br&gt;🔸 **マッピングを増やす／名前を変えるときだけ編集**。普段は放置。citeturn0search0 |
 | **`:root { … }`** | 中盤② | **ライトモードの実値**。&lt;br&gt;`--primary:` の数値を変えれば、`bg-primary` など全部の色が即座に変わる。&lt;br&gt;🔸 **色・角丸・チャート色などを替えたいときはここを変更**。 |
-| **`.dark { … }`** | 中盤③ | **ダークモード用の実値**。&lt;br&gt;`.dark` クラスが `&lt;html&gt;` か `&lt;body&gt;` についた瞬間、ここの値が優先される。&lt;br&gt;🔸 **ダーク配色を変えたいときはここを編集**。 |
+| **`.dark { … }`** | 中盤③ | **ダークモード用の実値**。&lt;br&gt;`.dark` クラスが `<html>` か `<body>` についた瞬間、ここの値が優先される。&lt;br&gt;🔸 **ダーク配色を変えたいときはここを編集**。 |
 | **`@layer base { … }`** | 末尾 | グローバル CSS ルール。`body` の背景色／文字色や、全要素の `border-color` を Tailwind クラスで一括適用している。&lt;br&gt;🔸 **デフォルトのタイポグラフィやリセットを変える時に編集**。 |
 
 ---
@@ -903,7 +903,7 @@ bunx --bun shadcn@latest initでこれが作られた
 ---
 
 ## 👤 ユーザー
-*2025/6/27 15:47:49*
+*2025/06/27 15:47:49*
 
 これも生成された
 
@@ -935,7 +935,7 @@ baseColorを変えていいのだろうか？
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 15:48:14*
+*2025/06/27 15:48:14*
 
 ### `components.json` が担う役割
 
@@ -1002,7 +1002,7 @@ baseColorを変えていいのだろうか？
 ---
 
 ## 👤 ユーザー
-*2025/6/27 15:50:14*
+*2025/06/27 15:50:14*
 
 でもどのテーマであろうが、 生成されるUIコンポーネントに違いはないんだよね。なぜならばそこではセマンティックなクラス名が指定されてるから。理解あってるかな。つまり色を変えるんだったら上書きしないでここのテーマカラーを変えるのがいいってことだよね。 
 逆にビュー上ではあまり色の指定をセマンティックなもの以外ではしちゃいけないってことだよね。
@@ -1010,13 +1010,13 @@ baseColorを変えていいのだろうか？
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 15:50:22*
+*2025/06/27 15:50:22*
 
 ### ご認識 ─ ほぼ合っていますが、**色以外** ではスタイルごとに微差がある
 
 | 項目 | 生成される ❶**コンポーネント API** | ❷**中の Tailwind クラス** | ❸**実際の色** |
 |------|-----------------------------|---------------------------|----------------|
-| **`default` style** | `&lt;Button variant="secondary" …&gt;` など同じ | `rounded-lg px-4 py-2 text-sm` | `bg-primary` → `--primary`（HSL/OKLCH 値） |
+| **`default` style** | `<Button variant="secondary" …>` など同じ | `rounded-lg px-4 py-2 text-sm` | `bg-primary` → `--primary`（HSL/OKLCH 値） |
 | **`new-york` style** | **API は同一** | `rounded-md px-3 py-1.5 text-xs` など *若干コンパクト* | 同じ `bg-primary` → `--primary` |
 
 &gt; - ✔ **API とセマンティック色トークンは共通**  
@@ -1055,7 +1055,7 @@ baseColorを変えていいのだろうか？
 ---
 
 ## 👤 ユーザー
-*2025/6/27 15:51:14*
+*2025/06/27 15:51:14*
 
 逆にハードコードした色を指定させないとか、そういったりはできないのか?
 こういうのを使わせたくない。 
@@ -1064,13 +1064,13 @@ className="border-neutral-200 dark:border-neutral-800"
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 15:51:15*
+*2025/06/27 15:51:15*
 
 ### 「ハードコード色クラスを**物理的に書けなくする**」3 つのレイヤー
 
 | レイヤー | やり方 | 効果範囲 | 実装コスト | 一番ラク |
 |----------|--------|-----------|------------|----------|
-| **① Tailwind-CSS ビルド時に“作らせない”** | Tailwind の `theme.colors` を **完全に上書き**して<br>公式パレット（gray-500 / neutral-200 など）を消す | 生成 CSS／本番 | 低 | ✔ |
+| **① Tailwind-CSS ビルド時に“作らせない”** | Tailwind の `theme.colors` を **完全に上書き**して&lt;br&gt;公式パレット（gray-500 / neutral-200 など）を消す | 生成 CSS／本番 | 低 | ✔ |
 | **② Lint で“書いた時点”でエラーにする** | ESLint + `eslint-plugin-tailwindcss` の `whitelist` / `sendMessage` ルールや Stylelint + `stylelint-no-indistinguishable-colors` などで禁止 | エディタ／CI | 中 | ✔ |
 | **③ CI テストで“ビルド後”に検出** | `pnpm run build && grep -R "neutral-" dist && exit 1` など色名の出現を強制チェック | リポジトリ全体 | 低 | ◯（保険） |
 
@@ -1197,26 +1197,26 @@ steps:
 ---
 
 ## 👤 ユーザー
-*2025/6/27 15:53:31*
+*2025/06/27 15:53:31*
 
 tailwind v4 でコンフィグがない場合や、biome v2 の場合にはどうするのか？
 
 ---
 
 ## 🤖 アシスタント
-*2025/6/27 15:53:47*
+*2025/06/27 15:53:47*
 
 ## 1. Tailwind v4 で **`tailwind.config.*` が無い** とき
 
 | 目的 | どうする？ | メモ |
 |------|-----------|------|
-| **デフォルト色パレットを “生成させない”** | ▶ **最小コンフィグを置くしかない**<br>`tailwind.config.ts` を 6 行で作る | コンフィグレス・モードは *拡張* だけ出来ない＝既定パレットが必ず残る |
+| **デフォルト色パレットを “生成させない”** | ▶ **最小コンフィグを置くしかない**&lt;br&gt;`tailwind.config.ts` を 6 行で作る | コンフィグレス・モードは *拡張* だけ出来ない＝既定パレットが必ず残る |
 | **でも極力シンプルにしたい** | ```ts<br>export default { theme:{ colors:{} } } satisfies import("tailwindcss").Config;<br>``` | `colors:{}` を書いた瞬間に **灰色/赤…が全部消える** |
-| **CSS 変数はどうなる？** | `@theme inline` 内のマッピングは**そのまま有効**。<br>`bg-primary` などは `config` に触れなくても動く | Tailwind v4 の JIT は **CSS 側の `@theme inline`** を一次ソースにするため |
+| **CSS 変数はどうなる？** | `@theme inline` 内のマッピングは**そのまま有効**。&lt;br&gt;`bg-primary` などは `config` に触れなくても動く | Tailwind v4 の JIT は **CSS 側の `@theme inline`** を一次ソースにするため |
 
-> **結論**:  
-> “コンフィグを置かない” 状態ではパレット除去が出来ないので、  
-> **`theme.colors = {}` を書いた超ミニ config を置く**のが最短citeturn0search1。
+&gt; **結論**:  
+&gt; “コンフィグを置かない” 状態ではパレット除去が出来ないので、  
+&gt; **`theme.colors = {}` を書いた超ミニ config を置く**のが最短citeturn0search1。
 
 ---
 
@@ -1251,9 +1251,9 @@ Biome 2.x の Linter はまだ Tailwind 専用ルールを公式には持って�
 * VS Code の Biome 拡張でも即エラー表示。  
 * CI では `biome check --apply-unsafe=false` で落とせる。
 
-> 🚧 **現状の制限**  
-> - Tailwind 用 ESLint ルール `no-custom-classname` 相当は **ポート要望 Issue #6502 が上がったばかり** で、正式実装はまだ先。citeturn1search0  
-> - それまでの間は **正規表現ルール + CI grep** が現実的。
+&gt; 🚧 **現状の制限**  
+&gt; - Tailwind 用 ESLint ルール `no-custom-classname` 相当は **ポート要望 Issue #6502 が上がったばかり** で、正式実装はまだ先。citeturn1search0  
+&gt; - それまでの間は **正規表現ルール + CI grep** が現実的。
 
 ---
 

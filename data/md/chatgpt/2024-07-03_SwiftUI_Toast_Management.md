@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/3 15:42:02*
+*2024/07/03 15:42:02*
 
 SwiftUIのアプリでトーストを一元管理したい。ToastTypeを enum で定義して、それぞれの options や content を定義していきたい。
 
@@ -51,21 +51,21 @@ public struct RootView&lt;Dependency: RootDIContainerDependency&gt;: View {
 ---
 
 ## 🤖 アシスタント
-*2024/7/3 15:42:39*
+*2024/07/03 15:42:39*
 
 User wants to manage toasts centrally in their SwiftUI app by defining ToastType as an enum with respective options and content.
 
 ---
 
 ## 🔧 ツール
-*2024/7/3 15:42:39*
+*2024/07/03 15:42:39*
 
 Model set context updated.
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/3 15:42:39*
+*2024/07/03 15:42:39*
 
 To centralize the management of toasts in your SwiftUI app, you can define a `ToastType` enum with associated options and content. You can then create a view modifier or an environment object to handle the presentation of these toasts. Here's a sample implementation:
 

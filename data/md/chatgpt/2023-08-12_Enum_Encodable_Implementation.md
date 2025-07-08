@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/8/12 16:52:24*
+*2023/08/12 16:52:24*
 
 以下でエラーになってしまう。
 
@@ -20,7 +20,7 @@ extension ApiRequestManagerError: LoggableEntity {}
 ---
 
 ## 🤖 アシスタント
-*2023/8/12 16:52:48*
+*2023/08/12 16:52:48*
 
 `ApiRequestManagerError` の拡張部に `LoggableEntity` を適用しようとしているようですが、 `LoggableEntity` の定義や実装内容が示されていません。もし、 `LoggableEntity` が特定のメソッドやプロパティの実装を必要とするプロトコルであれば、その実装を `ApiRequestManagerError` の拡張部に追加する必要があります。
 

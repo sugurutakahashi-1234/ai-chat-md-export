@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/25 19:01:31*
+*2024/06/25 19:01:31*
 
 以下に prepareToPlayAndPlay(audioSources: AudioSource) async throws のような複数の音声ファイルを連続再生する機能を追加したい
 
@@ -158,7 +158,7 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 ---
 
 ## 🤖 アシスタント
-*2024/6/25 19:01:42*
+*2024/06/25 19:01:42*
 
 `prepareToPlayAndPlay(audioSources: [AudioSource]) async throws` のような複数の音声ファイルを連続再生する機能を追加するために、以下の変更を行います：
 

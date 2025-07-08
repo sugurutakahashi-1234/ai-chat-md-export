@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/14 10:50:26*
+*2023/06/14 10:50:26*
 
 ```
 syntax = "proto3";
@@ -41,7 +41,7 @@ message ScrollEvent {
 ---
 
 ## 🤖 アシスタント
-*2023/6/14 10:50:54*
+*2023/06/14 10:50:54*
 
 This is a Protocol Buffers (Protobuf) schema defining several data structures related to user interaction events in a web interface.
 

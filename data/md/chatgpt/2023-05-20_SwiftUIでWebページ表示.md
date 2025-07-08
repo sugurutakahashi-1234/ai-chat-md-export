@@ -5,14 +5,14 @@
 ---
 
 ## 👤 ユーザー
-*2023/5/20 16:21:00*
+*2023/05/20 16:21:00*
 
 SwiftUI で特定のURLのWebページを表示する実装をおしてほしい。Webページを見せる際にアプリ内ブラウザ、アプリ外ブラウザなど色々あると思うので、各パターンみせてほしい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 16:21:51*
+*2023/05/20 16:21:51*
 
 SwiftUIで特定のURLのWebページを表示する方法は主に2つあります。それぞれアプリ内ブラウザとアプリ外ブラウザを使用する方法です。
 
@@ -66,14 +66,14 @@ struct ContentView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 17:07:42*
+*2023/05/20 17:07:42*
 
 アプリ内ブラウザ（WKWebViewを使用） で戻るボタンや進むボタンなど標準のコンポーネントを追加したいんだけど
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 17:08:25*
+*2023/05/20 17:08:25*
 
 WKWebViewにはナビゲーションのためのメソッド（`goBack()`や`goForward()`）が提供されています。これらを利用して戻るボタンや進むボタンを実装できます。
 
@@ -153,14 +153,14 @@ struct ContentView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 17:09:55*
+*2023/05/20 17:09:55*
 
 func makeCoordinator() -&gt; Coordinator を使って書くとどんな感じ？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 17:10:30*
+*2023/05/20 17:10:30*
 
 SwiftUI の `UIViewRepresentable` では、 `makeCoordinator()` を使用して、UIKit のデリゲートパターンを活用することが可能です。
 
@@ -234,14 +234,14 @@ class WebViewStore: ObservableObject {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 17:27:50*
+*2023/05/20 17:27:50*
 
 なるほど!ちなみに @Published var isLoading: Bool みたいな値をWebViewStore側に持ってView側でローディングを表示したい
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 17:29:06*
+*2023/05/20 17:29:06*
 
 それには `WebView` の `Coordinator` で `WKNavigationDelegate` のメソッドを使ってローディングの状態を管理することができます。
 
@@ -335,14 +335,14 @@ class WebViewStore: ObservableObject {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 17:29:33*
+*2023/05/20 17:29:33*
 
 WebViewStoreをWebViewPresenterに変更したい。ちなみにWebViewStoreとWebViewPresenterの名前はどっちがいいと思う？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 17:30:37*
+*2023/05/20 17:30:37*
 
 一般的に、クラス名はそのクラスが何をするのか、どのような目的を持つのかを明確に示すべきです。"Store"という語はしばしば状態やデータを保持するための場所を示すために使われます。一方、"Presenter"という語は主にMVP（Model-View-Presenter）アーキテクチャで使用され、ビューロジックを管理し、モデルからデータを取得してビューに表示する役割を持つクラスを示します。
 
@@ -392,14 +392,14 @@ class WebViewPresenter: ObservableObject {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:39:02*
+*2023/05/20 18:39:02*
 
 ちなみに WebView 内で別タブに遷移するようなリンクをタップしたらどうなるの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:39:30*
+*2023/05/20 18:39:30*
 
 WebView内で新しいタブを開くようなリンク（`target="_blank"`のあるリンク）をタップした場合、デフォルトでは何も起こりません。これはiOSの`WKWebView`が新しいタブの概念をサポートしていないためです。
 
@@ -435,14 +435,14 @@ class Coordinator: NSObject, WKNavigationDelegate {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:41:52*
+*2023/05/20 18:41:52*
 
 if navigationAction.targetFrame == nil  {} としているのはなぜ？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:42:14*
+*2023/05/20 18:42:14*
 
 `WKNavigationAction`のプロパティ`targetFrame`は、ナビゲーションアクションが現在のフレーム内で行われる予定の場合にそのフレームを表す`WKFrameInfo`オブジェクトを返します。しかし、新しいウィンドウやタブを開くリンク（`target="_blank"`が設定されている）をクリックした場合、その`targetFrame`は`nil`となります。
 
@@ -453,14 +453,14 @@ if navigationAction.targetFrame == nil  {} としているのはなぜ？
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:43:33*
+*2023/05/20 18:43:33*
 
 たとえば、外部アプリに遷移するような、AppStoreアプリを開くようなリンクの場合はどうなるの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:44:12*
+*2023/05/20 18:44:12*
 
 そのような外部リンクの場合、`WKNavigationDelegate`の`webView(_:decidePolicyFor:navigationAction:decisionHandler:)`メソッドを使用して特定のURLスキームに基づいて制御を行うことができます。
 
@@ -516,7 +516,7 @@ class Coordinator: NSObject, WKNavigationDelegate {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:47:12*
+*2023/05/20 18:47:12*
 
 以下のコードを
 
@@ -532,7 +532,7 @@ class Coordinator: NSObject, WKNavigationDelegate {
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:47:46*
+*2023/05/20 18:47:46*
 
 指定されたコードの前後がわからないため、確実な回答は難しいですが、もしこの`webView(_:createWebViewWith:configuration:for:navigationAction:windowFeatures:)`メソッドの使い方について質問があるのであれば、このメソッドは新しいウィンドウまたは新しいタブを開く必要がある場合に呼び出されます。例えば、HTMLで`target="_blank"`が指定されているリンクをクリックしたときなどです。
 
@@ -552,14 +552,14 @@ func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewCon
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:48:43*
+*2023/05/20 18:48:43*
 
 ちなみにこのdelegateが呼ばれていないみたいなんだけど
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:49:11*
+*2023/05/20 18:49:11*
 
 `WKNavigationDelegate`の`webView(_:createWebViewWith:configuration:for:navigationAction:windowFeatures:)`メソッドが呼ばれない場合、以下の可能性が考えられます。
 
@@ -582,7 +582,7 @@ func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:51:32*
+*2023/05/20 18:51:32*
 
 他のdelegateは呼ばれているので1ではないと思う
 2の他に理由は考えられないかな？
@@ -590,7 +590,7 @@ func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:51:58*
+*2023/05/20 18:51:58*
 
 それが全て正常であるならば、他にもいくつか考えられる可能性があります。
 
@@ -605,14 +605,14 @@ func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:52:27*
+*2023/05/20 18:52:27*
 
 `target="_blank` を指定しているかどうかを確認する方法は？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:53:02*
+*2023/05/20 18:53:02*
 
 `target="_blank"`が指定されているかどうかを確認するには、WebページのHTMLソースを調査するのが一番簡単です。以下にその手順を示します。
 
@@ -629,7 +629,7 @@ func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:54:45*
+*2023/05/20 18:54:45*
 
 ありがとう。Webページを確認したらtarget="_blank"は含まれていたよ
 ちなみにこんな感じなんだけどどこが間違っていると思う？
@@ -696,7 +696,7 @@ struct WebView: UIViewRepresentable {
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:55:35*
+*2023/05/20 18:55:35*
 
 ご提供いただいたコードを確認したところ、`WKWebView`のインスタンスが`WebViewPresenter`の`@Published`プロパティとして宣言されていますが、これが問題を引き起こしている可能性があります。
 
@@ -764,14 +764,14 @@ struct WebView: UIViewRepresentable {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:55:57*
+*2023/05/20 18:55:57*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 18:56:16*
+*2023/05/20 18:56:16*
 
 すみません、メッセージが途中で切れてしまいました。以下に続きを記載します。
 
@@ -799,7 +799,7 @@ struct ContentView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 18:58:16*
+*2023/05/20 18:58:16*
 
 なるほど、だけどこんな感じの画面からWebViewは使われていて、戻るボタンや進むボタンが必要で、外側でwebViewを保持する必要があるんだ。
 ちなみにこの場合って、WebViewPresenterは@Publishedでvar webView: WKWebViewを保持する必要はないかもしれない。
@@ -841,7 +841,7 @@ struct WebRootView: View {
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 19:01:55*
+*2023/05/20 19:01:55*
 
 そうですね、提供いただいた新しいコードからすると、`WebViewPresenter`が`WKWebView`のインスタンスを保持する必要はなさそうです。
 
@@ -908,7 +908,7 @@ struct WebRootView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 19:05:31*
+*2023/05/20 19:05:31*
 
 でもそれだとWebRootViewでのgoBackやgoForwardがよばれなくない？
 
@@ -925,7 +925,7 @@ struct WebRootView: View {
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 19:06:20*
+*2023/05/20 19:06:20*
 
 おっしゃる通りです、申し訳ありません。WKWebViewのインスタンスを参照する必要がありますね。この問題を解決するために、`WebView`の`UIViewRepresentable`実装で`WKWebView`のインスタンスを外部に公開することが必要です。
 
@@ -990,14 +990,14 @@ struct WebRootView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 19:06:33*
+*2023/05/20 19:06:33*
 
 つづき
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 19:07:04*
+*2023/05/20 19:07:04*
 
 すみません、メッセージが途中で切れてしまいました。ここで続きを説明します。
 
@@ -1051,14 +1051,14 @@ struct WebRootView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 19:07:40*
+*2023/05/20 19:07:40*
 
 ちなみにその場合は @Published var webView: WKWebView = WKWebView() の @Published って必要なの？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 19:09:12*
+*2023/05/20 19:09:12*
 
 `@Published`属性は値が変更されたときに通知を発行するためのもので、観察可能なオブジェクトに適用することができます。しかし、あなたが指摘したように、このケースでは`WKWebView`のインスタンス自体が変更されるわけではないので、`@Published`属性は必要ないかもしれません。
 
@@ -1071,14 +1071,14 @@ struct WebRootView: View {
 ---
 
 ## 👤 ユーザー
-*2023/5/20 19:12:55*
+*2023/05/20 19:12:55*
 
 まって、delegateがよばれていないのはWKUIDelegate してないのが原因じゃない？
 
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 19:13:26*
+*2023/05/20 19:13:26*
 
 すみません、私の説明が不足していました。確かに、新規タブを開くようなリンク（`target="_blank"` を含む）がクリックされたときに呼ばれる `WKUIDelegate` のメソッド `webView(_:createWebViewWith:for:windowFeatures:)` については、`WKUIDelegate` を設定する必要があります。
 
@@ -1119,7 +1119,7 @@ class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {  // WKUIDelega
 ---
 
 ## 👤 ユーザー
-*2023/5/20 19:26:46*
+*2023/05/20 19:26:46*
 
 なるほど、ちなみに以下のメソッドは WKNavigationDelegate, WKUIDelegate のどっちのデリゲート？
 
@@ -1161,7 +1161,7 @@ func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigatio
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 19:27:01*
+*2023/05/20 19:27:01*
 
 `webView(_:decidePolicyFor:decisionHandler:)`メソッドは `WKNavigationDelegate` プロトコルの一部です。このメソッドは、ナビゲーションアクションが許可されるべきかどうかを決定するときにWebKitによって呼び出されます。
 
@@ -1173,7 +1173,7 @@ func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigatio
 ---
 
 ## 👤 ユーザー
-*2023/5/20 19:30:25*
+*2023/05/20 19:30:25*
 
 ちなみに以下のコードを解説して欲しい
 
@@ -1215,7 +1215,7 @@ func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigatio
 ---
 
 ## 🤖 アシスタント
-*2023/5/20 19:30:30*
+*2023/05/20 19:30:30*
 
 このコードは、WKWebViewのnavigationActionに対するポリシーを決定するためのWKNavigationDelegateのメソッドで、以
 

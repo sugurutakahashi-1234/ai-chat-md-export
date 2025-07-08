@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/1 12:29:31*
+*2024/03/01 12:29:31*
 
 SwiftでFirebaseのFirestoreを使ってToDoアプリを管理したい。一旦こんなエンティティを考えている
 
@@ -21,7 +21,7 @@ struct Task: Identifiable {
 ---
 
 ## 🤖 アシスタント
-*2024/3/1 12:31:07*
+*2024/03/01 12:31:07*
 
 Firebaseを使用してToDoアプリを作成し、複数のユーザーに対応するためにログイン機能を実装するには、以下の手順を踏むことが一般的です。このプロセスは、Firebase AuthenticationとFirestoreを組み合わせて使用します。
 
@@ -128,14 +128,14 @@ db.collection("tasks").whereField("userId", isEqualTo: Auth.auth().currentUser?.
 ---
 
 ## 👤 ユーザー
-*2024/3/1 12:32:39*
+*2024/03/01 12:32:39*
 
 Firebase Authenticationはサードパーティー製の認証しか使う予定がない。
 
 ---
 
 ## 🤖 アシスタント
-*2024/3/1 12:33:47*
+*2024/03/01 12:33:47*
 
 Firebase Authenticationを使用してサードパーティー製の認証プロバイダ（例えば、Google、Facebook、Twitter、GitHubなど）のみを利用する場合、以下の手順で設定します。ここでは、Google認証を例に説明しますが、他のプロバイダについても基本的な流れは同じです。
 

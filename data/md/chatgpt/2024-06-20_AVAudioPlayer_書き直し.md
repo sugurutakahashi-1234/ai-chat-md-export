@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/6/21 0:47:08*
+*2024/06/21 00:47:08*
 
 以下の処理を全部AVAudioPlayerで書き直してほしい。
 
@@ -165,7 +165,7 @@ public final class AudioPlayDriver: AudioPlayDriverProtocol {
 ---
 
 ## 🤖 アシスタント
-*2024/6/21 0:47:44*
+*2024/06/21 00:47:44*
 
 AVPlayerをAVAudioPlayerに変更するための修正を以下に示します。
 
@@ -290,7 +290,7 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 ---
 
 ## 👤 ユーザー
-*2024/6/21 0:54:04*
+*2024/06/21 00:54:04*
 
 この辺の処理が抜けている
 
@@ -335,7 +335,7 @@ extension AudioPlayDriver: AVAudioPlayerDelegate {
 ---
 
 ## 🤖 アシスタント
-*2024/6/21 0:54:49*
+*2024/06/21 00:54:49*
 
 AVAudioPlayerを使用して、抜けていた再生時刻の通知や再生準備が完了した際の通知、および再生完了時のリセット処理を追加したコードは以下のようになります。
 

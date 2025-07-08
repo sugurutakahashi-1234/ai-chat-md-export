@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/8/20 17:46:48*
+*2024/08/20 17:46:48*
 
 一番最初に来たselectedImageが更新した場合はenablePhotoCropがtrueでもcrop画面を表示しないようなオプションを引数でbool値でつけて欲しい
 
@@ -81,21 +81,21 @@ struct PhotoRegisterButton&lt;Content: View&gt;: View {
 ---
 
 ## 🤖 アシスタント
-*2024/8/20 17:47:16*
+*2024/08/20 17:47:16*
 
 User wants to add an option to the `PhotoRegisterButton` struct to prevent the crop screen from appearing when the `selectedImage` is updated, even if `enablePhotoCrop` is true. This option should be passed as a Boolean argument.
 
 ---
 
 ## 🔧 ツール
-*2024/8/20 17:47:16*
+*2024/08/20 17:47:16*
 
 Model set context updated.
 
 ---
 
 ## 🤖 アシスタント
-*2024/8/20 17:47:16*
+*2024/08/20 17:47:16*
 
 Here’s how you can modify the `PhotoRegisterButton` struct to include an option that prevents the crop screen from appearing when the `selectedImage` is updated, even if `enablePhotoCrop` is true.
 
@@ -178,14 +178,14 @@ This allows you to prevent the crop screen from showing when updating the image 
 ---
 
 ## 👤 ユーザー
-*2024/8/20 17:49:13*
+*2024/08/20 17:49:13*
 
 日本語で
 
 ---
 
 ## 🤖 アシスタント
-*2024/8/20 17:49:41*
+*2024/08/20 17:49:41*
 
 こちらのコードを修正して、`selectedImage`が更新された際に、`enablePhotoCrop`がtrueでもcrop画面を表示しないオプションを追加しました。
 

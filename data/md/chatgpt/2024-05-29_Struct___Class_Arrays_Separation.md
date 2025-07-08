@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/5/29 11:45:31*
+*2024/05/29 11:45:31*
 
 struct や  class の配列の場合とそうでない場合の配列を分けたい
 
@@ -103,7 +103,7 @@ struct Person {
 ---
 
 ## 🤖 アシスタント
-*2024/5/29 11:45:54*
+*2024/05/29 11:45:54*
 
 To separate the arrays containing `struct` or `class` instances from those that do not, we can modify the `propertyView` function to handle both scenarios. Specifically, we will distinguish between arrays of `struct` or `class` instances and arrays of other types by checking the display style of the array's elements.
 

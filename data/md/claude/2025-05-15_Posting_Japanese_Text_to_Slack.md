@@ -5,51 +5,41 @@
 ---
 
 ## 👤 ユーザー
-*2025/5/15 19:42:14*
+*2025/05/15 19:42:14*
 
 slack-mcpにテストと投稿して欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/15 19:42:53*
+*2025/05/15 19:42:53*
 
 I'll help you post a test message to the Slack MCP. Let me post a message with the text "テスト" (test) to your Slack channel.
 
 First, I need to identify the available channels:
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 I found the "mcp-test" channel in your Slack workspace. Now I'll post your test message to this channel:
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 I apologize, but it seems I'm not a member of the "mcp-test" channel yet. Let me try the "general" channel where I am already a member:
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 I've posted a message to the "general" channel in your Slack workspace. However, I notice there was an encoding issue with the Japanese characters - the message appears as "???" instead of "テスト".
 
 Let me try again with explicit encoding:
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
 I'm still experiencing an encoding issue with the Japanese characters. Let me try with a simple English test message to confirm the functionality is working:
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 
 
@@ -62,14 +52,14 @@ Is there anything else you'd like me to try posting to your Slack workspace?
 ---
 
 ## 👤 ユーザー
-*2025/5/15 19:48:07*
+*2025/05/15 19:48:07*
 
 なんで文字化けすると思う？
 
 ---
 
 ## 🤖 アシスタント
-*2025/5/15 19:48:18*
+*2025/05/15 19:48:18*
 
 文字化けの原因について考えてみましょう。
 

@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/2/1 11:17:03*
+*2025/02/01 11:17:03*
 
 以下によって撮影画面を作成しているが、カメラをdisposeする処理がない。
 どうやってカメラを管理してdisposeするのがよいか検討して欲しい。
@@ -328,7 +328,7 @@ class ShootingPage extends HookConsumerWidget {
 ---
 
 ## 🔧 ツール
-*2025/2/1 11:17:26*
+*2025/02/01 11:17:26*
 
 **Managing CameraController disposal**
 
@@ -349,7 +349,7 @@ I’m mapping out best practices for storing CameraController in a separate @riv
 ---
 
 ## 🤖 アシスタント
-*2025/2/1 11:17:26*
+*2025/02/01 11:17:26*
 
 Riverpod（あるいは hooks_riverpod）で `CameraController` を管理する場合の最大のポイントは、**「ライフサイクル管理（dispose）」** をどうやって行うかです。
 
@@ -541,14 +541,14 @@ Future<CameraController?> getCameraController(Ref ref) async {
 
 したがって、
 
-> なにか別の @riverpod で保持するか、他の方法がよいか
+&gt; なにか別の @riverpod で保持するか、他の方法がよいか
 
 といった問いに対しては、**「（いまの形でも構わないので）`ref.onDispose` を使い、できれば `autoDispose` もつけて使うのがベスト」** と言えます。
 
 ---
 
 ## 👤 ユーザー
-*2025/2/1 11:21:08*
+*2025/02/01 11:21:08*
 
 @riverpod アノテーションの以下の記述のどちらを使った方がいいのか？
 現状プロジェクトではAsyncNotifierとはせずに_$の表記を使っている。
@@ -565,7 +565,7 @@ class MyCameraControllerNotifier extends _$MyCameraControllerNotifier {}
 ---
 
 ## 🔧 ツール
-*2025/2/1 11:21:30*
+*2025/02/01 11:21:30*
 
 **Deciding between Riverpod approaches**
 
@@ -590,7 +590,7 @@ I’m leaning towards naming classes with a `$` prefix to prevent conflicts. Def
 ---
 
 ## 🤖 アシスタント
-*2025/2/1 11:21:30*
+*2025/02/01 11:21:30*
 
 Riverpod 2.x 以降のドキュメントでは、**大きく2種類の書き方**が紹介されています。
 
@@ -647,8 +647,8 @@ Riverpod 2.x 以降のドキュメントでは、**大きく2種類の書き方*
 - `extends _$MyCameraControllerNotifier` とすることで、**Riverpod の生成コードと自作クラスを合体**させるイメージです。  
 - `build()` や `dispose()` をオーバーライドする点は同じですが、**拡張性のためのコードが自動生成される**ため、公式ドキュメントの最新ガイドではこちらがメインになっています。
 
-> **補足**: 旧バージョンの Riverpod だと `FutureProvider` / `StateNotifierProvider` などを自力で書く方法が一般的でした。  
-> Riverpod 2.x 以降は **「アノテーション + コードジェネレーションでまとめて管理する」** のが推奨される流れになり、このため `_$(アンダーバー＋ドル)` というクラスが自動生成されるようになっています。
+&gt; **補足**: 旧バージョンの Riverpod だと `FutureProvider` / `StateNotifierProvider` などを自力で書く方法が一般的でした。  
+&gt; Riverpod 2.x 以降は **「アノテーション + コードジェネレーションでまとめて管理する」** のが推奨される流れになり、このため `_$(アンダーバー＋ドル)` というクラスが自動生成されるようになっています。
 
 ---
 
@@ -708,7 +708,7 @@ Riverpod 2.x 以降のドキュメントでは、**大きく2種類の書き方*
 ---
 
 ## 👤 ユーザー
-*2025/2/1 12:50:32*
+*2025/02/01 12:50:32*
 
 以下で参照されなくなったタイミングでautoDisposeeしてほしい
 
@@ -736,7 +736,7 @@ class CameraControllerNotifier extends _$CameraControllerNotifier {
 ---
 
 ## 🔧 ツール
-*2025/2/1 12:51:03*
+*2025/02/01 12:51:03*
 
 **Maximizing the code**  
 I’m enhancing the code snippet for `CameraControllerNotifier` with an auto-dispose mechanism using the `@riverpod` annotation and `ref.onDispose` to manage resources effectively.
@@ -758,7 +758,7 @@ By examining the official documentation, I'm confirming that `@Riverpod(keepAliv
 I’m revisiting the idea that `@Riverpod(keepAlive: false)`, `@riverpodAutoDispose`, and `@autoDispose` annotations effectively ensure automatic disposal in Riverpod 2. The `ref.onDispose` method is also utilized.
 
 **Enhancing automatic disposal**  
-Integrating `autoDispose` into the annotation, along with `ref.onDispose(() =&gt; controller.dispose())` in the build method, ensures providers automatically dispose of when no longer active, streamlining resource management.
+Integrating `autoDispose` into the annotation, along with `ref.onDispose(() => controller.dispose())` in the build method, ensures providers automatically dispose of when no longer active, streamlining resource management.
 
 **Leaning towards automatic disposal**  
 I’m concluding that adding `@Riverpod(autoDispose: true)` is the best approach. It simplifies the setup and ensures efficient resource management.
@@ -770,7 +770,7 @@ This marks a shift towards using `ref.onDispose` for resource management in Rive
 ---
 
 ## 🤖 アシスタント
-*2025/2/1 12:51:03*
+*2025/02/01 12:51:03*
 
 `Riverpod` で「参照されなくなったタイミングで自動的に dispose したい」場合は、**autoDispose を有効にする**のがポイントです。  
 Riverpod 2.x のアノテーションでは、`@Riverpod(autoDispose: true)` を付けるか、`@riverpodAutoDispose` を使う方法があります。

@@ -18,7 +18,7 @@ phonenumberkit を SwiftUIで実装してほしい。昨日は国を選択して
 
 以下は、`PhoneNumberKit`を使って国を選択し、その後に電話番号を入力する基本的なSwiftUIビューの例です。
 
-まず、`PhoneNumberKit`をプロジェクトに追加します。Swift Package Managerを使用している場合は、Xcodeの"File" > "Swift Packages" > "Add Package Dependency"に進み、リポジトリのURL（https://github.com/marmelroy/PhoneNumberKit）を追加します。
+まず、`PhoneNumberKit`をプロジェクトに追加します。Swift Package Managerを使用している場合は、Xcodeの"File" &gt; "Swift Packages" &gt; "Add Package Dependency"に進み、リポジトリのURL（https://github.com/marmelroy/PhoneNumberKit）を追加します。
 
 その後、以下のコードスニペットをプロジェクトに追加してください。
 

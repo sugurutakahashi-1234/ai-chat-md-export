@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/6/13 16:48:12*
+*2023/06/13 16:48:12*
 
 以下のコードの改善案を教えて欲しい
 
@@ -49,7 +49,7 @@ struct MissionListView: View {
 ---
 
 ## 🤖 アシスタント
-*2023/6/13 16:48:26*
+*2023/06/13 16:48:26*
 
 このコードにはいくつかの改善点があります。以下に、それぞれの改善案を説明します。
 
@@ -114,7 +114,7 @@ struct MissionListView: View {
     private let presenter: MissionListPresenter
     @Binding var didRefreshControl: Bool
 
-    init(missions: [Mission], didRefreshControl: Binding<Bool>) {
+    init(missions: [Mission], didRefreshControl: Binding&lt;Bool&gt;) {
         presenter = MissionListPresenter(missions: missions)
         _didRefreshControl = didRefreshControl
     }

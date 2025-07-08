@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/3/7 23:44:55*
+*2024/03/07 23:44:55*
 
 hogeに相当する型を教えてほしい
 
@@ -91,7 +91,7 @@ public extension MaintenanceInfo {
 ---
 
 ## 🤖 アシスタント
-*2024/3/7 23:45:22*
+*2024/03/07 23:45:22*
 
 `hoge`プロパティで期待される型は、`RemoteConfigurable.Type`です。これは、`RemoteConfigurable`プロトコルを満たす型そのもの（型自体、つまりメタタイプ）を指します。`RemoteConfigurable.Type`は、`RemoteConfigurable`プロトコルに準拠する任意の型を参照することができます。
 

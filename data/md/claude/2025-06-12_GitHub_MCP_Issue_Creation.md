@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2025/6/12 9:54:51*
+*2025/06/12 09:54:51*
 
 GitHubのMCPを使って添付した内容のエシューを作ってほしい。 
 https://github.com/suguruTakahashi-1234/hono-learning/issues
@@ -13,12 +13,10 @@ https://github.com/suguruTakahashi-1234/hono-learning/issues
 ---
 
 ## 🤖 アシスタント
-*2025/6/12 9:56:24*
+*2025/06/12 09:56:24*
 
 GitHubのMCPツールを使って、添付された内容に基づいてイシューを作成します。
-```
-This block is not supported on your current device yet.
-```
+*[ツール使用: 対応していないブロック]*
 
 GitHubのMCPツールが利用できないようです。代わりに、イシューの内容をMarkdown形式で作成しました。これをコピーして、以下のURLから手動でイシューを作成してください：
 

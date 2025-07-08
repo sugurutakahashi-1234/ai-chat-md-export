@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/7/1 22:37:17*
+*2023/07/01 22:37:17*
 
 こちらの処理をnavigationViewとnavigationLinkの処理で書き換えて欲しい
 
@@ -102,7 +102,7 @@ struct MissionPageNavigatorView_Previews: PreviewProvider {
 ---
 
 ## 🤖 アシスタント
-*2023/7/1 22:38:02*
+*2023/07/01 22:38:02*
 
 指定のSwiftUIコードをNavigationViewとNavigationLinkで書き換えるには、以下のように実施できます。ただし、実際のアプリケーションでこの修正を適用する際は、各ビューが正しく遷移と通信を行うために、各ビューの実装と結合を適切に行う必要があります。
 
@@ -160,7 +160,7 @@ struct MissionPageNavigatorView: View {
 ---
 
 ## 👤 ユーザー
-*2023/7/1 22:38:54*
+*2023/07/01 22:38:54*
 
 if let missionTypeDetail = mission.missionTypeDetails.first {
                 preparationView(
@@ -171,7 +171,7 @@ if let missionTypeDetail = mission.missionTypeDetails.first {
 ---
 
 ## 🤖 アシスタント
-*2023/7/1 22:39:32*
+*2023/07/01 22:39:32*
 
 すみません、その点を見落としていました。そうですね、最初に表示されるビューを最初のmissionTypeDetailに基づいて表示するように修正すべきです。
 
@@ -231,14 +231,14 @@ struct MissionPageNavigatorView: View {
 ---
 
 ## 👤 ユーザー
-*2023/7/1 22:41:07*
+*2023/07/01 22:41:07*
 
 .environmentObject(navigator) も抜けている気がする抜けている処理も書いて欲しい
 
 ---
 
 ## 🤖 アシスタント
-*2023/7/1 22:41:56*
+*2023/07/01 22:41:56*
 
 大変申し訳ございません、その点を見落としていました。実際には、作成されたView全体に`EnvironmentObject`を提供する必要があります。以下にその修正を適用したコードを示します：
 

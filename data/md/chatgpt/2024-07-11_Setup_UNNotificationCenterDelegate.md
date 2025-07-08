@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/7/11 17:50:51*
+*2024/07/11 17:50:51*
 
 Testで実行しようとするとUNUserNotificationCenter.current().delegate = selfでbundleProxyForCurrentProcess is nilとエラーになってしまう。
 
@@ -50,7 +50,7 @@ extension UNNotificationResponse: @unchecked @retroactive Sendable {}
 ---
 
 ## 🤖 アシスタント
-*2024/7/11 17:51:10*
+*2024/07/11 17:51:10*
 
 `bundleProxyForCurrentProcess is nil`というエラーは、`UNUserNotificationCenter.current().delegate = self`がアプリケーションコンテキストではない場所で呼び出された場合に発生することがあります。これは通常、アプリのライフサイクルが完全にセットアップされる前に通知の設定を試みている場合に起こります。
 
@@ -83,14 +83,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ---
 
 ## 👤 ユーザー
-*2024/7/11 17:51:56*
+*2024/07/11 17:51:56*
 
 でもこのclass単体のテストがしたいんだ。テスト時にUNUserNotificationCenter.current().delegate = selfが実行されないようにしたり、bundleProxyForCurrentProcess is nilであった場合に実行しないようにできないのか？
 
 ---
 
 ## 🤖 アシスタント
-*2024/7/11 17:52:50*
+*2024/07/11 17:52:50*
 
 `UNUserNotificationCenter.current().delegate = self`をテスト時に実行されないようにする方法として、以下のように条件を付けて実行することが考えられます。または、テスト環境でモックを使用する方法もあります。以下にいくつかのアプローチを示します。
 

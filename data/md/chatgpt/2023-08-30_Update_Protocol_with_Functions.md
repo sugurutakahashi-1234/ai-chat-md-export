@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/8/30 11:17:50*
+*2023/08/30 11:17:50*
 
 func update(appUserId: OptionalString) のように変数について、launchAppCount以下の変数にupdate関数をつけて、setのprotocolを排除して欲しい
 
@@ -45,7 +45,7 @@ public protocol UserDefaultsManagerProtocol: AnyObject {
 ---
 
 ## 🤖 アシスタント
-*2023/8/30 11:18:33*
+*2023/08/30 11:18:33*
 
 Based on your request, I will make the following changes to the protocol:
 
@@ -108,7 +108,7 @@ This revised protocol meets your requirement of having `update` functions for th
 ---
 
 ## 👤 ユーザー
-*2023/8/31 17:42:38*
+*2023/08/31 17:42:38*
 
 func update(launchAppCount: Int) のように他の関数も全部保管して欲しい
 
@@ -181,7 +181,7 @@ public class UserDefaultsManager: UserDefaultsManagerProtocol {
 ---
 
 ## 🤖 アシスタント
-*2023/8/31 17:43:29*
+*2023/08/31 17:43:29*
 
 Based on your requirement, I understand that you want to implement the `update` functions in the `UserDefaultsManager` class for each property. Here's how you can do it:
 

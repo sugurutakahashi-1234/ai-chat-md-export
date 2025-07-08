@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2024/4/15 12:00:46*
+*2024/04/15 12:00:46*
 
 以下を日本語化してほしい。
 
@@ -71,7 +71,7 @@ See the [LICENSE](./LICENSE.md) file for license rights and limitations (MIT).
 ---
 
 ## 🤖 アシスタント
-*2024/4/15 12:01:39*
+*2024/04/15 12:01:39*
 
 ### Swift Package Manager 依存関係図
 
@@ -135,7 +135,7 @@ Xcodeまたは[App Store Connect](https://appstoreconnect.apple.com/)を通じ�
 ---
 
 ## 👤 ユーザー
-*2024/4/15 12:05:54*
+*2024/04/15 12:05:54*
 
 以下を英語にしてほしい
 
@@ -146,7 +146,7 @@ Xcode Cloudの設定はXcodeまたは[App Store Connect](https://appstoreconnect
 ---
 
 ## 🤖 アシスタント
-*2024/4/15 12:05:59*
+*2024/04/15 12:05:59*
 
 The CI/CD environment for this project is built using Xcode Cloud.
 

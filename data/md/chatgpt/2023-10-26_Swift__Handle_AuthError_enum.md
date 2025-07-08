@@ -5,7 +5,7 @@
 ---
 
 ## 👤 ユーザー
-*2023/10/26 9:06:12*
+*2023/10/26 09:06:12*
 
 以下の AuthError を switch 文で case でそれぞれのパラメーターをprintするような処理を書いて欲しい
 
@@ -39,7 +39,7 @@ public enum AuthError {
 ---
 
 ## 🤖 アシスタント
-*2023/10/26 9:06:43*
+*2023/10/26 09:06:43*
 
 こちらが、指定された `AuthError` enum を扱う `switch` 文を使用したコードのサンプルです：
 
@@ -94,14 +94,14 @@ func handleAuthError(error: AuthError) {
 ---
 
 ## 👤 ユーザー
-*2023/10/26 9:06:53*
+*2023/10/26 09:06:53*
 
 ごめん。print文は1行にして欲しい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/10/26 9:07:22*
+*2023/10/26 09:07:22*
 
 了解しました。それぞれのエラーケースを1行で出力するように修正します：
 
@@ -140,14 +140,14 @@ func handleAuthError(error: AuthError) {
 ---
 
 ## 👤 ユーザー
-*2023/10/26 9:08:16*
+*2023/10/26 09:08:16*
 
 underlyingError は error に renameして、 handleAuthError(authError: AuthError) { にして、さらにmap と $0 はわかりにくいからもっと簡単に処理して欲しい。
 
 ---
 
 ## 🤖 アシスタント
-*2023/10/26 9:08:41*
+*2023/10/26 09:08:41*
 
 了解しました。以下のように修正します：
 
@@ -194,14 +194,14 @@ func errorDescription(from error: Error?) -> String {
 ---
 
 ## 👤 ユーザー
-*2023/10/26 9:08:54*
+*2023/10/26 09:08:54*
 
 errorDescription(from error: Error?) も使わずに書けないかな？
 
 ---
 
 ## 🤖 アシスタント
-*2023/10/26 9:09:25*
+*2023/10/26 09:09:25*
 
 もちろん、`errorDescription(from:)` 関数を使用しないでコードを書くことも可能です。以下のように修正できます：
 
@@ -265,7 +265,7 @@ struct AuthDetailError {
 次に、`AuthError`から`AuthDetailError`にマップする関数を作成します：
 
 ```swift
-func mapToDetailError(authError: AuthError) -> AuthDetailError {
+func mapToDetailError(authError: AuthError) -&gt; AuthDetailError {
     switch authError {
     case .configuration(let description, let suggestion, let error):
         return AuthDetailError(type: "Configuration", description: description, suggestion: suggestion, error: error?.localizedDescription)
