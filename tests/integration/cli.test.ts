@@ -27,7 +27,6 @@ describe("CLI Integration Tests", () => {
     expect(output).toContain("-i, --input");
     expect(output).toContain("-o, --output");
     expect(output).toContain("-f, --format");
-    expect(output).toContain("--copy-raw");
   });
 
   test("requires input argument", async () => {
@@ -122,30 +121,6 @@ describe("CLI Integration Tests", () => {
     expect(outputFiles).toHaveLength(2);
   });
 
-  test("copies raw files with --copy-raw", async () => {
-    const inputFile = path.join(fixturesDir, "chatgpt/valid-conversation.json");
-    const outputDir = path.join(tempDir, "output");
-
-    // Change working directory temporarily
-    const originalCwd = process.cwd();
-    process.chdir(tempDir);
-
-    try {
-      const result =
-        await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --copy-raw`.quiet();
-
-      expect(result.exitCode).toBe(0);
-
-      const rawFiles = await fs.readdir("data/raw/chatgpt");
-      expect(rawFiles).toHaveLength(1);
-      expect(rawFiles[0]).toMatch(
-        /^\d{4}-\d{2}-\d{2}_valid-conversation\.json$/,
-      );
-    } finally {
-      process.chdir(originalCwd);
-    }
-  });
-
   test("handles invalid file format", async () => {
     const inputFile = path.join(
       fixturesDir,
@@ -222,9 +197,9 @@ describe("CLI Integration Tests", () => {
 
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles).toHaveLength(1);
-    // Should replace special characters with underscores
-    expect(outputFiles[0]).toMatch(
-      /^2023-12-31_Test_With_Special_Characters_\.md$/,
+    // Should produce URL-encoded filename
+    expect(outputFiles[0]).toBe(
+      "2023-12-31_Test%2FWith%3ASpecial*Characters%3F.md",
     );
   });
 });

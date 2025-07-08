@@ -8,6 +8,7 @@ import { loadChatGPT } from "./loaders/chatgpt.js";
 import { loadClaude } from "./loaders/claude.js";
 import { convertToMarkdown } from "./markdown.js";
 import type { Conversation } from "./types.js";
+import { generateFileName } from "./utils/filename.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const packageJson = JSON.parse(
@@ -18,7 +19,6 @@ const optionsSchema = z.object({
   input: z.string(),
   output: z.string().optional(),
   format: z.enum(["chatgpt", "claude", "auto"]).default("auto"),
-  copyRaw: z.boolean().default(false),
   since: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format")
@@ -61,13 +61,15 @@ async function main() {
     .description("Convert ChatGPT and Claude export data to Markdown")
     .version(packageJson.version)
     .requiredOption("-i, --input <path>", "Input file or directory path")
-    .option("-o, --output <path>", "Output directory (default: current directory)")
+    .option(
+      "-o, --output <path>",
+      "Output directory (default: current directory)",
+    )
     .option(
       "-f, --format <format>",
       "Input format (chatgpt, claude, auto)",
       "auto",
     )
-    .option("--copy-raw", "Copy raw data to data/raw/", false)
     .option(
       "--since <date>",
       "Include conversations started on or after this date (YYYY-MM-DD)",
@@ -87,9 +89,6 @@ async function main() {
 
   # Specify format explicitly
   $ ai-chat-md-export -i claude_export.json -f claude
-
-  # Copy raw data while converting
-  $ ai-chat-md-export -i data.json --copy-raw
 
   # Filter by date range
   $ ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
@@ -205,7 +204,7 @@ async function processFile(
 
   for (const conv of filteredConversations) {
     const markdown = convertToMarkdown(conv);
-    const fileName = `${conv.date}_${conv.title.replace(/[^a-zA-Z0-9ぁ-んァ-ヶー一-龠]/g, "_")}.md`;
+    const fileName = generateFileName(conv.date, conv.title);
     const outputPath = path.join(outputDir, fileName);
 
     try {
@@ -217,16 +216,6 @@ async function processFile(
           `Reason: ${error instanceof Error ? error.message : "Unknown error"}`,
       );
     }
-  }
-
-  if (options.copyRaw) {
-    const formatDir = format;
-    const rawDir = path.join("data/raw", formatDir);
-    await fs.mkdir(rawDir, { recursive: true });
-    const rawFileName = `${new Date().toISOString().split("T")[0]}_${path.basename(filePath)}`;
-    const rawPath = path.join(rawDir, rawFileName);
-    await fs.copyFile(filePath, rawPath);
-    console.log(`  → Copied raw data: ${rawPath}`);
   }
 }
 
