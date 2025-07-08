@@ -1,11 +1,11 @@
 # Timestamp to Google Timestamp
 
-日付: 2023-06-28
+Date: 2023-06-28
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 14:00:49*
+## 👤 User
+*2023-06-28 14:00:49*
 
 ミリ秒でのInt型のUINXのtimestamp情報をもっていてSwiftProtoBufを導入しており、Google_Protobuf_Timestamp型に変換したい。どうすればいいか？
 
@@ -76,8 +76,8 @@ extension Google_Protobuf_Timestamp {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 14:01:15*
+## 🤖 Assistant
+*2023-06-28 14:01:15*
 
 あなたの`Int`型のUNIXタイムスタンプはミリ秒単位で、Google Protobufの`Google_Protobuf_Timestamp`は秒とナノ秒単位で時刻を表します。このため、ミリ秒単位のUNIXタイムスタンプを変換するには、以下のステップが必要になります。
 
@@ -100,8 +100,8 @@ let timestamp = Google_Protobuf_Timestamp(seconds: seconds, nanos: nanoseconds)
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 14:02:03*
+## 👤 User
+*2023-06-28 14:02:03*
 
 以下のようなextensionのinitは使えないのかな？
 
@@ -170,8 +170,8 @@ extension Google_Protobuf_Timestamp {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 14:02:23*
+## 🤖 Assistant
+*2023-06-28 14:02:23*
 
 はい、その拡張を使用することもできます。`timeIntervalSince1970`というメソッドは、与えられた`TimeInterval`（秒単位）を1970年1月1日00:00:00 UTCからの相対的な時間として解釈します。 
 
@@ -191,8 +191,8 @@ let timestamp = Google_Protobuf_Timestamp(timeIntervalSince1970: timeIntervalSin
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 14:03:43*
+## 👤 User
+*2023-06-28 14:03:43*
 
 以下のようなものを定義していて、protocolを作成して、その処理をprotocolのextensionで実装して使いたい
 public struct EmotionDataModel {
@@ -268,8 +268,8 @@ public struct InteractionDataModel {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 14:04:21*
+## 🤖 Assistant
+*2023-06-28 14:04:21*
 
 これらのデータモデルがすべて`timestampInMilliseconds`という共通のプロパティを持っているため、プロトコルを使ってその機能を共有することは理にかなっています。以下のように`Timestampable`という新しいプロトコルを定義することができます：
 
@@ -316,29 +316,29 @@ let timestamp = emotionData.timestamp  // `Google_Protobuf_Timestamp`オブジ�
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 14:04:34*
+## 👤 User
+*2023-06-28 14:04:34*
 
 「ミリ秒の」という意味をつけてほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 14:04:44*
+## 🤖 Assistant
+*2023-06-28 14:04:44*
 
 すみませんが、具体的な内容がわからないため再度質問内容を教えていただけますか？プロトコルの名称を`MillisecondsTimestampable`に変更する、あるいは他の何かを指しているのでしょうか？具体的な情報を提供いただければ幸いです。
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 14:04:56*
+## 👤 User
+*2023-06-28 14:04:56*
 
 まさにそうでprotocol名についてです。
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 14:05:18*
+## 🤖 Assistant
+*2023-06-28 14:05:18*
 
 理解しました。それであれば、以下のようにプロトコルの名前を`MillisecondsTimestampable`に変更できます：
 
@@ -378,15 +378,15 @@ public struct InteractionDataModel: MillisecondsTimestampable {
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 14:05:41*
+## 👤 User
+*2023-06-28 14:05:41*
 
 var timestamp: Google_Protobuf_Timestamp {} もasGoogleProtobufTimestampにrenameしてほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 14:06:00*
+## 🤖 Assistant
+*2023-06-28 14:06:00*
 
 了解しました。それについては、以下のように変更できます：
 
@@ -414,15 +414,15 @@ let timestamp = emotionData.asGoogleProtobufTimestamp  // `Google_Protobuf_Times
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 14:06:08*
+## 👤 User
+*2023-06-28 14:06:08*
 
 MillisecondsTimestampable ももう少しいいのがないか候補をあげてほしい。
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 14:06:34*
+## 🤖 Assistant
+*2023-06-28 14:06:34*
 
 プロトコル名は、そのプロトコルが何を保証するかをはっきりと示すべきです。タイムスタンプに関連するプロトコルであること、そしてそれがミリ秒単位であることを示す必要があります。以下にいくつかの提案を列挙します：
 

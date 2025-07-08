@@ -1,11 +1,11 @@
 # Refactor with Protocols.
 
-日付: 2023-05-18
+Date: 2023-05-18
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 01:18:27*
+## 👤 User
+*2023-05-19 01:18:27*
 
 以下のコードをprotocol などをつかってリファクタして欲しい
 
@@ -69,8 +69,8 @@ enum Vegetable: String, CaseIterable, Identifiable {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 01:20:06*
+## 🤖 Assistant
+*2023-05-19 01:20:06*
 
 コードを見ると、FruitとVegetableの両方で多くの共通点があることがわかります。それぞれが、遷移方法とデスティネーションビューを提供する方法を定義しています。これをプロトコルで一般化することができます。
 
@@ -148,15 +148,15 @@ enum Vegetable: String, CaseIterable, Identifiable, IdentifiableDestination {
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 01:21:34*
+## 👤 User
+*2023-05-19 01:21:34*
 
 protocol IdentifiableDestination の associatedtype DestinationView: View ってどういう意味。もっといい感じに描くことはできるの？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 01:23:21*
+## 🤖 Assistant
+*2023-05-19 01:23:21*
 
 Swiftの`associatedtype`キーワードはプロトコル内でプレースホルダータイプを定義します。プロトコルが採用される際、このプレースホルダータイプは具体的な型に置き換えられます。
 

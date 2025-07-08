@@ -1,18 +1,18 @@
 # Camel to Space: Swift
 
-日付: 2023-08-14
+Date: 2023-08-14
 
 ---
 
-## 👤 ユーザー
-*2023/08/14 18:51:31*
+## 👤 User
+*2023-08-14 18:51:31*
 
 Swift で キャメルケースを小文字に変換して、半角スペースを空ける変換をStringのExtensionで書いて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/08/14 18:51:58*
+## 🤖 Assistant
+*2023-08-14 18:51:58*
 
 Swiftで、キャメルケースの文字列を小文字に変換し、単語の区切りに半角スペースを入れるための`String`のExtensionを以下に示します：
 
@@ -37,15 +37,15 @@ print(testString.camelCaseToSpaces()) // "hello world this is a test"
 
 ---
 
-## 👤 ユーザー
-*2023/08/14 19:00:17*
+## 👤 User
+*2023-08-14 19:00:17*
 
 頭文字を大文字にする処理を入れたい。
 
 ---
 
-## 🤖 アシスタント
-*2023/08/14 19:00:41*
+## 🤖 Assistant
+*2023-08-14 19:00:41*
 
 了解しました。頭文字を大文字にする処理を含めたコードは以下のようになります。
 
@@ -73,15 +73,15 @@ print(testString.camelCaseToSpacesWithCapitalizedFirstLetter()) // "Hello world 
 
 ---
 
-## 👤 ユーザー
-*2023/08/14 19:01:12*
+## 👤 User
+*2023-08-14 19:01:12*
 
 頭文字を大文字にするは別のString の extensionで記載したい
 
 ---
 
-## 🤖 アシスタント
-*2023/08/14 19:01:42*
+## 🤖 Assistant
+*2023-08-14 19:01:42*
 
 了解しました。２つの異なる`String` extensionsとして機能を分けることができます。１つ目はキャメルケースをスペース区切りに変換し、２つ目は文字列の頭文字を大文字にするものです。
 
@@ -113,8 +113,8 @@ print(convertedString) // "Hello world this is a test"
 
 ---
 
-## 👤 ユーザー
-*2023/08/14 19:02:15*
+## 👤 User
+*2023-08-14 19:02:15*
 
 以下と何が違うの？
 var fromLowerToUpperCamelCaseConverted: String {
@@ -123,8 +123,8 @@ var fromLowerToUpperCamelCaseConverted: String {
 
 ---
 
-## 🤖 アシスタント
-*2023/08/14 19:02:50*
+## 🤖 Assistant
+*2023-08-14 19:02:50*
 
 提供されたコード：
 

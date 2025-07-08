@@ -1,18 +1,18 @@
 # SwiftテストコードのNimbleQuick使用
 
-日付: 2023-06-12
+Date: 2023-06-12
 
 ---
 
-## 👤 ユーザー
-*2023/06/12 13:33:14*
+## 👤 User
+*2023-06-12 13:33:14*
 
 Swiftのテストコードで NimbleQuickを使っているのだけれどもdescribe、context、itにどんな記述をすれば以下押してほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/12 13:33:52*
+## 🤖 Assistant
+*2023-06-12 13:33:52*
 
 Nimble と Quick は Swift のユニットテストのためのフレームワークで、BDD (Behavior-Driven Development) スタイルのテストを書くためのものです。
 
@@ -53,8 +53,8 @@ class StringSpec: QuickSpec {
 
 ---
 
-## 👤 ユーザー
-*2023/06/12 13:39:30*
+## 👤 User
+*2023-06-12 13:39:30*
 
 以下のStringのextensionについてテストコードをかいてほしい。他にもextensionはあるのでそれをそうていしてほしい。
 
@@ -77,8 +77,8 @@ extension String {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/12 13:40:03*
+## 🤖 Assistant
+*2023-06-12 13:40:03*
 
 あなたの要求に基づいて、以下にテストケースを示します。
 
@@ -123,8 +123,8 @@ class StringExtensionSpec: QuickSpec {
 
 ---
 
-## 👤 ユーザー
-*2023/06/12 13:42:53*
+## 👤 User
+*2023-06-12 13:42:53*
 
 以下のテストコードも書いてほしい
 
@@ -172,8 +172,8 @@ private extension AnalyticsLogEvent {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/12 13:43:39*
+## 🤖 Assistant
+*2023-06-12 13:43:39*
 
 上記のコードに対して、`basicAnalyticsProperties` メソッドをテストするテストケースを書くことができます。このテストでは、異なる種類の値を `AnalyticsLogEvent` の `properties` にセットし、それぞれが適切にマップされているかを確認します。
 
@@ -229,15 +229,15 @@ class AnalyticsLogEventSpec: QuickSpec {
 
 ---
 
-## 👤 ユーザー
-*2023/06/12 13:52:32*
+## 👤 User
+*2023-06-12 13:52:32*
 
 basicAnalyticsProperties' is inaccessible due to 'fileprivate' protection level となってしまったのだけれどもどうすればいい？
 
 ---
 
-## 🤖 アシスタント
-*2023/06/12 13:52:59*
+## 🤖 Assistant
+*2023-06-12 13:52:59*
 
 テストを書く際にプライベートなプロパティやメソッドにアクセスする必要がある場合、そのアクセスレベルを適切に調整する必要があります。しかし、これらのメソッドやプロパティが内部的にのみ使用されるためにプライベートに設定されている場合、それらの可視性を変更することは推奨されません。
 
@@ -247,15 +247,15 @@ basicAnalyticsProperties' is inaccessible due to 'fileprivate' protection level 
 
 ---
 
-## 👤 ユーザー
-*2023/06/12 13:53:57*
+## 👤 User
+*2023-06-12 13:53:57*
 
 @testable import することでどうにかならないんだっけ？
 
 ---
 
-## 🤖 アシスタント
-*2023/06/12 13:54:22*
+## 🤖 Assistant
+*2023-06-12 13:54:22*
 
 `@testable import`ディレクティブを使用すると、モジュール内の`internal`レベルまでのメンバーに対するアクセスが可能となりますが、残念ながら`private`や`fileprivate`レベルのメンバーに対するアクセスは依然として制限されます。
 

@@ -1,18 +1,18 @@
 # SwiftUI アプリで AppDelegate と orientationLock を統合する
 
-日付: 2023-05-23
+Date: 2023-05-23
 
 ---
 
-## 👤 ユーザー
-*2023/05/23 12:17:48*
+## 👤 User
+*2023-05-23 12:17:48*
 
 SwiftUI のアプリ開発で @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate をつかいたい。また、AppDelegate に static var orientationLock = UIInterfaceOrientationMask.portrait を宣言して、好きなViewでその値を更新したいのだけれどもどうすればいいか教えて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/23 12:18:21*
+## 🤖 Assistant
+*2023-05-23 12:18:21*
 
 SwiftUI 2.0以降では、`@UIApplicationDelegateAdaptor` を使用して `AppDelegate` の機能を統合することができます。
 
@@ -62,15 +62,15 @@ struct SomeView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/23 12:19:03*
+## 👤 User
+*2023-05-23 12:19:03*
 
 マルチモジュール対応していて、SomeView からは AppDelegate を参照できないのだけれどもどうすればいいかおしえてほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/23 12:19:35*
+## 🤖 Assistant
+*2023-05-23 12:19:35*
 
 SomeViewから直接AppDelegateを参照できない場合、SwiftUIの環境を利用してインターフェースの方向のロックを操作するための共有データを作成できます。この状況では、通常、共有可能な状態を作成し、それを@EnvironmentObjectプロパティラッパを使用してアプリケーション内の複数のビューに渡すことが推奨されます。
 
@@ -131,15 +131,15 @@ struct SomeView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/23 12:20:37*
+## 👤 User
+*2023-05-23 12:20:37*
 
 SomeView 側のコードも書いて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/23 12:21:06*
+## 🤖 Assistant
+*2023-05-23 12:21:06*
 
 もちろんです。上記のコードでは `SomeView` の中で `OrientationManager` を参照するようにしています。以下にその例を示します：
 
@@ -178,15 +178,15 @@ struct SomeView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/23 14:33:41*
+## 👤 User
+*2023-05-23 14:33:41*
 
 UIDevice.current.setValue(3, forKey: "orientation") みたいな処理は必要ないの？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/23 14:34:04*
+## 🤖 Assistant
+*2023-05-23 14:34:04*
 
 私が提供したソリューションでは、UIの向きは AppDelegate の `application(_:supportedInterfaceOrientationsFor:)` 関数を通じて制御されます。具体的には、OrientationManagerのorientationLockプロパティが更新されると、この関数が再評価され、適切な向きが選択されます。
 
@@ -196,15 +196,15 @@ UIDevice.current.setValue(3, forKey: "orientation") みたいな処理は必要�
 
 ---
 
-## 👤 ユーザー
-*2023/05/23 14:47:46*
+## 👤 User
+*2023-05-23 14:47:46*
 
 UIInterfaceOrientation を UIInterfaceOrientationMask に変換するコードを書きたい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/23 14:48:09*
+## 🤖 Assistant
+*2023-05-23 14:48:09*
 
 `UIInterfaceOrientation`を`UIInterfaceOrientationMask`に変換するには、switchステートメントを使用して各ケースを処理します。以下にその例を示します：
 

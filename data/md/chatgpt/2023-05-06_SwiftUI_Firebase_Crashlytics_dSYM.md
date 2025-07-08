@@ -1,18 +1,18 @@
 # SwiftUI Firebase Crashlytics dSYM
 
-日付: 2023-05-06
+Date: 2023-05-06
 
 ---
 
-## 👤 ユーザー
-*2023/05/06 14:20:34*
+## 👤 User
+*2023-05-06 14:20:34*
 
 SwiftUIで使っているiOSアプリでFirebase Crashlytics を使いたいんだけど dSYM ファイルを自動的にアップロードする方法を教えて欲しい。
 
 ---
 
-## 🤖 アシスタント
-*2023/05/06 14:21:19*
+## 🤖 Assistant
+*2023-05-06 14:21:19*
 
 Firebase Crashlytics を SwiftUI の iOS アプリで使用し、dSYM ファイルを自動的にアップロードする方法は次のようになります。
 
@@ -48,15 +48,15 @@ ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TAR
 
 ---
 
-## 👤 ユーザー
-*2023/05/06 14:22:17*
+## 👤 User
+*2023-05-06 14:22:17*
 
 ${PODS_ROOT} 、${DWARF_DSYM_FOLDER_PATH}、${DWARF_DSYM_FILE_NAME} ってなんですか？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/06 14:22:47*
+## 🤖 Assistant
+*2023-05-06 14:22:47*
 
 これらの変数は Xcode の環境変数で、ビルドプロセスの中で使用されます。それぞれの変数の意味は以下の通りです。
 
@@ -74,8 +74,8 @@ ${PODS_ROOT} 、${DWARF_DSYM_FOLDER_PATH}、${DWARF_DSYM_FILE_NAME} ってなん
 
 ---
 
-## 👤 ユーザー
-*2023/05/06 14:24:03*
+## 👤 User
+*2023-05-06 14:24:03*
 
 Swift Package Manager を使っているんだけど独自の Package を作成している場合でもそのスクリプトで大丈夫？
 
@@ -83,8 +83,8 @@ Swift Package Manager を使っているんだけど独自の Package を作成�
 
 ---
 
-## 🤖 アシスタント
-*2023/05/06 14:24:37*
+## 🤖 Assistant
+*2023-05-06 14:24:37*
 
 Swift Package Manager を使用していて、独自の Package を作成している場合でも、先ほどのスクリプトは機能しますが、FirebaseCrashlytics の run スクリプトのパスを Swift Package Manager の形式に変更する必要があります。
 
@@ -106,8 +106,8 @@ ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TAR
 
 ---
 
-## 👤 ユーザー
-*2023/05/06 14:35:34*
+## 👤 User
+*2023-05-06 14:35:34*
 
 公式ドキュメントを見ると以下のようなことが書いてあったけどどういうこと？
 
@@ -116,8 +116,8 @@ ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TAR
 
 ---
 
-## 🤖 アシスタント
-*2023/05/06 14:36:33*
+## 🤖 Assistant
+*2023-05-06 14:36:33*
 
 公式ドキュメントで言及されている内容は、Crashlytics が dSYM ファイルをより迅速に処理し、アプリのバージョンを dSYM に関連付ける方法に関するものです。これを実現するために、プロジェクトのビルド済み Info.plist ファイルの場所をスクリプトに渡すことが推奨されています。
 

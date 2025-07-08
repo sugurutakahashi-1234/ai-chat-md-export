@@ -1,11 +1,11 @@
 # Create Error Enums 2.0
 
-日付: 2023-08-05
+Date: 2023-08-05
 
 ---
 
-## 👤 ユーザー
-*2023/08/05 20:35:49*
+## 👤 User
+*2023-08-05 20:35:49*
 
 AppErrorにCaseIterable を適応させたい。RecordingManagerErrorやApiRequestManagerErrorなどもenumなので、それもCaseIterableに対応させて、AppError.allCasesでそれぞれのパターンも網羅したい。また、今後enumの定義が各RecordingManagerErrorやApiRequestManagerErrorやAppErrorが増えても、それの追記を忘れないような仕組みも作りたい。
 
@@ -91,8 +91,8 @@ public enum AnchorAndEmotionAnalysisInteractorError: Error {
 
 ---
 
-## 🤖 アシスタント
-*2023/08/05 20:36:21*
+## 🤖 Assistant
+*2023-08-05 20:36:21*
 
 Swiftの`CaseIterable`プロトコルはenumのすべてのケースに対して自動的に適用できます。ただし、各ケースがアソシエイティッドバリューを持たない場合のみ適用できます。
 

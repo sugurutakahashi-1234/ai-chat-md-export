@@ -1,18 +1,18 @@
 # AWSとFirebaseの比較
 
-日付: 2023-06-20
+Date: 2023-06-20
 
 ---
 
-## 👤 ユーザー
-*2023/06/20 17:09:12*
+## 👤 User
+*2023-06-20 17:09:12*
 
 Firebase Remote Config のAWSはあるのか
 
 ---
 
-## 🤖 アシスタント
-*2023/06/20 17:09:48*
+## 🤖 Assistant
+*2023-06-20 17:09:48*
 
 AWS (Amazon Web Services) には、Firebase Remote Configと類似の機能を提供するサービスがいくつか存在します。Firebase Remote Configの主な目的は、アプリの設定をリモートから管理・変更できるようにすることです。
 

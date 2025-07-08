@@ -1,11 +1,11 @@
 # Struct for Function Arguments
 
-日付: 2023-06-28
+Date: 2023-06-28
 
 ---
 
-## 👤 ユーザー
-*2023/06/29 03:57:00*
+## 👤 User
+*2023-06-29 03:57:00*
 
 swiftで以下の関数の引数をまとめたstructを定義したい。
 
@@ -13,8 +13,8 @@ func uploadAnalysisResults(measurementId: String, userId: User.ID, sessionId: St
 
 ---
 
-## 🤖 アシスタント
-*2023/06/29 03:57:28*
+## 🤖 Assistant
+*2023-06-29 03:57:28*
 
 Swiftでは、関数の引数をまとめるために、Structを使用することができます。以下に示すのは、あなたが指定した関数の引数をまとめたStructを定義する一例です：
 

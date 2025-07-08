@@ -1,18 +1,18 @@
 # Swift: Accessing Enum RawValue
 
-日付: 2023-07-21
+Date: 2023-07-21
 
 ---
 
-## 👤 ユーザー
-*2023/07/22 06:04:22*
+## 👤 User
+*2023-07-22 06:04:22*
 
 Swiftでstructの変数にアクセスしたときに、enumだったらrawValueにアクセスするような式ってどうかけばいい？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/22 06:05:04*
+## 🤖 Assistant
+*2023-07-22 06:05:04*
 
 Swiftでstructのプロパティがenum型で、そのenumがRawRepresentableプロトコルに準拠している場合、`rawValue`プロパティを使って原始値にアクセスできます。まず、以下にそのようなenumとstructを定義する方法を示します：
 
@@ -42,8 +42,8 @@ let rawValue = myStruct.myEnum.rawValue  // 2
 
 ---
 
-## 👤 ユーザー
-*2023/07/22 06:08:39*
+## 👤 User
+*2023-07-22 06:08:39*
 
 このときに全部rawValueにアクセスしたいんだ
 
@@ -71,8 +71,8 @@ print(test.fuga)
 
 ---
 
-## 🤖 アシスタント
-*2023/07/22 06:09:08*
+## 🤖 Assistant
+*2023-07-22 06:09:08*
 
 あなたが各プロパティに対して自動的にrawValueにアクセスしたい場合、Swiftではそのようなことは直接サポートされていません。各プロパティにアクセスしてそれぞれの型に応じた処理をすることは、型チェックとダウンキャストを行うことで可能ですが、それには`Mirror`というSwiftのリフレクションAPIを使用します。
 
@@ -111,8 +111,8 @@ for child in mirror.children {
 
 ---
 
-## 👤 ユーザー
-*2023/07/22 06:12:11*
+## 👤 User
+*2023-07-22 06:12:11*
 
 以下の  dictionary[keyName] = child.value や dictionary[keyName.toSnakeCase] = child.value でこのような対応をいれたい
 
@@ -148,8 +148,8 @@ public extension DictionaryConvertible {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/22 06:12:31*
+## 🤖 Assistant
+*2023-07-22 06:12:31*
 
 あなたがenum型の`RawRepresentable`プロパティのrawValueにアクセスしたい場合、`asDictionary(caseFormat:)`関数を以下のように修正できます：
 
@@ -188,15 +188,15 @@ public extension DictionaryConvertible {
 
 ---
 
-## 👤 ユーザー
-*2023/07/22 07:53:03*
+## 👤 User
+*2023-07-22 07:53:03*
 
 また、RawRepresentable ではなかったら、enum の case 名の String にすることはできない？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/22 07:53:51*
+## 🤖 Assistant
+*2023-07-22 07:53:51*
 
 Swiftには、enum型の値からcase名を直接文字列として取得する標準的な方法がありません。しかし、`CustomStringConvertible`プロトコルを準拠させて`description`プロパティをオーバーライドすることで、それを達成することが可能です。
 
@@ -247,15 +247,15 @@ print(dictionary)  // ["hoge": 100, "moge": "efg", "fuga": "abc"]
 
 ---
 
-## 👤 ユーザー
-*2023/07/22 07:54:19*
+## 👤 User
+*2023-07-22 07:54:19*
 
 enum の場合に String(child.value) みたいなことはできないの？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/22 07:55:01*
+## 🤖 Assistant
+*2023-07-22 07:55:01*
 
 Swiftでは、enumの値を直接Stringに変換すると、結果はenumの名前とそのケースの名前を連結したものになります。例えば、以下のenumがあるとします:
 
@@ -309,15 +309,15 @@ public extension DictionaryConvertible {
 
 ---
 
-## 👤 ユーザー
-*2023/07/22 07:55:33*
+## 👤 User
+*2023-07-22 07:55:33*
 
 これだとRawRepresentableでなければ全部Srtingになってしまうので、enum だけこうしたい
 
 ---
 
-## 🤖 アシスタント
-*2023/07/22 07:56:11*
+## 🤖 Assistant
+*2023-07-22 07:56:11*
 
 Swiftにはenumの値がenumであることを動的に確認する標準的な方法がありません。しかし、特定のenumが存在することが既知である場合、そのenumを特定のプロトコルに準拠させ、そのプロトコルを使用してenumであるかどうかをチェックすることができます。
 
@@ -376,15 +376,15 @@ public extension DictionaryConvertible {
 
 ---
 
-## 👤 ユーザー
-*2023/07/22 07:56:42*
+## 👤 User
+*2023-07-22 07:56:42*
 
 どうにか enum であることを取得する方法はないの？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/22 07:57:09*
+## 🤖 Assistant
+*2023-07-22 07:57:09*
 
 SwiftでEnum型であることを動的に判定する標準的な方法は存在しません。ただし、Swiftの標準ライブラリの一部であるMirror APIを使用してリフレクションを使用することで、Enum型の場合とそれ以外の場合を区別することができます。
 

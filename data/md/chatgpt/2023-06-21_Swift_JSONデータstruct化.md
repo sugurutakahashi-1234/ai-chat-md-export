@@ -1,11 +1,11 @@
 # Swift JSONデータstruct化
 
-日付: 2023-06-21
+Date: 2023-06-21
 
 ---
 
-## 👤 ユーザー
-*2023/06/21 23:37:00*
+## 👤 User
+*2023-06-21 23:37:00*
 
 Swiftで以下をstructで扱えるようにしたいです。
 
@@ -13,8 +13,8 @@ Swiftで以下をstructで扱えるようにしたいです。
 
 ---
 
-## 🤖 アシスタント
-*2023/06/21 23:38:43*
+## 🤖 Assistant
+*2023-06-21 23:38:43*
 
 このようなJSONデータをSwiftのstructで扱うためには、まず適切な構造体を定義する必要があります。以下に示すように、`Codable`プロトコルを採用したstructを作成します。
 
@@ -52,8 +52,8 @@ if let jsonData = jsonString.data(using: .utf8) {
 
 ---
 
-## 👤 ユーザー
-*2023/06/21 23:45:50*
+## 👤 User
+*2023-06-21 23:45:50*
 
 今度は以下のstructになるようにdecodeするような仕組みを作ってほしい。typeは読まなくてよくてenumだけ呼んで欲しい
 
@@ -63,8 +63,8 @@ struct SingleSelect {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/21 23:46:49*
+## 🤖 Assistant
+*2023-06-21 23:46:49*
 
 Swiftの`Codable`プロトコルを使用すると、特定の部分のみをデコードすることも可能です。以下にその例を示します。
 
@@ -111,15 +111,15 @@ if let jsonData = jsonString.data(using: .utf8) {
 
 ---
 
-## 👤 ユーザー
-*2023/06/21 23:46:53*
+## 👤 User
+*2023-06-21 23:46:53*
 
 中間のService構造体はいらない気がするんだけど。
 
 ---
 
-## 🤖 アシスタント
-*2023/06/21 23:48:26*
+## 🤖 Assistant
+*2023-06-21 23:48:26*
 
 確かに、中間の`Service`構造体は必要ありません。`SingleSelect`構造体の`CodingKeys`を設定し、その`choices`プロパティがJSONの`enum`フィールドに対応するように指定すれば、直接デコードできます。
 
@@ -153,8 +153,8 @@ if let jsonData = jsonString.data(using: .utf8) {
 
 ---
 
-## 👤 ユーザー
-*2023/06/21 23:50:02*
+## 👤 User
+*2023-06-21 23:50:02*
 
 同様に以下の文字列をFreeDescriptionに変換するコードを書いて欲しい。
 
@@ -169,8 +169,8 @@ struct FreeDescription {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/21 23:50:36*
+## 🤖 Assistant
+*2023-06-21 23:50:36*
 
 `FreeDescription` structを`Codable`プロトコルに適合させ、特定のキーをプロパティにマッピングするための`CodingKeys`を設定することで実現できます。以下に具体的なコードを示します。
 
@@ -203,8 +203,8 @@ if let jsonData = jsonString.data(using: .utf8) {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 00:03:29*
+## 👤 User
+*2023-06-22 00:03:29*
 
 以下のような Question の型があって、ConstraintType をもっている。
 それによってconstraintsの形式が異なって、freeDescription であれば struct FreeDescription に変換できる文字列で、singleSelect の場合は struct SingleSelect に変換できる文字列である。
@@ -251,8 +251,8 @@ public enum AnswerType {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 00:04:34*
+## 🤖 Assistant
+*2023-06-22 00:04:34*
 
 Swiftでは、`Question`構造体に`answerType`という計算プロパティを追加することで、指定された制約に基づいて`AnswerType`を返すことが可能です。ここでは、JSONデコーダを使用して`constraints`文字列を`FreeDescription`または`SingleSelect`にデコードします。
 
@@ -323,8 +323,8 @@ public enum AnswerType {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 00:06:35*
+## 👤 User
+*2023-06-22 00:06:35*
 
 以下のように書くことでerrorをスローするようにしたい
 var answerType: AnswerType {
@@ -332,8 +332,8 @@ var answerType: AnswerType {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 00:07:38*
+## 🤖 Assistant
+*2023-06-22 00:07:38*
 
 残念ながら、Swiftでは現時点では計算プロパティがエラーをスローすることはできません。しかし、代わりにメソッドを使って同様の結果を得ることが可能です。
 
@@ -410,15 +410,15 @@ do {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 00:08:21*
+## 👤 User
+*2023-06-22 00:08:21*
 
 debugDescription のないようにconstraintsの値も入れたい」
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 00:09:08*
+## 🤖 Assistant
+*2023-06-22 00:09:08*
 
 `DecodingError.dataCorrupted`の`debugDescription`に`constraints`の値を含めることができます。これにより、エラーメッセージに具体的な情報を提供することができ、デバッグが容易になります。
 
@@ -486,8 +486,8 @@ public enum AnswerType {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 00:17:33*
+## 👤 User
+*2023-06-22 00:17:33*
 
 以下のようなtryってできないんだっけ？
 
@@ -517,8 +517,8 @@ extension EmomilCore.Question {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 00:18:25*
+## 🤖 Assistant
+*2023-06-22 00:18:25*
 
 Swiftの`map`関数はエラーをスローすることはできません。そのため、エラーをスローするクロージャ（`try EmomilCore.Question(from: $0)`）を直接使用することはできません。
 
@@ -558,15 +558,15 @@ extension EmomilCore.Question {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 00:18:46*
+## 👤 User
+*2023-06-22 00:18:46*
 
 compactMap ではなくてちゃんとエラーをスローするようにしたい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 00:19:30*
+## 🤖 Assistant
+*2023-06-22 00:19:30*
 
 エラーをスローするためには、`map`を使う代わりに明示的に`for`ループを使いましょう。その中で各要素を処理し、エラーをスローする操作を行います。
 
@@ -609,15 +609,15 @@ extension EmomilCore.Question {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 00:22:41*
+## 👤 User
+*2023-06-22 00:22:41*
 
 if let amplifyQuestions = amplifyQuestionnaire.questions { はしなくてよくて 強制アンラップしてください
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 00:23:16*
+## 🤖 Assistant
+*2023-06-22 00:23:16*
 
 了解しました。強制アンラップを使用して`amplifyQuestionnaire.questions`を処理すると、以下のようになります：
 
@@ -656,8 +656,8 @@ extension EmomilCore.Question {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 00:30:19*
+## 👤 User
+*2023-06-22 00:30:19*
 
 以下の強制アンラップしている処理をguard文でthrowするように変更して欲しい
 
@@ -702,8 +702,8 @@ extension EmomilCore.Measurement {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 00:31:21*
+## 🤖 Assistant
+*2023-06-22 00:31:21*
 
 強制アンラップを`guard let`ステートメントに変更し、必要な値が存在しない場合にエラーをスローするようにします。カスタムエラーを定義して各場所で使用することができます。
 

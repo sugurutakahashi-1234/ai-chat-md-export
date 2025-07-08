@@ -1,11 +1,11 @@
 # Ordering Internal Publisher Steps
 
-日付: 2023-06-29
+Date: 2023-06-29
 
 ---
 
-## 👤 ユーザー
-*2023/06/29 20:21:35*
+## 👤 User
+*2023-06-29 20:21:35*
 
 publisher内部の処理順を上から順にしたい。
 
@@ -35,8 +35,8 @@ NotificationCenter.default
 
 ---
 
-## 🤖 アシスタント
-*2023/06/29 20:22:36*
+## 🤖 Assistant
+*2023-06-29 20:22:36*
 
 あなたが提示したコードは、`AVPlayerItemDidPlayToEndTime`イベントを処理するもので、このイベントが発生したときに`sink`の中で以下の処理が行われます：
 

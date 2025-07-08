@@ -1,18 +1,18 @@
 # Struct to Dict: Common Protocol
 
-日付: 2023-06-10
+Date: 2023-06-10
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 12:08:24*
+## 👤 User
+*2023-06-10 12:08:24*
 
 structの変数名と値を辞書型に変換する方法。また、変数名はcamelCaseからsnakecaseに変更して欲しい。これらの処理を共通化したい。（プロトコル定義してもろもろしたい）
 
 ---
 
-## 🤖 アシスタント
-*2023/06/10 12:09:00*
+## 🤖 Assistant
+*2023-06-10 12:09:00*
 
 以下に、Swiftでstructのインスタンス変数を辞書に変換し、その際にキー名をcamelCaseからsnake_caseに変換する実装例を示します。この処理は共通化し、新たなプロトコルを定義することで任意のstructに適用可能です。
 
@@ -66,15 +66,15 @@ print(user.asDictionary())
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 12:09:55*
+## 👤 User
+*2023-06-10 12:09:55*
 
 User に age: Int など追加して欲しい。また、キャメルケースをスネークケースに変える処理はextension String としてほしい。
 
 ---
 
-## 🤖 アシスタント
-*2023/06/10 12:10:20*
+## 🤖 Assistant
+*2023-06-10 12:10:20*
 
 了解しました。まず、User structに新しいプロパティageを追加します。次に、キャメルケースをスネークケースに変換する処理をStringの拡張として定義します。
 
@@ -127,15 +127,15 @@ print(user.asDictionary())
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 12:11:10*
+## 👤 User
+*2023-06-10 12:11:10*
 
 DictionaryConvertible は asDictionary はコンピューテッドプロパティーにして欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/10 12:11:32*
+## 🤖 Assistant
+*2023-06-10 12:11:32*
 
 了解しました。それに合わせて、`DictionaryConvertible`プロトコルの`asDictionary`をコンピューテッドプロパティとして定義します。
 
@@ -190,15 +190,15 @@ print(user.dictionary)
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 12:12:23*
+## 👤 User
+*2023-06-10 12:12:23*
 
 var asDictionary: [String: Any] { get } にしてほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/10 12:12:48*
+## 🤖 Assistant
+*2023-06-10 12:12:48*
 
 了解しました。プロトコルの`dictionary`プロパティ名を`asDictionary`に変更します。
 
@@ -253,15 +253,15 @@ print(user.asDictionary)
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 14:40:34*
+## 👤 User
+*2023-06-10 14:40:34*
 
 asDictionary を snakeCaseにするか、そのままにするか、をenumで設定して引数で設定して、変えられるようにしたい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/10 14:41:13*
+## 🤖 Assistant
+*2023-06-10 14:41:13*
 
 それに対応するため、`CaseFormat`というenumを作成し、それを`asDictionary`の引数として与えられるように設定します。ここでは、`CaseFormat` enumは`original`と`snakeCase`の二つの値を持つとします。
 
@@ -331,8 +331,8 @@ print(user.asDictionary(format: .original))
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 14:45:47*
+## 👤 User
+*2023-06-10 14:45:47*
 
 ちなみに以下のようにAWSのAmplifyを使って、ログを送信するのだけれども、nameにStruct名をつかって、propertiesにasDictionaryで生成した辞書型を入れて、BasicAnalyticsEventを作るようなプロトコルを作成して、それをUserに継承させて使用したい
 
@@ -355,8 +355,8 @@ func recordButtonClickedEvent() {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/10 14:46:36*
+## 🤖 Assistant
+*2023-06-10 14:46:36*
 
 ご要望に合わせて、AnalyticsEventRecordableという新しいプロトコルを作成します。このプロトコルは、structの名前を取得し、そのインスタンスのプロパティと値を辞書に変換して、それを使ってBasicAnalyticsEventを作成・記録するメソッドを提供します。
 
@@ -451,15 +451,15 @@ user.recordEvent()
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 14:46:41*
+## 👤 User
+*2023-06-10 14:46:41*
 
 つづき
 
 ---
 
-## 🤖 アシスタント
-*2023/06/10 14:47:21*
+## 🤖 Assistant
+*2023-06-10 14:47:21*
 
 もし`eventName`が"User"固定ではなく、各structの型名を動的に取得したい場合、Swiftの現行バージョンではその直接的な方法は提供されていません。しかし、ワークアラウンドとして、各structが自身の型名を文字列として提供することを要求する新たなプロトコルを作成することができます。
 
@@ -517,15 +517,15 @@ user.recordEvent()
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 14:48:56*
+## 👤 User
+*2023-06-10 14:48:56*
 
 AnalyticsEventRecordable は DictionaryConvertible と TypeNameProvider の2つのプロトコルを適応している前提で処理したほうが良い気がするのだけどどう思う？
 
 ---
 
-## 🤖 アシスタント
-*2023/06/10 14:49:41*
+## 🤖 Assistant
+*2023-06-10 14:49:41*
 
 はい、そのご提案は合理的です。`AnalyticsEventRecordable`が`DictionaryConvertible`と`TypeNameProvider`の両方のプロトコルに準拠していることを前提とすれば、より安全なコードを書くことができます。これにより、任意のstructが`AnalyticsEventRecordable`に準拠する場合、それらは自動的に他の2つのプロトコルにも準拠する必要があります。
 
@@ -606,8 +606,8 @@ user.recordEvent()
 
 ---
 
-## 👤 ユーザー
-*2023/06/10 14:51:46*
+## 👤 User
+*2023-06-10 14:51:46*
 
 typeName って実質struct名のことだよね？、structNameとかにしてもいいと思うんだけどどう思うStructNameProviderとか
 

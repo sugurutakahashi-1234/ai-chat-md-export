@@ -1,11 +1,11 @@
 # Notify Reviewers on Checks
 
-日付: 2023-05-09
+Date: 2023-05-09
 
 ---
 
-## 👤 ユーザー
-*2023/05/09 12:12:54*
+## 👤 User
+*2023-05-09 12:12:54*
 
 name: Notify Reviewers on Successful Checks
 
@@ -74,8 +74,8 @@ jobs:
 
 ---
 
-## 🤖 アシスタント
-*2023/05/09 12:13:02*
+## 🤖 Assistant
+*2023-05-09 12:13:02*
 
 If you want to trigger the job in a different way than using the `check_suite` event with a successful conclusion and a pull request, you can modify the `on` section of your workflow YAML file. 
 
@@ -154,15 +154,15 @@ jobs:
 
 ---
 
-## 👤 ユーザー
-*2023/05/09 12:13:11*
+## 👤 User
+*2023-05-09 12:13:11*
 
 つづき
 
 ---
 
-## 🤖 アシスタント
-*2023/05/09 12:13:15*
+## 🤖 Assistant
+*2023-05-09 12:13:15*
 
 STATUS"
             exit 0

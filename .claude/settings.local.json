@@ -2,7 +2,6 @@
   "permissions": {
     "allow": [
       "Bash(play:*)",
-      "mcp__ide__getDiagnostics",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:vitest.dev)",
       "Bash(claude mcp:*)",
@@ -124,7 +123,8 @@
       "Bash(npm run type-check:*)",
       "Bash(npm run:*)",
       "Bash(npm test)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "Bash(sed:*)"
     ],
     "deny": []
   },

@@ -1,18 +1,18 @@
 # Amplify SDK Configuration.
 
-日付: 2023-05-10
+Date: 2023-05-10
 
 ---
 
-## 👤 ユーザー
-*2023/05/10 20:19:15*
+## 👤 User
+*2023-05-10 20:19:15*
 
 awsconfiguration.json と amplifyconfiguration.json さえあれば iOSプロジェクトから Amplify SDK を使えるかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/10 20:21:43*
+## 🤖 Assistant
+*2023-05-10 20:21:43*
 
 はい、`awsconfiguration.json`と`amplifyconfiguration.json`ファイルがあれば、iOSプロジェクトでAmplify SDKを使ってAWSリソースにアクセスできます。
 

@@ -1,11 +1,11 @@
 # ButtonSize for CustomButtonStyle.
 
-日付: 2023-07-21
+Date: 2023-07-21
 
 ---
 
-## 👤 ユーザー
-*2023/07/21 12:15:04*
+## 👤 User
+*2023-07-21 12:15:04*
 
 以下に public enum ButtonSize {} でcase medium と case smallの概念を導入して、CustomButtonStyleがButtonTypeの後に、size: ButtonSize = .medium をとるようにして欲しい
 
@@ -133,8 +133,8 @@ public struct CustomButtonStyle: ButtonStyle {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/21 12:15:45*
+## 🤖 Assistant
+*2023-07-21 12:15:45*
 
 以下のようにButtonSize列挙型を導入し、CustomButtonStyleにサイズパラメータを追加しました。各サイズの高さと角の半径は定数として定義し、必要に応じて変更することができます。
 
@@ -235,15 +235,15 @@ public struct CustomButtonStyle: ButtonStyle {
 
 ---
 
-## 👤 ユーザー
-*2023/07/21 12:16:49*
+## 👤 User
+*2023-07-21 12:16:49*
 
 ButtonSize の定義をかいてほしい、そこにvar buttonHeight や var buttonCornerRadius を定義してほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/07/21 12:17:28*
+## 🤖 Assistant
+*2023-07-21 12:17:28*
 
 申し訳ありません、理解しました。そのようにButtonSizeを変更してそれぞれのサイズに対応する高さと角の半径をButtonSize内に設定することも可能です。以下のように修正します：
 

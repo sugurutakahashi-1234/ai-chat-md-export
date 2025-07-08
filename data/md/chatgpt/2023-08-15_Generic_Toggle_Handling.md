@@ -1,11 +1,11 @@
 # Generic Toggle Handling
 
-日付: 2023-08-15
+Date: 2023-08-15
 
 ---
 
-## 👤 ユーザー
-*2023/08/15 14:06:08*
+## 👤 User
+*2023-08-15 14:06:08*
 
 うまくToggleの定義を一般化したい。
 
@@ -94,8 +94,8 @@ struct DebugChangeStatusView_Previews: PreviewProvider {
 
 ---
 
-## 🤖 アシスタント
-*2023/08/15 14:06:52*
+## 🤖 Assistant
+*2023-08-15 14:06:52*
 
 I understand you're trying to make the toggle handling more generic in Swift and SwiftUI, using an enum. The given code uses a direct switch-case approach for each `DebugChangeStatusType`. This can be made more concise and flexible by:
 
@@ -182,16 +182,16 @@ This approach makes adding new toggles or removing existing ones easier and less
 
 ---
 
-## 👤 ユーザー
-*2023/08/15 14:19:06*
+## 👤 User
+*2023-08-15 14:19:06*
 
 ReferenceWritableKeyPathはつかわないでほしい。
 あと日本語でお願いします。
 
 ---
 
-## 🤖 アシスタント
-*2023/08/15 14:19:53*
+## 🤖 Assistant
+*2023-08-15 14:19:53*
 
 了解しました。`ReferenceWritableKeyPath`を使わないで、更に簡略化する方法を考えてみます。
 
@@ -257,16 +257,16 @@ enum DebugChangeStatusType: String, CaseIterable, Identifiable {
 
 ---
 
-## 👤 ユーザー
-*2023/08/15 14:21:05*
+## 👤 User
+*2023-08-15 14:21:05*
 
 うまくプレゼンターを使うようにして欲しい。
 UserDefaultsManagerProtocolは presenterでしかつかえないんだ。
 
 ---
 
-## 🤖 アシスタント
-*2023/08/15 14:22:00*
+## 🤖 Assistant
+*2023-08-15 14:22:00*
 
 了解しました。Presenterを利用して情報を管理し、ViewとUserDefaultsの間のロジックを担当するようにします。
 
@@ -367,15 +367,15 @@ struct DebugChangeStatusView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2023/08/15 14:22:13*
+## 👤 User
+*2023-08-15 14:22:13*
 
 func binding と func toggleView は View側に実装をおこなってほしい。
 
 ---
 
-## 🤖 アシスタント
-*2023/08/15 14:23:04*
+## 🤖 Assistant
+*2023-08-15 14:23:04*
 
 了解しました。`binding` と `toggleView` の関数を `DebugChangeStatusView` 内に移動し、Presenterを通してUIとUserDefaultsを結びつけます。
 
@@ -474,15 +474,15 @@ struct DebugChangeStatusView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2023/08/15 14:23:33*
+## 👤 User
+*2023-08-15 14:23:33*
 
 func bindingやfunc toggleView はわざわざ関数化しなくていいよ。
 
 ---
 
-## 🤖 アシスタント
-*2023/08/15 14:24:17*
+## 🤖 Assistant
+*2023-08-15 14:24:17*
 
 了解しました。関数化せずに、直接 `body` プロパティ内でそれらの処理を行います。
 
@@ -573,15 +573,15 @@ struct DebugChangeStatusView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2023/08/15 14:25:02*
+## 👤 User
+*2023-08-15 14:25:02*
 
 func value と func setValue がわかれているけど、いい感じにまとめられないかな？switch文を２回書きたくないんだ。
 
 ---
 
-## 🤖 アシスタント
-*2023/08/15 14:25:31*
+## 🤖 Assistant
+*2023-08-15 14:25:31*
 
 了解しました。`value(for:)` と `setValue(_:for:)` の両方の関数を１つの computed property にまとめることができます。その場合、Swiftの`Binding`を直接活用して、そのプロパティのgetとsetをoverrideしてあげます。
 
@@ -634,15 +634,15 @@ ForEach(DebugChangeStatusType.allCases) { type in
 
 ---
 
-## 👤 ユーザー
-*2023/08/15 14:26:01*
+## 👤 User
+*2023-08-15 14:26:01*
 
 どっちがいいかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/08/15 14:26:44*
+## 🤖 Assistant
+*2023-08-15 14:26:44*
 
 この問題に関して「これがベストだ」という答えはないのですが、それぞれのアプローチには以下のような特徴やメリット、デメリットがあります。
 

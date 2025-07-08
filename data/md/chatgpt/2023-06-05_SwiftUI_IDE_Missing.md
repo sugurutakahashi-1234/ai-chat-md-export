@@ -1,18 +1,18 @@
 # SwiftUI IDE Missing
 
-日付: 2023-06-05
+Date: 2023-06-05
 
 ---
 
-## 👤 ユーザー
-*2023/06/06 02:46:06*
+## 👤 User
+*2023-06-06 02:46:06*
 
 SwiftUIde
 
 ---
 
-## 🤖 アシスタント
-*2023/06/06 02:46:21*
+## 🤖 Assistant
+*2023-06-06 02:46:21*
 
 As of my knowledge cutoff in September 2021, SwiftUI is a user interface toolkit introduced by Apple in 2019 that allows developers to design apps in a declarative way. It is available for all Apple platforms, including iOS, macOS, watchOS, and tvOS.
 

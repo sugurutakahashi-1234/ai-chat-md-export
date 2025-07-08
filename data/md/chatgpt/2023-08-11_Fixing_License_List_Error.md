@@ -1,11 +1,11 @@
 # Fixing License List Error
 
-日付: 2023-08-11
+Date: 2023-08-11
 
 ---
 
-## 👤 ユーザー
-*2023/08/11 11:01:56*
+## 👤 User
+*2023-08-11 11:01:56*
 
 以下のコードでCannot convert return expression of type '()' to return type '[License]'というエラーになる
 
@@ -25,8 +25,8 @@ extension License {
 
 ---
 
-## 🤖 アシスタント
-*2023/08/11 11:02:32*
+## 🤖 Assistant
+*2023-08-11 11:02:32*
 
 `Cannot convert return expression of type '()' to return type '[License]'` エラーは、`licenseList` という computed property が `[License]` タイプを返すべきなのに、それとは異なるタイプを返そうとしている場合に発生します。
 

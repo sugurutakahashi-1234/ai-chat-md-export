@@ -46,8 +46,7 @@ bin/
 *.swp
 *.swo
 
-# cursor rules
+# ai assistants
 .cursor/
-
-# 生データのみ除外（Markdownは含める）
-data/raw/
+.claude/
+CLAUDE.md

@@ -1,11 +1,11 @@
 # Enum RawValue in Protocol
 
-日付: 2023-05-18
+Date: 2023-05-18
 
 ---
 
-## 👤 ユーザー
-*2023/05/18 13:22:56*
+## 👤 User
+*2023-05-18 13:22:56*
 
 以下のように enum の rawValue をprotocol の exxtension で使いたいのだけれどもどうすればいい？
 
@@ -28,8 +28,8 @@ private enum Hoge: HogeProtocol {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/18 13:23:40*
+## 🤖 Assistant
+*2023-05-18 13:23:40*
 
 あなたが`HogeProtocol`で`Identifiable`および`CaseIterable`を採用しているにもかかわらず、このプロトコルを採用したenumが自動的に`String`や`CaseIterable`の特性を取得するわけではありません。なので`HogeProtocol`が`String`や`CaseIterable`を必要としているならば、それぞれの特性を自身の宣言に明示的に含める必要があります。
 

@@ -1,18 +1,18 @@
 # Firebase Crashlytics スクリプト
 
-日付: 2023-05-29
+Date: 2023-05-29
 
 ---
 
-## 👤 ユーザー
-*2023/05/29 10:29:44*
+## 👤 User
+*2023-05-29 10:29:44*
 
 firebase Crashlytics スクリプトの Run scriptのオプションはどれをせっていすべきか？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/29 10:30:10*
+## 🤖 Assistant
+*2023-05-29 10:30:10*
 
 Firebase Crashlyticsを使用する際、XcodeでRun Scriptフェーズを設定する必要があります。具体的には、プロジェクトのBuild Phasesタブに移動し、＋ボタンをクリックしてNew Run Script Phaseを選択します。
 
@@ -34,15 +34,15 @@ $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
 
 ---
 
-## 👤 ユーザー
-*2023/05/29 10:30:21*
+## 👤 User
+*2023-05-29 10:30:21*
 
 for install builds only なのか based on dependency analysis なのか？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/29 10:31:10*
+## 🤖 Assistant
+*2023-05-29 10:31:10*
 
 XcodeにおけるRun Scriptフェーズの設定には、"Run script only when installing"と"Based on dependency analysis"という2つのチェックボックスがあります。Firebase Crashlyticsを設定する際、これらのオプションについては以下のように理解しておくと良いでしょう。
 
@@ -54,15 +54,15 @@ XcodeにおけるRun Scriptフェーズの設定には、"Run script only when i
 
 ---
 
-## 👤 ユーザー
-*2023/05/29 10:40:06*
+## 👤 User
+*2023-05-29 10:40:06*
 
 スキーマを修正する必要はありますか？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/29 10:40:28*
+## 🤖 Assistant
+*2023-05-29 10:40:28*
 
 Firebase CrashlyticsのRun Scriptフェーズを設定した後、特別な理由がない限り、Xcodeのスキーマを修正する必要は通常ありません。
 

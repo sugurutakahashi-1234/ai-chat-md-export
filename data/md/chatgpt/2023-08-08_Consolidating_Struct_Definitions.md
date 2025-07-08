@@ -1,11 +1,11 @@
 # Consolidating Struct Definitions
 
-日付: 2023-08-08
+Date: 2023-08-08
 
 ---
 
-## 👤 ユーザー
-*2023/08/08 15:17:21*
+## 👤 User
+*2023-08-08 15:17:21*
 
 Swiftで以下のように全く同じ変数の定義を持つstructの記述をまとめることはできないのか？
 
@@ -51,8 +51,8 @@ public struct TouchCancel: ProtoBufValueConvertible, Codable {
 
 ---
 
-## 🤖 アシスタント
-*2023/08/08 15:17:44*
+## 🤖 Assistant
+*2023-08-08 15:17:44*
 
 Swift では、一つの `struct` または `class` が他の型にそのまま変換するような直接的なメカニズムは提供していません。ただし、設計を工夫して冗長性を減少させることは可能です。
 

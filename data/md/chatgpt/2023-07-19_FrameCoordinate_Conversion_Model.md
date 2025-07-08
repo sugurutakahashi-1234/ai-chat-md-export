@@ -1,11 +1,11 @@
 # FrameCoordinate Conversion Model
 
-日付: 2023-07-19
+Date: 2023-07-19
 
 ---
 
-## 👤 ユーザー
-*2023/07/19 19:28:33*
+## 👤 User
+*2023-07-19 19:28:33*
 
 FrameCoordinate を
 
@@ -34,8 +34,8 @@ public enum FrameCoordinate: Codable {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/19 19:28:38*
+## 🤖 Assistant
+*2023-07-19 19:28:38*
 
 The `FrameCoordinate` enum you provided is written in Swift and is defined with two cases: `cgPoint` and `pixel`. Each case has associated data of type `Double`.
 

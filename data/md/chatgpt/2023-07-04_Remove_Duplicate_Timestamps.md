@@ -1,11 +1,11 @@
 # Remove Duplicate Timestamps
 
-日付: 2023-07-04
+Date: 2023-07-04
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 11:35:07*
+## 👤 User
+*2023-07-04 11:35:07*
 
 Dictionary(uniqueKeysWithValues: map { ($0.timestampInMilliseconds, $0) }).values の処理でThread 56: Fatal error: Duplicate values for key: '1688437921110'となってしまっ。
 
@@ -33,8 +33,8 @@ public extension Array where Element: TimestampRemoveDuplicatesAndSortable {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 11:35:44*
+## 🤖 Assistant
+*2023-07-04 11:35:44*
 
 Swiftの `Dictionary(uniqueKeysWithValues:)` メソッドは、各キーが一意であることを前提としています。したがって、タイムスタンプが重複するデータがある場合、エラーになってしまいます。
 
@@ -60,15 +60,15 @@ public extension Array where Element: TimestampRemoveDuplicatesAndSortable {
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 11:36:07*
+## 👤 User
+*2023-07-04 11:36:07*
 
 そんなことしなくても、Timestampが一意にしたいので、被った場合はどちらかの値で上がいて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 11:36:32*
+## 🤖 Assistant
+*2023-07-04 11:36:32*
 
 なるほど、理解しました。同じタイムスタンプで複数のデータが存在する場合には、そのどちらか一つを選ぶという要件があるのですね。
 
@@ -87,15 +87,15 @@ public extension Array where Element: TimestampRemoveDuplicatesAndSortable {
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 11:36:49*
+## 👤 User
+*2023-07-04 11:36:49*
 
 これって計算量重くないの？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 11:37:11*
+## 🤖 Assistant
+*2023-07-04 11:37:11*
 
 `Dictionary(_:uniquingKeysWith:)`を使用すると、元の配列の各要素に対して一度だけ処理が行われます。この操作の時間計算量はO(n)です。ここで、nは元の配列の要素数です。
 
@@ -105,15 +105,15 @@ public extension Array where Element: TimestampRemoveDuplicatesAndSortable {
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 11:37:24*
+## 👤 User
+*2023-07-04 11:37:24*
 
 ちなみに後半を使う場合はどうすればいいの？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 11:37:38*
+## 🤖 Assistant
+*2023-07-04 11:37:38*
 
 後に現れるデータを使用したい場合、`uniquingKeysWith:` パラメータとして渡すクロージャ内で `second` を返すようにすれば良いです。具体的には以下のようになります：
 

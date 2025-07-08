@@ -1,11 +1,11 @@
 # Protobuf JSON Encoding
 
-日付: 2023-06-17
+Date: 2023-06-17
 
 ---
 
-## 👤 ユーザー
-*2023/06/17 21:15:32*
+## 👤 User
+*2023-06-17 21:15:32*
 
 protobufの以下のオプションについて押して
 
@@ -36,8 +36,8 @@ public struct JSONEncodingOptions {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/17 21:16:01*
+## 🤖 Assistant
+*2023-06-17 21:16:01*
 
 この`jsonUTF8Data`関数と`JSONEncodingOptions`オプションは、ProtobufメッセージをJSON形式にシリアライズするために使用されます。具体的には以下の通りです：
 

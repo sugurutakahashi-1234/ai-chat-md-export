@@ -1,11 +1,11 @@
 # Swift Async Algorithms
 
-日付: 2023-05-22
+Date: 2023-05-22
 
 ---
 
-## 👤 ユーザー
-*2023/05/23 00:58:11*
+## 👤 User
+*2023-05-23 00:58:11*
 
 以下を要点をまとめて解説して欲しい
 
@@ -29,8 +29,8 @@ We used the "chunked(by:)" API to ensure that chunks of messages are serialized 
 
 ---
 
-## 🤖 アシスタント
-*2023/05/23 00:59:37*
+## 🤖 Assistant
+*2023-05-23 00:59:37*
 
 Philippeは、Swiftの新しいパッケージ、Swift Async Algorithmsの紹介を行います。これはSwiftのオープンソースパッケージ群に新たに加わったもので、Swift CollectionsやSwift Algorithmsと並んでいます。Swift Async Algorithmsパッケージは、AsyncSequenceを使って時間経過で値を処理するためのアルゴリズムのセットに特化しています。
 
@@ -46,15 +46,15 @@ Swift Async Algorithmsパッケージは、Clock、Instant、Durationタイプ�
 
 ---
 
-## 👤 ユーザー
-*2023/05/23 01:01:02*
+## 👤 User
+*2023-05-23 01:01:02*
 
 つづき
 
 ---
 
-## 🤖 アシスタント
-*2023/05/23 01:02:06*
+## 🤖 Assistant
+*2023-05-23 01:02:06*
 
 わると、検索コントローラーが各変更ごとに検索リクエストを発行するのではなく、タイピングが終了したと考えられる静止期間を待つようにしたいと述べています。これは、Debounceアルゴリズムを用いて、指定した期間何も起きない場合に待機するという動作を実現しています。
 

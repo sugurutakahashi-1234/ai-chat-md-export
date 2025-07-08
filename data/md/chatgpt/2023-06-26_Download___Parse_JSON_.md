@@ -1,18 +1,18 @@
 # Download & Parse JSON.
 
-日付: 2023-06-26
+Date: 2023-06-26
 
 ---
 
-## 👤 ユーザー
-*2023/06/27 00:37:10*
+## 👤 User
+*2023-06-27 00:37:10*
 
 public func downloadAndParseJson&lt;T&gt;(key: String) async throws -&gt; T where T: Decodable, T: Encodable {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/27 00:37:52*
+## 🤖 Assistant
+*2023-06-27 00:37:52*
 
 It seems like you're in the middle of creating an asynchronous function in Swift to download and parse a JSON. As of my knowledge cut-off in September 2021, Swift 5.5 introduced the new concurrency model with async/await, and the Codable protocol can be used for data parsing. Here's a basic example using URLSession:
 

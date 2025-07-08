@@ -1,11 +1,11 @@
 # AppError Handling in Code
 
-日付: 2023-08-09
+Date: 2023-08-09
 
 ---
 
-## 👤 ユーザー
-*2023/08/09 22:17:14*
+## 👤 User
+*2023-08-09 22:17:14*
 
 まず以下を理解して欲しい
 
@@ -79,8 +79,8 @@ public protocol AppErrorConvertible: Error {
 
 ---
 
-## 🤖 アシスタント
-*2023/08/09 22:18:20*
+## 🤖 Assistant
+*2023-08-09 22:18:20*
 
 このコードには、アプリケーションのエラーを表す `AppError` enumと、それに関連する機能が含まれています。以下の点を理解しました。
 
@@ -101,15 +101,15 @@ public protocol AppErrorConvertible: Error {
 
 ---
 
-## 👤 ユーザー
-*2023/08/09 22:18:23*
+## 👤 User
+*2023-08-09 22:18:23*
 
 public extension Error の var asAppError: AppError  について、AppErrorConvertible に適応しているなら asAppErrorを返して欲しい.
 
 ---
 
-## 🤖 アシスタント
-*2023/08/09 22:18:53*
+## 🤖 Assistant
+*2023-08-09 22:18:53*
 
 了解しました。`AppErrorConvertible` プロトコルに適応している場合、その型が持っている `asAppError` を返すように `Error` の拡張を修正します。
 
@@ -133,15 +133,15 @@ public extension Error {
 
 ---
 
-## 👤 ユーザー
-*2023/08/09 22:19:07*
+## 👤 User
+*2023-08-09 22:19:07*
 
 これをswitch文で書けないかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/08/09 22:19:26*
+## 🤖 Assistant
+*2023-08-09 22:19:26*
 
 もちろん、`switch`文を使用してこの処理を書き換えることができます。以下のようにしてみました。
 

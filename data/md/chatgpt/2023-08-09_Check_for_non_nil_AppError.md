@@ -1,11 +1,11 @@
 # Check for non-nil AppError
 
-日付: 2023-08-09
+Date: 2023-08-09
 
 ---
 
-## 👤 ユーザー
-*2023/08/09 16:53:14*
+## 👤 User
+*2023-08-09 16:53:14*
 
 以下の場合にAppErrorがnilAppErrorでないことを判定する方法
 
@@ -65,8 +65,8 @@ public enum AppError: Error, LocalizedError {
 
 ---
 
-## 🤖 アシスタント
-*2023/08/09 16:53:47*
+## 🤖 Assistant
+*2023-08-09 16:53:47*
 
 `AppError` という列挙型において、 `nilAppError` というケースが定義されています。ある `AppError` のインスタンスが `nilAppError` でないかどうかを確認するには、Swift の `switch` 文や `if` 文を使用することができます。
 
@@ -109,8 +109,8 @@ if isErrorNotNilAppError(error) {
 
 ---
 
-## 👤 ユーザー
-*2023/08/09 16:55:08*
+## 👤 User
+*2023-08-09 16:55:08*
 
 この処理にif let appError かつ nilAppError でないときにViewを返して欲しい
 
@@ -159,8 +159,8 @@ public extension View {
 
 ---
 
-## 🤖 アシスタント
-*2023/08/09 16:55:53*
+## 🤖 Assistant
+*2023-08-09 16:55:53*
 
 指定されたコードの中で、`AppError?` を受け取り、それが `nil` または `nilAppError` でない場合に特定の `View` を返すようにするには、if文の中にさらに条件を追加する必要があります。
 
@@ -214,15 +214,15 @@ public extension View {
 
 ---
 
-## 👤 ユーザー
-*2023/08/09 16:56:15*
+## 👤 User
+*2023-08-09 16:56:15*
 
 Referencing operator function '!=' on 'BinaryInteger' requires that 'AppError' conform to 'BinaryInteger'となった
 
 ---
 
-## 🤖 アシスタント
-*2023/08/09 16:57:12*
+## 🤖 Assistant
+*2023-08-09 16:57:12*
 
 申し訳ございません。私が提供したコードの `appError != .nilAppError` の部分でエラーが発生していますね。
 
@@ -291,15 +291,15 @@ public extension View {
 
 ---
 
-## 👤 ユーザー
-*2023/08/09 16:58:19*
+## 👤 User
+*2023-08-09 16:58:19*
 
 あんまりスマートではないね。。。もっとスマートに書けないの？
 
 ---
 
-## 🤖 アシスタント
-*2023/08/09 16:59:09*
+## 🤖 Assistant
+*2023-08-09 16:59:09*
 
 もちろん、よりコンパクトに書くことが可能です。以下は、スマートな方法で`nilAppError`をチェックし、それに応じた`View`を返す方法です。
 
@@ -354,15 +354,15 @@ public extension View {
 
 ---
 
-## 👤 ユーザー
-*2023/08/09 16:59:21*
+## 👤 User
+*2023-08-09 16:59:21*
 
 Referencing operator function '!=' on 'BinaryInteger' requires that 'AppError' conform to 'BinaryInteger'となる
 
 ---
 
-## 🤖 アシスタント
-*2023/08/09 17:00:15*
+## 🤖 Assistant
+*2023-08-09 17:00:15*
 
 申し訳ございません、私の前回の回答が不正確でした。
 

@@ -1,11 +1,11 @@
 # Smart Answer Dict
 
-日付: 2023-07-18
+Date: 2023-07-18
 
 ---
 
-## 👤 ユーザー
-*2023/07/18 19:59:44*
+## 👤 User
+*2023-07-18 19:59:44*
 
 以下のanswersDictの作成の処理をスマートに行うことはできないでしょうか？
 
@@ -51,8 +51,8 @@ extension Set : CustomStringConvertible, CustomDebugStringConvertible {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/18 20:00:06*
+## 🤖 Assistant
+*2023-07-18 20:00:06*
 
 一部の処理を改良し、さらにスマートにしてみましょう。この場合、AnswerValueに対して直接descriptionを適用できます。これにより、switch文でcaseごとに処理を分ける必要がなくなります。ただし、そのためには`AnswerValue`が`CustomStringConvertible`を準拠するように定義を変更する必要があります。
 
@@ -87,15 +87,15 @@ let answersDict = answers.map { answerInput in
 
 ---
 
-## 👤 ユーザー
-*2023/07/18 20:01:02*
+## 👤 User
+*2023-07-18 20:01:02*
 
 Codable をつかうことでもっとスマートにできないかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/18 20:01:26*
+## 🤖 Assistant
+*2023-07-18 20:01:26*
 
 `Codable`プロトコルを使用して、よりスマートにコードを書くこともできます。このプロトコルは、Swiftのモデルを簡単にJSONと相互変換することを可能にします。
 

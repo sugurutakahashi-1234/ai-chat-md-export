@@ -1,11 +1,11 @@
 # Swift: Improve Code Readability
 
-日付: 2023-07-12
+Date: 2023-07-12
 
 ---
 
-## 👤 ユーザー
-*2023/07/13 06:55:08*
+## 👤 User
+*2023-07-13 06:55:08*
 
 Swiftの以下処理をもう少し可読性をあげたい
 
@@ -46,8 +46,8 @@ func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
 
 ---
 
-## 🤖 アシスタント
-*2023/07/13 06:55:56*
+## 🤖 Assistant
+*2023-07-13 06:55:56*
 
 以下は、いくつかのヒントを用いてあなたのSwiftコードの可読性を向上させるための改善案です：
 
@@ -103,8 +103,8 @@ private func handleAllowedURL(_ url: URL) {
 
 ---
 
-## 👤 ユーザー
-*2023/07/13 06:57:25*
+## 👤 User
+*2023-07-13 06:57:25*
 
 func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -&gt; Void) {
         guard let url = navigationAction.request.url,
@@ -143,8 +143,8 @@ func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
 
 ---
 
-## 🤖 アシスタント
-*2023/07/13 06:57:58*
+## 🤖 Assistant
+*2023-07-13 06:57:58*
 
 Swiftの可読性を向上させるためには、長い関数をより短い複数の関数に分けると良いです。それにより、それぞれの関数が特定の目的を持つようになり、全体のロジックが理解しやすくなります。
 

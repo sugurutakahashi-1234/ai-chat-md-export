@@ -1,11 +1,11 @@
 # fullScreenCover to push transition
 
-日付: 2023-06-22
+Date: 2023-06-22
 
 ---
 
-## 👤 ユーザー
-*2023/06/23 05:49:09*
+## 👤 User
+*2023-06-23 05:49:09*
 
 public struct GazeTrackCalibrationView: View {
     @Environment(\.dismiss) private var dismiss
@@ -83,8 +83,8 @@ public struct GazeTrackCalibrationView: View {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/23 05:49:17*
+## 🤖 Assistant
+*2023-06-23 05:49:17*
 
 This is a `SwiftUI` view that handles the calibration for gaze tracking, represented by the `GazeTrackCalibrationView` struct. Let me explain the main parts of this code:
 

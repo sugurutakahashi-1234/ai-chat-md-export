@@ -1,11 +1,11 @@
 # SwiftUI CheckBoxView
 
-日付: 2023-07-03
+Date: 2023-07-03
 
 ---
 
-## 👤 ユーザー
-*2023/07/03 18:39:29*
+## 👤 User
+*2023-07-03 18:39:29*
 
 SwiftUIでToggleStyleを作成いていたのだけれども、そもそもこれは一般的なViewとしてCheckBoxViewとして定義したほうがいいと思った。それを書いて欲しい
 
@@ -25,8 +25,8 @@ public struct CheckBoxToggleStyle: ToggleStyle {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/03 18:40:22*
+## 🤖 Assistant
+*2023-07-03 18:40:22*
 
 SwiftUIでCheckBoxViewを作成するためには、まずはUIViewRepresentableを使用してUIKitのUIControlを取り込むことから始めます。以下にその具体的な実装を示します。
 
@@ -77,15 +77,15 @@ struct CheckBoxView: UIViewRepresentable {
 
 ---
 
-## 👤 ユーザー
-*2023/07/03 18:40:24*
+## 👤 User
+*2023-07-03 18:40:24*
 
 UIKit ではなくて SwiftUIで実装して欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/07/03 18:40:55*
+## 🤖 Assistant
+*2023-07-03 18:40:55*
 
 申し訳ありません、私の理解不足でした。SwiftUIでCheckBoxを実装する方法について修正します。以下にそれを示します。
 
@@ -131,15 +131,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/07/03 18:41:21*
+## 👤 User
+*2023-07-03 18:41:21*
 
 CheckBoxView を使う側でタップしても何も反応しないようにしたいんだがどうすればいいかな？’
 
 ---
 
-## 🤖 アシスタント
-*2023/07/03 18:42:06*
+## 🤖 Assistant
+*2023-07-03 18:42:06*
 
 `CheckBoxView`がタップされても何も反応しないようにするためには、`Button`のactionクロージャを空にすることができます。この場合、`CheckBoxView`はタップされたときに状態を変更しなくなります。
 

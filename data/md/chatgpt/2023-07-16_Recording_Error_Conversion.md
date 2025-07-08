@@ -1,11 +1,11 @@
 # Recording Error Conversion
 
-日付: 2023-07-16
+Date: 2023-07-16
 
 ---
 
-## 👤 ユーザー
-*2023/07/16 10:59:19*
+## 👤 User
+*2023-07-16 10:59:19*
 
 以下の定義があるときにRecordingManagerErrorをAppError.recordingError(RecordingManagerError)に変換するコードをRecordingManagerErrorのextensionで記述できないのか？
 
@@ -19,8 +19,8 @@ public enum AppError: LocalizedError {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/16 10:59:27*
+## 🤖 Assistant
+*2023-07-16 10:59:27*
 
 RecordingManagerErrorからAppErrorへの変換をRecordingManagerErrorのextensionで記述することは可能です。以下に具体的なコードを示します：
 
@@ -43,8 +43,8 @@ let appError: AppError = recordingError.toAppError()
 
 ---
 
-## 👤 ユーザー
-*2023/07/16 11:00:54*
+## 👤 User
+*2023-07-16 11:00:54*
 
 以下のApiRequestManagerErrorについても同様のextensionを記述してほしい
 
@@ -61,8 +61,8 @@ public enum AppError: LocalizedError {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/16 11:01:05*
+## 🤖 Assistant
+*2023-07-16 11:01:05*
 
 同様に、ApiRequestManagerErrorからAppErrorへの変換をApiRequestManagerErrorのextensionで記述することが可能です。以下に具体的なコードを示します：
 
@@ -85,8 +85,8 @@ let appError: AppError = apiError.toAppError()
 
 ---
 
-## 👤 ユーザー
-*2023/07/16 11:02:24*
+## 👤 User
+*2023-07-16 11:02:24*
 
 extensionの以下のような処理を一般化して今後増えていくManagerErrorにプロトコルを適応するだけでまとめてしょりできないのか？
 
@@ -100,8 +100,8 @@ func toAppError() -&gt; AppError {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/16 11:02:44*
+## 🤖 Assistant
+*2023-07-16 11:02:44*
 
 エラーの種類が増えてくる場合、Swiftではプロトコルとジェネリックを使用して一般化を実現することができます。
 
@@ -135,15 +135,15 @@ extension ApiRequestManagerError: AppErrorConvertible {
 
 ---
 
-## 👤 ユーザー
-*2023/07/16 11:03:48*
+## 👤 User
+*2023-07-16 11:03:48*
 
 AppErrorConvertible について、self の型を判定して、うまく処理を1箇所にまとめられないか？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/16 11:04:06*
+## 🤖 Assistant
+*2023-07-16 11:04:06*
 
 Swiftでは型の安全性が重視されているため、エラータイプを判別してそれぞれのエラーケースにマッピングすることは直接的には難しいです。また、このようなアプローチは型の情報をフルに活用せず、エラー処理が散逸してしまう可能性があります。
 

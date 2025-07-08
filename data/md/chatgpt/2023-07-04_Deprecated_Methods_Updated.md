@@ -1,11 +1,11 @@
 # Deprecated Methods Updated
 
-日付: 2023-07-04
+Date: 2023-07-04
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 20:31:46*
+## 👤 User
+*2023-07-04 20:31:46*
 
 'tracks(withMediaType:)' was deprecated in iOS 16.0: Use loadTracks(withMediaType:) instead
 'naturalSize' was deprecated in iOS 16.0: Use load(.naturalSize) instead
@@ -26,8 +26,8 @@ func updateVideoPlayerViewSize(videoPlayerViewSize: CGSize) {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 20:32:36*
+## 🤖 Assistant
+*2023-07-04 20:32:36*
 
 Your existing code uses the deprecated methods `tracks(withMediaType:)` and `naturalSize`. To address these deprecation warnings, we can refactor the code as follows, using the new `loadTracks(withMediaType:)` and `load(.naturalSize)` methods as indicated:
 
@@ -87,15 +87,15 @@ Also, ensure that the `loadTracks(withMediaType:)` and `load(.naturalSize)` meth
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 20:32:49*
+## 👤 User
+*2023-07-04 20:32:49*
 
 DispatchGroup を使わないでもっとシンプルに取得できないのか？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 20:33:21*
+## 🤖 Assistant
+*2023-07-04 20:33:21*
 
 `loadTracks(withMediaType:)` と `load(.naturalSize)` の具体的な動作やこれらが非同期処理を行っているかどうかは、iOS 16.0以降での変更に依存します。僕の知識は2021年9月までのもので、それ以降の変更については調査が必要です。
 

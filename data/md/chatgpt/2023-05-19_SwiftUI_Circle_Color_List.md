@@ -1,18 +1,18 @@
 # SwiftUI Circle Color List
 
-日付: 2023-05-19
+Date: 2023-05-19
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 17:01:11*
+## 👤 User
+*2023-05-19 17:01:11*
 
 SwiftUI で 円形の指定のcolorが塗りつぶされているアイコンとその左にカラー名をしめたしたようなListをLabel型のコンポーネントを使ってコードしてみて
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 17:01:53*
+## 🤖 Assistant
+*2023-05-19 17:01:53*
 
 SwiftUI で、指定の色が塗りつぶされた円形のアイコンとその左に色名を表示した List を作成するには、次のようなコードを使用できます：
 
@@ -66,8 +66,8 @@ struct ContentView_Previews: PreviewProvider {
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 17:21:47*
+## 👤 User
+*2023-05-19 17:21:47*
 
 以下のsecondary を Neutral に変換して
 
@@ -75,8 +75,8 @@ secondary90, secondary80, secondary70, secondary60, secondary50, secondary40, se
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 17:22:21*
+## 🤖 Assistant
+*2023-05-19 17:22:21*
 
 SwiftUIで色をカスタム定義する方法を紹介します。それにより、あなたの`secondary`シリーズを`neutral`シリーズに変換することが可能です。
 
@@ -104,8 +104,8 @@ extension Color {
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 17:23:38*
+## 👤 User
+*2023-05-19 17:23:38*
 
 以下のsecondary を neutral に変換してほしい。1行でお願い。
 
@@ -113,8 +113,8 @@ secondary90, secondary80, secondary70, secondary60, secondary50, secondary40, se
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 17:24:04*
+## 🤖 Assistant
+*2023-05-19 17:24:04*
 
 一行で書く場合、以下のようになります：
 

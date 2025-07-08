@@ -1,11 +1,11 @@
 # Cannot convert types error.
 
-日付: 2023-05-18
+Date: 2023-05-18
 
 ---
 
-## 👤 ユーザー
-*2023/05/18 13:45:30*
+## 👤 User
+*2023-05-18 13:45:30*
 
 どうして、Cannot convert value of type '[OpenPageType]' to expected argument type 'Binding&lt;C&gt;' や Generic parameter 'C' could not be inferred や Cannot assign value of type 'Binding&lt;_&gt;' to type 'OpenPageType' のようなエラーがでるの？
 
@@ -65,8 +65,8 @@ struct OpenPageView: View {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/18 13:47:11*
+## 🤖 Assistant
+*2023-05-18 13:47:11*
 
 このエラーはSwiftの型システムとSwiftUIのビュービルダーの仕組みに関連しています。
 

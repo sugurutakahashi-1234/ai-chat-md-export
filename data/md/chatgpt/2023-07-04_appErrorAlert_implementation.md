@@ -1,11 +1,11 @@
 # appErrorAlert implementation
 
-日付: 2023-07-04
+Date: 2023-07-04
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 21:40:34*
+## 👤 User
+*2023-07-04 21:40:34*
 
 以下のようなものをつくっていて、appErrorAlert の cancelButtonOnly にonDismiss: (() -&gt; Void)? = nil を渡せるようにして View側でうまく実装したい
 
@@ -140,8 +140,8 @@ public extension AppError {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 21:41:40*
+## 🤖 Assistant
+*2023-07-04 21:41:40*
 
 `cancelButtonOnly`の定義に`onDismiss`クロージャを追加し、それを`alert`のボタンのアクションで使います。それによって、アラートが閉じられるときに特定のアクションを実行することができます。
 
@@ -192,8 +192,8 @@ public extension View {
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 21:42:53*
+## 👤 User
+*2023-07-04 21:42:53*
 
 できれば以下のようにしたい。
 public extension View {
@@ -202,8 +202,8 @@ public extension View {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 21:43:32*
+## 🤖 Assistant
+*2023-07-04 21:43:32*
 
 了解しました。引数`onDismiss`を追加することで、View側で直接クロージャを提供することができます。これは`SimpleCloseAppErrorAlertModifier`の定義を少し変更することで実現できます。
 

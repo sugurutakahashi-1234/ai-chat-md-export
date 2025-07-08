@@ -1,18 +1,18 @@
 # Swift Remove "Presenter"
 
-日付: 2023-08-03
+Date: 2023-08-03
 
 ---
 
-## 👤 ユーザー
-*2023/08/03 21:32:54*
+## 👤 User
+*2023-08-03 21:32:54*
 
 Swiftで文字列から"Presenter"という文字列を削除してほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/08/03 21:33:17*
+## 🤖 Assistant
+*2023-08-03 21:33:17*
 
 もちろんです！Swiftで指定した文字列を削除することは簡単にできます。"Presenter"という文字列を削除したい場合、以下のように書くことができます。
 
@@ -34,8 +34,8 @@ print(myString) // "I am the of this event"
 
 ---
 
-## 👤 ユーザー
-*2023/08/03 22:13:38*
+## 👤 User
+*2023-08-03 22:13:38*
 
 "/Users/sugurutakahashi/git/emomil-app-ios-Xcode_14.2/EmomilPackage/Sources/EmomilResearch/Presentation/ResearchDetail/ResearchDetailPresenter.swift"
 
@@ -43,8 +43,8 @@ print(myString) // "I am the of this event"
 
 ---
 
-## 🤖 アシスタント
-*2023/08/03 22:13:53*
+## 🤖 Assistant
+*2023-08-03 22:13:53*
 
 指定された文字列からファイル名 `"ResearchDetailPresenter.swift"` を取り出すためには、以下のようなコードを使用することができます。
 
@@ -58,15 +58,15 @@ print(fileName) // "ResearchDetailPresenter.swift"
 
 ---
 
-## 👤 ユーザー
-*2023/08/03 22:14:23*
+## 👤 User
+*2023-08-03 22:14:23*
 
 NSString を使わないとどうやれば取得できますか？StringのExtensionで定義したい
 
 ---
 
-## 🤖 アシスタント
-*2023/08/03 22:14:41*
+## 🤖 Assistant
+*2023-08-03 22:14:41*
 
 もちろん、`NSString` を使用せずに、Swift の標準 `String` を拡張してファイル名を取り出す方法もあります。以下は、その一例です。
 
@@ -86,15 +86,15 @@ print(fileName) // "ResearchDetailPresenter.swift"
 
 ---
 
-## 👤 ユーザー
-*2023/08/03 23:26:43*
+## 👤 User
+*2023-08-03 23:26:43*
 
 拡張子以下を除く処理もどうやって書けばいいの？
 
 ---
 
-## 🤖 アシスタント
-*2023/08/03 23:27:08*
+## 🤖 Assistant
+*2023-08-03 23:27:08*
 
 拡張子を除いたファイル名を取得するために、さらに文字列を拡張することができます。以下はその例です。
 
@@ -116,15 +116,15 @@ print(fileName) // "ResearchDetailPresenter"
 
 ---
 
-## 👤 ユーザー
-*2023/08/03 23:28:27*
+## 👤 User
+*2023-08-03 23:28:27*
 
 もっといい感じに直せない？
 
 ---
 
-## 🤖 アシスタント
-*2023/08/03 23:29:03*
+## 🤖 Assistant
+*2023-08-03 23:29:03*
 
 もちろん、コードを整理して、さらに直感的にすることができます。以下の拡張は、ファイル名を取得し、オプションで拡張子を除くことができる方法を提供します。
 

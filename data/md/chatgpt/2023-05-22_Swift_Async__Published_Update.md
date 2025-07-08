@@ -1,18 +1,18 @@
 # Swift Async @Published Update
 
-日付: 2023-05-22
+Date: 2023-05-22
 
 ---
 
-## 👤 ユーザー
-*2023/05/23 01:07:33*
+## 👤 User
+*2023-05-23 01:07:33*
 
 Swift Async Algorithms を使って、@Published な値を更新するようなコードを書いて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/23 01:08:52*
+## 🤖 Assistant
+*2023-05-23 01:08:52*
 
 Swift 5.5以降で導入された非同期処理を扱う新機能Async/AwaitやSwift 5.6で導入されたAsync Algorithmsを組み合わせて、@Publishedな値を非同期的に更新するコード例を示します。
 

@@ -1,11 +1,11 @@
 # Swift ImageItem to EmotionAnalysisResultDTO Conversion
 
-日付: 2023-06-08
+Date: 2023-06-08
 
 ---
 
-## 👤 ユーザー
-*2023/06/08 13:20:59*
+## 👤 User
+*2023-06-08 13:20:59*
 
 swiftで以下のようなstructがある場合に ImageItem を EmotionAnalysisResultDTO に変換する処理を書いて欲しい。ちなみにEmotionAnalysisResultDTOはクリーンアーキテクチャーのフレームワーク層であることをいしきしてほしい。
 
@@ -45,8 +45,8 @@ struct EmotionAnalysisResultDTO: Encodable {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/08 13:21:16*
+## 🤖 Assistant
+*2023-06-08 13:21:16*
 
 まず、`EmotionAnalysisResultDTO`に変換する前に、`EmotionAnalysisResult`を各感情タイプの確信度に変換する必要があります。そして、それらを使用して`EmotionAnalysisResultDTO`を作成します。 
 

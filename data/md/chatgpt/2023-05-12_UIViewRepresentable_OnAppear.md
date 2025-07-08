@@ -1,18 +1,18 @@
 # UIViewRepresentable onAppear
 
-日付: 2023-05-12
+Date: 2023-05-12
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 14:49:24*
+## 👤 User
+*2023-05-12 14:49:24*
 
 UIViewRepresentable で onAppear を実装する方法
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 14:49:35*
+## 🤖 Assistant
+*2023-05-12 14:49:35*
 
 SwiftUIでは、`UIViewRepresentable`を使用してUIKitのViewをラップし、SwiftUIのViewとして使用することができます。`UIViewRepresentable`を使用して`UIView`を表示する場合、`onAppear`と同様の機能を実装するには、`makeUIView`メソッド内で処理を行うことができます。
 

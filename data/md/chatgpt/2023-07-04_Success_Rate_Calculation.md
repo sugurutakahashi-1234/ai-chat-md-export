@@ -1,11 +1,11 @@
 # Success Rate Calculation
 
-日付: 2023-07-04
+Date: 2023-07-04
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 19:52:33*
+## 👤 User
+*2023-07-04 19:52:33*
 
 AnchorDataModel の配列に対して、
 TrackingState が success or lowConfidence かつ、ScreenState が insideOfScreenである割合を計算して、それがAnchorDataModelの配列数の70%以上だったら サクセス、そうではなければ false になるような処理をSwiftで書いて欲しい
@@ -59,8 +59,8 @@ public enum ScreenState {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 19:53:09*
+## 🤖 Assistant
+*2023-07-04 19:53:09*
 
 下記のSwiftコードがあなたが指定した条件を満たしています。配列`anchorDataModels`に対して、`TrackingState`が`success`または`lowConfidence`、そして`ScreenState`が`insideOfScreen`である`AnchorDataModel`の割合を計算します。その割合が70%以上であれば、関数は`true`を返し、そうでなければ`false`を返します。
 
@@ -96,15 +96,15 @@ if result {
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 19:55:04*
+## 👤 User
+*2023-07-04 19:55:04*
 
 結果をstructで返して欲しい。有効な割合 double、全体の数、有効だった数、基準値の割合、有効だったかどうか、
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 19:55:46*
+## 🤖 Assistant
+*2023-07-04 19:55:46*
 
 指定の内容に基づき、次のような構造体と関数を作成しました。
 
@@ -161,15 +161,15 @@ print("Is Successful: \(result.isSuccessful ? "Yes" : "No")")
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 19:57:04*
+## 👤 User
+*2023-07-04 19:57:04*
 
 TrackingResult の extension のresultMessage: String でこれらの情報をもとに結果文言を短文で作成してほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 19:57:23*
+## 🤖 Assistant
+*2023-07-04 19:57:23*
 
 `TrackingResult`構造体に対して拡張を行い、結果メッセージを返すプロパティを追加します。このプロパティでは、適切な形式で情報を文字列にまとめます。
 
@@ -195,15 +195,15 @@ print(result.resultMessage)
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 19:57:42*
+## 👤 User
+*2023-07-04 19:57:42*
 
 もっと短くていいよ
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 19:58:00*
+## 🤖 Assistant
+*2023-07-04 19:58:00*
 
 了解しました、それではもっとシンプルなメッセージを作成してみましょう。同様に`TrackingResult`構造体の拡張部分にプロパティを追加します。
 
@@ -228,15 +228,15 @@ print(result.resultMessage)
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 19:58:42*
+## 👤 User
+*2023-07-04 19:58:42*
 
 100かけなくていいよ。あと、全体の数と有効だったデータの個数も短くいれてほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 19:58:59*
+## 🤖 Assistant
+*2023-07-04 19:58:59*
 
 了解しました。それでは結果メッセージを以下のように簡潔に修正します：
 
@@ -262,15 +262,15 @@ print(result.resultMessage)
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 20:00:12*
+## 👤 User
+*2023-07-04 20:00:12*
 
 "Tracking" だけに使うわけではないからValidationResultというstrcut名にして、メッセージもTracking:ではなく Validation: にしてほしい。
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 20:00:52*
+## 🤖 Assistant
+*2023-07-04 20:00:52*
 
 指定通りに構造体の名前を`ValidationResult`に変更し、メッセージもそれに合わせて更新します。
 
@@ -334,15 +334,15 @@ print(result.resultMessage)
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 20:01:31*
+## 👤 User
+*2023-07-04 20:01:31*
 
 Validation: true, or Validation: false でいいよ
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 20:01:44*
+## 🤖 Assistant
+*2023-07-04 20:01:44*
 
 指定通りにメッセージを更に簡潔にします。
 
@@ -369,8 +369,8 @@ print(result.resultMessage)
 
 ---
 
-## 👤 ユーザー
-*2023/07/04 20:15:33*
+## 👤 User
+*2023-07-04 20:15:33*
 
 EmotionDataModel の配列についても同様の処理をしてほしい。条件は”resultStatus”==”SUCCESS”のみです。
 
@@ -447,8 +447,8 @@ public struct EmotionDataModel {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/04 20:16:03*
+## 🤖 Assistant
+*2023-07-04 20:16:03*
 
 `EmotionDataModel`の配列についても、同様の処理を行う`validation`メソッドを追加します。このメソッドでは`EmotionDataModel`の配列を引数に取り、`ResultStatus`が`SUCCESS`である要素の割合がしきい値を超えるかどうかに基づいて`ValidationResult`を返します。
 

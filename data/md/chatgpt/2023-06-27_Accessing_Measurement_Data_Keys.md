@@ -1,11 +1,11 @@
 # Accessing Measurement Data Keys
 
-日付: 2023-06-27
+Date: 2023-06-27
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 04:09:23*
+## 👤 User
+*2023-06-28 04:09:23*
 
 以下の定義であるが、measurementDataKey.anchor、measurementDataKey.interaction、measurementDataKey.emotion のようにアクセスできるようにしたいがどうすればいいか
 
@@ -85,8 +85,8 @@ public protocol DataKey {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 04:10:06*
+## 🤖 Assistant
+*2023-06-28 04:10:06*
 
 質問を理解する限り、おそらくmeasurementDataKeyを用いて、anchor、interaction、emotionへアクセスするようなクラスや構造体を作りたいということだと思います。以下のようにDataKeyFactoryという名前のファクトリークラスを作成し、MeasurementDataKeyインスタンスを作成するメソッドを追加することで、簡単に目的を達成できます。
 
@@ -124,15 +124,15 @@ let emotionKey = DataKeyFactory.makeKey(.emotion, measurementId: "measurementId"
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 04:11:13*
+## 👤 User
+*2023-06-28 04:11:13*
 
 ちょっと違くて、let measurementDataKey = MeasurementDataKey(measurementId: measurementId, userId: userId, sessionId: sessionId) と一度作ったら、measurementDataKey.anchor、measurementDataKey.interaction、measurementDataKey.emotion みたいにアクセスできるイメージ。できれば enum でやりたい。
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 04:11:49*
+## 🤖 Assistant
+*2023-06-28 04:11:49*
 
 理解しました。その場合は、以下のように `MeasurementDataKey` エンムを作成し、そこに anchor, interaction, emotion といったケースを持たせ、それぞれに対して対応する `DataKey` を生成するメソッドを持たせることができます。例えば以下のように定義することが可能です。
 

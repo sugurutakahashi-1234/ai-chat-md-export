@@ -1,11 +1,11 @@
 # エラー: fullScreenCover
 
-日付: 2023-06-20
+Date: 2023-06-20
 
 ---
 
-## 👤 ユーザー
-*2023/06/21 02:06:04*
+## 👤 User
+*2023-06-21 02:06:04*
 
 以下のコードについてfullScreenCoverの部分処理で、orientationの値によって挙動を変えたいがエラーになってしまっている。どうすればいいか案を推して欲しい、
 
@@ -164,8 +164,8 @@ private extension GazeTrackCalibrationPresenter {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/21 02:06:53*
+## 🤖 Assistant
+*2023-06-21 02:06:53*
 
 このコードで発生している問題は、`fullScreenCover`内部のロジックが `View` プロトコルを適用したボディの一部として見られているため、ビルド時に条件分岐が行えないことに起因しています。
 
@@ -187,15 +187,15 @@ SwiftUIの`View`プロトコルは、`some View`として表現される、一�
 
 ---
 
-## 👤 ユーザー
-*2023/06/21 02:08:10*
+## 👤 User
+*2023-06-21 02:08:10*
 
 なるほど、presenter.orientation == .portrait でなかったらこのViewをdismiss.callAsFunction()したいんだけどそれはできないのかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/06/21 02:57:14*
+## 🤖 Assistant
+*2023-06-21 02:57:14*
 
 `dismiss`を`fullScreenCover`内部で呼び出すことはできますが、その場合も引き続き何らかのViewを返す必要があります。`dismiss.callAsFunction()`は`View`を返さないため、直接的にそれを使用することはできません。
 

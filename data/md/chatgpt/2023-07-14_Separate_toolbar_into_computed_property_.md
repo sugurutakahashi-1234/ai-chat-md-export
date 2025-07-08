@@ -1,11 +1,11 @@
 # Separate toolbar into computed property.
 
-日付: 2023-07-14
+Date: 2023-07-14
 
 ---
 
-## 👤 ユーザー
-*2023/07/14 18:15:40*
+## 👤 User
+*2023-07-14 18:15:40*
 
 swiftでツールバーのところを別でコンピューテッドプロパティーにして読みやすくして欲しい
 
@@ -140,8 +140,8 @@ struct WebMeasurementView: View {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/14 18:16:11*
+## 🤖 Assistant
+*2023-07-14 18:16:11*
 
 ツールバー部分を別のコンピューテッドプロパティとして管理し、コードの読みやすさを向上させることは可能です。以下に、ツールバー部分を別のコンピューテッドプロパティ`toolbarContent`に分けた例を示します。
 
@@ -214,15 +214,15 @@ struct WebMeasurementView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/07/14 18:17:33*
+## 👤 User
+*2023-07-14 18:17:33*
 
 Return type of property 'toolbarContent' requires that 'ToolbarItemGroup&lt;TupleView&lt;(some View, Spacer, some View, Spacer, Button&lt;some View&gt;, Spacer, some View)&gt;&gt;' conform to 'View' というエラーになった
 
 ---
 
-## 🤖 アシスタント
-*2023/07/14 18:18:03*
+## 🤖 Assistant
+*2023-07-14 18:18:03*
 
 すみません、私のミスでした。`ToolbarItemGroup`が具体的な`View`を返す必要があります。以下に修正したコードを示します。
 
@@ -296,8 +296,8 @@ struct WebMeasurementView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/07/14 18:18:23*
+## 👤 User
+*2023-07-14 18:18:23*
 
 というエラーが出た
 
@@ -305,8 +305,8 @@ Static method 'buildBlock' requires that 'ToolbarItemGroup&lt;TupleView&lt;(some
 
 ---
 
-## 🤖 アシスタント
-*2023/07/14 18:18:59*
+## 🤖 Assistant
+*2023-07-14 18:18:59*
 
 すみません、それは私の間違いでした。`ToolbarItemGroup`自体が`View`を返すわけではなく、その中に含まれる各要素が`View`を返します。したがって、各`Button`を個々のコンピューテッドプロパティとして定義し、それを直接`toolbar`内で使用する方が良いでしょう。以下に修正したコードを示します。
 
@@ -387,15 +387,15 @@ struct WebMeasurementView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/07/14 18:19:47*
+## 👤 User
+*2023-07-14 18:19:47*
 
 こんなに細かくする必要なないのでGroupで囲ってしまったりHstackで囲ってしまえば、ひとつｊのコンピューテッドプロパティーで定義できるのかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/14 18:20:22*
+## 🤖 Assistant
+*2023-07-14 18:20:22*
 
 はい、その通りです。`HStack` を使用してボタン群をひとつのグループにまとめることで、全てのボタンをひとつのコンピューテッドプロパティで表現することが可能です。
 

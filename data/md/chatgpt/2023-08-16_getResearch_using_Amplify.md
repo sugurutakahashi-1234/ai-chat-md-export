@@ -1,11 +1,11 @@
 # getResearch using Amplify
 
-日付: 2023-08-16
+Date: 2023-08-16
 
 ---
 
-## 👤 ユーザー
-*2023/08/16 17:07:44*
+## 👤 User
+*2023-08-16 17:07:44*
 
 for in でうまく書きたい。（日本語でお願い）
 
@@ -45,8 +45,8 @@ for in でうまく書きたい。（日本語でお願い）
 
 ---
 
-## 🤖 アシスタント
-*2023/08/16 17:08:02*
+## 🤖 Assistant
+*2023-08-16 17:08:02*
 
 お示しいただいたコードは、指定された`measurementType`に基づいてリサーチを取得する関数と、Amplifyから返されたリサーチをドメインエンティティに変換する関数の2つを含むものと思われます。こちらは現状、非常にきれいに書かれています。
 
@@ -54,16 +54,16 @@ for in でうまく書きたい。（日本語でお願い）
 
 ---
 
-## 👤 ユーザー
-*2023/08/16 17:09:44*
+## 👤 User
+*2023-08-16 17:09:44*
 
 resultData.map { convertToDomainEntity(amplifyResearch: $0) } のところがエラーになっている。
 AsyncSequence をつかいたいんだ＼
 
 ---
 
-## 🤖 アシスタント
-*2023/08/16 17:10:22*
+## 🤖 Assistant
+*2023-08-16 17:10:22*
 
 了解しました。非同期での操作を行う場合、Swift 5.5以降の新しい非同期APIを利用して`AsyncSequence`を使います。
 
@@ -100,15 +100,15 @@ public func getResearches(measurementType: EmomilCore.MeasurementType?) async th
 
 ---
 
-## 👤 ユーザー
-*2023/08/16 17:12:28*
+## 👤 User
+*2023-08-16 17:12:28*
 
 ThrowingTaskGroup だともっと綺麗に書けないかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/08/16 17:13:16*
+## 🤖 Assistant
+*2023-08-16 17:13:16*
 
 もちろん、`ThrowingTaskGroup`を使用すると、非同期のタスクを並行して実行しながら結果を集めることができます。これにより、全ての`amplifyResearch`要素に対して`convertToDomainEntity`関数を同時に実行し、結果をより迅速に得ることができる可能性があります。
 
@@ -151,15 +151,15 @@ public func getResearches(measurementType: EmomilCore.MeasurementType?) async th
 
 ---
 
-## 👤 ユーザー
-*2023/08/16 17:46:08*
+## 👤 User
+*2023-08-16 17:46:08*
 
 try await convertToDomainEntity(amplifyResearch: amplifyResearch) について、selfがないと怒られたのだが、これは今日参照にならないのか？
 
 ---
 
-## 🤖 アシスタント
-*2023/08/16 17:46:58*
+## 🤖 Assistant
+*2023-08-16 17:46:58*
 
 はい、`withThrowingTaskGroup` や `TaskGroup` の中のクロージャでは、明示的に `self` を参照する必要があります。これはクロージャが `self` をキャプチャするかどうかを明確にするためです。クロージャ内で `self` を明示的に使用することで、メモリリークや循環参照を防ぐための意識を高めることができます。
 

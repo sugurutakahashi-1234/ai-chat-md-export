@@ -1,11 +1,11 @@
 # Generic struct requires Hashable.
 
-日付: 2023-05-19
+Date: 2023-05-19
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 23:31:24*
+## 👤 User
+*2023-05-19 23:31:24*
 
 以下のコードで Generic struct 'ForEach' requires that 'ColorAsset' conform to 'Hashable' というエラーになってしまうのだけどどうして
 
@@ -47,8 +47,8 @@ struct ColorSectionView<ColorAssets: ColorAssetsListable>: View {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 23:31:53*
+## 🤖 Assistant
+*2023-05-19 23:31:53*
 
 Swift の `ForEach` 構造体を使用する際には、列挙する項目が `Hashable` プロトコルを満たしている必要があります。そのため、`ColorAsset` が `Hashable` を満たしていない場合、このエラーが発生します。
 
@@ -58,8 +58,8 @@ Swift の `ForEach` 構造体を使用する際には、列挙する項目が `H
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 23:33:24*
+## 👤 User
+*2023-05-19 23:33:24*
 
 ```swift
 public final class ColorAsset {
@@ -105,8 +105,8 @@ public final class ColorAsset {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 23:34:06*
+## 🤖 Assistant
+*2023-05-19 23:34:06*
 
 提供していただいた `ColorAsset` は現状では `Hashable` プロトコルに準拠していません。これを解決するためには、`ColorAsset` が `Hashable` プロトコルに準拠するように修正する必要があります。
 

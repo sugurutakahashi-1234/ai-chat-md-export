@@ -1,18 +1,18 @@
 # UIViewRepresentable Coordinator
 
-日付: 2023-05-12
+Date: 2023-05-12
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 14:35:16*
+## 👤 User
+*2023-05-12 14:35:16*
 
 UIViewRepresentable Representable.Coordinator ってなんですか？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 14:36:29*
+## 🤖 Assistant
+*2023-05-12 14:36:29*
 
 `UIViewRepresentable` は、SwiftUI と UIKit を組み合わせて使用する際に役立つプロトコルです。SwiftUI は主に Apple の新しいフレームワークであり、UIKit は従来の iOS フレームワークです。`UIViewRepresentable` を使用することで、UIKit のビューとコントローラを SwiftUI で利用できます。
 
@@ -28,15 +28,15 @@ UIViewRepresentable Representable.Coordinator ってなんですか？
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 14:39:54*
+## 👤 User
+*2023-05-12 14:39:54*
 
 UIViewRepresentableなViewを呼び出している側から、UIViewRepresentable側の処理を呼び出したのだけどもどうすればいい？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 14:41:29*
+## 🤖 Assistant
+*2023-05-12 14:41:29*
 
 `UIViewRepresentable`側の処理を呼び出すには、`UIViewRepresentable`プロトコルを実装したビューに関数を追加し、そのビューを使用しているSwiftUIビューから関数を呼び出す方法があります。次に、簡単な例を示します。
 
@@ -121,15 +121,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 14:42:11*
+## 👤 User
+*2023-05-12 14:42:11*
 
 Delegate とか使いたくないんだけど
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 14:43:55*
+## 🤖 Assistant
+*2023-05-12 14:43:55*
 
 Delegateを使わずに、`UIViewRepresentable`とSwiftUI View間でデータやイベントをやり取りする方法として、Combineフレームワークを利用することができます。この例では、`PassthroughSubject`を使用してイベントを送信し、それらをリッスンして処理を実行します。
 
@@ -218,15 +218,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 14:44:13*
+## 👤 User
+*2023-05-12 14:44:13*
 
 トリガーをtextFieldChanged ではなくてonAppearやonDisappear
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 14:45:59*
+## 🤖 Assistant
+*2023-05-12 14:45:59*
 
 `onAppear`や`onDisappear`を使って、`UIViewRepresentable`内の処理をトリガーすることもできます。この方法では、SwiftUIビューが表示されたり消えたりするときに、特定の処理が実行されます。
 
@@ -296,15 +296,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 14:54:37*
+## 👤 User
+*2023-05-12 14:54:37*
 
 UIViewRepresentable を継承したViewにViewModelを導入してほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 14:56:14*
+## 🤖 Assistant
+*2023-05-12 14:56:14*
 
 `UIViewRepresentable`を使用したViewでViewModelを導入するには、`ObservableObject`プロトコルを実装したViewModelを作成し、それを`EnvironmentObject`または`ObservedObject`として使用します。これにより、SwiftUIとUIKitの間でデータやイベントの共有が容易になります。
 
@@ -389,15 +389,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 14:57:08*
+## 👤 User
+*2023-05-12 14:57:08*
 
 CustomTextFieldViewModel に関数を作って、CustomTextField が描画されたタイミングで読んでほし、
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 14:58:33*
+## 🤖 Assistant
+*2023-05-12 14:58:33*
 
 `CustomTextFieldViewModel`に関数を追加し、`CustomTextField`が描画されたタイミングでそれを呼び出すには、`onAppear`イベントを利用します。以下の手順で実装できます。
 
@@ -463,15 +463,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 14:59:16*
+## 👤 User
+*2023-05-12 14:59:16*
 
 environmentObject を使うのはやめてほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 15:00:28*
+## 🤖 Assistant
+*2023-05-12 15:00:28*
 
 了解しました。`EnvironmentObject`を使用せずに、`ObservedObject`を使用して`CustomTextFieldViewModel`を渡す方法を示します。この方法では、`CustomTextField`のイニシャライザに`CustomTextFieldViewModel`を渡します。
 
@@ -520,15 +520,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 15:01:11*
+## 👤 User
+*2023-05-12 15:01:11*
 
 関数名がonAppearじゃなくていいものは変えて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 15:02:12*
+## 🤖 Assistant
+*2023-05-12 15:02:12*
 
 了解しました。関数名を`onTextFieldAppear`に変更します。
 
@@ -577,8 +577,8 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 15:02:23*
+## 👤 User
+*2023-05-12 15:02:23*
 
 func onTextFieldAppear(_ action: @escaping () -&gt; Void) -&gt; some View {
         self.onAppear(perform: action)
@@ -587,8 +587,8 @@ func onTextFieldAppear(_ action: @escaping () -&gt; Void) -&gt; some View {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 15:03:39*
+## 🤖 Assistant
+*2023-05-12 15:03:39*
 
 すみません、私の説明が間違っていました。`UIViewRepresentable`内で直接`onAppear`や`onDisappear`を定義することはできません。この代わりに、ビューの外側で`onAppear`や`onDisappear`を使用してください。以下の例で修正します。
 
@@ -635,15 +635,15 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 15:04:47*
+## 👤 User
+*2023-05-12 15:04:47*
 
 CustomTextFieldViewModel では、CustomTextField の中で表示されている文字列と同じ変数を共有していて、それをcustomFunction() ではそれを適当な文字列に変更する処理を書きたい
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 15:08:06*
+## 🤖 Assistant
+*2023-05-12 15:08:06*
 
 `CustomTextFieldViewModel`で`CustomTextField`内の文字列と同じ変数を共有し、`customFunction()`でその文字列を変更する処理を追加するには、以下の手順を実行します。
 
@@ -735,8 +735,8 @@ struct ContentView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 15:09:37*
+## 👤 User
+*2023-05-12 15:09:37*
 
 つづき
 

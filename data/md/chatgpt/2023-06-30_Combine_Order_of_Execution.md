@@ -1,11 +1,11 @@
 # Combine Order of Execution
 
-日付: 2023-06-30
+Date: 2023-06-30
 
 ---
 
-## 👤 ユーザー
-*2023/06/30 19:02:21*
+## 👤 User
+*2023-06-30 19:02:21*
 
 SwiftのCombineについての質問です。
 passthroughsubjectに値をsendしてして、それをサブスクライブしている処理で、別の配列にappendしています。
@@ -27,8 +27,8 @@ sampleSubject
 
 ---
 
-## 🤖 アシスタント
-*2023/06/30 19:03:01*
+## 🤖 Assistant
+*2023-06-30 19:03:01*
 
 Combineフレームワークでは、publisherがデータをemitするたびに、それに対応するsubscriberにそのデータが送信され、それぞれのsubscriberがデータを処理します。この処理は非同期に行われることが多いです。
 

@@ -1,18 +1,18 @@
 # UIInterfaceOrientationMaskの取得方法
 
-日付: 2023-06-28
+Date: 2023-06-28
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 16:51:22*
+## 👤 User
+*2023-06-28 16:51:22*
 
 現在のUIInterfaceOrientationMaskの値の取得方法
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 16:51:53*
+## 🤖 Assistant
+*2023-06-28 16:51:53*
 
 `UIInterfaceOrientationMask`はアプリケーションで許可されるデバイスの回転方向を表します。この値は、アプリケーションの設定や特定のビューコントローラの要求により定義されます。
 
@@ -36,15 +36,15 @@ let currentOrientation = UIDevice.current.orientation
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 16:52:00*
+## 👤 User
+*2023-06-28 16:52:00*
 
 UIInterfaceOrientationMask を取得する方法はないの？
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 16:52:50*
+## 🤖 Assistant
+*2023-06-28 16:52:50*
 
 iOSでは、特定のビューコントローラの許可されるインターフェースの向きを示す `UIInterfaceOrientationMask` を直接取得するメソッドは提供されていません。これは主にアプリケーションまたはビューコントローラの設定やオーバーライドで定義され、特定のビューコントローラがどのような向きをサポートするかをシステムに伝える役割があります。
 
@@ -67,15 +67,15 @@ let supportedOrientations = myVC.supportedInterfaceOrientations
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 16:52:52*
+## 👤 User
+*2023-06-28 16:52:52*
 
 SiwftUIで開発していて、UIInterfaceOrientation を取得する方法をおしえてほしい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 16:53:24*
+## 🤖 Assistant
+*2023-06-28 16:53:24*
 
 SwiftUIでは、`UIInterfaceOrientation`を直接取得するメソッドは提供されていません。しかし、`@Environment`プロパティラッパを使ってデバイスのサイズクラスを取得し、それをもとにデバイスの向きを推定することは可能です。
 

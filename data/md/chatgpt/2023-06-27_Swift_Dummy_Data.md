@@ -1,11 +1,11 @@
 # Swift Dummy Data
 
-日付: 2023-06-27
+Date: 2023-06-27
 
 ---
 
-## 👤 ユーザー
-*2023/06/27 22:08:55*
+## 👤 User
+*2023-06-27 22:08:55*
 
 Swiftで以下のprotoデータを元にのダミーデータを作って欲しい
 
@@ -58,8 +58,8 @@ message VideoSkipped {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/27 22:09:08*
+## 🤖 Assistant
+*2023-06-27 22:09:08*
 
 SwiftではGoogleのProtocol Buffers（ProtoBuf）の使用には`SwiftProtobuf`ライブラリが必要となります。このライブラリを用いてダミーデータを作成します。
 

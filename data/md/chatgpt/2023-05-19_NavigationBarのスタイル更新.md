@@ -1,11 +1,11 @@
 # NavigationBarのスタイル更新
 
-日付: 2023-05-19
+Date: 2023-05-19
 
 ---
 
-## 👤 ユーザー
-*2023/05/20 00:16:42*
+## 👤 User
+*2023-05-20 00:16:42*
 
 以下のコードでnavigationBarAppearanceをつかいたくない。
 なるべくSwiftUIで対応してほしい
@@ -49,8 +49,8 @@ public struct BaseView: View {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/20 00:18:17*
+## 🤖 Assistant
+*2023-05-20 00:18:17*
 
 SwiftUIによりナビゲーションバーのスタイルを変更するには、`.navigationBarTitleDisplayMode()`や`.navigationBarColor()`といったビューモディファイアを使用できます。以下にコードを示します。ここでは、タイトルとバックグラウンドの色をそれぞれ設定しています。
 
@@ -111,8 +111,8 @@ struct NavigationBarModifier: ViewModifier {
 
 ---
 
-## 👤 ユーザー
-*2023/05/20 00:18:43*
+## 👤 User
+*2023-05-20 00:18:43*
 
 そもそも以下のコードで何を設定しているのかをおしえてほしい
 
@@ -135,8 +135,8 @@ struct NavigationBarModifier: ViewModifier {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/20 00:20:00*
+## 🤖 Assistant
+*2023-05-20 00:20:00*
 
 このコードはナビゲーションバーの見た目を設定しています。具体的には、以下の項目を設定しています。
 
@@ -160,15 +160,15 @@ struct NavigationBarModifier: ViewModifier {
 
 ---
 
-## 👤 ユーザー
-*2023/05/20 00:31:18*
+## 👤 User
+*2023-05-20 00:31:18*
 
 なるほど、ちなみに struct NavigationBarModifier: ViewModifier とする必要があるの？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/20 00:31:54*
+## 🤖 Assistant
+*2023-05-20 00:31:54*
 
 はい、その通りです。`ViewModifier`プロトコルを実装した`NavigationBarModifier`という新しいstructを定義することで、ナビゲーションバーのスタイル設定を再利用可能なコンポーネントとして利用できます。これによりコードの再利用性と可読性が向上します。
 

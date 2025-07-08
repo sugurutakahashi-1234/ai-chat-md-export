@@ -1,11 +1,11 @@
 # PreviewLayer state update issue.
 
-日付: 2023-05-12
+Date: 2023-05-12
 
 ---
 
-## 👤 ユーザー
-*2023/05/12 16:38:10*
+## 👤 User
+*2023-05-12 16:38:10*
 
 以下のコードでself.previewLayer = previewLayerするとModifying state during view update, this will cause undefined behavior.とエラーがでた。DispatchQueue.main.async {} で囲む以外に対処方法をおしえてほしい
 
@@ -58,8 +58,8 @@ struct CameraPreview: UIViewRepresentable {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/12 16:41:08*
+## 🤖 Assistant
+*2023-05-12 16:41:08*
 
 `UIViewRepresentable`の`makeUIView(context:)`メソッドは、SwiftUIが要求するためにビューを作成する場所です。このメソッドの目的は、新しいビューを作成して返すことであるため、ビューの状態を更新することは避けるべきです。
 

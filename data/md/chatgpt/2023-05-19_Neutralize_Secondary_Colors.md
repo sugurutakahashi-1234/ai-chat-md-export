@@ -1,11 +1,11 @@
 # Neutralize Secondary Colors
 
-日付: 2023-05-19
+Date: 2023-05-19
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 17:24:31*
+## 👤 User
+*2023-05-19 17:24:31*
 
 以下のsecondary の部分を neutral に変換した文字列がほしい。1行でお願い。
 
@@ -13,15 +13,15 @@ secondary90, secondary80, secondary70, secondary60, secondary50, secondary40, se
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 17:24:32*
+## 🤖 Assistant
+*2023-05-19 17:24:32*
 
 neutral90, neutral80, neutral70, neutral60, neutral50, neutral40, neutral30, neutral20, neutral10, neutral5
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 18:07:58*
+## 👤 User
+*2023-05-19 18:07:58*
 
 以下のコードで `Instance method 'listRowBackground' requires that 'some ShapeStyle' conform to 'View'` というエラーが出たんだけどなんで？
 
@@ -98,8 +98,8 @@ struct ColorListView: View {
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 18:08:08*
+## 🤖 Assistant
+*2023-05-19 18:08:08*
 
 このエラーは、`listRowBackground` メソッドに渡される引数である `backgroundColor.color` が `View` プロトコルに準拠していないため発生しています。
 
@@ -162,8 +162,8 @@ enum Hoge: String, CaseIterable, Identifiable {
 
 ---
 
-## 👤 ユーザー
-*2023/05/19 18:14:17*
+## 👤 User
+*2023-05-19 18:14:17*
 
 そうすると以下のエラーが `.opacity(Double(opacity)/100)` ででてしまんだけど
 
@@ -173,8 +173,8 @@ No 'opacity' candidates produce the expected contextual result type 'LinearGradi
 
 ---
 
-## 🤖 アシスタント
-*2023/05/19 18:14:22*
+## 🤖 Assistant
+*2023-05-19 18:14:22*
 
 すみません、先ほどの回答に誤りがありました。`LinearGradient` 自体には `opacity` プロパティが存在しないため、エラーが発生しています。
 

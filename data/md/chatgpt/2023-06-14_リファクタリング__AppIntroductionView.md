@@ -1,11 +1,11 @@
 # リファクタリング: AppIntroductionView
 
-日付: 2023-06-14
+Date: 2023-06-14
 
 ---
 
-## 👤 ユーザー
-*2023/06/15 04:36:14*
+## 👤 User
+*2023-06-15 04:36:14*
 
 以下をリファクタリングしてください
 
@@ -135,8 +135,8 @@ private extension AppIntroductionView {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/15 04:37:21*
+## 🤖 Assistant
+*2023-06-15 04:37:21*
 
 以下のようにリファクタリングしてみます。コードの冗長性を減らすために、共通部分を抽出して`onboardingView(for:onboarding:)`という新しいprivateメソッドを作成しました。
 
@@ -245,8 +245,8 @@ struct Onboarding {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/15 04:37:40*
+## 🤖 Assistant
+*2023-06-15 04:37:40*
 
 ```
 
@@ -254,8 +254,8 @@ struct Onboarding {
 
 ---
 
-## 👤 ユーザー
-*2023/06/15 04:43:35*
+## 👤 User
+*2023-06-15 04:43:35*
 
 OnboardingStepのextension で Image と title と description の 3つのコンピュテーっとプロパティを生やして、func onboardingView() の引数にそれぞれをせっていするようにしてほしい
 
@@ -398,8 +398,8 @@ struct AppIntroductionView_Previews: PreviewProvider {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/15 04:44:38*
+## 🤖 Assistant
+*2023-06-15 04:44:38*
 
 ご要望に応じて、`OnboardingStep`の拡張に3つのコンピューテッドプロパティ（`onboardingImage`、`title`、`description`）を追加し、これらを引数として新しく定義した`onboardingView(for:onboardingTitle:onboardingDescription:)`メソッドに渡すように変更しました。
 
@@ -482,15 +482,15 @@ public struct AppIntroductionView: View {
 
 ---
 
-## 👤 ユーザー
-*2023/06/15 04:45:37*
+## 👤 User
+*2023-06-15 04:45:37*
 
 つづき
 
 ---
 
-## 🤖 アシスタント
-*2023/06/15 04:46:06*
+## 🤖 Assistant
+*2023-06-15 04:46:06*
 
 申し訳ありません、メッセージが途切れました。以下が続きです。
 

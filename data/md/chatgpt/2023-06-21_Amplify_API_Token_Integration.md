@@ -1,11 +1,11 @@
 # Amplify API Token Integration
 
-日付: 2023-06-21
+Date: 2023-06-21
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:13:43*
+## 👤 User
+*2023-06-22 03:13:43*
 
 SwiftのAmplifyでAmplify.API.queryを実行する際にCustomInterceptorを使って、Cognitoからとれるtokenを設定して、クエリを実行する方法を教えて欲しい。
 
@@ -13,8 +13,8 @@ SwiftでAmplifyのSDKは導入済みなので、そこの説明は省略して�
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:14:54*
+## 🤖 Assistant
+*2023-06-22 03:14:54*
 
 SwiftでAmplifyのAPIクエリを実行する際に、カスタムインターセプターを使用してCognitoから取得したトークンを設定する方法は以下の通りです。
 
@@ -67,8 +67,8 @@ Amplify.API.query(request: .list(YourModel.self), options: options) { event in
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:17:35*
+## 👤 User
+*2023-06-22 03:17:35*
 
 なるほど。
 
@@ -76,8 +76,8 @@ AuthTokenURLRequestInterceptor の mutableRequest.setValue(token, forHTTPHeaderF
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:18:06*
+## 🤖 Assistant
+*2023-06-22 03:18:06*
 
 はい、その通りです。SwiftではHTTPヘッダーの値を設定するために、URLRequestのsetValue(_:forHTTPHeaderField:)メソッドを使用します。あなたが提示したコードスニペットでは、"authorization"ヘッダーに対してトークンを設定しています。
 
@@ -93,15 +93,15 @@ mutableRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:20:01*
+## 👤 User
+*2023-06-22 03:20:01*
 
 addValue と setValue の違いを推して欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:20:37*
+## 🤖 Assistant
+*2023-06-22 03:20:37*
 
 `addValue(_:forHTTPHeaderField:)`と`setValue(_:forHTTPHeaderField:)`はどちらも`URLRequest`のメソッドで、HTTPリクエストヘッダーに値を追加するために使われます。しかしその挙動は若干異なります。
 
@@ -113,15 +113,15 @@ addValue と setValue の違いを推して欲しい
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:28:40*
+## 👤 User
+*2023-06-22 03:28:40*
 
 idTokenの取得方法も教えて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:29:20*
+## 🤖 Assistant
+*2023-06-22 03:29:20*
 
 AWS CognitoからIDトークンを取得するには、以下のSwiftコードスニペットを使用できます。これは`Amplify.Auth`を使用してユーザーの認証情報を取得し、それからIDトークンを取り出すものです。
 
@@ -152,15 +152,15 @@ Amplify.Auth.fetchAuthSession { result in
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:29:41*
+## 👤 User
+*2023-06-22 03:29:41*
 
 Amplify.Auth.fetchAuthSession を async/await のほうをつかってほしい。
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:30:31*
+## 🤖 Assistant
+*2023-06-22 03:30:31*
 
 Swift 5.5のasync/await機能を使用してAmplify.Auth.fetchAuthSessionからIDトークンを非同期に取得する方法は以下の通りです。
 
@@ -206,15 +206,15 @@ enum CustomError: Error {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:30:33*
+## 👤 User
+*2023-06-22 03:30:33*
 
 fetchIdToken はguard文の方がいい気がする
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:31:00*
+## 🤖 Assistant
+*2023-06-22 03:31:00*
 
 そうですね、guard文を使用することで、エラー処理を一箇所にまとめ、コードの可読性を高めることができます。
 
@@ -241,15 +241,15 @@ func fetchIdToken() async throws -> String {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:31:16*
+## 👤 User
+*2023-06-22 03:31:16*
 
 try? とする必要ってあるかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:31:45*
+## 🤖 Assistant
+*2023-06-22 03:31:45*
 
 ご指摘いただいた通り、ここで`try?`を使用すると、エラーが発生した場合に詳細なエラー情報が失われてしまいます。そのため、エラーが発生した際に原因を特定したい場合は、`try`を使用してエラーをキャッチし、それを再スローするとよいでしょう。以下にその例を示します。
 
@@ -279,15 +279,15 @@ func fetchIdToken() async throws -> String {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:32:26*
+## 👤 User
+*2023-06-22 03:32:26*
 
 これで行こう！一旦全文書いて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:33:07*
+## 🤖 Assistant
+*2023-06-22 03:33:07*
 
 もちろんです。ここに全体のコードをまとめています。このコードでは、`fetchIdToken`関数を定義し、非同期にIDトークンを取得します。エラーハンドリングにはguard文とdo-catchを使用しています。
 
@@ -338,15 +338,15 @@ async {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:33:38*
+## 👤 User
+*2023-06-22 03:33:38*
 
 Interceptorの方の処理も書いて欲しい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:34:39*
+## 🤖 Assistant
+*2023-06-22 03:34:39*
 
 もちろんです、トークンを取得する`fetchIdToken`関数とカスタムのリクエストインターセプターを組み合わせることで、各リクエストにAuthorizationヘッダーを追加できます。下記のように実装することができます。
 
@@ -419,15 +419,15 @@ async {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:35:44*
+## 👤 User
+*2023-06-22 03:35:44*
 
 こんなことしなくても AuthTokenURLRequestInterceptor をそのまま使えばいいのでは
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:36:06*
+## 🤖 Assistant
+*2023-06-22 03:36:06*
 
 申し訳ありません、ご指摘の通りです。現時点では（2021年9月までの情報に基づいています）、AmplifyのAPIクエリに認証情報を付与するためには、通常はAPIカテゴリの設定を行い、認証モードを指定します。これにより、Amplifyは自動的に認証ヘッダをクエリに追加します。
 
@@ -437,15 +437,15 @@ async {
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:37:32*
+## 👤 User
+*2023-06-22 03:37:32*
 
 AuthTokenURLRequestInterceptor をそのまま、apiPluginにaddできないのかな？
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:38:03*
+## 🤖 Assistant
+*2023-06-22 03:38:03*
 
 現時点でのAmplifyの設定は、通常APIカテゴリの設定を使用し、認証モードを指定することで、Amplifyが自動的に認証ヘッダをクエリに追加します。したがって、`AuthTokenURLRequestInterceptor`を直接APIプラグインに追加する機能は提供されていません。
 
@@ -457,15 +457,15 @@ AuthTokenURLRequestInterceptor をそのまま、apiPluginにaddできないの�
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:46:45*
+## 👤 User
+*2023-06-22 03:46:45*
 
 Cannot find 'AuthTokenURLRequestInterceptor' in scopeというエラーになった
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:47:14*
+## 🤖 Assistant
+*2023-06-22 03:47:14*
 
 `AuthTokenURLRequestInterceptor`という名前のクラスや構造体が、Amplify FrameworkやAWS SDKには存在しません。そのため、`Cannot find 'AuthTokenURLRequestInterceptor' in scope`というエラーが発生します。
 
@@ -475,8 +475,8 @@ AmplifyのAPIリクエストに認証トークンを含めるために、どの�
 
 ---
 
-## 👤 ユーザー
-*2023/06/22 03:48:55*
+## 👤 User
+*2023-06-22 03:48:55*
 
 なるほど。ではこれをこのまま使ってみたいのだけれどもどうすればいい？
 
@@ -523,8 +523,8 @@ struct AuthTokenURLRequestInterceptor: URLRequestInterceptor {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/22 03:49:40*
+## 🤖 Assistant
+*2023-06-22 03:49:40*
 
 あなたが提供した `AuthTokenURLRequestInterceptor` はすでに良い形で実装されています。これを使用するには、次のようにAmplify APIの設定に追加する必要があります。以下のコードは例ですので、具体的な実装についてはアプリケーションの要件に応じて適宜変更してください。
 

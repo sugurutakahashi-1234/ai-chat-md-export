@@ -1,11 +1,11 @@
 # Questionnaire View Implementation
 
-日付: 2023-06-27
+Date: 2023-06-27
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 00:32:51*
+## 👤 User
+*2023-06-28 00:32:51*
 
 public struct QuestionnaireView: View {
     @EnvironmentObject private var navigator: MissionPageNavigator
@@ -78,8 +78,8 @@ public struct QuestionnaireView: View {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 00:33:31*
+## 🤖 Assistant
+*2023-06-28 00:33:31*
 
 This is a SwiftUI `View` named `QuestionnaireView` for a questionnaire page. It uses an environment object `navigator`, which is likely used to handle navigation between views. It also uses a `StateObject`, `presenter`, which probably contains the business logic related to the questionnaire, such as fetching data, validation and managing the state of the view.
 
@@ -99,8 +99,8 @@ One thing to note is that the code seems to be making use of a lot of custom vie
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 00:33:54*
+## 👤 User
+*2023-06-28 00:33:54*
 
 NavigationLinkのためにZstackを使っているんだけどやめたい
 
@@ -108,8 +108,8 @@ NavigationLinkのためにZstackを使っているんだけどやめたい
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 00:34:56*
+## 🤖 Assistant
+*2023-06-28 00:34:56*
 
 `ZStack`を使って`NavigationLink`を扱うことは、特に目立つボタンなどに対してナビゲーションを割り当てたいが、そのボタンが直接`NavigationLink`として表現されることを望まない場合によく用いられます。このパターンは、ビジュアルデザインを邪魔することなくプログラム的なナビゲーションを提供することができます。
 
@@ -139,15 +139,15 @@ NavigationLinkのためにZstackを使っているんだけどやめたい
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 00:35:14*
+## 👤 User
+*2023-06-28 00:35:14*
 
 モディファイアで上手く隠せる方法なかったっけ？
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 00:35:48*
+## 🤖 Assistant
+*2023-06-28 00:35:48*
 
 はい、その通りです。`NavigationLink`を使用する際に、視覚的な要素を完全に隠したい場合には、`NavigationLink`を`EmptyView`と一緒に使用することができます。この方式では、`ZStack`を使用する必要はありません。
 

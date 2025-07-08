@@ -1,18 +1,18 @@
 # Amplify Auth Keychain Group.
 
-日付: 2023-05-10
+Date: 2023-05-10
 
 ---
 
-## 👤 ユーザー
-*2023/05/10 23:52:43*
+## 👤 User
+*2023-05-10 23:52:43*
 
 SwiftでAmplify Auth を使って開発するにはapplication target &gt; Signing & Capabilities &gt; + Capability, then select Keychain Sharing からキーチェーンの設定を有効にしないといけないみたいなんだけどその時に作成するキーチェーングループって命名はどうすればいいの？
 
 ---
 
-## 🤖 アシスタント
-*2023/05/10 23:55:31*
+## 🤖 Assistant
+*2023-05-10 23:55:31*
 
 キーチェーングループの命名は、一般的には次のようなルールに従っています。
 

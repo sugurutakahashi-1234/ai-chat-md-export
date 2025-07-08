@@ -1,11 +1,11 @@
 # GraphQLでAWS Amplifyを使用して、SwiftのStringと[String]をAWSJSONに変換する方法
 
-日付: 2023-07-13
+Date: 2023-07-13
 
 ---
 
-## 👤 ユーザー
-*2023/07/13 16:22:33*
+## 👤 User
+*2023-07-13 16:22:33*
 
 graphQLでAmplifyを使っている。導入は済んでいる。
 
@@ -19,8 +19,8 @@ input AnswerInput {
 
 ---
 
-## 🤖 アシスタント
-*2023/07/13 16:22:43*
+## 🤖 Assistant
+*2023-07-13 16:22:43*
 
 GraphQLの`AWSJSON`型は、JSON形式のデータを取り扱うための特殊な型です。JSONは`String`、`Number`、`Object`、`Array`、`Boolean`、`null`の六つのデータ型を持つことができます。
 

@@ -1,18 +1,18 @@
 # SwiftUI SceneDelegate alternative.
 
-日付: 2023-07-01
+Date: 2023-07-01
 
 ---
 
-## 👤 ユーザー
-*2023/07/01 22:30:47*
+## 👤 User
+*2023-07-01 22:30:47*
 
 SwiftUIのアプリでSceneDelegate って使わないほうがいいでしょうか？
 
 ---
 
-## 🤖 アシスタント
-*2023/07/01 22:31:21*
+## 🤖 Assistant
+*2023-07-01 22:31:21*
 
 SwiftUI 2.0が導入されてからは、多くの開発者が `SceneDelegate` よりもよりシンプルな `@main` attributeと新たな `App` プロトコルを使用するようになりました。これはiOS 14とともに導入され、それによって、`SceneDelegate` や `AppDelegate` を直接使用する必要性が大幅に低下しました。
 

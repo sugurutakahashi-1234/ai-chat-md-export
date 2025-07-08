@@ -1,25 +1,25 @@
 # Chat assistance available.
 
-日付: 2023-04-28
+Date: 2023-04-28
 
 ---
 
-## 👤 ユーザー
-*2023/04/28 15:40:56*
+## 👤 User
+*2023-04-28 15:40:56*
 
 ```
 
 ---
 
-## 🤖 アシスタント
-*2023/04/28 15:40:58*
+## 🤖 Assistant
+*2023-04-28 15:40:58*
 
 ```Welcome to ChatGPT! How can I assist you today?
 
 ---
 
-## 👤 ユーザー
-*2023/04/28 15:41:04*
+## 👤 User
+*2023-04-28 15:41:04*
 
 struct Foo {
     let int: Int
@@ -31,8 +31,8 @@ struct Foo {
 
 ---
 
-## 🤖 アシスタント
-*2023/04/28 15:41:16*
+## 🤖 Assistant
+*2023-04-28 15:41:16*
 
 It looks like you have defined a Swift struct called `Foo`. It has five properties:
 

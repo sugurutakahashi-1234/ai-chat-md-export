@@ -1,11 +1,11 @@
 # ProtoBuf Swift Codable
 
-日付: 2023-06-11
+Date: 2023-06-11
 
 ---
 
-## 👤 ユーザー
-*2023/06/11 19:26:35*
+## 👤 User
+*2023-06-11 19:26:35*
 
 以下のprotoBuf定義からSwiftでCodable適応したenumとstructを出力して欲しい。変数はvarではなくletにしてほしい。
 

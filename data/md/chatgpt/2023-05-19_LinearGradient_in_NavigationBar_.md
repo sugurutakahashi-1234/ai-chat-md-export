@@ -1,18 +1,18 @@
 # LinearGradient in NavigationBar.
 
-日付: 2023-05-19
+Date: 2023-05-19
 
 ---
 
-## 👤 ユーザー
-*2023/05/20 01:33:53*
+## 👤 User
+*2023-05-20 01:33:53*
 
 I want to set a LinearGradient gradient as the background of the navigation bar in my SwiftUI app.
 
 ---
 
-## 🤖 アシスタント
-*2023/05/20 01:34:35*
+## 🤖 Assistant
+*2023-05-20 01:34:35*
 
 In SwiftUI, as of my knowledge cutoff in September 2021, you can't directly apply a gradient background to a `NavigationView` or `NavigationBar`. However, you can use some workarounds to achieve this effect.
 

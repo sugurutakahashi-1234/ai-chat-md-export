@@ -1,11 +1,11 @@
 # FullScreenCover to Push Transition
 
-日付: 2023-06-28
+Date: 2023-06-28
 
 ---
 
-## 👤 ユーザー
-*2023/06/28 21:18:36*
+## 👤 User
+*2023-06-28 21:18:36*
 
 fullScreenCover の遷移をpush遷移にしたい
 
@@ -108,8 +108,8 @@ public struct GazeTrackCalibrationView: View {
 
 ---
 
-## 🤖 アシスタント
-*2023/06/28 21:19:30*
+## 🤖 Assistant
+*2023-06-28 21:19:30*
 
 SwiftUIでのフルスクリーン遷移は、通常 `.fullScreenCover(isPresented:content:)` メソッドを使用して行われますが、これは新しいビューをモーダルとして表示します。しかし、フルスクリーン遷移をpush遷移にする方法が直接的にはありません。代わりにNavigationLinkを使用して新しい画面をpushすることができますが、この場合でもフルスクリーン表示にするためには追加の作業が必要です。
 
