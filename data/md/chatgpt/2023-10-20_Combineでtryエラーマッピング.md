@@ -10,7 +10,7 @@
 SwiftのCombineでtryでエラーがあった場合にnilにmapしたい。
 
  $rawPhoneNumber
-            .tryCompactMap { \[weak self\] rawPhoneNumber in
+            .tryCompactMap { [weak self] rawPhoneNumber in
                 guard let self else {
                     return nil
                 }
@@ -149,7 +149,7 @@ $rawPhoneNumber
 
 specialCharactersRegexが以下であるように修正してほしい。
 
-^ $ \* . \[ \] { } ( ) ? " ! @ # % & / \\ , &gt; &lt; ' : ; | \_ ~ ` = + -
+^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , &gt; &lt; ' : ; | _ ~ ` = + -
 
 ---
 
@@ -197,7 +197,7 @@ Swift 5で導入された生の文字列リテラルでは、`#`記号を使用�
 ## 👤 ユーザー
 *2023/10/20 16:01:41*
 
-^ $ \* . \[ \] { } ( ) ? " ! @ # % & / \\ , &gt; &lt; ' : ; | \_ ~ ` = + -  をそれぞれテストケースで追加して確認して欲しい。
+^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , &gt; &lt; ' : ; | _ ~ ` = + -  をそれぞれテストケースで追加して確認して欲しい。
 
 ---
 
@@ -240,10 +240,10 @@ class SpecialCharacterTests: XCTestCase {
 ## 👤 ユーザー
 *2023/10/20 16:02:25*
 
-let specialCharacterTestCases = \[
+let specialCharacterTestCases = [
     ("NoSpecials", false),
     ("Special!", true)
-\]
+]
 のに追加するかたちにしてほしい。
 
 ---
@@ -313,8 +313,8 @@ protocol PasswordValidateDriverProtocol {
 
 class PasswordValidateDriver: PasswordValidateDriverProtocol {
     
-    // https://docs.aws.amazon.com/ja\_jp/cognito/latest/developerguide/user-pool-settings-policies.html
-    private let specialCharactersRegex = #"\[\\^\\$\\\*\\.\\\[\\\]\\{\\}\\(\\)\\?"\\!@#%&/\\\\,&gt;&lt;':;\\|\_~`=\\+-\]"#
+    // https://docs.aws.amazon.com/ja_jp/cognito/latest/developerguide/user-pool-settings-policies.html
+    private let specialCharactersRegex = #"[\^\$*\.[]\{\}\(\)\?"\!@#%&/\\,&gt;&lt;':;\|_~`=\+-]"#
     private let validPasswordLengthRange = 16...24
     
     func validatePassword(password: String) -&gt; PasswordValidationStatus {
@@ -337,72 +337,72 @@ class PasswordValidateDriver: PasswordValidateDriverProtocol {
 let driver = PasswordValidateDriver()
 
 // 各基準ごとのテストケース
-let lengthTestCases = \[
+let lengthTestCases = [
     ("123456789012345", false), // 15文字
     ("1234567890123456", true),  // 16文字
     ("123456789012345678901234", true), // 24文字
     ("1234567890123456789012345", false) // 25文字
-\]
+]
 
-let numberTestCases = \[
+let numberTestCases = [
     ("NoNumbersHere!", false),
     ("1NumberIncluded", true)
-\]
+]
 
-let specialCharacterTestCases = \[
+let specialCharacterTestCases = [
     ("NoSpecials", false),
     ("Special!", true)
-\]
+]
 
-let uppercaseTestCases = \[
+let uppercaseTestCases = [
     ("nouppercase", false),
     ("SOMEUPPERCASE", true)
-\]
+]
 
-let lowercaseTestCases = \[
+let lowercaseTestCases = [
     ("NOLOWERCASE", false),
     ("somelowercase", true)
-\]
+]
 
-let fullValidationTestCases = \[
+let fullValidationTestCases = [
     ("Valid1Password!", false), // 基準を満たさない
     ("Valid1Password123!", true) // すべての基準を満たす
-\]
+]
 
 // 長さのテスト
 for (password, expected) in lengthTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.isValidLength == expected, "Length validation failed for \\(password)")
+    assert(result.isValidLength == expected, "Length validation failed for \(password)")
 }
 
 // 数字のテスト
 for (password, expected) in numberTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.containsNumber == expected, "Number validation failed for \\(password)")
+    assert(result.containsNumber == expected, "Number validation failed for \(password)")
 }
 
 // 特殊文字のテスト
 for (password, expected) in specialCharacterTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.containsSpecialCharacter == expected, "Special character validation failed for \\(password)")
+    assert(result.containsSpecialCharacter == expected, "Special character validation failed for \(password)")
 }
 
 // 大文字のテスト
 for (password, expected) in uppercaseTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.containsUppercase == expected, "Uppercase validation failed for \\(password)")
+    assert(result.containsUppercase == expected, "Uppercase validation failed for \(password)")
 }
 
 // 小文字のテスト
 for (password, expected) in lowercaseTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.containsLowercase == expected, "Lowercase validation failed for \\(password)")
+    assert(result.containsLowercase == expected, "Lowercase validation failed for \(password)")
 }
 
 // isFullyValidのテスト
 for (password, expected) in fullValidationTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.isFullyValid == expected, "Full validation failed for \\(password)")
+    assert(result.isFullyValid == expected, "Full validation failed for \(password)")
 }
 
 
@@ -452,11 +452,11 @@ for (password, expected) in specialCharacterTestCases {
 
 以下の3つを比べては可不足ないか？
 
-private let specialCharactersRegex = #"\[\\^\\$\\\*\\.\\\[\\\]\\{\\}\\(\\)\\?"\\!@#%&/\\\\,&gt;&lt;':;\\|\_~`=\\+-\]"#
+private let specialCharactersRegex = #"[\^\$*\.[]\{\}\(\)\?"\!@#%&/\\,&gt;&lt;':;\|_~`=\+-]"#
 
-let additionalSpecialCharacters = \["^", "$", "\*", ".", "\[", "\]", "{", "}", "(", ")", "?", "\\"", "!", "@", "#", "%", "&", "/", "\\\\", ",", "&gt;", "&lt;", "'", ":", ";", "|", "\_", "~", "`", "=", "+", "-"\]
+let additionalSpecialCharacters = ["^", "$", "*", ".", "[", "]", "{", "}", "(", ")", "?", "\"", "!", "@", "#", "%", "&", "/", "\\", ",", "&gt;", "&lt;", "'", ":", ";", "|", "_", "~", "`", "=", "+", "-"]
 
-^ $ \* . \[ \] { } ( ) ? " ! @ # % & / \\ , &gt; &lt; ' : ; | \_ ~ ` = + -
+^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , &gt; &lt; ' : ; | _ ~ ` = + -
 
 ---
 

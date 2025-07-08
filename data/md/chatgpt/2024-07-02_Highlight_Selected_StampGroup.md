@@ -17,7 +17,7 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
 
     public init(dependency: Dependency, talkThread: TalkThread) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: StampListPresenter(dependency: dependency, talkThread: talkThread))
+        _presenter = .init(wrappedValue: StampListPresenter(dependency: dependency, talkThread: talkThread))
     }
 
     public var body: some View {
@@ -25,7 +25,7 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
             VStack {
                 ScrollView(.horizontal) {
                     LazyHStack {
-                        ForEach(presenter.stampGroups, id: \\.id) { stampGroup in
+                        ForEach(presenter.stampGroups, id: \.id) { stampGroup in
                             Button {
                                 presenter.onTapStampGroup(stampGroup: stampGroup)
                             } label: {
@@ -41,9 +41,9 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
                 // Ref: 【SwiftUI】LazyVGrid内の画像を正方形にする【ワークアラウンド】 https://qiita.com/tsuzuki817/items/cc9364089cee3a763084
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 20) {
                     if let stampGroup = presenter.selectedStampGroup {
-                        ForEach(stampGroup.stamps, id: \\.id) { stamp in
+                        ForEach(stampGroup.stamps, id: \.id) { stamp in
                             CustomAsyncImageView(imageUrl: stamp.imageUrl)
-                                .aspectRatio(Constants.AspectRatio.\_1\_1, contentMode: .fill)
+                                .aspectRatio(Constants.AspectRatio._1_1, contentMode: .fill)
                                 .cornerRadius(8)
                                 .padding(.all, 4)
                         }
@@ -68,12 +68,12 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
 
 import PreviewSnapshots
 
-struct StampListView\_Previews: PreviewProvider, SnapshotTestable {
+struct StampListView_Previews: PreviewProvider, SnapshotTestable {
     static var snapshots: PreviewSnapshots&lt;RootDIContainerDependencyMock&gt; {
         .init(
-            configurations: \[
+            configurations: [
                 UITestPreviewType.placeholder.configuration,
-            \],
+            ],
             configure: { dependency in
                 StampListView(dependency: dependency, talkThread: .placeholder)
                     .navigationStacked()
@@ -85,7 +85,7 @@ struct StampListView\_Previews: PreviewProvider, SnapshotTestable {
 
 @MainActor
 final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: ObservableObject {
-    @Published private(set) var stampGroups: \[StampGroup\] = \[\]
+    @Published private(set) var stampGroups: [StampGroup] = []
     @Published private(set) var selectedStampGroup: StampGroup?
     
     @Published var isLoading: Bool = false
@@ -118,7 +118,7 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
             stampGroups = try await dependency.apiRequestDriver.getStampGroups()
             selectedStampGroup = stampGroups.first
         } catch {
-            dependency.logDriver.errorLog("\\(error)")
+            dependency.logDriver.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }

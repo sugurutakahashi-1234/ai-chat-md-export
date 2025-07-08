@@ -9,7 +9,7 @@
 
 Swiftの以下処理をもう少し可読性をあげたい
 
-func webView(\_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -&gt; Void) {
+func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -&gt; Void) {
         guard let url = navigationAction.request.url,
               let urlScheme = url.scheme?.lowercased(),
               let urlHost = url.host?.lowercased()
@@ -25,7 +25,7 @@ func webView(\_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction
         // - data: インラインデータを指すスキーム
         // - blob: ブラウザ内に生成された大きなデータオブジェクトを指すスキーム
         // - file: ローカルファイルシステム上のファイルを指すスキーム
-        let nonTransitioningSchemes = \["http", "https", "about", "data", "blob", "file"\]
+        let nonTransitioningSchemes = ["http", "https", "about", "data", "blob", "file"]
 
         if !nonTransitioningSchemes.contains(urlScheme) || urlHost.contains("apps.apple.com") {
             print(url)
@@ -106,7 +106,7 @@ private func handleAllowedURL(_ url: URL) {
 ## 👤 ユーザー
 *2023/7/13 6:57:25*
 
-func webView(\_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -&gt; Void) {
+func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -&gt; Void) {
         guard let url = navigationAction.request.url,
               let urlScheme = url.scheme?.lowercased(),
               let urlHost = url.host?.lowercased()
@@ -122,7 +122,7 @@ func webView(\_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction
         // - data: インラインデータを指すスキーム
         // - blob: ブラウザ内に生成された大きなデータオブジェクトを指すスキーム
         // - file: ローカルファイルシステム上のファイルを指すスキーム
-        let nonTransitioningSchemes = \["http", "https", "about", "data", "blob", "file"\]
+        let nonTransitioningSchemes = ["http", "https", "about", "data", "blob", "file"]
 
         if !nonTransitioningSchemes.contains(urlScheme) || urlHost.contains("apps.apple.com") {
             print(url)

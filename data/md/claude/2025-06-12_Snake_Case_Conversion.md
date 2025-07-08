@@ -8,14 +8,14 @@
 *2025/6/12 18:50:27*
 
 スネークケースにして。 
-DUMMY\_SECRET\_FOR\_TESTING
+DUMMY_SECRET_FOR_TESTING
 
 ---
 
 ## 🤖 アシスタント
 *2025/6/12 18:50:36*
 
-`dummy\_secret\_for\_testing`
+`dummy_secret_for_testing`
 
 ---
 

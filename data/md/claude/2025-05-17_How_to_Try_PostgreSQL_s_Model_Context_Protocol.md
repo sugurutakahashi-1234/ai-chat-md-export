@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2025/5/17 12:31:13*
 
-\*\*PostgreSQLのMCPを試してみたい。手順を教えて欲しい\*\*
+**PostgreSQLのMCPを試してみたい。手順を教えて欲しい**
 
 https://github.com/modelcontextprotocol/servers/tree/main/src/postgres
 

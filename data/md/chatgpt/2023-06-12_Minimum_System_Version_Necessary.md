@@ -115,7 +115,7 @@ LSMinimumSystemVersion の選択肢がないんだけど
 次のステップで`LSMinimumSystemVersion`を`Info.plist`に追加できます：
 
 1. Xcodeのプロジェクトナビゲータで、対象のプロジェクトを選択します。
-2. `\[Project Name\] &gt; Info.plist`を開きます。
+2. `[Project Name] &gt; Info.plist`を開きます。
 3. Info.plistの任意の場所をクリックしてフォーカスを合わせ、右クリック（またはコントロールクリック）を行い、「行を追加」を選択します。
 4. 新たに作成された行にキーとして`LSMinimumSystemVersion`を入力します。
 5. その行の値に対応する最小macOSバージョン（例：`10.15`）を入力します。

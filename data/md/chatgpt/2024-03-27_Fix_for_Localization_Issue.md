@@ -34,20 +34,20 @@ Your message for a GitHub issue comment looks like a constructive contribution w
 
 ---
 
-\*\*Proposed Modifications\*\*
+**Proposed Modifications**
 
 I have verified that the following steps resolve the issue:
 
-\*\*Step 1: Add InfoPlist.strings\*\*
+**Step 1: Add InfoPlist.strings**
 - Navigate to `Production &gt; Production &gt; Resources`.
 - Choose "Add New File…" and create `InfoPlist.strings`.
 
-\*\*Step 2: Extract String Catalogs\*\*
+**Step 2: Extract String Catalogs**
 - Build the Production target to ensure `InfoPlist.strings` generates the `CFBundleName` and `CFBundleDisplayName` keys.
 
-\*\*Step 3: Add English Localization\*\*
+**Step 3: Add English Localization**
 
-\*\*Step 4: Change Language Setting\*\*
+**Step 4: Change Language Setting**
 - From "Edit Scheme", change the language setting to English, then build again.
 
 ---
@@ -70,7 +70,7 @@ Certainly! Adding a polite note at the end to acknowledge the possibility of rep
 
 ---
 
-\*\*Note\*\*: If these steps are already documented officially, I apologize for any repetition. My intention is to assist those who might have encountered the same issue.
+**Note**: If these steps are already documented officially, I apologize for any repetition. My intention is to assist those who might have encountered the same issue.
 
 ---
 

@@ -93,31 +93,31 @@ Resemble.jsは、JavaScriptで書かれたもう一つの画像比較ライブ�
 
 これらのライブラリの中で人気が高いものを順に挙げると、以下のようになります：
 
-### 1. \*\*Pixelmatch\*\*
+### 1. **Pixelmatch**
 Pixelmatchは特にスナップショットテストの画像比較で広く使われており、人気があります。軽量で使いやすく、カスタマイズも容易なため、多くの開発者に支持されています。
 
-- \*\*人気度\*\*: 非常に高い
-- \*\*利用シーン\*\*: フロントエンドのテストツールと組み合わせての使用が多い
-- \*\*理由\*\*: 軽量かつ簡単に使えるため、CI/CDパイプラインにも組み込みやすい
+- **人気度**: 非常に高い
+- **利用シーン**: フロントエンドのテストツールと組み合わせての使用が多い
+- **理由**: 軽量かつ簡単に使えるため、CI/CDパイプラインにも組み込みやすい
 
-### 2. \*\*ImageMagick\*\*
+### 2. **ImageMagick**
 ImageMagickは長い歴史があり、画像処理の分野で非常に広く使われています。比較機能も強力で、非常にカスタマイズ可能です。
 
-- \*\*人気度\*\*: 高い
-- \*\*利用シーン\*\*: 画像処理全般、スクリプトやコマンドラインからの利用
-- \*\*理由\*\*: 多機能で信頼性が高く、画像処理に関するあらゆるニーズに対応できる
+- **人気度**: 高い
+- **利用シーン**: 画像処理全般、スクリプトやコマンドラインからの利用
+- **理由**: 多機能で信頼性が高く、画像処理に関するあらゆるニーズに対応できる
 
-### 3. \*\*Resemble.js\*\*
+### 3. **Resemble.js**
 Resemble.jsも人気がありますが、Pixelmatchほどではありません。ブラウザおよびNode.jsで動作するため、特定の環境での使用に適しています。
 
-- \*\*人気度\*\*: 中程度
-- \*\*利用シーン\*\*: ウェブアプリケーションのフロントエンドテスト
-- \*\*理由\*\*: 使いやすさと結果の視覚的な分かりやすさが魅力
+- **人気度**: 中程度
+- **利用シーン**: ウェブアプリケーションのフロントエンドテスト
+- **理由**: 使いやすさと結果の視覚的な分かりやすさが魅力
 
 ### 結論
-- \*\*Pixelmatch\*\*が最も人気が高く、スナップショットテストの画像差分を確認するための標準的な選択肢とされています。
-- \*\*ImageMagick\*\*も非常に人気があり、多機能であるため、スナップショットテスト以外の画像処理にも広く使われています。
-- \*\*Resemble.js\*\*は特定のニーズに応じて使われており、シンプルな画像比較が必要な場合に便利です。
+- **Pixelmatch**が最も人気が高く、スナップショットテストの画像差分を確認するための標準的な選択肢とされています。
+- **ImageMagick**も非常に人気があり、多機能であるため、スナップショットテスト以外の画像処理にも広く使われています。
+- **Resemble.js**は特定のニーズに応じて使われており、シンプルな画像比較が必要な場合に便利です。
 
 プロジェクトの規模や具体的な要件に応じて、これらのライブラリの中から最適なものを選ぶことをお勧めします。
 
@@ -560,16 +560,16 @@ const pixelmatch = require('pixelmatch');
 const path = require('path');
 
 // コマンドライン引数を取得
-const \[sourceBranch, targetBranch, snapshotsDir\] = process.argv.slice(2);
+const [sourceBranch, targetBranch, snapshotsDir] = process.argv.slice(2);
 
 if (!sourceBranch || !targetBranch || !snapshotsDir) {
   console.error('Usage: node compare-snapshots.js &lt;sourceBranch&gt; &lt;targetBranch&gt; &lt;snapshotsDir&gt;');
   process.exit(1);
 }
 
-const sourceDir = path.resolve(\_\_dirname, snapshotsDir, sourceBranch);
-const targetDir = path.resolve(\_\_dirname, snapshotsDir, targetBranch);
-const outputDir = path.resolve(\_\_dirname, 'diffs');
+const sourceDir = path.resolve(__dirname, snapshotsDir, sourceBranch);
+const targetDir = path.resolve(__dirname, snapshotsDir, targetBranch);
+const outputDir = path.resolve(__dirname, 'diffs');
 
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
@@ -1117,7 +1117,7 @@ node:internal/modules/esm/resolve:210
   const resolvedOption = FSLegacyMainResolve(packageJsonUrlString, packageConfig.main, baseStringified);
                          ^
 
-Error: Cannot find package '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/node\_modules/pngjs/package.json' imported from /Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/compare-snapshots.js
+Error: Cannot find package '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/node_modules/pngjs/package.json' imported from /Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/compare-snapshots.js
     at legacyMainResolve (node:internal/modules/esm/resolve:210:26)
     at packageResolve (node:internal/modules/esm/resolve:828:14)
     at moduleResolve (node:internal/modules/esm/resolve:914:18)
@@ -1125,12 +1125,12 @@ Error: Cannot find package '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/n
     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:542:12)
     at ModuleLoader.resolve (node:internal/modules/esm/loader:511:25)
     at ModuleLoader.getModuleJob (node:internal/modules/esm/loader:241:38)
-    at ModuleJob.\_link (node:internal/modules/esm/module\_job:126:49) {
-  code: 'ERR\_MODULE\_NOT\_FOUND'
+    at ModuleJob._link (node:internal/modules/esm/module_job:126:49) {
+  code: 'ERR_MODULE_NOT_FOUND'
 }
 
 Node.js v22.2.0
-make: \*\*\* \[compare-snapshots\] Error 1
+make: *** [compare-snapshots] Error 1
 
 ---
 
@@ -1264,7 +1264,7 @@ make compare-snapshots sourceBranch=source_branch_name targetBranch=target_branc
 ## 👤 ユーザー
 *2024/7/18 12:22:59*
 
-引数に指定がなかったらsourceBranchは現在のブランチ、ターゲットブランチはmainブランチ、snapshotsDirはSmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_ としてほしい
+引数に指定がなかったらsourceBranchは現在のブランチ、ターゲットブランチはmainブランチ、snapshotsDirはSmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__ としてほしい
 
 ---
 
@@ -1395,26 +1395,26 @@ node ./pixelmatch/script/compare-snapshots.mjs
 Debugger attached.
 Source Branch: feature/141
 Target Branch: main
-Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_
+Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__
 Waiting for the debugger to disconnect...
 node:fs:1374
   const result = binding.mkdir(
                          ^
 
-Error: ENOENT: no such file or directory, mkdir '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/output/feature/141\_vs\_main'
+Error: ENOENT: no such file or directory, mkdir '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/output/feature/141_vs_main'
     at Object.mkdirSync (node:fs:1374:26)
     at file:///Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/compare-snapshots.mjs:46:8
-    at ModuleJob.run (node:internal/modules/esm/module\_job:262:25)
+    at ModuleJob.run (node:internal/modules/esm/module_job:262:25)
     at async ModuleLoader.import (node:internal/modules/esm/loader:475:24)
-    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run\_main:109:5) {
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:109:5) {
   errno: -2,
   code: 'ENOENT',
   syscall: 'mkdir',
-  path: '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/output/feature/141\_vs\_main'
+  path: '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/output/feature/141_vs_main'
 }
 
 Node.js v22.2.0
-make: \*\*\* \[compare-snapshots\] Error 1
+make: *** [compare-snapshots] Error 1
 
 ---
 
@@ -1529,33 +1529,33 @@ make compare-snapshots sourceBranch=feature/141 targetBranch=main snapshotsDir=S
 ## 👤 ユーザー
 *2024/7/18 12:26:29*
 
-このようなエラーになった。どちらのブランチもSmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_以下のブランチで探してほしい
+このようなエラーになった。どちらのブランチもSmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__以下のブランチで探してほしい
 
 $ make compare-snapshots                                                                                                         2 ↵
 node ./pixelmatch/script/compare-snapshots.mjs   
 Debugger attached.
 Source Branch: feature/141
 Target Branch: main
-Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_
+Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__
 Waiting for the debugger to disconnect...
 node:fs:1509
   const result = binding.readdir(
                          ^
 
-Error: ENOENT: no such file or directory, scandir '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_/feature/141'
+Error: ENOENT: no such file or directory, scandir '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__/feature/141'
     at Object.readdirSync (node:fs:1509:26)
     at file:///Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/compare-snapshots.mjs:53:4
-    at ModuleJob.run (node:internal/modules/esm/module\_job:262:25)
+    at ModuleJob.run (node:internal/modules/esm/module_job:262:25)
     at async ModuleLoader.import (node:internal/modules/esm/loader:475:24)
-    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run\_main:109:5) {
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:109:5) {
   errno: -2,
   code: 'ENOENT',
   syscall: 'scandir',
-  path: '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_/feature/141'
+  path: '/Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__/feature/141'
 }
 
 Node.js v22.2.0
-make: \*\*\* \[compare-snapshots\] Error 1
+make: *** [compare-snapshots] Error 1
 
 ---
 
@@ -1690,10 +1690,10 @@ node ./pixelmatch/script/compare-snapshots.mjs
 Debugger attached.
 Source Branch: feature/141
 Target Branch: main
-Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_
-Source directory not found: /Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_/feature/141
+Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__
+Source directory not found: /Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/pixelmatch/script/SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__/feature/141
 Waiting for the debugger to disconnect...
-make: \*\*\* \[compare-snapshots\] Error 1
+make: *** [compare-snapshots] Error 1
 
 ---
 
@@ -1832,10 +1832,10 @@ node ./pixelmatch/script/compare-snapshots.mjs
 Debugger attached.
 Source Branch: feature/141
 Target Branch: main
-Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_
-Source directory not found: /Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_/feature/141
+Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__
+Source directory not found: /Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__/feature/141
 Waiting for the debugger to disconnect...
-make: \*\*\* \[compare-snapshots\] Error 1
+make: *** [compare-snapshots] Error 1
 
 ---
 
@@ -2125,17 +2125,17 @@ make compare-snapshots sourceBranch=feature/141 targetBranch=main snapshotsDir=S
 ## 👤 ユーザー
 *2024/7/18 12:32:30*
 
-イカになったんだけど、実際に/SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_/feature/141は存在しない。/SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_ は存在んする
+イカになったんだけど、実際に/SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__/feature/141は存在しない。/SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__ は存在んする
 
 make compare-snapshots                                                                                                         2 ↵
 node ./pixelmatch/script/compare-snapshots.mjs   
 Debugger attached.
 Source Branch: feature/141
 Target Branch: main
-Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_
-Source directory not found: /Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_/feature/141
+Snapshots Directory: SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__
+Source directory not found: /Users/sugurutakahashi/git/Project-SoftBankSNS-iOS/SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__/feature/141
 Waiting for the debugger to disconnect...
-make: \*\*\* \[compare-snapshots\] Error 1
+make: *** [compare-snapshots] Error 1
 
 ---
 
@@ -2290,7 +2290,7 @@ Error getting the current branch: Command failed: git rev-parse --abbrev-ref HEA
 fatal: not a git repository (or any of the parent directories): .git
 
 Waiting for the debugger to disconnect...
-make: \*\*\* \[compare-snapshots\] Error 1
+make: *** [compare-snapshots] Error 1
 
 ---
 
@@ -2360,7 +2360,7 @@ Error getting the current branch: Command failed: git rev-parse --abbrev-ref HEA
 fatal: not a git repository (or any of the parent directories): .git
 
 Waiting for the debugger to disconnect...
-make: \*\*\* \[compare-snapshots\] Error 1
+make: *** [compare-snapshots] Error 1
 
 ---
 

@@ -9,10 +9,10 @@
 
 Swift で　Struct定義して星
 {
-  "id": "sub\_1234abcd"
-  "current\_period\_end": "2024-02-01T12:00:00Z",
-  "cancel\_at": "2024-02-01T12:00:00Z",
-  "customer\_id": "cus\_1234abcd"
+  "id": "sub_1234abcd"
+  "current_period_end": "2024-02-01T12:00:00Z",
+  "cancel_at": "2024-02-01T12:00:00Z",
+  "customer_id": "cus_1234abcd"
 }
 
 ---

@@ -11,10 +11,10 @@ localhost:3002/v1/guildsにリクエストするようにしてほしい
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/lib/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
 
 // API Client Provider
 final guildApiProvider = Provider&lt;GuildApi&gt;((ref) {
@@ -44,7 +44,7 @@ class GuildPage extends HookConsumerWidget {
         data: (guildInfo) =&gt; Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: \[
+            children: [
               Text('Guild Info: $guildInfo'),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -59,7 +59,7 @@ class GuildPage extends HookConsumerWidget {
                 },
                 child: const Text('Go To Guild Create'),
               ),
-            \],
+            ],
           ),
         ),
         loading: () =&gt; const Center(child: CircularProgressIndicator()),

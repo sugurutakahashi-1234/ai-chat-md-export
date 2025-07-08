@@ -10,7 +10,7 @@
 accountState.whenOrNull(
       data: (data) {
         if (data != null) {
-          WidgetsBinding.instance.addPostFrameCallback((\_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             context.go(Screen.map.path);
           });
         }
@@ -19,14 +19,14 @@ accountState.whenOrNull(
 の処理はuseEffectでaccountStateを監視するのとどちらがいいのか？
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:flutter\_svg/flutter\_svg.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/accounts/get\_accounts\_info.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/accounts/get_accounts_info.dart';
 
 class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
@@ -43,13 +43,13 @@ class LoginPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     accountState.whenOrNull(
       data: (data) {
         if (data != null) {
-          WidgetsBinding.instance.addPostFrameCallback((\_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             context.go(Screen.map.path);
           });
         }
@@ -67,7 +67,7 @@ class LoginPage extends HookConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: \[
+                children: [
                   GestureDetector(
                     onLongPress: () {
                       // TODO: flavor が dev の場合のみの機能
@@ -88,7 +88,7 @@ class LoginPage extends HookConsumerWidget {
                       prefixIcon: Padding(
                         padding: EdgeInsets.all(12),
                         child: Icon(
-                          Icons.email\_outlined,
+                          Icons.email_outlined,
                           color: ColorToken.text,
                           size: 24,
                         ),
@@ -104,7 +104,7 @@ class LoginPage extends HookConsumerWidget {
                     },
                     child: const Text('Login'),
                   ),
-                \],
+                ],
               ),
             ),
           ),
@@ -182,13 +182,13 @@ useEffect(
 useEffect(
   () {
     if (accountState is AsyncData && accountState.value != null) {
-      WidgetsBinding.instance.addPostFrameCallback((\_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         context.go(Screen.map.path);
       });
     }
     return null;
   },
-  \[accountState\],
+  [accountState],
 );
 
 ---
@@ -479,7 +479,7 @@ ProviderListener<AsyncValue<Account?>>(
         }
         return null;
       },
-      \[accountState\],
+      [accountState],
     );
 
 ---
@@ -592,7 +592,7 @@ class MyAccountNotifier extends StateNotifier<AsyncValue<Account?>> {
 resetState(); みたいない処理をさせたい
 
 @Riverpod(keepAlive: true)
-class GetMyAccountNotifier extends \_$GetMyAccountNotifier {
+class GetMyAccountNotifier extends _$GetMyAccountNotifier {
   @override
   Future&lt;AccountResponseDTOData?&gt; build() async =&gt; null;
 

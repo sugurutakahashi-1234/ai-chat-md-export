@@ -107,7 +107,7 @@ https://github.com/aws-amplify/aws-sdk-ios と https://github.com/soto-project/s
 `aws-sdk-ios` と `soto` の両方とも、Swift 5.5で導入された `async`/`await` 機能をサポートしていますが、対応状況は異なります。
 
 1. aws-sdk-ios：
-`aws-sdk-ios` は、Swift 5.5の `async`/`await` 機能には直接対応していませんが、`async`/`await` を利用するためのサードパーティ拡張が提供されています。例えば、\[`AWSAsync`\](https://github.com/swift-aws/aws-sdk-ios/blob/main/Sources/AWSAsync/AWSAsync.swift) は、`aws-sdk-ios` の各サービスの非同期メソッドに対して `async`/`await` を使用できるように拡張しています。ただし、この拡張は公式サポートされているわけではないため、使用する際には注意が必要です。
+`aws-sdk-ios` は、Swift 5.5の `async`/`await` 機能には直接対応していませんが、`async`/`await` を利用するためのサードパーティ拡張が提供されています。例えば、[`AWSAsync`](https://github.com/swift-aws/aws-sdk-ios/blob/main/Sources/AWSAsync/AWSAsync.swift) は、`aws-sdk-ios` の各サービスの非同期メソッドに対して `async`/`await` を使用できるように拡張しています。ただし、この拡張は公式サポートされているわけではないため、使用する際には注意が必要です。
 
 2. soto：
 `soto` は、SwiftNIOをベースにしていますが、Swift 5.5以降のバージョンでは `async`/`await` をサポートしています。`soto` のリポジトリには、非同期メソッドを `async`/`await` を使って呼び出す方法が記載されています。これにより、Swift 5.5以降を対象とするプロジェクトでは、`soto` を使った非同期プログラミングがより簡潔で直感的になります。
@@ -252,7 +252,7 @@ aws-sdk-ios を使って同じことをしようとするとどうやって書�
 ## 🤖 アシスタント
 *2023/5/8 16:28:10*
 
-`aws-sdk-ios`は、Swift Package Managerでの直接のインストールはサポートしていません。しかし、代わりに\[AWSSDKSwift\](https://github.com/swift-aws/aws-sdk-swift)（現在は\[soto\](https://github.com/soto-project/soto)として知られています）を使用することができます。これは、`aws-sdk-ios`と同様にiOSプラットフォームで利用でき、Swift Package Managerに対応しています。
+`aws-sdk-ios`は、Swift Package Managerでの直接のインストールはサポートしていません。しかし、代わりに[AWSSDKSwift](https://github.com/swift-aws/aws-sdk-swift)（現在は[soto](https://github.com/soto-project/soto)として知られています）を使用することができます。これは、`aws-sdk-ios`と同様にiOSプラットフォームで利用でき、Swift Package Managerに対応しています。
 
 以下の手順で、`soto`を使用してCSVファイルをS3にアップロードするコードを書
 

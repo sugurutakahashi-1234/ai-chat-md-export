@@ -191,35 +191,35 @@ Button.displayName = "Button";
 
 | 分類 | 気に なる点 | 補足・回避策 |
 |------|------------|--------------|
-| \*\*Tailwind v4 そのもの\*\* | \*\*⧗ エコシステムが追い付いていない\*\* - 一部公式プラグイン・サードパーティは v3 系のみ対応。&lt;br&gt;\*\*⚙ ネイティブ依存が CI で詰まる\*\* - Oxide エンジンは Rust バイナリを落とすので、Alpine Linux など GLIBC 非互換環境ではビルドエラーになるケースあり。 | `--legacy` オプションで旧ビルドにフォールバック、または Docker イメージで実行環境を揃える。&lt;br&gt;新規プラグイン採用時は \*\*`npm info &lt;pkg&gt; peerDependencies`\*\* で v4 対応を確認。 citeturn0search1turn0search7 |
-| \*\*トークンを CSS 変数化\*\* | \*\*🎨 “静的パージ” が効きにくい\*\* - `var(--color-primary)` のような変数は Tailwind の未使用クラス絞り込み対象外。テーマ数が増えると最終 CSS が肥大しやすい。 | 変数名自体を Tailwind の `--tw` プリフィクスに統一し、`@supports (color: oklch(0 0 0)) {}` 内で追加テーマを遅延ロードすると軽量化可。 |
-| \*\*CVA + tailwind-merge\*\* | \*\*⚖ 機能差\*\* - Tailwind-variants には「スロット」「複合 variant」など高度な API があるが、CVA は最小限。後から要求が増えると乗り換えコストが発生。&lt;br&gt;\*\*🏷 ランタイム結合コスト\*\* - `buttonStyles({size})` がレンダー毎に走る。実測では 1 µs 未満だが、数千ノードを仮想 DOM 外で生成する SSR ではベンチ必須。 | 高機能が欲しくなった時点で tailwind-variants へ移行可能かを PoC しておくと安心。比較記事も参考に長期運用を判断。 citeturn0search2turn0search5 |
-| \*\*Ladle 採用 (Storybook なし)\*\* | \*\*📚 ドキュメント機能が薄い\*\* - MDX Docs、Design Token アドオン、Figma 組み込み等は Ladle に無い。&lt;br&gt;\*\*👥 周囲の慣れ\*\* - 大規模チームや業務委託メンバーは「Storybook 前提」で作業するケースが多い。 | \*ライト版\* と割り切り「Ladle → Storybook」のマイグレーション手順を README に残す。Storybook を “docs only” モードで後付け導入する方法もある。 |
-| \*\*その他\*\* | - Radix & Ariakit も v4 移行が未完の API あり&lt;br&gt;- `@layer components` を多用すると cascade 設計が複雑化しがち | コンポーネントの先頭に `@layer components` を自動付与する eslint-plugin などで統一ルールを強制 |
+| **Tailwind v4 そのもの** | **⧗ エコシステムが追い付いていない** - 一部公式プラグイン・サードパーティは v3 系のみ対応。&lt;br&gt;**⚙ ネイティブ依存が CI で詰まる** - Oxide エンジンは Rust バイナリを落とすので、Alpine Linux など GLIBC 非互換環境ではビルドエラーになるケースあり。 | `--legacy` オプションで旧ビルドにフォールバック、または Docker イメージで実行環境を揃える。&lt;br&gt;新規プラグイン採用時は **`npm info &lt;pkg&gt; peerDependencies`** で v4 対応を確認。 citeturn0search1turn0search7 |
+| **トークンを CSS 変数化** | **🎨 “静的パージ” が効きにくい** - `var(--color-primary)` のような変数は Tailwind の未使用クラス絞り込み対象外。テーマ数が増えると最終 CSS が肥大しやすい。 | 変数名自体を Tailwind の `--tw` プリフィクスに統一し、`@supports (color: oklch(0 0 0)) {}` 内で追加テーマを遅延ロードすると軽量化可。 |
+| **CVA + tailwind-merge** | **⚖ 機能差** - Tailwind-variants には「スロット」「複合 variant」など高度な API があるが、CVA は最小限。後から要求が増えると乗り換えコストが発生。&lt;br&gt;**🏷 ランタイム結合コスト** - `buttonStyles({size})` がレンダー毎に走る。実測では 1 µs 未満だが、数千ノードを仮想 DOM 外で生成する SSR ではベンチ必須。 | 高機能が欲しくなった時点で tailwind-variants へ移行可能かを PoC しておくと安心。比較記事も参考に長期運用を判断。 citeturn0search2turn0search5 |
+| **Ladle 採用 (Storybook なし)** | **📚 ドキュメント機能が薄い** - MDX Docs、Design Token アドオン、Figma 組み込み等は Ladle に無い。&lt;br&gt;**👥 周囲の慣れ** - 大規模チームや業務委託メンバーは「Storybook 前提」で作業するケースが多い。 | *ライト版* と割り切り「Ladle → Storybook」のマイグレーション手順を README に残す。Storybook を “docs only” モードで後付け導入する方法もある。 |
+| **その他** | - Radix & Ariakit も v4 移行が未完の API あり&lt;br&gt;- `@layer components` を多用すると cascade 設計が複雑化しがち | コンポーネントの先頭に `@layer components` を自動付与する eslint-plugin などで統一ルールを強制 |
 
 ---
 
 ## Storybook とは？
 
-&gt; \*\*Storybook\*\* はフロントエンド用の「孤立開発 & ドキュメンテーション環境」です。コンポーネントやページをアプリ本体から切り離して起動し、状態ごとの UI を\*ストーリー\*としてカタログ化します。  
+&gt; **Storybook** はフロントエンド用の「孤立開発 & ドキュメンテーション環境」です。コンポーネントやページをアプリ本体から切り離して起動し、状態ごとの UI を*ストーリー*としてカタログ化します。  
 &gt; – 公式ドキュメント citeturn0search0turn0search6
 
 ### 主な用途
 
-1. \*\*開発\*\*  
+1. **開発**  
    本番データがなくても “エッジケース” (超長文・空データ・エラー状態など) を即座に再現し、UI を検証できる。
-2. \*\*テスト\*\*  
+2. **テスト**  
    Storybook 8 以降は Playwright ベースの “Component Test” が同梱。ビジュアルリグレッションもアドオンで容易。
-3. \*\*ドキュメント\*\*  
+3. **ドキュメント**  
    `.mdx` で設計意図やサンプルコードを同居させ、デザイナー／QA／PM への共有サイトとして公開可。 citeturn0search3
-4. \*\*設計資産の再利用\*\*  
+4. **設計資産の再利用**  
    アドオン経由で Figma 連携・アクセシビリティ監査・デザイントークン表などを一元化。
 
-&gt; 「メンテが大変では？」という議論もありますが、\*\*チーム外共有・回帰テスト・オンボーディング\*\* のコストを考慮して採用する企業が多数です。 citeturn0search9
+&gt; 「メンテが大変では？」という議論もありますが、**チーム外共有・回帰テスト・オンボーディング** のコストを考慮して採用する企業が多数です。 citeturn0search9
 
 ### Ladle との簡易比較
 
-| 項目 | \*\*Ladle\*\* | \*\*Storybook\*\* |
+| 項目 | **Ladle** | **Storybook** |
 |------|-----------|---------------|
 | 起動速度 | ⚡ 数百 ms (Vite ベース) | 1–3 秒程度 (Webpack/Vite 選択可) |
 | 機能/アドオン | 必要最小限 | 100+ 公式アドオン＋豊富なサードパーティ |
@@ -231,10 +231,10 @@ Button.displayName = "Button";
 
 ## まとめ
 
-- 提案スタックは \*\*「速さ・軽さ」重視\*\* だが、  
-  \*\*🔸 v4 新機能の“揺り戻し”\*\* と \*\*🔸 ドキュメント基盤の薄さ\*\* が主なリスク。
+- 提案スタックは **「速さ・軽さ」重視** だが、  
+  **🔸 v4 新機能の“揺り戻し”** と **🔸 ドキュメント基盤の薄さ** が主なリスク。
 - 小規模フェーズでは Ladle + CVA で十分。  
-  チーム拡大・デザイナー参加が見えたタイミングで \*\*Storybook への昇格\*\*、variant ライブラリの再評価を検討すると安全です。
+  チーム拡大・デザイナー参加が見えたタイミングで **Storybook への昇格**、variant ライブラリの再評価を検討すると安全です。
 
 ---
 

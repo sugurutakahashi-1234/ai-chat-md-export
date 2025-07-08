@@ -37,7 +37,7 @@ print(myString) // "I am the of this event"
 ## 👤 ユーザー
 *2023/8/3 22:13:38*
 
-"/Users/sugurutakahashi/git/emomil-app-ios-Xcode\_14.2/EmomilPackage/Sources/EmomilResearch/Presentation/ResearchDetail/ResearchDetailPresenter.swift"
+"/Users/sugurutakahashi/git/emomil-app-ios-Xcode_14.2/EmomilPackage/Sources/EmomilResearch/Presentation/ResearchDetail/ResearchDetailPresenter.swift"
 
 以下から "ResearchDetailPresenter.swift" のみを取り出して欲しい
 

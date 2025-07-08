@@ -146,9 +146,9 @@ struct NavigationBarModifier: ViewModifier {
 
 3. `navigationBarAppearance.backgroundColor = CoreAssets.Color.Neutral.white.color`: ナビゲーションバーの背景色を白色に設定します。
 
-4. `navigationBarAppearance.titleTextAttributes = \[.foregroundColor: CoreAssets.Color.Neutral.black.color\]`: ナビゲーションバーのタイトルの色を黒色に設定します。
+4. `navigationBarAppearance.titleTextAttributes = [.foregroundColor: CoreAssets.Color.Neutral.black.color]`: ナビゲーションバーのタイトルの色を黒色に設定します。
 
-5. `navigationBarAppearance.largeTitleTextAttributes = \[.foregroundColor: CoreAssets.Color.Neutral.black.color\]`: ナビゲーションバーのラージタイトルの色を黒色に設定します。
+5. `navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: CoreAssets.Color.Neutral.black.color]`: ナビゲーションバーのラージタイトルの色を黒色に設定します。
 
 6. `UINavigationBar.appearance().standardAppearance = navigationBarAppearance`: ナビゲーションバーのデフォルトの外観を設定します。この設定は、ナビゲーションバーが表示されている間中ずっと適用されます。
 
@@ -172,7 +172,7 @@ struct NavigationBarModifier: ViewModifier {
 
 はい、その通りです。`ViewModifier`プロトコルを実装した`NavigationBarModifier`という新しいstructを定義することで、ナビゲーションバーのスタイル設定を再利用可能なコンポーネントとして利用できます。これによりコードの再利用性と可読性が向上します。
 
-`ViewModifier`はSwiftUIの一部で、Viewの表示を修正するためのプロトコルです。`ViewModifier`を実装すると、`.modifier(\_:)`メソッドを使用して特定のビューに修正を適用することができます。
+`ViewModifier`はSwiftUIの一部で、Viewの表示を修正するためのプロトコルです。`ViewModifier`を実装すると、`.modifier(_:)`メソッドを使用して特定のビューに修正を適用することができます。
 
 `NavigationBarModifier`では、以下のような動作を提供しています:
 

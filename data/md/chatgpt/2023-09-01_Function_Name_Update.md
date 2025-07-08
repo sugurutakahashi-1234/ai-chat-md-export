@@ -27,7 +27,7 @@ func checkMinimumRequiredVersion() async {
             let currentVersion = try Version(deviceInfoManager.appVersion)
             let newVersion = try Version(newAppInfo.appUpdateInfo.minimumRequiredAppVersion)
 
-            LoggerContainer.debugLog("currentVersion: \\(currentVersion), newVersion: \\(newVersion)")
+            LoggerContainer.debugLog("currentVersion: \(currentVersion), newVersion: \(newVersion)")
 
             if currentVersion &lt; newVersion {
                 appError = .appUpdate(updateUrlString: newAppInfo.appUpdateInfo.updateUrl)

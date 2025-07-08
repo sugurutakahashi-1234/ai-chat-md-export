@@ -71,7 +71,7 @@ example projects とは言わないの？
 
 ## タイトル
 
-Swfit Package Manager によって、\[isowords\](https://github.com/pointfreeco/isowords) に見られるように、アプリケーションをマルチモジュールやマルチプロジェクト構成に簡単に適用できるようになりました。
+Swfit Package Manager によって、[isowords](https://github.com/pointfreeco/isowords) に見られるように、アプリケーションをマルチモジュールやマルチプロジェクト構成に簡単に適用できるようになりました。
 
 Swift Package Manager におけるモジュールの分割は通常、機能に応じて行われますが、FIA では Clean Architecture の設計概念に基づいて、各レイヤーごとにモジュールを分割する手法を採用しています。
 
@@ -89,7 +89,7 @@ Swift Package Manager におけるモジュールの分割は通常、機能に�
 ## 🤖 アシスタント
 *2024/4/24 10:19:25*
 
-この章の内容を踏まえたタイトルとして、「\*\*Simplifying Multi-Module Architecture with Swift Package Manager\*\*」を提案します。このタイトルは、Swift Package Managerを使用してマルチモジュールやマルチプロジェクト構成を簡単に適用する方法に焦点を当てた内容を簡潔に表現しています。
+この章の内容を踏まえたタイトルとして、「**Simplifying Multi-Module Architecture with Swift Package Manager**」を提案します。このタイトルは、Swift Package Managerを使用してマルチモジュールやマルチプロジェクト構成を簡単に適用する方法に焦点を当てた内容を簡潔に表現しています。
 
 ---
 
@@ -103,7 +103,7 @@ FIA は Swift Package Manager によってもたらされる。という意味�
 ## 🤖 アシスタント
 *2024/4/24 10:20:22*
 
-そのニュアンスを含めて、次のようなタイトルを提案します: \*\*"Enabling FIA with Swift Package Manager: Simplifying Multi-Module Architecture"\*\*. このタイトルは、Swift Package ManagerがFIA（ここで特定のアーキテクチャやフレームワークを指すと仮定しています）を可能にし、マルチモジュールアーキテクチャの適用を簡素化することを強調しています。
+そのニュアンスを含めて、次のようなタイトルを提案します: **"Enabling FIA with Swift Package Manager: Simplifying Multi-Module Architecture"**. このタイトルは、Swift Package ManagerがFIA（ここで特定のアーキテクチャやフレームワークを指すと仮定しています）を可能にし、マルチモジュールアーキテクチャの適用を簡素化することを強調しています。
 
 ---
 

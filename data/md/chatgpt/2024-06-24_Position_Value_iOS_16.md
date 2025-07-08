@@ -22,11 +22,11 @@ struct ScrollDesignViewItem: Identifiable, Hashable {
 // MARK: - View
 
 public struct ScrollDesignView: View {
-    @State private var items: \[ScrollDesignViewItem\] = \[.red, .blue, .green, .yellow, .pink, .purple\].compactMap { ScrollDesignViewItem(color: $0) }
+    @State private var items: [ScrollDesignViewItem] = [.red, .blue, .green, .yellow, .pink, .purple].compactMap { ScrollDesignViewItem(color: $0) }
 
     public var body: some View {
         ScrollView(.vertical) {
-            if #available(iOS 17.0, \*) {
+            if #available(iOS 17.0, *) {
                 VStack(alignment: .leading) {
                     Text("Simple (Not Paging)")
                         .padding(.horizontal)
@@ -62,7 +62,7 @@ public struct ScrollDesignView: View {
 }
 
 public struct SimpleScrollDesignView: View {
-    let items: \[ScrollDesignViewItem\]
+    let items: [ScrollDesignViewItem]
 
     public var body: some View {
         GeometryReader { geometry in
@@ -82,14 +82,14 @@ public struct SimpleScrollDesignView: View {
     }
 }
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 public struct PagingScrollDesignView: View {
-    let items: \[ScrollDesignViewItem\]
+    let items: [ScrollDesignViewItem]
 
     public var body: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 0) {
-                ForEach(items, id: \\.self) { item in
+                ForEach(items, id: \.self) { item in
                     RoundedRectangle(cornerRadius: 15)
                         .fill(item.color.gradient)
                         .frame(height: 100)
@@ -104,15 +104,15 @@ public struct PagingScrollDesignView: View {
     }
 }
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 public struct PositionScrollDesignView: View {
     @State var scrollPosition: ScrollDesignViewItem?
-    let items: \[ScrollDesignViewItem\]
+    let items: [ScrollDesignViewItem]
 
     public var body: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 0) {
-                ForEach(items, id: \\.self) { item in
+                ForEach(items, id: \.self) { item in
                     RoundedRectangle(cornerRadius: 15)
                         .fill(item.color.gradient)
                         .frame(height: 100)
@@ -127,15 +127,15 @@ public struct PositionScrollDesignView: View {
         .scrollIndicators(.hidden)
         .overlay {
             if let scrollPosition {
-                Text("\\(scrollPosition.color)")
+                Text("\(scrollPosition.color)")
             }
         }
     }
 }
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 public struct CenteringScrollDesignView: View {
-    let items: \[ScrollDesignViewItem\]
+    let items: [ScrollDesignViewItem]
     let spacing: CGFloat
     let padding: CGFloat
 
@@ -143,10 +143,10 @@ public struct CenteringScrollDesignView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: spacing) {
-                    ForEach(items, id: \\.self) { item in
+                    ForEach(items, id: \.self) { item in
                         RoundedRectangle(cornerRadius: 15)
                             .fill(item.color.gradient)
-                            .frame(width: geometry.size.width - padding \* 2, height: 100)
+                            .frame(width: geometry.size.width - padding * 2, height: 100)
                     }
                 }
                 .padding(.horizontal, padding)
@@ -159,9 +159,9 @@ public struct CenteringScrollDesignView: View {
     }
 }
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 public struct TransitionScrollDesignView: View {
-    let items: \[ScrollDesignViewItem\]
+    let items: [ScrollDesignViewItem]
     let spacing: CGFloat
     let padding: CGFloat
 
@@ -169,10 +169,10 @@ public struct TransitionScrollDesignView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: spacing) {
-                    ForEach(items, id: \\.self) { item in
+                    ForEach(items, id: \.self) { item in
                         RoundedRectangle(cornerRadius: 15)
                             .fill(item.color.gradient)
-                            .frame(width: geometry.size.width - padding \* 2, height: 100)
+                            .frame(width: geometry.size.width - padding * 2, height: 100)
                             .scrollTransition(.interactive, axis: .horizontal) { view, phase in
                                 view
                                     .scaleEffect(phase.isIdentity ? 1 : 0.95)

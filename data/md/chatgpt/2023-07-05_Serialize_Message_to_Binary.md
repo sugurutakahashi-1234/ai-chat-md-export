@@ -18,7 +18,7 @@ import SwiftProtobufPluginLibrary
         
     }
 
-    func serializeToBinaryData(messages: \[some Message\]) throws -&gt; Data {
+    func serializeToBinaryData(messages: [some Message]) throws -&gt; Data {
         let outputStream = OutputStream.toMemory()
         outputStream.open()
 
@@ -27,7 +27,7 @@ import SwiftProtobufPluginLibrary
             do {
                 try BinaryDelimited.serialize(message: message, to: outputStream)
             } catch {
-                AppLogger.debugLog("Failed to BinaryDelimited serialize: \\(error)", level: .error)
+                AppLogger.debugLog("Failed to BinaryDelimited serialize: \(error)", level: .error)
                 throw error
             }
         }
@@ -36,13 +36,13 @@ import SwiftProtobufPluginLibrary
 
         guard let data = outputStream.property(forKey: .dataWrittenToMemoryStreamKey) as? Data else {
             AppLogger.debugLog("Failed to retrieve data from OutputStream", level: .error)
-            throw NSError(domain: "EncodingError", code: -1, userInfo: \[NSLocalizedDescriptionKey: "Failed to retrieve data from OutputStream"\])
+            throw NSError(domain: "EncodingError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to retrieve data from OutputStream"])
         }
 
         return data
     }
 
-    func serializeToJSONData(messages: \[some Message\]) throws -&gt; Data {
+    func serializeToJSONData(messages: [some Message]) throws -&gt; Data {
         var jsonData = Data()
 
         // エラーを throw するため forEach などは使えない
@@ -51,7 +51,7 @@ import SwiftProtobufPluginLibrary
                 let stringData = try message.jsonUTF8Data()
                 jsonData.append(stringData)
             } catch {
-                AppLogger.debugLog("Failed to serialize to JSON: \\(error)", level: .error)
+                AppLogger.debugLog("Failed to serialize to JSON: \(error)", level: .error)
                 throw error
             }
         }

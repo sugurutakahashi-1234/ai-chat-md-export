@@ -38,7 +38,7 @@ Slack で /github subscribe ができないんだけど理由を教えてほし�
 
 解決方法としては、緑色のボタン「Update GitHub App permissions」をクリックして、GitHub アプリの権限を更新することが推奨されています。これにより、必要な権限が付与され、/github subscribe コマンドが正常に機能するようになるはずです。
 
-権限を更新した後、再度 `/github subscribe Gallusys/snpit\_guild\_app issues, pulls, commits:'\*', releases, deployments, reviews, branches, comments, discussions, workflows` コマンドを実行してみてください。
+権限を更新した後、再度 `/github subscribe Gallusys/snpit_guild_app issues, pulls, commits:'*', releases, deployments, reviews, branches, comments, discussions, workflows` コマンドを実行してみてください。
 
 ---
 

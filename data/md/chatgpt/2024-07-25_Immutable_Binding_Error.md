@@ -18,9 +18,9 @@ struct PasswordField: View {
     @FocusState var isSecureFieldFocused: Bool
     @State var isFirstEntryAfterToggle = false
     
-    init(\_ titleKey: LocalizedStringKey, text: Binding&lt;String&gt;) {
+    init(_ titleKey: LocalizedStringKey, text: Binding&lt;String&gt;) {
         self.titleKey = titleKey
-        \_text = text
+        _text = text
     }
     
     var body: some View {
@@ -61,7 +61,7 @@ struct PasswordField: View {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color.primary, lineWidth: 1)
         )
-        .onChange(of: text) { \[text\] newValue in
+        .onChange(of: text) { [text] newValue in
             if newValue.count == 1 && isFirstEntryAfterToggle {
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
                 text = text + newValue

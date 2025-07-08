@@ -12,15 +12,15 @@ Running Gradle task 'assembleDebug'...
 
 FAILURE: Build failed with an exception.
 
-\* Where:
-Settings file '/Users/sugurutakahashi/git/gallusys/snpit\_guild\_app/android/settings.gradle' line: 20
+* Where:
+Settings file '/Users/sugurutakahashi/git/gallusys/snpit_guild_app/android/settings.gradle' line: 20
 
-\* What went wrong:
-Error resolving plugin \[id: 'dev.flutter.flutter-plugin-loader', version: '1.0.0'\]
+* What went wrong:
+Error resolving plugin [id: 'dev.flutter.flutter-plugin-loader', version: '1.0.0']
 &gt; A problem occurred configuring project ':gradle'.
    &gt; Could not read workspace metadata from /Users/sugurutakahashi/.gradle/caches/8.11.1/kotlin-dsl/accessors/68da9f82c772be8b3ae444be2f8c6c79/metadata.bin
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.

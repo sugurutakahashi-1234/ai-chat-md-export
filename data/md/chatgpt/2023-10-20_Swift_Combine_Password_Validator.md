@@ -11,7 +11,7 @@ SwiftのCombineで入力されているパスワードがポリシーを満た�
 
 - 16文字以上-24文字以下
 - 数字
-- 特殊文字^ $ \* . \[ \] { } ( ) ? " ! @ # % & / \\ , &gt; &lt; ' : ; | \_ ~ ` = + - 
+- 特殊文字^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , &gt; &lt; ' : ; | _ ~ ` = + - 
 - 大文字のベーシックラテン文字
 - 小文字のベーシックラテン文字
 
@@ -218,7 +218,7 @@ PasswordValidationStatus がいい。
 
 PasswordValidateDriver とPasswordValidateDriverProtocol を作って、PasswordValidationStatus は PasswordValidateDriver の外で宣言して欲しい。
 
-PasswordValidateDriver の中に specialCharactersRegex = #"\[\\^$\*.\\\[\\\]{}\\(\\)?\\"!@#%&/\\\\,&gt;&lt;':;|\_~`=\\+-\]"# と 16...24 を定義して、ほしい。
+PasswordValidateDriver の中に specialCharactersRegex = #"[\^$*.[]{}\(\)?\"!@#%&/\\,&gt;&lt;':;|_~`=\+-]"# と 16...24 を定義して、ほしい。
 
 PasswordValidateDriverProtocol のインターフェースは func validatePassword(password: String) -&gt; PasswordValidationStatus にしてほしい。
 
@@ -594,25 +594,25 @@ print("All tests passed!")
 ## 👤 ユーザー
 *2023/10/20 15:51:05*
 
-\_\_lldb\_expr\_23/#849\_PasswordValidateDriver.playground:80: Assertion failed: Length validation failed for sixteencharsxxx
+__lldb_expr_23/#849_PasswordValidateDriver.playground:80: Assertion failed: Length validation failed for sixteencharsxxx
 Playground execution failed:
 
-error: Execution was interrupted, reason: EXC\_BREAKPOINT (code=1, subcode=0x1926abbe8).
+error: Execution was interrupted, reason: EXC_BREAKPOINT (code=1, subcode=0x1926abbe8).
 The process has been left at the point where it was interrupted, use "thread return -x" to return to the state before expression evaluation.
 
-\* thread #1, queue = 'com.apple.main-thread', stop reason = EXC\_BREAKPOINT (code=1, subcode=0x1926abbe8)
-    frame #0: 0x00000001926abbe8 libswiftCore.dylib`Swift.\_assertionFailure(\_: Swift.StaticString, \_: Swift.String, file: Swift.StaticString, line: Swift.UInt, flags: Swift.UInt32) -&gt; Swift.Never + 248
-    frame #1: 0x0000000101c61920 $\_\_lldb\_expr24`main at #849\_PasswordValidateDriver.playground:0
-    frame #2: 0x0000000100cb67f8 #849\_PasswordValidateDriver`linkResources + 264
-    frame #3: 0x00000001803ee464 CoreFoundation`\_\_CFRUNLOOP\_IS\_CALLING\_OUT\_TO\_A\_BLOCK\_\_ + 20
-    frame #4: 0x00000001803edbac CoreFoundation`\_\_CFRunLoopDoBlocks + 352
-    frame #5: 0x00000001803e8450 CoreFoundation`\_\_CFRunLoopRun + 788
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BREAKPOINT (code=1, subcode=0x1926abbe8)
+    frame #0: 0x00000001926abbe8 libswiftCore.dylib`Swift._assertionFailure(_: Swift.StaticString, _: Swift.String, file: Swift.StaticString, line: Swift.UInt, flags: Swift.UInt32) -&gt; Swift.Never + 248
+    frame #1: 0x0000000101c61920 $__lldb_expr24`main at #849_PasswordValidateDriver.playground:0
+    frame #2: 0x0000000100cb67f8 #849_PasswordValidateDriver`linkResources + 264
+    frame #3: 0x00000001803ee464 CoreFoundation`__CFRUNLOOP_IS_CALLING_OUT_TO_A_BLOCK__ + 20
+    frame #4: 0x00000001803edbac CoreFoundation`__CFRunLoopDoBlocks + 352
+    frame #5: 0x00000001803e8450 CoreFoundation`__CFRunLoopRun + 788
     frame #6: 0x00000001803e7d28 CoreFoundation`CFRunLoopRunSpecific + 572
     frame #7: 0x000000018e7cdbc0 GraphicsServices`GSEventRunModal + 160
-    frame #8: 0x00000001852bafdc UIKitCore`-\[UIApplication \_run\] + 868
+    frame #8: 0x00000001852bafdc UIKitCore`-[UIApplication _run] + 868
     frame #9: 0x00000001852bec54 UIKitCore`UIApplicationMain + 124
-  \* frame #10: 0x0000000100cb6954 #849\_PasswordValidateDriver`main + 348
-    frame #11: 0x0000000100e29558 dyld\_sim`start\_sim + 20
+  * frame #10: 0x0000000100cb6954 #849_PasswordValidateDriver`main + 348
+    frame #11: 0x0000000100e29558 dyld_sim`start_sim + 20
     frame #12: 0x0000000100f16058 dyld`start + 2224
 
 
@@ -680,7 +680,7 @@ protocol PasswordValidateDriverProtocol {
 
 class PasswordValidateDriver: PasswordValidateDriverProtocol {
     
-    private let specialCharactersRegex = #"\[\\^$\*.\\\[\\\]{}\\(\\)?\\"!@#%&/\\\\,&gt;&lt;':;|\_~`=\\+-\]"#
+    private let specialCharactersRegex = #"[\^$*.[]{}\(\)?\"!@#%&/\\,&gt;&lt;':;|_~`=\+-]"#
     private let validPasswordLengthRange = 16...24
     
     func validatePassword(password: String) -&gt; PasswordValidationStatus {
@@ -703,72 +703,72 @@ class PasswordValidateDriver: PasswordValidateDriverProtocol {
 let driver = PasswordValidateDriver()
 
 // 各基準ごとのテストケース
-let lengthTestCases = \[
+let lengthTestCases = [
     ("fifteencharsxx", false), // 15文字
     ("sixteencharsxxx", true),  // 16文字
     ("twentyfourcharsxxxxxxxx", true), // 24文字
     ("twentyfivecharsxxxxxxxxx", false) // 25文字
-\]
+]
 
-let numberTestCases = \[
+let numberTestCases = [
     ("NoNumbersHere!", false),
     ("1NumberIncluded", true)
-\]
+]
 
-let specialCharacterTestCases = \[
+let specialCharacterTestCases = [
     ("NoSpecials", false),
     ("Special!", true)
-\]
+]
 
-let uppercaseTestCases = \[
+let uppercaseTestCases = [
     ("nouppercase", false),
     ("SOMEUPPERCASE", true)
-\]
+]
 
-let lowercaseTestCases = \[
+let lowercaseTestCases = [
     ("NOLOWERCASE", false),
     ("somelowercase", true)
-\]
+]
 
-let fullValidationTestCases = \[
+let fullValidationTestCases = [
     ("Valid1Password!", false), // すべての基準を満たす
     ("Valid1Password123!", true)     // 基準を満たさない
-\]
+]
 
 // 長さのテスト
 for (password, expected) in lengthTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.isValidLength == expected, "Length validation failed for \\(password)")
+    assert(result.isValidLength == expected, "Length validation failed for \(password)")
 }
 
 // 数字のテスト
 for (password, expected) in numberTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.containsNumber == expected, "Number validation failed for \\(password)")
+    assert(result.containsNumber == expected, "Number validation failed for \(password)")
 }
 
 // 特殊文字のテスト
 for (password, expected) in specialCharacterTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.containsSpecialCharacter == expected, "Special character validation failed for \\(password)")
+    assert(result.containsSpecialCharacter == expected, "Special character validation failed for \(password)")
 }
 
 // 大文字のテスト
 for (password, expected) in uppercaseTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.containsUppercase == expected, "Uppercase validation failed for \\(password)")
+    assert(result.containsUppercase == expected, "Uppercase validation failed for \(password)")
 }
 
 // 小文字のテスト
 for (password, expected) in lowercaseTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.containsLowercase == expected, "Lowercase validation failed for \\(password)")
+    assert(result.containsLowercase == expected, "Lowercase validation failed for \(password)")
 }
 
 // isFullyValidのテスト
 for (password, expected) in fullValidationTestCases {
     let result = driver.validatePassword(password: password)
-    assert(result.isFullyValid == expected, "Full validation failed for \\(password)")
+    assert(result.isFullyValid == expected, "Full validation failed for \(password)")
 }
 
 
@@ -804,12 +804,12 @@ let fullValidationTestCases = [
 以下を修正してほしい。
 
 // 各基準ごとのテストケース
-let lengthTestCases = \[
+let lengthTestCases = [
     ("fifteencharsxx", false), // 15文字
     ("sixteencharsxxx", true),  // 16文字
     ("twentyfourcharsxxxxxxxx", true), // 24文字
     ("twentyfivecharsxxxxxxxxx", false) // 25文字
-\]
+]
 
 ---
 

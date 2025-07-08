@@ -10,7 +10,7 @@
 ~/git/daVinciAppIOS  ‹feature/43› $ make swiftlint-run                                                                                              2 ↵
 swift run --package-path ./DaVinciDevToolsPackage mint run swiftlint --fix
 Building for debugging...
-\[24/24\] Applying mint
+[24/24] Applying mint
 Build of product 'mint' complete! (1.37s)
 Correcting Swift files in current working directory
 Correcting 'ConfigurationBlueprintsApp.swift' (1/561)
@@ -145,7 +145,7 @@ Correcting 'ValidationTests.swift' (124/561)
 Correcting 'HelpMessageGeneratorTests.swift' (125/561)
 /Users/sugurutakahashi/git/daVinciAppIOS/DaVinciDevToolsPackage/.build/checkouts/Rainbow/Sources/ColorApproximation.swift: Corrected Trailing Newline
 Correcting 'ArgumentListTests.swift' (126/561)
-make: \*\*\* \[swiftlint-run\] Abort trap: 6
+make: *** [swiftlint-run] Abort trap: 6
 
 ---
 
@@ -156,15 +156,15 @@ It looks like you encountered an issue during the execution of the `swiftlint-ru
 
 Here are some possible steps to resolve or investigate the issue further:
 
-1. \*\*Check File Permissions\*\*: Ensure that the `DaVinciDevToolsPackage/.build/checkouts/Rainbow/Playground/main.swift` file and its parent directories have the appropriate permissions for read/write operations. Use the command `ls -la` to verify permissions and adjust them if necessary with `chmod` or `chown`.
+1. **Check File Permissions**: Ensure that the `DaVinciDevToolsPackage/.build/checkouts/Rainbow/Playground/main.swift` file and its parent directories have the appropriate permissions for read/write operations. Use the command `ls -la` to verify permissions and adjust them if necessary with `chmod` or `chown`.
 
-2. \*\*Update SwiftLint\*\*: Ensure you are using the latest version of SwiftLint. Sometimes crashes can occur due to bugs that may have been fixed in newer versions. Run `mint run swiftlint@latest` to ensure you're using the most recent version.
+2. **Update SwiftLint**: Ensure you are using the latest version of SwiftLint. Sometimes crashes can occur due to bugs that may have been fixed in newer versions. Run `mint run swiftlint@latest` to ensure you're using the most recent version.
 
-3. \*\*Check Disk Space\*\*: Ensure there is enough available disk space on your machine. Sometimes issues with file writing can be caused by low storage.
+3. **Check Disk Space**: Ensure there is enough available disk space on your machine. Sometimes issues with file writing can be caused by low storage.
 
-4. \*\*Exclude Problematic Files\*\*: If the problem is localized to specific files (like `main.swift` in the Rainbow package), you can temporarily exclude those files from SwiftLint by adding them to `.swiftlint.yml` under the `excluded` section.
+4. **Exclude Problematic Files**: If the problem is localized to specific files (like `main.swift` in the Rainbow package), you can temporarily exclude those files from SwiftLint by adding them to `.swiftlint.yml` under the `excluded` section.
 
-5. \*\*Report the Bug\*\*: As the error suggests, you can submit a bug report to the LLVM project's issue tracker with the relevant crash details, if none of the above solutions work.
+5. **Report the Bug**: As the error suggests, you can submit a bug report to the LLVM project's issue tracker with the relevant crash details, if none of the above solutions work.
 
 Would you like to proceed with any of these steps, or do you need help gathering additional information?
 

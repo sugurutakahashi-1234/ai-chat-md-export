@@ -10,39 +10,39 @@
 どういうことだと思いますか？
 
 &gt; Task :app:publishProdReleaseBundle
-755Starting App Bundle upload: /home/runner/work/snpit\_guild\_app/snpit\_guild\_app/build/app/outputs/bundle/prodRelease/app-prod-release.aab
+755Starting App Bundle upload: /home/runner/work/snpit_guild_app/snpit_guild_app/build/app/outputs/bundle/prodRelease/app-prod-release.aab
 756Uploading App Bundle: 29% complete
 757Uploading App Bundle: 58% complete
 758Uploading App Bundle: 86% complete
 759App Bundle upload complete
-760Updating \[draft\] release (ae.zealnova.snpitguild:\[90\]) in track 'internal'
+760Updating [draft] release (ae.zealnova.snpitguild:[90]) in track 'internal'
 761
 762
 763&gt; Task :commitEditForAeDotZealnovaDotSnpitguild FAILED
 764Committing changes
 765
-766\[Incubating\] Problems report is available at: file:///home/runner/work/snpit\_guild\_app/snpit\_guild\_app/build/reports/problems/problems-report.html
+766[Incubating] Problems report is available at: file:///home/runner/work/snpit_guild_app/snpit_guild_app/build/reports/problems/problems-report.html
 767FAILURE: Build failed with an exception.
 768
-769\* What went wrong:
+769* What went wrong:
 770Execution failed for task ':commitEditForAeDotZealnovaDotSnpitguild'.
 771&gt; A failure occurred while executing com.github.triplet.gradle.play.tasks.CommitEdit$Committer
 772 &gt; 400 Bad Request
 773 POST https://androidpublisher.googleapis.com/androidpublisher/v3/applications/ae.zealnova.snpitguild/edits/12712691204150489749:commit?changesNotSentForReview=false
 774 {
 775 "code": 400,
-776 "errors": \[
+776 "errors": [
 777 {
 778 "domain": "global",
 779 "message": "A change was made to the application outside of this Edit, please create a new edit.",
 780 "reason": "failedPrecondition"
 781 }
-782 \],
+782 ],
 783 "message": "A change was made to the application outside of this Edit, please create a new edit.",
-784 "status": "FAILED\_PRECONDITION"
+784 "status": "FAILED_PRECONDITION"
 785 }
 786
-787\* Try:
+787* Try:
 788&gt; Run with --stacktrace option to get the stack trace.
 789&gt; Run with --info or --debug option to get more log output.
 790&gt; Run with --scan to get full insights.
@@ -54,7 +54,7 @@
 796
 797You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
 798
-799For more on this, please refer to https://docs.gradle.org/8.13/userguide/command\_line\_interface.html#sec:command\_line\_warnings in the Gradle documentation.
+799For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 800603 actionable tasks: 32 executed, 571 up-to-date
 801Error: Process completed with exit code 1.
 

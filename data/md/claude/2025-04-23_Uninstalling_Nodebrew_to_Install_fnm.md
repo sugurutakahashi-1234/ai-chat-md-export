@@ -104,7 +104,7 @@ Would you like more specific information about any of these steps?
 
 このようなエラーが表示される
 
-error: Can't create the symlink for multishells at "/Users/sugurutakahashi/.local/state/fnm\_multishells/60580\_1745386041070". Maybe there are some issues with permissions for the directory? No such file or directory (os error 2)
+error: Can't create the symlink for multishells at "/Users/sugurutakahashi/.local/state/fnm_multishells/60580_1745386041070". Maybe there are some issues with permissions for the directory? No such file or directory (os error 2)
 
 ---
 

@@ -13,7 +13,7 @@ warning: could not determine XCTest paths: terminated(1): /usr/bin/xcrun --sdk m
     xcrun: error: unable to lookup item 'PlatformPath' in SDK '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk'
     
 error: 'mintclipackage': package 'mintclipackage' is using Swift tools version 6.0.0 but the installed version is 5.10.0
-make: \*\*\* \[mockolo-code-gen\] Error 1
+make: *** [mockolo-code-gen] Error 1
 
 ---
 

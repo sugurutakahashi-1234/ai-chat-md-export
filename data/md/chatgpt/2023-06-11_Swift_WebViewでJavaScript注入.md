@@ -94,22 +94,22 @@ npmを通じてインストールしたライブラリを使用する場合は�
 ## 👤 ユーザー
 *2023/6/11 18:31:50*
 
-webView(\_:didStartProvisionalNavigation:) が呼ばれる場合ってどういうとき？
+webView(_:didStartProvisionalNavigation:) が呼ばれる場合ってどういうとき？
 
 ---
 
 ## 🤖 アシスタント
 *2023/6/11 18:32:17*
 
-`webView(\_:didStartProvisionalNavigation:)` は、WKNavigationDelegateプロトコルのメソッドで、WKWebViewがナビゲーションの開始を報告する際に呼び出されます。
+`webView(_:didStartProvisionalNavigation:)` は、WKNavigationDelegateプロトコルのメソッドで、WKWebViewがナビゲーションの開始を報告する際に呼び出されます。
 
 具体的には以下のような状況で呼び出されます:
 
 1. WebViewが新たにページを読み込み始めたとき。これは新しいURLに対する初期リクエスト、ページのリロード、履歴のバック・フォワード等によるナビゲーションで起こります。
 
-2. リダイレクトの開始時にも呼び出されます。リダイレクトが行われるとき、まず`webView(\_:didStartProvisionalNavigation:)`が呼び出され、その後で`webView(\_:didReceiveServerRedirectForProvisionalNavigation:)`が呼び出されます。
+2. リダイレクトの開始時にも呼び出されます。リダイレクトが行われるとき、まず`webView(_:didStartProvisionalNavigation:)`が呼び出され、その後で`webView(_:didReceiveServerRedirectForProvisionalNavigation:)`が呼び出されます。
 
-重要な点として、このメソッドはページの読み込みが始まったことを示すだけであり、読み込みが正常に完了するかどうかを保証するものではありません。ページの読み込みが成功したかどうかを確認するには、`webView(\_:didFinish:)`またはエラーが発生した場合は`webView(\_:didFailProvisionalNavigation:withError:)`を使用することができます。
+重要な点として、このメソッドはページの読み込みが始まったことを示すだけであり、読み込みが正常に完了するかどうかを保証するものではありません。ページの読み込みが成功したかどうかを確認するには、`webView(_:didFinish:)`またはエラーが発生した場合は`webView(_:didFailProvisionalNavigation:withError:)`を使用することができます。
 
 ---
 
@@ -172,19 +172,19 @@ WKNavigationDelegate のメソッドが実行されるタイミングについ�
 
 以下に、一部の主要なメソッドとそれらが呼び出されるタイミングを示します：
 
-1. \*\*`webView(\_:decidePolicyFor:decisionHandler:)`\*\* は、ナビゲーションアクションが行われる前に呼び出され、そのアクションを許可するかキャンセルするかを決定するのに使われます。
+1. **`webView(_:decidePolicyFor:decisionHandler:)`** は、ナビゲーションアクションが行われる前に呼び出され、そのアクションを許可するかキャンセルするかを決定するのに使われます。
 
-2. \*\*`webView(\_:didStartProvisionalNavigation:)`\*\* は、ページの読み込みが開始されたときに呼び出されます。このメソッドは新しいページの読み込みが始まるたびに呼び出されます。
+2. **`webView(_:didStartProvisionalNavigation:)`** は、ページの読み込みが開始されたときに呼び出されます。このメソッドは新しいページの読み込みが始まるたびに呼び出されます。
 
-3. \*\*`webView(\_:didReceiveServerRedirectForProvisionalNavigation:)`\*\* は、サーバからのリダイレクトが受け取られたときに呼び出されます。
+3. **`webView(_:didReceiveServerRedirectForProvisionalNavigation:)`** は、サーバからのリダイレクトが受け取られたときに呼び出されます。
 
-4. \*\*`webView(\_:didFailProvisionalNavigation:withError:)`\*\* は、ページの読み込み中にエラーが発生したときに呼び出されます。
+4. **`webView(_:didFailProvisionalNavigation:withError:)`** は、ページの読み込み中にエラーが発生したときに呼び出されます。
 
-5. \*\*`webView(\_:didCommit:)`\*\* は、ウェブビューがコンテンツを受け取り始めたときに呼び出されます。これはページの読み込みが進行中で、データがWebViewに送信されていることを意味します。
+5. **`webView(_:didCommit:)`** は、ウェブビューがコンテンツを受け取り始めたときに呼び出されます。これはページの読み込みが進行中で、データがWebViewに送信されていることを意味します。
 
-6. \*\*`webView(\_:didFinish:)`\*\* は、ページの読み込みが完了したときに呼び出されます。これは全てのコンテンツが読み込まれ、JavaScriptの読み込みも完了したことを示します。
+6. **`webView(_:didFinish:)`** は、ページの読み込みが完了したときに呼び出されます。これは全てのコンテンツが読み込まれ、JavaScriptの読み込みも完了したことを示します。
 
-7. \*\*`webView(\_:didFail:withError:)`\*\* は、ナビゲーション中またはページの読み込み中にエラーが発生したときに呼び出されます。
+7. **`webView(_:didFail:withError:)`** は、ナビゲーション中またはページの読み込み中にエラーが発生したときに呼び出されます。
 
 以上がWKNavigationDelegateの主要なメソッドとその呼び出しタイミングになります。これらを用いることで、ページの読み込みやナビゲーションのプロセスを詳細に管理できます。なお、具体的な使用方法はアプリケーションの要件によります。
 
@@ -202,17 +202,17 @@ WKNavigationDelegate のメソッドが実行されるタイミングについ�
 
 `WKNavigationDelegate` には、さらにいくつかの他のメソッドがあります。それらは以下の通りです：
 
-1. \*\*`webView(\_:decidePolicyFor:preferences:decisionHandler:)`\*\*: 新しいウィンドウを開く要求が来たときに呼び出され、新しいウィンドウの表示に対する方針を決定します。
+1. **`webView(_:decidePolicyFor:preferences:decisionHandler:)`**: 新しいウィンドウを開く要求が来たときに呼び出され、新しいウィンドウの表示に対する方針を決定します。
 
-2. \*\*`webViewWebContentProcessDidTerminate(\_:)`\*\*: WebビューのWebコンテンツプロセスがクラッシュしたときに呼び出されます。
+2. **`webViewWebContentProcessDidTerminate(_:)`**: WebビューのWebコンテンツプロセスがクラッシュしたときに呼び出されます。
 
-3. \*\*`webView(\_:authenticationChallenge:shouldAllowDeprecatedTLSDecisionHandler:)`\*\*: Webビューが非推奨のTLSプロトコルを使用して接続しようとするときに呼び出されます。
+3. **`webView(_:authenticationChallenge:shouldAllowDeprecatedTLSDecisionHandler:)`**: Webビューが非推奨のTLSプロトコルを使用して接続しようとするときに呼び出されます。
 
-4. \*\*`webView(\_:didReceive:completionHandler:)`\*\*: チャレンジに応答するために呼び出されます。
+4. **`webView(_:didReceive:completionHandler:)`**: チャレンジに応答するために呼び出されます。
 
 これらのメソッドは全てオプションであり、使用するかどうかはアプリケーションの要件によります。
 
-それぞれのメソッドが呼び出されるタイミングは、そのメソッドが対応する特定のイベントまたは状況によります。例えば、`webView(\_:decidePolicyFor:preferences:decisionHandler:)`は新しいウィンドウを開く要求が来たときに呼び出され、`webViewWebContentProcessDidTerminate(\_:)`はWebビューのWebコンテンツプロセスがクラッシュしたときに呼び出されます。
+それぞれのメソッドが呼び出されるタイミングは、そのメソッドが対応する特定のイベントまたは状況によります。例えば、`webView(_:decidePolicyFor:preferences:decisionHandler:)`は新しいウィンドウを開く要求が来たときに呼び出され、`webViewWebContentProcessDidTerminate(_:)`はWebビューのWebコンテンツプロセスがクラッシュしたときに呼び出されます。
 
 ---
 
@@ -228,30 +228,30 @@ WKNavigationDelegate のメソッドが実行されるタイミングについ�
 
 ウェブページのナビゲーションが開始されてから完了するまでの流れを表す一般的な `WKNavigationDelegate` のメソッドの呼び出し順序は次のようになります：
 
-1. \*\*`webView(\_:decidePolicyFor:decisionHandler:)`\*\*: ナビゲーションアクションが行われる前に呼び出されます。そのアクションを許可するかキャンセルするかを決定します。
+1. **`webView(_:decidePolicyFor:decisionHandler:)`**: ナビゲーションアクションが行われる前に呼び出されます。そのアクションを許可するかキャンセルするかを決定します。
 
-2. \*\*`webView(\_:didStartProvisionalNavigation:)`\*\*: ページの読み込みが開始されたときに呼び出されます。このメソッドは新しいページの読み込みが始まるたびに呼び出されます。
+2. **`webView(_:didStartProvisionalNavigation:)`**: ページの読み込みが開始されたときに呼び出されます。このメソッドは新しいページの読み込みが始まるたびに呼び出されます。
 
-3. \*\*`webView(\_:didReceiveServerRedirectForProvisionalNavigation:)`\*\*: サーバからのリダイレクトが受け取られたときに呼び出されます。
+3. **`webView(_:didReceiveServerRedirectForProvisionalNavigation:)`**: サーバからのリダイレクトが受け取られたときに呼び出されます。
 
-4. \*\*`webView(\_:didCommit:)`\*\*: ウェブビューがコンテンツを受け取り始めたときに呼び出されます。これはページの読み込みが進行中で、データがWebViewに送信されていることを意味します。
+4. **`webView(_:didCommit:)`**: ウェブビューがコンテンツを受け取り始めたときに呼び出されます。これはページの読み込みが進行中で、データがWebViewに送信されていることを意味します。
 
-5. \*\*`webView(\_:didFinish:)`\*\*: ページの読み込みが完了したときに呼び出されます。これは全てのコンテンツが読み込まれ、JavaScriptの読み込みも完了したことを示します。
+5. **`webView(_:didFinish:)`**: ページの読み込みが完了したときに呼び出されます。これは全てのコンテンツが読み込まれ、JavaScriptの読み込みも完了したことを示します。
 
 エラーが発生した場合、それぞれの段階で対応するエラーメソッドが呼び出されます:
 
-- \*\*`webView(\_:didFailProvisionalNavigation:withError:)`\*\*: ページの読み込みの開始段階でエラーが発生した場合に呼び出されます。
+- **`webView(_:didFailProvisionalNavigation:withError:)`**: ページの読み込みの開始段階でエラーが発生した場合に呼び出されます。
 
-- \*\*`webView(\_:didFail:withError:)`\*\*: ナビゲーション中またはページの読み込み中にエラーが発生した場合に呼び出されます。
+- **`webView(_:didFail:withError:)`**: ナビゲーション中またはページの読み込み中にエラーが発生した場合に呼び出されます。
 
 また、以下のメソッドは特定のイベントに応じて呼び出されます：
 
-- \*\*`webView(\_:decidePolicyFor:preferences:decisionHandler:)`\*\*: 新しいウィンドウを開く要求が来たときに呼び出されます。
+- **`webView(_:decidePolicyFor:preferences:decisionHandler:)`**: 新しいウィンドウを開く要求が来たときに呼び出されます。
 
-- \*\*`webViewWebContentProcessDidTerminate(\_:)`\*\*: WebビューのWebコンテンツプロセスがクラッシュしたときに呼び出されます。
+- **`webViewWebContentProcessDidTerminate(_:)`**: WebビューのWebコンテンツプロセスがクラッシュしたときに呼び出されます。
 
-- \*\*`webView(\_:authenticationChallenge:shouldAllowDeprecatedTLSDecisionHandler:)`\*\*: Webビューが非推奨のTLSプロトコルを使用して接続しようとするときに呼び出されます。
+- **`webView(_:authenticationChallenge:shouldAllowDeprecatedTLSDecisionHandler:)`**: Webビューが非推奨のTLSプロトコルを使用して接続しようとするときに呼び出されます。
 
-- \*\*`webView(\_:didReceive:completionHandler:)`\*\*: 認証チャレンジに応答するた
+- **`webView(_:didReceive:completionHandler:)`**: 認証チャレンジに応答するた
 
 ---

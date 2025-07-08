@@ -365,7 +365,7 @@ DebugLocalizationPageみたいなところで言語の切り替えの検証ペ�
 ## 🔧 ツール
 *2025/2/1 22:43:40*
 
-\*\*Setting up the interface\*\*
+**Setting up the interface**
 
 I’m constructing a UI with Slang’s i18n and translation provider, adding ElevatedButtons for locales, and showing translations in a text area. Progressing towards a functional debug localization page.
 
@@ -501,35 +501,35 @@ StatefulWidgetではなくて、リバーポッドやhooksを使って欲しい�
 ## 🔧 ツール
 *2025/2/1 22:45:08*
 
-\*\*Weighing state management options\*\*
+**Weighing state management options**
 
 I'm contemplating state management choices, considering Riverpod for a debu localization page. Exploring consumer widgets or stateless with hooks for tracking locale changes.
 
-\*\*Mapping locale management\*\*
+**Mapping locale management**
 
 I’m defining a Riverpod provider to manage the current locale, considering options like a "localeStateProvider" or directly using Slang's "TranslationProvider" for UI updates.
 
-\*\*Weighing options\*\*
+**Weighing options**
 
-I'm torn between a "HookWidget" with hooks\_riverpod or flutter\_hooks, leaning towards a simpler "ConsumerWidget" for locale management. The goal is to keep things straightforward.
+I'm torn between a "HookWidget" with hooks_riverpod or flutter_hooks, leaning towards a simpler "ConsumerWidget" for locale management. The goal is to keep things straightforward.
 
-\*\*Setting locale and managing language\*\*
+**Setting locale and managing language**
 
 I'm working through managing the locale with Slang's "TranslationProvider," including current locale text display and buttons to toggle between languages, like English and Japanese.
 
-\*\*Syncing locale updates\*\*
+**Syncing locale updates**
 
 Considering using a Riverpod StateProvider to sync with Slang's setLocale. Options include manually updating the provider or listening to Slang's stream for more dynamic changes.
 
-\*\*Simplifying the approach\*\*
+**Simplifying the approach**
 
-Taking a closer look at using "HookConsumerWidget" for hooks\_riverpod, which might be overkill, but could demonstrate hook usage nicely.
+Taking a closer look at using "HookConsumerWidget" for hooks_riverpod, which might be overkill, but could demonstrate hook usage nicely.
 
-\*\*Switching locales\*\*
+**Switching locales**
 
 I’m making a "HookConsumerWidget" to toggle between English and Japanese. The UI automatically updates with Slang's context.t for other text, while the current locale updates manually.
 
-\*\*Finalizing the approach\*\*
+**Finalizing the approach**
 
 I’m working through the manual update of the current locale in a "HookConsumerWidget" and considering the simpler solution of presenting just one example, likely a ConsumerWidget.
 
@@ -779,15 +779,15 @@ jsonに locale を持つのはどうだろうか？
 ## 🔧 ツール
 *2025/2/1 22:48:03*
 
-\*\*Weighing storage options\*\*
+**Weighing storage options**
 
 I’m figuring out whether to store locale data—or the currently selected locale—in JSON, considering options like configuration, locale codes, or user preferences. JSON is often used for i18n storage, not locale preferences.
 
-\*\*Mapping locale storage\*\*
+**Mapping locale storage**
 
 I’m thinking about creating a JSON file with locale data for a dropdown. Ultimately, the user wants to persist the selected locale using SharedPreferences for future app sessions.
 
-\*\*Weighing options\*\*
+**Weighing options**
 
 I’m evaluating storing the selected locale in a JSON file versus SharedPreferences, considering ease of access and parsing needs, and contrasting these against localization features like automatic JSON translation loading.
 

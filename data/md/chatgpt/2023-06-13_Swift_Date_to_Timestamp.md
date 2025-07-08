@@ -148,7 +148,7 @@ extension Date {
 *2023/6/14 1:39:22*
 
 そんなにコメントいらなくて、以下の処理が何をしているかをコメントで教えて欲しい
-let nanos = Int32((timeInterval - Double(seconds)) \* 1000000000.0)
+let nanos = Int32((timeInterval - Double(seconds)) * 1000000000.0)
 
 ---
 
@@ -170,7 +170,7 @@ let nanos = Int32((timeInterval - Double(seconds)) * 1000000000.0)
 ## 👤 ユーザー
 *2023/6/14 1:40:07*
 
-ナノって変換しやすいように\_とか入れられるんだっけ？
+ナノって変換しやすいように_とか入れられるんだっけ？
 
 ---
 

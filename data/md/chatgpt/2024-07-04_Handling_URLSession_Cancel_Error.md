@@ -13,7 +13,7 @@
 public enum URLSessionDownloadDriver {
     public static func imageDownload(url: URL) async throws -&gt; UIImage {
         do {
-            let (data, \_) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(from: url)
             OSLogger.debugLog("Completed: Download")
 
             guard let image = UIImage(data: data) else {
@@ -22,18 +22,18 @@ public enum URLSessionDownloadDriver {
 
             return image
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             throw error
         }
     }
 
     public static func audioDownload(url: URL) async throws -&gt; Data {
         do {
-            let (data, \_) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(from: url)
             OSLogger.debugLog("Completed: Download")
             return data
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             throw error
         }
     }

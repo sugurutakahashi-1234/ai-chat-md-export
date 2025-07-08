@@ -17,19 +17,19 @@ Favorite なんだけど、非活性のときには ブックマークアイコ�
 
 画像のように Favorite と Within 100km radius の chips によるフィルター機能をつけたい。いい感じに実装してほしい。
 
-import 'package:built\_collection/built\_collection.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:guild\_api/guild\_api.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/api\_provider.dart';
-import 'package:snpit\_guild\_app/utils/api\_handling\_utils.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:guild_api/guild_api.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/api_provider.dart';
+import 'package:snpit_guild_app/utils/api_handling_utils.dart';
 
-part 'get\_spot\_list.g.dart';
+part 'get_spot_list.g.dart';
 
 @Riverpod(keepAlive: true)
-class GetSpotListNotifier extends \_$GetSpotListNotifier {
+class GetSpotListNotifier extends _$GetSpotListNotifier {
   @override
   Future&lt;BuiltList&lt;SpotDTO&gt;?&gt; build() async =&gt; null;
 
@@ -77,14 +77,14 @@ class GetSpotListNotifier extends \_$GetSpotListNotifier {
 }
 
 
-import 'package:flutter\_riverpod/flutter\_riverpod.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/domain/preferences\_keys.dart';
-import 'package:snpit\_guild\_app/domain/search\_type.dart';
-import 'package:snpit\_guild\_app/infrastructure/services/shared\_preferences\_service.dart';
-import 'package:snpit\_guild\_app/presentation/providers/shared\_preferences/shared\_preferences\_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/domain/preferences_keys.dart';
+import 'package:snpit_guild_app/domain/search_type.dart';
+import 'package:snpit_guild_app/infrastructure/services/shared_preferences_service.dart';
+import 'package:snpit_guild_app/presentation/providers/shared_preferences/shared_preferences_provider.dart';
 
-part 'shared\_preferences\_service\_provider.g.dart';
+part 'shared_preferences_service_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 Future&lt;SharedPreferencesService&gt; sharedPreferencesService(Ref ref) async {
@@ -93,7 +93,7 @@ Future&lt;SharedPreferencesService&gt; sharedPreferencesService(Ref ref) async {
 }
 
 @Riverpod(keepAlive: true)
-class IsSpotFilterModeNotifier extends \_$IsSpotFilterModeNotifier {
+class IsSpotFilterModeNotifier extends _$IsSpotFilterModeNotifier {
   @override
   Future&lt;bool&gt; build() async {
     try {
@@ -112,7 +112,7 @@ class IsSpotFilterModeNotifier extends \_$IsSpotFilterModeNotifier {
 }
 
 @Riverpod(keepAlive: true)
-class SearchTypeNotifier extends \_$SearchTypeNotifier {
+class SearchTypeNotifier extends _$SearchTypeNotifier {
   @override
   Future&lt;SearchType&gt; build() async {
     try {
@@ -138,19 +138,19 @@ class SearchTypeNotifier extends \_$SearchTypeNotifier {
 
 画像のように Favorite と Within 100km radius の chips による2つのフィルター機能をつけたい。いい感じに実装してほしい。
 
-import 'package:built\_collection/built\_collection.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:guild\_api/guild\_api.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/api\_provider.dart';
-import 'package:snpit\_guild\_app/utils/api\_handling\_utils.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:guild_api/guild_api.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/api_provider.dart';
+import 'package:snpit_guild_app/utils/api_handling_utils.dart';
 
-part 'get\_spot\_list.g.dart';
+part 'get_spot_list.g.dart';
 
 @Riverpod(keepAlive: true)
-class GetSpotListNotifier extends \_$GetSpotListNotifier {
+class GetSpotListNotifier extends _$GetSpotListNotifier {
   @override
   Future&lt;BuiltList&lt;SpotDTO&gt;?&gt; build() async =&gt; null;
 
@@ -198,14 +198,14 @@ class GetSpotListNotifier extends \_$GetSpotListNotifier {
 }
 
 
-import 'package:flutter\_riverpod/flutter\_riverpod.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/domain/preferences\_keys.dart';
-import 'package:snpit\_guild\_app/domain/search\_type.dart';
-import 'package:snpit\_guild\_app/infrastructure/services/shared\_preferences\_service.dart';
-import 'package:snpit\_guild\_app/presentation/providers/shared\_preferences/shared\_preferences\_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/domain/preferences_keys.dart';
+import 'package:snpit_guild_app/domain/search_type.dart';
+import 'package:snpit_guild_app/infrastructure/services/shared_preferences_service.dart';
+import 'package:snpit_guild_app/presentation/providers/shared_preferences/shared_preferences_provider.dart';
 
-part 'shared\_preferences\_service\_provider.g.dart';
+part 'shared_preferences_service_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 Future&lt;SharedPreferencesService&gt; sharedPreferencesService(Ref ref) async {
@@ -214,7 +214,7 @@ Future&lt;SharedPreferencesService&gt; sharedPreferencesService(Ref ref) async {
 }
 
 @Riverpod(keepAlive: true)
-class IsSpotFilterModeNotifier extends \_$IsSpotFilterModeNotifier {
+class IsSpotFilterModeNotifier extends _$IsSpotFilterModeNotifier {
   @override
   Future&lt;bool&gt; build() async {
     try {
@@ -233,7 +233,7 @@ class IsSpotFilterModeNotifier extends \_$IsSpotFilterModeNotifier {
 }
 
 @Riverpod(keepAlive: true)
-class SearchTypeNotifier extends \_$SearchTypeNotifier {
+class SearchTypeNotifier extends _$SearchTypeNotifier {
   @override
   Future&lt;SearchType&gt; build() async {
     try {

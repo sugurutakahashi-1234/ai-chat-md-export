@@ -10,25 +10,25 @@
 これって最新の値はfirstに入っているのラストに入っているの？
 
 public struct BoundedArray&lt;T&gt; {
-    private var array: \[T\] = \[\]
+    private var array: [T] = []
     private var maxSize: Int
 
     public init(maxSize: Int) {
         self.maxSize = maxSize
     }
 
-    public mutating func append(\_ element: T) {
+    public mutating func append(_ element: T) {
         if array.count &gt;= maxSize {
             array.removeFirst()
         }
         array.append(element)
     }
 
-    public func getArray() -&gt; \[T\] {
+    public func getArray() -&gt; [T] {
         return array
     }
 
-    public mutating func setMaxSize(\_ newSize: Int) {
+    public mutating func setMaxSize(_ newSize: Int) {
         while array.count &gt; newSize {
             array.removeFirst()
         }

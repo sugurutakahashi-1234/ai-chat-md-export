@@ -16,22 +16,22 @@ Future onTapReject() async {}
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:image\_cropper/image\_cropper.dart';
-import 'package:image\_picker/image\_picker.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:permission\_handler/permission\_handler.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/update\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/update\_guild\_member.dart';
-import 'package:snpit\_guild\_app/presentation/router/router.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/update_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/update_guild_member.dart';
+import 'package:snpit_guild_app/presentation/router/router.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class GuildManagePage extends HookConsumerWidget {
   const GuildManagePage({super.key});
@@ -52,7 +52,7 @@ class GuildManagePage extends HookConsumerWidget {
       final croppedFile = await ImageCropper().cropImage(
         sourcePath: pickedFile.path,
         aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
-        uiSettings: \[
+        uiSettings: [
           AndroidUiSettings(
             hideBottomControls: true,
             lockAspectRatio: true,
@@ -60,7 +60,7 @@ class GuildManagePage extends HookConsumerWidget {
           IOSUiSettings(
             aspectRatioLockEnabled: true,
           ),
-        \],
+        ],
       );
 
       if (croppedFile == null) {
@@ -71,10 +71,10 @@ class GuildManagePage extends HookConsumerWidget {
       imageFile.value = File(croppedFile.path);
       debugPrint('Cropped image path: ${imageFile.value!.path}');
 
-      // TODO: \[Photo\] 画像アップロードなど適切な API 呼び出し
+      // TODO: [Photo] 画像アップロードなど適切な API 呼び出し
       await ref.read(updateGuildNotifierProvider.notifier).updateGuildAvatar(
             UriExtensions.randomImageUrlWithTitle(
-              // ignore: use\_build\_context\_synchronously
+              // ignore: use_build_context_synchronously
               TimeOfDay.now().format(context),
             ).toString(),
           );
@@ -109,9 +109,9 @@ class GuildManagePage extends HookConsumerWidget {
           final guildId = guildInfo.guildId ?? 'Unknown';
           final guildName = guildInfo.guildName ?? 'No Name';
           final guildAvatar = guildInfo.guildAvatar ?? '';
-          final guildMembers = guildInfo.guildMembers ?? &lt;GuildMemberDto&gt;\[\];
+          final guildMembers = guildInfo.guildMembers ?? &lt;GuildMemberDto&gt;[];
 
-          return \_buildGuildManagementContent(
+          return _buildGuildManagementContent(
             context: context,
             ref: ref,
             pickAndCropImage: pickAndCropImage,
@@ -126,7 +126,7 @@ class GuildManagePage extends HookConsumerWidget {
   }
 
   /// GuildInfoResponseDtoData の中の必要データを非オプショナルで受け取り、安全なデフォルトを使う
-  Widget \_buildGuildManagementContent({
+  Widget _buildGuildManagementContent({
     required BuildContext context,
     required WidgetRef ref,
     required Future&lt;void&gt; Function() pickAndCropImage,
@@ -140,20 +140,20 @@ class GuildManagePage extends HookConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: \[
+          children: [
             const SizedBox(height: 32),
             // ギルドのアバター(写真)
             Center(
               child: GestureDetector(
                 onTap: () async {
-                  final hasPermission = await \_hasPhotoPermission(context);
+                  final hasPermission = await _hasPhotoPermission(context);
                   if (hasPermission) {
                     await pickAndCropImage();
                   }
                 },
                 child: Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: guildAvatar.isNotEmpty
@@ -168,7 +168,7 @@ class GuildManagePage extends HookConsumerWidget {
                               height: 64,
                               color: ColorToken.bgDark,
                               child: const Icon(
-                                Icons.hide\_image\_outlined,
+                                Icons.hide_image_outlined,
                                 size: 48,
                                 color: ColorToken.text,
                               ),
@@ -183,11 +183,11 @@ class GuildManagePage extends HookConsumerWidget {
                       ),
                     ),
                     const Icon(
-                      Icons.camera\_alt,
+                      Icons.camera_alt,
                       size: 24,
                       color: Colors.white,
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
@@ -234,7 +234,7 @@ class GuildManagePage extends HookConsumerWidget {
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: \[
+                    children: [
                       const Text(
                         'Name',
                         style: TextStyle(
@@ -243,20 +243,20 @@ class GuildManagePage extends HookConsumerWidget {
                         ),
                       ),
                       Row(
-                        children: \[
+                        children: [
                           Text(
                             guildName,
                             style: const TextStyle(fontSize: 16),
                           ),
                           const SizedBox(width: 8),
                           const Icon(
-                            Icons.chevron\_right,
+                            Icons.chevron_right,
                             color: ColorToken.text,
                             size: 20,
                           ),
-                        \],
+                        ],
                       ),
-                    \],
+                    ],
                   ),
                 ),
               ),
@@ -265,20 +265,20 @@ class GuildManagePage extends HookConsumerWidget {
             const Divider(color: ColorToken.secondary, thickness: 1),
             const SizedBox(height: 32),
             // メンバー申請一覧
-            \_buildRequestedMembers(
+            _buildRequestedMembers(
               context: context,
               ref: ref,
               guildId: guildId,
               guildMembers: guildMembers,
             ),
-          \],
+          ],
         ),
       ),
     );
   }
 
   /// 申請中メンバー一覧表示
-  Widget \_buildRequestedMembers({
+  Widget _buildRequestedMembers({
     required BuildContext context,
     required WidgetRef ref,
     required String guildId,
@@ -301,7 +301,7 @@ class GuildManagePage extends HookConsumerWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: requestedMembers.length,
       itemBuilder: (context, index) {
-        final member = requestedMembers\[index\];
+        final member = requestedMembers[index];
         final userId = member.userId ?? 'UnknownUserId';
         final userName = member.username ?? 'UnknownUserName';
         final avatarUrl = member.avatar ?? '';
@@ -317,17 +317,17 @@ class GuildManagePage extends HookConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
-                children: \[
+                children: [
                   // ユーザー情報部分
                   Row(
-                    children: \[
+                    children: [
                       // 左側：アバター + ユーザー名
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: \[
+                          children: [
                             Row(
-                              children: \[
+                              children: [
                                 CircleAvatar(
                                   radius: 16,
                                   backgroundImage: avatarUrl.isNotEmpty
@@ -350,7 +350,7 @@ class GuildManagePage extends HookConsumerWidget {
                                     ),
                                   ),
                                 ),
-                              \],
+                              ],
                             ),
                             const SizedBox(height: 10),
                             // バッジなど（例としてダミー4個）
@@ -373,28 +373,28 @@ class GuildManagePage extends HookConsumerWidget {
                                 ),
                               ),
                             ),
-                          \],
+                          ],
                         ),
                       ),
                       // 右側：各種ステータス (Q, E, L, B など)
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
-                          children: \[
-                            \_buildStatRow('Q', 13),
-                            \_buildStatRow('E', 48),
-                            \_buildStatRow('L', 7),
-                            \_buildStatRow('B', 5),
-                          \],
+                          children: [
+                            _buildStatRow('Q', 13),
+                            _buildStatRow('E', 48),
+                            _buildStatRow('L', 7),
+                            _buildStatRow('B', 5),
+                          ],
                         ),
                       ),
-                    \],
+                    ],
                   ),
                   const SizedBox(height: 16),
                   // 承認・却下ボタン
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: \[
+                    children: [
                       Flexible(
                         child: OutlinedButton(
                           onPressed: () async {
@@ -454,9 +454,9 @@ class GuildManagePage extends HookConsumerWidget {
                           ),
                         ),
                       ),
-                    \],
+                    ],
                   ),
-                \],
+                ],
               ),
             ),
           ),
@@ -466,10 +466,10 @@ class GuildManagePage extends HookConsumerWidget {
   }
 
   /// 各種ステータス表示用のウィジェット
-  Widget \_buildStatRow(String label, int value) {
+  Widget _buildStatRow(String label, int value) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
-      children: \[
+      children: [
         const SizedBox(width: 40),
         SizedBox(
           width: 20,
@@ -496,12 +496,12 @@ class GuildManagePage extends HookConsumerWidget {
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-      \],
+      ],
     );
   }
 
   /// 写真の権限をチェックして、権限があれば true を返す
-  Future&lt;bool&gt; \_hasPhotoPermission(BuildContext context) async {
+  Future&lt;bool&gt; _hasPhotoPermission(BuildContext context) async {
     final status = await Permission.photos.request();
 
     switch (status) {
@@ -512,7 +512,7 @@ class GuildManagePage extends HookConsumerWidget {
       case PermissionStatus.permanentlyDenied:
         // 永久に拒否されている場合
         if (context.mounted) {
-          \_showPermissionDialog(context);
+          _showPermissionDialog(context);
         }
         return false;
       case PermissionStatus.denied:
@@ -529,14 +529,14 @@ class GuildManagePage extends HookConsumerWidget {
   }
 
   /// 設定画面へ遷移させるダイアログを表示
-  void \_showPermissionDialog(BuildContext context) {
+  void _showPermissionDialog(BuildContext context) {
     showDialog&lt;void&gt;(
       context: context,
       builder: (context) =&gt; AlertDialog(
         title: const Text('Permission to access photos is required'),
         content:
             const Text('Enable photo access in settings to select a photo.'),
-        actions: \[
+        actions: [
           TextButton(
             onPressed: () async {
               context.pop();
@@ -549,7 +549,7 @@ class GuildManagePage extends HookConsumerWidget {
             },
             child: const Text('Open Settings'),
           ),
-        \],
+        ],
       ),
     );
   }
@@ -560,41 +560,41 @@ class GuildManagePage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/1/19 17:07:22*
 
-\*\*Creating async methods\*\*
+**Creating async methods**
 
 I'm working on `onTapReject` and `onTapApprove` to handle errors with `try/catch`, showing a snackbar if something goes wrong. Progress is steady, aiming for robust error handling.
 
-\*\*Thinking through context\*\*
+**Thinking through context**
 
 I'm considering how to handle async methods `onTapReject` and `onTapApprove`, ensuring they access necessary arguments like context or userId for error handling or displaying snack bars.
 
-\*\*Mapping the logic\*\*
+**Mapping the logic**
 
 I'm considering adapting the inline logic to `onTapReject` and `onTapApprove`, possibly passing context or userId as arguments to ensure error handling and updating necessary data.
 
-\*\*Adjusting my strategy\*\*
+**Adjusting my strategy**
 
 I'm thinking through adding parameters for context, ref, guildId, userId, and userName to `onTapReject` and `onTapApprove`, aligning with the user's request for error handling and snackbar display.
 
-\*\*Error handling strategy\*\*
+**Error handling strategy**
 
 I'm figuring out how to cover errors efficiently in `onTapReject` and `onTapApprove` by adding `try/catch` blocks and a snackbar for error messages. Progress is steady and logical.
 
-\*\*Enhancing error handling\*\*
+**Enhancing error handling**
 
-I'm adding `try/catch` blocks to `onTapReject` and `onTapApprove`, and planning to replicate `\_buildRequestedMembers` logic within these methods for consistent error handling and snackbar display.
+I'm adding `try/catch` blocks to `onTapReject` and `onTapApprove`, and planning to replicate `_buildRequestedMembers` logic within these methods for consistent error handling and snackbar display.
 
-\*\*Adding context variables\*\*
+**Adding context variables**
 
-I’m noting the potential to include context variables like `guildId` or `userId` in `onTapReject` and `onTapApprove`. This might align with `\_buildRequestedMembers`' logic, but we'll keep it simple for now.
+I’m noting the potential to include context variables like `guildId` or `userId` in `onTapReject` and `onTapApprove`. This might align with `_buildRequestedMembers`' logic, but we'll keep it simple for now.
 
-\*\*Mapping out changes\*\*
+**Mapping out changes**
 
-I’m planning to replace calls in `\_buildRequestedMembers` with `onTapReject` and `onTapApprove`, enhancing them with error handling and snackbar display, while considering relevant context variables.
+I’m planning to replace calls in `_buildRequestedMembers` with `onTapReject` and `onTapApprove`, enhancing them with error handling and snackbar display, while considering relevant context variables.
 
-\*\*Implementing error handling\*\*
+**Implementing error handling**
 
-I’m integrating `onTapReject` and `onTapApprove` methods with error handling and snackbars, aligning them with `\_buildRequestedMembers` to ensure consistent functionality.
+I’m integrating `onTapReject` and `onTapApprove` methods with error handling and snackbars, aligning them with `_buildRequestedMembers` to ensure consistent functionality.
 
 ---
 

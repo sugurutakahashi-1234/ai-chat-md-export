@@ -22,7 +22,7 @@ UIViewRepresentable Representable.Coordinator ってなんですか？
 
 1. `makeCoordinator()`: SwiftUI に Coordinator インスタンスを作成する方法を指示します。
 2. `makeUIView(context: Context)`: 与えられたコンテキストを使用して、UIKit ビューのインスタンスを作成します。
-3. `updateUIView(\_ uiView: UIViewType, context: Context)`: SwiftUI からの状態変更やビューの再構築が発生した際に、UIKit ビューを更新します。
+3. `updateUIView(_ uiView: UIViewType, context: Context)`: SwiftUI からの状態変更やビューの再構築が発生した際に、UIKit ビューを更新します。
 
 `Representable.Coordinator` を使用することで、SwiftUI と UIKit の機能を効果的に組み合わせることができます。例えば、SwiftUI でカスタムの UIKit ベースのマップビューやテキストフィールドを表示・操作することが可能です。
 
@@ -580,7 +580,7 @@ struct ContentView: View {
 ## 👤 ユーザー
 *2023/5/12 15:02:23*
 
-func onTextFieldAppear(\_ action: @escaping () -&gt; Void) -&gt; some View {
+func onTextFieldAppear(_ action: @escaping () -&gt; Void) -&gt; some View {
         self.onAppear(perform: action)
     }
 こんなことできるの？

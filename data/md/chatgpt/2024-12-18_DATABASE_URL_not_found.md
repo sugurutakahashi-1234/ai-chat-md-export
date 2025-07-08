@@ -13,15 +13,15 @@ Datasource "db": PostgreSQL database
 
 Error: Prisma schema validation - (get-config wasm)
 Error code: P1012
-error: Environment variable not found: DATABASE\_URL.
+error: Environment variable not found: DATABASE_URL.
   --&gt;  prisma/schema.prisma:14
    | 
 13 |   provider = "postgresql"
-14 |   url      = env("DATABASE\_URL")
+14 |   url      = env("DATABASE_URL")
    | 
 
 Validation Error Count: 1
-\[Context: getConfig\]
+[Context: getConfig]
 
 Prisma CLI Version : 6.1.0
 

@@ -10,9 +10,9 @@
 maxColumnCount がある場合に、volumeLevels が maxColumnCount に達していなければ、前方に 0 で埋めてあげてほしい
 
 struct WaveformView: View {
-    let volumeLevels: \[Double\]
+    let volumeLevels: [Double]
 
-    init(volumeLevels: \[Double\], isRandomized: Bool = false, maxColumnCount: Int? = nil) {
+    init(volumeLevels: [Double], isRandomized: Bool = false, maxColumnCount: Int? = nil) {
         if isRandomized {
             self.volumeLevels = volumeLevels.shuffled()
         } else {
@@ -28,12 +28,12 @@ struct WaveformView: View {
             let spacing = rectangleWidth / 2
 
             HStack(spacing: spacing) {
-                ForEach(0..&lt;volumeLevels.count, id: \\.self) { index in
+                ForEach(0..&lt;volumeLevels.count, id: \.self) { index in
                     VStack {
                         Spacer()
                         Rectangle()
                             .fill(Color.accentColor)
-                            .frame(width: rectangleWidth, height: volumeLevels\[index\] \* 100)
+                            .frame(width: rectangleWidth, height: volumeLevels[index] * 100)
                             .cornerRadius(8)
                         Spacer()
                     }

@@ -11,10 +11,10 @@ InquirySendViewについて、ニックネームとメールアドレスと電�
 
 public struct InquiryView: View {
     @StateObject private var presenter: InquiryPresenter
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     public init() {
-        \_presenter = .init(wrappedValue: InquiryPresenter())
+        _presenter = .init(wrappedValue: InquiryPresenter())
     }
 
     public var body: some View {
@@ -73,8 +73,8 @@ public struct InquiryView: View {
             
             List {
                 Picker(selection: $presenter.selectedInquiryType) {
-                    ForEach(InquiryType.allCases, id: \\.self) { type in
-                        Text("\\(type.displayName)")
+                    ForEach(InquiryType.allCases, id: \.self) { type in
+                        Text("\(type.displayName)")
                             .tag(type)
                     }
                 } label: {
@@ -147,7 +147,7 @@ struct InquirySendView: View {
     let inquiryDetailText: String
     let onTapSend: () -&gt; Void
     @Binding var shouldDismiss: Bool
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         ScrollView(.vertical) {
@@ -161,7 +161,7 @@ struct InquirySendView: View {
             .padding(.vertical)
 
             HStack {
-                Text("\\(selectedInquiryType.displayName)")
+                Text("\(selectedInquiryType.displayName)")
                     .padding(.horizontal, 20)
                     .padding(.bottom)
                 Spacer()

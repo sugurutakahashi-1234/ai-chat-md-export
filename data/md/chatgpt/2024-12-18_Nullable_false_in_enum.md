@@ -9,7 +9,7 @@
 
 openapiでenumって nullable false って意味あるの？
 
-properties: {username: {type: string, description: 'The username of the account', example: user1, nullable: true}, email: {type: string, description: 'The email of the account', example: guild@gmail.com, nullable: true}, SNPITToken: {type: string, description: 'The SNPIT token to link the Guild account with SNPIT account', nullable: true}, Avatar: {type: string, description: 'Avatar shown in map', enum: \[AVATAR1, AVATAR2, AVATAR3\], nullable: false}}
+properties: {username: {type: string, description: 'The username of the account', example: user1, nullable: true}, email: {type: string, description: 'The email of the account', example: guild@gmail.com, nullable: true}, SNPITToken: {type: string, description: 'The SNPIT token to link the Guild account with SNPIT account', nullable: true}, Avatar: {type: string, description: 'Avatar shown in map', enum: [AVATAR1, AVATAR2, AVATAR3], nullable: false}}
 
 ---
 

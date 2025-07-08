@@ -12,7 +12,7 @@ format の命名を変えたい。いくつか候補をだしてほしい
 /// 電話番号ドライバープロトコル
 public protocol PhoneNumberDriverProtocol: AnyObject {
     /// 全ての Country 一覧
-    var allCountries: \[Country\] { get throws }
+    var allCountries: [Country] { get throws }
 
     /// 日本の Country 型
     var japan: Country { get }

@@ -257,7 +257,7 @@ https://github.com/suguruTakahashi-1234/fia-practical-sample
 ## 👤 ユーザー
 *2024/6/14 10:33:50*
 
-ちなみに cron: '3 2 1 \* \*' はどう言う意味
+ちなみに cron: '3 2 1 * *' はどう言う意味
 
 ---
 
@@ -371,7 +371,7 @@ jobs:
 ## 👤 ユーザー
 *2024/6/14 10:35:16*
 
-content-filepath: ./issue\_metrics.md はどう言う意味？
+content-filepath: ./issue_metrics.md はどう言う意味？
 
 ---
 
@@ -547,15 +547,15 @@ jobs:
 name: Issue Metrics
 
 on:
-  workflow\_dispatch:
+  workflow_dispatch:
   schedule:
-    - cron: '0 0 1 \* \*'
+    - cron: '0 0 1 * *'
 
 permissions:
   contents: read
 
 env:
-  gh\_token: ${{ secrets.IOS\_TEAM\_PAT }} # IOS\_TEAM\_PAT: project, read:org, repo
+  gh_token: ${{ secrets.IOS_TEAM_PAT }} # IOS_TEAM_PAT: project, read:org, repo
   repo: suguruTakahashi-1234/swiftui-sample-app
 
 jobs:
@@ -570,27 +570,27 @@ jobs:
       shell: bash
       run: |
         # Calculate the first day of the previous month
-        first\_day=$(date -d "last month" +%Y-%m-01)
+        first_day=$(date -d "last month" +%Y-%m-01)
 
         # Calculate the last day of the previous month
-        last\_day=$(date -d "$first\_day +1 month -1 day" +%Y-%m-%d)
+        last_day=$(date -d "$first_day +1 month -1 day" +%Y-%m-%d)
 
         #Set an environment variable with the date range
-        echo "$first\_day..$last\_day"
-        echo "last\_month=$first\_day..$last\_day" &gt;&gt; "$GITHUB\_ENV"
+        echo "$first_day..$last_day"
+        echo "last_month=$first_day..$last_day" &gt;&gt; "$GITHUB_ENV"
 
     - name: Run issue-metrics tool
       uses: github/issue-metrics@v3
       env:
-        GH\_TOKEN: ${{ env.gh\_token }}
-        SEARCH\_QUERY: 'repo:${{ env.repo }} is:issue created:${{ env.last\_month }} -reason:"not planned"'
+        GH_TOKEN: ${{ env.gh_token }}
+        SEARCH_QUERY: 'repo:${{ env.repo }} is:issue created:${{ env.last_month }} -reason:"not planned"'
 
     - name: Create issue
       uses: peter-evans/create-issue-from-file@v5
       with:
         title: 【Report】Monthly issue metrics
-        token: ${{ secrets.GITHUB\_TOKEN }}
-        content-filepath: ./issue\_metrics.md
+        token: ${{ secrets.GITHUB_TOKEN }}
+        content-filepath: ./issue_metrics.md
         labels: |
           report
 

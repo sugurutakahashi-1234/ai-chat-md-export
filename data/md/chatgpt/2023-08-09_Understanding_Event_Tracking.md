@@ -10,25 +10,25 @@
 以下のスプレッドシートをまず理解して欲しいです。
 
 				カスタムパラメーター										
-									↓error\_nameとほぼ同義であるが、実装都合で必要					
-	イベント名	送信するタイミング	備考	なし	message	user\_id	instance\_name	screen\_name	app\_error	error\_name	alert\_title	alert\_message	measurement\_id	session\_id
+									↓error_nameとほぼ同義であるが、実装都合で必要					
+	イベント名	送信するタイミング	備考	なし	message	user_id	instance_name	screen_name	app_error	error_name	alert_title	alert_message	measurement_id	session_id
 			　		String		String	String	String	String	String	String	String	String
-	debug\_log	デバッグログとして送信したい場合			Y									
-	Identify\_user	Identify\_user したタイミングで送信する				Y								
-	clear\_user	ログアウトしてuserIDが一意にならなくなったタイミングで送信する		Y										
-	enable\_analytics	アナリティクスを有効にしたとき		Y										
-	disable\_analytics	アナリティクスを無効にしたとき		Y										
-	init\_instance	インスタンスを生成したとき（init）					Y							
-	deinit\_instance	インスタンスを破棄したとき（deinit）					Y							
-	appear\_screen	画面の表示開始（ViewのonAppear() or task()）						Y						
-	disappear\_screen	画面の表示終了（ViewのonDisappear()）						Y						
+	debug_log	デバッグログとして送信したい場合			Y									
+	Identify_user	Identify_user したタイミングで送信する				Y								
+	clear_user	ログアウトしてuserIDが一意にならなくなったタイミングで送信する		Y										
+	enable_analytics	アナリティクスを有効にしたとき		Y										
+	disable_analytics	アナリティクスを無効にしたとき		Y										
+	init_instance	インスタンスを生成したとき（init）					Y							
+	deinit_instance	インスタンスを破棄したとき（deinit）					Y							
+	appear_screen	画面の表示開始（ViewのonAppear() or task()）						Y						
+	disappear_screen	画面の表示終了（ViewのonDisappear()）						Y						
 	error	エラーが発生したとき							Y	Y				
-	show\_alert	アラートを表示したとき							Y	Y	Y	Y		
-	create\_session	create\_session 成功後											Y	Y
-	start\_analysis	動画 or Web調査開始後											Y	Y
-	end\_analysis	動画 or Web調査のデータ送信後											Y	Y
-	end\_analysis\_invalid\_data	動画 or Web調査のデータ送信後（有効データを満たしていない場合）											Y	Y
-	break\_analysis	動画 or Web調査のデータ送信後（調査を中断した場合）											Y	Y
+	show_alert	アラートを表示したとき							Y	Y	Y	Y		
+	create_session	create_session 成功後											Y	Y
+	start_analysis	動画 or Web調査開始後											Y	Y
+	end_analysis	動画 or Web調査のデータ送信後											Y	Y
+	end_analysis_invalid_data	動画 or Web調査のデータ送信後（有効データを満たしていない場合）											Y	Y
+	break_analysis	動画 or Web調査のデータ送信後（調査を中断した場合）											Y	Y
 
 ---
 
@@ -39,25 +39,25 @@
 
 以下、各カラムとそれに関連する内容をまとめて説明します。
 
-1. \*\*イベント名\*\*: このカラムは、監視対象となる特定のイベントやアクションの名前を示しています。
-2. \*\*送信するタイミング\*\*: このカラムは、イベントが発生した時の詳細な状況や条件を示しています。
-3. \*\*備考\*\*: 特定のイベントに関連する追加情報や説明が記載されているカラムです。
+1. **イベント名**: このカラムは、監視対象となる特定のイベントやアクションの名前を示しています。
+2. **送信するタイミング**: このカラムは、イベントが発生した時の詳細な状況や条件を示しています。
+3. **備考**: 特定のイベントに関連する追加情報や説明が記載されているカラムです。
 4. 以下のカラムは、各イベントが発生した際に送信されるべきデータの種類を示しています。
-   - \*\*なし\*\*: 何も送信しないことを示す。
-   - \*\*message\*\*: おそらく、エラーメッセージや情報メッセージなどを示す。
-   - \*\*user\_id\*\*: ユーザーの一意のID。
-   - \*\*instance\_name\*\*: インスタンスの名前。
-   - \*\*screen\_name\*\*: 表示されている画面の名前。
-   - \*\*app\_error\*\*: アプリケーションのエラーコードやエラーメッセージ。
-   - \*\*error\_name\*\*: エラーの名前や種類。
-   - \*\*alert\_title\*\*: 表示されるアラートのタイトル。
-   - \*\*alert\_message\*\*: 表示されるアラートのメッセージ内容。
-   - \*\*measurement\_id\*\*: 何らかの計測データのID。
-   - \*\*session\_id\*\*: セッションのID。
+   - **なし**: 何も送信しないことを示す。
+   - **message**: おそらく、エラーメッセージや情報メッセージなどを示す。
+   - **user_id**: ユーザーの一意のID。
+   - **instance_name**: インスタンスの名前。
+   - **screen_name**: 表示されている画面の名前。
+   - **app_error**: アプリケーションのエラーコードやエラーメッセージ。
+   - **error_name**: エラーの名前や種類。
+   - **alert_title**: 表示されるアラートのタイトル。
+   - **alert_message**: 表示されるアラートのメッセージ内容。
+   - **measurement_id**: 何らかの計測データのID。
+   - **session_id**: セッションのID。
 
 「Y」とマークされているセルは、そのイベントが発生した際に該当のデータを送信することを示しています。
 
-例として、`error` イベントが発生した場合、`app\_error` と `error\_name` の2つのデータを送信する必要があります。一方で、`appear\_screen` イベントが発生した際には、`screen\_name` のみを送信します。
+例として、`error` イベントが発生した場合、`app_error` と `error_name` の2つのデータを送信する必要があります。一方で、`appear_screen` イベントが発生した際には、`screen_name` のみを送信します。
 
 このスプレッドシートは、アプリケーションやシステムの開発者にとって、どのようなデータをいつ送信するかの指針として非常に役立つものとなっています。
 
@@ -284,9 +284,9 @@ public enum LogEvent {
 
     public struct EndGazeTrackCalibration: LogEventProtocol {
         public let orientation: AppUIInterfaceOrientation
-        public let calibrationData: \[Double\]
+        public let calibrationData: [Double]
 
-        public init(orientation: AppUIInterfaceOrientation, calibrationData: \[Double\]) {
+        public init(orientation: AppUIInterfaceOrientation, calibrationData: [Double]) {
             self.orientation = orientation
             self.calibrationData = calibrationData
         }

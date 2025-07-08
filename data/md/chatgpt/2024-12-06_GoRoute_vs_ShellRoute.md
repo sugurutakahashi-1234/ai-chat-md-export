@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/12/6 15:00:33*
 
-import 'package:go\_router/go\_router.dart';
+import 'package:go_router/go_router.dart';
 のShellRouteとRouteの違いを教えてほしい
 
 ---

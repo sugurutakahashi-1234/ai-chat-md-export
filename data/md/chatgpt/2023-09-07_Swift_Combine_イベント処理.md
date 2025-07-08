@@ -10,7 +10,7 @@
 以下のソースコードについて、interactionDataModelSubject をsubscribeして、actionsの条件と一致したときにprintする処理を書いて欲しい。
 
 let interactionDataModelSubject = PassthroughSubject&lt;InteractionDataModel, Never&gt;()
-let actions: \[Action\]
+let actions: [Action]
 
 public struct InteractionDataModel {
     public let timestampInMilliseconds: Int
@@ -69,7 +69,7 @@ public extension SnakeCasedStructNameProvidable {
 }
 
 public protocol ConvertibleToDictionary {
-    func toDictionary(caseFormat: CaseFormat) -&gt; \[String: Any\]
+    func toDictionary(caseFormat: CaseFormat) -&gt; [String: Any]
 }
 
 public enum CaseFormat {
@@ -80,10 +80,10 @@ public enum CaseFormat {
 
 public extension ConvertibleToDictionary {
     /// 以下の処理は Mirror ではなくて、Codable で書き直すことも検討したのですが、以下の記事のようにやりたいことが達成できなかったので、Mirror 使用している
-    // Ref: \[Swift\] JSONSerialization を使って辞書型に変換すると数値や Bool 値の型が勝手に変更されてしまう件 https://zenn.dev/ikuraikura/articles/2023-08-12-dict
-    func toDictionary(caseFormat: CaseFormat = .original) -&gt; \[String: Any\] {
+    // Ref: [Swift] JSONSerialization を使って辞書型に変換すると数値や Bool 値の型が勝手に変更されてしまう件 https://zenn.dev/ikuraikura/articles/2023-08-12-dict
+    func toDictionary(caseFormat: CaseFormat = .original) -&gt; [String: Any] {
         let mirror = Mirror(reflecting: self)
-        var dictionary: \[String: Any\] = \[:\]
+        var dictionary: [String: Any] = [:]
 
         mirror.children.forEach { child in
             guard let keyName = child.label else {
@@ -92,9 +92,9 @@ public extension ConvertibleToDictionary {
 
             switch caseFormat {
             case .original:
-                dictionary\[keyName\] = child.value
+                dictionary[keyName] = child.value
             case .snakeCase:
-                dictionary\[keyName.toSnakeCase\] = child.value
+                dictionary[keyName.toSnakeCase] = child.value
             }
         }
 
@@ -103,20 +103,20 @@ public extension ConvertibleToDictionary {
 }
 
 public extension String {
-    /// ex1) "snakeCase" -&gt; "snake\_case"
-    /// ex2) "SnakeCase" -&gt; "snake\_case"
-    /// ex3) "\_SnakeCase" -&gt; "\_snake\_case"
-    /// ex4) "snakeCaseURL0123" -&gt; "snake\_case\_u\_r\_l0123"
+    /// ex1) "snakeCase" -&gt; "snake_case"
+    /// ex2) "SnakeCase" -&gt; "snake_case"
+    /// ex3) "_SnakeCase" -&gt; "_snake_case"
+    /// ex4) "snakeCaseURL0123" -&gt; "snake_case_u_r_l0123"
     var toSnakeCase: String {
         let snakeCased = unicodeScalars.reduce("") { result, scalar in
             if CharacterSet.uppercaseLetters.contains(scalar) {
-                return "\\(result)\_\\(Character(scalar))"
+                return "\(result)_\(Character(scalar))"
             } else {
                 return result + String(scalar)
             }
         }.lowercased()
 
-        if snakeCased.hasPrefix("\_") {
+        if snakeCased.hasPrefix("_") {
             return String(snakeCased.dropFirst())
         } else {
             return snakeCased
@@ -129,10 +129,10 @@ public struct Action {
     /// id
     public let id: String
 
-    /// event名。ex) "page\_show"、"click" （スネークケースでも可）
+    /// event名。ex) "page_show"、"click" （スネークケースでも可）
     public let interactionEventName: String
 
-    /// 判定するパラメーター。ex) \["location": "https://example.com/hoge", "referrer": "https://example.com/moge"\], \["target": "svg.icon-login"\]
+    /// 判定するパラメーター。ex) ["location": "https://example.com/hoge", "referrer": "https://example.com/moge"], ["target": "svg.icon-login"]
     public let interactionParameters: Dictionary&lt;String, String&gt;
 }
 
@@ -318,7 +318,7 @@ func areEqual(_ lhs: Any, _ rhs: Any) -> Bool {
 ## 👤 ユーザー
 *2023/9/7 11:14:20*
 
-おもったんだけど、\[String: Any\] ごと、つまり辞書型ごと比較はできないのかな？
+おもったんだけど、[String: Any] ごと、つまり辞書型ごと比較はできないのかな？
 
 ---
 

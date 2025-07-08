@@ -15,8 +15,8 @@ public struct UserDefaultsManager: UserDefaultsManagerProtocol {
     private let isAppIntroductionShownSubject = PassthroughSubject&lt;Bool, Never&gt;()
     private let isUserAttributesRegisteredSubject = PassthroughSubject&lt;Bool, Never&gt;()
     private let isDeviceAccessRequestShownSubject = PassthroughSubject&lt;Bool, Never&gt;()
-    private let portraitCalibrationDataSubject = PassthroughSubject&lt;\[Double\]?, Never&gt;()
-    private let landscapeLeftCalibrationDataSubject = PassthroughSubject&lt;\[Double\]?, Never&gt;()
+    private let portraitCalibrationDataSubject = PassthroughSubject&lt;[Double]?, Never&gt;()
+    private let landscapeLeftCalibrationDataSubject = PassthroughSubject&lt;[Double]?, Never&gt;()
     private let isGazeCalibrationDoneSubject = PassthroughSubject&lt;Bool, Never&gt;()
     private let isEnableAppLogAnalyticsSubject = PassthroughSubject&lt;Bool, Never&gt;()
 
@@ -40,11 +40,11 @@ public struct UserDefaultsManager: UserDefaultsManagerProtocol {
         isGazeCalibrationDoneSubject.eraseToAnyPublisher()
     }
 
-    public var portraitCalibrationDataPublisher: AnyPublisher&lt;\[Double\]?, Never&gt; {
+    public var portraitCalibrationDataPublisher: AnyPublisher&lt;[Double]?, Never&gt; {
         portraitCalibrationDataSubject.eraseToAnyPublisher()
     }
 
-    public var landscapeLeftCalibrationDataPublisher: AnyPublisher&lt;\[Double\]?, Never&gt; {
+    public var landscapeLeftCalibrationDataPublisher: AnyPublisher&lt;[Double]?, Never&gt; {
         landscapeLeftCalibrationDataSubject.eraseToAnyPublisher()
     }
 
@@ -91,14 +91,14 @@ public struct UserDefaultsManager: UserDefaultsManagerProtocol {
     }
 
     @UserDefaultsWrapper(key: .portraitCalibrationData, defaultValue: nil)
-    public var portraitCalibrationData: \[Double\]? {
+    public var portraitCalibrationData: [Double]? {
         didSet {
             portraitCalibrationDataSubject.send(portraitCalibrationData)
         }
     }
 
     @UserDefaultsWrapper(key: .landscapeRightCalibrationData, defaultValue: nil)
-    public var landscapeRightCalibrationData: \[Double\]? {
+    public var landscapeRightCalibrationData: [Double]? {
         didSet {
             landscapeLeftCalibrationDataSubject.send(landscapeRightCalibrationData)
         }
@@ -130,51 +130,51 @@ public struct UserDefaultsManager: UserDefaultsManagerProtocol {
     public init(userDefaults: UserDefaults = .standard) {
         // UserDefaults を .standard に入れ替えられるようにをどの UserDefaults をつかえるようにするか再設定している
 
-        \_authorizationIdToken = UserDefaultsWrapper(key: .authorizationIdToken, defaultValue: nil)
-        \_authorizationIdToken.updateUserDefaults(userDefaults)
+        _authorizationIdToken = UserDefaultsWrapper(key: .authorizationIdToken, defaultValue: nil)
+        _authorizationIdToken.updateUserDefaults(userDefaults)
         
-        \_isLoginSessionValid = UserDefaultsWrapper(key: .isLoginSessionValid, defaultValue: false)
-        \_isLoginSessionValid.updateUserDefaults(userDefaults)
+        _isLoginSessionValid = UserDefaultsWrapper(key: .isLoginSessionValid, defaultValue: false)
+        _isLoginSessionValid.updateUserDefaults(userDefaults)
 
-        \_isAppIntroductionShown = UserDefaultsWrapper(key: .isAppIntroductionShown, defaultValue: false)
-        \_isAppIntroductionShown.updateUserDefaults(userDefaults)
+        _isAppIntroductionShown = UserDefaultsWrapper(key: .isAppIntroductionShown, defaultValue: false)
+        _isAppIntroductionShown.updateUserDefaults(userDefaults)
 
-        \_isUserAttributesRegistered = UserDefaultsWrapper(key: .isUserAttributesRegistered, defaultValue: false)
-        \_isUserAttributesRegistered.updateUserDefaults(userDefaults)
+        _isUserAttributesRegistered = UserDefaultsWrapper(key: .isUserAttributesRegistered, defaultValue: false)
+        _isUserAttributesRegistered.updateUserDefaults(userDefaults)
 
-        \_isDeviceAccessRequestShown = UserDefaultsWrapper(key: .isDeviceAccessRequestShown, defaultValue: false)
-        \_isDeviceAccessRequestShown.updateUserDefaults(userDefaults)
+        _isDeviceAccessRequestShown = UserDefaultsWrapper(key: .isDeviceAccessRequestShown, defaultValue: false)
+        _isDeviceAccessRequestShown.updateUserDefaults(userDefaults)
 
-        \_isGazeCalibrationDone = UserDefaultsWrapper(key: .isGazeCalibrationDone, defaultValue: false)
-        \_isGazeCalibrationDone.updateUserDefaults(userDefaults)
+        _isGazeCalibrationDone = UserDefaultsWrapper(key: .isGazeCalibrationDone, defaultValue: false)
+        _isGazeCalibrationDone.updateUserDefaults(userDefaults)
 
-        \_portraitCalibrationData = UserDefaultsWrapper(key: .portraitCalibrationData, defaultValue: nil)
-        \_portraitCalibrationData.updateUserDefaults(userDefaults)
+        _portraitCalibrationData = UserDefaultsWrapper(key: .portraitCalibrationData, defaultValue: nil)
+        _portraitCalibrationData.updateUserDefaults(userDefaults)
 
-        \_landscapeRightCalibrationData = UserDefaultsWrapper(key: .landscapeRightCalibrationData, defaultValue: nil)
-        \_landscapeRightCalibrationData.updateUserDefaults(userDefaults)
+        _landscapeRightCalibrationData = UserDefaultsWrapper(key: .landscapeRightCalibrationData, defaultValue: nil)
+        _landscapeRightCalibrationData.updateUserDefaults(userDefaults)
 
         // TODO: テストマーケ版ではアプリ外で承諾を行っているのでデフォルト true であるが、オープンベータではデフォルト false とする
-        \_isEnableAppLogAnalytics = UserDefaultsWrapper(key: .isEnableAppLogAnalytics, defaultValue: true)
-        \_isEnableAppLogAnalytics.updateUserDefaults(userDefaults)
+        _isEnableAppLogAnalytics = UserDefaultsWrapper(key: .isEnableAppLogAnalytics, defaultValue: true)
+        _isEnableAppLogAnalytics.updateUserDefaults(userDefaults)
 
-        \_isEnableJSONEncode = UserDefaultsWrapper(key: .isEnableJSONEncode, defaultValue: false)
-        \_isEnableJSONEncode.updateUserDefaults(userDefaults)
+        _isEnableJSONEncode = UserDefaultsWrapper(key: .isEnableJSONEncode, defaultValue: false)
+        _isEnableJSONEncode.updateUserDefaults(userDefaults)
 
-        \_isEnableLocalBackup = UserDefaultsWrapper(key: .isEnableLocalBackup, defaultValue: false)
-        \_isEnableLocalBackup.updateUserDefaults(userDefaults)
+        _isEnableLocalBackup = UserDefaultsWrapper(key: .isEnableLocalBackup, defaultValue: false)
+        _isEnableLocalBackup.updateUserDefaults(userDefaults)
 
-        \_isEnableSavingImagesWhileCapturing = UserDefaultsWrapper(key: .isEnableSavingImagesWhileCapturing, defaultValue: false)
-        \_isEnableSavingImagesWhileCapturing.updateUserDefaults(userDefaults)
+        _isEnableSavingImagesWhileCapturing = UserDefaultsWrapper(key: .isEnableSavingImagesWhileCapturing, defaultValue: false)
+        _isEnableSavingImagesWhileCapturing.updateUserDefaults(userDefaults)
 
-        \_isEnableCameraCaptureDebugView = UserDefaultsWrapper(key: .enableCameraCaptureDebugView, defaultValue: false)
-        \_isEnableCameraCaptureDebugView.updateUserDefaults(userDefaults)
+        _isEnableCameraCaptureDebugView = UserDefaultsWrapper(key: .enableCameraCaptureDebugView, defaultValue: false)
+        _isEnableCameraCaptureDebugView.updateUserDefaults(userDefaults)
     }
 }
 
 extension String?: UserDefaultsCodable {}
 extension Bool: UserDefaultsCodable {}
-extension \[Double\]?: UserDefaultsCodable {}
+extension [Double]?: UserDefaultsCodable {}
 
 
 public protocol UserDefaultsCodable: Codable {
@@ -204,14 +204,14 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
         self.defaultValue = defaultValue
     }
 
-    public mutating func updateUserDefaults(\_ userDefaults: UserDefaults) {
+    public mutating func updateUserDefaults(_ userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
     }
 
     public var wrappedValue: T {
         get {
             guard let userDefaults else {
-                assertionFailure("Unset UserDefaults \\(key)")
+                assertionFailure("Unset UserDefaults \(key)")
                 return defaultValue
             }
             guard let data = userDefaults.data(forKey: key.rawValue) else {
@@ -221,20 +221,20 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
                 let decodedValue = try T.decoder.decode(T.self, from: data)
                 return decodedValue
             } catch {
-                assertionFailure("Failed to decode \\(key): \\(error)")
+                assertionFailure("Failed to decode \(key): \(error)")
                 return defaultValue
             }
         }
         set {
             do {
                 guard let userDefaults else {
-                    assertionFailure("Unset UserDefaults \\(key)")
+                    assertionFailure("Unset UserDefaults \(key)")
                     return
                 }
                 let encodedValue = try T.encoder.encode(newValue)
                 userDefaults.set(encodedValue, forKey: key.rawValue)
             } catch {
-                assertionFailure("Failed to encode \\(key): \\(error)")
+                assertionFailure("Failed to encode \(key): \(error)")
             }
         }
     }
@@ -247,16 +247,16 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
 
 このコードは、Swiftで書かれたコードで、主にUserDefaultsの操作を管理する機能を提供します。以下に主要な部分の説明をします。
 
-1. \*\*UserDefaultsManager\*\*:
+1. **UserDefaultsManager**:
 この構造体は、UserDefaultsの特定のキーに対応する値の管理を担当します。各キーにはその値の変更を監視するための`PassthroughSubject`が用意されており、それらの値のPublisherが公開されています。これにより、これらの値の変更を監視するCombineフレームワークを使った非同期処理が可能となります。
 
-2. \*\*UserDefaultsCodable\*\*:
+2. **UserDefaultsCodable**:
 このプロトコルは、UserDefaultsに格納できる型を定義します。これらの型はCodableプロトコルに準拠する必要があり、それぞれのデコーダとエンコーダを提供します。これにより、UserDefaultsに非プリミティブなデータ型を保存できます。
 
-3. \*\*UserDefaultsWrapper\*\*:
+3. **UserDefaultsWrapper**:
 これはproperty wrapperとして動作し、UserDefaultsに対する値の読み書きを容易にします。このラッパーを用いることで、UserDefaultsに格納するデータのエンコーディングとデコーディングが自動化され、それぞれのキーに対するデフォルト値も設定可能になります。
 
-4. \*\*UserDefaultsKeys\*\*:
+4. **UserDefaultsKeys**:
 このコードでは見えませんが、この型はおそらくUserDefaultsの各キーを定義しているenumでしょう。
 
 このコード全体としては、SwiftのCombineフレームワーク、property wrapper、Codableフレームワーク、UserDefaultsをうまく組み合わせて、アプリケーションの状態管理を効率化し、より堅牢にするための良い例を示しています。このコードがあることで、UserDefaultsに保存されている値の変更を監視し、その変更を他のコードに反映させるための非同期処理を容易に実装できます。
@@ -266,7 +266,7 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
 ## 👤 ユーザー
 *2023/6/22 11:02:17*
 
-extension \[Double\]?: UserDefaultsCodable {} のところで以下のエラーが表示されているのでどうしたらいいか教えて欲しい
+extension [Double]?: UserDefaultsCodable {} のところで以下のエラーが表示されているのでどうしたらいいか教えて欲しい
 
 Conflicting conformance of 'Optional&lt;Wrapped&gt;' to protocol 'UserDefaultsCodable'; there cannot be more than one conformance, even with different conditional bounds
 

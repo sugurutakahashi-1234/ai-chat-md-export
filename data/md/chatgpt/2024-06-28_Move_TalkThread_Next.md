@@ -9,7 +9,7 @@
 
 selectedTalkThread  を次の TalkThread へ移行する処理
 
-@Published private(set) var talkThreads: \[TalkThread\] = \[\]
+@Published private(set) var talkThreads: [TalkThread] = []
 @Published var selectedTalkThread: TalkThread?
 
 ---

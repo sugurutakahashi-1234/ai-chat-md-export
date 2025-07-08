@@ -15,14 +15,14 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
 
     public init(dependency: Dependency, talkThread: TalkThread) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: StampListPresenter(dependency: dependency, talkThread: talkThread))
+        _presenter = .init(wrappedValue: StampListPresenter(dependency: dependency, talkThread: talkThread))
     }
 
     public var body: some View {
         VStack {
             ScrollView(.horizontal) {
                 LazyHStack {
-                    ForEach(presenter.stampGroups, id: \\.id) { stampGroup in
+                    ForEach(presenter.stampGroups, id: \.id) { stampGroup in
                         Button {
                             presenter.onTapStampGroup(stampGroup: stampGroup)
                         } label: {
@@ -44,9 +44,9 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
                 // Ref: 【SwiftUI】LazyVGrid内の画像を正方形にする【ワークアラウンド】 https://qiita.com/tsuzuki817/items/cc9364089cee3a763084
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 20) {
                     if let stampGroup = presenter.selectedStampGroup {
-                        ForEach(stampGroup.stamps, id: \\.id) { stamp in
+                        ForEach(stampGroup.stamps, id: \.id) { stamp in
                             CustomAsyncImageView(imageUrl: stamp.imageUrl)
-                                .aspectRatio(Constants.AspectRatio.\_1\_1, contentMode: .fill)
+                                .aspectRatio(Constants.AspectRatio._1_1, contentMode: .fill)
                                 .cornerRadius(8)
                                 .padding(.all, 4)
                         }

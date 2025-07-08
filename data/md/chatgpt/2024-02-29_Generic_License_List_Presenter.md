@@ -8,7 +8,7 @@
 *2024/2/29 16:08:35*
 
 public protocol LibraryLicenseDriverProtocol {
-    var licenseList: \[License\] { get }
+    var licenseList: [License] { get }
 }
 
 
@@ -21,7 +21,7 @@ public protocol LicenseListPresenterDependency {
 
 @MainActor
 final class LicenseListPresenter: ObservableObject {
-    @Published private(set) var licenseList: \[License\] = \[\]
+    @Published private(set) var licenseList: [License] = []
     @Published var selectedLicense: License?
 
     private let libraryLicenseDriver: some LibraryLicenseDriverProtocol

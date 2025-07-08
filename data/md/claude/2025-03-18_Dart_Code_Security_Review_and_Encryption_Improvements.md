@@ -10,13 +10,13 @@
 問題点は
 
 import 'dart:convert';
-import 'dart:typed\_data';
+import 'dart:typed_data';
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter/widgets.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:snpit\_guild\_app/domain/app\_constants.dart';
-import 'package:snpit\_guild\_app/domain/encryptable\_location\_data.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:snpit_guild_app/domain/app_constants.dart';
+import 'package:snpit_guild_app/domain/encryptable_location_data.dart';
 
 encrypt.Key generateKey(String keyStr) {
   final keyBytes = crypto.sha256.convert(utf8.encode(keyStr)).bytes;
@@ -58,14 +58,14 @@ Map&lt;String, dynamic&gt; decryptLocationData(String encryptedData) {
     throw const FormatException('Invalid encrypted data format');
   }
 
-  final iv = encrypt.IV.fromBase64(parts\[0\]);
+  final iv = encrypt.IV.fromBase64(parts[0]);
   final key = generateKey(AppConstants.locationEncryptionKey);
 
   final encrypter = encrypt.Encrypter(
     encrypt.AES(key, mode: encrypt.AESMode.cbc),
   );
 
-  final decrypted = encrypter.decrypt64(parts\[1\], iv: iv);
+  final decrypted = encrypter.decrypt64(parts[1], iv: iv);
   return jsonDecode(decrypted) as Map&lt;String, dynamic&gt;;
 }
 

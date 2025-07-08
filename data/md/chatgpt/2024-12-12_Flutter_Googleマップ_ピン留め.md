@@ -190,11 +190,11 @@ class MyApp extends StatelessWidget {
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'package:flutter\_sample\_app/providers/current\_user.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
+import 'package:flutter_sample_app/providers/current_user.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapPage extends HookConsumerWidget {
   const MapPage({super.key});

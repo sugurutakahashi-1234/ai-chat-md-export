@@ -9,7 +9,7 @@
 
 以下の name と size を逆にしてほしい
 
-public static let allContentSizes: \[(name: String, size: UIContentSizeCategory)\] = \[
+public static let allContentSizes: [(name: String, size: UIContentSizeCategory)] = [
         ("extra-small", UIContentSizeCategory.extraSmall),
         ("small", .small),
         ("medium", .medium),
@@ -22,7 +22,7 @@ public static let allContentSizes: \[(name: String, size: UIContentSizeCategory)
         ("accessibility-extra-large", .accessibilityExtraLarge),
         ("accessibility-extra-extra-large", .accessibilityExtraExtraLarge),
         ("accessibility-extra-extra-extra-large", .accessibilityExtraExtraExtraLarge),
-    \]
+    ]
 
 ---
 

@@ -15,7 +15,7 @@ Widget buildExplorerCard(ExplorerDTO explorer, {required bool isSelected}) {
       final energy = explorer.energy;
       final fullEnergy = explorer.fullEnergy;
       final energyRatio = energy / fullEnergy;
-      final rangeInMeters = ((explorer.range) \* 1000).toInt();
+      final rangeInMeters = ((explorer.range) * 1000).toInt();
       final description = explorer.explorerDescription ?? '';
 
       return Center(
@@ -31,7 +31,7 @@ Widget buildExplorerCard(ExplorerDTO explorer, {required bool isSelected}) {
             padding: const EdgeInsets.all(16),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: \[
+              children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: SquareImage(
@@ -44,7 +44,7 @@ Widget buildExplorerCard(ExplorerDTO explorer, {required bool isSelected}) {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: \[
+                    children: [
                       const Text(
                         'Life',
                         style: TextStyle(
@@ -83,10 +83,10 @@ Widget buildExplorerCard(ExplorerDTO explorer, {required bool isSelected}) {
                           fontSize: 12,
                         ),
                       ),
-                    \],
+                    ],
                   ),
                 ),
-              \],
+              ],
             ),
           ),
         ),

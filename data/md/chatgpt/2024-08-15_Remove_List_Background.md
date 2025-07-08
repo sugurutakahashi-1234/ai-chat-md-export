@@ -8,9 +8,9 @@
 *2024/8/15 15:11:24*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-PKaDHlgZckGj5T5rhQisvPDy",
-  "size\_bytes": 56539,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-PKaDHlgZckGj5T5rhQisvPDy",
+  "size_bytes": 56539,
   "width": 462,
   "height": 920,
   "fovea": null,
@@ -18,13 +18,13 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 Listならではのグレーの背景が表示される.scrollContentBackground(.hidden)や.background(Color.clear)としてもパディングが保たれてしまうので、それを消したい
@@ -35,7 +35,7 @@ public struct ProfilePostView: View {
     @StateObject private var presenter: ProfilePostPresenter
 
     public init() {
-        \_presenter = .init(wrappedValue: ProfilePostPresenter())
+        _presenter = .init(wrappedValue: ProfilePostPresenter())
     }
 
     public var body: some View {
@@ -89,8 +89,8 @@ public struct ProfilePostView: View {
             
             List {
                 Picker("", selection: $presenter.gender) {
-                    ForEach(Gender.allCases, id: \\.self) { gender in
-                        Text("\\(gender.displayName)")
+                    ForEach(Gender.allCases, id: \.self) { gender in
+                        Text("\(gender.displayName)")
                             .tag(gender)
                     }
                 }

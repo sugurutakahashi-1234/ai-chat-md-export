@@ -9,7 +9,7 @@
 
 複数の名前のワークフローを検知したい。Swift-DocC Hostも咥えたい
 
-/github subscribe crage-inc/Project-SoftBankSNS-iOS issues, pulls, commits:'\*', releases, deployments, reviews, branches, comments, workflows:{event:"workflow\_dispatch", name:"OpenAPI Spec To Code Gen"}, discussions
+/github subscribe crage-inc/Project-SoftBankSNS-iOS issues, pulls, commits:'*', releases, deployments, reviews, branches, comments, workflows:{event:"workflow_dispatch", name:"OpenAPI Spec To Code Gen"}, discussions
 
 ---
 

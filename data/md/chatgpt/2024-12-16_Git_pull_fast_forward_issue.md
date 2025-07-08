@@ -8,8 +8,8 @@
 *2024/12/16 22:29:42*
 
 $ git pull origin develop                                                                                                                              128 ↵
-From https://github.com/Gallusys/snpit\_guild\_app
- \* branch            develop    -&gt; FETCH\_HEAD
+From https://github.com/Gallusys/snpit_guild_app
+ * branch            develop    -&gt; FETCH_HEAD
 fatal: Not possible to fast-forward, aborting.
 
 ---

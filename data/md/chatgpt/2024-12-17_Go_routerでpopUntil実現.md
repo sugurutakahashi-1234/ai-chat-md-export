@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/12/17 21:56:15*
 
-Navigator を使わずにgo\_routerで書けないかな？
+Navigator を使わずにgo_routerで書けないかな？
 
                     Navigator.of(context).popUntil(
                       (route) =&gt;

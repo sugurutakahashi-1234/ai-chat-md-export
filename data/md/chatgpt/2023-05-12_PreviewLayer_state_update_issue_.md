@@ -15,7 +15,7 @@ struct CameraPreview: UIViewRepresentable {
     let cameraPreviewPresenter: CameraPreviewPresenter
     private let queue = DispatchQueue(label: "videoQueue")
     @State private var previewLayer: AVCaptureVideoPreviewLayer?
-    @Binding var currentImageItems: \[ImageItem\]
+    @Binding var currentImageItems: [ImageItem]
 
     func makeUIView(context: Context) -&gt; UIView {
         guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {
@@ -30,7 +30,7 @@ struct CameraPreview: UIViewRepresentable {
             output.setSampleBufferDelegate(context.coordinator, queue: queue)
             cameraPreviewPresenter.captureSession.addInput(input)
             cameraPreviewPresenter.captureSession.addOutput(output)
-            // Ref: https://developers.google.com/ml-kit/vision/selfie-segmentation/ios?hl=ja#tips\_to\_improve\_performance
+            // Ref: https://developers.google.com/ml-kit/vision/selfie-segmentation/ios?hl=ja#tips_to_improve_performance
             output.alwaysDiscardsLateVideoFrames = true
             let connection = output.connection(with: .video)
             connection?.videoOrientation = .portrait
@@ -47,7 +47,7 @@ struct CameraPreview: UIViewRepresentable {
         return cameraView
     }
 
-    func updateUIView(\_ uiView: UIView, context: Context) {
+    func updateUIView(_ uiView: UIView, context: Context) {
         previewLayer?.frame = uiView.frame
     }
 

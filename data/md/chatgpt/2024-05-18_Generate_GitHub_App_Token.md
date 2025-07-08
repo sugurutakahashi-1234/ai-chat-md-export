@@ -17,7 +17,7 @@ https://github.com/actions/create-github-app-token
 
 To use the `actions/create-github-app-token` GitHub Action, follow these steps to generate a GitHub App Installation Access Token for your workflows:
 
-1. \*\*Register a GitHub App\*\*:
+1. **Register a GitHub App**:
 
 ---
 

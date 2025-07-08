@@ -10,15 +10,15 @@
 GuildPageをgetGuildInfoNotifierProviderを使うようにして書き換えて欲しい
 
 import 'package:flutter/foundation.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:snpit\_guild\_app/lib/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guild\_api\_provider.dart';
+import 'package:snpit_guild_app/lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guild_api_provider.dart';
 
-part 'get\_guild\_info.g.dart';
+part 'get_guild_info.g.dart';
 
 @riverpod
-class GetGuildInfoNotifier extends \_$GetGuildInfoNotifier {
+class GetGuildInfoNotifier extends _$GetGuildInfoNotifier {
   @override
   Future&lt;GuildInfoResponseDtoData?&gt; build() async =&gt; null;
 
@@ -38,10 +38,10 @@ class GetGuildInfoNotifier extends \_$GetGuildInfoNotifier {
 }
 
 import 'package:flutter/material.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guild\_api\_provider.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guild_api_provider.dart';
 
 // Guild Info Future Provider
 final guildInfoProvider = FutureProvider((ref) async {
@@ -70,7 +70,7 @@ class GuildPage extends HookConsumerWidget {
         data: (guildInfo) =&gt; Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: \[
+            children: [
               Text('Guild Info: $guildInfo'),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -85,7 +85,7 @@ class GuildPage extends HookConsumerWidget {
                 },
                 child: const Text('Go To Guild Create'),
               ),
-            \],
+            ],
           ),
         ),
         loading: () =&gt; const Center(child: CircularProgressIndicator()),
@@ -109,14 +109,14 @@ class GuildPage extends HookConsumerWidget {
 ## 🤖 アシスタント
 *2024/12/18 16:13:00*
 
-{"name": "guild\_page\_refactor", "type": "code/dart", "content": "import 'package:flutter/material.dart';\\nimport 'package:go\_router/go\_router.dart';\\nimport 'package:hooks\_riverpod/hooks\_riverpod.dart';\\nimport 'package:snpit\_guild\_app/domain/screen.dart';\\nimport 'package:snpit\_guild\_app/presentation/providers/get\_guild\_info\_notifier\_provider.dart';\\n\\nclass GuildPage extends HookConsumerWidget {\\n  const GuildPage({super.key});\\n\\n  @override\\n  Widget build(BuildContext context, WidgetRef ref) {\\n    final guildInfoAsync = ref.watch(getGuildInfoNotifierProvider);\\n\\n    return Scaffold(\\n      appBar: AppBar(title: const Text('Guild Page')),\\n      body: guildInfoAsync.when(\\n        data: (guildInfo) =&gt; Center(\\n          child: Column(\\n            mainAxisAlignment: MainAxisAlignment.center,\\n            children: \[\\n              if (guildInfo != null)\\n                Text('Guild Info: ${guildInfo.name ?? \\"No Name\\"}'),\\n              const SizedBox(height: 16),\\n              ElevatedButton(\\n                onPressed: () {\\n                  context.push(Screen.guildCode.path);\\n                },\\n                child: const Text('Go To Guild Code'),\\n              ),\\n              ElevatedButton(\\n                onPressed: () {\\n                  context.push(Screen.guildCreate.path);\\n                },\\n                child: const Text('Go To Guild Create'),\\n              ),\\n            \],\\n          ),\\n        ),\\n        loading: () =&gt; const Center(child: CircularProgressIndicator()),\\n        error: (error, stackTrace) =&gt; Center(\\n          child: Column(\\n            mainAxisAlignment: MainAxisAlignment.center,\\n            children: \[\\n              Text('Error: $error'),\\n              const SizedBox(height: 16),\\n              ElevatedButton(\\n                onPressed: () =&gt; ref.read(getGuildInfoNotifierProvider.notifier).executeRequest(),\\n                child: const Text('Retry'),\\n              ),\\n            \],\\n          ),\\n        ),\\n      ),\\n    );\\n  }\\n}"}
+{"name": "guild_page_refactor", "type": "code/dart", "content": "import 'package:flutter/material.dart';\nimport 'package:go_router/go_router.dart';\nimport 'package:hooks_riverpod/hooks_riverpod.dart';\nimport 'package:snpit_guild_app/domain/screen.dart';\nimport 'package:snpit_guild_app/presentation/providers/get_guild_info_notifier_provider.dart';\n\nclass GuildPage extends HookConsumerWidget {\n  const GuildPage({super.key});\n\n  @override\n  Widget build(BuildContext context, WidgetRef ref) {\n    final guildInfoAsync = ref.watch(getGuildInfoNotifierProvider);\n\n    return Scaffold(\n      appBar: AppBar(title: const Text('Guild Page')),\n      body: guildInfoAsync.when(\n        data: (guildInfo) =&gt; Center(\n          child: Column(\n            mainAxisAlignment: MainAxisAlignment.center,\n            children: [\n              if (guildInfo != null)\n                Text('Guild Info: ${guildInfo.name ?? \"No Name\"}'),\n              const SizedBox(height: 16),\n              ElevatedButton(\n                onPressed: () {\n                  context.push(Screen.guildCode.path);\n                },\n                child: const Text('Go To Guild Code'),\n              ),\n              ElevatedButton(\n                onPressed: () {\n                  context.push(Screen.guildCreate.path);\n                },\n                child: const Text('Go To Guild Create'),\n              ),\n            ],\n          ),\n        ),\n        loading: () =&gt; const Center(child: CircularProgressIndicator()),\n        error: (error, stackTrace) =&gt; Center(\n          child: Column(\n            mainAxisAlignment: MainAxisAlignment.center,\n            children: [\n              Text('Error: $error'),\n              const SizedBox(height: 16),\n              ElevatedButton(\n                onPressed: () =&gt; ref.read(getGuildInfoNotifierProvider.notifier).executeRequest(),\n                child: const Text('Retry'),\n              ),\n            ],\n          ),\n        ),\n      ),\n    );\n  }\n}"}
 
 ---
 
 ## 🔧 ツール
 *2024/12/18 16:13:00*
 
-{"result": "Successfully created text document 'guild\_page\_refactor' which will be referenced in all future messages with the unique identifier textdoc\_id: '676275f4d0b481918822abdfdc824702'", "textdoc\_id": "676275f4d0b481918822abdfdc824702", "name": "guild\_page\_refactor"}
+{"result": "Successfully created text document 'guild_page_refactor' which will be referenced in all future messages with the unique identifier textdoc_id: '676275f4d0b481918822abdfdc824702'", "textdoc_id": "676275f4d0b481918822abdfdc824702", "name": "guild_page_refactor"}
 
 ---
 
@@ -124,14 +124,14 @@ class GuildPage extends HookConsumerWidget {
 *2024/12/18 16:13:00*
 
 ### 主な変更点
-1. \*\*`GetGuildInfoNotifier` の利用\*\*:
+1. **`GetGuildInfoNotifier` の利用**:
    - `guildInfoProvider` を削除し、`getGuildInfoNotifierProvider` を使用。
    - データのフェッチ、エラー処理を `GetGuildInfoNotifier` に任せる。
 
-2. \*\*エラー時のリトライ\*\*:
+2. **エラー時のリトライ**:
    - エラー時に「Retry」ボタンを追加し、`executeRequest` を再実行可能に。
 
-3. \*\*`guildInfo` 表示\*\*:
+3. **`guildInfo` 表示**:
    - `guildInfo` の名前 (`name`) を表示するようにし、null チェックを追加。
 
 これで `GetGuildInfoNotifier` を活用し、データフェッチの責務がより明確に分離されました。質問があれば教えてください！

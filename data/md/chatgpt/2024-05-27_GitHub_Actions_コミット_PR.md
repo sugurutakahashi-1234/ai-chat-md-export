@@ -104,9 +104,9 @@ jobs:
 
 以下のエラーになった。
 
-Run git config --global user.name 'github-actions\[bot\]'
+Run git config --global user.name 'github-actions[bot]'
 Switched to a new branch 'update/generated-docs'
-\[update/generated-docs 63df232\] Update generated docs
+[update/generated-docs 63df232] Update generated docs
  9 files changed, 574 insertions(+)
  create mode 100644 docs/README.md
  create mode 100644 docs/Tasks.md
@@ -117,7 +117,7 @@ Switched to a new branch 'update/generated-docs'
  create mode 100644 docs/Users.svg
  create mode 100644 docs/schema.json
  create mode 100644 docs/schema.svg
-remote: Permission to suguruTakahashi-1234/tbls-sample.git denied to github-actions\[bot\].
+remote: Permission to suguruTakahashi-1234/tbls-sample.git denied to github-actions[bot].
 fatal: unable to access 'https://github.com/suguruTakahashi-1234/tbls-sample/': The requested URL returned error: 403
 Error: Process completed with exit code 128.
 
@@ -210,71 +210,71 @@ jobs:
 
 こういうエラーになりました。
 
-##\[debug\]Evaluating condition for step: 'Create Pull Request'
-##\[debug\]Evaluating: success()
-##\[debug\]Evaluating success:
-##\[debug\]=&gt; true
-##\[debug\]Result: true
-##\[debug\]Starting: Create Pull Request
-##\[debug\]Loading inputs
-##\[debug\]Evaluating: secrets.GITHUB\_TOKEN
-##\[debug\]Evaluating Index:
-##\[debug\]..Evaluating secrets:
-##\[debug\]..=&gt; Object
-##\[debug\]..Evaluating String:
-##\[debug\]..=&gt; 'GITHUB\_TOKEN'
-##\[debug\]=&gt; '\*\*\*'
-##\[debug\]Result: '\*\*\*'
-##\[debug\]Evaluating: format('{0} &lt;{1}+{2}@users.noreply.github.com&gt;', github.actor, github.actor\_id, github.actor)
-##\[debug\]Evaluating format:
-##\[debug\]..Evaluating String:
-##\[debug\]..=&gt; '{0} &lt;{1}+{2}@users.noreply.github.com&gt;'
-##\[debug\]..Evaluating Index:
-##\[debug\]....Evaluating github:
-##\[debug\]....=&gt; Object
-##\[debug\]....Evaluating String:
-##\[debug\]....=&gt; 'actor'
-##\[debug\]..=&gt; 'suguruTakahashi-1234'
-##\[debug\]..Evaluating Index:
-##\[debug\]....Evaluating github:
-##\[debug\]....=&gt; Object
-##\[debug\]....Evaluating String:
-##\[debug\]....=&gt; 'actor\_id'
-##\[debug\]..=&gt; '60458956'
-##\[debug\]..Evaluating Index:
-##\[debug\]....Evaluating github:
-##\[debug\]....=&gt; Object
-##\[debug\]....Evaluating String:
-##\[debug\]....=&gt; 'actor'
-##\[debug\]..=&gt; 'suguruTakahashi-1234'
-##\[debug\]=&gt; 'suguruTakahashi-1234 &lt;60458956+suguruTakahashi-1234@users.noreply.github.com&gt;'
-##\[debug\]Result: 'suguruTakahashi-1234 &lt;60458956+suguruTakahashi-1234@users.noreply.github.com&gt;'
-##\[debug\]Loading env
+##[debug]Evaluating condition for step: 'Create Pull Request'
+##[debug]Evaluating: success()
+##[debug]Evaluating success:
+##[debug]=&gt; true
+##[debug]Result: true
+##[debug]Starting: Create Pull Request
+##[debug]Loading inputs
+##[debug]Evaluating: secrets.GITHUB_TOKEN
+##[debug]Evaluating Index:
+##[debug]..Evaluating secrets:
+##[debug]..=&gt; Object
+##[debug]..Evaluating String:
+##[debug]..=&gt; 'GITHUB_TOKEN'
+##[debug]=&gt; '***'
+##[debug]Result: '***'
+##[debug]Evaluating: format('{0} &lt;{1}+{2}@users.noreply.github.com&gt;', github.actor, github.actor_id, github.actor)
+##[debug]Evaluating format:
+##[debug]..Evaluating String:
+##[debug]..=&gt; '{0} &lt;{1}+{2}@users.noreply.github.com&gt;'
+##[debug]..Evaluating Index:
+##[debug]....Evaluating github:
+##[debug]....=&gt; Object
+##[debug]....Evaluating String:
+##[debug]....=&gt; 'actor'
+##[debug]..=&gt; 'suguruTakahashi-1234'
+##[debug]..Evaluating Index:
+##[debug]....Evaluating github:
+##[debug]....=&gt; Object
+##[debug]....Evaluating String:
+##[debug]....=&gt; 'actor_id'
+##[debug]..=&gt; '60458956'
+##[debug]..Evaluating Index:
+##[debug]....Evaluating github:
+##[debug]....=&gt; Object
+##[debug]....Evaluating String:
+##[debug]....=&gt; 'actor'
+##[debug]..=&gt; 'suguruTakahashi-1234'
+##[debug]=&gt; 'suguruTakahashi-1234 &lt;60458956+suguruTakahashi-1234@users.noreply.github.com&gt;'
+##[debug]Result: 'suguruTakahashi-1234 &lt;60458956+suguruTakahashi-1234@users.noreply.github.com&gt;'
+##[debug]Loading env
 Run peter-evans/create-pull-request@v6
-##\[debug\]Inputs: {
-##\[debug\]  token: '\*\*\*',
-##\[debug\]  gitToken: '',
-##\[debug\]  path: '',
-##\[debug\]  addPaths: \[\],
-##\[debug\]  commitMessage: 'Update generated docs',
-##\[debug\]  committer: 'github-actions\[bot\] &lt;41898282+github-actions\[bot\]@users.noreply.github.com&gt;',
-##\[debug\]  author: 'suguruTakahashi-1234 &lt;60458956+suguruTakahashi-1234@users.noreply.github.com&gt;',
-##\[debug\]  signoff: false,
-##\[debug\]  branch: 'update/generated-docs',
-##\[debug\]  deleteBranch: false,
-##\[debug\]  branchSuffix: '',
-##\[debug\]  base: '',
-##\[debug\]  pushToFork: '',
-##\[debug\]  title: 'Update generated docs',
-##\[debug\]  body: 'This PR updates the generated docs.',
-##\[debug\]  bodyPath: '',
-##\[debug\]  labels: \[\],
-##\[debug\]  assignees: \[\],
-##\[debug\]  reviewers: \[\],
-##\[debug\]  teamReviewers: \[\],
-##\[debug\]  milestone: 0,
-##\[debug\]  draft: false
-##\[debug\]}
+##[debug]Inputs: {
+##[debug]  token: '***',
+##[debug]  gitToken: '',
+##[debug]  path: '',
+##[debug]  addPaths: [],
+##[debug]  commitMessage: 'Update generated docs',
+##[debug]  committer: 'github-actions[bot] &lt;41898282+github-actions[bot]@users.noreply.github.com&gt;',
+##[debug]  author: 'suguruTakahashi-1234 &lt;60458956+suguruTakahashi-1234@users.noreply.github.com&gt;',
+##[debug]  signoff: false,
+##[debug]  branch: 'update/generated-docs',
+##[debug]  deleteBranch: false,
+##[debug]  branchSuffix: '',
+##[debug]  base: '',
+##[debug]  pushToFork: '',
+##[debug]  title: 'Update generated docs',
+##[debug]  body: 'This PR updates the generated docs.',
+##[debug]  bodyPath: '',
+##[debug]  labels: [],
+##[debug]  assignees: [],
+##[debug]  reviewers: [],
+##[debug]  teamReviewers: [],
+##[debug]  milestone: 0,
+##[debug]  draft: false
+##[debug]}
 ::group::Prepare git configuration
 Prepare git configuration
 ::group::Determining the base and head repositories
@@ -285,8 +285,8 @@ Configuring credential for HTTPS authentication
 ::group::Checking the base repository state
 Checking the base repository state
 Restore git configuration
-##\[debug\]Node Action run completed with exit code 1
-##\[debug\]Finishing: Create Pull Request
+##[debug]Node Action run completed with exit code 1
+##[debug]Finishing: Create Pull Request
 
 ---
 
@@ -368,7 +368,7 @@ jobs:
 こういうエラーになった
 
 To https://github.com/suguruTakahashi-1234/tbls-sample
- ! \[rejected\]        update/generated-docs -&gt; update/generated-docs (fetch first)
+ ! [rejected]        update/generated-docs -&gt; update/generated-docs (fetch first)
 error: failed to push some refs to 'https://github.com/suguruTakahashi-1234/tbls-sample'
 hint: Updates were rejected because the remote contains work that you do not
 hint: have locally. This is usually caused by another repository pushing to

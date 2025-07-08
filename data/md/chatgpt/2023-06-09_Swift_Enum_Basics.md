@@ -141,7 +141,7 @@ public enum LogCategory: String {
 以下の関数についてインターフェースだけ抽出してほしい
 
 public enum AppLogger {
-    public static func debugLog(\_ message: String, category: LogCategory = .general, level: LogLevel = .default) {
+    public static func debugLog(_ message: String, category: LogCategory = .general, level: LogLevel = .default) {
         #if DEBUG
             let subsystem = Bundle.main.bundleIdentifier ?? "Logger"
             let osLog = OSLog(subsystem: subsystem, category: category.rawValue)
@@ -153,7 +153,7 @@ public enum AppLogger {
             case .fault: osLogType = .fault
             default: osLogType = .default
             }
-            os\_log("\[%@\] %@", log: osLog, type: osLogType, String(describing: level), message)
+            os_log("[%@] %@", log: osLog, type: osLogType, String(describing: level), message)
         #endif
     }
 
@@ -166,7 +166,7 @@ public enum AppLogger {
             let subsystem = Bundle.main.bundleIdentifier ?? "Logger"
             let osLog = OSLog(subsystem: subsystem, category: LogCategory.`init`.rawValue)
             let osLogType: OSLogType = .info
-            os\_log("\[%@\] %@", log: osLog, type: osLogType, osLogType.description, "\\(className) Init \\(subMessage)")
+            os_log("[%@] %@", log: osLog, type: osLogType, osLogType.description, "\(className) Init \(subMessage)")
         #endif
     }
 
@@ -179,7 +179,7 @@ public enum AppLogger {
             let subsystem = Bundle.main.bundleIdentifier ?? "Logger"
             let osLog = OSLog(subsystem: subsystem, category: LogCategory.deinit.rawValue)
             let osLogType: OSLogType = .info
-            os\_log("\[%@\] %@", log: osLog, type: osLogType, osLogType.description, "\\(className) Deinit \\(subMessage)")
+            os_log("[%@] %@", log: osLog, type: osLogType, osLogType.description, "\(className) Deinit \(subMessage)")
         #endif
     }
 }

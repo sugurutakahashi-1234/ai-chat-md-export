@@ -13,34 +13,34 @@
 public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public init() { }
     public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT, osLogDriver: OSLogDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT) {
-        self.\_libraryLicenseDriver = libraryLicenseDriver
-        self.\_osLogDriver = osLogDriver
-        self.\_firebaseSetupDriver = firebaseSetupDriver
+        self._libraryLicenseDriver = libraryLicenseDriver
+        self._osLogDriver = osLogDriver
+        self._firebaseSetupDriver = firebaseSetupDriver
     }
 
     public typealias LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock
     public typealias OSLogDriverProtocolAT = OSLogDriverProtocolMock
 
     public private(set) var libraryLicenseDriverSetCallCount = 0
-    private var \_libraryLicenseDriver: LibraryLicenseDriverProtocolAT!  { didSet { libraryLicenseDriverSetCallCount += 1 } }
+    private var _libraryLicenseDriver: LibraryLicenseDriverProtocolAT!  { didSet { libraryLicenseDriverSetCallCount += 1 } }
     public var libraryLicenseDriver: LibraryLicenseDriverProtocolAT {
-        get { return \_libraryLicenseDriver }
-        set { \_libraryLicenseDriver = newValue }
+        get { return _libraryLicenseDriver }
+        set { _libraryLicenseDriver = newValue }
     }
     public typealias FirebaseSetupDriverProtocolAT = FirebaseSetupDriverProtocolMock
 
     public private(set) var osLogDriverSetCallCount = 0
-    private var \_osLogDriver: OSLogDriverProtocolAT!  { didSet { osLogDriverSetCallCount += 1 } }
+    private var _osLogDriver: OSLogDriverProtocolAT!  { didSet { osLogDriverSetCallCount += 1 } }
     public var osLogDriver: OSLogDriverProtocolAT {
-        get { return \_osLogDriver }
-        set { \_osLogDriver = newValue }
+        get { return _osLogDriver }
+        set { _osLogDriver = newValue }
     }
 
     public private(set) var firebaseSetupDriverSetCallCount = 0
-    private var \_firebaseSetupDriver: FirebaseSetupDriverProtocolAT!  { didSet { firebaseSetupDriverSetCallCount += 1 } }
+    private var _firebaseSetupDriver: FirebaseSetupDriverProtocolAT!  { didSet { firebaseSetupDriverSetCallCount += 1 } }
     public var firebaseSetupDriver: FirebaseSetupDriverProtocolAT {
-        get { return \_firebaseSetupDriver }
-        set { \_firebaseSetupDriver = newValue }
+        get { return _firebaseSetupDriver }
+        set { _firebaseSetupDriver = newValue }
     }
 }
 

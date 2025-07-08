@@ -147,7 +147,7 @@ This setup ensures that your error view is displayed when an image fetch fails a
 ## 👤 ユーザー
 *2024/7/4 16:41:47*
 
-AsyncImageErrorView { \_ in } だったり書けない
+AsyncImageErrorView { _ in } だったり書けない
 
 ---
 

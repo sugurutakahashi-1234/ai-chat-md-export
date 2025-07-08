@@ -267,7 +267,7 @@ protocol TimestampRemoveDuplicatesAndSortable {
 }
 
 extension Array where Element: TimestampRemoveDuplicatesAndSortable {
-    func removeDuplicatesAndSorted() -&gt; \[Element\] {
+    func removeDuplicatesAndSorted() -&gt; [Element] {
         Array(
             Dictionary(uniqueKeysWithValues: map { ($0.timestampInMilliseconds, $0) }).values
         ).sorted { $0.timestampInMilliseconds &lt; $1.timestampInMilliseconds }
@@ -377,19 +377,19 @@ let sortedArrayDescending = originalArray.timestampSorted(ascending: false) // �
 removeDuplicatesAndSorted をtimestampSortedを使って表現したお
 
 extension Array where Element: TimestampRemoveDuplicatesAndSortable {
-    func removeDuplicates() -&gt; \[Element\] {
+    func removeDuplicates() -&gt; [Element] {
         Array(
             Dictionary(uniqueKeysWithValues: map { ($0.timestampInMilliseconds, $0) }).values
         )
     }
     
-    func timestampSorted(ascending: Bool = true) -&gt; \[Element\] {
+    func timestampSorted(ascending: Bool = true) -&gt; [Element] {
             sorted {
                 ascending ? $0.timestampInMilliseconds &lt; $1.timestampInMilliseconds : $0.timestampInMilliseconds &gt; $1.timestampInMilliseconds
             }
         }
     
-    func removeDuplicatesAndSorted() -&gt; \[Element\] {
+    func removeDuplicatesAndSorted() -&gt; [Element] {
         removeDuplicates().sorted { $0.timestampInMilliseconds &lt; $1.timestampInMilliseconds }
     }
 }

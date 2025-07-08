@@ -8,11 +8,11 @@
 *2023/6/23 5:49:09*
 
 public struct GazeTrackCalibrationView: View {
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var presenter: GazeTrackCalibrationPresenter
 
     public init(orientation: AppUIInterfaceOrientation, shouldShowCalibrationView: Binding&lt;Bool&gt;) {
-        \_presenter = StateObject(wrappedValue: GazeTrackCalibrationPresenter(orientation: orientation, shouldShowCalibrationView: shouldShowCalibrationView))
+        _presenter = StateObject(wrappedValue: GazeTrackCalibrationPresenter(orientation: orientation, shouldShowCalibrationView: shouldShowCalibrationView))
     }
 
     public var body: some View {
@@ -39,7 +39,7 @@ public struct GazeTrackCalibrationView: View {
             VStack {
                 Spacer()
                 Spacer()
-                Text("スマートフォンを顔から30cmほどはなして、\\n画面上の赤い丸を見続けてください")
+                Text("スマートフォンを顔から30cmほどはなして、\n画面上の赤い丸を見続けてください")
                     .typographyStyle(.body2)
                     .foregroundColor(CoreAssets.Color.Neutral.white.swiftUIColor)
                     .multilineTextAlignment(.center)

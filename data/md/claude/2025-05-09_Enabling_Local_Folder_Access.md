@@ -13,12 +13,12 @@
   "mcpServers": {
     "notionApi": {
       "command": "npx",
-      "args": \[
+      "args": [
         "-y",
         "@notionhq/notion-mcp-server"
-      \],
+      ],
       "env": {
-        "OPENAPI\_MCP\_HEADERS": "{\\"Authorization\\": \\"Bearer ntn\_12516787372499JcKI1BkaQTbB2Bjl6qgVOVvCDlFIW3Zs\\", \\"Notion-Version\\": \\"2022-06-28\\" }"
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\" }"
       }
     }
   }
@@ -79,12 +79,12 @@ Notionのデータに関しては、お送りいただいたMCP設定を使っ�
   "mcpServers": {
     "notionApi": {
       "command": "npx",
-      "args": \[
+      "args": [
         "-y",
         "@notionhq/notion-mcp-server"
-      \],
+      ],
       "env": {
-        "OPENAPI\_MCP\_HEADERS": "{\\"Authorization\\": \\"Bearer ntn\_12516787372499JcKI1BkaQTbB2Bjl6qgVOVvCDlFIW3Zs\\", \\"Notion-Version\\": \\"2022-06-28\\" }"
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\" }"
       }
     }
   }

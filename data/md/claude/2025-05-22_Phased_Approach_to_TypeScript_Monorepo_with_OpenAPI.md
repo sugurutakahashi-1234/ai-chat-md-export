@@ -1096,7 +1096,7 @@ class WebApiClient {
 ## 👤 ユーザー
 *2025/5/22 22:56:39*
 
-\*\*マイクロフロントエンド\*\*アーキテクチャとは？
+**マイクロフロントエンド**アーキテクチャとは？
 
 ---
 
@@ -2305,7 +2305,7 @@ pnpm build:web-client    # 最後（全依存関係必要）
 ## 👤 ユーザー
 *2025/5/23 0:11:58*
 
-つまり、サーバーはA\[shared\] と C\[server\]、クライアントはA\[shared\] B\[api-client\] D\[web-client\] でまとめてビルドするという認識でOKですか？またそれはどこの記述で表現されていますか？
+つまり、サーバーはA[shared] と C[server]、クライアントはA[shared] B[api-client] D[web-client] でまとめてビルドするという認識でOKですか？またそれはどこの記述で表現されていますか？
 
 ---
 
@@ -2442,7 +2442,7 @@ deploy-web-client:
     "dev": "tsc --watch"
   },
   "devDependencies": {
-    "typescript": "workspace:\*"
+    "typescript": "workspace:*"
   }
 }
 // packages/api-client/package.json
@@ -2459,7 +2459,7 @@ deploy-web-client:
     "axios": "^1.0.0"
   },
   "devDependencies": {
-    "typescript": "workspace:\*"
+    "typescript": "workspace:*"
   }
 }
 // packages/server/package.json
@@ -2474,11 +2474,11 @@ deploy-web-client:
     "generate:client": "openapi-generator-cli generate -i src/openapi.yaml -g typescript-axios -o ../api-client/src/generated"
   },
   "dependencies": {
-    "@myapp/shared": "workspace:\*",
+    "@myapp/shared": "workspace:*",
     "express": "^4.0.0"
   },
   "devDependencies": {
-    "typescript": "workspace:\*",
+    "typescript": "workspace:*",
     "@openapitools/openapi-generator-cli": "^2.0.0"
   }
 }
@@ -2492,13 +2492,13 @@ deploy-web-client:
     "preview": "vite preview"
   },
   "dependencies": {
-    "@myapp/shared": "workspace:\*",
-    "@myapp/api-client": "workspace:\*",
+    "@myapp/shared": "workspace:*",
+    "@myapp/api-client": "workspace:*",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "typescript": "workspace:\*",
+    "typescript": "workspace:*",
     "vite": "^4.0.0"
   }
 }
@@ -3240,7 +3240,7 @@ pnpm run generate:client
 
 この
   "devDependencies": {
-    "typescript": "workspace:\*"
+    "typescript": "workspace:*"
   }
 
 ---

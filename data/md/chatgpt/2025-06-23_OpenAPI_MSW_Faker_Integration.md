@@ -149,13 +149,13 @@ msw以上にmockライブラリのエコシステムが整っているライブ�
 *2025/6/23 18:14:05*
 
 ### 結論だけ先に
-- \*\*フロントエンドの「リクエスト横取り型」\*\* では、2025 年時点で \*\*Mock Service Worker (MSW)\*\* が依然としてもっとも大きいコミュニティとプラグイン網を持ち、これを“超える”エコシステムはまだ登場していません。citeturn4view0  
-- \*\*サーバー常駐／スタブサーバー型\*\* まで視野を広げると  
-  1. \*\*WireMock\*\* – 10 年以上の歴史＋gRPC/GraphQL/レコーディング/クラウド版など“フルスタック”の総合力citeturn2view0turn8view0  
-  2. \*\*Mockoon\*\* – GUI・CLI・Docker・GitHub Action・クラウド連携、AI 補完まで付く“オールインワン”citeturn3view0turn9view0  
-  3. \*\*Stoplight Prism\*\* – OpenAPI 2 / 3.1 対応、ダイナミック例生成＋入出力バリデーション、コールバックまでモックciteturn7view0turn10view0  
-  という 3 強が \*\*「エコシステムの厚さ」では MSW を上回る局面\*\* もあります（GUI、クラウド、記録再生など）。  
-- ただしこれらは \*\*実装スタイルが根本的に異なる\*\* ため、MSW の ServiceWorker／Node インターセプト方式をそのまま置き換えるものではありません。
+- **フロントエンドの「リクエスト横取り型」** では、2025 年時点で **Mock Service Worker (MSW)** が依然としてもっとも大きいコミュニティとプラグイン網を持ち、これを“超える”エコシステムはまだ登場していません。citeturn4view0  
+- **サーバー常駐／スタブサーバー型** まで視野を広げると  
+  1. **WireMock** – 10 年以上の歴史＋gRPC/GraphQL/レコーディング/クラウド版など“フルスタック”の総合力citeturn2view0turn8view0  
+  2. **Mockoon** – GUI・CLI・Docker・GitHub Action・クラウド連携、AI 補完まで付く“オールインワン”citeturn3view0turn9view0  
+  3. **Stoplight Prism** – OpenAPI 2 / 3.1 対応、ダイナミック例生成＋入出力バリデーション、コールバックまでモックciteturn7view0turn10view0  
+  という 3 強が **「エコシステムの厚さ」では MSW を上回る局面** もあります（GUI、クラウド、記録再生など）。  
+- ただしこれらは **実装スタイルが根本的に異なる** ため、MSW の ServiceWorker／Node インターセプト方式をそのまま置き換えるものではありません。
 
 ---
 
@@ -163,15 +163,15 @@ msw以上にmockライブラリのエコシステムが整っているライブ�
 
 | 分類 | ライブラリ | GitHub ⭐ | 主なエコシステム要素 |
 |------|-----------|----------|-----------------------|
-| インターセプト | \*\*MSW\*\* | 16.8 k citeturn4view0 | REST/GraphQL/WS、ブラウザ・Node・RN、DevTools 連携、Vite/Vitest/Playwright プラグイン、V2 で CLI も |
-| サーバー型 | \*\*WireMock\*\* | 6.8 k citeturn8view0 | Java ライブラリ・Docker・クラウド (WireMock Cloud)、レコード&リプレイ、gRPC/GraphQL/HTTPS/テンプレート、Spring Boot 統合など豊富citeturn2view0 |
-| サーバー型 | \*\*Mockoon\*\* | 7.3 k citeturn9view0 | デスクトップ GUI、CLI・Docker・GitHub Action、クラウド共有、動的テンプレート・AI アシスタント・Proxy など多機能citeturn3view0 |
-| サーバー型 | \*\*Stoplight Prism\*\* | 4.6 k citeturn10view0 | OpenAPI/Postman から自動モック、リクエスト/レスポンス検証、動的サンプル生成、Validation Proxy、Callback モックciteturn7view0 |
+| インターセプト | **MSW** | 16.8 k citeturn4view0 | REST/GraphQL/WS、ブラウザ・Node・RN、DevTools 連携、Vite/Vitest/Playwright プラグイン、V2 で CLI も |
+| サーバー型 | **WireMock** | 6.8 k citeturn8view0 | Java ライブラリ・Docker・クラウド (WireMock Cloud)、レコード&リプレイ、gRPC/GraphQL/HTTPS/テンプレート、Spring Boot 統合など豊富citeturn2view0 |
+| サーバー型 | **Mockoon** | 7.3 k citeturn9view0 | デスクトップ GUI、CLI・Docker・GitHub Action、クラウド共有、動的テンプレート・AI アシスタント・Proxy など多機能citeturn3view0 |
+| サーバー型 | **Stoplight Prism** | 4.6 k citeturn10view0 | OpenAPI/Postman から自動モック、リクエスト/レスポンス検証、動的サンプル生成、Validation Proxy、Callback モックciteturn7view0 |
 | インターセプト | Mirage JS | 5.4 k citeturn4view0 | Ember 発祥。in-memory DB・Seed などが特徴。ServiceWorker ではなく `fetch/XMLHttpRequest` パッチ式citeturn0search3 |
 
-&gt; ★ \*\*ポイント\*\*  
-&gt; GUI／クラウド・テンプレート・レコーディング・プロトコル多様性（gRPC など）といった周辺機能まで含めると \*\*WireMock・Mockoon・Prism\*\* は確かに巨大です。  
-&gt; しかし「ブラウザでもテストランナーでも同じモックを \_横取り\_ できる」という体験においては \*\*MSW が唯一無二\*\* であり、直接置き換えられるライブラリはまだ存在しません。
+&gt; ★ **ポイント**  
+&gt; GUI／クラウド・テンプレート・レコーディング・プロトコル多様性（gRPC など）といった周辺機能まで含めると **WireMock・Mockoon・Prism** は確かに巨大です。  
+&gt; しかし「ブラウザでもテストランナーでも同じモックを _横取り_ できる」という体験においては **MSW が唯一無二** であり、直接置き換えられるライブラリはまだ存在しません。
 
 ---
 
@@ -179,19 +179,19 @@ msw以上にmockライブラリのエコシステムが整っているライブ�
 
 | 目的 / 制約 | 最適候補 | 理由 |
 |-------------|----------|------|
-| \*\*フロントエンド開発 & テストを 1 つのハンドラで完結\*\* | \*\*MSW\*\* | ServiceWorker + Node インターセプトで “動くコードをそのままテスト” できる。React/Vite/Vitest 連携が充実 |
-| \*\*バックエンドとの並行開発、QA 用永久モック環境が欲しい\*\* | \*\*Mockoon Cloud\*\* または \*\*Prism\*\* | GUI で仕様→モック生成、チーム共有・デプロイがボタン一発 |
-| \*\*E2E / 結合テストで外部サービスを完全再現\*\* | \*\*WireMock (Docker)\*\* | きめ細かなリクエストマッチ・ステートフルなシナリオ・フォールト注入・録画再生などが強力 |
-| \*\*契約 (Contract) テストを自動化\*\* | \*\*Prism Validation Proxy\*\* | 実 API ↔︎ OpenAPI の乖離をステージングで自動検知。OpenAPI 3.1 までサポート |
-| \*\*既存の MSW ハンドラは活かしつつレコード/リプレイ機能も欲しい\*\* | MSW + WireMock/Mockoon 組み合わせ | MSW を開発/UT に、WireMock などをシステムテスト・CI 用スタブに分担するハイブリッド構成が現場で増加中 |
+| **フロントエンド開発 & テストを 1 つのハンドラで完結** | **MSW** | ServiceWorker + Node インターセプトで “動くコードをそのままテスト” できる。React/Vite/Vitest 連携が充実 |
+| **バックエンドとの並行開発、QA 用永久モック環境が欲しい** | **Mockoon Cloud** または **Prism** | GUI で仕様→モック生成、チーム共有・デプロイがボタン一発 |
+| **E2E / 結合テストで外部サービスを完全再現** | **WireMock (Docker)** | きめ細かなリクエストマッチ・ステートフルなシナリオ・フォールト注入・録画再生などが強力 |
+| **契約 (Contract) テストを自動化** | **Prism Validation Proxy** | 実 API ↔︎ OpenAPI の乖離をステージングで自動検知。OpenAPI 3.1 までサポート |
+| **既存の MSW ハンドラは活かしつつレコード/リプレイ機能も欲しい** | MSW + WireMock/Mockoon 組み合わせ | MSW を開発/UT に、WireMock などをシステムテスト・CI 用スタブに分担するハイブリッド構成が現場で増加中 |
 
 ---
 
 ## まとめ
 
-- \*\*「MSW をそのまま置き換え」できるライブラリは今のところ無い\*\*。  
-- ただし \*\*クラウド運用・ノーコード GUI・gRPC など周辺要件\*\* まで入れると WireMock／Mockoon／Prism が MSW を上回る面もある。  
-- \*\*用途別にツールを併用\*\* するのが 2025 年の主流アプローチ。フロントの高速開発は MSW、統合テストや契約検証はサーバー型モックという切り分けを検討すると良いでしょう。
+- **「MSW をそのまま置き換え」できるライブラリは今のところ無い**。  
+- ただし **クラウド運用・ノーコード GUI・gRPC など周辺要件** まで入れると WireMock／Mockoon／Prism が MSW を上回る面もある。  
+- **用途別にツールを併用** するのが 2025 年の主流アプローチ。フロントの高速開発は MSW、統合テストや契約検証はサーバー型モックという切り分けを検討すると良いでしょう。
 
 ---
 
@@ -206,32 +206,32 @@ msw以上にmockライブラリのエコシステムが整っているライブ�
 ## 🤖 アシスタント
 *2025/6/23 18:16:28*
 
-下表に \*\*「WireMock / Mockoon / Stoplight Prism」サーバー型 3 製品\*\* をまとめました。すべて \*\*OpenAPI を直接読み込んでモックを起動\*\* できますが、狙っているユースケースがかなり違います。
+下表に **「WireMock / Mockoon / Stoplight Prism」サーバー型 3 製品** をまとめました。すべて **OpenAPI を直接読み込んでモックを起動** できますが、狙っているユースケースがかなり違います。
 
 |  | WireMock | Mockoon | Stoplight Prism |
 |---|---|---|---|
-| GitHub ⭐ (2025-06) | \*\*6.8 k\*\* citeturn1view0 | \*\*7.3 k\*\* citeturn2view0 | \*\*4.6 k\*\* citeturn3view0 |
+| GitHub ⭐ (2025-06) | **6.8 k** citeturn1view0 | **7.3 k** citeturn2view0 | **4.6 k** citeturn3view0 |
 | 最新リリース | 3.13.1 (2025-06-11) citeturn5view0 | 9.2.0 (2025-03-12) citeturn6view0 | 5.14.2 (2025-04-17) citeturn7view0 |
-| OpenAPI対応 | Cloud/UI/CLI で v2・v3 インポート／テンプレート生成 citeturn0search0turn8search0 | デスクトップ/CLI で v2・v3 取込・v3 エクスポート（機能マッピングに制限あり） citeturn0search2turn0search7 | CLI/ライブラリで \*\*v2・v3・v3.1\*\*＋Postman ― 完全バリデーション＆動的例生成 citeturn9turn7view0 |
-| 特徴の軸 | \*Java コア\*／Docker・Jar・埋め込み可&lt;br&gt;リクエスト高精度マッチ・テンプレート&lt;br&gt;\*\*レコード＆リプレイ\*\*&lt;br&gt;\*\*Chaos/Fault 注入\*\* citeturn8search2turn8search1 | \*\*GUI\*\* でドラッグ＆ドロップ設計&lt;br&gt;同一 UI からクラウド共有・デプロイ&lt;br&gt;JSON テンプレート・プロキシ&lt;br&gt;軽量 CLI で CI 実行可 | \*\*スキーマ主導\*\*：リクエスト/レスポンス双方向検証&lt;br&gt;json-schema-faker 連携で動的モック&lt;br&gt;Validation Proxy＝契約テストとしても利用&lt;br&gt;Seed 付きで再現性確保 |
+| OpenAPI対応 | Cloud/UI/CLI で v2・v3 インポート／テンプレート生成 citeturn0search0turn8search0 | デスクトップ/CLI で v2・v3 取込・v3 エクスポート（機能マッピングに制限あり） citeturn0search2turn0search7 | CLI/ライブラリで **v2・v3・v3.1**＋Postman ― 完全バリデーション＆動的例生成 citeturn9turn7view0 |
+| 特徴の軸 | *Java コア*／Docker・Jar・埋め込み可&lt;br&gt;リクエスト高精度マッチ・テンプレート&lt;br&gt;**レコード＆リプレイ**&lt;br&gt;**Chaos/Fault 注入** citeturn8search2turn8search1 | **GUI** でドラッグ＆ドロップ設計&lt;br&gt;同一 UI からクラウド共有・デプロイ&lt;br&gt;JSON テンプレート・プロキシ&lt;br&gt;軽量 CLI で CI 実行可 | **スキーマ主導**：リクエスト/レスポンス双方向検証&lt;br&gt;json-schema-faker 連携で動的モック&lt;br&gt;Validation Proxy＝契約テストとしても利用&lt;br&gt;Seed 付きで再現性確保 |
 | 苦手な所 | UI は Cloud 版のみ（OSS は JSON or Java）&lt;br&gt;OpenAPI→スタブ変換は CLI ベータ | gRPC/GraphQL 未対応、スキーマ検証は弱め | GUI なし（Stoplight Platformへ誘導）&lt;br&gt;大規模 spec では起動が遅いことも |
-| こんな時に | \*エンタープライズ品質\*の結合／回帰／負荷試験。実 API を録画→カオス注入 | \*フロント～QA 共用\* の手軽なスタブ環境。非開発者も触れる GUI が必須 | \*Spec-First 開発\* で「仕様どおりか？」を常に自動チェック。CI の契約テストにも |
+| こんな時に | *エンタープライズ品質*の結合／回帰／負荷試験。実 API を録画→カオス注入 | *フロント～QA 共用* の手軽なスタブ環境。非開発者も触れる GUI が必須 | *Spec-First 開発* で「仕様どおりか？」を常に自動チェック。CI の契約テストにも |
 
 ---
 
 ## 「勢い」をどう見るか？
 
-\* \*\*コミュニティ規模\*\*  
-  Star 数は Mockoon &gt; WireMock &gt; Prism。ただし WireMock は 2011 年開始の老舗で \*\*企業利用実績が桁違い\*\*、Prism は Stoplight プラットフォームの中核で \*\*毎月リリース\*\* が続くなど、3 製品とも“枯れていて活発”と言える。  
-\* \*\*リリース頻度\*\*  
+* **コミュニティ規模**  
+  Star 数は Mockoon &gt; WireMock &gt; Prism。ただし WireMock は 2011 年開始の老舗で **企業利用実績が桁違い**、Prism は Stoplight プラットフォームの中核で **毎月リリース** が続くなど、3 製品とも“枯れていて活発”と言える。  
+* **リリース頻度**  
   2025 年に入ってからのリリース回数は  
   - WireMock 3 系 … 毎月リリース (3.11→3.13)  
   - Prism 5 系 … 4〜6 週間ごと  
   - Mockoon 9 系 … 3 か月に 1 回程度  
-  速度だけで言えば \*\*WireMock ≒ Prism\*\* がやや先行。  
-\* \*\*エコシステム拡張\*\*  
-  - WireMock ⇒ \*\*WireMock Cloud\*\* で GUI、CI 効率化、Chaos、差分監視など拡張機能が激増中 citeturn8search0  
-  - Mockoon ⇒ \*\*Desktop↔Cloud↔CLI\*\* の連携路線を強化。GitHub Action 公式サポートで “QA チームの標準ツール” として伸長中。  
+  速度だけで言えば **WireMock ≒ Prism** がやや先行。  
+* **エコシステム拡張**  
+  - WireMock ⇒ **WireMock Cloud** で GUI、CI 効率化、Chaos、差分監視など拡張機能が激増中 citeturn8search0  
+  - Mockoon ⇒ **Desktop↔Cloud↔CLI** の連携路線を強化。GitHub Action 公式サポートで “QA チームの標準ツール” として伸長中。  
   - Prism ⇒ Stoplight 製品群 (Spectral lint, Studio Designer) と横串で使える一体感が売り。
 
 ---
@@ -240,16 +240,16 @@ msw以上にmockライブラリのエコシステムが整っているライブ�
 
 | あなたの状況 | ベストチョイス |
 |--------------|----------------|
-| \*\*OpenAPI を“真面目に”検証しながらフロント・サーバー両方の CI を回したい\*\* | \*\*Prism\*\* – バリデーション Proxy と json-schema-faker 生成で契約テストが即座に書ける |
-| \*\*GUI でサクッとモックを作って非エンジニアとも共有したい／CI でも同じファイルを使いたい\*\* | \*\*Mockoon\*\* – デスクトップ操作 → CLI/Action でそのまま再利用 |
-| \*\*レガシー含む大型システムの統合テスト／障害注入テストをしたい\*\* | \*\*WireMock\*\* – 高度なマッチング、録画、Chaos、gRPC/GraphQL、企業サポート |
+| **OpenAPI を“真面目に”検証しながらフロント・サーバー両方の CI を回したい** | **Prism** – バリデーション Proxy と json-schema-faker 生成で契約テストが即座に書ける |
+| **GUI でサクッとモックを作って非エンジニアとも共有したい／CI でも同じファイルを使いたい** | **Mockoon** – デスクトップ操作 → CLI/Action でそのまま再利用 |
+| **レガシー含む大型システムの統合テスト／障害注入テストをしたい** | **WireMock** – 高度なマッチング、録画、Chaos、gRPC/GraphQL、企業サポート |
 
-&gt; \*\*結論\*\*  
-&gt; - 仕様どおりかを“厳格に”担保 → \*\*Prism\*\*  
-&gt; - “GUI・クラウド・コラボ”重視 → \*\*Mockoon\*\*  
-&gt; - “エンタープライズ耐久テスト”重視 → \*\*WireMock\*\*  
+&gt; **結論**  
+&gt; - 仕様どおりかを“厳格に”担保 → **Prism**  
+&gt; - “GUI・クラウド・コラボ”重視 → **Mockoon**  
+&gt; - “エンタープライズ耐久テスト”重視 → **WireMock**  
 &gt;   
-&gt; \*\*OpenAPI 対応\*\*という一点だけなら 3 製品とも十分使えます。最終的には \*\*開発フローと組織のフェーズ\*\*に合わせて選ぶのが吉です。
+&gt; **OpenAPI 対応**という一点だけなら 3 製品とも十分使えます。最終的には **開発フローと組織のフェーズ**に合わせて選ぶのが吉です。
 
 ---
 

@@ -13,7 +13,7 @@ public final class UserNotificationCenterDriver: NSObject, UNUserNotificationCen
     override public init() {
         super.init()
         OSLogger.initLog()
-        if ProcessInfo.processInfo.environment\["XCTestConfigurationFilePath"\] == nil {
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
             UNUserNotificationCenter.current().delegate = self
         } else {
             // アプリが起動していない状態で UNUserNotificationCenter.current().delegate = self を行うと bundleProxyForCurrentProcess is nil といったようなエラーになるための対応
@@ -28,34 +28,34 @@ public final class UserNotificationCenterDriver: NSObject, UNUserNotificationCen
 
     /// アプリがフォアグラウンドにいるときに通知が表示される直前に呼び出され、通知のプレゼンテーションオプションを指定する
     @MainActor
-    public func userNotificationCenter(\_: UNUserNotificationCenter, willPresent \_: UNNotification) async -&gt; UNNotificationPresentationOptions {
+    public func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification) async -&gt; UNNotificationPresentationOptions {
         UserNotificationCenterDelegateNotificationDriver.userNotificationCenterWillPresent.send(())
-        return \[.banner, .sound, .badge\]
+        return [.banner, .sound, .badge]
     }
 
     /// ユーザーが通知に対してアクションを取ったときに呼び出される
     @MainActor
-    public func userNotificationCenter(\_: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-        OSLogger.debugLog("Receive Notification Response: \\(response.notification.request.content.userInfo)")
-        guard let urlString = response.notification.request.content.userInfo\["url"\] as? String else {
-            OSLogger.debugLog("Failed to get URL from userInfo. \\(response.notification.request.content.userInfo)")
+    public func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        OSLogger.debugLog("Receive Notification Response: \(response.notification.request.content.userInfo)")
+        guard let urlString = response.notification.request.content.userInfo["url"] as? String else {
+            OSLogger.debugLog("Failed to get URL from userInfo. \(response.notification.request.content.userInfo)")
             return
         }
 
         guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            OSLogger.debugLog("Failed to encode URL string: \\(urlString).")
+            OSLogger.debugLog("Failed to encode URL string: \(urlString).")
             return
         }
 
         guard let url = URL(string: encodedUrlString) else {
-            OSLogger.debugLog("Failed to create URL from \\(encodedUrlString).")
+            OSLogger.debugLog("Failed to create URL from \(encodedUrlString).")
             return
         }
         UserNotificationCenterDelegateNotificationDriver.userNotificationCenterDidReceive.send(url)
     }
 
     // 以下は OS の通知設定から任意の画面を表示する動線を加えることができる （Facebook のアプリ参照）
-    // public func userNotificationCenter(\_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {}
+    // public func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {}
 }
 
 ---

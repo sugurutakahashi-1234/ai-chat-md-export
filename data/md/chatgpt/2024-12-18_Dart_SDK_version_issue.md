@@ -8,13 +8,13 @@
 *2024/12/18 14:13:12*
 
 $ make build                        
-fvm flutter pub run build\_runner build --delete-conflicting-outputs
+fvm flutter pub run build_runner build --delete-conflicting-outputs
 Deprecated. Use `dart run` instead.
 Resolving dependencies... 
 The current Dart SDK version is 3.5.4.
 
-Because snpit\_guild\_app depends on json\_serializable &gt;=6.9.1 which requires SDK version &gt;=3.6.0 &lt;4.0.0, version solving failed.
-make: \*\*\* \[build\] Error 1
+Because snpit_guild_app depends on json_serializable &gt;=6.9.1 which requires SDK version &gt;=3.6.0 &lt;4.0.0, version solving failed.
+make: *** [build] Error 1
 
 ---
 

@@ -1003,7 +1003,7 @@ docPath: "./docs"
 ## 👤 ユーザー
 *2024/5/27 11:37:10*
 
-MYSQL\_USER や  MYSQL\_PASSWORD や MYSQL\_ROOT\_PASSWORD は実際なんでもいいということであってますか？
+MYSQL_USER や  MYSQL_PASSWORD や MYSQL_ROOT_PASSWORD は実際なんでもいいということであってますか？
 
 ---
 
@@ -1906,7 +1906,7 @@ docker-compose down
 
 docker-compose ps
 
-WARN\[0000\] /Users/sugurutakahashi/git/tbls-sample/docker-compose.yml: `version` is obsolete 
+WARN[0000] /Users/sugurutakahashi/git/tbls-sample/docker-compose.yml: `version` is obsolete 
 NAME                  IMAGE          COMMAND                   SERVICE   CREATED         STATUS                            PORTS
 tbls-sample-mysql-1   mysql:latest   "docker-entrypoint.s…"   mysql     6 seconds ago   Up 5 seconds (health: starting)   0.0.0.0:3306-&gt;3306/tcp, 33060/tcp
 
@@ -2002,7 +2002,7 @@ tbls doc
 ## 👤 ユーザー
 *2024/5/27 12:45:52*
 
-mysql: \[Warning\] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
 
 ---
 
@@ -2133,20 +2133,20 @@ $ go install github.com/k1LoW/tbls@latest                                       
 
 # github.com/goccy/go-graphviz/internal/ccall
 In file included from common.c:5:
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:165:35: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2540:24: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2596:35: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2602:35: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2612:31: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2623:31: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2628:31: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2641:28: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2650:33: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2659:32: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2668:32: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 \[-Wsingle-bit-bitfield-constant-conversion\]
-~/git/tbls-sample  ‹main\*› $ 
-~/git/tbls-sample  ‹main\*› $ 
-~/git/tbls-sample  ‹main\*› $ tbls doc
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:165:35: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2540:24: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2596:35: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2602:35: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2612:31: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2623:31: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2628:31: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2641:28: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2650:33: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2659:32: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+../../go/pkg/mod/github.com/goccy/go-graphviz@v0.1.2/internal/ccall/common/emit.c:2668:32: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+~/git/tbls-sample  ‹main*› $ 
+~/git/tbls-sample  ‹main*› $ 
+~/git/tbls-sample  ‹main*› $ tbls doc
 
 zsh: command not found: tbls
 

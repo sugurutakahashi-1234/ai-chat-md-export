@@ -13,7 +13,7 @@
 
 
 extension Playbook {
-    func addScenarios&lt;S: ScenariosBuildable&gt;(@ScenariosBuilder \_ scenarios: () -&gt; S) -&gt; Self {
+    func addScenarios&lt;S: ScenariosBuildable&gt;(@ScenariosBuilder _ scenarios: () -&gt; S) -&gt; Self {
         self.addScenarios(of: ScenarioKind(rawValue: ここにシナリオのViewの型名が入るようにしてほしい), scenarios)
     }
 }
@@ -24,12 +24,12 @@ extension Playbook {
 /// Represents an instance that can build an array of scenarios.
 public protocol ScenariosBuildable {
     /// Builds an array of scenarios.
-    func buildScenarios() -&gt; \[Scenario\]
+    func buildScenarios() -&gt; [Scenario]
 }
 
 extension Scenario: ScenariosBuildable {
     /// Builds an array of scenarios containing only `self`.
-    public func buildScenarios() -&gt; \[Scenario\] { \[self\] }
+    public func buildScenarios() -&gt; [Scenario] { [self] }
 }
 
 /// Represents part of the component state.
@@ -58,7 +58,7 @@ public struct Scenario {
     ///   - line: A line number where defined this scenario in file.
     ///   - content: A closure that make a new content with passed context.
     public init(
-        \_ name: ScenarioName,
+        _ name: ScenarioName,
         layout: ScenarioLayout,
         file: StaticString = #file,
         line: UInt = #line,
@@ -80,7 +80,7 @@ public struct Scenario {
     ///   - line: A line number where defined this scenario in file.
     ///   - content: A closure that make a new content.
     public init(
-        \_ name: ScenarioName,
+        _ name: ScenarioName,
         layout: ScenarioLayout,
         file: StaticString = #file,
         line: UInt = #line,
@@ -91,7 +91,7 @@ public struct Scenario {
             layout: layout,
             file: file,
             line: line,
-            content: { \_ in content() }
+            content: { _ in content() }
         )
     }
 }
@@ -116,20 +116,20 @@ extension UIViewController: ScenarioContent {
 }
 
 private final class UIViewHostingController: UIViewController {
-    private let \_view: UIView
+    private let _view: UIView
 
     init(view: UIView) {
-        self.\_view = view
+        self._view = view
         super.init(nibName: nil, bundle: nil)
     }
 
-    @available(\*, unavailable)
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override func loadView() {
-        view = \_view
+        view = _view
     }
 }
 

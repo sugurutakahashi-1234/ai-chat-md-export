@@ -1603,7 +1603,7 @@ Task {
 `AsyncStream`が生成する`Task`のリソースは適切に解放される必要があります。`continuation.finish()`が呼ばれても、内部で生成された`Task`がキャンセルされるわけではありません。`AsyncStream`が不要になった際には、関連する`Task`をキャンセルする必要があります。
 
 ### 3. メモリリークのリスク
-クロージャ内での強参照が循環参照を引き起こし、メモリリークの原因となる可能性があります。クロージャ内で`self`をキャプチャする際は、`\[weak self\]`または`\[unowned self\]`を使用して、循環参照を防ぐべきです。
+クロージャ内での強参照が循環参照を引き起こし、メモリリークの原因となる可能性があります。クロージャ内で`self`をキャプチャする際は、`[weak self]`または`[unowned self]`を使用して、循環参照を防ぐべきです。
 
 ### 4. タスクのスケジューリング
 このコードでは`TaskGroup`を用いてタスクをスケジュールしていますが、複数のタスクを並列に実行することで、システムのリソースが不足する可能性も考えられます。タスクの優先度や、実行すべきタスクの数を適切に管理する必要があります。
@@ -1639,7 +1639,7 @@ struct Streams {
         self.firstStream = AsyncStream&lt;IntStreamItem&gt;(bufferingPolicy: .bufferingNewest(5)) { continuation in
             Task {
                 for i in 1...5 {
-                    try! await Task.sleep(nanoseconds: 1\_000\_000\_000) // 1秒
+                    try! await Task.sleep(nanoseconds: 1_000_000_000) // 1秒
                     continuation.yield(IntStreamItem(id: i, value: i))
                 }
                 continuation.finish()
@@ -1649,7 +1649,7 @@ struct Streams {
         self.secondStream = AsyncStream&lt;IntStreamItem&gt;(bufferingPolicy: .bufferingNewest(5)) { continuation in
             Task {
                 for i in 6...10 {
-                    try! await Task.sleep(nanoseconds: 1\_000\_000\_000) // 1秒
+                    try! await Task.sleep(nanoseconds: 1_000_000_000) // 1秒
                     continuation.yield(IntStreamItem(id: i, value: i))
                 }
                 continuation.finish()
@@ -1659,7 +1659,7 @@ struct Streams {
         self.thirdStream = AsyncStream&lt;IntStreamItem&gt;(bufferingPolicy: .bufferingNewest(5)) { continuation in
             Task {
                 for i in 11...15 {
-                    try! await Task.sleep(nanoseconds: 1\_000\_000\_000) // 1秒
+                    try! await Task.sleep(nanoseconds: 1_000_000_000) // 1秒
                     continuation.yield(IntStreamItem(id: i, value: i))
                 }
                 continuation.finish()
@@ -1675,17 +1675,17 @@ Task {
         // firstStreamとsecondStreamを同期処理
         group.addTask {
             for await item in streams.firstStream {
-                print("First Stream - ID: \\(item.id), Value: \\(item.value)")
+                print("First Stream - ID: \(item.id), Value: \(item.value)")
             }
             for await item in streams.secondStream {
-                print("Second Stream - ID: \\(item.id), Value: \\(item.value)")
+                print("Second Stream - ID: \(item.id), Value: \(item.value)")
             }
         }
         
         // thirdStreamを並列処理
         group.addTask {
             for await item in streams.thirdStream {
-                print("Third Stream - ID: \\(item.id), Value: \\(item.value)")
+                print("Third Stream - ID: \(item.id), Value: \(item.value)")
             }
         }
     }

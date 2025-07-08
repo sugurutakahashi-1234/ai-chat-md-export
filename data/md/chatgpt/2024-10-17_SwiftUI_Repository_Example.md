@@ -32,11 +32,11 @@ struct HogeView {
     @StateObject private var viewModel: HogeViewModel
     
     init(dependency: HogeViewModelDependency = HogeViewModelDependencyInjectorImpl()) {
-        \_viewModel = .init(wrappedValue: .init(dependency: dependency))
+        _viewModel = .init(wrappedValue: .init(dependency: dependency))
     }
     
     var body: some View {
-        Text("\\(viewModel.text)")
+        Text("\(viewModel.text)")
             .onAppear {
                 viewModel.onAppear()
             }
@@ -57,7 +57,7 @@ final class HogeViewModel: ObservableObject {
                 let helloStr = try await dependency.hogeRepository.fetchHello()
                 let worldStr = try await dependency.mogeRepository.fetchWorld()
                 
-                text = "\\(helloStr) \\(worldStr) !"
+                text = "\(helloStr) \(worldStr) !"
             } catch {
                 print(error)
             }

@@ -99,7 +99,7 @@ struct SelectableTextView: UIViewRepresentable {
         return textView
     }
 
-    func updateUIView(\_ uiView: UITextView, context: Context) {
+    func updateUIView(_ uiView: UITextView, context: Context) {
         uiView.text = text
     }
 }
@@ -107,7 +107,7 @@ struct SelectableTextView: UIViewRepresentable {
 #Preview {
     ScrollView {
         VStack {
-            SelectableTextView(text: "hoge\\naaa")
+            SelectableTextView(text: "hoge\naaa")
         }
     }
 }

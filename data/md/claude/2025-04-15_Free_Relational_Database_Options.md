@@ -18,25 +18,25 @@
 
 ## クラウドベースの無料リレーショナルDBサービス
 
-1. \*\*Amazon RDS Free Tier\*\* - AWS の無料利用枠で、MySQL、PostgreSQL、MariaDB などを12ヶ月間無料で利用できます（容量と機能に制限あり）
+1. **Amazon RDS Free Tier** - AWS の無料利用枠で、MySQL、PostgreSQL、MariaDB などを12ヶ月間無料で利用できます（容量と機能に制限あり）
 
-2. \*\*Google Cloud SQL Free Tier\*\* - Google Cloud Platform の無料枠で、MySQL、PostgreSQL、SQL Server を小規模ながら利用可能
+2. **Google Cloud SQL Free Tier** - Google Cloud Platform の無料枠で、MySQL、PostgreSQL、SQL Server を小規模ながら利用可能
 
-3. \*\*Microsoft Azure SQL Database\*\* - 無料枠があり、小規模な開発やテスト用途に適しています
+3. **Microsoft Azure SQL Database** - 無料枠があり、小規模な開発やテスト用途に適しています
 
-4. \*\*Heroku Postgres Hobby Dev\*\* - 10,000行までの制限がありますが、完全無料で利用可能
+4. **Heroku Postgres Hobby Dev** - 10,000行までの制限がありますが、完全無料で利用可能
 
-5. \*\*Supabase\*\* - PostgreSQL ベースのサービスで、無料プランが提供されています
+5. **Supabase** - PostgreSQL ベースのサービスで、無料プランが提供されています
 
 ## セルフホスト型（自分でサーバーにインストール）
 
-1. \*\*MySQL Community Edition\*\* - 完全無料のオープンソースリレーショナルDB
+1. **MySQL Community Edition** - 完全無料のオープンソースリレーショナルDB
 
-2. \*\*PostgreSQL\*\* - 高機能な完全無料のオープンソースリレーショナルDB
+2. **PostgreSQL** - 高機能な完全無料のオープンソースリレーショナルDB
 
-3. \*\*SQLite\*\* - ファイルベースの軽量DBで、アプリケーションに組み込みやすい
+3. **SQLite** - ファイルベースの軽量DBで、アプリケーションに組み込みやすい
 
-4. \*\*MariaDB\*\* - MySQL のフォークで完全無料
+4. **MariaDB** - MySQL のフォークで完全無料
 
 ## 選択の際の注意点
 
@@ -62,43 +62,43 @@ RBDの設定などはあるべくドキュメントからコード生成してGi
 
 ## Database as Codeの一般的なツール
 
-1. \*\*Flyway\*\* - シンプルな移行ベースのデータベースバージョン管理。SQLスクリプトを使用してデータベース変更を管理します。
+1. **Flyway** - シンプルな移行ベースのデータベースバージョン管理。SQLスクリプトを使用してデータベース変更を管理します。
 
-2. \*\*Liquibase\*\* - より多機能なデータベースバージョン管理ツール。SQL、XML、JSON、YAMLで変更を記述できます。
+2. **Liquibase** - より多機能なデータベースバージョン管理ツール。SQL、XML、JSON、YAMLで変更を記述できます。
 
-3. \*\*Prisma\*\* - モダンなNode.jsとTypeScript用のORMで、マイグレーション管理も含まれます。スキーマをコードとして定義できます。
+3. **Prisma** - モダンなNode.jsとTypeScript用のORMで、マイグレーション管理も含まれます。スキーマをコードとして定義できます。
 
-4. \*\*SQLAlchemy (Python)\*\* - PythonのORMで、Alembicというマイグレーションツールと組み合わせることでスキーマ管理が可能です。
+4. **SQLAlchemy (Python)** - PythonのORMで、Alembicというマイグレーションツールと組み合わせることでスキーマ管理が可能です。
 
-5. \*\*Django Migrations\*\* - DjangoフレームワークのORM機能を使ったマイグレーション管理システム。
+5. **Django Migrations** - DjangoフレームワークのORM機能を使ったマイグレーション管理システム。
 
-6. \*\*Entity Framework (C#)\*\* - Microsoftの.NET環境向けORMで、コードファーストアプローチとマイグレーション機能があります。
+6. **Entity Framework (C#)** - Microsoftの.NET環境向けORMで、コードファーストアプローチとマイグレーション機能があります。
 
 ## インフラストラクチャとしてのコード（IaC）ツール
 
-1. \*\*Terraform\*\* - クラウドリソースをコードで管理できるIaCツール。RDSやCloud SQLなどのデータベースリソースもコードで定義できます。
+1. **Terraform** - クラウドリソースをコードで管理できるIaCツール。RDSやCloud SQLなどのデータベースリソースもコードで定義できます。
 
-2. \*\*AWS CloudFormation / CDK\*\* - AWSリソース（RDSを含む）をコードとして管理。
+2. **AWS CloudFormation / CDK** - AWSリソース（RDSを含む）をコードとして管理。
 
-3. \*\*Pulumi\*\* - 一般的なプログラミング言語でクラウドインフラを定義できるIaCツール。
+3. **Pulumi** - 一般的なプログラミング言語でクラウドインフラを定義できるIaCツール。
 
 ## データベーススキーマ設計ツール
 
-1. \*\*dbdiagram.io\*\* - ERD（エンティティ関係図）を作成し、そこからSQLを生成できるツール。結果をGitで管理できます。
+1. **dbdiagram.io** - ERD（エンティティ関係図）を作成し、そこからSQLを生成できるツール。結果をGitで管理できます。
 
-2. \*\*Schema Spy\*\* - 既存のデータベースのドキュメント生成ツール。
+2. **Schema Spy** - 既存のデータベースのドキュメント生成ツール。
 
-3. \*\*SchemaHero\*\* - Kubernetes環境でデータベーススキーマをGit管理するツール。
+3. **SchemaHero** - Kubernetes環境でデータベーススキーマをGit管理するツール。
 
 ## 実装のベストプラクティス
 
-1. \*\*マイグレーションベースのアプローチ\*\* - 各データベース変更を個別のマイグレーションファイルとして管理し、順番に適用。
+1. **マイグレーションベースのアプローチ** - 各データベース変更を個別のマイグレーションファイルとして管理し、順番に適用。
 
-2. \*\*冪等性の確保\*\* - 同じマイグレーションが複数回実行されても問題ないように設計。
+2. **冪等性の確保** - 同じマイグレーションが複数回実行されても問題ないように設計。
 
-3. \*\*CI/CDパイプラインの統合\*\* - データベース変更のテストと本番適用を自動化。
+3. **CI/CDパイプラインの統合** - データベース変更のテストと本番適用を自動化。
 
-4. \*\*ブランチ戦略\*\* - フィーチャーブランチでデータベース変更を開発し、マイグレーションテストを行った後に本番に適用。
+4. **ブランチ戦略** - フィーチャーブランチでデータベース変更を開発し、マイグレーションテストを行った後に本番に適用。
 
 どのような規模やスタック（言語やフレームワーク）で開発されているかによって、最適なアプローチは異なります。ご希望があれば、より具体的なアドバイスをご提供できます。
 
@@ -118,25 +118,25 @@ Terraformのような「Infrastructure as Code (IaC)」アプローチでデー�
 
 ## Terraformの競合・代替ツール
 
-1. \*\*AWS CloudFormation / AWS CDK\*\*
+1. **AWS CloudFormation / AWS CDK**
    - AWS専用のIaCツール
    - CDKはTypeScript, Python, Java, C#などで記述可能
    - AWSサービスとの統合が最も緊密
    - デメリット: AWS以外のクラウドには対応していない
 
-2. \*\*Google Cloud Deployment Manager\*\*
+2. **Google Cloud Deployment Manager**
    - GCP専用のIaCツール
    - YAML, Python, Jinja2テンプレートで記述
    - GCPサービスとの統合が緊密
    - デメリット: GCP以外のクラウドには対応していない
 
-3. \*\*Pulumi\*\*
+3. **Pulumi**
    - 一般的なプログラミング言語(JavaScript, TypeScript, Python, Go, .NET)でインフラを定義
    - マルチクラウド対応(AWS, GCP, Azure他)
    - 実際のプログラミング言語を使うため、より複雑なロジックが書ける
    - デメリット: Terraformと比べて成熟度やコミュニティがやや小さい
 
-4. \*\*Crossplane\*\*
+4. **Crossplane**
    - Kubernetes拡張としてクラウドリソースを管理
    - KubernetesのCRD(Custom Resource Definitions)を使ってクラウドリソースを宣言的に定義
    - マルチクラウド対応
@@ -144,24 +144,24 @@ Terraformのような「Infrastructure as Code (IaC)」アプローチでデー�
 
 ## データベース固有のIaCツール
 
-1. \*\*Terraform + 専用プロバイダー\*\*
-   - aws\_db\_instance, google\_sql\_database\_instanceなどのリソースタイプ
+1. **Terraform + 専用プロバイダー**
+   - aws_db_instance, google_sql_database_instanceなどのリソースタイプ
    - マルチクラウド対応で一貫した管理が可能
 
-2. \*\*AWS RDS + CloudFormation\*\*
+2. **AWS RDS + CloudFormation**
    - AWSのRDSをCloudFormationで定義・管理
 
-3. \*\*GCP Cloud SQL + Deployment Manager\*\*
+3. **GCP Cloud SQL + Deployment Manager**
    - GCPのCloud SQLをDeployment Managerで定義・管理
 
 ## データベーススキーマ管理ツール (IaCと組み合わせて使用)
 
-1. \*\*Flyway / Liquibase\*\*
+1. **Flyway / Liquibase**
    - データベーススキーマのバージョン管理
    - TerraformやCDKなどと組み合わせて使用可能
    - データベース内の実際のスキーマ変更を管理
 
-2. \*\*Sqitch\*\*
+2. **Sqitch**
    - データベーススキーマの変更管理ツール
    - 依存関係に基づいた変更適用が可能
 
@@ -169,12 +169,12 @@ Terraformのような「Infrastructure as Code (IaC)」アプローチでデー�
 
 AWSとGCPの両方を使用予定であれば:
 
-1. \*\*Terraformを使用する\*\*
+1. **Terraformを使用する**
    - マルチクラウド対応の最も成熟したIaCツール
    - AWSとGCPの両方に対応する豊富なプロバイダー
    - モジュール化によるコードの再利用が可能
 
-2. \*\*Pulumiを検討する\*\*
+2. **Pulumiを検討する**
    - より複雑なロジックやプログラミング言語の機能を活用したい場合
 
 両クラウドでサービスを利用する際は、Terraformの適切なバージョン管理とステート管理（例：Terraform Cloud, S3+DynamoDB, GCS）が重要です。また、モジュール化して共通のパターンを抽出することで、複数のクラウド間での一貫性を保つことができます。

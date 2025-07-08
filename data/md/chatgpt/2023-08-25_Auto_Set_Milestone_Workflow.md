@@ -13,8 +13,8 @@ issueやPRをcloseした際にマイルストーンがついていない場合�
 name: Auto Set Milestone To PR
 
 on:
-  pull\_request:
-    types: \[opened\]
+  pull_request:
+    types: [opened]
 
 jobs:
   set-milestone:
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           # NOTE: `admin:org, project, repo` scope suguruTakahashi-1234's personal access token (classic)
-          github-token: ${{ secrets.EMOMIL\_IOS\_GITHUB\_ACTIONS\_TOKEN }}
+          github-token: ${{ secrets.EMOMIL_IOS_GITHUB_ACTIONS_TOKEN }}
           script: |
             // Ref: PRにマイルストーンを自動設定 https://qiita.com/stnamco/items/06d2147c93a1cca97371
             // Ref: https://octokit.github.io/rest.js/v20
@@ -32,12 +32,12 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
-              sort: 'due\_on',
+              sort: 'due_on',
               direction: 'desc',  // 最新のものから取得
-              per\_page: 1         // 最新のマイルストーンのみを取得
+              per_page: 1         // 最新のマイルストーンのみを取得
             });
 
-            const latestMilestone = milestones.data\[0\];
+            const latestMilestone = milestones.data[0];
             if (!latestMilestone) {
               console.log('No open milestones found');
               return;
@@ -46,7 +46,7 @@ jobs:
             await github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue\_number: context.payload.pull\_request.number,
+              issue_number: context.payload.pull_request.number,
               milestone: latestMilestone.number
             });
 
@@ -126,27 +126,27 @@ jobs:
 ## 👤 ユーザー
 *2023/8/25 15:10:56*
 
-!!context.payload.pull\_request; ってどういう意味？
+!!context.payload.pull_request; ってどういう意味？
 
 ---
 
 ## 🤖 アシスタント
 *2023/8/25 15:11:23*
 
-`!!context.payload.pull\_request` はJavaScriptの式で、`context.payload.pull\_request` の真偽値を確認しています。
+`!!context.payload.pull_request` はJavaScriptの式で、`context.payload.pull_request` の真偽値を確認しています。
 
 具体的には:
 
-- `context.payload.pull\_request` は、イベントのペイロード（この場合は `pull\_request` イベントのペイロード）の `pull\_request` プロパティを参照します。PRのイベントがトリガーされた場合、このプロパティは存在しますが、issueのイベントがトリガーされた場合、このプロパティは存在しないため `undefined` となります。
+- `context.payload.pull_request` は、イベントのペイロード（この場合は `pull_request` イベントのペイロード）の `pull_request` プロパティを参照します。PRのイベントがトリガーされた場合、このプロパティは存在しますが、issueのイベントがトリガーされた場合、このプロパティは存在しないため `undefined` となります。
   
 - `!` 演算子は、その後の値の真偽値を反転させます。たとえば、値が `true` なら `false` に、`false` なら `true` にします。
 
 - `!!` は、`!` 演算子を2回適用することで、元の値の真偽値を取得することができます。
 
-したがって、`!!context.payload.pull\_request` の値は以下のようになります:
+したがって、`!!context.payload.pull_request` の値は以下のようになります:
 
-- `context.payload.pull\_request` が存在すれば（つまりPRのイベントの場合）：`true`
-- `context.payload.pull\_request` が存在しなければ（つまりissueのイベントの場合）：`false`
+- `context.payload.pull_request` が存在すれば（つまりPRのイベントの場合）：`true`
+- `context.payload.pull_request` が存在しなければ（つまりissueのイベントの場合）：`false`
 
 この式を使用することで、処理がPRに関連しているのか、それともissueに関連しているのかを簡単に確認できます。
 

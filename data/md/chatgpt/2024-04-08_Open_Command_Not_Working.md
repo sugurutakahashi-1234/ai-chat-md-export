@@ -12,7 +12,7 @@ makefileでopenで遷移してくれない
 # Swift-DocC によるドキュメント生成
 .PHONY: swift-docc-gen
 swift-docc-gen:
-	./swift\_docc/script/docc\_gen.sh
+	./swift_docc/script/docc_gen.sh
 	$(MAKE) swift-docc-preview
 	open http://localhost:8080/documentation/domainlayer
 

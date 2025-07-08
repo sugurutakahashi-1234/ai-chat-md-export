@@ -83,7 +83,7 @@ Viewing artifacts created via the Analysis Tool web feature preview isn’t yet 
 こういう感じにしてほしい 1/2は適宜にして40だと思って読み替えてほしい
 Stack(
       alignment: Alignment.center,
-      children: \[
+      children: [
         CircleAvatar(
           radius: size / 2,
           backgroundColor: ColorToken.bgWhite.withValues(alpha: 0.2),
@@ -95,7 +95,7 @@ Stack(
             await onPressed();
           },
         ),
-      \],
+      ],
     );
 
 ---

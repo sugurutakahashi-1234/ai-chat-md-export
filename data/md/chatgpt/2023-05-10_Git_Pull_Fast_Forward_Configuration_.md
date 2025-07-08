@@ -30,7 +30,7 @@ git config --global --unset pull.ff
 *2023/5/10 12:19:17*
 
 From github.com:Viagate/emomil-app-ios
- \* branch            feature/2-swift-format -&gt; FETCH\_HEAD
+ * branch            feature/2-swift-format -&gt; FETCH_HEAD
 hint: You have divergent branches and need to specify how to reconcile them.
 hint: You can do so by running one of the following commands sometime before
 hint: your next pull:

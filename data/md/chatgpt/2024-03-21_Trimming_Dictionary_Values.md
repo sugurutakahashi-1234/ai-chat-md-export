@@ -11,7 +11,7 @@
 
 
 public extension Dictionary where Value == Any {
-    func trimmingValuesToMaxLength(\_ maxLength: Int) -&gt; \[Key: Value\] {
+    func trimmingValuesToMaxLength(_ maxLength: Int) -&gt; [Key: Value] {
         mapValues { value in
             if let stringValue = value as? String, stringValue.count &gt; maxLength {
                 return String(stringValue.prefix(maxLength))

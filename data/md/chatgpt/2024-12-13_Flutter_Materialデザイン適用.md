@@ -173,8 +173,8 @@ ColorScheme 型のドキュメントがあれば教えてほしい
 
 また、`ColorScheme` を使用してアプリ全体のテーマを設定する方法については、以下の日本語記事が参考になります。
 
-- \[Flutterでカラーテーマーを管理するColorSchemeの設定と、現在のColorSchemeを取得する方法\](https://www.sukerou.com/2024/07/fluttercolorschemecolorscheme.html)
-- \[Flutter / ColorSchemeの設定方法\](https://zenn.dev/gen\_kk/articles/cc538ffa392922)
+- [Flutterでカラーテーマーを管理するColorSchemeの設定と、現在のColorSchemeを取得する方法](https://www.sukerou.com/2024/07/fluttercolorschemecolorscheme.html)
+- [Flutter / ColorSchemeの設定方法](https://zenn.dev/gen_kk/articles/cc538ffa392922)
 
 これらの記事では、`ColorScheme` を用いたテーマ設定の具体的な手順や、各プロパティの詳細について解説されています。特に、`ColorScheme` を `ThemeData` に適用し、`MaterialApp` に設定する方法など、実際のコード例を交えて説明されています。
 

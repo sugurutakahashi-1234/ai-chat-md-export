@@ -20,16 +20,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:guild\_api/guild\_api.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/domain/search\_result.dart';
-import 'package:snpit\_guild\_app/domain/search\_type.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/update\_explorer.dart';
-import 'package:snpit\_guild\_app/presentation/providers/flavor\_provider.dart';
-import 'package:snpit\_guild\_app/utils/location\_utils.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:guild_api/guild_api.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/domain/search_result.dart';
+import 'package:snpit_guild_app/domain/search_type.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/update_explorer.dart';
+import 'package:snpit_guild_app/presentation/providers/flavor_provider.dart';
+import 'package:snpit_guild_app/utils/location_utils.dart';
 
-part 'on\_exploring.g.dart';
+part 'on_exploring.g.dart';
 
 class OnExploringState {
   const OnExploringState({
@@ -46,7 +46,7 @@ class OnExploringState {
 }
 
 @Riverpod(keepAlive: true)
-class OnExploringNotifier extends \_$OnExploringNotifier {
+class OnExploringNotifier extends _$OnExploringNotifier {
   @override
   OnExploringState build() {
     return const OnExploringState(
@@ -75,7 +75,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
         const Duration(seconds: 5),
         onTimeout: () {
           throw Exception(
-            // ignore: lines\_longer\_than\_80\_chars
+            // ignore: lines_longer_than_80_chars
             'Getting current location timed out. Please try again in an area with better signal.',
           );
         },
@@ -84,7 +84,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
       final searchResult =
           await ref.read(updateExplorerNotifierProvider.notifier).search(
                 explorerId,
-                // TODO: \[v0.2.0\] \[Search\] SearchType を切り替えできるようにする
+                // TODO: [v0.2.0] [Search] SearchType を切り替えできるようにする
                 SearchType.spot,
                 currentLocation,
               );
@@ -123,7 +123,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
 
 
 @Riverpod(keepAlive: true)
-class SearchTypeNotifier extends \_$SearchTypeNotifier {
+class SearchTypeNotifier extends _$SearchTypeNotifier {
   @override
   Future&lt;SearchType&gt; build() async {
     try {
@@ -165,16 +165,16 @@ ExplorerListPageをこのターゲットの切り替えの実装をしたい。
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:guild\_api/guild\_api.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/domain/search\_result.dart';
-import 'package:snpit\_guild\_app/domain/search\_type.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/update\_explorer.dart';
-import 'package:snpit\_guild\_app/presentation/providers/flavor\_provider.dart';
-import 'package:snpit\_guild\_app/utils/location\_utils.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:guild_api/guild_api.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/domain/search_result.dart';
+import 'package:snpit_guild_app/domain/search_type.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/update_explorer.dart';
+import 'package:snpit_guild_app/presentation/providers/flavor_provider.dart';
+import 'package:snpit_guild_app/utils/location_utils.dart';
 
-part 'on\_exploring.g.dart';
+part 'on_exploring.g.dart';
 
 class OnExploringState {
   const OnExploringState({
@@ -191,7 +191,7 @@ class OnExploringState {
 }
 
 @Riverpod(keepAlive: true)
-class OnExploringNotifier extends \_$OnExploringNotifier {
+class OnExploringNotifier extends _$OnExploringNotifier {
   @override
   OnExploringState build() {
     return const OnExploringState(
@@ -220,7 +220,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
         const Duration(seconds: 5),
         onTimeout: () {
           throw Exception(
-            // ignore: lines\_longer\_than\_80\_chars
+            // ignore: lines_longer_than_80_chars
             'Getting current location timed out. Please try again in an area with better signal.',
           );
         },
@@ -229,7 +229,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
       final searchResult =
           await ref.read(updateExplorerNotifierProvider.notifier).search(
                 explorerId,
-                // TODO: \[v0.2.0\] \[Search\] SearchType を切り替えできるようにする
+                // TODO: [v0.2.0] [Search] SearchType を切り替えできるようにする
                 SearchType.spot,
                 currentLocation,
               );
@@ -268,7 +268,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
 
 
 @Riverpod(keepAlive: true)
-class SearchTypeNotifier extends \_$SearchTypeNotifier {
+class SearchTypeNotifier extends _$SearchTypeNotifier {
   @override
   Future&lt;SearchType&gt; build() async {
     try {
@@ -311,16 +311,16 @@ ExplorerListPageを修正してこのターゲットの切り替えの実装を�
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:guild\_api/guild\_api.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/domain/search\_result.dart';
-import 'package:snpit\_guild\_app/domain/search\_type.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/update\_explorer.dart';
-import 'package:snpit\_guild\_app/presentation/providers/flavor\_provider.dart';
-import 'package:snpit\_guild\_app/utils/location\_utils.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:guild_api/guild_api.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/domain/search_result.dart';
+import 'package:snpit_guild_app/domain/search_type.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/update_explorer.dart';
+import 'package:snpit_guild_app/presentation/providers/flavor_provider.dart';
+import 'package:snpit_guild_app/utils/location_utils.dart';
 
-part 'on\_exploring.g.dart';
+part 'on_exploring.g.dart';
 
 class OnExploringState {
   const OnExploringState({
@@ -337,7 +337,7 @@ class OnExploringState {
 }
 
 @Riverpod(keepAlive: true)
-class OnExploringNotifier extends \_$OnExploringNotifier {
+class OnExploringNotifier extends _$OnExploringNotifier {
   @override
   OnExploringState build() {
     return const OnExploringState(
@@ -366,7 +366,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
         const Duration(seconds: 5),
         onTimeout: () {
           throw Exception(
-            // ignore: lines\_longer\_than\_80\_chars
+            // ignore: lines_longer_than_80_chars
             'Getting current location timed out. Please try again in an area with better signal.',
           );
         },
@@ -375,7 +375,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
       final searchResult =
           await ref.read(updateExplorerNotifierProvider.notifier).search(
                 explorerId,
-                // TODO: \[v0.2.0\] \[Search\] SearchType を切り替えできるようにする
+                // TODO: [v0.2.0] [Search] SearchType を切り替えできるようにする
                 SearchType.spot,
                 currentLocation,
               );
@@ -414,7 +414,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
 
 
 @Riverpod(keepAlive: true)
-class SearchTypeNotifier extends \_$SearchTypeNotifier {
+class SearchTypeNotifier extends _$SearchTypeNotifier {
   @override
   Future&lt;SearchType&gt; build() async {
     try {
@@ -458,16 +458,16 @@ SearchTypeのspotがspotsでアイテムボックスがミステリーボック�
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:guild\_api/guild\_api.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/domain/search\_result.dart';
-import 'package:snpit\_guild\_app/domain/search\_type.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/update\_explorer.dart';
-import 'package:snpit\_guild\_app/presentation/providers/flavor\_provider.dart';
-import 'package:snpit\_guild\_app/utils/location\_utils.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:guild_api/guild_api.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/domain/search_result.dart';
+import 'package:snpit_guild_app/domain/search_type.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/update_explorer.dart';
+import 'package:snpit_guild_app/presentation/providers/flavor_provider.dart';
+import 'package:snpit_guild_app/utils/location_utils.dart';
 
-part 'on\_exploring.g.dart';
+part 'on_exploring.g.dart';
 
 class OnExploringState {
   const OnExploringState({
@@ -484,7 +484,7 @@ class OnExploringState {
 }
 
 @Riverpod(keepAlive: true)
-class OnExploringNotifier extends \_$OnExploringNotifier {
+class OnExploringNotifier extends _$OnExploringNotifier {
   @override
   OnExploringState build() {
     return const OnExploringState(
@@ -513,7 +513,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
         const Duration(seconds: 5),
         onTimeout: () {
           throw Exception(
-            // ignore: lines\_longer\_than\_80\_chars
+            // ignore: lines_longer_than_80_chars
             'Getting current location timed out. Please try again in an area with better signal.',
           );
         },
@@ -522,7 +522,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
       final searchResult =
           await ref.read(updateExplorerNotifierProvider.notifier).search(
                 explorerId,
-                // TODO: \[v0.2.0\] \[Search\] SearchType を切り替えできるようにする
+                // TODO: [v0.2.0] [Search] SearchType を切り替えできるようにする
                 SearchType.spot,
                 currentLocation,
               );
@@ -561,7 +561,7 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
 
 
 @Riverpod(keepAlive: true)
-class SearchTypeNotifier extends \_$SearchTypeNotifier {
+class SearchTypeNotifier extends _$SearchTypeNotifier {
   @override
   Future&lt;SearchType&gt; build() async {
     try {

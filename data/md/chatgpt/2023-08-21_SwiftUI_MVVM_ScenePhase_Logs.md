@@ -84,7 +84,7 @@ public class ScenePhaseManager: ScenePhaseManagerProtocol {
     // Ref: https://github.com/Viagate/emomil-app-ios/issues/517
     public func scenePhageChanged(scenePhase: ScenePhase) {
         scenePhaseSubject.send(scenePhase)
-        LoggerContainer.debugLog("newScenePhase: \\(scenePhase)")
+        LoggerContainer.debugLog("newScenePhase: \(scenePhase)")
     }
 }
 

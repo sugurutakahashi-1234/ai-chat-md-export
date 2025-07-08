@@ -9,8 +9,8 @@
 
 どういうこと？
 
-~/git/flutter\_sample\_app  ‹feature/2\*› $ make setup       
-/Applications/Xcode\_16.2\_beta\_3.app/Contents/Developer/usr/bin/make fvm-setup
+~/git/flutter_sample_app  ‹feature/2*› $ make setup       
+/Applications/Xcode_16.2_beta_3.app/Contents/Developer/usr/bin/make fvm-setup
 fvm install --setup
 ✓ Flutter SDK: SDK Version : 3.19.1 is already installed.
 ┌─────────────────────────────────────────────────┐
@@ -19,21 +19,21 @@ fvm install --setup
 SDK Version : 3.19.1 has Dart SDK 3.3.0 does not meet the project constraints of ^3.5.4.
 This could cause unexpected behavior or issues.
 
-\[WARN\] Skipping version constraint confirmation because of --force flag detected
+[WARN] Skipping version constraint confirmation because of --force flag detected
 ✗ Could not resolve dependencies. (30.0s)
 
 The current Dart SDK version is 3.3.0.
 
-Because flutter\_sample\_app requires SDK version ^3.5.4, version solving failed.
+Because flutter_sample_app requires SDK version ^3.5.4, version solving failed.
 
 
 You can try the following suggestion to make the pubspec resolve:
-\* Try using the Flutter SDK version: 3.24.5. 
+* Try using the Flutter SDK version: 3.24.5. 
 
 The error could indicate incompatible dependencies to the SDK.
-\[WARN\] Force pinning due to --force flag.
+[WARN] Force pinning due to --force flag.
 ✓ Project now uses Flutter SDK : SDK Version : 3.19.1
-/Applications/Xcode\_16.2\_beta\_3.app/Contents/Developer/usr/bin/make fvm-setup
+/Applications/Xcode_16.2_beta_3.app/Contents/Developer/usr/bin/make fvm-setup
 fvm install --setup
 ✓ Flutter SDK: SDK Version : 3.19.1 is already installed.
 ┌─────────────────────────────────────────────────┐
@@ -42,21 +42,21 @@ fvm install --setup
 SDK Version : 3.19.1 has Dart SDK 3.3.0 does not meet the project constraints of ^3.5.4.
 This could cause unexpected behavior or issues.
 
-\[WARN\] Skipping version constraint confirmation because of --force flag detected
+[WARN] Skipping version constraint confirmation because of --force flag detected
 ✗ Could not resolve dependencies. (30.9s)
 
 The current Dart SDK version is 3.3.0.
 
-Because flutter\_sample\_app requires SDK version ^3.5.4, version solving failed.
+Because flutter_sample_app requires SDK version ^3.5.4, version solving failed.
 
 
 You can try the following suggestion to make the pubspec resolve:
-\* Try using the Flutter SDK version: 3.24.5. 
+* Try using the Flutter SDK version: 3.24.5. 
 
 The error could indicate incompatible dependencies to the SDK.
-\[WARN\] Force pinning due to --force flag.
+[WARN] Force pinning due to --force flag.
 ✓ Project now uses Flutter SDK : SDK Version : 3.19.1
-~/git/flutter\_sample\_app  ‹feature/2\*› $
+~/git/flutter_sample_app  ‹feature/2*› $
 
 ---
 

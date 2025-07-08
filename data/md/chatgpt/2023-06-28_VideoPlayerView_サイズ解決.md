@@ -12,11 +12,11 @@
 struct MissionVideoWatchView: View {
     @StateObject private var presenter: MissionVideoWatchPresenter
     @Binding private var resultType: MissionVideoWatchResultType?
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     init(sessionId: Session.ID, movie: MissionValueType.Movie, resultType: Binding&lt;MissionVideoWatchResultType?&gt;) {
-        \_resultType = resultType
-        \_presenter = .init(wrappedValue: .init(sessionId: sessionId, movie: movie))
+        _resultType = resultType
+        _presenter = .init(wrappedValue: .init(sessionId: sessionId, movie: movie))
     }
 
     var body: some View {
@@ -56,8 +56,8 @@ public struct VideoPlayerView: UIViewRepresentable {
             layer.addSublayer(playerLayer)
         }
 
-        @available(\*, unavailable)
-        required init?(coder \_: NSCoder) {
+        @available(*, unavailable)
+        required init?(coder _: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
 
@@ -74,12 +74,12 @@ public struct VideoPlayerView: UIViewRepresentable {
         self.videoPlayer = videoPlayer
     }
 
-    public func makeUIView(context \_: Context) -&gt; UIView {
+    public func makeUIView(context _: Context) -&gt; UIView {
         let playerLayer = AVPlayerLayer(player: videoPlayer)
         return PlayerContainer(playerLayer: playerLayer)
     }
 
-    public func updateUIView(\_: UIView, context \_: Context) {}
+    public func updateUIView(_: UIView, context _: Context) {}
 }
 
 ---
@@ -141,7 +141,7 @@ extension MissionVideoWatchPresenter {
 
 private extension MissionVideoWatchPresenter {
     func setUp() {
-        NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem).sink { \[weak self\] \_ in
+        NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem).sink { [weak self] _ in
             self?.resultType = .didComplete
         }
         .store(in: &cancellableSet)
@@ -355,7 +355,7 @@ final class MissionVideoWatchPresenter: ObservableObject {
 ## 👤 ユーザー
 *2023/6/29 2:42:02*
 
-func updateVideoPlayerSize(\_ size: CGSize) {} の sizeは具体的な変数名に変えて欲しい。
+func updateVideoPlayerSize(_ size: CGSize) {} の sizeは具体的な変数名に変えて欲しい。
 
 ---
 
@@ -1420,13 +1420,13 @@ videoAspect は CGSize 型なのはなぜ？
 
 extension MissionVideoWatchPresenter {
     // ビデオプレイヤーのサイズを更新する関数
-    func updateVideoPlayerViewSize(\_ size: CGSize) {
+    func updateVideoPlayerViewSize(_ size: CGSize) {
         self.videoPlayerViewSize = size
     }
     
     func startMonitoringGazePoint() {
         gazePointPublisher
-            .map { \[weak self\] gazePoint -&gt; CGPoint? in
+            .map { [weak self] gazePoint -&gt; CGPoint? in
                 guard let self = self, 
                       let videoPlayerViewSize = self.videoPlayerViewSize,
                       let videoAspect = self.videoAspect else { return nil }
@@ -1449,7 +1449,7 @@ extension MissionVideoWatchPresenter {
                     // またはどちらのモードでも視聴される正方形のビデオの場合
                     // ビデオコンテンツはプレイヤービューを垂直に満たし、
                     // 左右に黒い余白があります。
-                    let videoWidth = videoPlayerViewSize.height \* videoAspect
+                    let videoWidth = videoPlayerViewSize.height * videoAspect
                     xOffset = (videoPlayerViewSize.width - videoWidth) / 2
                     yOffset = 0
                 }
@@ -1458,12 +1458,12 @@ extension MissionVideoWatchPresenter {
                 // 結果をビデオコンテンツの実際の幅または高さで割ります。
                 // これにより、視線の座標はビデオコンテンツの座標空間に変換され、
                 // ビデオコンテンツの左上隅が(0,0)、右下隅が(1,1)となる相対座標が得られます。
-                let x = (gazePoint.x - xOffset) / (videoPlayerViewSize.width - 2 \* xOffset)
-                let y = (gazePoint.y - yOffset) / (videoPlayerViewSize.height - 2 \* yOffset)
+                let x = (gazePoint.x - xOffset) / (videoPlayerViewSize.width - 2 * xOffset)
+                let y = (gazePoint.y - yOffset) / (videoPlayerViewSize.height - 2 * yOffset)
                 
                 return CGPoint(x: x, y: y)
             }
-            .sink { \[weak self\] relativePointInPlayerView in
+            .sink { [weak self] relativePointInPlayerView in
                 // 視線の相対座標（ビデオコンテンツの座標空間における）をプロパティに更新します。
                 // あるいは、必要に応じてこの相対座標を利用します。
                 self?.relativePointInPlayerView = relativePointInPlayerView
@@ -1475,11 +1475,11 @@ extension MissionVideoWatchPresenter {
 struct MissionVideoWatchView: View {
     @StateObject private var presenter: MissionVideoWatchPresenter
     @Binding private var resultType: MissionVideoWatchResultType?
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     init(sessionId: Session.ID, movie: MissionValueType.Movie, resultType: Binding&lt;MissionVideoWatchResultType?&gt;) {
-        \_resultType = resultType
-        \_presenter = .init(wrappedValue: .init(sessionId: sessionId, movie: movie))
+        _resultType = resultType
+        _presenter = .init(wrappedValue: .init(sessionId: sessionId, movie: movie))
     }
 
     var body: some View {
@@ -1856,7 +1856,7 @@ class MissionVideoWatchPresenter: ObservableObject {
 ## 👤 ユーザー
 *2023/6/29 6:13:02*
 
-gazePointPublisher の サブスクライブ処理も VideoInteractor 側で行いたい。Interactorに \[CGPoint(x: x, y: y)\] をどんどん貯めて欲しい。
+gazePointPublisher の サブスクライブ処理も VideoInteractor 側で行いたい。Interactorに [CGPoint(x: x, y: y)] をどんどん貯めて欲しい。
 
 ---
 
@@ -2021,7 +2021,7 @@ struct MissionVideoWatchView: View {
 
 ガード文にして欲しい
 
-func updateVideoPlayerViewSize(\_ size: CGSize) {
+func updateVideoPlayerViewSize(_ size: CGSize) {
         if let videoTrack = avPlayer.currentItem?.asset.tracks(withMediaType: .video).first {
             let videoSize = videoTrack.naturalSize
             let videoAspect = videoSize.width / videoSize.height
@@ -2076,7 +2076,7 @@ final class MissionVideoWatchPresenter: ObservableObject {
         didSet {
             #if DEBUG
                 if let videoPlayingStatus {
-                    print("VideoPlayingStatus: \\(videoPlayingStatus)")
+                    print("VideoPlayingStatus: \(videoPlayingStatus)")
                 }
             #endif
             if let videoPlayingStatus, videoPlayingStatus == .interrupted {
@@ -2095,7 +2095,7 @@ final class MissionVideoWatchPresenter: ObservableObject {
     private let userDefaultsManager: UserDefaultsManagerProtocol
     private let anchorAndEmotionAnalysisInteractor: AnchorAndEmotionAnalysisInteractorProtocol
     private var cancellableSet = Set&lt;AnyCancellable&gt;()
-    private var observers: \[NSKeyValueObservation\] = \[\]
+    private var observers: [NSKeyValueObservation] = []
 
     init(
         sessionId: Session.ID,
@@ -2106,7 +2106,7 @@ final class MissionVideoWatchPresenter: ObservableObject {
     ) {
         self.sessionId = sessionId
         self.movie = movie
-        \_videoPlayingStatus = videoPlayingStatus
+        _videoPlayingStatus = videoPlayingStatus
         self.userDefaultsManager = userDefaultsManager
         self.anchorAndEmotionAnalysisInteractor = anchorAndEmotionAnalysisInteractor
 
@@ -2249,25 +2249,25 @@ func updateVideoPlayerViewSize(videoPlayerViewSize: CGSize) {
 
 private extension MissionVideoWatchPresenter {
     func setSubscriber() {
-        let playing = avPlayer.publisher(for: \\.timeControlStatus)
+        let playing = avPlayer.publisher(for: \.timeControlStatus)
             .removeDuplicates()
             .filter { $0 == .playing }
-            .map { \_ in VideoPlayingStatus.didStart }
+            .map { _ in VideoPlayingStatus.didStart }
 
-        let paused = avPlayer.publisher(for: \\.timeControlStatus)
+        let paused = avPlayer.publisher(for: \.timeControlStatus)
             .removeDuplicates()
             .filter { $0 == .paused }
             .dropFirst() // AVPlayer の初期状態は `paused` のためスキップする
-            .map { \_ in VideoPlayingStatus.paused }
+            .map { _ in VideoPlayingStatus.paused }
 
         let endPlaying = NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem)
-            .map { \_ in VideoPlayingStatus.didEnd }
+            .map { _ in VideoPlayingStatus.didEnd }
 
         playing
             .merge(with: endPlaying)
             .combineLatest(paused)
             .receive(on: DispatchQueue.main)
-            .sink { \[weak self\] playingStatus, paused in
+            .sink { [weak self] playingStatus, paused in
                 guard let self else { return }
                 if playingStatus == .didStart, paused == .paused {
                     self.videoPlayingStatus = .interrupted
@@ -2278,7 +2278,7 @@ private extension MissionVideoWatchPresenter {
 
         playing
             .receive(on: DispatchQueue.main)
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 self?.anchorAndEmotionAnalysisInteractor.send(interaction: .init(eventType: .videoPlay(.init(source: "")))) // 本来 Web イベントのため空文字でよい
                 self?.shouldShowSkipButton = true
                 self?.videoPlayingStatus = .didStart
@@ -2287,7 +2287,7 @@ private extension MissionVideoWatchPresenter {
 
         NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem)
             .receive(on: DispatchQueue.main)
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 guard let self else { return }
                 Task { @MainActor in
                     await self.endedVideo()
@@ -2298,7 +2298,7 @@ private extension MissionVideoWatchPresenter {
         $appError
             .mapIsNotNil()
             .receive(on: DispatchQueue.main)
-            .sink { \[weak self\] shouldShowAlert in
+            .sink { [weak self] shouldShowAlert in
                 AppLogger.debugLog(self?.appError.debugDescription ?? "", level: .error)
                 self?.anchorAndEmotionAnalysisInteractor.send(interaction: .init(eventType: .error(.init(message: self?.appError.debugDescription ?? ""))))
                 self?.shouldShowAlert = shouldShowAlert
@@ -2314,7 +2314,7 @@ private extension MissionVideoWatchPresenter {
             .filter { $0 == .didSkip }
             .first()
             .receive(on: DispatchQueue.main)
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 guard let self else { return }
                 self.shouldShowSkipButton = false
                 self.anchorAndEmotionAnalysisInteractor.send(interaction: .init(eventType: .videoSkipped(.init(currentTime: self.avPlayer.currentTime().seconds))))
@@ -2323,7 +2323,7 @@ private extension MissionVideoWatchPresenter {
     }
 
     func setUpAudio() throws {
-        try AVAudioSession.sharedInstance().setCategory(.playback, options: \[\])
+        try AVAudioSession.sharedInstance().setCategory(.playback, options: [])
     }
 
     func downloadVideoResource() async throws -&gt; URL {
@@ -2332,12 +2332,12 @@ private extension MissionVideoWatchPresenter {
             throw AppError.customMessageError(message: "Failed to get video file name")
         }
 
-        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory() + "video\_\\(movie.id)\_\\(String(fileName))")
+        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory() + "video_\(movie.id)_\(String(fileName))")
         if FileManager.default.fileExists(atPath: fileURL.path) {
             return fileURL
         }
         do {
-            let (data, \_) = try await URLSession.shared.data(from: movie.fileURL)
+            let (data, _) = try await URLSession.shared.data(from: movie.fileURL)
             try data.write(to: fileURL)
             return fileURL
         } catch {

@@ -296,13 +296,13 @@ public protocol ApiRequestManagerProtocol: AnyObject {
     func getUser() async throws -&gt; User
     func getUserAttributeContents() async throws -&gt; UserAttributeContents
     func getUserAttribute() async throws -&gt; UserAttributes
-    func getMissionList(missionType: MissionType?) async throws -&gt; \[Mission\]
+    func getMissionList(missionType: MissionType?) async throws -&gt; [Mission]
     func getMission(id: String) async throws -&gt; Mission
     func getVideoMeasurement(id: String) async throws -&gt; VideoMeasurement
     func getWebsiteMeasurement(id: String) async throws -&gt; WebsiteMeasurement
-    func getPointHistories() async throws -&gt; \[PointHistory\]
+    func getPointHistories() async throws -&gt; [PointHistory]
     // TODO: Research を返却する func は疎通の確認のために残しているがいずれ削除する
-    func getResearches(measurementType: MeasurementType?) async throws -&gt; \[Research\]
+    func getResearches(measurementType: MeasurementType?) async throws -&gt; [Research]
     // TODO: Research を返却する func は疎通の確認のために残しているがいずれ削除する
     func getResearch(id: String) async throws -&gt; Research
 }
@@ -346,11 +346,11 @@ MeasurementTypeはすでに定義してあるのでそのままでいいです�
 
 public struct QuestionnaireMeasurement: Embeddable {
   var id: String
-  var research\_id: String
+  var research_id: String
   var order: Int
-  var measurement\_type: MeasurementType
+  var measurement_type: MeasurementType
   var name: String
-  var questions: \[Question\]
+  var questions: [Question]
 }
 
 public struct Question: Embeddable {
@@ -363,15 +363,15 @@ public struct Question: Embeddable {
 
 public struct TextConstraint: Embeddable {
   var type: ConstraintType
-  var min\_length: Int?
-  var max\_length: Int?
+  var min_length: Int?
+  var max_length: Int?
 }
 
 public struct InterviewMeasurement: Embeddable {
   var id: String
-  var research\_id: String
+  var research_id: String
   var order: Int
-  var measurement\_type: MeasurementType
+  var measurement_type: MeasurementType
 }
 
 ---
@@ -458,7 +458,7 @@ public struct InterviewMeasurement {
 
 public enum ConstraintType: String, EnumPersistable {
   case textarea
-  case singleSelect = "single\_select"
+  case singleSelect = "single_select"
 }
 
 ---
@@ -488,10 +488,10 @@ extension EmomilCore.WebsiteMeasurement {
     init(from amplifyWebsiteMeasurement: WebsiteMeasurement) {
         self.init(
             id: amplifyWebsiteMeasurement.id,
-            researchId: amplifyWebsiteMeasurement.research\_id,
+            researchId: amplifyWebsiteMeasurement.research_id,
             order: amplifyWebsiteMeasurement.order,
-            measurementType: EmomilCore.MeasurementType(from: amplifyWebsiteMeasurement.measurement\_type),
-            siteUrl: amplifyWebsiteMeasurement.site\_url,
+            measurementType: EmomilCore.MeasurementType(from: amplifyWebsiteMeasurement.measurement_type),
+            siteUrl: amplifyWebsiteMeasurement.site_url,
             instructions: amplifyWebsiteMeasurement.instructions
         )
     }
@@ -501,9 +501,9 @@ extension EmomilCore.PointHistory {
     init(from amplifyPointHistory: PointHistory) {
         self.init(
             id: amplifyPointHistory.id,
-            createdAt: amplifyPointHistory.created\_at.foundationDate,
-            orgName: amplifyPointHistory.org\_name,
-            researchTitle: amplifyPointHistory.research\_title,
+            createdAt: amplifyPointHistory.created_at.foundationDate,
+            orgName: amplifyPointHistory.org_name,
+            researchTitle: amplifyPointHistory.research_title,
             point: amplifyPointHistory.point
         )
     }
@@ -695,9 +695,9 @@ extension EmomilCore.QuestionnaireMeasurement {
     init(from amplifyQuestionnaireMeasurement: QuestionnaireMeasurement) {
         self.init(
             id: amplifyQuestionnaireMeasurement.id,
-            researchId: amplifyQuestionnaireMeasurement.research\_id,
+            researchId: amplifyQuestionnaireMeasurement.research_id,
             order: amplifyQuestionnaireMeasurement.order,
-            measurementType: EmomilCore.MeasurementType(from: amplifyQuestionnaireMeasurement.measurement\_type),
+            measurementType: EmomilCore.MeasurementType(from: amplifyQuestionnaireMeasurement.measurement_type),
             name: amplifyQuestionnaireMeasurement.name,
             questions: amplifyQuestionnaireMeasurement.questions.map { EmomilCore.Question(from: $0) }
         )
@@ -720,8 +720,8 @@ extension EmomilCore.TextConstraint {
     init(from amplifyTextConstraint: TextConstraint) {
         self.init(
             type: EmomilCore.ConstraintType(rawValue: amplifyTextConstraint.type.rawValue),
-            minLength: amplifyTextConstraint.min\_length,
-            maxLength: amplifyTextConstraint.max\_length
+            minLength: amplifyTextConstraint.min_length,
+            maxLength: amplifyTextConstraint.max_length
         )
     }
 }
@@ -730,9 +730,9 @@ extension EmomilCore.InterviewMeasurement {
     init(from amplifyInterviewMeasurement: InterviewMeasurement) {
         self.init(
             id: amplifyInterviewMeasurement.id,
-            researchId: amplifyInterviewMeasurement.research\_id,
+            researchId: amplifyInterviewMeasurement.research_id,
             order: amplifyInterviewMeasurement.order,
-            measurementType: EmomilCore.MeasurementType(from: amplifyInterviewMeasurement.measurement\_type)
+            measurementType: EmomilCore.MeasurementType(from: amplifyInterviewMeasurement.measurement_type)
         )
     }
 }
@@ -882,59 +882,59 @@ struct ApiRequestListView: View {
             List {
                 Group {
                     Section(header: Text("User")) {
-                        ForEach(properties(of: presenter.user ?? \[\]), id: \\.0) { key, value in
-                            Text("\\(key): \\(String(describing: value))")
+                        ForEach(properties(of: presenter.user ?? []), id: \.0) { key, value in
+                            Text("\(key): \(String(describing: value))")
                         }
                     }
 
                     Section(header: Text("UserAttributeContents")) {
-                        ForEach(properties(of: presenter.userAttributeContents ?? \[\]), id: \\.0) { key, value in
-                            Text("\\(key): \\(String(describing: value))")
+                        ForEach(properties(of: presenter.userAttributeContents ?? []), id: \.0) { key, value in
+                            Text("\(key): \(String(describing: value))")
                         }
                     }
 
                     Section(header: Text("UserAttributes")) {
-                        ForEach(properties(of: presenter.userAttributes ?? \[\]), id: \\.0) { key, value in
-                            Text("\\(key): \\(String(describing: value))")
+                        ForEach(properties(of: presenter.userAttributes ?? []), id: \.0) { key, value in
+                            Text("\(key): \(String(describing: value))")
                         }
                     }
 
                     Section(header: Text("Researches")) {
-                        ForEach(presenter.researches, id: \\.id) { research in
-                            ForEach(properties(of: research), id: \\.0) { key, value in
-                                Text("\\(key): \\(String(describing: value))")
+                        ForEach(presenter.researches, id: \.id) { research in
+                            ForEach(properties(of: research), id: \.0) { key, value in
+                                Text("\(key): \(String(describing: value))")
                             }
                         }
                     }
 
                     Section(header: Text("Research Details")) {
-                        ForEach(presenter.researchDetails, id: \\.id) { research in
-                            ForEach(properties(of: research), id: \\.0) { key, value in
-                                Text("\\(key): \\(String(describing: value))")
+                        ForEach(presenter.researchDetails, id: \.id) { research in
+                            ForEach(properties(of: research), id: \.0) { key, value in
+                                Text("\(key): \(String(describing: value))")
                             }
                         }
                     }
 
                     Section(header: Text("Video Measurements")) {
-                        ForEach(presenter.videoMeasurements, id: \\.id) { measurement in
-                            ForEach(properties(of: measurement), id: \\.0) { key, value in
-                                Text("\\(key): \\(String(describing: value))")
+                        ForEach(presenter.videoMeasurements, id: \.id) { measurement in
+                            ForEach(properties(of: measurement), id: \.0) { key, value in
+                                Text("\(key): \(String(describing: value))")
                             }
                         }
                     }
 
                     Section(header: Text("Website Measurements")) {
-                        ForEach(presenter.websiteMeasurements, id: \\.id) { measurement in
-                            ForEach(properties(of: measurement), id: \\.0) { key, value in
-                                Text("\\(key): \\(String(describing: value))")
+                        ForEach(presenter.websiteMeasurements, id: \.id) { measurement in
+                            ForEach(properties(of: measurement), id: \.0) { key, value in
+                                Text("\(key): \(String(describing: value))")
                             }
                         }
                     }
 
                     Section(header: Text("Point Histories")) {
-                        ForEach(presenter.pointHistories, id: \\.id) { history in
-                            ForEach(properties(of: history), id: \\.0) { key, value in
-                                Text("\\(key): \\(String(describing: value))")
+                        ForEach(presenter.pointHistories, id: \.id) { history in
+                            ForEach(properties(of: history), id: \.0) { key, value in
+                                Text("\(key): \(String(describing: value))")
                             }
                         }
                     }
@@ -953,7 +953,7 @@ struct ApiRequestListView: View {
     }
 
     // 変数名とその値のタプルの配列を返す関数
-    private func properties(of object: Any) -&gt; \[(String, Any)\] {
+    private func properties(of object: Any) -&gt; [(String, Any)] {
         let mirror = Mirror(reflecting: object)
         return mirror.children.compactMap { child in
             guard let label = child.label else { return nil }
@@ -970,11 +970,11 @@ final class ApiRequestListPresenter: ObservableObject {
     @Published var user: EmomilCore.User?
     @Published var userAttributeContents: EmomilCore.UserAttributeContents?
     @Published var userAttributes: EmomilCore.UserAttributes?
-    @Published var researches: \[EmomilCore.Research\] = \[\]
-    @Published var researchDetails: \[EmomilCore.Research\] = \[\]
-    @Published var videoMeasurements: \[EmomilCore.VideoMeasurement\] = \[\]
-    @Published var websiteMeasurements: \[EmomilCore.WebsiteMeasurement\] = \[\]
-    @Published var pointHistories: \[EmomilCore.PointHistory\] = \[\]
+    @Published var researches: [EmomilCore.Research] = []
+    @Published var researchDetails: [EmomilCore.Research] = []
+    @Published var videoMeasurements: [EmomilCore.VideoMeasurement] = []
+    @Published var websiteMeasurements: [EmomilCore.WebsiteMeasurement] = []
+    @Published var pointHistories: [EmomilCore.PointHistory] = []
 
     init(apiRequestManager: ApiRequestManagerProtocol = AmplifyApiRequestManager()) {
         self.apiRequestManager = apiRequestManager
@@ -1006,7 +1006,7 @@ final class ApiRequestListPresenter: ObservableObject {
                 }
             }
         } catch {
-            AppLogger.debugLog("error: \\(error)", category: .network)
+            AppLogger.debugLog("error: \(error)", category: .network)
             isShownAlert = true
         }
     }
@@ -1109,10 +1109,10 @@ final class ApiRequestListPresenter: ObservableObject {
 ## 👤 ユーザー
 *2023/6/15 3:52:08*
 
-以下の処理について、\[(String, Any)\] ではなくて \[(String, String)\]にしてしまったほうが、全体的に処理が利ファクタされる気がするのだけどどう思う？
+以下の処理について、[(String, Any)] ではなくて [(String, String)]にしてしまったほうが、全体的に処理が利ファクタされる気がするのだけどどう思う？
 
 // 変数名とその値のタプルの配列を返す関数
-    private func properties(of object: Any) -&gt; \[(String, Any)\] {
+    private func properties(of object: Any) -&gt; [(String, Any)] {
         let mirror = Mirror(reflecting: object)
         return mirror.children.compactMap { child in
             guard let label = child.label else { return nil }

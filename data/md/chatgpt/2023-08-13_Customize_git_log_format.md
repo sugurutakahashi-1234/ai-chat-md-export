@@ -185,9 +185,9 @@ echo -e "行1\n行2\n行3" | awk '1; {print "\n"}'
 ## 👤 ユーザー
 *2023/8/13 21:45:43*
 
-git log -10 --date=short --pretty=format:"\[%ad\] %s %b" | grep "Merge pull request" | awk '1; {print "\\n"}'
+git log -10 --date=short --pretty=format:"[%ad] %s %b" | grep "Merge pull request" | awk '1; {print "\n"}'
 
-について、\[%ad\] %s %b についてそれぞれ改行いれたい。
+について、[%ad] %s %b についてそれぞれ改行いれたい。
 
 ---
 
@@ -223,7 +223,7 @@ git log -10 --date=short --pretty=format:"[%ad]\n%s\n%b" | grep "Merge pull requ
 
 以下になってしまった。
 
-\[2023-08-13\]\\n#546 ドキュメントやCI/CDの整理\\n
+[2023-08-13]\n#546 ドキュメントやCI/CDの整理\n
 
 ---
 
@@ -258,7 +258,7 @@ git log -10 --date=short --pretty=format:"[%ad]\n%s\n%b" | grep "Merge pull requ
 ## 👤 ユーザー
 *2023/8/13 21:47:25*
 
-いや、\\n がうまくかいぎょうできていないみたい。
+いや、\n がうまくかいぎょうできていないみたい。
 
 ---
 

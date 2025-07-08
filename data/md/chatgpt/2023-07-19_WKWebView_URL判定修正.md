@@ -7,17 +7,17 @@
 ## 👤 ユーザー
 *2023/7/19 15:36:55*
 
-以下のfunc webView(\_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -&gt; WKNavigationActionPolicyの処理でparent.presenter.isUrlAllowedByAcls(url: url) でurlが許可されているものかそうでないかを確認しているが、これだとリダイレクトurlなどについても判定してしまう。
+以下のfunc webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -&gt; WKNavigationActionPolicyの処理でparent.presenter.isUrlAllowedByAcls(url: url) でurlが許可されているものかそうでないかを確認しているが、これだとリダイレクトurlなどについても判定してしまう。
 
 extension AnalysisWebViewCoordinator: WKNavigationDelegate {
     @MainActor
-    func webView(\_ webView: WKWebView, didCommit \_: WKNavigation!) {
+    func webView(_ webView: WKWebView, didCommit _: WKNavigation!) {
         parent.presenter.updateCanGoBack(webView.canGoBack)
         parent.presenter.updateCanGoForward(webView.canGoForward)
     }
 
     @MainActor
-    func webView(\_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -&gt; WKNavigationActionPolicy {
+    func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -&gt; WKNavigationActionPolicy {
         guard let url = navigationAction.request.url,
               let urlScheme = url.scheme?.lowercased()
         else {
@@ -30,7 +30,7 @@ extension AnalysisWebViewCoordinator: WKNavigationDelegate {
         // - data: インラインデータを指すスキーム
         // - blob: ブラウザ内に生成された大きなデータオブジェクトを指すスキーム
         // - file: ローカルファイルシステム上のファイルを指すスキーム
-        let nonTransitioningSchemes = \["about", "javascript", "data", "blob", "file"\]
+        let nonTransitioningSchemes = ["about", "javascript", "data", "blob", "file"]
         if nonTransitioningSchemes.contains(urlScheme) {
             return .allow
         }
@@ -195,7 +195,7 @@ func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction)
 
 たとえば、広告のurlなどはどのnavigationTypeか分かる？
 
-https://rcm-fe.amazon-adsystem.com/e/cm?ref=tf\_til&t=ipairs-22&m=amazon&o=9&p=8&l=as1&IS1=1&detail=1&asins=B07HCLNKYF&linkId=682e3875a81ea920f972d81d46bb36a0&bc1=000000&lt1=\_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr
+https://rcm-fe.amazon-adsystem.com/e/cm?ref=tf_til&t=ipairs-22&m=amazon&o=9&p=8&l=as1&IS1=1&detail=1&asins=B07HCLNKYF&linkId=682e3875a81ea920f972d81d46bb36a0&bc1=000000&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr
 
 ---
 

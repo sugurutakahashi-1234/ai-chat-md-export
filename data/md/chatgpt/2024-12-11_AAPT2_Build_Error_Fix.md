@@ -12,12 +12,12 @@ Running Gradle task 'assembleDebug'...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
+* What went wrong:
 Execution failed for task ':app:processDebugResources'.
 &gt; A failure occurred while executing com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$TaskAction
    &gt; Specified AAPT2 executable does not exist: /Users/sugurutakahashi/.gradle/caches/transforms-3/332d86e3e97ca3b4b04b6131b6681a3b/transformed/aapt2-8.1.0-10154469-osx/aapt2. Must supply one of aapt2 from maven or custom location.
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -91,12 +91,12 @@ Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
+* What went wrong:
 Execution failed for task ':app:checkDebugAarMetadata'.
 &gt; A failure occurred while executing com.android.build.gradle.internal.tasks.CheckAarMetadataWorkAction
    &gt; /Users/sugurutakahashi/.gradle/caches/transforms-3/a017c0c1c150e766625df730ca1d1522/transformed/jetified-window-1.2.0/META-INF/com/android/build/gradle/aar-metadata.properties (No such file or directory)
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -164,12 +164,12 @@ Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
+* What went wrong:
 Execution failed for task ':app:checkDebugAarMetadata'.
 &gt; A failure occurred while executing com.android.build.gradle.internal.tasks.CheckAarMetadataWorkAction
    &gt; /Users/sugurutakahashi/.gradle/caches/transforms-3/63d3b185799b2c098a0f6ed885ea8db1/transformed/fragment-1.7.1/META-INF/com/android/build/gradle/aar-metadata.properties (No such file or directory)
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.

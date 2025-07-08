@@ -19,7 +19,7 @@
 
 ---
 
-### \*\*Introduction Script\*\*  
+### **Introduction Script**  
 #### 英語
 Hi everyone, today I want to introduce a brand called "Coach George."  
 It's a men’s brand that specializes in stylish and high-quality items like bags, wallets, and accessories.  
@@ -28,7 +28,7 @@ Their designs are modern and classy, which makes them perfect for both casual an
 Coach George is famous for using durable materials like genuine leather.  
 Also, the brand is affordable compared to other luxury brands, so it’s a great choice for people who want something stylish without spending too much money.  
 
-I personally love their \[specific item you like, e.g., "leather backpacks"\]. It’s really practical, and the design matches almost any outfit.  
+I personally love their [specific item you like, e.g., "leather backpacks"]. It’s really practical, and the design matches almost any outfit.  
 
 If you’re looking for a gift for a friend or family member, Coach George has many great options.  
 

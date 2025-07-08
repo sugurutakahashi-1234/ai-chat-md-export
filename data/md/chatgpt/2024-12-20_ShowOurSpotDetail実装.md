@@ -9,12 +9,12 @@
 
 ShowOurSpotDetailを同じように作って欲しい
 
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'show\_explorer\_list.g.dart';
+part 'show_explorer_list.g.dart';
 
 @riverpod
-class ShowExplorerListNotifier extends \_$ShowExplorerListNotifier {
+class ShowExplorerListNotifier extends _$ShowExplorerListNotifier {
   @override
   bool build() =&gt; false;
 
@@ -34,14 +34,14 @@ class ShowExplorerListNotifier extends \_$ShowExplorerListNotifier {
 ## 🤖 アシスタント
 *2024/12/20 15:59:48*
 
-{"name": "show\_our\_spot\_detail", "type": "code/dart", "content": "import 'package:riverpod\_annotation/riverpod\_annotation.dart';\\n\\npart 'show\_our\_spot\_detail.g.dart';\\n\\n@riverpod\\nclass ShowOurSpotDetailNotifier extends \_$ShowOurSpotDetailNotifier {\\n  @override\\n  bool build() =&gt; false;\\n\\n  void show() =&gt; state = true;\\n  void hide() =&gt; state = false;\\n}"}
+{"name": "show_our_spot_detail", "type": "code/dart", "content": "import 'package:riverpod_annotation/riverpod_annotation.dart';\n\npart 'show_our_spot_detail.g.dart';\n\n@riverpod\nclass ShowOurSpotDetailNotifier extends _$ShowOurSpotDetailNotifier {\n  @override\n  bool build() =&gt; false;\n\n  void show() =&gt; state = true;\n  void hide() =&gt; state = false;\n}"}
 
 ---
 
 ## 🔧 ツール
 *2024/12/20 15:59:48*
 
-{"result": "Successfully created text document 'show\_our\_spot\_detail' which will be referenced in all future messages with the unique identifier textdoc\_id: '676515e246488191a0ae9e97e6c825d4'", "textdoc\_id": "676515e246488191a0ae9e97e6c825d4", "name": "show\_our\_spot\_detail"}
+{"result": "Successfully created text document 'show_our_spot_detail' which will be referenced in all future messages with the unique identifier textdoc_id: '676515e246488191a0ae9e97e6c825d4'", "textdoc_id": "676515e246488191a0ae9e97e6c825d4", "name": "show_our_spot_detail"}
 
 ---
 

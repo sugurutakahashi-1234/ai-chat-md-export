@@ -16,12 +16,12 @@ import PackageDescription
 let package = Package(
     name: "SmallTalkPackage",
     defaultLocalization: "ja",
-    platforms: \[
+    platforms: [
         .iOS(.v16),
         .macOS(.v15),
-    \],
+    ],
     products: TargetType.allCases.map { $0.product },
-    dependencies: \[
+    dependencies: [
         // Driver Framework
         .package(url: "https://github.com/argmaxinc/whisperkit", from: "0.8.0"),
         .package(url: "https://github.com/apple/swift-openapi-urlsession", from: "1.0.2"),
@@ -33,7 +33,7 @@ let package = Package(
         .package(url: "https://github.com/sanzaru/SimpleToast.git", from: "0.8.1"),
         .package(url: "https://github.com/markiv/SwiftUI-Shimmer.git", from: "1.5.0"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
-    \],
+    ],
     targets: TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
 )
 
@@ -43,51 +43,51 @@ extension TargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
         case .dependencyInjection:
-            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + \[
+            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
                 TargetType.presentation.dependency,
-            \])
+            ])
         case .domain:
-            .init(\[\], plugins: \[\])
+            .init([], plugins: [])
         case .framework(.device):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .product(name: "DeviceKit", package: "DeviceKit"),
-            \])
+            ])
         case .framework(.firebase):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
-            \])
+            ])
         case .framework(.license):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .product(name: "LicenseList", package: "LicenseList"),
-            \])
+            ])
         case .framework(.openAPI):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .product(name: "OpenAPIURLSession", package: "swift-openapi-urlsession"),
-            \])
+            ])
         case .framework(.phoneNumber):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .product(name: "PhoneNumberKit", package: "PhoneNumberKit"),
-            \])
+            ])
         case .framework(.speechToText):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .product(name: "WhisperKit", package: "whisperkit"),
-            \])
+            ])
         case .presentation:
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots"),
                 .product(name: "SimpleToast", package: "SimpleToast"),
                 .product(name: "Shimmer", package: "SwiftUI-Shimmer"),
-            \])
+            ])
         case .uiCatalog:
-            .init(\[
+            .init([
                 TargetType.presentation.dependency,
-            \])
+            ])
         }
     }
 }
@@ -98,20 +98,20 @@ extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
         case .driverTest:
-            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + \[\])
+            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [])
         case .interactorTest:
-            .init(\[
+            .init([
                 TargetType.dependencyInjection.dependency,
-            \])
+            ])
         case .presenterTest:
-            .init(\[
+            .init([
                 TargetType.presentation.dependency,
-            \])
+            ])
         case .viewSnapshotTest:
-            .init(\[
+            .init([
                 TargetType.presentation.dependency,
                 .product(name: "PreviewSnapshotsTesting", package: "swiftui-preview-snapshots"),
-            \])
+            ])
         }
     }
 }
@@ -119,10 +119,10 @@ extension TestTargetType {
 // MARK: - Entity
 
 struct DependencyLibrary {
-    let dependencies: \[PackageDescription.Target.Dependency\]
-    let plugins: \[PackageDescription.Target.PluginUsage\]
+    let dependencies: [PackageDescription.Target.Dependency]
+    let plugins: [PackageDescription.Target.PluginUsage]
 
-    init(\_ dependencies: \[PackageDescription.Target.Dependency\] = \[\], plugins: \[PackageDescription.Target.PluginUsage\] = \[\]) {
+    init(_ dependencies: [PackageDescription.Target.Dependency] = [], plugins: [PackageDescription.Target.PluginUsage] = []) {
         self.dependencies = dependencies
         self.plugins = plugins
     }
@@ -139,7 +139,7 @@ enum FrameworkTargetType: CaseIterable {
     case speechToText
 
     var folderName: String {
-        "\\(self)".initialUppercased
+        "\(self)".initialUppercased
     }
 }
 
@@ -152,13 +152,13 @@ enum TargetType: CaseIterable {
     case presentation
     case uiCatalog
 
-    static var allCases: \[TargetType\] {
-        FrameworkTargetType.allCases.map { .framework($0) } + \[
+    static var allCases: [TargetType] {
+        FrameworkTargetType.allCases.map { .framework($0) } + [
             .dependencyInjection,
             .domain,
             .presentation,
             .uiCatalog,
-        \]
+        ]
     }
 
     var folderName: String {
@@ -168,25 +168,25 @@ enum TargetType: CaseIterable {
         case .uiCatalog:
             "UICatalog"
         default:
-            "\\(self)".initialUppercased
+            "\(self)".initialUppercased
         }
     }
 
     var path: String {
         switch self {
         case .framework(let frameworkTargetType):
-            "./Sources/\\(folderName)/\\(frameworkTargetType.folderName)"
+            "./Sources/\(folderName)/\(frameworkTargetType.folderName)"
         default:
-            "./Sources/\\(folderName)/"
+            "./Sources/\(folderName)/"
         }
     }
 
     var name: String {
         switch self {
         case .framework(let frameworkTargetType):
-            "\\(frameworkTargetType.folderName)Framework"
+            "\(frameworkTargetType.folderName)Framework"
         default:
-            "\\(folderName)Layer"
+            "\(folderName)Layer"
         }
     }
 
@@ -205,21 +205,21 @@ enum TargetType: CaseIterable {
     }
 
     var product: PackageDescription.Product {
-        .library(name: name, targets: \[name\])
+        .library(name: name, targets: [name])
     }
 
-    var resources: \[Resource\]? {
+    var resources: [Resource]? {
         switch self {
         case .domain:
-            \[
+            [
                 // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
                 .process("Resources"),
-            \]
+            ]
         case .presentation:
-            \[
+            [
                 // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
                 .process("Resources"),
-            \]
+            ]
         default:
             nil
         }
@@ -235,22 +235,22 @@ enum TestTargetType: CaseIterable {
     case viewSnapshotTest
 
     var name: String {
-        "\\(self)".initialUppercased
+        "\(self)".initialUppercased
     }
 
-    private var exclude: \[String\] {
+    private var exclude: [String] {
         switch self {
         case .viewSnapshotTest:
-            \[
+            [
                 // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
-                "\_\_Snapshots\_\_",
-            \]
+                "__Snapshots__",
+            ]
         default:
-            \[\]
+            []
         }
     }
 
-    private var resources: \[Resource\]? {
+    private var resources: [Resource]? {
         nil
     }
 
@@ -269,11 +269,11 @@ enum TestTargetType: CaseIterable {
 
 // Ref: Swift Upcoming Feature Flags Cheatsheet https://github.com/treastrain/swift-upcomingfeatureflags-cheatsheet
 // Ref: Swift 6 に備える - 今後の機能（Upcoming Feature）の段階的適用 編 - https://zenn.dev/treastrain/articles/d2fd1b44e3ead5
-let swiftFlags = \[
+let swiftFlags = [
     "-Xfrontend", "-warn-long-expression-type-checking=500",
     "-Xfrontend", "-warn-long-function-bodies=500",
     "-enable-actor-data-race-checks",
-\]
+]
 
 extension SwiftSetting {
     static let existentialAny: Self = .enableUpcomingFeature("ExistentialAny") // SE-0335, Swift 5.6,  SwiftPM 5.8+
@@ -282,15 +282,15 @@ extension SwiftSetting {
 
 extension SwiftSetting: @retroactive CaseIterable {
     /// コメントアウトしている箇所はすでに Swift 6 であれば有効らしい（TODO: Beta 版でなくなったら外す）
-    public static var allCases: \[Self\] {
-        \[
+    public static var allCases: [Self] {
+        [
             .existentialAny,
             .otherSwiftFlags,
-        \]
+        ]
     }
 }
 
-package.targets.filter { !\[.system, .binary, .plugin, .macro\].contains($0.type) }.forEach { $0.swiftSettings = SwiftSetting.allCases }
+package.targets.filter { ![.system, .binary, .plugin, .macro].contains($0.type) }.forEach { $0.swiftSettings = SwiftSetting.allCases }
 
 // MARK: - Extension
 

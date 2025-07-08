@@ -9,8 +9,8 @@
 
 git pull origin develop
 Found existing alias for "git pull". You should use: "gl"
-From https://github.com/Gallusys/snpit\_guild\_app
- \* branch            develop    -&gt; FETCH\_HEAD
+From https://github.com/Gallusys/snpit_guild_app
+ * branch            develop    -&gt; FETCH_HEAD
 fatal: Not possible to fast-forward, aborting.
 
 ---

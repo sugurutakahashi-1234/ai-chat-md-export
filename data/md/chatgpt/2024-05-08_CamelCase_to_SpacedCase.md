@@ -8,20 +8,20 @@
 *2024/5/8 14:34:18*
 
 以下のような処理でアンダースコアの代わりに半角スペースを空けた文字列を提供するものを作成してほしい  public extension String {
-    /// - ex1) "snakeCase" -&gt; "snake\_case"
-    /// - ex2) "SnakeCase" -&gt; "snake\_case"
-    /// - ex3) "\_SnakeCase" -&gt; "\_snake\_case"
-    /// - ex4) "snakeCaseURL0123" -&gt; "snake\_case\_u\_r\_l0123"
+    /// - ex1) "snakeCase" -&gt; "snake_case"
+    /// - ex2) "SnakeCase" -&gt; "snake_case"
+    /// - ex3) "_SnakeCase" -&gt; "_snake_case"
+    /// - ex4) "snakeCaseURL0123" -&gt; "snake_case_u_r_l0123"
     var toSnakeCase: String {
         let snakeCased = unicodeScalars.reduce("") { result, scalar in
             if CharacterSet.uppercaseLetters.contains(scalar) {
-                "\\(result)\_\\(Character(scalar))"
+                "\(result)_\(Character(scalar))"
             } else {
                 result + String(scalar)
             }
         }.lowercased()
 
-        if snakeCased.hasPrefix("\_") {
+        if snakeCased.hasPrefix("_") {
             return String(snakeCased.dropFirst())
         } else {
             return snakeCased
@@ -211,7 +211,7 @@ print(example.instanceSpaceSeparatedTypeName)  // "Example Struct"
 
 snake Case
 Snake Case
-\_ Snake Case
+_ Snake Case
 snake Case U R L0123
 
 ---
@@ -337,10 +337,10 @@ public extension String {
 この条件式 `!CharacterSet.whitespaces.contains(result.unicodeScalars.last!)` は、結果文字列 `result` の最後の文字が空白文字でないことを確認するために使用されています。このチェックは主に、不要な空白の挿入を防ぐためにあります。
 
 具体的には、以下のケースを防ぐためです：
-1. \*\*二重空白の挿入防止\*\*：連続する大文字の間に既にスペースを挿入している場合や、前に既にスペースがある場合に、再度スペースを挿入するのを防ぎます。
-2. \*\*文字列開始時のスペース防止\*\*：もし文字列が大文字で始まる場合（例：`"UpperCaseString"`）、その大文字の前に不必要にスペースを挿入するのを防ぎます。ただし、現在のコードでは `!result.isEmpty` という条件もあるため、文字列の最初の文字でこのチェックは効果的に働いていません。
+1. **二重空白の挿入防止**：連続する大文字の間に既にスペースを挿入している場合や、前に既にスペースがある場合に、再度スペースを挿入するのを防ぎます。
+2. **文字列開始時のスペース防止**：もし文字列が大文字で始まる場合（例：`"UpperCaseString"`）、その大文字の前に不必要にスペースを挿入するのを防ぎます。ただし、現在のコードでは `!result.isEmpty` という条件もあるため、文字列の最初の文字でこのチェックは効果的に働いていません。
 
-このチェックがないと、例えば "\_SnakeCase" という文字列で "\_" の後にスペースが不要に挿入されたり、連続する大文字（"URL"）がある場合に、不適切な位置にスペースが挿入される可能性があります。この条件式はそれを防ぐために重要です。
+このチェックがないと、例えば "_SnakeCase" という文字列で "_" の後にスペースが不要に挿入されたり、連続する大文字（"URL"）がある場合に、不適切な位置にスペースが挿入される可能性があります。この条件式はそれを防ぐために重要です。
 
 ---
 

@@ -10,20 +10,20 @@
 TypeScriptのPartialとRecordの型について教えて欲しい
 
 const prismaErrorMapping: Partial&lt;Record&lt;PrismaErrorCode, ApiErrorType&gt;&gt; = {
-  \[PrismaErrorCode.UniqueConstraintViolation\]: ApiErrorType.Conflict,
-  \[PrismaErrorCode.RecordNotFoundOrAccessDenied\]: ApiErrorType.NotFound,
-  \[PrismaErrorCode.ForeignKeyConstraintViolation\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.ValueTooLong\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.RecordNotFound\]: ApiErrorType.NotFound,
-  \[PrismaErrorCode.ConstraintViolation\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.InvalidValue\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.DataValidationError\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.NullConstraintViolation\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.MissingRequiredValue\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.MissingRequiredArgument\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.RequiredRelationViolation\]: ApiErrorType.BadRequest,
-  \[PrismaErrorCode.RelatedRecordNotFound\]: ApiErrorType.NotFound,
-  \[PrismaErrorCode.TransactionConflict\]: ApiErrorType.Conflict,
+  [PrismaErrorCode.UniqueConstraintViolation]: ApiErrorType.Conflict,
+  [PrismaErrorCode.RecordNotFoundOrAccessDenied]: ApiErrorType.NotFound,
+  [PrismaErrorCode.ForeignKeyConstraintViolation]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.ValueTooLong]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.RecordNotFound]: ApiErrorType.NotFound,
+  [PrismaErrorCode.ConstraintViolation]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.InvalidValue]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.DataValidationError]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.NullConstraintViolation]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.MissingRequiredValue]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.MissingRequiredArgument]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.RequiredRelationViolation]: ApiErrorType.BadRequest,
+  [PrismaErrorCode.RelatedRecordNotFound]: ApiErrorType.NotFound,
+  [PrismaErrorCode.TransactionConflict]: ApiErrorType.Conflict,
 };
 
 ---

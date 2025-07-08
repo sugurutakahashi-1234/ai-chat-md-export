@@ -20,11 +20,11 @@ public struct Research {
     public let instructions: String
     public let rewardPoints: Int
     public let orgName: String?
-    public let measurementTypes: \[MeasurementType\]
-    public let measurements: \[Measurement\]
+    public let measurementTypes: [MeasurementType]
+    public let measurements: [Measurement]
     public let duration: Int
 
-    public init(id: String, title: String, openingAt: Date, closingAt: Date, imageUri: String, instructions: String, rewardPoints: Int, orgName: String?, measurementTypes: \[MeasurementType\], measurements: \[Measurement\], duration: Int) {
+    public init(id: String, title: String, openingAt: Date, closingAt: Date, imageUri: String, instructions: String, rewardPoints: Int, orgName: String?, measurementTypes: [MeasurementType], measurements: [Measurement], duration: Int) {
         self.id = id
         self.title = title
         self.openingAt = openingAt
@@ -82,9 +82,9 @@ public struct QuestionnaireMeasurement {
     public let order: Int
     public let measurementType: MeasurementType
     public let name: String
-    public let questions: \[Question\]
+    public let questions: [Question]
 
-    public init(id: String, researchId: String, order: Int, measurementType: MeasurementType, name: String, questions: \[Question\]) {
+    public init(id: String, researchId: String, order: Int, measurementType: MeasurementType, name: String, questions: [Question]) {
         self.id = id
         self.researchId = researchId
         self.order = order
@@ -559,7 +559,7 @@ Types()` の実装は `MeasurementType` が `Equatable` を満たす必要があ
 
 すこしmeasurementsの持ち方を検討したい
 
-public let measurements: \[MeasurementType\]
+public let measurements: [MeasurementType]
 
 いきなりenumのMeasurementTypeをもつよりも以下のようにラップして、enumの連想値もstructではなくて、タプルで表現した方がいいのでは？
 

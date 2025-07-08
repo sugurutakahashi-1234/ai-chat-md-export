@@ -7,9 +7,9 @@
 ## 👤 ユーザー
 *2025/2/22 23:09:54*
 
-以下の処理から oss\_licenses.dartの考慮がなくなりました
+以下の処理から oss_licenses.dartの考慮がなくなりました
 
-find lib -type f -name "\*.dart" ! -path "lib/gen/\*" ! -name "oss\_licenses.dart" | xargs dart format
+find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -name "oss_licenses.dart" | xargs dart format
 
 ---
 

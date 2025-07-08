@@ -13,21 +13,21 @@ Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
-Could not open cp\_settings generic class cache for settings file '/Users/sugurutakahashi/git/gallusys/snpit\_guild\_app/android/settings.gradle' (/Users/sugurutakahashi/.gradle/caches/7.6.3/scripts/digrbcejqtzh2o323b6w8i67r).
-&gt; BUG! exception in phase 'semantic analysis' in source unit '\_BuildScript\_' Unsupported class file major version 65
+* What went wrong:
+Could not open cp_settings generic class cache for settings file '/Users/sugurutakahashi/git/gallusys/snpit_guild_app/android/settings.gradle' (/Users/sugurutakahashi/.gradle/caches/7.6.3/scripts/digrbcejqtzh2o323b6w8i67r).
+&gt; BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 65
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
 
-\* Get more help at https://help.gradle.org
+* Get more help at https://help.gradle.org
 
 BUILD FAILED in 284ms
 
 ┌─ Flutter Fix ────────────────────────────────────────────────────────────────────────────────────┐
-│ \[!\] Your project's Gradle version is incompatible with the Java version that Flutter is using    │
+│ [!] Your project's Gradle version is incompatible with the Java version that Flutter is using    │
 │ for Gradle.                                                                                      │
 │                                                                                                  │
 │ If you recently upgraded Android Studio, consult the migration guide at                          │
@@ -37,7 +37,7 @@ BUILD FAILED in 284ms
 │ doctor --verbose`.                                                                               │
 │                                                                                                  │
 │ Then, update the Gradle version specified in                                                     │
-│ /Users/sugurutakahashi/git/gallusys/snpit\_guild\_app/android/gradle/wrapper/gradle-wrapper.proper │
+│ /Users/sugurutakahashi/git/gallusys/snpit_guild_app/android/gradle/wrapper/gradle-wrapper.proper │
 │ ties to be compatible with that Java version. See the link below for more information on         │
 │ compatible Java/Gradle versions:                                                                 │
 │ https://docs.gradle.org/current/userguide/compatibility.html#java                                │
@@ -143,7 +143,7 @@ flutter run
 こうであった
 
  $ flutter doctor -v
-\[✓\] Flutter (Channel stable, 3.24.5, on macOS 15.2 24C5089c darwin-arm64, locale en-JP)
+[✓] Flutter (Channel stable, 3.24.5, on macOS 15.2 24C5089c darwin-arm64, locale en-JP)
     • Flutter version 3.24.5 on channel stable at /Users/sugurutakahashi/development/flutter
     • Upstream repository https://github.com/flutter/flutter.git
     • Framework revision dec2ee5c1f (3 weeks ago), 2024-11-13 11:13:06 -0800
@@ -151,22 +151,22 @@ flutter run
     • Dart version 3.5.4
     • DevTools version 2.37.3
 
-\[✓\] Android toolchain - develop for Android devices (Android SDK version 35.0.0)
+[✓] Android toolchain - develop for Android devices (Android SDK version 35.0.0)
     • Android SDK at /Users/sugurutakahashi/Library/Android/sdk
     • Platform android-35, build-tools 35.0.0
     • Java binary at: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java
     • Java version OpenJDK Runtime Environment (build 21.0.3+-79915917-b509.11)
     • All Android licenses accepted.
 
-\[✓\] Xcode - develop for iOS and macOS (Xcode 16.2)
-    • Xcode at /Applications/Xcode\_16.2\_beta\_3.app/Contents/Developer
+[✓] Xcode - develop for iOS and macOS (Xcode 16.2)
+    • Xcode at /Applications/Xcode_16.2_beta_3.app/Contents/Developer
     • Build 16C5023f
     • CocoaPods version 1.16.2
 
-\[✓\] Chrome - develop for the web
+[✓] Chrome - develop for the web
     • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 
-\[✓\] Android Studio (version 2024.2)
+[✓] Android Studio (version 2024.2)
     • Android Studio at /Applications/Android Studio.app/Contents
     • Flutter plugin can be installed from:
       🔨 https://plugins.jetbrains.com/plugin/9212-flutter
@@ -174,11 +174,11 @@ flutter run
       🔨 https://plugins.jetbrains.com/plugin/6351-dart
     • Java version OpenJDK Runtime Environment (build 21.0.3+-79915917-b509.11)
 
-\[✓\] VS Code (version 1.95.3)
+[✓] VS Code (version 1.95.3)
     • VS Code at /Applications/Visual Studio Code.app/Contents
     • Flutter extension version 3.102.0
 
-\[✓\] Connected device (7 available)
+[✓] Connected device (7 available)
     • sdk gphone64 arm64 (mobile)       • emulator-5554                        • android-arm64  • Android 14 (API 34) (emulator)
     • sdk gphone64 arm64 (mobile)       • emulator-5556                        • android-arm64  • Android 15 (API 35) (emulator)
     • SuguruTakahashi-iPhone16 (mobile) • 00008140-001C085E142B001C            • ios            • iOS 18.2 22C5142a
@@ -190,7 +190,7 @@ flutter run
       same local area network as this Mac.
       The device must be opted into Developer Mode to connect wirelessly. (code -27)
 
-\[✓\] Network resources
+[✓] Network resources
     • All expected network resources are available.
 
 • No issues found!
@@ -279,7 +279,7 @@ flutter run
 ## 👤 ユーザー
 *2024/12/5 16:21:42*
 
-JDK 17 or higher is required. Please set a valid Java home path to 'java.jdt.ls.java.home' setting or JAVA\_HOME environment variable. Or ensure a valid Java executable is in your PATH.
+JDK 17 or higher is required. Please set a valid Java home path to 'java.jdt.ls.java.home' setting or JAVA_HOME environment variable. Or ensure a valid Java executable is in your PATH.
 
 ---
 

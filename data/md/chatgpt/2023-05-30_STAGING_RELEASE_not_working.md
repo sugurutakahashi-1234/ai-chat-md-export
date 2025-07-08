@@ -27,15 +27,15 @@ let licenseKey: String
 ## 🤖 アシスタント
 *2023/5/30 18:45:33*
 
-提供いただいたコードは、特定のビルド設定（ここでは `PRODUCTION\_RELEASE` と `STAGING\_RELEASE`）が定義されているかどうかに基づいて、`licenseKey` 変数の値を設定するものです。
+提供いただいたコードは、特定のビルド設定（ここでは `PRODUCTION_RELEASE` と `STAGING_RELEASE`）が定義されているかどうかに基づいて、`licenseKey` 変数の値を設定するものです。
 
 まず、Swiftの `#if`, `#elseif`, `#else`, `#endif` といったプリプロセッサディレクティブは、コードがコンパイルされる際に特定のコードブロックが含まれるかどうかを決定します。そして、これらのディレクティブはビルド設定やコンパイラフラグなどによって制御されます。
 
-したがって、あなたが期待する `STAGING\_RELEASE` の設定が反映されない理由は、おそらく `STAGING\_RELEASE` が適切に定義されていないか、もしくは定義されていないことが考えられます。
+したがって、あなたが期待する `STAGING_RELEASE` の設定が反映されない理由は、おそらく `STAGING_RELEASE` が適切に定義されていないか、もしくは定義されていないことが考えられます。
 
 解決方法としては以下のステップを試すことをお勧めします。
 
-1. ビルド設定を確認してみてください。Xcodeの "Build Settings" タブで "Swift Compiler - Custom Flags" または "Preprocessor Macros" セクションを探し、`STAGING\_RELEASE` が適切に設定されているかどうか確認します。通常は `STAGING\_RELEASE=1` のように設定します。
+1. ビルド設定を確認してみてください。Xcodeの "Build Settings" タブで "Swift Compiler - Custom Flags" または "Preprocessor Macros" セクションを探し、`STAGING_RELEASE` が適切に設定されているかどうか確認します。通常は `STAGING_RELEASE=1` のように設定します。
 
 2. ビルド設定が正しいにも関わらず問題が発生する場合は、ビルドをクリーンし（Cmd+Shift+K）、プロジェクトを再ビルド（Cmd+B）してみてください。これにより、ビルドのキャッシュがクリアされ、ビルド設定の変更が正しく反映される可能性があります。
 
@@ -46,18 +46,18 @@ let licenseKey: String
 ## 👤 ユーザー
 *2023/5/30 18:45:44*
 
-STAGING\_RELEASE=1 のような =1 はどういういみなの？
+STAGING_RELEASE=1 のような =1 はどういういみなの？
 
 ---
 
 ## 🤖 アシスタント
 *2023/5/30 18:46:24*
 
-ビルド設定で `STAGING\_RELEASE=1` のように設定する場合、`STAGING\_RELEASE`という名前のフラグ（もしくは定義）が存在することを示します。そして、その値は `1` に設定されます。これは通常、CやC++といった言語のプリプロセッサでよく用いられる方法です。
+ビルド設定で `STAGING_RELEASE=1` のように設定する場合、`STAGING_RELEASE`という名前のフラグ（もしくは定義）が存在することを示します。そして、その値は `1` に設定されます。これは通常、CやC++といった言語のプリプロセッサでよく用いられる方法です。
 
-しかし、Swiftでは通常、値 `1` は特別な意味を持たないので、単に `STAGING\_RELEASE` とだけ定義することも可能です。その場合、`STAGING\_RELEASE`が定義されているかどうかだけが問題となります。つまり、`STAGING\_RELEASE`が存在する（定義されている）なら `#if STAGING\_RELEASE` のブロックが評価されます。
+しかし、Swiftでは通常、値 `1` は特別な意味を持たないので、単に `STAGING_RELEASE` とだけ定義することも可能です。その場合、`STAGING_RELEASE`が定義されているかどうかだけが問題となります。つまり、`STAGING_RELEASE`が存在する（定義されている）なら `#if STAGING_RELEASE` のブロックが評価されます。
 
-Xcodeのビルド設定において、`-D STAGING\_RELEASE`のように`-D`フラグを用いて`STAGING\_RELEASE`を定義することもよく行われます。これはSwiftのコンパイラフラグにおいて、指定したシンボル（この場合は`STAGING\_RELEASE`）を定義することを意味します。この定義が存在する場合、`#if STAGING\_RELEASE` ブロック内のコードがコンパイルされ、そうでない場合は無視されます。
+Xcodeのビルド設定において、`-D STAGING_RELEASE`のように`-D`フラグを用いて`STAGING_RELEASE`を定義することもよく行われます。これはSwiftのコンパイラフラグにおいて、指定したシンボル（この場合は`STAGING_RELEASE`）を定義することを意味します。この定義が存在する場合、`#if STAGING_RELEASE` ブロック内のコードがコンパイルされ、そうでない場合は無視されます。
 
 ---
 
@@ -73,11 +73,11 @@ Swift Compiler - Custom Flags の Activr Compliation Conditions と Other Swift 
 
 Swiftにおいて、コンパイラに条件付きのコンパイルフラグを渡す場合、通常は "Swift Compiler - Custom Flags" の "Active Compilation Conditions" を使用します。
 
-具体的には、`STAGING\_RELEASE` の場合、"Active Compilation Conditions"に `STAGING\_RELEASE` を追加します。これにより、Swiftの `#if STAGING\_RELEASE`、`#elseif STAGING\_RELEASE`、`#endif` などの条件付きコンパイルディレクティブは `STAGING\_RELEASE` が定義されているかどうかにより評価されます。
+具体的には、`STAGING_RELEASE` の場合、"Active Compilation Conditions"に `STAGING_RELEASE` を追加します。これにより、Swiftの `#if STAGING_RELEASE`、`#elseif STAGING_RELEASE`、`#endif` などの条件付きコンパイルディレクティブは `STAGING_RELEASE` が定義されているかどうかにより評価されます。
 
 一方、"Other Swift Flags" は、Swiftコンパイラに追加のフラグを渡すために使用されますが、これは通常、コンパイラの挙動を制御するためのものであり、条件付きコンパイルフラグを定義するためのものではありません。
 
-したがって、通常は "Active Compilation Conditions" を使用して `STAGING\_RELEASE` のような条件付きコンパイルフラグを定義します。
+したがって、通常は "Active Compilation Conditions" を使用して `STAGING_RELEASE` のような条件付きコンパイルフラグを定義します。
 
 ---
 
@@ -219,7 +219,7 @@ App1 の Debug と Release で共通の設定がある場合などの $(inherite
 ## 👤 ユーザー
 *2023/5/30 23:47:51*
 
-App1-Common.xcconfig に SWIFT\_ACTIVE\_COMPILATION\_CONDITIONS の設定したい場合はどうすればいい？
+App1-Common.xcconfig に SWIFT_ACTIVE_COMPILATION_CONDITIONS の設定したい場合はどうすればいい？
 
 ---
 
@@ -259,9 +259,9 @@ SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) DEBUG
 
 `$(inherited)` という記法があるため、`DEBUG` の設定が2重になることは通常ありません。 `$(inherited)` は、現在のレベルよりも1つ上のレベルで設定されている値を引き継ぎます。したがって、あるレベルで `DEBUG` が設定されている場合、それはそのレベルのみで有効となります。
 
-具体的には、もし "App1-Common.xcconfig" ファイルで `SWIFT\_ACTIVE\_COMPILATION\_CONDITIONS = $(inherited) DEBUG` が設定されており、さらに "App1-Debug.xcconfig" ファイルでも `SWIFT\_ACTIVE\_COMPILATION\_CONDITIONS = $(inherited) DEBUG` が設定されている場合、最終的な `SWIFT\_ACTIVE\_COMPILATION\_CONDITIONS` の値に `DEBUG` が2回含まれることはありません。それぞれの `$(inherited)` が1つ上のレベルの設定を参照するためです。
+具体的には、もし "App1-Common.xcconfig" ファイルで `SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) DEBUG` が設定されており、さらに "App1-Debug.xcconfig" ファイルでも `SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) DEBUG` が設定されている場合、最終的な `SWIFT_ACTIVE_COMPILATION_CONDITIONS` の値に `DEBUG` が2回含まれることはありません。それぞれの `$(inherited)` が1つ上のレベルの設定を参照するためです。
 
-ただし、もし同一レベルで `DEBUG` を複数回設定してしまった場合、それは意図した結果にならないかもしれません。例えば、同じ `.xcconfig` ファイル内で `SWIFT\_ACTIVE\_COMPILATION\_CONDITIONS` を2回定義し、それぞれに `DEBUG` を含めてしまった場合、最終的な設定に `DEBUG` が2回含まれる可能性があります。ですので、 `.xcconfig` ファイル内での重複設定は避けるべきです。
+ただし、もし同一レベルで `DEBUG` を複数回設定してしまった場合、それは意図した結果にならないかもしれません。例えば、同じ `.xcconfig` ファイル内で `SWIFT_ACTIVE_COMPILATION_CONDITIONS` を2回定義し、それぞれに `DEBUG` を含めてしまった場合、最終的な設定に `DEBUG` が2回含まれる可能性があります。ですので、 `.xcconfig` ファイル内での重複設定は避けるべきです。
 
 具体的な設定方法や影響は、あなたのプロジェクトのビルド設定の階層構造や、どの `.xcconfig` ファイルがどのレベルで使用されているかによるため、その点を確認してみてください。
 
@@ -279,17 +279,17 @@ SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) DEBUG
 
 それは残念ですが、解決に向けて以下の確認事項を提案します：
 
-1. \*\*ビルド設定の確認\*\*: まず、プロジェクト、ターゲット、そして各ビルド設定（Debug、Releaseなど）で正しい `.xcconfig` ファイルが指定されているか確認してください。これはXcodeのプロジェクト設定ページの"Info"タブ内の"Configurations"セクションで確認できます。
+1. **ビルド設定の確認**: まず、プロジェクト、ターゲット、そして各ビルド設定（Debug、Releaseなど）で正しい `.xcconfig` ファイルが指定されているか確認してください。これはXcodeのプロジェクト設定ページの"Info"タブ内の"Configurations"セクションで確認できます。
 
-2. \*\*.xcconfigファイルの確認\*\*: 次に、それぞれの `.xcconfig` ファイルに正しい設定が記述されているか確認してください。設定が継承されているか、または正しい形式で指定されているかを見てください。
+2. **.xcconfigファイルの確認**: 次に、それぞれの `.xcconfig` ファイルに正しい設定が記述されているか確認してください。設定が継承されているか、または正しい形式で指定されているかを見てください。
 
-3. \*\*プリプロセッサマクロの確認\*\*: Swiftコード内の`#if/#elseif/#else/#endif`ディレクティブを使用している場合、これらが正しく設定されているか確認してください。特に、定義したマクロ名（例えば`STAGING\_RELEASE`）がSwiftコード内でも同じ綴りで使用されているかどうかを確認してください。
+3. **プリプロセッサマクロの確認**: Swiftコード内の`#if/#elseif/#else/#endif`ディレクティブを使用している場合、これらが正しく設定されているか確認してください。特に、定義したマクロ名（例えば`STAGING_RELEASE`）がSwiftコード内でも同じ綴りで使用されているかどうかを確認してください。
 
-4. \*\*ビルドログの確認\*\*: ビルド時にエラーや警告が出ていないか確認してください。特に `.xcconfig` ファイルやコンパイル条件に関連する問題がないか見てください。
+4. **ビルドログの確認**: ビルド時にエラーや警告が出ていないか確認してください。特に `.xcconfig` ファイルやコンパイル条件に関連する問題がないか見てください。
 
-5. \*\*クリーンビルドの試行\*\*: こうした問題が発生する時、Xcodeが古いビルドキャッシュを使用している可能性があります。`Product &gt; Clean Build Folder` を使用してビルドフォルダをクリーンにした後、もう一度ビルドしてみてください。
+5. **クリーンビルドの試行**: こうした問題が発生する時、Xcodeが古いビルドキャッシュを使用している可能性があります。`Product &gt; Clean Build Folder` を使用してビルドフォルダをクリーンにした後、もう一度ビルドしてみてください。
 
-6. \*\*スキーマの設定確認\*\*: 適切なスキーマが選択されていることを確認してください。特に、スキーマが正しいビルド設定（Debug、Releaseなど）を使っているかどうかを見てください。
+6. **スキーマの設定確認**: 適切なスキーマが選択されていることを確認してください。特に、スキーマが正しいビルド設定（Debug、Releaseなど）を使っているかどうかを見てください。
 
 これらの確認事項が全て正しいにも関わらず問題が解決しない場合、プロジェクトの設定や具体的なエラーについて詳しく教えていただければ、さらなるアドバイスが可能かもしれません。
 

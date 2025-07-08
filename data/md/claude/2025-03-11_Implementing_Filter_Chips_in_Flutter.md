@@ -63,7 +63,7 @@ The implementation maintains the original layout and functionality while adding 
 ## 👤 ユーザー
 *2025/3/11 13:46:55*
 
-可読性が悪いので\_FilterChipsRowには分けてほしくない。また、FilterChipは左側に詰めてほしい。
+可読性が悪いので_FilterChipsRowには分けてほしくない。また、FilterChipは左側に詰めてほしい。
 
 ---
 
@@ -100,7 +100,7 @@ Viewing artifacts created via the Analysis Tool web feature preview isn’t yet 
 
 onSelected の処理をonTapXXX としてほしい。FavoriteとWithin 100km radiusのそれぞれ追加してほしい。そうすると以下の処理はなくなると思っている
 
-useEffect(() { if (isFavoriteFilterMode.hasValue) { isFavoriteSelected.value = isFavoriteFilterMode.value!; } if (isRangeFilterMode.hasValue) { isRangeSelected.value = isRangeFilterMode.value!; } return null; }, \[isFavoriteFilterMode, isRangeFilterMode\]);
+useEffect(() { if (isFavoriteFilterMode.hasValue) { isFavoriteSelected.value = isFavoriteFilterMode.value!; } if (isRangeFilterMode.hasValue) { isRangeSelected.value = isRangeFilterMode.value!; } return null; }, [isFavoriteFilterMode, isRangeFilterMode]);
 
 ---
 

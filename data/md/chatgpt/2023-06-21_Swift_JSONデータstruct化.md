@@ -9,7 +9,7 @@
 
 Swiftで以下をstructで扱えるようにしたいです。
 
-"{\\"enum\\":\[\\"モーションキャプチャーサービス「Xsens Animate Pro」\\",\\"ハンドキャプチャーサービス「MANUS Quantum Metagloves」\\",\\"「暴太郎戦隊ドンブラザーズ」リアルタイムモーションキャプチャー\\",\\"「ひきだすにほんご Activate Your Japanese!」VFX＋モーションキャプチャー\\",\\"「KING – Kanaria / 黒杜えれん Cover【VTuber 歌ってみた】」モーションキャプチャー＋MV制作\\",\\"「初音ミクシンフォニー 2021」モーションキャプチャー/アニメーション\\",\\"TVアニメ「それが声優」第12話「ライブ」劇中曲「光の先へ」ライブシーンモーションキャプチャー（プリヴィズ制作）\\"\],\\"type\\":\\"text\\"}"
+"{\"enum\":[\"モーションキャプチャーサービス「Xsens Animate Pro」\",\"ハンドキャプチャーサービス「MANUS Quantum Metagloves」\",\"「暴太郎戦隊ドンブラザーズ」リアルタイムモーションキャプチャー\",\"「ひきだすにほんご Activate Your Japanese!」VFX＋モーションキャプチャー\",\"「KING – Kanaria / 黒杜えれん Cover【VTuber 歌ってみた】」モーションキャプチャー＋MV制作\",\"「初音ミクシンフォニー 2021」モーションキャプチャー/アニメーション\",\"TVアニメ「それが声優」第12話「ライブ」劇中曲「光の先へ」ライブシーンモーションキャプチャー（プリヴィズ制作）\"],\"type\":\"text\"}"
 
 ---
 
@@ -58,7 +58,7 @@ if let jsonData = jsonString.data(using: .utf8) {
 今度は以下のstructになるようにdecodeするような仕組みを作ってほしい。typeは読まなくてよくてenumだけ呼んで欲しい
 
 struct SingleSelect {
-    let choices: \[String\]
+    let choices: [String]
 }
 
 ---
@@ -217,13 +217,13 @@ public struct Question: Embeddable {
   var title: String
   var order: Int
   var `required`: Bool
-  var constraint\_type: ConstraintType
+  var constraint_type: ConstraintType
   var constraints: String
 }
 
 public enum ConstraintType: String, EnumPersistable {
-  case freeDescription = "free\_description"
-  case singleSelect = "single\_select"
+  case freeDescription = "free_description"
+  case singleSelect = "single_select"
 }
 
 struct FreeDescription: Codable {
@@ -231,13 +231,13 @@ struct FreeDescription: Codable {
     let maxLength: Int
 
     enum CodingKeys: String, CodingKey {
-        case minLength = "min\_length"
-        case maxLength = "max\_length"
+        case minLength = "min_length"
+        case maxLength = "max_length"
     }
 }
 
 struct SingleSelect: Codable {
-    let choices: \[String\]
+    let choices: [String]
 
     enum CodingKeys: String, CodingKey {
         case choices = "enum"
@@ -246,7 +246,7 @@ struct SingleSelect: Codable {
 
 public enum AnswerType {
     case textField(minLength: Int, maxLength: Int)
-    case picker(choices: \[String\])
+    case picker(choices: [String])
 }
 
 ---
@@ -496,7 +496,7 @@ extension EmomilCore.Measurement {
         self.init(
             id: amplifyQuestionnaire.id,
             order: amplifyQuestionnaire.order,
-            type: EmomilCore.MeasurementType(from: amplifyQuestionnaire.measurement\_type),
+            type: EmomilCore.MeasurementType(from: amplifyQuestionnaire.measurement_type),
             detail: .questionnaire(name: amplifyQuestionnaire.name!, questions: amplifyQuestionnaire.questions!.map { try EmomilCore.Question(from: $0) })
         )
     }
@@ -666,8 +666,8 @@ extension EmomilCore.Measurement {
         self.init(
             id: amplifyVideo.id,
             order: amplifyVideo.order,
-            type: EmomilCore.MeasurementType(from: amplifyVideo.measurement\_type),
-            detail: .video(fileUri: amplifyVideo.file\_uri!, instructions: amplifyVideo.instructions!, isSkip: amplifyVideo.skippable!)
+            type: EmomilCore.MeasurementType(from: amplifyVideo.measurement_type),
+            detail: .video(fileUri: amplifyVideo.file_uri!, instructions: amplifyVideo.instructions!, isSkip: amplifyVideo.skippable!)
         )
     }
 }
@@ -677,15 +677,15 @@ extension EmomilCore.Measurement {
         self.init(
             id: amplifyWebsite.id,
             order: amplifyWebsite.order,
-            type: EmomilCore.MeasurementType(from: amplifyWebsite.measurement\_type),
-            detail: .website(siteUrl: amplifyWebsite.site\_url!, instructions: amplifyWebsite.instructions!)
+            type: EmomilCore.MeasurementType(from: amplifyWebsite.measurement_type),
+            detail: .website(siteUrl: amplifyWebsite.site_url!, instructions: amplifyWebsite.instructions!)
         )
     }
 }
 
 extension EmomilCore.Measurement {
     init(fromQuestionnaire amplifyQuestionnaire: Questionnaire) throws {
-        var questions = \[EmomilCore.Question\]()
+        var questions = [EmomilCore.Question]()
         // map や forEach だと error を throw できないため for-in 文を使用している
         for amplifyQuestion in amplifyQuestionnaire.questions! {
             let question = try EmomilCore.Question(from: amplifyQuestion)
@@ -694,7 +694,7 @@ extension EmomilCore.Measurement {
         self.init(
             id: amplifyQuestionnaire.id,
             order: amplifyQuestionnaire.order,
-            type: EmomilCore.MeasurementType(from: amplifyQuestionnaire.measurement\_type),
+            type: EmomilCore.MeasurementType(from: amplifyQuestionnaire.measurement_type),
             detail: .questionnaire(name: amplifyQuestionnaire.name!, questions: questions)
         )
     }

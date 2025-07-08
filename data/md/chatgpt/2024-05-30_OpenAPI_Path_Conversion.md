@@ -9,8 +9,8 @@
 
 以下を小文字変換
 
-  CLIENT\_OPENAPI\_PATH: client-repo/path/to/openapi.yaml
-  SERVER\_OPENAPI\_PATH: server-repo/path/to/openapi.yaml
+  CLIENT_OPENAPI_PATH: client-repo/path/to/openapi.yaml
+  SERVER_OPENAPI_PATH: server-repo/path/to/openapi.yaml
 
 ---
 
@@ -32,17 +32,17 @@ server_openapi_path: server-repo/path/to/openapi.yaml
 name: API Request Code Gen
 
 on:
-  repository\_dispatch:
-    types: \[openapi-update\]
-  workflow\_dispatch:
+  repository_dispatch:
+    types: [openapi-update]
+  workflow_dispatch:
 
 env:
   # iOS
-  ios\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  ios\_openapi\_path: ${{ env.ios\_repo }}/schema/openapi.yaml
+  ios_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  ios_openapi_path: ${{ env.ios_repo }}/schema/openapi.yaml
   # Server Side
-  server\_side\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  server\_side\_openapi\_path: ${{ env.server\_side\_repo }}/server-side-repository/openapi.yaml
+  server_side_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  server_side_openapi_path: ${{ env.server_side_repo }}/server-side-repository/openapi.yaml
 
 ---
 

@@ -29,7 +29,7 @@ struct AudioListView: View {
     @StateObject private var presenter: AudioListPresenter
 
     init() {
-        \_presenter = .init(wrappedValue: .init())
+        _presenter = .init(wrappedValue: .init())
     }
 
     var body: some View {
@@ -85,14 +85,14 @@ struct AudioListView: View {
         }
         .navigationTitle("Audio List")
         .overlayLoading(isPresented: $presenter.isLoading, isGestureReactable: false)
-        .appErrorAlert(isPresented: $presenter.showAlert, appError: presenter.appError, onOk: { \_ in
+        .appErrorAlert(isPresented: $presenter.showAlert, appError: presenter.appError, onOk: { _ in
             presenter.onTapOkDelete()
         })
         .sheet(item: $presenter.selectedAudioUrl, content: { audioUrl in
-            if #available(iOS 16.0, \*) {
+            if #available(iOS 16.0, *) {
                 AudioPlayerView(audioUrl: audioUrl)
                     .navigationStacked()
-                    .presentationDetents(\[.medium\])
+                    .presentationDetents([.medium])
             } else {
                 Text("iOS 15は対応しておりません")
             }
@@ -806,9 +806,9 @@ struct AudioPlayerView: View {
 
 @MainActor
 final class AudioListPresenter: ObservableObject {
-    private(set) var audioDatas: \[AudioData\] = \[\]
-    @Published private(set) var searchedAudioDatas: \[AudioData\] = \[\]
-    @Publisher private(set) var uniqueDates: \[Date\] = \[\]
+    private(set) var audioDatas: [AudioData] = []
+    @Published private(set) var searchedAudioDatas: [AudioData] = []
+    @Publisher private(set) var uniqueDates: [Date] = []
 
     @Published var selectedAudioUrl: URL?
     @Published var searchText: String = ""
@@ -823,11 +823,11 @@ final class AudioListPresenter: ObservableObject {
 
     init() {
         $searchText
-            .compactMap { \[weak self\] searchText in
+            .compactMap { [weak self] searchText in
                 self?.audioDatas.filter { audioData in
-                    searchText.isEmpty || "\\(audioData.audioUrl.lastPathComponent)".localizedCaseInsensitiveContains(searchText)
+                    searchText.isEmpty || "\(audioData.audioUrl.lastPathComponent)".localizedCaseInsensitiveContains(searchText)
                 }
-                .sorted(by: \\.createdAt, order: .descending)
+                .sorted(by: \.createdAt, order: .descending)
             }
             .assign(to: &$searchedAudioDatas)
         

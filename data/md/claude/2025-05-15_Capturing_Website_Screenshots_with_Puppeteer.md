@@ -30,14 +30,14 @@ This block is not supported on your current device yet.
 ## 👤 ユーザー
 *2025/5/15 17:55:46*
 
-puppeteer\_screenshotしてほしい
+puppeteer_screenshotしてほしい
 
 ---
 
 ## 🤖 アシスタント
 *2025/5/15 17:55:52*
 
-こんにちは！`puppeteer\_screenshot`ツールを使用してスクリーンショットを撮りたいとのことですね。このツールを使用するには、まず対象のウェブページをロードするために`puppeteer\_navigate`を実行し、その後スクリーンショットを撮影する必要があります。
+こんにちは！`puppeteer_screenshot`ツールを使用してスクリーンショットを撮りたいとのことですね。このツールを使用するには、まず対象のウェブページをロードするために`puppeteer_navigate`を実行し、その後スクリーンショットを撮影する必要があります。
 
 どのウェブサイトのスクリーンショットを撮りたいですか？URLを教えていただければ、そのページのスクリーンショットを撮影します。
 

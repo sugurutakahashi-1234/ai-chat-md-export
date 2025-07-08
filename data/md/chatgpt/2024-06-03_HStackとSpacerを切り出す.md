@@ -13,16 +13,16 @@
 
 struct PropertyView&lt;T: Encodable&gt;: View {
     @Binding var showToast: Bool
-    let objects: \[T\]
+    let objects: [T]
     var onTapElement: (Any) -&gt; Void
 
     public var body: some View {
-        ForEach(Array(objects.enumerated()), id: \\.offset) { index, object in
+        ForEach(Array(objects.enumerated()), id: \.offset) { index, object in
             Section {
                 propertyView(object: object)
             } header: {
                 HStack {
-                    Text("\\(type(of: object))\[\\(index)\]")
+                    Text("\(type(of: object))[\(index)]")
 
                     Spacer()
 
@@ -39,7 +39,7 @@ struct PropertyView&lt;T: Encodable&gt;: View {
     }
 
     func propertyView(object: Any) -&gt; some View {
-        AnyView(ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \\.offset) { index, child in
+        AnyView(ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \.offset) { index, child in
             if let label = child.label {
                 let childMirror = Mirror(reflecting: child.value)
                 if childMirror.displayStyle == .struct || childMirror.displayStyle == .class {
@@ -48,19 +48,19 @@ struct PropertyView&lt;T: Encodable&gt;: View {
                     } label: {
                         Text(label)
                     }
-                } else if let subObjects = child.value as? \[Any\] {
+                } else if let subObjects = child.value as? [Any] {
                     DisclosureGroup {
-                        ForEach(Array(subObjects.enumerated()), id: \\.offset) { subIndex, subObject in
+                        ForEach(Array(subObjects.enumerated()), id: \.offset) { subIndex, subObject in
                             let subObjectMirror = Mirror(reflecting: subObject)
                             if subObjectMirror.displayStyle == .struct || subObjectMirror.displayStyle == .class {
                                 DisclosureGroup {
                                     propertyView(object: subObject)
                                 } label: {
                                     HStack(alignment: .top) {
-                                        Text("\\(type(of: subObject))")
+                                        Text("\(type(of: subObject))")
                                             .foregroundStyle(.black)
                                         Spacer()
-                                        Text("\\(type(of: subObject))\[\\(subIndex)\]")
+                                        Text("\(type(of: subObject))[\(subIndex)]")
                                     }
                                 }
                             } else {
@@ -68,10 +68,10 @@ struct PropertyView&lt;T: Encodable&gt;: View {
                                     onTapElement(subObject)
                                 } label: {
                                     HStack(alignment: .top) {
-                                        Text("\[\\(subIndex)\]")
+                                        Text("[\(subIndex)]")
                                             .foregroundStyle(.black)
                                         Spacer()
-                                        Text("\\(subObject)")
+                                        Text("\(subObject)")
                                     }
                                 }
                             }
@@ -81,7 +81,7 @@ struct PropertyView&lt;T: Encodable&gt;: View {
                             Text(label)
                                 .foregroundStyle(.black)
                             Spacer()
-                            Text("\\(Mirror(reflecting: child.value).subjectType)")
+                            Text("\(Mirror(reflecting: child.value).subjectType)")
                         }
                     }
                 } else {
@@ -92,7 +92,7 @@ struct PropertyView&lt;T: Encodable&gt;: View {
                             Text(label)
                                 .foregroundStyle(.black)
                             Spacer()
-                            Text("\\(child.value)")
+                            Text("\(child.value)")
                         }
                     }
                 }
@@ -101,10 +101,10 @@ struct PropertyView&lt;T: Encodable&gt;: View {
                     onTapElement(child.value)
                 } label: {
                     HStack(alignment: .top) {
-                        Text("\[\\(index)\]")
+                        Text("[\(index)]")
                             .foregroundStyle(.black)
                         Spacer()
-                        Text("\\(child.value)")
+                        Text("\(child.value)")
                     }
                 }
             }

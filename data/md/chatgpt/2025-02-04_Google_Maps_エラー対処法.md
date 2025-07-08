@@ -10,40 +10,40 @@
 lutterのgoogleMapを使ったアプリを開発しているが以下のようなエラーがどこかで発生している理由はなんだと思いますか？
 
 Error: PlatformException(channel-error,
-Unable to establish connection on channel: "d ev.flutter.pigeon.google\_maps\_flutter\_ios.Ma psApi.animateCamera.1"., null, null)
+Unable to establish connection on channel: "d ev.flutter.pigeon.google_maps_flutter_ios.Ma psApi.animateCamera.1"., null, null)
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/spot\_type.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/convert\_to\_domain.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/spots/get\_guild\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/item\_boxes/get\_item\_box\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/spots/get\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/get\_user.dart';
-import 'package:snpit\_guild\_app/presentation/providers/current\_location.dart';
-import 'package:snpit\_guild\_app/presentation/providers/exploded\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/on\_exploring.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_map\_spot.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_explorer\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_our\_spot\_detail.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_shootable\_spot\_detail.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/explored\_result\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/item\_box\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/location\_access\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/item\_box\_icon.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/spot\_icon.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/spot\_photo\_carousel.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/square\_image.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
-import 'package:widget\_to\_marker/widget\_to\_marker.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/spot_type.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/convert_to_domain.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/spots/get_guild_spot_list.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/item_boxes/get_item_box_list.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/spots/get_spot_list.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/get_user.dart';
+import 'package:snpit_guild_app/presentation/providers/current_location.dart';
+import 'package:snpit_guild_app/presentation/providers/exploded_spot_list.dart';
+import 'package:snpit_guild_app/presentation/providers/on_exploring.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_map_spot.dart';
+import 'package:snpit_guild_app/presentation/providers/show_explorer_list.dart';
+import 'package:snpit_guild_app/presentation/providers/show_our_spot_detail.dart';
+import 'package:snpit_guild_app/presentation/providers/show_shootable_spot_detail.dart';
+import 'package:snpit_guild_app/presentation/providers/show_spot_list.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/explored_result_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/item_box_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/location_access_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/item_box_icon.dart';
+import 'package:snpit_guild_app/presentation/widgets/spot_icon.dart';
+import 'package:snpit_guild_app/presentation/widgets/spot_photo_carousel.dart';
+import 'package:snpit_guild_app/presentation/widgets/square_image.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
+import 'package:widget_to_marker/widget_to_marker.dart';
 
 /// 逆三角形を描画するシンプルな Painter
 class TrianglePainter extends CustomPainter {
@@ -87,7 +87,7 @@ class MapPage extends HookConsumerWidget {
       // 1km ≈ 0.009度 (厳密でなくてOK)
       // 今回は 1~10km 程度なのでこれで十分
       final radiusKm = radiusMeters / 1000.0;
-      final delta = 0.009 \* radiusKm;
+      final delta = 0.009 * radiusKm;
 
       // 南西端と北東端をざっくり決める
       final southwest = LatLng(
@@ -132,7 +132,7 @@ class MapPage extends HookConsumerWidget {
     Future&lt;void&gt; onTapItemBoxMarker(ItemBoxDTO itemBox) async {
       await showDialog&lt;void&gt;(
         context: context,
-        builder: (\_) {
+        builder: (_) {
           return ItemBoxDialog(itemBox: itemBox);
         },
       );
@@ -157,18 +157,18 @@ class MapPage extends HookConsumerWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            boxShadow: \[
+            boxShadow: [
               BoxShadow(
                 blurRadius: 8,
                 color: ColorToken.bgBlack.withAlpha(50),
                 spreadRadius: 2,
                 offset: const Offset(0, 2),
               ),
-            \],
+            ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: \[
+            children: [
               SpotIcon(spotType: spotType),
               Transform.translate(
                 offset: const Offset(0, -4),
@@ -177,7 +177,7 @@ class MapPage extends HookConsumerWidget {
                   painter: TrianglePainter(color: ColorToken.bgWhite),
                 ),
               ),
-            \],
+            ],
           ),
         ),
       );
@@ -191,18 +191,18 @@ class MapPage extends HookConsumerWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            boxShadow: \[
+            boxShadow: [
               BoxShadow(
                 blurRadius: 8,
                 color: ColorToken.bgBlack.withAlpha(50),
                 spreadRadius: 2,
                 offset: const Offset(0, 2),
               ),
-            \],
+            ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: \[
+            children: [
               DecoratedBox(
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -232,7 +232,7 @@ class MapPage extends HookConsumerWidget {
                   painter: TrianglePainter(color: ColorToken.bgWhite),
                 ),
               ),
-            \],
+            ],
           ),
         ),
       );
@@ -257,7 +257,7 @@ class MapPage extends HookConsumerWidget {
       );
 
       return Marker(
-        markerId: MarkerId('spot\_$spotId'),
+        markerId: MarkerId('spot_$spotId'),
         position: LatLng(lat, lng),
         icon: iconDescriptor,
         onTap: () async {
@@ -282,7 +282,7 @@ class MapPage extends HookConsumerWidget {
       );
 
       return Marker(
-        markerId: MarkerId('itemBox\_$itemBoxId'),
+        markerId: MarkerId('itemBox_$itemBoxId'),
         position: LatLng(lat, lng),
         icon: iconDescriptor,
         onTap: () async {
@@ -301,11 +301,11 @@ class MapPage extends HookConsumerWidget {
       final neededMarkerIds = &lt;String&gt;{};
       for (final spot in newSpotList) {
         final spotId = spot.spotId ?? '';
-        neededMarkerIds.add('spot\_$spotId');
+        neededMarkerIds.add('spot_$spotId');
       }
       for (final box in newItemBoxList) {
         final boxId = box.itemBoxId ?? '';
-        neededMarkerIds.add('itemBox\_$boxId');
+        neededMarkerIds.add('itemBox_$boxId');
       }
 
       // 既存マーカーから「不要になったもの」を削除する
@@ -322,7 +322,7 @@ class MapPage extends HookConsumerWidget {
 
       // Spot のリストを順に処理し、1つずつ再描画して反映
       for (final spot in newSpotList) {
-        final markerId = MarkerId('spot\_${spot.spotId}');
+        final markerId = MarkerId('spot_${spot.spotId}');
         // buildSpotMarker (必ず再生成して再描画する)
         final newMarker = await buildSpotMarker(
           spot: spot,
@@ -350,7 +350,7 @@ class MapPage extends HookConsumerWidget {
 
       // ItemBox も同様に処理
       for (final itemBox in newItemBoxList) {
-        final markerId = MarkerId('itemBox\_${itemBox.itemBoxId}');
+        final markerId = MarkerId('itemBox_${itemBox.itemBoxId}');
         final newMarker = await buildItemBoxMarker(
           itemBox: itemBox,
           onTapItemBoxMarker: (box) async {
@@ -450,7 +450,7 @@ class MapPage extends HookConsumerWidget {
           await onRefresh();
         });
         // フォアグラウンド復帰で位置情報再取得
-        final observer = \_LifecycleObserver(
+        final observer = _LifecycleObserver(
           onResume: () async {
             final refreshedLocation =
                 ref.refresh(currentLocationNotifierProvider);
@@ -460,7 +460,7 @@ class MapPage extends HookConsumerWidget {
         WidgetsBinding.instance.addObserver(observer);
         return () =&gt; WidgetsBinding.instance.removeObserver(observer);
       },
-      \[\],
+      [],
     );
 
     ref
@@ -482,7 +482,7 @@ class MapPage extends HookConsumerWidget {
 
             // range は km 単位なので、メートルに換算（×1000）
             final explorerRangeKm = next.explorer?.range ?? 0;
-            final rangeInMeters = explorerRangeKm \* 1000.0;
+            final rangeInMeters = explorerRangeKm * 1000.0;
 
             final circle = Circle(
               circleId: const CircleId('explorerCircle'),
@@ -530,13 +530,13 @@ class MapPage extends HookConsumerWidget {
                     ),
                   )
                   .toList() ??
-              \[\];
+              [];
 
           ref.read(shouldRefreshMapSpotNotifierProvider.notifier).trigger();
 
           await showDialog&lt;void&gt;(
             context: context,
-            builder: (\_) =&gt; ExploredResultDialog(
+            builder: (_) =&gt; ExploredResultDialog(
               spotPhotoItemList: spotPhotoItems,
             ),
           );
@@ -548,7 +548,7 @@ class MapPage extends HookConsumerWidget {
     return Scaffold(
       body: currentLocationAsyncValue.when(
         data: (currentLocation) =&gt; Stack(
-          children: \[
+          children: [
             GoogleMap(
               initialCameraPosition: CameraPosition(
                 target: currentLocation,
@@ -574,7 +574,7 @@ class MapPage extends HookConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: \[
+                  children: [
                     // 現在地へ戻るボタン
                     SizedBox(
                       width: 48,
@@ -585,7 +585,7 @@ class MapPage extends HookConsumerWidget {
                           await onTapNearMe();
                         },
                         child: const Icon(
-                          Icons.near\_me,
+                          Icons.near_me,
                           size: 24,
                           color: ColorToken.secondaryDark,
                         ),
@@ -617,7 +617,7 @@ class MapPage extends HookConsumerWidget {
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
-                          children: \[
+                          children: [
                             Padding(
                               padding: const EdgeInsets.only(left: 4),
                               child: onExploringStateValue.isExploring
@@ -650,7 +650,7 @@ class MapPage extends HookConsumerWidget {
                               ),
                             ),
                             const Spacer(),
-                          \],
+                          ],
                         ),
                       ),
                     ),
@@ -659,7 +659,7 @@ class MapPage extends HookConsumerWidget {
                       data: (spotList) {
                         // 上位2つを取り出し、順序を逆にする
                         final displaySpotList =
-                            (spotList?.take(2).toList() ?? \[\])
+                            (spotList?.take(2).toList() ?? [])
                                 .reversed
                                 .toList();
                         return SizedBox(
@@ -680,12 +680,12 @@ class MapPage extends HookConsumerWidget {
                               child: Stack(
                                 clipBehavior: Clip.none,
                                 alignment: Alignment.bottomRight,
-                                children: \[
+                                children: [
                                   for (var i = 0; i &lt; 2; i++)
                                     if (i &lt; displaySpotList.length)
                                       Positioned(
-                                        left: i \* -4.0,
-                                        top: i \* -4.0,
+                                        left: i * -4.0,
+                                        top: i * -4.0,
                                         child: SizedBox(
                                           width: 44,
                                           height: 44,
@@ -704,7 +704,7 @@ class MapPage extends HookConsumerWidget {
                                                 borderRadius:
                                                     BorderRadius.circular(4),
                                                 child: SquareImage(
-                                                  imageUrl: displaySpotList\[i\]
+                                                  imageUrl: displaySpotList[i]
                                                       .photoUrl,
                                                   size: 44,
                                                 ),
@@ -713,7 +713,7 @@ class MapPage extends HookConsumerWidget {
                                           ),
                                         ),
                                       ),
-                                \],
+                                ],
                               ),
                             ),
                           ),
@@ -722,7 +722,7 @@ class MapPage extends HookConsumerWidget {
                       loading: () {
                         return const SizedBox.shrink();
                       },
-                      error: (error, \_) {
+                      error: (error, _) {
                         return SizedBox(
                           width: 48,
                           height: 48,
@@ -740,16 +740,16 @@ class MapPage extends HookConsumerWidget {
                         );
                       },
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
-          \],
+          ],
         ),
         loading: () {
           return const Center(child: CircularProgressIndicator());
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Padding(
             padding: const EdgeInsets.all(24),
             child: Center(
@@ -757,7 +757,7 @@ class MapPage extends HookConsumerWidget {
                 onPressed: () async {
                   await showDialog&lt;void&gt;(
                     context: context,
-                    builder: (\_) {
+                    builder: (_) {
                       return const LocationAccessDialog();
                     },
                   );
@@ -774,8 +774,8 @@ class MapPage extends HookConsumerWidget {
   }
 }
 
-class \_LifecycleObserver extends WidgetsBindingObserver {
-  \_LifecycleObserver({this.onResume});
+class _LifecycleObserver extends WidgetsBindingObserver {
+  _LifecycleObserver({this.onResume});
   final VoidCallback? onResume;
 
   @override
@@ -791,39 +791,39 @@ class \_LifecycleObserver extends WidgetsBindingObserver {
 ## 🔧 ツール
 *2025/2/4 16:26:17*
 
-\*\*Piecing together cause of error\*\*
+**Piecing together cause of error**
 
 The error likely stems from trying to animate the camera on an unloaded or invisible map or issues with the GoogleMapController's setup or state.
 
-\*\*Tracing concurrency errors\*\*
+**Tracing concurrency errors**
 
 There's a strong possibility that the animateCamera function is being called from an isolate or an unmounted widget, potentially causing concurrency issues when the map isn't fully loaded or visible.
 
-\*\*Possible causes\*\*
+**Possible causes**
 
 The error might result from an incomplete GoogleMap setup, the absence of Google services in the iOS simulator, or executing camera updates when the map isn't in or removed from the widget tree.
 
-\*\*Examining GoogleMapController\*\*
+**Examining GoogleMapController**
 
 I’m analyzing scenarios where the GoogleMapController might be disposed or detached, or where lifecycle issues could cause animateCamera to be called before the map is initialized, potentially harming the plugin.
 
-\*\*Investigating context validity\*\*
+**Investigating context validity**
 
 I'm gathering info on whether the animateCamera function is called after the context is invalid, which might cause issues with the controller's validity. This could be due to context changes or view manipulations.
 
-\*\*Validating LatLngBounds\*\*
+**Validating LatLngBounds**
 
 I’m mapping out invalid LatLngBounds parameters, ensuring northeast coordinates are not less than southwest coordinates, and considering iOS simulator limitations. This seems to be developing with exploration.
 
-\*\*Ensuring map usage\*\*
+**Ensuring map usage**
 
 I’m examining scenarios where animateCamera is called after the map is disposed, possibly due to asynchronous operations like user navigation and device resume, leading to concurrency or lifecycle issues.
 
-\*\*Troubleshooting errors\*\*
+**Troubleshooting errors**
 
 I’m identifying a known issue where calling googleMapController.animateCamera() on iOS while the page is inactive leads to errors, as the iOS platform channel disconnects and the map is detached.
 
-\*\*Preventing errors\*\*
+**Preventing errors**
 
 To avoid errors, I’m ensuring the map is loaded and in the widget tree before calling animateCamera. This involves checking if googleMapControllerState is null or if the page is mounted and active.
 
@@ -961,19 +961,19 @@ Future&lt;LatLng&gt; getCurrentLocation({required Flavor flavor}) async {
 ## 🔧 ツール
 *2025/2/4 16:36:06*
 
-\*\*Pinpointing the problem\*\*
+**Pinpointing the problem**
 
 I’m examining potential causes, like the map not loading or the native channel being lost, which might explain the error during camera animation.
 
-\*\*Weighing the possibilities\*\*
+**Weighing the possibilities**
 
 Considering the impact of the app running in the background or the map context being unmounted when the "animateCamera" function is invoked.
 
-\*\*Identifying potential issues\*\*
+**Identifying potential issues**
 
 I’m piecing together that the user might invoke "animateCamera" while the app is in the background or the map context is unmounted, possibly causing channel errors.
 
-\*\*Handling platform channel connections\*\*
+**Handling platform channel connections**
 
 Considering the app may go to the background with "openLocationSettings()", risking the map's re-initialization. Careful handling is required. Alternatively, "animateCamera" might be called without a ready map.
 
@@ -982,45 +982,45 @@ Considering the app may go to the background with "openLocationSettings()", risk
 ## 🤖 アシスタント
 *2025/2/4 16:36:06*
 
-iOS の Google Maps は、\*\*「ネイティブのマップチャネルが有効でないタイミングで `animateCamera` が呼ばれる」\*\* と `PlatformException(channel-error, Unable to establish connection...)` が発生しがちです。  
+iOS の Google Maps は、**「ネイティブのマップチャネルが有効でないタイミングで `animateCamera` が呼ばれる」** と `PlatformException(channel-error, Unable to establish connection...)` が発生しがちです。  
 とくに現在のコードだと、`onTapNearMe` 内で
 
 1. `Geolocator` が位置情報設定ダイアログ（システムの設定画面）を開く  
 2. その間に Flutter アプリがバックグラウンド状態（または “中断” 状態）になる  
 3. ユーザーが設定画面を閉じて復帰すると、ネイティブチャネルが張り直される前 or ウィジェットが dispose 済みのタイミングで `animateCamera` が走る  
 
-といった流れで、\*\*チャネルが切れた状態で `animateCamera` が呼ばれる\*\* 可能性が高いです。
+といった流れで、**チャネルが切れた状態で `animateCamera` が呼ばれる** 可能性が高いです。
 
 ---
 
 ## 原因になりやすいケース
 
-1. \*\*設定画面を開いたあと、アプリに戻るまでにタイムラグがある\*\*  
+1. **設定画面を開いたあと、アプリに戻るまでにタイムラグがある**  
    - `Geolocator.openLocationSettings()` により、アプリはフォアグラウンドから離れます。  
    - 設定から戻ってくるとアプリは再度フォアグラウンドに復帰しますが、地図ウィジェットが再描画される／iOS ネイティブチャネルが再確立される前に `animateCamera` してしまうとエラーになることがあります。
 
-2. \*\*ウィジェットが dispose されたり、新たに作られたりして `googleMapController` が無効化された\*\*  
+2. **ウィジェットが dispose されたり、新たに作られたりして `googleMapController` が無効化された**  
    - 例えば「位置情報許可ダイアログの結果を受け取るまでに、ユーザーが別画面に遷移してしまった」などで、Map ウィジェット自体が破棄されている状態。
 
-3. \*\*`onMapCreated` が完了していない or 復帰後にまだ再初期化が完了していない\*\*  
+3. **`onMapCreated` が完了していない or 復帰後にまだ再初期化が完了していない**  
    - `googleMapControllerState.value` が `null` の段階、あるいは iOS 側のネイティブマップが再生成途上で `animateCamera` を呼ぶと失敗します。
 
 ---
 
 ## 対処方法・確認ポイント
 
-1. \*\*MapController が有効かを必ずチェックする\*\*  
+1. **MapController が有効かを必ずチェックする**  
    - `onMapCreated` で受け取った `controller` をステートに保存する際、`null` ではないことを確認。  
    - `await Geolocator.openLocationSettings()` でシステム画面を開く処理の後で `animateCamera` するときは、  
      - 復帰後にまだコントローラが有効か (`if (googleMapControllerState.value != null)`)  
      - ウィジェットが `mounted` か (`if (!context.mounted) return;`)  
      を確認してから呼ぶようにする。
 
-2. \*\*バックグラウンドからの復帰タイミングをハンドリングする\*\*  
+2. **バックグラウンドからの復帰タイミングをハンドリングする**  
    - アプリが `resumed` になる際に `onMapCreated` 相当の再初期化や、再描画完了を待ってから `animateCamera` を呼び出すようにする。  
    - 何らかの `Future.delayed(...)` で少し待機し、ネイティブチャネルが再確立されるのを待ってからカメラ操作を行う方法もあります。
 
-3. \*\*設定画面を開いたあとに自動で `animateCamera` を走らせない\*\*  
+3. **設定画面を開いたあとに自動で `animateCamera` を走らせない**  
    - 位置情報が有効になったかどうか確認してから、改めて「現在地を取得」→「カメラを移動」のフローをユーザー主導で実行するほうが安全です。  
    - 「設定後に戻ってきた瞬間に即 `animateCamera`」だと、ネイティブ側がまだ初期化中の場合があるため。
 
@@ -1029,7 +1029,7 @@ iOS の Google Maps は、\*\*「ネイティブのマップチャネルが有�
 ### まとめ
 
 - `onTapNearMe` で `Geolocator.openLocationSettings()` → `設定に飛んだあとに戻る` → `animateCamera` の流れが、ネイティブマップチャネル未接続の状態で呼ばれているのが原因と推測されます。  
-- \*\*アプリがバックグラウンドに移る／復帰する\*\*、または \*\*ウィジェットが破棄される／再生成される\*\* 際のライフサイクル管理が不十分だと起こりがちなので、  
+- **アプリがバックグラウンドに移る／復帰する**、または **ウィジェットが破棄される／再生成される** 際のライフサイクル管理が不十分だと起こりがちなので、  
   - `if (context.mounted && googleMapControllerState.value != null) { ... }` のようにガードを挟む  
   - 復帰処理や設定反映のあとに少し待ってから `animateCamera` する  
 などを意識してみてください。
@@ -1046,23 +1046,23 @@ iOS の Google Maps は、\*\*「ネイティブのマップチャネルが有�
 ## 🔧 ツール
 *2025/2/4 16:37:13*
 
-\*\*Analyzing the error\*\*
+**Analyzing the error**
 
 I’m piecing together the issue: `openLocationSettings` isn't affected, but other errors persist. The `animateCamera` call might lead to channel failure or a background update, possibly compounded by user interaction or permission dialogs.
 
-\*\*Analyzing system dialogs\*\*
+**Analyzing system dialogs**
 
 I'm thinking through how iOS triggers a system dialog for permission, possibly breaking the channel. Even with granted permissions, the error might stem from specific `getCurrentPosition` settings or known iOS issues.
 
-\*\*Examining issues\*\*
+**Examining issues**
 
 I’m mapping out concurrency or race conditions where `onTapNearMe` fires too soon, `animateCamera` is called on unready or destroyed widgets, or the map context changes abruptly.
 
-\*\*Adjusting my approach\*\*
+**Adjusting my approach**
 
 I’m suggesting small delays post `getCurrentLocation`, ensuring the widget is mounted for `setState`, and accounting for iOS ephemeral interruptions or partial re-renders/hot reloads.
 
-\*\*Tracing possible faults\*\*
+**Tracing possible faults**
 
 OK, let's figure these out: `animateCamera` might be called too early, the map's out of scope, app reconfiguration disrupts things, `onTapNearMe` triggers multiple requests, or an iOS permission prompt jumps in.
 

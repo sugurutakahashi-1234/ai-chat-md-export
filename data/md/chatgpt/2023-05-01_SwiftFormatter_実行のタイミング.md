@@ -139,14 +139,14 @@ chmod +x .git/hooks/pre-commit
 ## 👤 ユーザー
 *2023/5/1 11:08:27*
 
-SWIFT\_ACCESS\_TOKEN ってなに？
+SWIFT_ACCESS_TOKEN ってなに？
 
 ---
 
 ## 🤖 アシスタント
 *2023/5/1 11:08:31*
 
-SWIFT\_ACCESS\_TOKENは、SwiftPackageManagerがGitHubから依存関係をダウンロードするために必要な、GitHubのパーソナルアクセストークンです。SwiftPackageManagerは、パッケージをダウンロードするために、GitHubのAPIを使用します。パーソナルアクセストークンを使用すると、API制限を回避し、プライベートリポジトリからのパッケージのダウンロードも可能になります。
+SWIFT_ACCESS_TOKENは、SwiftPackageManagerがGitHubから依存関係をダウンロードするために必要な、GitHubのパーソナルアクセストークンです。SwiftPackageManagerは、パッケージをダウンロードするために、GitHubのAPIを使用します。パーソナルアクセストークンを使用すると、API制限を回避し、プライベートリポジトリからのパッケージのダウンロードも可能になります。
 
 GitHubからパーソナルアクセストークンを生成するには、次の手順に従います。
 
@@ -162,8 +162,8 @@ GitHubからパーソナルアクセストークンを生成するには、次�
 
 6. トークンを生成します。
 
-7. 生成されたトークンをSWIFT\_ACCESS\_TOKENという名前でGitHub ActionsのSecretsに追加します。
+7. 生成されたトークンをSWIFT_ACCESS_TOKENという名前でGitHub ActionsのSecretsに追加します。
 
-SWIFT\_ACCESS\_TOKENを設定することで、SwiftPackageManagerがGitHubから依存関係をダウンロードする際に、トークンを使用してAPI制限を回避することができます。
+SWIFT_ACCESS_TOKENを設定することで、SwiftPackageManagerがGitHubから依存関係をダウンロードする際に、トークンを使用してAPI制限を回避することができます。
 
 ---

@@ -11,7 +11,7 @@ protocol AudioPlayDriverProtocol を定義したい。public 値はすべてプ�
 
 public final class AudioPlayDriver: Sendable {
     private nonisolated(unsafe) var player: AVPlayer?
-    private nonisolated(unsafe) var cancellables: Set&lt;AnyCancellable&gt; = \[\]
+    private nonisolated(unsafe) var cancellables: Set&lt;AnyCancellable&gt; = []
     private nonisolated(unsafe) let errorSubject = PassthroughSubject&lt;AppError, Never&gt;()
     private nonisolated(unsafe) let currentTimeSubject = CurrentValueSubject&lt;TimeInterval, Never&gt;(0.0)
     private nonisolated(unsafe) let durationSubject = CurrentValueSubject&lt;TimeInterval, Never&gt;(0.0)
@@ -43,19 +43,19 @@ public final class AudioPlayDriver: Sendable {
         // 0.1 秒ごとに再生時刻を通知
         Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
             .combineLatest(isPlayingSubject, isSeekingSubject)
-            .filter { \_, isPlaying, isSeeking in
+            .filter { _, isPlaying, isSeeking in
                 isPlaying && !isSeeking // 再生中かつseekしていないときのみ更新
             }
-            .map { \[weak self\] \_, \_, \_ in
+            .map { [weak self] _, _, _ in
                 self?.player?.currentTime().seconds ?? 0
             }
-            .assign(to: \\.value, on: currentTimeSubject)
+            .assign(to: \.value, on: currentTimeSubject)
             .store(in: &cancellables)
 
         // 再生準備が完了したら再生時間を通知
-        player?.currentItem?.publisher(for: \\.status)
+        player?.currentItem?.publisher(for: \.status)
             .receive(on: RunLoop.main)
-            .compactMap { \[weak self\] status in
+            .compactMap { [weak self] status in
                 switch status {
                 case .readyToPlay:
                     return self?.player?.currentItem?.duration.seconds
@@ -63,12 +63,12 @@ public final class AudioPlayDriver: Sendable {
                     return nil
                 }
             }
-            .assign(to: \\.value, on: durationSubject)
+            .assign(to: \.value, on: durationSubject)
             .store(in: &cancellables)
 
         // 動画を最後まで見終わったら再生開始状態にリセット
         NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 guard let self else {
                     return
                 }
@@ -82,7 +82,7 @@ public final class AudioPlayDriver: Sendable {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
-            OSLogger.errorLog("Audio playback failed: \\(error)")
+            OSLogger.errorLog("Audio playback failed: \(error)")
             errorSubject.send(error.toAppError)
         }
     }
@@ -100,7 +100,7 @@ public final class AudioPlayDriver: Sendable {
     public func seek(to time: TimeInterval) {
         isSeekingSubject.send(true)
         let cmTime = CMTime(seconds: time, preferredTimescale: 600)
-        player?.seek(to: cmTime) { \[weak self\] completed in
+        player?.seek(to: cmTime) { [weak self] completed in
             guard let self else {
                 return
             }

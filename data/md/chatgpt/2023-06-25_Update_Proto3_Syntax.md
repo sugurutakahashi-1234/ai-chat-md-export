@@ -17,21 +17,21 @@ message Anchor {
   // 作成日時
   google.protobuf.Timestamp timestamp = 1;
   // 
-  optional int32 tracking\_state = 2;
+  optional int32 tracking_state = 2;
   // 目線のx座標
   optional double left = 3;
   // 目線のy座標
   optional double top = 4;
   // 眼球運動状態
-  optional EyeMovementState eye\_movement\_state = 5;
+  optional EyeMovementState eye_movement_state = 5;
   // 
-  optional int32 screen\_state = 6;
+  optional int32 screen_state = 6;
   // 目の開き度
-  optional double eye\_openness = 7;
+  optional double eye_openness = 7;
   // 右目の瞬き
-  optional bool blink\_right = 8;
+  optional bool blink_right = 8;
   // 左目の瞬き
-  optional bool blink\_left = 9;
+  optional bool blink_left = 9;
   // 眠気度
   optional bool drowsiness = 10;
   // 注意度
@@ -47,13 +47,13 @@ enum EyeMovementState {
 
 
 extension Anchor {
-    static var dummies: \[Anchor\] {
-        \[.dummyEyeMovement, .dummyBlink, .dummyEyeMovement\]
+    static var dummies: [Anchor] {
+        [.dummyEyeMovement, .dummyBlink, .dummyEyeMovement]
     }
 
     static var dummyEyeMovement: Anchor {
         var anchor = Anchor()
-        anchor.timestamp = Google\_Protobuf\_Timestamp(date: Date())
+        anchor.timestamp = Google_Protobuf_Timestamp(date: Date())
         var eyeMovement = EyeMovement()
         eyeMovement.left = 1.0
         eyeMovement.top = 1.0
@@ -64,7 +64,7 @@ extension Anchor {
 
     static var dummyBlink: Anchor {
         var anchor = Anchor()
-        anchor.timestamp = Google\_Protobuf\_Timestamp(date: Date())
+        anchor.timestamp = Google_Protobuf_Timestamp(date: Date())
         var blink = Blink()
         blink.blinkRight = true
         blink.blinkLeft = false
@@ -195,7 +195,7 @@ import "google/protobuf/timestamp.proto";
 
 message Interaction {
   google.protobuf.Timestamp timestamp = 1;
-  string event\_type = 2;
+  string event_type = 2;
   map&lt;string, google.protobuf.Any&gt; parameters = 3;
 }
 
@@ -294,7 +294,7 @@ extension ScrollEvent {
 ## 👤 ユーザー
 *2023/6/26 2:54:17*
 
-import SwiftProtobuf はしているけど、import Google\_Protobuf はやっていない。
+import SwiftProtobuf はしているけど、import Google_Protobuf はやっていない。
 
 そして、.unpackMessage(pageViewEvent)でエラーになってしまった。
 
@@ -386,7 +386,7 @@ enum ResultStatus {
   // 成功
   SUCCESS = 0;
   // 複数人物検出
-  MULTI\_FACES = 1;
+  MULTI_FACES = 1;
   // 失敗
   FAILURE = 2;
 }
@@ -395,7 +395,7 @@ message Emotions {
   // 作成日時
   google.protobuf.Timestamp timestamp = 1;
   // ステータス
-  ResultStatus result\_status = 2;
+  ResultStatus result_status = 2;
   // 中立
   optional double neutral = 3;
   // 喜び
@@ -1051,7 +1051,7 @@ if model.isLeftSet {
 ## 👤 ユーザー
 *2023/6/26 7:04:35*
 
-以下の条件のときにPredictEmotionResultのextensionとして、\[EmotionDataModel\]を返す、コンピューテッドプロパティーを書いて欲しい
+以下の条件のときにPredictEmotionResultのextensionとして、[EmotionDataModel]を返す、コンピューテッドプロパティーを書いて欲しい
 
 private extension PredictEmotionResult {
     
@@ -1104,7 +1104,7 @@ public enum EmotionDataModelConverter {
         )
     }
     
-    public static func convertToEmotionDataModel(predictEmotionResult: PredictEmotionResult) throws -&gt; \[EmotionDataModel\] {
+    public static func convertToEmotionDataModel(predictEmotionResult: PredictEmotionResult) throws -&gt; [EmotionDataModel] {
         predictEmotionResult.imageItem.map { imageItem in
             EmotionDataModel(
                 timestamp: predictEmotionResult.timestamp,
@@ -1132,9 +1132,9 @@ private extension ImageItem {
 public struct PredictEmotionResult {
     public let id: String = UUID().uuidString
     public let timestamp: Date
-    public let imageItem: \[ImageItem\]
+    public let imageItem: [ImageItem]
     
-    public init(timestamp: Date, imageItem: \[ImageItem\]) {
+    public init(timestamp: Date, imageItem: [ImageItem]) {
         self.timestamp = timestamp
         self.imageItem = imageItem
     }
@@ -1217,7 +1217,7 @@ public extension PredictEmotionResult {
 ## 👤 ユーザー
 *2023/6/26 7:15:21*
 
-\[EmotionDataModel\] の initとして、PredictEmotionResultを引数に取るようにはできないの
+[EmotionDataModel] の initとして、PredictEmotionResultを引数に取るようにはできないの
 
 ---
 
@@ -1266,7 +1266,7 @@ let emotionDataModels: [EmotionDataModel] = Array(from: predictEmotionResult)
 extension Anchor {
     init(from dataModel: AnchorDataModel) {
         self.init()
-        timestamp = Google\_Protobuf\_Timestamp(date: dataModel.timestamp)
+        timestamp = Google_Protobuf_Timestamp(date: dataModel.timestamp)
         trackingState = Int32(dataModel.trackingState ?? 0)
         `left` = dataModel.left ?? 0
         top = dataModel.top ?? 0
@@ -1296,7 +1296,7 @@ extension EyeMovementState {
 extension Emotions {
     init(from dataModel: EmotionDataModel) {
         self.init()
-        timestamp = Google\_Protobuf\_Timestamp(date: dataModel.timestamp)
+        timestamp = Google_Protobuf_Timestamp(date: dataModel.timestamp)
         resultStatus = ResultStatus(from: dataModel.resultStatus)
         neutral = dataModel.neutral ?? 0
         happy = dataModel.happy ?? 0
@@ -1323,7 +1323,7 @@ extension ResultStatus {
 }
 
 extension Interaction {
-    init(from \_: InteractionDataModel) {
+    init(from _: InteractionDataModel) {
         // TODO: Webイベントの処理が出来上がってから対応する
         self.init()
     }
@@ -1423,9 +1423,9 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-private struct \_GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
-    struct \_2: SwiftProtobuf.ProtobufAPIVersion\_2 {}
-    typealias Version = \_2
+private struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+    struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
+    typealias Version = _2
 }
 
 enum ResultStatus: SwiftProtobuf.Enum {
@@ -1468,156 +1468,156 @@ enum ResultStatus: SwiftProtobuf.Enum {
 
     extension ResultStatus: CaseIterable {
         // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static var allCases: \[ResultStatus\] = \[
+        static var allCases: [ResultStatus] = [
             .success,
             .multiFaces,
             .failure,
-        \]
+        ]
     }
 
 #endif // swift(&gt;=4.2)
 
 struct Emotions {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+\*Additions` files in the SwiftProtobuf library for
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
     /// 作成日時
-    var timestamp: SwiftProtobuf.Google\_Protobuf\_Timestamp {
-        get { \_timestamp ?? SwiftProtobuf.Google\_Protobuf\_Timestamp() }
-        set { \_timestamp = newValue }
+    var timestamp: SwiftProtobuf.Google_Protobuf_Timestamp {
+        get { _timestamp ?? SwiftProtobuf.Google_Protobuf_Timestamp() }
+        set { _timestamp = newValue }
     }
 
     /// Returns true if `timestamp` has been explicitly set.
-    var hasTimestamp: Bool { \_timestamp != nil }
+    var hasTimestamp: Bool { _timestamp != nil }
     /// Clears the value of `timestamp`. Subsequent reads from it will return its default value.
-    mutating func clearTimestamp() { \_timestamp = nil }
+    mutating func clearTimestamp() { _timestamp = nil }
 
     /// ステータス
     var resultStatus: ResultStatus = .success
 
     /// 中立
     var neutral: Double {
-        get { \_neutral ?? 0 }
-        set { \_neutral = newValue }
+        get { _neutral ?? 0 }
+        set { _neutral = newValue }
     }
 
     /// Returns true if `neutral` has been explicitly set.
-    var hasNeutral: Bool { \_neutral != nil }
+    var hasNeutral: Bool { _neutral != nil }
     /// Clears the value of `neutral`. Subsequent reads from it will return its default value.
-    mutating func clearNeutral() { \_neutral = nil }
+    mutating func clearNeutral() { _neutral = nil }
 
     /// 喜び
     var happy: Double {
-        get { \_happy ?? 0 }
-        set { \_happy = newValue }
+        get { _happy ?? 0 }
+        set { _happy = newValue }
     }
 
     /// Returns true if `happy` has been explicitly set.
-    var hasHappy: Bool { \_happy != nil }
+    var hasHappy: Bool { _happy != nil }
     /// Clears the value of `happy`. Subsequent reads from it will return its default value.
-    mutating func clearHappy() { \_happy = nil }
+    mutating func clearHappy() { _happy = nil }
 
     /// 悲しみ
     var sad: Double {
-        get { \_sad ?? 0 }
-        set { \_sad = newValue }
+        get { _sad ?? 0 }
+        set { _sad = newValue }
     }
 
     /// Returns true if `sad` has been explicitly set.
-    var hasSad: Bool { \_sad != nil }
+    var hasSad: Bool { _sad != nil }
     /// Clears the value of `sad`. Subsequent reads from it will return its default value.
-    mutating func clearSad() { \_sad = nil }
+    mutating func clearSad() { _sad = nil }
 
     /// 怒り
     var angry: Double {
-        get { \_angry ?? 0 }
-        set { \_angry = newValue }
+        get { _angry ?? 0 }
+        set { _angry = newValue }
     }
 
     /// Returns true if `angry` has been explicitly set.
-    var hasAngry: Bool { \_angry != nil }
+    var hasAngry: Bool { _angry != nil }
     /// Clears the value of `angry`. Subsequent reads from it will return its default value.
-    mutating func clearAngry() { \_angry = nil }
+    mutating func clearAngry() { _angry = nil }
 
     /// 驚き
     var surprised: Double {
-        get { \_surprised ?? 0 }
-        set { \_surprised = newValue }
+        get { _surprised ?? 0 }
+        set { _surprised = newValue }
     }
 
     /// Returns true if `surprised` has been explicitly set.
-    var hasSurprised: Bool { \_surprised != nil }
+    var hasSurprised: Bool { _surprised != nil }
     /// Clears the value of `surprised`. Subsequent reads from it will return its default value.
-    mutating func clearSurprised() { \_surprised = nil }
+    mutating func clearSurprised() { _surprised = nil }
 
     /// 嫌悪
     var disgusted: Double {
-        get { \_disgusted ?? 0 }
-        set { \_disgusted = newValue }
+        get { _disgusted ?? 0 }
+        set { _disgusted = newValue }
     }
 
     /// Returns true if `disgusted` has been explicitly set.
-    var hasDisgusted: Bool { \_disgusted != nil }
+    var hasDisgusted: Bool { _disgusted != nil }
     /// Clears the value of `disgusted`. Subsequent reads from it will return its default value.
-    mutating func clearDisgusted() { \_disgusted = nil }
+    mutating func clearDisgusted() { _disgusted = nil }
 
     /// 恐れ
     var fear: Double {
-        get { \_fear ?? 0 }
-        set { \_fear = newValue }
+        get { _fear ?? 0 }
+        set { _fear = newValue }
     }
 
     /// Returns true if `fear` has been explicitly set.
-    var hasFear: Bool { \_fear != nil }
+    var hasFear: Bool { _fear != nil }
     /// Clears the value of `fear`. Subsequent reads from it will return its default value.
-    mutating func clearFear() { \_fear = nil }
+    mutating func clearFear() { _fear = nil }
 
     var contempt: Double {
-        get { \_contempt ?? 0 }
-        set { \_contempt = newValue }
+        get { _contempt ?? 0 }
+        set { _contempt = newValue }
     }
 
     /// Returns true if `contempt` has been explicitly set.
-    var hasContempt: Bool { \_contempt != nil }
+    var hasContempt: Bool { _contempt != nil }
     /// Clears the value of `contempt`. Subsequent reads from it will return its default value.
-    mutating func clearContempt() { \_contempt = nil }
+    mutating func clearContempt() { _contempt = nil }
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     init() {}
 
-    private var \_timestamp: SwiftProtobuf.Google\_Protobuf\_Timestamp?
-    private var \_neutral: Double?
-    private var \_happy: Double?
-    private var \_sad: Double?
-    private var \_angry: Double?
-    private var \_surprised: Double?
-    private var \_disgusted: Double?
-    private var \_fear: Double?
-    private var \_contempt: Double?
+    private var _timestamp: SwiftProtobuf.Google_Protobuf_Timestamp?
+    private var _neutral: Double?
+    private var _happy: Double?
+    private var _sad: Double?
+    private var _angry: Double?
+    private var _surprised: Double?
+    private var _disgusted: Double?
+    private var _fear: Double?
+    private var _contempt: Double?
 }
 
-#if swift(&gt;=5.5) && canImport(\_Concurrency)
+#if swift(&gt;=5.5) && canImport(_Concurrency)
     extension ResultStatus: @unchecked Sendable {}
     extension Emotions: @unchecked Sendable {}
-#endif // swift(&gt;=5.5) && canImport(\_Concurrency)
+#endif // swift(&gt;=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension ResultStatus: SwiftProtobuf.\_ProtoNameProviding {
-    static let \_protobuf\_nameMap: SwiftProtobuf.\_NameMap = \[
+extension ResultStatus: SwiftProtobuf._ProtoNameProviding {
+    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         0: .same(proto: "SUCCESS"),
-        1: .same(proto: "MULTI\_FACES"),
+        1: .same(proto: "MULTI_FACES"),
         2: .same(proto: "FAILURE"),
-    \]
+    ]
 }
 
-extension Emotions: SwiftProtobuf.Message, SwiftProtobuf.\_MessageImplementationBase, SwiftProtobuf.\_ProtoNameProviding {
+extension Emotions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
     static let protoMessageName: String = "Emotions"
-    static let \_protobuf\_nameMap: SwiftProtobuf.\_NameMap = \[
+    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "timestamp"),
-        2: .standard(proto: "result\_status"),
+        2: .standard(proto: "result_status"),
         3: .same(proto: "neutral"),
         4: .same(proto: "happy"),
         5: .same(proto: "sad"),
@@ -1626,7 +1626,7 @@ extension Emotions: SwiftProtobuf.Message, SwiftProtobuf.\_MessageImplementation
         8: .same(proto: "disgusted"),
         9: .same(proto: "fear"),
         10: .same(proto: "contempt"),
-    \]
+    ]
 
     mutating func decodeMessage(decoder: inout some SwiftProtobuf.Decoder) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1634,16 +1634,16 @@ extension Emotions: SwiftProtobuf.Message, SwiftProtobuf.\_MessageImplementation
             // allocates stack space for every case branch when no optimizations are
             // enabled. https://github.com/apple/swift-protobuf/issues/1034
             switch fieldNumber {
-            case 1: try try decoder.decodeSingularMessageField(value: &\_timestamp)
+            case 1: try try decoder.decodeSingularMessageField(value: &_timestamp)
             case 2: try try decoder.decodeSingularEnumField(value: &resultStatus)
-            case 3: try try decoder.decodeSingularDoubleField(value: &\_neutral)
-            case 4: try try decoder.decodeSingularDoubleField(value: &\_happy)
-            case 5: try try decoder.decodeSingularDoubleField(value: &\_sad)
-            case 6: try try decoder.decodeSingularDoubleField(value: &\_angry)
-            case 7: try try decoder.decodeSingularDoubleField(value: &\_surprised)
-            case 8: try try decoder.decodeSingularDoubleField(value: &\_disgusted)
-            case 9: try try decoder.decodeSingularDoubleField(value: &\_fear)
-            case 10: try try decoder.decodeSingularDoubleField(value: &\_contempt)
+            case 3: try try decoder.decodeSingularDoubleField(value: &_neutral)
+            case 4: try try decoder.decodeSingularDoubleField(value: &_happy)
+            case 5: try try decoder.decodeSingularDoubleField(value: &_sad)
+            case 6: try try decoder.decodeSingularDoubleField(value: &_angry)
+            case 7: try try decoder.decodeSingularDoubleField(value: &_surprised)
+            case 8: try try decoder.decodeSingularDoubleField(value: &_disgusted)
+            case 9: try try decoder.decodeSingularDoubleField(value: &_fear)
+            case 10: try try decoder.decodeSingularDoubleField(value: &_contempt)
             default: break
             }
         }
@@ -1654,50 +1654,50 @@ extension Emotions: SwiftProtobuf.Message, SwiftProtobuf.\_MessageImplementation
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
         // https://github.com/apple/swift-protobuf/issues/1182
-        try { if let v = self.\_timestamp {
+        try { if let v = self._timestamp {
             try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
         } }()
         if resultStatus != .success {
             try visitor.visitSingularEnumField(value: resultStatus, fieldNumber: 2)
         }
-        try { if let v = self.\_neutral {
+        try { if let v = self._neutral {
             try visitor.visitSingularDoubleField(value: v, fieldNumber: 3)
         } }()
-        try { if let v = self.\_happy {
+        try { if let v = self._happy {
             try visitor.visitSingularDoubleField(value: v, fieldNumber: 4)
         } }()
-        try { if let v = self.\_sad {
+        try { if let v = self._sad {
             try visitor.visitSingularDoubleField(value: v, fieldNumber: 5)
         } }()
-        try { if let v = self.\_angry {
+        try { if let v = self._angry {
             try visitor.visitSingularDoubleField(value: v, fieldNumber: 6)
         } }()
-        try { if let v = self.\_surprised {
+        try { if let v = self._surprised {
             try visitor.visitSingularDoubleField(value: v, fieldNumber: 7)
         } }()
-        try { if let v = self.\_disgusted {
+        try { if let v = self._disgusted {
             try visitor.visitSingularDoubleField(value: v, fieldNumber: 8)
         } }()
-        try { if let v = self.\_fear {
+        try { if let v = self._fear {
             try visitor.visitSingularDoubleField(value: v, fieldNumber: 9)
         } }()
-        try { if let v = self.\_contempt {
+        try { if let v = self._contempt {
             try visitor.visitSingularDoubleField(value: v, fieldNumber: 10)
         } }()
         try unknownFields.traverse(visitor: &visitor)
     }
 
     static func == (lhs: Emotions, rhs: Emotions) -&gt; Bool {
-        if lhs.\_timestamp != rhs.\_timestamp { return false }
+        if lhs._timestamp != rhs._timestamp { return false }
         if lhs.resultStatus != rhs.resultStatus { return false }
-        if lhs.\_neutral != rhs.\_neutral { return false }
-        if lhs.\_happy != rhs.\_happy { return false }
-        if lhs.\_sad != rhs.\_sad { return false }
-        if lhs.\_angry != rhs.\_angry { return false }
-        if lhs.\_surprised != rhs.\_surprised { return false }
-        if lhs.\_disgusted != rhs.\_disgusted { return false }
-        if lhs.\_fear != rhs.\_fear { return false }
-        if lhs.\_contempt != rhs.\_contempt { return false }
+        if lhs._neutral != rhs._neutral { return false }
+        if lhs._happy != rhs._happy { return false }
+        if lhs._sad != rhs._sad { return false }
+        if lhs._angry != rhs._angry { return false }
+        if lhs._surprised != rhs._surprised { return false }
+        if lhs._disgusted != rhs._disgusted { return false }
+        if lhs._fear != rhs._fear { return false }
+        if lhs._contempt != rhs._contempt { return false }
         if lhs.unknownFields != rhs.unknownFields { return false }
         return true
     }

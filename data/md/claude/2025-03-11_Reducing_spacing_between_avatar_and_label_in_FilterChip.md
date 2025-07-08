@@ -9,7 +9,7 @@
 
 avatar と labelの間隔を狭める方法はないのか？
 
-\*\*FilterChip\*\*({Key? key, Widget? avatar, required Widget label, TextStyle? labelStyle, EdgeInsetsGeometry? labelPadding, bool selected = false, required ValueChanged&lt;bool&gt;? onSelected, Widget? deleteIcon, VoidCallback? onDeleted, Color? deleteIconColor, String? deleteButtonTooltipMessage, double? pressElevation, Color? disabledColor, Color? selectedColor, String? tooltip, BorderSide? side, OutlinedBorder? shape, Clip clipBehavior = Clip.none, FocusNode? focusNode, bool autofocus = false, ~~MaterialStateProperty~~&lt;Color?&gt;? color, Color? backgroundColor, EdgeInsetsGeometry? padding, VisualDensity? visualDensity, MaterialTapTargetSize? materialTapTargetSize, double? elevation, Color? shadowColor, Color? surfaceTintColor, IconThemeData? iconTheme, Color? selectedShadowColor, bool? showCheckmark, Color? checkmarkColor, ShapeBorder avatarBorder = const CircleBorder(), BoxConstraints? avatarBoxConstraints, BoxConstraints? deleteIconBoxConstraints, ChipAnimationStyle? chipAnimationStyle, MouseCursor? mouseCursor})
+**FilterChip**({Key? key, Widget? avatar, required Widget label, TextStyle? labelStyle, EdgeInsetsGeometry? labelPadding, bool selected = false, required ValueChanged&lt;bool&gt;? onSelected, Widget? deleteIcon, VoidCallback? onDeleted, Color? deleteIconColor, String? deleteButtonTooltipMessage, double? pressElevation, Color? disabledColor, Color? selectedColor, String? tooltip, BorderSide? side, OutlinedBorder? shape, Clip clipBehavior = Clip.none, FocusNode? focusNode, bool autofocus = false, ~~MaterialStateProperty~~&lt;Color?&gt;? color, Color? backgroundColor, EdgeInsetsGeometry? padding, VisualDensity? visualDensity, MaterialTapTargetSize? materialTapTargetSize, double? elevation, Color? shadowColor, Color? surfaceTintColor, IconThemeData? iconTheme, Color? selectedShadowColor, bool? showCheckmark, Color? checkmarkColor, ShapeBorder avatarBorder = const CircleBorder(), BoxConstraints? avatarBoxConstraints, BoxConstraints? deleteIconBoxConstraints, ChipAnimationStyle? chipAnimationStyle, MouseCursor? mouseCursor})
 Create a chip that acts like a checkbox.
 
 ---
@@ -75,7 +75,7 @@ ChipTheme(
                         showCheckmark: false,
                         avatar: isFavoriteSelected
                             ? const Icon(Icons.check, size: 16)
-                            : const Icon(Icons.bookmark\_rounded, size: 16),
+                            : const Icon(Icons.bookmark_rounded, size: 16),
                         padding: const EdgeInsets.symmetric(horizontal: 2),
                         side: BorderSide(
                           color: isFavoriteSelected

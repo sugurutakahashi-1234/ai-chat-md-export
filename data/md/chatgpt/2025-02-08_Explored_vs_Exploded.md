@@ -16,16 +16,16 @@ explored exploded どちらが正しい
 
 「explored」と「exploded」は意味が異なります。
 
-- \*\*explored\*\*（exploreの過去形・過去分詞）  
+- **explored**（exploreの過去形・過去分詞）  
   → 「探検した」「調査した」「探求した」という意味。  
   例：I explored the city.（私はその街を探検した。）
 
-- \*\*exploded\*\*（explodeの過去形・過去分詞）  
+- **exploded**（explodeの過去形・過去分詞）  
   → 「爆発した」「急激に増えた・広がった」という意味。  
   例：The balloon exploded.（風船が爆発した。）
 
 どちらが正しいかは文脈によります。  
-「何かを調査・探検した」と言いたいなら \*\*explored\*\*、  
-「爆発した・急激に増えた」と言いたいなら \*\*exploded\*\* です。
+「何かを調査・探検した」と言いたいなら **explored**、  
+「爆発した・急激に増えた」と言いたいなら **exploded** です。
 
 ---

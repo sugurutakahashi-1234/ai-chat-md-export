@@ -10,7 +10,7 @@
 FlutterのgoogleMapを使ったアプリを開発しているが以下のようなエラーがどこかで発生している理由雨はなんだと思いますか？
 
 Error: PlatformException(channel-error,
-Unable to establish connection on channel: "d ev.flutter.pigeon.google\_maps\_flutter\_ios.Ma psApi.animateCamera.1"., null, null)
+Unable to establish connection on channel: "d ev.flutter.pigeon.google_maps_flutter_ios.Ma psApi.animateCamera.1"., null, null)
 
 ---
 

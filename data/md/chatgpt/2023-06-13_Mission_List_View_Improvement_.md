@@ -13,15 +13,15 @@ struct MissionListView: View {
     @StateObject private var presenter: MissionListPresenter
     @Binding var didRefreshControl: Void?
 
-    init(missions: \[Mission\], didRefreshControl: Binding&lt;Void?&gt;) {
-        \_presenter = .init(wrappedValue: MissionListPresenter(missions: missions))
-        \_didRefreshControl = didRefreshControl
+    init(missions: [Mission], didRefreshControl: Binding&lt;Void?&gt;) {
+        _presenter = .init(wrappedValue: MissionListPresenter(missions: missions))
+        _didRefreshControl = didRefreshControl
     }
 
     var body: some View {
         ScrollView {
             LazyVGrid(columns: Array(repeating: GridItem(), count: 1), spacing: 10) {
-                ForEach(presenter.missions, id: \\.self) { mission in
+                ForEach(presenter.missions, id: \.self) { mission in
                     MissionListItemView(mission: mission)
                         .onTapGesture {
                             presenter.selectedMission = mission

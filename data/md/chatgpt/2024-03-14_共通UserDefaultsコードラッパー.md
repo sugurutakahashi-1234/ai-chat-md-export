@@ -23,17 +23,17 @@ public struct UserDefaultsNilableWrapper&lt;T: JSONCodable&gt; {
         get {
             guard let data = userDefaults.data(forKey: key.rawValue) else {
                 // 未更新の key の場合はデフォルト値を返却する（準正常系）
-                OSLogDriver.debugLog("Not found key in UserDefaults, key: \\(key), return defaultValue: \\(String(describing: defaultValue))")
+                OSLogDriver.debugLog("Not found key in UserDefaults, key: \(key), return defaultValue: \(String(describing: defaultValue))")
                 return defaultValue
             }
 
             do {
                 let decodedValue = try T.decoder.decode(T.self, from: data)
-                OSLogDriver.debugLog("Return UserDefaults value, key: \\(key), value: \\(decodedValue)")
+                OSLogDriver.debugLog("Return UserDefaults value, key: \(key), value: \(decodedValue)")
                 return decodedValue
             } catch {
-                OSLogDriver.errorLog("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))", level: .fault)
-                assertionFailure("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))")
+                OSLogDriver.errorLog("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))", level: .fault)
+                assertionFailure("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))")
                 return defaultValue
             }
         }
@@ -42,10 +42,10 @@ public struct UserDefaultsNilableWrapper&lt;T: JSONCodable&gt; {
             do {
                 let encodedValue = try T.encoder.encode(newValue)
                 userDefaults.set(encodedValue, forKey: key.rawValue)
-                OSLogDriver.debugLog("Update UserDefaults key: \\(key.rawValue), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))")
+                OSLogDriver.debugLog("Update UserDefaults key: \(key.rawValue), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))")
             } catch {
-                OSLogDriver.errorLog("Failed to encode \\(key): \\(error), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))", level: .fault)
-                assertionFailure("Failed to encode \\(key): \\(error), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))")
+                OSLogDriver.errorLog("Failed to encode \(key): \(error), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))", level: .fault)
+                assertionFailure("Failed to encode \(key): \(error), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))")
             }
         }
     }
@@ -68,17 +68,17 @@ public struct UserDefaultsWrapper&lt;T: JSONCodable&gt; {
         get {
             guard let data = userDefaults.data(forKey: key.rawValue) else {
                 // 未更新の key の場合はデフォルト値を返却する（準正常系）
-                OSLogDriver.debugLog("Not found key in UserDefaults, key: \\(key), return defaultValue: \\(String(describing: defaultValue))")
+                OSLogDriver.debugLog("Not found key in UserDefaults, key: \(key), return defaultValue: \(String(describing: defaultValue))")
                 return defaultValue
             }
 
             do {
                 let decodedValue = try T.decoder.decode(T.self, from: data)
-                OSLogDriver.debugLog("Return UserDefaults value, key: \\(key), value: \\(decodedValue)")
+                OSLogDriver.debugLog("Return UserDefaults value, key: \(key), value: \(decodedValue)")
                 return decodedValue
             } catch {
-                OSLogDriver.errorLog("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))", level: .fault)
-                assertionFailure("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))")
+                OSLogDriver.errorLog("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))", level: .fault)
+                assertionFailure("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))")
                 return defaultValue
             }
         }
@@ -87,10 +87,10 @@ public struct UserDefaultsWrapper&lt;T: JSONCodable&gt; {
             do {
                 let encodedValue = try T.encoder.encode(newValue)
                 userDefaults.set(encodedValue, forKey: key.rawValue)
-                OSLogDriver.debugLog("Update UserDefaults key: \\(key.rawValue), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))")
+                OSLogDriver.debugLog("Update UserDefaults key: \(key.rawValue), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))")
             } catch {
-                OSLogDriver.errorLog("Failed to encode \\(key): \\(error), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))", level: .fault)
-                assertionFailure("Failed to encode \\(key): \\(error), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))")
+                OSLogDriver.errorLog("Failed to encode \(key): \(error), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))", level: .fault)
+                assertionFailure("Failed to encode \(key): \(error), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))")
             }
         }
     }
@@ -270,17 +270,17 @@ public struct UserDefaultsNilableWrapper&lt;T: JSONCodable&gt; {
         get {
             guard let data = userDefaults.data(forKey: key.rawValue) else {
                 // 未更新の key の場合はデフォルト値を返却する（準正常系）
-                OSLogDriver.debugLog("Not found key in UserDefaults, key: \\(key), return defaultValue: \\(String(describing: defaultValue))")
+                OSLogDriver.debugLog("Not found key in UserDefaults, key: \(key), return defaultValue: \(String(describing: defaultValue))")
                 return defaultValue
             }
 
             do {
                 let decodedValue = try T.decoder.decode(T.self, from: data)
-                OSLogDriver.debugLog("Return UserDefaults value, key: \\(key), value: \\(decodedValue)")
+                OSLogDriver.debugLog("Return UserDefaults value, key: \(key), value: \(decodedValue)")
                 return decodedValue
             } catch {
-                OSLogDriver.errorLog("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))", level: .fault)
-                assertionFailure("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))")
+                OSLogDriver.errorLog("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))", level: .fault)
+                assertionFailure("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))")
                 return defaultValue
             }
         }
@@ -289,10 +289,10 @@ public struct UserDefaultsNilableWrapper&lt;T: JSONCodable&gt; {
             do {
                 let encodedValue = try T.encoder.encode(newValue)
                 userDefaults.set(encodedValue, forKey: key.rawValue)
-                OSLogDriver.debugLog("Update UserDefaults key: \\(key.rawValue), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))")
+                OSLogDriver.debugLog("Update UserDefaults key: \(key.rawValue), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))")
             } catch {
-                OSLogDriver.errorLog("Failed to encode \\(key): \\(error), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))", level: .fault)
-                assertionFailure("Failed to encode \\(key): \\(error), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))")
+                OSLogDriver.errorLog("Failed to encode \(key): \(error), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))", level: .fault)
+                assertionFailure("Failed to encode \(key): \(error), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))")
             }
         }
     }
@@ -314,17 +314,17 @@ public struct UserDefaultsWrapper&lt;T: JSONCodable&gt; {
         get {
             guard let data = userDefaults.data(forKey: key.rawValue) else {
                 // 未更新の key の場合はデフォルト値を返却する（準正常系）
-                OSLogDriver.debugLog("Not found key in UserDefaults, key: \\(key), return defaultValue: \\(String(describing: defaultValue))")
+                OSLogDriver.debugLog("Not found key in UserDefaults, key: \(key), return defaultValue: \(String(describing: defaultValue))")
                 return defaultValue
             }
 
             do {
                 let decodedValue = try T.decoder.decode(T.self, from: data)
-                OSLogDriver.debugLog("Return UserDefaults value, key: \\(key), value: \\(decodedValue)")
+                OSLogDriver.debugLog("Return UserDefaults value, key: \(key), value: \(decodedValue)")
                 return decodedValue
             } catch {
-                OSLogDriver.errorLog("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))", level: .fault)
-                assertionFailure("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))")
+                OSLogDriver.errorLog("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))", level: .fault)
+                assertionFailure("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))")
                 return defaultValue
             }
         }
@@ -333,10 +333,10 @@ public struct UserDefaultsWrapper&lt;T: JSONCodable&gt; {
             do {
                 let encodedValue = try T.encoder.encode(newValue)
                 userDefaults.set(encodedValue, forKey: key.rawValue)
-                OSLogDriver.debugLog("Update UserDefaults key: \\(key.rawValue), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))")
+                OSLogDriver.debugLog("Update UserDefaults key: \(key.rawValue), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))")
             } catch {
-                OSLogDriver.errorLog("Failed to encode \\(key): \\(error), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))", level: .fault)
-                assertionFailure("Failed to encode \\(key): \\(error), oldValue: \\(String(describing: oldValue)), newValue: \\(String(describing: newValue))")
+                OSLogDriver.errorLog("Failed to encode \(key): \(error), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))", level: .fault)
+                assertionFailure("Failed to encode \(key): \(error), oldValue: \(String(describing: oldValue)), newValue: \(String(describing: newValue))")
             }
         }
     }

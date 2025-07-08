@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2023/6/22 17:51:46*
 
-SwiftUI でViewModel で @publishedで var shouldDismiss: Bool を定義して、それがtrueのときに@Environment(\\.dismiss) private var dismiss のdismiss()を実行するコードを書いて欲しい
+SwiftUI でViewModel で @publishedで var shouldDismiss: Bool を定義して、それがtrueのときに@Environment(\.dismiss) private var dismiss のdismiss()を実行するコードを書いて欲しい
 
 ---
 

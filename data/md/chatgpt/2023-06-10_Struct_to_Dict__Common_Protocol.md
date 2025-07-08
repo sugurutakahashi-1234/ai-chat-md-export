@@ -193,7 +193,7 @@ print(user.dictionary)
 ## 👤 ユーザー
 *2023/6/10 12:12:23*
 
-var asDictionary: \[String: Any\] { get } にしてほしい
+var asDictionary: [String: Any] { get } にしてほしい
 
 ---
 
@@ -339,10 +339,10 @@ print(user.asDictionary(format: .original))
 func recordButtonClickedEvent() {
     // カスタムイベントの名前とプロパティを指定
     let eventName = "ButtonClicked"
-    let eventProperties: \[String: AnalyticsPropertyValue\] = \[
+    let eventProperties: [String: AnalyticsPropertyValue] = [
         "buttonColor": "blue",
         "buttonSize": "large"
-    \]
+    ]
 
     // BasicAnalyticsEventを作成
     let event = BasicAnalyticsEvent(name: eventName, properties: eventProperties)

@@ -24,13 +24,13 @@ switch 文でうまくまとめてほしい
 
 @Riverpod(keepAlive: true)
 Future&lt;Uri&gt; baseUri(Ref ref) async {
-  // TODO: \[環境構築\] flavorごとにbaseUriを変更する
+  // TODO: [環境構築] flavorごとにbaseUriを変更する
   const defaultBaseUri = 'http://localhost';
   // const defaultBaseUri = 'https://dev-guild-api.snpit.xyz/'; // guild-api dev server
   // 実機デバイスから Mac で立ち上げた localhost のサーバーに接続する場合は PC の IP アドレスに変更する
   // ターミナルから `ipconfig getifaddr en0` のコマンド実行で取得可能
   const hostPcIpAddress = '192.168.1.139';
-  // TODO: \[環境構築\] flavorごとにportを変更する
+  // TODO: [環境構築] flavorごとにportを変更する
   const port = 4010; // prism mock server
   // const port = 3002; // docker local server
 
@@ -72,14 +72,14 @@ Future&lt;Uri&gt; baseUri(Ref ref) async {
 ## 🤖 アシスタント
 *2025/1/23 13:32:28*
 
-{"name": "flavor\_base\_uri", "type": "code/dart", "content": "enum Flavor {\\n  prd,\\n  stg,\\n  dev,\\n}\\n\\n@Riverpod(keepAlive: true)\\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\\n  const defaultBaseUri = 'http://localhost';\\n  const hostPcIpAddress = '192.168.1.139';\\n  const port = 4010; // prism mock server\\n\\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\\n\\n  final deviceInfo = DeviceInfoPlugin();\\n\\n  // Flavor による base URI の切り替え\\n  String environmentBaseUri;\\n  switch (flavor) {\\n    case Flavor.prd:\\n      environmentBaseUri = 'https://guild-api.snpit.xyz';\\n      break;\\n    case Flavor.stg:\\n      environmentBaseUri = 'https://dev-guild-api.snpit.xyz';\\n      break;\\n    case Flavor.dev:\\n      environmentBaseUri = defaultBaseUri;\\n      break;\\n  }\\n\\n  if (Platform.isIOS) {\\n    final iosInfo = await deviceInfo.iosInfo;\\n    if (iosInfo.isPhysicalDevice) {\\n      // iOS 実機\\n      return Uri.parse('http://$hostPcIpAddress:$port');\\n    } else {\\n      // iOS シミュレーター\\n      return Uri.parse('$environmentBaseUri:$port');\\n    }\\n  } else if (Platform.isAndroid) {\\n    final androidInfo = await deviceInfo.androidInfo;\\n    if (androidInfo.isPhysicalDevice) {\\n      // Android 実機\\n      return Uri.parse('http://$hostPcIpAddress:$port');\\n    } else {\\n      // Android エミュレーター\\n      return Uri.parse('http://10.0.2.2:$port');\\n    }\\n  } else {\\n    // その他のプラットフォーム\\n    return Uri.parse('$environmentBaseUri:$port');\\n  }\\n}"}
+{"name": "flavor_base_uri", "type": "code/dart", "content": "enum Flavor {\n  prd,\n  stg,\n  dev,\n}\n\n@Riverpod(keepAlive: true)\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\n  const defaultBaseUri = 'http://localhost';\n  const hostPcIpAddress = '192.168.1.139';\n  const port = 4010; // prism mock server\n\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\n\n  final deviceInfo = DeviceInfoPlugin();\n\n  // Flavor による base URI の切り替え\n  String environmentBaseUri;\n  switch (flavor) {\n    case Flavor.prd:\n      environmentBaseUri = 'https://guild-api.snpit.xyz';\n      break;\n    case Flavor.stg:\n      environmentBaseUri = 'https://dev-guild-api.snpit.xyz';\n      break;\n    case Flavor.dev:\n      environmentBaseUri = defaultBaseUri;\n      break;\n  }\n\n  if (Platform.isIOS) {\n    final iosInfo = await deviceInfo.iosInfo;\n    if (iosInfo.isPhysicalDevice) {\n      // iOS 実機\n      return Uri.parse('http://$hostPcIpAddress:$port');\n    } else {\n      // iOS シミュレーター\n      return Uri.parse('$environmentBaseUri:$port');\n    }\n  } else if (Platform.isAndroid) {\n    final androidInfo = await deviceInfo.androidInfo;\n    if (androidInfo.isPhysicalDevice) {\n      // Android 実機\n      return Uri.parse('http://$hostPcIpAddress:$port');\n    } else {\n      // Android エミュレーター\n      return Uri.parse('http://10.0.2.2:$port');\n    }\n  } else {\n    // その他のプラットフォーム\n    return Uri.parse('$environmentBaseUri:$port');\n  }\n}"}
 
 ---
 
 ## 🔧 ツール
 *2025/1/23 13:32:28*
 
-{"result": "Successfully created text document 'flavor\_base\_uri' which will be referenced in all future messages with the unique identifier textdoc\_id: '6791c6535128819193f30fe3bd46ac9d'", "textdoc\_id": "6791c6535128819193f30fe3bd46ac9d", "name": "flavor\_base\_uri"}
+{"result": "Successfully created text document 'flavor_base_uri' which will be referenced in all future messages with the unique identifier textdoc_id: '6791c6535128819193f30fe3bd46ac9d'", "textdoc_id": "6791c6535128819193f30fe3bd46ac9d", "name": "flavor_base_uri"}
 
 ---
 
@@ -102,14 +102,14 @@ Future&lt;Uri&gt; baseUri(Ref ref) async {
 ## 🤖 アシスタント
 *2025/1/23 13:33:03*
 
-{"updates":\[{"pattern":".\*", "replacement":"enum Flavor {\\n  prd,\\n  stg,\\n  dev,\\n}\\n\\n@Riverpod(keepAlive: true)\\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\\n  const defaultBaseUri = 'http://localhost';\\n  const hostPcIpAddress = '192.168.1.139';\\n  const port = 4010; // prism mock server\\n\\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\\n\\n  // Flavor による base URI の切り替え\\n  String environmentBaseUri;\\n  switch (flavor) {\\n    case Flavor.prd:\\n      return Uri.parse('https://guild-api.snpit.xyz');\\n    case Flavor.stg:\\n      return Uri.parse('https://dev-guild-api.snpit.xyz');\\n    case Flavor.dev:\\n      environmentBaseUri = defaultBaseUri;\\n      break;\\n  }\\n\\n  if (flavor == Flavor.dev) {\\n    final deviceInfo = DeviceInfoPlugin();\\n\\n    if (Platform.isIOS) {\\n      final iosInfo = await deviceInfo.iosInfo;\\n      if (iosInfo.isPhysicalDevice) {\\n        // iOS 実機\\n        return Uri.parse('http://$hostPcIpAddress:$port');\\n      } else {\\n        // iOS シミュレーター\\n        return Uri.parse('$environmentBaseUri:$port');\\n      }\\n    } else if (Platform.isAndroid) {\\n      final androidInfo = await deviceInfo.androidInfo;\\n      if (androidInfo.isPhysicalDevice) {\\n        // Android 実機\\n        return Uri.parse('http://$hostPcIpAddress:$port');\\n      } else {\\n        // Android エミュレーター\\n        return Uri.parse('http://10.0.2.2:$port');\\n      }\\n    } else {\\n      // その他のプラットフォーム\\n      return Uri.parse('$environmentBaseUri:$port');\\n    }\\n  }\\n\\n  // デフォルトの値を返す\\n  return Uri.parse(defaultBaseUri);\\n}"}\]}
+{"updates":[{"pattern":".*", "replacement":"enum Flavor {\n  prd,\n  stg,\n  dev,\n}\n\n@Riverpod(keepAlive: true)\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\n  const defaultBaseUri = 'http://localhost';\n  const hostPcIpAddress = '192.168.1.139';\n  const port = 4010; // prism mock server\n\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\n\n  // Flavor による base URI の切り替え\n  String environmentBaseUri;\n  switch (flavor) {\n    case Flavor.prd:\n      return Uri.parse('https://guild-api.snpit.xyz');\n    case Flavor.stg:\n      return Uri.parse('https://dev-guild-api.snpit.xyz');\n    case Flavor.dev:\n      environmentBaseUri = defaultBaseUri;\n      break;\n  }\n\n  if (flavor == Flavor.dev) {\n    final deviceInfo = DeviceInfoPlugin();\n\n    if (Platform.isIOS) {\n      final iosInfo = await deviceInfo.iosInfo;\n      if (iosInfo.isPhysicalDevice) {\n        // iOS 実機\n        return Uri.parse('http://$hostPcIpAddress:$port');\n      } else {\n        // iOS シミュレーター\n        return Uri.parse('$environmentBaseUri:$port');\n      }\n    } else if (Platform.isAndroid) {\n      final androidInfo = await deviceInfo.androidInfo;\n      if (androidInfo.isPhysicalDevice) {\n        // Android 実機\n        return Uri.parse('http://$hostPcIpAddress:$port');\n      } else {\n        // Android エミュレーター\n        return Uri.parse('http://10.0.2.2:$port');\n      }\n    } else {\n      // その他のプラットフォーム\n      return Uri.parse('$environmentBaseUri:$port');\n    }\n  }\n\n  // デフォルトの値を返す\n  return Uri.parse(defaultBaseUri);\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/23 13:33:03*
 
-{"result": "Successfully updated text document with textdoc\_id '6791c6535128819193f30fe3bd46ac9d'", "textdoc\_id": "6791c6535128819193f30fe3bd46ac9d"}
+{"result": "Successfully updated text document with textdoc_id '6791c6535128819193f30fe3bd46ac9d'", "textdoc_id": "6791c6535128819193f30fe3bd46ac9d"}
 
 ---
 
@@ -130,14 +130,14 @@ case Flavor.dev: 内で return して breakしない方が見通しがいい気�
 ## 🤖 アシスタント
 *2025/1/23 13:34:11*
 
-{"updates":\[{"pattern":".\*", "replacement":"enum Flavor {\\n  prd,\\n  stg,\\n  dev,\\n}\\n\\n@Riverpod(keepAlive: true)\\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\\n  const defaultBaseUri = 'http://localhost';\\n  const hostPcIpAddress = '192.168.1.139';\\n  const port = 4010; // prism mock server\\n\\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\\n\\n  // Flavor による base URI の切り替え\\n  switch (flavor) {\\n    case Flavor.prd:\\n      return Uri.parse('https://guild-api.snpit.xyz');\\n    case Flavor.stg:\\n      return Uri.parse('https://dev-guild-api.snpit.xyz');\\n    case Flavor.dev:\\n      final deviceInfo = DeviceInfoPlugin();\\n\\n      if (Platform.isIOS) {\\n        final iosInfo = await deviceInfo.iosInfo;\\n        if (iosInfo.isPhysicalDevice) {\\n          // iOS 実機\\n          return Uri.parse('http://$hostPcIpAddress:$port');\\n        } else {\\n          // iOS シミュレーター\\n          return Uri.parse('$defaultBaseUri:$port');\\n        }\\n      } else if (Platform.isAndroid) {\\n        final androidInfo = await deviceInfo.androidInfo;\\n        if (androidInfo.isPhysicalDevice) {\\n          // Android 実機\\n          return Uri.parse('http://$hostPcIpAddress:$port');\\n        } else {\\n          // Android エミュレーター\\n          return Uri.parse('http://10.0.2.2:$port');\\n        }\\n      } else {\\n        // その他のプラットフォーム\\n        return Uri.parse('$defaultBaseUri:$port');\\n      }\\n  }\\n\\n  // デフォルトの値を返す\\n  return Uri.parse(defaultBaseUri);\\n}"}\]}
+{"updates":[{"pattern":".*", "replacement":"enum Flavor {\n  prd,\n  stg,\n  dev,\n}\n\n@Riverpod(keepAlive: true)\nFuture&lt;Uri&gt; baseUri(Ref ref) async {\n  const defaultBaseUri = 'http://localhost';\n  const hostPcIpAddress = '192.168.1.139';\n  const port = 4010; // prism mock server\n\n  final flavor = Flavor.dev; // TODO: 環境ごとに Flavor を設定\n\n  // Flavor による base URI の切り替え\n  switch (flavor) {\n    case Flavor.prd:\n      return Uri.parse('https://guild-api.snpit.xyz');\n    case Flavor.stg:\n      return Uri.parse('https://dev-guild-api.snpit.xyz');\n    case Flavor.dev:\n      final deviceInfo = DeviceInfoPlugin();\n\n      if (Platform.isIOS) {\n        final iosInfo = await deviceInfo.iosInfo;\n        if (iosInfo.isPhysicalDevice) {\n          // iOS 実機\n          return Uri.parse('http://$hostPcIpAddress:$port');\n        } else {\n          // iOS シミュレーター\n          return Uri.parse('$defaultBaseUri:$port');\n        }\n      } else if (Platform.isAndroid) {\n        final androidInfo = await deviceInfo.androidInfo;\n        if (androidInfo.isPhysicalDevice) {\n          // Android 実機\n          return Uri.parse('http://$hostPcIpAddress:$port');\n        } else {\n          // Android エミュレーター\n          return Uri.parse('http://10.0.2.2:$port');\n        }\n      } else {\n        // その他のプラットフォーム\n        return Uri.parse('$defaultBaseUri:$port');\n      }\n  }\n\n  // デフォルトの値を返す\n  return Uri.parse(defaultBaseUri);\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/23 13:34:11*
 
-{"result": "Successfully updated text document with textdoc\_id '6791c6535128819193f30fe3bd46ac9d'", "textdoc\_id": "6791c6535128819193f30fe3bd46ac9d"}
+{"result": "Successfully updated text document with textdoc_id '6791c6535128819193f30fe3bd46ac9d'", "textdoc_id": "6791c6535128819193f30fe3bd46ac9d"}
 
 ---
 
@@ -297,22 +297,22 @@ Android 実機とホストPCが同一ネットワークに接続されている�
 
 `-h 0.0.0.0 -p 4010` はサーバーを起動する際のオプションで、次のような意味があります：
 
-### \*\*1. `-h 0.0.0.0`\*\*
+### **1. `-h 0.0.0.0`**
 `-h` は `host` の略で、サーバーがどのネットワークインターフェースでリッスンするかを指定します。
 
-- \*\*`0.0.0.0`\*\* は「すべてのネットワークインターフェース」を意味します。
+- **`0.0.0.0`** は「すべてのネットワークインターフェース」を意味します。
   - これにより、ローカルホスト（`localhost` や `127.0.0.1`）だけでなく、同じネットワーク内の他のデバイス（例: 実機の Android や iOS デバイス）からもアクセスできるようになります。
-- \*\*例\*\*:
+- **例**:
   - `-h 127.0.0.1`: ローカルホストのみで接続を許可
   - `-h 192.168.1.139`: 特定のローカルIPアドレスで接続を許可
   - `-h 0.0.0.0`: すべてのIPアドレス（ローカルホストや他のデバイス）で接続を許可
 
 ---
 
-### \*\*2. `-p 4010`\*\*
+### **2. `-p 4010`**
 `-p` は `port` の略で、サーバーが通信を待ち受けるポート番号を指定します。
 
-- \*\*ポート番号\*\*: サーバーがリクエストを受け付ける窓口を意味します。
+- **ポート番号**: サーバーがリクエストを受け付ける窓口を意味します。
   - 例えば、`4010` というポート番号を指定すると、`http://&lt;host&gt;:4010` でアクセスできます。
 - サーバーごとに使われるポート番号が異なる場合がありますが、一般的な番号は以下のようなものです：
   - `80`: HTTP (ウェブブラウザが通常使用)
@@ -321,10 +321,10 @@ Android 実機とホストPCが同一ネットワークに接続されている�
 
 ---
 
-### \*\*まとめ\*\*
+### **まとめ**
 `-h 0.0.0.0 -p 4010` はサーバーのリスニング設定を以下のように指定しています：
-- \*\*`-h 0.0.0.0`\*\*: どのデバイスからでも接続を許可（同じネットワーク内）
-- \*\*`-p 4010`\*\*: ポート番号 `4010` を窓口として待ち受け
+- **`-h 0.0.0.0`**: どのデバイスからでも接続を許可（同じネットワーク内）
+- **`-p 4010`**: ポート番号 `4010` を窓口として待ち受け
 
 これにより、例えば Android 実機から `http://192.168.1.139:4010` にアクセスすると、ホストPC上で動いているサーバーに接続できるようになります。
 
@@ -663,14 +663,14 @@ Prism Mock Server の `-d` オプションを活用して、レスポンスを�
 
 ---
 
-### \*\*1. OpenAPI に複数のレスポンス例を書いて、Prism で Mock API を立ててレスポンスを切り替えると便利\*\*
+### **1. OpenAPI に複数のレスポンス例を書いて、Prism で Mock API を立ててレスポンスを切り替えると便利**
 この記事では、OpenAPI 仕様書に複数のレスポンス例を定義し、Prism を用いてモックサーバーを立ち上げ、リクエストヘッダーの `Prefer` を使ってレスポンスを切り替える方法が詳しく説明されています。
 具体的な手順や設定方法が記載されており、Prism の柔軟なカスタマイズ機能を理解するのに役立ちます。
 citeturn0search3
 
 ---
 
-### \*\*2. Prism を使って OpenAPI の定義を元に値を返してくれるモックサーバーを建てる\*\*
+### **2. Prism を使って OpenAPI の定義を元に値を返してくれるモックサーバーを建てる**
 こちらの記事では、Prism の基本的な使い方から、OpenAPI 定義を基にモックサーバーを構築する手順が解説されています。
 `-d` オプションを用いたカスタマイズについても触れられており、実際のプロジェクトでの適用方法が具体的に示されています。
 citeturn0search2

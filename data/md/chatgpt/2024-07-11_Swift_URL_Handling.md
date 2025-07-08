@@ -818,12 +818,12 @@ enum CustomUrlSchema {
             return
         }
 
-        let params: \[String: String\] = url.queryParameters
+        let params: [String: String] = url.queryParameters
 
         self = CustomUrlSchema.processHost(host: host, params: params)
     }
 
-    private static func processHost(host: String, params: \[String: String\]) -&gt; CustomUrlSchema {
+    private static func processHost(host: String, params: [String: String]) -&gt; CustomUrlSchema {
         switch host {
         case "hoge":
             return processHoge(params: params)
@@ -834,16 +834,16 @@ enum CustomUrlSchema {
         }
     }
 
-    private static func processHoge(params: \[String: String\]) -&gt; CustomUrlSchema {
-        if let id = params\["id"\], let name = params\["name"\] {
+    private static func processHoge(params: [String: String]) -&gt; CustomUrlSchema {
+        if let id = params["id"], let name = params["name"] {
             return .hoge(id: id, name: name)
         } else {
             return .unknown
         }
     }
 
-    private static func processMoge(params: \[String: String\]) -&gt; CustomUrlSchema {
-        if let id = params\["id"\], let type = params\["type"\] {
+    private static func processMoge(params: [String: String]) -&gt; CustomUrlSchema {
+        if let id = params["id"], let type = params["type"] {
             return .moge(id: id, type: type)
         } else {
             return .unknown
@@ -852,10 +852,10 @@ enum CustomUrlSchema {
 }
 
 extension URL {
-    var queryParameters: \[String: String\] {
-        var params = \[String: String\]()
+    var queryParameters: [String: String] {
+        var params = [String: String]()
         let components = URLComponents(url: self, resolvingAgainstBaseURL: false)
-        components?.queryItems?.forEach { params\[$0.name\] = $0.value }
+        components?.queryItems?.forEach { params[$0.name] = $0.value }
         return params
     }
 }
@@ -1164,7 +1164,7 @@ handleCustomUrl("app://unknown?id=3")
 ## 👤 ユーザー
 *2024/7/11 20:26:04*
 
-\[(key: String, value: String)\] にしてほしい。
+[(key: String, value: String)] にしてほしい。
 
 ---
 

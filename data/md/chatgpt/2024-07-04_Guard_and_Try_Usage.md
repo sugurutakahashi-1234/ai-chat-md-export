@@ -33,7 +33,7 @@ public final class CacheFileDriver: CacheFileDriverProtocol {
         if let data = image.pngData() {
             do {
                 try data.write(to: fileURL)
-                print("Image saved to cache: \\(fileURL)")
+                print("Image saved to cache: \(fileURL)")
             } catch {
                 throw AppError.customError()
             }

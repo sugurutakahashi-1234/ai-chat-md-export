@@ -14,19 +14,19 @@ public protocol TimestampRemoveDuplicatesAndSortable {
 }
 
 public extension Array where Element: TimestampRemoveDuplicatesAndSortable {
-    func removeDuplicates() -&gt; \[Element\] {
+    func removeDuplicates() -&gt; [Element] {
         Array(
             Dictionary(uniqueKeysWithValues: map { ($0.timestampInMilliseconds, $0) }).values
         )
     }
 
-    func timestampSorted(ascending: Bool = true) -&gt; \[Element\] {
+    func timestampSorted(ascending: Bool = true) -&gt; [Element] {
         sorted {
             ascending ? $0.timestampInMilliseconds &lt; $1.timestampInMilliseconds : $0.timestampInMilliseconds &gt; $1.timestampInMilliseconds
         }
     }
 
-    func removeDuplicatesAndSorted(ascending: Bool = true) -&gt; \[Element\] {
+    func removeDuplicatesAndSorted(ascending: Bool = true) -&gt; [Element] {
         removeDuplicates().timestampSorted(ascending: ascending)
     }
 }
@@ -97,7 +97,7 @@ public extension Array where Element: TimestampRemoveDuplicatesAndSortable {
 ## 🤖 アシスタント
 *2023/7/4 11:37:11*
 
-`Dictionary(\_:uniquingKeysWith:)`を使用すると、元の配列の各要素に対して一度だけ処理が行われます。この操作の時間計算量はO(n)です。ここで、nは元の配列の要素数です。
+`Dictionary(_:uniquingKeysWith:)`を使用すると、元の配列の各要素に対して一度だけ処理が行われます。この操作の時間計算量はO(n)です。ここで、nは元の配列の要素数です。
 
 この方法であれば、Swiftの辞書が内部的にハッシュ表を使用しているため、各要素の処理が高速に行われます。その結果、全体のパフォーマンスはかなり良好です。特に、要素数が非常に大きい配列に対して `contains(where:)` を使用すると、その時間計算量がO(n^2)となるのに比べて大幅な改善となります。
 

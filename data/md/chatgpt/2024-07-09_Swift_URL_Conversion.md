@@ -527,7 +527,7 @@ Image saved to cache: /path/to/your/cache/directory/placehold_jp_444444_FFFFFF_1
 ## 👤 ユーザー
 *2024/7/9 12:19:33*
 
-Domain=NSCocoaErrorDomain Code=4 \\"ファイル“picsum\_photos\_\_231\_283.png”は存在しません。\\" UserInfo={NSUnderlyingError=0x303ad83c0 {Error Domain=NSPOSIXErrorDomain Code=2 \\"No such file or directory\\
+Domain=NSCocoaErrorDomain Code=4 \"ファイル“picsum_photos__231_283.png”は存在しません。\" UserInfo={NSUnderlyingError=0x303ad83c0 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\
 
     public static func saveImage(fileName: String, image: UIImage, directory: URL) throws(FileManageDriverError) {
         let fileUrl = directory.appendingPathComponent(fileName)
@@ -629,12 +629,12 @@ public extension URL {
         let domain = self.host ?? "unknown"
         
         // パスの一部を取得（最後のコンポーネント）
-        let pathComponent = self.pathComponents.joined(separator: "\_")
+        let pathComponent = self.pathComponents.joined(separator: "_")
         
         // ファイル名を生成
-        let fileName = "\\(domain)\\(pathComponent)".replacingOccurrences(of: "/", with: "\_").replacingOccurrences(of: ".", with: "\_")
+        let fileName = "\(domain)\(pathComponent)".replacingOccurrences(of: "/", with: "_").replacingOccurrences(of: ".", with: "_")
         
-        return "\\(fileName).\\(FileExtension.png.rawValue)"
+        return "\(fileName).\(FileExtension.png.rawValue)"
     }
 }
 

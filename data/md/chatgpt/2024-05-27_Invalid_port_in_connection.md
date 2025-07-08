@@ -10,7 +10,7 @@
 変わらずエラーになった
 
 Run tbls doc
-parse "\*\*\*tcp(127.0.0.1:3306)/todo\_database": invalid port ":3306)" after host
+parse "***tcp(127.0.0.1:3306)/todo_database": invalid port ":3306)" after host
 Error: Process completed with exit code 1.
 
 ---

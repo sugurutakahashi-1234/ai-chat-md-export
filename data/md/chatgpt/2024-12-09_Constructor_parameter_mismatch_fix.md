@@ -7,30 +7,30 @@
 ## 👤 ユーザー
 *2024/12/9 16:39:49*
 
-The super parameter named 'swatch'' does not share the same name as the corresponding parameter in the super constructor, '\_swatch'.
+The super parameter named 'swatch'' does not share the same name as the corresponding parameter in the super constructor, '_swatch'.
 Try using the name of the corresponding parameter in the super constructor.
-class \_MaterialColor extends ColorSwatch&lt;int&gt; {
-  const \_MaterialColor(super.primary, super.swatch);
+class _MaterialColor extends ColorSwatch&lt;int&gt; {
+  const _MaterialColor(super.primary, super.swatch);
 
-  Color get shade10 =&gt; this\[10\]!;
+  Color get shade10 =&gt; this[10]!;
 
-  Color get shade20 =&gt; this\[20\]!;
+  Color get shade20 =&gt; this[20]!;
 
-  Color get shade30 =&gt; this\[30\]!;
+  Color get shade30 =&gt; this[30]!;
 
-  Color get shade40 =&gt; this\[40\]!;
+  Color get shade40 =&gt; this[40]!;
 
-  Color get shade50 =&gt; this\[50\]!;
+  Color get shade50 =&gt; this[50]!;
 
-  Color get shade60 =&gt; this\[60\]!;
+  Color get shade60 =&gt; this[60]!;
 
-  Color get shade70 =&gt; this\[70\]!;
+  Color get shade70 =&gt; this[70]!;
 
-  Color get shade80 =&gt; this\[80\]!;
+  Color get shade80 =&gt; this[80]!;
 
-  Color get shade90 =&gt; this\[90\]!;
+  Color get shade90 =&gt; this[90]!;
 
-  Color get shade100 =&gt; this\[100\]!;
+  Color get shade100 =&gt; this[100]!;
 }
 
 ---

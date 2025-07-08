@@ -8,9 +8,9 @@
 *2024/12/20 14:19:15*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-VUqSD4JQFSLqDTErYkqAfJ",
-  "size\_bytes": 160325,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-VUqSD4JQFSLqDTErYkqAfJ",
+  "size_bytes": 160325,
   "width": 347,
   "height": 539,
   "fovea": null,
@@ -18,13 +18,13 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class SpotDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('SpotDetailPage'),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -45,7 +45,7 @@ class SpotDetailPage extends StatelessWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: const Center(child: Text('SpotDetailPage')),
     );
@@ -258,9 +258,9 @@ GestureDetector は使わなくていいよ。
 Divider は使って欲しくない。Listをうまくつかってレイアウトして欲しい。
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class SpotDetailPage extends HookConsumerWidget {
   const SpotDetailPage({super.key});
@@ -273,12 +273,12 @@ class SpotDetailPage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Detail'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow\_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -286,17 +286,17 @@ class SpotDetailPage extends HookConsumerWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: \[
+        children: [
           // 画像表示エリア
           Expanded(
             flex: 3,
             child: Stack(
               fit: StackFit.expand,
-              children: \[
+              children: [
                 Image.network(
                   imageUrl,
                   fit: BoxFit.cover,
@@ -334,7 +334,7 @@ class SpotDetailPage extends HookConsumerWidget {
                     ),
                   ),
                 ),
-              \],
+              ],
             ),
           ),
           // 詳細情報エリア
@@ -345,9 +345,9 @@ class SpotDetailPage extends HookConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: \[
+                children: [
                   Row(
-                    children: \[
+                    children: [
                       const Text(
                         'Difficulty level',
                         style: TextStyle(fontSize: 16),
@@ -360,7 +360,7 @@ class SpotDetailPage extends HookConsumerWidget {
                           style: TextStyle(fontSize: 16, color: Colors.black),
                         ),
                       ),
-                    \],
+                    ],
                   ),
                   const Divider(),
                   GestureDetector(
@@ -369,14 +369,14 @@ class SpotDetailPage extends HookConsumerWidget {
                       debugPrint('Navigate to Guild Detail');
                     },
                     child: Row(
-                      children: \[
+                      children: [
                         const Text(
                           'Holder',
                           style: TextStyle(fontSize: 16),
                         ),
                         const Spacer(),
                         Row(
-                          children: const \[
+                          children: const [
                             Text(
                               'Your Guild',
                               style: TextStyle(
@@ -385,17 +385,17 @@ class SpotDetailPage extends HookConsumerWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Icon(Icons.arrow\_forward\_ios, size: 16),
-                          \],
+                            Icon(Icons.arrow_forward_ios, size: 16),
+                          ],
                         ),
-                      \],
+                      ],
                     ),
                   ),
-                \],
+                ],
               ),
             ),
           ),
-        \],
+        ],
       ),
     );
   }

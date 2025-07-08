@@ -167,30 +167,30 @@ graph TD
 *2024/6/10 22:02:28*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-N3ncvF847GiIKBYFlQKawiRL",
-  "size\_bytes": 272022,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-N3ncvF847GiIKBYFlQKawiRL",
+  "size_bytes": 272022,
   "width": 1024,
   "height": 1024,
   "fovea": 512,
   "metadata": {
     "dalle": {
-      "gen\_id": "qO1NKUrGAI9FYfK8",
+      "gen_id": "qO1NKUrGAI9FYfK8",
       "prompt": "A diagram of a CI/CD pipeline using Mermaid syntax. The diagram starts with a 'Version Control (GitHub)' node, followed by a 'Build (GitHub Actions)' node, then a 'Test (GitHub Actions)' node. After the test node, there is a 'Deploy to Staging (GitHub Actions)' node, followed by a 'Manual Approval' node, and finally a 'Deploy to Production (GitHub Actions)' node. The diagram should clearly show the flow from one node to the next with arrows connecting them.",
       "seed": 2368848218,
-      "parent\_gen\_id": null,
-      "edit\_op": null,
-      "serialization\_title": "DALL-E generation metadata"
+      "parent_gen_id": null,
+      "edit_op": null,
+      "serialization_title": "DALL-E generation metadata"
     },
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": false,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 
@@ -208,7 +208,7 @@ DALL·E displayed 1 images. The images are already plainly visible, so don't rep
 
 以下に、CI/CD パイプラインの図を示します。この図は、各ステージが矢印で接続され、GitHub Actions を使用したビルド、テスト、デプロイの流れを視覚化しています。
 
-!\[CI/CD Pipeline Diagram\](sandbox:/mnt/data/A\_diagram\_of\_a\_CI/CD\_pipeline\_using\_Mermaid\_syntax.png)
+![CI/CD Pipeline Diagram](sandbox:/mnt/data/A_diagram_of_a_CI/CD_pipeline_using_Mermaid_syntax.png)
 
 この図を参考に、マーメイドの記述を視覚化することができます。
 
@@ -231,9 +231,9 @@ For example, you can find templates for:
 - Entity-relationship diagrams (ERD) for visualizing relationships within your CI/CD pipeline.
 - Cloud infrastructure diagrams to visualize the deployment process across different cloud platforms like AWS, Azure, and GCP.
 
-To access these templates, visit the \[draw.io templates page\](https://drawio-app.com/examples) and choose the appropriate category for your needs.
+To access these templates, visit the [draw.io templates page](https://drawio-app.com/examples) and choose the appropriate category for your needs.
 
-Additionally, there is a GitHub repository dedicated to CI/CD pipeline diagrams using draw.io. This repository contains various examples and resources that can help you create your own CI/CD pipeline diagrams. You can explore this repository at \[ci-cd/draw.io on GitHub\](https://github.com/ci-cd/draw.io) to find more specific templates and examples relevant to CI/CD processes.
+Additionally, there is a GitHub repository dedicated to CI/CD pipeline diagrams using draw.io. This repository contains various examples and resources that can help you create your own CI/CD pipeline diagrams. You can explore this repository at [ci-cd/draw.io on GitHub](https://github.com/ci-cd/draw.io) to find more specific templates and examples relevant to CI/CD processes.
 
 These resources should provide a good starting point for visualizing your CI/CD pipeline using draw.io.
 

@@ -110,17 +110,17 @@ Given the clarification and focusing strictly on Swift's capabilities and associ
 
 Swift doesn't have built-in macro support or a preprocessor for custom code generation at compile-time like the C preprocessor. Instead, code generation in Swift is usually handled by external tools or scripts that generate Swift files before compilation, which the Swift compiler then compiles as part of the build process.
 
-\*\*Approach with External Tooling (e.g., Sourcery):\*\*
+**Approach with External Tooling (e.g., Sourcery):**
 
 Sourcery is a popular tool in the Swift community for metaprogramming, allowing developers to generate Swift code automatically. It scans your source files, applies your templates, and generates Swift code for you. This is not a macro but achieves a similar result by generating code that you would include in your project.
 
-\*\*Sourcery Template Example:\*\*
+**Sourcery Template Example:**
 
 To generate code similar to what you've described using Sourcery, you would define a template (using Sourcery's template syntax) that takes your struct names as input and generates the protocol definitions for wireframes and presenter dependencies.
 
 However, since creating a full Sourcery setup here is a bit complex and beyond the scope of a simple text response, I'll instead focus on how you might manually achieve a similar result without detailed steps on setting up Sourcery, assuming you're looking for a conceptual understanding or a simpler script-based approach.
 
-\*\*Swift Scripting for Code Generation:\*\*
+**Swift Scripting for Code Generation:**
 
 Another approach is Swift scripting itself. Swift can execute scripts, and you could write a Swift script that generates these files for you. This script would be a simple Swift program that takes a struct name as input and outputs the file contents you described.
 

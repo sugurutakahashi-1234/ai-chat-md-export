@@ -7,38 +7,38 @@
 ## 👤 ユーザー
 *2025/4/15 10:17:13*
 
-\* Put up this flag をフラグの状態によって変えたいと思います。
-   \* 構築可能: Put up this flag
-   \* 建設済み: This flag is constructed （非活性）
-   \* 破壊後: This flag is destroyed （非活性）
+* Put up this flag をフラグの状態によって変えたいと思います。
+   * 構築可能: Put up this flag
+   * 建設済み: This flag is constructed （非活性）
+   * 破壊後: This flag is destroyed （非活性）
 
 ---
 
 ## 👤 ユーザー
 *2025/4/15 10:18:21*
 
-\* Put up this flag をフラグの状態によって変えたいと思います。
-   \* 構築可能: Put up this flag
-   \* 建設済み: This flag is constructed （非活性）
-   \* 破壊後: This flag is destroyed （非活性）
+* Put up this flag をフラグの状態によって変えたいと思います。
+   * 構築可能: Put up this flag
+   * 建設済み: This flag is constructed （非活性）
+   * 破壊後: This flag is destroyed （非活性）
 
 /// FlagDTO
 ///
 /// Properties:
-/// \* \[flagId\] - NFT flag ID
-/// \* \[spotId\] - Spot ID
-/// \* \[tokenId\] - Token ID of NFT flag
-/// \* \[flagName\] - NFT flag name
-/// \* \[flagDescription\] - NFT flag description
-/// \* \[flagImage\] - Image of NFT flag explorer (URL)
-/// \* \[flagCategory\] - Category of NFT flag
-/// \* \[flagStatus\] - Status of NFT flag
-/// \* \[level\] - Current level of NFT flag
-/// \* \[fullEndurance\] -  Full endurance of NFT flag
-/// \* \[endurance\] - Current endurance of NFT flag
-/// \* \[defended\] - The number of defenses against attacks from other guilds
-/// \* \[rarity\] - Rarity of NFT flag
-/// \* \[flagIncome\] - Income of NFT flag
+/// * [flagId] - NFT flag ID
+/// * [spotId] - Spot ID
+/// * [tokenId] - Token ID of NFT flag
+/// * [flagName] - NFT flag name
+/// * [flagDescription] - NFT flag description
+/// * [flagImage] - Image of NFT flag explorer (URL)
+/// * [flagCategory] - Category of NFT flag
+/// * [flagStatus] - Status of NFT flag
+/// * [level] - Current level of NFT flag
+/// * [fullEndurance] -  Full endurance of NFT flag
+/// * [endurance] - Current endurance of NFT flag
+/// * [defended] - The number of defenses against attacks from other guilds
+/// * [rarity] - Rarity of NFT flag
+/// * [flagIncome] - Income of NFT flag
 @BuiltValue()
 abstract class FlagDTO implements Built&lt;FlagDTO, FlagDTOBuilder&gt; {
   /// NFT flag ID
@@ -100,30 +100,30 @@ abstract class FlagDTO implements Built&lt;FlagDTO, FlagDTOBuilder&gt; {
   @BuiltValueField(wireName: r'flagIncome')
   num get flagIncome;
 
-  FlagDTO.\_();
+  FlagDTO._();
 
-  factory FlagDTO(\[void updates(FlagDTOBuilder b)\]) = \_$FlagDTO;
+  factory FlagDTO([void updates(FlagDTOBuilder b)]) = _$FlagDTO;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void \_defaults(FlagDTOBuilder b) =&gt; b;
+  static void _defaults(FlagDTOBuilder b) =&gt; b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer&lt;FlagDTO&gt; get serializer =&gt; \_$FlagDTOSerializer();
+  static Serializer&lt;FlagDTO&gt; get serializer =&gt; _$FlagDTOSerializer();
 }
 class FlagStatus extends EnumClass {
   @BuiltValueEnumConst(wireName: r'NEW')
-  static const FlagStatus NEW = \_$NEW;
+  static const FlagStatus NEW = _$NEW;
   @BuiltValueEnumConst(wireName: r'CONSTRUCTED')
-  static const FlagStatus CONSTRUCTED = \_$CONSTRUCTED;
+  static const FlagStatus CONSTRUCTED = _$CONSTRUCTED;
   @BuiltValueEnumConst(wireName: r'DESTROYED')
-  static const FlagStatus DESTROYED = \_$DESTROYED;
+  static const FlagStatus DESTROYED = _$DESTROYED;
 
-  static Serializer&lt;FlagStatus&gt; get serializer =&gt; \_$flagStatusSerializer;
+  static Serializer&lt;FlagStatus&gt; get serializer =&gt; _$flagStatusSerializer;
 
-  const FlagStatus.\_(String name) : super(name);
+  const FlagStatus._(String name) : super(name);
 
-  static BuiltSet&lt;FlagStatus&gt; get values =&gt; \_$values;
-  static FlagStatus valueOf(String name) =&gt; \_$valueOf(name);
+  static BuiltSet&lt;FlagStatus&gt; get values =&gt; _$values;
+  static FlagStatus valueOf(String name) =&gt; _$valueOf(name);
 }
 
 ---

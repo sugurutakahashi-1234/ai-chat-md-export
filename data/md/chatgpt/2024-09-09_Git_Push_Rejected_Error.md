@@ -7,20 +7,20 @@
 ## 👤 ユーザー
 *2024/9/10 0:05:32*
 
-Run git config --global user.name "github-actions\[bot\]"
-  git config --global user.name "github-actions\[bot\]"
-  git config --global user.email "github-actions\[bot\]@users.noreply.github.com"
+Run git config --global user.name "github-actions[bot]"
+  git config --global user.name "github-actions[bot]"
+  git config --global user.email "github-actions[bot]@users.noreply.github.com"
   git add ./docs/diagrams/finance.png README.md
   git commit -m "Update README with latest Mermaid diagram and finance.png"
-  git remote set-url origin \*\*\*github.com/suguruTakahashi-1234/finance.git
+  git remote set-url origin ***github.com/suguruTakahashi-1234/finance.git
   git push origin HEAD:refs/heads/main
   shell: /usr/bin/bash -e {0}
   env:
-    GITHUB\_TOKEN: \*\*\*
-\[main 36b3a1c\] Update README with latest Mermaid diagram and finance.png
+    GITHUB_TOKEN: ***
+[main 36b3a1c] Update README with latest Mermaid diagram and finance.png
  2 files changed, 90 insertions(+), 22 deletions(-)
 To https://github.com/suguruTakahashi-1234/finance.git
- ! \[rejected\]        HEAD -&gt; main (fetch first)
+ ! [rejected]        HEAD -&gt; main (fetch first)
 error: failed to push some refs to 'https://github.com/suguruTakahashi-1234/finance.git'
 hint: Updates were rejected because the remote contains work that you do not
 hint: have locally. This is usually caused by another repository pushing to

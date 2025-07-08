@@ -402,7 +402,7 @@ In this updated workflow, the `generate_token` job generates the GitHub App toke
 
 以下の意味を教えてほしい
 
-run: echo "gh\_token=${{ steps.generate\_token.outputs.token }}" &gt;&gt; $GITHUB\_ENV
+run: echo "gh_token=${{ steps.generate_token.outputs.token }}" &gt;&gt; $GITHUB_ENV
 
 ---
 
@@ -440,7 +440,7 @@ echo "gh_token=生成されたトークン" >> $GITHUB_ENV
 *2024/5/18 13:36:55*
 
 以下をいらないとどうなるの？
-&gt;&gt; $GITHUB\_ENV
+&gt;&gt; $GITHUB_ENV
 
 ---
 
@@ -488,50 +488,50 @@ GitHub Apps でpermissionを設定しているが、このワークフローで�
 
 GitHub App のワークフローで必要なパーミッションは、Personal Access Token (PAT) で指定していた `project`, `read:org`, `repo` に相当するものを設定する必要があります。具体的には、以下のパーミッションが必要です：
 
-1. \*\*`project` (Project Permissions)\*\*:
-   - \*\*`write`\*\* パーミッション：プロジェクトのカードの作成、移動、および削除に必要です。
+1. **`project` (Project Permissions)**:
+   - **`write`** パーミッション：プロジェクトのカードの作成、移動、および削除に必要です。
 
-2. \*\*`read:org` (Organization Permissions)\*\*:
-   - \*\*`read`\*\* パーミッション：組織のプロジェクトボードにアクセスするために必要です。
+2. **`read:org` (Organization Permissions)**:
+   - **`read`** パーミッション：組織のプロジェクトボードにアクセスするために必要です。
 
-3. \*\*`repo` (Repository Permissions)\*\*:
-   - \*\*`contents`\*\*：リポジトリの内容（コードなど）にアクセスするためのパーミッションです。
-   - \*\*`issues`\*\*：リポジトリのイシューにアクセスするためのパーミッションです。
-   - \*\*`pull\_requests`\*\*：プルリクエストにアクセスするためのパーミッションです。
+3. **`repo` (Repository Permissions)**:
+   - **`contents`**：リポジトリの内容（コードなど）にアクセスするためのパーミッションです。
+   - **`issues`**：リポジトリのイシューにアクセスするためのパーミッションです。
+   - **`pull_requests`**：プルリクエストにアクセスするためのパーミッションです。
 
 これらのパーミッションを GitHub App に設定する方法は以下の通りです：
 
 ### GitHub App のパーミッションの設定方法
 
-1. \*\*GitHub App の設定にアクセス\*\*:
+1. **GitHub App の設定にアクセス**:
    - GitHub の設定ページから「Developer settings」にアクセスし、「GitHub Apps」を選択します。
    - 対象の GitHub App を選択します。
 
-2. \*\*パーミッションの設定\*\*:
+2. **パーミッションの設定**:
    - 左側のメニューから「Permissions & events」を選択します。
    - 以下のパーミッションを設定します：
 
-     - \*\*Repository permissions\*\*:
-       - `Contents`：\*\*Read-only\*\* または \*\*Read & write\*\*
-       - `Issues`：\*\*Read-only\*\* または \*\*Read & write\*\*
-       - `Pull requests`：\*\*Read-only\*\* または \*\*Read & write\*\*
+     - **Repository permissions**:
+       - `Contents`：**Read-only** または **Read & write**
+       - `Issues`：**Read-only** または **Read & write**
+       - `Pull requests`：**Read-only** または **Read & write**
 
-     - \*\*Organization permissions\*\*:
-       - `Projects`：\*\*Read-only\*\* または \*\*Read & write\*\*
+     - **Organization permissions**:
+       - `Projects`：**Read-only** または **Read & write**
 
-3. \*\*設定を保存\*\*:
+3. **設定を保存**:
    - 設定を変更したら、保存します。
 
-4. \*\*インストールされたリポジトリに適用\*\*:
+4. **インストールされたリポジトリに適用**:
    - 必要に応じて、インストールされているリポジトリまたは組織に適用します。
 
 ### まとめ
 
 このワークフローで必要なパーミッションは以下の通りです：
 
-- \*\*Project\*\*：`write`
-- \*\*Organization\*\*：`read`
-- \*\*Repository\*\*：
+- **Project**：`write`
+- **Organization**：`read`
+- **Repository**：
   - `Contents`：`read`
   - `Issues`：`read`
   - `Pull requests`：`read`
@@ -543,59 +543,59 @@ GitHub App のワークフローで必要なパーミッションは、Personal 
 ## 👤 ユーザー
 *2024/5/18 13:58:04*
 
-gh\_token: ${{ env.gh\_token }} に値が入っていないかもしれない
+gh_token: ${{ env.gh_token }} に値が入っていないかもしれない
 
 name: Project Board PR Handler
 
 on:
-  pull\_request:
+  pull_request:
     types:
       - opened
       - reopened
-      - ready\_for\_review
+      - ready_for_review
       - closed
       - synchronize
 
 env:
-  gh\_organization: suguruTakahashi-1234
-  gh\_repo: swiftui-sample-app
-  project\_id: 1
-  in\_review\_issue: In Review (Issue)
-  in\_review\_pr: 👀 In Review (PR)
-  qa\_accept: QA Accept
+  gh_organization: suguruTakahashi-1234
+  gh_repo: swiftui-sample-app
+  project_id: 1
+  in_review_issue: In Review (Issue)
+  in_review_pr: 👀 In Review (PR)
+  qa_accept: QA Accept
 
 jobs:
-  generate\_token:
+  generate_token:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/create-github-app-token@v1
-        id: generate\_token
+        id: generate_token
         with:
-          app-id: ${{ secrets.APP\_ID }}
-          private-key: ${{ secrets.PRIVATE\_KEY }}
-      - name: Set gh\_token
-        run: echo "gh\_token=${{ steps.generate\_token.outputs.token }}" &gt;&gt; $GITHUB\_ENV
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: Set gh_token
+        run: echo "gh_token=${{ steps.generate_token.outputs.token }}" &gt;&gt; $GITHUB_ENV
 
-  move\_pr:
+  move_pr:
     name: Move PR
     runs-on: ubuntu-latest
-    needs: generate\_token
-    if: github.event\_name == 'pull\_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready\_for\_review')
+    needs: generate_token
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready_for_review')
     steps:
-      - name: Move to ${{ env.in\_review\_pr }}
+      - name: Move to ${{ env.in_review_pr }}
         uses: leonsteinhaeuser/project-beta-automations@v2.2.1
         with:
-          gh\_token: ${{ env.gh\_token }}
-          user: ${{ env.gh\_organization }}
-          project\_id: ${{ env.project\_id }}
-          resource\_node\_id: ${{ github.event.pull\_request.node\_id }}
-          status\_value: ${{ env.in\_review\_pr }}
+          gh_token: ${{ env.gh_token }}
+          user: ${{ env.gh_organization }}
+          project_id: ${{ env.project_id }}
+          resource_node_id: ${{ github.event.pull_request.node_id }}
+          status_value: ${{ env.in_review_pr }}
 
-  extract\_issues:
+  extract_issues:
     name: Extract Issues From Commit Message
     runs-on: ubuntu-latest
-    needs: generate\_token
-    if: github.event\_name == 'pull\_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready\_for\_review' || github.event.action == 'synchronize' || github.event.action == 'closed')
+    needs: generate_token
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready_for_review' || github.event.action == 'synchronize' || github.event.action == 'closed')
     outputs:
       issues: ${{ steps.extract.outputs.issues }}
     steps:
@@ -606,40 +606,40 @@ jobs:
 
       - name: Fetch target branch
         run: |
-          git fetch origin ${{ github.event.pull\_request.base.ref }}:refs/remotes/origin/${{ github.event.pull\_request.base.ref }}
+          git fetch origin ${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
 
       - name: Extract issue numbers from PR commits
         id: extract
         run: |
-          target\_branch=${{ github.event.pull\_request.base.ref }}
-          echo "Target branch: $target\_branch"
-          if \[ "${{ github.event.action }}" == "closed" \]; then
-            commits=$(git log --no-merges --format=%B ${GITHUB\_SHA}^..${GITHUB\_SHA})
+          target_branch=${{ github.event.pull_request.base.ref }}
+          echo "Target branch: $target_branch"
+          if [ "${{ github.event.action }}" == "closed" ]; then
+            commits=$(git log --no-merges --format=%B ${GITHUB_SHA}^..${GITHUB_SHA})
           else
-            commits=$(git log origin/$target\_branch..HEAD --no-merges --format=%B)
+            commits=$(git log origin/$target_branch..HEAD --no-merges --format=%B)
           fi
           echo "Commits for debugging: $commits"
-          issues=$(echo "$commits" | grep -oE '#\[0-9\]+' | tr -d '#' | jq -R -s -c 'split("\\n") | map(select(. != "")) | unique')
+          issues=$(echo "$commits" | grep -oE '#[0-9]+' | tr -d '#' | jq -R -s -c 'split("\n") | map(select(. != "")) | unique')
           echo "Extracted unique issues: $issues"
-          echo "issues=$issues" &gt;&gt; $GITHUB\_OUTPUT
+          echo "issues=$issues" &gt;&gt; $GITHUB_OUTPUT
 
-  move\_issues\_on\_pr\_update:
+  move_issues_on_pr_update:
     name: Move Issues on PR Update
     runs-on: ubuntu-latest
-    needs: \[generate\_token, extract\_issues\]
-    if: github.event.action != 'closed' && needs.extract\_issues.outputs.issues != '\[\]'
+    needs: [generate_token, extract_issues]
+    if: github.event.action != 'closed' && needs.extract_issues.outputs.issues != '[]'
     strategy:
       matrix:
-        issue: ${{ fromJson(needs.extract\_issues.outputs.issues) }}
+        issue: ${{ fromJson(needs.extract_issues.outputs.issues) }}
     steps:
       - name: Get node ID for issue
-        id: get\_node\_id
+        id: get_node_id
         uses: actions/github-script@v6
         with:
           script: |
             const issueNumber = ${{ matrix.issue }};
-            const owner = '${{ env.gh\_organization }}';
-            const repo = '${{ env.gh\_repo }}';
+            const owner = '${{ env.gh_organization }}';
+            const repo = '${{ env.gh_repo }}';
 
             const result = await github.graphql(`
               query($number: Int!, $owner: String!, $name: String!) {
@@ -657,37 +657,37 @@ jobs:
             );
 
             const nodeId = result.repository.issue.id;
-            console.log(`issue\_node\_id=${nodeId}`);
-            core.setOutput('issue\_node\_id', nodeId);
+            console.log(`issue_node_id=${nodeId}`);
+            core.setOutput('issue_node_id', nodeId);
         env:
-          GH\_TOKEN: ${{ secrets.GITHUB\_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Move issue to ${{ env.in\_review\_issue }}
+      - name: Move issue to ${{ env.in_review_issue }}
         uses: leonsteinhaeuser/project-beta-automations@v2.2.1
         with:
-          gh\_token: ${{ env.gh\_token }}
-          user: ${{ env.gh\_organization }}
-          project\_id: ${{ env.project\_id }}
-          resource\_node\_id: ${{ steps.get\_node\_id.outputs.issue\_node\_id }}
-          status\_value: ${{ env.in\_review\_issue }}
+          gh_token: ${{ env.gh_token }}
+          user: ${{ env.gh_organization }}
+          project_id: ${{ env.project_id }}
+          resource_node_id: ${{ steps.get_node_id.outputs.issue_node_id }}
+          status_value: ${{ env.in_review_issue }}
 
-  move\_issues\_on\_close:
+  move_issues_on_close:
     name: Move Issues on PR Close
     runs-on: ubuntu-latest
-    needs: \[generate\_token, extract\_issues\]
-    if: github.event.action == 'closed' && needs.extract\_issues.outputs.issues != '\[\]' && github.event.pull\_request.merged == true
+    needs: [generate_token, extract_issues]
+    if: github.event.action == 'closed' && needs.extract_issues.outputs.issues != '[]' && github.event.pull_request.merged == true
     strategy:
       matrix:
-        issue: ${{ fromJson(needs.extract\_issues.outputs.issues) }}
+        issue: ${{ fromJson(needs.extract_issues.outputs.issues) }}
     steps:
       - name: Get node ID for issue
-        id: get\_node\_id
+        id: get_node_id
         uses: actions/github-script@v6
         with:
           script: |
             const issueNumber = ${{ matrix.issue }};
-            const owner = '${{ env.gh\_organization }}';
-            const repo = '${{ env.gh\_repo }}';
+            const owner = '${{ env.gh_organization }}';
+            const repo = '${{ env.gh_repo }}';
 
             const result = await github.graphql(`
               query($number: Int!, $owner: String!, $name: String!) {
@@ -705,19 +705,19 @@ jobs:
             );
 
             const nodeId = result.repository.issue.id;
-            console.log(`issue\_node\_id=${nodeId}`);
-            core.setOutput('issue\_node\_id', nodeId);
+            console.log(`issue_node_id=${nodeId}`);
+            core.setOutput('issue_node_id', nodeId);
         env:
-          GH\_TOKEN: ${{ secrets.GITHUB\_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Move issue to ${{ env.qa\_accept }}
+      - name: Move issue to ${{ env.qa_accept }}
         uses: leonsteinhaeuser/project-beta-automations@v2.2.1
         with:
-          gh\_token: ${{ env.gh\_token }}
-          user: ${{ env.gh\_organization }}
-          project\_id: ${{ env.project\_id }}
-          resource\_node\_id: ${{ steps.get\_node\_id.outputs.issue\_node\_id }}
-          status\_value: ${{ env.qa\_accept }}
+          gh_token: ${{ env.gh_token }}
+          user: ${{ env.gh_organization }}
+          project_id: ${{ env.project_id }}
+          resource_node_id: ${{ steps.get_node_id.outputs.issue_node_id }}
+          status_value: ${{ env.qa_accept }}
 
 ---
 
@@ -926,7 +926,7 @@ Move Issues on PR Update (132)
 failed 2 minutes ago in 8s
 
 Run leonsteinhaeuser/project-beta-automations@v2.2.1
-Run /home/runner/work/\_actions/leonsteinhaeuser/project-beta-automations/v2.2.1/deps.sh
+Run /home/runner/work/_actions/leonsteinhaeuser/project-beta-automations/v2.2.1/deps.sh
 gh cli is installed.
 Run echo "No GH Auth method configured, provide PAT or App ID/Key"; exit 1
 No GH Auth method configured, provide PAT or App ID/Key
@@ -1342,10 +1342,10 @@ jobs:
 
 最初の以下はTokenが表示されていたが、
 
-Run echo "Generated GitHub App Token: \*\*\*"
-Generated GitHub App Token: \*\*\*
+Run echo "Generated GitHub App Token: ***"
+Generated GitHub App Token: ***
 
-他のPrint gh\_tokenではすべて空であった
+他のPrint gh_tokenではすべて空であった
 
 ---
 
@@ -1784,7 +1784,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/18 15:11:11*
 
-GITHUB\_ENV   ではなくてextract\_issuesでやっているようなGITHUB\_OUTPUTなのではないか？（自身がないです）
+GITHUB_ENV   ではなくてextract_issuesでやっているようなGITHUB_OUTPUTなのではないか？（自身がないです）
 
 ---
 
@@ -2004,8 +2004,8 @@ jobs:
 
 以下のままであった
 
-Run echo "gh\_token: "
-gh\_token:
+Run echo "gh_token: "
+gh_token:
 
 ---
 
@@ -2449,8 +2449,8 @@ jobs:
 
 相変わらずトークンは空である
 
-Run echo "gh\_token: "
-gh\_token:
+Run echo "gh_token: "
+gh_token:
 
 ---
 
@@ -2928,43 +2928,43 @@ jobs:
 ## 🤖 アシスタント
 *2024/5/18 15:20:11*
 
-and GITHUB\_OUTPUT
+and GITHUB_OUTPUT
         run: |
-          echo "gh\_token=$(cat token.txt)" &gt;&gt; $GITHUB\_ENV
-          echo "gh\_token=$(cat token.txt)" &gt;&gt; $GITHUB\_OUTPUT
+          echo "gh_token=$(cat token.txt)" &gt;&gt; $GITHUB_ENV
+          echo "gh_token=$(cat token.txt)" &gt;&gt; $GITHUB_OUTPUT
           cat token.txt
 
-  move\_pr:
+  move_pr:
     name: Move PR
     runs-on: ubuntu-latest
-    needs: generate\_token
-    if: github.event\_name == 'pull\_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready\_for\_review')
+    needs: generate_token
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready_for_review')
     steps:
-      - name: Read gh\_token from file
+      - name: Read gh_token from file
         run: |
-          export gh\_token=$(cat token.txt)
-          echo "gh\_token: $gh\_token"
-      - name: Move to ${{ env.in\_review\_pr }}
+          export gh_token=$(cat token.txt)
+          echo "gh_token: $gh_token"
+      - name: Move to ${{ env.in_review_pr }}
         uses: leonsteinhaeuser/project-beta-automations@v2.2.1
         with:
-          gh\_token: $gh\_token
-          user: ${{ env.gh\_organization }}
-          project\_id: ${{ env.project\_id }}
-          resource\_node\_id: ${{ github.event.pull\_request.node\_id }}
-          status\_value: ${{ env.in\_review\_pr }}
+          gh_token: $gh_token
+          user: ${{ env.gh_organization }}
+          project_id: ${{ env.project_id }}
+          resource_node_id: ${{ github.event.pull_request.node_id }}
+          status_value: ${{ env.in_review_pr }}
 
-  extract\_issues:
+  extract_issues:
     name: Extract Issues From Commit Message
     runs-on: ubuntu-latest
-    needs: generate\_token
-    if: github.event\_name == 'pull\_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready\_for\_review' || github.event.action == 'synchronize' || github.event.action == 'closed')
+    needs: generate_token
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready_for_review' || github.event.action == 'synchronize' || github.event.action == 'closed')
     outputs:
       issues: ${{ steps.extract.outputs.issues }}
     steps:
-      - name: Read gh\_token from file
+      - name: Read gh_token from file
         run: |
-          export gh\_token=$(cat token.txt)
-          echo "gh\_token: $gh\_token"
+          export gh_token=$(cat token.txt)
+          echo "gh_token: $gh_token"
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -2972,12 +2972,12 @@ and GITHUB\_OUTPUT
 
       - name: Fetch target branch
         run: |
-          git fetch origin ${{ github.event.pull\_request.base.ref }}:refs/remotes/origin/${{ github.event.pull\_request.base.ref }}
+          git fetch origin ${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
 
       - name: Extract issue numbers from PR commits
         id: extract
         run: |
-          target\_branch=${{ github.event.pull\_request.base.ref }}
+          target_branch=${{ github.event.pull_request.base.ref }}
           echo "Target branch:
 
 ---

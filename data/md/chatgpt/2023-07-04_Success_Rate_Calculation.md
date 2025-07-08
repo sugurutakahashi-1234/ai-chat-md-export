@@ -424,7 +424,7 @@ public struct EmotionDataModel {
 }
 
 
-    static func validation(anchorDataModels: \[AnchorDataModel\]) -&gt; ValidationResult {
+    static func validation(anchorDataModels: [AnchorDataModel]) -&gt; ValidationResult {
         let thresholdRatio: Double = 0.7
         let successfulModels = anchorDataModels.filter { model in
             (model.trackingState == .success || model.trackingState == .lowConfidence) && model.screenState == .insideOfScreen
@@ -441,7 +441,7 @@ public struct EmotionDataModel {
         return result
     }
     
-    static func validation(emotionDataModels: \[EmotionDataModel\]) -&gt; ValidationResult {
+    static func validation(emotionDataModels: [EmotionDataModel]) -&gt; ValidationResult {
         
     }
 

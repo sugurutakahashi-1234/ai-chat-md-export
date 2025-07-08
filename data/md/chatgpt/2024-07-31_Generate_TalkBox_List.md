@@ -8,8 +8,8 @@
 *2024/7/31 17:53:18*
 
 limitの数だけ返したい
-    public func getTalkBoxs(limit: Int, nextCursor: String?, previousCursor: String?) async throws -&gt; \[TalkBox\] {
-        (0...(limit - 1)).map { \_ in
+    public func getTalkBoxs(limit: Int, nextCursor: String?, previousCursor: String?) async throws -&gt; [TalkBox] {
+        (0...(limit - 1)).map { _ in
             let lastPostedAt: Date = .random
             return TalkBox(id: .uuid, name: .randomGroup, imageUrl: .randomImageUrl, lastPostedAt: lastPostedAt, hasUnreadThread: .random, isBookmarked: .random, isMuted: .random, threads: .randoms, accounts: .randoms)
         }

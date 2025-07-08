@@ -9,16 +9,16 @@
 
 Swift イベント名のstruct を変数名をつくって定義して欲しい
 
-イベント名	送信するタイミング	備考	データ送信の有無	message	 screen\_name	error	measurement\_id	session\_id	orientation	analysis\_measurement\_type	is\_completed
+イベント名	送信するタイミング	備考	データ送信の有無	message	 screen_name	error	measurement_id	session_id	orientation	analysis_measurement_type	is_completed
 		　		String	String	AppError(String)	String	String	AppUIInterfaceOrientation(String)	AnalysisMeasurementType(String)	Bool
-debug\_log	デバッグログとして送信したい場合			Y							
-appear\_screen	画面の表示開始（ViewのonAppear() or onTask()）				Y						
-disappear\_screen	画面の表示終了（ViewのonDisAppear()）				Y						
-occur\_error	エラーが発生したとき					Y					
-show\_alert	アラートを表示したとき	まだ送っていないイベント				Y					
-create\_session	create\_session 成功後						Y	Y			
-start\_analysis	動画 or Web調査開始後						Y	Y	Y	Y	
-end\_analysis	動画 or Web調査のデータ送信後（中断含む）						Y	Y	Y	Y	Y
+debug_log	デバッグログとして送信したい場合			Y							
+appear_screen	画面の表示開始（ViewのonAppear() or onTask()）				Y						
+disappear_screen	画面の表示終了（ViewのonDisAppear()）				Y						
+occur_error	エラーが発生したとき					Y					
+show_alert	アラートを表示したとき	まだ送っていないイベント				Y					
+create_session	create_session 成功後						Y	Y			
+start_analysis	動画 or Web調査開始後						Y	Y	Y	Y	
+end_analysis	動画 or Web調査のデータ送信後（中断含む）						Y	Y	Y	Y	Y
 
 ---
 

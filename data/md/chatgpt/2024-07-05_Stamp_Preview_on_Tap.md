@@ -14,11 +14,11 @@
 public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
     private let dependency: Dependency
     @StateObject private var presenter: StampListPresenter&lt;Dependency&gt;
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     public init(dependency: Dependency, talkThread: TalkThread) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: StampListPresenter(dependency: dependency, talkThread: talkThread))
+        _presenter = .init(wrappedValue: StampListPresenter(dependency: dependency, talkThread: talkThread))
     }
 
     public var body: some View {
@@ -39,7 +39,7 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
                             .cornerRadius(12)
                     }
 
-                    ForEach(presenter.stampGroups, id: \\.id) { stampGroup in
+                    ForEach(presenter.stampGroups, id: \.id) { stampGroup in
                         Button {
                             presenter.onTapStampGroup(stampGroup: stampGroup)
                         } label: {
@@ -61,14 +61,14 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
             ScrollView {
                 // Ref: 【SwiftUI】LazyVGrid内の画像を正方形にする【ワークアラウンド】 https://qiita.com/tsuzuki817/items/cc9364089cee3a763084
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 20) {
-                    ForEach(presenter.stamps, id: \\.id) { stamp in
+                    ForEach(presenter.stamps, id: \.id) { stamp in
                         Button {
                             Task {
                                 await presenter.onTapStamp(stamp: stamp)
                             }
                         } label: {
                             CachedAsyncImageView(imageUrl: stamp.imageUrl, directory: Constants.FilePath.stampDirectory)
-                                .aspectRatio(Constants.AspectRatio.\_1\_1, contentMode: .fill)
+                                .aspectRatio(Constants.AspectRatio._1_1, contentMode: .fill)
                                 .cornerRadius(8)
                                 .padding(.all, 4)
                         }
@@ -98,18 +98,18 @@ public struct StampListView&lt;Dependency: RootDIContainerDependency&gt;: View {
 
 import PreviewSnapshots
 
-struct StampListView\_Previews: PreviewProvider, SnapshotTestable {
+struct StampListView_Previews: PreviewProvider, SnapshotTestable {
     static var snapshots: PreviewSnapshots&lt;RootDIContainerDependencyMock&gt; {
         .init(
-            configurations: \[
+            configurations: [
                 UITestPreviewType.placeholder.configuration,
-            \],
+            ],
             configure: { dependency in
                 Color.clear
                     .sheet(isPresented: .constant(true)) {
                         StampListView(dependency: dependency, talkThread: .placeholder)
                             .navigationStacked()
-                            .presentationDetents(\[.medium\])
+                            .presentationDetents([.medium])
                     }
             }
         )
@@ -124,8 +124,8 @@ enum StampGroupSelectType: Equatable {
 
 @MainActor
 final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: ObservableObject {
-    @Published private(set) var stampGroups: \[StampGroup\] = \[\]
-    @Published private(set) var stamps: \[Stamp\] = \[\]
+    @Published private(set) var stampGroups: [StampGroup] = []
+    @Published private(set) var stamps: [Stamp] = []
     @Published private(set) var stampGroupSelectType: StampGroupSelectType = .history
 
     @Published var isLoading: Bool = false
@@ -146,7 +146,7 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
             .map { stampGroupSelectType in
                 switch stampGroupSelectType {
                 case .history:
-                    dependency.localDataStoreDriver.stampHistorys.sorted(by: \\.postedAt, order: .descending).map { $0.stamp }.reduce(into: \[Stamp\]()) { result, stamp in
+                    dependency.localDataStoreDriver.stampHistorys.sorted(by: \.postedAt, order: .descending).map { $0.stamp }.reduce(into: [Stamp]()) { result, stamp in
                         // 同じスタンプ は フィルタリングして除外する（Set 型は順番を保持しないので不向き）
                         if !result.contains(where: { $0 == stamp }) {
                             result.append(stamp)
@@ -174,7 +174,7 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
         do {
             stampGroups = try await dependency.apiRequestDriver.getStampGroups()
         } catch {
-            dependency.logDriver.errorLog("\\(error)")
+            dependency.logDriver.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -197,14 +197,14 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
             try await dependency.apiRequestDriver.postStamp(stamp: stamp, talkThread: talkThread)
 
             // スタンプを送信して履歴を 100 件まで登録する（重複 OK として、表示するときにフィルタリングする）
-            dependency.localDataStoreDriver.stampHistorys = (dependency.localDataStoreDriver.stampHistorys + \[StampHistory(stamp: stamp, postedAt: .now)\]).suffix(100)
+            dependency.localDataStoreDriver.stampHistorys = (dependency.localDataStoreDriver.stampHistorys + [StampHistory(stamp: stamp, postedAt: .now)]).suffix(100)
 
             // 閉じた先で toast を表示させるので、この画面では toast は表示しない（Bindingでも実装可能であるが取り回しが面倒なのでこうしている）
             dependency.toastDriver.showToast(.postedStamp)
 
             shouldDismiss = true
         } catch {
-            dependency.logDriver.errorLog("\\(error)")
+            dependency.logDriver.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }

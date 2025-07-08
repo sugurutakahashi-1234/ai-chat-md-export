@@ -86,9 +86,9 @@ jobs:
 *2023/8/23 2:01:11*
 
 const gh = github.rest; と const context = github.context; は使わないで欲しい。
-${{secrets.GITHUB\_TOKEN}} は${{ secrets.PERSONAL\_ACCESS\_TOKEN }} を使って欲しい。
+${{secrets.GITHUB_TOKEN}} は${{ secrets.PERSONAL_ACCESS_TOKEN }} を使って欲しい。
 name: Move PR to "👀 In Review (Issue)" column は記述しなくていいよ
-    types: \[opened\] と書いて欲しい。
+    types: [opened] と書いて欲しい。
 
 ---
 
@@ -275,16 +275,16 @@ note のパラメータはrequireになっているんだけど。
 ## 🤖 アシスタント
 *2023/8/23 2:18:04*
 
-申し訳ございません、おっしゃるとおりです。`note` は通常必要ですが、`content\_id` と `content\_type` を指定する場合は必要ありません。
+申し訳ございません、おっしゃるとおりです。`note` は通常必要ですが、`content_id` と `content_type` を指定する場合は必要ありません。
 
 `createCard` のメソッドは以下の2つの方法でカードを作成することができます：
 
 1. `note` を指定してフリーテキストのカードを作成する。
-2. `content\_id` と `content\_type` を指定して、既存のIssueやPull Requestをカードとして追加する。
+2. `content_id` と `content_type` を指定して、既存のIssueやPull Requestをカードとして追加する。
 
 2番目の方法を使用しているので、`note` は必要ありません。
 
-したがって、現在のコードは正しいです。指定した `content\_id` と `content\_type` に基づいてPRをカードとして追加する際に、`note` は省略することができます。
+したがって、現在のコードは正しいです。指定した `content_id` と `content_type` に基づいてPRをカードとして追加する際に、`note` は省略することができます。
 
 ---
 
@@ -371,18 +371,18 @@ jobs:
     result-encoding: json
     retries: 0
     retry-exempt-status-codes: 400,401,403,404,422
-RequestError \[HttpError\]: Must have admin rights to Repository.
+RequestError [HttpError]: Must have admin rights to Repository.
 Error: Unhandled error: HttpError: Must have admin rights to Repository.
-    at /home/runner/work/\_actions/actions/github-script/v6/dist/index.js:6842:21
-    at processTicksAndRejections (node:internal/process/task\_queues:96:5)
-    at async getColumnId (eval at callAsyncFunction (/home/runner/work/\_actions/actions/github-script/v6/dist/index.js:15143:16), &lt;anonymous&gt;:7:19)
-    at async run (eval at callAsyncFunction (/home/runner/work/\_actions/actions/github-script/v6/dist/index.js:15143:16), &lt;anonymous&gt;:27:20) {
+    at /home/runner/work/_actions/actions/github-script/v6/dist/index.js:6842:21
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async getColumnId (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v6/dist/index.js:15143:16), &lt;anonymous&gt;:7:19)
+    at async run (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v6/dist/index.js:15143:16), &lt;anonymous&gt;:27:20) {
   status: 403,
   response: {
     url: 'https://api.github.com/projects/1/columns',
     status: 403,
     headers: {
-      'access-control-allow-origin': '\*',
+      'access-control-allow-origin': '*',
       'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset',
       connection: 'close',
       'content-encoding': 'gzip',
@@ -410,7 +410,7 @@ Error: Unhandled error: HttpError: Must have admin rights to Repository.
     },
     data: {
       message: 'Must have admin rights to Repository.',
-      documentation\_url: 'https://docs.github.com/rest/projects/columns#list-project-columns'
+      documentation_url: 'https://docs.github.com/rest/projects/columns#list-project-columns'
     }
   },
   request: {
@@ -419,9 +419,9 @@ Error: Unhandled error: HttpError: Must have admin rights to Repository.
     headers: {
       accept: 'application/vnd.github.v3+json',
       'user-agent': 'actions/github-script octokit-core.js/3.6.0 Node.js/16.20.1 (linux; x64)',
-      authorization: 'token \[REDACTED\]'
+      authorization: 'token [REDACTED]'
     },
-    request: { agent: \[Agent\], hook: \[Function: bound bound register\] }
+    request: { agent: [Agent], hook: [Function: bound bound register] }
   }
 }
 
@@ -434,11 +434,11 @@ Error: Unhandled error: HttpError: Must have admin rights to Repository.
 
 以下の手順を試してください：
 
-1. \*\*パーソナルアクセストークンの権限確認\*\*: GitHubにログインし、トークンの設定ページに移動します。このトークンは「repo」、「admin:org」、および「project」のすべての権限を持つ必要があります。これらの権限がない場合、トークンを編集して追加してください。
+1. **パーソナルアクセストークンの権限確認**: GitHubにログインし、トークンの設定ページに移動します。このトークンは「repo」、「admin:org」、および「project」のすべての権限を持つ必要があります。これらの権限がない場合、トークンを編集して追加してください。
 
-2. \*\*オーガニゼーションの設定確認\*\*: もしもこのプロジェクトがオーガニゼーションのものであるならば、該当のオーガニゼーションの設定でアクセス権を確認してください。トークンを生成したユーザーが該当のリポジトリやオーガニゼーションに十分な権限を持っているか確認してください。
+2. **オーガニゼーションの設定確認**: もしもこのプロジェクトがオーガニゼーションのものであるならば、該当のオーガニゼーションの設定でアクセス権を確認してください。トークンを生成したユーザーが該当のリポジトリやオーガニゼーションに十分な権限を持っているか確認してください。
 
-3. \*\*ワークフローのプロジェクトID確認\*\*: ワークフロー内の`projectId`が正しいか再確認してください。正しいプロジェクトIDであることを確認する必要があります。
+3. **ワークフローのプロジェクトID確認**: ワークフロー内の`projectId`が正しいか再確認してください。正しいプロジェクトIDであることを確認する必要があります。
 
 これらの手順を踏んで、トークンや設定が正しく、十分な権限を持っていることを確認してください。それでも問題が解決しない場合、さらなるトラブルシューティングが必要となる場合があります。
 
@@ -447,18 +447,18 @@ Error: Unhandled error: HttpError: Must have admin rights to Repository.
 ## 👤 ユーザー
 *2023/8/23 2:37:59*
 
-admin:repo\_hook やadmin:org\_hookにはどのような意味があるか？
+admin:repo_hook やadmin:org_hookにはどのような意味があるか？
 
 ---
 
 ## 🤖 アシスタント
 *2023/8/23 2:38:39*
 
-`admin:repo\_hook` と `admin:org\_hook` は、GitHubのパーソナルアクセストークンのスコープの一部として定義されている権限です。これらのスコープに関連する権限は、リポジトリや組織のWebフックの管理に関連しています。
+`admin:repo_hook` と `admin:org_hook` は、GitHubのパーソナルアクセストークンのスコープの一部として定義されている権限です。これらのスコープに関連する権限は、リポジトリや組織のWebフックの管理に関連しています。
 
 具体的には：
 
-1. \*\*admin:repo\_hook\*\*
+1. **admin:repo_hook**
     - このスコープは、個々のリポジトリに関連するフックの管理に使用されます。
     - ユーザーは次のことができます：
         - リポジトリフックの読み取り
@@ -466,7 +466,7 @@ admin:repo\_hook やadmin:org\_hookにはどのような意味があるか？
         - リポジトリフックの更新
         - リポジトリフックの削除
 
-2. \*\*admin:org\_hook\*\*
+2. **admin:org_hook**
     - このスコープは、GitHubの組織に関連するフックの管理に使用されます。
     - ユーザーは次のことができます：
         - 組織フックの読み取り
@@ -474,7 +474,7 @@ admin:repo\_hook やadmin:org\_hookにはどのような意味があるか？
         - 組織フックの更新
         - 組織フックの削除
 
-\*\*注意:\*\* 権限を付与する際には注意が必要です。特に `admin` スコープは、権限の範囲が広く、重要な操作ができるため、安全な管理と適切な使用が必要です。必要最小限のスコープのみを付与することを推奨します。
+**注意:** 権限を付与する際には注意が必要です。特に `admin` スコープは、権限の範囲が広く、重要な操作ができるため、安全な管理と適切な使用が必要です。必要最小限のスコープのみを付与することを推奨します。
 
 ---
 
@@ -490,14 +490,14 @@ Slackの通知ではどんな権限が必要は手案
 
 Slackに通知を送るためのGitHubのアクションやスクリプトに関しては、直接的にSlackのAPIトークンやWebhook URLを利用する場合が多いです。これは、GitHub側がSlackに直接通知を送るためのものです。したがって、GitHubの権限とSlackの権限は別々のものとして考える必要があります。
 
-1. \*\*GitHub側の権限\*\*:
-    - GitHub Actionsを利用する場合、アクションがリポジトリのデータにアクセスするためのトークン (`GITHUB\_TOKEN` またはカスタムのPAT) が必要です。
+1. **GitHub側の権限**:
+    - GitHub Actionsを利用する場合、アクションがリポジトリのデータにアクセスするためのトークン (`GITHUB_TOKEN` またはカスタムのPAT) が必要です。
     - ただし、Slackに通知を送るだけの場合、特定の権限は不要となります。ただし、特定のイベントの詳細を通知に含める場合、そのイベントに関連するデータへのアクセス権限が必要になることもあります。
 
-2. \*\*Slack側の権限\*\*:
-    - \*\*Incoming Webhooks\*\*: SlackのIncoming Webhookを使用する最もシンプルな方法では、特定のチャンネルにメッセージを送信するためのWebhook URLが必要です。このURLはSlackの設定で生成できます。
-    - \*\*Bot Token\*\*: Slack APIをより高度に使用する場合、Bot Tokenが必要となります。これには、メッセージを送信する権限やユーザーのリストを取得する権限など、様々な権限が付与されることがあります。トークンのスコープは、使用するAPIメソッドに応じて適切に設定する必要があります。
-    - \*\*OAuth Access Token\*\*: Slackアプリを使用して、特定のワークスペースに対してOAuth認証を行う場合、このトークンを使用します。これは、特定のユーザーアクションやワークスペースデータへのアクセスに関連するものです。
+2. **Slack側の権限**:
+    - **Incoming Webhooks**: SlackのIncoming Webhookを使用する最もシンプルな方法では、特定のチャンネルにメッセージを送信するためのWebhook URLが必要です。このURLはSlackの設定で生成できます。
+    - **Bot Token**: Slack APIをより高度に使用する場合、Bot Tokenが必要となります。これには、メッセージを送信する権限やユーザーのリストを取得する権限など、様々な権限が付与されることがあります。トークンのスコープは、使用するAPIメソッドに応じて適切に設定する必要があります。
+    - **OAuth Access Token**: Slackアプリを使用して、特定のワークスペースに対してOAuth認証を行う場合、このトークンを使用します。これは、特定のユーザーアクションやワークスペースデータへのアクセスに関連するものです。
 
 Slackに通知を送る場合、通常はSlackのIncoming Webhookを使用するのが最もシンプルで安全な方法です。これにより、特定のチャンネルに対してメッセージを送信することができます。高度な機能やカスタマイズが必要な場合は、Slack APIとBot Tokenを利用することになります。
 

@@ -10,17 +10,17 @@
 JSON5に書き直して
 
 {
-  "labels": \["dependencies"\],
-  "packageRules": \[
+  "labels": ["dependencies"],
+  "packageRules": [
     {
-      "matchPackagePatterns": \["eslint"\],
-      "labels": \["linting"\]
+      "matchPackagePatterns": ["eslint"],
+      "labels": ["linting"]
     },
     {
-      "matchDepTypes": \["optionalDependencies"\],
-      "addLabels": \["optional"\]
+      "matchDepTypes": ["optionalDependencies"],
+      "addLabels": ["optional"]
     }
-  \]
+  ]
 }
 
 ---
@@ -79,16 +79,16 @@ JSON5はJSONの柔軟な拡張として設計されていますが、2022年の�
 
 {
  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
- "extends": \[
+ "extends": [
   "config:base"
- \],
- "labels": \[
+ ],
+ "labels": [
   "renovate"
- \],
+ ],
  "enabled": true,
  "automerge": false,
  "branchPrefix": "feature/renovate/",
- "baseBranches": \["$default"\],
+ "baseBranches": ["$default"],
  "branchNameStrict": true,
  "prConcurrentLimit": 3,
  "dependencyDashboard": true

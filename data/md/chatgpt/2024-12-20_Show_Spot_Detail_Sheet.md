@@ -7,9 +7,9 @@
 ## 👤 ユーザー
 *2024/12/20 16:02:39*
 
-以下を\_showOurSpotDetailSheetとしてほしい。
+以下を_showOurSpotDetailSheetとしてほしい。
 
-void \_showSpotListSheet(BuildContext context, WidgetRef ref) {
+void _showSpotListSheet(BuildContext context, WidgetRef ref) {
     // sheet が立ち上がるタイミングで最初の画面にリセットしないと、sheet を表示したときに前回閉じた画面が表示される
     spotListRouter.go(Screen.spotList.path);
 
@@ -29,7 +29,7 @@ void \_showSpotListSheet(BuildContext context, WidgetRef ref) {
           ),
         );
       },
-    ).then((\_) {
+    ).then((_) {
       ref.read(showSpotListNotifierProvider.notifier).hide();
     });
   }

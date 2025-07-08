@@ -11,15 +11,15 @@
 他のapiリクエストごとにこの手の定義したいと思っていて、それらで使えるような関数名がいい
 
 import 'package:flutter/foundation.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:snpit\_guild\_app/lib/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guild\_api\_provider.dart';
+import 'package:snpit_guild_app/lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guild_api_provider.dart';
 
-part 'get\_guild\_info.g.dart';
+part 'get_guild_info.g.dart';
 
 @riverpod
-class GetGuildInfoNotifier extends \_$GetGuildInfoNotifier {
+class GetGuildInfoNotifier extends _$GetGuildInfoNotifier {
   @override
   Future&lt;GuildInfoResponseDtoData?&gt; build() async =&gt; null;
 

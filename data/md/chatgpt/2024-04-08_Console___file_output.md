@@ -7,14 +7,14 @@
 ## 👤 ユーザー
 *2024/4/8 17:23:03*
 
-output\_fileだけではなく、コンソールにも出力をだしたい。
+output_fileだけではなく、コンソールにも出力をだしたい。
 
-swift run --package-path $mint\_package\_path mint run periphery scan \\
-    --skip-build --index-store-path $index\_store\_path \\
-    --retain-swift-ui-previews \\
-    --retain-public \\
-    --targets "DomainLayer" "PresentationLayer" "DependencyInjectionLayer" "DeviceFramework" "FirebaseFramework" "LicenseFramework" \\
-    &gt; $output\_file
+swift run --package-path $mint_package_path mint run periphery scan \
+    --skip-build --index-store-path $index_store_path \
+    --retain-swift-ui-previews \
+    --retain-public \
+    --targets "DomainLayer" "PresentationLayer" "DependencyInjectionLayer" "DeviceFramework" "FirebaseFramework" "LicenseFramework" \
+    &gt; $output_file
 
 ---
 

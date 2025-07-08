@@ -70,9 +70,9 @@ classDiagram
 *2024/4/10 10:54:13*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-alFE2V2HOJTyqWteddf9oPrg",
-  "size\_bytes": 68307,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-alFE2V2HOJTyqWteddf9oPrg",
+  "size_bytes": 68307,
   "width": 522,
   "height": 679,
   "fovea": null,
@@ -102,9 +102,9 @@ OCR処理中にエラーが発生しました。環境に日本語の言語デ�
 *2024/4/10 10:55:51*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-AUqjBzTe2VT4ontKEeap7paf",
-  "size\_bytes": 252187,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-AUqjBzTe2VT4ontKEeap7paf",
+  "size_bytes": 252187,
   "width": 1290,
   "height": 1642,
   "fovea": null,

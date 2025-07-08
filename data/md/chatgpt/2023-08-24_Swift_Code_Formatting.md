@@ -16,15 +16,15 @@ Swiftで型宣言を省略させないようにするライブラリやフォー
 
 Swiftのコーディングスタイルや書式を強制したり、コードを自動で整形するためのツールはいくつか存在しますが、その中でも「SwiftLint」や「SwiftFormat」が特に人気です。これらのツールを使うことで、特定のコーディングスタイルをプロジェクト全体で強制することができます。
 
-1. \*\*SwiftLint\*\*:
+1. **SwiftLint**:
    - SwiftLintはSwiftの静的解析ツールであり、コードに対して一貫性のあるスタイルと標準を維持するのを助けるツールです。
    - ルールをカスタマイズして、例えば型宣言を省略させないようなルールを強制することもできます。
-   - 公式サイト: \[https://github.com/realm/SwiftLint\](https://github.com/realm/SwiftLint)
+   - 公式サイト: [https://github.com/realm/SwiftLint](https://github.com/realm/SwiftLint)
 
-2. \*\*SwiftFormat\*\*:
+2. **SwiftFormat**:
    - SwiftFormatはSwiftコードのフォーマッターであり、コードの書式を整えることが目的です。
    - SwiftLintと同様に、SwiftFormatもカスタマイズ可能なルールを持っており、これを利用して型宣言の省略を避けるような設定を行うことができます。
-   - 公式サイト: \[https://github.com/nicklockwood/SwiftFormat\](https://github.com/nicklockwood/SwiftFormat)
+   - 公式サイト: [https://github.com/nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
 
 これらのツールを使うことで、Swiftの型宣言を省略させない、あるいは他の特定のコーディング規則を強制することが可能です。設定ファイルを適切にカスタマイズすれば、所望の動作を得ることができるでしょう。
 

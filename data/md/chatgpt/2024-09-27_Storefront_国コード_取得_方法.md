@@ -161,7 +161,7 @@ func exampleUsage() {
 以下ってどういう意味
 
     /// The `Locale.Currency` used for the purchase.
-    @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, \*)
+    @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
     @backDeployed(before: iOS 17.2, macOS 14.2, tvOS 17.2, watchOS 10.2, visionOS 1.1)
 
 ---
@@ -225,7 +225,7 @@ struct SubscriptionTransaction: Identifiable {
     let isUpgraded: Bool
 
     // TODO: iOS 17 以降では StoreKit.Transaction から Storefront を直接取得が可能なので、SubscriptionTransaction で保持するようにしたい
-    // @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, \*)
+    // @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
     // let storeFront: StoreFront or
 }
 

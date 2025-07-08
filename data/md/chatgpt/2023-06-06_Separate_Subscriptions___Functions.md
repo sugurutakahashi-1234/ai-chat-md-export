@@ -29,7 +29,7 @@ final class BasePresenter: ObservableObject {
         shouldShowCalibration = !userDefaultsManager.isCalibrationDone
 
         authManager.authEventPublisher
-            .map(\\.isLoggedIn)
+            .map(\.isLoggedIn)
             .assign(to: &$isLoggedIn)
         
         userDefaultsManager.isOnboardingDonePublisher
@@ -82,7 +82,7 @@ final class BasePresenter: ObservableObject {
 以下のauthのpublisherのサブスクライブする処理とユーザーデフォルトのサブスクライブする処理の2つにわけたいんだ
 
 authManager.authEventPublisher
-            .map(\\.isLoggedIn)
+            .map(\.isLoggedIn)
             .assign(to: &$isLoggedIn)
         
         userDefaultsManager.isOnboardingDonePublisher
@@ -174,10 +174,10 @@ authManager.authEventPublisher
 
 "オンボーディング"と"チュートリアル"は、しばしば似た目的で使われますが、その用途や範囲には違いがあります。
 
-\*\*オンボーディング\*\*：
+**オンボーディング**：
 オンボーディングは、新規ユーザーがアプリケーションやサービスを理解し、使い始める手続き全体を指します。これは、アカウント作成、利用規約の同意、基本的な機能の概要の提示などを含むことがあります。オンボーディングの目的は、ユーザーが新しい環境になじむのを手助けし、問題なくアプリケーションやサービスを使用できるようにすることです。
 
-\*\*チュートリアル\*\*：
+**チュートリアル**：
 チュートリアルは、ユーザーがアプリケーションやサービスの具体的な機能や操作方法を学ぶのを助ける具体的な手順またはガイドを指します。チュートリアルは、一般的に特定のタスクの達成を目指して構成され、ユーザーがアプリケーションやサービスの特定の部分を理解し、使用する方法を示します。
 
 したがって、チュートリアルはオンボーディングの一部となることもあります。一方で、オンボーディングはユーザーがサービスを初めて使うときに一度だけ経験するものであるのに対し、チュートリアルは新たな機能が追加されたときなど、ユーザーがサービスを既に使い始めた後でも提供されることがあります。

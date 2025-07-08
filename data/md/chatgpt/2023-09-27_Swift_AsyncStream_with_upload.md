@@ -16,15 +16,15 @@ public func upload(key: String, localUrl: URL) async throws -&gt; AsyncStream&lt
 
             Task {
                 for await progress in await uploadTask.progress {
-                    LoggerContainer.debugLog("Upload progress: \\(progress.fractionCompleted \* 100)%")
+                    LoggerContainer.debugLog("Upload progress: \(progress.fractionCompleted * 100)%")
                 }
             }
 
             let result = try await uploadTask.value
             LoggerContainer.log(.endUpload(.init(key: key, result: result)))
-            LoggerContainer.debugLog("Completed: \\(result)")
+            LoggerContainer.debugLog("Completed: \(result)")
         } catch {
-            LoggerContainer.logError("Failed to upload data: \\(error)")
+            LoggerContainer.logError("Failed to upload data: \(error)")
             throw error
         }
     }

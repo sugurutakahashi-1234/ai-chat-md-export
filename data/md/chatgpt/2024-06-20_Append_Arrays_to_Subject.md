@@ -367,8 +367,8 @@ for i in 5...25 {
 
 以下で貯める数を変数で定義したい。
 
-.scan(\[Int\]()) { (accumulated, newValue) in
-        (accumulated + \[newValue\]).suffix(20)
+.scan([Int]()) { (accumulated, newValue) in
+        (accumulated + [newValue]).suffix(20)
     }
 
 ---

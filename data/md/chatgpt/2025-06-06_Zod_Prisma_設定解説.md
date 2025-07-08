@@ -33,7 +33,7 @@ generator zod {
 ## 🤖 アシスタント
 *2025/6/6 17:34:59*
 
-以下では `zod-prisma-types` の主な設定項目を \*\*true / false\*\* で切り替えたときに何が生成され、型安全性や運用面でどんなメリット・デメリットがあるかを整理しました。  
+以下では `zod-prisma-types` の主な設定項目を **true / false** で切り替えたときに何が生成され、型安全性や運用面でどんなメリット・デメリットがあるかを整理しました。  
 （バージョン 3.2.4 README を基に 2025-06-06 時点の情報を引用しています）citeturn1view0
 
 ---
@@ -42,11 +42,11 @@ generator zod {
 
 | オプション | `true` の挙動 | 主なメリット | 主なデメリット |
 |-----------|---------------|-------------|---------------|
-| \*\*useMultipleFiles\*\* | モデル・Input・Enum などをモデル単位の複数ファイルへ分割し、ルートに barrel file を生成 | TS のインクリメンタルビルドが速くなる／変更差分を把握しやすい | import パスが深くなり VS Code の “Find in file” で断片化しがち；barrel を嫌う場合は \*writeBarrelFiles=false\* が追加で必要 citeturn1view0 |
-| \*\*writeBarrelFiles\*\* | サブフォルダごとに `index.ts` を自動生成 | `import { … } from "@/generated/zod"` でまとめ取り出来る | ファイル数×barrel で多数の（実質空）ファイルが増え TS パースが遅くなる場合あり citeturn1view0 |
+| **useMultipleFiles** | モデル・Input・Enum などをモデル単位の複数ファイルへ分割し、ルートに barrel file を生成 | TS のインクリメンタルビルドが速くなる／変更差分を把握しやすい | import パスが深くなり VS Code の “Find in file” で断片化しがち；barrel を嫌う場合は *writeBarrelFiles=false* が追加で必要 citeturn1view0 |
+| **writeBarrelFiles** | サブフォルダごとに `index.ts` を自動生成 | `import { … } from "@/generated/zod"` でまとめ取り出来る | ファイル数×barrel で多数の（実質空）ファイルが増え TS パースが遅くなる場合あり citeturn1view0 |
 
 ### OpenAPI 用 tip  
-OpenAPI-TS／TRPC などで \*tree-shaking\* を効かせるなら `useMultipleFiles=true` ＋ `writeBarrelFiles=false` がビルド時間とバンドルサイズのバランスが取りやすいです。
+OpenAPI-TS／TRPC などで *tree-shaking* を効かせるなら `useMultipleFiles=true` ＋ `writeBarrelFiles=false` がビルド時間とバンドルサイズのバランスが取りやすいです。
 
 ---
 
@@ -54,10 +54,10 @@ OpenAPI-TS／TRPC などで \*tree-shaking\* を効かせるなら `useMultipleF
 
 | オプション | `true` の挙動 | 向いているケース | デメリット・注意 |
 |-----------|---------------|----------------|-----------------|
-| \*\*createInputTypes\*\* | `UserCreateInputSchema` や `UserWhereUniqueInputSchema` 等、Prisma の \*inputTypes\* 系をすべて生成 | API サーバー層で \*\*入力\*\* バリデーションを Zod で完全に置き換えたい場合 | 生成行数が 5〜10 倍に増える；IDE が重くなる citeturn1view0 |
-| \*\*createModelTypes\*\* | `UserSchema` など \*\*モデル\*\* スキーマを生成 | 取得結果をフロント／BFF 側でも Zod でパースしたい | RDB の null/既定値差分と二重管理になる場合あり citeturn1view0 |
-| \*\*addInputTypeValidation\*\* | ↑で生成した Input にも Field コメントのカスタム validator を適用 | フロント → API → DB まで一気通貫で同一制約を担保 | コメントに大量 validator を書くと再生成が遅くなる；Input でだけ緩めたい場合は \*false\* 推奨 citeturn1view0 |
-| \*\*addIncludeType / addSelectType\*\* | `Prisma.user.findMany({ include… })` / `{ select… }` 用 arg スキーマを追加 | TRPC の args レイヤを完全型安全にしたい時 | OpenAPI では不要なので \*false\* で OK（コード量削減） citeturn1view0 |
+| **createInputTypes** | `UserCreateInputSchema` や `UserWhereUniqueInputSchema` 等、Prisma の *inputTypes* 系をすべて生成 | API サーバー層で **入力** バリデーションを Zod で完全に置き換えたい場合 | 生成行数が 5〜10 倍に増える；IDE が重くなる citeturn1view0 |
+| **createModelTypes** | `UserSchema` など **モデル** スキーマを生成 | 取得結果をフロント／BFF 側でも Zod でパースしたい | RDB の null/既定値差分と二重管理になる場合あり citeturn1view0 |
+| **addInputTypeValidation** | ↑で生成した Input にも Field コメントのカスタム validator を適用 | フロント → API → DB まで一気通貫で同一制約を担保 | コメントに大量 validator を書くと再生成が遅くなる；Input でだけ緩めたい場合は *false* 推奨 citeturn1view0 |
+| **addIncludeType / addSelectType** | `Prisma.user.findMany({ include… })` / `{ select… }` 用 arg スキーマを追加 | TRPC の args レイヤを完全型安全にしたい時 | OpenAPI では不要なので *false* で OK（コード量削減） citeturn1view0 |
 
 ---
 
@@ -65,28 +65,28 @@ OpenAPI-TS／TRPC などで \*tree-shaking\* を効かせるなら `useMultipleF
 
 | オプション | true/false の違い | ポイント |
 |-----------|------------------|---------|
-| \*\*useDecimalJs\*\* | \*true\* で `decimal.js` を依存に取り、`Decimal` 型を `decimal.js` インスタンスで検証する。\*false\*（既定）なら Prisma 付属の `Prisma.Decimal` のみで検証 | `decimal.js` を全層で使う既存コードがあれば \*true\*。純粋に Prisma だけなら \*false\* の方が依存が減り軽量 （README v3.x では “decimal.js は未サポート、Prisma 標準のみ” へ仕様変更）citeturn7view0 |
-| \*\*imports\*\* | v2 までは generator オプションだったが v3 から \*フィールド／モデルのリッチコメント\* で `/// @zod.import(\[...\])` 指定に統合 | 既存リポジトリ移行時は generator 側設定を削除してコメント形式へ寄せる必要あり citeturn7view0 |
-| \*\*prismaJsonNullability\*\* | v2 のオプションは廃止。v3 では JSON Null の扱いを内部で自動変換（`"DbNull" | "JsonNull"` → `Prisma.DbNull | Prisma.JsonNull`） | 旧オプションを残すと警告が出るので削除推奨；nullable JSON を OpenAPI に流す場合はこの挙動を把握しておく citeturn7view0 |
+| **useDecimalJs** | *true* で `decimal.js` を依存に取り、`Decimal` 型を `decimal.js` インスタンスで検証する。*false*（既定）なら Prisma 付属の `Prisma.Decimal` のみで検証 | `decimal.js` を全層で使う既存コードがあれば *true*。純粋に Prisma だけなら *false* の方が依存が減り軽量 （README v3.x では “decimal.js は未サポート、Prisma 標準のみ” へ仕様変更）citeturn7view0 |
+| **imports** | v2 までは generator オプションだったが v3 から *フィールド／モデルのリッチコメント* で `/// @zod.import([...])` 指定に統合 | 既存リポジトリ移行時は generator 側設定を削除してコメント形式へ寄せる必要あり citeturn7view0 |
+| **prismaJsonNullability** | v2 のオプションは廃止。v3 では JSON Null の扱いを内部で自動変換（`"DbNull" | "JsonNull"` → `Prisma.DbNull | Prisma.JsonNull`） | 旧オプションを残すと警告が出るので削除推奨；nullable JSON を OpenAPI に流す場合はこの挙動を把握しておく citeturn7view0 |
 
 ---
 
 ## 4. 型安全性と Prisma 設定の両立 Tips
 
-1. \*\*Prisma スキーマをソースオブトゥルースに\*\*  
+1. **Prisma スキーマをソースオブトゥルースに**  
    - Prisma 側で nullable / @default を正確に記述し、`createOptionalDefaultValuesTypes=true` を併用すると「DB で default なので API では optional」という型が自動生成されます。  
-2. \*\*Decimal 列は `sql.Decimal` 互換のまま使う\*\*  
+2. **Decimal 列は `sql.Decimal` 互換のまま使う**  
    - 金額計算を JavaScript 側でする必要が無いなら `useDecimalJs=false` でシンプルに保つ。  
-3. \*\*OpenAPI 生成チェーンとの統合\*\*  
+3. **OpenAPI 生成チェーンとの統合**  
    - `zod-prisma-types` → `@hey-api/openapi-ts` の自動変換を行う場合、InputTypes を生成し (`createInputTypes=true`) `addInputTypeValidation=true` のままにすると、Zod で一度 parse した値をそのまま OpenAPI リクエスト型へ流用でき、ランタイム検証を二重に書かずに済みます。  
 
 ---
 
 ### まとめ
 
-- \*\*OpenAPI だけが目的\*\* → `createInputTypes=true`, `createModelTypes=false`, `addIncludeType=false`, `addSelectType=false`, `useMultipleFiles=true` が最小かつ管理しやすい組み合わせ。  
-- \*\*バックエンドでも Zod で厳密検証\*\* → `createModelTypes=true` も有効化し、`addInputTypeValidation` を活かす。  
-- \*\*Decimal を厳密に扱う\*\* 必要が出てきたら `decimal.js` + `useDecimalJs=true` への切り替えを検討。ただし v3 系は公式に非推奨なので注意。  
+- **OpenAPI だけが目的** → `createInputTypes=true`, `createModelTypes=false`, `addIncludeType=false`, `addSelectType=false`, `useMultipleFiles=true` が最小かつ管理しやすい組み合わせ。  
+- **バックエンドでも Zod で厳密検証** → `createModelTypes=true` も有効化し、`addInputTypeValidation` を活かす。  
+- **Decimal を厳密に扱う** 必要が出てきたら `decimal.js` + `useDecimalJs=true` への切り替えを検討。ただし v3 系は公式に非推奨なので注意。  
 
 疑問点があればモデル定義例と併せてお知らせください。
 
@@ -830,7 +830,7 @@ database/
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./generated/\*": "./generated/\*"   // ⚠ raw client を晒したくないなら消す
+    "./generated/*": "./generated/*"   // ⚠ raw client を晒したくないなら消す
   },
   "scripts": {
     "prisma:generate": "prisma generate",

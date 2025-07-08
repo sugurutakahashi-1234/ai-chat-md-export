@@ -208,7 +208,7 @@ struct TogglePreviewView_Previews: PreviewProvider {
 ## 👤 ユーザー
 *2024/5/9 15:53:11*
 
-違うそれをTogglePreviewView\_Previews内で実装してほしいんだ
+違うそれをTogglePreviewView_Previews内で実装してほしいんだ
 
 ---
 

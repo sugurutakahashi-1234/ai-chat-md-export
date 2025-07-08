@@ -16,7 +16,7 @@ npx @veyrax/mcp-cli install figmaapi-4c499d99-a297 vrx-1efbff4094f9d8d402bb151ea
 ## 👤 ユーザー
 *2025/5/12 14:33:00*
 
-VeyraXのtool\_callでFigmaを参照して欲しい
+VeyraXのtool_callでFigmaを参照して欲しい
 
 ---
 
@@ -50,23 +50,23 @@ Figmaファイルを参照するためには、まずファイルキーが必要
 ## 👤 ユーザー
 *2025/5/12 14:33:39*
 
-figma\_get\_images
+figma_get_images
 
 ---
 
 ## 🤖 アシスタント
 *2025/5/12 14:33:56*
 
-Figmaのイメージを取得するために、`figma\_get\_images`メソッドを使用したいですね。このメソッドを使用するには、ファイルキー(fileKey)とノードID(ids)の両方が必要です。
+Figmaのイメージを取得するために、`figma_get_images`メソッドを使用したいですね。このメソッドを使用するには、ファイルキー(fileKey)とノードID(ids)の両方が必要です。
 
 FigmaファイルのファイルキーとノードIDを教えていただけますか？
 
 ファイルキーは通常、Figma URLの一部で次のような形式です:
 `https://www.figma.com/file/XXXXX/...` (XXXXXの部分がファイルキー)
 
-ノードIDは特定の要素を指定するためのもので、カンマ区切りのリストとして指定します。通常、ノードIDは元のFigmaファイル内で選択した要素のプロパティパネルで確認できるか、Figma APIを使用している場合は`figma\_get\_file`などで事前に取得することができます。
+ノードIDは特定の要素を指定するためのもので、カンマ区切りのリストとして指定します。通常、ノードIDは元のFigmaファイル内で選択した要素のプロパティパネルで確認できるか、Figma APIを使用している場合は`figma_get_file`などで事前に取得することができます。
 
-これらの情報をお持ちでしたら、`tool\_call`を使って`figma\_get\_images`を実行できます。また、画像のスケールや形式（jpg、png、svg、pdf）なども指定できます。
+これらの情報をお持ちでしたら、`tool_call`を使って`figma_get_images`を実行できます。また、画像のスケールや形式（jpg、png、svg、pdf）なども指定できます。
 
 ---
 
@@ -126,7 +126,7 @@ Figmaデータの取得に成功しました。以下が取得したデータの
 ## 👤 ユーザー
 *2025/5/12 14:35:16*
 
-download\_figma\_images
+download_figma_images
 
 ---
 
@@ -188,7 +188,7 @@ This block is not supported on your current device yet.
 ## 👤 ユーザー
 *2025/5/12 14:37:25*
 
-tool\_call でできることの一覧を教えて欲しい
+tool_call でできることの一覧を教えて欲しい
 
 ---
 
@@ -349,9 +349,9 @@ npx @veyrax/mcp-cli install figmaapi-4c499d99-a297 vrx-1efbff4094f9d8d402bb151ea
 
 設定は以下の通りである
 
-"Framelink Figma MCP": {       "command": "npx",       "args": \[         "-y",         "figma-developer-mcp",         "--figma-api-key=figd\_zwaPN5Uozjg9XxrJMXCRmOdkXbZ7OoHawuBhXxV4",         "--stdio"       \]     },
+"Framelink Figma MCP": {       "command": "npx",       "args": [         "-y",         "figma-developer-mcp",         "--figma-api-key=figd_zwaPN5Uozjg9XxrJMXCRmOdkXbZ7OoHawuBhXxV4",         "--stdio"       ]     },
 
- "veyrax-mcp": {       "command": "npx",       "args": \[         "-y",         "@smithery/cli@latest",         "run",         "@VeyraX/veyrax-mcp",         "--key",         "4717771e-3f9a-4810-8677-3de61ed626b4",         "--config",         "\\"{\\\\\\"VEYRAX\_API\_KEY\\\\\\":\\\\\\"vrx-1efbff4094f9d8d402bb151eab4844276daa4486\\\\\\"}\\""       \]     },     "veyrax-figmaapi": {       "command": "npx",       "args": \[         "-y",         "@veyrax/mcp-cli",         "deploy",         "--sse",         "https://figmaapi-4c499d99-a297.mcp.veyraxapp.com/sse",         "--header",         "VEYRAX\_API\_KEY:vrx-1efbff4094f9d8d402bb151eab4844276daa4486"       \]     }
+ "veyrax-mcp": {       "command": "npx",       "args": [         "-y",         "@smithery/cli@latest",         "run",         "@VeyraX/veyrax-mcp",         "--key",         "4717771e-3f9a-4810-8677-3de61ed626b4",         "--config",         "\"{\\\"VEYRAX_API_KEY\\\":\\\"vrx-1efbff4094f9d8d402bb151eab4844276daa4486\\\"}\""       ]     },     "veyrax-figmaapi": {       "command": "npx",       "args": [         "-y",         "@veyrax/mcp-cli",         "deploy",         "--sse",         "https://figmaapi-4c499d99-a297.mcp.veyraxapp.com/sse",         "--header",         "VEYRAX_API_KEY:vrx-1efbff4094f9d8d402bb151eab4844276daa4486"       ]     }
 
 ---
 

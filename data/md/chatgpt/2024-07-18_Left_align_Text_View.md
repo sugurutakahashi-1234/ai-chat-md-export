@@ -15,7 +15,7 @@ public struct LicenseDetailView&lt;Dependency: RootDIContainerDependency&gt;: Vi
 
     public init(dependency: Dependency, license: License) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: LicenseDetailPresenter(dependency: dependency, license: license))
+        _presenter = .init(wrappedValue: LicenseDetailPresenter(dependency: dependency, license: license))
     }
 
     public var body: some View {

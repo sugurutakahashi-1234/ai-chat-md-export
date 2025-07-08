@@ -8,10 +8,10 @@
 *2024/12/24 14:06:16*
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
 
 class GuildCodePage extends HookConsumerWidget {
   const GuildCodePage({super.key});
@@ -22,12 +22,12 @@ class GuildCodePage extends HookConsumerWidget {
 
     useEffect(
       () {
-        WidgetsBinding.instance.addPostFrameCallback((\_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           FocusScope.of(context).requestFocus(focusNode);
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -39,7 +39,7 @@ class GuildCodePage extends HookConsumerWidget {
       body: Padding(
         padding: const EdgeInsets.all(40),
         child: Column(
-          children: \[
+          children: [
             const SizedBox(height: 8),
             const Text(
               'Enter guild code',
@@ -63,7 +63,7 @@ class GuildCodePage extends HookConsumerWidget {
                 'Next',
               ),
             ),
-          \],
+          ],
         ),
       ),
     );
@@ -78,19 +78,19 @@ class GuildCodePage extends HookConsumerWidget {
 Your implementation of the `GuildCodePage` is clean and well-structured. Here's a quick review and some potential improvements or considerations:
 
 ### Feedback and Suggestions:
-1. \*\*Focus Management:\*\*
+1. **Focus Management:**
    - You are correctly using `useFocusNode` and ensuring the `focusNode` is focused after the widget builds. This is a good practice for user-friendly UX.
 
-2. \*\*Validation for the Guild Code:\*\*
+2. **Validation for the Guild Code:**
    - You might want to include basic validation for the text input, such as checking if the guild code is not empty or meets specific requirements (e.g., length, format).
    - You can use a `TextEditingController` to retrieve and validate the input.
 
-3. \*\*Error Handling:\*\*
+3. **Error Handling:**
    - Adding a mechanism to show an error message if the entered code is invalid (e.g., a `Text` widget below the `TextField` that displays an error).
 
-4. \*\*Accessibility:\*\*
+4. **Accessibility:**
    - Ensure the `TextField` has a descriptive `decoration` with a `labelText` or `hintText` to help users understand the purpose of the input field.
 
-5. \*\*
+5. **
 
 ---

@@ -17,15 +17,15 @@ Renovate PR 作成しない設定
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
     // 基本設定を拡張
-    "extends": \[
+    "extends": [
         "config:recommended"
-    \],
+    ],
 
     // タイムゾーンの設定
     "timezone": "Asia/Tokyo",
 
     // PRに自動で付けられるラベル
-    "labels": \[\],
+    "labels": [],
 
     // Renovate botを活性化
     "enabled": true,
@@ -34,14 +34,14 @@ Renovate PR 作成しない設定
     "automerge": false,
 
     // PR のタイトルと commit message の Prefix
-    "commitMessageAction": "\[Renovate\]",
+    "commitMessageAction": "[Renovate]",
 
     // Xcode Cloud の CI の無効化
-    "commitMessageSuffix": "\[ci skip\]",
+    "commitMessageSuffix": "[ci skip]",
 
     // スケジューリング
     // ref: https://docs.renovatebot.com/configuration-options/#schedule
-    "schedule": \["after 10am and before 5pm every weekday"\],
+    "schedule": ["after 10am and before 5pm every weekday"],
 
     // 1時間あたりに作成されるPR数を無制限にする（0は無制限を表す）
     "prHourlyLimit": 0,
@@ -53,7 +53,7 @@ Renovate PR 作成しない設定
     "branchPrefix": "feature/renovate-",
 
     // 使用する基本ブランチ
-    "baseBranches": \["$default"\],
+    "baseBranches": ["$default"],
 
     // ブランチ名に厳格な規則を適用
     "branchNameStrict": true,
@@ -65,10 +65,10 @@ Renovate PR 作成しない設定
     "dependencyDashboard": true,
 
     // "Dependency Dashboard" issue のタイトル
-    "dependencyDashboardTitle": "\[Renovate\] ライブラリのバージョンアップ状況の管理",
+    "dependencyDashboardTitle": "[Renovate] ライブラリのバージョンアップ状況の管理",
 
     // Dependency Dashboard に自動で付けられるラベル
-    "dependencyDashboardLabels": \[\],
+    "dependencyDashboardLabels": [],
 
     // DraftのPRで作成
     "draftPR": true,
@@ -135,7 +135,7 @@ type	string
 allowedValues	immediate, not-pending, status-success, approval
 default	"immediate"
 cli	--pr-creation
-env	RENOVATE\_PR\_CREATION
+env	RENOVATE_PR_CREATION
 This setting tells Renovate when to create PRs:
 
 immediate (default): Renovate creates PRs immediately after creating the corresponding branch
@@ -155,7 +155,7 @@ When prCreation is set to approval, Renovate creates the PR only when approved v
 ## 🤖 アシスタント
 *2024/10/23 13:02:03*
 
-\*\*prCreation¶\*\*  
+**prCreation¶**  
 ブランチに対してPRを作成するタイミングを設定します。
 
 | 名前        | 値           |
@@ -164,22 +164,22 @@ When prCreation is set to approval, Renovate creates the PR only when approved v
 | allowedValues | immediate, not-pending, status-success, approval |
 | default     | "immediate"  |
 | cli         | --pr-creation|
-| env         | RENOVATE\_PR\_CREATION|
+| env         | RENOVATE_PR_CREATION|
 
 この設定は、RenovateがPRを作成するタイミングを指定します：
 
-- \*\*immediate (デフォルト):\*\* Renovateは対応するブランチを作成した直後にPRを作成します。
-- \*\*not-pending:\*\* ステータスチェックが完了する（成功または失敗）まで待ってからPRを作成します。
-- \*\*status-success:\*\* テストが成功した場合にのみPRを作成します。
-- \*\*approval:\*\* 更新のためのブランチはすぐに作成しますが、Dependency Dashboardの承認を得てからPRを作成します。
+- **immediate (デフォルト):** Renovateは対応するブランチを作成した直後にPRを作成します。
+- **not-pending:** ステータスチェックが完了する（成功または失敗）まで待ってからPRを作成します。
+- **status-success:** テストが成功した場合にのみPRを作成します。
+- **approval:** 更新のためのブランチはすぐに作成しますが、Dependency Dashboardの承認を得てからPRを作成します。
 
-- \*\*immediate\*\* に設定されている場合、新しい更新が利用可能になるとすぐにPull Requestが作成され、関連する通知も送信されます。PRをマージするかどうかを決定する前に、チェックの完了を待つ必要があります。
+- **immediate** に設定されている場合、新しい更新が利用可能になるとすぐにPull Requestが作成され、関連する通知も送信されます。PRをマージするかどうかを決定する前に、チェックの完了を待つ必要があります。
 
-- \*\*not-pending\*\* に設定されている場合、Renovateは全てのテストが成功または失敗するまでPRを作成しません。PRの通知を受け取ると、すぐにアクションを起こすことができ、完全なテスト結果が確認できます。関連するチェックがない場合、コミットの作成から24時間経過後にPRを作成します。
+- **not-pending** に設定されている場合、Renovateは全てのテストが成功または失敗するまでPRを作成しません。PRの通知を受け取ると、すぐにアクションを起こすことができ、完全なテスト結果が確認できます。関連するチェックがない場合、コミットの作成から24時間経過後にPRを作成します。
 
-- \*\*status-success\*\* に設定されている場合、全てのテストが成功した場合にのみPRを作成します。テストが失敗してPRが作成されない場合は、Dependency Dashboardから対応するPRを選択し、ブランチに修正をプッシュします。
+- **status-success** に設定されている場合、全てのテストが成功した場合にのみPRを作成します。テストが失敗してPRが作成されない場合は、Dependency Dashboardから対応するPRを選択し、ブランチに修正をプッシュします。
 
-- \*\*approval\*\* に設定されている場合、Dependency Dashboardで承認された後にのみPRを作成しますが、ブランチ自体は即座に作成されます。
+- **approval** に設定されている場合、Dependency Dashboardで承認された後にのみPRを作成しますが、ブランチ自体は即座に作成されます。
 
 ---
 
@@ -227,7 +227,7 @@ not-pending はどういうこと？
 
 `prCreation: "not-pending"`は、RenovateがPRを作成するタイミングを制御する設定で、以下のような動作になります：
 
-- \*\*「not-pending」\*\*に設定した場合、Renovateはステータスチェックが完了するまで待ってからPRを作成します。  
+- **「not-pending」**に設定した場合、Renovateはステータスチェックが完了するまで待ってからPRを作成します。  
   - ステータスチェックとは、CI（継続的インテグレーション）ツールやその他の検証プロセスが実行されることを指し、通常、テストの成功または失敗を含みます。
   - この設定では、ブランチはすぐに作成されますが、PRはその後に作成されます。具体的には、すべてのテストが完了（成功または失敗）するまでPRの作成が保留されます。
 

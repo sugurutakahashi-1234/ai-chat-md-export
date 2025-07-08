@@ -186,16 +186,16 @@ formatNumber は何を行なっているのか？
 
 `formatNumber`関数は、ユーザーが入力フィールドに入力した生の電話番号を解析し、国際的な電話番号フォーマットに整形するプロセスを実行しています。以下は、この関数が行っている具体的なステップです：
 
-1. \*\*解析（Parsing）\*\*: 
+1. **解析（Parsing）**: 
     - `phoneNumberKit.parse`メソッドを使用して、入力された生の電話番号文字列（`phoneNumber`）を解析します。このメソッドは、電話番号を`PhoneNumber`オブジェクトに変換しようと試みます。
     - 解析は、指定された国のコンテキスト（`withRegion`に渡される`selectedCountryCode`）で行われ、これが電話番号のフォーマットと解析の方法に影響を与えます。
     - `ignoreType: true`は、電話番号の種類（固定電話、モバイルなど）を無視して解析を行うことを指示します。これは、入力された番号がどの種類であっても解析を試みることを意味します。
 
-2. \*\*フォーマット（Formatting）\*\*:
+2. **フォーマット（Formatting）**:
     - 解析に成功した場合（エラーが投げられなかった場合）、`phoneNumberKit.format`メソッドを使用して、解析された`PhoneNumber`オブジェクトを特定のフォーマットに変換します。
     - この例では、`.international`フォーマットが使用されています。これは、国際的なE.164標準に準拠した番号表記を生成するためのもので、国コードと国際的に認識される形式が含まれます。
 
-3. \*\*エラーハンドリング（Error Handling）\*\*:
+3. **エラーハンドリング（Error Handling）**:
     - 解析プロセス中に何らかの問題が発生した場合（例えば、入力が実際の電話番号として認識できない場合）、`catch`ブロックがエラーを捕捉します。
     - この例では、エラーが発生すると、`formattedNumber`は"Invalid number"という文字列に設定され、これがユーザーに表示されます。
 
@@ -217,16 +217,16 @@ formatNumber は何を行なっているのか？
 
 `PhoneNumberKit`の解析機能は、これらの規則を理解しており、適切なフォーマットに自動的に調整します。具体的には、以下のプロセスが行われます:
 
-1. \*\*解析（Parsing）\*\*:
+1. **解析（Parsing）**:
    - ユーザーが電話番号を入力すると、`PhoneNumberKit`はこの番号を解析し、有効な電話番号オブジェクトに変換しようと試みます。
    - このプロセスの一環として、ライブラリは入力された番号が国内フォーマット（例: 先頭に`0`が付いている）を使用しているか、または国際フォーマットを使用しているかを判断します。
    - 解析は、指定された国コード（このケースでは"JP"など）に基づいて行われ、国内のダイヤリング規則に従って適切な変換が適用されます。
 
-2. \*\*国内フォーマットの調整\*\*:
+2. **国内フォーマットの調整**:
    - もし電話番号が国内フォーマットで入力されている場合（つまり、先頭に`0`が付いているなど）、`PhoneNumberKit`はこの`0`を自動的に削除し、国際的なフォーマットに変換する際に国コード（`+81`）を追加します。
    - この変換は、国際的な通信標準に従って自動的に行われるため、開発者が明示的に処理を記述する必要はありません。
 
-3. \*\*フォーマット（Formatting）\*\*:
+3. **フォーマット（Formatting）**:
    - 解析された電話番号は、その後特定のフォーマット（このケースでは国際フォーマット）に変換されます。
    - これにより、最終的に得られる番号は国際的なダイヤリングに適した形式（`+81`などの国コードで始まる）で表されます。
 
@@ -242,7 +242,7 @@ formatNumber は何を行なっているのか？
 import PhoneNumberKit
 
 public protocol PhoneNumberDriverProtocol: AnyObject {
-    var allCountries: \[Country\] { get throws }
+    var allCountries: [Country] { get throws }
 }
 
 public final class PhoneNumberDriver: PhoneNumberDriverProtocol {
@@ -250,7 +250,7 @@ public final class PhoneNumberDriver: PhoneNumberDriverProtocol {
     
     public init() {}
     
-    public var allCountries: \[Country\] {
+    public var allCountries: [Country] {
         get throws {
             phoneNumberKit.allCountries().tryMap { countryNmae in
                 guard let countryCode = phoneNumberKit.countryCode(for: countryNmae) else {
@@ -268,11 +268,11 @@ public struct Country: Identifiable {
     public let code: Int
     
     public var id: String {
-        "\\(code)"
+        "\(code)"
     }
     
     public var codeWithPlus: String {
-        "+\\(code)"
+        "+\(code)"
     }
     
     public init(name: String, code: Int) {
@@ -353,11 +353,11 @@ public struct Country: Identifiable {
     public let code: Int
     
     public var id: String {
-        "\\(code)"
+        "\(code)"
     }
     
     public var codeWithPlus: String {
-        "+\\(code)"
+        "+\(code)"
     }
 
     public init(name: String, code: Int) {

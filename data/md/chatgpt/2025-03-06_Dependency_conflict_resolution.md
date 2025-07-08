@@ -7,24 +7,24 @@
 ## 👤 ユーザー
 *2025/3/6 13:23:21*
 
-~/git/gallusys/snpit\_guild\_app  ‹feature/315\*› $ make get                                                                 2 ↵
-/Applications/Xcode\_16.3\_beta\_1.app/Contents/Developer/usr/bin/make clean
+~/git/gallusys/snpit_guild_app  ‹feature/315*› $ make get                                                                 2 ↵
+/Applications/Xcode_16.3_beta_1.app/Contents/Developer/usr/bin/make clean
 fvm flutter clean
 Cleaning Xcode workspace...                                         3.8s
 fvm flutter pub get
 Resolving dependencies... 
-Because no versions of openapi\_generator match &gt;6.1.0 &lt;7.0.0 and openapi\_generator 6.1.0 depends on analyzer &gt;=2.0.0 &lt;7.0.0,
-  openapi\_generator ^6.1.0 requires analyzer &gt;=2.0.0 &lt;7.0.0.
-And because riverpod\_generator &gt;=2.6.4 &lt;3.0.0-dev.2 depends on analyzer ^7.0.0, openapi\_generator ^6.1.0 is incompatible
-  with riverpod\_generator &gt;=2.6.4 &lt;3.0.0-dev.2.
-So, because snpit\_guild\_app depends on both riverpod\_generator ^2.6.4 and openapi\_generator ^6.1.0, version solving failed.
+Because no versions of openapi_generator match &gt;6.1.0 &lt;7.0.0 and openapi_generator 6.1.0 depends on analyzer &gt;=2.0.0 &lt;7.0.0,
+  openapi_generator ^6.1.0 requires analyzer &gt;=2.0.0 &lt;7.0.0.
+And because riverpod_generator &gt;=2.6.4 &lt;3.0.0-dev.2 depends on analyzer ^7.0.0, openapi_generator ^6.1.0 is incompatible
+  with riverpod_generator &gt;=2.6.4 &lt;3.0.0-dev.2.
+So, because snpit_guild_app depends on both riverpod_generator ^2.6.4 and openapi_generator ^6.1.0, version solving failed.
 Failed to update packages.
-make: \*\*\* \[get\] Error 1
+make: *** [get] Error 1
 
-name: snpit\_guild\_app
+name: snpit_guild_app
 description: "A new Flutter project."
 
-publish\_to: 'none'
+publish_to: 'none'
 
 # 個人の開発 PC でビルドした場合に反映されるバージョン
 version: 0.1.10+1
@@ -37,118 +37,118 @@ dependencies:
   flutter:
     sdk: flutter
   # slang
-  flutter\_localizations:
+  flutter_localizations:
     sdk: flutter
-  cupertino\_icons:
+  cupertino_icons:
 
   # Language
   slang: ^4.4.1
-  slang\_flutter: ^4.4.0
+  slang_flutter: ^4.4.0
 
   # Router
-  go\_router: ^14.8.0
+  go_router: ^14.8.0
 
   # State Management
-  flutter\_hooks: ^0.20.5
-  hooks\_riverpod: ^2.6.1
-  flutter\_riverpod: ^2.6.1
-  riverpod\_annotation: ^2.6.1
+  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.6.1
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
 
   # Image SVG Converter
-  flutter\_svg: ^2.0.17
-  vector\_graphics: ^1.1.17
+  flutter_svg: ^2.0.17
+  vector_graphics: ^1.1.17
 
   # Map
-  google\_maps\_flutter: ^2.10.0
+  google_maps_flutter: ^2.10.0
   geolocator: ^13.0.2
-  widget\_to\_marker: ^1.0.6
+  widget_to_marker: ^1.0.6
 
   # Carousel Widget
-  carousel\_slider: ^5.0.0
+  carousel_slider: ^5.0.0
 
   # Camera
   camera: 0.10.6 # 0.11.0 以上だと Android が横向き撮影になってしまうため 0.10.6 に固定（調査してアップデートしたい）
-  image\_picker: ^1.1.2
+  image_picker: ^1.1.2
   image: ^4.5.2
 
   # Permission Handler
-  permission\_handler: ^11.3.1
+  permission_handler: ^11.3.1
 
   # Device Info
-  device\_info\_plus: ^11.3.0
+  device_info_plus: ^11.3.0
 
   # Debug Info
-  package\_info\_plus: ^8.2.1
+  package_info_plus: ^8.2.1
 
   # Image Cropper
-  image\_cropper: ^8.1.0
+  image_cropper: ^8.1.0
 
   # URL Launcher
-  url\_launcher: ^6.3.1
-  store\_redirect: ^2.0.4
+  url_launcher: ^6.3.1
+  store_redirect: ^2.0.4
 
   # OpenAPI Generator
-  built\_collection: ^5.1.1
-  openapi\_generator\_annotations: ^6.1.0
+  built_collection: ^5.1.1
+  openapi_generator_annotations: ^6.1.0
 
   # OpenAPI Generator
   dio: ^5.8.0
-  flutter\_launcher\_icons: ^0.14.3
+  flutter_launcher_icons: ^0.14.3
 
   # HTTP Parser (for Photo Upload)
-  http\_parser: ^4.1.2
+  http_parser: ^4.1.2
 
   # Utility
-  intl: ^0.19.0 # slang\_flutter ^4.4.0 との競合で ^0.20.2 以上にできない
-  auto\_size\_text: ^3.0.0
+  intl: ^0.19.0 # slang_flutter ^4.4.0 との競合で ^0.20.2 以上にできない
+  auto_size_text: ^3.0.0
 
   # Secure Storage
-  flutter\_secure\_storage: ^9.2.4
+  flutter_secure_storage: ^9.2.4
 
   # Image Cache
-  cached\_network\_image: ^3.4.1
+  cached_network_image: ^3.4.1
 
   # Delete Cache
-  path\_provider: ^2.1.5
+  path_provider: ^2.1.5
 
   # Font
-  google\_fonts: ^6.2.1
+  google_fonts: ^6.2.1
 
   # Verification Code
-  flutter\_verification\_code: ^1.1.7
+  flutter_verification_code: ^1.1.7
 
   # Splash Screen
-  flutter\_native\_splash: ^2.4.4
+  flutter_native_splash: ^2.4.4
 
   # Dotenv
-  flutter\_dotenv: ^5.2.1
+  flutter_dotenv: ^5.2.1
 
   # OpenAPI Generator
-  guild\_api:
-    path: ./guild\_api
+  guild_api:
+    path: ./guild_api
 
-dev\_dependencies:
+dev_dependencies:
   # Test
-  flutter\_test:
+  flutter_test:
     sdk: flutter
   
   # Builder
-  build\_runner: ^2.4.15
-  riverpod\_generator: ^2.6.4
-  flutter\_gen\_runner: ^5.8.0
-  slang\_build\_runner: ^4.4.2
+  build_runner: ^2.4.15
+  riverpod_generator: ^2.6.4
+  flutter_gen_runner: ^5.8.0
+  slang_build_runner: ^4.4.2
 
   # OpenAPI Generator
-  openapi\_generator: ^6.1.0
+  openapi_generator: ^6.1.0
 
   # OpenAPI Generator
-  json\_serializable: ^6.9.1
+  json_serializable: ^6.9.1
 
   # Linter
-  pedantic\_mono:
+  pedantic_mono:
 
   # URL Launcher
-  url\_launcher\_ios: ^6.3.2
+  url_launcher_ios: ^6.3.2
 
 flutter:
   uses-material-design: true
@@ -157,26 +157,26 @@ flutter:
     - .env
     - assets/images/
 
-flutter\_gen:
+flutter_gen:
   assets:
     outputs:
-      directory\_path\_enabled: true
+      directory_path_enabled: true
   integrations:
-    flutter\_svg: true
+    flutter_svg: true
 
-flutter\_launcher\_icons:
+flutter_launcher_icons:
   android: true
   ios: true
-  image\_path: "assets/app\_icon/icon.png"
+  image_path: "assets/app_icon/icon.png"
 
-flutter\_native\_splash:
-  image: 'assets/app\_icon/icon\_foreground.png'
+flutter_native_splash:
+  image: 'assets/app_icon/icon_foreground.png'
   fullscreen: true
   color: "#2E3739"
-  android\_12:
+  android_12:
     color: "#2E3739"
-    icon\_background\_color: "#2E3739"
-    image: 'assets/app\_icon/icon\_foreground.png'
+    icon_background_color: "#2E3739"
+    image: 'assets/app_icon/icon_foreground.png'
 
 ---
 
@@ -257,26 +257,26 @@ Let me know if you need further debugging! 🚀
 *2025/3/6 13:25:08*
 
 make get                                                                 2 ↵
-/Applications/Xcode\_16.3\_beta\_1.app/Contents/Developer/usr/bin/make clean
+/Applications/Xcode_16.3_beta_1.app/Contents/Developer/usr/bin/make clean
 fvm flutter clean
 Cleaning Xcode workspace...                                         3.8s
 fvm flutter pub get
 Resolving dependencies... 
-Because no versions of openapi\_generator match &gt;6.1.0 &lt;7.0.0 and openapi\_generator 6.1.0 depends on analyzer &gt;=2.0.0 &lt;7.0.0,
-  openapi\_generator ^6.1.0 requires analyzer &gt;=2.0.0 &lt;7.0.0.
-And because riverpod\_generator &gt;=2.6.4 &lt;3.0.0-dev.2 depends on analyzer ^7.0.0, openapi\_generator ^6.1.0 is incompatible
-  with riverpod\_generator &gt;=2.6.4 &lt;3.0.0-dev.2.
-And because no versions of riverpod\_generator match &gt;2.6.3 &lt;2.6.4 and riverpod\_generator 2.6.3 depends on source\_gen ^1.2.0,
-  if openapi\_generator ^6.1.0 and riverpod\_generator &gt;=2.6.3 &lt;3.0.0-dev.2 then source\_gen ^1.2.0.
-And because json\_serializable &gt;=6.9.1 depends on source\_gen ^2.0.0 and snpit\_guild\_app depends on riverpod\_generator ^2.6.3,
-  openapi\_generator ^6.1.0 is incompatible with json\_serializable &gt;=6.9.1.
-So, because snpit\_guild\_app depends on both openapi\_generator ^6.1.0 and json\_serializable ^6.9.1, version solving failed.
+Because no versions of openapi_generator match &gt;6.1.0 &lt;7.0.0 and openapi_generator 6.1.0 depends on analyzer &gt;=2.0.0 &lt;7.0.0,
+  openapi_generator ^6.1.0 requires analyzer &gt;=2.0.0 &lt;7.0.0.
+And because riverpod_generator &gt;=2.6.4 &lt;3.0.0-dev.2 depends on analyzer ^7.0.0, openapi_generator ^6.1.0 is incompatible
+  with riverpod_generator &gt;=2.6.4 &lt;3.0.0-dev.2.
+And because no versions of riverpod_generator match &gt;2.6.3 &lt;2.6.4 and riverpod_generator 2.6.3 depends on source_gen ^1.2.0,
+  if openapi_generator ^6.1.0 and riverpod_generator &gt;=2.6.3 &lt;3.0.0-dev.2 then source_gen ^1.2.0.
+And because json_serializable &gt;=6.9.1 depends on source_gen ^2.0.0 and snpit_guild_app depends on riverpod_generator ^2.6.3,
+  openapi_generator ^6.1.0 is incompatible with json_serializable &gt;=6.9.1.
+So, because snpit_guild_app depends on both openapi_generator ^6.1.0 and json_serializable ^6.9.1, version solving failed.
 
 
 You can try the following suggestion to make the pubspec resolve:
-\* Consider downgrading your constraint on json\_serializable: flutter pub add dev:json\_serializable:^6.9.0
+* Consider downgrading your constraint on json_serializable: flutter pub add dev:json_serializable:^6.9.0
 Failed to update packages.
-make: \*\*\* \[get\] Error 1
+make: *** [get] Error 1
 
 ---
 

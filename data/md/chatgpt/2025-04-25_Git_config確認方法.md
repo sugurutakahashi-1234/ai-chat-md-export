@@ -48,7 +48,7 @@ git config --global user.email
 
 git pull すると勝手にマージされてしまうのを止めたい
 
-core.excludesfile=/Users/sugurutakahashi/.gitignore\_global
+core.excludesfile=/Users/sugurutakahashi/.gitignore_global
 difftool.sourcetree.cmd=opendiff "$LOCAL" "$REMOTE"
 difftool.sourcetree.path=
 mergetool.sourcetree.cmd=/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh "$LOCAL" "$REMOTE" -ancestor "$BASE" -merge "$MERGED"

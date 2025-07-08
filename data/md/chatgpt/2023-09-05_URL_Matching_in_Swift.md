@@ -122,32 +122,32 @@ SwiftのURLってどういう単位で分割できるのかな？
 
 Swiftの`URL`型には、URLを構成するさまざまなコンポーネントを取得するためのプロパティが用意されています。以下に、主なコンポーネントとそれに対応するプロパティを示します：
 
-1. \*\*スキーム (Scheme)\*\*
+1. **スキーム (Scheme)**
    - `url.scheme`: 例）`https`, `http`, `file`, `ftp` など
 
-2. \*\*ユーザ情報 (User Info)\*\*
+2. **ユーザ情報 (User Info)**
    - `url.user`: ユーザ名
    - `url.password`: パスワード
 
-3. \*\*ホスト (Host)\*\*
+3. **ホスト (Host)**
    - `url.host`: 例）`www.example.com`
 
-4. \*\*ポート (Port)\*\*
+4. **ポート (Port)**
    - `url.port`: 例）`80`, `443` など
 
-5. \*\*パス (Path)\*\*
+5. **パス (Path)**
    - `url.path`: 例）`/directory/file.html`
 
-6. \*\*クエリ (Query)\*\*
+6. **クエリ (Query)**
    - `url.query`: URLのクエリ部分（`?`の後ろ）を取得します。例）`key=value&anotherKey=anotherValue`
 
-7. \*\*フラグメント (Fragment)\*\*
+7. **フラグメント (Fragment)**
    - `url.fragment`: `#`の後ろの部分を取得します。例）`section1`
 
-8. \*\*URL全体の文字列表現 (Absolute String)\*\*
+8. **URL全体の文字列表現 (Absolute String)**
    - `url.absoluteString`: 全てのコンポーネントを含む完全なURLの文字列表現を取得します。
 
-9. \*\*ベースURL\*\*
+9. **ベースURL**
    - `url.baseURL`: もし元となるURLが存在すれば
 
 ---

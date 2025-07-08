@@ -8,9 +8,9 @@
 *2024/12/19 22:06:36*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-5xKTAejDoik7h2GR5zEgEx",
-  "size\_bytes": 126529,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-5xKTAejDoik7h2GR5zEgEx",
+  "size_bytes": 126529,
   "width": 507,
   "height": 948,
   "fovea": null,
@@ -18,23 +18,23 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 paddingはhorizonに24と絵は仮でよいので、実装を少し近づけて欲しい
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild\_info.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild_info.dart';
 
 class GuildPage extends HookConsumerWidget {
   const GuildPage({super.key});
@@ -48,7 +48,7 @@ class GuildPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     final guildInfoAsync = ref.watch(getGuildInfoNotifierProvider);
@@ -59,11 +59,11 @@ class GuildPage extends HookConsumerWidget {
         data: (guildInfo) =&gt; Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: \[
+            children: [
               if (guildInfo != null) Text('Guild Info: $guildInfo'),
               if (guildInfo == null)
                 const Text(
-                  'No guild affiliation \\nJoin a guild or create a new one!',
+                  'No guild affiliation \nJoin a guild or create a new one!',
                 ),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -78,7 +78,7 @@ class GuildPage extends HookConsumerWidget {
                 },
                 child: const Text('Host a new guild'),
               ),
-            \],
+            ],
           ),
         ),
         loading: () =&gt; const Center(child: CircularProgressIndicator()),
@@ -98,8 +98,8 @@ class GuildPage extends HookConsumerWidget {
 Here’s an updated implementation of your `GuildPage` that better aligns with the provided design:
 
 ### Key Adjustments:
-1. \*\*Horizontal Padding:\*\* Set to `24` as requested.
-2. \*\*Design Updates:\*\*
+1. **Horizontal Padding:** Set to `24` as requested.
+2. **Design Updates:**
    -
 
 ---
@@ -347,8 +347,8 @@ Let me know if you need further adjustments!
 また、ElevatedButtonのフォントなどは指定されている。また関数化しないでいいよ。
 
 import 'package:flutter/material.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_pallet.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_pallet.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
 
 final ThemeData appTheme = ThemeData(
   primaryColor: ColorToken.primary,

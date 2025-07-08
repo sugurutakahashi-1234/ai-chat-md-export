@@ -32,16 +32,16 @@ Model set context updated.
 Raspberry Pi PicoでBluetoothやIoTプロトコル（Matterなど）を実装するのはとても面白いプロジェクトですね！以下は始めるための手順です：
 
 ### 1. 必要なハードウェアを準備
-- \*\*Raspberry Pi Pico\*\*：標準モデルや無線通信をサポートしたPico Wを選択。
-- \*\*センサーやアクチュエータ\*\*：例えば温度センサー、モーター、LEDなど。
-- \*\*電源供給\*\*：USBケーブルやバッテリーパック。
-- \*\*ブレッドボードとジャンパーケーブル\*\*。
+- **Raspberry Pi Pico**：標準モデルや無線通信をサポートしたPico Wを選択。
+- **センサーやアクチュエータ**：例えば温度センサー、モーター、LEDなど。
+- **電源供給**：USBケーブルやバッテリーパック。
+- **ブレッドボードとジャンパーケーブル**。
 
 ### 2. ソフトウェア環境を整える
-- \*\*MicroPython\*\* または \*\*C/C++ SDK\*\* を使って開発します。
+- **MicroPython** または **C/C++ SDK** を使って開発します。
   - MicroPythonは学びやすく、デバッグが容易です。
   - 高パフォーマンスが必要な場合はC/C++ SDKを選択。
-- \*\*開発環境\*\*：VS Code、Thonny IDEなどが便利です。
+- **開発環境**：VS Code、Thonny IDEなどが便利です。
 
 ### 3. Bluetoothの実装 (Pico Wを使用)
 Pico WにはBluetoothが内蔵されていませんが、外部モジュール（例：HC-05、HM-10）を接続すれば可能です。
@@ -53,15 +53,15 @@ Pico WにはBluetoothが内蔵されていませんが、外部モジュール�
 
 ### 4. IoTプロトコル（Matter）の実装
 Matterのプロトコルをサポートするためには、以下を検討：
-- Matterのライブラリ（\[Connected Home over IP\](https://github.com/project-chip/connectedhomeip)）をビルドし、Pico用に移植。
-- \*\*ネットワーク接続\*\*：
+- Matterのライブラリ（[Connected Home over IP](https://github.com/project-chip/connectedhomeip)）をビルドし、Pico用に移植。
+- **ネットワーク接続**：
   - Wi-Fiモジュール（Pico W内蔵Wi-Fiまたは外部Wi-Fiモジュール）を使用。
   - デバイスをMatterに参加させる手順を学ぶ（ペアリングや通信プロトコル）。
 
 ### 5. 学びながら進める
-- \*\*公式ドキュメント\*\*：\[Raspberry Pi Pico Documentation\](https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html)。
-- \*\*コミュニティ\*\*：Matterの開発者フォーラムやGitHubプロジェクトに参加。
-- \*\*プロジェクト例\*\*：
+- **公式ドキュメント**：[Raspberry Pi Pico Documentation](https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html)。
+- **コミュニティ**：Matterの開発者フォーラムやGitHubプロジェクトに参加。
+- **プロジェクト例**：
   - スマート照明制御。
   - 環境センサーを使用したデータロガー。
 
@@ -83,88 +83,88 @@ Raspberry Pi Picoで電子工作を始める際、必要なものはプロジェ
 
 ---
 
-### 1. \*\*基本セット\*\*
-- \*\*Raspberry Pi Pico（W推奨）\*\*  
-  - \*\*Raspberry Pi Pico W\*\*（Wi-Fi機能内蔵、IoT向け）  
-  - \*\*Raspberry Pi Pico\*\*（Wi-Fiが不要ならこちらでもOK）
-- \*\*USBケーブル（Micro USB）\*\*  
+### 1. **基本セット**
+- **Raspberry Pi Pico（W推奨）**  
+  - **Raspberry Pi Pico W**（Wi-Fi機能内蔵、IoT向け）  
+  - **Raspberry Pi Pico**（Wi-Fiが不要ならこちらでもOK）
+- **USBケーブル（Micro USB）**  
   - データ通信対応のもの（充電専用ケーブルはNG）。
 
 ---
 
-### 2. \*\*開発に必要なアクセサリ\*\*
-- \*\*ブレッドボード\*\*  
+### 2. **開発に必要なアクセサリ**
+- **ブレッドボード**  
   - 配線の試作や部品接続に使用。
-- \*\*ジャンパーケーブル\*\*  
+- **ジャンパーケーブル**  
   - オス-オス、オス-メスの両方を用意。
-- \*\*ハンダ付けツール（必要に応じて）\*\*  
+- **ハンダ付けツール（必要に応じて）**  
   - モジュールやコネクタをしっかり接続する場合。
 
 ---
 
-### 3. \*\*Bluetooth用ハードウェア\*\*
-- \*\*Bluetoothモジュール（BLE対応）\*\*  
-  - \*\*HM-10\*\*（BLE通信対応）  
-  - \*\*HC-05\*\*（クラシックBluetooth、安価で初心者向け）  
+### 3. **Bluetooth用ハードウェア**
+- **Bluetoothモジュール（BLE対応）**  
+  - **HM-10**（BLE通信対応）  
+  - **HC-05**（クラシックBluetooth、安価で初心者向け）  
   ※Pico WにはBluetoothがないため、外付けモジュールが必要です。
 
 ---
 
-### 4. \*\*IoT用ハードウェア\*\*
-- \*\*Wi-Fiルーター\*\*（既存のものを使用）  
+### 4. **IoT用ハードウェア**
+- **Wi-Fiルーター**（既存のものを使用）  
   - Pico Wは内蔵Wi-Fiで通信可能。
-- \*\*IoTクラウドサービス用デバイス（オプション）\*\*  
+- **IoTクラウドサービス用デバイス（オプション）**  
   - MQTTブローカーを使用する場合、テスト用にサーバー環境を用意。
 
 ---
 
-### 5. \*\*センサーとアクチュエータ\*\*
+### 5. **センサーとアクチュエータ**
 Raspberry Pi Picoのプロジェクトに適したセンサーとアクチュエータ：
 #### センサー
-- \*\*DHT11/DHT22\*\*（温湿度センサー）  
-- \*\*BMP280\*\*（気圧センサー、温度も取得可能）  
-- \*\*HC-SR501\*\*（人感センサー）  
-- \*\*MLX90614\*\*（赤外線温度センサー、非接触で温度測定可能）
+- **DHT11/DHT22**（温湿度センサー）  
+- **BMP280**（気圧センサー、温度も取得可能）  
+- **HC-SR501**（人感センサー）  
+- **MLX90614**（赤外線温度センサー、非接触で温度測定可能）
 
 #### アクチュエータ
-- \*\*サーボモーター（SG90）\*\*  
+- **サーボモーター（SG90）**  
   - 回転制御や動く装置に利用。
-- \*\*リレー\*\*  
+- **リレー**  
   - 高電圧デバイスを制御可能。
-- \*\*LEDやブザー\*\*  
+- **LEDやブザー**  
   - 状態表示や簡易通知に便利。
 
 ---
 
-### 6. \*\*電源関連\*\*
-- \*\*モバイルバッテリーやUSB電源アダプタ\*\*  
+### 6. **電源関連**
+- **モバイルバッテリーやUSB電源アダプタ**  
   - 長時間動作させたい場合。
-- \*\*バッテリーホルダーと電池（AA×2〜3本）\*\*  
+- **バッテリーホルダーと電池（AA×2〜3本）**  
   - 電池駆動のプロジェクト用。
 
 ---
 
-### 7. \*\*ディスプレイやボタン\*\*
-- \*\*LCDディスプレイ\*\*  
-  - \*\*16x2 LCD\*\*（I2C対応がおすすめ）  
-  - \*\*OLEDディスプレイ（0.96インチなど）\*\*（小型で高解像度）
-- \*\*ボタンとスイッチ\*\*  
+### 7. **ディスプレイやボタン**
+- **LCDディスプレイ**  
+  - **16x2 LCD**（I2C対応がおすすめ）  
+  - **OLEDディスプレイ（0.96インチなど）**（小型で高解像度）
+- **ボタンとスイッチ**  
   - 入力装置として利用。
 
 ---
 
-### 8. \*\*開発補助ツール\*\*
-- \*\*マルチメーター\*\*  
+### 8. **開発補助ツール**
+- **マルチメーター**  
   - 電圧や抵抗値を測定してトラブルシューティング。
-- \*\*ロジックアナライザ\*\*（必要なら）  
+- **ロジックアナライザ**（必要なら）  
   - 通信のデバッグ用。
-- \*\*3Dプリンタ\*\*（オプション）  
+- **3Dプリンタ**（オプション）  
   - ケースやプロジェクトの外装作成に便利。
 
 ---
 
-### 9. \*\*ソフトウェア開発ツール\*\*
-- \*\*SDカード（オプション）\*\*  
+### 9. **ソフトウェア開発ツール**
+- **SDカード（オプション）**  
   - ログデータ保存用にSDカードリーダーモジュールを追加可能。
 
 ---
@@ -185,69 +185,69 @@ Raspberry Pi Picoのプロジェクトに適したセンサーとアクチュエ
 
 Raspberry Pi Picoでの電子工作を始めるにあたり、特にBluetoothやIoTプロトコル（Matterなど）の実装を目指す場合、以下のアイテムがおすすめです。2024年現在、Amazon.co.jpで入手可能な製品を中心にご紹介します。
 
-### 1. \*\*Raspberry Pi Pico W\*\*
+### 1. **Raspberry Pi Pico W**
 
 Wi-Fi機能を内蔵しており、IoTプロジェクトに最適です。
 
-- \*\*製品名\*\*: Raspberry Pi Pico W
-- \*\*価格\*\*: ￥1,780
-- \*\*リンク\*\*: \[Raspberry Pi Pico W\](https://www.amazon.co.jp/Raspberrypi-Raspberry-Pi-Pico-W/dp/B0BB69CH2T)
+- **製品名**: Raspberry Pi Pico W
+- **価格**: ￥1,780
+- **リンク**: [Raspberry Pi Pico W](https://www.amazon.co.jp/Raspberrypi-Raspberry-Pi-Pico-W/dp/B0BB69CH2T)
 
-### 2. \*\*Bluetoothモジュール\*\*
+### 2. **Bluetoothモジュール**
 
 Pico WにはBluetooth機能が内蔵されていないため、外付けのBluetoothモジュールが必要です。
 
-- \*\*製品名\*\*: HM-10 Bluetooth 4.0 BLEモジュール
-- \*\*価格\*\*: ￥1,200
-- \*\*リンク\*\*: \[HM-10 Bluetooth 4.0 BLEモジュール\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: HM-10 Bluetooth 4.0 BLEモジュール
+- **価格**: ￥1,200
+- **リンク**: [HM-10 Bluetooth 4.0 BLEモジュール](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
-### 3. \*\*スターターキット\*\*
+### 3. **スターターキット**
 
 電子工作に必要な基本的な部品が揃ったキットです。
 
-- \*\*製品名\*\*: Freenove Raspberry Pi Pico W用スーパースターターキット
-- \*\*価格\*\*: ￥5,880
-- \*\*リンク\*\*: \[Freenove Raspberry Pi Pico W用スーパースターターキット\](https://www.amazon.co.jp/dp/B0C558S3N6)
+- **製品名**: Freenove Raspberry Pi Pico W用スーパースターターキット
+- **価格**: ￥5,880
+- **リンク**: [Freenove Raspberry Pi Pico W用スーパースターターキット](https://www.amazon.co.jp/dp/B0C558S3N6)
 
-### 4. \*\*ブレッドボードとジャンパーワイヤーセット\*\*
+### 4. **ブレッドボードとジャンパーワイヤーセット**
 
 プロトタイピングに必須のアイテムです。
 
-- \*\*製品名\*\*: ELEGOO ブレッドボードとジャンパーワイヤーセット
-- \*\*価格\*\*: ￥1,299
-- \*\*リンク\*\*: \[ELEGOO ブレッドボードとジャンパーワイヤーセット\](https://www.amazon.co.jp/dp/B01EV70C78)
+- **製品名**: ELEGOO ブレッドボードとジャンパーワイヤーセット
+- **価格**: ￥1,299
+- **リンク**: [ELEGOO ブレッドボードとジャンパーワイヤーセット](https://www.amazon.co.jp/dp/B01EV70C78)
 
-### 5. \*\*センサーセット\*\*
+### 5. **センサーセット**
 
 多様なセンサーが含まれており、さまざまなプロジェクトに対応できます。
 
-- \*\*製品名\*\*: SunFounder Raspberry Pi Pico用センサーキット
-- \*\*価格\*\*: ￥4,860
-- \*\*リンク\*\*: \[SunFounder Raspberry Pi Pico用センサーキット\](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
+- **製品名**: SunFounder Raspberry Pi Pico用センサーキット
+- **価格**: ￥4,860
+- **リンク**: [SunFounder Raspberry Pi Pico用センサーキット](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
 
-### 6. \*\*電源供給用USBケーブル\*\*
+### 6. **電源供給用USBケーブル**
 
 データ通信対応のUSBケーブルです。
 
-- \*\*製品名\*\*: Anker PowerLine Micro USBケーブル
-- \*\*価格\*\*: ￥999
-- \*\*リンク\*\*: \[Anker PowerLine Micro USBケーブル\](https://www.amazon.co.jp/dp/B012VZ7MUM)
+- **製品名**: Anker PowerLine Micro USBケーブル
+- **価格**: ￥999
+- **リンク**: [Anker PowerLine Micro USBケーブル](https://www.amazon.co.jp/dp/B012VZ7MUM)
 
-### 7. \*\*ディスプレイモジュール\*\*
+### 7. **ディスプレイモジュール**
 
 プロジェクトの出力表示に便利です。
 
-- \*\*製品名\*\*: 0.96インチ OLEDディスプレイモジュール
-- \*\*価格\*\*: ￥1,080
-- \*\*リンク\*\*: \[0.96インチ OLEDディスプレイモジュール\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 0.96インチ OLEDディスプレイモジュール
+- **価格**: ￥1,080
+- **リンク**: [0.96インチ OLEDディスプレイモジュール](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
-### 8. \*\*リレー・モジュール\*\*
+### 8. **リレー・モジュール**
 
 高電圧デバイスの制御に使用します。
 
-- \*\*製品名\*\*: 5V 2チャンネル リレーモジュール
-- \*\*価格\*\*: ￥799
-- \*\*リンク\*\*: \[5V 2チャンネル リレーモジュール\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 5V 2チャンネル リレーモジュール
+- **価格**: ￥799
+- **リンク**: [5V 2チャンネル リレーモジュール](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
 これらのアイテムを揃えることで、Raspberry Pi Picoを用いたBluetoothやIoTプロジェクトをスムーズに開始できます。各リンク先で詳細情報や最新の価格をご確認ください。
 
@@ -267,53 +267,53 @@ Raspberry Pi Pico 2 を使う想定なんだ。また Pico 2 の Wモデルも�
 
 以下に、Pico 2 Wを使用した電子工作を始めるために必要なアイテムをまとめました。これらは2024年11月現在、Amazon.co.jpで入手可能な製品です。
 
-### 1. \*\*Raspberry Pi Pico 2 W\*\*
+### 1. **Raspberry Pi Pico 2 W**
 
 Wi-FiとBluetooth 5.2を内蔵した最新モデルです。
 
-- \*\*製品名\*\*: Raspberry Pi Pico 2 W
-- \*\*価格\*\*: ￥1,500
-- \*\*リンク\*\*: \[Raspberry Pi Pico 2 W\](https://www.amazon.co.jp/dp/B0CXYZ1234)
+- **製品名**: Raspberry Pi Pico 2 W
+- **価格**: ￥1,500
+- **リンク**: [Raspberry Pi Pico 2 W](https://www.amazon.co.jp/dp/B0CXYZ1234)
 
-### 2. \*\*USBケーブル（Micro USB）\*\*
+### 2. **USBケーブル（Micro USB）**
 
 データ通信対応のケーブルが必要です。
 
-- \*\*製品名\*\*: Anker PowerLine Micro USBケーブル
-- \*\*価格\*\*: ￥999
-- \*\*リンク\*\*: \[Anker PowerLine Micro USBケーブル\](https://www.amazon.co.jp/dp/B012VZ7MUM)
+- **製品名**: Anker PowerLine Micro USBケーブル
+- **価格**: ￥999
+- **リンク**: [Anker PowerLine Micro USBケーブル](https://www.amazon.co.jp/dp/B012VZ7MUM)
 
-### 3. \*\*ブレッドボードとジャンパーワイヤーセット\*\*
+### 3. **ブレッドボードとジャンパーワイヤーセット**
 
 プロトタイピングに必須のアイテムです。
 
-- \*\*製品名\*\*: ELEGOO ブレッドボードとジャンパーワイヤーセット
-- \*\*価格\*\*: ￥1,299
-- \*\*リンク\*\*: \[ELEGOO ブレッドボードとジャンパーワイヤーセット\](https://www.amazon.co.jp/dp/B01EV70C78)
+- **製品名**: ELEGOO ブレッドボードとジャンパーワイヤーセット
+- **価格**: ￥1,299
+- **リンク**: [ELEGOO ブレッドボードとジャンパーワイヤーセット](https://www.amazon.co.jp/dp/B01EV70C78)
 
-### 4. \*\*センサーセット\*\*
+### 4. **センサーセット**
 
 多様なセンサーが含まれており、さまざまなプロジェクトに対応できます。
 
-- \*\*製品名\*\*: SunFounder Raspberry Pi Pico用センサーキット
-- \*\*価格\*\*: ￥4,860
-- \*\*リンク\*\*: \[SunFounder Raspberry Pi Pico用センサーキット\](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
+- **製品名**: SunFounder Raspberry Pi Pico用センサーキット
+- **価格**: ￥4,860
+- **リンク**: [SunFounder Raspberry Pi Pico用センサーキット](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
 
-### 5. \*\*ディスプレイモジュール\*\*
+### 5. **ディスプレイモジュール**
 
 プロジェクトの出力表示に便利です。
 
-- \*\*製品名\*\*: 0.96インチ OLEDディスプレイモジュール
-- \*\*価格\*\*: ￥1,080
-- \*\*リンク\*\*: \[0.96インチ OLEDディスプレイモジュール\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 0.96インチ OLEDディスプレイモジュール
+- **価格**: ￥1,080
+- **リンク**: [0.96インチ OLEDディスプレイモジュール](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
-### 6. \*\*リレーモジュール\*\*
+### 6. **リレーモジュール**
 
 高電圧デバイスの制御に使用します。
 
-- \*\*製品名\*\*: 5V 2チャンネル リレーモジュール
-- \*\*価格\*\*: ￥799
-- \*\*リンク\*\*: \[5V 2チャンネル リレーモジュール\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 5V 2チャンネル リレーモジュール
+- **価格**: ￥799
+- **リンク**: [5V 2チャンネル リレーモジュール](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
 これらのアイテムを揃えることで、Raspberry Pi Pico 2 Wを用いたBluetoothやIoTプロジェクトをスムーズに開始できます。各リンク先で詳細情報や最新の価格をご確認ください。
 
@@ -333,56 +333,56 @@ Raspberry Pi Pico 2 を使う想定なんだ。また Pico 2 の Wモデルも�
 
 ---
 
-### 1. \*\*Raspberry Pi Pico 2 W\*\*  
+### 1. **Raspberry Pi Pico 2 W**  
 Wi-FiとBluetooth 5.2を内蔵した最新モデル。
 
-- \*\*価格\*\*: 約￥1,500  
-- \*\*購入リンク\*\*: \[Raspberry Pi Pico 2 W\](https://www.amazon.co.jp/dp/B0CXYZ1234)
+- **価格**: 約￥1,500  
+- **購入リンク**: [Raspberry Pi Pico 2 W](https://www.amazon.co.jp/dp/B0CXYZ1234)
 
 ---
 
-### 2. \*\*USBケーブル（Micro USB）\*\*  
+### 2. **USBケーブル（Micro USB）**  
 データ通信対応のUSBケーブル。
 
-- \*\*製品名\*\*: Anker PowerLine Micro USBケーブル  
-- \*\*価格\*\*: ￥999  
-- \*\*購入リンク\*\*: \[Anker PowerLine Micro USBケーブル\](https://www.amazon.co.jp/dp/B012VZ7MUM)
+- **製品名**: Anker PowerLine Micro USBケーブル  
+- **価格**: ￥999  
+- **購入リンク**: [Anker PowerLine Micro USBケーブル](https://www.amazon.co.jp/dp/B012VZ7MUM)
 
 ---
 
-### 3. \*\*ブレッドボードとジャンパーワイヤーセット\*\*  
+### 3. **ブレッドボードとジャンパーワイヤーセット**  
 プロトタイピングに必須のアイテム。
 
-- \*\*製品名\*\*: ELEGOO ブレッドボードとジャンパーワイヤーセット  
-- \*\*価格\*\*: ￥1,299  
-- \*\*購入リンク\*\*: \[ELEGOO ブレッドボードとジャンパーワイヤーセット\](https://www.amazon.co.jp/dp/B01EV70C78)
+- **製品名**: ELEGOO ブレッドボードとジャンパーワイヤーセット  
+- **価格**: ￥1,299  
+- **購入リンク**: [ELEGOO ブレッドボードとジャンパーワイヤーセット](https://www.amazon.co.jp/dp/B01EV70C78)
 
 ---
 
-### 4. \*\*センサーセット\*\*  
+### 4. **センサーセット**  
 多様なセンサーが含まれたキット。
 
-- \*\*製品名\*\*: SunFounder Raspberry Pi Pico用センサーキット  
-- \*\*価格\*\*: ￥4,860  
-- \*\*購入リンク\*\*: \[SunFounder Raspberry Pi Pico用センサーキット\](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
+- **製品名**: SunFounder Raspberry Pi Pico用センサーキット  
+- **価格**: ￥4,860  
+- **購入リンク**: [SunFounder Raspberry Pi Pico用センサーキット](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
 
 ---
 
-### 5. \*\*ディスプレイモジュール\*\*  
+### 5. **ディスプレイモジュール**  
 プロジェクトの出力表示に便利。
 
-- \*\*製品名\*\*: 0.96インチ OLEDディスプレイモジュール  
-- \*\*価格\*\*: ￥1,080  
-- \*\*購入リンク\*\*: \[0.96インチ OLEDディスプレイモジュール\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 0.96インチ OLEDディスプレイモジュール  
+- **価格**: ￥1,080  
+- **購入リンク**: [0.96インチ OLEDディスプレイモジュール](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
 ---
 
-### 6. \*\*リレーモジュール\*\*  
+### 6. **リレーモジュール**  
 高電圧デバイスの制御に使用。
 
-- \*\*製品名\*\*: 5V 2チャンネル リレーモジュール  
-- \*\*価格\*\*: ￥799  
-- \*\*購入リンク\*\*: \[5V 2チャンネル リレーモジュール\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 5V 2チャンネル リレーモジュール  
+- **価格**: ￥799  
+- **購入リンク**: [5V 2チャンネル リレーモジュール](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
 ---
 
@@ -404,56 +404,56 @@ http形式でほしい
 
 ---
 
-### 1. \*\*Raspberry Pi Pico 2 W\*\*  
+### 1. **Raspberry Pi Pico 2 W**  
 Wi-FiとBluetooth 5.2を内蔵した最新モデル。  
 
-- \*\*価格\*\*: 約￥1,500  
-- \*\*リンク\*\*: \[https://www.amazon.co.jp/dp/B0CXYZ1234\](https://www.amazon.co.jp/dp/B0CXYZ1234)
+- **価格**: 約￥1,500  
+- **リンク**: [https://www.amazon.co.jp/dp/B0CXYZ1234](https://www.amazon.co.jp/dp/B0CXYZ1234)
 
 ---
 
-### 2. \*\*USBケーブル（Micro USB）\*\*  
+### 2. **USBケーブル（Micro USB）**  
 データ通信対応のUSBケーブル。
 
-- \*\*製品名\*\*: Anker PowerLine Micro USBケーブル  
-- \*\*価格\*\*: ￥999  
-- \*\*リンク\*\*: \[https://www.amazon.co.jp/dp/B012VZ7MUM\](https://www.amazon.co.jp/dp/B012VZ7MUM)
+- **製品名**: Anker PowerLine Micro USBケーブル  
+- **価格**: ￥999  
+- **リンク**: [https://www.amazon.co.jp/dp/B012VZ7MUM](https://www.amazon.co.jp/dp/B012VZ7MUM)
 
 ---
 
-### 3. \*\*ブレッドボードとジャンパーワイヤーセット\*\*  
+### 3. **ブレッドボードとジャンパーワイヤーセット**  
 プロトタイピングに必須のアイテム。
 
-- \*\*製品名\*\*: ELEGOO ブレッドボードとジャンパーワイヤーセット  
-- \*\*価格\*\*: ￥1,299  
-- \*\*リンク\*\*: \[https://www.amazon.co.jp/dp/B01EV70C78\](https://www.amazon.co.jp/dp/B01EV70C78)
+- **製品名**: ELEGOO ブレッドボードとジャンパーワイヤーセット  
+- **価格**: ￥1,299  
+- **リンク**: [https://www.amazon.co.jp/dp/B01EV70C78](https://www.amazon.co.jp/dp/B01EV70C78)
 
 ---
 
-### 4. \*\*センサーセット\*\*  
+### 4. **センサーセット**  
 多様なセンサーが含まれたキット。
 
-- \*\*製品名\*\*: SunFounder Raspberry Pi Pico用センサーキット  
-- \*\*価格\*\*: ￥4,860  
-- \*\*リンク\*\*: \[https://www.amazon.co.jp/dp/B0B5Q5Z5J8\](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
+- **製品名**: SunFounder Raspberry Pi Pico用センサーキット  
+- **価格**: ￥4,860  
+- **リンク**: [https://www.amazon.co.jp/dp/B0B5Q5Z5J8](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
 
 ---
 
-### 5. \*\*ディスプレイモジュール\*\*  
+### 5. **ディスプレイモジュール**  
 プロジェクトの出力表示に便利。
 
-- \*\*製品名\*\*: 0.96インチ OLEDディスプレイモジュール  
-- \*\*価格\*\*: ￥1,080  
-- \*\*リンク\*\*: \[https://www.amazon.co.jp/dp/B07D5VNT7Z\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 0.96インチ OLEDディスプレイモジュール  
+- **価格**: ￥1,080  
+- **リンク**: [https://www.amazon.co.jp/dp/B07D5VNT7Z](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
 ---
 
-### 6. \*\*リレーモジュール\*\*  
+### 6. **リレーモジュール**  
 高電圧デバイスの制御に使用。
 
-- \*\*製品名\*\*: 5V 2チャンネル リレーモジュール  
-- \*\*価格\*\*: ￥799  
-- \*\*リンク\*\*: \[https://www.amazon.co.jp/dp/B07D5VNT7Z\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 5V 2チャンネル リレーモジュール  
+- **価格**: ￥799  
+- **リンク**: [https://www.amazon.co.jp/dp/B07D5VNT7Z](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
 ---
 
@@ -475,62 +475,62 @@ Wi-FiとBluetooth 5.2を内蔵した最新モデル。
 
 ---
 
-### 1. \*\*Raspberry Pi Pico 2 W\*\*
+### 1. **Raspberry Pi Pico 2 W**
 
 Wi-FiとBluetooth 5.2を内蔵した最新モデルです。
 
-- \*\*製品名\*\*: Raspberry Pi Pico 2 W
-- \*\*価格\*\*: ￥1,780
-- \*\*リンク\*\*: \[Raspberry Pi Pico 2 W\](https://www.amazon.co.jp/dp/B0BB69CH2T)
+- **製品名**: Raspberry Pi Pico 2 W
+- **価格**: ￥1,780
+- **リンク**: [Raspberry Pi Pico 2 W](https://www.amazon.co.jp/dp/B0BB69CH2T)
 
 ---
 
-### 2. \*\*USBケーブル（Micro USB）\*\*
+### 2. **USBケーブル（Micro USB）**
 
 データ通信対応のUSBケーブルです。
 
-- \*\*製品名\*\*: Anker PowerLine Micro USBケーブル
-- \*\*価格\*\*: ￥999
-- \*\*リンク\*\*: \[Anker PowerLine Micro USBケーブル\](https://www.amazon.co.jp/dp/B012VZ7MUM)
+- **製品名**: Anker PowerLine Micro USBケーブル
+- **価格**: ￥999
+- **リンク**: [Anker PowerLine Micro USBケーブル](https://www.amazon.co.jp/dp/B012VZ7MUM)
 
 ---
 
-### 3. \*\*ブレッドボードとジャンパーワイヤーセット\*\*
+### 3. **ブレッドボードとジャンパーワイヤーセット**
 
 プロトタイピングに必須のアイテムです。
 
-- \*\*製品名\*\*: ELEGOO ブレッドボードとジャンパーワイヤーセット
-- \*\*価格\*\*: ￥1,299
-- \*\*リンク\*\*: \[ELEGOO ブレッドボードとジャンパーワイヤーセット\](https://www.amazon.co.jp/dp/B01EV70C78)
+- **製品名**: ELEGOO ブレッドボードとジャンパーワイヤーセット
+- **価格**: ￥1,299
+- **リンク**: [ELEGOO ブレッドボードとジャンパーワイヤーセット](https://www.amazon.co.jp/dp/B01EV70C78)
 
 ---
 
-### 4. \*\*センサーセット\*\*
+### 4. **センサーセット**
 
 多様なセンサーが含まれており、さまざまなプロジェクトに対応できます。
 
-- \*\*製品名\*\*: SunFounder Raspberry Pi Pico用センサーキット
-- \*\*価格\*\*: ￥4,860
-- \*\*リンク\*\*: \[SunFounder Raspberry Pi Pico用センサーキット\](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
+- **製品名**: SunFounder Raspberry Pi Pico用センサーキット
+- **価格**: ￥4,860
+- **リンク**: [SunFounder Raspberry Pi Pico用センサーキット](https://www.amazon.co.jp/dp/B0B5Q5Z5J8)
 
 ---
 
-### 5. \*\*ディスプレイモジュール\*\*
+### 5. **ディスプレイモジュール**
 
 プロジェクトの出力表示に便利です。
 
-- \*\*製品名\*\*: 0.96インチ OLEDディスプレイモジュール
-- \*\*価格\*\*: ￥1,080
-- \*\*リンク\*\*: \[0.96インチ OLEDディスプレイモジュール\](https://www.amazon.co.jp/dp/B07D5VNT7Z)
+- **製品名**: 0.96インチ OLEDディスプレイモジュール
+- **価格**: ￥1,080
+- **リンク**: [0.96インチ OLEDディスプレイモジュール](https://www.amazon.co.jp/dp/B07D5VNT7Z)
 
 ---
 
-### 6. \*\*リレーモジュール\*\*
+### 6. **リレーモジュール**
 
 高電圧デバイスの制御に使用します。
 
-- \*\*製品名\*\*: 5V 2チャンネル リレーモジュール
-- \*\*価格\*\*: ￥799
-- \*\*リンク\*\*: \[5V 2チャンネル リレーモジュール
+- **製品名**: 5V 2チャンネル リレーモジュール
+- **価格**: ￥799
+- **リンク**: [5V 2チャンネル リレーモジュール
 
 ---

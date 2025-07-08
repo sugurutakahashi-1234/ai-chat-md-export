@@ -9,7 +9,7 @@
 
 macのローカルで動かせるようにしたい。コンソールから引数で渡したい。node.jsの環境はある
 
-import \* as crypto from 'crypto';
+import * as crypto from 'crypto';
 // 型定義
 type EncryptDataType = {
   latitude: number;
@@ -18,34 +18,34 @@ type EncryptDataType = {
 };
 // 定数
 const ALGORITHM = 'aes-256-cbc';
-const KEY\_STRING = 'f93kdL02x!vB7@qZm#9Tws6Uo$YePn';
+const KEY_STRING = 'f93kdL02x!vB7@qZm#9Tws6Uo$YePn';
 // 暗号化関数
 export function encrypt(object: EncryptDataType): string {
-  const key = crypto.createHash('sha256').update(KEY\_STRING).digest();
+  const key = crypto.createHash('sha256').update(KEY_STRING).digest();
   const iv = crypto.randomBytes(16);
   const json = JSON.stringify(object);
   
   const cipher = crypto.createCipheriv(ALGORITHM, key, iv);
-  const encrypted = Buffer.concat(\[
+  const encrypted = Buffer.concat([
     cipher.update(json, 'utf8'),
     cipher.final(),
-  \]);
+  ]);
   
   return `${iv.toString('base64')}:${encrypted.toString('base64')}`;
 }
 // 復号化関数
 export function decrypt(encryptedData: string): EncryptDataType {
-  const key = crypto.createHash('sha256').update(KEY\_STRING).digest();
+  const key = crypto.createHash('sha256').update(KEY_STRING).digest();
   
-  const \[ivBase64, encryptedBase64\] = encryptedData.split(':');
+  const [ivBase64, encryptedBase64] = encryptedData.split(':');
   const iv = Buffer.from(ivBase64, 'base64');
   const encrypted = Buffer.from(encryptedBase64, 'base64');
   
   const decipher = crypto.createDecipheriv(ALGORITHM, key, iv);
-  const decrypted = Buffer.concat(\[
+  const decrypted = Buffer.concat([
     decipher.update(encrypted),
     decipher.final(),
-  \]);
+  ]);
   
   return JSON.parse(decrypted.toString('utf8'));
 }

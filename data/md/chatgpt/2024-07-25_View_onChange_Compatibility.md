@@ -7,15 +7,15 @@
 ## 👤 ユーザー
 *2024/7/25 15:59:22*
 
-@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, \*)
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 extension View {
-    nonisolated public func onChange&lt;V&gt;(of value: V, initial: Bool = false, \_ action: @escaping (\_ oldValue: V, \_ newValue: V) -&gt; Void) -&gt; some View where V : Equatable
+    nonisolated public func onChange&lt;V&gt;(of value: V, initial: Bool = false, _ action: @escaping (_ oldValue: V, _ newValue: V) -&gt; Void) -&gt; some View where V : Equatable
 
 
 private extension View {
     @ViewBuilder
     func onChangeIfAvailable(of: ) -&gt; some View where V : Equatable {
-        if #available(iOS 17.0, \*) {
+        if #available(iOS 17.0, *) {
             // ここを実装したい
         } else {
             self

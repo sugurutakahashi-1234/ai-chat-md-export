@@ -66,7 +66,7 @@ bundle install
 ## 👤 ユーザー
 *2024/9/17 18:52:40*
 
-でもYour bundle only supports platforms \["arm64-darwin-22", "arm64-darwin-23"\] but your local platform is arm64-darwin-24. Add the current platform to the lockfile with
+でもYour bundle only supports platforms ["arm64-darwin-22", "arm64-darwin-23"] but your local platform is arm64-darwin-24. Add the current platform to the lockfile with
 `bundle lock --add-platform arm64-darwin-24` and try again.
 
 ---
@@ -111,9 +111,9 @@ arm64-darwin-24とは？
 
 `arm64-darwin-24` は、プラットフォーム（OSとアーキテクチャ）を示す識別子です。これを分解すると、以下のようになります：
 
-- \*\*`arm64`\*\*: CPUアーキテクチャを指します。Appleシリコン（M1、M2など）などのARMベースの64ビットアーキテクチャです。
-- \*\*`darwin`\*\*: macOSの基盤となるUnix系のオペレーティングシステムの名前です。macOSやiOSのカーネルは「Darwin」と呼ばれています。
-- \*\*`24`\*\*: macOSのバージョンを表しています。この数字は、macOSの内部バージョン番号に対応しており、macOS Sonoma（macOS 14）がこの「24」に対応します。
+- **`arm64`**: CPUアーキテクチャを指します。Appleシリコン（M1、M2など）などのARMベースの64ビットアーキテクチャです。
+- **`darwin`**: macOSの基盤となるUnix系のオペレーティングシステムの名前です。macOSやiOSのカーネルは「Darwin」と呼ばれています。
+- **`24`**: macOSのバージョンを表しています。この数字は、macOSの内部バージョン番号に対応しており、macOS Sonoma（macOS 14）がこの「24」に対応します。
 
 したがって、`arm64-darwin-24` は「Appleシリコンを搭載したmacOS Sonomaを実行している環境」を意味します。具体的には、あなたのシステムがApple M1/M2チップなどを使い、macOS 14 (Sonoma) で動作していることを表しています。
 

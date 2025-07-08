@@ -11,17 +11,17 @@ preLaunchTask とは？
 
 {
     "version": "0.2.0",
-    "configurations": \[
+    "configurations": [
         {
             "name": "local",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
             "program": "lib/main.dart",
-            "args": \[
+            "args": [
                 "--flavor",
                 "local"
-            \],
+            ],
             "preLaunchTask": "generate-env-local"
         },
         {
@@ -30,10 +30,10 @@ preLaunchTask とは？
             "type": "dart",
             "flutterMode": "debug",
             "program": "lib/main.dart",
-            "args": \[
+            "args": [
                 "--flavor",
                 "dev"
-            \],
+            ],
             "preLaunchTask": "generate-env-dev"
         },
         {
@@ -42,10 +42,10 @@ preLaunchTask とは？
             "type": "dart",
             "flutterMode": "debug",
             "program": "lib/main.dart",
-            "args": \[
+            "args": [
                 "--flavor",
                 "stage"
-            \],
+            ],
             "preLaunchTask": "generate-env-stage"
         },
         {
@@ -54,13 +54,13 @@ preLaunchTask とは？
             "type": "dart",
             "flutterMode": "debug",
             "program": "lib/main.dart",
-            "args": \[
+            "args": [
                 "--flavor",
                 "prod"
-            \],
+            ],
             "preLaunchTask": "generate-env-prod"
         }
-    \]
+    ]
 }
 
 ---
@@ -90,7 +90,7 @@ preLaunchTask とは？
 ## 👤 ユーザー
 *2025/3/28 14:38:52*
 
-./scripts/generate\_env.sh dev や ./scripts/generate\_env.sh prod などを実行させたいんだ
+./scripts/generate_env.sh dev や ./scripts/generate_env.sh prod などを実行させたいんだ
 
 ---
 

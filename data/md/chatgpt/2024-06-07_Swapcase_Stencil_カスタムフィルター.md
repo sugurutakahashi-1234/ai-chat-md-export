@@ -233,7 +233,7 @@ public enum UICatalogType: SwiftUIForEachable {
 ## 👤 ユーザー
 *2024/6/7 15:54:25*
 
-error: ./sourcery/template/presentation\_code\_gen/UICatalogType.stencil: Unable to resolve subscript ':1' in variable '"")\[:1\]'
+error: ./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unable to resolve subscript ':1' in variable '"")[:1]'
 
 ---
 
@@ -289,7 +289,7 @@ public enum UICatalogType: SwiftUIForEachable {
 ## 👤 ユーザー
 *2024/6/7 15:55:00*
 
-error: ./sourcery/template/presentation\_code\_gen/UICatalogType.stencil: Unknown filter 'first'. Found similar filters: 'split', 'filter', 'class', 'struct', 'count', 'split', 'filter'.
+error: ./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown filter 'first'. Found similar filters: 'split', 'filter', 'class', 'struct', 'count', 'split', 'filter'.
 
 ---
 

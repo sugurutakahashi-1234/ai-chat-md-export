@@ -12,9 +12,9 @@ FVM Doctor:
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Project:
 ┌─────────────────────────────┬───────────────────────────────────────────────┐
-│ Project                     │ flutter\_sample\_app                            │
+│ Project                     │ flutter_sample_app                            │
 ├─────────────────────────────┼───────────────────────────────────────────────┤
-│ Directory                   │ /Users/sugurutakahashi/git/flutter\_sample\_app │
+│ Directory                   │ /Users/sugurutakahashi/git/flutter_sample_app │
 ├─────────────────────────────┼───────────────────────────────────────────────┤
 │ Active Flavor               │ None                                          │
 ├─────────────────────────────┼───────────────────────────────────────────────┤
@@ -41,7 +41,7 @@ Project:
 IDEs:
 Cannot resolve symbolic links
 
-Path: /Users/sugurutakahashi/git/flutter\_sample\_app/.fvm/versions
+Path: /Users/sugurutakahashi/git/flutter_sample_app/.fvm/versions
 
 ---
 

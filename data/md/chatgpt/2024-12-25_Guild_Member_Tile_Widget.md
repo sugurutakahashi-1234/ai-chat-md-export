@@ -7,21 +7,21 @@
 ## 👤 ユーザー
 *2024/12/25 14:16:42*
 
-\_GuildMemberTile を定義してほしい
+_GuildMemberTile を定義してほしい
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:flutter\_svg/svg.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild\_info.dart';
-import 'package:snpit\_guild\_app/presentation/providers/on\_created\_guild.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild_info.dart';
+import 'package:snpit_guild_app/presentation/providers/on_created_guild.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class GuildPage extends HookConsumerWidget {
   const GuildPage({super.key});
@@ -37,13 +37,13 @@ class GuildPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     // ギルドが作成された場合ギルド情報を取得する
     ref.listen&lt;bool&gt;(
       onCreatedGuildNotifierProvider,
-      (\_, next) async {
+      (_, next) async {
         if (next) {
           await ref.read(getMyGuildNotifierProvider.notifier).executeRequest();
         }
@@ -62,18 +62,18 @@ class GuildPage extends HookConsumerWidget {
               return DefaultTabController(
                 length: 2, // Tabの数
                 child: Column(
-                  children: \[
+                  children: [
                     Container(
                       padding: const EdgeInsets.all(16),
                       child: Column(
-                        children: \[
+                        children: [
                           DecoratedBox(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(color: ColorToken.secondary),
                             ),
                             child: Column(
-                              children: \[
+                              children: [
                                 GestureDetector(
                                   onTap: () {
                                     Clipboard.setData(
@@ -104,7 +104,7 @@ class GuildPage extends HookConsumerWidget {
                                     ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
-                                      children: \[
+                                      children: [
                                         SvgPicture.asset(
                                           Assets.images.triangleDots.path,
                                         ),
@@ -115,7 +115,7 @@ class GuildPage extends HookConsumerWidget {
                                             fontSize: 14,
                                           ),
                                         ),
-                                      \],
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -145,7 +145,7 @@ class GuildPage extends HookConsumerWidget {
                                 const SizedBox(height: 8),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: \[
+                                  children: [
                                     const Icon(
                                       Icons.people,
                                       size: 24,
@@ -158,7 +158,7 @@ class GuildPage extends HookConsumerWidget {
                                         fontSize: 14,
                                       ),
                                     ),
-                                  \],
+                                  ],
                                 ),
                                 const SizedBox(height: 24),
                                 const Padding(
@@ -172,18 +172,18 @@ class GuildPage extends HookConsumerWidget {
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
-                                  children: \[
-                                    \_buildStatColumn('Search', 3879, 'Q'),
-                                    \_buildStatColumn('Attack', 1230, 'E'),
-                                    \_buildStatColumn('Luck', 893, 'L'),
-                                    \_buildStatColumn('Defence', 905, 'B'),
-                                  \],
+                                  children: [
+                                    _buildStatColumn('Search', 3879, 'Q'),
+                                    _buildStatColumn('Attack', 1230, 'E'),
+                                    _buildStatColumn('Luck', 893, 'L'),
+                                    _buildStatColumn('Defence', 905, 'B'),
+                                  ],
                                 ),
                                 const SizedBox(height: 24),
-                              \],
+                              ],
                             ),
                           ),
-                        \],
+                        ],
                       ),
                     ),
                     TabBar(
@@ -199,21 +199,21 @@ class GuildPage extends HookConsumerWidget {
                       ),
                       labelColor: ColorToken.text,
                       unselectedLabelColor: ColorToken.secondary,
-                      tabs: const \[
+                      tabs: const [
                         Tab(text: 'Members'),
                         Tab(text: 'Spots'),
-                      \],
+                      ],
                     ),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(24),
                         child: TabBarView(
-                          children: \[
+                          children: [
                             // Members Tab
                             ListView.builder(
                               itemCount: guildInfo.guildMembers?.length ?? 0,
                               itemBuilder: (context, index) {
-                                final member = guildInfo.guildMembers!\[index\];
+                                final member = guildInfo.guildMembers![index];
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 8,
@@ -229,7 +229,7 @@ class GuildPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(12),
                                       child: Row(
-                                        children: \[
+                                        children: [
                                           CircleAvatar(
                                             radius: 16,
                                             backgroundImage: NetworkImage(
@@ -242,7 +242,7 @@ class GuildPage extends HookConsumerWidget {
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
-                                              children: \[
+                                              children: [
                                                 Text(
                                                   maxLines: 1,
                                                   overflow:
@@ -281,21 +281,21 @@ class GuildPage extends HookConsumerWidget {
                                                     ),
                                                   ),
                                                 ),
-                                              \],
+                                              ],
                                             ),
                                           ),
                                           const SizedBox(width: 12),
                                           Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.end,
-                                            children: \[
-                                              \_buildStatRow('Q', 13),
-                                              \_buildStatRow('E', 48),
-                                              \_buildStatRow('L', 7),
-                                              \_buildStatRow('B', 5),
-                                            \],
+                                            children: [
+                                              _buildStatRow('Q', 13),
+                                              _buildStatRow('E', 48),
+                                              _buildStatRow('L', 7),
+                                              _buildStatRow('B', 5),
+                                            ],
                                           ),
-                                        \],
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -305,11 +305,11 @@ class GuildPage extends HookConsumerWidget {
 
                             // Spots Tab
                             const Center(child: Text('COMING SOON...')),
-                          \],
+                          ],
                         ),
                       ),
                     ),
-                  \],
+                  ],
                 ),
               );
             } else {
@@ -318,14 +318,14 @@ class GuildPage extends HookConsumerWidget {
                 physics: AlwaysScrollableScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: \_NoGuildWidget(),
+                  child: _NoGuildWidget(),
                 ),
               );
             }
           },
           loading: () =&gt; const Center(child: CircularProgressIndicator()),
           error: (error, stackTrace) {
-            WidgetsBinding.instance.addPostFrameCallback((\_) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Error: $error')),
               );
@@ -340,9 +340,9 @@ class GuildPage extends HookConsumerWidget {
     );
   }
 
-  Widget \_buildStatColumn(String title, int value, String subtext) {
+  Widget _buildStatColumn(String title, int value, String subtext) {
     return Column(
-      children: \[
+      children: [
         Text(
           title,
           style: const TextStyle(
@@ -363,15 +363,15 @@ class GuildPage extends HookConsumerWidget {
             color: ColorToken.secondary,
           ),
         ),
-      \],
+      ],
     );
   }
 
-  Widget \_buildStatRow(String label, int value) {
+  Widget _buildStatRow(String label, int value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
-        children: \[
+        children: [
           Text(
             label,
             style: const TextStyle(
@@ -396,19 +396,19 @@ class GuildPage extends HookConsumerWidget {
               backgroundColor: ColorToken.bg,
             ),
           ),
-        \],
+        ],
       ),
     );
   }
 }
 
-class \_NoGuildWidget extends StatelessWidget {
-  const \_NoGuildWidget();
+class _NoGuildWidget extends StatelessWidget {
+  const _NoGuildWidget();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: \[
+      children: [
         const SizedBox(height: 48),
         const Text(
           'No guild affiliation',
@@ -432,7 +432,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 Assets.images.joinGuildFig.path,
               ),
@@ -443,7 +443,7 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text(
                         'Join an existing guild',
@@ -452,15 +452,15 @@ class \_NoGuildWidget extends StatelessWidget {
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 16),
@@ -471,7 +471,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 Assets.images.createGuildFig.path,
               ),
@@ -482,26 +482,26 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text('Host a new guild'),
                     ),
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 48),
-      \],
+      ],
     );
   }
 }
@@ -511,21 +511,21 @@ class \_NoGuildWidget extends StatelessWidget {
 ## 🤖 アシスタント
 *2024/12/25 14:17:01*
 
-Here's the implementation for `\_GuildMemberTile`, following the conventions and design patterns in your existing code:
+Here's the implementation for `_GuildMemberTile`, following the conventions and design patterns in your existing code:
 
 ---
 
 ## 🤖 アシスタント
 *2024/12/25 14:17:01*
 
-{"name": "guild\_member\_tile", "type": "code/dart", "content": "import 'package:flutter/material.dart';\\nimport 'package:flutter\_hooks/flutter\_hooks.dart';\\nimport 'package:flutter\_svg/svg.dart';\\nimport 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';\\nimport 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';\\n\\nclass GuildMemberTile extends StatelessWidget {\\n  final String userId;\\n  final String avatarUrl;\\n  final Map&lt;String, int&gt; stats;\\n\\n  const GuildMemberTile({\\n    Key? key,\\n    required this.userId,\\n    required this.avatarUrl,\\n    required this.stats,\\n  }) : super(key: key);\\n\\n  @override\\n  Widget build(BuildContext context) {\\n    return Padding(\\n      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),\\n      child: DecoratedBox(\\n        decoration: BoxDecoration(\\n          borderRadius: BorderRadius.circular(4),\\n          border: Border.all(color: ColorToken.secondary),\\n        ),\\n        child: Padding(\\n          padding: const EdgeInsets.all(12),\\n          child: Row(\\n            children: \[\\n              CircleAvatar(\\n                radius: 16,\\n                backgroundImage: NetworkImage(avatarUrl),\\n              ),\\n              const SizedBox(width: 12),\\n              Expanded(\\n                child: Column(\\n                  crossAxisAlignment: CrossAxisAlignment.start,\\n                  children: \[\\n                    Text(\\n                      userId,\\n                      maxLines: 1,\\n                      overflow: TextOverflow.ellipsis,\\n                      style: const TextStyle(\\n                        color: Colors.white,\\n                        fontSize: 16,\\n                        fontWeight: FontWeight.bold,\\n                      ),\\n                    ),\\n                    const SizedBox(height: 8),\\n                    Row(\\n                      children: List.generate(\\n                        4,\\n                        (badgeIndex) =&gt; Padding(\\n                          padding: const EdgeInsets.only(right: 4),\\n                          child: ClipRRect(\\n                            borderRadius: BorderRadius.circular(4),\\n                            child: SizedBox(\\n                              width: 28,\\n                              height: 28,\\n                              child: Image.network(\\n                                UriExtensions.randomImageUrl.toString(),\\n                                fit: BoxFit.cover,\\n                              ),\\n                            ),\\n                          ),\\n                        ),\\n                      ),\\n                    ),\\n                  \],\\n                ),\\n              ),\\n              const SizedBox(width: 12),\\n              Column(\\n                crossAxisAlignment: CrossAxisAlignment.end,\\n                children: stats.entries\\n                    .map((entry) =&gt; \_buildStatRow(entry.key, entry.value))\\n                    .toList(),\\n              ),\\n            \],\\n          ),\\n        ),\\n      ),\\n    );\\n  }\\n\\n  Widget \_buildStatRow(String label, int value) {\\n    return Padding(\\n      padding: const EdgeInsets.symmetric(vertical: 4),\\n      child: Row(\\n        children: \[\\n          Text(\\n            label,\\n            style: const TextStyle(\\n              color: Colors.white,\\n              fontSize: 14,\\n            ),\\n          ),\\n          const SizedBox(width: 4),\\n          Text(\\n            value.toString(),\\n            style: const TextStyle(\\n              color: Colors.white,\\n              fontSize: 14,\\n            ),\\n          ),\\n          const SizedBox(width: 4),\\n          SizedBox(\\n            width: 50,\\n            child: LinearProgressIndicator(\\n              value: value / 100,\\n              color: ColorToken.primary,\\n              backgroundColor: ColorToken.bg,\\n            ),\\n          ),\\n        \],\\n      ),\\n    );\\n  }\\n}"}
+{"name": "guild_member_tile", "type": "code/dart", "content": "import 'package:flutter/material.dart';\nimport 'package:flutter_hooks/flutter_hooks.dart';\nimport 'package:flutter_svg/svg.dart';\nimport 'package:snpit_guild_app/presentation/design_token/color_token.dart';\nimport 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';\n\nclass GuildMemberTile extends StatelessWidget {\n  final String userId;\n  final String avatarUrl;\n  final Map&lt;String, int&gt; stats;\n\n  const GuildMemberTile({\n    Key? key,\n    required this.userId,\n    required this.avatarUrl,\n    required this.stats,\n  }) : super(key: key);\n\n  @override\n  Widget build(BuildContext context) {\n    return Padding(\n      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),\n      child: DecoratedBox(\n        decoration: BoxDecoration(\n          borderRadius: BorderRadius.circular(4),\n          border: Border.all(color: ColorToken.secondary),\n        ),\n        child: Padding(\n          padding: const EdgeInsets.all(12),\n          child: Row(\n            children: [\n              CircleAvatar(\n                radius: 16,\n                backgroundImage: NetworkImage(avatarUrl),\n              ),\n              const SizedBox(width: 12),\n              Expanded(\n                child: Column(\n                  crossAxisAlignment: CrossAxisAlignment.start,\n                  children: [\n                    Text(\n                      userId,\n                      maxLines: 1,\n                      overflow: TextOverflow.ellipsis,\n                      style: const TextStyle(\n                        color: Colors.white,\n                        fontSize: 16,\n                        fontWeight: FontWeight.bold,\n                      ),\n                    ),\n                    const SizedBox(height: 8),\n                    Row(\n                      children: List.generate(\n                        4,\n                        (badgeIndex) =&gt; Padding(\n                          padding: const EdgeInsets.only(right: 4),\n                          child: ClipRRect(\n                            borderRadius: BorderRadius.circular(4),\n                            child: SizedBox(\n                              width: 28,\n                              height: 28,\n                              child: Image.network(\n                                UriExtensions.randomImageUrl.toString(),\n                                fit: BoxFit.cover,\n                              ),\n                            ),\n                          ),\n                        ),\n                      ),\n                    ),\n                  ],\n                ),\n              ),\n              const SizedBox(width: 12),\n              Column(\n                crossAxisAlignment: CrossAxisAlignment.end,\n                children: stats.entries\n                    .map((entry) =&gt; _buildStatRow(entry.key, entry.value))\n                    .toList(),\n              ),\n            ],\n          ),\n        ),\n      ),\n    );\n  }\n\n  Widget _buildStatRow(String label, int value) {\n    return Padding(\n      padding: const EdgeInsets.symmetric(vertical: 4),\n      child: Row(\n        children: [\n          Text(\n            label,\n            style: const TextStyle(\n              color: Colors.white,\n              fontSize: 14,\n            ),\n          ),\n          const SizedBox(width: 4),\n          Text(\n            value.toString(),\n            style: const TextStyle(\n              color: Colors.white,\n              fontSize: 14,\n            ),\n          ),\n          const SizedBox(width: 4),\n          SizedBox(\n            width: 50,\n            child: LinearProgressIndicator(\n              value: value / 100,\n              color: ColorToken.primary,\n              backgroundColor: ColorToken.bg,\n            ),\n          ),\n        ],\n      ),\n    );\n  }\n}"}
 
 ---
 
 ## 🔧 ツール
 *2024/12/25 14:17:01*
 
-{"result": "Successfully created text document 'guild\_member\_tile' which will be referenced in all future messages with the unique identifier textdoc\_id: '676b954907bc8191b0ce02888962c41c'", "textdoc\_id": "676b954907bc8191b0ce02888962c41c", "name": "guild\_member\_tile"}
+{"result": "Successfully created text document 'guild_member_tile' which will be referenced in all future messages with the unique identifier textdoc_id: '676b954907bc8191b0ce02888962c41c'", "textdoc_id": "676b954907bc8191b0ce02888962c41c", "name": "guild_member_tile"}
 
 ---
 

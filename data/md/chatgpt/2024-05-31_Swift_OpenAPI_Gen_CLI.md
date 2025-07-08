@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/5/31 15:09:00*
 
-Swift\_Open\_API\_Gen\_CLI\_PACKAGE を大文字に
+Swift_Open_API_Gen_CLI_PACKAGE を大文字に
 
 ---
 

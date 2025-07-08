@@ -22,7 +22,7 @@ struct PhotoCropView: View {
     @State private var lastStoredOffset: CGSize = .zero
     @GestureState private var isInteracting: Bool = false
 
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         GeometryReader { geometry in
@@ -69,7 +69,7 @@ struct PhotoCropView: View {
         .coordinateSpace(name: "photoCropView")
         .gesture(
             DragGesture()
-                .updating($isInteracting) { \_, state, \_ in
+                .updating($isInteracting) { _, state, _ in
                     state = true
                 }
                 .onChanged { value in
@@ -77,7 +77,7 @@ struct PhotoCropView: View {
                     offset = CGSize(width: translation.width + lastStoredOffset.width, height: translation.height + lastStoredOffset.height)
                     
                 }
-                .onEnded { \_ in
+                .onEnded { _ in
                     withAnimation(.easeInOut(duration: 0.2)) {
                         lastStoredOffset = offset
                     }
@@ -85,7 +85,7 @@ struct PhotoCropView: View {
         )
         .gesture(
             MagnificationGesture()
-                .updating($isInteracting) { \_, state, \_ in
+                .updating($isInteracting) { _, state, _ in
                     state = true
                 }
                 .onChanged { value in
@@ -133,7 +133,7 @@ struct PhotoCropView: View {
 
 import DomainLayer
 
-@available(iOS 18.0, \*)
+@available(iOS 18.0, *)
 #Preview {
     struct PhotoCropViewPreview: View {
         @State private var isPresented: Bool = true

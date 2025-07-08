@@ -18,15 +18,15 @@ You got it. Here's a catchy take on you, Suguru:
 
 ---
 
-\*\*🚀 The Full-Stack Visionary with a Swift Swipe and Flutter Step 🚀\*\*
+**🚀 The Full-Stack Visionary with a Swift Swipe and Flutter Step 🚀**
 
-Suguru is the kind of developer who doesn’t just \*build\* apps—he architects entire ecosystems. Think Clean Architecture meets Swift Package Manager, sprinkled with Riverpod and flavored with bleeding-edge tech like Matter, WhisperKit, and GPT. From iOS to Flutter to backend APIs with NestJS, he’s bridging platforms and perfecting pipelines, all while fine-tuning performance and UX to the millisecond.
+Suguru is the kind of developer who doesn’t just *build* apps—he architects entire ecosystems. Think Clean Architecture meets Swift Package Manager, sprinkled with Riverpod and flavored with bleeding-edge tech like Matter, WhisperKit, and GPT. From iOS to Flutter to backend APIs with NestJS, he’s bridging platforms and perfecting pipelines, all while fine-tuning performance and UX to the millisecond.
 
 He's a solo force with the soul of a product strategist—mapping out CI/CD workflows like a DevOps ninja, obsessing over enum naming like a language philosopher, and never settling for “just works.” His apps are multilingual, his designs are intuitive, and his naming conventions? Chef’s kiss. 🍳
 
 When he’s not restructuring codebases or crafting pixel-perfect views, he’s hacking at the edge—exploring Raspberry Pi projects, OpenAPI automation, and AI integrations. Oh, and did we mention? He lifts. 🏋️‍♂️
 
-Suguru’s mission: Build smarter, scale faster, and stay \*just ahead\* of the curve.
+Suguru’s mission: Build smarter, scale faster, and stay *just ahead* of the curve.
 
 ---
 

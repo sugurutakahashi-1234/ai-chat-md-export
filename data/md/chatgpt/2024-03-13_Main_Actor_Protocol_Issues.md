@@ -11,7 +11,7 @@ swiftでMain actor-isolated static property 'snapshots' cannot be used to satisf
 
 import PreviewSnapshots
 
-struct HomeTabView\_Previews: PreviewProvider, SnapshotTestable {
+struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
     static var previews: some View {
         snapshots.previews.previewLayout(.sizeThatFits)
     }
@@ -19,7 +19,7 @@ struct HomeTabView\_Previews: PreviewProvider, SnapshotTestable {
 // Main actor-isolated static property 'snapshots' cannot be used to satisfy nonisolated protocol requirement
     static var snapshots: PreviewSnapshots&lt;HomeTab&gt; {
         PreviewSnapshots&lt;HomeTab&gt;(
-            configurations: HomeTab.allCases.map { tab in .init(name: "\\(tab)".initialUppercased, state: tab) },
+            configurations: HomeTab.allCases.map { tab in .init(name: "\(tab)".initialUppercased, state: tab) },
             configure: { homeTab in
                 HomeTabView(router: AppRootRouter.empty, dependency: AppRootRouterDependencyMock.random, selectedTab: homeTab)
             }

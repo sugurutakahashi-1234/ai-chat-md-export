@@ -24,7 +24,7 @@
 struct Foo {
     let int: Int
     let optionalInt: Int?
-    let array: \[Int\]
+    let array: [Int]
     let url: URL
     let optionalUrl: URL?
 }
@@ -38,7 +38,7 @@ It looks like you have defined a Swift struct called `Foo`. It has five properti
 
 1. `int` of type `Int`, which is a required integer value.
 2. `optionalInt` of type `Int?`, which is an optional integer value.
-3. `array` of type `\[Int\]`, which is an array of integers.
+3. `array` of type `[Int]`, which is an array of integers.
 4. `url` of type `URL`, which is a required URL value.
 5. `optionalUrl` of type `URL?`, which is an optional URL value.
 

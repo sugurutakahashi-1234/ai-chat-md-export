@@ -8,14 +8,14 @@
 *2023/5/28 12:05:56*
 
 Figma のアイコンの定義をSwiftで も定義しようと思っていて、
-/\* Icon/MultiplyCircleFill \*/ を 以下の enum の case に追加したほうに、他のアイコンについても enum の case として加えて欲しい
+/* Icon/MultiplyCircleFill */ を 以下の enum の case に追加したほうに、他のアイコンについても enum の case として加えて欲しい
 
 public enum SFSymbol: String {
     case multiplyCircleFill
 }
 
 
-/\* Icon/MultiplyCircleFill \*/
+/* Icon/MultiplyCircleFill */
 
 position: relative;
 left: 26.95%;
@@ -25,7 +25,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/QuestionmarkCircleFill \*/
+/* Icon/QuestionmarkCircleFill */
 
 position: relative;
 left: 59.49%;
@@ -35,7 +35,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/QuestionmarkCircle \*/
+/* Icon/QuestionmarkCircle */
 
 position: relative;
 left: 64.91%;
@@ -45,7 +45,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/QuestionmarkCircle \*/
+/* Icon/QuestionmarkCircle */
 
 position: relative;
 left: 59.49%;
@@ -55,7 +55,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/QuestionmarkCircleFill \*/
+/* Icon/QuestionmarkCircleFill */
 
 position: relative;
 left: 54.07%;
@@ -65,7 +65,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/ChevronRight \*/
+/* Icon/ChevronRight */
 
 position: relative;
 left: 59.49%;
@@ -75,7 +75,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/ChevronLeft \*/
+/* Icon/ChevronLeft */
 
 position: relative;
 left: 54.07%;
@@ -85,7 +85,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/Time\_Fill \*/
+/* Icon/Time_Fill */
 
 position: relative;
 left: 64.91%;
@@ -95,7 +95,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/ClockFill \*/
+/* Icon/ClockFill */
 
 position: relative;
 left: 21.53%;
@@ -105,7 +105,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/ClockOutline \*/
+/* Icon/ClockOutline */
 
 position: relative;
 left: 70.33%;
@@ -115,7 +115,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/Stopwatch \*/
+/* Icon/Stopwatch */
 
 position: relative;
 left: 48.64%;
@@ -125,7 +125,7 @@ bottom: 40.88%;
 
 
 
-/\* Icon/StopwatchFill \*/
+/* Icon/StopwatchFill */
 
 position: relative;
 left: 32.38%;
@@ -135,7 +135,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/BackwardEndCircleFill \*/
+/* Icon/BackwardEndCircleFill */
 
 position: relative;
 left: 37.8%;
@@ -145,7 +145,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/ForwardEndCircleFill \*/
+/* Icon/ForwardEndCircleFill */
 
 position: relative;
 left: 43.22%;
@@ -155,7 +155,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/ForwardEndCircle \*/
+/* Icon/ForwardEndCircle */
 
 position: relative;
 left: 59.49%;
@@ -165,7 +165,7 @@ bottom: 40.88%;
 
 
 
-/\* Icon/BackwardEndCircle \*/
+/* Icon/BackwardEndCircle */
 
 position: relative;
 left: 54.07%;
@@ -175,7 +175,7 @@ bottom: 40.88%;
 
 
 
-/\* Icon/Alert\_Fill \*/
+/* Icon/Alert_Fill */
 
 position: relative;
 left: 48.64%;
@@ -185,7 +185,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/CheckmarkCircleBadgeXmark \*/
+/* Icon/CheckmarkCircleBadgeXmark */
 
 position: relative;
 left: 48.64%;
@@ -195,7 +195,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/SquareAndArrowUp \*/
+/* Icon/SquareAndArrowUp */
 
 position: relative;
 left: 64.91%;
@@ -205,7 +205,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/House \*/
+/* Icon/House */
 
 position: relative;
 left: 43.22%;
@@ -215,7 +215,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/BellFill \*/
+/* Icon/BellFill */
 
 position: relative;
 left: 32.38%;
@@ -225,7 +225,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/BellBudgeFill \*/
+/* Icon/BellBudgeFill */
 
 position: relative;
 left: 26.95%;
@@ -235,7 +235,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/BellBudge \*/
+/* Icon/BellBudge */
 
 position: relative;
 left: 32.38%;
@@ -245,7 +245,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/Ellipsis \*/
+/* Icon/Ellipsis */
 
 position: relative;
 left: 21.53%;
@@ -255,7 +255,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/Bell \*/
+/* Icon/Bell */
 
 position: relative;
 left: 37.8%;
@@ -265,7 +265,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/GearshapeFill \*/
+/* Icon/GearshapeFill */
 
 position: relative;
 left: 21.53%;
@@ -275,7 +275,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/Gearshape \*/
+/* Icon/Gearshape */
 
 position: relative;
 left: 26.95%;
@@ -285,7 +285,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/CheckMark \*/
+/* Icon/CheckMark */
 
 position: relative;
 left: 75.76%;
@@ -295,7 +295,7 @@ bottom: 53.28%;
 
 
 
-/\* HouseFill \*/
+/* HouseFill */
 
 position: relative;
 left: 37.8%;
@@ -305,7 +305,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/ListBullet.clipboardFill \*/
+/* Icon/ListBullet.clipboardFill */
 
 position: relative;
 left: 43.22%;
@@ -315,7 +315,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/EyeFill \*/
+/* Icon/EyeFill */
 
 position: relative;
 left: 26.95%;
@@ -325,7 +325,7 @@ bottom: 40.88%;
 
 
 
-/\* Icon/EyeSlashFill \*/
+/* Icon/EyeSlashFill */
 
 position: relative;
 left: 21.53%;
@@ -335,7 +335,7 @@ bottom: 40.88%;
 
 
 
-/\* Icon/MessageFill \*/
+/* Icon/MessageFill */
 
 position: relative;
 left: 48.64%;
@@ -345,7 +345,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/CameraViewfinder \*/
+/* Icon/CameraViewfinder */
 
 position: relative;
 left: 54.07%;
@@ -355,7 +355,7 @@ bottom: 65.69%;
 
 
 
-/\* Icon/IphoneGen1 \*/
+/* Icon/IphoneGen1 */
 
 position: relative;
 left: 43.22%;
@@ -365,7 +365,7 @@ bottom: 40.88%;
 
 
 
-/\* Icon/PersonFIll \*/
+/* Icon/PersonFIll */
 
 position: relative;
 left: 64.91%;
@@ -375,7 +375,7 @@ bottom: 40.88%;
 
 
 
-/\* Icon/RectanglePortraitAndArrowForward \*/
+/* Icon/RectanglePortraitAndArrowForward */
 
 position: relative;
 left: 70.33%;
@@ -385,7 +385,7 @@ bottom: 53.28%;
 
 
 
-/\* Icon/Multiply \*/
+/* Icon/Multiply */
 
 position: relative;
 width: 24px;
@@ -395,7 +395,7 @@ top: 138px;
 
 
 
-/\* Icon/PersonBadgeClockFill \*/
+/* Icon/PersonBadgeClockFill */
 
 position: relative;
 left: 70.33%;
@@ -405,7 +405,7 @@ bottom: 40.88%;
 
 
 
-/\* Icon/SquareAndArrowUpCircleFill \*/
+/* Icon/SquareAndArrowUpCircleFill */
 
 position: relative;
 left: 70.33%;
@@ -415,7 +415,7 @@ bottom: 78.1%;
 
 
 
-/\* Icon/QuestionmarkBubbleFill \*/
+/* Icon/QuestionmarkBubbleFill */
 
 position: relative;
 width: 24px;
@@ -425,7 +425,7 @@ top: 36px;
 
 
 
-/\* Icon/RectangleGroupFill \*/
+/* Icon/RectangleGroupFill */
 
 position: relative;
 width: 24px;

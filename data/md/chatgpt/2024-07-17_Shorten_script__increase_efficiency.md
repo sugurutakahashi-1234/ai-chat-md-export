@@ -12,7 +12,7 @@
 #!/bin/sh
 
 # スキーマのリストを取得し、「Test」を含むスキーマだけを抽出
-schemas=$(xcodebuild -list | awk '/Schemes:/,/^\[^ \]/ {if ($1 != "Schemes:" && $1 ~ /Test/) print $1}')
+schemas=$(xcodebuild -list | awk '/Schemes:/,/^[^ ]/ {if ($1 != "Schemes:" && $1 ~ /Test/) print $1}')
 
 # ViewSnapshotTest を除外
 schemas=$(echo "$schemas" | grep -v "ViewSnapshotTest")

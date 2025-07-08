@@ -16,16 +16,16 @@ UIImage を macOS でも動かす方法
 
 `UIImage`はiOSのUIKitフレームワークに特有のクラスで、macOSでは直接使用することはできません。しかし、macOSでiOSのコードを一部使いたい場合、いくつかのアプローチがあります。
 
-1. \*\*Mac Catalystを使用する:\*\*
+1. **Mac Catalystを使用する:**
    Mac Catalystは、iPadアプリケーションをMac用に変換するためのAppleのツールです。これにより、UIKitベースのアプリケーションコード（`UIImage`を含む）をmacOSで動作するように調整できます。ただし、このプロセスは自動的ではなく、UIの違いを考慮してコードの修正が必要です。
 
-2. \*\*NSImageとのブリッジング:\*\*
+2. **NSImageとのブリッジング:**
    macOSには、`UIImage`に対応する`NSImage`クラスがあります。特定のコードで`UIImage`を使用する必要がある場合は、`UIImage`と`NSImage`間のデータを変換するヘルパーメソッドまたはエクステンションを作成できます。これにより、macOS特有のコードでUIImageのデータを扱うことが可能になります。
 
-3. \*\*SwiftUIの使用:\*\*
+3. **SwiftUIの使用:**
    SwiftUIは、iOS、macOS、watchOS、tvOSで動作するクロスプラットフォームのUIツールキットです。SwiftUIの`Image`ビューは、`UIImage`および`NSImage`を受け入れるため、コードを一度書けば複数のプラットフォーム間で共有できます。
 
-4. \*\*UIKit for Mac (Project Catalyst):\*\*
+4. **UIKit for Mac (Project Catalyst):**
    最近のmacOSバージョンでは、Project Catalystとしても知られるUIKit for Macが導入されました。これにより、開発者はiOSアプリをmacOSに移植し、大部分のUIKitコード（`UIImage`を含む）を再利用できます。
 
 これらのアプローチの選択は、プロジェクトの要件、既存のコードベース、および目標プラットフォームによって異なります。`UIImage`をmacOSで直接的に「動かす」代わりに、適切なツールやフレームワークを使用してコードを適応させることが一般的です。

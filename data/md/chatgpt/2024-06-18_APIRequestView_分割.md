@@ -15,7 +15,7 @@ public struct APIRequestView&lt;Dependency: RootDIContainerDependency&gt;: View 
 
     public init(dependency: Dependency) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: .init(dependency: dependency))
+        _presenter = .init(wrappedValue: .init(dependency: dependency))
     }
 
     public var body: some View {
@@ -23,8 +23,8 @@ public struct APIRequestView&lt;Dependency: RootDIContainerDependency&gt;: View 
             Section("Request") {
                 HStack {
                     Picker(selection: $presenter.selectedApi) {
-                        ForEach(APIType.allCases, id: \\.self) { apiType in
-                            Text("\\(apiType)")
+                        ForEach(APIType.allCases, id: \.self) { apiType in
+                            Text("\(apiType)")
                         }
                     } label: {
                         Text("API")
@@ -81,7 +81,7 @@ public struct APIRequestView&lt;Dependency: RootDIContainerDependency&gt;: View 
                         .isHidden(presenter.allResponse.isEmpty)
                     }
                 }
-                .redacted(reason: presenter.isLoading ? .placeholder : \[\])
+                .redacted(reason: presenter.isLoading ? .placeholder : [])
                 .shimmering(active: presenter.isLoading)
             }
             .textCase(.none)
@@ -96,7 +96,7 @@ public struct APIRequestView&lt;Dependency: RootDIContainerDependency&gt;: View 
                     PropertyView(showToast: $presenter.showToast, objects: presenter.allResponse, onTapElement: presenter.onTapElement)
                 }
             }
-            .redacted(reason: presenter.isLoading ? .placeholder : \[\])
+            .redacted(reason: presenter.isLoading ? .placeholder : [])
             .shimmering(active: presenter.isLoading)
         }
         .scrollDismissesKeyboard(.immediately)

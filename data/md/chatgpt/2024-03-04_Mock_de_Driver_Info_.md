@@ -19,11 +19,11 @@ extension DeviceInfoDriverProtocolMock {
 
 /// @mockable
 public protocol DeviceInfoDriverProtocol {
-    /// Bundle.main.infoDictionary\["CFBundleShortVersionString"\]
+    /// Bundle.main.infoDictionary["CFBundleShortVersionString"]
     /// ex) 1.2.3
     var appVersion: String { get }
 
-    /// Bundle.main.infoDictionary\["CFBundleVersion"\]
+    /// Bundle.main.infoDictionary["CFBundleVersion"]
     /// ex) 123
     var appBuildNumber: String { get }
 

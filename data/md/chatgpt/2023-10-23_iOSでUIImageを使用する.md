@@ -19,7 +19,7 @@ let filesDirectoryName = "TestImages"
 var currentFileURL = URL(filePath: #file)
 currentFileURL.deleteLastPathComponent()
 let directoryPath = currentFileURL.appending(path: filesDirectoryName).absoluteString.replacingOccurrences(of: "file://", with: "")
-print("directoryPath: \\(directoryPath)")
+print("directoryPath: \(directoryPath)")
 let filesExist = checkIfFilesExist(in: directoryPath)
 if !filesExist {
     fatalError("Image files don't exist!")
@@ -29,8 +29,8 @@ let fileManager = FileManager.default
 do {
     let directoryPath = directoryPath
     let directoryNames = try fileManager.contentsOfDirectory(atPath: directoryPath)
-    print("directoryNames: \\(directoryNames)")
-    var resultModels: \[ResultModel\] = \[\]
+    print("directoryNames: \(directoryNames)")
+    var resultModels: [ResultModel] = []
     try directoryNames.enumerated().forEach { directoryItem in
         let fileDirectoryPath = directoryPath + "/" + directoryItem.element
         let fileNames = try fileManager.contentsOfDirectory(atPath: fileDirectoryPath)
@@ -43,7 +43,7 @@ do {
             }
             let resultModel = ResultModel(fileName: fileItem.element, emotionKind: directoryItem.element, results: resultModelItems)
             resultModels.append(resultModel)
-            print("Directory: \\(directoryItem.offset + 1)/\\(directoryNames.count), File: \\(fileItem.offset + 1)/\\(fileNames.count)")
+            print("Directory: \(directoryItem.offset + 1)/\(directoryNames.count), File: \(fileItem.offset + 1)/\(fileNames.count)")
         }
     }
 
@@ -63,12 +63,12 @@ private func checkIfFilesExist(in directoryPath: String) -&gt; Bool {
         // ディレクトリ内のファイル数が1つ以上ある場合はtrueを返す
         return !fileURLs.isEmpty
     } catch {
-        print("Error while checking files: \\(error.localizedDescription)")
+        print("Error while checking files: \(error.localizedDescription)")
         return false
     }
 }
 
-private func saveJSONToFile(\_ data: some Encodable, filePath: String) {
+private func saveJSONToFile(_ data: some Encodable, filePath: String) {
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
     do {
@@ -150,11 +150,11 @@ IOSurface creation failed: e00002be parentID: 0 properties: {
 
 解決策として以下の方法が考えられます：
 
-1. \*\*リソースの解放\*\*: エラーが「クライアントのIOSurface上限に達した可能性がある」と述べているため、使用している全ての画像データや他のメモリ集約的リソースが適切に解放されていることを確認してください。特に、大量の画像を扱っている場合や、画像処理のようなメモリ集約的な処理を行っている場合には、不要になったオブジェクトを明示的に解放する必要があります。
+1. **リソースの解放**: エラーが「クライアントのIOSurface上限に達した可能性がある」と述べているため、使用している全ての画像データや他のメモリ集約的リソースが適切に解放されていることを確認してください。特に、大量の画像を扱っている場合や、画像処理のようなメモリ集約的な処理を行っている場合には、不要になったオブジェクトを明示的に解放する必要があります。
 
-2. \*\*バッチ処理\*\*: 画像の処理をバッチに分けることで、一度に処理する画像の数を減らすことができます。これにより、同時に作成されるIOSurfaceの数が減り、このエラーを回避できる可能性があります。
+2. **バッチ処理**: 画像の処理をバッチに分けることで、一度に処理する画像の数を減らすことができます。これにより、同時に作成されるIOSurfaceの数が減り、このエラーを回避できる可能性があります。
 
-3. \*\*非同期処理の最適化\*\*: もし画像処理などが非同期で行われている場合、同時に多数のタスクが実行されないように処理を調整することが重要です。例えば、DispatchQueueなどを使用して、同時に実行できるタスクの数を制限することができます。
+3. **非同期処理の最適化**: もし画像処理などが非同期で行われている場合、同時に多数のタスクが実行されないように処理を調整することが重要です。例えば、DispatchQueueなどを使用して、同時に実行できるタスクの数を制限することができます。
 
 この問題は、アプリケーションの設計や実行されている処理に大きく依存します。従って、具体的な解決策を提案するためには、アプリケーションの全体的な構造や、このエラーが発生するコンテキストをより詳しく理解する必要があります。
 

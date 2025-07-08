@@ -25,7 +25,7 @@ public enum FrameCoordinate: Codable {
     public var pixelSystemValue: Double {
         switch self {
         case .cgPoint(let cgPointSystemValue):
-            return cgPointSystemValue \* UIScreen.main.scale
+            return cgPointSystemValue * UIScreen.main.scale
         case .pixel(let pixelSystemValue):
             return pixelSystemValue
         }

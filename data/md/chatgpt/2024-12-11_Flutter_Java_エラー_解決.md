@@ -14,14 +14,14 @@ Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
-Execution failed for task ':flutter\_plugin\_android\_lifecycle:compileDebugJavaWithJavac'.
-&gt; Could not resolve all files for configuration ':flutter\_plugin\_android\_lifecycle:androidJdkImage'.
-   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=\_internal\_android\_jdk\_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
+* What went wrong:
+Execution failed for task ':flutter_plugin_android_lifecycle:compileDebugJavaWithJavac'.
+&gt; Could not resolve all files for configuration ':flutter_plugin_android_lifecycle:androidJdkImage'.
+   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=_internal_android_jdk_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
       &gt; Execution failed for JdkImageTransform: /Users/sugurutakahashi/Library/Android/sdk/platforms/android-34/core-for-system-modules.jar.
          &gt; Error while executing process /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/jlink with arguments {--module-path /Users/sugurutakahashi/.gradle/caches/transforms-3/d9e926982c2c139ff9125eb7b6be4144/transformed/output/temp/jmod --add-modules java.base --output /Users/sugurutakahashi/.gradle/caches/transforms-3/d9e926982c2c139ff9125eb7b6be4144/transformed/output/jdkImage --disable-plugin system-modules}
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -131,7 +131,7 @@ android.enableJetifier=true
 homebrew で openjdk を入れたのが問題かもしれない
 
 $ fvm flutter doctor -v
-\[✓\] Flutter (Channel stable, 3.24.5, on macOS 15.2 24C100 darwin-arm64, locale en-JP)
+[✓] Flutter (Channel stable, 3.24.5, on macOS 15.2 24C100 darwin-arm64, locale en-JP)
     • Flutter version 3.24.5 on channel stable at /Users/sugurutakahashi/fvm/versions/3.24.5
     • Upstream repository https://github.com/flutter/flutter.git
     • Framework revision dec2ee5c1f (4 weeks ago), 2024-11-13 11:13:06 -0800
@@ -139,22 +139,22 @@ $ fvm flutter doctor -v
     • Dart version 3.5.4
     • DevTools version 2.37.3
 
-\[✓\] Android toolchain - develop for Android devices (Android SDK version 35.0.0)
+[✓] Android toolchain - develop for Android devices (Android SDK version 35.0.0)
     • Android SDK at /Users/sugurutakahashi/Library/Android/sdk
     • Platform android-35, build-tools 35.0.0
     • Java binary at: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java
     • Java version OpenJDK Runtime Environment (build 21.0.3+-79915917-b509.11)
     • All Android licenses accepted.
 
-\[✓\] Xcode - develop for iOS and macOS (Xcode 16.2)
-    • Xcode at /Applications/Xcode\_16.2\_beta\_3.app/Contents/Developer
+[✓] Xcode - develop for iOS and macOS (Xcode 16.2)
+    • Xcode at /Applications/Xcode_16.2_beta_3.app/Contents/Developer
     • Build 16C5023f
     • CocoaPods version 1.16.2
 
-\[✓\] Chrome - develop for the web
+[✓] Chrome - develop for the web
     • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 
-\[✓\] Android Studio (version 2024.2)
+[✓] Android Studio (version 2024.2)
     • Android Studio at /Applications/Android Studio.app/Contents
     • Flutter plugin can be installed from:
       🔨 https://plugins.jetbrains.com/plugin/9212-flutter
@@ -162,11 +162,11 @@ $ fvm flutter doctor -v
       🔨 https://plugins.jetbrains.com/plugin/6351-dart
     • Java version OpenJDK Runtime Environment (build 21.0.3+-79915917-b509.11)
 
-\[✓\] VS Code (version 1.95.3)
+[✓] VS Code (version 1.95.3)
     • VS Code at /Applications/Visual Studio Code.app/Contents
     • Flutter extension version 3.102.0
 
-\[✓\] Connected device (6 available)
+[✓] Connected device (6 available)
     • sdk gphone64 arm64 (mobile)       • emulator-5554                        • android-arm64  • Android 15 (API 35) (emulator)
     • SuguruTakahashi-iPhone16 (mobile) • 00008140-001C085E142B001C            • ios            • iOS 18.2 22C151
     • iPhone 16 (mobile)                • 45797DF9-7D24-451E-B3C9-06A4D259CCE4 • ios            • com.apple.CoreSimulator.SimRuntime.iOS-18-2 (simulator)
@@ -176,11 +176,11 @@ $ fvm flutter doctor -v
     ! Error: Browsing on the local area network for SuguruTakahashi-iPadPro12.9-2ndGen. Ensure the device is unlocked and attached with a cable or associated with the same local area network as this Mac.
       The device must be opted into Developer Mode to connect wirelessly. (code -27)
 
-\[✓\] Network resources
+[✓] Network resources
     • All expected network resources are available.
 
 • No issues found!
-~/git/flutter\_sample\_app  ‹feature/30\*› $ java -version                                                                                                  
+~/git/flutter_sample_app  ‹feature/30*› $ java -version                                                                                                  
 openjdk version "23.0.1" 2024-10-15
 OpenJDK Runtime Environment Homebrew (build 23.0.1)
 OpenJDK 64-Bit Server VM Homebrew (build 23.0.1, mixed mode, sharing)

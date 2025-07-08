@@ -16,22 +16,22 @@
 
 英語で「大きい」「小さい」「中間」を組み合わせると、さまざまな表現が可能です。以下にいくつかの例を挙げます：
 
-1. \*\*Large - Small - Medium\*\*
+1. **Large - Small - Medium**
    - この基本的な組み合わせは、サイズに関する多くの状況で使用されます。衣類、食品、家具など、さまざまな製品のサイズを表すのに使われます。
 
-2. \*\*Big - Little - Intermediate\*\*
+2. **Big - Little - Intermediate**
    - 「Big」と「Little」は、よりカジュアルな会話でよく使われる表現です。「Intermediate」は技術的な文脈や、中間のレベルや段階を指すときに使用されます。
 
-3. \*\*Huge - Tiny - Moderate\*\*
+3. **Huge - Tiny - Moderate**
    - 「Huge」と「Tiny」は、それぞれ「非常に大きい」と「非常に小さい」を意味し、感情的な強調を加えるときに使われます。「Moderate」は、極端ではない、適度なサイズや量を表すのに用いられます。
 
-4. \*\*Massive - Minuscule - Median\*\*
+4. **Massive - Minuscule - Median**
    - 「Massive」は「とても大きい」や「重量がある」ことを、「Minuscule」は「とても小さい」ことを強調します。「Median」は中央値を意味し、中間点や平均を指すときに使用されます。
 
-5. \*\*Gigantic - Petite - Medium\*\*
+5. **Gigantic - Petite - Medium**
    - 「Gigantic」は「巨大な」、「Petite」は特に女性の衣類で小さいサイズを指す場合に使用されます。「Medium」はこれらの極端なサイズの間の標準的なサイズを指します。
 
-6. \*\*Enormous - Slight - Medium-sized\*\*
+6. **Enormous - Slight - Medium-sized**
    - 「Enormous」は非常に大きいサイズや量を、「Slight」はほとんど気づかないほど小さいか、重要でないものを指します。「Medium-sized」は、直接「中サイズ」と言いたい場合に適しています。
 
 これらの表現は、サイズ、量、程度など、さまざまな文脈で使用できます。目的や文脈に応じて適切な組み合わせを選ぶことが重要です。
@@ -50,22 +50,22 @@
 
 もちろんです。他にも様々な「大きい」「小さい」「中間」を表す英語の組み合わせがあります。以下に更に例を挙げます：
 
-7. \*\*Expansive - Compact - Medium-scale\*\*
+7. **Expansive - Compact - Medium-scale**
    - 「Expansive」は、面積が広いまたは広範囲に及ぶものを指し、「Compact」は小さくて効率的な配置や設計を意味します。「Medium-scale」は、規模や範囲が中間のものを指します。
 
-8. \*\*Colossal - Diminutive - Mid-sized\*\*
+8. **Colossal - Diminutive - Mid-sized**
    - 「Colossal」は非常に大きなものや建造物を指すのに使われ、「Diminutive」は小さくて愛らしいものや、文字通り小さいものを指します。「Mid-sized」は、大きさや規模が中間のもの、特に企業や自動車などで使われます。
 
-9. \*\*Vast - Miniscule - Intermediate-size\*\*
+9. **Vast - Miniscule - Intermediate-size**
    - 「Vast」は非常に広い範囲や大きな量を指し、「Miniscule」（少し異なるスペリングで「Minuscule」とも書かれます）は非常に小さいことを強調します。「Intermediate-size」は、小さいと大きいの中間のサイズを指します。
 
-10. \*\*Tremendous - Tiny - Mid-level\*\*
+10. **Tremendous - Tiny - Mid-level**
     - 「Tremendous」は、量や程度が非常に大きいものを指すのに使われ、「Tiny」は非常に小さいものを指します。「Mid-level」は、階層やレベルが中間のもの、特に組織内のポジションや能力レベルを指す場合に使用されます。
 
-11. \*\*Monumental - Microscopic - Midway\*\*
+11. **Monumental - Microscopic - Midway**
     - 「Monumental」は、物理的な大きさよりも、重要性や影響の大きさを強調するのに使われます。「Microscopic」は文字通り顕微鏡でしか見えないほど小さいもの、または非常に小さいことを比喩的に表します。「Midway」は、二つの極端の中間点を指します。
 
-12. \*\*Bulky - Petite - Mid-scale\*\*
+12. **Bulky - Petite - Mid-scale**
     - 「Bulky」は、大きくてかさばるものを指し、「Petite」は小さいサイズ、特に人の体型や衣類のサイズに使われます。「Mid-scale」は、規模が中間のもの、特にビジネスやプロジェクトに関する文脈で使用されます。
 
 これらの例からもわかるように、英語にはサイズや量、規模を表す非常に多様な語彙が存在します。選択する表現は、その使用される文脈やニュアンスによって異なります。
@@ -91,9 +91,9 @@ SMLは何の略？
 
 「SML」は、サイズ表記における標準的な略語で、「Small, Medium, Large」の略です。これらは、衣類、容器、商品などのサイズ区分を示すのに一般的に使用されます。具体的には、以下のような意味を持ちます：
 
-- \*\*S (Small)\*\*: 小さいサイズ
-- \*\*M (Medium)\*\*: 中間のサイズ
-- \*\*L (Large)\*\*: 大きいサイズ
+- **S (Small)**: 小さいサイズ
+- **M (Medium)**: 中間のサイズ
+- **L (Large)**: 大きいサイズ
 
 この略語は、消費者が製品のサイズを簡単に理解し、選択するのを助けるために用いられます。また、これらの基本的なサイズ表記に加えて、XS（Extra Small: より小さいサイズ）やXL（Extra Large: より大きいサイズ）、さらにはXXL（Extra Extra Large: よりもっと大きいサイズ）など、サイズ範囲を拡張するための追加の略語が存在します。
 
@@ -276,10 +276,10 @@ short long middle の組み合わせのプロトコルはどんな命名にな�
 
 これらの名前は、プロトコルが長さ、期間、またはその他の次元の調整可能な範囲を提供することを示しています。プロトコルの目的によって、以下のようなさまざまな命名が考えられます：
 
-- \*\*LengthConfigurable\*\*: 長さや距離に関する設定が可能であることを示します。
-- \*\*DurationAdjustable\*\*: 期間や時間の長さを調整できることを意味します。
-- \*\*DimensionalScaleAdjustable\*\*: さまざまな寸法やスケールを調整可能であることを示します。
-- \*\*MeasurableRangeAdjusting\*\*: 測定可能な範囲や区間を調整する能力を持っていることを示します。
+- **LengthConfigurable**: 長さや距離に関する設定が可能であることを示します。
+- **DurationAdjustable**: 期間や時間の長さを調整できることを意味します。
+- **DimensionalScaleAdjustable**: さまざまな寸法やスケールを調整可能であることを示します。
+- **MeasurableRangeAdjusting**: 測定可能な範囲や区間を調整する能力を持っていることを示します。
 
 より抽象的な名前を選ぶことで、プロトコルの使用範囲を広げ、多様なコンテキストでの利用を想定できるようになります。選択する名前は、プロトコルが提供する機能や、それを採用する型の性質に応じて決定すると良いでしょう。
 

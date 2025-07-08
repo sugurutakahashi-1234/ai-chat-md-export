@@ -704,7 +704,7 @@ class StopwatchViewModel: ObservableObject {
 ## 👤 ユーザー
 *2023/9/21 10:52:41*
 
-.sink { \[weak self\] in
+.sink { [weak self] in
                 self?.displaySeconds = $0
             }
 
@@ -1042,8 +1042,8 @@ class StopwatchViewModel: ObservableObject {
         Timer.publish(every: StopwatchViewModel.timerInterval, on: .main, in: .common)
             .autoconnect()
             .combineLatest(timerControl)
-            .filter { \_, shouldRun in shouldRun }
-            .map { newTime, \_ in newTime } // タプルの新しい時間部分だけを取り出す
+            .filter { _, shouldRun in shouldRun }
+            .map { newTime, _ in newTime } // タプルの新しい時間部分だけを取り出す
             .scan(Double(displaySeconds)) { accumulated, newTime in
                 accumulated + newTime
             }

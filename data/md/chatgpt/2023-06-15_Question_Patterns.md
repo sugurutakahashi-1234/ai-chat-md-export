@@ -21,7 +21,7 @@ struct Question {
 
 enum ConstraintType {
     case textarea(minLength: Int?, maxLength: Int?)
-    case singleSelect(choices: \[Choice\])
+    case singleSelect(choices: [Choice])
 }
 
 struct Choice {

@@ -37,7 +37,7 @@ struct TalkBoxView: View {
                 .cornerRadius(8)
             
             HStack {
-                Text("\\(talkBox.lastPostedAt.toString(.yyyyMMdd))")
+                Text("\(talkBox.lastPostedAt.toString(.yyyyMMdd))")
                     .lineLimit(1)
                     .minimumScaleFactor(0.6)
                 Spacer()

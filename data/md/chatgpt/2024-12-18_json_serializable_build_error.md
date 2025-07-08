@@ -8,21 +8,21 @@
 *2024/12/19 0:25:48*
 
 make build                                                                                                                    2 ↵
-fvm flutter pub run build\_runner build --delete-conflicting-outputs
+fvm flutter pub run build_runner build --delete-conflicting-outputs
 Deprecated. Use `dart run` instead.
-\[INFO\] Generating build script completed, took 138ms
+[INFO] Generating build script completed, took 138ms
 FlutterGen v5.8.0 Loading ...
 Reading FlutterGen options from pubspec.yaml
-\[INFO\] Reading cached asset graph completed, took 137ms
-\[INFO\] Checking for updates since last build completed, took 606ms
-\[INFO\] Running build completed, took 6.0s
-\[INFO\] Caching finalized dependency graph completed, took 82ms
-\[SEVERE\] json\_serializable on lib/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart (cached):
+[INFO] Reading cached asset graph completed, took 137ms
+[INFO] Checking for updates since last build completed, took 606ms
+[INFO] Running build completed, took 6.0s
+[INFO] Caching finalized dependency graph completed, took 82ms
+[SEVERE] json_serializable on lib/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart (cached):
 
 UnimplementedError: (InvalidTypeImpl) InvalidType
-\[SEVERE\] Failed after 6.1s
+[SEVERE] Failed after 6.1s
 Failed to update packages.
-make: \*\*\* \[build\] Error 1
+make: *** [build] Error 1
 
 ---
 

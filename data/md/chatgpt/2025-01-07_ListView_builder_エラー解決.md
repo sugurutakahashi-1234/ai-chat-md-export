@@ -13,18 +13,18 @@ ListView.builder(の部分が怪しい
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:image\_cropper/image\_cropper.dart';
-import 'package:image\_picker/image\_picker.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild\_info.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/update\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/router/router.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild_info.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/update_guild.dart';
+import 'package:snpit_guild_app/presentation/router/router.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class GuildManagePage extends HookConsumerWidget {
   const GuildManagePage({super.key});
@@ -43,7 +43,7 @@ class GuildManagePage extends HookConsumerWidget {
         final croppedFile = await ImageCropper().cropImage(
           sourcePath: pickedFile.path,
           aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
-          uiSettings: \[
+          uiSettings: [
             AndroidUiSettings(
               hideBottomControls: true,
               lockAspectRatio: true,
@@ -51,7 +51,7 @@ class GuildManagePage extends HookConsumerWidget {
             IOSUiSettings(
               aspectRatioLockEnabled: true,
             ),
-          \],
+          ],
         );
 
         if (croppedFile != null) {
@@ -63,7 +63,7 @@ class GuildManagePage extends HookConsumerWidget {
               .read(updateGuildNotifierProvider.notifier)
               .updateGuildAvatar(
                 UriExtensions.randomImageUrlWithTitle(
-                  // ignore: use\_build\_context\_synchronously
+                  // ignore: use_build_context_synchronously
                   TimeOfDay.now().format(context),
                 ).toString(),
               );
@@ -94,14 +94,14 @@ class GuildManagePage extends HookConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: \[
+              children: [
                 const SizedBox(height: 32),
                 Center(
                   child: GestureDetector(
                     onTap: pickAndCropImage,
                     child: Stack(
                       alignment: Alignment.center,
-                      children: \[
+                      children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: guildAvatar != null
@@ -116,7 +116,7 @@ class GuildManagePage extends HookConsumerWidget {
                                   height: 64,
                                   color: ColorToken.bgDark,
                                   child: const Icon(
-                                    Icons.hide\_image\_outlined,
+                                    Icons.hide_image_outlined,
                                     size: 48,
                                     color: ColorToken.text,
                                   ),
@@ -131,11 +131,11 @@ class GuildManagePage extends HookConsumerWidget {
                           ),
                         ),
                         const Icon(
-                          Icons.camera\_alt,
+                          Icons.camera_alt,
                           size: 24,
                           color: Colors.white,
                         ),
-                      \],
+                      ],
                     ),
                   ),
                 ),
@@ -172,7 +172,7 @@ class GuildManagePage extends HookConsumerWidget {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: \[
+                        children: [
                           const Text(
                             'Name',
                             style: TextStyle(
@@ -181,7 +181,7 @@ class GuildManagePage extends HookConsumerWidget {
                             ),
                           ),
                           Row(
-                            children: \[
+                            children: [
                               Text(
                                 guildName,
                                 style: const TextStyle(
@@ -190,13 +190,13 @@ class GuildManagePage extends HookConsumerWidget {
                               ),
                               const SizedBox(width: 8),
                               const Icon(
-                                Icons.chevron\_right,
+                                Icons.chevron_right,
                                 color: ColorToken.text,
                                 size: 20,
                               ),
-                            \],
+                            ],
                           ),
-                        \],
+                        ],
                       ),
                     ),
                   ),
@@ -210,7 +210,7 @@ class GuildManagePage extends HookConsumerWidget {
                 ListView.builder(
                   itemCount: guildInfo?.guildMembers?.length ?? 0,
                   itemBuilder: (context, index) {
-                    final member = guildInfo?.guildMembers!\[index\];
+                    final member = guildInfo?.guildMembers![index];
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: DecoratedBox(
@@ -223,13 +223,13 @@ class GuildManagePage extends HookConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Row(
-                            children: \[
+                            children: [
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: \[
+                                  children: [
                                     Row(
-                                      children: \[
+                                      children: [
                                         CircleAvatar(
                                           radius: 16,
                                           backgroundImage: NetworkImage(
@@ -252,7 +252,7 @@ class GuildManagePage extends HookConsumerWidget {
                                             ),
                                           ),
                                         ),
-                                      \],
+                                      ],
                                     ),
                                     const SizedBox(height: 10),
                                     Row(
@@ -278,28 +278,28 @@ class GuildManagePage extends HookConsumerWidget {
                                         ),
                                       ),
                                     ),
-                                  \],
+                                  ],
                                 ),
                               ),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: \[
-                                    \_buildStatRow('Q', 13),
-                                    \_buildStatRow('E', 48),
-                                    \_buildStatRow('L', 7),
-                                    \_buildStatRow('B', 5),
-                                  \],
+                                  children: [
+                                    _buildStatRow('Q', 13),
+                                    _buildStatRow('E', 48),
+                                    _buildStatRow('L', 7),
+                                    _buildStatRow('B', 5),
+                                  ],
                                 ),
                               ),
-                            \],
+                            ],
                           ),
                         ),
                       ),
                     );
                   },
                 ),
-              \],
+              ],
             ),
           );
         },
@@ -307,10 +307,10 @@ class GuildManagePage extends HookConsumerWidget {
     );
   }
 
-  Widget \_buildStatRow(String label, int value) {
+  Widget _buildStatRow(String label, int value) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
-      children: \[
+      children: [
         const SizedBox(
           width: 40,
         ),
@@ -343,7 +343,7 @@ class GuildManagePage extends HookConsumerWidget {
             borderRadius: BorderRadius.circular(2),
           ),
         ),
-      \],
+      ],
     );
   }
 }

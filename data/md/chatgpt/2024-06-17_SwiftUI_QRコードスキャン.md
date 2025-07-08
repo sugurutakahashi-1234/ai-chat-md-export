@@ -545,7 +545,7 @@ struct QRCodeScanView: UIViewControllerRepresentable {
             self.parent = parent
         }
         
-        func dataScanner (\_ dataScanner: DataScannerViewController, didAdd addedItems: \[RecognizedItem\], allItems: \[RecognizedItem\]) {
+        func dataScanner (_ dataScanner: DataScannerViewController, didAdd addedItems: [RecognizedItem], allItems: [RecognizedItem]) {
             for item in addedItems {
                 switch item {
                 case .barcode(let barcode):
@@ -565,7 +565,7 @@ struct QRCodeScanView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -&gt; DataScannerViewController {
         let scannerViewController = DataScannerViewController(
-            recognizedDataTypes: \[.barcode()\], // スキャン対象: バーコードのみ
+            recognizedDataTypes: [.barcode()], // スキャン対象: バーコードのみ
             qualityLevel: .balanced, // 品質: バランス
             recognizesMultipleItems: false, // 複数のアイテムを認識するか: OFF
             isHighFrameRateTrackingEnabled: false, // フレームレートを高くするか: OFF
@@ -578,7 +578,7 @@ struct QRCodeScanView: UIViewControllerRepresentable {
         return scannerViewController
     }
 
-    func updateUIViewController(\_ uiViewController: DataScannerViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: DataScannerViewController, context: Context) {
         do {
             try uiViewController.startScanning()
         } catch {
@@ -593,7 +593,7 @@ public struct QRCodeScannerView&lt;Dependency: RootDIContainerDependency&gt;: Vi
 
     public init(dependency: Dependency, isShowingScanner: Binding&lt;Bool&gt;) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: QRCodeScannerPresenter(dependency: dependency, isShowingScanner: isShowingScanner))
+        _presenter = .init(wrappedValue: QRCodeScannerPresenter(dependency: dependency, isShowingScanner: isShowingScanner))
     }
 
     public var body: some View {
@@ -622,7 +622,7 @@ final class QRCodeScannerPresenter&lt;Dependency: QRCodeScannerPresenterDependen
         dependency.logDriver.initLog()
 
         self.dependency = dependency
-        \_isShowingScanner = isShowingScanner
+        _isShowingScanner = isShowingScanner
         
         $scannedCode
             
@@ -978,7 +978,7 @@ public struct QRCodeScannerView&lt;Dependency: RootDIContainerDependency&gt;: Vi
 
     public init(dependency: Dependency) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: QRCodeScannerPresenter(dependency: dependency))
+        _presenter = .init(wrappedValue: QRCodeScannerPresenter(dependency: dependency))
     }
 
     public var body: some View {

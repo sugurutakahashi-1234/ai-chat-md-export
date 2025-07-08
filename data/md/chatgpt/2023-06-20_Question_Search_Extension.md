@@ -71,7 +71,7 @@ public extension Question {
         switch answerType {
         case .textField(let minLength, let maxLength):
             return answerValue.count &gt;= minLength && answerValue.count &lt;= maxLength
-        case .picker(choices: \_):
+        case .picker(choices: _):
             return true
         }
     }

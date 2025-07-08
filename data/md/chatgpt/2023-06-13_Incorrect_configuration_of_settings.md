@@ -9,8 +9,8 @@
 
 以下について記述が間違っている場合は教えて欲しい
 
-input\_dir: Resources
-output\_dir: Generated/
+input_dir: Resources
+output_dir: Generated/
 
 strings:
   inputs:

@@ -125,12 +125,12 @@ This `allCases` array would contain cases with whatever default/dummy values you
 
 一旦この形式で他のcaseについてもうめてほしい
 
-let cases: \[InteractionEventType\] = \[
+let cases: [InteractionEventType] = [
             .sessionStart(.init()),
             .sessionEnded(.init()),
             .sessionTimeout(.init())
             .recordingStart(.init())
-        \]
+        ]
 
 ---
 
@@ -179,7 +179,7 @@ Please note that this assumes that all the associated types (like `InteractionEv
 
 
 
-        let cases: \[InteractionEventType\] = \[
+        let cases: [InteractionEventType] = [
             .sessionStart(.init()),
             .sessionEnded(.init()),
             .sessionTimeout(.init()),
@@ -204,7 +204,7 @@ Please note that this assumes that all the associated types (like `InteractionEv
             .nonMeasuredSectionStart(.init(section: .default, message: .random)),
             .nonMeasuredSectionEnd(.init(section: .default, message: .random)),
             .error(.init(message: .random))
-        \]
+        ]
 
 ---
 

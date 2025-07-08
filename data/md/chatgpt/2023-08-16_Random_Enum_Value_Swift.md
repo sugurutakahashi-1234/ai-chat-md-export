@@ -194,10 +194,10 @@ public extension String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString = ""
 
-        for \_ in 0...length {
+        for _ in 0...length {
             let randomValue = Int.random(in: 0...base.count - 1)
             let index: Index = base.index(base.startIndex, offsetBy: randomValue)
-            let character: Character = base\[index\]
+            let character: Character = base[index]
             randomString += String(character)
         }
         return randomString

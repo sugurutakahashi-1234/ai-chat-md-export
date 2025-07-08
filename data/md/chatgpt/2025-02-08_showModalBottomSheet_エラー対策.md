@@ -11,23 +11,23 @@ showModalBottomSheetで表示できる画面で、ローディングにshowModal
 どちらかの方針を取りたい。
 (1) ローディング中はshowModalBottomSheetを閉じられなくする
 (2) このエラーの発生を伏せず。  例外が発生しました
-\* 
+* 
 StateError (Bad state: Cannot use "ref" after the widget was disposed.)
 
- import 'package:carousel\_slider/carousel\_slider.dart';
+ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/get\_explorer\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/update\_explorer.dart';
-import 'package:snpit\_guild\_app/presentation/providers/flavor\_provider.dart';
-import 'package:snpit\_guild\_app/presentation/providers/on\_exploring.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/square\_image.dart';
-import 'package:snpit\_guild\_app/utils/location\_utils.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/get_explorer_list.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/update_explorer.dart';
+import 'package:snpit_guild_app/presentation/providers/flavor_provider.dart';
+import 'package:snpit_guild_app/presentation/providers/on_exploring.dart';
+import 'package:snpit_guild_app/presentation/widgets/square_image.dart';
+import 'package:snpit_guild_app/utils/location_utils.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class ExplorerListPage extends HookConsumerWidget {
   const ExplorerListPage({super.key});
@@ -48,7 +48,7 @@ class ExplorerListPage extends HookConsumerWidget {
           throw Exception('You do not have any explorers.');
         }
 
-        final selectedExplorer = explorerList\[selectedExplorerIndexState.value\];
+        final selectedExplorer = explorerList[selectedExplorerIndexState.value];
         final explorerId = selectedExplorer.explorerId;
 
         if (explorerId == null) {
@@ -61,7 +61,7 @@ class ExplorerListPage extends HookConsumerWidget {
           const Duration(seconds: 5),
           onTimeout: () {
             throw Exception(
-              // ignore: lines\_longer\_than\_80\_chars
+              // ignore: lines_longer_than_80_chars
               'Getting current location timed out. Please try again in an area with better signal.',
             );
           },
@@ -104,7 +104,7 @@ class ExplorerListPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     Widget buildExplorerCard(ExplorerDTO explorer, {required bool isSelected}) {
@@ -130,7 +130,7 @@ class ExplorerListPage extends HookConsumerWidget {
             padding: const EdgeInsets.all(16),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: \[
+              children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: SquareImage(
@@ -143,7 +143,7 @@ class ExplorerListPage extends HookConsumerWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: \[
+                    children: [
                       const Text(
                         'Life',
                         style: TextStyle(
@@ -182,10 +182,10 @@ class ExplorerListPage extends HookConsumerWidget {
                           fontSize: 12,
                         ),
                       ),
-                    \],
+                    ],
                   ),
                 ),
-              \],
+              ],
             ),
           ),
         ),
@@ -196,27 +196,27 @@ class ExplorerListPage extends HookConsumerWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Select explorer'),
-        actions: \[
+        actions: [
           IconButton(
             onPressed: () {
               context.pop();
             },
             icon: const Icon(Icons.close),
           ),
-        \],
+        ],
       ),
       body: explorerListAsyncValue.when(
         data: (tmpExplorerList) {
-          final explorerList = tmpExplorerList ?? \[\];
+          final explorerList = tmpExplorerList ?? [];
 
           if (explorerList.isEmpty) {
             return const Center(child: Text('You do not have any explorers.'));
           }
 
           return Stack(
-            children: \[
+            children: [
               Column(
-                children: \[
+                children: [
                   Expanded(
                     child: CarouselSlider.builder(
                       options: CarouselOptions(
@@ -227,7 +227,7 @@ class ExplorerListPage extends HookConsumerWidget {
                       ),
                       itemCount: explorerList.length,
                       itemBuilder: (context, index, realIndex) {
-                        final explorer = explorerList\[index\];
+                        final explorer = explorerList[index];
                         final isSelected =
                             index == selectedExplorerIndexState.value;
 
@@ -241,19 +241,19 @@ class ExplorerListPage extends HookConsumerWidget {
                       },
                     ),
                   ),
-                \],
+                ],
               ),
               if (isExploring)
                 const Center(
                   child: CircularProgressIndicator(),
                 ),
-            \],
+            ],
           );
         },
         loading: () {
           return const Center(child: CircularProgressIndicator());
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Center(child: Text('Error: $error'));
         },
       ),
@@ -282,7 +282,7 @@ class ExplorerListPage extends HookConsumerWidget {
 
 コンテキストとrefの参照がウィジェットの状態変更と関係しているため、エラーが発生している可能性があります。この問題には、ローディング状態中のボトムシートの閉じるボタンを無効にする、もしくはボトムシートを完全に閉じられないようにする方法が考えられます。
 
-\*\*ウィジェット管理の工夫\*\*
+**ウィジェット管理の工夫**
 
 `context.mounted`を使って、何かを参照する前にコンテキストがアタッチされているかチェックしている。非同期操作中でもrefへの参照を管理する方法だね。
 
@@ -453,38 +453,38 @@ showModalBottomSheetが閉じたとしても残りの処理は全部やりきっ
 
 ユーザーは、ボトムシートが閉じられても非同期処理を続行し、後で結果を得たいと考えています。
 
-\*\*背景でのアクティブ\*\*
+**背景でのアクティブ**
 
 ボトムシートが閉じても背景プロセスが動作し、結果はRiverpodで管理される。幾らかの操作の後、非同期処理は続行される。
 
-\*\*非同期の流れ\*\*
+**非同期の流れ**
 
 NotiferはUIの外で動作し、ストアを更新。結果は非同期に提供され、後でUIが状態を読み取る。UIは結果を待たずに他の操作を進める。
 
-\*\*バッカーグラウンドの進行\*\*
+**バッカーグラウンドの進行**
 
 UIが閉じても背景プロセスは続行中。グローバルプロバイダーかウィジェットのトップレベルプロバイダーで管理し、`context.mounted`のチェックでユーザーのスクリーン維持を確認する。
 
-\*\*プロバイダーでの処理\*\*
+**プロバイダーでの処理**
 
 ボトムシートが閉じても、プロバイダー内で処理を継続中。`context`は渡さず、必要なものだけを渡している。
 
-\*\*背景の持続\*\*
+**背景の持続**
 
 ユーザーが「開始」をタップし、プロセスがスタート。ボトムシートは閉じるかもしれないが、ノティファイアは処理を続けている。最終状態を設定し、メッセージを表示するかもしれない。
 
-\*\*エラーハンドリングの方法\*\*
+**エラーハンドリングの方法**
 
 ボトムシートが閉じても、グローバルなスキャフォールドメッセンジャーか、トップレベルのロジックを使ってエラーステートを処理している。
 
-\*\*エラーハンドリングの検討\*\*
+**エラーハンドリングの検討**
 
 エラーステートをノティファイアで管理し、次の画面に進むための方法を模索中。これにより、ユーザーはボトムシートが閉じてもスムーズに次の操作ができる。
 
-\*\*プロセスの持続性\*\*  
+**プロセスの持続性**  
 ユーザーの問いは、ボトムシートが閉じてもプロセスが進む方法です。プロバイダーを活用し、関連する引数を渡して非同期ロジックを管理しています。
 
-\*\*プロセスの委任操作\*\*
+**プロセスの委任操作**
 
 ロジックをプロバイダーに委任し、非同期処理を管理。コンテキストやウィジェットには余計な干渉をせず、完了またはエラーをプロバイダーで処理する方法を探っている。
 
@@ -740,51 +740,51 @@ class ExplorerListPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/2/8 13:10:12*
 
-\*\*設定の工夫を探る\*\*
+**設定の工夫を探る**
 
 showModalBottomSheetのisDismissibleとenableDragを動的に切り替える方法を模索中。WillPopScopeを活用し、isLoadingがtrueなら未来の値をfalse、falseならtrueにしている。その方法は少し複雑ですが、少しずつ解決策が見えてきている。
 
-\*\*探索中の解決策\*\*
+**探索中の解決策**
 
 WillPopScopeを活用し、表示中のshowModalBottomSheetのisDismissible属性を動的に変える方法を模索中。手作業での操作や別のオーバーレイを利用するアプローチも検討中。
 
-\*\*進行中の対応策模索\*\*
+**進行中の対応策模索**
 
 isLoadingがfalseならデフォルト設定で表示し、trueならWillPopScopeでポップ操作を取り扱い、ドラッグジェスチャーを無効にしている。こうやってUXを損なわないようにしているんだ。
 
-\*\*工夫を凝らす\*\*
+**工夫を凝らす**
 
 isLoadingがtrueのときはAbsorbPointerを使ってユーザー入力をブロックし、WillPopScopeでシステムバックボタンを抑制中。ドラッグの取り扱いも工夫しているところだ。
 
-\*\*カスタム囚人範囲の作成\*\*
+**カスタム囚人範囲の作成**
 
 isLoadingがfalseのときにのみスワイプでシートを閉じるには、カスタムのページルートを作成するか、アニメーションを上書きする方法を検討している。
 
-\*\*複数の方法を探る\*\*
+**複数の方法を探る**
 
 isLoadingがtrueのときWillPopScopeを活用し、スワイプを無効にするか、ポインターイベントをブロックする方法を模索している。
 
-\*\*スクリーンショットの提案\*\*
+**スクリーンショットの提案**
 
 問題を整理し、`isDismissible`を`false`にし、`enableDrag`も`false`にすると良い。子ウィジェットのビルドメソッドで、非読み込み時にクローズボタンを表示。
 
-\*\*簡単な解決策を見つける\*\*
+**簡単な解決策を見つける**
 
 isLoadingがfalseのときにのみクローズボタンを表示し、trueなら無効にする方法が、一番シンプルかつユーザーのリクエストに一致している。
 
-\*\*試してみるのが面白い\*\*
+**試してみるのが面白い**
 
 isLoadingがfalseのときにのみクローズボタンを表示し、ポインターイベントをブロックする方法を検討中。テストしながら答えを探しているところ。
 
-\*\*アプローチを模索する\*\*
+**アプローチを模索する**
 
 isLoadingがfalseのときにのみクローズボタンを表示し、trueのときは無効にする方法を検討中。これが最もシンプルでユーザーのリクエストに適合している。
 
-\*\*スワイプを無効化している\*\*
+**スワイプを無効化している**
 
 isLoadingがtrueのときはスワイプを無効化し、falseになったらWebViewを再読み込みしている。これで効率的にスワイプ操作が制御できる。
 
-\*\*スワイプ操作の制御\*\*
+**スワイプ操作の制御**
 
 `isDismissible`と`enableDrag`を`true`に設定し、`isLoading`が`true`のときに`WillPopScope`でポップを制限している。
 
@@ -909,27 +909,27 @@ ExplorerUseCaseNotifierを作りたい。リバーポッドアノテーション
 ## 🔧 ツール
 *2025/2/8 16:14:58*
 
-\*\*Riverpodの利用確認\*\*
+**Riverpodの利用確認**
 
 Riverpod Annotationsを使って`ExplorerUseCaseNotifier`を作成する方法を探し中。`Notifier`と`AsyncNotifier`の違いを検討し、`ExplorerUseCaseState`の定義を指定している。
 
-\*\*状態管理の定義\*\*
+**状態管理の定義**
 
 `ExplorerUseCaseState`を定義し、`isLoading`、`error`、`exploredSpotList`の状態を管理。`copyWith`メソッドを使って状態の更新を行っている。
 
-\*\*エクスプローラの開始をサポート\*\*
+**エクスプローラの開始をサポート**
 
 `ExplorerUseCaseNotifier`を`@riverpod`アノテーションを使って定義し、`startExplore`メソッドでエクスプローラの開始をサポートしている。
 
-\*\*エクスプローラの進行状況を管理\*\*
+**エクスプローラの進行状況を管理**
 
 `ExplorerUseCaseState`クラスは、ロード状態、エラー、エクスプローラされたスポットリストの3つの主要属性を持ち、状態の更新が容易に行える。
 
-\*\*エクスプローラの状態管理\*\*
+**エクスプローラの状態管理**
 
 `ExplorerUseCaseNotifier`は`ExplorerUseCaseState`を使用してエクスプローラの状態を管理し、`startExplore`メソッドでエクスプローラの開始をサポートしている。
 
-\*\*エクスプローラの状態管理\*\*
+**エクスプローラの状態管理**
 
 `AutoDisposeNotifierProvider`で`ExplorerUseCaseNotifier`の状態を管理し、`@riverpod`アノテーションを使って`explorerUseCaseNotifierProvider`を定義している。
 

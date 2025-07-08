@@ -58,20 +58,20 @@ iOS Simulator から macOSのFinderにアクセスしたいんだ
 
 iOS Simulatorから直接macOSのFinderやその他のシステムファイルにアクセスすることは基本的にはできません。iOS Simulatorは、実際のiOSデバイスのように動作するように設計されており、サンドボックス環境内で実行されるため、ホストシステムのファイルにはアクセスできません。ただし、特定のファイルやデータをSimulatorに転送する方法はいくつかあります。
 
-1. \*\*ドラッグ＆ドロップ\*\*:
+1. **ドラッグ＆ドロップ**:
    - 最も簡単な方法の1つは、ファイルをiOS Simulatorのウィンドウにドラッグ＆ドロップすることです。これにより、そのファイルはSimulator上のアプリのDocumentsディレクトリにコピーされます。この方法は主にファイルや画像などのメディアコンテンツを迅速に転送するために使用されます。
 
-2. \*\*共有コンテナ\*\*:
+2. **共有コンテナ**:
    - アプリがApp Groupsを使用している場合、共有コンテナにファイルを配置することができます。これは、異なるアプリ間でファイルを共有する場合や、macOSアプリとiOSアプリ間でデータを共有する際に役立ちます。
 
-3. \*\*Finderを使用したファイルの転送\*\*:
+3. **Finderを使用したファイルの転送**:
    - 特定のファイルをSimulatorに直接配置する必要がある場合、そのデバイスのファイルシステムにアクセスできます。
      - Finderで、`~/Library/Developer/CoreSimulator/Devices/`に移動します。ここには、インストールされているすべてのSimulatorのUUIDがリストされています。
      - 適切なデバイスを見つけるには、それぞれの`device.plist`ファイルを確認する必要があります。
      - 正しいデバイスを見つけたら、`data/Containers/Data/Application/`に進み、特定のアプリのディレクトリを探します（これもUUIDで表示されます）。`Documents`フォルダはここにあります。
      - 必要なファイルをこの`Documents`ディレクトリにドラッグ＆ドロップするか、または必要に応じてサブディレクトリを作成します。
 
-4. \*\*XcodeのProject Navigator\*\*:
+4. **XcodeのProject Navigator**:
    - XcodeのProject Navigatorを使用して、アプリのバンドルリソースに直接ファイルを追加することもできます。ただし、これはアプリが次にビルドされるときにのみ反映されます。
 
 これらの方法を使用すると、iOS Simulatorで動作するアプリが必要なファイルにアクセスできるようになりますが、Simulator自体が直接macOSのファイルシステムにアクセスすることはできません。アプリの開発やテストに必要なファイルやデータは、上記の方法を使用してSimulatorに転送する必要があります。
@@ -103,7 +103,7 @@ let fileManager = FileManager.default
 do {
     let directoryPath = directoryPath
     let directoryNames = try fileManager.contentsOfDirectory(atPath: directoryPath)
-    var resultModels: \[ResultModel\] = \[\]
+    var resultModels: [ResultModel] = []
     try directoryNames.enumerated().forEach { directoryItem in
         let fileDirectoryPath = directoryPath + "/" + directoryItem.element
         let fileNames = try fileManager.contentsOfDirectory(atPath: fileDirectoryPath)
@@ -117,7 +117,7 @@ do {
                 }
                 let resultModel = ResultModel(fileName: fileItem.element, emotionKind: directoryItem.element, results: resultModelItems)
                 resultModels.append(resultModel)
-                print("Directory: \\(directoryItem.offset + 1)/\\(directoryNames.count), File: \\(fileItem.offset + 1)/\\(fileNames.count)")
+                print("Directory: \(directoryItem.offset + 1)/\(directoryNames.count), File: \(fileItem.offset + 1)/\(fileNames.count)")
             }
         #endif
     }
@@ -138,12 +138,12 @@ private func checkIfFilesExist(in directoryPath: String) -&gt; Bool {
         // ディレクトリ内のファイル数が1つ以上ある場合はtrueを返す
         return !fileURLs.isEmpty
     } catch {
-        print("Error while checking files: \\(error.localizedDescription)")
+        print("Error while checking files: \(error.localizedDescription)")
         return false
     }
 }
 
-private func saveJSONToFile(\_ data: some Encodable, filePath: String) {
+private func saveJSONToFile(_ data: some Encodable, filePath: String) {
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
     do {
@@ -213,7 +213,7 @@ private func saveJSONToFile(\_ data: some Encodable, filePath: String) {
 
 import PackageDescription
 
-// Ref: https://twitter.com/\_maiyama18/status/1631265021857783810
+// Ref: https://twitter.com/_maiyama18/status/1631265021857783810
 private extension PackageDescription.Target.Dependency {
     /// Same Package module
     static let emotionAnalysisCore: Self = "EmotionAnalysisCore"
@@ -225,44 +225,44 @@ private extension PackageDescription.Target.Dependency {
 let package = Package(
     name: "EmotionAnalysisPackage",
     defaultLocalization: "ja",
-    platforms: \[.iOS(.v16), .macOS(.v14)\],
-    products: \[
-        .library(name: "EmotionAnalysisCore", targets: \["EmotionAnalysisCore"\]),
-        .library(name: "EmotionAnalysisPresentation", targets: \["EmotionAnalysisPresentation"\]),
-        .executable(name: "EmotionAnalysisValidation", targets: \["EmotionAnalysisValidation"\]),
-    \],
-    dependencies: \[
+    platforms: [.iOS(.v16), .macOS(.v14)],
+    products: [
+        .library(name: "EmotionAnalysisCore", targets: ["EmotionAnalysisCore"]),
+        .library(name: "EmotionAnalysisPresentation", targets: ["EmotionAnalysisPresentation"]),
+        .executable(name: "EmotionAnalysisValidation", targets: ["EmotionAnalysisValidation"]),
+    ],
+    dependencies: [
         .package(url: "https://github.com/Quick/Nimble", from: "11.2.0"),
         .package(url: "https://github.com/Quick/Quick", from: "6.1.0"),
-    \],
-    targets: \[
+    ],
+    targets: [
         .target(
             name: "EmotionAnalysisCore",
-            dependencies: \[\],
-            resources: \[
+            dependencies: [],
+            resources: [
                 .process("Resources/EmotionAnalysisMlModel.mlpackage"),
-            \]
+            ]
         ),
         .target(
             name: "EmotionAnalysisPresentation",
-            dependencies: \[
+            dependencies: [
                 .emotionAnalysisCore,
-            \]
+            ]
         ),
         .executableTarget(
             name: "EmotionAnalysisValidation",
-            dependencies: \[
+            dependencies: [
                 .emotionAnalysisCore,
-            \]
+            ]
         ),
         .testTarget(
             name: "EmotionAnalysisTests",
-            dependencies: \[
+            dependencies: [
                 .quick,
                 .nimble,
-            \]
+            ]
         ),
-    \]
+    ]
 )
 
 
@@ -283,7 +283,7 @@ let package = Package(
 
 ## EmotionAnalysisValidationの使い方
 1. Xcodeで`EmotionAnalysisValidation`のSchemeを選択する
-2. \[Kaggle\](https://www.kaggle.com/datasets/noamsegal/affectnet-training-data)のサイトから素材の画像をダウンロードし、`EmotionAnalysisPackage/Sources/EmotionAnalysisValidation/TestImages/`に配置する
+2. [Kaggle](https://www.kaggle.com/datasets/noamsegal/affectnet-training-data)のサイトから素材の画像をダウンロードし、`EmotionAnalysisPackage/Sources/EmotionAnalysisValidation/TestImages/`に配置する
 3. デバイスにmacOSを選択し、`run`する
 
 ---
@@ -297,22 +297,22 @@ let package = Package(
 
 以下は、iOSアプリでこれを達成するための一般的なステップです：
 
-1. \*\*新しいiOSアプリプロジェクトの作成\*\*:
+1. **新しいiOSアプリプロジェクトの作成**:
    - Xcodeで新しいiOSアプリプロジェクトを作成します。このプロジェクトは、UIを持ち、ユーザーが画像を選択して感情分析を実行できるように設計することができます。
 
-2. \*\*`EmotionAnalysisCore`モジュールの統合\*\*:
+2. **`EmotionAnalysisCore`モジュールの統合**:
    - 作成したiOSアプリプロジェクトに`EmotionAnalysisCore`モジュールを統合します。これにより、共有されたコア機能を利用できるようになります。
 
-3. \*\*画像の取得と選択\*\*:
+3. **画像の取得と選択**:
    - iOSアプリでは、ユーザーが直接画像を選択するか、アプリに組み込まれた画像を使用するUIを提供することができます。`UIImagePickerController`を使用して、ユーザーにカメラロールから画像を選択させることが一般的です。
 
-4. \*\*感情分析の実行\*\*:
+4. **感情分析の実行**:
    - 選択された画像に対して`EmotionAnalysisCore`モジュールを使用して感情分析を実行します。
 
-5. \*\*結果の表示\*\*:
+5. **結果の表示**:
    - 分析結果をユーザーに表示します。これは、テキストまたはグラフィカルな形式で行うことができます。
 
-6. \*\*（オプション）バッチ処理\*\*:
+6. **（オプション）バッチ処理**:
    - もしバッチでの画像処理を行いたい場合、事前にアプリのバンドルに画像を含めるか、あるいはユーザーに複数の画像を一度に選択させることができます。
 
 このプロセスは、`EmotionAnalysisValidation`ツールの直接的な移植ではなく、iOSの環境と制約に適合させた新しいアプリケーションの作成です。`EmotionAnalysisCore`のコア機能はそのまま保持され、iOSアプリのコンテキストで利用されます。

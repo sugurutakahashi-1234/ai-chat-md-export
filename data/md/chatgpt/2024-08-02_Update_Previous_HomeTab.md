@@ -16,7 +16,7 @@ struct HomeTabView&lt;Dependency: RootDIContainerDependency&gt;: View {
 
     init(dependency: Dependency, homeTab: HomeTab = .home) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: .init(homeTab: homeTab))
+        _presenter = .init(wrappedValue: .init(homeTab: homeTab))
     }
 
     var body: some View {
@@ -56,7 +56,7 @@ final class HomeTabPresenter: ObservableObject {
         // selectedHomeTabの変更を監視
         $selectedHomeTab
             .removeDuplicates()
-            .sink { \[weak self\] newTab in
+            .sink { [weak self] newTab in
                 switch newTab {
                 case .post:
                     self?.onTapPostTab()

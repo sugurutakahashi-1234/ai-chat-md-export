@@ -13,7 +13,7 @@ let value: String と let values: String を AWSJSONに変換するにはどう�
 
 
 input AnswerInput {
-  question\_id: ID!
+  question_id: ID!
   value: AWSJSON!
 }
 

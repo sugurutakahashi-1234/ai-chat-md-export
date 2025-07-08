@@ -7,9 +7,9 @@
 ## 👤 ユーザー
 *2024/4/1 12:35:07*
 
-Swiftで、LicenseDetailView\_Previews.Ty という文字列から LicenseDetailView という文字列を抜き出す処理を書いてほしい。
+Swiftで、LicenseDetailView_Previews.Ty という文字列から LicenseDetailView という文字列を抜き出す処理を書いてほしい。
 
-XXX\_PreviewsYYY から XXX を抜き出す処理にするイメージです。
+XXX_PreviewsYYY から XXX を抜き出す処理にするイメージです。
 
 ---
 
@@ -265,7 +265,7 @@ print(noViewText.viewName) // "NoViewHere"
 
 しょつりょくが以下になった
 
-LicenseDetailView\_
+LicenseDetailView_
 
 ---
 

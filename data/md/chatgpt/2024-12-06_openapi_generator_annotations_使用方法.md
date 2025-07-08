@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/12/6 16:02:46*
 
-openapi\_generator\_annotations: ^6.0.0 の使い方。
+openapi_generator_annotations: ^6.0.0 の使い方。
 
 ---
 
@@ -141,7 +141,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 以下のコードはどこに記述したほうがいいのか？
 
-import 'package:openapi\_generator\_annotations/openapi\_generator\_annotations.dart';
+import 'package:openapi_generator_annotations/openapi_generator_annotations.dart';
 
 @Openapi(
   inputSpecFile: 'schema/openapi.yaml',
@@ -282,7 +282,7 @@ dart run build_runner build --delete-conflicting-outputs
 ## 👤 ユーザー
 *2024/12/6 16:09:26*
 
-api\_client\_config というよりもopneapiからコード生成のための記述としたい。
+api_client_config というよりもopneapiからコード生成のための記述としたい。
 
 ---
 
@@ -328,7 +328,7 @@ dart run build_runner build --delete-conflicting-outputs
 ## 👤 ユーザー
 *2024/12/6 16:10:22*
 
-configs で open\_api\_generate\_config としよう
+configs で open_api_generate_config としよう
 
 ---
 
@@ -601,7 +601,7 @@ dart run build_runner build --delete-conflicting-outputs
 ## 👤 ユーザー
 *2024/12/6 16:24:10*
 
-source\_gen とはなんですか
+source_gen とはなんですか
 generatorName の選択肢は他にもあるんですか？
 pubName はなんですか❓
 
@@ -610,22 +610,22 @@ pubName はなんですか❓
 ## 🤖 アシスタント
 *2024/12/6 16:24:18*
 
-`openapi\_generator`パッケージを使用してOpenAPI仕様からDartクライアントSDKを生成する際、以下の点について詳しく説明します。
+`openapi_generator`パッケージを使用してOpenAPI仕様からDartクライアントSDKを生成する際、以下の点について詳しく説明します。
 
-\*\*1. `source\_gen`とは\*\*
+**1. `source_gen`とは**
 
-`source\_gen`は、Dartのコード生成を支援するライブラリで、アノテーションを利用してコードを自動生成するためのAPIを提供します。これにより、手動でのコード記述を減らし、開発効率を向上させることができます。 citeturn0search2
+`source_gen`は、Dartのコード生成を支援するライブラリで、アノテーションを利用してコードを自動生成するためのAPIを提供します。これにより、手動でのコード記述を減らし、開発効率を向上させることができます。 citeturn0search2
 
-\*\*2. `generatorName`の選択肢\*\*
+**2. `generatorName`の選択肢**
 
-`generatorName`は、OpenAPI仕様から生成するクライアントSDKのタイプを指定するためのパラメータです。`openapi\_generator`パッケージでは、以下のジェネレーターが利用可能です。
+`generatorName`は、OpenAPI仕様から生成するクライアントSDKのタイプを指定するためのパラメータです。`openapi_generator`パッケージでは、以下のジェネレーターが利用可能です。
 
 - `Generator.dio`: Dioパッケージを使用したHTTPクライアントを生成します。
 - `Generator.chopper`: Chopperパッケージを使用したHTTPクライアントを生成します。
 
 これらのジェネレーターを選択することで、プロジェクトの要件に応じたクライアントSDKを生成できます。
 
-\*\*3. `pubName`とは\*\*
+**3. `pubName`とは**
 
 `pubName`は、生成されるパッケージの名前を指定するためのプロパティです。`additionalProperties`内で設定し、生成されるパッケージの`pubspec.yaml`ファイルに反映されます。これにより、生成されたパッケージを他のプロジェクトで依存関係として利用する際に、指定した名前で参照することができます。
 
@@ -643,26 +643,26 @@ additionalProperties や typeMappings が入らない場合
 ## 🤖 アシスタント
 *2024/12/6 16:25:30*
 
-`openapi\_generator\_annotations`パッケージを使用してOpenAPI仕様からDartクライアントSDKを生成する際、`additionalProperties`や`typeMappings`を省略した場合の挙動について説明します。
+`openapi_generator_annotations`パッケージを使用してOpenAPI仕様からDartクライアントSDKを生成する際、`additionalProperties`や`typeMappings`を省略した場合の挙動について説明します。
 
-\*\*1. `additionalProperties`を省略した場合\*\*
+**1. `additionalProperties`を省略した場合**
 
 `additionalProperties`は、生成されるコードに対して追加のプロパティや設定を提供するためのオプションです。これを省略すると、デフォルトの設定が適用されます。例えば、生成されるパッケージの名前やバージョン、著者情報などがデフォルト値となります。特定の設定をカスタマイズしたい場合は、`additionalProperties`を明示的に指定する必要があります。
 
-\*\*2. `typeMappings`を省略した場合\*\*
+**2. `typeMappings`を省略した場合**
 
 `typeMappings`は、OpenAPI仕様で定義されたデータ型と、生成されるコード内で使用されるデータ型とのマッピングを指定するためのオプションです。これを省略すると、デフォルトの型マッピングが適用されます。例えば、OpenAPI仕様の`integer`型はDartの`int`型に、`string`型は`String`型にマッピングされます。特定の型を別のクラスや型にマッピングしたい場合は、`typeMappings`を使用して明示的に指定する必要があります。
 
-\*\*3. `generatorName`の選択肢\*\*
+**3. `generatorName`の選択肢**
 
-`generatorName`は、使用するジェネレーターの種類を指定するオプションです。`openapi\_generator`パッケージでは、以下のジェネレーターが利用可能です。
+`generatorName`は、使用するジェネレーターの種類を指定するオプションです。`openapi_generator`パッケージでは、以下のジェネレーターが利用可能です。
 
 - `Generator.dio`: Dioパッケージを使用したHTTPクライアントを生成します。
 - `Generator.chopper`: Chopperパッケージを使用したHTTPクライアントを生成します。
 
 プロジェクトの要件や使用するHTTPクライアントライブラリに応じて、適切なジェネレーターを選択してください。
 
-\*\*4. `pubName`とは\*\*
+**4. `pubName`とは**
 
 `pubName`は、生成されるパッケージの名前を指定するプロパティです。`additionalProperties`内で設定し、生成されるパッケージの`pubspec.yaml`ファイルに反映されます。これにより、生成されたパッケージを他のプロジェクトで依存関係として利用する際に、指定した名前で参照することができます。
 
@@ -675,10 +675,10 @@ additionalProperties や typeMappings が入らない場合
 
 以下になって生成が終わらないんだが
 
-\[WARNING\] No actions completed for 15.0s, waiting on:
-  - openapi\_generator on lib/openapi/generate\_config.dart
+[WARNING] No actions completed for 15.0s, waiting on:
+  - openapi_generator on lib/openapi/generate_config.dart
 
-\[INFO\] 28.2s elapsed, 9/10 actions completed.
+[INFO] 28.2s elapsed, 9/10 actions completed.
 
 ---
 

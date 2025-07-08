@@ -9,7 +9,7 @@
 
 特定のワークフローをチャンネルに流したい
 
-/github subscribe Gallusys/snpit\_guild\_app issues, pulls, commits:'\*', releases, deployments, reviews, branches,
+/github subscribe Gallusys/snpit_guild_app issues, pulls, commits:'*', releases, deployments, reviews, branches,
 comments, discussions
 
 ---

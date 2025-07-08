@@ -16,17 +16,17 @@ iOSで録音の実装を行なったがボイスメモに比べて明らかに�
 
 iOSでの録音で音量が小さい問題は、いくつかの要因によって引き起こされる可能性があります。以下の点を確認してみてください：
 
-1. \*\*マイクのアクセス許可\*\*: アプリがマイクへのアクセス権を持っているか確認してください。これは、アプリの設定で確認できます。
+1. **マイクのアクセス許可**: アプリがマイクへのアクセス権を持っているか確認してください。これは、アプリの設定で確認できます。
 
-2. \*\*マイクの選択\*\*: iOSデバイスには複数のマイクがあり、異なる状況で異なるマイクが使用される場合があります。例えば、iPhoneのフロントマイクとボトムマイク。使用するマイクを適切に選択する必要があります。
+2. **マイクの選択**: iOSデバイスには複数のマイクがあり、異なる状況で異なるマイクが使用される場合があります。例えば、iPhoneのフロントマイクとボトムマイク。使用するマイクを適切に選択する必要があります。
 
-3. \*\*オーディオセッションの設定\*\*: `AVAudioSession`の設定を確認してください。特に、`category`や`mode`が適切に設定されているかどうかを確認してみてください。録音用には通常、`AVAudioSessionCategoryRecord`や`AVAudioSessionCategoryPlayAndRecord`が推奨されます。
+3. **オーディオセッションの設定**: `AVAudioSession`の設定を確認してください。特に、`category`や`mode`が適切に設定されているかどうかを確認してみてください。録音用には通常、`AVAudioSessionCategoryRecord`や`AVAudioSessionCategoryPlayAndRecord`が推奨されます。
 
-4. \*\*ゲイン設定\*\*: 録音中のゲイン（音量の増幅率）が適切に設定されているかどうかを確認してください。これは、マイクの入力ゲインを調整することで解決できる場合があります。
+4. **ゲイン設定**: 録音中のゲイン（音量の増幅率）が適切に設定されているかどうかを確認してください。これは、マイクの入力ゲインを調整することで解決できる場合があります。
 
-5. \*\*物理的な問題\*\*: マイクの近くがふさがっていないか、またはマイク自体が汚れていないかも確認してください。これが原因で録音が不十分になることがあります。
+5. **物理的な問題**: マイクの近くがふさがっていないか、またはマイク自体が汚れていないかも確認してください。これが原因で録音が不十分になることがあります。
 
-6. \*\*ハードウェアの問題\*\*: 他のアプリ（例えばボイスメモ）では問題なく録音できる場合は、ハードウェアの問題ではなく、アプリのコーディングや設定に問題がある可能性が高いです。
+6. **ハードウェアの問題**: 他のアプリ（例えばボイスメモ）では問題なく録音できる場合は、ハードウェアの問題ではなく、アプリのコーディングや設定に問題がある可能性が高いです。
 
 問題の解決には、上記の各点を一つずつ確認していくことが効果的です。それでも解決しない場合は、具体的なコードを確認してみるとより詳しい原因を特定できるかもしれません。
 
@@ -39,8 +39,8 @@ iOSでの録音で音量が小さい問題は、いくつかの要因によっ�
 
 @MainActor
 final class AudioListPresenter: ObservableObject {
-    @Published private(set) var audioFiles: \[URL\] = \[\]
-    @Published private(set) var audioData: \[AudioData\] = \[\]
+    @Published private(set) var audioFiles: [URL] = []
+    @Published private(set) var audioData: [AudioData] = []
     
     @Published var isLoading: Bool = false
     @Published var appError: AppError?
@@ -63,7 +63,7 @@ final class AudioListPresenter: ObservableObject {
             let tmpPath = fileManageDriver.getDirectoryURL(directoryType: .tmp)
             let audioFiles = try fileManageDriver.fetchFiles(directory: tmpPath, extensions: FileExtension.allCases)
 
-            var fetchedAudioData: \[AudioData\] = \[\]
+            var fetchedAudioData: [AudioData] = []
             try await withThrowingTaskGroup(of: AudioData.self) { group in
                 for fileUrl in audioFiles {
                     group.addTask {
@@ -76,9 +76,9 @@ final class AudioListPresenter: ObservableObject {
                 }
             }
 
-            audioData = fetchedAudioData.sorted(by: \\.createdAt, order: .descending)
+            audioData = fetchedAudioData.sorted(by: \.createdAt, order: .descending)
         } catch {
-            OSLogger.errorLog("Failed to read audio files: \\(error)")
+            OSLogger.errorLog("Failed to read audio files: \(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -89,7 +89,7 @@ final class AudioListPresenter: ObservableObject {
             player = try AVAudioPlayer(contentsOf: audioData.fileUrl)
             player?.play()
         } catch {
-            OSLogger.debugLog("Audio playback failed: \\(error)")
+            OSLogger.debugLog("Audio playback failed: \(error)")
             appError = error.toAppError
             showAlert = true
         }

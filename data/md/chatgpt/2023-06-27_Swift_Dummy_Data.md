@@ -16,7 +16,7 @@ import "google/protobuf/timestamp.proto";
 
 message Interaction {
   google.protobuf.Timestamp timestamp = 1;
-  string event\_type = 2;
+  string event_type = 2;
   map&lt;string, google.protobuf.Value&gt; parameters = 3;
 }
 
@@ -53,7 +53,7 @@ message VideoEnded {
 message VideoSkipped {
   // 動画の現在の再生時間（秒）
   // AVPlayer.currentTime().seconds
-  double current\_time = 1;
+  double current_time = 1;
 }
 
 ---

@@ -11,7 +11,7 @@
 ResponseBodyが指定なんだ。
 
 @riverpod
-class UploadPhotoNotifier extends \_$UploadPhotoNotifier {
+class UploadPhotoNotifier extends _$UploadPhotoNotifier {
   @override
   Future&lt;UploadedPhoto?&gt; build() async =&gt; null;
 
@@ -28,12 +28,12 @@ class UploadPhotoNotifier extends \_$UploadPhotoNotifier {
             await multipartFile.finalize().toBytes(),
             contentType: multipartFile.contentType,
           ),
-          UploadPhotoRequestForYamlType.USER\_PHOTOS,
+          UploadPhotoRequestForYamlType.USER_PHOTOS,
           location.latitude,
           location.longitude,
         );
 
-  /// Uploaded a photo, separate Admin and User photo using PhotoType \[ADM0101, GME0302\]
+  /// Uploaded a photo, separate Admin and User photo using PhotoType [ADM0101, GME0302]
   /// post: /v1/photos
   ///
   Future&lt;Response&lt;PhotoUploadResponseDTO&gt;&gt; photosControllerUploadPhoto(

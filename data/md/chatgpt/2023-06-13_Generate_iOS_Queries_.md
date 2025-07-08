@@ -20,56 +20,56 @@ enum MeasurementType {
 # タスクインタフェース
 interface IMeasurement {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
+  measurement_type: MeasurementType!
 }
 
 # 調査（お願い）
-type Research @aws\_cognito\_user\_pools {
+type Research @aws_cognito_user_pools {
   id: ID!
   title: String!
-  opening\_at: AWSDateTime!
-  closing\_at: AWSDateTime!
-  image\_uri: String!
+  opening_at: AWSDateTime!
+  closing_at: AWSDateTime!
+  image_uri: String!
   description: String!
-  reward\_points: Int!
-  org\_name: String
-  measurement\_types: \[MeasurementType!\]!
-  measurements: \[Measurement!\]!
+  reward_points: Int!
+  org_name: String
+  measurement_types: [MeasurementType!]!
+  measurements: [Measurement!]!
   duration: Int!
 }
 
 # タスク
-type Measurement implements IMeasurement @aws\_cognito\_user\_pools {
+type Measurement implements IMeasurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
+  measurement_type: MeasurementType!
 }
 
 # 動画タスク
-type VideoMeasurement implements IMeasurement @aws\_cognito\_user\_pools {
+type VideoMeasurement implements IMeasurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
-  file\_uri: String!
-  situation\_description: String! # TODO データ定義に追加
+  measurement_type: MeasurementType!
+  file_uri: String!
+  situation_description: String! # TODO データ定義に追加
 }
 
 # サイト調査タスク
-type WebsiteMeasurement implements IMeasurement @aws\_cognito\_user\_pools {
+type WebsiteMeasurement implements IMeasurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
-  site\_url: AWSURL!
-  situation\_description: String! # TODO データ定義に追加
+  measurement_type: MeasurementType!
+  site_url: AWSURL!
+  situation_description: String! # TODO データ定義に追加
 }
 
 # ユーザ
-type User @aws\_cognito\_user\_pools {
+type User @aws_cognito_user_pools {
   id: ID!
   name: String!
   email: AWSEmail!
@@ -78,71 +78,71 @@ type User @aws\_cognito\_user\_pools {
 
 # 旧: ユーザ属性
 type UserAttribute
-  @aws\_cognito\_user\_pools
+  @aws_cognito_user_pools
   @deprecated(reason: "Use UserAttributes") {
-  user\_id: ID!
-  date\_of\_birth: String!
+  user_id: ID!
+  date_of_birth: String!
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
   device: String
 }
 
 # ユーザ属性
-type UserAttributes @aws\_cognito\_user\_pools {
-  user\_id: ID!
-  date\_of\_birth: AWSDate!
+type UserAttributes @aws_cognito_user_pools {
+  user_id: ID!
+  date_of_birth: AWSDate!
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
   device: String
 }
 
 # ユーザ属性コンテンツ
-type UserAttributeContents @aws\_cognito\_user\_pools {
-  genders: \[String!\]!
-  occupations: \[String!\]!
-  industries: \[String!\]!
-  educations: \[String!\]!
-  annual\_incomes: \[String!\]!
-  residence\_types: \[String!\]!
-  locations: \[String!\]!
-  marital\_statuses: \[String!\]!
-  household\_sizes: \[String!\]!
+type UserAttributeContents @aws_cognito_user_pools {
+  genders: [String!]!
+  occupations: [String!]!
+  industries: [String!]!
+  educations: [String!]!
+  annual_incomes: [String!]!
+  residence_types: [String!]!
+  locations: [String!]!
+  marital_statuses: [String!]!
+  household_sizes: [String!]!
 }
 
 # ポイント履歴
-type PointHistory @aws\_cognito\_user\_pools {
-  created\_at: AWSDateTime!
-  org\_name: String
-  research\_title: String!
+type PointHistory @aws_cognito_user_pools {
+  created_at: AWSDateTime!
+  org_name: String
+  research_title: String!
   point: Int!
 }
 
 # 旧: ユーザ属性登録Input
 input CreateUserAttribute @deprecated(reason: "Use CreateUserAttributeInput") {
-  user\_name: String!
-  user\_email: String!
-  date\_of\_birth: AWSDate!
+  user_name: String!
+  user_email: String!
+  date_of_birth: AWSDate!
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
   device: String
@@ -150,16 +150,16 @@ input CreateUserAttribute @deprecated(reason: "Use CreateUserAttributeInput") {
 
 # 旧: ユーザ属性更新Input
 input UpdateUserAttribute @deprecated(reason: "Use UpdateUserAttributeInput") {
-  user\_id: ID!
-  user\_name: String
-  date\_of\_birth: AWSDate
+  user_id: ID!
+  user_name: String
+  date_of_birth: AWSDate
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
   device: String @deprecated(reason: "Use Device.name")
@@ -172,14 +172,14 @@ input UpdateUserInput {
 
 # ユーザ属性登録Input
 input CreateUserAttributeInput {
-  date\_of\_birth: AWSDate!
+  date_of_birth: AWSDate!
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
   device: String
@@ -187,60 +187,60 @@ input CreateUserAttributeInput {
 
 # ユーザ属性更新Input
 input UpdateUserAttributeInput {
-  date\_of\_birth: AWSDate!
+  date_of_birth: AWSDate!
   gender: String!
-  annual\_income: String!
+  annual_income: String!
   occupation: String!
   industry: String!
-  marital\_status: String!
-  residence\_type: String!
-  household\_size: String!
+  marital_status: String!
+  residence_type: String!
+  household_size: String!
   location: String!
   education: String!
   device: String @deprecated(reason: "Use Device.name") # TODO デバイス情報の取得方法を検討
 }
 
 ## Query ##
-type Query @aws\_cognito\_user\_pools {
-  getUser(id: String!): User @deprecated(reason: "Use get\_user")
-  getResearch(id: String!): Research @deprecated(reason: "Use get\_research")
-  listResearches(id: String!, MeasurementType: String): \[Research\]
-    @deprecated(reason: "Use list\_researches")
+type Query @aws_cognito_user_pools {
+  getUser(id: String!): User @deprecated(reason: "Use get_user")
+  getResearch(id: String!): Research @deprecated(reason: "Use get_research")
+  listResearches(id: String!, MeasurementType: String): [Research]
+    @deprecated(reason: "Use list_researches")
   getUserAttributeContents: UserAttributeContents
-    @deprecated(reason: "Use get\_user\_attribute\_contents")
+    @deprecated(reason: "Use get_user_attribute_contents")
   getUserAttribute(id: String!): UserAttribute
-    @deprecated(reason: "Use get\_user\_attributes")
+    @deprecated(reason: "Use get_user_attributes")
   # ユーザ情報取得(ログインユーザ)
-  get\_user: User
+  get_user: User
   # ユーザ属性コンテンツ取得
-  get\_user\_attribute\_contents: UserAttributeContents
+  get_user_attribute_contents: UserAttributeContents
   # ユーザ属性情報取得(ログインユーザ)
-  get\_user\_attributes: UserAttributes
+  get_user_attributes: UserAttributes
   # お願い一覧取得
-  list\_researches(MeasurementType: String): \[Research!\]!
+  list_researches(MeasurementType: String): [Research!]!
   # お願い詳細情報取得
-  get\_research(id: String!): Research
+  get_research(id: String!): Research
   # 動画タスク情報取得
-  get\_video\_measurement(id: String!): VideoMeasurement
+  get_video_measurement(id: String!): VideoMeasurement
   # サイト調査タスク情報取得
-  get\_website\_measurement(id: String!): WebsiteMeasurement
+  get_website_measurement(id: String!): WebsiteMeasurement
   # アンケートタスク情報取得 TODO データ設計検討待ち
   # ポイント履歴取得(ログインユーザ)
-  list\_point\_histories: \[PointHistory!\]!
+  list_point_histories: [PointHistory!]!
 }
 
 ## Mutation ##
-type Mutation @aws\_cognito\_user\_pools {
+type Mutation @aws_cognito_user_pools {
   createUserAttribute(input: CreateUserAttribute!): UserAttribute
-    @deprecated(reason: "Use create\_user\_attributes")
+    @deprecated(reason: "Use create_user_attributes")
   updateUserAttribute(input: UpdateUserAttribute!): UserAttribute
-    @deprecated(reason: "Use update\_user\_attributes")
+    @deprecated(reason: "Use update_user_attributes")
   # ユーザ情報更新(ログインユーザ)
-  update\_user(input: UpdateUserInput!): User!
+  update_user(input: UpdateUserInput!): User!
   # ユーザ属性情報登録(ログインユーザ)
-  create\_user\_attributes(input: CreateUserAttributeInput!): UserAttributes!
+  create_user_attributes(input: CreateUserAttributeInput!): UserAttributes!
   # ユーザ属性情報更新(ログインユーザ)
-  update\_user\_attributes(input: UpdateUserAttributeInput!): UserAttributes!
+  update_user_attributes(input: UpdateUserAttributeInput!): UserAttributes!
   # お願い獲得ポイント登録 TODO postgresqlで実施できないか検討
   # アンケートタスク結果登録 TODO データ設計検討待ち
 }
@@ -457,7 +457,7 @@ mutation {
 ## 👤 ユーザー
 *2023/6/13 15:43:19*
 
-たとえば、list\_researches の取得した measurements.research\_id をつかって、get\_research を発行するようなクエリを作成して欲しい
+たとえば、list_researches の取得した measurements.research_id をつかって、get_research を発行するようなクエリを作成して欲しい
 
 ---
 

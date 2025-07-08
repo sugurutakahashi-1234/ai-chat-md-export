@@ -11,13 +11,13 @@ ref.read(getGuildInfoNotifierProvider.notifier).executeRequest();
 をpull to refreshで実行したい
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild\_info.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild_info.dart';
 
 class GuildPage extends HookConsumerWidget {
   const GuildPage({super.key});
@@ -31,7 +31,7 @@ class GuildPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     final guildInfoAsync = ref.watch(getGuildInfoNotifierProvider);
@@ -47,14 +47,14 @@ class GuildPage extends HookConsumerWidget {
             return const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: SingleChildScrollView(
-                child: \_NoGuildWidget(),
+                child: _NoGuildWidget(),
               ),
             );
           }
         },
         loading: () =&gt; const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) {
-          WidgetsBinding.instance.addPostFrameCallback((\_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Error: $error')),
             );
@@ -66,13 +66,13 @@ class GuildPage extends HookConsumerWidget {
   }
 }
 
-class \_NoGuildWidget extends StatelessWidget {
-  const \_NoGuildWidget();
+class _NoGuildWidget extends StatelessWidget {
+  const _NoGuildWidget();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: \[
+      children: [
         const SizedBox(height: 48),
         const Text(
           'No guild affiliation',
@@ -96,7 +96,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 // TODO: 画像を差し替える
                 Assets.images.animalsLogin.path,
@@ -110,7 +110,7 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text(
                         'Join an existing guild',
@@ -119,15 +119,15 @@ class \_NoGuildWidget extends StatelessWidget {
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 16),
@@ -138,7 +138,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 // TODO: 画像を差し替える
                 Assets.images.animalsLogin.path,
@@ -152,26 +152,26 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text('Host a new guild'),
                     ),
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 48),
-      \],
+      ],
     );
   }
 }
@@ -259,13 +259,13 @@ class GuildPage extends HookConsumerWidget {
 一回エラーになったらpullto refreshできなかったんだが
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild\_info.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild_info.dart';
 
 class GuildPage extends HookConsumerWidget {
   const GuildPage({super.key});
@@ -279,7 +279,7 @@ class GuildPage extends HookConsumerWidget {
         // });
         return null;
       },
-      \[\],
+      [],
     );
 
     final guildInfoAsync = ref.watch(getGuildInfoNotifierProvider);
@@ -302,14 +302,14 @@ class GuildPage extends HookConsumerWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
-                  child: \_NoGuildWidget(),
+                  child: _NoGuildWidget(),
                 ),
               );
             }
           },
           loading: () =&gt; const Center(child: CircularProgressIndicator()),
           error: (error, stackTrace) {
-            WidgetsBinding.instance.addPostFrameCallback((\_) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Error: $error')),
               );
@@ -322,13 +322,13 @@ class GuildPage extends HookConsumerWidget {
   }
 }
 
-class \_NoGuildWidget extends StatelessWidget {
-  const \_NoGuildWidget();
+class _NoGuildWidget extends StatelessWidget {
+  const _NoGuildWidget();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: \[
+      children: [
         const SizedBox(height: 48),
         const Text(
           'No guild affiliation',
@@ -352,7 +352,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 // TODO: 画像を差し替える
                 Assets.images.animalsLogin.path,
@@ -366,7 +366,7 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text(
                         'Join an existing guild',
@@ -375,15 +375,15 @@ class \_NoGuildWidget extends StatelessWidget {
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 16),
@@ -394,7 +394,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 // TODO: 画像を差し替える
                 Assets.images.animalsLogin.path,
@@ -408,26 +408,26 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text('Host a new guild'),
                     ),
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 48),
-      \],
+      ],
     );
   }
 }

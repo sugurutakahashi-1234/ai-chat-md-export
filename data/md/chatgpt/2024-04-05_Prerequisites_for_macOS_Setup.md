@@ -31,9 +31,9 @@ READMEファイルに記述する内容を英語で作成してみますね。�
 
 Before you begin, ensure you have met the following requirements:
 
-- \*\*macOS\*\*: Version 14.4.1 or later.
-- \*\*Xcode\*\*: Version 15.3 or later, with Swift 5.10.
-- \*\*npm\*\*: Version 10.5.0 or later. (Please install it using a version manager like nodebrew or any method you prefer.)
+- **macOS**: Version 14.4.1 or later.
+- **Xcode**: Version 15.3 or later, with Swift 5.10.
+- **npm**: Version 10.5.0 or later. (Please install it using a version manager like nodebrew or any method you prefer.)
 
 ---
 
@@ -57,9 +57,9 @@ like nodebrew というよりは例えばという意味にしてほしい。も
 
 Ensure you have:
 
-- \*\*macOS\*\*: 14.4.1+
-- \*\*Xcode\*\*: 15.3+ (Swift 5.10)
-- \*\*npm\*\*: 10.5.0+ (Install using your preferred method, e.g., nodebrew.)
+- **macOS**: 14.4.1+
+- **Xcode**: 15.3+ (Swift 5.10)
+- **npm**: 10.5.0+ (Install using your preferred method, e.g., nodebrew.)
 
 ---
 

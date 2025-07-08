@@ -12,7 +12,7 @@ play 中に onAudioPlayerDidFinishPlaying から true がくるまで処理を�
 /// NSObject は AVAudioPlayerDelegate の適応のために必要
 public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol {
     private nonisolated(unsafe) var player: AVAudioPlayer?
-    private nonisolated(unsafe) var cancellables: Set&lt;AnyCancellable&gt; = \[\]
+    private nonisolated(unsafe) var cancellables: Set&lt;AnyCancellable&gt; = []
     private nonisolated(unsafe) let currentTimeSubject = CurrentValueSubject&lt;TimeInterval, Never&gt;(0.0)
     private nonisolated(unsafe) let durationSubject = CurrentValueSubject&lt;TimeInterval, Never&gt;(0.0)
     private nonisolated(unsafe) let isPlayingSubject = CurrentValueSubject&lt;Bool, Never&gt;(false)
@@ -138,7 +138,7 @@ public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol, AVAudioPl
 ちなみにこういうデリゲートからくるんだけど、もっといい実装方法はあったりする？
 
 extension AudioPlayDriver: AVAudioPlayerDelegate {
-    public func audioPlayerDidFinishPlaying(\_ player: AVAudioPlayer, successfully \_: Bool) {
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully _: Bool) {
         stopMeteringTimer()
         player.currentTime = 0
         isPlayingSubject.send(false)
@@ -530,7 +530,7 @@ public func play(audioSource: AudioSource) async throws {
 
         await withCheckedContinuation { continuation in
             onAudioPlayerDidFinishPlaying
-                .sink { \_ in
+                .sink { _ in
                     continuation.resume()
                 }
                 .store(in: &cancellables)
@@ -540,7 +540,7 @@ public func play(audioSource: AudioSource) async throws {
 
  await withCheckedContinuation { continuation in
             onAudioPlayerDidFinishPlaying
-                .sink { \_ in
+                .sink { _ in
                     continuation.resume()
                 }
                 .store(in: &cancellables)
@@ -650,7 +650,7 @@ public func play(audioSource: AudioSource) async throws {
 
             // 新しいサブスクリプションを作成
             onDidFinishPlaying
-                .sink { \_ in
+                .sink { _ in
                     continuation.resume()
                 }
                 .store(in: &didFinishPlayingCancellable)

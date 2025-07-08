@@ -9,9 +9,9 @@
 
 AsyncImage がtalkThreadsの最初の一つしか読み込まれない。
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 public struct TalkThreadListScrollView: View {
-    let talkThreads: \[TalkThread\]
+    let talkThreads: [TalkThread]
     let spacing: CGFloat
     let padding: CGFloat
 
@@ -19,7 +19,7 @@ public struct TalkThreadListScrollView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: spacing) {
-                    ForEach(talkThreads, id: \\.id) { talkThread in
+                    ForEach(talkThreads, id: \.id) { talkThread in
                         AsyncImage(url: talkThread.imageUrl, transaction: .init(animation: .bouncy)) { asyncImagePhase in
                             switch asyncImagePhase {
                             case .success(let image):
@@ -38,7 +38,7 @@ public struct TalkThreadListScrollView: View {
                                 AsyncImageLoadingView()
                             }
                         }
-                        .frame(width: geometry.size.width - padding \* 2, height: 100)
+                        .frame(width: geometry.size.width - padding * 2, height: 100)
                     }
                 }
                 .padding(.horizontal, padding)

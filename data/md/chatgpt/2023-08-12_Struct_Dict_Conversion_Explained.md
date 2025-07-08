@@ -319,13 +319,13 @@ SwiftでJSONを扱う場合、`Codable`プロトコルや`JSONSerialization`ク�
 
 ## 原因と解決策
 
-1. \*\*型情報の喪失\*\*  
+1. **型情報の喪失**  
    `JSONSerialization`は、JSONの形式に従ってデータを変換します。そのため、`2.0`などの浮動小数点数が`2`として整数で認識されたり、`true`が`1`として認識されることがあります。  
-   \*\*解決策\*\*: `Codable`や`JSONSerialization`を使用せず、独自の変換方法を用いることで、型情報を保持したまま変換を行うことができます。この記事の後半で紹介されている`ConvertibleToDictionary`プロトコルを使用する方法がその一例です。
+   **解決策**: `Codable`や`JSONSerialization`を使用せず、独自の変換方法を用いることで、型情報を保持したまま変換を行うことができます。この記事の後半で紹介されている`ConvertibleToDictionary`プロトコルを使用する方法がその一例です。
 
-2. \*\*`KeyDecodingStrategy`の設定ミス\*\*  
+2. **`KeyDecodingStrategy`の設定ミス**  
    Structのキー名と、変換後のDictionaryのキー名との対応関係が正しくないと、変換時にエラーが発生します。  
-   \*\*解決策\*\*: キー名の対応関係を正確に指定することで、エラーを防ぐことができます。特に、`.convertToSnakeCase`や`.convertFromSnakeCase`を使用する場合は、キー名の形式を注意深く確認する必要があります。
+   **解決策**: キー名の対応関係を正確に指定することで、エラーを防ぐことができます。特に、`.convertToSnakeCase`や`.convertFromSnakeCase`を使用する場合は、キー名の形式を注意深く確認する必要があります。
 
 ## Protocol Buffersとの組み合わせ
 

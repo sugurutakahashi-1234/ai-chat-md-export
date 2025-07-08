@@ -26,7 +26,7 @@ final class AudioPlayerPresenter: ObservableObject {
 
     let audioUrl: URL
     private var player: AVPlayer?
-    private var cancellables: Set&lt;AnyCancellable&gt; = \[\]
+    private var cancellables: Set&lt;AnyCancellable&gt; = []
     private let fileManageDriver: FileManageDriver = FileManageDriver()
 
     init(audioUrl: URL) {
@@ -42,10 +42,10 @@ final class AudioPlayerPresenter: ObservableObject {
         // 0.1 秒ごとに再生時刻と seek bar を同期させる
         Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
             .combineLatest($isPlaying, $isSeeking)
-            .filter { \_, isPlaying, isSeeking in
+            .filter { _, isPlaying, isSeeking in
                 isPlaying && !isSeeking // 再生中かつseekしていないときのみ更新
             }
-            .map { \[weak self\] \_, \_, \_ in
+            .map { [weak self] _, _, _ in
                 self?.player?.currentTime().seconds ?? 0
             }
             .assign(to: &$currentTime)
@@ -53,7 +53,7 @@ final class AudioPlayerPresenter: ObservableObject {
         // 動画を最後まで見終わったら再生開始状態にリセットする
         NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
             .receive(on: RunLoop.main)
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 guard let self else {
                     return
                 }
@@ -64,9 +64,9 @@ final class AudioPlayerPresenter: ObservableObject {
             .store(in: &cancellables)
 
         // 再生準備が完了したら再生時間をセットする
-        player?.currentItem?.publisher(for: \\.status)
+        player?.currentItem?.publisher(for: \.status)
             .receive(on: RunLoop.main)
-            .sink { \[weak self\] status in
+            .sink { [weak self] status in
                 switch status {
                 case .readyToPlay:
                     self?.isLoading = false
@@ -84,7 +84,7 @@ final class AudioPlayerPresenter: ObservableObject {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
-            OSLogger.errorLog("Audio playback failed: \\(error)")
+            OSLogger.errorLog("Audio playback failed: \(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -120,7 +120,7 @@ final class AudioPlayerPresenter: ObservableObject {
             try fileManageDriver.removeItemIfExists(at: audioUrl)
             shouldDismiss = true
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -128,7 +128,7 @@ final class AudioPlayerPresenter: ObservableObject {
 
     func seek(to time: TimeInterval) {
         let cmTime = CMTime(seconds: time, preferredTimescale: 600)
-        player?.seek(to: cmTime) { \[weak self\] completed in
+        player?.seek(to: cmTime) { [weak self] completed in
             if completed {
                 self?.currentTime = time
                 self?.isSeeking = false
@@ -145,7 +145,7 @@ final class AudioPlayerPresenter: ObservableObject {
 Capture of 'self' with non-sendable type 'AudioPlayerPresenter?' in a `@Sendable` closure; this is an error in the Swift 6 language mode
 というエラーになった。
 
-player?.seek(to: cmTime) { \[weak self\] completed in
+player?.seek(to: cmTime) { [weak self] completed in
             if completed {
                 self?.currentTime = time
                 self?.isSeeking = false

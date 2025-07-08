@@ -9,7 +9,7 @@
 
 @MainActor
 final class TalkBoxListPresenter: ObservableObject {
-    @Published private(set) var talkBoxes: \[TalkBox\] = \[\]
+    @Published private(set) var talkBoxes: [TalkBox] = []
 
     @Published var isLoading: Bool = false
     @Published var appError: AppError?
@@ -21,11 +21,11 @@ final class TalkBoxListPresenter: ObservableObject {
     func onAppear() async {
         do {
             talkBoxes = try await apiDriver.getTalkBox()
-                .sorted(by: \\.lastPostedAt, order: .descending)
-                .sorted(by: \\.isMuted, order: .ascending)
-                .sorted(by: \\.isBookmarked, order: .descending)
+                .sorted(by: \.lastPostedAt, order: .descending)
+                .sorted(by: \.isMuted, order: .ascending)
+                .sorted(by: \.isBookmarked, order: .descending)
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -41,7 +41,7 @@ final class TalkBoxListPresenter: ObservableObject {
             let newTalkBox = try await apiDriver.postTalkBox(talkBox: .random)
             talkBoxes.insert(newTalkBox, at: 0)
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -53,17 +53,17 @@ final class TalkBoxListPresenter: ObservableObject {
             let updatedTalkBox = try await apiDriver.putTalkBox(talkBox: talkBox)
 
             if let index = talkBoxes.firstIndex(where: { $0.id == updatedTalkBox.id }) {
-                talkBoxes\[index\] = updatedTalkBox
+                talkBoxes[index] = updatedTalkBox
             } else {
                 assertionFailure("Unexpected")
             }
 
             talkBoxes =  talkBoxes
-                .sorted(by: \\.lastPostedAt, order: .descending)
-                .sorted(by: \\.isMuted, order: .ascending)
-                .sorted(by: \\.isBookmarked, order: .descending)
+                .sorted(by: \.lastPostedAt, order: .descending)
+                .sorted(by: \.isMuted, order: .ascending)
+                .sorted(by: \.isBookmarked, order: .descending)
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -75,17 +75,17 @@ final class TalkBoxListPresenter: ObservableObject {
             let updatedTalkBox = try await apiDriver.putTalkBox(talkBox: talkBox)
 
             if let index = talkBoxes.firstIndex(where: { $0.id == updatedTalkBox.id }) {
-                talkBoxes\[index\] = updatedTalkBox
+                talkBoxes[index] = updatedTalkBox
             } else {
                 assertionFailure("Unexpected")
             }
 
             talkBoxes =  talkBoxes
-                .sorted(by: \\.lastPostedAt, order: .descending)
-                .sorted(by: \\.isMuted, order: .ascending)
-                .sorted(by: \\.isBookmarked, order: .descending)
+                .sorted(by: \.lastPostedAt, order: .descending)
+                .sorted(by: \.isMuted, order: .ascending)
+                .sorted(by: \.isBookmarked, order: .descending)
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -101,7 +101,7 @@ final class TalkBoxListPresenter: ObservableObject {
                 assertionFailure("Unexpected")
             }
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -110,7 +110,7 @@ final class TalkBoxListPresenter: ObservableObject {
 
 
 public extension Sequence {
-    func sorted(order: SortOrder) -&gt; \[Element\] where Element: Comparable {
+    func sorted(order: SortOrder) -&gt; [Element] where Element: Comparable {
         switch order {
         case .ascending:
             return sorted { $0 &lt; $1 }
@@ -119,12 +119,12 @@ public extension Sequence {
         }
     }
 
-    func sorted(by keyPath: KeyPath&lt;Element, some Comparable&gt;, order: SortOrder) -&gt; \[Element\] {
+    func sorted(by keyPath: KeyPath&lt;Element, some Comparable&gt;, order: SortOrder) -&gt; [Element] {
         switch order {
         case .ascending:
-            sorted { $0\[keyPath: keyPath\] &lt; $1\[keyPath: keyPath\] }
+            sorted { $0[keyPath: keyPath] &lt; $1[keyPath: keyPath] }
         case .descending:
-            sorted { $0\[keyPath: keyPath\] &gt; $1\[keyPath: keyPath\] }
+            sorted { $0[keyPath: keyPath] &gt; $1[keyPath: keyPath] }
         }
     }
 }
@@ -132,9 +132,9 @@ public extension Sequence {
 
 以下のソートをよく行なっているが、共通化したいどうすればいいか？また、何度もsorted と書くのはあまりやりたくないので、条件を配列で渡すこともできるようにしたい
 
-                .sorted(by: \\.lastPostedAt, order: .descending)
-                .sorted(by: \\.isMuted, order: .ascending)
-                .sorted(by: \\.isBookmarked, order: .descending)
+                .sorted(by: \.lastPostedAt, order: .descending)
+                .sorted(by: \.isMuted, order: .ascending)
+                .sorted(by: \.isBookmarked, order: .descending)
 
 ---
 
@@ -307,9 +307,9 @@ final class TalkBoxListPresenter: ObservableObject {
 
 配列でまとめなくていいや、以下の処理を繰り返しているのでどうにか共通化できないか？
 
-                .sorted(by: \\.lastPostedAt, order: .descending)
-                .sorted(by: \\.isMuted, order: .ascending)
-                .sorted(by: \\.isBookmarked, order: .descending)
+                .sorted(by: \.lastPostedAt, order: .descending)
+                .sorted(by: \.isMuted, order: .ascending)
+                .sorted(by: \.isBookmarked, order: .descending)
 
 ---
 
@@ -445,7 +445,7 @@ final class TalkBoxListPresenter: ObservableObject {
 *2024/5/24 18:46:37*
 
 以下を作るだけの方がスマートでは？
-private func sortTalkBoxes(talkBox: TalkBox) -&gt; \[TalkBox\] {
+private func sortTalkBoxes(talkBox: TalkBox) -&gt; [TalkBox] {
 
 ---
 

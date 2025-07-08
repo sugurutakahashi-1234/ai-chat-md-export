@@ -34,9 +34,9 @@ mcpサーバーのobsidianで取得できないのか？
 
 「modelcontextprotocol/servers」リポジトリのドキュメントは以下のツールで取得できます：
 
-1. `fetch\_servers\_documentation` - リポジトリの全ドキュメントを取得
-2. `search\_servers\_documentation` - リポジトリ内のドキュメントを検索
-3. `search\_servers\_code` - リポジトリ内のコードを検索
+1. `fetch_servers_documentation` - リポジトリの全ドキュメントを取得
+2. `search_servers_documentation` - リポジトリ内のドキュメントを検索
+3. `search_servers_code` - リポジトリ内のコードを検索
 
 もし「modelcontextprotocol/servers」リポジトリに関する情報が必要でしたら、これらのツールを使ってお手伝いできます。必要な情報や探しているものについて、もう少し詳しく教えていただけますか？
 
@@ -45,7 +45,7 @@ mcpサーバーのobsidianで取得できないのか？
 ## 👤 ユーザー
 *2025/5/16 17:58:08*
 
-obsidian\_get\_file\_contentsで撮って欲しい
+obsidian_get_file_contentsで撮って欲しい
 
 ---
 

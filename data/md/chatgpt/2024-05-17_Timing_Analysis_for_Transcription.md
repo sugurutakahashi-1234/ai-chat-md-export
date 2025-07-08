@@ -18,7 +18,7 @@ import Hub
 import NaturalLanguage
 import Tokenizers
 
-#if !((os(macOS) || targetEnvironment(macCatalyst)) && arch(x86\_64))
+#if !((os(macOS) || targetEnvironment(macCatalyst)) && arch(x86_64))
 public typealias FloatType = Float16
 #else
 public typealias FloatType = Float
@@ -68,7 +68,7 @@ public enum ModelVariant: CustomStringConvertible, CaseIterable {
     case largev2
     case largev3
 
-    // TODO: implement config.json and generation\_config.json parsing for models
+    // TODO: implement config.json and generation_config.json parsing for models
     public var isMultilingual: Bool {
         switch self {
             case .tiny, .base, .small, .medium, .large, .largev2, .largev3:
@@ -138,7 +138,7 @@ public enum ModelState: CustomStringConvertible {
     }
 }
 
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public struct ModelComputeOptions {
     public var melCompute: MLComputeUnits
     public var audioEncoderCompute: MLComputeUnits
@@ -163,7 +163,7 @@ public struct ModelComputeOptions {
         self.prefillCompute = prefillCompute
         self.textDecoderCompute = textDecoderCompute
 
-        if #available(macOS 14.0, iOS 17.0, \*) {
+        if #available(macOS 14.0, iOS 17.0, *) {
             self.audioEncoderCompute = audioEncoderCompute ?? .cpuAndNeuralEngine
         } else {
             self.audioEncoderCompute = audioEncoderCompute ?? .cpuAndGPU
@@ -188,7 +188,7 @@ public enum DecodingTask: CustomStringConvertible, CaseIterable {
 }
 
 public struct DecodingInputs {
-    var initialPrompt: \[Int\]
+    var initialPrompt: [Int]
     var inputIds: MLMultiArray
     var cacheLength: MLMultiArray
     var keyCache: MLMultiArray
@@ -203,20 +203,20 @@ public struct DecodingInputs {
         // NOTE: Because we have a mask on the kvcache,
         // we can simply shift the masks without touching the data,
         // it will be overwritten by the new data without impact on the output
-        cacheLength\[0\] = NSNumber(value: prefilledCacheSize - 1)
+        cacheLength[0] = NSNumber(value: prefilledCacheSize - 1)
 
         // Store token history and
         // Reset masks to prepare for next window
         for i in 0..&lt;maxTokenContext {
             if i &lt;= prefilledCacheSize - 1 {
                 // Inside overlap window
-                decoderKeyPaddingMask\[i\] = 0
-                kvCacheUpdateMask\[i - 1\] = 0
-                kvCacheUpdateMask\[i\] = 1
+                decoderKeyPaddingMask[i] = 0
+                kvCacheUpdateMask[i - 1] = 0
+                kvCacheUpdateMask[i] = 1
             } else {
                 // Padding
-                decoderKeyPaddingMask\[i\] = -10000
-                kvCacheUpdateMask\[i\] = 0
+                decoderKeyPaddingMask[i] = -10000
+                kvCacheUpdateMask[i] = 0
             }
         }
     }
@@ -259,7 +259,7 @@ public struct DecodingCache {
 ///   - firstTokenLogProbThreshold: If the log probability over the first sampled token is below this value, treat as failed.
 ///   - noSpeechThreshold: If the no speech probability is higher than this value AND the average log
 ///                        probability over sampled tokens is below `logProbThreshold`, consider the segment as silent.
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public struct DecodingOptions {
     public var verbose: Bool
     public var task: DecodingTask
@@ -276,11 +276,11 @@ public struct DecodingOptions {
     public var withoutTimestamps: Bool
     public var wordTimestamps: Bool
     public var maxInitialTimestamp: Float?
-    public var clipTimestamps: \[Float\]
-    public var promptTokens: \[Int\]?
-    public var prefixTokens: \[Int\]?
+    public var clipTimestamps: [Float]
+    public var promptTokens: [Int]?
+    public var prefixTokens: [Int]?
     public var suppressBlank: Bool
-    public var supressTokens: \[Int\]
+    public var supressTokens: [Int]
     public var compressionRatioThreshold: Float?
     public var logProbThreshold: Float?
     public var firstTokenLogProbThreshold: Float?
@@ -302,11 +302,11 @@ public struct DecodingOptions {
                 withoutTimestamps: Bool = false,
                 wordTimestamps: Bool = false,
                 maxInitialTimestamp: Float? = nil,
-                clipTimestamps: \[Float\] = \[\],
-                promptTokens: \[Int\]? = nil,
-                prefixTokens: \[Int\]? = nil,
+                clipTimestamps: [Float] = [],
+                promptTokens: [Int]? = nil,
+                prefixTokens: [Int]? = nil,
                 suppressBlank: Bool = false,
-                supressTokens: \[Int\]? = nil,
+                supressTokens: [Int]? = nil,
                 compressionRatioThreshold: Float? = 2.4,
                 logProbThreshold: Float? = -1.0,
                 firstTokenLogProbThreshold: Float? = -1.5,
@@ -332,7 +332,7 @@ public struct DecodingOptions {
         self.promptTokens = promptTokens
         self.prefixTokens = prefixTokens
         self.suppressBlank = suppressBlank
-        self.supressTokens = supressTokens ?? \[\] // nonSpeechTokens() // TODO: implement these as default
+        self.supressTokens = supressTokens ?? [] // nonSpeechTokens() // TODO: implement these as default
         self.compressionRatioThreshold = compressionRatioThreshold
         self.logProbThreshold = logProbThreshold
         self.firstTokenLogProbThreshold = firstTokenLogProbThreshold
@@ -341,7 +341,7 @@ public struct DecodingOptions {
     }
 }
 
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public struct DecodingFallback {
     public var needsFallback: Bool
     public var fallbackReason: String
@@ -352,7 +352,7 @@ public struct DecodingFallback {
     }
 }
 
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public extension DecodingFallback {
     init?(
         options: DecodingOptions,
@@ -379,12 +379,12 @@ public extension DecodingFallback {
     }
 }
 
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public struct DecodingResult {
     public var language: String
-    public var languageProbs: \[String: Float\]
-    public var tokens: \[Int\]
-    public var tokenLogProbs: \[\[Int: Float\]\]
+    public var languageProbs: [String: Float]
+    public var tokens: [Int]
+    public var tokenLogProbs: [[Int: Float]]
     public var text: String
     public var avgLogProb: Float
     public var noSpeechProb: Float
@@ -396,9 +396,9 @@ public struct DecodingResult {
 
     public static var emptyResults: DecodingResult {
         return DecodingResult(language: "",
-                              languageProbs: \[:\],
-                              tokens: \[\],
-                              tokenLogProbs: \[\],
+                              languageProbs: [:],
+                              tokens: [],
+                              tokenLogProbs: [],
                               text: "",
                               avgLogProb: 0.0,
                               noSpeechProb: 0.0,
@@ -466,7 +466,7 @@ public enum WhisperError: Error, LocalizedError, Equatable {
 
 public struct TranscriptionResult: Codable {
     public var text: String
-    public var segments: \[TranscriptionSegment\]
+    public var segments: [TranscriptionSegment]
     public var language: String
     public var timings: TranscriptionTimings
 
@@ -475,7 +475,7 @@ public struct TranscriptionResult: Codable {
             let start = segment.start
             let end = segment.end
             let text = segment.text
-            let line = "\[\\(formatTimestamp(start)) --&gt; \\(formatTimestamp(end))\] \\(text)"
+            let line = "[\(formatTimestamp(start)) --&gt; \(formatTimestamp(end))] \(text)"
             Logging.debug(line)
         }
     }
@@ -488,7 +488,7 @@ public struct TranscriptionResult: Codable {
         let rtf = timings.realTimeFactor
         let totalTokens = segments.reduce(0) { $0 + $1.tokens.count }
 
-        let fullPipelineDuration = timings.fullPipeline \* 1000 // Convert to milliseconds
+        let fullPipelineDuration = timings.fullPipeline * 1000 // Convert to milliseconds
 
         let audioLoadTime = formatTimeWithPercentage(timings.audioLoading, 1, fullPipelineDuration)
         let audioProcTime = formatTimeWithPercentage(timings.audioProcessing, timings.totalAudioProcessingRuns, fullPipelineDuration)
@@ -509,37 +509,37 @@ public struct TranscriptionResult: Codable {
         // Logging
         Logging.info("---- Transcription Timings ----")
 
-        Logging.info("Audio Load:          \\(audioLoadTime)")
-        Logging.info("Audio Processing:    \\(audioProcTime)")
-        Logging.info("Mels:                \\(logmelsTime)")
-        Logging.info("Encoding:            \\(encodingTime)")
-        Logging.info("Matrices Init:       \\(decodingInitTime)")
-        Logging.info("Prefill:             \\(prefillInfo)")
-        Logging.info("Decoding:            \\(predictionsInfo)")
-        Logging.info("Non-inference:       \\(nonPredTimeInfo)")
-        Logging.info("- Logit Filtering:   \\(filteringInfo)")
-        Logging.info("- Sampling:          \\(samplingInfo)")
-        Logging.info("- Kv Caching:        \\(kvCachingInfo)")
-        Logging.info("- Word Timestamps:   \\(wordTimestampInfo)")
-        Logging.info("- Windowing:         \\(windowingInfo)")
-        Logging.info("Fallbacks:           \\(fallbackInfo)")
-        Logging.info("Decoding Full Loop:  \\(decodingLoopInfo)")
+        Logging.info("Audio Load:          \(audioLoadTime)")
+        Logging.info("Audio Processing:    \(audioProcTime)")
+        Logging.info("Mels:                \(logmelsTime)")
+        Logging.info("Encoding:            \(encodingTime)")
+        Logging.info("Matrices Init:       \(decodingInitTime)")
+        Logging.info("Prefill:             \(prefillInfo)")
+        Logging.info("Decoding:            \(predictionsInfo)")
+        Logging.info("Non-inference:       \(nonPredTimeInfo)")
+        Logging.info("- Logit Filtering:   \(filteringInfo)")
+        Logging.info("- Sampling:          \(samplingInfo)")
+        Logging.info("- Kv Caching:        \(kvCachingInfo)")
+        Logging.info("- Word Timestamps:   \(wordTimestampInfo)")
+        Logging.info("- Windowing:         \(windowingInfo)")
+        Logging.info("Fallbacks:           \(fallbackInfo)")
+        Logging.info("Decoding Full Loop:  \(decodingLoopInfo)")
         Logging.info("-------------------------------")
 
         // Summary statistics
-        Logging.info("Model Load Time:     \\(String(format: "%.2f", timings.modelLoading)) seconds")
-        Logging.info("Inference Duration:  \\(String(format: "%.2f", timings.fullPipeline)) seconds")
-        Logging.info("- Decoding Loop:     \\(String(format: "%.2f", decodeLoopTime)) seconds")
-        Logging.info("Time to first token: \\(String(format: "%.2f", timeToFirstToken)) seconds")
-        Logging.info("Total Tokens:        \\(totalTokens)")
-        Logging.info("Tokens per Second:   \\(String(format: "%.2f", tokensPerSecond)) tok/s")
-        Logging.info("Real Time Factor:    \\(String(format: "%.2f", rtf))")
-        Logging.info("Fallbacks:           \\(timings.totalDecodingFallbacks)")
+        Logging.info("Model Load Time:     \(String(format: "%.2f", timings.modelLoading)) seconds")
+        Logging.info("Inference Duration:  \(String(format: "%.2f", timings.fullPipeline)) seconds")
+        Logging.info("- Decoding Loop:     \(String(format: "%.2f", decodeLoopTime)) seconds")
+        Logging.info("Time to first token: \(String(format: "%.2f", timeToFirstToken)) seconds")
+        Logging.info("Total Tokens:        \(totalTokens)")
+        Logging.info("Tokens per Second:   \(String(format: "%.2f", tokensPerSecond)) tok/s")
+        Logging.info("Real Time Factor:    \(String(format: "%.2f", rtf))")
+        Logging.info("Fallbacks:           \(timings.totalDecodingFallbacks)")
     }
 }
 
 public extension TranscriptionResult {
-    var allWords: \[WordTiming\] {
+    var allWords: [WordTiming] {
         return segments.compactMap { $0.words }.flatMap { $0 }
     }
 }
@@ -550,18 +550,18 @@ public struct TranscriptionSegment: Hashable, Codable {
     public var start: Float = 0.0
     public var end: Float = 0.0
     public var text: String = ""
-    public var tokens: \[Int\] = \[\]
-    public var tokenLogProbs: \[\[Int: Float\]\] = \[\[:\]\]
+    public var tokens: [Int] = []
+    public var tokenLogProbs: [[Int: Float]] = [[:]]
     public var temperature: Float = 1.0
     public var avgLogprob: Float = 0.0
     public var compressionRatio: Float = 1.0
     public var noSpeechProb: Float = 0.0
-    public var words: \[WordTiming\]? = nil
+    public var words: [WordTiming]? = nil
 }
 
 public struct WordTiming: Hashable, Codable {
     public var word: String
-    public var tokens: \[Int\]
+    public var tokens: [Int]
     public var start: Float
     public var end: Float
     public var probability: Float
@@ -570,7 +570,7 @@ public struct WordTiming: Hashable, Codable {
 public struct TranscriptionProgress {
     public var timings: TranscriptionTimings
     public var text: String
-    public var tokens: \[Int\]
+    public var tokens: [Int]
     public var temperature: Float?
     public var avgLogprob: Float?
     public var compressionRatio: Float?
@@ -684,7 +684,7 @@ public class MelSpectrogramInput: MLFeatureProvider {
     public var audio: MLMultiArray
 
     public var featureNames: Set&lt;String&gt; {
-        return \["audio"\]
+        return ["audio"]
     }
 
     public func featureValue(for featureName: String) -&gt; MLFeatureValue? {
@@ -704,20 +704,20 @@ public class MelSpectrogramInput: MLFeatureProvider {
 }
 
 /// Model Prediction Output Type
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public class MelSpectrogramOutput: MLFeatureProvider {
     /// Source provided by CoreML
     private let provider: MLFeatureProvider
 
-    /// melspectrogram\_features as 1 × 80 × 1 × 3000 4-dimensional array of 16-bit floats
+    /// melspectrogram_features as 1 × 80 × 1 × 3000 4-dimensional array of 16-bit floats
     public var melspectrogramFeatures: MLMultiArray {
-        return self.provider.featureValue(for: "melspectrogram\_features")!.multiArrayValue!
+        return self.provider.featureValue(for: "melspectrogram_features")!.multiArrayValue!
     }
 
-    /// melspectrogram\_features as 1 × 80 × 1 × 3000 4-dimensional array of 16-bit floats
+    /// melspectrogram_features as 1 × 80 × 1 × 3000 4-dimensional array of 16-bit floats
     @available(macOS, unavailable)
     @available(macCatalyst, unavailable)
-    public var melspectrogram\_featuresShapedArray: MLShapedArray&lt;Float16&gt; {
+    public var melspectrogram_featuresShapedArray: MLShapedArray&lt;Float16&gt; {
         return MLShapedArray&lt;Float16&gt;(self.melspectrogramFeatures)
     }
 
@@ -729,8 +729,8 @@ public class MelSpectrogramOutput: MLFeatureProvider {
         return self.provider.featureValue(for: featureName)
     }
 
-    public init(melspectrogram\_features: MLMultiArray) {
-        self.provider = try! MLDictionaryFeatureProvider(dictionary: \["melspectrogram\_features": MLFeatureValue(multiArray: melspectrogram\_features)\])
+    public init(melspectrogram_features: MLMultiArray) {
+        self.provider = try! MLDictionaryFeatureProvider(dictionary: ["melspectrogram_features": MLFeatureValue(multiArray: melspectrogram_features)])
     }
 
     public init(features: MLFeatureProvider) {
@@ -741,47 +741,47 @@ public class MelSpectrogramOutput: MLFeatureProvider {
 // MARK: AudioEncoder
 
 /// Model Prediction Input Type
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public class AudioEncoderInput: MLFeatureProvider {
-    /// melspectrogram\_features as 1 × {80,128} × 1 × 3000 4-dimensional array of floats
-    public var melspectrogram\_features: MLMultiArray
+    /// melspectrogram_features as 1 × {80,128} × 1 × 3000 4-dimensional array of floats
+    public var melspectrogram_features: MLMultiArray
 
     public var featureNames: Set&lt;String&gt; {
-        return \["melspectrogram\_features"\]
+        return ["melspectrogram_features"]
     }
 
     public func featureValue(for featureName: String) -&gt; MLFeatureValue? {
-        if featureName == "melspectrogram\_features" {
-            return MLFeatureValue(multiArray: self.melspectrogram\_features)
+        if featureName == "melspectrogram_features" {
+            return MLFeatureValue(multiArray: self.melspectrogram_features)
         }
         return nil
     }
 
-    public init(melspectrogram\_features: MLMultiArray) {
-        self.melspectrogram\_features = melspectrogram\_features
+    public init(melspectrogram_features: MLMultiArray) {
+        self.melspectrogram_features = melspectrogram_features
     }
 
-    public convenience init(melspectrogram\_features: MLShapedArray&lt;Float&gt;) {
-        self.init(melspectrogram\_features: MLMultiArray(melspectrogram\_features))
+    public convenience init(melspectrogram_features: MLShapedArray&lt;Float&gt;) {
+        self.init(melspectrogram_features: MLMultiArray(melspectrogram_features))
     }
 }
 
 /// Model Prediction Output Type
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public class AudioEncoderOutput: MLFeatureProvider {
     /// Source provided by CoreML
     private let provider: MLFeatureProvider
 
-    /// encoder\_output\_embeds as 1 × embedDim × 1 × sequenceLength 4-dimensional array of 16-bit floats
-    public var encoder\_output\_embeds: MLMultiArray {
-        return self.provider.featureValue(for: "encoder\_output\_embeds")!.multiArrayValue!
+    /// encoder_output_embeds as 1 × embedDim × 1 × sequenceLength 4-dimensional array of 16-bit floats
+    public var encoder_output_embeds: MLMultiArray {
+        return self.provider.featureValue(for: "encoder_output_embeds")!.multiArrayValue!
     }
 
-    /// encoder\_output\_embeds as 1 × embedDim × 1 × sequenceLength 4-dimensional array of 16-bit floats
+    /// encoder_output_embeds as 1 × embedDim × 1 × sequenceLength 4-dimensional array of 16-bit floats
     @available(macOS, unavailable)
     @available(macCatalyst, unavailable)
-    public var encoder\_output\_embedsShapedArray: MLShapedArray&lt;Float16&gt; {
-        return MLShapedArray&lt;Float16&gt;(self.encoder\_output\_embeds)
+    public var encoder_output_embedsShapedArray: MLShapedArray&lt;Float16&gt; {
+        return MLShapedArray&lt;Float16&gt;(self.encoder_output_embeds)
     }
 
     public var featureNames: Set&lt;String&gt; {
@@ -792,8 +792,8 @@ public class AudioEncoderOutput: MLFeatureProvider {
         return self.provider.featureValue(for: featureName)
     }
 
-    public init(encoder\_output\_embeds: MLMultiArray) {
-        self.provider = try! MLDictionaryFeatureProvider(dictionary: \["encoder\_output\_embeds": MLFeatureValue(multiArray: encoder\_output\_embeds)\])
+    public init(encoder_output_embeds: MLMultiArray) {
+        self.provider = try! MLDictionaryFeatureProvider(dictionary: ["encoder_output_embeds": MLFeatureValue(multiArray: encoder_output_embeds)])
     }
 
     public init(features: MLFeatureProvider) {
@@ -804,75 +804,75 @@ public class AudioEncoderOutput: MLFeatureProvider {
 // MARK: TextDecoder
 
 /// Model Prediction Input Type
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public class TextDecoderInput: MLFeatureProvider {
-    /// input\_ids as 1 element vector of 32-bit integers
-    public var input\_ids: MLMultiArray
+    /// input_ids as 1 element vector of 32-bit integers
+    public var input_ids: MLMultiArray
 
-    /// cache\_length as 1 element vector of 32-bit integers
-    public var cache\_length: MLMultiArray
+    /// cache_length as 1 element vector of 32-bit integers
+    public var cache_length: MLMultiArray
 
-    /// key\_cache as 1 × kvCacheEmbedDim × 1 × kvCacheMaxSequenceLength 4-dimensional array of floats
-    public var key\_cache: MLMultiArray
+    /// key_cache as 1 × kvCacheEmbedDim × 1 × kvCacheMaxSequenceLength 4-dimensional array of floats
+    public var key_cache: MLMultiArray
 
-    /// value\_cache as 1 × kvCacheEmbedDim × 1 × kvCacheMaxSequenceLength 4-dimensional array of floats
-    public var value\_cache: MLMultiArray
+    /// value_cache as 1 × kvCacheEmbedDim × 1 × kvCacheMaxSequenceLength 4-dimensional array of floats
+    public var value_cache: MLMultiArray
 
-    /// kv\_cache\_update\_mask as 1 by kvCacheMaxSequenceLength matrix of floats
-    public var kv\_cache\_update\_mask: MLMultiArray
+    /// kv_cache_update_mask as 1 by kvCacheMaxSequenceLength matrix of floats
+    public var kv_cache_update_mask: MLMultiArray
 
-    /// encoder\_output\_embeds as 1 × embedSize × 1 × sequenceLength 4-dimensional array of floats
-    public var encoder\_output\_embeds: MLMultiArray
+    /// encoder_output_embeds as 1 × embedSize × 1 × sequenceLength 4-dimensional array of floats
+    public var encoder_output_embeds: MLMultiArray
 
-    /// decoder\_key\_padding\_mask as 1 by kvCacheMaxSequenceLength matrix of floats
-    public var decoder\_key\_padding\_mask: MLMultiArray
+    /// decoder_key_padding_mask as 1 by kvCacheMaxSequenceLength matrix of floats
+    public var decoder_key_padding_mask: MLMultiArray
 
     public var featureNames: Set&lt;String&gt; {
-        return \["input\_ids", "cache\_length", "key\_cache", "value\_cache", "kv\_cache\_update\_mask", "encoder\_output\_embeds", "decoder\_key\_padding\_mask"\]
+        return ["input_ids", "cache_length", "key_cache", "value_cache", "kv_cache_update_mask", "encoder_output_embeds", "decoder_key_padding_mask"]
     }
 
     public func featureValue(for featureName: String) -&gt; MLFeatureValue? {
-        if featureName == "input\_ids" {
-            return MLFeatureValue(multiArray: self.input\_ids)
+        if featureName == "input_ids" {
+            return MLFeatureValue(multiArray: self.input_ids)
         }
-        if featureName == "cache\_length" {
-            return MLFeatureValue(multiArray: self.cache\_length)
+        if featureName == "cache_length" {
+            return MLFeatureValue(multiArray: self.cache_length)
         }
-        if featureName == "key\_cache" {
-            return MLFeatureValue(multiArray: self.key\_cache)
+        if featureName == "key_cache" {
+            return MLFeatureValue(multiArray: self.key_cache)
         }
-        if featureName == "value\_cache" {
-            return MLFeatureValue(multiArray: self.value\_cache)
+        if featureName == "value_cache" {
+            return MLFeatureValue(multiArray: self.value_cache)
         }
-        if featureName == "kv\_cache\_update\_mask" {
-            return MLFeatureValue(multiArray: self.kv\_cache\_update\_mask)
+        if featureName == "kv_cache_update_mask" {
+            return MLFeatureValue(multiArray: self.kv_cache_update_mask)
         }
-        if featureName == "encoder\_output\_embeds" {
-            return MLFeatureValue(multiArray: self.encoder\_output\_embeds)
+        if featureName == "encoder_output_embeds" {
+            return MLFeatureValue(multiArray: self.encoder_output_embeds)
         }
-        if featureName == "decoder\_key\_padding\_mask" {
-            return MLFeatureValue(multiArray: self.decoder\_key\_padding\_mask)
+        if featureName == "decoder_key_padding_mask" {
+            return MLFeatureValue(multiArray: self.decoder_key_padding_mask)
         }
         return nil
     }
 
-    public init(input\_ids: MLMultiArray, cache\_length: MLMultiArray, key\_cache: MLMultiArray, value\_cache: MLMultiArray, kv\_cache\_update\_mask: MLMultiArray, encoder\_output\_embeds: MLMultiArray, decoder\_key\_padding\_mask: MLMultiArray) {
-        self.input\_ids = input\_ids
-        self.cache\_length = cache\_length
-        self.key\_cache = key\_cache
-        self.value\_cache = value\_cache
-        self.kv\_cache\_update\_mask = kv\_cache\_update\_mask
-        self.encoder\_output\_embeds = encoder\_output\_embeds
-        self.decoder\_key\_padding\_mask = decoder\_key\_padding\_mask
+    public init(input_ids: MLMultiArray, cache_length: MLMultiArray, key_cache: MLMultiArray, value_cache: MLMultiArray, kv_cache_update_mask: MLMultiArray, encoder_output_embeds: MLMultiArray, decoder_key_padding_mask: MLMultiArray) {
+        self.input_ids = input_ids
+        self.cache_length = cache_length
+        self.key_cache = key_cache
+        self.value_cache = value_cache
+        self.kv_cache_update_mask = kv_cache_update_mask
+        self.encoder_output_embeds = encoder_output_embeds
+        self.decoder_key_padding_mask = decoder_key_padding_mask
     }
 
-    public convenience init(input\_ids: MLShapedArray&lt;Int32&gt;, cache\_length: MLShapedArray&lt;Int32&gt;, key\_cache: MLShapedArray&lt;Float&gt;, value\_cache: MLShapedArray&lt;Float&gt;, kv\_cache\_update\_mask: MLShapedArray&lt;Float&gt;, encoder\_output\_embeds: MLShapedArray&lt;Float&gt;, decoder\_key\_padding\_mask: MLShapedArray&lt;Float&gt;) {
-        self.init(input\_ids: MLMultiArray(input\_ids), cache\_length: MLMultiArray(cache\_length), key\_cache: MLMultiArray(key\_cache), value\_cache: MLMultiArray(value\_cache), kv\_cache\_update\_mask: MLMultiArray(kv\_cache\_update\_mask), encoder\_output\_embeds: MLMultiArray(encoder\_output\_embeds), decoder\_key\_padding\_mask: MLMultiArray(decoder\_key\_padding\_mask))
+    public convenience init(input_ids: MLShapedArray&lt;Int32&gt;, cache_length: MLShapedArray&lt;Int32&gt;, key_cache: MLShapedArray&lt;Float&gt;, value_cache: MLShapedArray&lt;Float&gt;, kv_cache_update_mask: MLShapedArray&lt;Float&gt;, encoder_output_embeds: MLShapedArray&lt;Float&gt;, decoder_key_padding_mask: MLShapedArray&lt;Float&gt;) {
+        self.init(input_ids: MLMultiArray(input_ids), cache_length: MLMultiArray(cache_length), key_cache: MLMultiArray(key_cache), value_cache: MLMultiArray(value_cache), kv_cache_update_mask: MLMultiArray(kv_cache_update_mask), encoder_output_embeds: MLMultiArray(encoder_output_embeds), decoder_key_padding_mask: MLMultiArray(decoder_key_padding_mask))
     }
 }
 
 /// Model Prediction Output Type
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public class TextDecoderOutput: MLFeatureProvider {
     /// Source provided by CoreML
     private let provider: MLFeatureProvider
@@ -889,43 +889,43 @@ public class TextDecoderOutput: MLFeatureProvider {
         return MLShapedArray&lt;Float16&gt;(self.logits)
     }
 
-    /// key\_cache\_updates as 1 × embed\_dim \* num\_layers × 1 × 1 4-dimensional array of 16-bit floats
-    public var key\_cache\_updates: MLMultiArray {
-        return self.provider.featureValue(for: "key\_cache\_updates")!.multiArrayValue!
+    /// key_cache_updates as 1 × embed_dim * num_layers × 1 × 1 4-dimensional array of 16-bit floats
+    public var key_cache_updates: MLMultiArray {
+        return self.provider.featureValue(for: "key_cache_updates")!.multiArrayValue!
     }
 
-    /// key\_cache\_updates as 1 × embed\_dim \* num\_layers × 1 × 1 4-dimensional array of 16-bit floats
+    /// key_cache_updates as 1 × embed_dim * num_layers × 1 × 1 4-dimensional array of 16-bit floats
     @available(macOS, unavailable)
     @available(macCatalyst, unavailable)
-    public var key\_cache\_updatesShapedArray: MLShapedArray&lt;Float16&gt; {
-        return MLShapedArray&lt;Float16&gt;(self.key\_cache\_updates)
+    public var key_cache_updatesShapedArray: MLShapedArray&lt;Float16&gt; {
+        return MLShapedArray&lt;Float16&gt;(self.key_cache_updates)
     }
 
-    /// value\_cache\_updates as 1 × kvCacheEmbedDim × 1 × 1 4-dimensional array of 16-bit floats
-    public var value\_cache\_updates: MLMultiArray {
-        return self.provider.featureValue(for: "value\_cache\_updates")!.multiArrayValue!
+    /// value_cache_updates as 1 × kvCacheEmbedDim × 1 × 1 4-dimensional array of 16-bit floats
+    public var value_cache_updates: MLMultiArray {
+        return self.provider.featureValue(for: "value_cache_updates")!.multiArrayValue!
     }
 
-    /// value\_cache\_updates as 1 × kvCacheEmbedDim × 1 × 1 4-dimensional array of 16-bit floats
+    /// value_cache_updates as 1 × kvCacheEmbedDim × 1 × 1 4-dimensional array of 16-bit floats
     @available(macOS, unavailable)
     @available(macCatalyst, unavailable)
-    public var value\_cache\_updatesShapedArray: MLShapedArray&lt;Float16&gt; {
-        return MLShapedArray&lt;Float16&gt;(self.value\_cache\_updates)
+    public var value_cache_updatesShapedArray: MLShapedArray&lt;Float16&gt; {
+        return MLShapedArray&lt;Float16&gt;(self.value_cache_updates)
     }
 
-    /// alignment\_heads\_weights as 1 × 1500 2-dimensional array of 16-bit floats
-    public var alignment\_heads\_weights: MLMultiArray? {
-        return self.provider.featureValue(for: "alignment\_heads\_weights")?.multiArrayValue
+    /// alignment_heads_weights as 1 × 1500 2-dimensional array of 16-bit floats
+    public var alignment_heads_weights: MLMultiArray? {
+        return self.provider.featureValue(for: "alignment_heads_weights")?.multiArrayValue
     }
 
-    /// alignment\_heads\_weights as 1 × 1500 2-dimensional array of 16-bit floats
+    /// alignment_heads_weights as 1 × 1500 2-dimensional array of 16-bit floats
     @available(macOS, unavailable)
     @available(macCatalyst, unavailable)
-    public var alignment\_heads\_weightsShapedArray: MLShapedArray&lt;Float16&gt;? {
-        guard let alignment\_heads\_weights = self.alignment\_heads\_weights else {
+    public var alignment_heads_weightsShapedArray: MLShapedArray&lt;Float16&gt;? {
+        guard let alignment_heads_weights = self.alignment_heads_weights else {
             return nil
         }
-        return MLShapedArray&lt;Float16&gt;(alignment\_heads\_weights)
+        return MLShapedArray&lt;Float16&gt;(alignment_heads_weights)
     }
 
     public var featureNames: Set&lt;String&gt; {
@@ -936,8 +936,8 @@ public class TextDecoderOutput: MLFeatureProvider {
         return self.provider.featureValue(for: featureName)
     }
 
-    public init(logits: MLMultiArray, key\_cache\_updates: MLMultiArray, value\_cache\_updates: MLMultiArray, logits\_argmax \_: MLMultiArray) {
-        self.provider = try! MLDictionaryFeatureProvider(dictionary: \["logits": MLFeatureValue(multiArray: logits), "key\_cache\_updates": MLFeatureValue(multiArray: key\_cache\_updates), "value\_cache\_updates": MLFeatureValue(multiArray: value\_cache\_updates)\])
+    public init(logits: MLMultiArray, key_cache_updates: MLMultiArray, value_cache_updates: MLMultiArray, logits_argmax _: MLMultiArray) {
+        self.provider = try! MLDictionaryFeatureProvider(dictionary: ["logits": MLFeatureValue(multiArray: logits), "key_cache_updates": MLFeatureValue(multiArray: key_cache_updates), "value_cache_updates": MLFeatureValue(multiArray: value_cache_updates)])
     }
 
     public init(features: MLFeatureProvider) {
@@ -955,7 +955,7 @@ public class TextDecoderCachePrefillInput: MLFeatureProvider {
     public var language: MLMultiArray
 
     public var featureNames: Set&lt;String&gt; {
-        return \["task", "language"\]
+        return ["task", "language"]
     }
 
     public func featureValue(for featureName: String) -&gt; MLFeatureValue? {
@@ -979,33 +979,33 @@ public class TextDecoderCachePrefillInput: MLFeatureProvider {
 }
 
 /// Model Prediction Output Type
-@available(macOS 13, iOS 16, watchOS 10, visionOS 1, \*)
+@available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
 public class TextDecoderCachePrefillOutput: MLFeatureProvider {
     /// Source provided by CoreML
     private let provider: MLFeatureProvider
 
-    /// key\_cache\_prefill as 1 × embed\_dim \* num\_layers × 1 × 3 4-dimensional array of 16-bit floats
-    public var key\_cache\_prefill: MLMultiArray {
-        return self.provider.featureValue(for: "key\_cache\_prefill")!.multiArrayValue!
+    /// key_cache_prefill as 1 × embed_dim * num_layers × 1 × 3 4-dimensional array of 16-bit floats
+    public var key_cache_prefill: MLMultiArray {
+        return self.provider.featureValue(for: "key_cache_prefill")!.multiArrayValue!
     }
 
-    /// key\_cache\_prefill as 1 × embed\_dim \* num\_layers × 1 × 3 4-dimensional array of 16-bit floats
+    /// key_cache_prefill as 1 × embed_dim * num_layers × 1 × 3 4-dimensional array of 16-bit floats
     @available(macOS, unavailable)
     @available(macCatalyst, unavailable)
-    public var key\_cache\_prefillShapedArray: MLShapedArray&lt;Float16&gt; {
-        return MLShapedArray&lt;Float16&gt;(self.key\_cache\_prefill)
+    public var key_cache_prefillShapedArray: MLShapedArray&lt;Float16&gt; {
+        return MLShapedArray&lt;Float16&gt;(self.key_cache_prefill)
     }
 
-    /// value\_cache\_prefill as 1 × embed\_dim \* num\_layers × 1 × 3 4-dimensional array of 16-bit floats
-    public var value\_cache\_prefill: MLMultiArray {
-        return self.provider.featureValue(for: "value\_cache\_prefill")!.multiArrayValue!
+    /// value_cache_prefill as 1 × embed_dim * num_layers × 1 × 3 4-dimensional array of 16-bit floats
+    public var value_cache_prefill: MLMultiArray {
+        return self.provider.featureValue(for: "value_cache_prefill")!.multiArrayValue!
     }
 
-    /// value\_cache\_prefill as 1 × embed\_dim \* num\_layers × 1 × 3 4-dimensional array of 16-bit floats
+    /// value_cache_prefill as 1 × embed_dim * num_layers × 1 × 3 4-dimensional array of 16-bit floats
     @available(macOS, unavailable)
     @available(macCatalyst, unavailable)
-    public var value\_cache\_prefillShapedArray: MLShapedArray&lt;Float16&gt; {
-        return MLShapedArray&lt;Float16&gt;(self.value\_cache\_prefill)
+    public var value_cache_prefillShapedArray: MLShapedArray&lt;Float16&gt; {
+        return MLShapedArray&lt;Float16&gt;(self.value_cache_prefill)
     }
 
     public var featureNames: Set&lt;String&gt; {
@@ -1016,8 +1016,8 @@ public class TextDecoderCachePrefillOutput: MLFeatureProvider {
         return self.provider.featureValue(for: featureName)
     }
 
-    public init(key\_cache\_prefill: MLMultiArray, value\_cache\_prefill: MLMultiArray) {
-        self.provider = try! MLDictionaryFeatureProvider(dictionary: \["key\_cache\_prefill": MLFeatureValue(multiArray: key\_cache\_prefill), "value\_cache\_prefill": MLFeatureValue(multiArray: value\_cache\_prefill)\])
+    public init(key_cache_prefill: MLMultiArray, value_cache_prefill: MLMultiArray) {
+        self.provider = try! MLDictionaryFeatureProvider(dictionary: ["key_cache_prefill": MLFeatureValue(multiArray: key_cache_prefill), "value_cache_prefill": MLFeatureValue(multiArray: value_cache_prefill)])
     }
 
     public init(features: MLFeatureProvider) {
@@ -1071,7 +1071,7 @@ public protocol WhisperTokenizer: Tokenizer {
     var specialTokens: SpecialTokens { get }
     var allLanguageTokens: Set&lt;Int&gt; { get }
 
-    func splitToWordTokens(tokenIds: \[Int\]) -&gt; (words: \[String\], wordTokens: \[\[Int\]\])
+    func splitToWordTokens(tokenIds: [Int]) -&gt; (words: [String], wordTokens: [[Int]])
 }
 
 struct WhisperTokenizerWrapper: WhisperTokenizer {
@@ -1097,18 +1097,18 @@ struct WhisperTokenizerWrapper: WhisperTokenizer {
         self.specialTokens = specialTokens
         self.allLanguageTokens = Set(
             Constants.languages
-                .compactMap { tokenizer.convertTokenToId("&lt;|\\($0.value)|&gt;") }
+                .compactMap { tokenizer.convertTokenToId("&lt;|\($0.value)|&gt;") }
                 .filter { $0 &gt; specialTokens.specialTokenBegin }
         )
     }
 
-    private func splitTokensOnUnicode(tokens: \[Int\]) -&gt; (words: \[String\], wordTokens: \[\[Int\]\]) {
+    private func splitTokensOnUnicode(tokens: [Int]) -&gt; (words: [String], wordTokens: [[Int]]) {
         let decodedFull = tokenizer.decode(tokens: tokens)
-        let replacementString = "\\u{fffd}"
+        let replacementString = "\u{fffd}"
 
-        var words: \[String\] = \[\]
-        var wordTokens: \[\[Int\]\] = \[\]
-        var currentTokens: \[Int\] = \[\]
+        var words: [String] = []
+        var wordTokens: [[Int]] = []
+        var currentTokens: [Int] = []
         var unicodeOffset = 0
 
         for token in tokens {
@@ -1117,13 +1117,13 @@ struct WhisperTokenizerWrapper: WhisperTokenizer {
 
             var hasUnicodeInFullString = false
             if let range = decoded.range(of: replacementString) {
-                hasUnicodeInFullString = decodedFull\[range\] == replacementString
+                hasUnicodeInFullString = decodedFull[range] == replacementString
             }
 
             if !decoded.contains(replacementString) || hasUnicodeInFullString {
                 words.append(decoded)
                 wordTokens.append(currentTokens)
-                currentTokens = \[\]
+                currentTokens = []
                 unicodeOffset += decoded.count
             }
         }
@@ -1131,10 +1131,10 @@ struct WhisperTokenizerWrapper: WhisperTokenizer {
         return (words, wordTokens)
     }
 
-    private func splitTokensOnSpaces(tokens: \[Int\]) -&gt; (words: \[String\], wordTokens: \[\[Int\]\]) {
+    private func splitTokensOnSpaces(tokens: [Int]) -&gt; (words: [String], wordTokens: [[Int]]) {
         let (subwords, subwordTokensList) = splitTokensOnUnicode(tokens: tokens)
-        var words: \[String\] = \[\]
-        var wordTokens: \[\[Int\]\] = \[\]
+        var words: [String] = []
+        var wordTokens: [[Int]] = []
 
         for (subword, subwordTokens) in zip(subwords, subwordTokensList) {
             let special = subwordTokens.first! &gt;= specialTokens.specialTokenBegin
@@ -1147,17 +1147,17 @@ struct WhisperTokenizerWrapper: WhisperTokenizer {
                 words.append(subword)
                 wordTokens.append(subwordTokens)
             } else {
-                words\[words.count - 1\] += subword
-                wordTokens\[words.count - 1\].append(contentsOf: subwordTokens)
+                words[words.count - 1] += subword
+                wordTokens[words.count - 1].append(contentsOf: subwordTokens)
             }
         }
 
         return (words, wordTokens)
     }
 
-    private func isPunctuation(\_ text: String, tokenRange: Range&lt;String.Index&gt;, tag: NLTag?) -&gt; Bool {
+    private func isPunctuation(_ text: String, tokenRange: Range&lt;String.Index&gt;, tag: NLTag?) -&gt; Bool {
         let punctuationCharacters = CharacterSet.punctuationCharacters
-        let token = String(text\[tokenRange\])
+        let token = String(text[tokenRange])
         if let tag = tag, tag == .punctuation {
             return true
         } else if token.unicodeScalars.allSatisfy({ punctuationCharacters.contains($0) }) {
@@ -1169,7 +1169,7 @@ struct WhisperTokenizerWrapper: WhisperTokenizer {
     /// Decodes token ids into individual words and per-word subtokens
     /// - Parameter tokenIds: Array of tokens to decode and then split
     /// - Returns: Tuple containing and array of the split words and all tokens for each word
-    func splitToWordTokens(tokenIds: \[Int\]) -&gt; (words: \[String\], wordTokens: \[\[Int\]\]) {
+    func splitToWordTokens(tokenIds: [Int]) -&gt; (words: [String], wordTokens: [[Int]]) {
         let decodedWords = tokenizer.decode(tokens: tokenIds.filter { $0 &lt; specialTokens.specialTokenBegin })
 
         // Detect language of input text
@@ -1177,7 +1177,7 @@ struct WhisperTokenizerWrapper: WhisperTokenizer {
         recognizer.processString(decodedWords)
         let languageCode = recognizer.dominantLanguage?.rawValue
 
-        if \["zh", "ja", "th", "lo", "my", "yue"\].contains(languageCode) {
+        if ["zh", "ja", "th", "lo", "my", "yue"].contains(languageCode) {
             return splitTokensOnUnicode(tokens: tokenIds)
         } else {
             return splitTokensOnSpaces(tokens: tokenIds)
@@ -1186,23 +1186,23 @@ struct WhisperTokenizerWrapper: WhisperTokenizer {
 }
 
 extension WhisperTokenizerWrapper: Tokenizer {
-    func tokenize(text: String) -&gt; \[String\] {
+    func tokenize(text: String) -&gt; [String] {
         tokenizer.tokenize(text: text)
     }
 
-    func encode(text: String) -&gt; \[Int\] {
+    func encode(text: String) -&gt; [Int] {
         tokenizer.encode(text: text)
     }
 
-    func decode(tokens: \[Int\]) -&gt; String {
+    func decode(tokens: [Int]) -&gt; String {
         tokenizer.decode(tokens: tokens)
     }
 
-    func convertTokenToId(\_ token: String) -&gt; Int? {
+    func convertTokenToId(_ token: String) -&gt; Int? {
         tokenizer.convertTokenToId(token)
     }
 
-    func convertIdToToken(\_ id: Int) -&gt; String? {
+    func convertIdToToken(_ id: Int) -&gt; String? {
         tokenizer.convertIdToToken(id)
     }
 
@@ -1254,8 +1254,8 @@ public enum Constants {
     }
 
     public static let maxTokenContext = Int(448 / 2)
-    public static let languages: \[String: String\] =
-        \[
+    public static let languages: [String: String] =
+        [
             "english": "en",
             "chinese": "zh",
             "german": "de",
@@ -1368,7 +1368,7 @@ public enum Constants {
             "sinhalese": "si",
             "castilian": "es",
             "mandarin": "zh",
-        \]
+        ]
 }
 
 ---

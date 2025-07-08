@@ -88,7 +88,7 @@ public final class FileManageDriver {
         }
     }
 
-    func getFiles(directory: URL, extensions: \[FileExtension\]) throws -&gt; \[URL\] {
+    func getFiles(directory: URL, extensions: [FileExtension]) throws -&gt; [URL] {
         try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil).filter { fileUrl in
             extensions.contains { $0.rawValue == fileUrl.pathExtension }
         }

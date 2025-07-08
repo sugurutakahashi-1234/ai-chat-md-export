@@ -154,17 +154,17 @@ sudo mkdir -p /usr/local/n
 
 `mkdir -p` コマンドの `-p` オプションには以下の2つの重要な機能があります：
 
-1. \*\*親ディレクトリも必要に応じて作成する\*\*：
+1. **親ディレクトリも必要に応じて作成する**：
    - 例えば、もし `/usr/local` が存在しなかった場合でも、それも含めて作成します
 
-2. \*\*既に存在するディレクトリでもエラーにならない\*\*：
+2. **既に存在するディレクトリでもエラーにならない**：
    - これが今回の質問に関連する重要なポイントです
    - 通常の `mkdir` だと、既存のディレクトリを作成しようとするとエラーになります
    - `-p` オプションを付けると、既にディレクトリが存在する場合は何もせずに正常終了します
 
 つまり、`sudo mkdir -p /usr/local/n` は：
-- \*\*ディレクトリが存在しない場合\*\*：新しく作成します
-- \*\*ディレクトリが既に存在する場合\*\*：何もせずに正常終了します（エラーにならない）
+- **ディレクトリが存在しない場合**：新しく作成します
+- **ディレクトリが既に存在する場合**：何もせずに正常終了します（エラーにならない）
 
 スクリプト内でこのコマンドが使われている理由は、スクリプトの実行環境に関わらず確実にディレクトリが存在するようにするためです。これは「冪等性（べきとうせい）」と呼ばれる性質で、何度実行しても同じ結果になるようにするためのプログラミングの一般的なテクニックです。
 
@@ -218,7 +218,7 @@ sudo chown -R root:wheel /usr/local
 Uninstalling /opt/homebrew/Cellar/n/10.1.0... (7 files, 87.7KB)
 Warning: The following may be n configuration files and have not been removed!
 If desired, remove them manually with `rm -rf`:
-  /opt/homebrew/etc/bash\_completion.d
+  /opt/homebrew/etc/bash_completion.d
   /opt/homebrew/etc/fonts
   /opt/homebrew/etc/openssl@3
 

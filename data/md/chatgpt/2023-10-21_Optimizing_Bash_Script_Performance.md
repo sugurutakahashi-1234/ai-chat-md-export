@@ -14,59 +14,59 @@
 # Ref: SwiftFormatを導入してコード記法を統一化 - https://tech.mirrativ.stream/entry/2022/06/27/060850
 
 # SwiftFormat のあるパッケージを指定する
-tools\_package="EmomilToolsPackage"
+tools_package="EmomilToolsPackage"
 
-run\_swiftformat() {
-  command="swift run --package-path $tools\_package swiftformat"
+run_swiftformat() {
+  command="swift run --package-path $tools_package swiftformat"
   command -v $command &gt;/dev/null 2&gt;&1
-  if \[ $? -gt 0 \]; then
+  if [ $? -gt 0 ]; then
     echo "😓 swiftformat コマンドが見つかりません。"
     exit 1
   fi
   $command "$@"
 }
 
-should\_fail=false
-staged\_swift\_files=$(git diff --diff-filter=d --staged --name-only | grep -e '\\(.\*\\).swift$')
+should_fail=false
+staged_swift_files=$(git diff --diff-filter=d --staged --name-only | grep -e '\(.*\).swift$')
 
-if \[ -z "$staged\_swift\_files" \]; then
+if [ -z "$staged_swift_files" ]; then
   # 変更された Swift ファイルが見つからない場合
   exit 0
 fi
 
 while read file; do
   # ステージングされていない変更のパッチを作成
-  unstaged\_patch=$(git diff "$file")
-  if \[ ! -z "$unstaged\_patch" \]; then
+  unstaged_patch=$(git diff "$file")
+  if [ ! -z "$unstaged_patch" ]; then
     # ステージングされていない変更がある場合は削除
     git restore $file
   fi
 
   # SwiftFormat でステージングされた変更のみをチェック
   echo "👁 SwiftFormat: 確認中... $file"
-  run\_swiftformat --lint $file
-  if \[ $? -eq 0 \]; then
-    if \[ ! -z "$unstaged\_patch" \]; then
+  run_swiftformat --lint $file
+  if [ $? -eq 0 ]; then
+    if [ ! -z "$unstaged_patch" ]; then
       # パッチがある場合は適用して未ステージの変更を復元
-      echo "$unstaged\_patch" | git apply --whitespace=nowarn
+      echo "$unstaged_patch" | git apply --whitespace=nowarn
     fi
-    printf "\\n"
+    printf "\n"
     continue
   fi
 
-  should\_fail=true
-  if \[ ! -z "$unstaged\_patch" \]; then
+  should_fail=true
+  if [ ! -z "$unstaged_patch" ]; then
     # パッチがある場合は適用して未ステージの変更を復元
-    echo "$unstaged\_patch" | git apply --whitespace=nowarn
+    echo "$unstaged_patch" | git apply --whitespace=nowarn
   fi
 
   # ファイルにSwiftFormatを適用（変更が適用されます）
   echo "🪬 SwiftFormat: 適用中... $file"
-  run\_swiftformat $file
-  printf "\\n"
-done &lt;&lt;&lt; "$staged\_swift\_files"
+  run_swiftformat $file
+  printf "\n"
+done &lt;&lt;&lt; "$staged_swift_files"
 
-if $should\_fail; then
+if $should_fail; then
   echo "⛔️ SwiftFormatによってコードに変更が生じました。"
   echo "変更を取り入れるなどの対応をお願いします。"
   exit 1

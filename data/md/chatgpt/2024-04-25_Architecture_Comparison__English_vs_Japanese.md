@@ -825,29 +825,29 @@ FIA について補足する日本語の Speaker Deck スライドを以下で�
 
 The English and Japanese versions of the document about Framework-Independent Architecture (FIA) are quite consistent in content. However, there are subtle differences in the phrasing and some additional clarifications in the Japanese text which might be reflective of language-specific preferences for explaining technical concepts. Here are some key differences and nuances:
 
-1. \*\*Introduction and Description of FIA\*\*:
-   - \*\*English\*\*: "This architecture incorporates a multi-module, multi-project structure using the Swift Package Manager and is based on the design principles of the Clean Architecture."
-   - \*\*Japanese\*\*: More explicitly states that the architecture "adopts a multi-module, multi-project configuration using the Swift Package Manager, based on the design principles of Clean Architecture."
+1. **Introduction and Description of FIA**:
+   - **English**: "This architecture incorporates a multi-module, multi-project structure using the Swift Package Manager and is based on the design principles of the Clean Architecture."
+   - **Japanese**: More explicitly states that the architecture "adopts a multi-module, multi-project configuration using the Swift Package Manager, based on the design principles of Clean Architecture."
 
-2. \*\*Goals of FIA\*\*:
-   - \*\*English\*\*: Mentions reducing Xcode build time while enjoying the benefits of independence and testability.
-   - \*\*Japanese\*\*: More directly focuses on the expectation of reducing build times in Xcode due to the architecture’s design.
+2. **Goals of FIA**:
+   - **English**: Mentions reducing Xcode build time while enjoying the benefits of independence and testability.
+   - **Japanese**: More directly focuses on the expectation of reducing build times in Xcode due to the architecture’s design.
 
-3. \*\*Dependency Injection Description\*\*:
-   - \*\*English\*\*: Somewhat brief, mentioning dependency injection at the application entry point.
-   - \*\*Japanese\*\*: Adds a clarification that this approach allows for providing a clean area not only at the presentation layer but also at the application layer, emphasizing the extension of cleanliness beyond typical layers.
+3. **Dependency Injection Description**:
+   - **English**: Somewhat brief, mentioning dependency injection at the application entry point.
+   - **Japanese**: Adds a clarification that this approach allows for providing a clean area not only at the presentation layer but also at the application layer, emphasizing the extension of cleanliness beyond typical layers.
 
-4. \*\*Dependency Direction\*\*:
-   - \*\*English\*\*: Describes the inward nature of dependencies.
-   - \*\*Japanese\*\*: Additionally describes maintaining clear boundaries and independence among layers, which might imply a stronger emphasis on the encapsulation each layer provides.
+4. **Dependency Direction**:
+   - **English**: Describes the inward nature of dependencies.
+   - **Japanese**: Additionally describes maintaining clear boundaries and independence among layers, which might imply a stronger emphasis on the encapsulation each layer provides.
 
-5. \*\*Role of the Framework Layer\*\*:
-   - \*\*English\*\*: Describes the Framework layer in context of the outermost layer in Clean Architecture.
-   - \*\*Japanese\*\*: More descriptive about how the Framework layer corresponds to the Data Access Layer or Infrastructure Layer and depends on external frameworks, databases, etc.
+5. **Role of the Framework Layer**:
+   - **English**: Describes the Framework layer in context of the outermost layer in Clean Architecture.
+   - **Japanese**: More descriptive about how the Framework layer corresponds to the Data Access Layer or Infrastructure Layer and depends on external frameworks, databases, etc.
 
-6. \*\*Swift Package Manager Compatibility\*\*:
-   - \*\*English\*\*: Notes that Swift Package Manager is well-suited for implementing Clean Architecture.
-   - \*\*Japanese\*\*: Provides an extended explanation on how the package manager eases managing dependency directions, reinforcing the match with Clean Architecture principles.
+6. **Swift Package Manager Compatibility**:
+   - **English**: Notes that Swift Package Manager is well-suited for implementing Clean Architecture.
+   - **Japanese**: Provides an extended explanation on how the package manager eases managing dependency directions, reinforcing the match with Clean Architecture principles.
 
 These differences reflect a tendency in the Japanese version to provide more detailed explanations, possibly to ensure clarity and avoid ambiguities that might arise from direct translations. This approach is common in technical documentation to make the content accessible and understandable for a non-English speaking audience.
 
@@ -865,29 +865,29 @@ These differences reflect a tendency in the Japanese version to provide more det
 
 もちろんです。英語版と日本語版のドキュメントの違いについて、以下に詳細な日本語での解説を提供します：
 
-1. \*\*FIAの紹介と説明\*\*：
-   - \*\*英語版\*\*：Swift Package Managerを使用したマルチモジュール、マルチプロジェクト構造を取り入れ、Clean Architectureの設計原則に基づいています。
-   - \*\*日本語版\*\*：Swift Package Managerを用いたマルチモジュール、マルチプロジェクト構成を採用し、Clean Architectureの設計原則に基づいていると、より明確に説明しています。
+1. **FIAの紹介と説明**：
+   - **英語版**：Swift Package Managerを使用したマルチモジュール、マルチプロジェクト構造を取り入れ、Clean Architectureの設計原則に基づいています。
+   - **日本語版**：Swift Package Managerを用いたマルチモジュール、マルチプロジェクト構成を採用し、Clean Architectureの設計原則に基づいていると、より明確に説明しています。
 
-2. \*\*FIAの目的\*\*：
-   - \*\*英語版\*\*：独立性とテスタビリティのメリットを享受しつつ、Xcodeのビルド時間を短縮することを目的としています。
-   - \*\*日本語版\*\*：Xcodeでのビルド時間の短縮が期待できると、アーキテクチャの設計によるビルド時間削減により直接的に焦点を当てています。
+2. **FIAの目的**：
+   - **英語版**：独立性とテスタビリティのメリットを享受しつつ、Xcodeのビルド時間を短縮することを目的としています。
+   - **日本語版**：Xcodeでのビルド時間の短縮が期待できると、アーキテクチャの設計によるビルド時間削減により直接的に焦点を当てています。
 
-3. \*\*依存性注入の説明\*\*：
-   - \*\*英語版\*\*：アプリケーションのエントリーポイントで依存性注入について簡潔に述べています。
-   - \*\*日本語版\*\*：プレゼンテーション層だけでなくアプリケーション層にもクリーンな領域を提供することを明確にし、通常の層を超えてクリーンさを拡張することを強調しています。
+3. **依存性注入の説明**：
+   - **英語版**：アプリケーションのエントリーポイントで依存性注入について簡潔に述べています。
+   - **日本語版**：プレゼンテーション層だけでなくアプリケーション層にもクリーンな領域を提供することを明確にし、通常の層を超えてクリーンさを拡張することを強調しています。
 
-4. \*\*依存関係の方向性\*\*：
-   - \*\*英語版\*\*：依存関係の内向きな性質について説明しています。
-   - \*\*日本語版\*\*：各レイヤー間の明確な境界と独立性を保つことも付け加えており、各層が提供するカプセル化により強い重点を置いています。
+4. **依存関係の方向性**：
+   - **英語版**：依存関係の内向きな性質について説明しています。
+   - **日本語版**：各レイヤー間の明確な境界と独立性を保つことも付け加えており、各層が提供するカプセル化により強い重点を置いています。
 
-5. \*\*フレームワーク層の役割\*\*：
-   - \*\*英語版\*\*：Clean Architectureの最も外側の層としてのフレームワーク層について説明しています。
-   - \*\*日本語版\*\*：フレームワーク層がデータアクセス層やインフラストラクチャ層に相当し、外部フレームワークやデータベースなどに依存する部分であると、より詳細に説明しています。
+5. **フレームワーク層の役割**：
+   - **英語版**：Clean Architectureの最も外側の層としてのフレームワーク層について説明しています。
+   - **日本語版**：フレームワーク層がデータアクセス層やインフラストラクチャ層に相当し、外部フレームワークやデータベースなどに依存する部分であると、より詳細に説明しています。
 
-6. \*\*Swift Package Managerの適合性\*\*：
-   - \*\*英語版\*\*：Swift Package ManagerはClean Architectureを実装するのに適していると述べています。
-   - \*\*日本語版\*\*：パッケージマネージャーが依存方向の管理を容易にする方法を拡張して説明し、Clean Architectureの原則との相性の良さを強調しています。
+6. **Swift Package Managerの適合性**：
+   - **英語版**：Swift Package ManagerはClean Architectureを実装するのに適していると述べています。
+   - **日本語版**：パッケージマネージャーが依存方向の管理を容易にする方法を拡張して説明し、Clean Architectureの原則との相性の良さを強調しています。
 
 これらの違いは、日本語版がより詳細な説明を提供し、直訳から生じる可能性のある曖昧さを避け、内容を明確にするための言語特有の傾向を反映しています。技術文書では、内容をアクセスしやすく、理解しやすくするために、このようなアプローチが一般的です。
 
@@ -907,30 +907,30 @@ These differences reflect a tendency in the Japanese version to provide more det
 
 ### Original English Version (Selected Sections):
 
-1. \*\*Overview\*\*
+1. **Overview**
    - The Framework-Independent Architecture (FIA) is a newly proposed architecture for Swift app development. This architecture incorporates a multi-module, multi-project structure using the Swift Package Manager and is based on the design principles of the Clean Architecture.
 
-2. \*\*Main Goal\*\*
+2. **Main Goal**
    - The main goal of FIA is to reduce Xcode build time while enjoying the benefits of independence and testability that the Clean Architecture provides.
 
-3. \*\*Dependency Injection\*\*
+3. **Dependency Injection**
    - This architecture uses dependency injection at the application entry point to provide a clean area not only at the presentation layer, but also at the application layer.
 
-4. \*\*Swift Package Manager Compatibility\*\*
-   - With the advent of Swift Package Manager, applications can now be easily adapted to multi-module and multi-project configurations, as seen in \[isowords\](https://github.com/pointfreeco/isowords).
+4. **Swift Package Manager Compatibility**
+   - With the advent of Swift Package Manager, applications can now be easily adapted to multi-module and multi-project configurations, as seen in [isowords](https://github.com/pointfreeco/isowords).
 
 ### Proposed English Revision:
 
-1. \*\*Overview\*\*
+1. **Overview**
    - The Framework-Independent Architecture (FIA) is a cutting-edge architecture designed for Swift app development. It adopts a comprehensive multi-module and multi-project structure, utilizing the Swift Package Manager and aligning with the design principles of the Clean Architecture. This structure enhances the architecture's flexibility and scalability.
 
-2. \*\*Main Goal\*\*
+2. **Main Goal**
    - The primary objective of FIA is to significantly reduce Xcode build times. It achieves this by leveraging the benefits of modularity and testability inherent in Clean Architecture, thereby streamlining the development process.
 
-3. \*\*Dependency Injection\*\*
+3. **Dependency Injection**
    - FIA employs dependency injection right at the application’s entry point, ensuring that both the presentation and application layers maintain a clean and decoupled state. This strategy extends the principles of Clean Architecture throughout the application, promoting a more robust and maintainable codebase.
 
-4. \*\*Swift Package Manager Compatibility\*\*
+4. **Swift Package Manager Compatibility**
    - The integration of Swift Package Manager has revolutionized application configurations, enabling straightforward adaptations to multi-module and multi-project structures. This compatibility is particularly beneficial in aligning with the directional dependencies emphasized in Clean Architecture, making it an ideal choice for implementing robust architectural frameworks.
 
 These revisions aim to clarify and expand on the explanations to align more closely with the Japanese version, emphasizing the architecture’s strategic benefits and its alignment with Clean Architecture principles.
@@ -953,7 +953,7 @@ This architecture incorporates a multi-module, multi-project structure using the
 - The Framework-Independent Architecture (FIA) is a newly proposed architecture for Swift app development. This architecture incorporates a multi-module, multi-project structure using the Swift Package Manager and is based on the design principles of the Clean Architecture.
 
 ### Revised Sentence:
-- The Framework-Independent Architecture (FIA) is a newly proposed architecture for Swift app development. This architecture \*\*adopts\*\* a multi-module, multi-project structure using the Swift Package Manager and is based on the design principles of the Clean Architecture.
+- The Framework-Independent Architecture (FIA) is a newly proposed architecture for Swift app development. This architecture **adopts** a multi-module, multi-project structure using the Swift Package Manager and is based on the design principles of the Clean Architecture.
 
 「incorporates」を「adopts」に変更することで、「採用する」というニュアンスがより明確になり、設計の意図と戦略的な選択が強調されます。
 
@@ -1376,13 +1376,13 @@ For questions or collaboration, please contact us at [![X URL](https://img.shiel
 
 Your English document is largely well-constructed and clear. However, there are a few areas where the phrasing could be improved for clarity and fluency. Here are some suggestions:
 
-1. \*\*Redundancy and Clarity\*\*
+1. **Redundancy and Clarity**
    - In the paragraph discussing the "Framework" layer, the sentence "In FIA, this layer is positioned as a non-clean area." is repeated. It would be more concise and clear to combine this idea into a single, streamlined sentence.
 
-2. \*\*Consistency and Specificity\*\*
+2. **Consistency and Specificity**
    - The use of terms like "fast application builds" could be more specific. Phrasing like "accelerated application build processes" might convey the intended meaning more formally.
 
-3. \*\*Technical Descriptions\*\*
+3. **Technical Descriptions**
    - Some descriptions could benefit from slight rephrasing for technical accuracy or clarity, particularly when describing the benefits and operations of Swift Package Manager and dependency injection.
 
 Here is the revised section incorporating these suggestions:
@@ -1391,17 +1391,17 @@ Here is the revised section incorporating these suggestions:
 
 ### Revised Sections
 
-\*\*Framework Layer Description:\*\*
+**Framework Layer Description:**
 - In the Framework-Independent Architecture (FIA), the "Framework" refers to the outermost "Framework Layer" shown in the figure, also known as the Data Access Layer or Infrastructure Layer. This layer, which relies on external frameworks, databases, network communications, and other details, is designated as a non-clean area in FIA. The architecture strategically maintains a clean development application layer, while the production application layer depends on this non-clean area to reduce build times during development.
 
-\*\*Swift Package Manager Enables FIA:\*\*
-- The advent of the Swift Package Manager has transformed application development by facilitating easy adaptation to multi-module and multi-project configurations, exemplified by projects like \[isowords\](https://github.com/pointfreeco/isowords). Unlike typical module partitioning based on features, FIA organizes modules according to the layers defined by Clean Architecture principles. Moreover, Swift Package Manager adeptly manages the direction of module dependencies through settings in Package.swift, making it highly compatible with Clean Architecture’s emphasis on dependency directionality. This setup is ideal for employing dependency injection at the application’s entry point, allowing for distinct project setups: a development project using a mock DI container independent of the framework layer, and a production project that utilizes the actual DI container reliant on the framework layer.
+**Swift Package Manager Enables FIA:**
+- The advent of the Swift Package Manager has transformed application development by facilitating easy adaptation to multi-module and multi-project configurations, exemplified by projects like [isowords](https://github.com/pointfreeco/isowords). Unlike typical module partitioning based on features, FIA organizes modules according to the layers defined by Clean Architecture principles. Moreover, Swift Package Manager adeptly manages the direction of module dependencies through settings in Package.swift, making it highly compatible with Clean Architecture’s emphasis on dependency directionality. This setup is ideal for employing dependency injection at the application’s entry point, allowing for distinct project setups: a development project using a mock DI container independent of the framework layer, and a production project that utilizes the actual DI container reliant on the framework layer.
 
-\*\*Advantages and Disadvantages of FIA:\*\*
+**Advantages and Disadvantages of FIA:**
 - FIA harnesses the Clean Architecture design principles to offer substantial benefits in independence, testability, maintainability, reusability, and scalability, with a particular focus on reducing build times—a significant advantage. However, adopting Clean Architecture can also introduce challenges such as increased complexity in implementation, a steeper learning curve, and potential overengineering risks.
 
-\*\*Implementation Challenges and Solutions:\*\*
-- Implementing FIA may present technical challenges such as increased type complexity when using `protocol`s with `some` instead of `any`, necessitating precise type resolution. The architecture also demands extensive boilerplate code even for simple views and requires frequent updates to mock DI containers as dependencies change. Testing views can be cumbersome, whether through lengthy XCUITest processes or manual checks in Xcode Previews, which lacks built-in snapshot testing. To mitigate these issues, tools like \[Sourcery\](https://github.com/krzysztofzablocki/Sourcery), \[Mockolo\](https://github.com/uber/mockolo), and \[PreviewSnapshots\](https://github.com/doordash-oss/swiftui-preview-snapshots) can be instrumental. For practical implementation examples using these tools, refer to \[this FIA sample repository\](https://github.com/suguruTakahashi-1234/fia-practical-sample.git).
+**Implementation Challenges and Solutions:**
+- Implementing FIA may present technical challenges such as increased type complexity when using `protocol`s with `some` instead of `any`, necessitating precise type resolution. The architecture also demands extensive boilerplate code even for simple views and requires frequent updates to mock DI containers as dependencies change. Testing views can be cumbersome, whether through lengthy XCUITest processes or manual checks in Xcode Previews, which lacks built-in snapshot testing. To mitigate these issues, tools like [Sourcery](https://github.com/krzysztofzablocki/Sourcery), [Mockolo](https://github.com/uber/mockolo), and [PreviewSnapshots](https://github.com/doordash-oss/swiftui-preview-snapshots) can be instrumental. For practical implementation examples using these tools, refer to [this FIA sample repository](https://github.com/suguruTakahashi-1234/fia-practical-sample.git).
 
 ---
 

@@ -9,42 +9,42 @@
 
 notionにtodoを追加して欲しい
 
-\* NotebookLM
-   \* https://notebooklm.google.com/
-\* n8n
-   \* https://suguru-takahashi.app.n8n.cloud/home/workflows
-\* Genspark
-   \* https://www.genspark.ai/
-\* Zapier
-   \* https://zapier.com/app/home
-\* manus
-   \* https://manus.im/app
-\* Devin
-\* Cursor
-\* Mastra
-   \* https://github.com/mastra-ai/mastra
-\* Cline
-\* Windsurf
-\* Codex
-\* ClaudeCode
-\* Obsidian
-\* 
-\* Qwen3
-\* LMStudio
-\* Ollama
-\* Gemma 3
-\* ホスティング
-   \* ヴァーセル
-   \* fly
-   \* クラウドコア
-\* MCP Docker
-\* スライド生成AI
-\* ローカルLLM
-   \* Mac
-   \* iOS
-\* React Native
-   \* expo
-      \* https://github.com/expo/expo
+* NotebookLM
+   * https://notebooklm.google.com/
+* n8n
+   * https://suguru-takahashi.app.n8n.cloud/home/workflows
+* Genspark
+   * https://www.genspark.ai/
+* Zapier
+   * https://zapier.com/app/home
+* manus
+   * https://manus.im/app
+* Devin
+* Cursor
+* Mastra
+   * https://github.com/mastra-ai/mastra
+* Cline
+* Windsurf
+* Codex
+* ClaudeCode
+* Obsidian
+* 
+* Qwen3
+* LMStudio
+* Ollama
+* Gemma 3
+* ホスティング
+   * ヴァーセル
+   * fly
+   * クラウドコア
+* MCP Docker
+* スライド生成AI
+* ローカルLLM
+   * Mac
+   * iOS
+* React Native
+   * expo
+      * https://github.com/expo/expo
 
 ---
 

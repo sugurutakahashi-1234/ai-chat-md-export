@@ -391,14 +391,14 @@ MSWを搭載しているようなOpenAPIクライアントのジェネレータ�
 
 | 種別 | ツール名 / 構成 | 生成できるもの | 特徴 | コメント |
 |----|----|----|----|----|
-| \*\*オールインワン\*\* | \*\*Kubb\*\* | TypeScript 型 / Axios or fetch クライアント / TanStack Query フック / Zod / Faker / \*\*MSW ハンドラ\*\* | OpenAPI 2.0・3.x・3.1 対応。プラグイン方式で React-Query/SWR/Vue Query 等にも対応。CLI でも Vite／webpack 用の unplugin でも動く。citeturn8view0 | Orval にかなり近い体験。React 以外の UI フレームワークも選択可 |
-| | \*\*nestia (@nestia/sdk)\*\* | fetch SDK ＋ \*\*Mockup Simulator\*\*（バックエンドを擬似実行） | NestJS 想定のツールだが、Swagger/OpenAPI から単独でも SDK と “MSW 風” シミュレータを生成。E2E テストコードも自動生成できる。citeturn5search0 | MSW そのものではなく独自ランタイムだが、フロント開発中に実 API 不要という点は同じ |
-| \*\*クライアント＋モックを別ツールで合成\*\* | \*\*openapi-typescript ＋ mswjs/source\*\* | openapi-typescript: 型・クライアント&lt;br&gt;mswjs/source: \*\*fromOpenApi()\*\* で MSW ハンドラ | \_source\_ は MSW 公式のハンドラ自動生成ライブラリ。OpenAPI 3 だけでなく 2.0 も OK。クライアントは好きなジェネレーターと組み合わせ可。citeturn0search1 | 「既存プロジェクトに後付け」で一番手軽 |
-| | \*\*openapi-to-msw\*\* ＋ 任意のクライアント | CLI で OpenAPI → \*\*MSW ハンドラ\*\* / Storybook 用モック | Faker でランダム値を吐くモードあり。React 以外の UI テストにも使いやすい。citeturn3search1 | ハンドラ専用。クライアントは別途 orval / openapi-fetch などで生成 |
-| | \*\*@principlestudios/openapi-codegen-typescript-msw\*\* | 上記ライブラリの MSW アダプタ | `openapi-codegen-typescript` で出力した fetch/Axios SDK を \*\*型安全な MSW\*\* でテスト可能にする薄いラッパー。citeturn2search7 | .NET ランタイム依存あり（実行環境注意） |
-| \*\*薄いラッパー\*\* | \*\*openapi-msw\*\* | OpenAPI–TS の型をそのまま活かす小さな MSW ヘルパー | クライアントは別途 openapi-fetch などで生成した上で、「msw の `http.get()` を型安全化」するイメージ。citeturn6search0 | 既存の MSW ハンドラを改修するだけで導入できる |
+| **オールインワン** | **Kubb** | TypeScript 型 / Axios or fetch クライアント / TanStack Query フック / Zod / Faker / **MSW ハンドラ** | OpenAPI 2.0・3.x・3.1 対応。プラグイン方式で React-Query/SWR/Vue Query 等にも対応。CLI でも Vite／webpack 用の unplugin でも動く。citeturn8view0 | Orval にかなり近い体験。React 以外の UI フレームワークも選択可 |
+| | **nestia (@nestia/sdk)** | fetch SDK ＋ **Mockup Simulator**（バックエンドを擬似実行） | NestJS 想定のツールだが、Swagger/OpenAPI から単独でも SDK と “MSW 風” シミュレータを生成。E2E テストコードも自動生成できる。citeturn5search0 | MSW そのものではなく独自ランタイムだが、フロント開発中に実 API 不要という点は同じ |
+| **クライアント＋モックを別ツールで合成** | **openapi-typescript ＋ mswjs/source** | openapi-typescript: 型・クライアント&lt;br&gt;mswjs/source: **fromOpenApi()** で MSW ハンドラ | _source_ は MSW 公式のハンドラ自動生成ライブラリ。OpenAPI 3 だけでなく 2.0 も OK。クライアントは好きなジェネレーターと組み合わせ可。citeturn0search1 | 「既存プロジェクトに後付け」で一番手軽 |
+| | **openapi-to-msw** ＋ 任意のクライアント | CLI で OpenAPI → **MSW ハンドラ** / Storybook 用モック | Faker でランダム値を吐くモードあり。React 以外の UI テストにも使いやすい。citeturn3search1 | ハンドラ専用。クライアントは別途 orval / openapi-fetch などで生成 |
+| | **@principlestudios/openapi-codegen-typescript-msw** | 上記ライブラリの MSW アダプタ | `openapi-codegen-typescript` で出力した fetch/Axios SDK を **型安全な MSW** でテスト可能にする薄いラッパー。citeturn2search7 | .NET ランタイム依存あり（実行環境注意） |
+| **薄いラッパー** | **openapi-msw** | OpenAPI–TS の型をそのまま活かす小さな MSW ヘルパー | クライアントは別途 openapi-fetch などで生成した上で、「msw の `http.get()` を型安全化」するイメージ。citeturn6search0 | 既存の MSW ハンドラを改修するだけで導入できる |
 
-&gt; 💡 \*\*Hey API (openapi-ts) にも MSW プラグインの計画はありますが、執筆時点（2025-06-22）ではまだ “coming soon”\*\* です。citeturn6search9
+&gt; 💡 **Hey API (openapi-ts) にも MSW プラグインの計画はありますが、執筆時点（2025-06-22）ではまだ “coming soon”** です。citeturn6search9
 
 ---
 
@@ -406,36 +406,36 @@ MSWを搭載しているようなOpenAPIクライアントのジェネレータ�
 
 | こんな時 | 向いている選択肢 |
 |---|---|
-| \*\*Orval とほぼ同じ DX で、でも次世代的なツールを試したい\*\* | \*\*Kubb\*\*（React 以外にも展開可、Faker 連携も強力） |
-| \*\*NestJS をバックエンドに使い、E2E テストもまとめて自動化したい\*\* | \*\*nestia\*\* |
-| \*\*既存プロジェクトに MSW だけ足したい／クライアントはもう生成済み\*\* | `mswjs/source` または `openapi-msw` |
-| \*\*Storybook・UI テスト主体でランダムモックが欲しい\*\* | `openapi-to-msw` |
-| \*\*.NET 環境でも使えて、クライアントとモックを同じ系でそろえたい\*\* | `openapi-codegen-typescript` + その MSW アダプタ |
+| **Orval とほぼ同じ DX で、でも次世代的なツールを試したい** | **Kubb**（React 以外にも展開可、Faker 連携も強力） |
+| **NestJS をバックエンドに使い、E2E テストもまとめて自動化したい** | **nestia** |
+| **既存プロジェクトに MSW だけ足したい／クライアントはもう生成済み** | `mswjs/source` または `openapi-msw` |
+| **Storybook・UI テスト主体でランダムモックが欲しい** | `openapi-to-msw` |
+| **.NET 環境でも使えて、クライアントとモックを同じ系でそろえたい** | `openapi-codegen-typescript` + その MSW アダプタ |
 
 ---
 
 #### ワンポイント：MSW 生成の “質” はここを見る
 
-1. \*\*OpenAPI の例 (examples) / schema をどう扱うか\*\*  
+1. **OpenAPI の例 (examples) / schema をどう扱うか**  
    - Kubb・nestia は `example` 値や Faker 用プリセットをそのまま返せる。  
-2. \*\*TypeScript 型安全\*\*  
+2. **TypeScript 型安全**  
    - openapi-msw や nestia は “パス／レスポンス” までジェネリクスで保証。  
-3. \*\*ランタイムバリデーション\*\*  
+3. **ランタイムバリデーション**  
    - Orval/Kubb は Zod を同時生成できるので UI 層でも安全に parse 可能。  
-4. \*\*モックサーバー起動方法\*\*  
+4. **モックサーバー起動方法**  
    - MSW Worker（ブラウザ）／MSW Server（Node）どちらも生成してくれるか。  
 
 ---
 
 ## まとめ
 
-- \*\*Orval 以外にも\*\*  
-  - \*\*Kubb\*\*（React-Query + Zod + Faker + MSW）  
-  - \*\*nestia\*\*（SDK + 自動モックシミュレータ）  
-  - \*\*mswjs/source\*\* / \*\*openapi-to-msw\*\* / \*\*openapi-msw\*\* など “ハンドラ専用” ツール  
-  - \*\*openapi-codegen-typescript-msw\*\*（クライアント＋MSW を .NET CLI で）  
-- 目的が \*\*「とにかく手軽に UI 開発を回したい」\*\* なら `mswjs/source` + 任意のクライアントが最短。  
-- Orval と同等以上の \*\*「生成物ワンパッケージ完結」\*\* を求めるなら \*\*Kubb\*\* が現状一番近い選択肢です。  
+- **Orval 以外にも**  
+  - **Kubb**（React-Query + Zod + Faker + MSW）  
+  - **nestia**（SDK + 自動モックシミュレータ）  
+  - **mswjs/source** / **openapi-to-msw** / **openapi-msw** など “ハンドラ専用” ツール  
+  - **openapi-codegen-typescript-msw**（クライアント＋MSW を .NET CLI で）  
+- 目的が **「とにかく手軽に UI 開発を回したい」** なら `mswjs/source` + 任意のクライアントが最短。  
+- Orval と同等以上の **「生成物ワンパッケージ完結」** を求めるなら **Kubb** が現状一番近い選択肢です。  
 
 必要な DX・既存スタックとの親和性を見ながら取り込んでみてください 🚀
 

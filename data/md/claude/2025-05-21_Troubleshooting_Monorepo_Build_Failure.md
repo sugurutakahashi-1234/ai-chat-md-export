@@ -19,29 +19,29 @@ packages/server build$ tsc
 │ src/index.ts(6,42): error TS2307: Cannot find module '@myapp/shared' or its corresponding type declarations.
 └─ Failed in 393ms at /Users/sugurutakahashi/git/hono-learning/packages/server
 /Users/sugurutakahashi/git/hono-learning/packages/server:
- ERR\_PNPM\_RECURSIVE\_RUN\_FIRST\_FAIL  @myapp/server@1.0.0 build: `tsc`
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @myapp/server@1.0.0 build: `tsc`
 Exit status 2
  ELIFECYCLE  Command failed with exit code 2.
-(3.13.2) ~/git/hono-learning  ‹main\*› $ tree -aL 2                                                                                                                                                                                  2 ↵
+(3.13.2) ~/git/hono-learning  ‹main*› $ tree -aL 2                                                                                                                                                                                  2 ↵
 .
 ├── .git
-│   ├── COMMIT\_EDITMSG
+│   ├── COMMIT_EDITMSG
 │   ├── config
 │   ├── description
-│   ├── FETCH\_HEAD
+│   ├── FETCH_HEAD
 │   ├── HEAD
 │   ├── hooks
 │   ├── index
 │   ├── info
 │   ├── logs
 │   ├── objects
-│   ├── ORIG\_HEAD
+│   ├── ORIG_HEAD
 │   └── refs
 ├── .github
 │   └── copilot-instructions.md
 ├── .gitignore
 ├── .husky
-│   ├── \_
+│   ├── _
 │   └── pre-commit
 ├── .npmrc
 ├── .nvmrc
@@ -49,13 +49,13 @@ Exit status 2
 │   ├── extensions.json
 │   └── settings.json
 ├── biome.json
-├── node\_modules
+├── node_modules
 │   ├── .bin
 │   ├── .modules.yaml
 │   ├── .pnpm
 │   ├── .pnpm-workspace-state.json
 │   ├── @biomejs
-│   └── husky -&gt; .pnpm/husky@9.1.7/node\_modules/husky
+│   └── husky -&gt; .pnpm/husky@9.1.7/node_modules/husky
 ├── package.json
 ├── packages
 │   ├── client
@@ -65,7 +65,7 @@ Exit status 2
 ├── pnpm-workspace.yaml
 └── tsconfig.base.json
 20 directories, 21 files
-(3.13.2) ~/git/hono-learning  ‹main\*› $ 
+(3.13.2) ~/git/hono-learning  ‹main*› $ 
 
 {
   "name": "hono-learning",
@@ -85,7 +85,7 @@ Exit status 2
     "format": "biome format .",
     "format:fix": "biome format --write ."
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "engines": {
@@ -93,9 +93,9 @@ Exit status 2
     "pnpm": "&gt;=10.0.0"
   },
   "packageManager": "pnpm@10.11.0",
-  "workspaces": \[
-    "packages/\*"
-  \],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@biomejs/biome": "2.0.0-beta.5",
     "husky": "9.1.7"
@@ -112,7 +112,7 @@ Exit status 2
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
@@ -134,12 +134,12 @@ Exit status 2
     "start": "node dist/index.js",
     "generate-client": "openapi2aspida -i src/openapi.yaml -o src/api"
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
-    "@myapp/shared": "workspace:\*",
+    "@myapp/shared": "workspace:*",
     "@hono/node-server": "1.14.2",
     "@hono/swagger-ui": "0.5.1",
     "hono": "4.7.10"
@@ -297,8 +297,8 @@ packages/
     "skipLibCheck": true,
     "rewriteRelativeImportExtensions": true
   },
-  "include": \["src/\*\*/\*"\],
-  "exclude": \["dist", "node\_modules"\]
+  "include": ["src/**/*"],
+  "exclude": ["dist", "node_modules"]
 }
 
 ---
@@ -418,10 +418,10 @@ packages/server build$ tsc
 │ src/index.ts(6,23): error TS2305: Module '"@myapp/shared"' has no exported member 'CounterData'.
 └─ Failed in 391ms at /Users/sugurutakahashi/git/hono-learning/packages/server
 /Users/sugurutakahashi/git/hono-learning/packages/server:
- ERR\_PNPM\_RECURSIVE\_RUN\_FIRST\_FAIL  @myapp/server@1.0.0 build: `tsc`
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @myapp/server@1.0.0 build: `tsc`
 Exit status 2
  ELIFECYCLE  Command failed with exit code 2.
-(3.13.2) ~/git/hono-learning  ‹main\*› $                                                                                                                                                                                             2 ↵
+(3.13.2) ~/git/hono-learning  ‹main*› $                                                                                                                                                                                             2 ↵
 
 ---
 
@@ -779,7 +779,7 @@ pnpm -r --filter=@myapp/server build
     "format": "biome format .",
     "format:fix": "biome format --write ."
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "engines": {
@@ -787,9 +787,9 @@ pnpm -r --filter=@myapp/server build
     "pnpm": "&gt;=10.0.0"
   },
   "packageManager": "pnpm@10.11.0",
-  "workspaces": \[
-    "packages/\*"
-  \],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@biomejs/biome": "2.0.0-beta.5",
     "husky": "9.1.7"
@@ -905,11 +905,11 @@ pnpm build
 
 以下の意味を教えて欲しい
 
-  "types": "dist/index.d.ts",   "files": \[     "dist"   \],
+  "types": "dist/index.d.ts",   "files": [     "dist"   ],
 
 これらの意味を教えて欲しい
 
-"baseUrl": ".", "paths": { "@myapp/shared": \["./packages/shared/src"\], "@myapp/shared/\*": \["./packages/shared/src/\*"\] }, "composite": true, "declaration": true
+"baseUrl": ".", "paths": { "@myapp/shared": ["./packages/shared/src"], "@myapp/shared/*": ["./packages/shared/src/*"] }, "composite": true, "declaration": true
 
 また、この記述もだめなのか？
 
@@ -920,14 +920,14 @@ pnpm build
   "description": "",
   "main": "index.js",
   "types": "dist/index.d.ts",
-  "files": \[
+  "files": [
     "dist"
-  \],
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
@@ -2222,7 +2222,7 @@ import type { CounterData } from '@myapp/shared'; // shared から型をイン�
 
 以下について、それぞれコメントをいれて解説して欲しい、また、2025年最新でできるだけ推奨される設定にして欲しい
 
-{ "compilerOptions": { "target": "ES2024", \*// 全体で統一\* "module": "ESNext", \*// 全体で統一\* "moduleResolution": "Bundler", \*// 全体で統一\* "esModuleInterop": true, "allowSyntheticDefaultImports": true, "forceConsistentCasingInFileNames": true, "strict": true, "skipLibCheck": true, "baseUrl": ".", "paths": { "@myapp/shared": \["./packages/shared/src"\], "@myapp/shared/\*": \["./packages/shared/src/\*"\] }, "composite": true, "declaration": true, "declarationMap": true, "sourceMap": true, "isolatedModules": true, "verbatimModuleSyntax": true }, "exclude": \["dist", "node\_modules", "\*\*/\*.test.ts", "\*\*/\*.spec.ts"\] }
+{ "compilerOptions": { "target": "ES2024", *// 全体で統一* "module": "ESNext", *// 全体で統一* "moduleResolution": "Bundler", *// 全体で統一* "esModuleInterop": true, "allowSyntheticDefaultImports": true, "forceConsistentCasingInFileNames": true, "strict": true, "skipLibCheck": true, "baseUrl": ".", "paths": { "@myapp/shared": ["./packages/shared/src"], "@myapp/shared/*": ["./packages/shared/src/*"] }, "composite": true, "declaration": true, "declarationMap": true, "sourceMap": true, "isolatedModules": true, "verbatimModuleSyntax": true }, "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.spec.ts"] }
 
 ---
 

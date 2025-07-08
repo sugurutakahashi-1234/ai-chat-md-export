@@ -10,7 +10,7 @@
 publisher内部の処理順を上から順にしたい。
 
 NotificationCenter.default
-            .publisher(for: .AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem).sink { \[weak self\] \_ in
+            .publisher(for: .AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem).sink { [weak self] _ in
                 guard let self else { return }
                 self.anchorAndEmotionAnalysisInteractor.send(interaction: .init(eventType: .videoEnded(.init(source: "")))) // 本来 Web イベントのため空文字でよい
                 Task {

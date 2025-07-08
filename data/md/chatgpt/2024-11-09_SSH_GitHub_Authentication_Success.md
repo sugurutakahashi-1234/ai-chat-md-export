@@ -8,7 +8,7 @@
 *2024/11/9 22:46:07*
 
 ssh -T git@github.com                                                                                             1 ↵
-Enter passphrase for key '/Users/sugurutakahashi/.ssh/id\_ed25519':
+Enter passphrase for key '/Users/sugurutakahashi/.ssh/id_ed25519':
 Hi suguruTakahashi-1234! You've successfully authenticated, but GitHub does not provide shell access.
 
 ---
@@ -16,7 +16,7 @@ Hi suguruTakahashi-1234! You've successfully authenticated, but GitHub does not 
 ## 🤖 アシスタント
 *2024/11/9 22:46:10*
 
-This message indicates that your SSH key is working correctly for GitHub authentication. When you run `ssh -T git@github.com`, GitHub verifies your SSH key, and the "Hi \[username\]! You've successfully authenticated" message confirms that you’ve authenticated successfully. However, GitHub does not provide direct shell access to users, so the message also indicates that you cannot use SSH to open a shell session on GitHub's servers.
+This message indicates that your SSH key is working correctly for GitHub authentication. When you run `ssh -T git@github.com`, GitHub verifies your SSH key, and the "Hi [username]! You've successfully authenticated" message confirms that you’ve authenticated successfully. However, GitHub does not provide direct shell access to users, so the message also indicates that you cannot use SSH to open a shell session on GitHub's servers.
 
 You're all set to perform Git operations with your GitHub repositories using SSH! If you need help with any specific Git commands, feel free to ask.
 

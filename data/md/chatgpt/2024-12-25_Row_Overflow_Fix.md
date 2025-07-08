@@ -8,9 +8,9 @@
 *2024/12/25 15:12:48*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-C6FDWrUsWpRqoXFbmSR8yR",
-  "size\_bytes": 60173,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-C6FDWrUsWpRqoXFbmSR8yR",
+  "size_bytes": 60173,
   "width": 690,
   "height": 376,
   "fovea": null,
@@ -18,24 +18,24 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 child: Row(
-                                        children: \[
+                                        children: [
                                           Expanded(
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
-                                              children: \[
+                                              children: [
                                                 Row(
-                                                  children: \[
+                                                  children: [
                                                     CircleAvatar(
                                                       radius: 16,
                                                       backgroundImage:
@@ -59,7 +59,7 @@ child: Row(
                                                             FontWeight.bold,
                                                       ),
                                                     ),
-                                                  \],
+                                                  ],
                                                 ),
                                                 const SizedBox(height: 10),
                                                 Row(
@@ -88,22 +88,22 @@ child: Row(
                                                     ),
                                                   ),
                                                 ),
-                                              \],
+                                              ],
                                             ),
                                           ),
                                           Expanded(
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.end,
-                                              children: \[
-                                                \_buildStatRow('Q', 13),
-                                                \_buildStatRow('E', 48),
-                                                \_buildStatRow('L', 7),
-                                                \_buildStatRow('B', 5),
-                                              \],
+                                              children: [
+                                                _buildStatRow('Q', 13),
+                                                _buildStatRow('E', 48),
+                                                _buildStatRow('L', 7),
+                                                _buildStatRow('B', 5),
+                                              ],
                                             ),
                                           ),
-                                        \],
+                                        ],
                                       ),
 
 ---

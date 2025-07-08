@@ -49,7 +49,7 @@ If you follow these steps and still encounter issues, please provide more detail
 ## 👤 ユーザー
 *2024/5/14 17:45:50*
 
-アプリケーションフォルダにXcode\_15.4.appがある
+アプリケーションフォルダにXcode_15.4.appがある
 
 ---
 

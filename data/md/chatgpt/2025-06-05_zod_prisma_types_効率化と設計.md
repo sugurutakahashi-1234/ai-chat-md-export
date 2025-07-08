@@ -137,25 +137,25 @@ import { env } from "./env.js";
 import { handlePrismaError } from "./errors/prisma-handlers.js";
 import { getUserService } from "./services/user.service.js";
 
-/\*\*
- \* APIパスとHTTPメソッドから一意なoperationIdを生成する
- \*
- \* @param method - HTTPメソッド (get, post, put, delete など)
- \* @param path - APIパス (/api/users/{id} など)
- \* @returns 生成されたoperationId
- \*
- \* 命名規則:
- \* - GET /api/users -&gt; getUsersApi
- \* - GET /api/users/{id} -&gt; getUserByIdApi
- \* - POST /api/users -&gt; postUsersApi
- \* - PUT /api/users/{id} -&gt; putUserByIdApi
- \* - DELETE /api/users/{id} -&gt; deleteUserByIdApi
- \*/
+/**
+ * APIパスとHTTPメソッドから一意なoperationIdを生成する
+ *
+ * @param method - HTTPメソッド (get, post, put, delete など)
+ * @param path - APIパス (/api/users/{id} など)
+ * @returns 生成されたoperationId
+ *
+ * 命名規則:
+ * - GET /api/users -&gt; getUsersApi
+ * - GET /api/users/{id} -&gt; getUserByIdApi
+ * - POST /api/users -&gt; postUsersApi
+ * - PUT /api/users/{id} -&gt; putUserByIdApi
+ * - DELETE /api/users/{id} -&gt; deleteUserByIdApi
+ */
 function generateOperationId(method: string, path: string): string {
   // パスを正規化（先頭の/api/を除去、{id}などのパラメータを処理）
   const normalizedPath = path
-    .replace(/^\\/api\\//, "") // /api/ を除去
-    .replace(/\\{(\\w+)\\}/g, (\_, param) =&gt; {
+    .replace(/^\/api\//, "") // /api/ を除去
+    .replace(/\{(\w+)\}/g, (_, param) =&gt; {
       // {id} -&gt; ById, {userId} -&gt; ByUserId（パラメータ名をPascalCaseに変換）
       return `By${param.charAt(0).toUpperCase() + param.slice(1)}`;
     })
@@ -214,7 +214,7 @@ const CreateUserRequestSchema = z
 const ApiResponseSchema = &lt;T extends z.ZodTypeAny&gt;(dataSchema: T) =&gt;
   z.object({
     data: dataSchema,
-    status: z.enum(\["success", "error"\]).openapi({
+    status: z.enum(["success", "error"]).openapi({
       example: "success",
     }),
     message: z.string().optional().openapi({
@@ -236,20 +236,20 @@ const ErrorResponseSchema = z
 const app: OpenAPIHono = new OpenAPIHono();
 
 // ミドルウェアを設定
-app.use("\*", logger());
+app.use("*", logger());
 
 // CORS設定（t3-env検証済み環境変数を使用）
-const getCorsOrigins = (): string\[\] =&gt; {
+const getCorsOrigins = (): string[] =&gt; {
   sharedLogger.info(
-    `Environment: ${env.APP\_ENV}, CORS Origins: ${env.CORS\_ORIGINS}`,
+    `Environment: ${env.APP_ENV}, CORS Origins: ${env.CORS_ORIGINS}`,
   );
-  return env.CORS\_ORIGINS;
+  return env.CORS_ORIGINS;
 };
 
 app.use(
-  "/api/\*",
+  "/api/*",
   cors({
-    origin: (origin, \_c) =&gt; {
+    origin: (origin, _c) =&gt; {
       const allowedOrigins = getCorsOrigins();
 
       // 同一オリジンリクエスト（originがundefined）を許可
@@ -261,7 +261,7 @@ app.use(
       }
 
       // 本番環境でサブドメイン対応が必要な場合の例（コメントアウト）
-      // if (process.env\["NODE\_ENV"\] === 'production' && origin.endsWith('.example.com')) {
+      // if (process.env["NODE_ENV"] === 'production' && origin.endsWith('.example.com')) {
       //   return origin;
       // }
 
@@ -269,16 +269,16 @@ app.use(
     },
     credentials: true,
     maxAge: 600, // Safariの上限（10分）
-    allowMethods: \["GET", "POST", "PUT", "DELETE"\] as const,
-    allowHeaders: \["Content-Type", "Authorization"\],
-    exposeHeaders: \["X-Request-ID", "X-Total-Count"\],
+    allowMethods: ["GET", "POST", "PUT", "DELETE"] as const,
+    allowHeaders: ["Content-Type", "Authorization"],
+    exposeHeaders: ["X-Request-ID", "X-Total-Count"],
   }),
 );
 
 // OpenAPI仕様とSwagger UIの設定
 app.doc31("/doc", {
   openapi: "3.1.0",
-  servers: \[
+  servers: [
     {
       url: "https://api.hono-learning.example",
       description: "Production server",
@@ -287,7 +287,7 @@ app.doc31("/doc", {
       url: "https://staging-api.hono-learning.example",
       description: "Staging server",
     },
-  \],
+  ],
   info: {
     title: "MyApp API",
     version: "1.0.0",
@@ -308,7 +308,7 @@ const getUsersRoute = createRoute({
   operationId: generateOperationId("get", "/api/users"),
   summary: "全ユーザーを取得",
   description: "システムに登録されているすべてのユーザーを取得します",
-  security: \[\], // 認証不要を明示
+  security: [], // 認証不要を明示
   responses: {
     200: {
       content: {
@@ -343,7 +343,7 @@ const getUserByIdRoute = createRoute({
   operationId: generateOperationId("get", "/api/users/{id}"),
   summary: "特定のユーザーを取得",
   description: "指定されたIDのユーザー情報を取得します",
-  security: \[\], // 認証不要を明示
+  security: [], // 認証不要を明示
   request: {
     params: z.object({
       id: z.string().openapi({
@@ -390,7 +390,7 @@ const createUserRoute = createRoute({
   operationId: generateOperationId("post", "/api/users"),
   summary: "新規ユーザーを作成",
   description: "新しいユーザーをシステムに登録します",
-  security: \[\], // 認証不要を明示
+  security: [], // 認証不要を明示
   request: {
     body: {
       content: {

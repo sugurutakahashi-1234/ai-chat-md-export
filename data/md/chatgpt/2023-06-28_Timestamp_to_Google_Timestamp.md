@@ -7,24 +7,24 @@
 ## 👤 ユーザー
 *2023/6/28 14:00:49*
 
-ミリ秒でのInt型のUINXのtimestamp情報をもっていてSwiftProtoBufを導入しており、Google\_Protobuf\_Timestamp型に変換したい。どうすればいいか？
+ミリ秒でのInt型のUINXのtimestamp情報をもっていてSwiftProtoBufを導入しており、Google_Protobuf_Timestamp型に変換したい。どうすればいいか？
 
 let timestampInMilliseconds: Int
 
-extension Google\_Protobuf\_Timestamp {
-  /// Creates a new `Google\_Protobuf\_Timestamp` initialized relative to 00:00:00
+extension Google_Protobuf_Timestamp {
+  /// Creates a new `Google_Protobuf_Timestamp` initialized relative to 00:00:00
   /// UTC on 1 January 1970 by a given number of seconds.
   ///
   /// - Parameter timeIntervalSince1970: The `TimeInterval`, interpreted as
   ///   seconds relative to 00:00:00 UTC on 1 January 1970.
   public init(timeIntervalSince1970: TimeInterval) {
     let sd = floor(timeIntervalSince1970)
-    let nd = round((timeIntervalSince1970 - sd) \* TimeInterval(nanosPerSecond))
+    let nd = round((timeIntervalSince1970 - sd) * TimeInterval(nanosPerSecond))
     let (s, n) = normalizeForTimestamp(seconds: Int64(sd), nanos: Int32(nd))
     self.init(seconds: s, nanos: n)
   }
 
-  /// Creates a new `Google\_Protobuf\_Timestamp` initialized relative to 00:00:00
+  /// Creates a new `Google_Protobuf_Timestamp` initialized relative to 00:00:00
   /// UTC on 1 January 2001 by a given number of seconds.
   ///
   /// - Parameter timeIntervalSinceReferenceDate: The `TimeInterval`,
@@ -32,7 +32,7 @@ extension Google\_Protobuf\_Timestamp {
   public init(timeIntervalSinceReferenceDate: TimeInterval) {
     let sd = floor(timeIntervalSinceReferenceDate)
     let nd = round(
-      (timeIntervalSinceReferenceDate - sd) \* TimeInterval(nanosPerSecond))
+      (timeIntervalSinceReferenceDate - sd) * TimeInterval(nanosPerSecond))
     // The addition of timeIntervalBetween1970And... is deliberately delayed
     // until the input is separated into an integer part and a fraction
     // part, so that we don't unnecessarily lose precision.
@@ -42,7 +42,7 @@ extension Google\_Protobuf\_Timestamp {
     self.init(seconds: s, nanos: n)
   }
 
-  /// Creates a new `Google\_Protobuf\_Timestamp` initialized to the same time as
+  /// Creates a new `Google_Protobuf_Timestamp` initialized to the same time as
   /// the given `Date`.
   ///
   /// - Parameter date: The `Date` with which to initialize the timestamp.
@@ -105,20 +105,20 @@ let timestamp = Google_Protobuf_Timestamp(seconds: seconds, nanos: nanoseconds)
 
 以下のようなextensionのinitは使えないのかな？
 
-extension Google\_Protobuf\_Timestamp {
-  /// Creates a new `Google\_Protobuf\_Timestamp` initialized relative to 00:00:00
+extension Google_Protobuf_Timestamp {
+  /// Creates a new `Google_Protobuf_Timestamp` initialized relative to 00:00:00
   /// UTC on 1 January 1970 by a given number of seconds.
   ///
   /// - Parameter timeIntervalSince1970: The `TimeInterval`, interpreted as
   ///   seconds relative to 00:00:00 UTC on 1 January 1970.
   public init(timeIntervalSince1970: TimeInterval) {
     let sd = floor(timeIntervalSince1970)
-    let nd = round((timeIntervalSince1970 - sd) \* TimeInterval(nanosPerSecond))
+    let nd = round((timeIntervalSince1970 - sd) * TimeInterval(nanosPerSecond))
     let (s, n) = normalizeForTimestamp(seconds: Int64(sd), nanos: Int32(nd))
     self.init(seconds: s, nanos: n)
   }
 
-  /// Creates a new `Google\_Protobuf\_Timestamp` initialized relative to 00:00:00
+  /// Creates a new `Google_Protobuf_Timestamp` initialized relative to 00:00:00
   /// UTC on 1 January 2001 by a given number of seconds.
   ///
   /// - Parameter timeIntervalSinceReferenceDate: The `TimeInterval`,
@@ -126,7 +126,7 @@ extension Google\_Protobuf\_Timestamp {
   public init(timeIntervalSinceReferenceDate: TimeInterval) {
     let sd = floor(timeIntervalSinceReferenceDate)
     let nd = round(
-      (timeIntervalSinceReferenceDate - sd) \* TimeInterval(nanosPerSecond))
+      (timeIntervalSinceReferenceDate - sd) * TimeInterval(nanosPerSecond))
     // The addition of timeIntervalBetween1970And... is deliberately delayed
     // until the input is separated into an integer part and a fraction
     // part, so that we don't unnecessarily lose precision.
@@ -136,7 +136,7 @@ extension Google\_Protobuf\_Timestamp {
     self.init(seconds: s, nanos: n)
   }
 
-  /// Creates a new `Google\_Protobuf\_Timestamp` initialized to the same time as
+  /// Creates a new `Google_Protobuf_Timestamp` initialized to the same time as
   /// the given `Date`.
   ///
   /// - Parameter date: The `Date` with which to initialize the timestamp.
@@ -381,7 +381,7 @@ public struct InteractionDataModel: MillisecondsTimestampable {
 ## 👤 ユーザー
 *2023/6/28 14:05:41*
 
-var timestamp: Google\_Protobuf\_Timestamp {} もasGoogleProtobufTimestampにrenameしてほしい
+var timestamp: Google_Protobuf_Timestamp {} もasGoogleProtobufTimestampにrenameしてほしい
 
 ---
 

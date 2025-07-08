@@ -11,12 +11,12 @@ let whisper = try await WhisperKit() の初期化に時間がかかっている�
 シングルトンをうまく使って解消したい。
 
 final class TranscriptionDriver: Sendable {
-    func transcribe(audioUrl: URL) async throws -&gt; \[TranscriptionResult\] {
+    func transcribe(audioUrl: URL) async throws -&gt; [TranscriptionResult] {
         let whisper = try await WhisperKit()
         return try await whisper.transcribe(audioPath: audioUrl.path, decodeOptions:DecodingOptions.init(language: "ja"))
     }
 
-    @available(\*, deprecated, message: "Subject to removal in a future version. Use `transcribe(audioUrl: URL) async throws -&gt; \[TranscriptionResult\]` instead.")
+    @available(*, deprecated, message: "Subject to removal in a future version. Use `transcribe(audioUrl: URL) async throws -&gt; [TranscriptionResult]` instead.")
     func transcribe(audioUrl: URL) async throws -&gt; TranscriptionResult {
         let whisper = try await WhisperKit()
         guard let transcriptionResult = try await whisper.transcribe(audioPath: audioUrl.path, decodeOptions:DecodingOptions.init(language: "ja")) else {
@@ -262,12 +262,12 @@ final class TranscriptionDriver: Sendable {
         }
     }
 
-    func transcribe(audioUrl: URL) async throws -&gt; \[TranscriptionResult\] {
+    func transcribe(audioUrl: URL) async throws -&gt; [TranscriptionResult] {
         let whisper = try await getWhisperKit()
         return try await whisper.transcribe(audioPath: audioUrl.path, decodeOptions:DecodingOptions.init(language: "ja"))
     }
 
-    @available(\*, deprecated, message: "Subject to removal in a future version. Use `transcribe(audioUrl: URL) async throws -&gt; \[TranscriptionResult\]` instead.")
+    @available(*, deprecated, message: "Subject to removal in a future version. Use `transcribe(audioUrl: URL) async throws -&gt; [TranscriptionResult]` instead.")
     func transcribe(audioUrl: URL) async throws -&gt; TranscriptionResult {
         let whisper = try await getWhisperKit()
         guard let transcriptionResult = try await whisper.transcribe(audioPath: audioUrl.path, decodeOptions:DecodingOptions.init(language: "ja")) else {

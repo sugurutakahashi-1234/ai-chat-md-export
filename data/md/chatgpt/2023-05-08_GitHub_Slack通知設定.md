@@ -77,9 +77,9 @@ jobs:
 
 設定ファイルの内容について説明します。
 
-- `on: check\_suite: types: - completed` で、チェックスイートが完了したイベントに対してワークフローが実行されるようにしています。
-- `if: ${{ github.event.check\_suite.conclusion == 'success' }}` で、チェックスイートの結果が成功の場合のみ、後続のステップが実行されるようにしています。
-- `PR\_ID`, `PR\_DATA`, `USERS`で、GitHub APIを使用してPRのID、データ、指定されたレビュワーを取得しています。
+- `on: check_suite: types: - completed` で、チェックスイートが完了したイベントに対してワークフローが実行されるようにしています。
+- `if: ${{ github.event.check_suite.conclusion == 'success' }}` で、チェックスイートの結果が成功の場合のみ、後続のステップが実行されるようにしています。
+- `PR_ID`, `PR_DATA`, `USERS`で、GitHub APIを使用してPRのID、データ、指定されたレビュワーを取得しています。
 - `MENTIONS`で、レビュワーのGitHubユーザ名をSlackユーザIDに変換し、メンション用のフォーマットに整形しています。
 - 最後に`curl`コマンドで、Slack APIの`chat.postMessage`を呼び出して、メッセージを送信しています。
 
@@ -100,7 +100,7 @@ chat:write権限を持ったBotトークンを取得方法を教えて
 `chat:write`権限を持ったBotトークンを取得するには、以下の手順を実行してください。
 
 1. Slack APIページへアクセス
-まず、\[Slack APIページ\](https://api.slack.com/)にアクセスして、右上の「Your Apps」をクリックし、Slackアプリ一覧に移動します。
+まず、[Slack APIページ](https://api.slack.com/)にアクセスして、右上の「Your Apps」をクリックし、Slackアプリ一覧に移動します。
 
 2. 新しいSlackアプリを作成
 「Create New App」ボタンをクリックし、新しいアプリを作成します。アプリ名とワークスペースを入力し、「Create App」をクリックします。
@@ -398,7 +398,7 @@ jobs:
 ## 🤖 アシスタント
 *2023/5/9 0:18:21*
 
-（続き）レビュー済みのユーザーを特定（`USERS\_REVIEWED`変数）し、彼らをメンションから除外するように変更しました。`for`ループ内で、ユーザーがレビュー済みでないことを確認してから、メンションを生成しています。
+（続き）レビュー済みのユーザーを特定（`USERS_REVIEWED`変数）し、彼らをメンションから除外するように変更しました。`for`ループ内で、ユーザーがレビュー済みでないことを確認してから、メンションを生成しています。
 
 この変更により、レビュー済みのレビュワーはメンションに含まれなくなり、未レビューのレビュワーのみが通知されます。ただし、この設定では、「Approved」または「Changes requested」のステータスを持つレビュワーが除外されるため、レビューが「Commented」のみの場合は除外されません。必要に応じて、ステータスの条件を変更してください。
 
@@ -469,10 +469,10 @@ jobs:
 
 https://slack.com/api/chat.postMessage を送信したら、
 
-{"ok":false,"error":"not\_in\_channel","warning":"missing\_charset","response\_metadata":{"warnings":\["missing\_charset"\]}}
+{"ok":false,"error":"not_in_channel","warning":"missing_charset","response_metadata":{"warnings":["missing_charset"]}}
 
 というエラーが返ってきたんだけど、どの辺が間違っている可能性が高いかな？
-SLACK\_CHANNEL\_ID: "C05736775AM" を指定したけど。
+SLACK_CHANNEL_ID: "C05736775AM" を指定したけど。
 
 ---
 
@@ -504,7 +504,7 @@ Slackで、対象のチャンネル（この場合は `C05736775AM`）に移動�
 
 今度は以下のエラーがでた
 
-{"ok":false,"error":"invalid\_blocks","errors":\["failed to match all allowed schemas \[json-pointer:\\/blocks\\/0\\/text\]","must be more than 0 characters \[json-pointer:\\/blocks\\/0\\/text\\/text\]"\],"warning":"missing\_charset","response\_metadata":{"messages":\["\[ERROR\] failed to match all allowed schemas \[json-pointer:\\/blocks\\/0\\/text\]","\[ERROR\] must be more than 0 characters \[json-pointer:\\/blocks\\/0\\/text\\/text\]"\],"warnings":\["missing\_charset"\]}}
+{"ok":false,"error":"invalid_blocks","errors":["failed to match all allowed schemas [json-pointer:\/blocks\/0\/text]","must be more than 0 characters [json-pointer:\/blocks\/0\/text\/text]"],"warning":"missing_charset","response_metadata":{"messages":["[ERROR] failed to match all allowed schemas [json-pointer:\/blocks\/0\/text]","[ERROR] must be more than 0 characters [json-pointer:\/blocks\/0\/text\/text]"],"warnings":["missing_charset"]}}
 
 修正方法を教えて。
 
@@ -1042,17 +1042,17 @@ Incoming Webhooks の作り方を教えて欲しい
 
 SlackのIncoming Webhookを設定する方法を説明します。Incoming Webhookを使うと、外部ソースから簡単にSlackチャンネルにメッセージを送信できます。
 
-1. まず、Slackアプリディレクトリで\[Incoming WebHooksアプリ\](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks)を開きます。
+1. まず、Slackアプリディレクトリで[Incoming WebHooksアプリ](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks)を開きます。
 
-2. \*\*Add to Slack\*\*ボタンをクリックします。
+2. **Add to Slack**ボタンをクリックします。
 
-3. ドロップダウンメニューから、メッセージを送信したいチャンネルを選択します。選択が完了したら、\*\*Add Incoming WebHooks integration\*\*ボタンをクリックして設定を保存します。
+3. ドロップダウンメニューから、メッセージを送信したいチャンネルを選択します。選択が完了したら、**Add Incoming WebHooks integration**ボタンをクリックして設定を保存します。
 
 4. Webhook URLが生成されます。このURLは、外部サービスやアプリからSlackにメッセージを送信するために使用します。このURLは秘密情報とみなされるため、安全に保管してください。
 
 これでIncoming Webhookが設定されました。生成されたWebhook URLを使って、GitHub Actionsなどの外部サービスからSlackチャンネルにメッセージを送信できます。
 
-GitHub ActionsのワークフローでこのURLを使用する場合、`SLACK\_WEBHOOK\_URL`という環境変数に設定し、それを`curl`コマンドでメッセージを送信する際に使用します。このURLは秘密情報ですので、GitHubリポジトリの\[Secrets\](https://docs.github.com/en/actions/security-guides/encrypted-secrets)に保存して、ワークフローで参照することをお勧めします。
+GitHub ActionsのワークフローでこのURLを使用する場合、`SLACK_WEBHOOK_URL`という環境変数に設定し、それを`curl`コマンドでメッセージを送信する際に使用します。このURLは秘密情報ですので、GitHubリポジトリの[Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)に保存して、ワークフローで参照することをお勧めします。
 
 ---
 
@@ -1060,7 +1060,7 @@ GitHub ActionsのワークフローでこのURLを使用する場合、`SLACK\_W
 *2023/5/9 2:07:20*
 
 on:
-  check\_suite:
+  check_suite:
     types:
       - completed
 
@@ -1182,7 +1182,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 2:58:13*
 
-最終的な notify\_reviewers\_on\_successful\_checks.yml なんだけど、これの出力の具体例を教えて欲しい
+最終的な notify_reviewers_on_successful_checks.yml なんだけど、これの出力の具体例を教えて欲しい
 
 ---
 
@@ -1296,7 +1296,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 4:19:14*
 
-なるほど。その場合、notify\_reviewers\_on\_successful\_checks.yml と同じ通知を送りたいんだけど、ymlを書いて欲しい。
+なるほど。その場合、notify_reviewers_on_successful_checks.yml と同じ通知を送りたいんだけど、ymlを書いて欲しい。
 
 ---
 
@@ -1377,9 +1377,9 @@ jobs:
 ## 🤖 アシスタント
 *2023/5/9 4:21:45*
 
-その後、`notify\_reviewers`ステップで、プルリクエストの情報とアサインされたレビュアーを取得し、メンションを作成してSlackに通知を送ります。メンションがない場合、「レビューワーが設定されていません。」というメッセージが表示されます。
+その後、`notify_reviewers`ステップで、プルリクエストの情報とアサインされたレビュアーを取得し、メンションを作成してSlackに通知を送ります。メンションがない場合、「レビューワーが設定されていません。」というメッセージが表示されます。
 
-このワークフローを使用することで、プルリクエストにレビュアーがアサインされたときにCIが通っていれば、指定されたSlackチャンネルに通知が送信されます。`notify\_reviewers\_on\_successful\_checks.yml`と同様に、必要な環境変数やシークレットが設定されていることを確認してください。
+このワークフローを使用することで、プルリクエストにレビュアーがアサインされたときにCIが通っていれば、指定されたSlackチャンネルに通知が送信されます。`notify_reviewers_on_successful_checks.yml`と同様に、必要な環境変数やシークレットが設定されていることを確認してください。
 
 ---
 
@@ -1456,7 +1456,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 4:24:51*
 
-notify\_reviewers\_on\_successful\_checks.ymlと同様にIncoming Webhookを使うように変更してほしい。
+notify_reviewers_on_successful_checks.ymlと同様にIncoming Webhookを使うように変更してほしい。
 
 ---
 
@@ -1551,7 +1551,7 @@ by @送信者の名前
 ## 👤 ユーザー
 *2023/5/9 4:28:16*
 
-notify\_reviewers\_on\_successful\_checks.yml では PR\_ID を使っていたので、notify\_reviewers\_on\_assign.ymlでも同じように PR\_ID を使って処理して欲しい
+notify_reviewers_on_successful_checks.yml では PR_ID を使っていたので、notify_reviewers_on_assign.ymlでも同じように PR_ID を使って処理して欲しい
 
 ---
 
@@ -1619,7 +1619,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 4:29:56*
 
-notify\_reviewers\_on\_successful\_checks.yml もメンションが存在しない場合に通知をおくらないように修正したい
+notify_reviewers_on_successful_checks.yml もメンションが存在しない場合に通知をおくらないように修正したい
 
 ---
 
@@ -1683,7 +1683,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 4:32:22*
 
-notify\_reviewers\_on\_assign.yml でもnotify\_reviewers\_on\_successful\_checks.yml と同様にAPPROVEDじゃない人にメンションするようにしたい
+notify_reviewers_on_assign.yml でもnotify_reviewers_on_successful_checks.yml と同様にAPPROVEDじゃない人にメンションするようにしたい
 
 ---
 
@@ -1752,14 +1752,14 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 4:35:16*
 
-notify\_reviewers\_on\_assign.yml と notify\_reviewers\_on\_successful\_checks.yml で似ている処理があるから共通化できたりしないの？。コードが見づらくなるなら、しなくてもいいんだけど。
+notify_reviewers_on_assign.yml と notify_reviewers_on_successful_checks.yml で似ている処理があるから共通化できたりしないの？。コードが見づらくなるなら、しなくてもいいんだけど。
 
 ---
 
 ## 🤖 アシスタント
 *2023/5/9 4:35:53*
 
-GitHub Actionsでは、共通化するために\[composite run steps actions\](https://docs.github.com/en/actions/creating-actions/creating-a-composite-run-steps-action)という機能を使うことができます。これを使用して共通の処理を別のリポジトリで管理し、それらのアクションを利用することで、処理を共通化できます。
+GitHub Actionsでは、共通化するために[composite run steps actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-run-steps-action)という機能を使うことができます。これを使用して共通の処理を別のリポジトリで管理し、それらのアクションを利用することで、処理を共通化できます。
 
 ただし、この方法ではコードの可読性やメンテナンス性が悪くなる可能性があります。また、共通化のための設定が多くなることもあります。このため、現状の2つのファイルでそれぞれの機能を維持することが、管理が容易であると判断される場合もあります。
 
@@ -1858,7 +1858,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 4:53:43*
 
-notify\_reviewers\_on\_assign.yml を最初からとgithub\_to\_slack\_mapping.jsonをリポジトリのルートではなく、.github/github\_to\_slack\_mapping.json においたからそれも加味して、修正してほしい
+notify_reviewers_on_assign.yml を最初からとgithub_to_slack_mapping.jsonをリポジトリのルートではなく、.github/github_to_slack_mapping.json においたからそれも加味して、修正してほしい
 
 ---
 
@@ -1969,7 +1969,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 4:56:20*
 
-ありがとう。notify\_reviewers\_on\_successful\_checks.yml についても notify\_reviewers\_on\_assign.yml  と同じ対応をしてほしい。
+ありがとう。notify_reviewers_on_successful_checks.yml についても notify_reviewers_on_assign.yml  と同じ対応をしてほしい。
 
 ---
 
@@ -2251,7 +2251,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 5:05:31*
 
-ありがとう。もう一度、notify\_reviewers\_on\_assign.yml を表示して欲しい
+ありがとう。もう一度、notify_reviewers_on_assign.yml を表示して欲しい
 
 ---
 
@@ -2326,9 +2326,9 @@ jobs:
 *2023/5/9 5:07:37*
 
 on:
-  pull\_request:
+  pull_request:
     types:
-      - review\_requested
+      - review_requested
 
 のほうが正しくないですか？
 
@@ -2576,7 +2576,7 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 5:24:07*
 
-notify\_reviewers\_on\_successful\_checks.yml についても、 同様にメッセージを出力して終了コードを変更せずにスキップするように修正してほしい
+notify_reviewers_on_successful_checks.yml についても、 同様にメッセージを出力して終了コードを変更せずにスキップするように修正してほしい
 
 ---
 
@@ -2649,50 +2649,50 @@ jobs:
 name: Notify Reviewers on Successful Checks
 
 on:
-  check\_suite:
+  check_suite:
     types:
       - completed
 
 jobs:
-  notify\_reviewers:
+  notify_reviewers:
     runs-on: ubuntu-latest
-    if: github.event.check\_suite.conclusion == 'success' && github.event.check\_suite.app.slug == 'github-actions'
+    if: github.event.check_suite.conclusion == 'success' && github.event.check_suite.app.slug == 'github-actions'
     steps:
       - name: Get PR data
-        id: pr\_data
+        id: pr_data
         run: |
-          PR\_ID=$(gh api "search/issues?q=${{ github.event.check\_suite.head\_sha }}+repo:${{ github.repository }}+is:pr+is:open" -q '.items\[0\].number')
-          if \[ -n "$PR\_ID" \]; then
-            PR\_DATA=$(gh pr view $PR\_ID --json title,url,author,requestedReviewers)
-            echo "::set-output name=pr\_data::$PR\_DATA"
+          PR_ID=$(gh api "search/issues?q=${{ github.event.check_suite.head_sha }}+repo:${{ github.repository }}+is:pr+is:open" -q '.items[0].number')
+          if [ -n "$PR_ID" ]; then
+            PR_DATA=$(gh pr view $PR_ID --json title,url,author,requestedReviewers)
+            echo "::set-output name=pr_data::$PR_DATA"
           else
             echo "Error: PR data could not be retrieved."
             exit 1
           fi
 
       - name: Notify reviewers
-        if: steps.pr\_data.outputs.pr\_data
+        if: steps.pr_data.outputs.pr_data
         run: |
-          PR\_DATA="${{ steps.pr\_data.outputs.pr\_data }}"
-          PR\_TITLE=$(echo "$PR\_DATA" | jq -r '.title')
-          PR\_URL=$(echo "$PR\_DATA" | jq -r '.url')
-          AUTHOR\_NAME=$(echo "$PR\_DATA" | jq -r '.author.login')
-          REVIEWER\_DATA=$(echo "$PR\_DATA" | jq -r '.requestedReviewers.nodes\[\] | select(.reviews.nodes\[\]? | .state == "APPROVED" | not) | .login')
-          MENTIONS=$(printf "&lt;@%s&gt; " $REVIEWER\_DATA)
+          PR_DATA="${{ steps.pr_data.outputs.pr_data }}"
+          PR_TITLE=$(echo "$PR_DATA" | jq -r '.title')
+          PR_URL=$(echo "$PR_DATA" | jq -r '.url')
+          AUTHOR_NAME=$(echo "$PR_DATA" | jq -r '.author.login')
+          REVIEWER_DATA=$(echo "$PR_DATA" | jq -r '.requestedReviewers.nodes[] | select(.reviews.nodes[]? | .state == "APPROVED" | not) | .login')
+          MENTIONS=$(printf "&lt;@%s&gt; " $REVIEWER_DATA)
 
-          if \[ -n "$MENTIONS" \]; then
-            SLACK\_MESSAGE="{
-              \\"blocks\\": \[
+          if [ -n "$MENTIONS" ]; then
+            SLACK_MESSAGE="{
+              \"blocks\": [
                 {
-                  \\"type\\": \\"section\\",
-                  \\"text\\": {
-                    \\"type\\": \\"mrkdwn\\",
-                    \\"text\\": \\"$MENTIONS レビューをお願いします。\\nPR の CI が通りました。\\n\\n$PR\_TITLE\\n$PR\_URL\\n\\nby @$AUTHOR\_NAME\\"
+                  \"type\": \"section\",
+                  \"text\": {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"$MENTIONS レビューをお願いします。\nPR の CI が通りました。\n\n$PR_TITLE\n$PR_URL\n\nby @$AUTHOR_NAME\"
                   }
                 }
-              \]
+              ]
             }"
-            curl -s -X POST -H 'Content-type: application/json' --data "$SLACK\_MESSAGE" "${{ secrets.SLACK\_WEBHOOK\_URL }}"
+            curl -s -X POST -H 'Content-type: application/json' --data "$SLACK_MESSAGE" "${{ secrets.SLACK_WEBHOOK_URL }}"
           else
             echo "Info: No reviewers found to mention. Skipping this job."
             exit 0
@@ -2766,9 +2766,9 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 5:41:20*
 
-notify\_reviewers\_on\_successful\_checks.yml が実行されないんだけど、どうしてかな？
+notify_reviewers_on_successful_checks.yml が実行されないんだけど、どうしてかな？
 
-if: github.event.check\_suite.conclusion == 'success' && github.event.check\_suite.app.slug == 'github-actions' が怪しい気がする
+if: github.event.check_suite.conclusion == 'success' && github.event.check_suite.app.slug == 'github-actions' が怪しい気がする
 
 ---
 
@@ -2838,25 +2838,25 @@ jobs:
 ## 👤 ユーザー
 *2023/5/9 5:42:46*
 
-github.event.check\_suite.conclusion == 'success' だけじゃダメなの？
+github.event.check_suite.conclusion == 'success' だけじゃダメなの？
 
 ---
 
 ## 🤖 アシスタント
 *2023/5/9 5:43:31*
 
-すみません、説明が不十分でした。`github.event.check\_suite.conclusion == 'success'` だけでも機能することがありますが、チェックスイートがプルリクエストに関連しているかどうかを確認するために、追加の条件を加えた方がより正確です。
+すみません、説明が不十分でした。`github.event.check_suite.conclusion == 'success'` だけでも機能することがありますが、チェックスイートがプルリクエストに関連しているかどうかを確認するために、追加の条件を加えた方がより正確です。
 
-`if: github.event.check\_suite.conclusion == 'success' && github.event.check\_suite.pull\_requests` を使用すると、チェックスイートが成功し、かつプルリクエストに関連するものである場合にのみ、ワークフローが実行されます。
+`if: github.event.check_suite.conclusion == 'success' && github.event.check_suite.pull_requests` を使用すると、チェックスイートが成功し、かつプルリクエストに関連するものである場合にのみ、ワークフローが実行されます。
 
-しかし、あなたがおっしゃるように、単純に `github.event.check\_suite.conclusion == 'success'` を使用することもできます。これにより、すべての成功したチェックスイートに対してワークフローが実行されます。ただし、この場合、プルリクエストに関連しないチェックスイートが対象になる可能性があります。そのため、意図しない通知が発生することがあります。
+しかし、あなたがおっしゃるように、単純に `github.event.check_suite.conclusion == 'success'` を使用することもできます。これにより、すべての成功したチェックスイートに対してワークフローが実行されます。ただし、この場合、プルリクエストに関連しないチェックスイートが対象になる可能性があります。そのため、意図しない通知が発生することがあります。
 
 ---
 
 ## 👤 ユーザー
 *2023/5/9 5:47:17*
 
-やっぱり動かなかった、if: github.event.check\_suite.conclusion == 'success' && github.event.check\_suite.pull\_requests を修正したほうがいい気がする
+やっぱり動かなかった、if: github.event.check_suite.conclusion == 'success' && github.event.check_suite.pull_requests を修正したほうがいい気がする
 
 ---
 

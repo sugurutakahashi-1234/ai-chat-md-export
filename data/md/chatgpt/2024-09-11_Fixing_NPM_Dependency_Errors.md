@@ -20,7 +20,7 @@
     "generate-pdf": "asciidoctor-web-pdf ./docs/index.adoc -o output.pdf -a pdf-theme=custom-theme.yml",
     "convert-asciidoc": "npm run generate-asciidoc && npm run generate-pdf"
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -39,7 +39,7 @@ npm error code ETARGET
 npm error notarget No matching version found for undefined@undefined.
 npm error notarget In most cases you or one of your dependencies are requesting
 npm error notarget a package version that doesn't exist.
-npm error A complete log of this run can be found in: /Users/sugurutakahashi/.npm/\_logs/2024-09-11T07\_45\_32\_205Z-debug-0.log
+npm error A complete log of this run can be found in: /Users/sugurutakahashi/.npm/_logs/2024-09-11T07_45_32_205Z-debug-0.log
 
 ---
 
@@ -106,26 +106,26 @@ Severity: high
 path-to-regexp outputs backtracking regular expressions - https://github.com/advisories/GHSA-9wv6-86v2-598j
 fix available via `npm audit fix --force`
 Will install @openapitools/openapi-generator-cli@0.0.6, which is a breaking change
-node\_modules/path-to-regexp
+node_modules/path-to-regexp
   @nestjs/core  5.2.0-next - 5.7.4 || &gt;=6.11.0-next.1
   Depends on vulnerable versions of path-to-regexp
-  node\_modules/@nestjs/core
+  node_modules/@nestjs/core
     @openapitools/openapi-generator-cli  &gt;=0.0.7-3.0.0
     Depends on vulnerable versions of @nestjs/core
-    node\_modules/@openapitools/openapi-generator-cli
+    node_modules/@openapitools/openapi-generator-cli
 
 ws  8.0.0 - 8.17.0
 Severity: high
 ws affected by a DoS when handling a request with many HTTP headers - https://github.com/advisories/GHSA-3h5v-q93c-6h6q
 fix available via `npm audit fix --force`
 Will install undefined@undefined, which is a breaking change
-node\_modules/ws
+node_modules/ws
   puppeteer  11.0.0 - 18.1.0
   Depends on vulnerable versions of ws
-  node\_modules/puppeteer
-    asciidoctor-pdf  \*
+  node_modules/puppeteer
+    asciidoctor-pdf  *
     Depends on vulnerable versions of puppeteer
-    node\_modules/asciidoctor-pdf
+    node_modules/asciidoctor-pdf
 
 6 high severity vulnerabilities
 

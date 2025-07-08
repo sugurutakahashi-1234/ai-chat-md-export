@@ -145,7 +145,7 @@ final class ProfileEditPresenter: ObservableObject {
         do {
             account = try await apiRequestDriver.getAccount()
         } catch {
-            logDriver.errorLog("\\(error)")
+            logDriver.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -275,35 +275,35 @@ struct ContentView: View {
 ### 1. `if let`を使用する方法
 
 #### メリット:
-- \*\*シンプルで直感的\*\*: `account`が存在するかどうかを明示的に確認し、その後の処理を安全に行います。コードが読みやすく、理解しやすいです。
-- \*\*SwiftUIの設計にマッチ\*\*: SwiftUIのビューが常にアプリケーションの状態に基づいて表示を更新するという設計思想に合っています。`account`がロードされていない状態ではローディングUIを表示するなどの対応が容易です。
+- **シンプルで直感的**: `account`が存在するかどうかを明示的に確認し、その後の処理を安全に行います。コードが読みやすく、理解しやすいです。
+- **SwiftUIの設計にマッチ**: SwiftUIのビューが常にアプリケーションの状態に基づいて表示を更新するという設計思想に合っています。`account`がロードされていない状態ではローディングUIを表示するなどの対応が容易です。
 
 #### デメリット:
-- \*\*デフォルト値の設定がない\*\*: `account`が`nil`のときにデフォルト値を使用しないため、全てのアクセスで`if let`のチェックが必要です。
+- **デフォルト値の設定がない**: `account`が`nil`のときにデフォルト値を使用しないため、全てのアクセスで`if let`のチェックが必要です。
 
 ### 2. `Binding`を使用する方法
 
 #### メリット:
-- \*\*柔軟性\*\*: `Binding`を使って安全に`account`のプロパティにアクセスでき、デフォルト値を設定することでオプショナルを扱いやすくしています。これは、ビューのリロードが頻繁に発生する場合や、UIが常に表示されている必要がある場合に有効です。
-- \*\*コードの再利用性が高い\*\*: `Binding`のget/setパターンを使うことで、再利用可能なコンポーネントとして構築できます。
+- **柔軟性**: `Binding`を使って安全に`account`のプロパティにアクセスでき、デフォルト値を設定することでオプショナルを扱いやすくしています。これは、ビューのリロードが頻繁に発生する場合や、UIが常に表示されている必要がある場合に有効です。
+- **コードの再利用性が高い**: `Binding`のget/setパターンを使うことで、再利用可能なコンポーネントとして構築できます。
 
 #### デメリット:
-- \*\*デフォルト値のリスク\*\*: `account`が`nil`のときにデフォルトの`Date()`を使う場合、ユーザーが意図しないデフォルトのデータを操作してしまうリスクがあります。このデフォルト値が意図的でない場合、バグの原因になる可能性があります。
-- \*\*やや複雑\*\*: `Binding`の`get`と`set`を適切に管理するため、コードが若干複雑になります。特に、`account`が`nil`のときの処理を間違うと予期しない動作を引き起こす可能性があります。
+- **デフォルト値のリスク**: `account`が`nil`のときにデフォルトの`Date()`を使う場合、ユーザーが意図しないデフォルトのデータを操作してしまうリスクがあります。このデフォルト値が意図的でない場合、バグの原因になる可能性があります。
+- **やや複雑**: `Binding`の`get`と`set`を適切に管理するため、コードが若干複雑になります。特に、`account`が`nil`のときの処理を間違うと予期しない動作を引き起こす可能性があります。
 
 ### どちらが良いか？
 
-- \*\*1の方法\*\*が良いケース:
+- **1の方法**が良いケース:
   - `account`が`nil`の状態が意味を持つ場合（例: ローディング中やエラー時などにUIで何か特別な表示をする場合）。
   - シンプルで直感的な実装を好む場合。
   - SwiftUIの状態管理に慣れていない、またはコードの可読性を優先したい場合。
 
-- \*\*2の方法\*\*が良いケース:
+- **2の方法**が良いケース:
   - `account`が存在しないときにデフォルト値を使用しても問題ない場合。
   - 柔軟性を持たせた再利用可能なコンポーネントを構築したい場合。
   - プロパティの更新ロジックを細かく管理したい場合。
 
-総合的には、\*\*シンプルさと直感的なコードを優先する場合は1\*\*を、\*\*柔軟性や再利用性を重視する場合は2\*\*を選ぶのが良いでしょう。
+総合的には、**シンプルさと直感的なコードを優先する場合は1**を、**柔軟性や再利用性を重視する場合は2**を選ぶのが良いでしょう。
 
 ---
 
@@ -357,8 +357,8 @@ struct ContentView: View {
 
                 List {
                     Picker("", selection: account.gender) {
-                        ForEach(Gender.allCases, id: \\.self) { gender in
-                            Text("\\(gender.displayName)")
+                        ForEach(Gender.allCases, id: \.self) { gender in
+                            Text("\(gender.displayName)")
                                 .tag(gender)
                         }
                     }
@@ -497,14 +497,14 @@ struct ContentView: View {
 
 struct TextInputView: View {
     @Binding var inputText: String
-    @Environment(\\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     @FocusState private var isFocused: Bool
 
     var title: String
     var placeholder: String
 
     var body: some View {
-        GeometryReader { \_ in
+        GeometryReader { _ in
             VStack {
                 Spacer()
 

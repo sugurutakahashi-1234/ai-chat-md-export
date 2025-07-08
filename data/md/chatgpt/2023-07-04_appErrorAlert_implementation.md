@@ -18,7 +18,7 @@ public struct SimpleCloseAppErrorAlertModifier: ViewModifier {
 
     public func body(content: Content) -&gt; some View {
         content
-            .alert(isPresented: $shouldShowAlert, error: appError) { \_ in
+            .alert(isPresented: $shouldShowAlert, error: appError) { _ in
                 Button(cancelButtonText, role: .cancel) {}
             } message: { error in
                 error.alertMessage
@@ -134,7 +134,7 @@ public extension AppError {
     }
 
     var debugDescription: String {
-        "\\(self), \\(alertBody.title), \\(alertBody.message)"
+        "\(self), \(alertBody.title), \(alertBody.message)"
     }
 }
 

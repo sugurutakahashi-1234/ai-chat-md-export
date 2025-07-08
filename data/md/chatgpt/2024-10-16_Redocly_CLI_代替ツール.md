@@ -16,30 +16,30 @@ redocly-cli の代わり
 
 Redocly CLI の代わりとして利用できるオープンソースのツールには、以下のものがあります。これらは OpenAPI ドキュメントの生成、バリデーション、レンダリング、またはホスティングをサポートするものです。
 
-1. \*\*Swagger Codegen\*\*  
-   - \*\*概要\*\*: Swagger Codegen は、OpenAPI ドキュメントからクライアントやサーバーのコードを生成するためのツールです。
-   - \*\*代替機能\*\*: Redocly のように API ドキュメントを生成する機能は直接的には持っていませんが、Swagger Editor と併用することで OpenAPI ドキュメントの編集やプレビューをサポートします。
-   - \*\*リンク\*\*: \[Swagger Codegen\](https://github.com/swagger-api/swagger-codegen)
+1. **Swagger Codegen**  
+   - **概要**: Swagger Codegen は、OpenAPI ドキュメントからクライアントやサーバーのコードを生成するためのツールです。
+   - **代替機能**: Redocly のように API ドキュメントを生成する機能は直接的には持っていませんが、Swagger Editor と併用することで OpenAPI ドキュメントの編集やプレビューをサポートします。
+   - **リンク**: [Swagger Codegen](https://github.com/swagger-api/swagger-codegen)
 
-2. \*\*OpenAPI Generator\*\*  
-   - \*\*概要\*\*: Swagger Codegen のフォーク版で、OpenAPI のさまざまなバージョンに対応しています。クライアントやサーバーのコード生成に加えて、OpenAPI ドキュメントの生成・バリデーションも行えます。
-   - \*\*代替機能\*\*: コード生成に加えて、API ドキュメントの静的な HTML 生成が可能です。
-   - \*\*リンク\*\*: \[OpenAPI Generator\](https://openapi-generator.tech/)
+2. **OpenAPI Generator**  
+   - **概要**: Swagger Codegen のフォーク版で、OpenAPI のさまざまなバージョンに対応しています。クライアントやサーバーのコード生成に加えて、OpenAPI ドキュメントの生成・バリデーションも行えます。
+   - **代替機能**: コード生成に加えて、API ドキュメントの静的な HTML 生成が可能です。
+   - **リンク**: [OpenAPI Generator](https://openapi-generator.tech/)
 
-3. \*\*Spectral\*\*  
-   - \*\*概要\*\*: Spectral は、OpenAPI などの API ドキュメントのバリデーションや linting を行うためのルールベースのツールです。
-   - \*\*代替機能\*\*: Redocly のバリデーション機能の代替として利用できます。独自のルールを設定し、API ドキュメントの品質チェックが行えます。
-   - \*\*リンク\*\*: \[Spectral\](https://github.com/stoplightio/spectral)
+3. **Spectral**  
+   - **概要**: Spectral は、OpenAPI などの API ドキュメントのバリデーションや linting を行うためのルールベースのツールです。
+   - **代替機能**: Redocly のバリデーション機能の代替として利用できます。独自のルールを設定し、API ドキュメントの品質チェックが行えます。
+   - **リンク**: [Spectral](https://github.com/stoplightio/spectral)
 
-4. \*\*Swagger UI\*\*  
-   - \*\*概要\*\*: Swagger UI は、OpenAPI ドキュメントを動的に読み込み、Web 上で視覚化するためのツールです。HTML と JavaScript のパッケージとして提供されており、Redoc の代替としてドキュメントをホスティングできます。
-   - \*\*代替機能\*\*: Redoc のように API ドキュメントを表示するためのインターフェースを提供します。
-   - \*\*リンク\*\*: \[Swagger UI\](https://swagger.io/tools/swagger-ui/)
+4. **Swagger UI**  
+   - **概要**: Swagger UI は、OpenAPI ドキュメントを動的に読み込み、Web 上で視覚化するためのツールです。HTML と JavaScript のパッケージとして提供されており、Redoc の代替としてドキュメントをホスティングできます。
+   - **代替機能**: Redoc のように API ドキュメントを表示するためのインターフェースを提供します。
+   - **リンク**: [Swagger UI](https://swagger.io/tools/swagger-ui/)
 
-5. \*\*Docusaurus\*\* + \*\*Swagger UI\*\* または \*\*Redoc\*\*  
-   - \*\*概要\*\*: Docusaurus は、静的サイトジェネレーターで、API ドキュメントのホスティングやカスタマイズされたドキュメントページの作成に便利です。これに Swagger UI や Redoc を組み合わせることで、完全なドキュメントポータルを構築できます。
-   - \*\*代替機能\*\*: Redocly のような柔軟な API ドキュメントポータルを作成できます。
-   - \*\*リンク\*\*: \[Docusaurus\](https://docusaurus.io/)
+5. **Docusaurus** + **Swagger UI** または **Redoc**  
+   - **概要**: Docusaurus は、静的サイトジェネレーターで、API ドキュメントのホスティングやカスタマイズされたドキュメントページの作成に便利です。これに Swagger UI や Redoc を組み合わせることで、完全なドキュメントポータルを構築できます。
+   - **代替機能**: Redocly のような柔軟な API ドキュメントポータルを作成できます。
+   - **リンク**: [Docusaurus](https://docusaurus.io/)
 
 これらのツールは、Redocly CLI の代替や補完として使用でき、プロジェクトに合わせて適切なツールを選択することができます。
 

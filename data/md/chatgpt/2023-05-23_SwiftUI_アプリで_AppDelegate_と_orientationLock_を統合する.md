@@ -188,7 +188,7 @@ UIDevice.current.setValue(3, forKey: "orientation") みたいな処理は必要�
 ## 🤖 アシスタント
 *2023/5/23 14:34:04*
 
-私が提供したソリューションでは、UIの向きは AppDelegate の `application(\_:supportedInterfaceOrientationsFor:)` 関数を通じて制御されます。具体的には、OrientationManagerのorientationLockプロパティが更新されると、この関数が再評価され、適切な向きが選択されます。
+私が提供したソリューションでは、UIの向きは AppDelegate の `application(_:supportedInterfaceOrientationsFor:)` 関数を通じて制御されます。具体的には、OrientationManagerのorientationLockプロパティが更新されると、この関数が再評価され、適切な向きが選択されます。
 
 `UIDevice.current.setValue(3, forKey: "orientation")` のようなコードは、強制的にデバイスの現在の向きを変更するために使われますが、それは通常推奨されない手法です。この手法はプライベートAPI（この場合は "orientation" キー）を使っていて、このようなAPIの使用はアップルによって禁止されています。プライベートAPIを使用したアプリはApp Storeに登録できない可能性があります。
 

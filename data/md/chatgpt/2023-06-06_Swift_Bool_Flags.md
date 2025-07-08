@@ -61,14 +61,14 @@ public struct UserDefaultsManager {
     
     public init(userDefaults: UserDefaults = .standard) {
         // UserDefaults を .standard に入れ替えられるようにをどの UserDefaults をつかえるようにするか再設定している
-        \_isFirstAppLaunch = UserDefaultsWrapper(key: .isFirstAppLaunch, defaultValue: true)
-        \_isFirstAppLaunch.updateUserDefaults(userDefaults)
+        _isFirstAppLaunch = UserDefaultsWrapper(key: .isFirstAppLaunch, defaultValue: true)
+        _isFirstAppLaunch.updateUserDefaults(userDefaults)
 
-        \_isFirstPermissionGrantedShown = UserDefaultsWrapper(key: .isFirstPermissionGrantedShown, defaultValue: true)
-        \_isFirstPermissionGrantedShown.updateUserDefaults(userDefaults)
+        _isFirstPermissionGrantedShown = UserDefaultsWrapper(key: .isFirstPermissionGrantedShown, defaultValue: true)
+        _isFirstPermissionGrantedShown.updateUserDefaults(userDefaults)
 
-        \_isFirstCalibrationSetted = UserDefaultsWrapper(key: .isFirstCalibrationSetted, defaultValue: true)
-        \_isFirstCalibrationSetted.updateUserDefaults(userDefaults)
+        _isFirstCalibrationSetted = UserDefaultsWrapper(key: .isFirstCalibrationSetted, defaultValue: true)
+        _isFirstCalibrationSetted.updateUserDefaults(userDefaults)
     }
 }
 
@@ -177,9 +177,9 @@ PassthroughSubject の変数名は XXXSubject がいいか XXXPublisher がよ�
 
 ただし、変数名を決める際には以下の2つの観点から考えることができます：
 
-1. \*\*役割\*\*：変数がどのような役割を果たすかによって変数名を選ぶことができます。もし主な役割がデータの再配信であれば、`XXXSubject`という名前が適しているかもしれません。一方、もし主な役割がデータの配信であれば、`XXXPublisher`という名前が適しているかもしれません。
+1. **役割**：変数がどのような役割を果たすかによって変数名を選ぶことができます。もし主な役割がデータの再配信であれば、`XXXSubject`という名前が適しているかもしれません。一方、もし主な役割がデータの配信であれば、`XXXPublisher`という名前が適しているかもしれません。
 
-2. \*\*一貫性\*\*：プロジェクト内での一貫性も重要です。もしプロジェクト内で`Subject`を`XXXSubject`と名付ける慣習があるなら、それに従うべきです。同様に、もし`XXXPublisher`という慣習があるなら、それに従うべきです。
+2. **一貫性**：プロジェクト内での一貫性も重要です。もしプロジェクト内で`Subject`を`XXXSubject`と名付ける慣習があるなら、それに従うべきです。同様に、もし`XXXPublisher`という慣習があるなら、それに従うべきです。
 
 したがって、どちらが「よい」かは主に使用される文脈によります。具体的な使用方法やプロジェクトの命名規則に基づいて適切な名前を選ぶことをお勧めします。
 

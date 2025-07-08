@@ -13,9 +13,9 @@ public struct ImageItem: Identifiable {
     public let id = UUID().uuidString
     public let image: UIImage
     public let timestamp: Double
-    public let emotionPredictResults: \[EmotionAnalysisResult\]
+    public let emotionPredictResults: [EmotionAnalysisResult]
 
-    public init(image: UIImage, timestamp: Double, emotionPredictResults: \[EmotionAnalysisResult\]) {
+    public init(image: UIImage, timestamp: Double, emotionPredictResults: [EmotionAnalysisResult]) {
         self.image = image
         self.timestamp = timestamp
         self.emotionPredictResults = emotionPredictResults

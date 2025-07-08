@@ -24,21 +24,21 @@ Swiftで以下のようなjsonが来て、
 
 {
   "type": "text",
-  "max\_length": 300
+  "max_length": 300
 }
 
 {
   "type": "integer",
-  "enum": \[1, 2, 3, 4, 5\]
+  "enum": [1, 2, 3, 4, 5]
 }
 
 {
   "type": "array",
   "items": {
     "type": "text",
-    "enum": \["ラーメン", "カツ丼", "焼肉"\]
+    "enum": ["ラーメン", "カツ丼", "焼肉"]
   },
-  "max\_length": 2
+  "max_length": 2
 }
 
 ---

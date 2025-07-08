@@ -8,9 +8,9 @@
 *2024/12/8 0:35:41*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-8JMgsfd5YcEXp2pGpvGLv6",
-  "size\_bytes": 44863,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-8JMgsfd5YcEXp2pGpvGLv6",
+  "size_bytes": 44863,
   "width": 499,
   "height": 420,
   "fovea": null,
@@ -18,37 +18,37 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
-debug\_menu\_page を追加して、DebugMenuPageからは各画面すべての遷移ができるようにしてほしい。
+debug_menu_page を追加して、DebugMenuPageからは各画面すべての遷移ができるようにしてほしい。
 
 // Package imports:
-import 'package:go\_router/go\_router.dart';
+import 'package:go_router/go_router.dart';
 
 // Project imports:
-import 'package:flutter\_sample\_app/pages/account\_page.dart';
-import 'package:flutter\_sample\_app/pages/notification\_list\_page.dart';
-import 'pages/guild\_page.dart';
-import 'pages/login\_page.dart';
-import 'pages/map\_page.dart';
-import 'pages/tab\_page.dart';
+import 'package:flutter_sample_app/pages/account_page.dart';
+import 'package:flutter_sample_app/pages/notification_list_page.dart';
+import 'pages/guild_page.dart';
+import 'pages/login_page.dart';
+import 'pages/map_page.dart';
+import 'pages/tab_page.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/login',
-  routes: \[
+  routes: [
     GoRoute(
       path: '/login',
       builder: (context, state) =&gt; const LoginPage(),
     ),
     GoRoute(
-      path: '/notification\_list',
+      path: '/notification_list',
       builder: (context, state) =&gt; const NotificationListPage(),
     ),
     GoRoute(
@@ -57,38 +57,38 @@ final GoRouter router = GoRouter(
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =&gt; TabPage(navigationShell: navigationShell),
-      branches: \[
+      branches: [
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: '/map',
               builder: (context, state) =&gt; const MapPage(),
             ),
-          \],
+          ],
         ),
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: '/guild',
               builder: (context, state) =&gt; const GuildPage(),
             ),
-          \],
+          ],
         ),
-      \],
+      ],
     ),
-  \],
+  ],
 );
 
 // Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:openapi/openapi.dart';
 
 // Project imports:
-import 'package:flutter\_sample\_app/providers/current\_user.dart';
+import 'package:flutter_sample_app/providers/current_user.dart';
 
 class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
@@ -371,12 +371,12 @@ class DeviceInfoPage extends StatelessWidget {
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:openapi/openapi.dart';
 
 // Project imports:
-import 'package:flutter\_sample\_app/providers/current\_user.dart';
+import 'package:flutter_sample_app/providers/current_user.dart';
 
 class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
@@ -544,28 +544,28 @@ class LoginPage extends HookConsumerWidget {
 ## 👤 ユーザー
 *2024/12/8 0:50:15*
 
-device\_infoは debug\_menuから歯科遷移できない
+device_infoは debug_menuから歯科遷移できない
 GoRoute(
-  path: '/device\_info',
+  path: '/device_info',
   builder: (context, state) =&gt; const DeviceInfoPage(),
 ),
 // Package imports:
-import 'package:flutter\_sample\_app/pages/debug\_menu\_page.dart';
-import 'package:go\_router/go\_router.dart';
+import 'package:flutter_sample_app/pages/debug_menu_page.dart';
+import 'package:go_router/go_router.dart';
 
 // Project imports:
-import 'package:flutter\_sample\_app/pages/account\_page.dart';
-import 'package:flutter\_sample\_app/pages/notification\_list\_page.dart';
-import 'pages/guild\_page.dart';
-import 'pages/login\_page.dart';
-import 'pages/map\_page.dart';
-import 'pages/tab\_page.dart';
+import 'package:flutter_sample_app/pages/account_page.dart';
+import 'package:flutter_sample_app/pages/notification_list_page.dart';
+import 'pages/guild_page.dart';
+import 'pages/login_page.dart';
+import 'pages/map_page.dart';
+import 'pages/tab_page.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/login',
-  routes: \[
+  routes: [
     GoRoute(
-      path: '/debug\_menu',
+      path: '/debug_menu',
       builder: (context, state) =&gt; const DebugMenuPage(),
     ),
     GoRoute(
@@ -573,7 +573,7 @@ final GoRouter router = GoRouter(
       builder: (context, state) =&gt; const LoginPage(),
     ),
     GoRoute(
-      path: '/notification\_list',
+      path: '/notification_list',
       builder: (context, state) =&gt; const NotificationListPage(),
     ),
     GoRoute(
@@ -582,26 +582,26 @@ final GoRouter router = GoRouter(
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =&gt; TabPage(navigationShell: navigationShell),
-      branches: \[
+      branches: [
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: '/map',
               builder: (context, state) =&gt; const MapPage(),
             ),
-          \],
+          ],
         ),
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: '/guild',
               builder: (context, state) =&gt; const GuildPage(),
             ),
-          \],
+          ],
         ),
-      \],
+      ],
     ),
-  \],
+  ],
 );
 
 ---
@@ -795,7 +795,7 @@ class DeviceInfoPage extends StatelessWidget {
 ## 👤 ユーザー
 *2024/12/8 0:51:04*
 
-階層的に debug\_menu -&gt; device\_info なんだ
+階層的に debug_menu -&gt; device_info なんだ
 
 ---
 

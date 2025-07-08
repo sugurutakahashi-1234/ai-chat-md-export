@@ -55,7 +55,7 @@ Lalalalalala dear tear
 
 行き止まりから落とし穴。どうりで悲劇のヒロインフラグ
 顔を洗いリセットして覚悟を決めたならMake UP
-流した汗の粒\_キラ！
+流した汗の粒_キラ！
 心に残ってる言葉
 1
 ウインクして時を止めて
@@ -69,7 +69,7 @@ Lalalalalala dear tear
 教えてくれたね
 時が過ぎてもどん
 あなたが勇気くれる
-\* Repeat
+* Repeat
 全速力で駆け抜けてく日々の一滴の車思いきり泣いてたくさん笑って
 純度100パーセント
 沈んでく夕日に
@@ -87,7 +87,7 @@ Lalalalalala dear tear
 ビルの隙間には冷たい風吹き抜けて
 弱さも受け入れて
 強く生きて行くよ
-\* Repeat
+* Repeat
 Lalalalalalalalalala
 Lalalalalala dear tear
 Lalalalalalalalalala
@@ -151,7 +151,7 @@ Lalalalalala dear tear
 
 行き止まりから落とし穴。どうりで悲劇のヒロインフラグ  
 顔を洗いリセットして覚悟を決めたならMake UP  
-流した汗の粒\_キラ！  
+流した汗の粒_キラ！  
 心に残ってる言葉  
 1  
 ウインクして時を止めて  
@@ -165,7 +165,7 @@ Lalalalalala dear tear
 教えてくれたね  
 時が過ぎてもどん  
 あなたが勇気くれる  
-\* Repeat  
+* Repeat  
 全速力で駆け抜けてく日々の一滴の車思いきり泣いてたくさん笑って  
 純度100パーセント  
 沈んでく夕日に  
@@ -183,7 +183,7 @@ Lalalalalala dear tear
 ビルの隙間には冷たい風吹き抜けて  
 弱さも受け入れて  
 強く生きて行くよ  
-\* Repeat  
+* Repeat  
 Lalalalalalalalalala  
 Lalalalalala dear tear  
 Lalalalalalalalalala  

@@ -15,12 +15,12 @@ public struct TalkBox: Sendable, Identifiable, Hashable {
     public let hasUnreadThread: Bool
     public let isBookmarked: Bool
     public let isMuted: Bool
-    public let threads: \[TalkThread\]
-    public let accounts: \[Account\]
+    public let threads: [TalkThread]
+    public let accounts: [Account]
 }
 
 extension TalkBox {
-    func updatedName(\_ newName: String) -&gt; TalkBox {
+    func updatedName(_ newName: String) -&gt; TalkBox {
         
     }
 }
@@ -57,7 +57,7 @@ This method returns a new `TalkBox` instance with the `name` updated to `newName
 ## 👤 ユーザー
 *2024/8/23 16:57:14*
 
-func updatedIsMuted(\_ newIsMuted: Bool) -&gt; TalkBox {}
+func updatedIsMuted(_ newIsMuted: Bool) -&gt; TalkBox {}
 
 ---
 

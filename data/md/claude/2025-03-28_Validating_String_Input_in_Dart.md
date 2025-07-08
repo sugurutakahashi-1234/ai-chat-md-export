@@ -11,15 +11,15 @@
 どうすればいいか？
 
 import 'dart:io';
-import 'package:device\_info\_plus/device\_info\_plus.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:package\_info\_plus/package\_info\_plus.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/base\_uri\_provider.dart';
-import 'package:snpit\_guild\_app/presentation/providers/secure\_storage/access\_token.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/base_uri_provider.dart';
+import 'package:snpit_guild_app/presentation/providers/secure_storage/access_token.dart';
 
-part 'dio\_provider.g.dart';
+part 'dio_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 Future&lt;Dio&gt; dio(Ref ref) async {
@@ -58,13 +58,13 @@ Future&lt;Dio&gt; dio(Ref ref) async {
       baseUrl: baseUri.toString(),
       headers: {
         'Content-Type': 'application/json',
-        'package\_name': packageInfo.packageName, // ae.zealnova.snpitguild
-        'app\_version': packageInfo.version, // 0.0.1
-        'build\_number': packageInfo.buildNumber, // 1
-        'system\_name': systemName, // iOS or Android
-        'system\_version': systemVersion, // 18.4 or 34
-        'model\_name': modelName, // iPhone 16 Pro or Redmi 14C
-        'system\_info': systemInfo, // 全情報
+        'package_name': packageInfo.packageName, // ae.zealnova.snpitguild
+        'app_version': packageInfo.version, // 0.0.1
+        'build_number': packageInfo.buildNumber, // 1
+        'system_name': systemName, // iOS or Android
+        'system_version': systemVersion, // 18.4 or 34
+        'model_name': modelName, // iPhone 16 Pro or Redmi 14C
+        'system_info': systemInfo, // 全情報
       },
       connectTimeout: const Duration(seconds: 30),
       sendTimeout: const Duration(seconds: 30),
@@ -76,7 +76,7 @@ Future&lt;Dio&gt; dio(Ref ref) async {
     InterceptorsWrapper(
       onRequest: (options, handler) async {
         final accessToken = await ref.read(accessTokenNotifierProvider.future);
-        options.headers\['access\_token'\] = accessToken;
+        options.headers['access_token'] = accessToken;
 
         return handler.next(options);
       },
@@ -365,7 +365,7 @@ systemInfo = sanitizeForHeader(androidInfo.toString());
 
 String makeSafeForHeader(String input) {
   // ASCII印字可能文字(スペース~チルダ)のみを残す正規表現
-  return input.replaceAll(RegExp(r'\[^\\x20-\\x7E\]'), '\_')
+  return input.replaceAll(RegExp(r'[^\x20-\x7E]'), '_')
       .substring(0, min(input.length, 200));
 }
 

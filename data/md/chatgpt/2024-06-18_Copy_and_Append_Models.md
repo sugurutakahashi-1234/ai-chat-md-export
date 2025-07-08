@@ -119,7 +119,7 @@ generate_diagram "--direction TD --test --product" "all_targets"
 ## 👤 ユーザー
 *2024/6/18 15:00:31*
 
-順番的には generate\_diagram "--direction TD --test --product" "all\_targets" の後に実行してほしい
+順番的には generate_diagram "--direction TD --test --product" "all_targets" の後に実行してほしい
 
 ---
 
@@ -191,12 +191,12 @@ echo "$append_content" >> "$destination_file"
 ## 👤 ユーザー
 *2024/6/18 15:02:54*
 
-以下は mermaid\_output\_path の変数を使ってほしい。
+以下は mermaid_output_path の変数を使ってほしい。
 
-source\_file="asset/mermaid/my\_targets.mmd"
-destination\_file="asset/mermaid/my\_targets\_with\_app.mmd"
+source_file="asset/mermaid/my_targets.mmd"
+destination_file="asset/mermaid/my_targets_with_app.mmd"
 
-また、Mermaid CLI を使って SVG 画像を生成してほしい。できれば generate\_diagram に swift package --package-path $tools\_package plugin depermaid $input\_options &gt; "$output\_file\_mmd" を実行するかしないかのフラグを渡して、うまく共通化したい。
+また、Mermaid CLI を使って SVG 画像を生成してほしい。できれば generate_diagram に swift package --package-path $tools_package plugin depermaid $input_options &gt; "$output_file_mmd" を実行するかしないかのフラグを渡して、うまく共通化したい。
 
 ---
 
@@ -589,14 +589,14 @@ generate_diagram input_options="" output_base="my_targets_with_app" generate_mer
 これだと改行が入ってしまう
 
 # 追記する内容
-append\_content="
+append_content="
     UICatalogLayer--&gt;PresentationLayer
-    DevelopmentApp(\[Development App\])--&gt;PresentationLayer
-    StagingApp(\[Staging App\])--&gt;PresentationLayer
-    StagingApp(\[Staging App\])--&gt;DependencyInjectionLayer
-    ProductionApp(\[Production App\])--&gt;PresentationLayer
-    ProductionApp(\[Production App\])--&gt;DependencyInjectionLayer
-    UICatalogApp(\[UICatalog App\])--&gt;UICatalogLayer
+    DevelopmentApp([Development App])--&gt;PresentationLayer
+    StagingApp([Staging App])--&gt;PresentationLayer
+    StagingApp([Staging App])--&gt;DependencyInjectionLayer
+    ProductionApp([Production App])--&gt;PresentationLayer
+    ProductionApp([Production App])--&gt;DependencyInjectionLayer
+    UICatalogApp([UICatalog App])--&gt;UICatalogLayer
 "
 
 ---
@@ -760,68 +760,68 @@ generate_diagram "" "my_targets_with_app" false
 ## 👤 ユーザー
 *2024/6/18 15:24:30*
 
-my\_targets.mmd で my\_targets\_with\_app.mmd を行なったのと同様に
-library\_targets で　library\_targets\_with\_app を行いたい。そしてなるべく処理を共通化したい。
+my_targets.mmd で my_targets_with_app.mmd を行なったのと同様に
+library_targets で　library_targets_with_app を行いたい。そしてなるべく処理を共通化したい。
 
 #!/bin/bash
 
-tools\_package="./SmallTalkPackage"
-mermaid\_output\_path="./asset/mermaid"
-image\_output\_path="./asset/image"
+tools_package="./SmallTalkPackage"
+mermaid_output_path="./asset/mermaid"
+image_output_path="./asset/image"
 
-generate\_diagram() {
-    local input\_options=$1
-    local output\_base=$2
-    local generate\_mermaid=$3
+generate_diagram() {
+    local input_options=$1
+    local output_base=$2
+    local generate_mermaid=$3
 
-    local output\_file\_mmd="$mermaid\_output\_path/${output\_base}.mmd"
-    local output\_file\_svg="$image\_output\_path/${output\_base}.svg"
+    local output_file_mmd="$mermaid_output_path/${output_base}.mmd"
+    local output_file_svg="$image_output_path/${output_base}.svg"
 
-    if \[ "$generate\_mermaid" = true \]; then
+    if [ "$generate_mermaid" = true ]; then
         # Swift Package Plugin を使って mermaid ファイルを生成
-        swift package --package-path $tools\_package plugin depermaid $input\_options &gt; "$output\_file\_mmd"
+        swift package --package-path $tools_package plugin depermaid $input_options &gt; "$output_file_mmd"
 
         # 最初の1行と最後の2行を削除
-        sed -i '' '1d' "$output\_file\_mmd"
-        sed -i '' '$d' "$output\_file\_mmd"
-        sed -i '' '$d' "$output\_file\_mmd"
+        sed -i '' '1d' "$output_file_mmd"
+        sed -i '' '$d' "$output_file_mmd"
+        sed -i '' '$d' "$output_file_mmd"
     fi
 
     # Mermaid CLI を使って SVG 画像を生成
-    npx @mermaid-js/mermaid-cli -i "$output\_file\_mmd" -o "$output\_file\_svg"
+    npx @mermaid-js/mermaid-cli -i "$output_file_mmd" -o "$output_file_svg"
 }
 
 # ダイアグラム生成の呼び出し
-generate\_diagram "--direction TD" "my\_targets" true
-generate\_diagram "--direction TD --test" "test\_targets" true
-generate\_diagram "--direction TD --product" "library\_targets" true
-generate\_diagram "--direction TD --test --product" "all\_targets" true
+generate_diagram "--direction TD" "my_targets" true
+generate_diagram "--direction TD --test" "test_targets" true
+generate_diagram "--direction TD --product" "library_targets" true
+generate_diagram "--direction TD --test --product" "all_targets" true
 
 # ここからファイルコピーと追記の処理
 
 # ファイルパスの定義
-source\_file="$mermaid\_output\_path/my\_targets.mmd"
-destination\_file="$mermaid\_output\_path/my\_targets\_with\_app.mmd"
+source_file="$mermaid_output_path/my_targets.mmd"
+destination_file="$mermaid_output_path/my_targets_with_app.mmd"
 
 # 追記する内容
-append\_content="    UICatalogLayer--&gt;PresentationLayer
-    DevelopmentApp(\[Development App\])--&gt;PresentationLayer
-    StagingApp(\[Staging App\])--&gt;PresentationLayer
-    StagingApp(\[Staging App\])--&gt;DependencyInjectionLayer
-    ProductionApp(\[Production App\])--&gt;PresentationLayer
-    ProductionApp(\[Production App\])--&gt;DependencyInjectionLayer
-    UICatalogApp(\[UICatalog App\])--&gt;UICatalogLayer
+append_content="    UICatalogLayer--&gt;PresentationLayer
+    DevelopmentApp([Development App])--&gt;PresentationLayer
+    StagingApp([Staging App])--&gt;PresentationLayer
+    StagingApp([Staging App])--&gt;DependencyInjectionLayer
+    ProductionApp([Production App])--&gt;PresentationLayer
+    ProductionApp([Production App])--&gt;DependencyInjectionLayer
+    UICatalogApp([UICatalog App])--&gt;UICatalogLayer
 "
 
 # コピー処理
-cp -p "$source\_file" "$destination\_file"
+cp -p "$source_file" "$destination_file"
 
 # ファイルの下に追記
-echo "$append\_content" &gt;&gt; "$destination\_file"
-sed -i '' '$d' "$destination\_file"
+echo "$append_content" &gt;&gt; "$destination_file"
+sed -i '' '$d' "$destination_file"
 
 # コピー後のファイルに対して Mermaid CLI を使って SVG 画像を生成
-generate\_diagram "" "my\_targets\_with\_app" false
+generate_diagram "" "my_targets_with_app" false
 
 ---
 
@@ -919,6 +919,6 @@ generate_diagram "" "library_targets_with_app" false
 ## 👤 ユーザー
 *2024/6/18 15:25:34*
 
-generate\_diagram の処理も共通化できないのか？
+generate_diagram の処理も共通化できないのか？
 
 ---

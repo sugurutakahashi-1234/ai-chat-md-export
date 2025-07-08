@@ -18,8 +18,8 @@ flutterでLinearProgressIndicatorのThemaを指定したい。
           ),
 
 import 'package:flutter/material.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_pallet.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_pallet.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
 
 final ThemeData appTheme = ThemeData(
   primaryColor: ColorToken.primary,

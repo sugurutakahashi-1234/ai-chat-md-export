@@ -16,11 +16,11 @@ import Foundation
 
 @MainActor
 final class TalkThreadListPresenter&lt;Dependency: TalkThreadListPresenterDependency&gt;: ObservableObject {
-    @Published private(set) var talkThreads: \[TalkThread\] = \[\]
+    @Published private(set) var talkThreads: [TalkThread] = []
     @Published var selectedTalkThread: TalkThread?
 
     @Published var isPlaying: Bool = false
-    @Published var recordingVolumeLevels: \[Double\] = \[\]
+    @Published var recordingVolumeLevels: [Double] = []
     static var volumeLevelColumns: Int {
         20
     }
@@ -44,10 +44,10 @@ final class TalkThreadListPresenter&lt;Dependency: TalkThreadListPresenterDepend
         // スワイプしたら再生を止める
         $selectedTalkThread
             .removeDuplicates()
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 self?.audioPlayTask?.cancel()
                 self?.dependency.audioPlayDriver.pause()
-                self?.recordingVolumeLevels = \[\]
+                self?.recordingVolumeLevels = []
             }
             .store(in: &cancellables)
 
@@ -56,8 +56,8 @@ final class TalkThreadListPresenter&lt;Dependency: TalkThreadListPresenterDepend
             .assign(to: &$isPlaying)
 
         dependency.audioPlayDriver.recordingVolumeLevelPublisher
-            .scan(\[Double\]()) { accumulated, newValue in
-                (accumulated + \[newValue\]).suffix(Self.volumeLevelColumns)
+            .scan([Double]()) { accumulated, newValue in
+                (accumulated + [newValue]).suffix(Self.volumeLevelColumns)
             }
             .receive(on: DispatchQueue.main)
             .assign(to: &$recordingVolumeLevels)
@@ -83,7 +83,7 @@ final class TalkThreadListPresenter&lt;Dependency: TalkThreadListPresenterDepend
                 selectedTalkThread = firstTalkThread
             }
         } catch {
-            dependency.logDriver.errorLog("\\(error)")
+            dependency.logDriver.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -92,7 +92,7 @@ final class TalkThreadListPresenter&lt;Dependency: TalkThreadListPresenterDepend
     func onDisappear() {
         audioPlayTask?.cancel()
         dependency.audioPlayDriver.pause()
-        recordingVolumeLevels = \[\]
+        recordingVolumeLevels = []
 
         dependency.logDriver.onDisappearLog()
     }
@@ -110,7 +110,7 @@ final class TalkThreadListPresenter&lt;Dependency: TalkThreadListPresenterDepend
             return
         }
 
-        let audioURLs: \[URL\] = selectedTalkThread.posts.sorted(by: \\.postedAt, order: .ascending).reduce(into: \[selectedTalkThread.audioUrl\]) { result, post in
+        let audioURLs: [URL] = selectedTalkThread.posts.sorted(by: \.postedAt, order: .ascending).reduce(into: [selectedTalkThread.audioUrl]) { result, post in
             switch post.postType {
             case .audio(let talkAudio):
                 result.append(talkAudio.audioUrl)
@@ -131,7 +131,7 @@ final class TalkThreadListPresenter&lt;Dependency: TalkThreadListPresenterDepend
             } catch is CancellationError {
                 dependency.logDriver.debugLog("Task was cancelled.")
             } catch {
-                dependency.logDriver.errorLog("\\(error)")
+                dependency.logDriver.errorLog("\(error)")
                 appError = error.toAppError
                 showAlert = true
             }

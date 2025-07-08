@@ -11,19 +11,19 @@
 
 {
   "data": null,
-  "errors": \[
+  "errors": [
     {
-      "path": \[
-        "update\_user"
-      \],
+      "path": [
+        "update_user"
+      ],
       "locations": null,
-      "message": "Cannot return null for non-nullable type: 'User' within parent 'Mutation' (/update\_user)"
+      "message": "Cannot return null for non-nullable type: 'User' within parent 'Mutation' (/update_user)"
     }
-  \]
+  ]
 }
 
 mutation MyMutation {
-  update\_user(name: "") {
+  update_user(name: "") {
     id
   }
 }
@@ -33,7 +33,7 @@ mutation MyMutation {
 ## 🤖 アシスタント
 *2023/6/24 22:41:42*
 
-エラーメッセージ「Cannot return null for non-nullable type: 'User' within parent 'Mutation' (/update\_user)」を見ると、GraphQL APIに対して送られた`update\_user`というMutationがエラーを引き起こしていることがわかります。
+エラーメッセージ「Cannot return null for non-nullable type: 'User' within parent 'Mutation' (/update_user)」を見ると、GraphQL APIに対して送られた`update_user`というMutationがエラーを引き起こしていることがわかります。
 
 具体的には、このMutationがnullを返しているのに、スキーマ定義では`User`型がnullを許容していないからです。つまり、このMutationは何かしらの`User`オブジェクトを必ず返すべきですが、何らかの理由でそれが実行されていないという事です。
 

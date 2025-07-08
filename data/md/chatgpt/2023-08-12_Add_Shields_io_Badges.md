@@ -17,16 +17,16 @@ https://github.com/Viagate/emomil-app-ios のページです。
 
 ## 運用
 
-- \[iOSチーム 運用ルール\](https://www.notion.so/viagate/iOS-dbc7686e505e470bbd25daa0ee8f03fd)
+- [iOSチーム 運用ルール](https://www.notion.so/viagate/iOS-dbc7686e505e470bbd25daa0ee8f03fd)
 
 ## 環境構築
 
-- \[環境構築\](./Docs/setup.md)
-- \[SwiftFormatの設定\](./Docs/swiftformat.md)
+- [環境構築](./Docs/setup.md)
+- [SwiftFormatの設定](./Docs/swiftformat.md)
 
 ## 資料
 
-- \[アーキテクチャ図\](./Docs/architecture.md)
+- [アーキテクチャ図](./Docs/architecture.md)
 
 ---
 

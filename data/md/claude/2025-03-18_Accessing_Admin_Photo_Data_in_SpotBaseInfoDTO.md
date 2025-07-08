@@ -63,12 +63,12 @@ This implementation satisfies your requirement to access admin photo information
 
 おなじくspotPhotosを持つ型があったんだけど、うまく共通化して表現できないか？そもそもspotPhotosから映えるようにすればいいかな？
 
-import 'package:guild\_api/guild\_api.dart';
+import 'package:guild_api/guild_api.dart';
 
 extension SpotBaseInfoDtoX on SpotBaseInfoDTO {
   String get adminPhotoUrl {
     final adminPhoto = spotPhotos.firstWhere(
-      (photo) =&gt; photo.photoType == SpotPhotoDTOPhotoTypeEnum.ADMIN\_PHOTOS,
+      (photo) =&gt; photo.photoType == SpotPhotoDTOPhotoTypeEnum.ADMIN_PHOTOS,
       orElse: () =&gt; throw StateError('No admin photo found for spot $spotId'),
     );
     return adminPhoto.photoUrl;
@@ -76,7 +76,7 @@ extension SpotBaseInfoDtoX on SpotBaseInfoDTO {
 
   String get adminPhotoId {
     final adminPhoto = spotPhotos.firstWhere(
-      (photo) =&gt; photo.photoType == SpotPhotoDTOPhotoTypeEnum.ADMIN\_PHOTOS,
+      (photo) =&gt; photo.photoType == SpotPhotoDTOPhotoTypeEnum.ADMIN_PHOTOS,
       orElse: () =&gt; throw StateError('No admin photo found for spot $spotId'),
     );
     return adminPhoto.photoId;
@@ -86,7 +86,7 @@ extension SpotBaseInfoDtoX on SpotBaseInfoDTO {
 extension SpotWithLocationInfoDtoX on SpotWithLocationInfoDTO {
   String get adminPhotoUrl {
     final adminPhoto = spotPhotos.firstWhere(
-      (photo) =&gt; photo.photoType == SpotPhotoDTOPhotoTypeEnum.ADMIN\_PHOTOS,
+      (photo) =&gt; photo.photoType == SpotPhotoDTOPhotoTypeEnum.ADMIN_PHOTOS,
       orElse: () =&gt; throw StateError('No admin photo found for spot $spotId'),
     );
     return adminPhoto.photoUrl;
@@ -94,7 +94,7 @@ extension SpotWithLocationInfoDtoX on SpotWithLocationInfoDTO {
 
   String get adminPhotoId {
     final adminPhoto = spotPhotos.firstWhere(
-      (photo) =&gt; photo.photoType == SpotPhotoDTOPhotoTypeEnum.ADMIN\_PHOTOS,
+      (photo) =&gt; photo.photoType == SpotPhotoDTOPhotoTypeEnum.ADMIN_PHOTOS,
       orElse: () =&gt; throw StateError('No admin photo found for spot $spotId'),
     );
     return adminPhoto.photoId;

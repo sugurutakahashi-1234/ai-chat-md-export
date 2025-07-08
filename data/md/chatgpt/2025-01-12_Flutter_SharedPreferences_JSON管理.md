@@ -7,36 +7,36 @@
 ## 👤 ユーザー
 *2025/1/12 19:18:21*
 
-Flutterでshared\_preferencesでjsonで簡単に扱うことのできるライブラリ
+Flutterでshared_preferencesでjsonで簡単に扱うことのできるライブラリ
 
 ---
 
 ## 🔧 ツール
 *2025/1/12 19:18:37*
 
-\*\*Piecing together solutions\*\*
+**Piecing together solutions**
 
-I’m considering libraries like "json\_shared\_preferences" for handling JSON in Flutter, but also exploring alternatives such as "shared\_preferences" and other storage options like "easy\_local\_storage" and "flutter\_cache\_manager".
+I’m considering libraries like "json_shared_preferences" for handling JSON in Flutter, but also exploring alternatives such as "shared_preferences" and other storage options like "easy_local_storage" and "flutter_cache_manager".
 
-\*\*Reviewing libraries\*\*
+**Reviewing libraries**
 
-I'm considering "shared\_preference\_helper" and checking alternatives like "get\_storage," "flutter secure storage," and "json\_preference" for managing JSON in Flutter.
+I'm considering "shared_preference_helper" and checking alternatives like "get_storage," "flutter secure storage," and "json_preference" for managing JSON in Flutter.
 
-\*\*Investigating options\*\*
+**Investigating options**
 
-I'm digging into libraries like "json\_serializable" with a wrapper around shared\_preferences, and "flutter secure storage" for integrated JSON support, considering their suitability for managing JSON in Flutter.
+I'm digging into libraries like "json_serializable" with a wrapper around shared_preferences, and "flutter secure storage" for integrated JSON support, considering their suitability for managing JSON in Flutter.
 
-\*\*Weighing alternatives\*\*
+**Weighing alternatives**
 
-I’m comparing various options like "PrefHelper" and "JsonConverter" for managing JSON with shared\_preferences. Considering "flutter\_secure\_storage" for integrated JSON support and "GetStorage" for lightweight storage.
+I’m comparing various options like "PrefHelper" and "JsonConverter" for managing JSON with shared_preferences. Considering "flutter_secure_storage" for integrated JSON support and "GetStorage" for lightweight storage.
 
-\*\*Balancing options\*\*
+**Balancing options**
 
-I'm weighing the convenience of managing JSON with "shared\_preferences" versus considering "GetStorage" or "Hive" for automatic transformations, factoring in ease of manual encoding/decoding.
+I'm weighing the convenience of managing JSON with "shared_preferences" versus considering "GetStorage" or "Hive" for automatic transformations, factoring in ease of manual encoding/decoding.
 
-\*\*Evaluating shared\_preferences\_helper\*\*
+**Evaluating shared_preferences_helper**
 
-Considering "shared\_preferences\_helper" for simplifying shared\_preferences operations and converting JSON, despite its uncertain maintenance status. Also thinking about combining shared\_preferences with json\_annotation/json\_serializable for custom object management.
+Considering "shared_preferences_helper" for simplifying shared_preferences operations and converting JSON, despite its uncertain maintenance status. Also thinking about combining shared_preferences with json_annotation/json_serializable for custom object management.
 
 ---
 

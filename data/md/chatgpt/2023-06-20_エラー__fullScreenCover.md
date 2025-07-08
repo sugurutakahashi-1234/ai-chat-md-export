@@ -11,11 +11,11 @@
 
 
 public struct GazeTrackCalibrationView: View {
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var presenter: GazeTrackCalibrationPresenter
 
     public init(orientation: AppUIInterfaceOrientation) {
-        \_presenter = StateObject(wrappedValue: GazeTrackCalibrationPresenter(orientation: orientation))
+        _presenter = StateObject(wrappedValue: GazeTrackCalibrationPresenter(orientation: orientation))
     }
 
     public var body: some View {
@@ -27,7 +27,7 @@ public struct GazeTrackCalibrationView: View {
                 // TODO: Spacer()によらない高さ調整（横画面対応も考えると難しかも？）
                 Spacer()
                 Spacer()
-                Text("スマートフォンを顔から30cmほどはなして、\\n画面上の赤い丸を見続けてください")
+                Text("スマートフォンを顔から30cmほどはなして、\n画面上の赤い丸を見続けてください")
                     .typographyStyle(.body2)
                     .foregroundColor(CoreAssets.Color.Neutral.white.swiftUIColor)
                     .multilineTextAlignment(.center)
@@ -103,18 +103,18 @@ final class GazeTrackCalibrationPresenter: ObservableObject {
             .assign(to: &$calibrationPoint)
 
         gazeTrackCalibrationInteractor.progressPublisher
-            .map { Int($0 \* 100) }
+            .map { Int($0 * 100) }
             .assign(to: &$progressPercentage)
 
         gazeTrackCalibrationInteractor.completedCalibrationPublisher
-            .sink { \[weak self\] calibrationData in
+            .sink { [weak self] calibrationData in
                 self?.completedCalibration(calibrationData: calibrationData)
             }
             .store(in: &cancellableSet)
 
         gazeTrackCalibrationInteractor.errorPublisher
-            .sink { \[weak self\] error in
-                AppLogger.debugLog("gaze track calibration interactor error: \\(error)", level: .error)
+            .sink { [weak self] error in
+                AppLogger.debugLog("gaze track calibration interactor error: \(error)", level: .error)
                 self?.error = error
                 self?.shouldShowAlert = true
             }
@@ -126,7 +126,7 @@ final class GazeTrackCalibrationPresenter: ObservableObject {
             try gazeTrackCalibrationInteractor.startCalibration()
             isCalibrating = true
         } catch {
-            AppLogger.debugLog("start calibration error: \\(error)", level: .error)
+            AppLogger.debugLog("start calibration error: \(error)", level: .error)
             self.error = error
             shouldShowAlert = true
         }
@@ -142,7 +142,7 @@ final class GazeTrackCalibrationPresenter: ObservableObject {
 }
 
 private extension GazeTrackCalibrationPresenter {
-    func completedCalibration(calibrationData: \[Double\]) {
+    func completedCalibration(calibrationData: [Double]) {
         switch orientation {
         case .portrait:
             userDefaultsManager.portraitCalibrationData = calibrationData
@@ -153,7 +153,7 @@ private extension GazeTrackCalibrationPresenter {
         do {
             try gazeTrackCalibrationInteractor.endCalibration()
         } catch {
-            AppLogger.debugLog("end calibration error: \\(error)", level: .error)
+            AppLogger.debugLog("end calibration error: \(error)", level: .error)
             self.error = error
             shouldShowAlert = true
         }

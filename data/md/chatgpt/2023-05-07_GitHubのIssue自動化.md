@@ -103,20 +103,20 @@ curl -H "Accept: application/vnd.github+json" \
 ## 👤 ユーザー
 *2023/5/7 20:32:14*
 
-gh\_token=${{ secrets.GITHUB\_TOKEN }} のところなんだけど、ちょっとわからないのでおしえてほしい
+gh_token=${{ secrets.GITHUB_TOKEN }} のところなんだけど、ちょっとわからないのでおしえてほしい
 
 ---
 
 ## 🤖 アシスタント
 *2023/5/7 20:32:52*
 
-`gh\_token=${{ secrets.GITHUB\_TOKEN }}` という記述は、GitHub Actionsが実行される際に、リポジトリにアクセスするために使用される特別なトークンを設定しています。
+`gh_token=${{ secrets.GITHUB_TOKEN }}` という記述は、GitHub Actionsが実行される際に、リポジトリにアクセスするために使用される特別なトークンを設定しています。
 
 GitHub Actionsは、リポジトリに対して一定の権限を持ち、自動化されたタスクを実行するために使われます。このトークンは、GitHubによって自動的に生成され、アクションが実行されるたびに、一時的なものとして提供されます。これにより、リポジトリの認証や権限管理が簡単になります。
 
-`secrets.GITHUB\_TOKEN` は、GitHubが提供する秘密情報の一種で、GitHub Actionsの中で利用できます。`secrets` は、リポジトリの設定から追加・管理できる機密情報を保管するための仕組みです。これらの秘密情報は、GitHub Actionsのワークフローの中で、`${{ secrets.SECRET\_NAME }}` のような構文で参照できます。
+`secrets.GITHUB_TOKEN` は、GitHubが提供する秘密情報の一種で、GitHub Actionsの中で利用できます。`secrets` は、リポジトリの設定から追加・管理できる機密情報を保管するための仕組みです。これらの秘密情報は、GitHub Actionsのワークフローの中で、`${{ secrets.SECRET_NAME }}` のような構文で参照できます。
 
-このコードの例では、`gh\_token=${{ secrets.GITHUB\_TOKEN }}` として、一時的なGitHubトークンを `gh\_token` という環境変数に設定しています。この `gh\_token` は、後で `curl` コマンドでAPIリクエストの認証に使用されます。
+このコードの例では、`gh_token=${{ secrets.GITHUB_TOKEN }}` として、一時的なGitHubトークンを `gh_token` という環境変数に設定しています。この `gh_token` は、後で `curl` コマンドでAPIリクエストの認証に使用されます。
 
 ---
 
@@ -130,7 +130,7 @@ GitHub Actionsは、リポジトリに対して一定の権限を持ち、自動
 ## 🤖 アシスタント
 *2023/5/7 20:35:06*
 
-`GITHUB\_TOKEN` は、GitHub Actionsの実行時に自動的に生成される特別なトークンであり、手動で作成する必要はありません。GitHub Actionsが実行されると、リポジトリに対する一定の権限を持つこのトークンが自動的に提供されます。
+`GITHUB_TOKEN` は、GitHub Actionsの実行時に自動的に生成される特別なトークンであり、手動で作成する必要はありません。GitHub Actionsが実行されると、リポジトリに対する一定の権限を持つこのトークンが自動的に提供されます。
 
 ただし、もし手動でPersonal Access Tokenを作成して、GitHub APIを使って操作を行いたい場合は、以下の手順で作成できます。
 
@@ -140,7 +140,7 @@ GitHub Actionsは、リポジトリに対して一定の権限を持ち、自動
 4. Tokenの名前を付け、必要なスコープ（権限）を選択します。リポジトリへのアクセスが必要な場合は、"repo" スコープを選択してください。他にも、必要に応じてスコープを追加できます。
 5. 最後に "Generate token" ボタンをクリックして、新しいPersonal Access Tokenが生成されます。このトークンは、表示されるのはこの時だけなので、安全な場所にコピーして保存しておいてください。
 
-GitHub Actionsのワークフローでこの手動で作成したPersonal Access Tokenを使用する場合は、リポジトリの "Secrets" に追加して、`${{ secrets.SECRET\_NAME }}` のような構文で参照できるようにします。ただし、GitHub Actionsであれば、通常は自動生成される `GITHUB\_TOKEN` を使用することが推奨されます。
+GitHub Actionsのワークフローでこの手動で作成したPersonal Access Tokenを使用する場合は、リポジトリの "Secrets" に追加して、`${{ secrets.SECRET_NAME }}` のような構文で参照できるようにします。ただし、GitHub Actionsであれば、通常は自動生成される `GITHUB_TOKEN` を使用することが推奨されます。
 
 ---
 

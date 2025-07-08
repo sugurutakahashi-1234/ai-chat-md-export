@@ -52,7 +52,7 @@ public extension AppError {
     // 実質的に alert のタイトルになる（LocalizedError の errorDescription の override である）
     var errorDescription: String? {
         switch self {
-        case .customMessageError(message: \_):
+        case .customMessageError(message: _):
             return "エラー"
         case .generalError:
             return "エラー"
@@ -78,7 +78,7 @@ public extension AppError {
 
     var alertMessageText: String {
         switch self {
-        case .customMessageError(message: \_):
+        case .customMessageError(message: _):
             return "エラーが発生しました"
         case .generalError:
             return "エラーが発生しました"
@@ -286,7 +286,7 @@ public struct SimpleCloseAppErrorAlertModifier: ViewModifier {
 
     public func body(content: Content) -&gt; some View {
         content
-            .alert(isPresented: $shouldShowAlert, error: appError) { \_ in
+            .alert(isPresented: $shouldShowAlert, error: appError) { _ in
                 Button(cancelButtonText, role: .cancel) {}
             } message: { error in
                 error.alertMessage

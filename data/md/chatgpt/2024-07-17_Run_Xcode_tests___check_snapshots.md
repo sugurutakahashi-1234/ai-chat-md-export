@@ -9,7 +9,7 @@
 
 以下のディレクトリを削除して、
 
-./SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_
+./SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__
 
 xcodebuild test -scheme ViewSnapshotTest -destination 'platform=iOS Simulator,name=iPhone 15'
 
@@ -17,7 +17,7 @@ xcodebuild test -scheme ViewSnapshotTest -destination 'platform=iOS Simulator,na
 
 以下のディレクトリについて、git上での変更がないか調べて
 
-./SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_
+./SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__
 
 変更があれば、それを、なければ成功のようなスクリプトを書いてほしい
 
@@ -78,7 +78,7 @@ fi
 ## 👤 ユーザー
 *2024/7/17 13:12:32*
 
-SNAPSHOTS\_DIR は 小文字にしてほしい
+SNAPSHOTS_DIR は 小文字にしてほしい
 
 ---
 
@@ -179,30 +179,30 @@ fi
 #!/bin/sh
 
 # 指定されたディレクトリを削除
-snapshots\_dir="./SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_"
+snapshots_dir="./SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__"
 
-if \[ -d "$snapshots\_dir" \]; then
-  rm -rf "$snapshots\_dir"
-  echo "Deleted directory: $snapshots\_dir"
+if [ -d "$snapshots_dir" ]; then
+  rm -rf "$snapshots_dir"
+  echo "Deleted directory: $snapshots_dir"
 else
-  echo "Directory not found: $snapshots\_dir"
+  echo "Directory not found: $snapshots_dir"
 fi
 
 # Xcodeのテストを実行して出力を抑制
 xcodebuild test -scheme ViewSnapshotTest -destination 'platform=iOS Simulator,name=iPhone 15' -quiet | grep -E "Test (Suite|Case)|error:"
 
 # テストの終了ステータスを確認
-if \[ $? -ne 0 \]; then
+if [ $? -ne 0 ]; then
   echo "Xcode tests failed."
   exit 1
 fi
 
 # gitのステータスを確認して変更があるかどうかをチェック
-git\_status=$(git status --porcelain "$snapshots\_dir")
+git_status=$(git status --porcelain "$snapshots_dir")
 
-if \[ -n "$git\_status" \]; then
+if [ -n "$git_status" ]; then
   echo "There are changes in the snapshots directory:"
-  echo "$git\_status"
+  echo "$git_status"
 else
   echo "No changes detected. Tests successful."
 fi
@@ -257,30 +257,30 @@ fi
 #!/bin/sh
 
 # 指定されたディレクトリを削除
-snapshots\_dir="./SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_"
+snapshots_dir="./SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__"
 
-if \[ -d "$snapshots\_dir" \]; then
-    rm -rf "$snapshots\_dir"
-    echo "Deleted directory: $snapshots\_dir"
+if [ -d "$snapshots_dir" ]; then
+    rm -rf "$snapshots_dir"
+    echo "Deleted directory: $snapshots_dir"
 else
-    echo "Directory not found: $snapshots\_dir"
+    echo "Directory not found: $snapshots_dir"
 fi
 
 # Xcodeのテストを実行して出力を抑制
 xcodebuild test -scheme ViewSnapshotTest -destination 'platform=iOS Simulator,name=iPhone 15' -quiet
 
 # テストの終了ステータスを確認
-if \[ $? -ne 0 \]; then
+if [ $? -ne 0 ]; then
     echo "Xcode tests failed."
     exit 1
 fi
 
 # gitのステータスを確認して変更があるかどうかをチェック
-git\_status=$(git status --porcelain "$snapshots\_dir")
+git_status=$(git status --porcelain "$snapshots_dir")
 
-if \[ -n "$git\_status" \]; then
+if [ -n "$git_status" ]; then
     echo "There are changes in the snapshots directory:"
-    echo "$git\_status"
+    echo "$git_status"
 else
     echo "No changes detected. Tests successful."
 fi

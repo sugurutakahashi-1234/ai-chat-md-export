@@ -58,9 +58,9 @@ struct ContentView_Previews: PreviewProvider {
 WaveformView を TalkThreadListScrollViewの中心の高さにしたいんだ。今のままだと上の方に表示されてしまう
 
 struct WaveformView: View {
-    let volumeLevels: \[Double\]
+    let volumeLevels: [Double]
 
-    init(volumeLevels: \[Double\], isRandomized: Bool = false) {
+    init(volumeLevels: [Double], isRandomized: Bool = false) {
         if isRandomized {
             self.volumeLevels = volumeLevels.shuffled()
         } else {
@@ -76,12 +76,12 @@ struct WaveformView: View {
             let spacing = rectangleWidth / 2
 
             HStack(spacing: spacing) {
-                ForEach(0..&lt;volumeLevels.count, id: \\.self) { index in
+                ForEach(0..&lt;volumeLevels.count, id: \.self) { index in
                     VStack {
                         Spacer()
                         Rectangle()
                             .fill(Color.accentColor)
-                            .frame(width: rectangleWidth, height: volumeLevels\[index\] \* 100)
+                            .frame(width: rectangleWidth, height: volumeLevels[index] * 100)
                             .cornerRadius(8)
                         Spacer()
                     }
@@ -99,12 +99,12 @@ public struct TalkThreadListView&lt;Dependency: RootDIContainerDependency&gt;: V
 
     public init(dependency: Dependency) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: TalkThreadListPresenter(dependency: dependency))
+        _presenter = .init(wrappedValue: TalkThreadListPresenter(dependency: dependency))
     }
 
     public var body: some View {
         VStack {
-            if #available(iOS 17.0, \*) {
+            if #available(iOS 17.0, *) {
                 ZStack {
                     TalkThreadListScrollView(selectedTalkThread: $presenter.selectedTalkThread, talkThreads: presenter.talkThreads, spacing: 16, padding: 32, onTapTalkThread: presenter.onTapTalkThread, onTapStampReaction: presenter.onTapStampReaction)
                     
@@ -192,10 +192,10 @@ public struct TalkThreadListView&lt;Dependency: RootDIContainerDependency&gt;: V
     }
 }
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 struct TalkThreadListScrollView: View {
     @Binding var selectedTalkThread: TalkThread?
-    let talkThreads: \[TalkThread\]
+    let talkThreads: [TalkThread]
     let spacing: CGFloat
     let padding: CGFloat
     let onTapTalkThread: () async -&gt; Void
@@ -205,15 +205,15 @@ struct TalkThreadListScrollView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: spacing) {
-                    ForEach(talkThreads, id: \\.self) { talkThread in
+                    ForEach(talkThreads, id: \.self) { talkThread in
                         CustomAsyncImageView(imageUrl: talkThread.imageUrl)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .frame(width: geometry.size.width - padding \* 2)
+                            .frame(width: geometry.size.width - padding * 2)
 
                             // これがないと長押しのタップ領域が正しく反映されない
                             // Ref: 【SwiftUI】contentShapeでTap領域を広げる - https://qiita.com/shiz/items/96585bddbc442683b78c
                             .contentShape(RoundedRectangle(cornerRadius: 8))
-                            // Ref: \[SwiftUI\] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
+                            // Ref: [SwiftUI] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
                             .contextMenu {
                                 Button {
                                     onTapStampReaction()
@@ -247,12 +247,12 @@ struct TalkThreadListScrollView: View {
 
 import PreviewSnapshots
 
-struct TalkThreadListView\_Previews: PreviewProvider, SnapshotTestable {
+struct TalkThreadListView_Previews: PreviewProvider, SnapshotTestable {
     static var snapshots: PreviewSnapshots&lt;RootDIContainerDependencyMock&gt; {
         .init(
-            configurations: \[
+            configurations: [
                 UITestPreviewType.placeholder.configuration,
-            \],
+            ],
             configure: { dependency in
                 TalkThreadListView(dependency: dependency)
                     .navigationStacked()

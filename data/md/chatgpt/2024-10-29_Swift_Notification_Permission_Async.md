@@ -12,8 +12,8 @@ Sending 'completion' risks causing data races; this is an error in the Swift 6 l
 class NotificationPermission {
     private static var center: UNUserNotificationCenter { .current() }
 
-    static func requestAuthorization(\_ completion: ((Bool, Error?) -&gt; Void)? = nil) {
-        let options: UNAuthorizationOptions = \[.alert, .badge, .sound\]
+    static func requestAuthorization(_ completion: ((Bool, Error?) -&gt; Void)? = nil) {
+        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
         center.requestAuthorization(options: options) { granted, error in
             DispatchQueue.main.async {
                 completion?(granted, error)
@@ -21,7 +21,7 @@ class NotificationPermission {
         }
     }
 
-    static func fetchAuthorizationStatus(\_ completion: ((UNAuthorizationStatus) -&gt; Void)? = nil) {
+    static func fetchAuthorizationStatus(_ completion: ((UNAuthorizationStatus) -&gt; Void)? = nil) {
         center.getNotificationSettings { settings in
             DispatchQueue.main.async {
                 completion?(settings.authorizationStatus)

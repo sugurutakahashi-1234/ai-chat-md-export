@@ -12,7 +12,7 @@ $rawPhoneNumber
             .map { rawPhoneNumber, isValidPhoneNumber in
                 switch (rawPhoneNumber.isEmpty, isValidPhoneNumber) {
                     
-                case (\_, \_):
+                case (_, _):
                     &lt;#code#&gt;
                 }
             }

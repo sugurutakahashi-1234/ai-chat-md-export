@@ -9,32 +9,32 @@
 
 以下をSwiftの型で表現して欲しい
 
-type Website implements Measurement @aws\_cognito\_user\_pools {
+type Website implements Measurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
-  site\_url: AWSURL
+  measurement_type: MeasurementType!
+  site_url: AWSURL
   instructions: String
-  acls: \[Acl!\]!
+  acls: [Acl!]!
   # 完了条件
-  complete\_conditions: CompleteConditions
+  complete_conditions: CompleteConditions
 }
 
 # タスク完了条件
 # and, or, conditionのいずれかが指定される
-type CompleteConditions @aws\_cognito\_user\_pools {
-  and: \[CompleteConditions\]
-  or: \[CompleteConditions\]
+type CompleteConditions @aws_cognito_user_pools {
+  and: [CompleteConditions]
+  or: [CompleteConditions]
   condition: InteractionCondition
 }
 
 # インタラクション
 # parametersにはProtobufのJSON形式で指定する
-type InteractionCondition @aws\_cognito\_user\_pools {
+type InteractionCondition @aws_cognito_user_pools {
   id: ID!
   description: String!
-  event\_type: String!
+  event_type: String!
   parameters: AWSJSON!
 }
 

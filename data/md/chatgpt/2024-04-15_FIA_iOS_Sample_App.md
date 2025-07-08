@@ -11,7 +11,7 @@
 
 # FIA Sample App
 
-このリポジトリは Swift で実装する iOS アプリの設計に Clean Architecture の設計概念を元にした \[Framework-Independent Architecture (FIA)\](https://github.com/suguruTakahashi-1234/framework-independent-architecture) を適応したサンプルアプリになります。
+このリポジトリは Swift で実装する iOS アプリの設計に Clean Architecture の設計概念を元にした [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) を適応したサンプルアプリになります。
 
 ---
 
@@ -22,7 +22,7 @@ Here's the translation to English:
 
 # FIA Sample App
 
-This repository contains a sample iOS app implemented in Swift, based on the design concept of Clean Architecture adapted to \[Framework-Independent Architecture (FIA)\](https://github.com/suguruTakahashi-1234/framework-independent-architecture).
+This repository contains a sample iOS app implemented in Swift, based on the design concept of Clean Architecture adapted to [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture).
 
 ---
 
@@ -40,7 +40,7 @@ This repository contains a sample iOS app implemented in Swift, based on the des
 
 # FIA Sample App
 
-This repository is a sample iOS app implemented in Swift, designed based on the Clean Architecture concept using the \[Framework-Independent Architecture (FIA)\](https://github.com/suguruTakahashi-1234/framework-independent-architecture) model.
+This repository is a sample iOS app implemented in Swift, designed based on the Clean Architecture concept using the [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) model.
 
 ---
 
@@ -71,8 +71,8 @@ If you're looking to use this as a description for the repository, it works very
 
 
 
-- \*\*アーキテクチャ\*\*
-  -  Clean Architecture の設計概念をベースにした \[Framework-Independent Architecture (FIA)\](https://github.com/suguruTakahashi-1234/framework-independent-architecture) の適応
+- **アーキテクチャ**
+  -  Clean Architecture の設計概念をベースにした [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) の適応
   - Swfit Package Manager によるマルチモジュール、マルチプロジェクト構成
 
 ---
@@ -82,8 +82,8 @@ If you're looking to use this as a description for the repository, it works very
 
 Here's the translation to English for your list:
 
-- \*\*Architecture\*\*
-  - Adaptation of \[Framework-Independent Architecture (FIA)\](https://github.com/suguruTakahashi-1234/framework-independent-architecture) based on the design concepts of Clean Architecture.
+- **Architecture**
+  - Adaptation of [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) based on the design concepts of Clean Architecture.
   - Multi-module, multi-project configuration via Swift Package Manager.
 
 ---

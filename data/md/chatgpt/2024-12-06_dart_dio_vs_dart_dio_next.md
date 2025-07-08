@@ -84,7 +84,7 @@ open api gen で dart-dio と dart-dio-next の違い
 ## 👤 ユーザー
 *2024/12/6 18:57:09*
 
-flutter pub run build\_runner build --delete-conflicting-outputs をディレクトリを指定して行いたい
+flutter pub run build_runner build --delete-conflicting-outputs をディレクトリを指定して行いたい
 
 ---
 
@@ -184,7 +184,7 @@ openapi-gen:
 	openapi-generator validate -i ./schema/openapi.yaml
 	openapi-generator generate -i ./schema/openapi.yaml -g dart-dio -o ./generated/openapi
 	cd generated/openapi
-	fvm flutter pub run build\_runner build --delete-conflicting-outputs
+	fvm flutter pub run build_runner build --delete-conflicting-outputs
 
 ---
 

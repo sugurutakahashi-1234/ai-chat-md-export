@@ -119,7 +119,7 @@ print(randomString)  // 例: "20483"
         guard n &gt; 0 else { return "" }
         
         // 数字の文字列を保持する配列
-        var digits: \[Character\] = \[\]
+        var digits: [Character] = []
         
         // 0を含めるために、ランダムな位置を選択
         let zeroPosition = Int.random(in: 0..&lt;n)
@@ -129,7 +129,7 @@ print(randomString)  // 例: "20483"
                 digits.append("0")
             } else {
                 let randomDigit = Int.random(in: 1...9)
-                digits.append(Character("\\(randomDigit)"))
+                digits.append(Character("\(randomDigit)"))
             }
         }
         

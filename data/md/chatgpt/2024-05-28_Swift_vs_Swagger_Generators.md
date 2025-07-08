@@ -33,40 +33,40 @@ Model set context updated.
 The two repositories you mentioned serve similar overarching purposes but cater to different ecosystems and have different approaches. Here’s a breakdown of their differences:
 
 ### Swagger Codegen
-\*\*Repository\*\*: \[swagger-api/swagger-codegen\](https://github.com/swagger-api/swagger-codegen)
+**Repository**: [swagger-api/swagger-codegen](https://github.com/swagger-api/swagger-codegen)
 
-\*\*Purpose\*\*: 
+**Purpose**: 
 - Swagger Codegen is designed to generate client libraries, server stubs, API documentation, and configuration files from an OpenAPI Specification (formerly known as Swagger).
 - It supports a wide variety of programming languages and frameworks, providing flexibility for developers working in different environments.
 
-\*\*Features\*\*:
-- \*\*Multi-language Support\*\*: It supports numerous programming languages, including Java, C#, Python, PHP, Ruby, Scala, and more.
-- \*\*Customizability\*\*: Users can customize the generated code using templates.
-- \*\*Community and Plugins\*\*: Has a large community and supports plugins for extended functionality.
+**Features**:
+- **Multi-language Support**: It supports numerous programming languages, including Java, C#, Python, PHP, Ruby, Scala, and more.
+- **Customizability**: Users can customize the generated code using templates.
+- **Community and Plugins**: Has a large community and supports plugins for extended functionality.
 
-\*\*Usage\*\*:
+**Usage**:
 - Ideal for projects requiring API client libraries or server stubs in multiple languages.
 - Useful in polyglot environments where multiple technologies are used.
 
 ### Swift OpenAPI Generator
-\*\*Repository\*\*: \[apple/swift-openapi-generator\](https://github.com/apple/swift-openapi-generator)
+**Repository**: [apple/swift-openapi-generator](https://github.com/apple/swift-openapi-generator)
 
-\*\*Purpose\*\*: 
+**Purpose**: 
 - Swift OpenAPI Generator is specifically designed to generate Swift client and server code from an OpenAPI specification.
 - It is tailored to integrate seamlessly with the Swift ecosystem, ensuring generated code adheres to Swift’s idioms and best practices.
 
-\*\*Features\*\*:
-- \*\*Swift-centric\*\*: Focuses exclusively on Swift, ensuring tight integration with Swift language features and conventions.
-- \*\*Concurrency Support\*\*: Generates code that takes advantage of Swift’s concurrency model.
-- \*\*Integration with Swift Packages\*\*: Supports Swift Package Manager for easy dependency management and integration.
+**Features**:
+- **Swift-centric**: Focuses exclusively on Swift, ensuring tight integration with Swift language features and conventions.
+- **Concurrency Support**: Generates code that takes advantage of Swift’s concurrency model.
+- **Integration with Swift Packages**: Supports Swift Package Manager for easy dependency management and integration.
 
-\*\*Usage\*\*:
+**Usage**:
 - Best suited for projects primarily developed in Swift.
 - Ideal for Swift developers looking to streamline the integration of OpenAPI-defined APIs into their Swift applications.
 
 ### Summary
-- \*\*Swagger Codegen\*\* is more versatile and supports multiple languages, making it suitable for diverse development environments.
-- \*\*Swift OpenAPI Generator\*\* is specialized for Swift, providing Swift-centric features and optimizations, making it ideal for Swift developers.
+- **Swagger Codegen** is more versatile and supports multiple languages, making it suitable for diverse development environments.
+- **Swift OpenAPI Generator** is specialized for Swift, providing Swift-centric features and optimizations, making it ideal for Swift developers.
 
 ---
 
@@ -83,40 +83,40 @@ The two repositories you mentioned serve similar overarching purposes but cater 
 それぞれのリポジトリの目的と特徴を以下に日本語で説明します。
 
 ### Swagger Codegen
-\*\*リポジトリ\*\*: \[swagger-api/swagger-codegen\](https://github.com/swagger-api/swagger-codegen)
+**リポジトリ**: [swagger-api/swagger-codegen](https://github.com/swagger-api/swagger-codegen)
 
-\*\*目的\*\*:
+**目的**:
 - Swagger Codegenは、OpenAPI Specification（旧称Swagger）からクライアントライブラリ、サーバースタブ、APIドキュメント、設定ファイルを生成するためのツールです。
 - 様々なプログラミング言語とフレームワークをサポートしており、異なる環境での開発に柔軟に対応できます。
 
-\*\*特徴\*\*:
-- \*\*多言語サポート\*\*: Java、C#、Python、PHP、Ruby、Scalaなど、多くのプログラミング言語をサポートしています。
-- \*\*カスタマイズ可能\*\*: テンプレートを使用して生成されたコードをカスタマイズすることができます。
-- \*\*コミュニティとプラグイン\*\*: 大きなコミュニティがあり、機能拡張のためのプラグインをサポートしています。
+**特徴**:
+- **多言語サポート**: Java、C#、Python、PHP、Ruby、Scalaなど、多くのプログラミング言語をサポートしています。
+- **カスタマイズ可能**: テンプレートを使用して生成されたコードをカスタマイズすることができます。
+- **コミュニティとプラグイン**: 大きなコミュニティがあり、機能拡張のためのプラグインをサポートしています。
 
-\*\*使用方法\*\*:
+**使用方法**:
 - 複数の言語でAPIクライアントライブラリやサーバースタブを必要とするプロジェクトに最適です。
 - 多言語環境で複数の技術が使用されている場合に便利です。
 
 ### Swift OpenAPI Generator
-\*\*リポジトリ\*\*: \[apple/swift-openapi-generator\](https://github.com/apple/swift-openapi-generator)
+**リポジトリ**: [apple/swift-openapi-generator](https://github.com/apple/swift-openapi-generator)
 
-\*\*目的\*\*:
+**目的**:
 - Swift OpenAPI Generatorは、OpenAPI仕様からSwiftのクライアントおよびサーバーコードを生成するためのツールです。
 - Swiftエコシステムとシームレスに統合するよう設計されており、生成されたコードがSwiftの慣習とベストプラクティスに従います。
 
-\*\*特徴\*\*:
-- \*\*Swiftに特化\*\*: Swiftに特化しており、Swiftの言語機能や規約と密接に統合されています。
-- \*\*並行処理サポート\*\*: Swiftの並行処理モデルを活用したコードを生成します。
-- \*\*Swiftパッケージとの統合\*\*: Swift Package Managerをサポートしており、依存関係の管理と統合が容易です。
+**特徴**:
+- **Swiftに特化**: Swiftに特化しており、Swiftの言語機能や規約と密接に統合されています。
+- **並行処理サポート**: Swiftの並行処理モデルを活用したコードを生成します。
+- **Swiftパッケージとの統合**: Swift Package Managerをサポートしており、依存関係の管理と統合が容易です。
 
-\*\*使用方法\*\*:
+**使用方法**:
 - 主にSwiftで開発されるプロジェクトに最適です。
 - Swift開発者がOpenAPIで定義されたAPIの統合を効率化するために理想的です。
 
 ### まとめ
-- \*\*Swagger Codegen\*\*は多言語対応で汎用性が高く、様々な開発環境に対応できます。
-- \*\*Swift OpenAPI Generator\*\*はSwiftに特化しており、Swift開発者にとって最適化された機能と利便性を提供します。
+- **Swagger Codegen**は多言語対応で汎用性が高く、様々な開発環境に対応できます。
+- **Swift OpenAPI Generator**はSwiftに特化しており、Swift開発者にとって最適化された機能と利便性を提供します。
 
 ---
 

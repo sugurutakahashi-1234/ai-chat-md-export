@@ -11,11 +11,11 @@ Swift で 以下の Identifiable ,CaseIterable を提供する SwiftUIForEachabl
 
 extension AudioFormat: Identifiable ,CaseIterable {
     public var id: String {
-        "\\(self)"
+        "\(self)"
     }
     
     public var name: String {
-        "\\(self)"
+        "\(self)"
     }
 }
 
@@ -64,11 +64,11 @@ enum AudioFormat: String, SwiftUIForEachable {
 extension SwiftUIForEachable で以下を提供してほしい
 
     public var id: String {
-        "\\(self)"
+        "\(self)"
     }
     
     public var name: String {
-        "\\(self)"
+        "\(self)"
     }
 }
 

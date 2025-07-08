@@ -26,8 +26,8 @@ struct Version: Comparable {
         self.patch = patch
     }
 
-    public init(\_ version: String) throws {
-        var numbers: \[Int\] = \[\]
+    public init(_ version: String) throws {
+        var numbers: [Int] = []
         for str in version.split(separator: ".") {
             if let number = Int(str) {
                 numbers.append(number)
@@ -38,9 +38,9 @@ struct Version: Comparable {
         guard numbers.count == 3 else {
             throw SampleError.sampleError
         }
-        major = numbers\[0\]
-        minor = numbers\[1\]
-        patch = numbers\[2\]
+        major = numbers[0]
+        minor = numbers[1]
+        patch = numbers[2]
     }
 
     public static func &lt; (lhs: Version, rhs: Version) -&gt; Bool {
@@ -64,7 +64,7 @@ protocol CloudStorageManagerProtocol: AnyObject {
 }
 
 public protocol DeviceInfoManagerProtocol: AnyObject {
-    /// Bundle.main.infoDictionary\["CFBundleShortVersionString"\]
+    /// Bundle.main.infoDictionary["CFBundleShortVersionString"]
     /// ex) 1.2.3
     var appVersion: String { get }
 }
@@ -119,10 +119,10 @@ final class ServiceStatusInteractor: ServiceStatusUseCase {
         let currentVersion = try Version(deviceInfoManager.appVersion)
         let newVersion = try Version(serviceStatus.appUpdateInfo.minimumRequiredAppVersion)
 
-        print("currentVersion: \\(currentVersion), newVersion: \\(newVersion)")
+        print("currentVersion: \(currentVersion), newVersion: \(newVersion)")
 
         if currentVersion &lt; newVersion {
-            print("requireAppUpdate, updateUrlString: \\(serviceStatus.appUpdateInfo.updateUrl)")
+            print("requireAppUpdate, updateUrlString: \(serviceStatus.appUpdateInfo.updateUrl)")
             return .requireAppUpdate(updateUrlString: serviceStatus.appUpdateInfo.updateUrl)
         }
 

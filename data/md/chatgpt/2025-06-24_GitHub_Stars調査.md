@@ -22,24 +22,24 @@ daisyUI
 
 以下の5つのGitHubリポジトリのスター数（2025年6月現在）とリンクになります：
 
-1. \*\*shadcn/ui\*\*  
+1. **shadcn/ui**  
    - ⭐ 約 89,600 スター citeturn0search5  
    - 🔗 https://github.com/shadcn-ui/ui
 
-2. \*\*Headless UI\*\*（tailwindlabs/headlessui）  
+2. **Headless UI**（tailwindlabs/headlessui）  
    - ⭐ 約 27,500 スター citeturn0search1  
    - 🔗 https://github.com/tailwindlabs/headlessui
 
-3. \*\*HeroUI\*\*（以前の NextUI；heroui-inc/heroui）  
+3. **HeroUI**（以前の NextUI；heroui-inc/heroui）  
    - ⭐ 約 24,600 スター citeturn0search2turn0search37  
    - 🔗 https://github.com/heroui-inc/heroui
 
-4. \*\*Radix UI\*\*（radix-ui/primitives を代表）  
+4. **Radix UI**（radix-ui/primitives を代表）  
    - ⭐ 約 17,400 スター（`primitives` パッケージ）citeturn0search8  
    - ※ 組織全体では合計約 20,300 スター citeturn0search46  
    - 🔗 https://github.com/radix-ui/primitives
 
-5. \*\*daisyUI\*\*（saadeghi/daisyui）  
+5. **daisyUI**（saadeghi/daisyui）  
    - ⭐ 約 37,300 スター citeturn0search4turn0search29  
    - 🔗 https://github.com/saadeghi/daisyui
 

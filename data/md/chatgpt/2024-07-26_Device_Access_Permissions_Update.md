@@ -16,7 +16,7 @@ public struct DeviceAccessView&lt;Dependency: RootDIContainerDependency&gt;: Vie
 
     public init(dependency: Dependency) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: DeviceAccessPresenter(dependency: dependency))
+        _presenter = .init(wrappedValue: DeviceAccessPresenter(dependency: dependency))
     }
 
     public var body: some View {
@@ -118,12 +118,12 @@ public struct DeviceAccessView&lt;Dependency: RootDIContainerDependency&gt;: Vie
 
 import PreviewSnapshots
 
-struct DeviceAccessView\_Previews: PreviewProvider, SnapshotTestable {
+struct DeviceAccessView_Previews: PreviewProvider, SnapshotTestable {
     static var snapshots: PreviewSnapshots&lt;RootDIContainerDependencyMock&gt; {
         .init(
-            configurations: \[
+            configurations: [
                 UITestPreviewType.placeholder.configuration,
-            \],
+            ],
             configure: { dependency in
                 DeviceAccessView(dependency: dependency)
                     .navigationStacked()
@@ -170,7 +170,7 @@ final class DeviceAccessPresenter&lt;Dependency: DeviceAccessPresenterDependency
     public init() {}
 
     public func requestPushNotification() async throws {
-        let isGranted = try await UNUserNotificationCenter.current().requestAuthorization(options: \[.alert, .badge, .sound\])
+        let isGranted = try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
 
         if isGranted {
             Task { @MainActor in
@@ -183,7 +183,7 @@ final class DeviceAccessPresenter&lt;Dependency: DeviceAccessPresenterDependency
     }
 
     public func requestRecording() async {
-        if #available(iOS 17.0, \*) {
+        if #available(iOS 17.0, *) {
             if await AVAudioApplication.requestRecordPermission() {
                 OSLogger.debugLog("granted")
             } else {
@@ -205,7 +205,7 @@ final class DeviceAccessPresenter&lt;Dependency: DeviceAccessPresenterDependency
 
     public func requestSpeechToText() {
         SFSpeechRecognizer.requestAuthorization { authStatus in
-            OSLogger.debugLog("\\(authStatus)")
+            OSLogger.debugLog("\(authStatus)")
             switch authStatus {
             case .authorized:
                 OSLogger.debugLog("OK")

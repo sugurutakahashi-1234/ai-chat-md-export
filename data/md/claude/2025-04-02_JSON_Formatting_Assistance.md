@@ -9,9 +9,9 @@
 
 jsonにして
 {
-  ios\_minimum\_app\_version: '0.0.1',
-  android\_minimum\_app\_version: '0.0.1',
-  maintenance: \*\*false\*\*,
+  ios_minimum_app_version: '0.0.1',
+  android_minimum_app_version: '0.0.1',
+  maintenance: **false**,
 }
 
 ---
@@ -40,22 +40,22 @@ The key changes I made:
 ## 👤 ユーザー
 *2025/4/2 11:30:27*
 
-import 'package:freezed\_annotation/freezed\_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'app\_config.freezed.dart';
-part 'app\_config.g.dart';
+part 'app_config.freezed.dart';
+part 'app_config.g.dart';
 
 @freezed
-class AppConfig with \_$AppConfig {
+class AppConfig with _$AppConfig {
   const factory AppConfig({
     // 予想外なのでメンテナンスモードをデフォルトで true に設定
     @Default(true) bool isMaintenance,
     @Default('0.0.1') String iosMinimumAppVersion,
     @Default('0.0.1') String androidMinimumAppVersion,
-  }) = \_AppConfig;
+  }) = _AppConfig;
 
   factory AppConfig.fromJson(Map&lt;String, dynamic&gt; json) =&gt;
-      \_$AppConfigFromJson(json);
+      _$AppConfigFromJson(json);
 }
 
 

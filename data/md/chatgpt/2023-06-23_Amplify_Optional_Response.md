@@ -14,34 +14,34 @@ Amplifyは導入されていることを前提に考えて欲しい。
 
 {
   "data": {
-    "get\_user\_attributes": null
+    "get_user_attributes": null
   }
 }
 
 let result = try await Amplify.API.query(request: .getUserAttribute())
         switch result {
         case .success(let resultData):
-            AppLogger.debugLog("Amplify API Success getUserAttribute(): \\(resultData)", category: .network)
+            AppLogger.debugLog("Amplify API Success getUserAttribute(): \(resultData)", category: .network)
          case .failure(let error):
-            AppLogger.debugLog("Amplify API Error getUserAttribute(): \\(error)", category: .network, level: .error)
+            AppLogger.debugLog("Amplify API Error getUserAttribute(): \(error)", category: .network, level: .error)
             throw error
 }
 
 extension GraphQLRequest {
 static func getUserAttribute() -&gt; GraphQLRequest&lt;UserAttributes&gt; {
-        let operationName = "get\_user\_attributes"
+        let operationName = "get_user_attributes"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
-            user\_id
-            date\_of\_birth
+        query \(operationName) {
+          \(operationName) {
+            user_id
+            date_of_birth
             gender
-            annual\_income
+            annual_income
             occupation
             industry
-            marital\_status
-            residence\_type
-            household\_size
+            marital_status
+            residence_type
+            household_size
             location
             education
           }
@@ -49,7 +49,7 @@ static func getUserAttribute() -&gt; GraphQLRequest&lt;UserAttributes&gt; {
         """
         return GraphQLRequest&lt;UserAttributes&gt;(
             document: document,
-            variables: \[:\],
+            variables: [:],
             responseType: UserAttributes.self,
             decodePath: operationName
         )
@@ -57,15 +57,15 @@ static func getUserAttribute() -&gt; GraphQLRequest&lt;UserAttributes&gt; {
 }
 
 public struct UserAttributes: Embeddable {
-  var user\_id: String
-  var date\_of\_birth: Temporal.Date
+  var user_id: String
+  var date_of_birth: Temporal.Date
   var gender: String?
-  var annual\_income: String?
+  var annual_income: String?
   var occupation: String?
   var industry: String?
-  var marital\_status: String?
-  var residence\_type: String?
-  var household\_size: String?
+  var marital_status: String?
+  var residence_type: String?
+  var household_size: String?
   var location: String?
   var education: String?
 }
@@ -75,15 +75,15 @@ public struct UserAttributes: Embeddable {
 extension UserAttributes {
   // MARK: - CodingKeys 
    public enum CodingKeys: String, ModelKey {
-    case user\_id
-    case date\_of\_birth
+    case user_id
+    case date_of_birth
     case gender
-    case annual\_income
+    case annual_income
     case occupation
     case industry
-    case marital\_status
-    case residence\_type
-    case household\_size
+    case marital_status
+    case residence_type
+    case household_size
     case location
     case education
   }
@@ -97,15 +97,15 @@ extension UserAttributes {
     model.pluralName = "UserAttributes"
     
     model.fields(
-      .field(userAttributes.user\_id, is: .required, ofType: .string),
-      .field(userAttributes.date\_of\_birth, is: .required, ofType: .date),
+      .field(userAttributes.user_id, is: .required, ofType: .string),
+      .field(userAttributes.date_of_birth, is: .required, ofType: .date),
       .field(userAttributes.gender, is: .optional, ofType: .string),
-      .field(userAttributes.annual\_income, is: .optional, ofType: .string),
+      .field(userAttributes.annual_income, is: .optional, ofType: .string),
       .field(userAttributes.occupation, is: .optional, ofType: .string),
       .field(userAttributes.industry, is: .optional, ofType: .string),
-      .field(userAttributes.marital\_status, is: .optional, ofType: .string),
-      .field(userAttributes.residence\_type, is: .optional, ofType: .string),
-      .field(userAttributes.household\_size, is: .optional, ofType: .string),
+      .field(userAttributes.marital_status, is: .optional, ofType: .string),
+      .field(userAttributes.residence_type, is: .optional, ofType: .string),
+      .field(userAttributes.household_size, is: .optional, ofType: .string),
       .field(userAttributes.location, is: .optional, ofType: .string),
       .field(userAttributes.education, is: .optional, ofType: .string)
     )

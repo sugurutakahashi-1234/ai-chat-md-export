@@ -39,13 +39,13 @@ public extension Acl {
     }
 }
 
-public extension \[Acl\] {
+public extension [Acl] {
     static var dummy: Self {
-        \[.dummy, .dummy, .dummy\]
+        [.dummy, .dummy, .dummy]
     }
 
     static var viagateDummy: Self {
-        \[.viagateDummy1, .viagateDummy2, .viagateDummy3\]
+        [.viagateDummy1, .viagateDummy2, .viagateDummy3]
     }
 }
 
@@ -451,15 +451,15 @@ public protocol DummyProvidable {
 }
 
 extension Array where Element: DummyProvidable {
-    public static var dummy: \[Element\] {
+    public static var dummy: [Element] {
         Array(repeating: Element.dummy, count: 5)
     }
     
-    public static func dummy(count: Int) -&gt; \[Element\] {
+    public static func dummy(count: Int) -&gt; [Element] {
         Array(repeating: Element.dummy, count: count)
     }
     
-    public static func dummy(countRange: ClosedRange&lt;Int&gt; = 0...3, isEmptyAllowed: Bool = false) -&gt; \[Element\] {
+    public static func dummy(countRange: ClosedRange&lt;Int&gt; = 0...3, isEmptyAllowed: Bool = false) -&gt; [Element] {
         let adjustedRange = isEmptyAllowed ? countRange : (Swift.max(1, countRange.lowerBound)...countRange.upperBound)
         let count = Int.random(in: adjustedRange)
         return Array(repeating: Element.dummy, count: count)
@@ -474,7 +474,7 @@ public extension Randomizable {
     static var random: Self {
         let all = Array(allCases)
         let index = Int.random(in: 0..&lt;all.count)
-        return all\[index\]
+        return all[index]
     }
 }
 

@@ -12,14 +12,14 @@ onPressed のstateのハンドリング処理をref.listenに書き換えて欲�
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:image\_cropper/image\_cropper.dart';
-import 'package:image\_picker/image\_picker.dart';
-import 'package:permission\_handler/permission\_handler.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/create\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/on\_created\_guild.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/create_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/on_created_guild.dart';
 
 class GuildCreatePage extends HookConsumerWidget {
   const GuildCreatePage({super.key});
@@ -37,7 +37,7 @@ class GuildCreatePage extends HookConsumerWidget {
         final croppedFile = await ImageCropper().cropImage(
           sourcePath: pickedFile.path,
           aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1), // 正方形にクロップ
-          uiSettings: \[
+          uiSettings: [
             AndroidUiSettings(
               hideBottomControls: true, // ボトムコントロール非表示
               lockAspectRatio: true, // アスペクト比を固定
@@ -45,7 +45,7 @@ class GuildCreatePage extends HookConsumerWidget {
             IOSUiSettings(
               aspectRatioLockEnabled: true, // アスペクト比を固定
             ),
-          \],
+          ],
         );
 
         if (croppedFile != null) {
@@ -70,10 +70,10 @@ class GuildCreatePage extends HookConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: \[
+          children: [
             imageFile.value != null
                 ? Column(
-                    children: \[
+                    children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.file(
@@ -88,7 +88,7 @@ class GuildCreatePage extends HookConsumerWidget {
                         onPressed: deleteImage,
                         child: const Text('画像を削除'),
                       ),
-                    \],
+                    ],
                   )
                 : const Text('画像が選択されていません'),
             const SizedBox(height: 20),
@@ -127,7 +127,7 @@ class GuildCreatePage extends HookConsumerWidget {
               },
               child: const Text('Create'),
             ),
-          \],
+          ],
         ),
       ),
     );
@@ -146,7 +146,7 @@ class GuildCreatePage extends HookConsumerWidget {
       case PermissionStatus.permanentlyDenied:
         // 永久に拒否されている場合
         if (context.mounted) {
-          \_showPermissionDialog(context);
+          _showPermissionDialog(context);
         }
         return false;
 
@@ -164,13 +164,13 @@ class GuildCreatePage extends HookConsumerWidget {
   }
 
   /// 設定ダイアログを表示
-  void \_showPermissionDialog(BuildContext context) {
+  void _showPermissionDialog(BuildContext context) {
     showDialog&lt;void&gt;(
       context: context,
       builder: (context) =&gt; AlertDialog(
         title: const Text('写真へのアクセス許可が必要です'),
         content: const Text('写真を選択するには、設定で写真へのアクセス許可をオンにしてください。'),
-        actions: \[
+        actions: [
           TextButton(
             onPressed: () {
               context.pop();
@@ -181,7 +181,7 @@ class GuildCreatePage extends HookConsumerWidget {
             onPressed: () async =&gt; openAppSettings(),
             child: const Text('設定を開く'),
           ),
-        \],
+        ],
       ),
     );
   }
@@ -199,14 +199,14 @@ class GuildCreatePage extends HookConsumerWidget {
 ## 🤖 アシスタント
 *2024/12/24 15:00:29*
 
-{"name": "guild\_create\_ref\_listen", "type": "code/dart", "content": "import 'dart:io';\\n\\nimport 'package:flutter/material.dart';\\nimport 'package:flutter\_hooks/flutter\_hooks.dart';\\nimport 'package:go\_router/go\_router.dart';\\nimport 'package:hooks\_riverpod/hooks\_riverpod.dart';\\nimport 'package:image\_cropper/image\_cropper.dart';\\nimport 'package:image\_picker/image\_picker.dart';\\nimport 'package:permission\_handler/permission\_handler.dart';\\nimport 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/create\_guild.dart';\\nimport 'package:snpit\_guild\_app/presentation/providers/on\_created\_guild.dart';\\n\\nclass GuildCreatePage extends HookConsumerWidget {\\n  const GuildCreatePage({super.key});\\n\\n  @override\\n  Widget build(BuildContext context, WidgetRef ref) {\\n    final imageFile = useState&lt;File?&gt;(null);\\n    final picker = useMemoized(ImagePicker.new);\\n\\n    /// 写真を選択して円状にクロップする\\n    Future&lt;void&gt; pickAndCropImage() async {\\n      final pickedFile = await picker.pickImage(source: ImageSource.gallery);\\n\\n      if (pickedFile != null) {\\n        final croppedFile = await ImageCropper().cropImage(\\n          sourcePath: pickedFile.path,\\n          aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1), // 正方形にクロップ\\n          uiSettings: \[\\n            AndroidUiSettings(\\n              hideBottomControls: true, // ボトムコントロール非表示\\n              lockAspectRatio: true, // アスペクト比を固定\\n            ),\\n            IOSUiSettings(\\n              aspectRatioLockEnabled: true, // アスペクト比を固定\\n            ),\\n          \],\\n        );\\n\\n        if (croppedFile != null) {\\n          imageFile.value = File(croppedFile.path);\\n        } else {\\n          debugPrint('クロップがキャンセルされました');\\n        }\\n      } else {\\n        debugPrint('画像選択がキャンセルされました');\\n      }\\n    }\\n\\n    /// 写真を削除\\n    void deleteImage() {\\n      imageFile.value = null;\\n      debugPrint('画像が削除されました');\\n    }\\n\\n    ref.listen&lt;AsyncValue&gt;(createGuildNotifierProvider, (previous, next) {\\n      if (next is AsyncData) {\\n        if (context.mounted) {\\n          ScaffoldMessenger.of(context).showSnackBar(\\n            const SnackBar(content: Text('ギルドが作成されました！')),\\n          );\\n          ref.read(onCreatedGuildNotifierProvider.notifier).trigger();\\n          context.pop();\\n        }\\n      } else if (next is AsyncError) {\\n        if (context.mounted) {\\n          ScaffoldMessenger.of(context).showSnackBar(\\n            const SnackBar(content: Text('ギルドの作成に失敗しました。')),\\n          );\\n        }\\n      }\\n    });\\n\\n    return Scaffold(\\n      appBar: AppBar(title: const Text('GuildCreatePage')),\\n      body: Padding(\\n        padding: const EdgeInsets.symmetric(horizontal: 24),\\n        child: Column(\\n          mainAxisAlignment: MainAxisAlignment.center,\\n          children: \[\\n            imageFile.value != null\\n                ? Column(\\n                    children: \[\\n                      ClipRRect(\\n                        borderRadius: BorderRadius.circular(8),\\n                        child: Image.file(\\n                          imageFile.value!,\\n                          width: 150,\\n                          height: 150,\\n                          fit: BoxFit.cover,\\n                        ),\\n                      ),\\n                      const SizedBox(height: 10),\\n                      ElevatedButton(\\n                        onPressed: deleteImage,\\n                        child: const Text('画像を削除'),\\n                      ),\\n                    \],\\n                  )\\n                : const Text('画像が選択されていません'),\\n            const SizedBox(height: 20),\\n            ElevatedButton(\\n              onPressed: () async {\\n                final hasPermission = await hasPhotoPermission(context);\\n                if (hasPermission) {\\n                  await pickAndCropImage();\\n                }\\n              },\\n              child: const Text('ギルドアイコンを選択'),\\n            ),\\n            ElevatedButton(\\n              onPressed: () async {\\n                await ref\\n                    .read(createGuildNotifierProvider.notifier)\\n                    .executeRequest('TODO: ギルド名を入力');\\n              },\\n              child: const Text('Create'),\\n            ),\\n          \],\\n        ),\\n      ),\\n    );\\n  }\\n\\n  /// 写真の権限をチェックして、権限があれば true を返す\\n  Future&lt;bool&gt; hasPhotoPermission(BuildContext context) async {\\n    final status = await Permission.photos.request();\\n\\n    switch (status) {\\n      case PermissionStatus.granted:\\n      case PermissionStatus.limited:\\n        // 許可済みの場合\\n        return true;\\n\\n      case PermissionStatus.permanentlyDenied:\\n        // 永久に拒否されている場合\\n        if (context.mounted) {\\n          \_showPermissionDialog(context);\\n        }\\n        return false;\\n\\n      case PermissionStatus.denied:\\n      case PermissionStatus.restricted:\\n      case PermissionStatus.provisional:\\n        // その他の場合\\n        if (context.mounted) {\\n          ScaffoldMessenger.of(context).showSnackBar(\\n            const SnackBar(content: Text('写真へのアクセスが許可されていません。')),\\n          );\\n        }\\n        return false;\\n    }\\n  }\\n\\n  /// 設定ダイアログを表示\\n  void \_showPermissionDialog(BuildContext context) {\\n    showDialog&lt;void&gt;(\\n      context: context,\\n      builder: (context) =&gt; AlertDialog(\\n        title: const Text('写真へのアクセス許可が必要です'),\\n        content: const Text('写真を選択するには、設定で写真へのアクセス許可をオンにしてください。'),\\n        actions: \[\\n          TextButton(\\n            onPressed: () {\\n              context.pop();\\n            },\\n            child: const Text('キャンセル'),\\n          ),\\n          TextButton(\\n            onPressed: () async =&gt; openAppSettings(),\\n            child: const Text('設定を開く'),\\n          ),\\n        \],\\n      ),\\n    );\\n  }\\n}"}
+{"name": "guild_create_ref_listen", "type": "code/dart", "content": "import 'dart:io';\n\nimport 'package:flutter/material.dart';\nimport 'package:flutter_hooks/flutter_hooks.dart';\nimport 'package:go_router/go_router.dart';\nimport 'package:hooks_riverpod/hooks_riverpod.dart';\nimport 'package:image_cropper/image_cropper.dart';\nimport 'package:image_picker/image_picker.dart';\nimport 'package:permission_handler/permission_handler.dart';\nimport 'package:snpit_guild_app/presentation/providers/api_client/guilds/create_guild.dart';\nimport 'package:snpit_guild_app/presentation/providers/on_created_guild.dart';\n\nclass GuildCreatePage extends HookConsumerWidget {\n  const GuildCreatePage({super.key});\n\n  @override\n  Widget build(BuildContext context, WidgetRef ref) {\n    final imageFile = useState&lt;File?&gt;(null);\n    final picker = useMemoized(ImagePicker.new);\n\n    /// 写真を選択して円状にクロップする\n    Future&lt;void&gt; pickAndCropImage() async {\n      final pickedFile = await picker.pickImage(source: ImageSource.gallery);\n\n      if (pickedFile != null) {\n        final croppedFile = await ImageCropper().cropImage(\n          sourcePath: pickedFile.path,\n          aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1), // 正方形にクロップ\n          uiSettings: [\n            AndroidUiSettings(\n              hideBottomControls: true, // ボトムコントロール非表示\n              lockAspectRatio: true, // アスペクト比を固定\n            ),\n            IOSUiSettings(\n              aspectRatioLockEnabled: true, // アスペクト比を固定\n            ),\n          ],\n        );\n\n        if (croppedFile != null) {\n          imageFile.value = File(croppedFile.path);\n        } else {\n          debugPrint('クロップがキャンセルされました');\n        }\n      } else {\n        debugPrint('画像選択がキャンセルされました');\n      }\n    }\n\n    /// 写真を削除\n    void deleteImage() {\n      imageFile.value = null;\n      debugPrint('画像が削除されました');\n    }\n\n    ref.listen&lt;AsyncValue&gt;(createGuildNotifierProvider, (previous, next) {\n      if (next is AsyncData) {\n        if (context.mounted) {\n          ScaffoldMessenger.of(context).showSnackBar(\n            const SnackBar(content: Text('ギルドが作成されました！')),\n          );\n          ref.read(onCreatedGuildNotifierProvider.notifier).trigger();\n          context.pop();\n        }\n      } else if (next is AsyncError) {\n        if (context.mounted) {\n          ScaffoldMessenger.of(context).showSnackBar(\n            const SnackBar(content: Text('ギルドの作成に失敗しました。')),\n          );\n        }\n      }\n    });\n\n    return Scaffold(\n      appBar: AppBar(title: const Text('GuildCreatePage')),\n      body: Padding(\n        padding: const EdgeInsets.symmetric(horizontal: 24),\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: [\n            imageFile.value != null\n                ? Column(\n                    children: [\n                      ClipRRect(\n                        borderRadius: BorderRadius.circular(8),\n                        child: Image.file(\n                          imageFile.value!,\n                          width: 150,\n                          height: 150,\n                          fit: BoxFit.cover,\n                        ),\n                      ),\n                      const SizedBox(height: 10),\n                      ElevatedButton(\n                        onPressed: deleteImage,\n                        child: const Text('画像を削除'),\n                      ),\n                    ],\n                  )\n                : const Text('画像が選択されていません'),\n            const SizedBox(height: 20),\n            ElevatedButton(\n              onPressed: () async {\n                final hasPermission = await hasPhotoPermission(context);\n                if (hasPermission) {\n                  await pickAndCropImage();\n                }\n              },\n              child: const Text('ギルドアイコンを選択'),\n            ),\n            ElevatedButton(\n              onPressed: () async {\n                await ref\n                    .read(createGuildNotifierProvider.notifier)\n                    .executeRequest('TODO: ギルド名を入力');\n              },\n              child: const Text('Create'),\n            ),\n          ],\n        ),\n      ),\n    );\n  }\n\n  /// 写真の権限をチェックして、権限があれば true を返す\n  Future&lt;bool&gt; hasPhotoPermission(BuildContext context) async {\n    final status = await Permission.photos.request();\n\n    switch (status) {\n      case PermissionStatus.granted:\n      case PermissionStatus.limited:\n        // 許可済みの場合\n        return true;\n\n      case PermissionStatus.permanentlyDenied:\n        // 永久に拒否されている場合\n        if (context.mounted) {\n          _showPermissionDialog(context);\n        }\n        return false;\n\n      case PermissionStatus.denied:\n      case PermissionStatus.restricted:\n      case PermissionStatus.provisional:\n        // その他の場合\n        if (context.mounted) {\n          ScaffoldMessenger.of(context).showSnackBar(\n            const SnackBar(content: Text('写真へのアクセスが許可されていません。')),\n          );\n        }\n        return false;\n    }\n  }\n\n  /// 設定ダイアログを表示\n  void _showPermissionDialog(BuildContext context) {\n    showDialog&lt;void&gt;(\n      context: context,\n      builder: (context) =&gt; AlertDialog(\n        title: const Text('写真へのアクセス許可が必要です'),\n        content: const Text('写真を選択するには、設定で写真へのアクセス許可をオンにしてください。'),\n        actions: [\n          TextButton(\n            onPressed: () {\n              context.pop();\n            },\n            child: const Text('キャンセル'),\n          ),\n          TextButton(\n            onPressed: () async =&gt; openAppSettings(),\n            child: const Text('設定を開く'),\n          ),\n        ],\n      ),\n    );\n  }\n}"}
 
 ---
 
 ## 🔧 ツール
 *2024/12/24 15:00:29*
 
-{"result": "Successfully created text document 'guild\_create\_ref\_listen' which will be referenced in all future messages with the unique identifier textdoc\_id: '676a4dfbc764819182b56dfba2784b1a'", "textdoc\_id": "676a4dfbc764819182b56dfba2784b1a", "name": "guild\_create\_ref\_listen"}
+{"result": "Successfully created text document 'guild_create_ref_listen' which will be referenced in all future messages with the unique identifier textdoc_id: '676a4dfbc764819182b56dfba2784b1a'", "textdoc_id": "676a4dfbc764819182b56dfba2784b1a", "name": "guild_create_ref_listen"}
 
 ---
 

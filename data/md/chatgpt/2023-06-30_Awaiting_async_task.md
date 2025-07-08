@@ -11,9 +11,9 @@ Swiftで以下の hoge 関数に関して print("hoge") することをawait す
 
 public func hoge() async {
         let cancelable = analyzeEmotionFinishedPublisher
-            .sink { \_ in
+            .sink { _ in
                 print("hoge")
-            } receiveValue: { \_ in }
+            } receiveValue: { _ in }
     }
 
 ---
@@ -48,7 +48,7 @@ public func hoge() async {
 ## 👤 ユーザー
 *2023/6/30 19:25:59*
 
-ちょっとやりたいことが違くて、このhoge()は.sink { \_ in
+ちょっとやりたいことが違くて、このhoge()は.sink { _ in
                 print("hoge")
             } のprint("hoge")の処理が終わるまで、処理を終わったことにしたくないんだ。
 
@@ -248,7 +248,7 @@ public func hoge() async {
 
 以下の処理って必要なの？
 
-continuation.onTermination = { @Sendable \_ in
+continuation.onTermination = { @Sendable _ in
             cancellable.cancel()
         }
 
@@ -384,7 +384,7 @@ public func hoge() async {
 ## 👤 ユーザー
 *2023/6/30 19:34:42*
 
-first(where: { \_ in true } も意味はあるの？
+first(where: { _ in true } も意味はあるの？
 
 ---
 

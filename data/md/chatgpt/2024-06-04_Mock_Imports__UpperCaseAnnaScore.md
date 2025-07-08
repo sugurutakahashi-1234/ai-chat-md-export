@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/6/4 15:27:13*
 
-MOCKOLO\_custom-imports 大文字あんなだースコア
+MOCKOLO_custom-imports 大文字あんなだースコア
 
 ---
 

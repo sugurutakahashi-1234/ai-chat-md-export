@@ -13,13 +13,13 @@
 private extension AuthDetailError {
     init(from amplifyAuthError: AuthError) {
         switch amplifyAuthError {
-        case .configuration(\_, \_, \_):
+        case .configuration(_, _, _):
             self = .configuration
 
-        case .service(\_, \_, \_):
+        case .service(_, _, _):
             self = .service
 
-        case .service(\_, \_, let error as AWSCognitoAuthError):
+        case .service(_, _, let error as AWSCognitoAuthError):
             switch error {
             case .lambda:
                 self = .alreadyExistsPhoneNumber
@@ -29,22 +29,22 @@ private extension AuthDetailError {
                 self = .service
             }
 
-        case .unknown(\_, \_):
+        case .unknown(_, _):
             self = .unknown
 
-        case .validation(\_, \_, \_, \_):
+        case .validation(_, _, _, _):
             self = .validation
 
-        case .notAuthorized(\_, \_, \_):
+        case .notAuthorized(_, _, _):
             self = .notAuthorized
 
-        case .invalidState(\_, \_, \_):
+        case .invalidState(_, _, _):
             self = .invalidState
 
-        case .signedOut(\_, \_, \_):
+        case .signedOut(_, _, _):
             self = .signedOut
 
-        case .sessionExpired(\_, \_, \_):
+        case .sessionExpired(_, _, _):
             self = .sessionExpired
         }
     }

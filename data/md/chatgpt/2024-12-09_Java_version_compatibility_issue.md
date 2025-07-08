@@ -9,9 +9,9 @@
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
-Could not open cp\_settings generic class cache for settings file '/Users/sugurutakahashi/git/gallusys/snpit\_guild\_app/android/settings.gradle' (/Users/sugurutakahashi/.gradle/caches/7.6.3/scripts/digrbcejqtzh2o323b6w8i67r).
-&gt; BUG! exception in phase 'semantic analysis' in source unit '\_BuildScript\_' Unsupported class file major version 65
+* What went wrong:
+Could not open cp_settings generic class cache for settings file '/Users/sugurutakahashi/git/gallusys/snpit_guild_app/android/settings.gradle' (/Users/sugurutakahashi/.gradle/caches/7.6.3/scripts/digrbcejqtzh2o323b6w8i67r).
+&gt; BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 65
 
 ---
 

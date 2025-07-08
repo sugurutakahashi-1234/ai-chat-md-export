@@ -13,13 +13,13 @@ import SwiftUI
 import DomainLayer
 
 struct CacheFileListView: View {
-    @State private var stampFiles: \[(path: String, image: UIImage?)\] = \[\]
+    @State private var stampFiles: [(path: String, image: UIImage?)] = []
     let directoryType: LocalDirectoryType = .caches
 
     var body: some View {
         List {
             Section("Stamp") {
-                ForEach(stampFiles, id: \\.path) { file in
+                ForEach(stampFiles, id: \.path) { file in
                     HStack {
                         if let image = file.image {
                             Image(uiImage: image)
@@ -45,14 +45,14 @@ struct CacheFileListView: View {
 
     func loadCacheFiles() {
         do {
-            let fileUrls = try FileManageDriver.getFiles(directory: Constants.FilePath.stampDirectory, extensions: \[.png\])
+            let fileUrls = try FileManageDriver.getFiles(directory: Constants.FilePath.stampDirectory, extensions: [.png])
             stampFiles = try fileUrls.map { fileUrl in
                 // lastPathComponent だけだと拡張子が入ってしまうため、deletingPathExtension で除かなければならない
                 let image = try FileManageDriver.loadImageFromCache(fileName: fileUrl.deletingPathExtension().lastPathComponent, directory: Constants.FilePath.stampDirectory)
                 return (path: fileUrl.lastPathComponent, image: image)
             }
         } catch {
-            print("Error while enumerating files \\(directoryType.directoryUrl.path): \\(error.localizedDescription)")
+            print("Error while enumerating files \(directoryType.directoryUrl.path): \(error.localizedDescription)")
         }
     }
 }
@@ -282,7 +282,7 @@ public struct ImageData: Identifiable, Sendable {
 }
 
 struct CacheFileListView: View {
-    @State private var stampFiles: \[ImageData\] = \[\]
+    @State private var stampFiles: [ImageData] = []
     let directoryType: LocalDirectoryType = .caches
 
     var body: some View {
@@ -302,7 +302,7 @@ struct CacheFileListView: View {
                         }
                         VStack(alignment: .leading) {
                             Text(file.imageUrl.lastPathComponent)
-                            Text("\\(file.createdAt, formatter: dateFormatter)")
+                            Text("\(file.createdAt, formatter: dateFormatter)")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                             Text(file.fileSize.formattedSize)
@@ -322,17 +322,17 @@ struct CacheFileListView: View {
 
     func loadCacheFiles() {
         do {
-            let fileUrls = try FileManageDriver.getFiles(directory: Constants.FilePath.stampDirectory, extensions: \[.png\])
+            let fileUrls = try FileManageDriver.getFiles(directory: Constants.FilePath.stampDirectory, extensions: [.png])
             stampFiles = try fileUrls.map { fileUrl in
                 // lastPathComponent だけだと拡張子が入ってしまうため、deletingPathExtension で除かなければならない
                 let image = try FileManageDriver.loadImageFromCache(fileName: fileUrl.deletingPathExtension().lastPathComponent, directory: Constants.FilePath.stampDirectory)
                 let attributes = try FileManager.default.attributesOfItem(atPath: fileUrl.path)
-                let creationDate = attributes\[.creationDate\] as? Date ?? Date()
-                let fileSize = attributes\[.size\] as? Int ?? 0
+                let creationDate = attributes[.creationDate] as? Date ?? Date()
+                let fileSize = attributes[.size] as? Int ?? 0
                 return ImageData(imageUrl: fileUrl, createdAt: creationDate, fileSize: fileSize, image: image)
             }
         } catch {
-            print("Error while enumerating files \\(directoryType.directoryUrl.path): \\(error.localizedDescription)")
+            print("Error while enumerating files \(directoryType.directoryUrl.path): \(error.localizedDescription)")
         }
     }
 
@@ -505,7 +505,7 @@ public struct ImageData: Identifiable, Sendable {
 // MARK: - View
 
 struct CacheFileListView: View {
-    @State private var stampFiles: \[ImageData\] = \[\]
+    @State private var stampFiles: [ImageData] = []
     let directoryType: LocalDirectoryType = .caches
 
     var body: some View {
@@ -517,7 +517,7 @@ struct CacheFileListView: View {
                             Label {
                                 VStack(alignment: .leading) {
                                     Text(file.imageUrl.lastPathComponent)
-                                    Text("\\(file.createdAt, formatter: dateFormatter)")
+                                    Text("\(file.createdAt, formatter: dateFormatter)")
                                         .font(.subheadline)
                                         .foregroundColor(.gray)
                                     Text(file.fileSize.formattedSize)
@@ -534,7 +534,7 @@ struct CacheFileListView: View {
                             Label {
                                 VStack(alignment: .leading) {
                                     Text(file.imageUrl.lastPathComponent)
-                                    Text("\\(file.createdAt, formatter: dateFormatter)")
+                                    Text("\(file.createdAt, formatter: dateFormatter)")
                                         .font(.subheadline)
                                         .foregroundColor(.gray)
                                     Text(file.fileSize.formattedSize)
@@ -560,16 +560,16 @@ struct CacheFileListView: View {
 
     func loadCacheFiles() {
         do {
-            let fileUrls = try FileManageDriver.getFiles(directory: Constants.FilePath.stampDirectory, extensions: \[.png\])
+            let fileUrls = try FileManageDriver.getFiles(directory: Constants.FilePath.stampDirectory, extensions: [.png])
             stampFiles = try fileUrls.map { fileUrl in
                 let image = try FileManageDriver.loadImageFromCache(fileName: fileUrl.deletingPathExtension().lastPathComponent, directory: Constants.FilePath.stampDirectory)
                 let attributes = try FileManager.default.attributesOfItem(atPath: fileUrl.path)
-                let creationDate = attributes\[.creationDate\] as? Date ?? Date()
-                let fileSize = attributes\[.size\] as? Int ?? 0
+                let creationDate = attributes[.creationDate] as? Date ?? Date()
+                let fileSize = attributes[.size] as? Int ?? 0
                 return ImageData(imageUrl: fileUrl, createdAt: creationDate, fileSize: fileSize, image: image)
             }
         } catch {
-            print("Error while enumerating files \\(directoryType.directoryUrl.path): \\(error.localizedDescription)")
+            print("Error while enumerating files \(directoryType.directoryUrl.path): \(error.localizedDescription)")
         }
     }
 

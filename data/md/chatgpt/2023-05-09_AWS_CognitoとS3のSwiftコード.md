@@ -559,7 +559,7 @@ class FirebaseTokenIdentityProvider: NSObject, AWSIdentityProviderManager {
 ## 👤 ユーザー
 *2023/5/9 15:30:06*
 
-AuthFetchSessionOptions について、identityProviderTokens に\[String: String\] を指定すると何が得られますか
+AuthFetchSessionOptions について、identityProviderTokens に[String: String] を指定すると何が得られますか
 
 ---
 
@@ -568,7 +568,7 @@ AuthFetchSessionOptions について、identityProviderTokens に\[String: Strin
 
 `AuthFetchSessionOptions`は、Amplifyの`fetchAuthSession`関数を呼び出す際に使用されるオプションです。`identityProviderTokens`プロパティは、第三者の認証プロバイダー（Google、Facebookなど）から取得したIDトークンを指定するために使用されます。
 
-`identityProviderTokens`に`\[String: String\]`の形式でトークンを指定すると、Amplifyはそれらのトークンを使用して、対応する認証プロバイダーと連携し、AWS Cognitoの認証情報を取得します。
+`identityProviderTokens`に`[String: String]`の形式でトークンを指定すると、Amplifyはそれらのトークンを使用して、対応する認証プロバイダーと連携し、AWS Cognitoの認証情報を取得します。
 
 具体的には、`fetchAuthSession`関数を呼び出すと、アプリケーションが使用するCognito Identity Poolに対して、指定されたトークンを使用して認証情報をリクエストします。この認証情報を使用して、AWSリソースへのアクセスが可能になります。
 

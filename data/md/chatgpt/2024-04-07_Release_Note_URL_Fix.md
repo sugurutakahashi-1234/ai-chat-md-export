@@ -7,12 +7,12 @@
 ## 👤 ユーザー
 *2024/4/7 12:15:03*
 
-Slackの通知で$(RELEASE\_NOTE\_URL) が解決されなかった。
+Slackの通知で$(RELEASE_NOTE_URL) が解決されなかった。
 
 name: Generate Tag & Release Note
 
 on:
-  workflow\_dispatch:
+  workflow_dispatch:
     inputs:
       tag:
         description: 'Tag name (e.g., 1.0.2, 1.0.2-rc.1)'
@@ -20,9 +20,9 @@ on:
         default: '0.0.0'
 
 env:
-  SLACK\_USERNAME: DeployBot
-  SLACK\_ICON: https://github.githubassets.com/images/modules/logos\_page/GitHub-Mark.png
-  SLACK\_WEBHOOK: ${{ secrets.SLACK\_WEBHOOK\_URL }}
+  SLACK_USERNAME: DeployBot
+  SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
   generate:
@@ -33,36 +33,36 @@ jobs:
     - name: Generate Release Note URL and Validate Tag
       run: |
         # Check tag format
-        TAG\_FORMAT="^(\[0-9\]+\\.\[0-9\]+\\.\[0-9\]+(-rc\\.\[0-9\]+)?)$"
-        if \[\[ ! "${{ github.event.inputs.tag }}" =~ $TAG\_FORMAT \]\]; then
+        TAG_FORMAT="^([0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?)$"
+        if [[ ! "${{ github.event.inputs.tag }}" =~ $TAG_FORMAT ]]; then
           echo "Error: Invalid tag format!"
           exit 1
         fi
         
         # Extract branch name from github.ref
-        BRANCH\_NAME=$(echo ${{ github.ref }} | sed 's/refs\\/heads\\///')
+        BRANCH_NAME=$(echo ${{ github.ref }} | sed 's/refs\/heads\///')
         
         # Print the release note URL
-        RELEASE\_NOTE\_URL="https://github.com/suguruTakahashi-1234/DISample/releases/new?tag=${{ github.event.inputs.tag }}&title=${{ github.event.inputs.tag }}&target=$BRANCH\_NAME&prerelease=1"
-        echo "RELEASE\_NOTE\_URL=$RELEASE\_NOTE\_URL" &gt;&gt; $GITHUB\_ENV
-        echo "Release note URL: $RELEASE\_NOTE\_URL"
+        RELEASE_NOTE_URL="https://github.com/suguruTakahashi-1234/DISample/releases/new?tag=${{ github.event.inputs.tag }}&title=${{ github.event.inputs.tag }}&target=$BRANCH_NAME&prerelease=1"
+        echo "RELEASE_NOTE_URL=$RELEASE_NOTE_URL" &gt;&gt; $GITHUB_ENV
+        echo "Release note URL: $RELEASE_NOTE_URL"
     # Success
     - name: Slack Notification on Success
       uses: rtCamp/action-slack-notify@v2
       if: success()
       env:
-        SLACK\_TITLE: Generate Tag & Release Note / Success
-        SLACK\_COLOR: good
-        SLACK\_MESSAGE: "$(RELEASE\_NOTE\_URL)"
+        SLACK_TITLE: Generate Tag & Release Note / Success
+        SLACK_COLOR: good
+        SLACK_MESSAGE: "$(RELEASE_NOTE_URL)"
 
     # Failure
     - name: Slack Notification on Failure
       uses: rtCamp/action-slack-notify@v2
       if: failure()
       env:
-        SLACK\_TITLE: Generate Tag & Release Note / Failure
-        SLACK\_COLOR: danger
-        SLACK\_MESSAGE: Failure Generate Tag & Release Note
+        SLACK_TITLE: Generate Tag & Release Note / Failure
+        SLACK_COLOR: danger
+        SLACK_MESSAGE: Failure Generate Tag & Release Note
 
 ---
 
@@ -161,18 +161,18 @@ jobs:
 GitHub Actionsで情報をステップ間で共有する方法としては、`env`（環境変数）を使う方法と`outputs`（ステップの出力）を使う方法の二つがありますが、どちらが一般的かは、使用するシナリオによって異なります。それぞれの方法には利点と適用シナリオがあります。
 
 ### 環境変数 (`env`) を使う方法
-- \*\*一般性：\*\* 環境変数を使う方法は非常に一般的です。環境変数は、OSレベルで広く使用されるため、ほとんどの開発者が馴染みがあります。
-- \*\*利点：\*\* ジョブ内のすべてのステップで容易にアクセス可能であり、シェルスクリプトやアプリケーションが期待する標準的な方法で値を渡せます。
-- \*\*適用シナリオ：\*\* ジョブ全体を通じて一貫して利用される設定や、外部サービスのAPIキーのような機密情報を渡す場合に適しています。
+- **一般性：** 環境変数を使う方法は非常に一般的です。環境変数は、OSレベルで広く使用されるため、ほとんどの開発者が馴染みがあります。
+- **利点：** ジョブ内のすべてのステップで容易にアクセス可能であり、シェルスクリプトやアプリケーションが期待する標準的な方法で値を渡せます。
+- **適用シナリオ：** ジョブ全体を通じて一貫して利用される設定や、外部サービスのAPIキーのような機密情報を渡す場合に適しています。
 
 ### ステップの出力 (`outputs`) を使う方法
-- \*\*一般性：\*\* ステップの出力を使う方法もGitHub Actions内で広く使用されていますが、環境変数ほどの普遍性はありません。主にGitHub Actionsのコンテキスト内での情報の受け渡しに特化しています。
-- \*\*利点：\*\* 特定のステップから直接情報を受け取ることができるため、情報のソースが明確です。また、ステップ間での依存関係が明確に表現されるため、ワークフローの可読性と管理性が向上します。
-- \*\*適用シナリオ：\*\* ステップ間で動的に生成されたデータを共有する場合や、あるステップの出力が後続の特定のステップでのみ必要な場合に適しています。
+- **一般性：** ステップの出力を使う方法もGitHub Actions内で広く使用されていますが、環境変数ほどの普遍性はありません。主にGitHub Actionsのコンテキスト内での情報の受け渡しに特化しています。
+- **利点：** 特定のステップから直接情報を受け取ることができるため、情報のソースが明確です。また、ステップ間での依存関係が明確に表現されるため、ワークフローの可読性と管理性が向上します。
+- **適用シナリオ：** ステップ間で動的に生成されたデータを共有する場合や、あるステップの出力が後続の特定のステップでのみ必要な場合に適しています。
 
 ### 結論
-- \*\*より一般的なのは？\*\* 環境変数を使用する方法は、より広い文脈（OSレベルでの設定含む）で一般的であり、直感的にも理解しやすいでしょう。しかし、GitHub Actionsの文脈では、`outputs`を使用する方法も同様に一般的です。
-- \*\*どちらを使うべきか？\*\* 使用する情報の種類やスコープ、ワークフローの複雑性に応じて選択します。ジョブ全体で広く使われる固定値や機密情報は`env`で、ステップ間で特定の情報を渡す場合は`outputs`が適しています。
+- **より一般的なのは？** 環境変数を使用する方法は、より広い文脈（OSレベルでの設定含む）で一般的であり、直感的にも理解しやすいでしょう。しかし、GitHub Actionsの文脈では、`outputs`を使用する方法も同様に一般的です。
+- **どちらを使うべきか？** 使用する情報の種類やスコープ、ワークフローの複雑性に応じて選択します。ジョブ全体で広く使われる固定値や機密情報は`env`で、ステップ間で特定の情報を渡す場合は`outputs`が適しています。
 
 最終的には、ワークフローの可読性、管理のしやすさ、およびセキュリティの観点から最適な方法を選ぶことが重要です。
 

@@ -12,11 +12,11 @@ Android スタジオ
 Resolving dependencies...
 The current Dart SDK version is 3.5.4.
 
-Because snpit\_guild\_app requires SDK version ^3.6.0, version solving failed.
+Because snpit_guild_app requires SDK version ^3.6.0, version solving failed.
 
 
 You can try the following suggestion to make the pubspec resolve:
-\* Try using the Flutter SDK version: 3.27.1.
+* Try using the Flutter SDK version: 3.27.1.
 
 ---
 

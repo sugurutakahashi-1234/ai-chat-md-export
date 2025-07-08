@@ -17,11 +17,11 @@ struct ScrollDesignViewItem: Identifiable, Hashable {
 // MARK: - View
 
 public struct ScrollDesignView: View {
-    @State private var items: \[ScrollDesignViewItem\] = \[.red, .blue, .green, .yellow, .pink, .purple\].compactMap { ScrollDesignViewItem(color: $0) }
+    @State private var items: [ScrollDesignViewItem] = [.red, .blue, .green, .yellow, .pink, .purple].compactMap { ScrollDesignViewItem(color: $0) }
 
     public var body: some View {
         ScrollView(.vertical) {
-            if #available(iOS 17.0, \*) {
+            if #available(iOS 17.0, *) {
                 VStack(alignment: .leading) {
                     Text("Simple (Not Paging)")
                         .padding(.horizontal)
@@ -30,7 +30,7 @@ public struct ScrollDesignView: View {
                     }}}
 
 public struct SimpleScrollDesignView: View {
-    let items: \[ScrollDesignViewItem\]
+    let items: [ScrollDesignViewItem]
 
     public var body: some View {
         GeometryReader { geometry in
@@ -155,11 +155,11 @@ With these changes, the color name covering the majority of the screen width wil
 以下についてもなにをtab表示しているかを表示してほしい
 
 public struct PositionPagingTabView: View {
-    let items: \[ScrollDesignViewItem\]
+    let items: [ScrollDesignViewItem]
 
     public var body: some View {
         TabView {
-            ForEach(items, id: \\.self) { item in
+            ForEach(items, id: \.self) { item in
                 RoundedRectangle(cornerRadius: 16)
                     .fill(item.color.gradient)
                     .frame(height: 100)

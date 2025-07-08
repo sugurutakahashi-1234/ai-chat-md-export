@@ -178,7 +178,7 @@ print(convertedString) // Prints: "multiply.circle.fill"
 
 Stringのextensionで定義してほしい
 
-&gt; 通常、スネークケースでは単語間をアンダースコア（\_）で区切りますが、ここではピリオド（.）を使用しています。
+&gt; 通常、スネークケースでは単語間をアンダースコア（_）で区切りますが、ここではピリオド（.）を使用しています。
 
 あとこの意味を含めて欲しい、convertCamelCaseToXXXX ではなくて、toXXXX という表現で十分伝わると思う。
 

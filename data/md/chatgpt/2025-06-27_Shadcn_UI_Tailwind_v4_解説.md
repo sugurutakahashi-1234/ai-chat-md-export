@@ -19,26 +19,26 @@ https://ui.shadcn.com/docs/tailwind-v4
 ## Shadcn UI × Tailwind CSS v4 解説（日本語）
 
 ### 1. 何が変わったのか ― “What’s New”
-- \*\*Tailwind v4 ＆ React 19 に正式対応\*\*  
+- **Tailwind v4 ＆ React 19 に正式対応**  
   CLI で最初から v4/React 19 プロジェクトを作成可能になりました。citeturn1view0
-- \*\*新しい `@theme`／`@theme inline` ディレクティブを全面サポート\*\*  
+- **新しい `@theme`／`@theme inline` ディレクティブを全面サポート**  
   CSS 変数管理がよりシンプルになります。citeturn1view0
-- \*\*コンポーネント刷新\*\*  
+- **コンポーネント刷新**  
   すべて Tailwind v4 用に書き直され、`forwardRef` は廃止。各プリミティブに `data-slot` が付き、スタイリングのフックが増えました。citeturn1view0
-- \*\*デフォルトテーマ変更\*\*  
+- **デフォルトテーマ変更**  
   “default” スタイルを廃止し、 新規プロジェクトは “new-york” テーマが標準。citeturn1view0
-- \*\*色空間\*\*  
+- **色空間**  
   HSL 定義が OKLCH に変換され、より視覚的に均一な色再現が可能に。citeturn1view0
-- \*\*トーストの置き換え\*\*  
+- **トーストの置き換え**  
   旧 `toast` コンポーネントは非推奨、代わりに `sonner` を推奨。citeturn1view0
 
-&gt; \*\*既存アプリは壊れない\*\*  
+&gt; **既存アプリは壊れない**  
 &gt; Tailwind v3/React 18 のままでも動作します。新しいコンポーネントを追加するときだけ v4 に移行してください。citeturn1view0
 
 ---
 
 ### 2. すぐ試したい場合
-`npx shadcn@canary init …` など \*\*CLI の canary 版\*\* を使えば、Next.js／Vite／Laravel… 各フレームワーク向けテンプレが v4 対応で生成できます。citeturn1view0
+`npx shadcn@canary init …` など **CLI の canary 版** を使えば、Next.js／Vite／Laravel… 各フレームワーク向けテンプレが v4 対応で生成できます。citeturn1view0
 
 ---
 
@@ -47,31 +47,31 @@ https://ui.shadcn.com/docs/tailwind-v4
 
 | # | 作業内容 | ポイント |
 |---|-----------|-----------|
-| 1 | \*\*Tailwind を v4 に上げる\*\* | `@tailwindcss/upgrade@next` コードモッドで非推奨ユーティリティや設定を自動修正。citeturn1view0 |
-| 2 | \*\*CSS 変数を `@theme inline` へ移行\*\* | `:root`／`.dark` から `hsl()` ラッパーを外し、`@theme inline` 内で再定義。ユーティリティ側と JS 側の両方で扱いやすく。citeturn1view0 |
-| 3 | \*\*チャート用カラー変数を修正\*\* | `hsl(var(--chart-\* ))` → `var(--chart-\* )` へ。OKLCH 移行に伴う書き換え。citeturn1view0 |
-| 4 | \*\*`size-\*` ユーティリティを活用\*\* | `w-\* h-\*` を一つにまとめ、Tailwind-Merge も対応済み。citeturn1view0 |
-| 5 | \*\*依存パッケージを最新版へ\*\* | `@radix-ui/\*`, `lucide-react`, `tailwind-merge`, `clsx` などを `pnpm up … --latest`。citeturn1view0 |
-| 6 | \*\*`forwardRef` の除去\*\* | 公式 codemod（remove-forward-ref）で一括変換、もしくは手動で `data-slot` 付きの通常関数コンポーネントへ置換。citeturn1view0 |
+| 1 | **Tailwind を v4 に上げる** | `@tailwindcss/upgrade@next` コードモッドで非推奨ユーティリティや設定を自動修正。citeturn1view0 |
+| 2 | **CSS 変数を `@theme inline` へ移行** | `:root`／`.dark` から `hsl()` ラッパーを外し、`@theme inline` 内で再定義。ユーティリティ側と JS 側の両方で扱いやすく。citeturn1view0 |
+| 3 | **チャート用カラー変数を修正** | `hsl(var(--chart-* ))` → `var(--chart-* )` へ。OKLCH 移行に伴う書き換え。citeturn1view0 |
+| 4 | **`size-*` ユーティリティを活用** | `w-* h-*` を一つにまとめ、Tailwind-Merge も対応済み。citeturn1view0 |
+| 5 | **依存パッケージを最新版へ** | `@radix-ui/*`, `lucide-react`, `tailwind-merge`, `clsx` などを `pnpm up … --latest`。citeturn1view0 |
+| 6 | **`forwardRef` の除去** | 公式 codemod（remove-forward-ref）で一括変換、もしくは手動で `data-slot` 付きの通常関数コンポーネントへ置換。citeturn1view0 |
 
 ---
 
 ### 4. 変更に伴う細かな注意点
-- \*\*アニメーションプラグイン変更\*\*  
+- **アニメーションプラグイン変更**  
   `tailwindcss-animate` は廃止。新規案件は `tw-animate-css` を標準採用。既存案件は依存削除 → `@import "tw-animate-css"` に差し替え。citeturn1view0
-- \*\*ダークモード配色を更新\*\*  
+- **ダークモード配色を更新**  
   2025-03-12 付でダーク配色がよりアクセシブルに再設計。v4 案件なら CLI の `add --all --overwrite` で再生成可能。citeturn1view0
-- \*\*最新ブラウザ専用\*\*  
+- **最新ブラウザ専用**  
   Tailwind v4 は “bleeding-edge” 機能（CSS カラー 4 など）に依存するため、レガシーブラウザをサポートする場合は注意。citeturn1view0
 
 ---
 
 ### 5. まとめ
-- \*\*移行は段階的に\*\*：まず Tailwind v4 の互換ガイド → shadcn/ui の 6 ステップ。  
-- \*\*コードモッド活用で負荷軽減\*\*：`@tailwindcss/upgrade@next` と `remove-forward-ref` を併用。  
-- \*\*テーマ変数を整理\*\*：`@theme inline` に移して JS 側でも色を再利用しやすくする。  
-- \*\*OKLCH と `size-\*` でモダン化\*\*：新色空間＆ユーティリティでスタイルがすっきり。  
-- \*\*非推奨コンポーネントやプラグインに注意\*\*：`toast`, `tailwindcss-animate` などは後継へ置換。
+- **移行は段階的に**：まず Tailwind v4 の互換ガイド → shadcn/ui の 6 ステップ。  
+- **コードモッド活用で負荷軽減**：`@tailwindcss/upgrade@next` と `remove-forward-ref` を併用。  
+- **テーマ変数を整理**：`@theme inline` に移して JS 側でも色を再利用しやすくする。  
+- **OKLCH と `size-*` でモダン化**：新色空間＆ユーティリティでスタイルがすっきり。  
+- **非推奨コンポーネントやプラグインに注意**：`toast`, `tailwindcss-animate` などは後継へ置換。
 
 これで shadcn/ui を Tailwind CSS v4/React 19 時代にフィットさせる準備は完了です。既存コードを大切にしつつ、新しいユーティリティや配色体系で開発体験を一段アップグレードしてみてください。
 
@@ -305,39 +305,39 @@ npx @react-native-reusables/cli add button
 ## 🤖 アシスタント
 *2025/6/27 13:27:58*
 
-### なぜ \*\*shadcn/ui\*\* は React Native でそのまま動かないのか？
+### なぜ **shadcn/ui** は React Native でそのまま動かないのか？
 
 | 障壁 | Web（React DOM + shadcn/ui） | React Native |
 |------|-----------------------------|--------------|
-| \*\*UI プリミティブ\*\* | `&lt;div&gt;`, `&lt;button&gt;`, `&lt;input&gt;` など HTML 要素 | `&lt;View&gt;`, `&lt;Text&gt;`, `&lt;Pressable&gt;` などネイティブ・ラッパー（HTML は存在しない）citeturn10view0turn13view0 |
-| \*\*スタイル方式\*\* | Tailwind CSS のクラス＋ CSS 変数（`--primary`) ＋ 擬似要素 `::before` など | JS オブジェクトによるインライン風スタイル。CSS・擬似要素・カスケード・CSS 変数なしciteturn10view0turn11search4 |
-| \*\*依存ライブラリ\*\* | Radix UI Primitives（ポータル・フォーカストラップ・ARIA 属性など DOM API 前提） | Radix 側が RN を公式にサポートしておらず「今のところ計画なし」と明言citeturn15view0 |
-| \*\*ビルドパイプライン\*\* | PostCSS／Tailwind CLI で `.css` を生成し Vite/Next.js が読み込む | Metro バンドラは `.css` を解釈せず、PostCSS プラグインも動かない |
-| \*\*インタラクション\*\* | `:hover`・`pointerenter`・`keydown Escape` などブラウザイベント | タッチ中心。これらの DOM イベントは存在しない／API が異なる |
+| **UI プリミティブ** | `&lt;div&gt;`, `&lt;button&gt;`, `&lt;input&gt;` など HTML 要素 | `&lt;View&gt;`, `&lt;Text&gt;`, `&lt;Pressable&gt;` などネイティブ・ラッパー（HTML は存在しない）citeturn10view0turn13view0 |
+| **スタイル方式** | Tailwind CSS のクラス＋ CSS 変数（`--primary`) ＋ 擬似要素 `::before` など | JS オブジェクトによるインライン風スタイル。CSS・擬似要素・カスケード・CSS 変数なしciteturn10view0turn11search4 |
+| **依存ライブラリ** | Radix UI Primitives（ポータル・フォーカストラップ・ARIA 属性など DOM API 前提） | Radix 側が RN を公式にサポートしておらず「今のところ計画なし」と明言citeturn15view0 |
+| **ビルドパイプライン** | PostCSS／Tailwind CLI で `.css` を生成し Vite/Next.js が読み込む | Metro バンドラは `.css` を解釈せず、PostCSS プラグインも動かない |
+| **インタラクション** | `:hover`・`pointerenter`・`keydown Escape` などブラウザイベント | タッチ中心。これらの DOM イベントは存在しない／API が異なる |
 
 ---
 
 #### 1. 「div がない」＝ DOM がない
-React Native は \*\*DOM を操作せず\*\*、JS ➜ ブリッジ ➜ ネイティブ UI という構造です。そのため HTML タグも CSS も直接は使えません。turn10view0  
+React Native は **DOM を操作せず**、JS ➜ ブリッジ ➜ ネイティブ UI という構造です。そのため HTML タグも CSS も直接は使えません。turn10view0  
 `&lt;div&gt;` 相当のコンテナはありますが（`&lt;View&gt;`）、動作もレイアウト仕様も別物です。citeturn13view0
 
 #### 2. CSS クラスと変数が解釈できない
-shadcn/ui は Tailwind v4 のクラスと `@theme inline` が生成する \*\*CSS 変数\*\*で色やサイズを切り替えます。しかし React Native には  
+shadcn/ui は Tailwind v4 のクラスと `@theme inline` が生成する **CSS 変数**で色やサイズを切り替えます。しかし React Native には  
 
-\* グローバルスタイルシート  
-\* CSS 変数 (`var(--primary)`)  
-\* 擬似要素 `::before / ::after`  
+* グローバルスタイルシート  
+* CSS 変数 (`var(--primary)`)  
+* 擬似要素 `::before / ::after`  
 
 が存在しないため、そのままでは色もアニメーションも当たりません。citeturn11search4
 
 #### 3. Radix UI ＝ DOM 前提
-shadcn/ui の大半のコンポーネント（Dialog, Tooltip, Combobox…）は \*\*Radix UI Primitives\*\* をラップしています。Radix は  
+shadcn/ui の大半のコンポーネント（Dialog, Tooltip, Combobox…）は **Radix UI Primitives** をラップしています。Radix は  
 
-\* `createPortal` で `document.body` 直下へ描画  
-\* `focus` / `aria-\*` 属性でアクセシビリティを制御  
-\* `pointerenter`, `keydown` などブラウザイベント  
+* `createPortal` で `document.body` 直下へ描画  
+* `focus` / `aria-*` 属性でアクセシビリティを制御  
+* `pointerenter`, `keydown` などブラウザイベント  
 
-に依存しており、React Native では動作しません。実際に Radix リポジトリでも \*「RN への公式対応予定は今のところなし」\* と回答されています。citeturn15view0
+に依存しており、React Native では動作しません。実際に Radix リポジトリでも *「RN への公式対応予定は今のところなし」* と回答されています。citeturn15view0
 
 #### 4. Metro が `.css` を読めない
 Web 版は PostCSS ➜ バンドラ（Vite/Next.js）で CSS を注入しますが、Metro バンドラは CSS ファイルをロードしません。Tailwind の JIT も実行されないため、クラス名を付けてもスタイルが生成されません。
@@ -348,23 +348,23 @@ Web 版は PostCSS ➜ バンドラ（Vite/Next.js）で CSS を注入します�
 
 | アプローチ | 仕組み | 状態 |
 |------------|--------|------|
-| \*\*NativeWind + `react-native-reusables`\*\* | Tailwind クラスを JS スタイルに変換し、Radix 風 API を再実装 | 30 ＋ コンポーネントが利用可能 |
-| \*\*Tamagui / Dripsy\*\* | RN 向けにテーマ・バリアントを提供する別ライブラリ | Web と RN のコード共有も可 |
-| \*\*gluestack UI v2\*\* | shadcn ライクな API を Expo 向けに提供 | まだ alpha 段階だが活発 |
+| **NativeWind + `react-native-reusables`** | Tailwind クラスを JS スタイルに変換し、Radix 風 API を再実装 | 30 ＋ コンポーネントが利用可能 |
+| **Tamagui / Dripsy** | RN 向けにテーマ・バリアントを提供する別ライブラリ | Web と RN のコード共有も可 |
+| **gluestack UI v2** | shadcn ライクな API を Expo 向けに提供 | まだ alpha 段階だが活発 |
 
-&gt; つまり \*\*公式 shadcn/ui をそのまま持ち込むのは無理\*\*。  
-&gt; 代わりに \*Tailwind を JS に変換\* してくれるライブラリや、Radix を模した RN 用コンポーネント群を組み合わせて「似た開発体験」を構築する、というのが現実的です。
+&gt; つまり **公式 shadcn/ui をそのまま持ち込むのは無理**。  
+&gt; 代わりに *Tailwind を JS に変換* してくれるライブラリや、Radix を模した RN 用コンポーネント群を組み合わせて「似た開発体験」を構築する、というのが現実的です。
 
 ---
 
 ## まとめ
 
-\* \*\*決定的理由\*\*は「Web 用 DOM & CSS 前提の実装」だから。  
-\* React Native には HTML/CSS のレイヤーがなく、Tailwind／Radix／shadcn の主要機能が動かない。  
-\* 公式対応の予定も現状なし。  
-\* どうしても欲しい場合は NativeWind や Tamagui など \*\*RN ネイティブ実装の代替ライブラリ\*\*を使うのがベスト。
+* **決定的理由**は「Web 用 DOM & CSS 前提の実装」だから。  
+* React Native には HTML/CSS のレイヤーがなく、Tailwind／Radix／shadcn の主要機能が動かない。  
+* 公式対応の予定も現状なし。  
+* どうしても欲しい場合は NativeWind や Tamagui など **RN ネイティブ実装の代替ライブラリ**を使うのがベスト。
 
-これで \*「div がないから？」\* という疑問の背景がクリアになるはずです。
+これで *「div がないから？」* という疑問の背景がクリアになるはずです。
 
 ---
 
@@ -445,7 +445,7 @@ export default function App() {
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark \*));
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-background: hsl(0 0% 100%);
@@ -498,7 +498,7 @@ export default function App() {
     --radius: 0.5rem;
   }
 
-  \* {
+  * {
     @apply border-border;
   }
 
@@ -615,7 +615,7 @@ export default function App() {
 }
 
 @layer base {
-  \* {
+  * {
     @apply border-border outline-ring/50;
   }
   body {
@@ -726,7 +726,7 @@ bunx --bun shadcn@latest initでこれが作られた
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark \*));
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -836,7 +836,7 @@ bunx --bun shadcn@latest initでこれが作られた
 }
 
 @layer base {
-  \* {
+  * {
     @apply border-border outline-ring/50;
   }
   body {
@@ -853,12 +853,12 @@ bunx --bun shadcn@latest initでこれが作られた
 
 | ブロック | 位置 | 編集すると反映される場所 |
 |-----------|------|---------------------------|
-| \*\*`@import` 2 行\*\* | 先頭 | Tailwind CSS とアニメーション用プラグインを組み込む。ここは通常変更不要。 |
-| \*\*`@custom-variant dark`\*\* | 先頭 | Tailwind v4 の新機能。`dark:bg-…` などの \*dark\* ユーティリティを「`.dark …` だけでなく `prefers-color-scheme: dark` にも効かせる」カスタムバリアント定義。ふだん触らない。 |
-| \*\*`@theme inline { … }`\*\* | 中盤① | ここは \*\*“マッピング表”\*\*。&lt;br&gt;クラス名 `bg-primary` → 実際の CSS 変数 `--primary` へ橋渡しするだけ。&lt;br&gt;🔸 \*\*マッピングを増やす／名前を変えるときだけ編集\*\*。普段は放置。citeturn0search0 |
-| \*\*`:root { … }`\*\* | 中盤② | \*\*ライトモードの実値\*\*。&lt;br&gt;`--primary:` の数値を変えれば、`bg-primary` など全部の色が即座に変わる。&lt;br&gt;🔸 \*\*色・角丸・チャート色などを替えたいときはここを変更\*\*。 |
-| \*\*`.dark { … }`\*\* | 中盤③ | \*\*ダークモード用の実値\*\*。&lt;br&gt;`.dark` クラスが `&lt;html&gt;` か `&lt;body&gt;` についた瞬間、ここの値が優先される。&lt;br&gt;🔸 \*\*ダーク配色を変えたいときはここを編集\*\*。 |
-| \*\*`@layer base { … }`\*\* | 末尾 | グローバル CSS ルール。`body` の背景色／文字色や、全要素の `border-color` を Tailwind クラスで一括適用している。&lt;br&gt;🔸 \*\*デフォルトのタイポグラフィやリセットを変える時に編集\*\*。 |
+| **`@import` 2 行** | 先頭 | Tailwind CSS とアニメーション用プラグインを組み込む。ここは通常変更不要。 |
+| **`@custom-variant dark`** | 先頭 | Tailwind v4 の新機能。`dark:bg-…` などの *dark* ユーティリティを「`.dark …` だけでなく `prefers-color-scheme: dark` にも効かせる」カスタムバリアント定義。ふだん触らない。 |
+| **`@theme inline { … }`** | 中盤① | ここは **“マッピング表”**。&lt;br&gt;クラス名 `bg-primary` → 実際の CSS 変数 `--primary` へ橋渡しするだけ。&lt;br&gt;🔸 **マッピングを増やす／名前を変えるときだけ編集**。普段は放置。citeturn0search0 |
+| **`:root { … }`** | 中盤② | **ライトモードの実値**。&lt;br&gt;`--primary:` の数値を変えれば、`bg-primary` など全部の色が即座に変わる。&lt;br&gt;🔸 **色・角丸・チャート色などを替えたいときはここを変更**。 |
+| **`.dark { … }`** | 中盤③ | **ダークモード用の実値**。&lt;br&gt;`.dark` クラスが `&lt;html&gt;` か `&lt;body&gt;` についた瞬間、ここの値が優先される。&lt;br&gt;🔸 **ダーク配色を変えたいときはここを編集**。 |
+| **`@layer base { … }`** | 末尾 | グローバル CSS ルール。`body` の背景色／文字色や、全要素の `border-color` を Tailwind クラスで一括適用している。&lt;br&gt;🔸 **デフォルトのタイポグラフィやリセットを変える時に編集**。 |
 
 ---
 
@@ -876,8 +876,8 @@ bunx --bun shadcn@latest initでこれが作られた
 
 ## 編集が UI に届くまでの流れ（ビルドパイプライン）
 
-1. \*\*保存すると\*\* Bun の dev サーバー（`bun run dev`）がファイルを再読み込み。  
-2. Tailwind CLI が `@theme inline` を解析し、`bg-primary` などのユーティリティを \*\*CSS 変数参照付きで再生成\*\*。citeturn0search4  
+1. **保存すると** Bun の dev サーバー（`bun run dev`）がファイルを再読み込み。  
+2. Tailwind CLI が `@theme inline` を解析し、`bg-primary` などのユーティリティを **CSS 変数参照付きで再生成**。citeturn0search4  
 3. ブラウザの HMR が走り、画面全体の配色・角丸が即更新。  
    - ライト/ダーク切替は `.dark` クラスを JS で付け替える or OS 設定に従う（`@custom-variant dark` が効く）  
 
@@ -885,20 +885,20 @@ bunx --bun shadcn@latest initでこれが作られた
 
 ## どのファイルを編集する？
 
-- \*\*場所\*\*: テンプレートでは `src/styles/globals.css` または `app/globals.css`（Next.js の場合）。  
+- **場所**: テンプレートでは `src/styles/globals.css` または `app/globals.css`（Next.js の場合）。  
   `bunx … init` がこのファイルを生成しています。  
-- \*\*補助ファイル\*\*: `components.json` 内の `"tailwind": { "cssVariables": true }` が \*\*CSS 変数モード\*\*を有効にしており、ここを変えない限りこの方式で固定citeturn0search1。  
+- **補助ファイル**: `components.json` 内の `"tailwind": { "cssVariables": true }` が **CSS 変数モード**を有効にしており、ここを変えない限りこの方式で固定citeturn0search1。  
 
 ---
 
 ### まとめ
 
-1. \*\*色・角丸など“値”を変える → `:root` と `.dark`\*\*  
-2. \*\*新しいトークン名を使いたい → `@theme inline` を増補\*\*  
-3. \*\*グローバルな適用先（body, \*）を調整 → `@layer base`\*\*  
+1. **色・角丸など“値”を変える → `:root` と `.dark`**  
+2. **新しいトークン名を使いたい → `@theme inline` を増補**  
+3. **グローバルな適用先（body, *）を調整 → `@layer base`**  
 4. `@import` と `@custom-variant` は通常いじらない。  
 
-この 3 段構え（マッピング → 実値 → グローバル適用）を覚えておけば、\*\*「どこを直せばどこに効くか」\*\* がすぐ把握できます。
+この 3 段構え（マッピング → 実値 → グローバル適用）を覚えておけば、**「どこを直せばどこに効くか」** がすぐ把握できます。
 
 ---
 
@@ -941,14 +941,14 @@ baseColorを変えていいのだろうか？
 
 | 項目 | 何に使うか | 実行時 or 生成時 |
 |------|------------|------------------|
-| `style`, `rsc`, `tsx` | 生成する \*\*コンポーネント雛形\*\* のバリエーションや拡張子を決定 | 生成時 (CLI) |
-| `tailwind.\*` | CLI に「Tailwind の CSS ファイルはどこ？ 変数モードか？」などを教える | 生成時 |
-| `aliases.\*` | `@/components` などの \*\*エイリアス\*\* を CLI が理解するため | 生成時 |
+| `style`, `rsc`, `tsx` | 生成する **コンポーネント雛形** のバリエーションや拡張子を決定 | 生成時 (CLI) |
+| `tailwind.*` | CLI に「Tailwind の CSS ファイルはどこ？ 変数モードか？」などを教える | 生成時 |
+| `aliases.*` | `@/components` などの **エイリアス** を CLI が理解するため | 生成時 |
 | `iconLibrary` | どのアイコンセットを import するか | 生成時 |
 
-&gt; \*\*ポイント\*\*  
+&gt; **ポイント**  
 &gt; アプリ実行中にこの JSON が読み込まれることはありません。  
-&gt; `bunx shadcn@latest add …` や `init` など \*\*CLI コマンドを叩いた瞬間だけ\*\* 参照され、  
+&gt; `bunx shadcn@latest add …` や `init` など **CLI コマンドを叩いた瞬間だけ** 参照され、  
 &gt; その内容をもとにファイルを書き出します。
 
 ---
@@ -957,13 +957,13 @@ baseColorを変えていいのだろうか？
 
 公式ドキュメントにはこう書かれています：
 
-&gt; `tailwind.baseColor` は “デフォルトのカラーパレットを生成するために使われる。\*\*初期化後には変更できない\*\*”citeturn1view0
+&gt; `tailwind.baseColor` は “デフォルトのカラーパレットを生成するために使われる。**初期化後には変更できない**”citeturn1view0
 
 #### なぜ “変更できない” と書いてあるのか
-1. \*\*初期化時に CSS 変数 or クラスがすでに生成される\*\*  
-   `:root { --primary: … }` などは \*もうファイルに書き込まれている\* ため、  
-   \*\*JSON だけ直しても既存 CSS は自動では書き換わらない\*\*。
-2. \*\*CLI は「差分編集」をしない\*\*  
+1. **初期化時に CSS 変数 or クラスがすでに生成される**  
+   `:root { --primary: … }` などは *もうファイルに書き込まれている* ため、  
+   **JSON だけ直しても既存 CSS は自動では書き換わらない**。
+2. **CLI は「差分編集」をしない**  
    `add button` などを再実行しても、既存ファイルを上書きしない限り色は更新されない。  
    想定外の事故を防ぐため “変えられません” と明言している。
 
@@ -973,31 +973,31 @@ baseColorを変えていいのだろうか？
 
 | 方法 | 手順 | メリット / デメリット |
 |------|------|------------------------|
-| \*\*① CSS 変数を手動で上書き (推奨)\*\* | `src/index.css` の `:root` & `.dark` 内の `--primary` など \*\*値だけ編集\*\* | 既存 UI が即反映。CLI を触らないので安全 |
-| \*\*② CLI でテーマ再生成\*\* | 1) `components.json` の `baseColor` を変更&lt;br&gt;2) `bunx shadcn@latest init --overwrite` または `bunx shadcn@latest add --all --overwrite` で \*\*CSS を再生成\*\* | まっさらなパレットを再出力できるが、&lt;br&gt;既存ファイルの手動マージが必要 |
-| \*\*③ いったん UI フォルダを削除 → 再 init\*\* | `src/components/ui` 等を削除 → `bunx shadcn@latest init` | “完全クリーン” だが、改造した UI も消える |
+| **① CSS 変数を手動で上書き (推奨)** | `src/index.css` の `:root` & `.dark` 内の `--primary` など **値だけ編集** | 既存 UI が即反映。CLI を触らないので安全 |
+| **② CLI でテーマ再生成** | 1) `components.json` の `baseColor` を変更&lt;br&gt;2) `bunx shadcn@latest init --overwrite` または `bunx shadcn@latest add --all --overwrite` で **CSS を再生成** | まっさらなパレットを再出力できるが、&lt;br&gt;既存ファイルの手動マージが必要 |
+| **③ いったん UI フォルダを削除 → 再 init** | `src/components/ui` 等を削除 → `bunx shadcn@latest init` | “完全クリーン” だが、改造した UI も消える |
 
 ---
 
 ### 変更が反映されるタイミング
 
 1. JSON を書き換える  
-2. \*\*CLI コマンドを再実行\*\*（`init` / `add` / `theme` 相当）  
+2. **CLI コマンドを再実行**（`init` / `add` / `theme` 相当）  
 3. CLI が CSS / TSX を再生成  
 4. Bun の HMR が走り、ブラウザに反映
 
-&gt; JSON を変えただけでは \*\*何も起こりません\*\*。必ず CLI をもう一度叩いてください。
+&gt; JSON を変えただけでは **何も起こりません**。必ず CLI をもう一度叩いてください。
 
 ---
 
 ## まとめ
 
-\* \*\*`components.json` は “CLI の設定ファイル”\*\*。アプリ実行時には読まれない。  
-\* `baseColor` は \*\*初回生成時にだけ\*\* 使われる値なので、あとから数字を変えても UI は変わらない。  
-\* 色を替えたいときは  
-  \* \*\*手動で CSS 変数を編集\*\*するのが最も手軽  
-  \* どうしても JSON で管理したいなら、`init --overwrite` などで \*\*再生成\*\*が必要。  
-\* 変更を反映させるには、必ず `bunx shadcn@latest …` コマンドをもう一度実行しよう。
+* **`components.json` は “CLI の設定ファイル”**。アプリ実行時には読まれない。  
+* `baseColor` は **初回生成時にだけ** 使われる値なので、あとから数字を変えても UI は変わらない。  
+* 色を替えたいときは  
+  * **手動で CSS 変数を編集**するのが最も手軽  
+  * どうしても JSON で管理したいなら、`init --overwrite` などで **再生成**が必要。  
+* 変更を反映させるには、必ず `bunx shadcn@latest …` コマンドをもう一度実行しよう。
 
 ---
 
@@ -1012,28 +1012,28 @@ baseColorを変えていいのだろうか？
 ## 🤖 アシスタント
 *2025/6/27 15:50:22*
 
-### ご認識 ─ ほぼ合っていますが、\*\*色以外\*\* ではスタイルごとに微差がある
+### ご認識 ─ ほぼ合っていますが、**色以外** ではスタイルごとに微差がある
 
-| 項目 | 生成される ❶\*\*コンポーネント API\*\* | ❷\*\*中の Tailwind クラス\*\* | ❸\*\*実際の色\*\* |
+| 項目 | 生成される ❶**コンポーネント API** | ❷**中の Tailwind クラス** | ❸**実際の色** |
 |------|-----------------------------|---------------------------|----------------|
-| \*\*`default` style\*\* | `&lt;Button variant="secondary" …&gt;` など同じ | `rounded-lg px-4 py-2 text-sm` | `bg-primary` → `--primary`（HSL/OKLCH 値） |
-| \*\*`new-york` style\*\* | \*\*API は同一\*\* | `rounded-md px-3 py-1.5 text-xs` など \*若干コンパクト\* | 同じ `bg-primary` → `--primary` |
+| **`default` style** | `&lt;Button variant="secondary" …&gt;` など同じ | `rounded-lg px-4 py-2 text-sm` | `bg-primary` → `--primary`（HSL/OKLCH 値） |
+| **`new-york` style** | **API は同一** | `rounded-md px-3 py-1.5 text-xs` など *若干コンパクト* | 同じ `bg-primary` → `--primary` |
 
-&gt; - ✔ \*\*API とセマンティック色トークンは共通\*\*  
-&gt; - ✻ \*\*余白・角丸・アニメーションはスタイルごとに微調整\*\*（＝クラスが少し違う）citeturn0search2  
+&gt; - ✔ **API とセマンティック色トークンは共通**  
+&gt; - ✻ **余白・角丸・アニメーションはスタイルごとに微調整**（＝クラスが少し違う）citeturn0search2  
 
-つまり \*\*「コードをコピペしても見た目が少し変わる」\*\* のは \*色ではなく密度・丸み・影\* などが原因です。  
-とはいえ、\*色\* だけならおっしゃる通り \*\*`--primary` などの変数を書き換える\*\*のが最短です。
+つまり **「コードをコピペしても見た目が少し変わる」** のは *色ではなく密度・丸み・影* などが原因です。  
+とはいえ、*色* だけならおっしゃる通り **`--primary` などの変数を書き換える**のが最短です。
 
 ---
 
 ## カラーテーマを変える正攻法
 
-1. \*\*`src/index.css`（例） の `:root` & `.dark` ブロック\*\*で `--primary` などを編集  
-2. `@theme inline` のマッピングは \*触らない\*（名前を増やすときだけ追記）  
+1. **`src/index.css`（例） の `:root` & `.dark` ブロック**で `--primary` などを編集  
+2. `@theme inline` のマッピングは *触らない*（名前を増やすときだけ追記）  
 3. ビルドを再実行すると、`bg-primary / text-primary-foreground …` が新色で再描画
 
-これなら \*\*既存 UI のマークアップを 1 行も触らず\*\* にテーマ差し替えができます。
+これなら **既存 UI のマークアップを 1 行も触らず** にテーマ差し替えができます。
 
 ---
 
@@ -1041,16 +1041,16 @@ baseColorを変えていいのだろうか？
 
 | 良い例 (◯) | 悪い例 (×) | 理由 |
 |------------|-----------|-------|
-| `className="bg-primary text-primary-foreground"` | `className="bg-red-500 text-white"` | ハードコードすると\*\*テーマごとの置換が不能\*\* |
+| `className="bg-primary text-primary-foreground"` | `className="bg-red-500 text-white"` | ハードコードすると**テーマごとの置換が不能** |
 | `className="border-border"` | `className="border-neutral-200 dark:border-neutral-800"` | 変数化 + カスタムバリアントに任せる |
 | 新トークンが必要 → `@theme inline` に `--color-warning` 追記 | `className="bg-yellow-300"` | セマンティック名を導入しておけば後で一括変更可 |
 
-\*\*結論\*\*  
-- ✔ 色を変えたい時は \*\*CSS 変数（テーマファイル）だけ編集\*\*  
-- ✔ JSX 側では \*\*セマンティックユーティリティ\*\* (`bg-primary`, `border-border`…) を使う  
+**結論**  
+- ✔ 色を変えたい時は **CSS 変数（テーマファイル）だけ編集**  
+- ✔ JSX 側では **セマンティックユーティリティ** (`bg-primary`, `border-border`…) を使う  
 - ✘ ハードコードした Tailwind 色クラスを混ぜると「テーマ一括差し替え」の恩恵を失う
 
-これが \*\*shadcn/ui + Tailwind v4\*\* での “正しいカスタマイズフロー” です。
+これが **shadcn/ui + Tailwind v4** での “正しいカスタマイズフロー” です。
 
 ---
 

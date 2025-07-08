@@ -10,24 +10,24 @@
 hasChanged を Text('Save') の ElevatedButton でもリアルタイムに反映して、その Bool によって変更がなかったら null にしたい。そして変更があった場合はタップできるようにしたい。
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/rarity.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/camera\_dto\_x.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/convert\_to\_domain.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/pages/camera\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/decks/create\_deck.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/decks/update\_deck.dart';
-import 'package:snpit\_guild\_app/presentation/providers/editing\_camera\_list.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/discard\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/parameters\_bar\_column.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/square\_image.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/total\_parameters\_row.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/rarity.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/camera_dto_x.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/convert_to_domain.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/pages/camera_list_page.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/decks/create_deck.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/decks/update_deck.dart';
+import 'package:snpit_guild_app/presentation/providers/editing_camera_list.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/discard_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/parameters_bar_column.dart';
+import 'package:snpit_guild_app/presentation/widgets/square_image.dart';
+import 'package:snpit_guild_app/presentation/widgets/total_parameters_row.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class DeckDetailPage extends HookConsumerWidget {
   const DeckDetailPage({super.key, required this.deckId});
@@ -53,7 +53,7 @@ class DeckDetailPage extends HookConsumerWidget {
         ..sort((a, b) =&gt; (a.cameraId ?? '').compareTo(b.cameraId ?? ''));
 
       for (var i = 0; i &lt; sortedInitialList.length; i++) {
-        if (sortedInitialList\[i\].cameraId != sortedCurrentList\[i\].cameraId) {
+        if (sortedInitialList[i].cameraId != sortedCurrentList[i].cameraId) {
           return true;
         }
       }
@@ -75,7 +75,7 @@ class DeckDetailPage extends HookConsumerWidget {
 
       final discard = await showDialog&lt;bool&gt;(
         context: context,
-        builder: (\_) {
+        builder: (_) {
           return const DiscardDialog();
         },
       );
@@ -141,7 +141,7 @@ class DeckDetailPage extends HookConsumerWidget {
 
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (didPop, \_) async {
+      onPopInvokedWithResult: (didPop, _) async {
         await onPopInvokedWithResult(didPop: didPop);
       },
       child: Scaffold(
@@ -162,7 +162,7 @@ class DeckDetailPage extends HookConsumerWidget {
                 ),
               ),
               child: Column(
-                children: \[
+                children: [
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: TotalParametersRow(
@@ -189,16 +189,16 @@ class DeckDetailPage extends HookConsumerWidget {
                       final camera = entry.value;
 
                       return Column(
-                        children: \[
+                        children: [
                           Padding(
                             padding: const EdgeInsets.all(16),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: \[
+                              children: [
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: \[
+                                  children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(4),
                                       child: SquareImage(
@@ -210,7 +210,7 @@ class DeckDetailPage extends HookConsumerWidget {
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: \[
+                                      children: [
                                         Text(
                                           camera.rarity?.domainRarity.title ??
                                               '',
@@ -221,15 +221,15 @@ class DeckDetailPage extends HookConsumerWidget {
                                           'Lv.${camera.level}',
                                           style: const TextStyle(fontSize: 12),
                                         ),
-                                      \],
+                                      ],
                                     ),
-                                  \],
+                                  ],
                                 ),
                                 Expanded(
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: \[
+                                    children: [
                                       Expanded(
                                         child: ParametersBarColumn(
                                           searchValue: camera.searchQ ?? 100,
@@ -240,7 +240,7 @@ class DeckDetailPage extends HookConsumerWidget {
                                       ),
                                       IconButton(
                                         icon: const Icon(
-                                          Icons.remove\_circle\_outline,
+                                          Icons.remove_circle_outline,
                                           size: 24,
                                           color: ColorPallet.red400,
                                         ),
@@ -250,10 +250,10 @@ class DeckDetailPage extends HookConsumerWidget {
                                           );
                                         },
                                       ),
-                                    \],
+                                    ],
                                   ),
                                 ),
-                              \],
+                              ],
                             ),
                           ),
                           if (index &lt; editingCameraListStateValue.length - 1)
@@ -261,7 +261,7 @@ class DeckDetailPage extends HookConsumerWidget {
                               height: 1,
                               color: ColorToken.border,
                             ),
-                        \],
+                        ],
                       );
                     }).toList(),
                   ),
@@ -279,7 +279,7 @@ class DeckDetailPage extends HookConsumerWidget {
                       child: OutlinedButton(
                         child: const Stack(
                           alignment: Alignment.centerLeft,
-                          children: \[
+                          children: [
                             Positioned(
                               child: Icon(
                                 Icons.add,
@@ -292,14 +292,14 @@ class DeckDetailPage extends HookConsumerWidget {
                                 'Put camera',
                               ),
                             ),
-                          \],
+                          ],
                         ),
                         onPressed: () async {
                           await onTapPutCamera();
                         },
                       ),
                     ),
-                \],
+                ],
               ),
             ),
           ),
@@ -325,23 +325,23 @@ class DeckDetailPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/1/28 15:16:38*
 
-\*\*Adjusting button state\*\*
+**Adjusting button state**
 
 I'm working through setting the `onPressed` property of an `ElevatedButton` in a Flutter app to reflect changes in a `hasChanged` boolean, enabling the button when changes occur and setting it to null when there are none.
 
-\*\*Refining the boolean computation\*\*
+**Refining the boolean computation**
 
 I'm refining the boolean `hasChanged` to recalulate each time `editingCameraListStateValue` changes, ensuring the `onPressed` property of the `ElevatedButton` is updated accordingly.
 
-\*\*Refining initial state\*\*
+**Refining initial state**
 
 I'm setting the initial camera list to be stored in a final variable, ensuring it only runs once. This allows for a real-time check in the build method for `hasChanged`.
 
-\*\*Clarifying the approach\*\*
+**Clarifying the approach**
 
 I’m detailing how to use a direct call to keep `hasChanged` updated with each rebuild, ensuring the `onPressed` property of the `ElevatedButton` reflects changes in real-time.
 
-\*\*Ensuring button functionality\*\*
+**Ensuring button functionality**
 
 I’m outlining the steps to implement `isDifferent`, stabilize `initialCameraList`, and calculate `hasChanged` for dynamic `onPressed` enablment, ensuring the button effectively updates in response to changes.
 
@@ -739,7 +739,7 @@ final hasChanged = useMemoized(
 
 final hasChanged = useMemoized(
   () =&gt; isDifferent(initialCameraList, editingCameraListStateValue),
-  \[editingCameraListStateValue\],
+  [editingCameraListStateValue],
 );
 これの方がよくないですか？
 

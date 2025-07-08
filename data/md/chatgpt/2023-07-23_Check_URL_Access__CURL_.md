@@ -63,7 +63,7 @@ func isUrlAccessible(navigationAction: WKNavigationAction) -&gt; Bool {
         // .reload: 3
         // .formResubmitted: 4
         // .other: 5
-        AppLogger.debugLog("access url: \\(url.absoluteString), navigationType: \\(navigationAction.navigationType)")
+        AppLogger.debugLog("access url: \(url.absoluteString), navigationType: \(navigationAction.navigationType)")
 
         // WebView内で遷移せずに処理されるスキーム
         // - about: 特殊なページを指すスキーム ex) about:blank
@@ -71,17 +71,17 @@ func isUrlAccessible(navigationAction: WKNavigationAction) -&gt; Bool {
         // - data: インラインデータを指すスキーム
         // - blob: ブラウザ内に生成された大きなデータオブジェクトを指すスキーム
         // - file: ローカルファイルシステム上のファイルを指すスキーム
-        let nonTransitioningSchemes = \["about", "javascript", "data", "blob", "file"\]
+        let nonTransitioningSchemes = ["about", "javascript", "data", "blob", "file"]
         if nonTransitioningSchemes.contains(urlScheme) {
             return true
         }
 
         // navigationAction.navigationType が .linkActivated または .formSubmitted の場合（リダイレクト、リロード、戻る操作を除く場合）、許可URLのチェックを行う
         if navigationAction.navigationType == .linkActivated || navigationAction.navigationType == .formSubmitted {
-            AppLogger.debugLog("access url: \\(url.absoluteString), acls: \\(web.acls.map { $0.urlPattern })")
+            AppLogger.debugLog("access url: \(url.absoluteString), acls: \(web.acls.map { $0.urlPattern })")
             let isUrlAllowed = web.acls.map { $0.urlPattern }.isEmpty || web.acls.map { $0.urlPattern }.contains(where: { url.absoluteString.hasPrefix($0) })
             guard isUrlAllowed else {
-                AppLogger.debugLog("access control error url: \\(url.absoluteString), acls: \\(web.acls.map { $0.urlPattern }), site url: \\(web.siteURL)", level: .error)
+                AppLogger.debugLog("access control error url: \(url.absoluteString), acls: \(web.acls.map { $0.urlPattern }), site url: \(web.siteURL)", level: .error)
                 anchorAndEmotionAnalysisInteractor.send(interaction: .init(eventType: .showAlert(.init(message: appError.localizedDescription))))
                 appError = .websiteAccessControlError(url)
                 shouldShowAccessControlErrorAlert = true

@@ -273,7 +273,7 @@ do {
 
 以下になってしまった
 
-Error: typeMismatch(Swift.Dictionary&lt;Swift.String, Any&gt;, Swift.DecodingError.Context(codingPath: \[\_JSONKey(stringValue: "name", intValue: nil)\], debugDescription: "Expected to decode Dictionary&lt;String, Any&gt; but found a string/data instead.", underlyingError: nil))
+Error: typeMismatch(Swift.Dictionary&lt;Swift.String, Any&gt;, Swift.DecodingError.Context(codingPath: [_JSONKey(stringValue: "name", intValue: nil)], debugDescription: "Expected to decode Dictionary&lt;String, Any&gt; but found a string/data instead.", underlyingError: nil))
 
 ---
 
@@ -439,7 +439,7 @@ properties.mapValues { value in
                 return ISO8601DateFormatter.sharedWithFractionalSeconds.string(from: dateValue)
             default:
                 // ここでエラーになった場合は AnalyticsPropertyValue の型になるように適宜 switch文を修正して下さい
-                assertionFailure("Value type not supported: \\(type(of: value))")
+                assertionFailure("Value type not supported: \(type(of: value))")
                 return String(describing: value)
             }
         }

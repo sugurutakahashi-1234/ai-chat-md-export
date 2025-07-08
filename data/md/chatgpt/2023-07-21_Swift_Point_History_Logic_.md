@@ -31,7 +31,7 @@ public struct Point: Identifiable {
 final class PointRootPresenter: ObservableObject {
     @Published private(set) var user: EmomilCore.User?
     @Published private(set) var totalPoints: Int = 0 // TODO: 本来は User.points からポイントを取得しているが、サーバー側の都合で一時的にアプリ側でsumしているので、いつか削除する
-    @Published private(set) var pointHistories: \[EmomilCore.Point\] = \[\]
+    @Published private(set) var pointHistories: [EmomilCore.Point] = []
     @Published var isLoading = false
     private let apiRequestManager: ApiRequestManagerProtocol
 
@@ -254,7 +254,7 @@ func onAppear() async {
 ## 👤 ユーザー
 *2023/7/21 15:56:17*
 
-var giftPoints: \[Point\] = \[\] を定義して、それに追加していって、全部の月の処理が終わったら、最後にpointHistoriesに追加していってほしい。
+var giftPoints: [Point] = [] を定義して、それに追加していって、全部の月の処理が終わったら、最後にpointHistoriesに追加していってほしい。
 
 ---
 

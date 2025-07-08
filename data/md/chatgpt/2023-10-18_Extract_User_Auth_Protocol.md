@@ -10,17 +10,17 @@
 protocolを抽出して欲しい
 
     public func signUp(emailAddress: String, phoneNumber: String, password: String) async throws {
-        let authUserAttributes = \[
+        let authUserAttributes = [
             AuthUserAttribute(.email, value: emailAddress),
             AuthUserAttribute(.phoneNumber, value: phoneNumber)
-        \]
+        ]
         let options = AuthSignUpRequest.Options(userAttributes: authUserAttributes)
         let result = try await Amplify.Auth.signUp(username: emailAddress, password: password, options: options)
-        LoggerContainer.log(.signUp(.init(result: "\\(result)")))
+        LoggerContainer.log(.signUp(.init(result: "\(result)")))
 
         switch result.nextStep {
         case .confirmUser(let deliveryDetails, let info, let userId):
-            LoggerContainer.debugLog("Confirm sign up user: \\(String(describing: deliveryDetails)), \\(String(describing: info)), \\(String(describing: userId)))")
+            LoggerContainer.debugLog("Confirm sign up user: \(String(describing: deliveryDetails)), \(String(describing: info)), \(String(describing: userId)))")
         case .done:
             LoggerContainer.debugLog("Reset completed")
         }
@@ -28,21 +28,21 @@ protocolを抽出して欲しい
 
     public func confirmSignUp(emailAddress: String, otpCode: String) async throws {
         let result = try await Amplify.Auth.confirmSignUp(for: emailAddress, confirmationCode: otpCode)
-        LoggerContainer.log(.confirmSignUp(.init(result: "\\(result)")))
+        LoggerContainer.log(.confirmSignUp(.init(result: "\(result)")))
     }
 
     public func resendSignUpCode(emailAddress: String) async throws {
         let result = try await Amplify.Auth.resendSignUpCode(for: emailAddress)
-        LoggerContainer.log(.resendSignUpCode(.init(result: "\\(result)")))
+        LoggerContainer.log(.resendSignUpCode(.init(result: "\(result)")))
     }
 
     public func resetPassword(emailAddress: String) async throws {
         let result = try await Amplify.Auth.resetPassword(for: emailAddress)
-        LoggerContainer.log(.resetPassword(.init(result: "\\(result)")))
+        LoggerContainer.log(.resetPassword(.init(result: "\(result)")))
 
         switch result.nextStep {
         case .confirmResetPasswordWithCode(let deliveryDetails, let info):
-            LoggerContainer.debugLog("Confirm reset password with code send to - \\(deliveryDetails) \\(String(describing: info))")
+            LoggerContainer.debugLog("Confirm reset password with code send to - \(deliveryDetails) \(String(describing: info))")
         case .done:
             LoggerContainer.debugLog("Reset completed")
         }

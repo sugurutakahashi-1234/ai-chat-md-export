@@ -1110,8 +1110,8 @@ driver-code-gen-revert:
 
 以下は同じなの？
 
-./sourcery/script/driver\_code\_gen.sh Hoge -r
-./sourcery/script/driver\_code\_gen.sh -r Hoge
+./sourcery/script/driver_code_gen.sh Hoge -r
+./sourcery/script/driver_code_gen.sh -r Hoge
 
 ---
 
@@ -1878,10 +1878,10 @@ echo "Sourcery DONE!!"
 makefileも
 
 
-# Presentation 層のコード生成 ex) make presentation-code-gen DI\_CONTAINER=Root VIEW=Hoge
+# Presentation 層のコード生成 ex) make presentation-code-gen DI_CONTAINER=Root VIEW=Hoge
 .PHONY: presentation-code-gen
 presentation-code-gen:
-	./sourcery/script/presentation\_code\_gen.sh $(DI\_CONTAINER) $(VIEW)
+	./sourcery/script/presentation_code_gen.sh $(DI_CONTAINER) $(VIEW)
 	$(MAKE) mockolo-code-gen
 
 ---

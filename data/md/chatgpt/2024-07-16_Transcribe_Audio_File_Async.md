@@ -9,7 +9,7 @@
 
 要約された文字列が返された
 
-public func transcribe(audioUrl: URL) async throws -&gt; \[String\] {
+public func transcribe(audioUrl: URL) async throws -&gt; [String] {
         let recognizer = try await getRecognizer()
         let request = SFSpeechURLRecognitionRequest(url: audioUrl)
 
@@ -26,7 +26,7 @@ public func transcribe(audioUrl: URL) async throws -&gt; \[String\] {
 
                 if let result {
                     if result.isFinal {
-                        continuation.resume(returning: \[result.bestTranscription.formattedString\])
+                        continuation.resume(returning: [result.bestTranscription.formattedString])
                     }
                 }
             }

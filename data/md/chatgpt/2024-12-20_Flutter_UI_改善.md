@@ -8,9 +8,9 @@
 *2024/12/20 14:36:10*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-B3nRMq7MSr1EekFefB7THu",
-  "size\_bytes": 424015,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-B3nRMq7MSr1EekFefB7THu",
+  "size_bytes": 424015,
   "width": 750,
   "height": 1350,
   "fovea": null,
@@ -18,19 +18,19 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-B2s2y4o5ZsR4Yo3Q9JnYzy",
-  "size\_bytes": 113106,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-B2s2y4o5ZsR4Yo3Q9JnYzy",
+  "size_bytes": 113106,
   "width": 272,
   "height": 449,
   "fovea": null,
@@ -38,22 +38,22 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 1枚目が今の実装で、2枚目が目指している実装なんだ。
 2つ並んでいるListTileをまとめるような囲いとそのボーダーと背景色を設定したい。
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class SpotDetailPage extends HookConsumerWidget {
   const SpotDetailPage({super.key});
@@ -66,12 +66,12 @@ class SpotDetailPage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Detail'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow\_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -79,20 +79,20 @@ class SpotDetailPage extends HookConsumerWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: \[
+          children: [
             AspectRatio(
               aspectRatio: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Stack(
                   fit: StackFit.expand,
-                  children: \[
+                  children: [
                     Image.network(
                       imageUrl.value,
                       fit: BoxFit.cover,
@@ -111,7 +111,7 @@ class SpotDetailPage extends HookConsumerWidget {
                         );
                       },
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
@@ -134,19 +134,19 @@ class SpotDetailPage extends HookConsumerWidget {
               ),
               trailing: const Row(
                 mainAxisSize: MainAxisSize.min,
-                children: \[
+                children: [
                   Text(
                     'Your Guild',
                   ),
                   SizedBox(width: 8),
-                  Icon(Icons.arrow\_forward\_ios),
-                \],
+                  Icon(Icons.arrow_forward_ios),
+                ],
               ),
               onTap: () {
                 debugPrint('Navigate to Guild Detail');
               },
             ),
-          \],
+          ],
         ),
       ),
     );
@@ -605,9 +605,9 @@ class SpotDetailPage extends HookConsumerWidget {
 *2024/12/20 15:17:27*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-FGp5kH597jo5a77gYScDyy",
-  "size\_bytes": 446218,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-FGp5kH597jo5a77gYScDyy",
+  "size_bytes": 446218,
   "width": 789,
   "height": 1652,
   "fovea": null,
@@ -615,22 +615,22 @@ class SpotDetailPage extends HookConsumerWidget {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 Holder の ListTile が下に広がっているのを解消したい
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class SpotDetailPage extends HookConsumerWidget {
   const SpotDetailPage({super.key});
@@ -640,7 +640,7 @@ class SpotDetailPage extends HookConsumerWidget {
     // TODO: API 疎通 or 前画面からもってくる
     final imageUrl = useState(UriExtensions.randomImageUrl.toString());
 
-    final items = \[
+    final items = [
       const ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 16),
         title: Text('Difficulty level'),
@@ -654,31 +654,31 @@ class SpotDetailPage extends HookConsumerWidget {
         title: const Text('Holder'),
         trailing: const Row(
           mainAxisSize: MainAxisSize.min, // これがないとクラッシュする
-          children: \[
+          children: [
             Text(
               'Your Guild',
             ),
             SizedBox(width: 8),
-            Icon(Icons.arrow\_forward\_ios),
-          \],
+            Icon(Icons.arrow_forward_ios),
+          ],
         ),
         onTap: () {
           debugPrint('Navigate to Guild Detail');
         },
       ),
       // 他のアイテムをここに追加していく
-    \];
+    ];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow\_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -686,20 +686,20 @@ class SpotDetailPage extends HookConsumerWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: \[
+          children: [
             AspectRatio(
               aspectRatio: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Stack(
                   fit: StackFit.expand,
-                  children: \[
+                  children: [
                     // 角丸にボーダー を入れるには Container x Padding を使う
                     Container(
                       decoration: BoxDecoration(
@@ -731,7 +731,7 @@ class SpotDetailPage extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
@@ -750,7 +750,7 @@ class SpotDetailPage extends HookConsumerWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return items\[index\];
+                  return items[index];
                 },
                 separatorBuilder: (context, index) =&gt; Container(
                   height: 0.5,
@@ -758,7 +758,7 @@ class SpotDetailPage extends HookConsumerWidget {
                 ),
               ),
             ),
-          \],
+          ],
         ),
       ),
     );
@@ -824,9 +824,9 @@ ListTile(
 *2024/12/20 15:19:08*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-BgZ8ePJUzRdHgGy3ixQVwP",
-  "size\_bytes": 517337,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-BgZ8ePJUzRdHgGy3ixQVwP",
+  "size_bytes": 517337,
   "width": 831,
   "height": 1653,
   "fovea": null,
@@ -834,13 +834,13 @@ ListTile(
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 まだ下に広い
@@ -851,7 +851,7 @@ ListTile(
         trailing: const IntrinsicHeight(
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: \[
+            children: [
               Text(
                 'Your Guild',
                 style: TextStyle(
@@ -860,11 +860,11 @@ ListTile(
               ),
               SizedBox(width: 8),
               Icon(
-                Icons.arrow\_forward\_ios,
+                Icons.arrow_forward_ios,
                 size: 16,
                 color: ColorToken.text,
               ),
-            \],
+            ],
           ),
         ),
         onTap: () {
@@ -937,9 +937,9 @@ ListTile(
 *2024/12/20 15:22:12*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-5c3XjJH5D2gCBwJECiSQMe",
-  "size\_bytes": 187343,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-5c3XjJH5D2gCBwJECiSQMe",
+  "size_bytes": 187343,
   "width": 520,
   "height": 975,
   "fovea": null,
@@ -947,22 +947,22 @@ ListTile(
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 まだ下に広がっている。
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class SpotDetailPage extends HookConsumerWidget {
   const SpotDetailPage({super.key});
@@ -972,7 +972,7 @@ class SpotDetailPage extends HookConsumerWidget {
     // TODO: API 疎通 or 前画面からもってくる
     final imageUrl = useState(UriExtensions.randomImageUrl.toString());
 
-    final items = \[
+    final items = [
       const ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 16),
         title: Text('Difficulty level'),
@@ -990,7 +990,7 @@ class SpotDetailPage extends HookConsumerWidget {
         ),
         trailing: const Row(
           mainAxisSize: MainAxisSize.min,
-          children: \[
+          children: [
             Text(
               'Your Guild',
               style: TextStyle(
@@ -999,28 +999,28 @@ class SpotDetailPage extends HookConsumerWidget {
             ),
             SizedBox(width: 8),
             Icon(
-              Icons.arrow\_forward\_ios,
+              Icons.arrow_forward_ios,
               size: 16,
               color: ColorToken.text,
             ),
-          \],
+          ],
         ),
         onTap: () {
           debugPrint('Navigate to Guild Detail');
         },
       ),
-    \];
+    ];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow\_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -1028,20 +1028,20 @@ class SpotDetailPage extends HookConsumerWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: \[
+          children: [
             AspectRatio(
               aspectRatio: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Stack(
                   fit: StackFit.expand,
-                  children: \[
+                  children: [
                     // 角丸にボーダー を入れるには Container x Padding を使う
                     Container(
                       decoration: BoxDecoration(
@@ -1073,7 +1073,7 @@ class SpotDetailPage extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
@@ -1092,7 +1092,7 @@ class SpotDetailPage extends HookConsumerWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return items\[index\];
+                  return items[index];
                 },
                 separatorBuilder: (context, index) =&gt; Container(
                   height: 0.5,
@@ -1100,7 +1100,7 @@ class SpotDetailPage extends HookConsumerWidget {
                 ),
               ),
             ),
-          \],
+          ],
         ),
       ),
     );
@@ -1181,10 +1181,10 @@ Holderのリスとを消したら今度はDifficulty levelが大きくなって�
 つまり、DecoratedBoxの内側の問題である。
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class SpotDetailPage extends HookConsumerWidget {
   const SpotDetailPage({super.key});
@@ -1194,7 +1194,7 @@ class SpotDetailPage extends HookConsumerWidget {
     // TODO: API 疎通 or 前画面からもってくる
     final imageUrl = useState(UriExtensions.randomImageUrl.toString());
 
-    final items = \[
+    final items = [
       const ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 16),
         title: Text('Difficulty level'),
@@ -1211,7 +1211,7 @@ class SpotDetailPage extends HookConsumerWidget {
         ),
         trailing: const Row(
           mainAxisSize: MainAxisSize.min,
-          children: \[
+          children: [
             Text(
               'Your Guild',
               style: TextStyle(
@@ -1220,28 +1220,28 @@ class SpotDetailPage extends HookConsumerWidget {
             ),
             SizedBox(width: 8),
             Icon(
-              Icons.arrow\_forward\_ios,
+              Icons.arrow_forward_ios,
               size: 16,
               color: ColorToken.text,
             ),
-          \],
+          ],
         ),
         onTap: () {
           debugPrint('Navigate to Guild Detail');
         },
       ),
-    \];
+    ];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow\_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -1249,20 +1249,20 @@ class SpotDetailPage extends HookConsumerWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: \[
+          children: [
             AspectRatio(
               aspectRatio: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Stack(
                   fit: StackFit.expand,
-                  children: \[
+                  children: [
                     // 角丸にボーダー を入れるには Container x Padding を使う
                     Container(
                       decoration: BoxDecoration(
@@ -1294,7 +1294,7 @@ class SpotDetailPage extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
@@ -1313,7 +1313,7 @@ class SpotDetailPage extends HookConsumerWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return items\[index\];
+                  return items[index];
                 },
                 separatorBuilder: (context, index) =&gt; Container(
                   height: 0.5,
@@ -1321,7 +1321,7 @@ class SpotDetailPage extends HookConsumerWidget {
                 ),
               ),
             ),
-          \],
+          ],
         ),
       ),
     );

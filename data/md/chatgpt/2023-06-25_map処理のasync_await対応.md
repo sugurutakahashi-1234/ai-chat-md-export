@@ -9,7 +9,7 @@
 
 map 処理だとasync/await対応できないので、対応してほしい。
 
-public static func predictWithFaceDetection(sampleBuffer: CMSampleBuffer, timestamp: Double, orientation: EmotionAnalysis.InputOrientation = .portrait) async throws -&gt; \[ImageItem\] {}
+public static func predictWithFaceDetection(sampleBuffer: CMSampleBuffer, timestamp: Double, orientation: EmotionAnalysis.InputOrientation = .portrait) async throws -&gt; [ImageItem] {}
 
 public func analysis() async throws {
         let predictEmotionResults = sampleBufferAndTimestamp.map { sampleBuffer, timestamp -&gt; PredictEmotionResult in
@@ -134,9 +134,9 @@ Invalid conversion from throwing function of type '@Sendable () async throws -&g
 public struct PredictEmotionResult {
     public let id: String = UUID().uuidString
     public let timestamp: Date
-    public let imageItem: \[ImageItem\]
+    public let imageItem: [ImageItem]
 
-    public init(timestamp: Date, imageItem: \[ImageItem\]) {
+    public init(timestamp: Date, imageItem: [ImageItem]) {
         self.timestamp = timestamp
         self.imageItem = imageItem
     }

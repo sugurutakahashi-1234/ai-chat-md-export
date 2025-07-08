@@ -10,17 +10,17 @@
 ref
       ..listen&lt;bool&gt;(showShootableSpotDetailNotifierProvider, (previous, next) {
         if (next) {
-          \_showShootableSpotDetailSheet(context, ref);
+          _showShootableSpotDetailSheet(context, ref);
         }
       })
       ..listen&lt;bool&gt;(showExplorerListNotifierProvider, (previous, next) {
         if (next) {
-          \_showExploreListSheet(context, ref);
+          _showExploreListSheet(context, ref);
         }
       })
       ..listen&lt;bool&gt;(showSpotListNotifierProvider, (previous, next) {
         if (next) {
-          \_showSpotListSheet(context, ref);
+          _showSpotListSheet(context, ref);
         }
       });
 

@@ -18,15 +18,15 @@ extension URL {
     }
 
     public static var randomImageUrl: URL {
-        let width: String = "\\(Int.random(in: 200...640))"
-        let height: String = "\\(Int.random(in: 200...640))"
-        return URL(string: "https://picsum.photos/\\(width)/\\(height)")!
+        let width: String = "\(Int.random(in: 200...640))"
+        let height: String = "\(Int.random(in: 200...640))"
+        return URL(string: "https://picsum.photos/\(width)/\(height)")!
     }
 
     public static func randomImageUrl(title: String) -&gt; URL {
-        let width: String = "\\(Int.random(in: 1...16))00"
-        let height: String = "\\(Int.random(in: 1...16))00"
-        return URL(string: "https://placehold.jp/444444/FFFFFF/\\(width)x\\(height).jpg?text=\\(title)")!
+        let width: String = "\(Int.random(in: 1...16))00"
+        let height: String = "\(Int.random(in: 1...16))00"
+        return URL(string: "https://placehold.jp/444444/FFFFFF/\(width)x\(height).jpg?text=\(title)")!
     }
 
     public static var placeholderImageUrl: URL {
@@ -34,7 +34,7 @@ extension URL {
     }
 
     public static func placeholderImageUrl(title: String) -&gt; URL {
-        URL(string: "https://placehold.jp/444444/FFFFFF/160x90.jpg?text=\\(title)")!
+        URL(string: "https://placehold.jp/444444/FFFFFF/160x90.jpg?text=\(title)")!
     }
 }
 
@@ -104,9 +104,9 @@ void main() {
 *2024/12/13 15:39:54*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-9W3m2gpaeZoYM7hex3PHek",
-  "size\_bytes": 477841,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-9W3m2gpaeZoYM7hex3PHek",
+  "size_bytes": 477841,
   "width": 569,
   "height": 908,
   "fovea": null,
@@ -114,13 +114,13 @@ void main() {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 添付した画像のような 画像のListを表示したい。
@@ -128,8 +128,8 @@ void main() {
 その際に先ほどの randomImageUrl を使って欲しい
 
 import 'package:flutter/material.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
 
 class SpotListPage extends StatelessWidget {
   const SpotListPage({super.key});
@@ -140,14 +140,14 @@ class SpotListPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('SpotListPage'),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
               Navigator.of(context, rootNavigator: true).pop(); // ボトムシート全体を閉じる
             },
           ),
-        \],
+        ],
       ),
       body: ListView.builder(
         itemCount: 10,

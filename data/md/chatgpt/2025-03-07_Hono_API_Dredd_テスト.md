@@ -14,19 +14,19 @@ npm で dredd を試したい。npm で hono を使ってAPIを構築する。ap
 ## 🔧 ツール
 *2025/3/7 22:11:52*
 
-\*\*npmスクリプトの活用を検討中\*\*
+**npmスクリプトの活用を検討中**
 
 TypeScript環境を作成し、HonoでAPIを構築。Dreddで契約検証を行いつつ、OpenAPIの自動生成も探っている。
 
-\*\*開発環境のセットアップを計画中\*\*
+**開発環境のセットアップを計画中**
 
 npm initでセットアップし、dev依存をインストール後、TypeScriptのtsconfigを設定。server.tsを作成し、OpenAPIのyamlファイルを生成。その後、dreddを利用してAPIを検証。
 
-\*\*コードベースのインターフェースをOpenAPI形式に変換\*\*
+**コードベースのインターフェースをOpenAPI形式に変換**
 
 ts-openapiやzod-to-openapiを使用し、ルートをコードで定義し、zodスキーマからOpenAPIを生成し、Dreddでテストする予定です。
 
-\*\*プロジェクト構造を整え、スキーマを定義し、OpenAPIを生成している\*\*
+**プロジェクト構造を整え、スキーマを定義し、OpenAPIを生成している**
 
 package.json、tsconfig.json、.dredd.yml、src/server.ts、src/routes.ts、src/schemas.ts、スクリプトを整備して、TypeScript環境を構築中。
 
@@ -504,7 +504,7 @@ hooks.afterAll((transactions, done) => {
 
 $ npm audit fix --force                                                                                  1 ↵
 npm warn using --force Recommended protections disabled.
-npm warn audit No fix available for zod-to-openapi@\*
+npm warn audit No fix available for zod-to-openapi@*
 npm warn deprecated swagger-methods@2.0.2: This package is no longer being maintained.
 npm warn deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
 npm warn deprecated json-schema-ref-parser@7.1.4: Please switch to @apidevtools/json-schema-ref-parser
@@ -523,7 +523,7 @@ async  3.0.0 - 3.2.1
 Severity: high
 Prototype Pollution in async - https://github.com/advisories/GHSA-fwr7-v2mv-hh25
 fix available via `npm audit fix`
-node\_modules/async
+node_modules/async
   dredd  &gt;=0.1.2
   Depends on vulnerable versions of async
   Depends on vulnerable versions of cross-spawn
@@ -531,13 +531,13 @@ node\_modules/async
   Depends on vulnerable versions of markdown-it
   Depends on vulnerable versions of optimist
   Depends on vulnerable versions of request
-  node\_modules/dredd
+  node_modules/dredd
 
 cross-spawn  &lt;6.0.6
 Severity: high
 Regular Expression Denial of Service (ReDoS) in cross-spawn - https://github.com/advisories/GHSA-3xgq-45jj-v275
 fix available via `npm audit fix`
-node\_modules/cross-spawn
+node_modules/cross-spawn
 
 json-pointer  &lt;=0.6.1
 Severity: critical
@@ -545,48 +545,48 @@ Prototype Pollution in json-pointer - https://github.com/advisories/GHSA-v5vg-g7
 Prototype pollution in json-pointer - https://github.com/advisories/GHSA-7mg4-w3w5-x5pc
 json-pointer vulnerable to Prototype Pollution - https://github.com/advisories/GHSA-6xrf-q977-5vgc
 fix available via `npm audit fix`
-node\_modules/json-pointer
+node_modules/json-pointer
   gavel  0.2.1 - 1.1.0 || 2.2.0 - 10.0.1
   Depends on vulnerable versions of json-pointer
-  node\_modules/gavel
+  node_modules/gavel
 
 markdown-it  &lt;12.3.2
 Severity: moderate
 Uncontrolled Resource Consumption in markdown-it - https://github.com/advisories/GHSA-6vfc-qv3f-vr6c
 fix available via `npm audit fix`
-node\_modules/markdown-it
+node_modules/markdown-it
 
 minimist  &lt;=0.2.3
 Severity: critical
 Prototype Pollution in minimist - https://github.com/advisories/GHSA-vh95-rmgr-6w4m
 Prototype Pollution in minimist - https://github.com/advisories/GHSA-xvch-5gv4-984h
 fix available via `npm audit fix`
-node\_modules/minimist
+node_modules/minimist
   optimist  &gt;=0.6.0
   Depends on vulnerable versions of minimist
-  node\_modules/optimist
+  node_modules/optimist
 
-request  \*
+request  *
 Severity: moderate
 Server-Side Request Forgery in Request - https://github.com/advisories/GHSA-p8p7-x288-28g6
 Depends on vulnerable versions of tough-cookie
 fix available via `npm audit fix`
-node\_modules/request
+node_modules/request
 
 tough-cookie  &lt;4.1.3
 Severity: moderate
 tough-cookie Prototype Pollution vulnerability - https://github.com/advisories/GHSA-72xf-g2v4-qvf3
 fix available via `npm audit fix`
-node\_modules/tough-cookie
+node_modules/tough-cookie
 
 zod  &lt;=3.22.2
 Severity: moderate
 Zod denial of service vulnerability - https://github.com/advisories/GHSA-m95q-7qp3-xv42
 No fix available
-node\_modules/zod
-  zod-to-openapi  \*
+node_modules/zod
+  zod-to-openapi  *
   Depends on vulnerable versions of zod
-  node\_modules/zod-to-openapi
+  node_modules/zod-to-openapi
 
 12 vulnerabilities (5 moderate, 2 high, 5 critical)
 
@@ -595,38 +595,38 @@ To address issues that do not require attention, run:
 
 Some issues need review, and may require choosing
 a different dependency.
-~/git/suguruTakahashi-1234/dredd-sample  ‹main\*› $
+~/git/suguruTakahashi-1234/dredd-sample  ‹main*› $
 
 ---
 
 ## 🔧 ツール
 *2025/3/7 22:16:00*
 
-\*\*見て、これを試してみる\*\*
+**見て、これを試してみる**
 
 古い依存関係に脆弱性が見つかっているね。新しいバージョンを探すか、他のツールを試してみるのが良さそうだ。
 
-\*\*更新の検討\*\*
+**更新の検討**
 
 いくつかの依存関係に脆弱性があるね。zodの最新バージョンを確認し、必要に応じて更新することを検討中。
 
-\*\*対応を模索中\*\*
+**対応を模索中**
 
 zodの脆弱性には修正がないみたい。代わりに他の工具を探して、部分的な修正や回避策を検討中。
 
-\*\*選択肢を模索中\*\*
+**選択肢を模索中**
 
 Dreddの依存関係に古いツールが多く、対応を検討。新しいバージョンや代替手段を探す必要がありそうだ。
 
-\*\*新しいDreddを試す\*\*
+**新しいDreddを試す**
 
 新しいDreddのバージョン14.0.0がリリースされている。開発環境専用なら一部の脆弱性が関係ない可能性もあるが、最新バージョンの試行が必要かもしれない。
 
-\*\*アップデートと回避を考慮\*\*
+**アップデートと回避を考慮**
 
 "request" を他のツールに変えるときは、ツールの更新が必要。脆弱性を無視するか、更新を待つか、異なるツールを試すこともある。
 
-\*\*代替案を探る\*\*
+**代替案を探る**
 
 zodの脆弱性は修正がないので、手動の検証や入力長の制限、依存関係の整理、異なるツールの使用を検討している。
 
@@ -733,57 +733,57 @@ Dredd と同様に「OpenAPI のドキュメント (openapi.yaml)」を元にサ
 
 ---
 
-## 1. \*\*Schemathesis\*\*
+## 1. **Schemathesis**
 
-- \[Schemathesis\](https://github.com/schemathesis/schemathesis) は Python 製のオープンソースツールで、OpenAPI（2/3）仕様からテストケースを自動生成して、API に対してリクエストを送り、応答が正しいかどうかを検証します。
-- \*\*特長\*\*
+- [Schemathesis](https://github.com/schemathesis/schemathesis) は Python 製のオープンソースツールで、OpenAPI（2/3）仕様からテストケースを自動生成して、API に対してリクエストを送り、応答が正しいかどうかを検証します。
+- **特長**
   - 仕様のパラメータ定義からさまざまな入力を生成（Fuzzing 的なアプローチ）し、実際に API サーバーを呼び出してレスポンスをチェックする。
   - 正しいレスポンスだけでなく、想定外のステータスコードや異常応答を狙って発生させることで、潜在的なバグを見つけられる。
   - Python パッケージなので、任意の CI/CD 上で動かしやすい。コマンドライン、もしくは Python スクリプトから利用できる。
-- \*\*利用イメージ\*\*
+- **利用イメージ**
   1. `pip install schemathesis`  
   2. `schemathesis run openapi.yaml --base-url=http://localhost:3000`  
      - これだけでドキュメントを解析し、テストリクエストを自動生成して送る簡易検証が可能。
 
 ---
 
-## 2. \*\*Prism (by Stoplight)\*\*
+## 2. **Prism (by Stoplight)**
 
-- \[Prism\](https://github.com/stoplightio/prism) は、OpenAPI/Swagger の定義からモックサーバを起動したり、実際の API と突き合わせてリクエスト・レスポンスを検証したりできるツールです。
-- \*\*特長\*\*
-  - \*\*Mock モード\*\*: OpenAPI に基づいたモックサーバを立ち上げ、想定レスポンスを返す。
-  - \*\*Proxy モード\*\*: 実際の API にリクエストをプロキシし、サーバーの返すレスポンスが OpenAPI の仕様どおりになっているかをバリデートする。
+- [Prism](https://github.com/stoplightio/prism) は、OpenAPI/Swagger の定義からモックサーバを起動したり、実際の API と突き合わせてリクエスト・レスポンスを検証したりできるツールです。
+- **特長**
+  - **Mock モード**: OpenAPI に基づいたモックサーバを立ち上げ、想定レスポンスを返す。
+  - **Proxy モード**: 実際の API にリクエストをプロキシし、サーバーの返すレスポンスが OpenAPI の仕様どおりになっているかをバリデートする。
   - CLI ツールとして提供されるので、Node.js 環境でインストールして簡単に使える。
-- \*\*利用イメージ\*\*  
+- **利用イメージ**  
   1. `npm install -g @stoplight/prism-cli`  
   2. `prism proxy openapi.yaml http://localhost:3000`  
      - これで Prism がプロキシとして起動し、OpenAPI 仕様に合わないリクエストやレスポンスはエラーとして報告してくれる。
 
 ---
 
-## 3. \*\*Optic\*\*
+## 3. **Optic**
 
-- \[Optic\](https://useoptic.com/) は、API のリクエスト・レスポンスをキャプチャして OpenAPI に差分を反映したり、API が仕様どおりに動いているかチェックしたりできるツールです。
-- \*\*特長\*\*
+- [Optic](https://useoptic.com/) は、API のリクエスト・レスポンスをキャプチャして OpenAPI に差分を反映したり、API が仕様どおりに動いているかチェックしたりできるツールです。
+- **特長**
   - OpenAPI スキーマからのチェックだけでなく、実際のトラフィックを元にドキュメント差分を見つけ、自動で更新案を作ってくれる。
   - 既存の API に対して「実際に動いている挙動とドキュメントが乖離していないか」を検証するのに便利。
-- \*\*利用イメージ\*\*
+- **利用イメージ**
   - CLI で `optic capture` などを実行して API コールを監視し、その結果をもとにドキュメントとの整合性を比較する。
 
 ---
 
-## 4. \*\*Newman / Postman + スクリプト拡張\*\*
+## 4. **Newman / Postman + スクリプト拡張**
 
-- \[Postman\](https://www.postman.com/) 上で OpenAPI ドキュメントをインポートし、コレクションを作成できます。そのコレクションをテストとして拡張しておけば、\[Newman\](https://github.com/postmanlabs/newman) CLI から自動テストを回すことも可能です。
+- [Postman](https://www.postman.com/) 上で OpenAPI ドキュメントをインポートし、コレクションを作成できます。そのコレクションをテストとして拡張しておけば、[Newman](https://github.com/postmanlabs/newman) CLI から自動テストを回すことも可能です。
 - ただし、Dredd のように「OpenAPI がこう書いてあるから、そのとおりにチェックする」アプローチというよりは、「Postman でテストスクリプトを書く」アプローチになるため、ある程度の手動設定が必要です。
 
 ---
 
-## 5. \*\*手動テスト + OpenAPI Enforcer / openapi-backend など\*\*
+## 5. **手動テスト + OpenAPI Enforcer / openapi-backend など**
 
 - ランタイムレベルでリクエストやレスポンスをチェックするミドルウェア的なライブラリを使う方法もあります。例えば:
-  - \[OpenAPI Enforcer\](https://github.com/ByronBecker/openapi-enforcer): Node.js 向けのバリデーションライブラリ
-  - \[openapi-backend\](https://github.com/anttiviljami/openapi-backend): OpenAPI を元にバリデーションやルーティングを行う Node.js ライブラリ
+  - [OpenAPI Enforcer](https://github.com/ByronBecker/openapi-enforcer): Node.js 向けのバリデーションライブラリ
+  - [openapi-backend](https://github.com/anttiviljami/openapi-backend): OpenAPI を元にバリデーションやルーティングを行う Node.js ライブラリ
 - これらをテスト時に組み込み、サーバーに対するリクエスト・レスポンスをバリデーションするように設定すれば、自前で「OpenAPI と実装の整合性チェック」を実装できます。  
 - ただし Dredd のような「CLI 1 発でテスト一式を回す」仕組みとは少し異なり、自前設定の労力が増えます。
 
@@ -791,12 +791,12 @@ Dredd と同様に「OpenAPI のドキュメント (openapi.yaml)」を元にサ
 
 ## まとめ
 
-- \*\*Schemathesis\*\* や \*\*Prism\*\* は「Dredd の代替手段」として特に有力です。  
-- Dredd 同様に CLI で \*\*OpenAPI ドキュメントを解析し、サーバーに対して実際にリクエストを送り、レスポンスをチェック\*\* するといった流れを実現できます。  
-- また \*\*Optic\*\* はドキュメントと実際の挙動を差分比較したり、ドキュメントを更新するワークフローに強みがあります。  
+- **Schemathesis** や **Prism** は「Dredd の代替手段」として特に有力です。  
+- Dredd 同様に CLI で **OpenAPI ドキュメントを解析し、サーバーに対して実際にリクエストを送り、レスポンスをチェック** するといった流れを実現できます。  
+- また **Optic** はドキュメントと実際の挙動を差分比較したり、ドキュメントを更新するワークフローに強みがあります。  
 - Postman / Newman などの一般的な API テストツールを使う道もありますが、Dredd のような「OpenAPI からテストを自動生成し、コマンド一発で契約テストを回す」使い方とは少し違うため、その点を考慮してください。
 
-ご要望の「OpenAPI のインターフェース通りにサーバーが動いているかを確認したい」という目的であれば、\*\*Schemathesis\*\* か \*\*Prism\*\* の Proxy モードが、とくに Dredd の代替として導入しやすいです。
+ご要望の「OpenAPI のインターフェース通りにサーバーが動いているかを確認したい」という目的であれば、**Schemathesis** か **Prism** の Proxy モードが、とくに Dredd の代替として導入しやすいです。
 
 ---
 
@@ -810,19 +810,19 @@ Dredd と同様に「OpenAPI のドキュメント (openapi.yaml)」を元にサ
 ## 🔧 ツール
 *2025/3/7 22:23:52*
 
-\*\*探し始める\*\*
+**探し始める**
 
 Node 環境で OpenAPI の契約テストを自動的に複数の組み合わせを試し、仕様に一致する応答を返すツールを探している。
 
-\*\*探している\*\*
+**探している**
 
 オープンソースツールや Node ベースの解決策を検討中。自動的に OpenAPI ドキュメントを読み、リクエストをサーバーに送信し、応答を確認するツールを探している。
 
-\*\*検討中のツール\*\*
+**検討中のツール**
 
 Node 環境で OpenAPI ドキュメントを読み、リクエストをサーバーに送信し、応答を確認するツールを探している。直接的な Node ベースの解決策はない。
 
-\*\*解決策を見つけ出す\*\*
+**解決策を見つけ出す**
 
 OpenAPI ドキュメントを読み、リクエストをサーバーに送信し、応答を確認する Node ベースの解決策はないが、Prism または openapi-enforcer とテストランナーの組み合わせが有力。
 
@@ -831,23 +831,23 @@ OpenAPI ドキュメントを読み、リクエストをサーバーに送信し
 ## 🤖 アシスタント
 *2025/3/7 22:23:52*
 
-Schemathesis と同等の “OpenAPI の仕様を読み取り、自動でテストケースを生成して API サーバーをたたき、結果を検証する” ツールは、\*\*Python 製\*\* が主流で、\*\*Node.js（npm）製\*\* のものは意外と多くありません。Dredd が古い依存に縛られがちなので代替を探したい、というケースはよくあるのですが、Schemathesis のような高度な自動テスト・Fuzz テストに特化した Node 製ツールは現状あまり活発にメンテされているものが見当たらない状況です。
+Schemathesis と同等の “OpenAPI の仕様を読み取り、自動でテストケースを生成して API サーバーをたたき、結果を検証する” ツールは、**Python 製** が主流で、**Node.js（npm）製** のものは意外と多くありません。Dredd が古い依存に縛られがちなので代替を探したい、というケースはよくあるのですが、Schemathesis のような高度な自動テスト・Fuzz テストに特化した Node 製ツールは現状あまり活発にメンテされているものが見当たらない状況です。
 
-以下、\*\*npm ベース\*\*で「OpenAPI 契約テスト」に使えそうな代表的アプローチやツールを挙げます。いずれも \*\*Schemathesis ほど包括的な自動生成テスト\*\*（パラメータを変動させて広範囲に検証する）までは行わないものが多いですが、参考になれば幸いです。
+以下、**npm ベース**で「OpenAPI 契約テスト」に使えそうな代表的アプローチやツールを挙げます。いずれも **Schemathesis ほど包括的な自動生成テスト**（パラメータを変動させて広範囲に検証する）までは行わないものが多いですが、参考になれば幸いです。
 
 ---
 
 ## 1. Prism (by Stoplight)
 
-- \*\*GitHub\*\*: \[stoplightio/prism\](https://github.com/stoplightio/prism)
-- \*\*インストール\*\*: `npm install -g @stoplight/prism-cli`
+- **GitHub**: [stoplightio/prism](https://github.com/stoplightio/prism)
+- **インストール**: `npm install -g @stoplight/prism-cli`
 
-Prism は \*\*OpenAPI の定義ファイル\*\* を元に \*\*モックサーバ\*\* を立ち上げたり、\*\*プロキシモード\*\* で実際のサーバーへリクエストを転送し、\*\*レスポンスを OpenAPI に沿ってバリデーション\*\* してくれるツールです。
+Prism は **OpenAPI の定義ファイル** を元に **モックサーバ** を立ち上げたり、**プロキシモード** で実際のサーバーへリクエストを転送し、**レスポンスを OpenAPI に沿ってバリデーション** してくれるツールです。
 
 ### 特長
 - CLI コマンド一つで「OpenAPI どおりのレスポンスになっているか」を検証可能
-- \*\*Mock モード\*\*と\*\*Proxy モード\*\*がある  
-  - \*Proxy モード\*: `prism proxy openapi.yaml http://localhost:3000` などとすると、Prism が 4010 番ポート（デフォルト）などで待ち受けし、そちらにアクセスしたリクエストを実サーバーに転送。サーバーの返却したレスポンスが OpenAPI に合致しない場合は CLI にエラーを表示してくれる
+- **Mock モード**と**Proxy モード**がある  
+  - *Proxy モード*: `prism proxy openapi.yaml http://localhost:3000` などとすると、Prism が 4010 番ポート（デフォルト）などで待ち受けし、そちらにアクセスしたリクエストを実サーバーに転送。サーバーの返却したレスポンスが OpenAPI に合致しない場合は CLI にエラーを表示してくれる
 
 ### 注意点
 - Schemathesis のように、パラメータを自動生成して大量にテストするわけではありません。  
@@ -857,24 +857,24 @@ Prism は \*\*OpenAPI の定義ファイル\*\* を元に \*\*モックサーバ
 
 ## 2. openapi-enforcer / openapi-response-validator / openapi-backend など
 
-\*\*OpenAPI のリクエスト／レスポンスを検証するライブラリ\*\*を、Mocha や Jest といったテストランナーで組み合わせて使う方法です。
+**OpenAPI のリクエスト／レスポンスを検証するライブラリ**を、Mocha や Jest といったテストランナーで組み合わせて使う方法です。
 
-1. \*\*\[openapi-enforcer\](https://github.com/ByronBecker/openapi-enforcer)\*\*  
+1. **[openapi-enforcer](https://github.com/ByronBecker/openapi-enforcer)**  
    - OpenAPI ドキュメントを読み込み、与えられたオブジェクト（リクエスト or レスポンス）が仕様通りかどうかをバリデーションできます。  
    - 自動テストを組む際、「`fetch` / `axios` で API を呼び出す → openapi-enforcer でレスポンスを検証」という形でスクリプトを書けば、Schemathesis に近い“契約テスト”を自前で構築可能です。  
    - ただしリクエストパラメータの自動生成などの機能はありません。あくまで「結果が OpenAPI に合うか」を自動チェックするライブラリという位置づけです。
 
-2. \*\*\[openapi-backend\](https://github.com/anttiviljami/openapi-backend)\*\*  
+2. **[openapi-backend](https://github.com/anttiviljami/openapi-backend)**  
    - 本来は「OpenAPI 仕様をもとに、Node.js でルーティング＆バリデーションする」ライブラリです。  
-   - こちらもテスト用に利用する場合、サーバーのレスポンスが仕様通りか検証する仕組みを備えていますが、やはり \*\*テストケース生成までは行わない\*\* ため、Schemathesis 的な大量検証には向きません。
+   - こちらもテスト用に利用する場合、サーバーのレスポンスが仕様通りか検証する仕組みを備えていますが、やはり **テストケース生成までは行わない** ため、Schemathesis 的な大量検証には向きません。
 
 ---
 
 ## 3. RestQA
 
-- \*\*サイト\*\*: \[restqa.io\](https://restqa.io/)  
+- **サイト**: [restqa.io](https://restqa.io/)  
 - BDD（Cucumber）スタイルで API テストを記述できるツールで、OpenAPI 仕様と連携する機能もあります。  
-- ただし、基本的には「自分でステップ定義を書いて、Given / When / Then 形式でテストを組む」形になるため、自動生成というよりは \*\*「OpenAPI からシナリオを半自動生成し、それを Cucumber で流す」\*\* イメージに近いです。  
+- ただし、基本的には「自分でステップ定義を書いて、Given / When / Then 形式でテストを組む」形になるため、自動生成というよりは **「OpenAPI からシナリオを半自動生成し、それを Cucumber で流す」** イメージに近いです。  
 - Schemathesis ほどの網羅的アプローチというより、BDD スタイルの可読性・ドキュメンテーションを重視したテストに向いています。
 
 ---
@@ -882,21 +882,21 @@ Prism は \*\*OpenAPI の定義ファイル\*\* を元に \*\*モックサーバ
 ## 4. （番外）Postman / Newman + OpenAPI インポート
 
 - Postman は OpenAPI 定義をインポートしてコレクション化できます。  
-- そのコレクションを\*\*Newman\*\*（npm パッケージ）から CLI で実行し、テストを自動化するのも一案です。  
+- そのコレクションを**Newman**（npm パッケージ）から CLI で実行し、テストを自動化するのも一案です。  
 - しかしながら自動生成されるコレクションは「主要なリクエスト定義」が中心で、Schemathesis のようにパラメータのバリエーションを網羅的に試すわけではありません。必要に応じて独自のテストスクリプトを書くことになります。
 
 ---
 
 ## 5. まとめ
 
-- Schemathesis は、OpenAPI を基に \*\*自動でテストケースを生成＆Fuzzing 的\*\* に動作確認する点が強力ですが、\*\*Python 製\*\* です。  
-- Node.js 環境向けには、\*\*Prism\*\* が比較的簡単に「仕様との整合性チェック」を行えるツールとして有名ですが、Schemathesis と同じレベルの自動テスト生成はありません。  
+- Schemathesis は、OpenAPI を基に **自動でテストケースを生成＆Fuzzing 的** に動作確認する点が強力ですが、**Python 製** です。  
+- Node.js 環境向けには、**Prism** が比較的簡単に「仕様との整合性チェック」を行えるツールとして有名ですが、Schemathesis と同じレベルの自動テスト生成はありません。  
 - それ以外の多くのツール（`openapi-enforcer`, `openapi-backend`, など）はライブラリとして「OpenAPI に合致するかどうかをバリデートする機能」を提供するに留まり、テストケース生成は自前で書く必要があります。  
 - 結果的に「Dredd のように CLI で手軽に回せて、Schemathesis ほど網羅的にパラメータを試せる Node 製ツール」は今のところあまりありません。いま挙げたツール群を活用して、ある程度は置き換え可能ですが、Schemathesis と同様の自動生成機能を期待すると物足りないかもしれません。
 
-もし \*\*「npm から呼べて Schemathesis 相当の機能」\*\* を求めるなら、
+もし **「npm から呼べて Schemathesis 相当の機能」** を求めるなら、
 
-- \*\*Docker\*\* or Python 実行環境を CI/CD に含めて Schemathesis を呼び出す  
+- **Docker** or Python 実行環境を CI/CD に含めて Schemathesis を呼び出す  
 - もしくは Prism の Proxy モード + 自前でリクエストパラメータを工夫してテストを作り込む  
 - あるいは `openapi-enforcer` 等を利用し、Jest / Mocha などでパラメータをある程度ランダム生成して繰り返すテストを書く
 

@@ -7,9 +7,9 @@
 ## 👤 ユーザー
 *2024/12/18 15:48:48*
 
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'base\_uri\_provider.g.dart';
+part 'base_uri_provider.g.dart';
 
 @riverpod
 Uri baseUri(BaseUriRef ref) {
@@ -17,7 +17,7 @@ Uri baseUri(BaseUriRef ref) {
 }
 
 'BaseUriRef' is deprecated and shouldn't be used. Will be removed in 3.0. Use Ref instead.
-Try replacing the use of the deprecated member with the replacement.dartdeprecated\_member\_use\_from\_same\_package
+Try replacing the use of the deprecated member with the replacement.dartdeprecated_member_use_from_same_package
 
 ---
 

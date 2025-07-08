@@ -27,21 +27,21 @@ final class RecordingDriver {
 
     func startRecording(recordingConfig: RecordingConfig) throws {
         let audioFilename = fileManageDriver.getDirectoryURL(directoryType: .tmp)
-            .appendingPathComponent("\\(Date.ios8601)")
+            .appendingPathComponent("\(Date.ios8601)")
             .appendingPathExtension(recordingConfig.audioFormat.fileExtension.rawValue)
 
-        let settings = \[
+        let settings = [
             AVFormatIDKey: Int(recordingConfig.audioFormat.audioFormatID),
             AVSampleRateKey: recordingConfig.audioSampleRateQuality.rawValue,
             AVNumberOfChannelsKey: recordingConfig.audioChannel.rawValue,
             AVEncoderAudioQualityKey: recordingConfig.audioEncodeQuality.toAVAudioQuality.rawValue
-        \]
+        ]
 
         // Ref: AVAudioSessionの設定で何が変わるのか？ - https://zenn.dev/entaku/articles/e75c4aa914c6cf
         try audioSession.setCategory(
             recordingConfig.audioSessionCategory.toAVAudioSessionCategory,
             mode: recordingConfig.audioSessionMode.toAVAudioSessionMode,
-            options: \[\]
+            options: []
         )
         
         OSLogger.debugLog("Start: session active")

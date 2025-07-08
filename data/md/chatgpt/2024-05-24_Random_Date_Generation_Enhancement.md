@@ -26,9 +26,9 @@ extension Date: RandomValueProvider {
         let today = Date(timeIntervalSinceNow: 0)
         let gregorian = Calendar(identifier: .gregorian)
         var offsetComponents = DateComponents()
-        offsetComponents.day = -1 \* (day - 1)
-        offsetComponents.hour = -1 \* hour
-        offsetComponents.minute = -1 \* minute
+        offsetComponents.day = -1 * (day - 1)
+        offsetComponents.hour = -1 * hour
+        offsetComponents.minute = -1 * minute
 
         let randomDate = gregorian
             .date(byAdding: offsetComponents, to: today, wrappingComponents: true)

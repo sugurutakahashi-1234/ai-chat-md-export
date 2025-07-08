@@ -36,18 +36,18 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import { defineConfig } from "eslint/config";
 
-export default defineConfig(\[
+export default defineConfig([
   {
-    files: \["\*\*/\*.{js,mjs,cjs,ts,jsx,tsx}"\],
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     plugins: { js },
-    extends: \["js/recommended"\],
+    extends: ["js/recommended"],
   },
   {
-    files: \["\*\*/\*.{js,mjs,cjs,ts,jsx,tsx}"\],
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
   },
   tseslint.configs.recommended,
-\]);
+]);
 
 ---
 
@@ -107,23 +107,23 @@ ESLintのライブラリかなんかで、自動的に型変換するものは�
 ESLint設定ファイルをJSからTSに移行するメリットは以下の通りです：
 
 ### メリット
-1. \*\*型安全性の確保\*\*：
+1. **型安全性の確保**：
    - 設定オブジェクトの構造が正しいかTypeScriptが検証してくれます
    - プラグインやルールの名前を間違えた場合に型エラーで検出できます
 
-2. \*\*IDE補完の強化\*\*：
+2. **IDE補完の強化**：
    - 設定可能なオプションに対する入力補完が効きます
    - ルール設定時のオプション値も補完されます
 
-3. \*\*プロジェクト全体の一貫性\*\*：
+3. **プロジェクト全体の一貫性**：
    - 他のコードがTypeScriptで書かれている場合、設定ファイルも同様に保つことでプロジェクト全体の統一感が増します
 
 ### デメリット
-1. \*\*複雑性の増加\*\*：
+1. **複雑性の増加**：
    - 型定義を追加する必要があり、シンプルなJS設定よりも複雑になります
    - 型エラーの解決に時間がかかる場合があります
 
-2. \*\*ビルドステップの追加\*\*：
+2. **ビルドステップの追加**：
    - TypeScriptファイルとして実行する場合、追加のビルドステップが必要になる場合があります
 
 ## 結論
@@ -266,7 +266,7 @@ npx eslint --config eslint.config.ts
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
@@ -337,20 +337,20 @@ pnpm add -D jiti
 
 ファイル '/Users/sugurutakahashi/git/typescript-learning/eslint.config.ts' が 'rootDir' '/Users/sugurutakahashi/git/typescript-learning/src' の下にありません。'rootDir' にすべてにソース ファイルが含まれている必要があります。
   ファイルがプログラム内に存在します。理由:
-    既定で一致するインクルード パターン '\*\*/\*'
+    既定で一致するインクルード パターン '**/*'
   '/Users/sugurutakahashi/git/typescript-learning/package.json' には値 "module" のフィールド "type" があるため、ファイルは ECMAScript モジュールです。
 
 {
   "compilerOptions": {
-    "target": "ES2024" /\* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. \*/,
-    "module": "NodeNext" /\* Specify what module code is generated. \*/,
-    "moduleResolution": "NodeNext" /\* Specify how modules are resolved. \*/,
-    "esModuleInterop": true /\* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. \*/,
-    "forceConsistentCasingInFileNames": true /\* Ensure that casing is correct in imports. \*/,
-    "strict": true /\* Enable all strict type-checking options. \*/,
+    "target": "ES2024" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "NodeNext" /* Specify what module code is generated. */,
+    "moduleResolution": "NodeNext" /* Specify how modules are resolved. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": true /* Enable all strict type-checking options. */,
     "skipLibCheck": true,
-    "outDir": "dist" /\* 追加: 出力ディレクトリを指定 \*/,
-    "rootDir": "src" /\* 追加: 入力ディレクトリを指定 \*/,
+    "outDir": "dist" /* 追加: 出力ディレクトリを指定 */,
+    "rootDir": "src" /* 追加: 入力ディレクトリを指定 */,
     "rewriteRelativeImportExtensions": true
   }
 }

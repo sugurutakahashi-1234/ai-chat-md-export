@@ -7,15 +7,15 @@
 ## 👤 ユーザー
 *2023/6/22 14:27:23*
 
-以下のauthUserAttributesから.custom("user\_id") で一致する場合のvalueを取得したい
-var authUserAttributes: \[AuthUserAttribute\]
+以下のauthUserAttributesから.custom("user_id") で一致する場合のvalueを取得したい
+var authUserAttributes: [AuthUserAttribute]
 
 
 public struct AuthUserAttribute {
     public let key: AuthUserAttributeKey
     public let value: String
 
-    public init(\_ key: AuthUserAttributeKey, value: String) {
+    public init(_ key: AuthUserAttributeKey, value: String) {
         self.key = key
         self.value = value
     }

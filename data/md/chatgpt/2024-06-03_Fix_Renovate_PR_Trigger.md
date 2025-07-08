@@ -12,11 +12,11 @@ renovateで生成されたPRでも以下のワークフローで反応させた�
 name: Move Issue And PR
 
 on:
-  pull\_request:
+  pull_request:
     types:
       - opened
       - reopened
-      - ready\_for\_review
+      - ready_for_review
       - closed
       - synchronize
 
@@ -132,7 +132,7 @@ jobs:
 ## 👤 ユーザー
 *2024/6/4 10:10:53*
 
-pull\_request\_target と pull\_request の使い分けがわからない。
+pull_request_target と pull_request の使い分けがわからない。
 
 ---
 
@@ -209,13 +209,13 @@ jobs:
 ## 👤 ユーザー
 *2024/6/4 10:12:01*
 
-以下は pull\_request\_target に変えて問題ないですか？
+以下は pull_request_target に変えて問題ないですか？
 
 name: Auto Assign Reviewers
 
 on:
-  pull\_request:
-    types: \[opened, ready\_for\_review, reopened\]
+  pull_request:
+    types: [opened, ready_for_review, reopened]
 
 jobs:
   add-reviews:
@@ -224,7 +224,7 @@ jobs:
       # Ref: https://github.com/marketplace/actions/auto-assign-action
       - uses: kentaro-m/auto-assign-action@v2.0.0
         with:
-          configuration-path: '.github/auto\_assign.yml'
+          configuration-path: '.github/auto_assign.yml'
 
 ---
 
@@ -311,10 +311,10 @@ jobs:
 name: Auto Set Label
 
 on:
-  pull\_request:
-    types: \[opened\]
+  pull_request:
+    types: [opened]
   issues:
-    types: \[opened\]
+    types: [opened]
 
 jobs:
   set-label:
@@ -324,14 +324,14 @@ jobs:
       - uses: actions/github-script@v7
         with:
           script: |
-            const isPullRequest = !!context.payload.pull\_request;
-            const number = isPullRequest ? context.payload.pull\_request.number : context.payload.issue.number;
+            const isPullRequest = !!context.payload.pull_request;
+            const number = isPullRequest ? context.payload.pull_request.number : context.payload.issue.number;
 
             // 既存のラベルを取得
             const currentIssueOrPR = await github.rest.issues.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue\_number: number
+              issue_number: number
             });
 
             if (currentIssueOrPR.data.labels && currentIssueOrPR.data.labels.length &gt; 0) {
@@ -339,15 +339,15 @@ jobs:
               return;
             }
 
-            const title = isPullRequest ? context.payload.pull\_request.title.toLowerCase() : context.payload.issue.title.toLowerCase();  // 大文字・小文字の区別をしない
+            const title = isPullRequest ? context.payload.pull_request.title.toLowerCase() : context.payload.issue.title.toLowerCase();  // 大文字・小文字の区別をしない
 
             // キーワードとラベルのマッピングを配列で保持
-            const keywordMapping = \[
-              { keywords: \['バグ', '不具合', 'hotfix'\], label: 'bug' },
-              { keywords: \['開発issue', '運用改善', 'github', 'xcode', '開発改善'\], label: 'DX' },
-              { keywords: \['技術', '調査', '検証'\], label: 'tech research' },
-              { keywords: \['ドキュメン', 'readme', 'issue template', 'issue テンプレート'\], label: 'documentation' }
-            \];
+            const keywordMapping = [
+              { keywords: ['バグ', '不具合', 'hotfix'], label: 'bug' },
+              { keywords: ['開発issue', '運用改善', 'github', 'xcode', '開発改善'], label: 'DX' },
+              { keywords: ['技術', '調査', '検証'], label: 'tech research' },
+              { keywords: ['ドキュメン', 'readme', 'issue template', 'issue テンプレート'], label: 'documentation' }
+            ];
 
             let labelToApply = 'enhancement';  // デフォルトのラベル
 
@@ -361,10 +361,10 @@ jobs:
 
             // ラベルを付与
             github.rest.issues.addLabels({
-              issue\_number: number,
+              issue_number: number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: \[labelToApply\]
+              labels: [labelToApply]
             });
 
 ---

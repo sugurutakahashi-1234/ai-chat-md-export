@@ -7,14 +7,14 @@
 ## 👤 ユーザー
 *2023/6/21 3:19:02*
 
-Text("スマートフォンを顔から30cmほどはなして、\\n画面上の赤い丸を見続けてください")の文言を画面の下から 2/5 の高さにしたい場合はどうするのか？
+Text("スマートフォンを顔から30cmほどはなして、\n画面上の赤い丸を見続けてください")の文言を画面の下から 2/5 の高さにしたい場合はどうするのか？
 
 public struct GazeTrackCalibrationView: View {
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var presenter: GazeTrackCalibrationPresenter
 
     public init(orientation: AppUIInterfaceOrientation, shouldShowCalibrationView: Binding&lt;Bool&gt;) {
-        \_presenter = StateObject(wrappedValue: GazeTrackCalibrationPresenter(orientation: orientation, shouldShowCalibrationView: shouldShowCalibrationView))
+        _presenter = StateObject(wrappedValue: GazeTrackCalibrationPresenter(orientation: orientation, shouldShowCalibrationView: shouldShowCalibrationView))
     }
 
     public var body: some View {
@@ -23,7 +23,7 @@ public struct GazeTrackCalibrationView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             // TODO: Spacer()によらない高さ調整（横画面対応も考えると難しかも？）
-            Text("スマートフォンを顔から30cmほどはなして、\\n画面上の赤い丸を見続けてください")
+            Text("スマートフォンを顔から30cmほどはなして、\n画面上の赤い丸を見続けてください")
                 .typographyStyle(.body2)
                 .foregroundColor(CoreAssets.Color.Neutral.white.swiftUIColor)
                 .multilineTextAlignment(.center)

@@ -9,7 +9,7 @@
 
 $ git pull origin feature/32
 Found existing alias for "git pull". You should use: "gl"
-error: You have not concluded your merge (MERGE\_HEAD exists).
+error: You have not concluded your merge (MERGE_HEAD exists).
 hint: Please, commit your changes before merging.
 fatal: Exiting because of unfinished merge.
 
@@ -82,7 +82,7 @@ Your branch is up to date with 'origin/feature/77'.
 All conflicts fixed but you are still merging.
   (use "git commit" to conclude merge)
 
-~/git/gallusys/snpit\_guild\_app  ‹feature/77› $
+~/git/gallusys/snpit_guild_app  ‹feature/77› $
 
 ---
 

@@ -8,9 +8,9 @@
 *2024/12/13 14:34:21*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-Q1qR1pQHcpAAhGaDrMVzYE",
-  "size\_bytes": 68130,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-Q1qR1pQHcpAAhGaDrMVzYE",
+  "size_bytes": 68130,
   "width": 486,
   "height": 465,
   "fovea": null,
@@ -18,19 +18,19 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-PNrWQMN2s5gq3pgPhxmhvb",
-  "size\_bytes": 71716,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-PNrWQMN2s5gq3pgPhxmhvb",
+  "size_bytes": 71716,
   "width": 424,
   "height": 463,
   "fovea": null,
@@ -38,19 +38,19 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 1枚目の写真のような実装にしたい。
 今は2枚目の写真のような実装になっているんだ。
 中のコンポーネントは横スクロール可能なんだ。
-できることなら carousel\_slider をつかいたい。
+できることなら carousel_slider をつかいたい。
 
 ---
 
@@ -76,8 +76,8 @@
 現状のコードはこれです。
 
 import 'package:flutter/material.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
 
 class SpotListPage extends StatelessWidget {
   const SpotListPage({super.key});
@@ -88,14 +88,14 @@ class SpotListPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('SpotListPage'),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
               Navigator.of(context, rootNavigator: true).pop(); // ボトムシート全体を閉じる
             },
           ),
-        \],
+        ],
       ),
       body: ListView.builder(
         itemCount: 10,

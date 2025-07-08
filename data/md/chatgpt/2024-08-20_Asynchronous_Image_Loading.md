@@ -14,7 +14,7 @@ extension UIImage {
         do {
             let data = try Data(contentsOf: imageUrl)
             guard UIImage(data: data) != nil else {
-                throw NSError(domain: "UIImageErrorDomain", code: 0, userInfo: \[NSLocalizedDescriptionKey: "Unable to create UIImage from data."\])
+                throw NSError(domain: "UIImageErrorDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unable to create UIImage from data."])
             }
             self.init(data: data)!
         } catch {

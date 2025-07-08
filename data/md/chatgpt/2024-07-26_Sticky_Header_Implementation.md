@@ -21,13 +21,13 @@ public struct MyHistoryView&lt;Dependency: RootDIContainerDependency&gt;: View {
 
     public init(dependency: Dependency, talkBox: TalkBox) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: MyHistoryPresenter(dependency: dependency, talkBox: talkBox))
+        _presenter = .init(wrappedValue: MyHistoryPresenter(dependency: dependency, talkBox: talkBox))
     }
 
     public var body: some View {
         ScrollView(.vertical) {
             LazyVStack(spacing: 16) {
-                ForEach(presenter.monthlyThreads, id: \\.self) { monthlyThread in
+                ForEach(presenter.monthlyThreads, id: \.self) { monthlyThread in
                     VStack(spacing: 8) {
                         HStack {
                             Text(monthlyThread.month.toString(.yyyyMM))
@@ -38,12 +38,12 @@ public struct MyHistoryView&lt;Dependency: RootDIContainerDependency&gt;: View {
 
                         // Ref: 【SwiftUI】LazyVGrid内の画像を正方形にする【ワークアラウンド】 https://qiita.com/tsuzuki817/items/cc9364089cee3a763084
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 2), count: 3), spacing: 2) {
-                            ForEach(monthlyThread.threads, id: \\.self) { talkThread in
+                            ForEach(monthlyThread.threads, id: \.self) { talkThread in
                                 Button {
                                     presenter.onTapTalkThread(talkThread: talkThread)
                                 } label: {
                                     CustomAsyncImageView(imageUrl: talkThread.imageUrl)
-                                        .aspectRatio(Constants.AspectRatio.\_1\_1, contentMode: .fill)
+                                        .aspectRatio(Constants.AspectRatio._1_1, contentMode: .fill)
                                         .clipShape(.rect(cornerRadius: 8))
                                 }
                             }
@@ -55,7 +55,7 @@ public struct MyHistoryView&lt;Dependency: RootDIContainerDependency&gt;: View {
         }
         .navigationTitle(presenter.talkBox.name)
         .navigationDestination(isPresented: $presenter.showThreadDetail) {
-            if let \_ = presenter.selectedThread {
+            if let _ = presenter.selectedThread {
                 TalkThreadListView(dependency: dependency, talkBox: presenter.talkBox)
             }
         }

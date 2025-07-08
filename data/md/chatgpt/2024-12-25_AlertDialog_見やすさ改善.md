@@ -8,9 +8,9 @@
 *2024/12/25 15:57:29*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-TdeATWuWLadk9zdpFzCTyX",
-  "size\_bytes": 324445,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-TdeATWuWLadk9zdpFzCTyX",
+  "size_bytes": 324445,
   "width": 744,
   "height": 1602,
   "fovea": null,
@@ -18,13 +18,13 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 flutterでAlertDialogが見づらくなってしまった。
@@ -35,7 +35,7 @@ AlertDialog(
                       content: const Text(
                         'Are you sure you want to delete this guild?',
                       ),
-                      actions: \[
+                      actions: [
                         TextButton(
                           onPressed: () =&gt; context.pop(false),
                           child: const Text('Cancel'),
@@ -44,12 +44,12 @@ AlertDialog(
                           onPressed: () =&gt; context.pop(true),
                           child: const Text('Delete'),
                         ),
-                      \],
+                      ],
                     ),
 
 import 'package:flutter/material.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_pallet.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_pallet.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
 
 final ThemeData appTheme = ThemeData(
   primaryColor: ColorToken.primary,
@@ -318,9 +318,9 @@ AlertDialog(
 *2024/12/25 16:12:30*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-U9jFRoS9JZYNFZgQdjQ256",
-  "size\_bytes": 51799,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-U9jFRoS9JZYNFZgQdjQ256",
+  "size_bytes": 51799,
   "width": 618,
   "height": 396,
   "fovea": null,
@@ -328,13 +328,13 @@ AlertDialog(
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 選択肢の色がよくない

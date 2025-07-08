@@ -1054,7 +1054,7 @@ struct OrientationLockViewControllerRepresentable: UIViewControllerRepresentable
         return viewController
     }
     
-    func updateUIViewController(\_ viewController: OrientationLockViewController, context: Context) {
+    func updateUIViewController(_ viewController: OrientationLockViewController, context: Context) {
         switch orientationLock {
         case .portrait:
             viewController.orientationLock = .portrait

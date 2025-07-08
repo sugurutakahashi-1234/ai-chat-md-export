@@ -697,7 +697,7 @@ Viewing artifacts created via the Analysis Tool web feature preview isn’t yet 
 
 この辺を同じリバーポッドにするのはどうだろうか？
 
-// 100km絞り込み検索モードの状態を管理するプロバイダー @Riverpod(keepAlive: true) class Spot100kmSearchMode extends \*$Spot100kmSearchMode { @override bool build() { try { final service = ref.watch(sharedPreferencesServiceProvider); return service.getValue&lt;bool&gt;( PreferencesKeys.isSpot100kmSearchModeEnabled.name, defaultValue: false, )!; } catch (e) { // SharedPreferencesが初期化されていない場合はデフォルト値を返す return false; } } Future&lt;void&gt; set(bool value) async { final service = ref.read(sharedPreferencesServiceProvider); await service.setValue&lt;bool&gt;(PreferencesKeys.isSpot100kmSearchModeEnabled.name, value); state = value; } } // SearchTypeの状態を管理するプロバイダー @Riverpod(keepAlive: true) class Search extends \*$Search { @override SearchType build() { try { final service = ref.watch(sharedPreferencesServiceProvider); final typeString = service.getValue&lt;String&gt;( PreferencesKeys.searchType.name, defaultValue: SearchType.spot.name, ); return SearchType.fromString(typeString!); } catch (e) { // SharedPreferencesが初期化されていない場合はデフォルト値を返す return SearchType.spot; } } Future&lt;void&gt; setType(SearchType type) async { final service = ref.read(sharedPreferencesServiceProvider); await service.setValue&lt;String&gt;(PreferencesKeys.searchType.name, type.name); state = type; } } // データをクリアするユーティリティプロバイダー @riverpod Future&lt;void&gt; clearAllPreferences(ClearAllPreferencesRef ref) async { final service = ref.read(sharedPreferencesServiceProvider); await service.clear(); // 関連するプロバイダーを更新 ref.invalidate(spot100kmSearchModeProvider); ref.invalidate(searchProvider); }
+// 100km絞り込み検索モードの状態を管理するプロバイダー @Riverpod(keepAlive: true) class Spot100kmSearchMode extends *$Spot100kmSearchMode { @override bool build() { try { final service = ref.watch(sharedPreferencesServiceProvider); return service.getValue&lt;bool&gt;( PreferencesKeys.isSpot100kmSearchModeEnabled.name, defaultValue: false, )!; } catch (e) { // SharedPreferencesが初期化されていない場合はデフォルト値を返す return false; } } Future&lt;void&gt; set(bool value) async { final service = ref.read(sharedPreferencesServiceProvider); await service.setValue&lt;bool&gt;(PreferencesKeys.isSpot100kmSearchModeEnabled.name, value); state = value; } } // SearchTypeの状態を管理するプロバイダー @Riverpod(keepAlive: true) class Search extends *$Search { @override SearchType build() { try { final service = ref.watch(sharedPreferencesServiceProvider); final typeString = service.getValue&lt;String&gt;( PreferencesKeys.searchType.name, defaultValue: SearchType.spot.name, ); return SearchType.fromString(typeString!); } catch (e) { // SharedPreferencesが初期化されていない場合はデフォルト値を返す return SearchType.spot; } } Future&lt;void&gt; setType(SearchType type) async { final service = ref.read(sharedPreferencesServiceProvider); await service.setValue&lt;String&gt;(PreferencesKeys.searchType.name, type.name); state = type; } } // データをクリアするユーティリティプロバイダー @riverpod Future&lt;void&gt; clearAllPreferences(ClearAllPreferencesRef ref) async { final service = ref.read(sharedPreferencesServiceProvider); await service.clear(); // 関連するプロバイダーを更新 ref.invalidate(spot100kmSearchModeProvider); ref.invalidate(searchProvider); }
 
 ---
 
@@ -1193,14 +1193,14 @@ ref.read(searchProvider.notifier).setType(SearchType.itemBox);
 
 デバッグ画面で今のローカルストレージがどのような状態かを確認したい
 
-import 'package:flutter\_riverpod/flutter\_riverpod.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/domain/preferences\_keys.dart';
-import 'package:snpit\_guild\_app/domain/search\_type.dart';
-import 'package:snpit\_guild\_app/infrastructure/services/shared\_preferences\_service.dart';
-import 'package:snpit\_guild\_app/presentation/providers/shared\_preferences/shared\_preferences\_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/domain/preferences_keys.dart';
+import 'package:snpit_guild_app/domain/search_type.dart';
+import 'package:snpit_guild_app/infrastructure/services/shared_preferences_service.dart';
+import 'package:snpit_guild_app/presentation/providers/shared_preferences/shared_preferences_provider.dart';
 
-part 'shared\_preferences\_service\_provider.g.dart';
+part 'shared_preferences_service_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 Future&lt;SharedPreferencesService&gt; sharedPreferencesService(Ref ref) async {
@@ -1209,7 +1209,7 @@ Future&lt;SharedPreferencesService&gt; sharedPreferencesService(Ref ref) async {
 }
 
 @Riverpod(keepAlive: true)
-class IsSpotFilterModeNotifier extends \_$IsSpotFilterModeNotifier {
+class IsSpotFilterModeNotifier extends _$IsSpotFilterModeNotifier {
   @override
   Future&lt;bool&gt; build() async {
     try {
@@ -1228,7 +1228,7 @@ class IsSpotFilterModeNotifier extends \_$IsSpotFilterModeNotifier {
 }
 
 @Riverpod(keepAlive: true)
-class SearchTypeNotifier extends \_$SearchTypeNotifier {
+class SearchTypeNotifier extends _$SearchTypeNotifier {
   @override
   Future&lt;SearchType&gt; build() async {
     try {
@@ -1247,32 +1247,32 @@ class SearchTypeNotifier extends \_$SearchTypeNotifier {
   }
 }
 
-import 'package:shared\_preferences/shared\_preferences.dart';
-import 'package:snpit\_guild\_app/domain/preferences\_keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:snpit_guild_app/domain/preferences_keys.dart';
 
 class SharedPreferencesService {
-  SharedPreferencesService(this.\_preferences);
+  SharedPreferencesService(this._preferences);
 
-  final SharedPreferences \_preferences;
+  final SharedPreferences _preferences;
 
   T getValue&lt;T&gt;(PreferencesKey&lt;T&gt; preferencesKey) {
     final key = preferencesKey.key;
     final defaultValue = preferencesKey.defaultValue;
 
-    if (!\_preferences.containsKey(key)) {
+    if (!_preferences.containsKey(key)) {
       return defaultValue;
     }
 
     if (T == bool) {
-      return (\_preferences.getBool(key) ?? defaultValue) as T;
+      return (_preferences.getBool(key) ?? defaultValue) as T;
     } else if (T == String) {
-      return (\_preferences.getString(key) ?? defaultValue) as T;
+      return (_preferences.getString(key) ?? defaultValue) as T;
     } else if (T == int) {
-      return (\_preferences.getInt(key) ?? defaultValue) as T;
+      return (_preferences.getInt(key) ?? defaultValue) as T;
     } else if (T == double) {
-      return (\_preferences.getDouble(key) ?? defaultValue) as T;
+      return (_preferences.getDouble(key) ?? defaultValue) as T;
     } else if (T == List&lt;String&gt;) {
-      return (\_preferences.getStringList(key) ?? defaultValue) as T;
+      return (_preferences.getStringList(key) ?? defaultValue) as T;
     } else {
       throw UnsupportedError('Unsupported type: $T');
     }
@@ -1283,15 +1283,15 @@ class SharedPreferencesService {
     final key = preferencesKey.key;
 
     if (value is bool) {
-      return \_preferences.setBool(key, value);
+      return _preferences.setBool(key, value);
     } else if (value is String) {
-      return \_preferences.setString(key, value);
+      return _preferences.setString(key, value);
     } else if (value is int) {
-      return \_preferences.setInt(key, value);
+      return _preferences.setInt(key, value);
     } else if (value is double) {
-      return \_preferences.setDouble(key, value);
+      return _preferences.setDouble(key, value);
     } else if (value is List&lt;String&gt;) {
-      return \_preferences.setStringList(key, value);
+      return _preferences.setStringList(key, value);
     } else {
       throw UnsupportedError('Unsupported type: ${value.runtimeType}');
     }
@@ -1567,10 +1567,10 @@ class PreferencesKeys {
   );
 
   // Instance method instead of static getter
-  List&lt;PreferencesKey&lt;dynamic&gt;&gt; get allKeys =&gt; \[
+  List&lt;PreferencesKey&lt;dynamic&gt;&gt; get allKeys =&gt; [
         PreferencesKeys.isSpotFilterMode,
         PreferencesKeys.searchType,
-      \];
+      ];
 }
 
 ---
@@ -1650,32 +1650,32 @@ if (values.isEmpty) {
 
 // すべての設定をクリアするためのプロバイダー や  // SharedPreferencesの全キーを取得するためのプロバイダー をつくるより、SharedPreferencesServiceを修正して、providerは簡単に実装する方が良くないでしょうか？
 
-import 'package:shared\_preferences/shared\_preferences.dart';
-import 'package:snpit\_guild\_app/domain/preferences\_keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:snpit_guild_app/domain/preferences_keys.dart';
 
 class SharedPreferencesService {
-  SharedPreferencesService(this.\_preferences);
+  SharedPreferencesService(this._preferences);
 
-  final SharedPreferences \_preferences;
+  final SharedPreferences _preferences;
 
   T getValue&lt;T&gt;(PreferencesKey&lt;T&gt; preferencesKey) {
     final key = preferencesKey.key;
     final defaultValue = preferencesKey.defaultValue;
 
-    if (!\_preferences.containsKey(key)) {
+    if (!_preferences.containsKey(key)) {
       return defaultValue;
     }
 
     if (T == bool) {
-      return (\_preferences.getBool(key) ?? defaultValue) as T;
+      return (_preferences.getBool(key) ?? defaultValue) as T;
     } else if (T == String) {
-      return (\_preferences.getString(key) ?? defaultValue) as T;
+      return (_preferences.getString(key) ?? defaultValue) as T;
     } else if (T == int) {
-      return (\_preferences.getInt(key) ?? defaultValue) as T;
+      return (_preferences.getInt(key) ?? defaultValue) as T;
     } else if (T == double) {
-      return (\_preferences.getDouble(key) ?? defaultValue) as T;
+      return (_preferences.getDouble(key) ?? defaultValue) as T;
     } else if (T == List&lt;String&gt;) {
-      return (\_preferences.getStringList(key) ?? defaultValue) as T;
+      return (_preferences.getStringList(key) ?? defaultValue) as T;
     } else {
       throw UnsupportedError('Unsupported type: $T');
     }
@@ -1686,15 +1686,15 @@ class SharedPreferencesService {
     final key = preferencesKey.key;
 
     if (value is bool) {
-      return \_preferences.setBool(key, value);
+      return _preferences.setBool(key, value);
     } else if (value is String) {
-      return \_preferences.setString(key, value);
+      return _preferences.setString(key, value);
     } else if (value is int) {
-      return \_preferences.setInt(key, value);
+      return _preferences.setInt(key, value);
     } else if (value is double) {
-      return \_preferences.setDouble(key, value);
+      return _preferences.setDouble(key, value);
     } else if (value is List&lt;String&gt;) {
-      return \_preferences.setStringList(key, value);
+      return _preferences.setStringList(key, value);
     } else {
       throw UnsupportedError('Unsupported type: ${value.runtimeType}');
     }
@@ -1805,10 +1805,10 @@ class PreferencesKeys {
   );
 
   // Instance method instead of static getter
-  List&lt;PreferencesKey&lt;dynamic&gt;&gt; get allKeys =&gt; \[
+  List&lt;PreferencesKey&lt;dynamic&gt;&gt; get allKeys =&gt; [
         PreferencesKeys.isSpotFilterMode,
         PreferencesKeys.searchType,
-      \];
+      ];
 }
 
 ---

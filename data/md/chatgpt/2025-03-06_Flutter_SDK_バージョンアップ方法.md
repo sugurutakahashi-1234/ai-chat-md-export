@@ -9,10 +9,10 @@
 
 Flutter のSDKのバージョンを上げる方法
 
-name: snpit\_guild\_app
+name: snpit_guild_app
 description: "A new Flutter project."
 
-publish\_to: 'none'
+publish_to: 'none'
 
 # 個人の開発 PC でビルドした場合に反映されるバージョン
 version: 0.1.10+1
@@ -25,118 +25,118 @@ dependencies:
   flutter:
     sdk: flutter
   # slang
-  flutter\_localizations:
+  flutter_localizations:
     sdk: flutter
-  cupertino\_icons:
+  cupertino_icons:
 
   # Language
   slang: ^4.4.1
-  slang\_flutter: ^4.4.0
+  slang_flutter: ^4.4.0
 
   # Router
-  go\_router: ^14.8.0
+  go_router: ^14.8.0
 
   # State Management
-  flutter\_hooks: ^0.20.5
-  hooks\_riverpod: ^2.6.1
-  flutter\_riverpod: ^2.6.1
-  riverpod\_annotation: ^2.6.1
+  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.6.1
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
 
   # Image SVG Converter
-  flutter\_svg: ^2.0.17
-  vector\_graphics: ^1.1.17
+  flutter_svg: ^2.0.17
+  vector_graphics: ^1.1.17
 
   # Map
-  google\_maps\_flutter: ^2.10.0
+  google_maps_flutter: ^2.10.0
   geolocator: ^13.0.2
-  widget\_to\_marker: ^1.0.6
+  widget_to_marker: ^1.0.6
 
   # Carousel Widget
-  carousel\_slider: ^5.0.0
+  carousel_slider: ^5.0.0
 
   # Camera
   camera: 0.10.6 # 0.11.0 以上だと Android が横向き撮影になってしまうため 0.10.6 に固定（調査してアップデートしたい）
-  image\_picker: ^1.1.2
+  image_picker: ^1.1.2
   image: ^4.5.2
 
   # Permission Handler
-  permission\_handler: ^11.3.1
+  permission_handler: ^11.3.1
 
   # Device Info
-  device\_info\_plus: ^11.3.0
+  device_info_plus: ^11.3.0
 
   # Debug Info
-  package\_info\_plus: ^8.2.1
+  package_info_plus: ^8.2.1
 
   # Image Cropper
-  image\_cropper: ^8.1.0
+  image_cropper: ^8.1.0
 
   # URL Launcher
-  url\_launcher: ^6.3.1
-  store\_redirect: ^2.0.4
+  url_launcher: ^6.3.1
+  store_redirect: ^2.0.4
 
   # OpenAPI Generator
-  built\_collection: ^5.1.1
-  openapi\_generator\_annotations: ^6.1.0
+  built_collection: ^5.1.1
+  openapi_generator_annotations: ^6.1.0
 
   # OpenAPI Generator
   dio: ^5.8.0
-  flutter\_launcher\_icons: ^0.14.3
+  flutter_launcher_icons: ^0.14.3
 
   # HTTP Parser (for Photo Upload)
-  http\_parser: ^4.1.2
+  http_parser: ^4.1.2
 
   # Utility
-  intl: ^0.19.0 # slang\_flutter ^4.4.0 との競合で ^0.20.2 以上にできない
-  auto\_size\_text: ^3.0.0
+  intl: ^0.19.0 # slang_flutter ^4.4.0 との競合で ^0.20.2 以上にできない
+  auto_size_text: ^3.0.0
 
   # Secure Storage
-  flutter\_secure\_storage: ^9.2.4
+  flutter_secure_storage: ^9.2.4
 
   # Image Cache
-  cached\_network\_image: ^3.4.1
+  cached_network_image: ^3.4.1
 
   # Delete Cache
-  path\_provider: ^2.1.5
+  path_provider: ^2.1.5
 
   # Font
-  google\_fonts: ^6.2.1
+  google_fonts: ^6.2.1
 
   # Verification Code
-  flutter\_verification\_code: ^1.1.7
+  flutter_verification_code: ^1.1.7
 
   # Splash Screen
-  flutter\_native\_splash: ^2.4.4
+  flutter_native_splash: ^2.4.4
 
   # Dotenv
-  flutter\_dotenv: ^5.2.1
+  flutter_dotenv: ^5.2.1
 
   # OpenAPI Generator
-  guild\_api:
-    path: ./guild\_api
+  guild_api:
+    path: ./guild_api
 
-dev\_dependencies:
+dev_dependencies:
   # Test
-  flutter\_test:
+  flutter_test:
     sdk: flutter
   
   # Builder
-  build\_runner: ^2.4.15
-  riverpod\_generator: ^2.6.3 # openapi\_generator 6.1.0 との競合で ^2.6.3 以上にできない
-  flutter\_gen\_runner: ^5.8.0
-  slang\_build\_runner: ^4.4.2
+  build_runner: ^2.4.15
+  riverpod_generator: ^2.6.3 # openapi_generator 6.1.0 との競合で ^2.6.3 以上にできない
+  flutter_gen_runner: ^5.8.0
+  slang_build_runner: ^4.4.2
 
   # OpenAPI Generator
-  openapi\_generator: ^6.1.0
+  openapi_generator: ^6.1.0
 
   # OpenAPI Generator
-  json\_serializable: ^6.9.0 # openapi\_generator 6.1.0 との競合で ^6.9.0 以上にできない
+  json_serializable: ^6.9.0 # openapi_generator 6.1.0 との競合で ^6.9.0 以上にできない
 
   # Linter
-  pedantic\_mono:
+  pedantic_mono:
 
   # URL Launcher
-  url\_launcher\_ios: ^6.3.2
+  url_launcher_ios: ^6.3.2
 
 flutter:
   uses-material-design: true
@@ -145,37 +145,37 @@ flutter:
     - .env
     - assets/images/
 
-flutter\_gen:
+flutter_gen:
   assets:
     outputs:
-      directory\_path\_enabled: true
+      directory_path_enabled: true
   integrations:
-    flutter\_svg: true
+    flutter_svg: true
 
-flutter\_launcher\_icons:
+flutter_launcher_icons:
   android: true
   ios: true
-  image\_path: "assets/app\_icon/icon.png"
+  image_path: "assets/app_icon/icon.png"
 
-flutter\_native\_splash:
-  image: 'assets/app\_icon/icon\_foreground.png'
+flutter_native_splash:
+  image: 'assets/app_icon/icon_foreground.png'
   fullscreen: true
   color: "#2E3739"
-  android\_12:
+  android_12:
     color: "#2E3739"
-    icon\_background\_color: "#2E3739"
-    image: 'assets/app\_icon/icon\_foreground.png'
+    icon_background_color: "#2E3739"
+    image: 'assets/app_icon/icon_foreground.png'
 
 ---
 
 ## 🔧 ツール
 *2025/3/6 13:27:42*
 
-\*\*SDKのバージョンを更新する\*\*
+**SDKのバージョンを更新する**
 
 Flutter SDKのバージョンを上げる方法を探っているんだ。"flutter: 3.27.4" の指定は一般的ではないけど、新しいバージョンにアップグレードする方法を知りたい。
 
-\*\*環境を整える\*\*
+**環境を整える**
 
 `pubspec.yaml`で環境制約を更新し、`flutter upgrade`を実行。`flutter: 3.27.4`の指定は一般的でないことを指摘し、通常の環境制約の更新方法を提案している。
 
@@ -394,156 +394,156 @@ $ fvm flutter pub upgrade
 
 Resolving dependencies... (1.4s)
 Downloading packages... 
-  \_fe\_analyzer\_shared 76.0.0 (80.0.0 available)
+  _fe_analyzer_shared 76.0.0 (80.0.0 available)
   analyzer 6.11.0 (7.3.0 available)
-  analyzer\_plugin 0.11.3 (0.13.0 available)
+  analyzer_plugin 0.11.3 (0.13.0 available)
 &gt; archive 4.0.4 (was 4.0.2)
   async 2.11.0 (2.13.0 available)
-  boolean\_selector 2.1.1 (2.1.2 available)
-&gt; built\_value 8.9.4 (was 8.9.3)
+  boolean_selector 2.1.1 (2.1.2 available)
+&gt; built_value 8.9.4 (was 8.9.3)
   camera 0.10.6 (0.11.1 available)
-&gt; camera\_avfoundation 0.9.18+9 (was 0.9.18+7)
+&gt; camera_avfoundation 0.9.18+9 (was 0.9.18+7)
   characters 1.3.0 (1.4.0 available)
   clock 1.1.1 (1.1.2 available)
   collection 1.19.0 (1.19.1 available)
-  custom\_lint\_core 0.7.0 (0.7.5 available)
-  custom\_lint\_visitor 1.0.0+6.11.0 (1.0.0+7.3.0 available)
-  dart\_style 2.3.8 (3.0.1 available)
-  device\_info\_plus 11.3.0 (11.3.3 available)
-&gt; dio\_web\_adapter 2.1.1 (was 2.1.0)
-  fake\_async 1.3.1 (1.3.3 available)
+  custom_lint_core 0.7.0 (0.7.5 available)
+  custom_lint_visitor 1.0.0+6.11.0 (1.0.0+7.3.0 available)
+  dart_style 2.3.8 (3.0.1 available)
+  device_info_plus 11.3.0 (11.3.3 available)
+&gt; dio_web_adapter 2.1.1 (was 2.1.0)
+  fake_async 1.3.1 (1.3.3 available)
   ffi 2.1.3 (2.1.4 available)
-&gt; file\_selector\_windows 0.9.3+4 (was 0.9.3+3)
-&gt; flutter\_gen\_core 5.10.0 (was 5.9.0)
-&gt; flutter\_gen\_runner 5.10.0 (was 5.9.0)
-  flutter\_hooks 0.20.5 (0.21.2 available)
-  flutter\_native\_splash 2.4.4 (2.4.5 available)
-&gt; flutter\_plugin\_android\_lifecycle 2.0.27 (was 2.0.24)
-  flutter\_secure\_storage\_linux 1.2.2 (2.0.1 available)
-  flutter\_secure\_storage\_macos 3.1.3 (4.0.0 available)
-  flutter\_secure\_storage\_platform\_interface 1.1.2 (2.0.1 available)
-  flutter\_secure\_storage\_web 1.2.1 (2.0.0 available)
-  flutter\_secure\_storage\_windows 3.1.2 (4.0.0 available)
-  freezed\_annotation 2.4.4 (3.0.0 available)
-&gt; go\_router 14.8.1 (was 14.8.0)
-&gt; google\_maps\_flutter 2.10.1 (was 2.10.0)
-&gt; google\_maps\_flutter\_android 2.14.13 (was 2.14.12)
-&gt; google\_maps\_flutter\_platform\_interface 2.11.1 (was 2.10.0)
-&gt; google\_maps\_flutter\_web 0.5.10+1 (was 0.5.10)
+&gt; file_selector_windows 0.9.3+4 (was 0.9.3+3)
+&gt; flutter_gen_core 5.10.0 (was 5.9.0)
+&gt; flutter_gen_runner 5.10.0 (was 5.9.0)
+  flutter_hooks 0.20.5 (0.21.2 available)
+  flutter_native_splash 2.4.4 (2.4.5 available)
+&gt; flutter_plugin_android_lifecycle 2.0.27 (was 2.0.24)
+  flutter_secure_storage_linux 1.2.2 (2.0.1 available)
+  flutter_secure_storage_macos 3.1.3 (4.0.0 available)
+  flutter_secure_storage_platform_interface 1.1.2 (2.0.1 available)
+  flutter_secure_storage_web 1.2.1 (2.0.0 available)
+  flutter_secure_storage_windows 3.1.2 (4.0.0 available)
+  freezed_annotation 2.4.4 (3.0.0 available)
+&gt; go_router 14.8.1 (was 14.8.0)
+&gt; google_maps_flutter 2.10.1 (was 2.10.0)
+&gt; google_maps_flutter_android 2.14.13 (was 2.14.12)
+&gt; google_maps_flutter_platform_interface 2.11.1 (was 2.10.0)
+&gt; google_maps_flutter_web 0.5.10+1 (was 0.5.10)
 &gt; image 4.5.3 (was 4.5.2)
-  image\_cropper 8.1.0 (9.0.0 available)
-&gt; image\_picker\_android 0.8.12+21 (was 0.8.12+20)
+  image_cropper 8.1.0 (9.0.0 available)
+&gt; image_picker_android 0.8.12+21 (was 0.8.12+20)
   intl 0.19.0 (0.20.2 available)
   js 0.6.7 (0.7.2 available)
-  json\_serializable 6.9.0 (6.9.4 available)
-  leak\_tracker 10.0.7 (10.0.9 available)
-  leak\_tracker\_flutter\_testing 3.0.8 (3.0.9 available)
+  json_serializable 6.9.0 (6.9.4 available)
+  leak_tracker 10.0.7 (10.0.9 available)
+  leak_tracker_flutter_testing 3.0.8 (3.0.9 available)
   matcher 0.12.16+1 (0.12.17 available)
-  material\_color\_utilities 0.11.1 (0.12.0 available)
+  material_color_utilities 0.11.1 (0.12.0 available)
   meta 1.15.0 (1.16.0 available)
-&gt; package\_info\_plus 8.3.0 (was 8.2.1)
-&gt; package\_info\_plus\_platform\_interface 3.2.0 (was 3.1.0)
+&gt; package_info_plus 8.3.0 (was 8.2.1)
+&gt; package_info_plus_platform_interface 3.2.0 (was 3.1.0)
   path 1.9.0 (1.9.1 available)
-  pedantic\_mono 1.29.0 (1.30.3 available)
-&gt; permission\_handler 11.4.0 (was 11.3.1)
-&gt; permission\_handler\_android 12.1.0 (was 12.0.13)
-&gt; permission\_handler\_apple 9.4.6 (was 9.4.5)
-&gt; permission\_handler\_platform\_interface 4.3.0 (was 4.2.3)
+  pedantic_mono 1.29.0 (1.30.3 available)
+&gt; permission_handler 11.4.0 (was 11.3.1)
+&gt; permission_handler_android 12.1.0 (was 12.0.13)
+&gt; permission_handler_apple 9.4.6 (was 9.4.5)
+&gt; permission_handler_platform_interface 4.3.0 (was 4.2.3)
   petitparser 6.0.2 (6.1.0 available)
-  riverpod\_analyzer\_utils 0.5.8 (0.5.10 available)
-  riverpod\_generator 2.6.3 (2.6.5 available)
+  riverpod_analyzer_utils 0.5.8 (0.5.10 available)
+  riverpod_generator 2.6.3 (2.6.5 available)
 &gt; slang 4.5.0 (was 4.4.1)
-&gt; slang\_build\_runner 4.5.0 (was 4.4.2)
-&gt; slang\_flutter 4.5.0 (was 4.4.0)
-  source\_gen 1.5.0 (2.0.0 available)
-  source\_span 1.10.0 (1.10.1 available)
+&gt; slang_build_runner 4.5.0 (was 4.4.2)
+&gt; slang_flutter 4.5.0 (was 4.4.0)
+  source_gen 1.5.0 (2.0.0 available)
+  source_span 1.10.0 (1.10.1 available)
   sqflite 2.4.1 (2.4.2 available)
-  sqflite\_android 2.4.0 (2.4.1 available)
-  sqflite\_common 2.5.4+6 (2.5.5 available)
-  sqflite\_darwin 2.4.1+1 (2.4.2 available)
-  stack\_trace 1.12.0 (1.12.1 available)
-  stream\_channel 2.1.2 (2.1.4 available)
-  string\_scanner 1.3.0 (1.4.1 available)
+  sqflite_android 2.4.0 (2.4.1 available)
+  sqflite_common 2.5.4+6 (2.5.5 available)
+  sqflite_darwin 2.4.1+1 (2.4.2 available)
+  stack_trace 1.12.0 (1.12.1 available)
+  stream_channel 2.1.2 (2.1.4 available)
+  string_scanner 1.3.0 (1.4.1 available)
   synchronized 3.3.0+3 (3.3.1 available)
-  term\_glyph 1.2.1 (1.2.2 available)
-  test\_api 0.7.3 (0.7.4 available)
-  vm\_service 14.3.0 (15.0.0 available)
+  term_glyph 1.2.1 (1.2.2 available)
+  test_api 0.7.3 (0.7.4 available)
+  vm_service 14.3.0 (15.0.0 available)
 &gt; web 1.1.1 (was 1.1.0)
   win32 5.10.1 (5.11.0 available)
-  win32\_registry 1.1.5 (2.1.0 available)
+  win32_registry 1.1.5 (2.1.0 available)
 Changed 25 dependencies!
 52 packages have newer versions incompatible with dependency constraints.
 Try `flutter pub outdated` for more information.
-~/git/gallusys/snpit\_guild\_app  ‹feature/315\*› $
+~/git/gallusys/snpit_guild_app  ‹feature/315*› $
 
 ---
 
 ## 🔧 ツール
 *2025/3/6 13:30:46*
 
-\*\*バージョンの更新を検討中\*\*
+**バージョンの更新を検討中**
 
 `pubspec.yaml`の依存関係にある`camera`のバージョンが0.10.6に固定されている。0.11.1への更新を検討し、0.11.0以降のバグを調査中。
 
-\*\*依存関係の調整を検討\*\*
+**依存関係の調整を検討**
 
-`intl`を^0.20.2にアップグレードして`slang\_flutter`との競合を解消しようとしている。`camera`はバージョン固定を維持し、画像ピッカーのバージョンを見直す必要がある。
+`intl`を^0.20.2にアップグレードして`slang_flutter`との競合を解消しようとしている。`camera`はバージョン固定を維持し、画像ピッカーのバージョンを見直す必要がある。
 
-\*\*最新バージョンの確認\*\*
+**最新バージョンの確認**
 
-`image`、`permission\_handler`、`go\_router`の各ライブラリの最新バージョンを調査し、^14.8.0への更新を検討している。ユーザーの制約も考慮に入れている。
+`image`、`permission_handler`、`go_router`の各ライブラリの最新バージョンを調査し、^14.8.0への更新を検討している。ユーザーの制約も考慮に入れている。
 
-\*\*依存関係の調整\*\*
+**依存関係の調整**
 
-`riverpod\_generator`と`json\_serializable`の競合を解消し、`flutter\_gen\_runner`、`slang`、`camera`のバージョンを^4.5.0に更新する方法を検討中。
+`riverpod_generator`と`json_serializable`の競合を解消し、`flutter_gen_runner`、`slang`、`camera`のバージョンを^4.5.0に更新する方法を検討中。
 
-\*\*バージョンの調整を模索中\*\*
+**バージョンの調整を模索中**
 
-`intl`を^0.20.2にアップデートし、`riverpod\_generator`を^2.6.5へと導く方法を探っている。これにより、依存関係の競合を減らそうとしている。
+`intl`を^0.20.2にアップデートし、`riverpod_generator`を^2.6.5へと導く方法を探っている。これにより、依存関係の競合を減らそうとしている。
 
-\*\*依存関係の見直し\*\*
+**依存関係の見直し**
 
-`intl`を^0.20.2に更新し、`slang`と`flutter\_gen\_runner`のバージョンを見直して、依存関係の問題を解消している。
+`intl`を^0.20.2に更新し、`slang`と`flutter_gen_runner`のバージョンを見直して、依存関係の問題を解消している。
 
-\*\*依存関係の最適化を模索中\*\*
+**依存関係の最適化を模索中**
 
-`camera`と`riverpod\_generator`のバージョンを見直し、`image`と`permissions\_handler`のアップデートを検討中。最新情報とユーザーの制約を考慮している。
+`camera`と`riverpod_generator`のバージョンを見直し、`image`と`permissions_handler`のアップデートを検討中。最新情報とユーザーの制約を考慮している。
 
-\*\*バージョン制限の見直し\*\*
+**バージョン制限の見直し**
 
 カメラのバージョンを確定し、プロジェクトのpubspec.yamlでピン留めしている。これによりアップグレードの幅が広がり、ユーザーが新しいバージョンを試しやすくなる。
 
-\*\*更新するピン留め\*\*
+**更新するピン留め**
 
 pubspec.yamlでカメラとopenapiのバージョンを更新し、最適化を図る。これにより、依存関係の競合を減らし、プロジェクトの健全性を維持する。
 
-\*\*依存関係の見直し\*\*
+**依存関係の見直し**
 
-`camera`、`openapi\_generator`、`riverpod\_generator`、`json\_serializable`を更新し、依存関係の競合を改善しつつ、他のライブラリのバージョンも適切に設定している。
+`camera`、`openapi_generator`、`riverpod_generator`、`json_serializable`を更新し、依存関係の競合を改善しつつ、他のライブラリのバージョンも適切に設定している。
 
-\*\*バージョンムービングのハンドリング\*\*
+**バージョンムービングのハンドリング**
 
 依存関係の更新方針を解説し、変更を適用しつつ、ユーザーに最新バージョンへのシームレスな移行を促している。
 
-\*\*バージョンの選定\*\*
+**バージョンの選定**
 
-`go\_router`、`image`、`permission\_handler`のバージョンを選定し、最新の互換性のあるバージョンを選び、ピン留めしている。他のパッケージも同様に扱っている。
+`go_router`、`image`、`permission_handler`のバージョンを選定し、最新の互換性のあるバージョンを選び、ピン留めしている。他のパッケージも同様に扱っている。
 
-\*\*バージョンの選択肢を探る\*\*
+**バージョンの選択肢を探る**
 
-`intl`、`camera`、`riverpod\_generator`、`json\_serializable`のバージョンを選定し、最新の互換性のあるバージョンをピン留めしている。
+`intl`、`camera`、`riverpod_generator`、`json_serializable`のバージョンを選定し、最新の互換性のあるバージョンをピン留めしている。
 
-\*\*バージョンの確認\*\*
+**バージョンの確認**
 
-`flutter\_gen\_runner`の新バージョン5.10.0を受け入れつつ、主要な競合を引き起こす可能性のあるバージョンを慎重に扱っている。
+`flutter_gen_runner`の新バージョン5.10.0を受け入れつつ、主要な競合を引き起こす可能性のあるバージョンを慎重に扱っている。
 
-\*\*バージョンの見直し\*\*
+**バージョンの見直し**
 
-`intl`のバージョンを`^0.20.2`に更新し、`camera`は`0.10.6`のままにするか`^0.11.1`にするか検討中。Major updateの`image\_cropper`も確認している。
+`intl`のバージョンを`^0.20.2`に更新し、`camera`は`0.10.6`のままにするか`^0.11.1`にするか検討中。Major updateの`image_cropper`も確認している。
 
-\*\*主な問題を特定する\*\*
+**主な問題を特定する**
 
-`intl`と`image\_cropper`の最新バージョンの導入で、エラーハンドリング応答の実装が求められている。
+`intl`と`image_cropper`の最新バージョンの導入で、エラーハンドリング応答の実装が求められている。
 
 ---
 

@@ -13,11 +13,11 @@
 
 .PHONY: help
 help:
-	@awk 'BEGIN {FS = ":"} /^\[a-zA-Z0-9\_-\]+:/ {if ($$2 == "") print "make " $$1}' Makefile
+	@awk 'BEGIN {FS = ":"} /^[a-zA-Z0-9_-]+:/ {if ($$2 == "") print "make " $$1}' Makefile
 
 .PHONY: open
 open:
-	open `find . -maxdepth 1 -mindepth 1 -iname "\*.xcworkspace"`
+	open `find . -maxdepth 1 -mindepth 1 -iname "*.xcworkspace"`
 
 .PHONY: setup-githooks
 setup-githooks:

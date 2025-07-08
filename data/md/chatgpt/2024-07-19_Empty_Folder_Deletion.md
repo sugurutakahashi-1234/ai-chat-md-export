@@ -15,13 +15,13 @@ import pixelmatch from 'pixelmatch';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { execSync } from 'child\_process';
+import { execSync } from 'child_process';
 import parse from 'parse-git-diff';
 import os from 'os';
 
-// \_\_filename と \_\_dirname の代替
-const \_\_filename = fileURLToPath(import.meta.url);
-const \_\_dirname = dirname(\_\_filename);
+// __filename と __dirname の代替
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // プロジェクトのルートディレクトリを取得
 let projectRoot;
@@ -42,7 +42,7 @@ try {
 }
 
 // コマンドライン引数を取得
-let \[sourceBranch = currentBranch, targetBranch = 'main', snapshotsDir = 'SmallTalkPackage/Tests/ViewSnapshotTest/\_\_Snapshots\_\_'\] = process.argv.slice(2);
+let [sourceBranch = currentBranch, targetBranch = 'main', snapshotsDir = 'SmallTalkPackage/Tests/ViewSnapshotTest/__Snapshots__'] = process.argv.slice(2);
 
 // 各ブランチの短いコミットハッシュを取得
 let sourceCommitHash;
@@ -58,7 +58,7 @@ try {
 
 // スナップショットディレクトリの絶対パスを構築
 const outputParentDir = path.resolve(projectRoot, 'pixelmatch/output');
-const outputDir = path.resolve(outputParentDir, `${sourceBranch.replace(/\\//g, '\_')}\_vs\_${targetBranch.replace(/\\//g, '\_')}\_${sourceCommitHash}\_${targetCommitHash}`);
+const outputDir = path.resolve(outputParentDir, `${sourceBranch.replace(/\//g, '_')}_vs_${targetBranch.replace(/\//g, '_')}_${sourceCommitHash}_${targetCommitHash}`);
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'git-temp-'));
 const addedDir = path.join(outputDir, 'add');
 const deletedDir = path.join(outputDir, 'delete');

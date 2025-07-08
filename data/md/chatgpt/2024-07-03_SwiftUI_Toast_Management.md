@@ -12,11 +12,11 @@ SwiftUIのアプリでトーストを一元管理したい。ToastTypeを enum �
 public struct RootView&lt;Dependency: RootDIContainerDependency&gt;: View {
     private let dependency: Dependency
     @StateObject private var presenter: RootPresenter&lt;Dependency&gt;
-    @Environment(\\.scenePhase) private var scenePhase
+    @Environment(\.scenePhase) private var scenePhase
 
     public init(dependency: Dependency) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: RootPresenter(dependency: dependency))
+        _presenter = .init(wrappedValue: RootPresenter(dependency: dependency))
     }
 
     public var body: some View {

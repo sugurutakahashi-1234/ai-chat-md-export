@@ -11,16 +11,16 @@
     &lt;!-- This comment indicates that this is an original description. --&gt;
 
     &lt;!-- Permissions options for the `location` group --&gt;
-    &lt;uses-permission android:name="android.permission.ACCESS\_FINE\_LOCATION" /&gt;
-    &lt;uses-permission android:name="android.permission.ACCESS\_COARSE\_LOCATION" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
 
     &lt;!-- Google Maps API Key --&gt;
-    &lt;meta-data android:name="com.google.android.geo.API\_KEY" android:value="AIzaSyDiCfN60zK88haudBRPSSmiCvwImFJKN3E"/&gt;
+    &lt;meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDiCfN60zK88haudBRPSSmiCvwImFJKN3E"/&gt;
 
     &lt;application
-        android:label="flutter\_sample\_app"
+        android:label="flutter_sample_app"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic\_launcher"&gt;
+        android:icon="@mipmap/ic_launcher"&gt;
         &lt;activity
             android:name=".MainActivity"
             android:exported="true"
@@ -51,12 +51,12 @@
     &lt;/application&gt;
     &lt;!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
-         https://developer.android.com/reference/android/content/Intent#ACTION\_PROCESS\_TEXT.
+         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
 
          In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. --&gt;
     &lt;queries&gt;
         &lt;intent&gt;
-            &lt;action android:name="android.intent.action.PROCESS\_TEXT"/&gt;
+            &lt;action android:name="android.intent.action.PROCESS_TEXT"/&gt;
             &lt;data android:mimeType="text/plain"/&gt;
         &lt;/intent&gt;
     &lt;/queries&gt;
@@ -67,14 +67,14 @@ Running Gradle task 'assembleDebug'...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
-Execution failed for task ':flutter\_plugin\_android\_lifecycle:compileDebugJavaWithJavac'.
-&gt; Could not resolve all files for configuration ':flutter\_plugin\_android\_lifecycle:androidJdkImage'.
-   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=\_internal\_android\_jdk\_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
+* What went wrong:
+Execution failed for task ':flutter_plugin_android_lifecycle:compileDebugJavaWithJavac'.
+&gt; Could not resolve all files for configuration ':flutter_plugin_android_lifecycle:androidJdkImage'.
+   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=_internal_android_jdk_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
       &gt; Execution failed for JdkImageTransform: /Users/sugurutakahashi/Library/Android/sdk/platforms/android-34/core-for-system-modules.jar.
          &gt; Error while executing process /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/jlink with arguments {--module-path /Users/sugurutakahashi/.gradle/caches/transforms-3/d9e926982c2c139ff9125eb7b6be4144/transformed/output/temp/jmod --add-modules java.base --output /Users/sugurutakahashi/.gradle/caches/transforms-3/d9e926982c2c139ff9125eb7b6be4144/transformed/output/jdkImage --disable-plugin system-modules}
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.

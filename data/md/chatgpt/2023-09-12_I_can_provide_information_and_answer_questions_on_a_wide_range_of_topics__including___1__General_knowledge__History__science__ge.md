@@ -12,7 +12,7 @@
 roundMessageView について、こううするとroundMessageViewのお願い終了条件の文字列が中央揃えになってしまう。
 
 struct WebsiteMeasurementInstructionView: View {
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
     let websiteMeasurement: WebsiteMeasurement
     
     var body: some View {

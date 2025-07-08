@@ -15,35 +15,35 @@ context.push(Screen.guildCode.path);context.push(Screen.guildCreate.path); でpu
 
 
 import 'package:flutter/rendering.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/pages/camera\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_device\_info\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_localization\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_menu\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_utility\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/deck\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/flag\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/gpt\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_code\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_create\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_manage\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_request\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/login\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/map\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/my\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/notification\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/setting\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/shootable\_spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/shooting\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/spot\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/tab\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/text\_editing\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/verification\_code\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/wallet\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/weave\_spot\_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/pages/camera_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_device_info_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_localization_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_menu_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_utility_page.dart';
+import 'package:snpit_guild_app/presentation/pages/deck_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/flag_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/gpt_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_code_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_create_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_manage_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_request_page.dart';
+import 'package:snpit_guild_app/presentation/pages/login_page.dart';
+import 'package:snpit_guild_app/presentation/pages/map_page.dart';
+import 'package:snpit_guild_app/presentation/pages/my_page.dart';
+import 'package:snpit_guild_app/presentation/pages/notification_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/setting_page.dart';
+import 'package:snpit_guild_app/presentation/pages/shootable_spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/shooting_page.dart';
+import 'package:snpit_guild_app/presentation/pages/spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/spot_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/tab_page.dart';
+import 'package:snpit_guild_app/presentation/pages/text_editing_page.dart';
+import 'package:snpit_guild_app/presentation/pages/verification_code_page.dart';
+import 'package:snpit_guild_app/presentation/pages/wallet_page.dart';
+import 'package:snpit_guild_app/presentation/pages/weave_spot_page.dart';
 
 class TextEditingPageArgs {
   TextEditingPageArgs({
@@ -61,7 +61,7 @@ class TextEditingPageArgs {
 
 final GoRouter router = GoRouter(
   initialLocation: Screen.login.path,
-  routes: \[
+  routes: [
     GoRoute(
       path: Screen.debugMenu.path,
       builder: (context, state) =&gt; const DebugMenuPage(),
@@ -195,29 +195,29 @@ final GoRouter router = GoRouter(
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =&gt;
           TabPage(navigationShell: navigationShell),
-      branches: \[
+      branches: [
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: Screen.map.path,
               builder: (context, state) =&gt; const MapPage(),
             ),
-          \],
+          ],
         ),
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: Screen.guild.path,
               builder: (context, state) =&gt; const GuildPage(),
             ),
-          \],
+          ],
         ),
-      \],
+      ],
     ),
-  \],
+  ],
 );
 
-import 'package:snpit\_guild\_app/utils/extensions/string\_extensions.dart';
+import 'package:snpit_guild_app/utils/extensions/string_extensions.dart';
 
 enum Screen {
   debugMenu,
@@ -259,30 +259,30 @@ extension ScreenRouteExtension on Screen {
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/presentation/extensions/font\_weight\_extensions.dart';
-import 'package:snpit\_guild\_app/presentation/pages/explorer\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/shootable\_spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/providers/access\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/wallet/get\_wallet.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_logout.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_map\_spot.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_explorer\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_force\_update.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_maintenance.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_our\_spot\_detail.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_shootable\_spot\_detail.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/router/spot\_list\_router.dart';
-import 'package:snpit\_guild\_app/presentation/theme/app\_theme.dart';
-import 'package:snpit\_guild\_app/utils/show\_dialog\_utils.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/presentation/extensions/font_weight_extensions.dart';
+import 'package:snpit_guild_app/presentation/pages/explorer_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/shootable_spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/providers/access_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/wallet/get_wallet.dart';
+import 'package:snpit_guild_app/presentation/providers/should_logout.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_map_spot.dart';
+import 'package:snpit_guild_app/presentation/providers/show_explorer_list.dart';
+import 'package:snpit_guild_app/presentation/providers/show_force_update.dart';
+import 'package:snpit_guild_app/presentation/providers/show_maintenance.dart';
+import 'package:snpit_guild_app/presentation/providers/show_our_spot_detail.dart';
+import 'package:snpit_guild_app/presentation/providers/show_shootable_spot_detail.dart';
+import 'package:snpit_guild_app/presentation/providers/show_spot_list.dart';
+import 'package:snpit_guild_app/presentation/router/spot_list_router.dart';
+import 'package:snpit_guild_app/presentation/theme/app_theme.dart';
+import 'package:snpit_guild_app/utils/show_dialog_utils.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class TabPage extends HookConsumerWidget {
   const TabPage({required this.navigationShell, super.key});
@@ -307,7 +307,7 @@ class TabPage extends HookConsumerWidget {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showShootableSpotDetailNotifierProvider.notifier).hide();
       });
     }
@@ -325,7 +325,7 @@ class TabPage extends HookConsumerWidget {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showExplorerListNotifierProvider.notifier).hide();
       });
     }
@@ -351,7 +351,7 @@ class TabPage extends HookConsumerWidget {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showSpotListNotifierProvider.notifier).hide();
       });
     }
@@ -380,7 +380,7 @@ class TabPage extends HookConsumerWidget {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showOurSpotDetailNotifierProvider.notifier).hide();
       });
     }
@@ -401,14 +401,14 @@ class TabPage extends HookConsumerWidget {
             content: const Text(
               'Your session has expired. Please log in again.',
             ),
-            actions: &lt;Widget&gt;\[
+            actions: &lt;Widget&gt;[
               TextButton(
                 onPressed: () async {
                   await onTapOk();
                 },
                 child: const Text('OK'),
               ),
-            \],
+            ],
           );
         },
       );
@@ -465,7 +465,7 @@ class TabPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -473,23 +473,23 @@ class TabPage extends HookConsumerWidget {
         leadingWidth: 100,
         leading: Row(
           mainAxisSize: MainAxisSize.min,
-          children: \[
+          children: [
             IconButton(
               icon: const Icon(Icons.person),
               onPressed: () {
                 context.push(Screen.myPage.path);
               },
             ),
-            // TODO: \[フェーズ2\] 通知機能の実装
+            // TODO: [フェーズ2] 通知機能の実装
             // IconButton(
             //   icon: const Icon(Icons.notifications),
             //   onPressed: () {
             //     context.push(Screen.notificationList.path);
             //   },
             // ),
-          \],
+          ],
         ),
-        actions: \[
+        actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: Material(
@@ -506,7 +506,7 @@ class TabPage extends HookConsumerWidget {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Row(
-                    children: \[
+                    children: [
                       Image.asset(
                         Assets.images.stpCoinIcon.path,
                         width: 20,
@@ -533,7 +533,7 @@ class TabPage extends HookConsumerWidget {
                             ),
                           );
                         },
-                        error: (error, \_) {
+                        error: (error, _) {
                           return Text(
                             '  ',
                             style: TextStyle(
@@ -548,13 +548,13 @@ class TabPage extends HookConsumerWidget {
                         'STP',
                         style: TextStyle(fontSize: 10),
                       ),
-                    \],
+                    ],
                   ),
                 ),
               ),
             ),
           ),
-        \],
+        ],
       ),
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
@@ -572,7 +572,7 @@ class TabPage extends HookConsumerWidget {
           }
           navigationShell.goBranch(index);
         },
-        items: const \[
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.public,
@@ -582,12 +582,12 @@ class TabPage extends HookConsumerWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.shield\_outlined,
+              Icons.shield_outlined,
               size: 24,
             ),
             label: 'Guild',
           ),
-        \],
+        ],
       ),
     );
   }
@@ -595,29 +595,29 @@ class TabPage extends HookConsumerWidget {
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/camera\_dto\_x.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/extensions/font\_weight\_extensions.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/camera_dto_x.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/extensions/font_weight_extensions.dart';
 
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/update\_guild\_member.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/get\_user.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_map\_spot.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/withdraw\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/guild\_icon.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/guild\_member\_column.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/parameters\_bar\_column.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/total\_parameters\_row.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/update_guild_member.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/get_user.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_map_spot.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/withdraw_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/guild_icon.dart';
+import 'package:snpit_guild_app/presentation/widgets/guild_member_column.dart';
+import 'package:snpit_guild_app/presentation/widgets/parameters_bar_column.dart';
+import 'package:snpit_guild_app/presentation/widgets/total_parameters_row.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class GuildPage extends HookConsumerWidget {
   const GuildPage({super.key});
@@ -664,7 +664,7 @@ class GuildPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -681,7 +681,7 @@ class GuildPage extends HookConsumerWidget {
           data: (guild) {
             if (guild != null) {
               // ギルド情報に所属している場合
-              return \_GuildContent(
+              return _GuildContent(
                 guild: guild,
                 myUserId: myUserId,
                 onRefresh: onRefresh,
@@ -692,7 +692,7 @@ class GuildPage extends HookConsumerWidget {
                 physics: AlwaysScrollableScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: \_NoGuildWidget(),
+                  child: _NoGuildWidget(),
                 ),
               );
             }
@@ -700,7 +700,7 @@ class GuildPage extends HookConsumerWidget {
           loading: () {
             return const Center(child: CircularProgressIndicator());
           },
-          error: (error, \_) {
+          error: (error, _) {
             return Center(child: Text('Error: $error'));
           },
         ),
@@ -710,8 +710,8 @@ class GuildPage extends HookConsumerWidget {
 }
 
 /// ギルド情報がある場合のコンテンツをまとめたWidget
-class \_GuildContent extends HookConsumerWidget {
-  const \_GuildContent({
+class _GuildContent extends HookConsumerWidget {
+  const _GuildContent({
     required this.guild,
     required this.myUserId,
     required this.onRefresh,
@@ -726,7 +726,7 @@ class \_GuildContent extends HookConsumerWidget {
     final guildId = guild.guildId ?? '';
     final guildName = guild.guildName ?? '';
     final guildMembersCount = guild.guildMembersCount ?? 0;
-    // TODO: \[GPT\] ギルドの所持GPTを表示する
+    // TODO: [GPT] ギルドの所持GPTを表示する
     final gptValue = guild.guildMembersCount ?? 0;
     final requestedMembersCount = guild.guildMembers
             ?.where(
@@ -748,20 +748,20 @@ class \_GuildContent extends HookConsumerWidget {
     final luckL = guild.luckL ?? 0;
     final defenseB = guild.defenseB ?? 0;
 
-    final guildMemberList = guild.guildMembers ?? \[\];
+    final guildMemberList = guild.guildMembers ?? [];
 
     return DefaultTabController(
       length: 2, // Tabの数
       child: Column(
-        children: \[
+        children: [
           Expanded(
             child: NestedScrollView(
               physics: const BouncingScrollPhysics(),
               headerSliverBuilder: (context, innerBoxIsScrolled) {
-                return \[
+                return [
                   // ギルドヘッダー部分
                   SliverToBoxAdapter(
-                    child: \_GuildHeader(
+                    child: _GuildHeader(
                       guildId: guildId,
                       guildName: guildName,
                       guildAvatar: guild.guildAvatar,
@@ -778,7 +778,7 @@ class \_GuildContent extends HookConsumerWidget {
                   // タブ部分（固定ヘッダー）
                   SliverPersistentHeader(
                     pinned: true,
-                    delegate: \_SliverTabBarDelegate(
+                    delegate: _SliverTabBarDelegate(
                       TabBar(
                         dividerColor: ColorToken.defaultBorder,
                         indicator: UnderlineTabIndicator(
@@ -792,14 +792,14 @@ class \_GuildContent extends HookConsumerWidget {
                         ),
                         labelColor: ColorToken.text,
                         unselectedLabelColor: ColorToken.defaultBorder,
-                        tabs: const \[
+                        tabs: const [
                           Tab(text: 'Members'),
                           Tab(text: 'Spots'),
-                        \],
+                        ],
                       ),
                     ),
                   ),
-                \];
+                ];
               },
               // タブビュー
               body: Padding(
@@ -809,29 +809,29 @@ class \_GuildContent extends HookConsumerWidget {
                   top: 24,
                 ),
                 child: TabBarView(
-                  children: \[
+                  children: [
                     // Members Tab
-                    \_GuildMembersTab(
+                    _GuildMembersTab(
                       guildId: guildId,
                       guildMemberList: guildMemberList,
                       onRefresh: onRefresh,
                     ),
                     // Spots Tab
-                    const \_SpotsTab(),
-                  \],
+                    const _SpotsTab(),
+                  ],
                 ),
               ),
             ),
           ),
-        \],
+        ],
       ),
     );
   }
 }
 
 /// ギルドのヘッダー部分（ギルド名やギルドIDなどの表示）
-class \_GuildHeader extends StatelessWidget {
-  const \_GuildHeader({
+class _GuildHeader extends StatelessWidget {
+  const _GuildHeader({
     required this.guildId,
     required this.guildName,
     required this.guildAvatar,
@@ -862,7 +862,7 @@ class \_GuildHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
-        children: \[
+        children: [
           const SizedBox(height: 24),
           DecoratedBox(
             decoration: BoxDecoration(
@@ -873,7 +873,7 @@ class \_GuildHeader extends StatelessWidget {
               ),
             ),
             child: Column(
-              children: \[
+              children: [
                 GestureDetector(
                   onTap: () {
                     Clipboard.setData(
@@ -899,9 +899,9 @@ class \_GuildHeader extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: \[
+                      children: [
                         const Icon(
-                          Icons.shield\_outlined,
+                          Icons.shield_outlined,
                           size: 24,
                           color: ColorToken.text,
                         ),
@@ -910,7 +910,7 @@ class \_GuildHeader extends StatelessWidget {
                           guildId,
                           style: const TextStyle(fontSize: 14),
                         ),
-                      \],
+                      ],
                     ),
                   ),
                 ),
@@ -935,10 +935,10 @@ class \_GuildHeader extends StatelessWidget {
                 const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: \[
+                  children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: \[
+                      children: [
                         const Icon(
                           Icons.people,
                           size: 24,
@@ -949,12 +949,12 @@ class \_GuildHeader extends StatelessWidget {
                           '$guildMembersCount',
                           style: const TextStyle(fontSize: 14),
                         ),
-                      \],
+                      ],
                     ),
                     const SizedBox(width: 32),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: \[
+                      children: [
                         Image.asset(
                           Assets.images.gptCoinIcon.path,
                           height: 24,
@@ -965,9 +965,9 @@ class \_GuildHeader extends StatelessWidget {
                           NumberFormat('#,###').format(gptValue),
                           style: const TextStyle(fontSize: 14),
                         ),
-                      \],
+                      ],
                     ),
-                  \],
+                  ],
                 ),
                 const SizedBox(height: 20),
                 const Padding(
@@ -984,20 +984,20 @@ class \_GuildHeader extends StatelessWidget {
                   defenceValue: defenseB,
                 ),
                 const SizedBox(height: 24),
-              \],
+              ],
             ),
           ),
           const SizedBox(height: 24),
 
           // ギルドの管理者または所有者の場合のみ管理者画面への導線を表示
-          if (isAdminOrOwner) ...\[
+          if (isAdminOrOwner) ...[
             OutlinedButton(
               onPressed: () {
                 context.push(Screen.guildManage.path);
               },
               child: Stack(
                 alignment: Alignment.centerRight,
-                children: \[
+                children: [
                   const Center(
                     child: Text('Manage this guild'),
                   ),
@@ -1018,25 +1018,25 @@ class \_GuildHeader extends StatelessWidget {
                             ),
                           )
                         : const Icon(
-                            Icons.arrow\_forward,
+                            Icons.arrow_forward,
                             size: 24,
                             color: ColorToken.text,
                           ),
                   ),
-                \],
+                ],
               ),
             ),
             const SizedBox(height: 8),
-          \],
-        \],
+          ],
+        ],
       ),
     );
   }
 }
 
 /// Membersタブのリスト部分
-class \_GuildMembersTab extends HookConsumerWidget {
-  const \_GuildMembersTab({
+class _GuildMembersTab extends HookConsumerWidget {
+  const _GuildMembersTab({
     required this.guildId,
     required this.guildMemberList,
     required this.onRefresh,
@@ -1112,7 +1112,7 @@ class \_GuildMembersTab extends HookConsumerWidget {
       itemCount: itemCount,
       itemBuilder: (context, index) {
         if (index &lt; filteredGuildMemberList.length) {
-          final guildMember = filteredGuildMemberList\[index\];
+          final guildMember = filteredGuildMemberList[index];
           final userName = guildMember.username ?? '';
           final isGuildOwner = guildMember.role == GuildMemberDtoRole.ADMIN ||
               guildMember.role == GuildMemberDtoRole.OWNER;
@@ -1122,7 +1122,7 @@ class \_GuildMembersTab extends HookConsumerWidget {
           final luckL = guildMember.decks?.firstOrNull?.luckL ?? 0;
           final defenseB = guildMember.decks?.firstOrNull?.defenseB ?? 0;
           final cameraList =
-              guildMember.decks?.firstOrNull?.deckCameras?.sorted() ?? \[\];
+              guildMember.decks?.firstOrNull?.deckCameras?.sorted() ?? [];
 
           return Padding(
             padding: const EdgeInsets.only(bottom: 8),
@@ -1137,7 +1137,7 @@ class \_GuildMembersTab extends HookConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
-                  children: \[
+                  children: [
                     Expanded(
                       child: GuildMemberColumn(
                         userName: userName,
@@ -1154,7 +1154,7 @@ class \_GuildMembersTab extends HookConsumerWidget {
                         defenseB: defenseB,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
@@ -1179,13 +1179,13 @@ class \_GuildMembersTab extends HookConsumerWidget {
 }
 
 /// ギルド未所属の場合に表示されるWidget
-class \_NoGuildWidget extends StatelessWidget {
-  const \_NoGuildWidget();
+class _NoGuildWidget extends StatelessWidget {
+  const _NoGuildWidget();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: \[
+      children: [
         const SizedBox(height: 48),
         Text(
           'No guild affiliation',
@@ -1211,7 +1211,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 Assets.images.joinGuildFig.path,
               ),
@@ -1222,22 +1222,22 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text('Join an existing guild'),
                     ),
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 16),
@@ -1250,7 +1250,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 Assets.images.createGuildFig.path,
               ),
@@ -1261,49 +1261,49 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(child: Text('Host a new guild')),
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 48),
-      \],
+      ],
     );
   }
 }
 
 // Spotsタブ
-class \_SpotsTab extends HookConsumerWidget {
-  const \_SpotsTab();
+class _SpotsTab extends HookConsumerWidget {
+  const _SpotsTab();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const SingleChildScrollView(
       child: Column(
-        children: \[
+        children: [
           SizedBox(height: 24),
           Text('Coming Soon!'),
           SizedBox(height: 24),
-        \],
+        ],
       ),
     );
   }
 }
 
 /// タブバーを SliverPersistentHeader として使うためのデリゲート
-class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
-  \_SliverTabBarDelegate(this.tabBar);
+class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverTabBarDelegate(this.tabBar);
 
   final TabBar tabBar;
 
@@ -1325,7 +1325,7 @@ class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(\_SliverTabBarDelegate oldDelegate) {
+  bool shouldRebuild(_SliverTabBarDelegate oldDelegate) {
     return oldDelegate.tabBar != tabBar;
   }
 }
@@ -1335,31 +1335,31 @@ class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
 ## 🔧 ツール
 *2025/2/15 10:51:28*
 
-\*\*問題の発見と解決策の模索\*\*
+**問題の発見と解決策の模索**
 
 現在、`GoRouter` を使用しているが、"Guild" タブをカバーしながら、新しいルートを追加している。これにより、ユーザーはタブを失うことなく新しいページを見ている。
 
-\*\*ルートの修正を検討\*\*
+**ルートの修正を検討**
 
 `StatefulShellBranch` を編集し、二つ目のタブのルート内にネストされたサブルートを追加。これにより、サブページがナビゲーションバーを保持するようになっている。
 
-\*\*ルート修正の必要性\*\*
+**ルート修正の必要性**
 
 二つ目のタブのルート内にネストされたサブルートを追加し、ナビゲーションバーを保持する方法を見つけている。これにより、サブページのナビゲーションバーが維持される。
 
-\*\*ルートの最適化を模索中\*\*
+**ルートの最適化を模索中**
 
 `GoRoute` を二つ目のタブ内に移動し、スクリーンやパスの定義を再評価して、サブルートとの競合を回避しつつ、ナビゲーションバーを維持している。
 
-\*\*ルートの整理とナビゲーションの工夫\*\*
+**ルートの整理とナビゲーションの工夫**
 
-`'guild\_manage'` パスを採用して、ルートを整理し、ナビゲーションバーを維持しつつ、サブルートとの競合を回避している。このアプローチは効果的に感じられる。
+`'guild_manage'` パスを採用して、ルートを整理し、ナビゲーションバーを維持しつつ、サブルートとの競合を回避している。このアプローチは効果的に感じられる。
 
-\*\*ルートの整理とナビゲーションの工夫\*\*
+**ルートの整理とナビゲーションの工夫**
 
 `StatefulShellBranch` 内にネストされたサブルートを定義し、`context.push('${Screen.guild.path}/manage')` を使って `GuildManagePage` にナビゲートし、ナビゲーションバーを維持している。
 
-\*\*ルートのネストを活用\*\*
+**ルートのネストを活用**
 
 更新された `router` 定義を提示して、動的なルートの変更やナビゲーションバーの維持に関するステップバイステップの説明やコードスニペットを提供している。
 
@@ -1539,15 +1539,15 @@ context.push('${Screen.guild.path}/manage');
 ## 🔧 ツール
 *2025/2/15 11:00:26*
 
-\*\*提案を検討中\*\*
+**提案を検討中**
 
 ユーザーは`Screen.guild.path + "/manage"`のままにしてタイプミスを防ぎたいと考えている。`Screen.guildManagePath`や`Screen.guildChild.manage.path`のようにサブパスを定義し、`'${Screen.guild.path}/${GuildSubScreen.manage.path}'`を使用する案を検討している。
 
-\*\*サブパスの作成\*\*
+**サブパスの作成**
 
 ユーザーは`Screen`列挙型のサブパスを定義している。`ScreenRouteExtension`内で`guildSub`を使い、`GuildSub`列挙型の`path`を取得している。
 
-\*\*再定義している\*\*
+**再定義している**
 
 `Screen`の`managePath`, `createPath`, `codePath`を新しい拡張機能で定義し、`context.push(Screen.guild.managePath);`のように使用している。
 
@@ -1710,14 +1710,14 @@ extension StringExtensions on String {
   // キャメルケースをアンダースコアに変換
   String camelToSnakeCase() {
     return replaceAllMapped(
-      RegExp(r'(\[a-z\])(\[A-Z\])'),
-      (match) =&gt; '${match.group(1)}\_${match.group(2)?.toLowerCase()}',
+      RegExp(r'([a-z])([A-Z])'),
+      (match) =&gt; '${match.group(1)}_${match.group(2)?.toLowerCase()}',
     ).toLowerCase();
   }
 
   // キャメルケースをスペース区切りにし、タイトルケースに変換
   String toTitleCase() {
-    final words = split(RegExp(r'(?=\[A-Z\])'));
+    final words = split(RegExp(r'(?=[A-Z])'));
     return words.map((word) =&gt; word.capitalize()).join(' ');
   }
 
@@ -1726,7 +1726,7 @@ extension StringExtensions on String {
     if (isEmpty) {
       return this;
     }
-    return this\[0\].toUpperCase() + substring(1).toLowerCase();
+    return this[0].toUpperCase() + substring(1).toLowerCase();
   }
 }
 
@@ -1735,7 +1735,7 @@ extension StringExtensions on String {
 ## 🔧 ツール
 *2025/2/15 11:07:30*
 
-\*\*ルートの選択肢を絞る\*\*
+**ルートの選択肢を絞る**
 
 特定の4つのルートに絞り、残りは元のロジックを保持する方法を模索している。
 
@@ -1807,27 +1807,27 @@ guildCode から guildRequest へボトムのナビゲーションを残しな�
 ## 🔧 ツール
 *2025/2/15 11:10:39*
 
-\*\*ルートの選択肢を探る\*\*
+**ルートの選択肢を探る**
 
 `guildCode` から `guildRequest` への遷移を検討している。`StatefulShellRoute.indexedStack`の子ルートとして保持し、ボトムナビゲーションを維持している。
 
-\*\*ナビゲーション選択肢の探求\*\*
+**ナビゲーション選択肢の探求**
 
 トップレベルのルートや他のブランチの場合、ボトムナビゲーションは維持できない。相対ナビゲーションを試みるが、ルートの構造に依存する。
 
-\*\*ルート構造を探る\*\*
+**ルート構造を探る**
 
 ユーザーが `GuildCodePage` にいる場合、ボトムナビゲーションを維持しつつ `GuildRequestPage` への遷移をどう実現するかを考慮中。
 
-\*\*ナビゲーション方法の工夫\*\*
+**ナビゲーション方法の工夫**
 
 `relative navigation` で `code` と `request` の関係を保つか、`absolute path` で `guildRequestPage` への完全なルートを推奨する。
 
-\*\*特定のルートの確認\*\*
+**特定のルートの確認**
 
 `guildRequest` が `guild` ブランチの子ルートであることを確認し、`context.push(Screen.guildRequest.path)` を使用している。
 
-\*\*ステップを踏む\*\*
+**ステップを踏む**
 
 `guildRequest` が `guildCode` と同じブランチの子ルートであることを確認し、`context.push('/guild/request')` でナビゲーションを行うことが推奨されている。
 
@@ -1929,9 +1929,9 @@ BottomNavigationBar が残った状態で画面を重ねられるようになり
 *2025/2/15 11:48:57*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-JkwBiMAUC3BP57oSZAnKX9",
-  "size\_bytes": 564703,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-JkwBiMAUC3BP57oSZAnKX9",
+  "size_bytes": 564703,
   "width": 740,
   "height": 1532,
   "fovea": null,
@@ -1939,48 +1939,48 @@ BottomNavigationBar が残った状態で画面を重ねられるようになり
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 このようにTabPageのヘッダーとGuildManagePageのヘッダーが2つとも残り続けてしまっている。
 これが1つしか存在しない様にするにはどうすればいいのか？
 
 import 'package:flutter/rendering.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/pages/camera\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_device\_info\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_localization\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_menu\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_utility\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/deck\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/flag\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/gpt\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_code\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_create\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_manage\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_request\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/login\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/map\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/my\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/notification\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/setting\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/shootable\_spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/shooting\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/spot\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/tab\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/text\_editing\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/verification\_code\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/wallet\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/weave\_spot\_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/pages/camera_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_device_info_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_localization_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_menu_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_utility_page.dart';
+import 'package:snpit_guild_app/presentation/pages/deck_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/flag_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/gpt_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_code_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_create_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_manage_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_request_page.dart';
+import 'package:snpit_guild_app/presentation/pages/login_page.dart';
+import 'package:snpit_guild_app/presentation/pages/map_page.dart';
+import 'package:snpit_guild_app/presentation/pages/my_page.dart';
+import 'package:snpit_guild_app/presentation/pages/notification_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/setting_page.dart';
+import 'package:snpit_guild_app/presentation/pages/shootable_spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/shooting_page.dart';
+import 'package:snpit_guild_app/presentation/pages/spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/spot_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/tab_page.dart';
+import 'package:snpit_guild_app/presentation/pages/text_editing_page.dart';
+import 'package:snpit_guild_app/presentation/pages/verification_code_page.dart';
+import 'package:snpit_guild_app/presentation/pages/wallet_page.dart';
+import 'package:snpit_guild_app/presentation/pages/weave_spot_page.dart';
 
 class TextEditingPageArgs {
   TextEditingPageArgs({
@@ -1998,7 +1998,7 @@ class TextEditingPageArgs {
 
 final GoRouter router = GoRouter(
   initialLocation: Screen.login.path,
-  routes: \[
+  routes: [
     GoRoute(
       path: Screen.debugMenu.path,
       builder: (context, state) =&gt; const DebugMenuPage(),
@@ -2113,21 +2113,21 @@ final GoRouter router = GoRouter(
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =&gt;
           TabPage(navigationShell: navigationShell),
-      branches: \[
+      branches: [
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: Screen.map.path,
               builder: (context, state) =&gt; const MapPage(),
             ),
-          \],
+          ],
         ),
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: Screen.guild.path,
               builder: (context, state) =&gt; const GuildPage(),
-              routes: \[
+              routes: [
                 GoRoute(
                   path: Screen.guildManage.branch,
                   builder: (context, state) =&gt; const GuildManagePage(),
@@ -2147,11 +2147,11 @@ final GoRouter router = GoRouter(
                     return GuildRequestPage(guildId: guildId);
                   },
                 ),
-              \],
+              ],
             ),
-          \],
+          ],
         ),
-      \],
+      ],
     ),
 
     // 以下は実際の遷移ではなくデバッグ用の遷移
@@ -2174,7 +2174,7 @@ final GoRouter router = GoRouter(
         return GuildRequestPage(guildId: guildId);
       },
     ),
-  \],
+  ],
 );
 
 ---
@@ -2286,7 +2286,7 @@ TabPage → showModalBottomSheet で OurSpotDetailPage → FlagListPage
 
 以下はソースコードである。
 
-import 'package:snpit\_guild\_app/utils/extensions/string\_extensions.dart';
+import 'package:snpit_guild_app/utils/extensions/string_extensions.dart';
 
 enum Screen {
   debugMenu,
@@ -2330,7 +2330,7 @@ extension ScreenRouteExtension on Screen {
       case Screen.guildRequest:
         return 'request';
 
-      // ignore: no\_default\_cases
+      // ignore: no_default_cases
       default:
         return '';
     }
@@ -2344,7 +2344,7 @@ extension ScreenRouteExtension on Screen {
       case Screen.guildRequest:
         return '${Screen.guild.path}/$branch';
 
-      // ignore: no\_default\_cases
+      // ignore: no_default_cases
       default:
         return '/${name.camelToSnakeCase()}';
     }
@@ -2358,7 +2358,7 @@ extension ScreenRouteExtension on Screen {
       case Screen.guildRequest:
         return '/$branch';
 
-      // ignore: no\_default\_cases
+      // ignore: no_default_cases
       default:
         return path;
     }
@@ -2369,35 +2369,35 @@ extension ScreenRouteExtension on Screen {
 }
 
 import 'package:flutter/rendering.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/pages/camera\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_device\_info\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_localization\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_menu\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/debug\_utility\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/deck\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/flag\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/gpt\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_code\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_create\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_manage\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/guild\_request\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/login\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/map\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/my\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/notification\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/setting\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/shootable\_spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/shooting\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/spot\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/tab\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/text\_editing\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/verification\_code\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/wallet\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/weave\_spot\_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/pages/camera_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_device_info_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_localization_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_menu_page.dart';
+import 'package:snpit_guild_app/presentation/pages/debug_utility_page.dart';
+import 'package:snpit_guild_app/presentation/pages/deck_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/flag_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/gpt_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_code_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_create_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_manage_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_page.dart';
+import 'package:snpit_guild_app/presentation/pages/guild_request_page.dart';
+import 'package:snpit_guild_app/presentation/pages/login_page.dart';
+import 'package:snpit_guild_app/presentation/pages/map_page.dart';
+import 'package:snpit_guild_app/presentation/pages/my_page.dart';
+import 'package:snpit_guild_app/presentation/pages/notification_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/setting_page.dart';
+import 'package:snpit_guild_app/presentation/pages/shootable_spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/shooting_page.dart';
+import 'package:snpit_guild_app/presentation/pages/spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/spot_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/tab_page.dart';
+import 'package:snpit_guild_app/presentation/pages/text_editing_page.dart';
+import 'package:snpit_guild_app/presentation/pages/verification_code_page.dart';
+import 'package:snpit_guild_app/presentation/pages/wallet_page.dart';
+import 'package:snpit_guild_app/presentation/pages/weave_spot_page.dart';
 
 class TextEditingPageArgs {
   TextEditingPageArgs({
@@ -2415,7 +2415,7 @@ class TextEditingPageArgs {
 
 final GoRouter router = GoRouter(
   initialLocation: Screen.login.path,
-  routes: \[
+  routes: [
     GoRoute(
       path: Screen.debugMenu.path,
       builder: (context, state) =&gt; const DebugMenuPage(),
@@ -2530,21 +2530,21 @@ final GoRouter router = GoRouter(
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =&gt;
           TabPage(navigationShell: navigationShell),
-      branches: \[
+      branches: [
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: Screen.map.path,
               builder: (context, state) =&gt; const MapPage(),
             ),
-          \],
+          ],
         ),
         StatefulShellBranch(
-          routes: \[
+          routes: [
             GoRoute(
               path: Screen.guild.path,
               builder: (context, state) =&gt; const GuildPage(),
-              routes: \[
+              routes: [
                 GoRoute(
                   path: Screen.guildManage.branch,
                   builder: (context, state) =&gt; const GuildManagePage(),
@@ -2564,11 +2564,11 @@ final GoRouter router = GoRouter(
                     return GuildRequestPage(guildId: guildId);
                   },
                 ),
-              \],
+              ],
             ),
-          \],
+          ],
         ),
-      \],
+      ],
     ),
 
     // 以下は実際の遷移ではなくデバッグ用の遷移
@@ -2591,21 +2591,21 @@ final GoRouter router = GoRouter(
         return GuildRequestPage(guildId: guildId);
       },
     ),
-  \],
+  ],
 );
 
 
 
-import 'package:go\_router/go\_router.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/pages/flag\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/our\_spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/spot\_list\_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/pages/flag_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/our_spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/pages/spot_list_page.dart';
 
 final GoRouter spotListRouter = GoRouter(
   initialLocation: Screen.spotList.path,
-  routes: \[
+  routes: [
     GoRoute(
       path: Screen.spotList.path,
       builder: (context, state) =&gt; const SpotListPage(),
@@ -2631,30 +2631,30 @@ final GoRouter spotListRouter = GoRouter(
         return FlagListPage(spotId: spotId);
       },
     ),
-  \],
+  ],
 );
 
 
 
 import 'package:flutter/material.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/pages/explorer\_list\_page.dart';
-import 'package:snpit\_guild\_app/presentation/pages/shootable\_spot\_detail\_page.dart';
-import 'package:snpit\_guild\_app/presentation/providers/access\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_logout.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_map\_spot.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_explorer\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_force\_update.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_maintenance.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_our\_spot\_detail.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_shootable\_spot\_detail.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/router/spot\_list\_router.dart';
-import 'package:snpit\_guild\_app/presentation/theme/app\_theme.dart';
-import 'package:snpit\_guild\_app/utils/show\_dialog\_utils.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/pages/explorer_list_page.dart';
+import 'package:snpit_guild_app/presentation/pages/shootable_spot_detail_page.dart';
+import 'package:snpit_guild_app/presentation/providers/access_token.dart';
+import 'package:snpit_guild_app/presentation/providers/should_logout.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_map_spot.dart';
+import 'package:snpit_guild_app/presentation/providers/show_explorer_list.dart';
+import 'package:snpit_guild_app/presentation/providers/show_force_update.dart';
+import 'package:snpit_guild_app/presentation/providers/show_maintenance.dart';
+import 'package:snpit_guild_app/presentation/providers/show_our_spot_detail.dart';
+import 'package:snpit_guild_app/presentation/providers/show_shootable_spot_detail.dart';
+import 'package:snpit_guild_app/presentation/providers/show_spot_list.dart';
+import 'package:snpit_guild_app/presentation/router/spot_list_router.dart';
+import 'package:snpit_guild_app/presentation/theme/app_theme.dart';
+import 'package:snpit_guild_app/utils/show_dialog_utils.dart';
 
 class TabPage extends HookConsumerWidget {
   const TabPage({required this.navigationShell, super.key});
@@ -2679,7 +2679,7 @@ class TabPage extends HookConsumerWidget {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showShootableSpotDetailNotifierProvider.notifier).hide();
       });
     }
@@ -2697,7 +2697,7 @@ class TabPage extends HookConsumerWidget {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showExplorerListNotifierProvider.notifier).hide();
       });
     }
@@ -2723,7 +2723,7 @@ class TabPage extends HookConsumerWidget {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showSpotListNotifierProvider.notifier).hide();
       });
     }
@@ -2752,7 +2752,7 @@ class TabPage extends HookConsumerWidget {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showOurSpotDetailNotifierProvider.notifier).hide();
       });
     }
@@ -2773,14 +2773,14 @@ class TabPage extends HookConsumerWidget {
             content: const Text(
               'Your session has expired. Please log in again.',
             ),
-            actions: &lt;Widget&gt;\[
+            actions: &lt;Widget&gt;[
               TextButton(
                 onPressed: () async {
                   await onTapOk();
                 },
                 child: const Text('OK'),
               ),
-            \],
+            ],
           );
         },
       );
@@ -2839,7 +2839,7 @@ class TabPage extends HookConsumerWidget {
           }
           navigationShell.goBranch(index);
         },
-        items: const \[
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.public,
@@ -2849,33 +2849,33 @@ class TabPage extends HookConsumerWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.shield\_outlined,
+              Icons.shield_outlined,
               size: 24,
             ),
             label: 'Guild',
           ),
-        \],
+        ],
       ),
     );
   }
 }
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/rarity.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/convert\_to\_domain.dart';
-import 'package:snpit\_guild\_app/presentation/extensions/font\_weight\_extensions.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/spots/get\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/flavor\_provider.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/square\_image.dart';
-import 'package:snpit\_guild\_app/utils/location\_utils.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/rarity.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/convert_to_domain.dart';
+import 'package:snpit_guild_app/presentation/extensions/font_weight_extensions.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/spots/get_spot_list.dart';
+import 'package:snpit_guild_app/presentation/providers/flavor_provider.dart';
+import 'package:snpit_guild_app/presentation/widgets/square_image.dart';
+import 'package:snpit_guild_app/utils/location_utils.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class SpotListPage extends HookConsumerWidget {
   const SpotListPage({super.key});
@@ -2896,7 +2896,7 @@ class SpotListPage extends HookConsumerWidget {
           const Duration(seconds: 5),
           onTimeout: () {
             throw Exception(
-              // ignore: lines\_longer\_than\_80\_chars
+              // ignore: lines_longer_than_80_chars
               'Getting current location timed out. Please try again in an area with better signal.',
             );
           },
@@ -2918,7 +2918,7 @@ class SpotListPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -2932,7 +2932,7 @@ class SpotListPage extends HookConsumerWidget {
             fontWeight: FontWeightX.semiBold,
           ),
         ),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () async {
@@ -2940,7 +2940,7 @@ class SpotListPage extends HookConsumerWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: () async {
@@ -2957,7 +2957,7 @@ class SpotListPage extends HookConsumerWidget {
             return SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
-                children: \[
+                children: [
                   const SizedBox(height: 8),
                   GridView.builder(
                     shrinkWrap: true,
@@ -2971,7 +2971,7 @@ class SpotListPage extends HookConsumerWidget {
                     ),
                     itemCount: spotList.length,
                     itemBuilder: (context, index) {
-                      final spot = spotList\[index\];
+                      final spot = spotList[index];
                       final spotId = spot.spotId ?? '';
                       final imageUrl = spot.photoUrl;
                       final rarity = spot.rarity;
@@ -2981,7 +2981,7 @@ class SpotListPage extends HookConsumerWidget {
                         onTap: () async {
                           await onTapSpot(spotId);
                         },
-                        child: \_SpotTile(
+                        child: _SpotTile(
                           imageUrl: imageUrl,
                           rarity: rarity?.domainRarity,
                           guildId: guildId,
@@ -2991,14 +2991,14 @@ class SpotListPage extends HookConsumerWidget {
                     },
                   ),
                   const SizedBox(height: 180),
-                \],
+                ],
               ),
             );
           },
           loading: () {
             return const Center(child: CircularProgressIndicator());
           },
-          error: (error, \_) {
+          error: (error, _) {
             return Center(
               child: Text('Error: $error'),
             );
@@ -3009,8 +3009,8 @@ class SpotListPage extends HookConsumerWidget {
   }
 }
 
-class \_SpotTile extends StatelessWidget {
-  const \_SpotTile({
+class _SpotTile extends StatelessWidget {
+  const _SpotTile({
     required this.imageUrl,
     required this.rarity,
     required this.guildId,
@@ -3026,7 +3026,7 @@ class \_SpotTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.bottomCenter,
-      children: \[
+      children: [
         // 枠線付きの画像
         DecoratedBox(
           decoration: BoxDecoration(
@@ -3053,13 +3053,13 @@ class \_SpotTile extends StatelessWidget {
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(
-                boxShadow: \[
+                boxShadow: [
                   BoxShadow(
                     color: Colors.black.withValues(alpha: 0.25),
                     offset: const Offset(0, 12),
                     blurRadius: 24,
                   ),
-                \],
+                ],
               ),
             ),
           ),
@@ -3068,7 +3068,7 @@ class \_SpotTile extends StatelessWidget {
         if (guildId != null)
           Positioned.fill(
             child: Align(
-              child: \_GuildLabel(isMyGuild: isMyGuild),
+              child: _GuildLabel(isMyGuild: isMyGuild),
             ),
           ),
 
@@ -3091,13 +3091,13 @@ class \_SpotTile extends StatelessWidget {
               ),
             ),
           ),
-      \],
+      ],
     );
   }
 }
 
-class \_GuildLabel extends StatelessWidget {
-  const \_GuildLabel({required this.isMyGuild});
+class _GuildLabel extends StatelessWidget {
+  const _GuildLabel({required this.isMyGuild});
 
   final bool isMyGuild;
 
@@ -3105,7 +3105,7 @@ class \_GuildLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: \[
+      children: [
         Icon(
           Icons.flag,
           size: 32,
@@ -3119,7 +3119,7 @@ class \_GuildLabel extends StatelessWidget {
             fontSize: 10,
           ),
         ),
-      \],
+      ],
     );
   }
 }

@@ -9,11 +9,11 @@
 
 以下の処理を一般化してどんなidをもつようなどんな配列でも使えるようにしたい
 
-private func addOrUpdateTalkBoxes(existing: \[TalkBox\], new: \[TalkBox\]) -&gt; \[TalkBox\] {
+private func addOrUpdateTalkBoxes(existing: [TalkBox], new: [TalkBox]) -&gt; [TalkBox] {
         var combined = existing
         new.forEach { newBox in
             if let index = combined.firstIndex(where: { $0.id == newBox.id }) {
-                combined\[index\] = newBox
+                combined[index] = newBox
             } else {
                 combined.append(newBox)
             }
@@ -82,11 +82,11 @@ let updatedTalkBoxes = addOrUpdate(existing: existingTalkBoxes, new: newTalkBoxe
 
 これは Arrayやcollectionの拡張にできないかな？
 
-private func addOrUpdate&lt;T: Identifiable&gt;(existing: \[T\], new: \[T\]) -&gt; \[T\] {
+private func addOrUpdate&lt;T: Identifiable&gt;(existing: [T], new: [T]) -&gt; [T] {
     var combined = existing
     new.forEach { newItem in
         if let index = combined.firstIndex(where: { $0.id == newItem.id }) {
-            combined\[index\] = newItem
+            combined[index] = newItem
         } else {
             combined.append(newItem)
         }

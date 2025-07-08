@@ -16,7 +16,7 @@ final walletId = data.wallet ?? '';
 
 /// The wallet balance details
 @freezed
-class WalletBalanceResponseDTOData with \_$WalletBalanceResponseDTOData {
+class WalletBalanceResponseDTOData with _$WalletBalanceResponseDTOData {
   factory WalletBalanceResponseDTOData({
     @JsonKey(name: 'walletAddress') required String? walletAddress,
     @JsonKey(name: 'stpAmount') required num? stpAmount,
@@ -25,15 +25,15 @@ class WalletBalanceResponseDTOData with \_$WalletBalanceResponseDTOData {
     @JsonKey(name: 'snptPrecision') required num? snptPrecision,
     @JsonKey(name: 'fpAmount') required num? fpAmount,
     @JsonKey(name: 'fpPrecision') required num? fpPrecision,
-  }) = \_WalletBalanceResponseDTOData;
+  }) = _WalletBalanceResponseDTOData;
 
   factory WalletBalanceResponseDTOData.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$WalletBalanceResponseDTODataFromJson(jsonMap);
+      _$WalletBalanceResponseDTODataFromJson(jsonMap);
 }
 
 
 @Riverpod(keepAlive: true)
-class GetWalletNotifier extends \_$GetWalletNotifier {
+class GetWalletNotifier extends _$GetWalletNotifier {
   @override
   Future&lt;WalletBalanceResponseDTOData?&gt; build() async =&gt; null;
 
@@ -71,19 +71,19 @@ class GetWalletNotifier extends \_$GetWalletNotifier {
   }
 }
 
-  import 'package:auto\_size\_text/auto\_size\_text.dart';
+  import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/nfts/get\_nfts.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/wallet/get\_wallet.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/square\_image.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/nfts/get_nfts.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/wallet/get_wallet.dart';
+import 'package:snpit_guild_app/presentation/widgets/square_image.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 enum NftType {
   explorer,
@@ -117,7 +117,7 @@ class WalletPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Future&lt;void&gt; onTapNft(NFT nft) async {
-      // TODO: \[フェーズ2\] NFT 詳細画面への遷移
+      // TODO: [フェーズ2] NFT 詳細画面への遷移
     }
 
     Future&lt;void&gt; onTapWalletId(String walletId) async {
@@ -147,7 +147,7 @@ class WalletPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -161,8 +161,8 @@ class WalletPage extends HookConsumerWidget {
           final stpValue = data.stp ?? 0;
           final walletId = data.wallet ?? '';
 
-          final explorers = data.explorers ?? \[\];
-          final flags = data.flags ?? \[\];
+          final explorers = data.explorers ?? [];
+          final flags = data.flags ?? [];
 
           final explorerNfts = explorers.map((explorer) {
             return NFT(
@@ -186,19 +186,19 @@ class WalletPage extends HookConsumerWidget {
             );
           }).toList();
 
-          final allNfts = \[
+          final allNfts = [
             ...explorerNfts,
             ...flagNfts,
-          \];
+          ];
 
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: \[
+                children: [
                   Column(
-                    children: \[
+                    children: [
                       DecoratedBox(
                         decoration: BoxDecoration(
                           color: ColorToken.bg,
@@ -210,7 +210,7 @@ class WalletPage extends HookConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(24),
                           child: Column(
-                            children: \[
+                            children: [
                               Image.asset(
                                 Assets.images.stpCoinIcon.path,
                                 width: 32,
@@ -221,7 +221,7 @@ class WalletPage extends HookConsumerWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.baseline,
                                 textBaseline: TextBaseline.alphabetic,
-                                children: \[
+                                children: [
                                   Flexible(
                                     child: AutoSizeText(
                                       stpValue.toString(),
@@ -241,7 +241,7 @@ class WalletPage extends HookConsumerWidget {
                                       fontSize: 16,
                                     ),
                                   ),
-                                \],
+                                ],
                               ),
                               const SizedBox(height: 24),
                               GestureDetector(
@@ -268,11 +268,11 @@ class WalletPage extends HookConsumerWidget {
                                   ),
                                 ),
                               ),
-                            \],
+                            ],
                           ),
                         ),
                       ),
-                    \],
+                    ],
                   ),
                   const SizedBox(height: 16),
 
@@ -295,7 +295,7 @@ class WalletPage extends HookConsumerWidget {
                         padding: const EdgeInsets.only(bottom: 8),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          // TODO: \[フェーズ2\] NFT 詳細画面への遷移（リップルに変更する）
+                          // TODO: [フェーズ2] NFT 詳細画面への遷移（リップルに変更する）
                           // child: Ink(
                           child: DecoratedBox(
                             decoration: BoxDecoration(
@@ -313,7 +313,7 @@ class WalletPage extends HookConsumerWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: Row(
-                                  children: \[
+                                  children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(4),
                                       child: SquareImage(
@@ -326,9 +326,9 @@ class WalletPage extends HookConsumerWidget {
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: \[
+                                        children: [
                                           Row(
-                                            children: \[
+                                            children: [
                                               Flexible(
                                                 child: Text(
                                                   nft.name,
@@ -355,7 +355,7 @@ class WalletPage extends HookConsumerWidget {
                                                   ),
                                                 ),
                                               ),
-                                            \],
+                                            ],
                                           ),
                                           const SizedBox(height: 12),
                                           Text(
@@ -366,16 +366,16 @@ class WalletPage extends HookConsumerWidget {
                                               fontSize: 12,
                                             ),
                                           ),
-                                        \],
+                                        ],
                                       ),
                                     ),
-                                    // TODO: \[フェーズ2\] NFT 詳細画面への遷移
+                                    // TODO: [フェーズ2] NFT 詳細画面への遷移
                                     // const Icon(
-                                    //   Icons.chevron\_right,
+                                    //   Icons.chevron_right,
                                     //   size: 32,
                                     //   color: ColorToken.text,
                                     // ),
-                                  \],
+                                  ],
                                 ),
                               ),
                             ),
@@ -385,7 +385,7 @@ class WalletPage extends HookConsumerWidget {
                     }).toList(),
                   ),
                   const SizedBox(height: 24),
-                \],
+                ],
               ),
             ),
           );
@@ -395,7 +395,7 @@ class WalletPage extends HookConsumerWidget {
             child: CircularProgressIndicator(),
           );
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Center(
             child: Text('Error: $error'),
           );
@@ -410,23 +410,23 @@ class WalletPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/2/3 18:23:05*
 
-\*\*Updating code references\*\*
+**Updating code references**
 
 I'm focusing on revising the Dart/Flutter code to access `walletAsyncValue`'s `stpAmount` and `walletAddress` instead of `nftsAsyncValue`'s data fields `stp` and `wallet`. This shift likely aims to align more closely with the intended data sources.
 
-\*\*Adjusting data references\*\*
+**Adjusting data references**
 
 I’m noting the shift to `walletAsyncValueData` to access `stpAmount` and `walletAddress` from `walletAsyncValue`. This adjustment aligns with the user's intention to use wallet data fields instead of NFT fields.
 
-\*\*Crafting a comprehensive display\*\*
+**Crafting a comprehensive display**
 
 I’m integrating `walletAsyncValue` to show `loading`, `error`, or `data` states. This enhancement ensures a complete user interface for handling different states effectively.
 
-\*\*Dashboarding data states\*\*
+**Dashboarding data states**
 
 I’m breaking down the `nftsAsyncValue` and `walletAsyncValue` states to ensure a clear, comprehensive dashboard. This effectively manages `loading`, `error`, and `data` states for a dynamic user interface.
 
-\*\*Pulling together\*\*
+**Pulling together**
 
 Merging `AsyncValue` objects from `nftsAsyncValue` and `walletAsyncValue` into a single widget, then utilizing `when(...)` to streamline data handling, including loading and error states.
 
@@ -812,15 +812,15 @@ combine2 は存在しなかった
 ## 🔧 ツール
 *2025/2/3 18:26:36*
 
-\*\*Navigating async values\*\*
+**Navigating async values**
 
 I’m exploring different approaches to combine `AsyncValue` instances, noting the use of `whenData`, `AsyncValue.guard`, and creating a combined provider with `autoDispose`. The user prefers keeping logic within the UI.
 
-\*\*Evaluating methods\*\*
+**Evaluating methods**
 
 I’m considering combining `AsyncValue` instances with nested `when` cascades or creating a combined provider that handles loading, error, and data states for `NftData` and `WalletData`.
 
-\*\*Weighing options\*\*
+**Weighing options**
 
 I’m noting the trade-offs between nested `when` statements and creating a separate provider for merging `AsyncValue` instances, considering simplicity and elegance. Additionally, manual combination is considered.
 
@@ -999,7 +999,7 @@ class WalletPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/2/3 18:29:40*
 
-\*\*Assessing Riverpod strategies\*\*
+**Assessing Riverpod strategies**
 
 I’m examining Riverpod methods, considering if "proxy provider" aligns. "Family" or "Dependency Injection" might also work. Creating a new provider that intersects with existing ones seems promising.
 
@@ -1186,19 +1186,19 @@ return nftsAsyncValue.when(
 
 読み込みが終わらなかった
 
-import 'package:auto\_size\_text/auto\_size\_text.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/nfts/get\_nfts.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/wallet/get\_wallet.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/square\_image.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/nfts/get_nfts.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/wallet/get_wallet.dart';
+import 'package:snpit_guild_app/presentation/widgets/square_image.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 enum NftType {
   explorer,
@@ -1232,7 +1232,7 @@ class WalletPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Future&lt;void&gt; onTapNft(NFT nft) async {
-      // TODO: \[フェーズ2\] NFT 詳細画面への遷移
+      // TODO: [フェーズ2] NFT 詳細画面への遷移
     }
 
     Future&lt;void&gt; onTapWalletId(String walletId) async {
@@ -1273,7 +1273,7 @@ class WalletPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -1289,8 +1289,8 @@ class WalletPage extends HookConsumerWidget {
           final stpValue = walletDate.stpAmount ?? 0;
           final walletId = walletDate.walletAddress ?? '';
 
-          final explorers = nftsData.explorers ?? \[\];
-          final flags = nftsData.flags ?? \[\];
+          final explorers = nftsData.explorers ?? [];
+          final flags = nftsData.flags ?? [];
 
           final explorerNfts = explorers.map((explorer) {
             return NFT(
@@ -1314,19 +1314,19 @@ class WalletPage extends HookConsumerWidget {
             );
           }).toList();
 
-          final allNfts = \[
+          final allNfts = [
             ...explorerNfts,
             ...flagNfts,
-          \];
+          ];
 
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: \[
+                children: [
                   Column(
-                    children: \[
+                    children: [
                       DecoratedBox(
                         decoration: BoxDecoration(
                           color: ColorToken.bg,
@@ -1338,7 +1338,7 @@ class WalletPage extends HookConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(24),
                           child: Column(
-                            children: \[
+                            children: [
                               Image.asset(
                                 Assets.images.stpCoinIcon.path,
                                 width: 32,
@@ -1349,7 +1349,7 @@ class WalletPage extends HookConsumerWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.baseline,
                                 textBaseline: TextBaseline.alphabetic,
-                                children: \[
+                                children: [
                                   Flexible(
                                     child: AutoSizeText(
                                       stpValue.toString(),
@@ -1369,7 +1369,7 @@ class WalletPage extends HookConsumerWidget {
                                       fontSize: 16,
                                     ),
                                   ),
-                                \],
+                                ],
                               ),
                               const SizedBox(height: 24),
                               GestureDetector(
@@ -1396,11 +1396,11 @@ class WalletPage extends HookConsumerWidget {
                                   ),
                                 ),
                               ),
-                            \],
+                            ],
                           ),
                         ),
                       ),
-                    \],
+                    ],
                   ),
                   const SizedBox(height: 16),
 
@@ -1423,7 +1423,7 @@ class WalletPage extends HookConsumerWidget {
                         padding: const EdgeInsets.only(bottom: 8),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          // TODO: \[フェーズ2\] NFT 詳細画面への遷移（リップルに変更する）
+                          // TODO: [フェーズ2] NFT 詳細画面への遷移（リップルに変更する）
                           // child: Ink(
                           child: DecoratedBox(
                             decoration: BoxDecoration(
@@ -1441,7 +1441,7 @@ class WalletPage extends HookConsumerWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: Row(
-                                  children: \[
+                                  children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(4),
                                       child: SquareImage(
@@ -1454,9 +1454,9 @@ class WalletPage extends HookConsumerWidget {
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: \[
+                                        children: [
                                           Row(
-                                            children: \[
+                                            children: [
                                               Flexible(
                                                 child: Text(
                                                   nft.name,
@@ -1483,7 +1483,7 @@ class WalletPage extends HookConsumerWidget {
                                                   ),
                                                 ),
                                               ),
-                                            \],
+                                            ],
                                           ),
                                           const SizedBox(height: 12),
                                           Text(
@@ -1494,16 +1494,16 @@ class WalletPage extends HookConsumerWidget {
                                               fontSize: 12,
                                             ),
                                           ),
-                                        \],
+                                        ],
                                       ),
                                     ),
-                                    // TODO: \[フェーズ2\] NFT 詳細画面への遷移
+                                    // TODO: [フェーズ2] NFT 詳細画面への遷移
                                     // const Icon(
-                                    //   Icons.chevron\_right,
+                                    //   Icons.chevron_right,
                                     //   size: 32,
                                     //   color: ColorToken.text,
                                     // ),
-                                  \],
+                                  ],
                                 ),
                               ),
                             ),
@@ -1513,7 +1513,7 @@ class WalletPage extends HookConsumerWidget {
                     }).toList(),
                   ),
                   const SizedBox(height: 24),
-                \],
+                ],
               ),
             ),
           );
@@ -1523,7 +1523,7 @@ class WalletPage extends HookConsumerWidget {
             child: CircularProgressIndicator(),
           );
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Center(
             child: Text('Error: $error'),
           );
@@ -1538,19 +1538,19 @@ class WalletPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/2/3 18:41:29*
 
-\*\*Identifying the issue\*\*
+**Identifying the issue**
 
 I’m thinking about how defining the `combinedDataProvider` inside the build method might lead to an infinite loop or repeated fetches, and considering moving it outside the build method to resolve this.
 
-\*\*Evaluating options\*\*
+**Evaluating options**
 
 I’m mapping out defining `combinedDataProvider` as a top-level provider or outside the class, or using `ref.watch(someGlobalCombinedProvider)` to prevent re-creation and resolve the infinite loading issue.
 
-\*\*Revisiting provider placement\*\*
+**Revisiting provider placement**
 
 Defined `combinedDataProvider` outside the build method to maintain state across rebuilds, or considering a nested "when" approach or a "FutureProvider" for handling async states.
 
-\*\*Addressing infinite loops\*\*
+**Addressing infinite loops**
 
 I’m recognizing that using "await ref.watch()" might cause infinite loops. Suggesting defining `combinedDataProvider` outside the widget to prevent re-creation and maintain state consistency.
 

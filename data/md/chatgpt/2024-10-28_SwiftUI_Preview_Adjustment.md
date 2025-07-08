@@ -7,11 +7,11 @@
 ## 👤 ユーザー
 *2024/10/28 13:34:37*
 
-#available(iOS 17.0, \*)
+#available(iOS 17.0, *)
 #Preview {
     @Previewable @State var text: String = ""
     return VStack {
-        QuestionnaireContentsView.NickNameInputView(text: text, onValueChanged: { \_ in })
+        QuestionnaireContentsView.NickNameInputView(text: text, onValueChanged: { _ in })
             .padding(.horizontal, 20)
     }
 }
@@ -49,7 +49,7 @@ This should now work correctly in the SwiftUI preview. Let me know if you need f
 ## 👤 ユーザー
 *2024/10/28 13:34:58*
 
-#available(iOS 17.0, \*) の書き方が間違っている
+#available(iOS 17.0, *) の書き方が間違っている
 
 ---
 

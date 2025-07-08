@@ -8,7 +8,7 @@
 *2024/5/15 13:50:49*
 
 以下のエラーになった
-Initializer 'init(\_:bufferingPolicy:\_:)' requires the types 'AppError' and 'any Error' be equivalent
+Initializer 'init(_:bufferingPolicy:_:)' requires the types 'AppError' and 'any Error' be equivalent
 
 import Foundation // URL
 import Combine

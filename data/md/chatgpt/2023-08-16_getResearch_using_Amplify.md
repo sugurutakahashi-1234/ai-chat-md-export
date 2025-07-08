@@ -9,11 +9,11 @@
 
 for in でうまく書きたい。（日本語でお願い）
 
-    public func getResearches(measurementType: EmomilCore.MeasurementType?) async throws -&gt; \[EmomilCore.Research\] {
-        let request: GraphQLRequest = .listResearches(measurement\_type: MeasurementType(from: measurementType))
+    public func getResearches(measurementType: EmomilCore.MeasurementType?) async throws -&gt; [EmomilCore.Research] {
+        let request: GraphQLRequest = .listResearches(measurement_type: MeasurementType(from: measurementType))
 
         LoggerContainer.requestLog(request: request)
-        // measurement\_type が nil の場合は全件取得になる
+        // measurement_type が nil の場合は全件取得になる
         let result = try await Amplify.API.query(request: request)
 
         switch result {
@@ -31,12 +31,12 @@ for in でうまく書きたい。（日本語でお願い）
         await .init(
             id: amplifyResearch.id,
             title: amplifyResearch.title,
-            openingAt: amplifyResearch.opening\_at.foundationDate,
-            closingAt: amplifyResearch.closing\_at.foundationDate,
-            imageUrl: try amplifyStorageManager.getURL(key: amplifyResearch.image\_uri),
+            openingAt: amplifyResearch.opening_at.foundationDate,
+            closingAt: amplifyResearch.closing_at.foundationDate,
+            imageUrl: try amplifyStorageManager.getURL(key: amplifyResearch.image_uri),
             instructions: amplifyResearch.instructions,
-            rewardPoints: amplifyResearch.reward\_points,
-            orgName: amplifyResearch.org\_name,
+            rewardPoints: amplifyResearch.reward_points,
+            orgName: amplifyResearch.org_name,
             duration: amplifyResearch.duration,
             isCompleted: amplifyResearch.success,
             measurements: amplifyResearch.measurements.map { EmomilCore.Measurement(from: $0) }

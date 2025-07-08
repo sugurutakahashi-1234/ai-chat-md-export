@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/5/29 11:10:34*
 
-以下の時 address: \[Address\] の配列部分がうまく表現されない
+以下の時 address: [Address] の配列部分がうまく表現されない
 
 
 import SwiftUI
@@ -21,26 +21,26 @@ struct Person {
     var name: String
     var age: Int
     var isEmployed: Bool
-    var address: \[Address\]
+    var address: [Address]
 }
 
 struct PropertyView: View {
-    var objects: \[Any\] = \[\]
+    var objects: [Any] = []
     
-    init(objects: \[Any\]) {
+    init(objects: [Any]) {
         self.objects = objects
     }
 
     public var body: some View {
         List {
-            ForEach(Array(objects.enumerated()), id: \\.offset) { index, object in
+            ForEach(Array(objects.enumerated()), id: \.offset) { index, object in
                 DisclosureGroup {
                     propertyView(object: object)
                 } label: {
                     HStack {
-                        Text("\\(type(of: object))")
+                        Text("\(type(of: object))")
                         Spacer()
-                        Text("\\(index)")
+                        Text("\(index)")
                     }
                 }
             }
@@ -50,7 +50,7 @@ struct PropertyView: View {
 
     
     func propertyView(object: Any) -&gt; some View {
-        AnyView(ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \\.offset) { index, child in
+        AnyView(ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \.offset) { index, child in
             if let label = child.label {
                 let childMirror = Mirror(reflecting: child.value)
                 if childMirror.displayStyle == .struct || childMirror.displayStyle == .class {
@@ -61,13 +61,13 @@ struct PropertyView: View {
                     }
                 } else {
                     Button {
-                        UIPasteboard.general.string = "\\(child.value)"
-                        print("\\(child.value)")
+                        UIPasteboard.general.string = "\(child.value)"
+                        print("\(child.value)")
                     } label: {
                         HStack {
                             Text(label)
                             Spacer()
-                            Text("\\(child.value)")
+                            Text("\(child.value)")
                         }
                     }
                 }
@@ -78,16 +78,16 @@ struct PropertyView: View {
 
 
 #Preview {
-    PropertyView(objects: \[
-        Person(name: "John Doe", age: 30, isEmployed: true, address: \[
+    PropertyView(objects: [
+        Person(name: "John Doe", age: 30, isEmployed: true, address: [
             Address(city: "New York", postalCode: "10001"),
             Address(city: "New York", postalCode: "10001")
-        \]),
-        Person(name: "John Doe", age: 30, isEmployed: true, address: \[
+        ]),
+        Person(name: "John Doe", age: 30, isEmployed: true, address: [
             Address(city: "New York", postalCode: "10001"),
             Address(city: "New York", postalCode: "10001")
-        \])
-    \])
+        ])
+    ])
 }
 
 ---
@@ -202,22 +202,22 @@ This should properly display the array of addresses within the `PropertyView`.
 import SwiftUI
 
 struct PropertyView: View {
-    var objects: \[Any\] = \[\]
+    var objects: [Any] = []
     
-    init(objects: \[Any\]) {
+    init(objects: [Any]) {
         self.objects = objects
     }
 
     public var body: some View {
         List {
-            ForEach(Array(objects.enumerated()), id: \\.offset) { index, object in
+            ForEach(Array(objects.enumerated()), id: \.offset) { index, object in
                 DisclosureGroup {
                     propertyView(object: object)
                 } label: {
                     HStack {
-                        Text("\\(type(of: object))")
+                        Text("\(type(of: object))")
                         Spacer()
-                        Text("\[\\(index)\]")
+                        Text("[\(index)]")
                     }
                 }
             }
@@ -225,7 +225,7 @@ struct PropertyView: View {
     }
     
     func propertyView(object: Any) -&gt; some View {
-        AnyView(ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \\.offset) { index, child in
+        AnyView(ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \.offset) { index, child in
             if let label = child.label {
                 let childMirror = Mirror(reflecting: child.value)
                 if childMirror.displayStyle == .struct || childMirror.displayStyle == .class {
@@ -234,27 +234,27 @@ struct PropertyView: View {
                     } label: {
                         Text(label)
                     }
-                } else if let subObjects = child.value as? \[Any\] {
-                    ForEach(Array(subObjects.enumerated()), id: \\.offset) { subIndex, subObject in
+                } else if let subObjects = child.value as? [Any] {
+                    ForEach(Array(subObjects.enumerated()), id: \.offset) { subIndex, subObject in
                         DisclosureGroup {
                             propertyView(object: subObject)
                         } label: {
                             HStack {
-                                Text("\\(type(of: subObject))")
+                                Text("\(type(of: subObject))")
                                 Spacer()
-                                Text("\[\\(subIndex)\]")
+                                Text("[\(subIndex)]")
                             }
                         }
                     }
                 } else {
                     Button {
-                        UIPasteboard.general.string = "\\(child.value)"
-                        print("\\(child.value)")
+                        UIPasteboard.general.string = "\(child.value)"
+                        print("\(child.value)")
                     } label: {
                         HStack {
                             Text(label)
                             Spacer()
-                            Text("\\(child.value)")
+                            Text("\(child.value)")
                         }
                     }
                 }
@@ -264,7 +264,7 @@ struct PropertyView: View {
 }
 
 struct Address {
-    var city: \[String\]
+    var city: [String]
     var postalCode: String
 }
 
@@ -272,21 +272,21 @@ struct Person {
     var name: String
     var age: Int
     var isEmployed: Bool
-    var address: \[Address\]
+    var address: [Address]
 }
 
 #Preview {
     NavigationStack {
-        PropertyView(objects: \[
-            Person(name: "John Doe", age: 30, isEmployed: true, address: \[
-                Address(city: \["New York", "トーキョー"\], postalCode: "10001"),
-                Address(city: \["New York", "トーキョー"\], postalCode: "10001")
-            \]),
-            Person(name: "John Doe", age: 30, isEmployed: true, address: \[
-                Address(city: \["New York", "トーキョー"\], postalCode: "10001"),
-                Address(city: \["New York", "トーキョー"\], postalCode: "10001")
-            \])
-        \])
+        PropertyView(objects: [
+            Person(name: "John Doe", age: 30, isEmployed: true, address: [
+                Address(city: ["New York", "トーキョー"], postalCode: "10001"),
+                Address(city: ["New York", "トーキョー"], postalCode: "10001")
+            ]),
+            Person(name: "John Doe", age: 30, isEmployed: true, address: [
+                Address(city: ["New York", "トーキョー"], postalCode: "10001"),
+                Address(city: ["New York", "トーキョー"], postalCode: "10001")
+            ])
+        ])
     }
 }
 

@@ -9,9 +9,9 @@
 
 lib/gen only exclude
 
-import\_sorter:
-  ignored\_files: # Optional, defaults to \[\]
-    - \\/lib\\/\*
+import_sorter:
+  ignored_files: # Optional, defaults to []
+    - \/lib\/*
 
 ---
 

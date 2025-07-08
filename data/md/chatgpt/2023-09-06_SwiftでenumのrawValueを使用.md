@@ -14,9 +14,9 @@ import Foundation
 import SwiftProtobuf
 
 extension ConvertibleToProtoBufValue {
-    var toProtoBufValueDictionary: \[String: Google\_Protobuf\_Value\] {
+    var toProtoBufValueDictionary: [String: Google_Protobuf_Value] {
         toDictionary(caseFormat: .snakeCase).mapValues { value in
-            var protoValue = Google\_Protobuf\_Value()
+            var protoValue = Google_Protobuf_Value()
             switch value {
             case let screenCoordinateValue as ScreenCoordinateValue:
                 protoValue.numberValue = screenCoordinateValue.pixelSystemValue
@@ -33,7 +33,7 @@ extension ConvertibleToProtoBufValue {
             case let boolValue as Bool:
                 protoValue.boolValue = boolValue
             default:
-                assertionFailure("Unexpected type encountered while converting to Google\_Protobuf\_Value")
+                assertionFailure("Unexpected type encountered while converting to Google_Protobuf_Value")
             }
             return protoValue
         }

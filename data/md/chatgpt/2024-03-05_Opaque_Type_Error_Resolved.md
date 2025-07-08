@@ -19,7 +19,7 @@ final class DeviceInfoPresenter&lt;Dependency: DeviceInfoPresenterDependency&gt;
         guard let selectedDeviceInfoType else {
             return ""
         }
-        return "Copied \\"\\(getDeviceInfoValue(selectedDeviceInfoType))\\""
+        return "Copied \"\(getDeviceInfoValue(selectedDeviceInfoType))\""
     }
 
     init(dependency: Dependency) {

@@ -8,12 +8,12 @@
 *2024/12/18 11:57:54*
 
 $ docker-compose ps
-WARN\[0000\] /Users/sugurutakahashi/git/gallusys/snpit\_guild\_server/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+WARN[0000] /Users/sugurutakahashi/git/gallusys/snpit_guild_server/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
 NAME             IMAGE                             COMMAND                   SERVICE        CREATED         STATUS         PORTS
-Guild\_API        snpit\_guild\_server-guild\_server   "docker-entrypoint.s…"   guild\_server   2 minutes ago   Up 2 minutes   0.0.0.0:3002-&gt;3000/tcp
-Guild\_Adminer    adminer                           "entrypoint.sh php -…"   adminer        2 minutes ago   Up 2 minutes   0.0.0.0:8081-&gt;8080/tcp
-Guild\_Redis      redis:6-alpine                    "docker-entrypoint.s…"   cache          2 minutes ago   Up 2 minutes   0.0.0.0:6380-&gt;6379/tcp
-guild\_postgres   postgres:14-alpine                "docker-entrypoint.s…"   db             2 minutes ago   Up 2 minutes   0.0.0.0:5432-&gt;5432/tcp
+Guild_API        snpit_guild_server-guild_server   "docker-entrypoint.s…"   guild_server   2 minutes ago   Up 2 minutes   0.0.0.0:3002-&gt;3000/tcp
+Guild_Adminer    adminer                           "entrypoint.sh php -…"   adminer        2 minutes ago   Up 2 minutes   0.0.0.0:8081-&gt;8080/tcp
+Guild_Redis      redis:6-alpine                    "docker-entrypoint.s…"   cache          2 minutes ago   Up 2 minutes   0.0.0.0:6380-&gt;6379/tcp
+guild_postgres   postgres:14-alpine                "docker-entrypoint.s…"   db             2 minutes ago   Up 2 minutes   0.0.0.0:5432-&gt;5432/tcp
 
 ---
 

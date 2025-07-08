@@ -11,11 +11,11 @@ type(of: self) と ObjectIdentifier(self) をワンライナー文字列取得�
 
 class HogeClass {
     init(dependencyInjector: AnythingAreaCalculationMeasuredLinesSetPresenterDependency) {
-        print("\\(type(of: self)).init: \\(ObjectIdentifier(self))")
+        print("\(type(of: self)).init: \(ObjectIdentifier(self))")
     }
 
     deinit {
-        print("\\(type(of: self)).deinit: \\(ObjectIdentifier(self))")
+        print("\(type(of: self)).deinit: \(ObjectIdentifier(self))")
     }
 }
 
@@ -90,11 +90,11 @@ class HogeClass {
 *2023/8/2 8:21:51*
 
 private var instanceName: String {
-        return "\\(type(of: self))"
+        return "\(type(of: self))"
     }
 
     private var instanceId: String {
-        return "\\(ObjectIdentifier(self))"
+        return "\(ObjectIdentifier(self))"
     }
 
 をどこでも使えるようにしたい場合はどうすればいい？

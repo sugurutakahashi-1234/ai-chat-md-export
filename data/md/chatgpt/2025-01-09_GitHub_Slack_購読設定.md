@@ -14,25 +14,25 @@ slack での github の /github subscribe 設定確認
 ## 🔧 ツール
 *2025/1/9 13:05:27*
 
-\*\*Confirming subscription settings\*\*
+**Confirming subscription settings**
 
 I'm thinking about how to check the Slack channel's subscription settings for GitHub repos using the "/github subscribe" command, ensuring it’s effectively working.
 
-\*\*Validating subscription\*\*
+**Validating subscription**
 
 I'm working out how to confirm existing GitHub Slack integration. The feasible options include using `/github subscribe list` or checking the GitHub Slack official documentation.
 
-\*\*Confirming subscription options\*\*
+**Confirming subscription options**
 
-OK, let me see: you can check subscription settings with commands like `/github subscribe \[repo\]` or `/github unsubscribe \[repo\]`. For organization-wide subscriptions, use `/github subscribe \[owner\]`.
+OK, let me see: you can check subscription settings with commands like `/github subscribe [repo]` or `/github unsubscribe [repo]`. For organization-wide subscriptions, use `/github subscribe [owner]`.
 
-\*\*Figuring out subscription commands\*\*
+**Figuring out subscription commands**
 
 Turns out, the GitHub Slack integration might have features like "manage subscription" and slash commands like `/github subscription list`. The UI also offers a "Manage Subscriptions" option.
 
-\*\*Validating commands\*\*
+**Validating commands**
 
-OK, let me see: using `/github subscriptions` to view current repository subscriptions, or commands like `/github subscribe help` or `/github subscribe \[owner/repo\]` for more specific settings.
+OK, let me see: using `/github subscriptions` to view current repository subscriptions, or commands like `/github subscribe help` or `/github subscribe [owner/repo]` for more specific settings.
 
 ---
 
@@ -141,15 +141,15 @@ GitHub の Slack アプリでは、以下のように購読するイベントを
 ## 🔧 ツール
 *2025/1/9 13:06:22*
 
-\*\*Gathering information\*\*
+**Gathering information**
 
 I’m outlining Slack's GitHub slash command "subscribe list," explaining its functionality to view subscriptions within a Slack channel. This involves exploring command variations and potential integration details from official sources like the GitHub blog or documentation.
 
-\*\*Navigating Slack commands\*\*
+**Navigating Slack commands**
 
 I’m noting the need for precise syntax and considering alternative commands if issues arise. Also, exploring options related to repository subscriptions and event toggling in Slack's GitHub integration.
 
-\*\*Understanding subscription visibility\*\*
+**Understanding subscription visibility**
 
 I’m explaining that the default list command shows channel-specific subscriptions and specific events, not workspace-wide. Subscription details for a particular repository across multiple channels cannot be viewed from Slack.
 

@@ -210,7 +210,7 @@ class OrientationPublisher: ObservableObject {
     init() {
         // NotificationCenterからデバイスのオリエンテーション変更の通知を受け取る
         cancellable = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 DispatchQueue.main.async {
                     // デバイスの現在のオリエンテーションがポートレートかどうかを確認し、パブリッシュする
                     self?.isPortrait = (UIDevice.current.orientation == .portrait)
@@ -271,7 +271,7 @@ class OrientationPublisher: ObservableObject {
 ## 👤 ユーザー
 *2023/6/21 1:27:12*
 
-どうして、DispatchQueue.main.async { 囲っているのか、.sink { \[weak self\] \_ in の\_で省略されている引数は使わないのか？
+どうして、DispatchQueue.main.async { 囲っているのか、.sink { [weak self] _ in の_で省略されている引数は使わないのか？
 
 ---
 
@@ -280,11 +280,11 @@ class OrientationPublisher: ObservableObject {
 
 まず、`DispatchQueue.main.async { }` で囲む理由について説明します。これは、UIを更新するコードは必ずメインスレッド上で実行しなければならないというiOSの制約によるものです。デバイスのオリエンテーションが変更された時に通知を受け取ると、その通知を処理するコードがバックグラウンドスレッド上で実行される可能性があります。しかし、`@Published` プロパティの更新はUIの変更を引き起こす可能性があるため、これをメインスレッドで行う必要があります。
 
-次に、`.sink { \[weak self\] \_ in` の `\_` について説明します。この `\_` は、このクロージャが引数を受け取ることを示していますが、その引数をクロージャの中で使わないという意味です。つまり、この `\_` は "我々はこの引数を無視します" という意味になります。
+次に、`.sink { [weak self] _ in` の `_` について説明します。この `_` は、このクロージャが引数を受け取ることを示していますが、その引数をクロージャの中で使わないという意味です。つまり、この `_` は "我々はこの引数を無視します" という意味になります。
 
-ここでは、`NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)` がオブザーバブルで、`.sink`メソッドを使ってその通知を購読しています。その通知の本文（`Notification`オブジェクト）は引数として渡されますが、このクロージャではそれを使う必要はありません。なぜなら、デバイスの現在のオリエンテーションは`UIDevice.current.orientation`から直接取得できるからです。そのため、引数を `\_` として省略しています。
+ここでは、`NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)` がオブザーバブルで、`.sink`メソッドを使ってその通知を購読しています。その通知の本文（`Notification`オブジェクト）は引数として渡されますが、このクロージャではそれを使う必要はありません。なぜなら、デバイスの現在のオリエンテーションは`UIDevice.current.orientation`から直接取得できるからです。そのため、引数を `_` として省略しています。
 
-`\[weak self\]` は、メモリリークを防ぐためのものです。クロージャが `self` を強く参照すると、それが `OrientationPublisher` のインスタンスを強く保持し、メモリリークを引き起こす可能性があります。そのため、ここでは `self` を弱く参照（`weak`）しています。
+`[weak self]` は、メモリリークを防ぐためのものです。クロージャが `self` を強く参照すると、それが `OrientationPublisher` のインスタンスを強く保持し、メモリリークを引き起こす可能性があります。そのため、ここでは `self` を弱く参照（`weak`）しています。
 
 ---
 

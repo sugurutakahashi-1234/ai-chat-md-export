@@ -16,7 +16,7 @@ android 14 15 対応機種 pixel
 
 Android 14およびAndroid 15へのアップデートに対応するGoogle Pixelシリーズの機種は以下の通りです。
 
-\*\*Android 14対応機種：\*\*
+**Android 14対応機種：**
 - Pixel 4a（5G）
 - Pixel 5
 - Pixel 5a（5G）
@@ -36,7 +36,7 @@ android 14 15 対応機種 pixel
 - Pixel 9 Pro XL
 - Pixel 9 Pro Fold
 
-\*\*Android 15対応機種：\*\*
+**Android 15対応機種：**
 - Pixel 6
 - Pixel 6 Pro
 - Pixel 6a

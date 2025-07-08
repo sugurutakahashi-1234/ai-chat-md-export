@@ -18,24 +18,24 @@ Incorrect use of ParentDataWidget.
 
 ════════════════════════════════════════════════════════════════════════════════
   
-import 'package:cached\_network\_image/cached\_network\_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/rarity.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/convert\_to\_domain.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/spots/get\_guild\_spot.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/spot\_photo\_carousel.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/rarity.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/convert_to_domain.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/spots/get_guild_spot.dart';
+import 'package:snpit_guild_app/presentation/providers/show_spot_list.dart';
+import 'package:snpit_guild_app/presentation/widgets/spot_photo_carousel.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class OurSpotDetailPage extends HookConsumerWidget {
   const OurSpotDetailPage({super.key, required this.spotId});
@@ -82,7 +82,7 @@ class OurSpotDetailPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -90,14 +90,14 @@ class OurSpotDetailPage extends HookConsumerWidget {
         // SpotList 画面からの遷移時のみ戻るボタンを表示
         leading: showSpotListStateValue
             ? IconButton(
-                icon: const Icon(Icons.arrow\_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () async {
                   context.pop();
                 },
               )
             : null,
         title: const Text('Our spot'),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () async {
@@ -105,13 +105,13 @@ class OurSpotDetailPage extends HookConsumerWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: guildSpotAsyncValue.when(
         loading: () {
           return const Center(child: CircularProgressIndicator());
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Center(
             child: Text('Error: $error'),
           );
@@ -131,7 +131,7 @@ class OurSpotDetailPage extends HookConsumerWidget {
                     ),
                   )
                   .toList() ??
-              \[\];
+              [];
 
           final autoIncomeLabel = guildSpot.autoIncome != null
               ? '${NumberFormat('#,###').format(guildSpot.autoIncome)} STP'
@@ -141,11 +141,11 @@ class OurSpotDetailPage extends HookConsumerWidget {
               guildSpot.rarity?.domainRarity.color ?? ColorToken.border;
           final flag = guildSpot.flags?.firstOrNull;
 
-          final items = \[
+          final items = [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
-                children: \[
+                children: [
                   const Expanded(
                     child: Align(
                       alignment: Alignment.centerLeft,
@@ -158,11 +158,11 @@ class OurSpotDetailPage extends HookConsumerWidget {
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: \[
+                      children: [
                         Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: \[
+                          children: [
                             Text(
                               autoIncomeLabel,
                               style: const TextStyle(fontSize: 14),
@@ -175,7 +175,7 @@ class OurSpotDetailPage extends HookConsumerWidget {
                                 color: ColorToken.border,
                               ),
                             ),
-                          \],
+                          ],
                         ),
                         CircleAvatar(
                           backgroundColor: ColorPallet.gray1000,
@@ -187,16 +187,16 @@ class OurSpotDetailPage extends HookConsumerWidget {
                             ),
                           ),
                         ),
-                      \],
+                      ],
                     ),
                   ),
-                \],
+                ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
-                children: \[
+                children: [
                   const Expanded(
                     child: Align(
                       alignment: Alignment.centerLeft,
@@ -216,15 +216,15 @@ class OurSpotDetailPage extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                \],
+                ],
               ),
             ),
-          \];
+          ];
 
           return SingleChildScrollView(
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: Column(
-              children: \[
+              children: [
                 SpotPhotoCarousel(spotPhotoItems: spotPhotoItems),
                 const SizedBox(height: 32),
                 Padding(
@@ -274,24 +274,24 @@ class OurSpotDetailPage extends HookConsumerWidget {
                       children: List.generate(
                         items.length,
                         (index) =&gt; Column(
-                          children: \[
+                          children: [
                             SizedBox(
                               height: 64,
-                              child: Center(child: items\[index\]),
+                              child: Center(child: items[index]),
                             ),
                             if (index &lt; items.length - 1)
                               Container(
                                 height: 1,
                                 color: ColorToken.border,
                               ),
-                          \],
+                          ],
                         ),
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 32),
-              \],
+              ],
             ),
           );
         },
@@ -308,7 +308,7 @@ class NoFlagRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Row(
-      children: \[
+      children: [
         CircleAvatar(
           radius: 28,
           backgroundColor: ColorPallet.green500,
@@ -322,7 +322,7 @@ class NoFlagRow extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: \[
+          children: [
             Text(
               'No flag',
               style: TextStyle(
@@ -333,20 +333,20 @@ class NoFlagRow extends StatelessWidget {
             SizedBox(height: 4),
             Text(
               'Flag and defend your spot against'
-              '\\nenemy attacks!',
+              '\nenemy attacks!',
               style: TextStyle(
                 fontSize: 12,
               ),
             ),
-          \],
+          ],
         ),
         Spacer(),
         Icon(
-          Icons.arrow\_forward,
+          Icons.arrow_forward,
           size: 24,
           color: ColorToken.text,
         ),
-      \],
+      ],
     );
   }
 }
@@ -368,7 +368,7 @@ class FlagRow extends StatelessWidget {
 
     return Expanded(
       child: Row(
-        children: \[
+        children: [
           CircleAvatar(
             radius: 28,
             backgroundImage: photoUrl != null
@@ -381,9 +381,9 @@ class FlagRow extends StatelessWidget {
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: \[
+              children: [
                 Row(
-                  children: \[
+                  children: [
                     const Text(
                       'Endurance remaining',
                       style: TextStyle(
@@ -392,7 +392,7 @@ class FlagRow extends StatelessWidget {
                     ),
                     const Spacer(),
                     Row(
-                      children: \[
+                      children: [
                         Text(
                           NumberFormat('#,###').format(endurance),
                           style: const TextStyle(
@@ -414,9 +414,9 @@ class FlagRow extends StatelessWidget {
                             color: ColorToken.border,
                           ),
                         ),
-                      \],
+                      ],
                     ),
-                  \],
+                  ],
                 ),
                 const SizedBox(height: 4),
                 LinearProgressIndicator(
@@ -429,7 +429,7 @@ class FlagRow extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Row(
-                  children: \[
+                  children: [
                     const Text(
                       'Defensive incentives',
                       style: TextStyle(
@@ -446,12 +446,12 @@ class FlagRow extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  \],
+                  ],
                 ),
-              \],
+              ],
             ),
           ),
-        \],
+        ],
       ),
     );
   }
@@ -462,50 +462,50 @@ class FlagRow extends StatelessWidget {
 ## 🔧 ツール
 *2025/2/6 14:22:23*
 
-\*\*修正を探る\*\*
+**修正を探る**
 
 `FlagRow`ウィジェット内の`Expanded`の使用は誤りで、親ウィジェットが`Row`または`Column`でないとエラーが発生している。親ウィジェットを修正する必要がある。
 
-\*\*確認中の構造\*\*
+**確認中の構造**
 
 `FlagRow`が`Padding`から`SizedBox`、`Material`、`InkWell`と内部にネストされている。親ウィジェットの修正を検討中。
 
-\*\*修正を模索\*\*
+**修正を模索**
 
 `Expanded`を`Row`から外すか、親から`Row`を削除している。こんな感じで進めている。
 
-\*\*修正を試みる\*\*
+**修正を試みる**
 
 `FlagRow`及び`NoFlagRow`の修正方向を模索中。`Spacer()`の親も`Flex`容器である必要がある。
 
-\*\*親の修正\*\*
+**親の修正**
 
 `Spacer()`を使うために、`NoFlagRow`の親も`Flex`容器である必要がある。現在の親は`Padding`などだから、これを改善する方向で進めている。
 
-\*\*親を見直し\*\*
+**親を見直し**
 
 `Spacer()`は`Flex`容器の親が必要だから、`Row`を使用しているのは良さそうだね。
 
-\*\*確認中の問題\*\*
+**確認中の問題**
 
 `Row`を使っているけど、エラーが発生している。`Expanded`の誤用が原因かもしれない。親の型にも注意が必要かもしれない。
 
-\*\*見直している使用法\*\*
+**見直している使用法**
 
 `FlagRow`で`Expanded`を使っているが、親の`Flex`がないためエラーが出ている。親を見直し、`Expanded`の使用を再考している。
 
-\*\*親の見直しと修正\*\*
+**親の見直しと修正**
 
 `FlagRow`の`Expanded`を削除し、`Row`を直接使用している。親の`Flex`がないため、`Row`を直接使う方が適切なのかもしれないね。
 
-\*\*親を見直す\*\*
+**親を見直す**
 
 `Row`自体は`Spacer()`を扱えるが、親の`Flex`がないとエラーになる。親を見直し、`Row`を直接使用するのが適切かも。
 
-\*\*確認中の使用法\*\*  
+**確認中の使用法**  
 `Row`は`Spacer()`を扱えるが、親の`Flex`がないとエラーになる。親を見直し、`Row`を直接使用するのが適切かもしれない。
 
-\*\*親子関係の確認\*\*  
+**親子関係の確認**  
 `Row`は`Spacer()`を扱えるが、親の`Flex`がないとエラーになる。親を見直し、`Row`を直接使用するのが適切かも。
 
 ---

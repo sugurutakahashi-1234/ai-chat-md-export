@@ -8,22 +8,22 @@
 *2025/2/18 13:31:02*
 
 Flutter で シンプルな使用してる OSS ライブラリーを表示する様な画面を作成したい。
-flutter\_oss\_licensesを使う方針で実装して欲しい。
+flutter_oss_licensesを使う方針で実装して欲しい。
 
 ---
 
 ## 🔧 ツール
 *2025/2/18 13:31:21*
 
-\*\*追加して表示\*\*
+**追加して表示**
 
-flutter\_oss\_licensesを`pubspec.yaml`に追加し、LicenseListPageを使用してアイコンを表示している。自動生成とカスタマイズの設定も行。
+flutter_oss_licensesを`pubspec.yaml`に追加し、LicenseListPageを使用してアイコンを表示している。自動生成とカスタマイズの設定も行。
 
-`flutter\_oss\_licenses`を`pubspec.yaml`に追加し、LicenseListPageを使ってアイコンを表示している。自動生成とカスタマイズの設定を進めているところ。
+`flutter_oss_licenses`を`pubspec.yaml`に追加し、LicenseListPageを使ってアイコンを表示している。自動生成とカスタマイズの設定を進めているところ。
 
-\*\*ルート設定の追加\*\*
+**ルート設定の追加**
 
-MaterialAppにルートを追加し、オンタップでNavigator.pushNamedを使ってLSライセンスページを表示している。pubspec.yamlに依存関係を追加し、"generate"ステップをdev\_dependenciesに追加してbuild\_runnerを実行中。
+MaterialAppにルートを追加し、オンタップでNavigator.pushNamedを使ってLSライセンスページを表示している。pubspec.yamlに依存関係を追加し、"generate"ステップをdev_dependenciesに追加してbuild_runnerを実行中。
 
 ---
 
@@ -179,9 +179,9 @@ class CustomOssLicensePage extends StatelessWidget {
 *2025/2/18 14:28:54*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-KQniTLJAf5dLnFwm9z6jKu",
-  "size\_bytes": 752997,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-KQniTLJAf5dLnFwm9z6jKu",
+  "size_bytes": 752997,
   "width": 776,
   "height": 1552,
   "fovea": null,
@@ -189,13 +189,13 @@ class CustomOssLicensePage extends StatelessWidget {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 公式のサンプルコードを参照にしたら以下のようになった。
@@ -203,8 +203,8 @@ class CustomOssLicensePage extends StatelessWidget {
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:snpit\_guild\_app/infrastructure/flutter\_oss\_licenses/oss\_licenses.dart';
-import 'package:url\_launcher/url\_launcher\_string.dart';
+import 'package:snpit_guild_app/infrastructure/flutter_oss_licenses/oss_licenses.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class OssLicenseListPage extends StatelessWidget {
   const OssLicenseListPage({super.key});
@@ -223,7 +223,7 @@ class OssLicensesPage extends StatelessWidget {
     await for (final l in LicenseRegistry.licenses) {
       for (final p in l.packages) {
         lm
-            .putIfAbsent(p, () =&gt; \[\])
+            .putIfAbsent(p, () =&gt; [])
             .addAll(l.paragraphs.map((paragraph) =&gt; paragraph.text));
       }
     }
@@ -233,12 +233,12 @@ class OssLicensesPage extends StatelessWidget {
         Package(
           name: key,
           description: '',
-          authors: \[\],
+          authors: [],
           version: '',
-          license: lm\[key\]!.join('\\n\\n'),
+          license: lm[key]!.join('\n\n'),
           isMarkdown: false,
           isSdk: false,
-          dependencies: \[\],
+          dependencies: [],
         ),
       );
     }
@@ -246,7 +246,7 @@ class OssLicensesPage extends StatelessWidget {
     return licenses;
   }
 
-  static final \_licenses = loadLicenses();
+  static final _licenses = loadLicenses();
 
   @override
   Widget build(BuildContext context) {
@@ -255,20 +255,20 @@ class OssLicensesPage extends StatelessWidget {
         title: const Text('Open Source Licenses'),
       ),
       body: FutureBuilder&lt;List&lt;Package&gt;&gt;(
-        future: \_licenses,
-        initialData: const \[\],
+        future: _licenses,
+        initialData: const [],
         builder: (context, snapshot) {
           return ListView.separated(
             padding: EdgeInsets.zero,
             itemCount: snapshot.data?.length ?? 0,
             itemBuilder: (context, index) {
-              final package = snapshot.data!\[index\];
+              final package = snapshot.data![index];
               return ListTile(
                 title: Text('${package.name} ${package.version}'),
                 subtitle: package.description.isNotEmpty
                     ? Text(package.description)
                     : null,
-                trailing: const Icon(Icons.chevron\_right),
+                trailing: const Icon(Icons.chevron_right),
                 onTap: () =&gt; Navigator.of(context).push(
                   MaterialPageRoute&lt;Widget&gt;(
                     builder: (context) =&gt;
@@ -289,13 +289,13 @@ class MiscOssLicenseSingle extends StatelessWidget {
   const MiscOssLicenseSingle({super.key, required this.package});
   final Package package;
 
-  String \_bodyText() {
-    return package.license!.split('\\n').map((line) {
+  String _bodyText() {
+    return package.license!.split('\n').map((line) {
       if (line.startsWith('//')) {
         line = line.substring(2);
       }
       return line.trim();
-    }).join('\\n');
+    }).join('\n');
   }
 
   @override
@@ -303,7 +303,7 @@ class MiscOssLicenseSingle extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('${package.name} ${package.version}')),
       body: ListView(
-        children: &lt;Widget&gt;\[
+        children: &lt;Widget&gt;[
           if (package.description.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(
@@ -345,11 +345,11 @@ class MiscOssLicenseSingle extends StatelessWidget {
               right: 12,
             ),
             child: Text(
-              \_bodyText(),
+              _bodyText(),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
-        \],
+        ],
       ),
     );
   }

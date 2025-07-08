@@ -65,40 +65,40 @@ You can copy and paste this into any markdown editor or compatible platform to s
 
 ### iOS アプリ開発
 
-- \*\*Swift\*\*
+- **Swift**
   - SwiftUI, Combine, Swift Concurrency, Swift Package Manager といった Swift の最新技術を用いた実装の経験。
-  - Swift の言語機能に関する数多くのブログの投稿。→ \[Zenn\](https://zenn.dev/ikuraikura)
-- \*\*リードエンジニア\*\*
+  - Swift の言語機能に関する数多くのブログの投稿。→ [Zenn](https://zenn.dev/ikuraikura)
+- **リードエンジニア**
   - 0 → 1 フェーズでの iOS アプリ開発のリードエンジニアの経験。
   - アーキテクチャやライブラリの選定を含むプロジェクト立ち上げにおける技術選定の経験。
-- \*\*アーキテクチャ\*\*
+- **アーキテクチャ**
   - Clean Architecture, VIPER, MVVM, Redux などの様々なアーキテクチャパターンの適用の経験。
   - Swift Package Manager でのマルチモジュールアプリ構成の設計/実装の経験。
-- \*\*ライブラリの組み込み\*\*
+- **ライブラリの組み込み**
   - ドローンなどのハードウェア機器の制御や、インカメラを使った視線分析、感情分析といった高度な実装スキルを要するライブラリの組み込みの経験。
-- \*\*mBaaS 連携\*\*
-  - \*\*Firebase\*\*
+- **mBaaS 連携**
+  - **Firebase**
     - Authentication, Firestore, Storage, Analytics, Crashlytics などの Firebase の各種サービスの利用/実装の経験。
-  - \*\*AWS Amplify\*\*
+  - **AWS Amplify**
     - AppSync (GraphQL), Cognito, S3, Pinpoint などの AWS の各種サービスの利用/実装の経験。
-- \*\*CI/CD\*\*
+- **CI/CD**
   - Xcode Cloud, Bitrise などを用いた自動テスト、自動デプロイ環境構築の経験。
 
 ### チーム開発
 
-- \*\*チーム間コミュニケーション\*\*
+- **チーム間コミュニケーション**
   - PdM、デザイナーと連携し、アプリケーションの仕様/デザインの調整の経験。
   - サーバーサイドチームと連携し、API インターフェースの調整の経験。
-- \*\*アジャイル開発\*\*
+- **アジャイル開発**
   - Jira, Confluence, GitHub Projects, Trello, Zenhub を含む多様なプロジェクト管理ツールを活用した数多くのアジャイル開発プロセスの経験。
-- \*\*Scrum Master\*\*
+- **Scrum Master**
   - Scrum Master として、チームのスプリント計画、実行、レトロスペクティブのファシリテーション、スクラムボードの設計を経験。
 
 ### その他の技術
 
-- \*\*Flutter\*\*
+- **Flutter**
   - Flutter による iOS/Android クロスプラットフォームでのアプリ開発経験。
-- \*\*サーバーサイドエンジニア\*\*
+- **サーバーサイドエンジニア**
   - PHP での API の設計/開発、DB (MySQL) のテーブル設計、OAuth2.0 での認証/認可の設計/実装。
   - OpenAPI (Swagger) での API インターフェース提供。
   - Postman を用いた API テストの自動化、JMeter での負荷テストのテストの設計/実施。
@@ -112,39 +112,39 @@ Here's the revised text with a more natural flow and without using a noun-only s
 
 ### iOS アプリ開発
 
-- \*\*Swift\*\*
+- **Swift**
   - SwiftUI, Combine, Swift Concurrency, Swift Package Manager といった Swift の最新技術を活用した実装経験があります。
-  - Swift の言語機能について多数のブログ記事を投稿しています。→ \[Zenn\](https://zenn.dev/ikuraikura)
-- \*\*リードエンジニア\*\*
+  - Swift の言語機能について多数のブログ記事を投稿しています。→ [Zenn](https://zenn.dev/ikuraikura)
+- **リードエンジニア**
   - iOS アプリ開発の初期フェーズでリードエンジニアを務め、アーキテクチャやライブラリ選定を含むプロジェクトの技術的な立ち上げを経験しました。
-- \*\*アーキテクチャ\*\*
+- **アーキテクチャ**
   - Clean Architecture, VIPER, MVVM, Redux など、さまざまなアーキテクチャパターンを適用した経験が豊富です。
   - Swift Package Manager を使用したマルチモジュールアプリの設計と実装に携わりました。
-- \*\*ライブラリの組み込み\*\*
+- **ライブラリの組み込み**
   - ドローン制御やインカメラを使った視線分析、感情分析など、高度な技術力を要するライブラリを組み込む作業を行いました。
-- \*\*mBaaS 連携\*\*
-  - \*\*Firebase\*\*
+- **mBaaS 連携**
+  - **Firebase**
     - Authentication, Firestore, Storage, Analytics, Crashlytics など、Firebase のさまざまなサービスを利用し、実装しました。
-  - \*\*AWS Amplify\*\*
+  - **AWS Amplify**
     - AppSync (GraphQL), Cognito, S3, Pinpoint など、AWS の多岐にわたるサービスを活用した経験があります。
-- \*\*CI/CD\*\*
+- **CI/CD**
   - Xcode Cloud や Bitrise を利用して自動テストや自動デプロイの環境を構築しました。
 
 ### チーム開発
 
-- \*\*チーム間コミュニケーション\*\*
+- **チーム間コミュニケーション**
   - PdM、デザイナーとの緊密な連携により、アプリケーションの仕様やデザインを調整しました。
   - サーバーサイドチームとの連携を通じてAPIインターフェースを調整した経験があります。
-- \*\*アジャイル開発\*\*
+- **アジャイル開発**
   - Jira, Confluence, GitHub Projects, Trello, Zenhub など、様々なプロジェクト管理ツールを用いたアジャイル開発プロセスを数多く経験しています。
-- \*\*Scrum Master\*\*
+- **Scrum Master**
   - Scrum Master として、スプリント計画、実行、レトロスペクティブのファシリテーション、スクラムボードの設計などを行いました。
 
 ### その他の技術
 
-- \*\*Flutter\*\*
+- **Flutter**
   - Flutter を使用して、iOS/Android のクロスプラットフォームアプリ開発を行いました。
-- \*\*サーバーサイドエンジニア\*\*
+- **サーバーサイドエンジニア**
   - PHP を用いた API の設計・開発、MySQL データベースのテーブル設計、OAuth2.0 による認証・認可の設計と実装を行いました。
   - OpenAPI (Swagger) を通じて API インターフェースを提供し、Postman を用いた API テストの自動化、JMeter での負荷テストを設計・実施しました。
 
@@ -211,38 +211,38 @@ Here's the revised text with a more natural flow and without using a noun-only s
 
 こうなった。改善点があれば押して欲しい。
 
-- \*\*Swift\*\*
+- **Swift**
   - SwiftUI, Combine, Swift Concurrency, Swift Package Manager といった Swift の最新技術を活用した実装経験がある。
-  - Swift の言語機能について多数のブログ記事を投稿している。→ \[Zenn\](https://zenn.dev/ikuraikura)
-- \*\*リードエンジニア\*\*
+  - Swift の言語機能について多数のブログ記事を投稿している。→ [Zenn](https://zenn.dev/ikuraikura)
+- **リードエンジニア**
   - iOS アプリ開発の初期フェーズでリードエンジニアを務め、アーキテクチャやライブラリ選定を含むプロジェクトの技術的な立ち上げを経験した。
-- \*\*アーキテクチャ\*\*
+- **アーキテクチャ**
   - Clean Architecture, VIPER, MVVM, Redux など、さまざまなアーキテクチャパターンを適用した経験がある。
   - Swift Package Manager を使用したマルチモジュールアプリの設計と実装の経験がある。
-- \*\*ライブラリの組み込み\*\*
+- **ライブラリの組み込み**
   - ドローンなどのハードウェア機器の制御や、インカメラを使った視線分析、感情分析といった高度な実装スキルを要するライブラリの組み込みの経験がある。
-- \*\*mBaaS 連携\*\*
-  - \*\*Firebase\*\*
+- **mBaaS 連携**
+  - **Firebase**
     - Authentication, Firestore, Storage, Analytics, Crashlytics, App Distribution など、Firebase のさまざまなサービスを利用し、実装した。
-  - \*\*AWS\*\*
+  - **AWS**
     - AppSync (GraphQL), Cognito, S3, Pinpoint などのサービスを AWS Amplify SDK を利用して実装した経験がある。
-- \*\*CI/CD\*\*
+- **CI/CD**
   - Xcode Cloud や Bitrise を利用して自動テストや自動デプロイの環境を構築した。
 
 ### チーム開発
 
-- \*\*チーム間コミュニケーション\*\*
+- **チーム間コミュニケーション**
   - PdM、デザイナー、サーバーサイドチームと連携し、アプリケーションの仕様、デザイン、API インターフェースを調整した経験がある。
-- \*\*アジャイル開発\*\*
+- **アジャイル開発**
   - Jira, Confluence, GitHub Projects, Trello, Zenhub など、様々なプロジェクト管理ツールを用いたアジャイルでの開発を数多く経験している。
-- \*\*Scrum Master\*\*
+- **Scrum Master**
   - Scrum Master として、スプリント計画、実行、レトロスペクティブのファシリテーション、スクラムボードの設計などを行った。
 
 ### その他の技術
 
-- \*\*Flutter\*\*
+- **Flutter**
   - Flutter を使用した iOS/Android のクロスプラットフォームアプリ開発の経験がある。
-- \*\*サーバーサイドエンジニア\*\*
+- **サーバーサイドエンジニア**
   - PHP を用いた API の設計・開発、MySQL データベースのテーブル設計、OAuth2.0 による認証・認可の設計と実装を行った。
   - OpenAPI (Swagger) を通じて API インターフェースを提供し、Postman を用いた API テストの自動化、JMeter での負荷テストを設計・実施した。
 

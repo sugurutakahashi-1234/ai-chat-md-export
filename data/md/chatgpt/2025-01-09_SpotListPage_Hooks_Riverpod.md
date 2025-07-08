@@ -10,7 +10,7 @@
 SpotListPage について hooksとRiverpodで getAllSpot を使って描画してほしい
 
 @freezed
-class SpotDTO with \_$SpotDTO {
+class SpotDTO with _$SpotDTO {
   factory SpotDTO({
     @JsonKey(name: 'spotId') required String? spotId,
     @JsonKey(name: 'guildId') String? guildId,
@@ -23,22 +23,22 @@ class SpotDTO with \_$SpotDTO {
     @JsonKey(name: 'spotLatitude') required num? spotLatitude,
     @JsonKey(name: 'spotAddress') required String? spotAddress,
     @JsonKey(name: 'createdAt') required DateTime? createdAt,
-  }) = \_SpotDTO;
+  }) = _SpotDTO;
 
   factory SpotDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$SpotDTOFromJson(jsonMap);
+      _$SpotDTOFromJson(jsonMap);
 }
 
 import 'package:flutter/foundation.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/api\_provider.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/api_provider.dart';
 
-part 'get\_spot\_info.g.dart';
+part 'get_spot_info.g.dart';
 
 @riverpod
-class GetSpotNotifier extends \_$GetSpotNotifier {
+class GetSpotNotifier extends _$GetSpotNotifier {
   @override
   Future&lt;List&lt;SpotDTO&gt;?&gt; build() async =&gt; null;
 
@@ -59,11 +59,11 @@ class GetSpotNotifier extends \_$GetSpotNotifier {
 }
 
 import 'package:flutter/material.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_pallet.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_pallet.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class SpotListPage extends StatelessWidget {
   const SpotListPage({super.key});
@@ -82,7 +82,7 @@ class SpotListPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Spot list'),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -90,7 +90,7 @@ class SpotListPage extends StatelessWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(16),
@@ -101,9 +101,9 @@ class SpotListPage extends StatelessWidget {
         ),
         itemCount: spotList.length,
         itemBuilder: (context, index) {
-          final spot = spotList\[index\];
-          final imageUrl = spot\['imageUrl'\]!;
-          final label = spot\['label'\]!;
+          final spot = spotList[index];
+          final imageUrl = spot['imageUrl']!;
+          final label = spot['label']!;
 
           return GestureDetector(
             onTap: () {
@@ -111,7 +111,7 @@ class SpotListPage extends StatelessWidget {
             },
             child: Stack(
               alignment: Alignment.bottomCenter,
-              children: \[
+              children: [
                 DecoratedBox(
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -166,7 +166,7 @@ class SpotListPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              \],
+              ],
             ),
           );
         },
@@ -180,15 +180,15 @@ class SpotListPage extends StatelessWidget {
 ## 🔧 ツール
 *2025/1/9 16:31:47*
 
-\*\*Integrating Riverpod\*\*
+**Integrating Riverpod**
 
 Considering how to link SpotListPage with Riverpod, potentially utilizing Riverpod Hook for GetSpotNotifier or calling getAllSpot to retrieve spots dynamically.
 
-\*\*Integrating hooks and Riverpod\*\*
+**Integrating hooks and Riverpod**
 
-We'll use flutter\_hooks with `useProvider` to connect to GetSpotNotifier and `getAllSpot()`. This method ensures seamless rendering of spots within the SpotListPage UI.
+We'll use flutter_hooks with `useProvider` to connect to GetSpotNotifier and `getAllSpot()`. This method ensures seamless rendering of spots within the SpotListPage UI.
 
-\*\*Integrating data retrieval\*\*
+**Integrating data retrieval**
 
 I'm thinking through how the SpotListPage class uses `HookConsumerWidget` to link with GetSpotNotifier. The `useEffect` method calls `getAllSpot()` to fetch spots, then UI elements show spot data.
 
@@ -366,22 +366,22 @@ class SpotListPage extends HookConsumerWidget {
 ## 👤 ユーザー
 *2025/1/9 16:36:57*
 
-useEffect で Future.microtask(() { もしくは WidgetsBinding.instance.addPostFrameCallback((\_) { で囲う場合とそうでない場合の違い
+useEffect で Future.microtask(() { もしくは WidgetsBinding.instance.addPostFrameCallback((_) { で囲う場合とそうでない場合の違い
 
 ---
 
 ## 🔧 ツール
 *2025/1/9 16:37:27*
 
-\*\*Assessing callback methods\*\*
+**Assessing callback methods**
 
 I’m looking into the difference between using 'useEffect' to delay execution with Future.microtask or WidgetsBinding.instance.addPostFrameCallback, which ensures tasks run after the current frame is rendered, avoiding potential immediate state changes and subsequent rebuilds.
 
-\*\*Eliminating build errors\*\*
+**Eliminating build errors**
 
 I’m positioning Future.microtask within 'useEffect' to preempt errors like "changing state during build" or "unnecessary rebuild" by ensuring the task runs after the current frame is rendered.
 
-\*\*Ensuring UI stability\*\*
+**Ensuring UI stability**
 
 I’m emphasizing the utility of addPostFrameCallback for tasks like size measurements or accessing RenderBox properties after rendering, improving UI stability before conflicts arise or API calls are made.
 

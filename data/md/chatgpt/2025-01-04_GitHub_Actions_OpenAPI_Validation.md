@@ -16,11 +16,11 @@ openapiをバリデーションするGitHubActionsのらいぶらり
 
 OpenAPIの定義をGitHub Actionsでバリデーションするには、以下のツールやライブラリが有効です。
 
-1. \*\*express-openapi-validator\*\*: このライブラリは、Express.jsアプリケーションでOpenAPIのバリデーションを行うためのものです。GitHub Actions内でテストスクリプトを実行し、APIのリクエストやレスポンスがOpenAPIの定義に準拠しているかを検証する際に利用できます。 citeturn0search2
+1. **express-openapi-validator**: このライブラリは、Express.jsアプリケーションでOpenAPIのバリデーションを行うためのものです。GitHub Actions内でテストスクリプトを実行し、APIのリクエストやレスポンスがOpenAPIの定義に準拠しているかを検証する際に利用できます。 citeturn0search2
 
-2. \*\*openapi-generator-cli\*\*: OpenAPIの定義からコードを生成するツールで、GitHub Actionsと組み合わせて自動化できます。生成されたコードの型や構造をチェックすることで、間接的にOpenAPI定義のバリデーションを行うことが可能です。 citeturn0search3
+2. **openapi-generator-cli**: OpenAPIの定義からコードを生成するツールで、GitHub Actionsと組み合わせて自動化できます。生成されたコードの型や構造をチェックすることで、間接的にOpenAPI定義のバリデーションを行うことが可能です。 citeturn0search3
 
-3. \*\*redoc-cli\*\*: OpenAPIの定義からドキュメントを生成するツールです。GitHub Actionsでredoc-cliを使用してHTMLドキュメントを生成し、その過程で定義の整合性を確認することができます。 citeturn0search7
+3. **redoc-cli**: OpenAPIの定義からドキュメントを生成するツールです。GitHub Actionsでredoc-cliを使用してHTMLドキュメントを生成し、その過程で定義の整合性を確認することができます。 citeturn0search7
 
 これらのツールをGitHub Actionsのワークフローに組み込むことで、OpenAPI定義のバリデーションを自動化し、APIの品質を維持することができます。
 

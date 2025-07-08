@@ -55,16 +55,16 @@ This approach will make your code more modular, easier to maintain, and more reu
 
 ExplorerDTO  を引数にした方がいい気がして期待
 
-final explorer = explorerList\[index\];
+final explorer = explorerList[index];
                     final imageUrl =
                         explorer.explorerImage.isNotEmpty
                             ? explorer.explorerImage
                             : null;
                     final energy = explorer.energy;
                     final fullEnergy = explorer.fullEnergy;
-                    // TODO: \[v0.3.0\] \[weave\] 攻撃力の反映
-                    final attack = ((explorer.range) \* 1000).toInt();
-                    final attackBuff = ((explorer.rangeBuff) \* 1000).toInt();
+                    // TODO: [v0.3.0] [weave] 攻撃力の反映
+                    final attack = ((explorer.range) * 1000).toInt();
+                    final attackBuff = ((explorer.rangeBuff) * 1000).toInt();
                     final description = explorer.explorerDescription ?? '';
 
 ---

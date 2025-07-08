@@ -10,10 +10,10 @@
 Qiitaの技術記事を書いて欲しい
 
 ---
-title: "\[Swift\] associatedtype の実装例"
+title: "[Swift] associatedtype の実装例"
 emoji: "🕊"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: \["Swift"\]
+topics: ["Swift"]
 published: true
 ---
 
@@ -153,10 +153,10 @@ Swiftの`associatedtype`は非常に強力な機能で、プロトコルの柔�
 こちらもよろしくお願いいたします。
 
 ---
-title: "\[Swift\] "
+title: "[Swift] "
 emoji: "🕊"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: \["Swift"\]
+topics: ["Swift"]
 published: true
 ---
 
@@ -166,7 +166,7 @@ struct CustomStringConvertibleHoge: CustomStringConvertible {
     let value: Int
     
     var description: String {
-        "CustomStringConvertible を適応している場合: \\(value)"
+        "CustomStringConvertible を適応している場合: \(value)"
     }
 }
 
@@ -174,7 +174,7 @@ struct NotCustomStringConvertibleHoge {
     let value: Int
     
     var description: String {
-        "CustomStringConvertible を適応していない場合: \\(value)"
+        "CustomStringConvertible を適応していない場合: \(value)"
     }
 }
 

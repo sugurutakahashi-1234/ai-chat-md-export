@@ -30,7 +30,7 @@ final class PhoneNumberInputPresenter&lt;Dependency: PhoneNumberInputPresenterDe
         $rawPhoneNumber
             .debounce(for: 0.2, scheduler: RunLoop.main) // ユーザー入力後、少し待機する
             .removeDuplicates() // 重複値を削除
-            .map { \[weak self\] rawPhoneNumber in
+            .map { [weak self] rawPhoneNumber in
                 // 国際電話番号に変換できない形式であれば nil とする
                 try? self?.dependency.phoneNumberDriver.formatRawPhoneNumberAsInternational(country: .japan, rawPhoneNumber: rawPhoneNumber)
             }

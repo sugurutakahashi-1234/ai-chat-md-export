@@ -11,7 +11,7 @@ errorMessage の Stringだけをスローしたい
 
 
 @riverpod
-class RequestCodeNotifier extends \_$RequestCodeNotifier {
+class RequestCodeNotifier extends _$RequestCodeNotifier {
   @override
   Future&lt;String?&gt; build() async =&gt; null;
 
@@ -68,15 +68,15 @@ class RequestCodeNotifier extends \_$RequestCodeNotifier {
   }
 
 @freezed
-class SendCodeResponseDto with \_$SendCodeResponseDto {
+class SendCodeResponseDto with _$SendCodeResponseDto {
   factory SendCodeResponseDto({
     @JsonKey(name: 'code') required num? code,
     @JsonKey(name: 'errorMessage') required String? errorMessage,
     @JsonKey(name: 'data') required String? data,
-  }) = \_SendCodeResponseDto;
+  }) = _SendCodeResponseDto;
 
   factory SendCodeResponseDto.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$SendCodeResponseDtoFromJson(jsonMap);
+      _$SendCodeResponseDtoFromJson(jsonMap);
 }
 
 ---
@@ -361,15 +361,15 @@ checkForApiError(response.data!);
 レスポンスが以下のようなcodeとerrorMessageを含むことを決め打ちして、ApiError 型に変換するコードを書いて欲しい
 
 @freezed
-class LoginResponseDto with \_$LoginResponseDto {
+class LoginResponseDto with _$LoginResponseDto {
   factory LoginResponseDto({
     @JsonKey(name: 'code') required num? code,
     @JsonKey(name: 'errorMessage') required String? errorMessage,
     @JsonKey(name: 'data') required LoginResponseDtoData? data,
-  }) = \_LoginResponseDto;
+  }) = _LoginResponseDto;
 
   factory LoginResponseDto.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$LoginResponseDtoFromJson(jsonMap);
+      _$LoginResponseDtoFromJson(jsonMap);
 }
 
 ---
@@ -1169,7 +1169,7 @@ Raw value: email must be an email
 手前のcheckForApiError(response.data);もDioExceptionブロックでのcheckForApiError(e.response?.data);も} on ApiError catch (e, stackTrace) {に飛ばすことはできないのか？
 
 @Riverpod(keepAlive: true)
-class GetMyAccountNotifier extends \_$GetMyAccountNotifier {
+class GetMyAccountNotifier extends _$GetMyAccountNotifier {
   @override
   Future&lt;AccountResponseDTOData?&gt; build() async =&gt; null;
 
@@ -1362,8 +1362,8 @@ await api.accountControllerGetCurrentUserAccounts(); で発生したエラーは
 
 void checkForApiError(dynamic response) {
   if (response is Map&lt;String, dynamic&gt;) {
-    final code = response\['code'\] as num?;
-    final errorMessage = response\['errorMessage'\] as String?;
+    final code = response['code'] as num?;
+    final errorMessage = response['errorMessage'] as String?;
 
     if (code != 0) {
       throw ApiError(
@@ -2318,12 +2318,12 @@ class GetMyAccountNotifier extends _$GetMyAccountNotifier {
 
 グローバルな変数や状態として、shouldLogoutNotifierみたいなboolを扱うものを
 
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'should\_logout.g.dart';
+part 'should_logout.g.dart';
 
 @riverpod
-class ShouldLogoutNotifier extends \_$ShouldLogoutNotifier {
+class ShouldLogoutNotifier extends _$ShouldLogoutNotifier {
   @override
   bool build() =&gt; false;
 

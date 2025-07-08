@@ -7,16 +7,16 @@
 ## 👤 ユーザー
 *2023/6/28 2:31:18*
 
-以下のStringのExtensionのtoSnakeCase関数で先頭に\_がある場合は削除してほいい
+以下のStringのExtensionのtoSnakeCase関数で先頭に_がある場合は削除してほいい
 
 public extension String {
-    // ex1) "snakeCase" -&gt; "snake\_case"
-    // ex2) "SnakeCase" -&gt; "\_snake\_case"
-    // ex3) "snakeCaseURL0123" -&gt; "snake\_case\_u\_r\_l0123"
+    // ex1) "snakeCase" -&gt; "snake_case"
+    // ex2) "SnakeCase" -&gt; "_snake_case"
+    // ex3) "snakeCaseURL0123" -&gt; "snake_case_u_r_l0123"
     var toSnakeCase: String {
         unicodeScalars.reduce("") { result, scalar in
             if CharacterSet.uppercaseLetters.contains(scalar) {
-                return "\\(result)\_\\(Character(scalar))"
+                return "\(result)_\(Character(scalar))"
             } else {
                 return result + String(scalar)
             }

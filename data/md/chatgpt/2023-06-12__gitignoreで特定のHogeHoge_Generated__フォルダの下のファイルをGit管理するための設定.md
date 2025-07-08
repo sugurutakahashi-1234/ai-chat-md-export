@@ -11,8 +11,8 @@
 
 
 # GeneratedのフォルダだけをGit管理するため(個別に手動生成しなくてもいいようにするため)
-\*\*/Generated/\*\*
-!\*\*/Generated/.gitignore
+**/Generated/**
+!**/Generated/.gitignore
 
 ---
 

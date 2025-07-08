@@ -10,14 +10,14 @@
 これを底を合わせるのではなくて中央を設定してほしい。
 
 struct WaveformView: View {
-    let volumeLevels: \[Double\]
+    let volumeLevels: [Double]
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 4) {
-            ForEach(0..&lt;volumeLevels.count, id: \\.self) { index in
+            ForEach(0..&lt;volumeLevels.count, id: \.self) { index in
                 Rectangle()
                     .fill(Color.black)
-                    .frame(width: 10, height: volumeLevels\[index\] \* 100)
+                    .frame(width: 10, height: volumeLevels[index] * 100)
             }
         }
         .frame(height: 100)

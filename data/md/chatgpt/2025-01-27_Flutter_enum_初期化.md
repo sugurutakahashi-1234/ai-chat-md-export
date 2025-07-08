@@ -15,7 +15,7 @@ enum Flavor {
   dev,
 }
 
-Flavor \_getFlavorFromString(String flavorString) {
+Flavor _getFlavorFromString(String flavorString) {
   switch (flavorString) {
     case 'dev':
       return Flavor.dev;

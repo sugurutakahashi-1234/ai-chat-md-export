@@ -8,11 +8,11 @@
 *2025/3/12 16:37:48*
 
 dart fix --apply lib
-	find lib -type f -name "\*.dart" ! -path "lib/gen/\*" ! -path "lib/infrastructure/snpit\_guild\_api/snpit\_guild\_api\_openapi\_config.dart" ! -path "lib/guild\_api/\*" | xargs dart format
+	find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/snpit_guild_api/snpit_guild_api_openapi_config.dart" ! -path "lib/guild_api/*" | xargs dart format
 
 を実行しているのだけれども以下のファイルの設定を読み込みながらすることはできないのか？
 
-analysis\_options.yaml
+analysis_options.yaml
 
 ---
 
@@ -42,27 +42,27 @@ find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/
 ## 👤 ユーザー
 *2025/3/12 16:39:09*
 
-$ find lib -type f -name "\*.dart" ! -path "lib/gen/\*" ! -path "lib/infrastructure/snpit\_guild\_api/snpit\_guild\_api\_openapi\_config.dart" ! -path "lib/guild\_api/\*" | xargs dart format --options=analysis\_options.yaml
+$ find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/snpit_guild_api/snpit_guild_api_openapi_config.dart" ! -path "lib/guild_api/*" | xargs dart format --options=analysis_options.yaml
 Could not find an option named "--options".
-Usage: dart format \[options...\] &lt;files or directories...&gt;
+Usage: dart format [options...] &lt;files or directories...&gt;
 -h, --help                     Print this usage information.
 -v, --verbose                  Show all options and flags with --help.
 -o, --output                   Set where to write formatted output.
-          \[json\]               Print code and selection as JSON.
-          \[none\]               Discard output.
-          \[show\]               Print code to terminal.
-          \[write\] (default)    Overwrite formatted files on disk.
+          [json]               Print code and selection as JSON.
+          [none]               Discard output.
+          [show]               Print code to terminal.
+          [write] (default)    Overwrite formatted files on disk.
     --set-exit-if-changed      Return exit code 1 if there are any formatting changes.
 Run "dart help" to see global options.
-~/git/gallusys/snpit\_guild\_app  ‹feature/246-2\*› $ dart fix --apply --options=analysis\_options.yaml lib                1 ↵
+~/git/gallusys/snpit_guild_app  ‹feature/246-2*› $ dart fix --apply --options=analysis_options.yaml lib                1 ↵
 Could not find an option named "--options".
-Usage: dart fix \[arguments\]
+Usage: dart fix [arguments]
 -h, --help                      Print this usage information.
 -n, --dry-run                   Preview the proposed changes but make no changes.
     --apply                     Apply the proposed changes.
     --code=&lt;code1,code2,...&gt;    Apply fixes for one (or more) diagnostic codes.
 Run "dart help" to see global options.
-~/git/gallusys/snpit\_guild\_app  ‹feature/246-2\*› $
+~/git/gallusys/snpit_guild_app  ‹feature/246-2*› $
 
 ---
 
@@ -90,7 +90,7 @@ find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/
 ## 👤 ユーザー
 *2025/3/12 16:42:21*
 
-わかったlefthook.ymlで実行するときにanalysis\_options.yamlが読み込まれていないように思える
+わかったlefthook.ymlで実行するときにanalysis_options.yamlが読み込まれていないように思える
 
 pre-commit:
   commands:
@@ -99,7 +99,7 @@ pre-commit:
     linter:
       run: dart fix --apply lib
     formatter:
-      run: find lib -type f -name "\*.dart" ! -path "lib/gen/\*" ! -path "lib/infrastructure/snpit\_guild\_api/snpit\_guild\_api\_openapi\_config.dart" ! -path "lib/guild\_api/\*" | xargs dart format
+      run: find lib -type f -name "*.dart" ! -path "lib/gen/*" ! -path "lib/infrastructure/snpit_guild_api/snpit_guild_api_openapi_config.dart" ! -path "lib/guild_api/*" | xargs dart format
 
 ---
 
@@ -137,18 +137,18 @@ linter:
 ## 👤 ユーザー
 *2025/3/12 17:03:06*
 
-そもそもdart formatってanalysis\_options.yaml の設定を読み込むのか？
+そもそもdart formatってanalysis_options.yaml の設定を読み込むのか？
 
 ---
 
 ## 🤖 アシスタント
 *2025/3/12 17:03:14*
 
-実際のところ、`dart format` コマンドは `analysis\_options.yaml` ファイルから設定を読み込みません。
+実際のところ、`dart format` コマンドは `analysis_options.yaml` ファイルから設定を読み込みません。
 
-Dart のフォーマッティングツールである `dart format`（以前の `dartfmt`）は独自の設定方式を持っており、`analysis\_options.yaml` ファイルの設定には依存していません。`dart format` は基本的に Dart の公式スタイルガイドに従った一貫したフォーマットを適用します。
+Dart のフォーマッティングツールである `dart format`（以前の `dartfmt`）は独自の設定方式を持っており、`analysis_options.yaml` ファイルの設定には依存していません。`dart format` は基本的に Dart の公式スタイルガイドに従った一貫したフォーマットを適用します。
 
-一方、`dart fix` と `flutter analyze` は `analysis\_options.yaml` ファイルの設定を読み込みます。これらは静的解析ツールであり、コードの質やスタイルに関するルールをカスタマイズするために設定ファイルを参照します。
+一方、`dart fix` と `flutter analyze` は `analysis_options.yaml` ファイルの設定を読み込みます。これらは静的解析ツールであり、コードの質やスタイルに関するルールをカスタマイズするために設定ファイルを参照します。
 
 もし特定のフォーマットルールを設定したい場合は、Dart 2.18以降では `dart format` に限定的なオプションがあります：
 
@@ -156,7 +156,7 @@ Dart のフォーマッティングツールである `dart format`（以前の 
 
 ただし、スペースやインデントなどの詳細なフォーマットルールをカスタマイズするオプションはありません。Dart のフォーマットは意図的に厳格で一貫性を持たせるために設計されています。
 
-lefthook.yml の問題については、コマンドの実行場所を確認する必要はありますが、`dart format` 自体は `analysis\_options.yaml` の設定を参照しないという点を理解しておくと良いでしょう。
+lefthook.yml の問題については、コマンドの実行場所を確認する必要はありますが、`dart format` 自体は `analysis_options.yaml` の設定を参照しないという点を理解しておくと良いでしょう。
 
 ---
 
@@ -165,35 +165,35 @@ lefthook.yml の問題については、コマンドの実行場所を確認す�
 
 このファイルのexcludeをしていしたい
 
-# https://pub.dev/packages/pedantic\_mono
-include: package:pedantic\_mono/analysis\_options.yaml
+# https://pub.dev/packages/pedantic_mono
+include: package:pedantic_mono/analysis_options.yaml
 
 analyzer:
   errors:
-    sort\_pub\_dependencies: ignore # Want to arrange in meaningful units
-    flutter\_style\_todos: ignore # Want to use TODOs in the code
+    sort_pub_dependencies: ignore # Want to arrange in meaningful units
+    flutter_style_todos: ignore # Want to use TODOs in the code
   exclude:
-    - '\*\*.g.dart'
-    - '\*\*.freezed.dart'
-    - '\*\*.openapi.dart'
-    - '\*\*.gen.dart'
-    - guild\_api/\*\*
-    - lib/infrastructure/snpit\_guild\_api/snpit\_guild\_api\_openapi\_config.dart
+    - '**.g.dart'
+    - '**.freezed.dart'
+    - '**.openapi.dart'
+    - '**.gen.dart'
+    - guild_api/**
+    - lib/infrastructure/snpit_guild_api/snpit_guild_api_openapi_config.dart
 
 linter:
   # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter\_lints/flutter.yaml`
+  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
   # included above or to enable additional rules. A list of all available lints
   # and their documentation is published at https://dart.dev/lints.
   #
   # Instead of disabling a lint rule for the entire project in the
   # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name\_of\_lint` and
-  # `// ignore\_for\_file: name\_of\_lint` syntax on the line or in the file
+  # or a specific dart file by using the `// ignore: name_of_lint` and
+  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # avoid\_print: false  # Uncomment to disable the `avoid\_print` rule
-    # prefer\_single\_quotes: true  # Uncomment to enable the `prefer\_single\_quotes` rule
+    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

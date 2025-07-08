@@ -130,7 +130,7 @@ Flutterの`ScaffoldState`の`showBottomSheet`を使う場合も、上記の`Navi
 ## 👤 ユーザー
 *2024/12/10 16:58:44*
 
-それを go\_routerで管理できないのか？
+それを go_routerで管理できないのか？
 
 ---
 
@@ -311,20 +311,20 @@ class BottomSheetDetailPage extends StatelessWidget {
 ## 🤖 アシスタント
 *2024/12/10 16:59:48*
 
-Flutterで`go\_router`を使用してBottom Sheet上でのページ遷移を管理する方法について、参考になる記事や公式ドキュメントを以下にまとめました。
+Flutterで`go_router`を使用してBottom Sheet上でのページ遷移を管理する方法について、参考になる記事や公式ドキュメントを以下にまとめました。
 
-1. \*\*\[Flutter\] go\_routerでbottom navigationの出し入れをしてみる - Qiita\*\*
-   - \*\*URL\*\*: https://qiita.com/kurogoma939/items/988b252fd2c9584cf020
-   - \*\*概要\*\*: `go\_router`を用いて、BottomNavigationBarの表示・非表示を制御しながら画面遷移を行う方法について解説しています。Bottom Sheetの直接的な例ではありませんが、`go\_router`でのナビゲーション制御の参考になります。
+1. **[Flutter] go_routerでbottom navigationの出し入れをしてみる - Qiita**
+   - **URL**: https://qiita.com/kurogoma939/items/988b252fd2c9584cf020
+   - **概要**: `go_router`を用いて、BottomNavigationBarの表示・非表示を制御しながら画面遷移を行う方法について解説しています。Bottom Sheetの直接的な例ではありませんが、`go_router`でのナビゲーション制御の参考になります。
 
-2. \*\*\[Flutter\] go\_routerでBottomNavigationBarの永続化に挑戦する - Qiita\*\*
-   - \*\*URL\*\*: https://qiita.com/heyhey1028/items/fbe24b0781b9245aff4d
-   - \*\*概要\*\*: `go\_router`を使用して、BottomNavigationBarの状態を保持しながら画面遷移を行う方法について詳しく解説しています。Bottom Sheetに関する直接的な情報は含まれていませんが、`go\_router`での複雑なナビゲーション管理のヒントが得られます。
+2. **[Flutter] go_routerでBottomNavigationBarの永続化に挑戦する - Qiita**
+   - **URL**: https://qiita.com/heyhey1028/items/fbe24b0781b9245aff4d
+   - **概要**: `go_router`を使用して、BottomNavigationBarの状態を保持しながら画面遷移を行う方法について詳しく解説しています。Bottom Sheetに関する直接的な情報は含まれていませんが、`go_router`での複雑なナビゲーション管理のヒントが得られます。
 
-3. \*\*go\_routerパッケージの公式ドキュメント\*\*
-   - \*\*URL\*\*: https://pub.dev/documentation/go\_router/latest/
-   - \*\*概要\*\*: `go\_router`の公式ドキュメントで、基本的な使い方や高度なナビゲーション手法について詳しく説明されています。特に、`CustomTransitionPage`や`navigatorBuilder`の使用方法は、Bottom Sheet上でのページ遷移を実装する際に役立ちます。
+3. **go_routerパッケージの公式ドキュメント**
+   - **URL**: https://pub.dev/documentation/go_router/latest/
+   - **概要**: `go_router`の公式ドキュメントで、基本的な使い方や高度なナビゲーション手法について詳しく説明されています。特に、`CustomTransitionPage`や`navigatorBuilder`の使用方法は、Bottom Sheet上でのページ遷移を実装する際に役立ちます。
 
-これらのリソースを参考に、`go\_router`を活用したBottom Sheet上でのページ遷移の実装を検討してみてください。
+これらのリソースを参考に、`go_router`を活用したBottom Sheet上でのページ遷移の実装を検討してみてください。
 
 ---

@@ -18,17 +18,17 @@ Incorrect use of ParentDataWidget.
 ════════════════════════════════════════════════════════════════════════════════
 
 
-import 'package:auto\_size\_text/auto\_size\_text.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/nfts/get\_nfts.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/square\_image.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/nfts/get_nfts.dart';
+import 'package:snpit_guild_app/presentation/widgets/square_image.dart';
 
 enum NftType {
   explorer,
@@ -62,7 +62,7 @@ class WalletPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Future&lt;void&gt; onTapNft(NFT nft) async {
-      // TODO: \[フェーズ2\] NFT 詳細画面への遷移
+      // TODO: [フェーズ2] NFT 詳細画面への遷移
     }
 
     Future&lt;void&gt; onTapWalletId(String walletId) async {
@@ -84,7 +84,7 @@ class WalletPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -98,8 +98,8 @@ class WalletPage extends HookConsumerWidget {
           final stpValue = data.stp ?? 0;
           final walletId = data.wallet ?? '';
 
-          final explorers = data.explorers ?? \[\];
-          final flags = data.flags ?? \[\];
+          final explorers = data.explorers ?? [];
+          final flags = data.flags ?? [];
 
           final explorerNfts = explorers.map((explorer) {
             return NFT(
@@ -123,19 +123,19 @@ class WalletPage extends HookConsumerWidget {
             );
           }).toList();
 
-          final allNfts = \[
+          final allNfts = [
             ...explorerNfts,
             ...flagNfts,
-          \];
+          ];
 
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: \[
+                children: [
                   Column(
-                    children: \[
+                    children: [
                       DecoratedBox(
                         decoration: BoxDecoration(
                           color: ColorToken.bg,
@@ -148,7 +148,7 @@ class WalletPage extends HookConsumerWidget {
                           padding: const EdgeInsets.all(24),
                           child: Expanded(
                             child: Column(
-                              children: \[
+                              children: [
                                 Image.asset(
                                   Assets.images.stpCoinIcon.path,
                                   width: 32,
@@ -160,7 +160,7 @@ class WalletPage extends HookConsumerWidget {
                                   crossAxisAlignment:
                                       CrossAxisAlignment.baseline,
                                   textBaseline: TextBaseline.alphabetic,
-                                  children: \[
+                                  children: [
                                     Flexible(
                                       child: AutoSizeText(
                                         stpValue.toString(),
@@ -180,7 +180,7 @@ class WalletPage extends HookConsumerWidget {
                                         fontSize: 16,
                                       ),
                                     ),
-                                  \],
+                                  ],
                                 ),
                                 const SizedBox(height: 24),
                                 GestureDetector(
@@ -207,12 +207,12 @@ class WalletPage extends HookConsumerWidget {
                                     ),
                                   ),
                                 ),
-                              \],
+                              ],
                             ),
                           ),
                         ),
                       ),
-                    \],
+                    ],
                   ),
                   const SizedBox(height: 16),
 
@@ -235,7 +235,7 @@ class WalletPage extends HookConsumerWidget {
                         padding: const EdgeInsets.only(bottom: 8),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          // TODO: \[フェーズ2\] NFT 詳細画面への遷移（リップルに変更する）
+                          // TODO: [フェーズ2] NFT 詳細画面への遷移（リップルに変更する）
                           // child: Ink(
                           child: DecoratedBox(
                             decoration: BoxDecoration(
@@ -253,7 +253,7 @@ class WalletPage extends HookConsumerWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: Row(
-                                  children: \[
+                                  children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(4),
                                       child: SquareImage(
@@ -266,9 +266,9 @@ class WalletPage extends HookConsumerWidget {
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: \[
+                                        children: [
                                           Row(
-                                            children: \[
+                                            children: [
                                               Flexible(
                                                 child: Text(
                                                   nft.name,
@@ -295,7 +295,7 @@ class WalletPage extends HookConsumerWidget {
                                                   ),
                                                 ),
                                               ),
-                                            \],
+                                            ],
                                           ),
                                           const SizedBox(height: 12),
                                           Text(
@@ -306,16 +306,16 @@ class WalletPage extends HookConsumerWidget {
                                               fontSize: 12,
                                             ),
                                           ),
-                                        \],
+                                        ],
                                       ),
                                     ),
-                                    // TODO: \[フェーズ2\] NFT 詳細画面への遷移
+                                    // TODO: [フェーズ2] NFT 詳細画面への遷移
                                     // const Icon(
-                                    //   Icons.chevron\_right,
+                                    //   Icons.chevron_right,
                                     //   size: 32,
                                     //   color: ColorToken.text,
                                     // ),
-                                  \],
+                                  ],
                                 ),
                               ),
                             ),
@@ -325,7 +325,7 @@ class WalletPage extends HookConsumerWidget {
                     }).toList(),
                   ),
                   const SizedBox(height: 24),
-                \],
+                ],
               ),
             ),
           );
@@ -335,7 +335,7 @@ class WalletPage extends HookConsumerWidget {
             child: CircularProgressIndicator(),
           );
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Center(
             child: Text('Error: $error'),
           );
@@ -350,23 +350,23 @@ class WalletPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/2/1 15:07:56*
 
-\*\*Diagnosing expansion misuse\*\*
+**Diagnosing expansion misuse**
 
 I noticed that `Expanded` is being used outside of a `Flex` widget, like `Padding` or `DecoratedBox`, which is causing the "Incorrect use of ParentDataWidget" error. Replacing or removing it seems essential.
 
-\*\*Noticing misplaced expansion\*\*
+**Noticing misplaced expansion**
 
 I observed that the `Expanded` widget is nested within a `Padding`, which is incorrect since it must be a child of a `Flex` widget. The immediate solution is to either remove or relocate it.
 
-\*\*Reordering elements\*\*
+**Reordering elements**
 
 I'm thinking about the widget hierarchy: `Column`, `DecoratedBox`, `Padding`, `Expanded`, and another `Column`. The `Expanded` widget directly belongs to a `Flex` widget's parent, not `Padding` or `DecoratedBox`.
 
-\*\*Evaluating fix options\*\*
+**Evaluating fix options**
 
 I’m considering removing the `Expanded` widget or enveloping the parent with a `Row` or `Column` to ensure the `DecoratedBox` handles horizontal space expansion correctly.
 
-\*\*Mapping dependencies\*\*
+**Mapping dependencies**
 
 I’m analyzing the structure: a `Column` containing another `Column`, which includes a `DecoratedBox`, a `Padding`, and an `Expanded` widget with a `Column` child. The `Expanded` widget seems misplaced under `DecoratedBox`.
 

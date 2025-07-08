@@ -12,12 +12,12 @@
         case .headerChanged:
             return """
             let header = document.querySelector("header");
-            window.webkit.messageHandlers.\\(name).postMessage({
+            window.webkit.messageHandlers.\(name).postMessage({
                 target: "header",
                 height: header.getBoundingClientRect().height
             });
             new MutationObserver(function() {
-                window.webkit.messageHandlers.\\(name).postMessage({
+                window.webkit.messageHandlers.\(name).postMessage({
                     target: "header",
                     height: header.getBoundingClientRect().height
                 });

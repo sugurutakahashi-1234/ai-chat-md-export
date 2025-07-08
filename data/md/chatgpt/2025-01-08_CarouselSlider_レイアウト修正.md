@@ -7,14 +7,14 @@
 ## 👤 ユーザー
 *2025/1/8 18:01:03*
 
-import 'package:carousel\_slider/carousel\_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/get\_explorer\_info.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/get_explorer_info.dart';
 
 class ExplorerListPage extends HookConsumerWidget {
   const ExplorerListPage({super.key});
@@ -25,12 +25,12 @@ class ExplorerListPage extends HookConsumerWidget {
 
     useEffect(
       () {
-        WidgetsBinding.instance.addPostFrameCallback((\_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           ref.read(getExplorerNotifierProvider.notifier).executeRequest();
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     Widget buildExplorerCard(ExplorerDTO explorer) {
@@ -49,9 +49,9 @@ class ExplorerListPage extends HookConsumerWidget {
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: \[
+            children: [
               Row(
-                children: \[
+                children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: imageUrl != null
@@ -62,14 +62,14 @@ class ExplorerListPage extends HookConsumerWidget {
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
                               return const Icon(
-                                Icons.broken\_image\_outlined,
+                                Icons.broken_image_outlined,
                                 size: 120,
                                 color: ColorToken.text,
                               );
                             },
                           )
                         : const Icon(
-                            Icons.hide\_image\_outlined,
+                            Icons.hide_image_outlined,
                             size: 120,
                             color: ColorToken.text,
                           ),
@@ -78,7 +78,7 @@ class ExplorerListPage extends HookConsumerWidget {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: \[
+                      children: [
                         const Text(
                           'Life',
                           style: TextStyle(
@@ -116,12 +116,12 @@ class ExplorerListPage extends HookConsumerWidget {
                             fontSize: 12,
                           ),
                         ),
-                      \],
+                      ],
                     ),
                   ),
-                \],
+                ],
               ),
-            \],
+            ],
           ),
         ),
       );
@@ -131,32 +131,32 @@ class ExplorerListPage extends HookConsumerWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Select explorer'),
-        actions: \[
+        actions: [
           IconButton(
             onPressed: () =&gt; context.pop(),
             icon: const Icon(Icons.close),
           ),
-        \],
+        ],
       ),
       body: explorerState.when(
         data: (explorers) {
-          if ((explorers ?? \[\]).isEmpty) {
+          if ((explorers ?? []).isEmpty) {
             return const Center(child: Text('No explorers available.'));
           }
 
           return Column(
-            children: \[
+            children: [
               Expanded(
                 child: CarouselSlider(
                   options: CarouselOptions(),
-                  items: (explorers ?? \[\]).map(buildExplorerCard).toList(),
+                  items: (explorers ?? []).map(buildExplorerCard).toList(),
                 ),
               ),
-            \],
+            ],
           );
         },
         loading: () =&gt; const Center(child: CircularProgressIndicator()),
-        error: (error, \_) =&gt; Center(child: Text('Error: $error')),
+        error: (error, _) =&gt; Center(child: Text('Error: $error')),
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(

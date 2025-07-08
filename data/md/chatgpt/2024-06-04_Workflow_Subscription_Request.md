@@ -9,7 +9,7 @@
 
 ワークフロー名を指定したい
 
-/github subscribe org/repo issues, pulls, commits:'\*', releases, deployments, reviews, branches, comments, workflows:{event:"pull\_request","workflow\_dispatch"}, discussions
+/github subscribe org/repo issues, pulls, commits:'*', releases, deployments, reviews, branches, comments, workflows:{event:"pull_request","workflow_dispatch"}, discussions
 
 ---
 
@@ -93,7 +93,7 @@ workflows の記述は or 条件なの？
 ## 👤 ユーザー
 *2024/6/4 11:07:17*
 
-pull\_request イベントは外して欲しい
+pull_request イベントは外して欲しい
 
 ---
 

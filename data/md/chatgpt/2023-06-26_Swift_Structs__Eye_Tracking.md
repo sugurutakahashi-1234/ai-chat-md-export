@@ -183,10 +183,10 @@ struct DrowsinessInformation {
 }
 
 public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInteractorProtocol {
-    private var gazeInformations: \[GazeInformation\]
-    private var attentIonInformations: \[AttentionInformation\]
-    private var blinkInformations: \[BlinkInformation\]
-    private var drowsinessInformations: \[DrowsinessInformation\]
+    private var gazeInformations: [GazeInformation]
+    private var attentIonInformations: [AttentionInformation]
+    private var blinkInformations: [BlinkInformation]
+    private var drowsinessInformations: [DrowsinessInformation]
 }
 
 ---
@@ -555,10 +555,10 @@ public struct AnchorDataModel {
 今の状況でお願いがあります。
 
 やりたいことは以下の4つの変数からAnchorDataModel の配列を生成することです。
-private var gazeInformations: \[GazeInformation\]
-private var attentionInformations: \[AttentionInformation\]
-private var blinkInformations: \[BlinkInformation\]
-private var drowsinessInformations: \[DrowsinessInformation\]
+private var gazeInformations: [GazeInformation]
+private var attentionInformations: [AttentionInformation]
+private var blinkInformations: [BlinkInformation]
+private var drowsinessInformations: [DrowsinessInformation]
     
 
 基本方針は以下のとおりです。
@@ -653,10 +653,10 @@ Informations`, `drowsinessInformations` が同じタイムスタンプのエン�
 
 そもそも以下の4つの配列はtimestampは並び替えられていないかも、その辺のソート処理もしたほうがいいと思った
 
-private var gazeInformations: \[GazeInformation\]
-private var attentionInformations: \[AttentionInformation\]
-private var blinkInformations: \[BlinkInformation\]
-private var drowsinessInformations: \[DrowsinessInformation\]
+private var gazeInformations: [GazeInformation]
+private var attentionInformations: [AttentionInformation]
+private var blinkInformations: [BlinkInformation]
+private var drowsinessInformations: [DrowsinessInformation]
 
 ---
 

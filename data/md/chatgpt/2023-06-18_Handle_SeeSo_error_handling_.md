@@ -39,7 +39,7 @@ final class SeeSoGazeTrackManager {
     // CalibrationDelegate
     private let onCalibrationNextPointSubject = PassthroughSubject&lt;(x: Double, y: Double), Never&gt;()
     private let onCalibrationProgressSubject = PassthroughSubject&lt;Double, Never&gt;()
-    private let onCalibrationFinishedSubject = PassthroughSubject&lt;\[Double\], Never&gt;()
+    private let onCalibrationFinishedSubject = PassthroughSubject&lt;[Double], Never&gt;()
     
     // UserStatusDelegate
     private let onAttentionSubject = PassthroughSubject&lt;(timestampBegin: Int, timestampEnd: Int, score: Double), Never&gt;()
@@ -52,7 +52,7 @@ final class SeeSoGazeTrackManager {
     
     // SeeSo Configs
     private let startTrackingAttentionIntervalSeconds: Int = 10 // 10 to 60 seconds. (The default is 30 seconds.)
-    private let calibrationMode: SeeSo.CalibrationMode = .DEFAULT // ONE\_POINT or FIVE\_POINT(DEFAULT) or SIX\_POINT
+    private let calibrationMode: SeeSo.CalibrationMode = .DEFAULT // ONE_POINT or FIVE_POINT(DEFAULT) or SIX_POINT
     private let calibrationCriteria: SeeSo.AccuracyCriteria = .DEFAULT // LOW or DEFAULT or HIGH
     
     private var cancellableSet = Set&lt;AnyCancellable&gt;()
@@ -72,13 +72,13 @@ final class SeeSoGazeTrackManager {
     
     deinit {
         cancellableSet.forEach { $0.cancel() }
-        cancellableSet = \[\]
+        cancellableSet = []
         print("deinit")
     }
     
     private func subscribeInitializationDelegate() {
         cancellableSet.forEach { $0.cancel() }
-        cancellableSet = \[\]
+        cancellableSet = []
 
         // tracker の初期化
         onInitializedSubject
@@ -90,13 +90,13 @@ final class SeeSoGazeTrackManager {
                 }
                 return (tracker, error)
             }
-            .sink(receiveValue: { \[weak self\] tracker, error in
+            .sink(receiveValue: { [weak self] tracker, error in
                 guard let self else {
                     return
                 }
-                guard error == .ERROR\_NONE else {
+                guard error == .ERROR_NONE else {
                     print(error)
-                    assertionFailure("\\(error)")
+                    assertionFailure("\(error)")
                     throw GazeTrackManagerError.initializationError
                 }
                 self.tracker = tracker
@@ -104,7 +104,7 @@ final class SeeSoGazeTrackManager {
                 do {
                     try self.startTracking()
                 } catch {
-                    assertionFailure("\\(error)")
+                    assertionFailure("\(error)")
                     throw error
                 }
             })
@@ -170,7 +170,7 @@ extension SeeSoGazeTrackManager: CalibrationDelegate {
         onCalibrationProgressSubject.send(progress)
     }
     
-    func onCalibrationFinished(calibrationData: \[Double\]) {
+    func onCalibrationFinished(calibrationData: [Double]) {
         onCalibrationFinishedSubject.send(calibrationData)
     }
 }

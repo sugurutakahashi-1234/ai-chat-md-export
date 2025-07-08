@@ -23,7 +23,7 @@ public final class OpenApplicationDriver {
             return
         }
 
-        UIApplication.shared.open(url, options: \[:\])
+        UIApplication.shared.open(url, options: [:])
     }
 }
 #endif

@@ -7,10 +7,10 @@
 ## 👤 ユーザー
 *2024/9/13 14:52:13*
 
-let \_ = try await client.postAppleSubscribe(.init(body: .jsonPayload(receipt\_data: receiptData, app\_id: .davinci)))
+let _ = try await client.postAppleSubscribe(.init(body: .jsonPayload(receipt_data: receiptData, app_id: .davinci)))
         
 
-Member 'init(receipt\_data:app\_id:)' in 'Operations.postAppleSubscribe.Input.Body' produces result of type 'Operations.postAppleSubscribe.Input.Body.jsonPayload', but context expects 'Operations.postAppleSubscribe.Input.Body'
+Member 'init(receipt_data:app_id:)' in 'Operations.postAppleSubscribe.Input.Body' produces result of type 'Operations.postAppleSubscribe.Input.Body.jsonPayload', but context expects 'Operations.postAppleSubscribe.Input.Body'
 
 ---
 

@@ -205,7 +205,7 @@ echo "All tests executed."
 
 $ xcodebuild -list                                                                                                                              127 ↵
 Command line invocation:
-    /Applications/Xcode\_16.0\_beta\_3.app/Contents/Developer/usr/bin/xcodebuild -list
+    /Applications/Xcode_16.0_beta_3.app/Contents/Developer/usr/bin/xcodebuild -list
 
 User defaults from command line:
     IDEPackageSupportUseBuiltinSCM = YES
@@ -316,7 +316,7 @@ echo "All tests executed."
 #!/bin/sh
 
 # スキーマのリストを取得し、「Test」を含むスキーマだけを抽出
-SCHEMAS=$(xcodebuild -list | awk '/Schemes:/,/^\[^ \]/ {if ($1 != "Schemes:" && $1 ~ /Test/) print $1}')
+SCHEMAS=$(xcodebuild -list | awk '/Schemes:/,/^[^ ]/ {if ($1 != "Schemes:" && $1 ~ /Test/) print $1}')
 
 # スキーマごとにテストを実行
 for SCHEMA in $SCHEMAS; do
@@ -396,7 +396,7 @@ for 文を回す前にスキーマの一覧をリストしてほしい
 #!/bin/sh
 
 # スキーマのリストを取得し、「Test」を含むスキーマだけを抽出
-schemas=$(xcodebuild -list | awk '/Schemes:/,/^\[^ \]/ {if ($1 != "Schemes:" && $1 ~ /Test/) print $1}')
+schemas=$(xcodebuild -list | awk '/Schemes:/,/^[^ ]/ {if ($1 != "Schemes:" && $1 ~ /Test/) print $1}')
 
 # スキーマごとにテストを実行
 for schema in $schemas; do
@@ -490,7 +490,7 @@ ViewSnapshotTest だけはテスト対象にしてほしくない。
 #!/bin/sh
 
 # スキーマのリストを取得し、「Test」を含むスキーマだけを抽出
-schemas=$(xcodebuild -list | awk '/Schemes:/,/^\[^ \]/ {if ($1 != "Schemes:" && $1 ~ /Test/) print $1}')
+schemas=$(xcodebuild -list | awk '/Schemes:/,/^[^ ]/ {if ($1 != "Schemes:" && $1 ~ /Test/) print $1}')
 
 # 対象スキーマの一覧を表示
 echo "Schemas to be tested:"

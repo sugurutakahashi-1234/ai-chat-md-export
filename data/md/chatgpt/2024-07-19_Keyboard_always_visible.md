@@ -17,7 +17,7 @@ public struct PhoneNumberInputView&lt;Dependency: RootDIContainerDependency&gt;:
 
     public init(dependency: Dependency) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: PhoneNumberInputPresenter(dependency: dependency))
+        _presenter = .init(wrappedValue: PhoneNumberInputPresenter(dependency: dependency))
     }
 
     public var body: some View {

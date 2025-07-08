@@ -15,7 +15,7 @@ public struct SimpleWebView: UIViewRepresentable {
 
     public init(url: URL, isLoading: Binding&lt;Bool&gt;) {
         self.url = url
-        \_isLoading = isLoading
+        _isLoading = isLoading
     }
 
     public func makeUIView(context: Context) -&gt; WKWebView {
@@ -26,7 +26,7 @@ public struct SimpleWebView: UIViewRepresentable {
         return webView
     }
 
-    public func updateUIView(\_ webView: WKWebView, context \_: Context) {
+    public func updateUIView(_ webView: WKWebView, context _: Context) {
         if url != webView.url {
             let request = URLRequest(url: url)
             webView.load(request)
@@ -41,18 +41,18 @@ public struct SimpleWebView: UIViewRepresentable {
     public class Coordinator: NSObject, WKNavigationDelegate {
         private let parent: SimpleWebView
 
-        public init(\_ parent: SimpleWebView) {
+        public init(_ parent: SimpleWebView) {
             self.parent = parent
             super.init()
         }
 
-        public nonisolated func webView(\_: WKWebView, didStartProvisionalNavigation \_: WKNavigation!) {
+        public nonisolated func webView(_: WKWebView, didStartProvisionalNavigation _: WKNavigation!) {
             Task { @MainActor in
                 parent.isLoading = true
             }
         }
 
-        public nonisolated func webView(\_: WKWebView, didFinish \_: WKNavigation!) {
+        public nonisolated func webView(_: WKWebView, didFinish _: WKNavigation!) {
             Task { @MainActor in
                 parent.isLoading = false
             }

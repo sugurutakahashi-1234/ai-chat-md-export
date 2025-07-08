@@ -505,7 +505,7 @@ public struct SettingView: View {
 ## 👤 ユーザー
 *2023/5/19 3:12:25*
 
-func showModal&lt;T: Navigatable&gt;(\_ item: T) {} は Fruit または Vegetable が来なかったらエラーにしたいんだけどうまく記述できないかな？
+func showModal&lt;T: Navigatable&gt;(_ item: T) {} は Fruit または Vegetable が来なかったらエラーにしたいんだけどうまく記述できないかな？
 
 ---
 

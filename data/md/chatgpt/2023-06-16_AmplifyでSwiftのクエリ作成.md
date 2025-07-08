@@ -21,67 +21,67 @@ enum MeasurementType {
 # タスクインタフェース
 interface IMeasurement {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
+  measurement_type: MeasurementType!
 }
 
 # 調査（お願い）
-type Research @aws\_cognito\_user\_pools {
+type Research @aws_cognito_user_pools {
   id: ID!
   title: String!
-  opening\_at: AWSDateTime!
-  closing\_at: AWSDateTime!
-  image\_uri: String!
+  opening_at: AWSDateTime!
+  closing_at: AWSDateTime!
+  image_uri: String!
   instructions: String!
-  reward\_points: Int!
-  org\_name: String
-  measurement\_types: \[MeasurementType!\]!
-  measurements: \[Measurement!\]!
+  reward_points: Int!
+  org_name: String
+  measurement_types: [MeasurementType!]!
+  measurements: [Measurement!]!
   duration: Int!
 }
 
 # タスク
-type Measurement implements IMeasurement @aws\_cognito\_user\_pools {
+type Measurement implements IMeasurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
+  measurement_type: MeasurementType!
 }
 
 # 動画タスク
-type VideoMeasurement implements IMeasurement @aws\_cognito\_user\_pools {
+type VideoMeasurement implements IMeasurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
-  file\_uri: String!
+  measurement_type: MeasurementType!
+  file_uri: String!
   instructions: String!
-  is\_skip: Boolean!
+  is_skip: Boolean!
 }
 
 # サイト調査タスク
-type WebsiteMeasurement implements IMeasurement @aws\_cognito\_user\_pools {
+type WebsiteMeasurement implements IMeasurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
-  site\_url: AWSURL!
+  measurement_type: MeasurementType!
+  site_url: AWSURL!
   instructions: String!
 }
 
 # アンケートタスク
-type QuestionnaireMeasurement implements IMeasurement @aws\_cognito\_user\_pools {
+type QuestionnaireMeasurement implements IMeasurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
+  measurement_type: MeasurementType!
   name: ID!
-  questions: \[Question!\]!
+  questions: [Question!]!
 }
 
 # アンケート質問
-type Question @aws\_cognito\_user\_pools {
+type Question @aws_cognito_user_pools {
   id: ID!
   title: String!
   order: Int!
@@ -92,7 +92,7 @@ type Question @aws\_cognito\_user\_pools {
 # アンケート回答タイプ
 enum ConstraintType {
   textarea
-  single\_select
+  single_select
 }
 
 # アンケート制約
@@ -104,40 +104,40 @@ interface IConstraint {
 }
 
 # テキスト自由記述制約（type=textarea）
-type TextConstraint implements IConstraint @aws\_cognito\_user\_pools {
+type TextConstraint implements IConstraint @aws_cognito_user_pools {
   type: ConstraintType!
-  min\_length: Int
-  max\_length: Int
+  min_length: Int
+  max_length: Int
 }
 
-# 単一選択肢制約（type=single\_select）
-type SingleSelectConstraint implements IConstraint @aws\_cognito\_user\_pools {
+# 単一選択肢制約（type=single_select）
+type SingleSelectConstraint implements IConstraint @aws_cognito_user_pools {
   type: ConstraintType!
-  options: \[String!\]!
+  options: [String!]!
 }
 
 # アンケート回答
-type Answer @aws\_cognito\_user\_pools {
-  question\_id: ID!
+type Answer @aws_cognito_user_pools {
+  question_id: ID!
   value: String!
 }
 
 # インタビュータスク
-type InterviewMeasurement implements IMeasurement @aws\_cognito\_user\_pools {
+type InterviewMeasurement implements IMeasurement @aws_cognito_user_pools {
   id: ID!
-  research\_id: ID!
+  research_id: ID!
   order: Int!
-  measurement\_type: MeasurementType!
+  measurement_type: MeasurementType!
 }
 
 # セッション（タスク実行結果）
-type Session @aws\_cognito\_user\_pools {
+type Session @aws_cognito_user_pools {
   id: ID!
   success: Boolean!
 }
 
 # ユーザ
-type User @aws\_cognito\_user\_pools {
+type User @aws_cognito_user_pools {
   id: ID!
   name: String!
   email: AWSEmail!
@@ -146,71 +146,71 @@ type User @aws\_cognito\_user\_pools {
 
 # 旧: ユーザ属性
 type UserAttribute
-  @aws\_cognito\_user\_pools
+  @aws_cognito_user_pools
   @deprecated(reason: "Use UserAttributes") {
-  user\_id: ID!
-  date\_of\_birth: String!
+  user_id: ID!
+  date_of_birth: String!
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
   device: String
 }
 
 # ユーザ属性
-type UserAttributes @aws\_cognito\_user\_pools {
-  user\_id: ID!
-  date\_of\_birth: AWSDate!
+type UserAttributes @aws_cognito_user_pools {
+  user_id: ID!
+  date_of_birth: AWSDate!
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
 }
 
 # ユーザ属性コンテンツ
-type UserAttributeContents @aws\_cognito\_user\_pools {
-  genders: \[String!\]!
-  occupations: \[String!\]!
-  industries: \[String!\]!
-  educations: \[String!\]!
-  annual\_incomes: \[String!\]!
-  residence\_types: \[String!\]!
-  locations: \[String!\]!
-  marital\_statuses: \[String!\]!
-  household\_sizes: \[String!\]!
+type UserAttributeContents @aws_cognito_user_pools {
+  genders: [String!]!
+  occupations: [String!]!
+  industries: [String!]!
+  educations: [String!]!
+  annual_incomes: [String!]!
+  residence_types: [String!]!
+  locations: [String!]!
+  marital_statuses: [String!]!
+  household_sizes: [String!]!
 }
 
 # ポイント履歴
-type PointHistory @aws\_cognito\_user\_pools {
+type PointHistory @aws_cognito_user_pools {
   id: ID!
-  created\_at: AWSDateTime!
-  org\_name: String
-  research\_title: String!
+  created_at: AWSDateTime!
+  org_name: String
+  research_title: String!
   point: Int!
 }
 
 # 旧: ユーザ属性登録Input
 input CreateUserAttribute @deprecated(reason: "Use CreateUserAttributeInput") {
-  user\_name: String!
-  user\_email: String!
-  date\_of\_birth: AWSDate!
+  user_name: String!
+  user_email: String!
+  date_of_birth: AWSDate!
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
   device: String @deprecated(reason: "Use Device.name")
@@ -218,16 +218,16 @@ input CreateUserAttribute @deprecated(reason: "Use CreateUserAttributeInput") {
 
 # 旧: ユーザ属性更新Input
 input UpdateUserAttribute @deprecated(reason: "Use UpdateUserAttributeInput") {
-  user\_id: ID!
-  user\_name: String
-  date\_of\_birth: AWSDate
+  user_id: ID!
+  user_name: String
+  date_of_birth: AWSDate
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
   device: String @deprecated(reason: "Use Device.name")
@@ -240,99 +240,99 @@ input UpdateUserInput {
 
 # ユーザ属性登録Input
 input CreateUserAttributeInput {
-  date\_of\_birth: AWSDate!
+  date_of_birth: AWSDate!
   gender: String
-  annual\_income: String
+  annual_income: String
   occupation: String
   industry: String
-  marital\_status: String
-  residence\_type: String
-  household\_size: String
+  marital_status: String
+  residence_type: String
+  household_size: String
   location: String
   education: String
 }
 
 # ユーザ属性更新Input
 input UpdateUserAttributeInput {
-  date\_of\_birth: AWSDate!
+  date_of_birth: AWSDate!
   gender: String!
-  annual\_income: String!
+  annual_income: String!
   occupation: String!
   industry: String!
-  marital\_status: String!
-  residence\_type: String!
-  household\_size: String!
+  marital_status: String!
+  residence_type: String!
+  household_size: String!
   location: String!
   education: String!
 }
 
 # アンケート回答Input
 input AnswerInput {
-  question\_id: ID!
+  question_id: ID!
   value: String!
 }
 
 # アンケートタスク結果登録Input
 input CreateQuestionnaireSessionInput {
-  questionnaire\_id: ID!
-  answers: \[AnswerInput!\]!
+  questionnaire_id: ID!
+  answers: [AnswerInput!]!
 }
 
 # インタビュータスク結果登録Input
 input CreateInterviewSessionInput {
-  interview\_id: ID!
+  interview_id: ID!
 }
 
 ## Query ##
-type Query @aws\_cognito\_user\_pools {
-  getUser(id: String!): User @deprecated(reason: "Use get\_user")
-  getResearch(id: String!): Research @deprecated(reason: "Use get\_research")
-  listResearches(id: String!, MeasurementType: String): \[Research\]
-    @deprecated(reason: "Use list\_researches")
+type Query @aws_cognito_user_pools {
+  getUser(id: String!): User @deprecated(reason: "Use get_user")
+  getResearch(id: String!): Research @deprecated(reason: "Use get_research")
+  listResearches(id: String!, MeasurementType: String): [Research]
+    @deprecated(reason: "Use list_researches")
   getUserAttributeContents: UserAttributeContents
-    @deprecated(reason: "Use get\_user\_attribute\_contents")
+    @deprecated(reason: "Use get_user_attribute_contents")
   getUserAttribute(id: String!): UserAttribute
-    @deprecated(reason: "Use get\_user\_attributes")
+    @deprecated(reason: "Use get_user_attributes")
   # ユーザ情報取得(ログインユーザ)
-  get\_user: User
+  get_user: User
   # ユーザ属性コンテンツ取得
-  get\_user\_attribute\_contents: UserAttributeContents
+  get_user_attribute_contents: UserAttributeContents
   # ユーザ属性情報取得(ログインユーザ)
-  get\_user\_attributes: UserAttributes
+  get_user_attributes: UserAttributes
   # お願い一覧取得
-  list\_researches(MeasurementType: String): \[Research!\]!
+  list_researches(MeasurementType: String): [Research!]!
   # お願い詳細情報取得
-  get\_research(id: String!): Research
+  get_research(id: String!): Research
   # 動画タスク情報取得
-  get\_video\_measurement(id: String!): VideoMeasurement
+  get_video_measurement(id: String!): VideoMeasurement
   # サイト調査タスク情報取得
-  get\_website\_measurement(id: String!): WebsiteMeasurement
+  get_website_measurement(id: String!): WebsiteMeasurement
   # アンケートタスク情報取得
-  get\_questionnaire\_measurement(id: String!): QuestionnaireMeasurement
+  get_questionnaire_measurement(id: String!): QuestionnaireMeasurement
   # インタビュータスク情報取得
-  get\_interview\_measurement(id: String!): InterviewMeasurement
+  get_interview_measurement(id: String!): InterviewMeasurement
   # ポイント履歴取得(ログインユーザ)
-  list\_point\_histories: \[PointHistory!\]!
+  list_point_histories: [PointHistory!]!
 }
 
 ## Mutation ##
-type Mutation @aws\_cognito\_user\_pools {
+type Mutation @aws_cognito_user_pools {
   createUserAttribute(input: CreateUserAttribute!): UserAttribute
-    @deprecated(reason: "Use create\_user\_attributes")
+    @deprecated(reason: "Use create_user_attributes")
   updateUserAttribute(input: UpdateUserAttribute!): UserAttribute
-    @deprecated(reason: "Use update\_user\_attributes")
+    @deprecated(reason: "Use update_user_attributes")
   # ユーザ情報更新(ログインユーザ)
-  update\_user(input: UpdateUserInput!): User!
+  update_user(input: UpdateUserInput!): User!
   # ユーザ属性情報登録(ログインユーザ)
-  create\_user\_attributes(input: CreateUserAttributeInput!): UserAttributes!
+  create_user_attributes(input: CreateUserAttributeInput!): UserAttributes!
   # ユーザ属性情報更新(ログインユーザ)
-  update\_user\_attributes(input: UpdateUserAttributeInput!): UserAttributes!
+  update_user_attributes(input: UpdateUserAttributeInput!): UserAttributes!
   # アンケートタスク結果登録
-  create\_questionnaire\_session(
+  create_questionnaire_session(
     input: CreateQuestionnaireSessionInput!
   ): Session!
   # インタビュータスク結果登録
-  create\_interview\_session(input: CreateInterviewSessionInput!): Session!
+  create_interview_session(input: CreateInterviewSessionInput!): Session!
 }
 
 ## Schema ##
@@ -426,23 +426,23 @@ Amplify.API.query(request: .get(Research.self, byId: researchId)) { event in
 以下のようなクエリを生成したい
 
 query MyQuery {
-  list\_researches(MeasurementType: "") {
+  list_researches(MeasurementType: "") {
     id
     title
-    reward\_points
-    org\_name
-    opening\_at
+    reward_points
+    org_name
+    opening_at
     measurements {
       id
-      measurement\_type
+      measurement_type
       order
-      research\_id
+      research_id
     }
-    measurement\_types
+    measurement_types
     instructions
-    image\_uri
+    image_uri
     duration
-    closing\_at
+    closing_at
   }
 }
 
@@ -638,7 +638,7 @@ Amplify.API.query(request: request) { result in
 
 ごめん他のも一緒に混ぜたいので
 
-where ResponseType == \[Research\] {とはしなくてもいけるかな
+where ResponseType == [Research] {とはしなくてもいけるかな
 
 ---
 
@@ -715,11 +715,11 @@ Amplify.API.query(request: request) { result in
 ## 🤖 アシスタント
 *2023/6/16 10:22:12*
 
-ランタイムエラーが発生する主な理由は、GraphQLRequestが期待するレスポンスの型（ここでは`\[Research\]`）が、実際のサーバーから返されるレスポンスの型と一致しない場合です。GraphQLはタイプセーフな言語であるため、クエリの実行時に期待するレスポンスの型と実際のレスポンスの型が一致しなければなりません。
+ランタイムエラーが発生する主な理由は、GraphQLRequestが期待するレスポンスの型（ここでは`[Research]`）が、実際のサーバーから返されるレスポンスの型と一致しない場合です。GraphQLはタイプセーフな言語であるため、クエリの実行時に期待するレスポンスの型と実際のレスポンスの型が一致しなければなりません。
 
-したがって、サーバーが返すレスポンスが`\[Research\]`型でない場合、クエリの実行中にデコードエラーが発生し、ランタイムエラーとなります。
+したがって、サーバーが返すレスポンスが`[Research]`型でない場合、クエリの実行中にデコードエラーが発生し、ランタイムエラーとなります。
 
-例えば、`ResponseType`を`\[Research\]`と定義しているが、実際にサーバーから返されるレスポンスは異なる型（例えば、単一の`Research`型やまったく異なる型）である場合、ランタイムエラーが発生します。このような場合、クエリのレスポンスを正しく解析できず、クラッシュやエラーを引き起こす可能性があります。
+例えば、`ResponseType`を`[Research]`と定義しているが、実際にサーバーから返されるレスポンスは異なる型（例えば、単一の`Research`型やまったく異なる型）である場合、ランタイムエラーが発生します。このような場合、クエリのレスポンスを正しく解析できず、クラッシュやエラーを引き起こす可能性があります。
 
 ---
 
@@ -727,20 +727,20 @@ Amplify.API.query(request: request) { result in
 *2023/6/16 10:28:26*
 
 ちなみに以下のようなエラーが起きてしまったのだけれどもどうして、
-2023-06-16 10:27:30.866698+0900 EmomilAppDevelop\[68097:5016920\] \[network\] \[error\] Amplify API Error listResearches(): GraphQLResponseError&lt;Array&lt;Research&gt;&gt;: Failed to decode GraphQL response to the `ResponseType` Array&lt;Research&gt;
+2023-06-16 10:27:30.866698+0900 EmomilAppDevelop[68097:5016920] [network] [error] Amplify API Error listResearches(): GraphQLResponseError&lt;Array&lt;Research&gt;&gt;: Failed to decode GraphQL response to the `ResponseType` Array&lt;Research&gt;
 Recovery suggestion: Failed to transform to `ResponseType`.
 Take a look at the `RawGraphQLResponse` and underlying error to see where it failed to decode.
 Caused by:
 APIError: typeMisMatch type: Array&lt;Any&gt;
 Caused by:
-typeMismatch(Swift.Array&lt;Any&gt;, Swift.DecodingError.Context(codingPath: \[\], debugDescription: "Expected to decode Array&lt;Any&gt; but found a dictionary instead.", underlyingError: nil))
-2023-06-16 10:27:30.866972+0900 EmomilAppDevelop\[68097:5016645\] \[network\] \[default\] error: GraphQLResponseError&lt;Array&lt;Research&gt;&gt;: Failed to decode GraphQL response to the `ResponseType` Array&lt;Research&gt;
+typeMismatch(Swift.Array&lt;Any&gt;, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array&lt;Any&gt; but found a dictionary instead.", underlyingError: nil))
+2023-06-16 10:27:30.866972+0900 EmomilAppDevelop[68097:5016645] [network] [default] error: GraphQLResponseError&lt;Array&lt;Research&gt;&gt;: Failed to decode GraphQL response to the `ResponseType` Array&lt;Research&gt;
 Recovery suggestion: Failed to transform to `ResponseType`.
 Take a look at the `RawGraphQLResponse` and underlying error to see where it failed to decode.
 Caused by:
 APIError: typeMisMatch type: Array&lt;Any&gt;
 Caused by:
-typeMismatch(Swift.Array&lt;Any&gt;, Swift.DecodingError.Context(codingPath: \[\], debugDescription: "Expected to decode Array&lt;Any&gt; but found a dictionary instead.", underlyingError: nil))
+typeMismatch(Swift.Array&lt;Any&gt;, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array&lt;Any&gt; but found a dictionary instead.", underlyingError: nil))
 
 ---
 
@@ -749,9 +749,9 @@ typeMismatch(Swift.Array&lt;Any&gt;, Swift.DecodingError.Context(codingPath: \[\
 
 このエラーメッセージは、SwiftがGraphQLレスポンスをデコード（変換）しようとした際に、予期した型（`Array&lt;Research&gt;`）と実際のレスポンス型が一致しなかったことを示しています。
 
-エラーメッセージによれば、`Expected to decode Array&lt;Any&gt; but found a dictionary instead.`とあります。これは、Swiftが`Array&lt;Any&gt;`型のデータを期待していたにもかかわらず、実際に受け取ったデータが辞書型（`Dictionary`または`\[String: Any\]`）であったために、デコードに失敗したことを示しています。
+エラーメッセージによれば、`Expected to decode Array&lt;Any&gt; but found a dictionary instead.`とあります。これは、Swiftが`Array&lt;Any&gt;`型のデータを期待していたにもかかわらず、実際に受け取ったデータが辞書型（`Dictionary`または`[String: Any]`）であったために、デコードに失敗したことを示しています。
 
-ここで、Swiftにおける`Array&lt;Any&gt;`は任意の型の要素を持つ配列を意味し、`Dictionary`または`\[String: Any\]`はキーが文字列で、値が任意の型である辞書型を意味します。
+ここで、Swiftにおける`Array&lt;Any&gt;`は任意の型の要素を持つ配列を意味し、`Dictionary`または`[String: Any]`はキーが文字列で、値が任意の型である辞書型を意味します。
 
 このエラーが発生した理由として考えられるものとしては、GraphQLサーバーからのレスポンスが、Swiftが期待した`Array&lt;Research&gt;`型ではなく、辞書型であった可能性があります。つまり、GraphQLサーバーから返されるデータの構造が、Swiftのデコード処理が期待する構造と一致していないためにエラーが発生したと考えられます。
 
@@ -768,65 +768,65 @@ typeMismatch(Swift.Array&lt;Any&gt;, Swift.DecodingError.Context(codingPath: \[\
 
 {
   "data": {
-    "list\_researches": \[
+    "list_researches": [
       {
         "id": "806424e6-f571-48b1-9051-12c1917e24e3",
         "title": "アパレルの広告CM",
-        "reward\_points": 100,
-        "org\_name": "株式会社エモミール",
-        "opening\_at": "2023-04-01T00:00:01.000Z",
-        "measurements": \[
+        "reward_points": 100,
+        "org_name": "株式会社エモミール",
+        "opening_at": "2023-04-01T00:00:01.000Z",
+        "measurements": [
           {
             "id": "acc0ee2b-8756-47ae-839d-82273a16b72f",
-            "measurement\_type": "video",
+            "measurement_type": "video",
             "order": 1,
-            "research\_id": "806424e6-f571-48b1-9051-12c1917e24e3"
+            "research_id": "806424e6-f571-48b1-9051-12c1917e24e3"
           },
           {
             "id": "794d9ba8-ea3f-4451-bb91-3d2810aaaeca",
-            "measurement\_type": "video",
+            "measurement_type": "video",
             "order": 2,
-            "research\_id": "806424e6-f571-48b1-9051-12c1917e24e3"
+            "research_id": "806424e6-f571-48b1-9051-12c1917e24e3"
           },
           {
             "id": "ee84910e-ea50-44a4-96c7-8979ac286c48",
-            "measurement\_type": "website",
+            "measurement_type": "website",
             "order": 3,
-            "research\_id": "806424e6-f571-48b1-9051-12c1917e24e3"
+            "research_id": "806424e6-f571-48b1-9051-12c1917e24e3"
           }
-        \],
-        "measurement\_types": \[
+        ],
+        "measurement_types": [
           "video",
           "website"
-        \],
+        ],
         "instructions": "再生されるCMを最後まで見てください",
-        "image\_uri": "/emomil-movie-image.png",
+        "image_uri": "/emomil-movie-image.png",
         "duration": 239,
-        "closing\_at": "2023-07-15T23:59:59.000Z"
+        "closing_at": "2023-07-15T23:59:59.000Z"
       },
       {
         "id": "206f19fb-d239-42d4-a01b-daa31ea5357f",
         "title": "ポイントサービスの紹介ページ",
-        "reward\_points": 200,
-        "org\_name": null,
-        "opening\_at": "2023-04-15T00:00:01.000Z",
-        "measurements": \[
+        "reward_points": 200,
+        "org_name": null,
+        "opening_at": "2023-04-15T00:00:01.000Z",
+        "measurements": [
           {
             "id": "9b27b9c2-4209-492b-9a82-6ac07202d036",
-            "measurement\_type": "website",
+            "measurement_type": "website",
             "order": 1,
-            "research\_id": "206f19fb-d239-42d4-a01b-daa31ea5357f"
+            "research_id": "206f19fb-d239-42d4-a01b-daa31ea5357f"
           }
-        \],
-        "measurement\_types": \[
+        ],
+        "measurement_types": [
           "website"
-        \],
+        ],
         "instructions": "「エモミル」のサイトを見てください",
-        "image\_uri": "/emomil-web-image.png",
+        "image_uri": "/emomil-web-image.png",
         "duration": 180,
-        "closing\_at": "2023-07-01T23:59:59.000Z"
+        "closing_at": "2023-07-01T23:59:59.000Z"
       }
-    \]
+    ]
   }
 }
 

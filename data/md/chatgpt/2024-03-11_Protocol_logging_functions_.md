@@ -9,7 +9,7 @@
 
 以下をprotocolで定義してほしい。
 
-public func debugLog(\_ message: String = "", level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
+public func debugLog(_ message: String = "", level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.debug(.init(message: message)), level: level, file: file, function: function, line: line)
     }
 
@@ -29,14 +29,14 @@ public func debugLog(\_ message: String = "", level: LogLevel = .info, file: Str
         log(.disappearScreen(.init(screenName: file.lastPathComponent.replacingOccurrences(of: "Presenter.swift", with: "").toSnakeCase)), level: level, file: file, function: function, line: line)
     }
 
-    public func errorLog(\_ appError: AppError?, level: LogLevel = .error, file: String = #filePath, function: String = #function, line: Int = #line) {
+    public func errorLog(_ appError: AppError?, level: LogLevel = .error, file: String = #filePath, function: String = #function, line: Int = #line) {
         guard let appError else {
             return
         }
         log(.error(.init(appError: appError, errorName: appError.name)), level: level, file: file, function: function, line: line)
     }
 
-    public func errorLog(\_ message: String, level: LogLevel = .error, file: String = #filePath, function: String = #function, line: Int = #line) {
+    public func errorLog(_ message: String, level: LogLevel = .error, file: String = #filePath, function: String = #function, line: Int = #line) {
         let appError: AppError = .customError(message)
         log(.error(.init(appError: appError, errorName: appError.name)), level: level, file: file, function: function, line: line)
     }

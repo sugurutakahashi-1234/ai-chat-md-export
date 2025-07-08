@@ -34,21 +34,21 @@ Objective-C
 
 @interface IncompleteTypeConsumer1 : NSObject
 @property id&lt;ForwardDeclaredProtocol&gt; propertyUsingAForwardDeclaredProtocol1;
-@property ForwardDeclaredInterface \*propertyUsingAForwardDeclaredInterface1;
+@property ForwardDeclaredInterface *propertyUsingAForwardDeclaredInterface1;
 - (id)init;
-- (NSObject&lt;ForwardDeclaredProtocol&gt; \*)methodReturningForwardDeclaredProtocol1;
-- (ForwardDeclaredInterface \*)methodReturningForwardDeclaredInterface1;
+- (NSObject&lt;ForwardDeclaredProtocol&gt; *)methodReturningForwardDeclaredProtocol1;
+- (ForwardDeclaredInterface *)methodReturningForwardDeclaredInterface1;
 - (void)methodTakingAForwardDeclaredProtocol1:
     (id&lt;ForwardDeclaredProtocol&gt;)param;
 - (void)methodTakingAForwardDeclaredInterface1:
-            (ForwardDeclaredInterface \*)param;
+            (ForwardDeclaredInterface *)param;
 @end
 
-ForwardDeclaredInterface \*CFunctionReturningAForwardDeclaredInterface1();
+ForwardDeclaredInterface *CFunctionReturningAForwardDeclaredInterface1();
 void CFunctionTakingAForwardDeclaredInterface1(
-    ForwardDeclaredInterface \*param);
+    ForwardDeclaredInterface *param);
 
-NSObject&lt;ForwardDeclaredProtocol&gt; \*CFunctionReturningAForwardDeclaredProtocol1();
+NSObject&lt;ForwardDeclaredProtocol&gt; *CFunctionReturningAForwardDeclaredProtocol1();
 void CFunctionTakingAForwardDeclaredProtocol1(
     id&lt;ForwardDeclaredProtocol&gt; param);
 Swift
@@ -70,20 +70,20 @@ Proposed solution
 We propose the following representation for forward declared Objective-C interfaces and protocols in Swift:
 
 // @class Foo turns into
-@available(\*, unavailable, message: “This Objective-C class has only been forward declared; import its owning module to use it”)
+@available(*, unavailable, message: “This Objective-C class has only been forward declared; import its owning module to use it”)
 class Foo : NSObject {}
 
 // @protocol Bar turns into
-@available(\*, unavailable, message: “This Objective-C protocol has only been forward declared; import its owning module to use it”)
+@available(*, unavailable, message: “This Objective-C protocol has only been forward declared; import its owning module to use it”)
 protocol Bar : NSObjectProtocol {}
 The idea is to introduce the minimal change that will make Objective-C APIs usable in a predictable safe manner.
 
 The aforementioned Objective-C API with this change looks like this from Swift:
 
-@available(\*, unavailable, message: "This Objective-C class has only been forward-declared; import its owning module to use it")
+@available(*, unavailable, message: "This Objective-C class has only been forward-declared; import its owning module to use it")
 class ForwardDeclaredInterface {
 }
-@available(\*, unavailable, message: "This Objective-C protocol has only been forward-declared; import its owning module to use it")
+@available(*, unavailable, message: "This Objective-C protocol has only been forward-declared; import its owning module to use it")
 protocol ForwardDeclaredProtocol : NSObjectProtocol {
 }
 class IncompleteTypeConsumer1 : NSObject {
@@ -92,24 +92,24 @@ class IncompleteTypeConsumer1 : NSObject {
   init!()
   func methodReturningForwardDeclaredProtocol1() -&gt; ForwardDeclaredProtocol!
   func methodReturningForwardDeclaredInterface1() -&gt; ForwardDeclaredInterface!
-  func methodTakingAForwardDeclaredProtocol1(\_ param: ForwardDeclaredProtocol!)
-  func methodTakingAForwardDeclaredInterface1(\_ param: ForwardDeclaredInterface!)
+  func methodTakingAForwardDeclaredProtocol1(_ param: ForwardDeclaredProtocol!)
+  func methodTakingAForwardDeclaredInterface1(_ param: ForwardDeclaredInterface!)
 }
 func CFunctionReturningAForwardDeclaredInterface1() -&gt; ForwardDeclaredInterface!
-func CFunctionTakingAForwardDeclaredInterface1(\_ param: ForwardDeclaredInterface!)
+func CFunctionTakingAForwardDeclaredInterface1(_ param: ForwardDeclaredInterface!)
 func CFunctionReturningAForwardDeclaredProtocol1() -&gt; ForwardDeclaredProtocol!
-func CFunctionTakingAForwardDeclaredProtocol1(\_ param: ForwardDeclaredProtocol!)
+func CFunctionTakingAForwardDeclaredProtocol1(_ param: ForwardDeclaredProtocol!)
 More usage examples can be found in these tests introduced here: swiftlang/swift#61606
 
 Detailed design
 Modifications lie almost exclusively in ClangImporter -- specifically in SwiftDeclConverter. If asked to convert a clang::ObjCInterfaceDecl or clang::ObjCProtocolDecl with no definition SwiftDeclConverter will now return a placeholder type instead of bailing. These placeholder types are as described:
 
 // @class Foo turns into
-@available(\*, unavailable, message: “This Objective-C class has only been forward declared; import its owning module to use it”)
+@available(*, unavailable, message: “This Objective-C class has only been forward declared; import its owning module to use it”)
 class Foo : NSObject {}
 
 // @protocol Bar turns into
-@available(\*, unavailable, message: “This Objective-C protocol has only been forward declared; import its owning module to use it”)
+@available(*, unavailable, message: “This Objective-C protocol has only been forward declared; import its owning module to use it”)
 protocol Bar : NSObjectProtocol {}
 Permitted usages of these types are intentionally limited. You will be able to use Objective-C and C declarations that refer to these types without issue. You will be able to pass around instances of these incomplete types from Swift to Objective-C and vice versa.
 
@@ -189,21 +189,21 @@ Thank you to @drodriguez and @rmaz for h
 ## 🤖 アシスタント
 *2024/10/28 16:06:06*
 
-Swift 5.9の新機能として導入された、Objective-Cの\*\*forward declaration\*\*をSwiftで扱う提案「SE-0384」では、次のような状況で対応が必要です。
+Swift 5.9の新機能として導入された、Objective-Cの**forward declaration**をSwiftで扱う提案「SE-0384」では、次のような状況で対応が必要です。
 
-### 1. \*\*Objective-C APIをSwiftで利用する場合\*\*
+### 1. **Objective-C APIをSwiftで利用する場合**
    - Objective-CのAPIで使用されているforward declarationがあると、その型やプロトコルがSwiftでインポートできず、一部のAPIがSwiftから見えなくなることがあります。このような場合にSwiftでプレースホルダー型を生成することで、APIの可視性を向上させる必要があります。
 
-### 2. \*\*循環依存を避けるためにforward declarationを使っている場合\*\*
+### 2. **循環依存を避けるためにforward declarationを使っている場合**
    - Objective-Cでは循環依存の回避やビルドパフォーマンス向上のためにforward declarationがよく使われます。Swiftではこれらの型が見えないため、既存のライブラリをSwiftで使用する際にAPIが不完全になることがあります。この問題を解決するための対応が必要です。
 
-### 3. \*\*Objective-CとSwift間の型の相互運用を行う場合\*\*
+### 3. **Objective-CとSwift間の型の相互運用を行う場合**
    - SwiftとObjective-Cの型間のデータの受け渡しやプロトコルの適用が行われる場合に、forward declarationされた型の存在が障害となることがあります。これを回避するため、Swift側でプレースホルダー型を使って型の相互運用を改善することが推奨されます。
 
-### 4. \*\*Swift 6以降のコードベースに移行する場合\*\*
+### 4. **Swift 6以降のコードベースに移行する場合**
    - Swift 6では、この機能がデフォルトで有効になります。移行作業を行う場合、この新機能の影響を考慮し、forward declarationされた型をインポートするか、プレースホルダー型を利用する必要があります。
 
-### 5. \*\*ClangImporterの振る舞いに対応する場合\*\*
+### 5. **ClangImporterの振る舞いに対応する場合**
    - ClangImporterはLazyでインポートのキャッシュを行うため、forward declarationされた型が原因で不完全な型がSwiftに現れる場合があります。この提案により、不完全な型を示すプレースホルダー型が導入され、より直感的なエラーメッセージや診断が提供されます。
 
 このような場面で、forward declarationに対する適切な対応が必要となります。特に、大規模なObjective-CコードベースをSwiftに移行する際に重要な変更点となります。

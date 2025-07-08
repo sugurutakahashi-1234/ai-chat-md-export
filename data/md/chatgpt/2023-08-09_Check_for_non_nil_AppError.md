@@ -126,7 +126,7 @@ public extension View {
     ) -&gt; some View {
         if let appError {
             // SwiftUI 3 からできるようになった View 内でのログの出力方法
-            let \_ = LoggerContainer.log(.showAlert(.init(
+            let _ = LoggerContainer.log(.showAlert(.init(
                 appError: appError,
                 errorName: appError.name,
                 alertTitle: appError.alertBody.title,

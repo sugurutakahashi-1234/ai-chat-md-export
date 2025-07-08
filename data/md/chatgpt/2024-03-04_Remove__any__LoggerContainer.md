@@ -16,7 +16,7 @@ public actor LoggerContainer {
         self.osLogDriver = osLogDriver
     }
     
-    public static func log(\_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    public static func log(_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         osLogDriver?.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
     }
 }

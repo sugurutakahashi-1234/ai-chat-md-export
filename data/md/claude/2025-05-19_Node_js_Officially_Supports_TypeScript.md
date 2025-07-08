@@ -180,9 +180,9 @@ ESM使用時の主な注意点：
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \\"Error: no test specified\\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
@@ -193,12 +193,12 @@ ESM使用時の主な注意点：
 
 {
   "compilerOptions": {
-    "target": "ES2024",                                  /\* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. \*/
-    "module": "commonjs",                                /\* Specify what module code is generated. \*/
-    "esModuleInterop": true,                             /\* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. \*/
-    "forceConsistentCasingInFileNames": true,            /\* Ensure that casing is correct in imports. \*/
-    "strict": true,                                      /\* Enable all strict type-checking options. \*/
-    "skipLibCheck": true                                 /\* Skip type checking all .d.ts files. \*/
+    "target": "ES2024",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   }
 }
 
@@ -962,61 +962,61 @@ TypeScriptファイルを実行する2つの方法、`tsx src/index.ts` と `nod
 
 | 機能 | tsx src/index.ts | node src/index.ts |
 |------|-----------------|-------------------|
-| \*\*型チェック\*\* | オプションで可能 | 行わない |
-| \*\*高度なTS機能\*\* | 対応（enum, interface, namespace等） | 基本的な型注釈のみ |
-| \*\*実行速度\*\* | 非常に高速 | 高速（型削除のみ） |
-| \*\*エラー表示\*\* | 詳細で読みやすい | 基本的 |
-| \*\*tsconfig.json\*\* | 尊重する | 無視する |
-| \*\*ホットリロード\*\* | `tsx watch` で対応 | 追加ツール必要 |
-| \*\*ライブラリ互換性\*\* | 広範囲 | 制限あり |
-| \*\*デバッグのしやすさ\*\* | ソースマップ対応 | 型削除のみ（空白に置き換え） |
+| **型チェック** | オプションで可能 | 行わない |
+| **高度なTS機能** | 対応（enum, interface, namespace等） | 基本的な型注釈のみ |
+| **実行速度** | 非常に高速 | 高速（型削除のみ） |
+| **エラー表示** | 詳細で読みやすい | 基本的 |
+| **tsconfig.json** | 尊重する | 無視する |
+| **ホットリロード** | `tsx watch` で対応 | 追加ツール必要 |
+| **ライブラリ互換性** | 広範囲 | 制限あり |
+| **デバッグのしやすさ** | ソースマップ対応 | 型削除のみ（空白に置き換え） |
 
 ## どういう場合にどちらを選ぶべきか
 
 ### `tsx src/index.ts` を選ぶべき場合（推奨）
 
-1. \*\*本格的な開発プロジェクト\*\*
+1. **本格的な開発プロジェクト**
    - 実務プロジェクト
    - チーム開発
    - 長期的なメンテナンス要件
 
-2. \*\*型安全性を重視する場合\*\*
+2. **型安全性を重視する場合**
    - エラーを早期に発見したい
    - 複雑なコードベース
 
-3. \*\*高度なTypeScript機能を使う場合\*\*
+3. **高度なTypeScript機能を使う場合**
    - enum、namespace、decorators等を使用
    - 複雑なジェネリクスを使用
 
-4. \*\*IDEとの統合性を重視する場合\*\*
+4. **IDEとの統合性を重視する場合**
    - VSCodeなどと連携して開発
 
 ### `node src/index.ts` を選ぶべき場合
 
-1. \*\*シンプルなスクリプト\*\*
+1. **シンプルなスクリプト**
    - 単純な自動化スクリプト
    - 簡単なプロトタイプ
 
-2. \*\*依存関係を最小化したい場合\*\*
+2. **依存関係を最小化したい場合**
    - 追加パッケージをインストールしたくない
    - システム要件を最小限にしたい
 
-3. \*\*基本的な型注釈だけを使う場合\*\*
+3. **基本的な型注釈だけを使う場合**
    - 複雑な型機能を使わない
    - 主に型ヒントとしてのみTypeScriptを使用
 
-4. \*\*実行速度が最優先の場合\*\*
+4. **実行速度が最優先の場合**
    - 起動時間を極限まで短くしたい
    - 最小限のオーバーヘッド
 
 ## まとめと推奨
 
-\*\*実務的な推奨\*\*: ほとんどの状況では \*\*`tsx src/index.ts`\*\* の使用を推奨します。以下の理由からです：
+**実務的な推奨**: ほとんどの状況では **`tsx src/index.ts`** の使用を推奨します。以下の理由からです：
 
-1. \*\*型安全性\*\*: 開発時のエラー検出が優れており、コードの品質を向上
-2. \*\*機能の豊富さ\*\*: より広範なTypeScript機能がサポート
-3. \*\*開発ツールとの統合\*\*: ホットリロードやデバッグが簡単
-4. \*\*将来性\*\*: より完全なTypeScriptサポートを提供
+1. **型安全性**: 開発時のエラー検出が優れており、コードの品質を向上
+2. **機能の豊富さ**: より広範なTypeScript機能がサポート
+3. **開発ツールとの統合**: ホットリロードやデバッグが簡単
+4. **将来性**: より完全なTypeScriptサポートを提供
 
 `node src/index.ts` の型削除機能は興味深い進展ですが、現時点では本格的な開発よりも、シンプルなユースケースやプロトタイピングに適しています。将来的にはNode.jsのネイティブサポートが改善される可能性はありますが、2025年現在は`tsx`のような専用ツールの方が全体的に優れた開発体験を提供します。
 

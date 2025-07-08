@@ -8,29 +8,29 @@
 *2024/10/30 9:48:05*
 
 {
-  "content\_type": "real\_time\_user\_audio\_video\_asset\_pointer",
-  "expiry\_datetime": null,
-  "frames\_asset\_pointers": \[\],
-  "video\_container\_asset\_pointer": null,
-  "audio\_asset\_pointer": {
-    "expiry\_datetime": null,
-    "content\_type": "audio\_asset\_pointer",
-    "asset\_pointer": "sediment://file\_67218245a8d82002020d969404ba12b1c753012b9aa7bfa60cb8b7f32a6bb1c427d63a0a52aab272d47753ccba02f6d9",
-    "size\_bytes": 25004,
+  "content_type": "real_time_user_audio_video_asset_pointer",
+  "expiry_datetime": null,
+  "frames_asset_pointers": [],
+  "video_container_asset_pointer": null,
+  "audio_asset_pointer": {
+    "expiry_datetime": null,
+    "content_type": "audio_asset_pointer",
+    "asset_pointer": "sediment://file_67218245a8d82002020d969404ba12b1c753012b9aa7bfa60cb8b7f32a6bb1c427d63a0a52aab272d47753ccba02f6d9",
+    "size_bytes": 25004,
     "format": "wav",
     "metadata": {
-      "start\_timestamp": null,
-      "end\_timestamp": null,
-      "pretokenized\_vq": null,
+      "start_timestamp": null,
+      "end_timestamp": null,
+      "pretokenized_vq": null,
       "interruptions": null,
-      "original\_audio\_source": null,
+      "original_audio_source": null,
       "transcription": null,
-      "word\_transcription": null,
+      "word_transcription": null,
       "start": 0,
       "end": 0.52
     }
   },
-  "audio\_start\_timestamp": 1.3511128616519272
+  "audio_start_timestamp": 1.3511128616519272
 }
 == Notes ==
 
@@ -41,19 +41,19 @@
 
 Hey! How can I help you today?
 {
-  "content\_type": "audio\_asset\_pointer",
-  "expiry\_datetime": null,
-  "asset\_pointer": "sediment://file\_67218245a5f020021986f61334f5ff2fc753012b9aa7bfa60cb8b7f32a6bb1c427d63a0a52aab272d47753ccba02f6d9",
-  "size\_bytes": 74444,
+  "content_type": "audio_asset_pointer",
+  "expiry_datetime": null,
+  "asset_pointer": "sediment://file_67218245a5f020021986f61334f5ff2fc753012b9aa7bfa60cb8b7f32a6bb1c427d63a0a52aab272d47753ccba02f6d9",
+  "size_bytes": 74444,
   "format": "wav",
   "metadata": {
-    "start\_timestamp": null,
-    "end\_timestamp": null,
-    "pretokenized\_vq": null,
+    "start_timestamp": null,
+    "end_timestamp": null,
+    "pretokenized_vq": null,
     "interruptions": null,
-    "original\_audio\_source": null,
+    "original_audio_source": null,
     "transcription": null,
-    "word\_transcription": null,
+    "word_transcription": null,
     "start": 0,
     "end": 1.55
   }

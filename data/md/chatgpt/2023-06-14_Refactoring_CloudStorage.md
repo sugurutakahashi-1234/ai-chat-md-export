@@ -24,10 +24,10 @@ public class AmplifyStorageManager: CloudStorageManagerProtocol {
             let uploadTask = Amplify.Storage.uploadData(key: key, data: data)
             Task {
                 for await progress in await uploadTask.progress {
-                    print("Progress: \\(progress)")
+                    print("Progress: \(progress)")
                 }
             }
-            try await print("Completed: \\(uploadTask.value)")
+            try await print("Completed: \(uploadTask.value)")
         } catch {
             throw error
         }
@@ -48,7 +48,7 @@ public struct AnchorDataKey: DataKey {
     }
 
     public var path: String {
-        "/raw/anchors/measurements/\\(measurementId)/users/\\(userId)"
+        "/raw/anchors/measurements/\(measurementId)/users/\(userId)"
     }
 }
 
@@ -62,7 +62,7 @@ public struct EmotionDataKey: DataKey {
     }
 
     public var path: String {
-        "/raw/emotions/measurements/\\(measurementId)/users/\\(userId)"
+        "/raw/emotions/measurements/\(measurementId)/users/\(userId)"
     }
 }
 
@@ -76,7 +76,7 @@ public struct InteractionDataKey: DataKey {
     }
 
     public var path: String {
-        "/raw/interactions/measurements/\\(measurementId)/users/\\(userId)"
+        "/raw/interactions/measurements/\(measurementId)/users/\(userId)"
     }
 }
 
@@ -87,19 +87,19 @@ public enum CloudStorageUploadRequest {
 }
 
 public struct AnchorConverter {
-    static func convertToData(\_: Any) async throws -&gt; Anchor {
+    static func convertToData(_: Any) async throws -&gt; Anchor {
         Anchor()
     }
 }
 
 public struct EmotionConverter {
-    static func convertToData(\_: Any) async throws -&gt; Emotions {
+    static func convertToData(_: Any) async throws -&gt; Emotions {
         Emotions()
     }
 }
 
 public struct InteractionConverter {
-    static func convertToData(\_: Any) async throws -&gt; Interaction {
+    static func convertToData(_: Any) async throws -&gt; Interaction {
         Interaction()
     }
 }
@@ -124,7 +124,7 @@ public class CloudStorageUploadInteractor: CloudStorageUploadInteractorProtocol 
         case .anchor(let key, let data):
             let convertedData = try await AnchorConverter.convertToData(data)
             let serializationMethod: SerializationMethod = UserDefaults.standard.bool(forKey: "isEnableJSONEncode") ? .json : .binaryDelimited
-            let serializedData = try serializeToData(messages: \[convertedData\], serializationMethod: serializationMethod)
+            let serializedData = try serializeToData(messages: [convertedData], serializationMethod: serializationMethod)
             if UserDefaults.standard.bool(forKey: "isEnableLocalBackup") {
                 try saveDataToLocal(data: serializedData, fileName: request.fileName, serializationMethod: serializationMethod)
             }
@@ -132,7 +132,7 @@ public class CloudStorageUploadInteractor: CloudStorageUploadInteractorProtocol 
         case .emotion(let key, let data):
             let convertedData = try await EmotionConverter.convertToData(data)
             let serializationMethod: SerializationMethod = UserDefaults.standard.bool(forKey: "isEnableJSONEncode") ? .json : .binaryDelimited
-            let serializedData = try serializeToData(messages: \[convertedData\], serializationMethod: serializationMethod)
+            let serializedData = try serializeToData(messages: [convertedData], serializationMethod: serializationMethod)
             if UserDefaults.standard.bool(forKey: "isEnableLocalBackup") {
                 try saveDataToLocal(data: serializedData, fileName: request.fileName, serializationMethod: serializationMethod)
             }
@@ -140,7 +140,7 @@ public class CloudStorageUploadInteractor: CloudStorageUploadInteractorProtocol 
         case .interaction(let key, let data):
             let convertedData = try await InteractionConverter.convertToData(data)
             let serializationMethod: SerializationMethod = UserDefaults.standard.bool(forKey: "isEnableJSONEncode") ? .json : .binaryDelimited
-            let serializedData = try serializeToData(messages: \[convertedData\], serializationMethod: serializationMethod)
+            let serializedData = try serializeToData(messages: [convertedData], serializationMethod: serializationMethod)
             if UserDefaults.standard.bool(forKey: "isEnableLocalBackup") {
                 try saveDataToLocal(data: serializedData, fileName: request.fileName, serializationMethod: serializationMethod)
             }
@@ -183,7 +183,7 @@ enum SerializationMethod {
     }
 }
 
-func serializeToData&lt;T: Message&gt;(messages: \[T\], serializationMethod: SerializationMethod) throws -&gt; Data {
+func serializeToData&lt;T: Message&gt;(messages: [T], serializationMethod: SerializationMethod) throws -&gt; Data {
     let data: Data
     switch serializationMethod {
     case .binaryDelimited:
@@ -204,7 +204,7 @@ func saveDataToLocal(data: Data, fileName: String, serializationMethod: Serializ
     }
 }
 
-func serializeToBinaryData&lt;T: Message&gt;(messages: \[T\]) throws -&gt; Data {
+func serializeToBinaryData&lt;T: Message&gt;(messages: [T]) throws -&gt; Data {
     let outputStream = OutputStream.toMemory()
     outputStream.open()
 
@@ -220,13 +220,13 @@ func serializeToBinaryData&lt;T: Message&gt;(messages: \[T\]) throws -&gt; Data 
     outputStream.close()
 
     guard let data = outputStream.property(forKey: .dataWrittenToMemoryStreamKey) as? Data else {
-        throw EncodingError.encodingFailed(NSError(domain: "EncodingError", code: -1, userInfo: \[NSLocalizedDescriptionKey : "Failed to retrieve data from OutputStream"\]))
+        throw EncodingError.encodingFailed(NSError(domain: "EncodingError", code: -1, userInfo: [NSLocalizedDescriptionKey : "Failed to retrieve data from OutputStream"]))
     }
 
     return data
 }
 
-func serializeToJSONData&lt;T: Message&gt;(messages: \[T\]) throws -&gt; Data {
+func serializeToJSONData&lt;T: Message&gt;(messages: [T]) throws -&gt; Data {
     var jsonData = Data()
 
     // エラーを throw するため forEach などは使えない
@@ -370,10 +370,10 @@ public class AmplifyStorageManager: CloudStorageManagerProtocol {
             let uploadTask = Amplify.Storage.uploadData(key: key, data: data)
             Task {
                 for await progress in await uploadTask.progress {
-                    print("Progress: \\(progress)")
+                    print("Progress: \(progress)")
                 }
             }
-            try await print("Completed: \\(uploadTask.value)")
+            try await print("Completed: \(uploadTask.value)")
         } catch {
             throw error
         }
@@ -394,7 +394,7 @@ public struct AnchorDataKey: DataKey {
     }
 
     public var path: String {
-        "/raw/anchors/measurements/\\(measurementId)/users/\\(userId)"
+        "/raw/anchors/measurements/\(measurementId)/users/\(userId)"
     }
 }
 
@@ -408,7 +408,7 @@ public struct EmotionDataKey: DataKey {
     }
 
     public var path: String {
-        "/raw/emotions/measurements/\\(measurementId)/users/\\(userId)"
+        "/raw/emotions/measurements/\(measurementId)/users/\(userId)"
     }
 }
 
@@ -422,7 +422,7 @@ public struct InteractionDataKey: DataKey {
     }
 
     public var path: String {
-        "/raw/interactions/measurements/\\(measurementId)/users/\\(userId)"
+        "/raw/interactions/measurements/\(measurementId)/users/\(userId)"
     }
 }
 
@@ -431,25 +431,25 @@ public struct DomainEmotion {}
 public struct DomainInteraction {}
 
 public enum CloudStorageUploadRequest {
-    case anchor(key: AnchorDataKey, data: \[DomainAnchor\])
-    case emotion(key: EmotionDataKey, data: \[DomainEmotion\])
-    case interaction(key: InteractionDataKey, data: \[DomainInteraction\])
+    case anchor(key: AnchorDataKey, data: [DomainAnchor])
+    case emotion(key: EmotionDataKey, data: [DomainEmotion])
+    case interaction(key: InteractionDataKey, data: [DomainInteraction])
 }
 
 public struct AnchorConverter {
-    static func convertToData(\_: DomainAnchor) throws -&gt; Anchor {
+    static func convertToData(_: DomainAnchor) throws -&gt; Anchor {
         Anchor()
     }
 }
 
 public struct EmotionConverter {
-    static func convertToData(\_: DomainEmotion) throws -&gt; Emotions {
+    static func convertToData(_: DomainEmotion) throws -&gt; Emotions {
         Emotions()
     }
 }
 
 public struct InteractionConverter {
-    static func convertToData(\_: DomainInteraction) throws -&gt; Interaction {
+    static func convertToData(_: DomainInteraction) throws -&gt; Interaction {
         Interaction()
     }
 }
@@ -533,7 +533,7 @@ enum SerializationMethod {
     }
 }
 
-func serializeToData&lt;T: Message&gt;(messages: \[T\], serializationMethod: SerializationMethod) throws -&gt; Data {
+func serializeToData&lt;T: Message&gt;(messages: [T], serializationMethod: SerializationMethod) throws -&gt; Data {
     let data: Data
     switch serializationMethod {
     case .binaryDelimited:
@@ -554,7 +554,7 @@ func saveDataToLocal(data: Data, fileName: String, serializationMethod: Serializ
     }
 }
 
-func serializeToBinaryData&lt;T: Message&gt;(messages: \[T\]) throws -&gt; Data {
+func serializeToBinaryData&lt;T: Message&gt;(messages: [T]) throws -&gt; Data {
     let outputStream = OutputStream.toMemory()
     outputStream.open()
 
@@ -570,13 +570,13 @@ func serializeToBinaryData&lt;T: Message&gt;(messages: \[T\]) throws -&gt; Data 
     outputStream.close()
 
     guard let data = outputStream.property(forKey: .dataWrittenToMemoryStreamKey) as? Data else {
-        throw EncodingError.encodingFailed(NSError(domain: "EncodingError", code: -1, userInfo: \[NSLocalizedDescriptionKey : "Failed to retrieve data from OutputStream"\]))
+        throw EncodingError.encodingFailed(NSError(domain: "EncodingError", code: -1, userInfo: [NSLocalizedDescriptionKey : "Failed to retrieve data from OutputStream"]))
     }
 
     return data
 }
 
-func serializeToJSONData&lt;T: Message&gt;(messages: \[T\]) throws -&gt; Data {
+func serializeToJSONData&lt;T: Message&gt;(messages: [T]) throws -&gt; Data {
     var jsonData = Data()
 
     // エラーを throw するため forEach などは使えない
@@ -1132,9 +1132,9 @@ Serializa Data Upload Interactor この4単語の派生語を入れたい
 もろもろ命名に違和感があるんだけどどう思う❓
 
 public enum CloudStorageUploadRequest {
-    case anchor(key: AnchorDataKey, data: \[DomainAnchor\])
-    case emotion(key: EmotionDataKey, data: \[DomainEmotion\])
-    case interaction(key: InteractionDataKey, data: \[DomainInteraction\])
+    case anchor(key: AnchorDataKey, data: [DomainAnchor])
+    case emotion(key: EmotionDataKey, data: [DomainEmotion])
+    case interaction(key: InteractionDataKey, data: [DomainInteraction])
 }
 
 public protocol SerializedDataUploaderInteractorProtocol {
@@ -1214,9 +1214,9 @@ CloudStorageUploadRequestやDataUploadRequestよりもよいenum名をけんと�
 Interactor名に合わせて、SerializationAndUploadInteractorProtocolの関数名やCloudStorageUploadRequestのenum名をかえてほしい
 
 public enum CloudStorageUploadRequest {
-    case anchor(key: AnchorDataKey, data: \[DomainAnchor\])
-    case emotion(key: EmotionDataKey, data: \[DomainEmotion\])
-    case interaction(key: InteractionDataKey, data: \[DomainInteraction\])
+    case anchor(key: AnchorDataKey, data: [DomainAnchor])
+    case emotion(key: EmotionDataKey, data: [DomainEmotion])
+    case interaction(key: InteractionDataKey, data: [DomainInteraction])
 }
 
 public protocol SerializationAndUploadInteractorProtocol {

@@ -10,7 +10,7 @@
 以下のデコードする記述も作成して欲しい
 
 public extension Encodable {
-    func asDictionary(caseFormat: CaseFormat) -&gt; \[String: Any\] {
+    func asDictionary(caseFormat: CaseFormat) -&gt; [String: Any] {
         let encoder = JSONEncoder()
 
         switch caseFormat {
@@ -22,12 +22,12 @@ public extension Encodable {
 
         do {
             let data = try encoder.encode(self)
-            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? \[String: Any\] else {
-                fatalError("Couldn't convert to \[String: Any\] dictionary")
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                fatalError("Couldn't convert to [String: Any] dictionary")
             }
             return jsonObject
         } catch {
-            fatalError("Encoding failed: \\(error)")
+            fatalError("Encoding failed: \(error)")
         }
     }
 }
@@ -433,7 +433,7 @@ public enum CaseFormat {
 }
 
 public extension Encodable {
-    func asDictionary(caseFormat: CaseFormat) -&gt; \[String: Any\] {
+    func asDictionary(caseFormat: CaseFormat) -&gt; [String: Any] {
         let encoder = JSONEncoder()
 
         switch caseFormat {
@@ -445,18 +445,18 @@ public extension Encodable {
 
         do {
             let data = try encoder.encode(self)
-            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? \[String: Any\] else {
-                fatalError("Couldn't convert to \[String: Any\] dictionary")
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                fatalError("Couldn't convert to [String: Any] dictionary")
             }
             return jsonObject
         } catch {
-            fatalError("Encoding failed: \\(error)")
+            fatalError("Encoding failed: \(error)")
         }
     }
 }
 
 public extension Decodable {
-    static func asStruct(from dictionary: \[String: Any\], caseFormat: CaseFormat) -&gt; Self? {
+    static func asStruct(from dictionary: [String: Any], caseFormat: CaseFormat) -&gt; Self? {
         let decoder = JSONDecoder()
 
         switch caseFormat {
@@ -467,10 +467,10 @@ public extension Decodable {
         }
 
         do {
-            let data = try JSONSerialization.data(withJSONObject: dictionary, options: \[\])
+            let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
             return try decoder.decode(Self.self, from: data)
         } catch {
-            print("デコード失敗: \\(error)")
+            print("デコード失敗: \(error)")
             return nil
         }
     }
@@ -502,12 +502,12 @@ print(Person.asStruct(from: personDict2, caseFormat: .snakeCase)!) // Person(fir
 具体的に：
 
 - `personDict1` は `.original` 形式でエンコードされているので、キーは "firstName" と "lastName" のままです。
-- `personDict2` は `.snakeCase` 形式でエンコードされているので、キーは "first\_name" と "last\_name" に変換されています。
+- `personDict2` は `.snakeCase` 形式でエンコードされているので、キーは "first_name" と "last_name" に変換されています。
 
 次に、これらの辞書をデコードするとき：
 
 - `personDict1` は `.original` 形式でデコードされるので、キー "firstName" と "lastName" をそのまま使用して、`Person` オブジェクトを再構築します。
-- `personDict2` は `.snakeCase` 形式でデコードされるので、キー "first\_name" と "last\_name" が "firstName" と "lastName" に変換され、その後`Person` オブジェクトを再構築します。
+- `personDict2` は `.snakeCase` 形式でデコードされるので、キー "first_name" と "last_name" が "firstName" と "lastName" に変換され、その後`Person` オブジェクトを再構築します。
 
 その結果、両方のデコード操作は同じ`Person`オブジェクトを再構築するため、出力が同じになります。
 
@@ -538,15 +538,15 @@ print(Person.asStruct(from: personDict2, caseFormat: .original)!) // Person(firs
 
 2. `print(Person.asStruct(from: personDict2, caseFormat: .snakeCase)!)`
    
-   `personDict2`は`.snakeCase`形式でエンコードされているため、キーは"first\_name"および"last\_name"に変換されています。`.snakeCase`でデコードすると、これらのキーは"firstName"および"lastName"に変換され、その後`Person`オブジェクトを正しく再構築します。
+   `personDict2`は`.snakeCase`形式でエンコードされているため、キーは"first_name"および"last_name"に変換されています。`.snakeCase`でデコードすると、これらのキーは"firstName"および"lastName"に変換され、その後`Person`オブジェクトを正しく再構築します。
 
 3. `print(Person.asStruct(from: personDict1, caseFormat: .snakeCase)!)`
    
-   これは少しトリッキーです。`personDict1`はオリジナルのキーでエンコードされていますが、`.snakeCase`でデコードを試みています。Swiftの`JSONDecoder`の動作のおかげで、キーがすでにCamelCase（firstName, lastName）である場合、snake\_case（first\_name, last\_name）に変換する際にキーが変わらないため、デコードが成功します。
+   これは少しトリッキーです。`personDict1`はオリジナルのキーでエンコードされていますが、`.snakeCase`でデコードを試みています。Swiftの`JSONDecoder`の動作のおかげで、キーがすでにCamelCase（firstName, lastName）である場合、snake_case（first_name, last_name）に変換する際にキーが変わらないため、デコードが成功します。
 
 4. `print(Person.asStruct(from: personDict2, caseFormat: .original)!)`
 
-   これはエラーになります。`personDict2`はキー"first\_name"および"last\_name"でエンコードされていますが、オリジナルの形式でデコードしようとしています。この場合、`JSONDecoder`は変換を試みませんので、適切なキーが見つからずデコードに失敗します。
+   これはエラーになります。`personDict2`はキー"first_name"および"last_name"でエンコードされていますが、オリジナルの形式でデコードしようとしています。この場合、`JSONDecoder`は変換を試みませんので、適切なキーが見つからずデコードに失敗します。
 
 この動作は、Swiftの`JSONDecoder`および`JSONEncoder`のキーの変換の振る舞いによるものです。
 
@@ -611,7 +611,7 @@ public enum CaseFormat {
 }
 
 public extension Encodable {
-    func asDictionary(caseFormat: CaseFormat) -&gt; \[String: Any\] {
+    func asDictionary(caseFormat: CaseFormat) -&gt; [String: Any] {
         let encoder = JSONEncoder()
 
         switch caseFormat {
@@ -623,18 +623,18 @@ public extension Encodable {
 
         do {
             let data = try encoder.encode(self)
-            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? \[String: Any\] else {
-                fatalError("Couldn't convert to \[String: Any\] dictionary")
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                fatalError("Couldn't convert to [String: Any] dictionary")
             }
             return jsonObject
         } catch {
-            fatalError("Encoding failed: \\(error)")
+            fatalError("Encoding failed: \(error)")
         }
     }
 }
 
 public extension Decodable {
-    init(from dictionary: \[String: Any\], caseFormat: CaseFormat) {
+    init(from dictionary: [String: Any], caseFormat: CaseFormat) {
         let decoder = JSONDecoder()
 
         switch caseFormat {
@@ -645,11 +645,11 @@ public extension Decodable {
         }
 
         do {
-            let data = try JSONSerialization.data(withJSONObject: dictionary, options: \[\])
+            let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
             let decodedObject = try decoder.decode(Self.self, from: data)
             self = decodedObject
         } catch {
-            fatalError("デコード失敗: \\(error)")
+            fatalError("デコード失敗: \(error)")
         }
     }
 }
@@ -817,19 +817,19 @@ final class LogEventTests: QuickSpec {
                         let logEvent = TestLogEvent(sampleInt: intValue, sampleString: stringValue, sampleDouble: doubleValue, sampleFloat: floatValue, sampleBool: boolValue, sampleDate: dateValue, sampleStruct: structValue)
                         let analyticsPropertyValueDictionary = logEvent.toAnalyticsPropertiesWithMetadata(level: levelValue, file: fileValue, function: functionValue, line: lineValue)
 
-                        expect(analyticsPropertyValueDictionary\["sample\_int"\] as? Int).to(equal(intValue))
-                        expect(analyticsPropertyValueDictionary\["sample\_string"\] as? String).to(equal(stringValue))
-                        expect(analyticsPropertyValueDictionary\["sample\_double"\] as? Double).to(equal(doubleValue))
-                        expect(analyticsPropertyValueDictionary\["sample\_float"\] as? Double).to(equal(Double(floatValue)))
-                        expect(analyticsPropertyValueDictionary\["sample\_bool"\] as? Bool).to(equal(boolValue))
-                        expect(analyticsPropertyValueDictionary\["sample\_struct"\] as? String).to(equal(String(describing: structValue)))
-                        expect(analyticsPropertyValueDictionary\["log\_level"\] as? String).to(equal(levelValue.name))
-                        expect(analyticsPropertyValueDictionary\["file"\] as? String).to(equal(fileValue))
-                        expect(analyticsPropertyValueDictionary\["function"\] as? String).to(equal(functionValue))
-                        expect(analyticsPropertyValueDictionary\["line"\] as? Int).to(equal(lineValue))
+                        expect(analyticsPropertyValueDictionary["sample_int"] as? Int).to(equal(intValue))
+                        expect(analyticsPropertyValueDictionary["sample_string"] as? String).to(equal(stringValue))
+                        expect(analyticsPropertyValueDictionary["sample_double"] as? Double).to(equal(doubleValue))
+                        expect(analyticsPropertyValueDictionary["sample_float"] as? Double).to(equal(Double(floatValue)))
+                        expect(analyticsPropertyValueDictionary["sample_bool"] as? Bool).to(equal(boolValue))
+                        expect(analyticsPropertyValueDictionary["sample_struct"] as? String).to(equal(String(describing: structValue)))
+                        expect(analyticsPropertyValueDictionary["log_level"] as? String).to(equal(levelValue.name))
+                        expect(analyticsPropertyValueDictionary["file"] as? String).to(equal(fileValue))
+                        expect(analyticsPropertyValueDictionary["function"] as? String).to(equal(functionValue))
+                        expect(analyticsPropertyValueDictionary["line"] as? Int).to(equal(lineValue))
 
                         let expectedDateString = ISO8601DateFormatter.sharedWithFractionalSeconds.string(from: dateValue)
-                        expect(analyticsPropertyValueDictionary\["sample\_date"\] as? String).to(equal(expectedDateString))
+                        expect(analyticsPropertyValueDictionary["sample_date"] as? String).to(equal(expectedDateString))
                     }
                 }
             }
@@ -839,17 +839,17 @@ final class LogEventTests: QuickSpec {
 
 
 extension LogEventProtocol {
-    func toAnalyticsPropertiesWithMetadata(level: EmomilCore.LogLevel, file: String, function: String, line: Int) -&gt; \[String: AnalyticsPropertyValue\] {
-        let metadata: \[String: AnalyticsPropertyValue\] = \[
-            "log\_level": level.name,
+    func toAnalyticsPropertiesWithMetadata(level: EmomilCore.LogLevel, file: String, function: String, line: Int) -&gt; [String: AnalyticsPropertyValue] {
+        let metadata: [String: AnalyticsPropertyValue] = [
+            "log_level": level.name,
             "file": file,
             "function": function,
             "line": line,
-        \]
-        return toAnalyticsProperties.merging(metadata, uniquingKeysWith: { \_, new in new })
+        ]
+        return toAnalyticsProperties.merging(metadata, uniquingKeysWith: { _, new in new })
     }
 
-    private var toAnalyticsProperties: \[String: AnalyticsPropertyValue\] {
+    private var toAnalyticsProperties: [String: AnalyticsPropertyValue] {
         self.asDictionary(keyEncodingStrategy: .convertToSnakeCase).mapValues { value in
             switch value {
             case let intValue as Int:
@@ -880,16 +880,16 @@ extension LogEventProtocol {
 
 エラーが発生している可能性のある部分を以下に示します：
 
-1. \*\*未宣言の型やプロトコル\*\*:
+1. **未宣言の型やプロトコル**:
    - `LoggableEntity`, `LogEventProtocol`, `EmomilCore.LogLevel`, そして `AnalyticsPropertyValue` はコードの中には定義されていない。これらの型やプロトコルが正しく定義され、適切にインポートされているか確認してください。
 
-2. \*\*エクステンションの関数のアクセスレベル\*\*:
+2. **エクステンションの関数のアクセスレベル**:
    - 他の場所で定義されている `LogEventProtocol` エクステンションがテストからアクセスできるか確認してください。アクセス修飾子の問題の可能性が考えられます。
 
-3. \*\*期待値と実際の値の不一致\*\*:
+3. **期待値と実際の値の不一致**:
    - テストが失敗する場合、具体的なエラーメッセージを確認することで、どの`expect`文でテストが失敗しているのかを知ることができます。それによって、期待値と実際の値のどこに不一致があるのかを特定する手助けとなります。
 
-4. \*\*Dateの変換\*\*:
+4. **Dateの変換**:
    - `ISO8601DateFormatter.sharedWithFractionalSeconds.string(from: dateValue)` は正確な日時の文字列を返しているか確認してください。また、`sharedWithFractionalSeconds`はこのコード内で定義されていないため、正しく定義されているかどうか確認してください。
 
 エラーメッセージやエラーの詳細を提供していただければ、さらに具体的なサポートができます。
@@ -902,18 +902,18 @@ extension LogEventProtocol {
 Test Suite 'Selected tests' started at 2023-08-12 18:15:32.981
 Test Suite 'EmomilPackageTests.xctest' started at 2023-08-12 18:15:32.982
 Test Suite 'LogEventTests' started at 2023-08-12 18:15:32.983
-Test Case '-\[EmomilPackageTests.LogEventTests LogEventProtocol\_\_toAnalyticsPropertyValueDictionary\_\_when\_properties\_contain\_supported\_types\_\_should\_correctly\_map\_different\_types\_of\_values:\]' started.
-/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:49: error: -\[EmomilPackageTests.LogEventTests LogEventProtocol\_\_toAnalyticsPropertyValueDictionary\_\_when\_properties\_contain\_supported\_types\_\_should\_correctly\_map\_different\_types\_of\_values:\] : failed - expected to equal &lt;20&gt;, got &lt;nil&gt; (use beNil() to match nils)
+Test Case '-[EmomilPackageTests.LogEventTests LogEventProtocol__toAnalyticsPropertyValueDictionary__when_properties_contain_supported_types__should_correctly_map_different_types_of_values:]' started.
+/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:49: error: -[EmomilPackageTests.LogEventTests LogEventProtocol__toAnalyticsPropertyValueDictionary__when_properties_contain_supported_types__should_correctly_map_different_types_of_values:] : failed - expected to equal &lt;20&gt;, got &lt;nil&gt; (use beNil() to match nils)
 
-/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:50: error: -\[EmomilPackageTests.LogEventTests LogEventProtocol\_\_toAnalyticsPropertyValueDictionary\_\_when\_properties\_contain\_supported\_types\_\_should\_correctly\_map\_different\_types\_of\_values:\] : failed - expected to equal &lt;30&gt;, got &lt;nil&gt; (use beNil() to match nils)
+/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:50: error: -[EmomilPackageTests.LogEventTests LogEventProtocol__toAnalyticsPropertyValueDictionary__when_properties_contain_supported_types__should_correctly_map_different_types_of_values:] : failed - expected to equal &lt;30&gt;, got &lt;nil&gt; (use beNil() to match nils)
 
-/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:51: error: -\[EmomilPackageTests.LogEventTests LogEventProtocol\_\_toAnalyticsPropertyValueDictionary\_\_when\_properties\_contain\_supported\_types\_\_should\_correctly\_map\_different\_types\_of\_values:\] : failed - expected to equal &lt;true&gt;, got &lt;nil&gt; (use beNil() to match nils)
+/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:51: error: -[EmomilPackageTests.LogEventTests LogEventProtocol__toAnalyticsPropertyValueDictionary__when_properties_contain_supported_types__should_correctly_map_different_types_of_values:] : failed - expected to equal &lt;true&gt;, got &lt;nil&gt; (use beNil() to match nils)
 
-/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:52: error: -\[EmomilPackageTests.LogEventTests LogEventProtocol\_\_toAnalyticsPropertyValueDictionary\_\_when\_properties\_contain\_supported\_types\_\_should\_correctly\_map\_different\_types\_of\_values:\] : failed - expected to equal &lt;SampleTestStruct(property: 1000)&gt;, got &lt;{property = 1000;}&gt;
+/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:52: error: -[EmomilPackageTests.LogEventTests LogEventProtocol__toAnalyticsPropertyValueDictionary__when_properties_contain_supported_types__should_correctly_map_different_types_of_values:] : failed - expected to equal &lt;SampleTestStruct(property: 1000)&gt;, got &lt;{property = 1000;}&gt;
 
-/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:59: error: -\[EmomilPackageTests.LogEventTests LogEventProtocol\_\_toAnalyticsPropertyValueDictionary\_\_when\_properties\_contain\_supported\_types\_\_should\_correctly\_map\_different\_types\_of\_values:\] : failed - expected to equal &lt;2023-08-12T18:15:32.984+09:00&gt;, got &lt;nil&gt; (use beNil() to match nils)
+/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilPackage/Tests/EmomilPackageTests/LogEventTests.swift:59: error: -[EmomilPackageTests.LogEventTests LogEventProtocol__toAnalyticsPropertyValueDictionary__when_properties_contain_supported_types__should_correctly_map_different_types_of_values:] : failed - expected to equal &lt;2023-08-12T18:15:32.984+09:00&gt;, got &lt;nil&gt; (use beNil() to match nils)
 
-Test Case '-\[EmomilPackageTests.LogEventTests LogEventProtocol\_\_toAnalyticsPropertyValueDictionary\_\_when\_properties\_contain\_supported\_types\_\_should\_correctly\_map\_different\_types\_of\_values:\]' failed (10.736 seconds).
+Test Case '-[EmomilPackageTests.LogEventTests LogEventProtocol__toAnalyticsPropertyValueDictionary__when_properties_contain_supported_types__should_correctly_map_different_types_of_values:]' failed (10.736 seconds).
 Test Suite 'LogEventTests' failed at 2023-08-12 18:15:43.719.
 	 Executed 1 test, with 5 failures (0 unexpected) in 10.736 (10.737) seconds
 Test Suite 'EmomilPackageTests.xctest' failed at 2023-08-12 18:15:43.719.
@@ -929,17 +929,17 @@ Program ended with exit code: 1
 
 エラーメッセージを見ると、いくつかのプロパティが期待される値と異なることがわかります。具体的には：
 
-1. `sample\_double` は20を期待していますが、実際の値は `nil` です。
-2. `sample\_float` は30を期待していますが、実際の値は `nil` です。
-3. `sample\_bool` は `true` を期待していますが、実際の値は `nil` です。
-4. `sample\_struct` は `SampleTestStruct(property: 1000)` を期待していますが、実際の値は `{property = 1000;}` です。
-5. `sample\_date` は特定の日時の文字列を期待していますが、実際の値は `nil` です。
+1. `sample_double` は20を期待していますが、実際の値は `nil` です。
+2. `sample_float` は30を期待していますが、実際の値は `nil` です。
+3. `sample_bool` は `true` を期待していますが、実際の値は `nil` です。
+4. `sample_struct` は `SampleTestStruct(property: 1000)` を期待していますが、実際の値は `{property = 1000;}` です。
+5. `sample_date` は特定の日時の文字列を期待していますが、実際の値は `nil` です。
 
 これらのエラーの原因を以下のように考えられます：
 
 1. `asDictionary` 機能は、期待されるキーと同じキーを持つ辞書を返しているかどうかを確認する必要があります。特に、`Double` や `Float` のような数値が正しくエンコードされているかどうかを確認してください。
 
-2. `sample\_struct` のエラーは、辞書の変換中に `SampleTestStruct` の文字列表現が異なる形式で提供されることを示しています。これは、デフォルトの `String(describing:)` の動作に起因する可能性があります。
+2. `sample_struct` のエラーは、辞書の変換中に `SampleTestStruct` の文字列表現が異なる形式で提供されることを示しています。これは、デフォルトの `String(describing:)` の動作に起因する可能性があります。
 
 3. 日付のエラーは、日付のエンコードやデコードに関連する可能性があります。特に、使用されている `ISO8601DateFormatter.sharedWithFractionalSeconds` の動作を確認する必要があります。
 
@@ -999,20 +999,20 @@ expect(analyticsPropertyValueDictionary["sample_double"] as? Double).to(equal(do
 以下について、boolが1とかに変換されてしまっているのだけれどもtrueにできないのか？
 
 public extension Encodable {
-    func asDictionary(keyEncodingStrategy: JSONEncoder.KeyEncodingStrategy) -&gt; \[String: Any\] {
+    func asDictionary(keyEncodingStrategy: JSONEncoder.KeyEncodingStrategy) -&gt; [String: Any] {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = keyEncodingStrategy
 
         do {
             let data = try encoder.encode(self)
-            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? \[String: Any\] else {
-                assertionFailure("Couldn't convert to \[String: Any\] dictionary")
-                return \[:\]
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                assertionFailure("Couldn't convert to [String: Any] dictionary")
+                return [:]
             }
             return jsonObject
         } catch {
-            assertionFailure("\\(error)")
-            return \[:\]
+            assertionFailure("\(error)")
+            return [:]
         }
     }
 }

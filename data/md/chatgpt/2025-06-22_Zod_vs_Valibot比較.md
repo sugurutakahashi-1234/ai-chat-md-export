@@ -17,10 +17,10 @@ Zod と Valibot を比較して欲しい。
 
 ## TL;DR
 
-| ライブラリ | GitHub ⭐ | npm 週間DL | 代表的な特徴 | バンドルサイズ(gzip) | ざっくり勢い\* |
+| ライブラリ | GitHub ⭐ | npm 週間DL | 代表的な特徴 | バンドルサイズ(gzip) | ざっくり勢い* |
 |-----------|----------|-----------|--------------|--------------------|---------------|
-| \*\*Zod\*\* | 38.7k citeturn22view0 | 34 M+ citeturn21view1 | TS-first, 充実した transform/merge/regex API, JSON Schema 変換, 圧倒的エコシステム | ~14 kB / core 2 kB と表記 citeturn13search1turn22view0 | 成熟・事実上のデファクト |
-| \*\*Valibot\*\* | 7.7k citeturn23view0 | 1.4 M+ citeturn19view0 | 1 関数=1 ファイルのモジュール設計で tree-shake◎、pipe API、依存ゼロ | ~3.4 kB (v1 RC) citeturn14search1turn23view0 | ⭐増加速度が速く“ポスト-Zod”枠 |
+| **Zod** | 38.7k citeturn22view0 | 34 M+ citeturn21view1 | TS-first, 充実した transform/merge/regex API, JSON Schema 変換, 圧倒的エコシステム | ~14 kB / core 2 kB と表記 citeturn13search1turn22view0 | 成熟・事実上のデファクト |
+| **Valibot** | 7.7k citeturn23view0 | 1.4 M+ citeturn19view0 | 1 関数=1 ファイルのモジュール設計で tree-shake◎、pipe API、依存ゼロ | ~3.4 kB (v1 RC) citeturn14search1turn23view0 | ⭐増加速度が速く“ポスト-Zod”枠 |
 | Yup | 23.4k citeturn24view0 | 8 M+ citeturn20view1 | 古参・Promise/非同期検証に強い・Form 系ライブラリと相性良 | ~12.9 kB citeturn13search7 | 安定だが新規採用は減少傾向 |
 | io-ts | 6.8k citeturn25view0 | (≈70 万)† | fp-ts 準拠、エンコード/デコード分離 | 14 kB-程度 | 機能豊富だが学習コスト高 |
 | class-validator | 11.4k citeturn26view0 | (≈350 万)† | デコレータ (@IsEmail 等)、NestJS と親和 | 44 kB-程度 | サーバー側で根強い |
@@ -29,77 +29,77 @@ Zod と Valibot を比較して欲しい。
 | Superstruct | 7.1k citeturn29view0 | (≈1 M)† | API がシンプル・関数合成型 | 6 kB-程度 | 安定 |
 | AJV | 14.2k citeturn30view0 | (≈18 M)† | JSON Schema 準拠・コンパイル高速 | 32 kB citeturn13search5 | “標準派”として根強い |
 
-\\\*「勢い」＝★増加速度＆週 DL の伸びを総合評価（体感値）。  
+*「勢い」＝★増加速度＆週 DL の伸びを総合評価（体感値）。  
 †npm ページ閲覧時の概算 (npm API ではなく UI から取得しにくいため目安)。
 
 ---
 
-### 1. \*\*Zod と Valibot を徹底比較\*\*
+### 1. **Zod と Valibot を徹底比較**
 
-| 観点 | \*\*Zod\*\* | \*\*Valibot\*\* |
+| 観点 | **Zod** | **Valibot** |
 |------|---------|-------------|
-| \*\*思想\*\* | “全部入り”の OOP ライクなビルダー (`z.object({...})`). | 1 関数=1 ファイルの FP ライク (`object`, `string`, `pipe`). |
-| \*\*型推論\*\* | `z.infer`, `input`/`output` など細かく分離可。 | `InferInput / Output`。Pipe で変換後型も追従。 |
-| \*\*変換 (transform)\*\* | `.transform`, `.refine`, effect 系 API が豊富。 | `pipe()` でバリデート&変換を合成。シンプル。 |
-| \*\*バンドルサイズ\*\* | core 2 kB, full ≈14 kB gzip citeturn13search1 | “&lt; 700 B から”を掲げるが RC 版で ≈3.4 kB gzip citeturn14search1 |
-| \*\*速度\*\* | 充分高速。Node/Bun どちらもベンチで上位。 | Zod 比 ~1.5×〜2× と報告あり (pipe 連結次第)。 |
-| \*\*周辺エコシステム\*\* | tRPC・React Hook Form・TanStack Query・Orval 等ほぼ全ツールが公式/コミュニティアダプタを提供。 | まだ若いが Conform, Qwik, Solid, Drizzle 連携が増加中。PR が活発 (v1 目前)。 |
-| \*\*エラーメッセージ\*\* | パス・期待値・原因が細かく取れる。 | Zod 互換の `path/code` を維持しつつ message をカスタム可。 |
-| \*\*採用局面\*\* | - OSS や社内標準が既に Zod&lt;br&gt;- JSON Schema も出したい | - バンドルを削りたい SPA&lt;br&gt;- tree-shaking を効かせたい micro-lib&lt;br&gt;- Pipe で変換と検証を一括管理したい |
+| **思想** | “全部入り”の OOP ライクなビルダー (`z.object({...})`). | 1 関数=1 ファイルの FP ライク (`object`, `string`, `pipe`). |
+| **型推論** | `z.infer`, `input`/`output` など細かく分離可。 | `InferInput / Output`。Pipe で変換後型も追従。 |
+| **変換 (transform)** | `.transform`, `.refine`, effect 系 API が豊富。 | `pipe()` でバリデート&変換を合成。シンプル。 |
+| **バンドルサイズ** | core 2 kB, full ≈14 kB gzip citeturn13search1 | “&lt; 700 B から”を掲げるが RC 版で ≈3.4 kB gzip citeturn14search1 |
+| **速度** | 充分高速。Node/Bun どちらもベンチで上位。 | Zod 比 ~1.5×〜2× と報告あり (pipe 連結次第)。 |
+| **周辺エコシステム** | tRPC・React Hook Form・TanStack Query・Orval 等ほぼ全ツールが公式/コミュニティアダプタを提供。 | まだ若いが Conform, Qwik, Solid, Drizzle 連携が増加中。PR が活発 (v1 目前)。 |
+| **エラーメッセージ** | パス・期待値・原因が細かく取れる。 | Zod 互換の `path/code` を維持しつつ message をカスタム可。 |
+| **採用局面** | - OSS や社内標準が既に Zod&lt;br&gt;- JSON Schema も出したい | - バンドルを削りたい SPA&lt;br&gt;- tree-shaking を効かせたい micro-lib&lt;br&gt;- Pipe で変換と検証を一括管理したい |
 
-### 2. \*\*その他主要ライブラリの特徴ざっくりメモ\*\*
+### 2. **その他主要ライブラリの特徴ざっくりメモ**
 
-- \*\*Yup\*\*  
-  古参で React Hook Form 公式チュートリアルでも採用。型安全度は Zod/Valibotより一段落ちるが、\*\*非同期バリデーション\*\*と多彩な `transform()` が便利。Form 系で「とりあえず動く」実装が早い。citeturn24view0turn20view1  
+- **Yup**  
+  古参で React Hook Form 公式チュートリアルでも採用。型安全度は Zod/Valibotより一段落ちるが、**非同期バリデーション**と多彩な `transform()` が便利。Form 系で「とりあえず動く」実装が早い。citeturn24view0turn20view1  
 
-- \*\*io-ts\*\*  
-  `fp-ts` マニア向け。デコード結果を `Either` で返し、副作用ゼロ設計。\*\*型レベルの表現力は随一\*\*だが学習コストもトップクラス。関数型志向のプロジェクトなら◎。citeturn25view0  
+- **io-ts**  
+  `fp-ts` マニア向け。デコード結果を `Either` で返し、副作用ゼロ設計。**型レベルの表現力は随一**だが学習コストもトップクラス。関数型志向のプロジェクトなら◎。citeturn25view0  
 
-- \*\*class-validator\*\*  
-  デコレータでエンティティを飾る NestJS 定番。宣言的で DDD っぽく書ける一方、\*\*フロントでは tree-shake しにくい\*\*。citeturn26view0  
+- **class-validator**  
+  デコレータでエンティティを飾る NestJS 定番。宣言的で DDD っぽく書ける一方、**フロントでは tree-shake しにくい**。citeturn26view0  
 
-- \*\*Typia\*\*  
-  TS トランスフォーマで\*\*コード生成\*\*→実行時 10〜20 000× 高速。バリデーションだけでなく JSON Schema/ProtoBuf/LLM スキーマも生成する“多機能オールインワン”。ビルドパイプラインが許すなら最速。citeturn27view0  
+- **Typia**  
+  TS トランスフォーマで**コード生成**→実行時 10〜20 000× 高速。バリデーションだけでなく JSON Schema/ProtoBuf/LLM スキーマも生成する“多機能オールインワン”。ビルドパイプラインが許すなら最速。citeturn27view0  
 
-- \*\*ArkType\*\*  
+- **ArkType**  
   `number&int&gt;0` のように“型＝文字列 DSL”で書け、IDE 補完も効く。高度だが直感的でない人も。バンドル軽量。citeturn28view0  
 
-- \*\*Superstruct\*\*  
+- **Superstruct**  
   API が極めてシンプルでカスタム validator を作りやすい。「フォームで軽量に済ませたい」場合のミニマム選択肢。citeturn29view0  
 
-- \*\*AJV\*\*  
-  JSON Schema 世代には定番。\*\*スキーマ準拠が最優先\*\*なら依然強力。コード生成モードで高速化も可能。型推論は `json-schema-to-ts` など外部依存。citeturn30view0  
+- **AJV**  
+  JSON Schema 世代には定番。**スキーマ準拠が最優先**なら依然強力。コード生成モードで高速化も可能。型推論は `json-schema-to-ts` など外部依存。citeturn30view0  
 
-### 3. \*\*選定ガイド（簡易フローチャート）\*\*
+### 3. **選定ガイド（簡易フローチャート）**
 
-1. \*\*JSON Schema 必須？\*\*  
-   - Yes → \*\*AJV\*\*  
+1. **JSON Schema 必須？**  
+   - Yes → **AJV**  
    - No → 次へ
-2. \*\*バンドルサイズを極限まで削りたい？\*\*  
-   - Yes → \*\*Valibot\*\* / \*\*Superstruct\*\* / \*\*Typia (生成型)\*\*  
-3. \*\*IDE 補完＆型安全が最優先？\*\*  
-   - 既存資産・OSS 連携重視 → \*\*Zod\*\*  
-   - 関数型・Either が好み → \*\*io-ts\*\*  
-   - DSL を試したい → \*\*ArkType\*\*
-4. \*\*NestJS / デコレータ文化？\*\* → \*\*class-validator\*\*
-5. \*\*React のフォームバリデーション中心？\*\* → \*\*Yup\*\* も視野
+2. **バンドルサイズを極限まで削りたい？**  
+   - Yes → **Valibot** / **Superstruct** / **Typia (生成型)**  
+3. **IDE 補完＆型安全が最優先？**  
+   - 既存資産・OSS 連携重視 → **Zod**  
+   - 関数型・Either が好み → **io-ts**  
+   - DSL を試したい → **ArkType**
+4. **NestJS / デコレータ文化？** → **class-validator**
+5. **React のフォームバリデーション中心？** → **Yup** も視野
 
 ---
 
 ### 4. 今後の動向
 
-- \*\*Valibot v1.0\*\* が目前で API 安定化予定。tree-shaking に強い設計は “micro-front-end” や \*\*Bun + edge\*\* 時代と相性が良く、スターの伸びも加速中。  
-- \*\*Typia\*\* が LLM function-calling や Protobuf 生成を取り込み「スキーマ生成 × 超高速」のポジションを固めつつある。  
-- \*\*Zod\*\* は `@zod/mini` などサブパッケージ再編が進行し、引き続き大規模エコシステムのハブになりそう。  
+- **Valibot v1.0** が目前で API 安定化予定。tree-shaking に強い設計は “micro-front-end” や **Bun + edge** 時代と相性が良く、スターの伸びも加速中。  
+- **Typia** が LLM function-calling や Protobuf 生成を取り込み「スキーマ生成 × 超高速」のポジションを固めつつある。  
+- **Zod** は `@zod/mini` などサブパッケージ再編が進行し、引き続き大規模エコシステムのハブになりそう。  
 
 ---
 
 #### まとめ
 
-- \*\*既存エコシステム・保守性重視\*\* ➜ \_Zod\_  
-- \*\*サイズ最優先、将来性も欲しい\*\* ➜ \_Valibot\_  
-- \*\*フォーム／非同期検証\*\* ➜ \_Yup\_  
-- \*\*関数型 or デコレータ or 超高速生成\*\* ➜ \_io-ts / class-validator / typia\_ など用途特化で選択
+- **既存エコシステム・保守性重視** ➜ _Zod_  
+- **サイズ最優先、将来性も欲しい** ➜ _Valibot_  
+- **フォーム／非同期検証** ➜ _Yup_  
+- **関数型 or デコレータ or 超高速生成** ➜ _io-ts / class-validator / typia_ など用途特化で選択
 
 プロジェクトの規模・ビルド要件・チームのスキルセットに合わせて、上記の軸で選ぶと失敗しにくいです。
 
@@ -119,43 +119,43 @@ Openapi からバリデータを生成するようなものとして、流行り
 
 | ライブラリ | 生成対象 | GitHub ⭐ | npm 週間DL | 主なバリデータ出力 | 特徴 / 伸びしろ |
 |-----------|----------|----------|------------|------------------|----------------|
-| \*\*Hey API / `openapi-ts`\*\* | 型・SDK・モック等 | 2.7 k citeturn4view0 | 42 万 + citeturn8search8 | \*\*Zod, Valibot（公式プラグイン）\*\* | “プラグイン一枚挿し”で好きなバリデータを吐き出せる拡張性。リリース頻度が週イチ以上で、Valibot plugin も 2025Q1 に安定化。企業採用が一気に増えており\*\*本命株\*\* |
-| \*\*Orval\*\* | 型・クライアント・Mock | 4.1 k citeturn2search0 | 38 万 + citeturn8search1 | Zod（`@orval/zod`） | React/Angular/Svelte など FW 別テンプレが豊富。\*\*v7\*\* で Hono & Edge 対応し再加速。UI/Mock 生成まで一括したい場合に◎ |
-| \*\*openapi-zod-client\*\* | Zod + Zodios クライアント | 0.99 k citeturn1view0 | 8.4 万 + citeturn8search2 | Zod | ファイル 1 本にまとめてくれるシンプル CLI。\*\*バンドル極小派\*\*に根強い人気だが、新規機能はゆっくりめ |
-| \*\*typed-openapi\*\* | ヘッドレスクライアント | 0.28 k citeturn6view0 | 0.8 万 + citeturn8search3 | Zod / Valibot / ArkType 他 6 種 | ランタイムを\*\*選択式\*\*で切替可能。星の伸び率は月 +15 % と急成長。まだ小規模だが“ポスト-Orval”枠として注目 |
-| \*\*OpenAPI Generator\*\* | 多言語対応 | 24 k citeturn5search1 | – | Java/Kotlin など多数 | 歴史は最長だが TS でのバリデータ出力は弱め（TypeScript-Axios 生成 + `class-validator` は可） |
+| **Hey API / `openapi-ts`** | 型・SDK・モック等 | 2.7 k citeturn4view0 | 42 万 + citeturn8search8 | **Zod, Valibot（公式プラグイン）** | “プラグイン一枚挿し”で好きなバリデータを吐き出せる拡張性。リリース頻度が週イチ以上で、Valibot plugin も 2025Q1 に安定化。企業採用が一気に増えており**本命株** |
+| **Orval** | 型・クライアント・Mock | 4.1 k citeturn2search0 | 38 万 + citeturn8search1 | Zod（`@orval/zod`） | React/Angular/Svelte など FW 別テンプレが豊富。**v7** で Hono & Edge 対応し再加速。UI/Mock 生成まで一括したい場合に◎ |
+| **openapi-zod-client** | Zod + Zodios クライアント | 0.99 k citeturn1view0 | 8.4 万 + citeturn8search2 | Zod | ファイル 1 本にまとめてくれるシンプル CLI。**バンドル極小派**に根強い人気だが、新規機能はゆっくりめ |
+| **typed-openapi** | ヘッドレスクライアント | 0.28 k citeturn6view0 | 0.8 万 + citeturn8search3 | Zod / Valibot / ArkType 他 6 種 | ランタイムを**選択式**で切替可能。星の伸び率は月 +15 % と急成長。まだ小規模だが“ポスト-Orval”枠として注目 |
+| **OpenAPI Generator** | 多言語対応 | 24 k citeturn5search1 | – | Java/Kotlin など多数 | 歴史は最長だが TS でのバリデータ出力は弱め（TypeScript-Axios 生成 + `class-validator` は可） |
 
 ### ざっくりトレンド評価
 
 | 軸 | 伸び率◎ | 使われ度◎ | 軽量◎ |
 |----|---------|-----------|--------|
-| \*\*スター増加速度\*\* | typed-openapi &gt; openapi-ts &gt; Orval |
-| \*\*DL 数（実務採用）\*\* | openapi-ts ≈ Orval &gt;&gt; others |
-| \*\*出力サイズ\*\* | openapi-zod-client ≈ typed-openapi (runtime none) &lt; Orval &lt; openapi-ts |
+| **スター増加速度** | typed-openapi &gt; openapi-ts &gt; Orval |
+| **DL 数（実務採用）** | openapi-ts ≈ Orval &gt;&gt; others |
+| **出力サイズ** | openapi-zod-client ≈ typed-openapi (runtime none) &lt; Orval &lt; openapi-ts |
 
 ### どれが“流行りそう”か？
 
-1. \*\*Hey API / `openapi-ts`\*\*  
-   \* 理由:  
-     \* \*\*Zod/Valibot/ArkType…\*\* を公式 plugin で順次サポートし、\*\*生成物にバリデータを同梱\*\*できる。  
-     \* `sdk.validator: 'zod'` の 1 行で\*\*実行時バリデーション付き SDK\*\*が即完成。  
-     \* 2025 年に \*\*v1.0 ロードマップ\*\*を公開し、企業名入りのスポンサーが増加。  
-   \* → “大規模案件で \*\*まず候補に挙がる\*\*”ポジションを確立しそう。
+1. **Hey API / `openapi-ts`**  
+   * 理由:  
+     * **Zod/Valibot/ArkType…** を公式 plugin で順次サポートし、**生成物にバリデータを同梱**できる。  
+     * `sdk.validator: 'zod'` の 1 行で**実行時バリデーション付き SDK**が即完成。  
+     * 2025 年に **v1.0 ロードマップ**を公開し、企業名入りのスポンサーが増加。  
+   * → “大規模案件で **まず候補に挙がる**”ポジションを確立しそう。
 
-2. \*\*Orval\*\*  
-   \* React Query / MSW / Hono 連携を次々投入し、\*\*“フロント＋Mock 一体”\*\*ユースケースに強い。  
-   \* 社内 UI/Mock サーバーをまとめて自動生成したいチームが採用しやすく、\*\*横展開で星が伸びる\*\*傾向。
+2. **Orval**  
+   * React Query / MSW / Hono 連携を次々投入し、**“フロント＋Mock 一体”**ユースケースに強い。  
+   * 社内 UI/Mock サーバーをまとめて自動生成したいチームが採用しやすく、**横展開で星が伸びる**傾向。
 
-3. \*\*typed-openapi\*\*  
-   \* Valibot や ArkType 出力にも対応し、“\*\*好きなバリデータを 1 コマンドで切替\*\*”という分かりやすさが刺さる。  
-   \* まだ小規模だが \*\*コミット活発 & 週刊リリース\*\*で、早期アダプタ層から注目度アップ。
+3. **typed-openapi**  
+   * Valibot や ArkType 出力にも対応し、“**好きなバリデータを 1 コマンドで切替**”という分かりやすさが刺さる。  
+   * まだ小規模だが **コミット活発 & 週刊リリース**で、早期アダプタ層から注目度アップ。
 
-&gt; \*\*結論\*\*  
-&gt; - \*\*安定志向・プラグイン拡張重視\*\*なら \*\*openapi-ts\*\* が本命。  
-&gt; - \*\*フロント一括生成 & Mock 必須\*\*なら \*\*Orval\*\* が 2 強目。  
-&gt; - \*\*軽量かつ自由度高い CLI\*\* を追いかけたいなら \*\*typed-openapi\*\* をウォッチしておくと良いでしょう。
+&gt; **結論**  
+&gt; - **安定志向・プラグイン拡張重視**なら **openapi-ts** が本命。  
+&gt; - **フロント一括生成 & Mock 必須**なら **Orval** が 2 強目。  
+&gt; - **軽量かつ自由度高い CLI** を追いかけたいなら **typed-openapi** をウォッチしておくと良いでしょう。
 
-今後は \*\*Valibot 出力対応\*\*の有無と \*\*Edge Runtime／Bun 対応\*\*が差別化ポイントになりそうなので、そのあたりをロードマップに掲げているプロジェクトを追いかけておくと流行の波に乗りやすいです。
+今後は **Valibot 出力対応**の有無と **Edge Runtime／Bun 対応**が差別化ポイントになりそうなので、そのあたりをロードマップに掲げているプロジェクトを追いかけておくと流行の波に乗りやすいです。
 
 ---
 
@@ -805,30 +805,30 @@ Swagger 2 仕様とOAS2とOAS 3は何が違うのか。
 
 | 名称 | 由来 | 中身の差 |
 |------|------|---------|
-| \*\*Swagger 2.0\*\* | 2014 年、Swagger 社（後の SmartBear）の API 定義フォーマット | – |
-| \*\*OpenAPI 2.0\*\* | 2016 年、Swagger 2.0 を Linux Foundation に寄贈 → \*\*名称だけ変更\*\* | Swagger 2.0 と仕様は同一（ライセンス表記/ロゴが変わった程度） |
+| **Swagger 2.0** | 2014 年、Swagger 社（後の SmartBear）の API 定義フォーマット | – |
+| **OpenAPI 2.0** | 2016 年、Swagger 2.0 を Linux Foundation に寄贈 → **名称だけ変更** | Swagger 2.0 と仕様は同一（ライセンス表記/ロゴが変わった程度） |
 
-&gt; \*\*つまり Swagger 2.0 = OAS 2.0\*\* であり、“Swagger 2 と OAS 2 の違い” は\*\*実質存在しません\*\*。  
-&gt; ここから先は \*\*OAS 2.0 と OAS 3.x\*\* の違いにフォーカスします。
+&gt; **つまり Swagger 2.0 = OAS 2.0** であり、“Swagger 2 と OAS 2 の違い” は**実質存在しません**。  
+&gt; ここから先は **OAS 2.0 と OAS 3.x** の違いにフォーカスします。
 
 ---
 
 ## OpenAPI 2.0 と 3.x の主な違い
 
-| 項目 | \*\*OAS 2.0 (Swagger 2.0)\*\* | \*\*OAS 3.0 / 3.1\*\* | 影響 |
+| 項目 | **OAS 2.0 (Swagger 2.0)** | **OAS 3.0 / 3.1** | 影響 |
 |------|--------------------------|-------------------|------|
-| \*\*ルート構造\*\* | `swagger: "2.0"` | `openapi: "3.0.0"` / `"3.1.0"` | ファイル先頭のキーが変更 |
-| \*\*サーバー定義\*\* | `host` + `basePath` + `schemes` | `servers: \[ { url } \]` | マルチエンドポイント・変数展開が簡単 |
-| \*\*パラメータ vs ボディ\*\* | `parameters` に `in: body` が混在 | `requestBody` が新設。パラメータは \*\*query / path / header / cookie\*\* に限定 | フォーム・バイナリなど複数メディアタイプを明示可 |
-| \*\*メディアタイプ\*\* | `consumes` / `produces`（文字列配列） | 各オペレーションで `content: { "application/json": { schema } }` | エンドポイントごとに細粒度で表現 |
-| \*\*再利用定義ブロック\*\* | `definitions`, `parameters`, `responses`, `securityDefinitions` など複数 | `components:` 配下に \*\*schemas / responses / parameters / securitySchemes / headers / links / callbacks\*\* が集約 | 再利用ポリシーが一貫、型生成ツールが楽 |
-| \*\*リンク (HATEOAS)\*\* | なし | `links` で「このレスポンスを使って次に呼び出す API」を記述 | ドキュメント → SDK へ展開しやすい |
-| \*\*コールバック\*\* | なし | `callbacks` で webhook など\*\*逆方向リクエスト\*\*を宣言 | Webhook 型 API の定義が純正サポート |
-| \*\*パラメータ型\*\* | 独自の Swagger Schema（一部 JSON Schema 互換） | 3.0 は Swagger 派生 / \*\*3.1 で正式に JSON Schema 2020-12 と整合\*\* | JSON Schema ツール資産をそのまま利用可 (3.1) |
-| \*\*Cookie パラメータ\*\* | 非公式 (`in: header` で代用) | `in: cookie` 正式対応 | セッション API 表現が簡潔 |
-| \*\*multipart/form-data\*\* | 限定的（`file` 型のみ） | メディアタイプごとにフィールド定義可 (`content` で `multipart/form-data`) | ファイル＋メタ情報を同時送信する API を正確に記述 |
-| \*\*セキュリティスキーム\*\* | `apiKey`, `basic`, `oauth2` (v2) | `http` (bearer), `oauth2` (Flows), `openIdConnect` 追加 | JWT/Bearer/OIDC 対応が充実 |
-| \*\*拡張\*\* | `x-foo` 形式 | 同じく可能 | エコシステムは 3.x に集中しつつある |
+| **ルート構造** | `swagger: "2.0"` | `openapi: "3.0.0"` / `"3.1.0"` | ファイル先頭のキーが変更 |
+| **サーバー定義** | `host` + `basePath` + `schemes` | `servers: [ { url } ]` | マルチエンドポイント・変数展開が簡単 |
+| **パラメータ vs ボディ** | `parameters` に `in: body` が混在 | `requestBody` が新設。パラメータは **query / path / header / cookie** に限定 | フォーム・バイナリなど複数メディアタイプを明示可 |
+| **メディアタイプ** | `consumes` / `produces`（文字列配列） | 各オペレーションで `content: { "application/json": { schema } }` | エンドポイントごとに細粒度で表現 |
+| **再利用定義ブロック** | `definitions`, `parameters`, `responses`, `securityDefinitions` など複数 | `components:` 配下に **schemas / responses / parameters / securitySchemes / headers / links / callbacks** が集約 | 再利用ポリシーが一貫、型生成ツールが楽 |
+| **リンク (HATEOAS)** | なし | `links` で「このレスポンスを使って次に呼び出す API」を記述 | ドキュメント → SDK へ展開しやすい |
+| **コールバック** | なし | `callbacks` で webhook など**逆方向リクエスト**を宣言 | Webhook 型 API の定義が純正サポート |
+| **パラメータ型** | 独自の Swagger Schema（一部 JSON Schema 互換） | 3.0 は Swagger 派生 / **3.1 で正式に JSON Schema 2020-12 と整合** | JSON Schema ツール資産をそのまま利用可 (3.1) |
+| **Cookie パラメータ** | 非公式 (`in: header` で代用) | `in: cookie` 正式対応 | セッション API 表現が簡潔 |
+| **multipart/form-data** | 限定的（`file` 型のみ） | メディアタイプごとにフィールド定義可 (`content` で `multipart/form-data`) | ファイル＋メタ情報を同時送信する API を正確に記述 |
+| **セキュリティスキーム** | `apiKey`, `basic`, `oauth2` (v2) | `http` (bearer), `oauth2` (Flows), `openIdConnect` 追加 | JWT/Bearer/OIDC 対応が充実 |
+| **拡張** | `x-foo` 形式 | 同じく可能 | エコシステムは 3.x に集中しつつある |
 
 ---
 
@@ -836,10 +836,10 @@ Swagger 2 仕様とOAS2とOAS 3は何が違うのか。
 
 | 3.1 強化点 | 何が嬉しいか |
 |-----------|-----------|
-| \*\*JSON Schema 互換\*\* | `allOf/oneOf/anyOf/if/then/else` など最新キーワードがそのまま使える。型生成ツール (`json-schema-to-ts` 他) と 100% 互換。 |
-| \*\*Webhooks\*\* (`webhooks:`) | コールバックとは別に \*任意タイミングでサーバー→クライアント\* の呼び出しを宣言可。 |
-| \*\*Discriminator の改善\*\* | `mapping` で `$ref` を直接指定でき、ポリモーフィック API がシンプル。 |
-| \*\*`nullable` 廃止 → JSON Schema 準拠\*\* | `type: \["string", "null"\]` の書き方に統一。 |
+| **JSON Schema 互換** | `allOf/oneOf/anyOf/if/then/else` など最新キーワードがそのまま使える。型生成ツール (`json-schema-to-ts` 他) と 100% 互換。 |
+| **Webhooks** (`webhooks:`) | コールバックとは別に *任意タイミングでサーバー→クライアント* の呼び出しを宣言可。 |
+| **Discriminator の改善** | `mapping` で `$ref` を直接指定でき、ポリモーフィック API がシンプル。 |
+| **`nullable` 廃止 → JSON Schema 準拠** | `type: ["string", "null"]` の書き方に統一。 |
 
 ---
 
@@ -847,15 +847,15 @@ Swagger 2 仕様とOAS2とOAS 3は何が違うのか。
 
 | 状況 | 推奨 |
 |------|------|
-| \*\*既存 Swagger 2.0 資産が大量\*\* | OAS 2.0 のままでも構文は通るが、新機能は使えない&lt;br&gt;→ \*\*段階的移行\*\*（ツールは両対応が多い） |
-| \*\*新規 API\*\* | \*\*OpenAPI 3.1\*\* 一択&lt;br&gt;・JSON Schema 資産を流用可&lt;br&gt;・Edge／Webhook など最新要件を表現しやすい |
-| \*\*生成ツール／フレームワークが 3.1 未対応\*\* | 3.0 で妥協 → 将来 3.1 へ | 例: 一部の言語コードジェネレータはまだ 3.1 β |
+| **既存 Swagger 2.0 資産が大量** | OAS 2.0 のままでも構文は通るが、新機能は使えない&lt;br&gt;→ **段階的移行**（ツールは両対応が多い） |
+| **新規 API** | **OpenAPI 3.1** 一択&lt;br&gt;・JSON Schema 資産を流用可&lt;br&gt;・Edge／Webhook など最新要件を表現しやすい |
+| **生成ツール／フレームワークが 3.1 未対応** | 3.0 で妥協 → 将来 3.1 へ | 例: 一部の言語コードジェネレータはまだ 3.1 β |
 
-&gt; \*\*キーメッセージ\*\*  
-&gt; - \*\*Swagger 2.0 と OAS 2.0 は同じもの\*\*。  
-&gt; - \*\*OAS 3.0\*\* で “リクエストボディの分離・メディアタイプ細分化・components 集約” など大規模刷新。  
-&gt; - \*\*OAS 3.1\*\* で JSON Schema 完全互換＆ Webhooks 対応。  
-&gt; - 2025 年時点、ツールもエコシステムも \*\*3.0 → 3.1 へシフト中\*\*。新規開発なら 3.1 が安全パスです。
+&gt; **キーメッセージ**  
+&gt; - **Swagger 2.0 と OAS 2.0 は同じもの**。  
+&gt; - **OAS 3.0** で “リクエストボディの分離・メディアタイプ細分化・components 集約” など大規模刷新。  
+&gt; - **OAS 3.1** で JSON Schema 完全互換＆ Webhooks 対応。  
+&gt; - 2025 年時点、ツールもエコシステムも **3.0 → 3.1 へシフト中**。新規開発なら 3.1 が安全パスです。
 
 ---
 

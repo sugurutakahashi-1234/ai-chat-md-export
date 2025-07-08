@@ -9,25 +9,25 @@
 
 以下のようなタグを生成してpushするようなコマンドラインをSwift Package manager のコマンドラインツールで実行したいんだけれどもやり方を教えて欲しい。
 
-FILE\_PATH=$(cd $(dirname $0) && pwd)
-VERSION=`cat "${FILE\_PATH}/../../Configs/Version.xcconfig"|grep "MARKETING\_VERSION="|sed "s/MARKETING\_VERSION=//"`
+FILE_PATH=$(cd $(dirname $0) && pwd)
+VERSION=`cat "${FILE_PATH}/../../Configs/Version.xcconfig"|grep "MARKETING_VERSION="|sed "s/MARKETING_VERSION=//"`
 
-TAG\_NAME=$VERSION
+TAG_NAME=$VERSION
 # 現在のコミットに既にタグがあるか確認
-if git tag --contains HEAD | grep -q "$TAG\_NAME"; then
+if git tag --contains HEAD | grep -q "$TAG_NAME"; then
     echo "The current commit already has the tag."
 else
     # 追加しようとしているタグが既にあるか確認
-    if git show-ref --tags | grep -q "$TAG\_NAME"; then
+    if git show-ref --tags | grep -q "$TAG_NAME"; then
          # 既存のタグを削除
-        git tag -d $TAG\_NAME
-        git push origin :refs/tags/$TAG\_NAME
+        git tag -d $TAG_NAME
+        git push origin :refs/tags/$TAG_NAME
         echo "Delete the tag of ${VERSION}."
     fi
 
     # 新しいタグを追加
-    git tag $TAG\_NAME
-    git push origin $TAG\_NAME
+    git tag $TAG_NAME
+    git push origin $TAG_NAME
     echo "Add tag ${VERSION}."
 fi
 

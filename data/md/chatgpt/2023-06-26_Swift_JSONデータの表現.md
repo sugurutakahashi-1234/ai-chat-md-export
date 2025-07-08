@@ -12,7 +12,7 @@ Swiftで表して欲しい
 {
     "title": "Feature list",
     "type": "array",
-    "prefixItems": \[
+    "prefixItems": [
         {
             "title": "Feature A",
             "properties": {
@@ -33,14 +33,14 @@ Swiftで表して欲しい
                 }
             }
         }
-    \],
+    ],
     "$defs": {
         "enabledToggle": {
             "title": "Enabled",
             "description": "Whether the feature is enabled (true),
                             disabled (false), or under
                             automatic control (null)",
-            "type": \["boolean", "null"\],
+            "type": ["boolean", "null"],
             "default": null
         }
     }

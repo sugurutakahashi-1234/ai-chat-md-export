@@ -241,9 +241,9 @@ struct PinterestGridView_Previews: PreviewProvider {
 *2024/5/22 15:36:26*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-lucMI3Z04usTIcLtVNgH2Qk8",
-  "size\_bytes": 754983,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-lucMI3Z04usTIcLtVNgH2Qk8",
+  "size_bytes": 754983,
   "width": 577,
   "height": 1099,
   "fovea": null,
@@ -251,19 +251,19 @@ struct PinterestGridView_Previews: PreviewProvider {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-MfYPVNA9kb4skXp4YJli83wd",
-  "size\_bytes": 538840,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-MfYPVNA9kb4skXp4YJli83wd",
+  "size_bytes": 538840,
   "width": 480,
   "height": 841,
   "fovea": null,
@@ -271,13 +271,13 @@ struct PinterestGridView_Previews: PreviewProvider {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 1個目の画像になってしまった。理想は2個目の画像である
@@ -362,9 +362,9 @@ struct PinterestGridView_Previews: PreviewProvider {
 *2024/5/22 15:37:49*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-jb7LrlBdTM8G95N0szWUCkR6",
-  "size\_bytes": 413928,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-jb7LrlBdTM8G95N0szWUCkR6",
+  "size_bytes": 413928,
   "width": 623,
   "height": 1147,
   "fovea": null,
@@ -372,13 +372,13 @@ struct PinterestGridView_Previews: PreviewProvider {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 これだと行がそろってしまう。列は揃えたままで行の高さを色々変えたい。
@@ -470,9 +470,9 @@ struct PinterestGridView_Previews: PreviewProvider {
 *2024/5/22 15:39:18*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-aihkPI2oxYxPoeb2l8M7fXrr",
-  "size\_bytes": 796364,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-aihkPI2oxYxPoeb2l8M7fXrr",
+  "size_bytes": 796364,
   "width": 626,
   "height": 1129,
   "fovea": null,
@@ -480,13 +480,13 @@ struct PinterestGridView_Previews: PreviewProvider {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 画像が重なってしまっている

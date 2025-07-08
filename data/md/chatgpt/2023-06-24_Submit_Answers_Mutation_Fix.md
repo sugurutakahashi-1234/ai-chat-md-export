@@ -14,12 +14,12 @@
 
 
 mutation MyMutation {
-  submit\_answers(
-    answers: \[
-      { question\_id: "1", value: "答え" },
-      { question\_id: "2", value: "別の答え" }
-    \],
-    session\_id: "session123"
+  submit_answers(
+    answers: [
+      { question_id: "1", value: "答え" },
+      { question_id: "2", value: "別の答え" }
+    ],
+    session_id: "session123"
   ) {
     id
     success
@@ -27,7 +27,7 @@ mutation MyMutation {
 }
 
 public struct Answer: Embeddable {
-  var question\_id: String
+  var question_id: String
   var value: String
 }
 
@@ -38,15 +38,15 @@ public struct Session: Embeddable {
 
 
 extension GraphQLRequest {
-static func submitAnswers(session\_id: String, answers: \[Answer\]) -&gt; GraphQLRequest&lt;Session&gt; {
-        let operationName = "submit\_answers"
+static func submitAnswers(session_id: String, answers: [Answer]) -&gt; GraphQLRequest&lt;Session&gt; {
+        let operationName = "submit_answers"
         let document = """
-        mutation \\(operationName)(
-          $session\_id: String!,
-          $answers: \[AnswerInput!\]
+        mutation \(operationName)(
+          $session_id: String!,
+          $answers: [AnswerInput!]
         ) {
-          \\(operationName)(
-            session\_id: $session\_id,
+          \(operationName)(
+            session_id: $session_id,
             answers: $answers
           ) {
             id
@@ -56,10 +56,10 @@ static func submitAnswers(session\_id: String, answers: \[Answer\]) -&gt; GraphQ
         """
         return GraphQLRequest&lt;Session&gt;(
             document: document,
-            variables: \[
-                "session\_id": session\_id,
+            variables: [
+                "session_id": session_id,
                 "answers": answers,
-            \],
+            ],
             responseType: Session.self,
             decodePath: operationName
         )

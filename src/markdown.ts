@@ -42,12 +42,13 @@ export function convertToMarkdown(conversation: Conversation): string {
 }
 
 function escapeMarkdown(text: string): string {
+  // HTMLタグのみエスケープし、マークダウン記法は保持
   return text
-    .replace(/\\/g, "\\\\")
-    .replace(/\*/g, "\\*")
-    .replace(/_/g, "\\_")
-    .replace(/\[/g, "\\[")
-    .replace(/\]/g, "\\]")
     .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+    .replace(/>/g, "&gt;")
+    // 既にエスケープされた文字を修正
+    .replace(/\\\*/g, "*")
+    .replace(/\\_/g, "_")
+    .replace(/\\\[/g, "[")
+    .replace(/\\\]/g, "]");
 }

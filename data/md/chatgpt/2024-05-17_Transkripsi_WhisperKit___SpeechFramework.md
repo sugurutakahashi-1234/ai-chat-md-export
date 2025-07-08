@@ -23,7 +23,7 @@ extension TranscriptionResult: Identifiable {
 
 @MainActor
 final class TranscriptionPresenter: ObservableObject {
-    @Published var transcriptionResults: \[TranscriptionResult\] = \[\]
+    @Published var transcriptionResults: [TranscriptionResult] = []
     @Published var isLoading: Bool = false
     @Published var appError: AppError?
     @Published var showAlert: Bool = false
@@ -47,7 +47,7 @@ final class TranscriptionPresenter: ObservableObject {
         do {
             transcriptionResults = try await transcriptionDriver.transcribe(audioUrl: audioUrl)
         } catch {
-            OSLogger.errorLog("Failed to read audio files: \\(error)")
+            OSLogger.errorLog("Failed to read audio files: \(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -60,7 +60,7 @@ struct TranscriptionView: View {
     @StateObject private var presenter: TranscriptionPresenter
 
     init(audioUrl: URL) {
-        \_presenter = .init(wrappedValue: .init(audioUrl: audioUrl))
+        _presenter = .init(wrappedValue: .init(audioUrl: audioUrl))
     }
     
     var body: some View {
@@ -98,7 +98,7 @@ final class TranscriptionDriver: Sendable {
                 TranscriptionDriver.sharedWhisperKit = try await WhisperKit()
                 OSLogger.debugLog("create WhisperKit")
             } catch {
-                OSLogger.debugLog("Failed to initialize WhisperKit: \\(error)")
+                OSLogger.debugLog("Failed to initialize WhisperKit: \(error)")
             }
         }
     }
@@ -114,16 +114,16 @@ final class TranscriptionDriver: Sendable {
     }
 
     // TODO: TranscriptionResult の抽象化
-    func transcribe(audioUrl: URL) async throws -&gt; \[TranscriptionResult\] {
+    func transcribe(audioUrl: URL) async throws -&gt; [TranscriptionResult] {
         OSLogger.debugLog("start transcribe")
         let whisper = try await getWhisperKit()
-        let transcriptionResults: \[TranscriptionResult\] = try await whisper.transcribe(audioPath: audioUrl.path, decodeOptions:DecodingOptions.init(language: "ja"))
-        OSLogger.debugLog("language: \\(transcriptionResults.first!.language)")
-        OSLogger.debugLog("text: \\(transcriptionResults.first!.text)")
-        OSLogger.debugLog("allWords: \\(transcriptionResults.first!.allWords)")
-        OSLogger.debugLog("segments: \\(transcriptionResults.first!.segments)")
-        OSLogger.debugLog("timings: \\(transcriptionResults.first!.timings)")
-        OSLogger.debugLog("fullPipeline: \\(transcriptionResults.first!.timings.fullPipeline)")
+        let transcriptionResults: [TranscriptionResult] = try await whisper.transcribe(audioPath: audioUrl.path, decodeOptions:DecodingOptions.init(language: "ja"))
+        OSLogger.debugLog("language: \(transcriptionResults.first!.language)")
+        OSLogger.debugLog("text: \(transcriptionResults.first!.text)")
+        OSLogger.debugLog("allWords: \(transcriptionResults.first!.allWords)")
+        OSLogger.debugLog("segments: \(transcriptionResults.first!.segments)")
+        OSLogger.debugLog("timings: \(transcriptionResults.first!.timings)")
+        OSLogger.debugLog("fullPipeline: \(transcriptionResults.first!.timings.fullPipeline)")
         return transcriptionResults
     }
 }

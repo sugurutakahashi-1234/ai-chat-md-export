@@ -955,17 +955,17 @@ jobs:
 name: API Request Code Gen
 
 on:
-  repository\_dispatch:
-    types: \[openapi-update\]
-  workflow\_dispatch:
+  repository_dispatch:
+    types: [openapi-update]
+  workflow_dispatch:
 
 env:
   # iOS
-  ios\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  ios\_openapi\_path: suguruTakahashi-1234/swift-openapi-gen-sample/schema/openapi.yaml
+  ios_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  ios_openapi_path: suguruTakahashi-1234/swift-openapi-gen-sample/schema/openapi.yaml
   # Server Side
-  server\_side\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  server\_side\_openapi\_path: suguruTakahashi-1234/swift-openapi-gen-sample/server-side-repository/openapi.yaml
+  server_side_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  server_side_openapi_path: suguruTakahashi-1234/swift-openapi-gen-sample/server-side-repository/openapi.yaml
 
 ---
 
@@ -1520,7 +1520,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/30 18:02:55*
 
-${{ secrets.PAT }} ではなく、${{ secrets.IOS\_TEAM\_PAT }} を使ってほしい。またこれは env.gh\_token として登録して使ってほしい
+${{ secrets.PAT }} ではなく、${{ secrets.IOS_TEAM_PAT }} を使ってほしい。またこれは env.gh_token として登録して使ってほしい
 
 ---
 

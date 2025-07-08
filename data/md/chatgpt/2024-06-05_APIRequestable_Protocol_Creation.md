@@ -17,7 +17,7 @@ final public class APIRequestDriver: Sendable {
 
     public init() {}
 
-    public func getUsers() async throws -&gt; \[DomainLayer.User\] {
+    public func getUsers() async throws -&gt; [DomainLayer.User] {
         do {
             let response = try await client.getUsers()
 
@@ -30,15 +30,15 @@ final public class APIRequestDriver: Sendable {
             case .notFound(let notFoundResponse):
                 switch notFoundResponse.body {
                 case .json(let error):
-                    OSLogger.errorLog("\\(error)")
+                    OSLogger.errorLog("\(error)")
                     throw APIRequestDriverError.notFound
                 }
-            case .undocumented(statusCode: let statusCode, \_):
-                OSLogger.errorLog("\\(statusCode)")
+            case .undocumented(statusCode: let statusCode, _):
+                OSLogger.errorLog("\(statusCode)")
                 throw APIRequestDriverError.undocumented
             }
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             throw APIRequestDriverError.unexpected(error)
         }
     }
@@ -56,15 +56,15 @@ final public class APIRequestDriver: Sendable {
             case .notFound(let notFoundResponse):
                 switch notFoundResponse.body {
                 case .json(let error):
-                    OSLogger.errorLog("\\(error)")
+                    OSLogger.errorLog("\(error)")
                     throw APIRequestDriverError.notFound
                 }
-            case .undocumented(statusCode: let statusCode, \_):
-                OSLogger.errorLog("\\(statusCode)")
+            case .undocumented(statusCode: let statusCode, _):
+                OSLogger.errorLog("\(statusCode)")
                 throw APIRequestDriverError.undocumented
             }
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             throw APIRequestDriverError.unexpected(error)
         }
     }

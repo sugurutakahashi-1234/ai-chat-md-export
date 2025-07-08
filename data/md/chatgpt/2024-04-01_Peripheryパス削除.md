@@ -7,44 +7,44 @@
 ## 👤 ユーザー
 *2024/4/1 13:13:29*
 
-以下のスクリプトについて。xcodebuild -scheme する前にperiphery\_pathを削除してほしい。
+以下のスクリプトについて。xcodebuild -scheme する前にperiphery_pathを削除してほしい。
 
 #!/bin/bash
 
-if \[ "$#" -ne 1 \]; then
+if [ "$#" -ne 1 ]; then
     echo "Usage: $0 &lt;Root Path&gt;"
     exit 1
 fi
 
-di\_scheme="DependencyInjectionLayer"
-root\_path=$1
-periphery\_path="$root\_path/periphery"
-periphery\_build\_path="$periphery\_path/build"
-output\_file="$periphery\_path/result.txt"
-index\_store\_path="$periphery\_build\_path/Index.noindex/DataStore/"
-mint\_package\_path="$root\_path/DISampleAppPackage"
+di_scheme="DependencyInjectionLayer"
+root_path=$1
+periphery_path="$root_path/periphery"
+periphery_build_path="$periphery_path/build"
+output_file="$periphery_path/result.txt"
+index_store_path="$periphery_build_path/Index.noindex/DataStore/"
+mint_package_path="$root_path/DISampleAppPackage"
 
 # periphery を実行すると MacOS でビルドを行うが、アプリ内部で UIKit など、iOS 依存なコードがあるとビルドできないため、一旦 xcodebuild コマンドでプラットフォームを指定して、ビルドする必要がある
 # 失敗する場合は periphery/build ディレクトリを削除してから、また、make コマンドを実行してください
-xcodebuild -scheme $di\_scheme -destination 'platform=iOS Simulator,OS=17.4,name=iPhone 15 Pro' -derivedDataPath $periphery\_build\_path clean build
+xcodebuild -scheme $di_scheme -destination 'platform=iOS Simulator,OS=17.4,name=iPhone 15 Pro' -derivedDataPath $periphery_build_path clean build
 
 # periphery の仕様なのか、ディレクトリを移動しないと SwiftPM マルチモジュール かつ Workspace で構成されるプロジェクト対応できない
-cd "${mint\_package\_path}"
+cd "${mint_package_path}"
 
 # Swift パッケージを指定したパスで実行し、periphery を使用してプロジェクトをスキャン
 # --skip-build: ビルドプロセスをスキップ
 # --index-store-path: ビルドプロセスをスキップしたので、xcodebuild でビルドしたindex-store-pathの指定
 # --retain-swift-ui-previews: SwiftUI のプレビューはそのままにしておく
 # --retain-public: 不要な Public 宣言はそのままにしておく
-swift run --package-path $mint\_package\_path mint run periphery scan \\
-    --skip-build --index-store-path $index\_store\_path \\
-    --retain-swift-ui-previews \\
-    --retain-public \\
-    --targets "DomainLayer" "PresentationLayer" "DependencyInjectionLayer" "DeviceFramework" "FirebaseFramework" "LicenseFramework" \\
-    &gt; $output\_file
+swift run --package-path $mint_package_path mint run periphery scan \
+    --skip-build --index-store-path $index_store_path \
+    --retain-swift-ui-previews \
+    --retain-public \
+    --targets "DomainLayer" "PresentationLayer" "DependencyInjectionLayer" "DeviceFramework" "FirebaseFramework" "LicenseFramework" \
+    &gt; $output_file
 
-# 出力に環境依存な root\_path が付与されるため、それを削除する
-sed "s|${root\_path}/||g" $output\_file &gt; temp\_file && mv temp\_file $output\_file
+# 出力に環境依存な root_path が付与されるため、それを削除する
+sed "s|${root_path}/||g" $output_file &gt; temp_file && mv temp_file $output_file
 
 echo "Periphery Scan Completed!!!!"
 

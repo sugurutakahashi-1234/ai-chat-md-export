@@ -12,26 +12,26 @@ $ pwd
 /Users/sugurutakahashi/git/hono-learning/packages/server
 $ pnpm add -w hono zod zod-openapi
 
-(3.13.2) ~/git/hono-learning  ‹main\*› $ tree -aL 2
+(3.13.2) ~/git/hono-learning  ‹main*› $ tree -aL 2
 .
 ├── .git
-│   ├── COMMIT\_EDITMSG
+│   ├── COMMIT_EDITMSG
 │   ├── config
 │   ├── description
-│   ├── FETCH\_HEAD
+│   ├── FETCH_HEAD
 │   ├── HEAD
 │   ├── hooks
 │   ├── index
 │   ├── info
 │   ├── logs
 │   ├── objects
-│   ├── ORIG\_HEAD
+│   ├── ORIG_HEAD
 │   └── refs
 ├── .github
 │   └── copilot-instructions.md
 ├── .gitignore
 ├── .husky
-│   ├── \_
+│   ├── _
 │   └── pre-commit
 ├── .npmrc
 ├── .nvmrc
@@ -39,17 +39,17 @@ $ pnpm add -w hono zod zod-openapi
 │   ├── extensions.json
 │   └── settings.json
 ├── biome.json
-├── node\_modules
+├── node_modules
 │   ├── .bin
 │   ├── .modules.yaml
 │   ├── .pnpm
 │   ├── .pnpm-workspace-state.json
 │   ├── @biomejs
-│   ├── hono -&gt; .pnpm/hono@4.7.10/node\_modules/hono
-│   ├── husky -&gt; .pnpm/husky@9.1.7/node\_modules/husky
-│   ├── typescript -&gt; .pnpm/typescript@5.8.3/node\_modules/typescript
-│   ├── zod -&gt; .pnpm/zod@3.25.20/node\_modules/zod
-│   └── zod-openapi -&gt; .pnpm/zod-openapi@4.2.4\_zod@3.25.20/node\_modules/zod-openapi
+│   ├── hono -&gt; .pnpm/hono@4.7.10/node_modules/hono
+│   ├── husky -&gt; .pnpm/husky@9.1.7/node_modules/husky
+│   ├── typescript -&gt; .pnpm/typescript@5.8.3/node_modules/typescript
+│   ├── zod -&gt; .pnpm/zod@3.25.20/node_modules/zod
+│   └── zod-openapi -&gt; .pnpm/zod-openapi@4.2.4_zod@3.25.20/node_modules/zod-openapi
 ├── package.json
 ├── packages
 │   ├── client
@@ -60,7 +60,7 @@ $ pnpm add -w hono zod zod-openapi
 ├── tsconfig.base.json
 └── tsconfig.json
 24 directories, 22 files
-(3.13.2) ~/git/hono-learning  ‹main\*› $
+(3.13.2) ~/git/hono-learning  ‹main*› $
 
 ---
 

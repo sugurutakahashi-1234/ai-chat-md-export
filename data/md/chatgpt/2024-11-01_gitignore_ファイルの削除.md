@@ -209,9 +209,9 @@ git-clean を使いたい
 
 $ ls
 Apps-iOS                           TextFieldStudy                     pre-order-flutter-app              swiftui-todo
-CL                                 Vpass\_iOS                          pushApp                            vpass-appinfra-v3
-DISample                           emomil                             shelltest                          vpass\_api\_spec\_document
-DiaTalk                            framework-independent-architecture smalltalk                          vpass\_documents
+CL                                 Vpass_iOS                          pushApp                            vpass-appinfra-v3
+DISample                           emomil                             shelltest                          vpass_api_spec_document
+DiaTalk                            framework-independent-architecture smalltalk                          vpass_documents
 MVVMSample-someya                  gnavi-mock-server                  suguruTakahashi-1234               xcode-cloud
 TWEETBOT                           gnavi-shopowner                    swiftui-local-notification         zenn-connects
  のディレクトリに対して、git clean -fdXを全部行いたい
@@ -257,9 +257,9 @@ $ pwd                                                                           
 /Users/sugurutakahashi/Desktop/work/tech/code
 ~/Desktop/work/tech/code  $ ls
 Apps-iOS                           TextFieldStudy                     pre-order-flutter-app              swiftui-todo
-CL                                 Vpass\_iOS                          pushApp                            vpass-appinfra-v3
-DISample                           emomil                             shelltest                          vpass\_api\_spec\_document
-DiaTalk                            framework-independent-architecture smalltalk                          vpass\_documents
+CL                                 Vpass_iOS                          pushApp                            vpass-appinfra-v3
+DISample                           emomil                             shelltest                          vpass_api_spec_document
+DiaTalk                            framework-independent-architecture smalltalk                          vpass_documents
 MVVMSample-someya                  gnavi-mock-server                  suguruTakahashi-1234               xcode-cloud
 TWEETBOT                           gnavi-shopowner                    swiftui-local-notification         zenn-connects
 
@@ -336,7 +336,7 @@ TWEETBOT                           gnavi-shopowner                    swiftui-lo
 ## 👤 ユーザー
 *2024/11/1 20:19:51*
 
-TARGET\_DIR は引数で指定する形がいい
+TARGET_DIR は引数で指定する形がいい
 
 ---
 

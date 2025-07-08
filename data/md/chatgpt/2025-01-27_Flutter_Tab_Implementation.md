@@ -8,9 +8,9 @@
 *2025/1/27 18:02:52*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-JKDz7FEJjmU4NA6DJ38o6F",
-  "size\_bytes": 34638,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-JKDz7FEJjmU4NA6DJ38o6F",
+  "size_bytes": 34638,
   "width": 232,
   "height": 503,
   "fovea": null,
@@ -18,19 +18,19 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-6BGBZXJGojJnTTKbSf9m58",
-  "size\_bytes": 27307,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-6BGBZXJGojJnTTKbSf9m58",
+  "size_bytes": 27307,
   "width": 237,
   "height": 514,
   "fovea": null,
@@ -38,19 +38,19 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-4Ev4viq4peg6i7sGyeZ54n",
-  "size\_bytes": 42750,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-4Ev4viq4peg6i7sGyeZ54n",
+  "size_bytes": 42750,
   "width": 219,
   "height": 271,
   "fovea": null,
@@ -58,13 +58,13 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 現在の実装に変更が入って、今の実装に新たにItemsタブを追加することになった。
@@ -78,23 +78,23 @@ items のタブの中身は現在、実装していないがそれも合わせ�
 
 Itemをタップした際は３枚目の画像のDialog()で表現して欲しい。
 
-import 'package:cached\_network\_image/cached\_network\_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/camera\_dto\_x.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/get\_user.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/items/get\_user\_item\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/editing\_camera\_list.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/camera\_row.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/total\_parameters\_row.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/camera_dto_x.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/get_user.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/items/get_user_item_list.dart';
+import 'package:snpit_guild_app/presentation/providers/editing_camera_list.dart';
+import 'package:snpit_guild_app/presentation/widgets/camera_row.dart';
+import 'package:snpit_guild_app/presentation/widgets/total_parameters_row.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class MyPage extends HookConsumerWidget {
   const MyPage({super.key});
@@ -145,7 +145,7 @@ class MyPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -159,16 +159,16 @@ class MyPage extends HookConsumerWidget {
           final photoUrl = myUser?.profilePicture ?? '';
           final deck = myUser?.decks?.first;
           final deckId = deck?.deckId;
-          final cameraList = deck?.deckCameras ?? \[\];
+          final cameraList = deck?.deckCameras ?? [];
 
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(
-                children: \[
+                children: [
                   // User
                   Row(
-                    children: \[
+                    children: [
                       CircleAvatar(
                         radius: 28,
                         backgroundColor:
@@ -183,7 +183,7 @@ class MyPage extends HookConsumerWidget {
                         width: 182,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: \[
+                          children: [
                             Text(
                               name,
                               maxLines: 1,
@@ -199,7 +199,7 @@ class MyPage extends HookConsumerWidget {
                                 await onTapCopyId(id);
                               },
                               child: Row(
-                                children: \[
+                                children: [
                                   Expanded(
                                     child: Text(
                                       'ID: $id',
@@ -216,16 +216,16 @@ class MyPage extends HookConsumerWidget {
                                     color: ColorToken.primary,
                                     size: 12,
                                   ),
-                                \],
+                                ],
                               ),
                             ),
-                          \],
+                          ],
                         ),
                       ),
                       const Spacer(),
                       IconButton(
                         icon: const Icon(
-                          Icons.settings\_outlined,
+                          Icons.settings_outlined,
                           size: 24,
                         ),
                         color: ColorToken.text,
@@ -233,7 +233,7 @@ class MyPage extends HookConsumerWidget {
                           await onTapSettings();
                         },
                       ),
-                    \],
+                    ],
                   ),
 
                   const SizedBox(height: 24),
@@ -241,9 +241,9 @@ class MyPage extends HookConsumerWidget {
                   // Deck
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: \[
+                    children: [
                       Row(
-                        children: \[
+                        children: [
                           const Text(
                             'Decks',
                             style: TextStyle(
@@ -269,7 +269,7 @@ class MyPage extends HookConsumerWidget {
                               },
                             ),
                           ),
-                        \],
+                        ],
                       ),
                       const SizedBox(height: 16),
                       // Deck
@@ -282,7 +282,7 @@ class MyPage extends HookConsumerWidget {
                           ),
                         ),
                         child: Column(
-                          children: \[
+                          children: [
                             Padding(
                               padding: const EdgeInsets.all(16),
                               child: TotalParametersRow(
@@ -310,23 +310,23 @@ class MyPage extends HookConsumerWidget {
                                 final camera = entry.value;
 
                                 return Column(
-                                  children: \[
+                                  children: [
                                     CameraRow(camera: camera),
                                     if (index &lt; cameraList.length - 1)
                                       Container(
                                         height: 1,
                                         color: ColorToken.border,
                                       ),
-                                  \],
+                                  ],
                                 );
                               }).toList(),
                             ),
-                          \],
+                          ],
                         ),
                       ),
-                    \],
+                    ],
                   ),
-                \],
+                ],
               ),
             ),
           );
@@ -334,7 +334,7 @@ class MyPage extends HookConsumerWidget {
         loading: () {
           return const Center(child: CircularProgressIndicator());
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Center(child: Text('Error: $error'));
         },
       ),
@@ -344,7 +344,7 @@ class MyPage extends HookConsumerWidget {
 
 
 @freezed
-class ItemDTO with \_$ItemDTO {
+class ItemDTO with _$ItemDTO {
   factory ItemDTO({
     @JsonKey(name: 'itemId') required String? itemId,
     @JsonKey(name: 'itemName') required String? itemName,
@@ -353,10 +353,10 @@ class ItemDTO with \_$ItemDTO {
     @JsonKey(name: 'itemPrice') required num? itemPrice,
     @JsonKey(name: 'itemStatus') required ItemDTOItemStatus? itemStatus,
     @JsonKey(name: 'itemCategory') required ItemDTOItemCategory? itemCategory,
-  }) = \_ItemDTO;
+  }) = _ItemDTO;
 
   factory ItemDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$ItemDTOFromJson(jsonMap);
+      _$ItemDTOFromJson(jsonMap);
 }
 
 ---
@@ -1279,7 +1279,7 @@ class MyPage extends HookConsumerWidget {
 例外が発生しました
 FlutterError (BoxConstraints forces an infinite width.
 These invalid constraints were provided to RenderPhysicalShape's layout() function by the following function, which probably computed the invalid constraints in question:
-  RenderConstrainedBox.performLayout (package:flutter/src/rendering/proxy\_box.dart:297:14)
+  RenderConstrainedBox.performLayout (package:flutter/src/rendering/proxy_box.dart:297:14)
 The offending constraints were:
   BoxConstraints(w=Infinity, 32.0&lt;=h&lt;=Infinity))
 
@@ -1290,8 +1290,8 @@ The offending constraints were:
 
 Flutter で「BoxConstraints forces an infinite width.」が出る典型的な原因は、
 
-1. \*\*親ウィジェットが横方向（width）の制約を与えていない状態で、子ウィジェットがサイズを埋めようとする\*\*  
-2. \*\*スクロール系ウィジェット（ListView / SingleChildScrollViewなど）を入れ子にしており、どちらかが無限幅になってしまう\*\*
+1. **親ウィジェットが横方向（width）の制約を与えていない状態で、子ウィジェットがサイズを埋めようとする**  
+2. **スクロール系ウィジェット（ListView / SingleChildScrollViewなど）を入れ子にしており、どちらかが無限幅になってしまう**
 
 などがあります。実行時に「`w=Infinity`」というエラー文言がある場合、横幅が無限大になっているのが原因です。
 
@@ -1338,17 +1338,17 @@ Flutter で「BoxConstraints forces an infinite width.」が出る典型的な�
 
 ## 対処のヒント
 
-- \*\*不要な `SingleChildScrollView` を外してみる\*\*  
+- **不要な `SingleChildScrollView` を外してみる**  
   すでに `ListView` がスクロールを担っている場合、さらに `SingleChildScrollView` を被せると、  
   無限大の制約が発生しやすくなります。  
-- \*\*`ListView` の `shrinkWrap` や `physics` を調整する\*\*  
+- **`ListView` の `shrinkWrap` や `physics` を調整する**  
   `shrinkWrap: true` は「子のサイズに応じて `ListView` 自体のサイズも決める」オプション。  
   ただし、親が別のスクロールを持つ場合は、スクロール競合を避けるために `physics: NeverScrollableScrollPhysics()` にし、  
   親側だけスクロールする作りにすることもあります。  
-- \*\*`Expanded` や `Flexible` でレイアウトをバランス良くまとめる\*\*  
+- **`Expanded` や `Flexible` でレイアウトをバランス良くまとめる**  
   親が `Row` や `Column` の場合、子を `Expanded` や `Flexible` でラップしておくと、  
   フレックスルールにしたがって適度に収まることが多いです。  
-- \*\*デバッグログを見ながら無限大になっている箇所を特定する\*\*  
+- **デバッグログを見ながら無限大になっている箇所を特定する**  
   場合によっては、一度レイアウトをシンプルなものに戻し、  
   徐々にウィジェットを追加していくことで、どこで無限大が発生しているのか確認しやすくなります。  
 
@@ -1378,7 +1378,7 @@ Flutter で「BoxConstraints forces an infinite width.」が出る典型的な�
 
 SliverPersistentHeader(
                     pinned: true,
-                    delegate: \_SliverTabBarDelegate(
+                    delegate: _SliverTabBarDelegate(
                       TabBar(
                         dividerColor: ColorToken.secondary,
                         indicator: UnderlineTabIndicator(
@@ -1392,10 +1392,10 @@ SliverPersistentHeader(
                         ),
                         labelColor: ColorToken.text,
                         unselectedLabelColor: ColorToken.secondary,
-                        tabs: const \[
+                        tabs: const [
                           Tab(text: 'Decks'),
                           Tab(text: 'Items'),
-                        \],
+                        ],
                       ),
                     ),
                   ),
@@ -1403,8 +1403,8 @@ SliverPersistentHeader(
 
 
 /// タブバーを SliverPersistentHeader として使うためのデリゲート
-class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
-  \_SliverTabBarDelegate(this.tabBar);
+class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverTabBarDelegate(this.tabBar);
 
   final TabBar tabBar;
 
@@ -1426,7 +1426,7 @@ class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(\_SliverTabBarDelegate oldDelegate) {
+  bool shouldRebuild(_SliverTabBarDelegate oldDelegate) {
     return oldDelegate.tabBar != tabBar;
   }
 }
@@ -1436,10 +1436,10 @@ class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
 SingleChildScrollViewは外していいと思う。
 
 例外が発生しました
-\* 
+* 
 FlutterError (BoxConstraints forces an infinite width.
 These invalid constraints were provided to RenderPhysicalShape's layout() function by the following function, which probably computed the invalid constraints in question:
-  RenderConstrainedBox.performLayout (package:flutter/src/rendering/proxy\_box.dart:297:14)
+  RenderConstrainedBox.performLayout (package:flutter/src/rendering/proxy_box.dart:297:14)
 The offending constraints were:
   BoxConstraints(w=Infinity, 32.0&lt;=h&lt;=Infinity))
 
@@ -1978,19 +1978,19 @@ class MyPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/1/27 19:47:01*
 
-\*\*Examining the layout\*\*
+**Examining the layout**
 
-I’m working through the `NestedScrollView` setup that includes `headerSliverBuilder` returning `\[SliverToBoxAdapter, SliverPersistentHeader\]`. The `body` has `TabBarView` with two `ListView` children, each with `shrinkWrap: true` and `physics: NeverScrollableScrollPhysics()`, and a "Decks" list including a row, `SizedBox`, `DecoratedBox`, columns, and `cameraList`.
+I’m working through the `NestedScrollView` setup that includes `headerSliverBuilder` returning `[SliverToBoxAdapter, SliverPersistentHeader]`. The `body` has `TabBarView` with two `ListView` children, each with `shrinkWrap: true` and `physics: NeverScrollableScrollPhysics()`, and a "Decks" list including a row, `SizedBox`, `DecoratedBox`, columns, and `cameraList`.
 
-\*\*Evaluating layout strategies\*\*
+**Evaluating layout strategies**
 
 I’m examining the cause of infinite constraints, considering `Expanded` or `Flexible` misuse. Removing "ListView" and trying `SingleChildScrollView` with `BouncingScrollPhysics()` is worth noting.
 
-\*\*Emulating a simpler pattern\*\*
+**Emulating a simpler pattern**
 
 I suggest using `SliverList` instead of `ListViews` within `CustomScrollView` for the `DECKS` and `ITEMS` tabs, ensuring each child has its own scroll. This aligns with the recommended nested scroll approach.
 
-\*\*Simplifying the structure\*\*
+**Simplifying the structure**
 
 I’m removing `physics: NeverScrollableScrollPhysics()` and `shrinkWrap: true`. The `Decks` tab will use a `CustomScrollView` with `SliverPadding` and `SliverList` for a more streamlined layout.
 

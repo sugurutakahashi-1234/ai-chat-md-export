@@ -7,31 +7,31 @@
 ## 👤 ユーザー
 *2025/2/14 15:42:02*
 
-\_buildRequestedMembersと \_buildGuildManagementContent は別ウィジェットに分けるのではなく、GuildManagePageに分けずに書いていきたい。
+_buildRequestedMembersと _buildGuildManagementContent は別ウィジェットに分けるのではなく、GuildManagePageに分けずに書いていきたい。
   import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:image\_cropper/image\_cropper.dart';
-import 'package:image\_picker/image\_picker.dart';
-import 'package:permission\_handler/permission\_handler.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/camera\_dto\_x.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/delete\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/update\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/update\_guild\_member.dart';
-import 'package:snpit\_guild\_app/presentation/router/router.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/delete\_guild\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/guild\_icon.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/guild\_member\_column.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/parameters\_bar\_column.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/camera_dto_x.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/delete_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/update_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/update_guild_member.dart';
+import 'package:snpit_guild_app/presentation/router/router.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/delete_guild_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/guild_icon.dart';
+import 'package:snpit_guild_app/presentation/widgets/guild_member_column.dart';
+import 'package:snpit_guild_app/presentation/widgets/parameters_bar_column.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class GuildManagePage extends HookConsumerWidget {
   const GuildManagePage({super.key});
@@ -95,7 +95,7 @@ class GuildManagePage extends HookConsumerWidget {
       final croppedFile = await ImageCropper().cropImage(
         sourcePath: pickedFile.path,
         aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
-        uiSettings: \[
+        uiSettings: [
           AndroidUiSettings(
             hideBottomControls: true,
             lockAspectRatio: true,
@@ -103,7 +103,7 @@ class GuildManagePage extends HookConsumerWidget {
           IOSUiSettings(
             aspectRatioLockEnabled: true,
           ),
-        \],
+        ],
       );
 
       if (croppedFile == null) {
@@ -119,10 +119,10 @@ class GuildManagePage extends HookConsumerWidget {
       debugPrint('Cropped image path: ${imageFileState.value!.path}');
 
       try {
-        // TODO: \[フェーズ2\] 画像アップロードなど適切な API 呼び出し
+        // TODO: [フェーズ2] 画像アップロードなど適切な API 呼び出し
         await ref.read(updateGuildNotifierProvider.notifier).updateGuildAvatar(
               UriExtensions.randomImageUrlWithTitle(
-                // ignore: use\_build\_context\_synchronously
+                // ignore: use_build_context_synchronously
                 TimeOfDay.now().format(context),
               ).toString(),
             );
@@ -156,20 +156,20 @@ class GuildManagePage extends HookConsumerWidget {
           content: const Text(
             'Coming Soon!',
           ),
-          actions: \[
+          actions: [
             TextButton(
               onPressed: () =&gt; context.pop(),
               child: const Text('OK'),
             ),
-          \],
+          ],
         ),
       );
 
       return;
 
-      // TODO: \[フェーズ2\] 画像アップロード機能を実装する
-      // ignore: dead\_code, use\_build\_context\_synchronously
-      final hasPermission = await \_hasPhotoPermission(context);
+      // TODO: [フェーズ2] 画像アップロード機能を実装する
+      // ignore: dead_code, use_build_context_synchronously
+      final hasPermission = await _hasPhotoPermission(context);
       if (hasPermission) {
         await pickAndCropImage();
       }
@@ -262,7 +262,7 @@ class GuildManagePage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -284,13 +284,13 @@ class GuildManagePage extends HookConsumerWidget {
             final guildId = guild.guildId ?? 'Unknown';
             final guildName = guild.guildName ?? 'No Name';
             final guildAvatar = guild.guildAvatar ?? '';
-            final guildMembers = guild.guildMembers ?? &lt;GuildMemberDto&gt;\[\];
+            final guildMembers = guild.guildMembers ?? &lt;GuildMemberDto&gt;[];
 
             return SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: \_buildGuildManagementContent(
+                child: _buildGuildManagementContent(
                   context: context,
                   ref: ref,
                   guildId: guildId,
@@ -309,7 +309,7 @@ class GuildManagePage extends HookConsumerWidget {
           loading: () {
             return const Center(child: CircularProgressIndicator());
           },
-          error: (error, \_) {
+          error: (error, _) {
             return Center(child: Text('Error: $error'));
           },
         ),
@@ -318,7 +318,7 @@ class GuildManagePage extends HookConsumerWidget {
   }
 
   /// GuildInfoResponseDtoData の中の必要データを非オプショナルで受け取り、安全なデフォルトを使う
-  Widget \_buildGuildManagementContent({
+  Widget _buildGuildManagementContent({
     required BuildContext context,
     required WidgetRef ref,
     required String guildId,
@@ -342,7 +342,7 @@ class GuildManagePage extends HookConsumerWidget {
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: \[
+      children: [
         const SizedBox(height: 32),
         // ギルドのアバター(写真)
         Center(
@@ -352,7 +352,7 @@ class GuildManagePage extends HookConsumerWidget {
             },
             child: Stack(
               alignment: Alignment.center,
-              children: \[
+              children: [
                 GuildIcon(
                   guildId: guildId,
                   guildAvatar: guildAvatar,
@@ -366,11 +366,11 @@ class GuildManagePage extends HookConsumerWidget {
                   ),
                 ),
                 const Icon(
-                  Icons.camera\_alt,
+                  Icons.camera_alt,
                   size: 24,
                   color: Colors.white,
                 ),
-              \],
+              ],
             ),
           ),
         ),
@@ -397,7 +397,7 @@ class GuildManagePage extends HookConsumerWidget {
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: \[
+                children: [
                   const Text(
                     'Name',
                     style: TextStyle(
@@ -411,7 +411,7 @@ class GuildManagePage extends HookConsumerWidget {
                   Flexible(
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: \[
+                      children: [
                         Flexible(
                           child: Text(
                             guildName,
@@ -422,14 +422,14 @@ class GuildManagePage extends HookConsumerWidget {
                         ),
                         const SizedBox(width: 8),
                         const Icon(
-                          Icons.chevron\_right,
+                          Icons.chevron_right,
                           color: ColorToken.text,
                           size: 20,
                         ),
-                      \],
+                      ],
                     ),
                   ),
-                \],
+                ],
               ),
             ),
           ),
@@ -440,7 +440,7 @@ class GuildManagePage extends HookConsumerWidget {
         ),
         const SizedBox(height: 32),
         // メンバー申請一覧
-        \_buildRequestedMembers(
+        _buildRequestedMembers(
           context: context,
           ref: ref,
           guildId: guildId,
@@ -460,12 +460,12 @@ class GuildManagePage extends HookConsumerWidget {
         //     child: const Text('Delete this guild'),
         //   ),
         // ),
-      \],
+      ],
     );
   }
 
   /// 申請中メンバー一覧表示
-  Widget \_buildRequestedMembers({
+  Widget _buildRequestedMembers({
     required BuildContext context,
     required WidgetRef ref,
     required String guildId,
@@ -508,12 +508,12 @@ class GuildManagePage extends HookConsumerWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: requestedMembers.length,
         itemBuilder: (context, index) {
-          final member = requestedMembers\[index\];
+          final member = requestedMembers[index];
           final userId = member.userId ?? '';
           final userName = member.username ?? '';
           final avatarUrl = member.avatar;
           final cameraList =
-              member.decks?.firstOrNull?.deckCameras?.sorted() ?? \[\];
+              member.decks?.firstOrNull?.deckCameras?.sorted() ?? [];
 
           return Padding(
             padding: const EdgeInsets.only(bottom: 8),
@@ -528,10 +528,10 @@ class GuildManagePage extends HookConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
-                  children: \[
+                  children: [
                     // ユーザー情報部分
                     Row(
-                      children: \[
+                      children: [
                         // 左側：アバター + ユーザー名
                         Expanded(
                           child: GuildMemberColumn(
@@ -550,13 +550,13 @@ class GuildManagePage extends HookConsumerWidget {
                             defenseB: member.decks?.firstOrNull?.defenseB ?? 0,
                           ),
                         ),
-                      \],
+                      ],
                     ),
                     const SizedBox(height: 16),
                     // 承認・却下ボタン
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: \[
+                      children: [
                         Flexible(
                           child: OutlinedButton(
                             onPressed: () async {
@@ -594,9 +594,9 @@ class GuildManagePage extends HookConsumerWidget {
                             ),
                           ),
                         ),
-                      \],
+                      ],
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
@@ -607,7 +607,7 @@ class GuildManagePage extends HookConsumerWidget {
   }
 
   /// 写真の権限をチェックして、権限があれば true を返す
-  Future&lt;bool&gt; \_hasPhotoPermission(BuildContext context) async {
+  Future&lt;bool&gt; _hasPhotoPermission(BuildContext context) async {
     final status = await Permission.photos.request();
 
     switch (status) {
@@ -618,7 +618,7 @@ class GuildManagePage extends HookConsumerWidget {
       case PermissionStatus.permanentlyDenied:
         // 永久に拒否されている場合
         if (context.mounted) {
-          \_showPermissionDialog(context);
+          _showPermissionDialog(context);
         }
         return false;
       case PermissionStatus.denied:
@@ -635,7 +635,7 @@ class GuildManagePage extends HookConsumerWidget {
   }
 
   /// 設定画面へ遷移させるダイアログを表示
-  void \_showPermissionDialog(BuildContext context) {
+  void _showPermissionDialog(BuildContext context) {
     showDialog&lt;void&gt;(
       context: context,
       builder: (context) =&gt; AlertDialog(
@@ -650,7 +650,7 @@ class GuildManagePage extends HookConsumerWidget {
         content: const Text(
           'Enable photo access in settings to select a photo.',
         ),
-        actions: \[
+        actions: [
           TextButton(
             onPressed: () async {
               context.pop();
@@ -663,7 +663,7 @@ class GuildManagePage extends HookConsumerWidget {
             },
             child: const Text('Open Settings'),
           ),
-        \],
+        ],
       ),
     );
   }
@@ -674,25 +674,25 @@ class GuildManagePage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/2/14 15:42:56*
 
-\*\*整理中\*\*
+**整理中**
 
-ユーザーは`\_buildRequestedMembers`と`\_buildGuildManagementContent`を同じファイル内に残したいと考えていますが、別々のウィジェットとしてではなく、`GuildManagePage`内に残す方法を模索中です。
+ユーザーは`_buildRequestedMembers`と`_buildGuildManagementContent`を同じファイル内に残したいと考えていますが、別々のウィジェットとしてではなく、`GuildManagePage`内に残す方法を模索中です。
 
-\*\*探る選択肢\*\*
+**探る選択肢**
 
-`\_buildRequestedMembers`と`\_buildGuildManagementContent`をトップレベルのプライベート関数またはプライベート拡張メソッドとして定義する方法を模索中。
+`_buildRequestedMembers`と`_buildGuildManagementContent`をトップレベルのプライベート関数またはプライベート拡張メソッドとして定義する方法を模索中。
 
-\*\*トップレベルのプライベート関数として保存\*\*
+**トップレベルのプライベート関数として保存**
 
-ユーザーが`\_buildRequestedMembers`と`\_buildGuildManagementContent`をファイル内に保つ方法を探る中で、これらをトップレベルのプライベート関数として記述することが有効だと気づく。
+ユーザーが`_buildRequestedMembers`と`_buildGuildManagementContent`をファイル内に保つ方法を探る中で、これらをトップレベルのプライベート関数として記述することが有効だと気づく。
 
-\*\*トップレベルのプライベート関数を探る\*\*
+**トップレベルのプライベート関数を探る**
 
-`\_buildGuildManagementContent`と`\_buildRequestedMembers`をファイル内のトップレベルのプライベート関数として定義し、`GuildManagePage.build`メソッドから呼び出す方法を検討している。
+`_buildGuildManagementContent`と`_buildRequestedMembers`をファイル内のトップレベルのプライベート関数として定義し、`GuildManagePage.build`メソッドから呼び出す方法を検討している。
 
-\*\*トップレベルのプライベート関数を使用\*\*
+**トップレベルのプライベート関数を使用**
 
-`GuildManagePage`クラス内の`\_buildGuildManagementContent`と`\_buildRequestedMembers`を外し、ファイル内のトップレベルのプライベート関数として定義する進展を見ている。
+`GuildManagePage`クラス内の`_buildGuildManagementContent`と`_buildRequestedMembers`を外し、ファイル内のトップレベルのプライベート関数として定義する進展を見ている。
 
 ---
 

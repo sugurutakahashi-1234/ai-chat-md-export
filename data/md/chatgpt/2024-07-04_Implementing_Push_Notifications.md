@@ -489,9 +489,9 @@ send_notification_to_followers(1, "ユーザーが新しいツイートを投稿
 
 1. A user with a mobile device.
 2. The device sending a push notification request with the device token to the server.
-3. The server storing the device token in a database table called 'device\_tokens'.
+3. The server storing the device token in a database table called 'device_tokens'.
 4. Another table called 'users' containing user information.
-5. A many-to-many relationship table called 'user\_device\_tokens' linking 'users' and 'device\_tokens'.
+5. A many-to-many relationship table called 'user_device_tokens' linking 'users' and 'device_tokens'.
 6. The process of a user tweeting, triggering a query to get the followers' device tokens.
 7. The server sending push notifications to the devices of all followers.
 

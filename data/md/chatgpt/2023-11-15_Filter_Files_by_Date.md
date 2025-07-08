@@ -275,7 +275,7 @@ done
 ## 👤 ユーザー
 *2023/11/15 17:58:52*
 
-npx qiita new "$(basename "$FILE" .md)" &lt; $QIITA\_TEMP\_FILE で作成できるのかな？
+npx qiita new "$(basename "$FILE" .md)" &lt; $QIITA_TEMP_FILE で作成できるのかな？
 
 ---
 
@@ -284,7 +284,7 @@ npx qiita new "$(basename "$FILE" .md)" &lt; $QIITA\_TEMP\_FILE で作成でき�
 
 `npx qiita new` コマンドは、新しい記事を作成するためのコマンドですが、通常の使い方では標準入力からの内容をそのまま記事の本文として受け付ける機能はありません。このコマンドは主に記事のタイトルを引数として受け取り、新しい記事のベースを作成するために使われます。記事の本文は通常、生成されたファイルに直接編集を加える形で行います。
 
-したがって、`npx qiita new "$(basename "$FILE" .md)" &lt; $QIITA\_TEMP\_FILE` というコマンドは、おそらく期待通りに動作しないでしょう。Qiitaの記事をコマンドラインから自動的に生成・更新するには、QiitaのAPIを使用する必要があります。
+したがって、`npx qiita new "$(basename "$FILE" .md)" &lt; $QIITA_TEMP_FILE` というコマンドは、おそらく期待通りに動作しないでしょう。Qiitaの記事をコマンドラインから自動的に生成・更新するには、QiitaのAPIを使用する必要があります。
 
 QiitaのAPIを使用して記事を投稿する場合、以下のステップを踏むことになります：
 
@@ -565,7 +565,7 @@ done
 ## 👤 ユーザー
 *2023/11/15 18:07:26*
 
-topics: \["Swift", "CaseIterable"\] やtopics: \["Swift"\]、topics: \["Swift", "Combine"\] などtopicsは複数ある場合がある。それに対応して欲しいのと、一番最後にnpx qiita publish --allを実行して欲しい。
+topics: ["Swift", "CaseIterable"] やtopics: ["Swift"]、topics: ["Swift", "Combine"] などtopicsは複数ある場合がある。それに対応して欲しいのと、一番最後にnpx qiita publish --allを実行して欲しい。
 
 ---
 
@@ -706,13 +706,13 @@ npx qiita publish --all
 ヘッダーがこうなった。
 
 ---
-title: "\[Swift\] \[Combine\] zipの完了条件あれこれ"
+title: "[Swift] [Combine] zipの完了条件あれこれ"
 tags:
   - ""Swift","Combine""
 private: false
-updated\_at: ''
+updated_at: ''
 id: null
-organization\_url\_name: null
+organization_url_name: null
 slide: false
 ignorePublish: false
 ---
@@ -721,14 +721,14 @@ ignorePublish: false
 そうではなく、こうしてほしい。
 
 ---
-title: \[Swift\] \[Combine\] zipの完了条件あれこれ
+title: [Swift] [Combine] zipの完了条件あれこれ
 tags:
   - Swift
   - Combine
 private: false
-updated\_at: ''
+updated_at: ''
 id: null
-organization\_url\_name: null
+organization_url_name: null
 slide: false
 ignorePublish: false
 ---

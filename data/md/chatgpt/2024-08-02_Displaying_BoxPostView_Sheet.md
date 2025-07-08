@@ -18,7 +18,7 @@ struct HomeTabView&lt;Dependency: RootDIContainerDependency&gt;: View {
 
     init(dependency: Dependency, homeTab: HomeTab = .home) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: .init(homeTab: homeTab))
+        _presenter = .init(wrappedValue: .init(homeTab: homeTab))
     }
 
     var body: some View {

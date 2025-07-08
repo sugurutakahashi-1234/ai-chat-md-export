@@ -9,7 +9,7 @@
 
 同じ行の出力が連続していたら消してほしい
 
-git log 0.1.0-rc.2..HEAD --oneline --pretty=format:"\[%cs\] %s %b"
+git log 0.1.0-rc.2..HEAD --oneline --pretty=format:"[%cs] %s %b"
 
 ---
 

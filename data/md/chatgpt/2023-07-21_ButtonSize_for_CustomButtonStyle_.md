@@ -50,13 +50,13 @@ private extension ButtonType {
 
     func foregroundColor(for state: ButtonState) -&gt; Color {
         switch (self, state) {
-        case (.primary, \_):
+        case (.primary, _):
             return CoreAssets.Color.Neutral.white.swiftUIColor
-        case (\_, .default):
+        case (_, .default):
             return CoreAssets.Color.Primary.primary100.swiftUIColor
-        case (\_, .pressed):
+        case (_, .pressed):
             return CoreAssets.Color.Primary.primary70.swiftUIColor
-        case (\_, .disabled):
+        case (_, .disabled):
             return CoreAssets.Color.Neutral.neutral50.swiftUIColor
         }
     }
@@ -91,13 +91,13 @@ private extension ButtonType {
 public struct CustomButtonStyle: ButtonStyle {
     // Button が .disabled かどうかを取得する
     // Ref: https://stackoverflow.com/questions/59169436/swiftui-buttonstyle-how-to-check-if-button-is-disabled-or-enabled
-    @Environment(\\.isEnabled) private var isEnabled: Bool
+    @Environment(\.isEnabled) private var isEnabled: Bool
     private var buttonType: ButtonType
     private static let border: CGFloat = 2
     private static let cornerRadius: CGFloat = 30
     private static let roundButtonHeight: CGFloat = 48
 
-    public init(\_ type: ButtonType) {
+    public init(_ type: ButtonType) {
         buttonType = type
     }
 

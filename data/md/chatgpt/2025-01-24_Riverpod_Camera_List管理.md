@@ -12,7 +12,7 @@ FlutterのRiverpodでリバーポッドアノテーションを使ってList&lt;
 setCameraListで全部を設定するメソッドが欲しくて、あとは一つのCameraDTOをaddメソッドと、idを指定して、deleteするメソッドも生やして欲しい。
 
 @freezed
-class CameraDTO with \_$CameraDTO {
+class CameraDTO with _$CameraDTO {
   factory CameraDTO({
     @JsonKey(name: 'cameraId') required String? cameraId,
     @JsonKey(name: 'cameraName') required String? cameraName,
@@ -23,10 +23,10 @@ class CameraDTO with \_$CameraDTO {
     @JsonKey(name: 'attackE') required num? attackE,
     @JsonKey(name: 'luckL') required num? luckL,
     @JsonKey(name: 'defenseB') required num? defenseB,
-  }) = \_CameraDTO;
+  }) = _CameraDTO;
 
   factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$CameraDTOFromJson(jsonMap);
+      _$CameraDTOFromJson(jsonMap);
 }
 
 ---
@@ -41,14 +41,14 @@ class CameraDTO with \_$CameraDTO {
 ## 🤖 アシスタント
 *2025/1/24 19:40:10*
 
-{"name":"camera\_list\_provider","type":"code/dart","content":"import 'package:flutter\_riverpod/flutter\_riverpod.dart';\\nimport 'package:freezed\_annotation/freezed\_annotation.dart';\\n\\npart 'camera\_list\_provider.freezed.dart';\\npart 'camera\_list\_provider.g.dart';\\n\\n@freezed\\nclass CameraDTO with \_$CameraDTO {\\n  factory CameraDTO({\\n    @JsonKey(name: 'cameraId') required String? cameraId,\\n    @JsonKey(name: 'cameraName') required String? cameraName,\\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\\n    @JsonKey(name: 'rarity') String? rarity,\\n    @JsonKey(name: 'level') num? level,\\n    @JsonKey(name: 'searchQ') required num? searchQ,\\n    @JsonKey(name: 'attackE') required num? attackE,\\n    @JsonKey(name: 'luckL') required num? luckL,\\n    @JsonKey(name: 'defenseB') required num? defenseB,\\n  }) = \_CameraDTO;\\n\\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; \_$CameraDTOFromJson(json);\\n}\\n\\n@riverpod\\nclass CameraList extends \_$CameraList {\\n  @override\\n  List&lt;CameraDTO&gt; build() =&gt; \[\];\\n\\n  /// 全体のカメラリストをセットするメソッド\\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\\n    state = newCameraList;\\n  }\\n\\n  /// 新しいカメラを追加するメソッド\\n  void addCamera(CameraDTO camera) {\\n    state = \[...state, camera\];\\n  }\\n\\n  /// 指定したIDのカメラを削除するメソッド\\n  void deleteCameraById(String cameraId) {\\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\\n  }\\n}"}
+{"name":"camera_list_provider","type":"code/dart","content":"import 'package:flutter_riverpod/flutter_riverpod.dart';\nimport 'package:freezed_annotation/freezed_annotation.dart';\n\npart 'camera_list_provider.freezed.dart';\npart 'camera_list_provider.g.dart';\n\n@freezed\nclass CameraDTO with _$CameraDTO {\n  factory CameraDTO({\n    @JsonKey(name: 'cameraId') required String? cameraId,\n    @JsonKey(name: 'cameraName') required String? cameraName,\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\n    @JsonKey(name: 'rarity') String? rarity,\n    @JsonKey(name: 'level') num? level,\n    @JsonKey(name: 'searchQ') required num? searchQ,\n    @JsonKey(name: 'attackE') required num? attackE,\n    @JsonKey(name: 'luckL') required num? luckL,\n    @JsonKey(name: 'defenseB') required num? defenseB,\n  }) = _CameraDTO;\n\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CameraDTOFromJson(json);\n}\n\n@riverpod\nclass CameraList extends _$CameraList {\n  @override\n  List&lt;CameraDTO&gt; build() =&gt; [];\n\n  /// 全体のカメラリストをセットするメソッド\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\n    state = newCameraList;\n  }\n\n  /// 新しいカメラを追加するメソッド\n  void addCamera(CameraDTO camera) {\n    state = [...state, camera];\n  }\n\n  /// 指定したIDのカメラを削除するメソッド\n  void deleteCameraById(String cameraId) {\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\n  }\n}"}
 
 ---
 
 ## 🔧 ツール
 *2025/1/24 19:40:10*
 
-{"result": "Successfully created text document 'camera\_list\_provider' which will be referenced in all future messages with the unique identifier textdoc\_id: '67936dfb59cc8191837dee96ef989bda'", "textdoc\_id": "67936dfb59cc8191837dee96ef989bda", "name": "camera\_list\_provider"}
+{"result": "Successfully created text document 'camera_list_provider' which will be referenced in all future messages with the unique identifier textdoc_id: '67936dfb59cc8191837dee96ef989bda'", "textdoc_id": "67936dfb59cc8191837dee96ef989bda", "name": "camera_list_provider"}
 
 ---
 
@@ -92,14 +92,14 @@ class CameraDTO with \_$CameraDTO {
 ## 🤖 アシスタント
 *2025/1/24 19:43:44*
 
-{"updates": \[{"pattern": ".\*", "replacement": "import 'package:flutter\_riverpod/flutter\_riverpod.dart';\\nimport 'package:freezed\_annotation/freezed\_annotation.dart';\\n\\npart 'editing\_deck\_state.freezed.dart';\\npart 'editing\_deck\_state.g.dart';\\n\\n@freezed\\nclass CameraDTO with \_$CameraDTO {\\n  factory CameraDTO({\\n    @JsonKey(name: 'cameraId') required String? cameraId,\\n    @JsonKey(name: 'cameraName') required String? cameraName,\\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\\n    @JsonKey(name: 'rarity') String? rarity,\\n    @JsonKey(name: 'level') num? level,\\n    @JsonKey(name: 'searchQ') required num? searchQ,\\n    @JsonKey(name: 'attackE') required num? attackE,\\n    @JsonKey(name: 'luckL') required num? luckL,\\n    @JsonKey(name: 'defenseB') required num? defenseB,\\n  }) = \_CameraDTO;\\n\\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; \_$CameraDTOFromJson(json);\\n}\\n\\n@riverpod\\nclass EditingDeckState extends \_$EditingDeckState {\\n  @override\\n  List&lt;CameraDTO&gt; build() =&gt; \[\];\\n\\n  /// 全体のカメラリストをセットするメソッド\\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\\n    state = newCameraList;\\n  }\\n\\n  /// 新しいカメラを追加するメソッド\\n  void addCamera(CameraDTO camera) {\\n    state = \[...state, camera\];\\n  }\\n\\n  /// 指定したIDのカメラを削除するメソッド\\n  void deleteCameraById(String cameraId) {\\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\\n  }\\n\\n  /// カメラリスト内のsearchQ、attackE、luckL、defenseBの合計値を取得するメソッド\\n  num get totalStats =&gt; state.fold&lt;num&gt;(\\n        0,\\n        (sum, camera) =&gt; sum + (camera.searchQ ?? 0) + (camera.attackE ?? 0) + (camera.luckL ?? 0) + (camera.defenseB ?? 0),\\n      );\\n}"}\]}
+{"updates": [{"pattern": ".*", "replacement": "import 'package:flutter_riverpod/flutter_riverpod.dart';\nimport 'package:freezed_annotation/freezed_annotation.dart';\n\npart 'editing_deck_state.freezed.dart';\npart 'editing_deck_state.g.dart';\n\n@freezed\nclass CameraDTO with _$CameraDTO {\n  factory CameraDTO({\n    @JsonKey(name: 'cameraId') required String? cameraId,\n    @JsonKey(name: 'cameraName') required String? cameraName,\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\n    @JsonKey(name: 'rarity') String? rarity,\n    @JsonKey(name: 'level') num? level,\n    @JsonKey(name: 'searchQ') required num? searchQ,\n    @JsonKey(name: 'attackE') required num? attackE,\n    @JsonKey(name: 'luckL') required num? luckL,\n    @JsonKey(name: 'defenseB') required num? defenseB,\n  }) = _CameraDTO;\n\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CameraDTOFromJson(json);\n}\n\n@riverpod\nclass EditingDeckState extends _$EditingDeckState {\n  @override\n  List&lt;CameraDTO&gt; build() =&gt; [];\n\n  /// 全体のカメラリストをセットするメソッド\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\n    state = newCameraList;\n  }\n\n  /// 新しいカメラを追加するメソッド\n  void addCamera(CameraDTO camera) {\n    state = [...state, camera];\n  }\n\n  /// 指定したIDのカメラを削除するメソッド\n  void deleteCameraById(String cameraId) {\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\n  }\n\n  /// カメラリスト内のsearchQ、attackE、luckL、defenseBの合計値を取得するメソッド\n  num get totalStats =&gt; state.fold&lt;num&gt;(\n        0,\n        (sum, camera) =&gt; sum + (camera.searchQ ?? 0) + (camera.attackE ?? 0) + (camera.luckL ?? 0) + (camera.defenseB ?? 0),\n      );\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/24 19:43:44*
 
-{"result": "Successfully updated text document with textdoc\_id '67936dfb59cc8191837dee96ef989bda'", "textdoc\_id": "67936dfb59cc8191837dee96ef989bda"}
+{"result": "Successfully updated text document with textdoc_id '67936dfb59cc8191837dee96ef989bda'", "textdoc_id": "67936dfb59cc8191837dee96ef989bda"}
 
 ---
 
@@ -108,10 +108,10 @@ class CameraDTO with \_$CameraDTO {
 
 変更完了しました。以下の更新を行いました：
 
-1. \*\*クラス名の変更\*\*:
+1. **クラス名の変更**:
    - `CameraList` を `EditingDeckState` に変更しました。
 
-2. \*\*`totalStats` メソッドの追加\*\*:
+2. **`totalStats` メソッドの追加**:
    - `searchQ`、`attackE`、`luckL`、`defenseB` の合計値を計算するメソッドを追加しました。
 
 これにより、デッキ内のカメラリスト全体のステータス合計値を簡単に取得できるようになります。他に要望があればお知らせください！
@@ -128,14 +128,14 @@ class CameraDTO with \_$CameraDTO {
 ## 🤖 アシスタント
 *2025/1/24 19:45:14*
 
-{"updates": \[{"pattern": ".\*", "replacement": "import 'package:flutter\_riverpod/flutter\_riverpod.dart';\\nimport 'package:freezed\_annotation/freezed\_annotation.dart';\\n\\npart 'editing\_deck\_state.freezed.dart';\\npart 'editing\_deck\_state.g.dart';\\n\\n@freezed\\nclass CameraDTO with \_$CameraDTO {\\n  factory CameraDTO({\\n    @JsonKey(name: 'cameraId') required String? cameraId,\\n    @JsonKey(name: 'cameraName') required String? cameraName,\\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\\n    @JsonKey(name: 'rarity') String? rarity,\\n    @JsonKey(name: 'level') num? level,\\n    @JsonKey(name: 'searchQ') required num? searchQ,\\n    @JsonKey(name: 'attackE') required num? attackE,\\n    @JsonKey(name: 'luckL') required num? luckL,\\n    @JsonKey(name: 'defenseB') required num? defenseB,\\n  }) = \_CameraDTO;\\n\\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; \_$CameraDTOFromJson(json);\\n}\\n\\n@riverpod\\nclass EditingDeckState extends \_$EditingDeckState {\\n  @override\\n  List&lt;CameraDTO&gt; build() =&gt; \[\];\\n\\n  /// 全体のカメラリストをセットするメソッド\\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\\n    state = newCameraList;\\n  }\\n\\n  /// 新しいカメラを追加するメソッド\\n  void addCamera(CameraDTO camera) {\\n    state = \[...state, camera\];\\n  }\\n\\n  /// 指定したIDのカメラを削除するメソッド\\n  void deleteCameraById(String cameraId) {\\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\\n  }\\n\\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\\n  num get totalSearchQ =&gt; state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0));\\n  num get totalAttackE =&gt; state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0));\\n  num get totalLuckL =&gt; state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0));\\n  num get totalDefenseB =&gt; state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0));\\n\\n  /// 各ステータスの合計値を取得するプロパティ (変更を監視可能)\\n  Map&lt;String, num&gt; get totalStats =&gt; {\\n        'searchQ': totalSearchQ,\\n        'attackE': totalAttackE,\\n        'luckL': totalLuckL,\\n        'defenseB': totalDefenseB,\\n      };\\n}"}\]}
+{"updates": [{"pattern": ".*", "replacement": "import 'package:flutter_riverpod/flutter_riverpod.dart';\nimport 'package:freezed_annotation/freezed_annotation.dart';\n\npart 'editing_deck_state.freezed.dart';\npart 'editing_deck_state.g.dart';\n\n@freezed\nclass CameraDTO with _$CameraDTO {\n  factory CameraDTO({\n    @JsonKey(name: 'cameraId') required String? cameraId,\n    @JsonKey(name: 'cameraName') required String? cameraName,\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\n    @JsonKey(name: 'rarity') String? rarity,\n    @JsonKey(name: 'level') num? level,\n    @JsonKey(name: 'searchQ') required num? searchQ,\n    @JsonKey(name: 'attackE') required num? attackE,\n    @JsonKey(name: 'luckL') required num? luckL,\n    @JsonKey(name: 'defenseB') required num? defenseB,\n  }) = _CameraDTO;\n\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CameraDTOFromJson(json);\n}\n\n@riverpod\nclass EditingDeckState extends _$EditingDeckState {\n  @override\n  List&lt;CameraDTO&gt; build() =&gt; [];\n\n  /// 全体のカメラリストをセットするメソッド\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\n    state = newCameraList;\n  }\n\n  /// 新しいカメラを追加するメソッド\n  void addCamera(CameraDTO camera) {\n    state = [...state, camera];\n  }\n\n  /// 指定したIDのカメラを削除するメソッド\n  void deleteCameraById(String cameraId) {\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\n  }\n\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\n  num get totalSearchQ =&gt; state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0));\n  num get totalAttackE =&gt; state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0));\n  num get totalLuckL =&gt; state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0));\n  num get totalDefenseB =&gt; state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0));\n\n  /// 各ステータスの合計値を取得するプロパティ (変更を監視可能)\n  Map&lt;String, num&gt; get totalStats =&gt; {\n        'searchQ': totalSearchQ,\n        'attackE': totalAttackE,\n        'luckL': totalLuckL,\n        'defenseB': totalDefenseB,\n      };\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/24 19:45:14*
 
-{"result": "Successfully updated text document with textdoc\_id '67936dfb59cc8191837dee96ef989bda'", "textdoc\_id": "67936dfb59cc8191837dee96ef989bda"}
+{"result": "Successfully updated text document with textdoc_id '67936dfb59cc8191837dee96ef989bda'", "textdoc_id": "67936dfb59cc8191837dee96ef989bda"}
 
 ---
 
@@ -144,10 +144,10 @@ class CameraDTO with \_$CameraDTO {
 
 以下の変更を行いました：
 
-1. \*\*各ステータスの合計値を個別に計算\*\*:
+1. **各ステータスの合計値を個別に計算**:
    - `totalSearchQ`、`totalAttackE`、`totalLuckL`、`totalDefenseB` を追加しました。
 
-2. \*\*変更が反映されるように `totalStats` プロパティを定義\*\*:
+2. **変更が反映されるように `totalStats` プロパティを定義**:
    - それぞれのステータスの合計値をキーとした `Map&lt;String, num&gt;` を提供。
 
 これにより、画面にステータスの合計値を即座に反映できるようになります。他に改善点があればお知らせください！
@@ -283,14 +283,14 @@ keyバリューでアクセスするのではなくクラスを作って欲し�
 ## 🤖 アシスタント
 *2025/1/24 20:43:39*
 
-{"updates": \[{"pattern": ".\*", "replacement": "import 'package:flutter\_riverpod/flutter\_riverpod.dart';\\nimport 'package:freezed\_annotation/freezed\_annotation.dart';\\n\\npart 'editing\_deck\_state.freezed.dart';\\npart 'editing\_deck\_state.g.dart';\\n\\n@freezed\\nclass CameraDTO with \_$CameraDTO {\\n  factory CameraDTO({\\n    @JsonKey(name: 'cameraId') required String? cameraId,\\n    @JsonKey(name: 'cameraName') required String? cameraName,\\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\\n    @JsonKey(name: 'rarity') String? rarity,\\n    @JsonKey(name: 'level') num? level,\\n    @JsonKey(name: 'searchQ') required num? searchQ,\\n    @JsonKey(name: 'attackE') required num? attackE,\\n    @JsonKey(name: 'luckL') required num? luckL,\\n    @JsonKey(name: 'defenseB') required num? defenseB,\\n  }) = \_CameraDTO;\\n\\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; \_$CameraDTOFromJson(json);\\n}\\n\\nclass TotalStats {\\n  final num searchQ;\\n  final num attackE;\\n  final num luckL;\\n  final num defenseB;\\n\\n  TotalStats({\\n    required this.searchQ,\\n    required this.attackE,\\n    required this.luckL,\\n    required this.defenseB,\\n  });\\n}\\n\\n@riverpod\\nclass EditingDeckState extends \_$EditingDeckState {\\n  @override\\n  List&lt;CameraDTO&gt; build() =&gt; \[\];\\n\\n  /// 全体のカメラリストをセットするメソッド\\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\\n    state = newCameraList;\\n  }\\n\\n  /// 新しいカメラを追加するメソッド\\n  void addCamera(CameraDTO camera) {\\n    state = \[...state, camera\];\\n  }\\n\\n  /// 指定したIDのカメラを削除するメソッド\\n  void deleteCameraById(String cameraId) {\\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\\n  }\\n\\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\\n  TotalStats get totalStats =&gt; TotalStats(\\n        searchQ: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0)),\\n        attackE: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0)),\\n        luckL: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0)),\\n        defenseB: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0)),\\n      );\\n}"}\]}
+{"updates": [{"pattern": ".*", "replacement": "import 'package:flutter_riverpod/flutter_riverpod.dart';\nimport 'package:freezed_annotation/freezed_annotation.dart';\n\npart 'editing_deck_state.freezed.dart';\npart 'editing_deck_state.g.dart';\n\n@freezed\nclass CameraDTO with _$CameraDTO {\n  factory CameraDTO({\n    @JsonKey(name: 'cameraId') required String? cameraId,\n    @JsonKey(name: 'cameraName') required String? cameraName,\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\n    @JsonKey(name: 'rarity') String? rarity,\n    @JsonKey(name: 'level') num? level,\n    @JsonKey(name: 'searchQ') required num? searchQ,\n    @JsonKey(name: 'attackE') required num? attackE,\n    @JsonKey(name: 'luckL') required num? luckL,\n    @JsonKey(name: 'defenseB') required num? defenseB,\n  }) = _CameraDTO;\n\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CameraDTOFromJson(json);\n}\n\nclass TotalStats {\n  final num searchQ;\n  final num attackE;\n  final num luckL;\n  final num defenseB;\n\n  TotalStats({\n    required this.searchQ,\n    required this.attackE,\n    required this.luckL,\n    required this.defenseB,\n  });\n}\n\n@riverpod\nclass EditingDeckState extends _$EditingDeckState {\n  @override\n  List&lt;CameraDTO&gt; build() =&gt; [];\n\n  /// 全体のカメラリストをセットするメソッド\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\n    state = newCameraList;\n  }\n\n  /// 新しいカメラを追加するメソッド\n  void addCamera(CameraDTO camera) {\n    state = [...state, camera];\n  }\n\n  /// 指定したIDのカメラを削除するメソッド\n  void deleteCameraById(String cameraId) {\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\n  }\n\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\n  TotalStats get totalStats =&gt; TotalStats(\n        searchQ: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0)),\n        attackE: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0)),\n        luckL: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0)),\n        defenseB: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0)),\n      );\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/24 20:43:39*
 
-{"result": "Successfully updated text document with textdoc\_id '67936dfb59cc8191837dee96ef989bda'", "textdoc\_id": "67936dfb59cc8191837dee96ef989bda"}
+{"result": "Successfully updated text document with textdoc_id '67936dfb59cc8191837dee96ef989bda'", "textdoc_id": "67936dfb59cc8191837dee96ef989bda"}
 
 ---
 
@@ -299,10 +299,10 @@ keyバリューでアクセスするのではなくクラスを作って欲し�
 
 以下の変更を加えました：
 
-1. \*\*`TotalStats` クラスを追加\*\*:
+1. **`TotalStats` クラスを追加**:
    - 各ステータス（`searchQ`、`attackE`、`luckL`、`defenseB`）の合計値を保持する専用のクラスを作成しました。
 
-2. \*\*`totalStats` プロパティを `TotalStats` 型に変更\*\*:
+2. **`totalStats` プロパティを `TotalStats` 型に変更**:
    - 合計値を `TotalStats` クラスで返すように変更しました。
 
 これにより、ステータスの合計値を扱いやすくし、プロパティとして利用する際により明確な構造になります。ほかに追加の要望があれば教えてください！
@@ -319,14 +319,14 @@ List&lt;CameraDTO&gt; にアクセスする際にレベル順が高いものか�
 ## 🤖 アシスタント
 *2025/1/24 20:54:01*
 
-{"updates": \[{"pattern": ".\*", "replacement": "import 'package:flutter\_riverpod/flutter\_riverpod.dart';\\nimport 'package:freezed\_annotation/freezed\_annotation.dart';\\n\\npart 'editing\_deck\_state.freezed.dart';\\npart 'editing\_deck\_state.g.dart';\\n\\n@freezed\\nclass CameraDTO with \_$CameraDTO {\\n  factory CameraDTO({\\n    @JsonKey(name: 'cameraId') required String? cameraId,\\n    @JsonKey(name: 'cameraName') required String? cameraName,\\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\\n    @JsonKey(name: 'rarity') String? rarity,\\n    @JsonKey(name: 'level') num? level,\\n    @JsonKey(name: 'searchQ') required num? searchQ,\\n    @JsonKey(name: 'attackE') required num? attackE,\\n    @JsonKey(name: 'luckL') required num? luckL,\\n    @JsonKey(name: 'defenseB') required num? defenseB,\\n  }) = \_CameraDTO;\\n\\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; \_$CameraDTOFromJson(json);\\n}\\n\\nclass TotalStats {\\n  final num searchQ;\\n  final num attackE;\\n  final num luckL;\\n  final num defenseB;\\n\\n  TotalStats({\\n    required this.searchQ,\\n    required this.attackE,\\n    required this.luckL,\\n    required this.defenseB,\\n  });\\n}\\n\\n@riverpod\\nclass EditingDeckState extends \_$EditingDeckState {\\n  @override\\n  List&lt;CameraDTO&gt; build() =&gt; \[\];\\n\\n  /// 全体のカメラリストをセットするメソッド\\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\\n    state = newCameraList;\\n  }\\n\\n  /// 新しいカメラを追加するメソッド\\n  void addCamera(CameraDTO camera) {\\n    state = \[...state, camera\];\\n  }\\n\\n  /// 指定したIDのカメラを削除するメソッド\\n  void deleteCameraById(String cameraId) {\\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\\n  }\\n\\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\\n  TotalStats get totalStats =&gt; TotalStats(\\n        searchQ: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0)),\\n        attackE: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0)),\\n        luckL: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0)),\\n        defenseB: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0)),\\n      );\\n\\n  /// レベル順 (降順) にソートされたカメラリストを取得するメソッド\\n  List&lt;CameraDTO&gt; get sortedByLevel =&gt; List.from(state)..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\\n}"}\]}
+{"updates": [{"pattern": ".*", "replacement": "import 'package:flutter_riverpod/flutter_riverpod.dart';\nimport 'package:freezed_annotation/freezed_annotation.dart';\n\npart 'editing_deck_state.freezed.dart';\npart 'editing_deck_state.g.dart';\n\n@freezed\nclass CameraDTO with _$CameraDTO {\n  factory CameraDTO({\n    @JsonKey(name: 'cameraId') required String? cameraId,\n    @JsonKey(name: 'cameraName') required String? cameraName,\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\n    @JsonKey(name: 'rarity') String? rarity,\n    @JsonKey(name: 'level') num? level,\n    @JsonKey(name: 'searchQ') required num? searchQ,\n    @JsonKey(name: 'attackE') required num? attackE,\n    @JsonKey(name: 'luckL') required num? luckL,\n    @JsonKey(name: 'defenseB') required num? defenseB,\n  }) = _CameraDTO;\n\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CameraDTOFromJson(json);\n}\n\nclass TotalStats {\n  final num searchQ;\n  final num attackE;\n  final num luckL;\n  final num defenseB;\n\n  TotalStats({\n    required this.searchQ,\n    required this.attackE,\n    required this.luckL,\n    required this.defenseB,\n  });\n}\n\n@riverpod\nclass EditingDeckState extends _$EditingDeckState {\n  @override\n  List&lt;CameraDTO&gt; build() =&gt; [];\n\n  /// 全体のカメラリストをセットするメソッド\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\n    state = newCameraList;\n  }\n\n  /// 新しいカメラを追加するメソッド\n  void addCamera(CameraDTO camera) {\n    state = [...state, camera];\n  }\n\n  /// 指定したIDのカメラを削除するメソッド\n  void deleteCameraById(String cameraId) {\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList();\n  }\n\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\n  TotalStats get totalStats =&gt; TotalStats(\n        searchQ: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0)),\n        attackE: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0)),\n        luckL: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0)),\n        defenseB: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0)),\n      );\n\n  /// レベル順 (降順) にソートされたカメラリストを取得するメソッド\n  List&lt;CameraDTO&gt; get sortedByLevel =&gt; List.from(state)..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/24 20:54:01*
 
-{"result": "Successfully updated text document with textdoc\_id '67936dfb59cc8191837dee96ef989bda'", "textdoc\_id": "67936dfb59cc8191837dee96ef989bda"}
+{"result": "Successfully updated text document with textdoc_id '67936dfb59cc8191837dee96ef989bda'", "textdoc_id": "67936dfb59cc8191837dee96ef989bda"}
 
 ---
 
@@ -335,7 +335,7 @@ List&lt;CameraDTO&gt; にアクセスする際にレベル順が高いものか�
 
 以下の変更を加えました：
 
-1. \*\*`sortedByLevel` プロパティを追加\*\*:
+1. **`sortedByLevel` プロパティを追加**:
    - `state` をレベル (`level`) の降順でソートしたリストを返すようにしました。
 
 このプロパティを使用すれば、`List&lt;CameraDTO&gt;` にアクセスするときに常にレベルが高い順に表示されます。他に要望があれば教えてください！
@@ -352,14 +352,14 @@ List&lt;CameraDTO&gt; にアクセスする際にレベル順が高いものか�
 ## 🤖 アシスタント
 *2025/1/24 20:55:37*
 
-{"updates": \[{"pattern": ".\*", "replacement": "import 'package:flutter\_riverpod/flutter\_riverpod.dart';\\nimport 'package:freezed\_annotation/freezed\_annotation.dart';\\n\\npart 'editing\_deck\_state.freezed.dart';\\npart 'editing\_deck\_state.g.dart';\\n\\n@freezed\\nclass CameraDTO with \_$CameraDTO {\\n  factory CameraDTO({\\n    @JsonKey(name: 'cameraId') required String? cameraId,\\n    @JsonKey(name: 'cameraName') required String? cameraName,\\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\\n    @JsonKey(name: 'rarity') String? rarity,\\n    @JsonKey(name: 'level') num? level,\\n    @JsonKey(name: 'searchQ') required num? searchQ,\\n    @JsonKey(name: 'attackE') required num? attackE,\\n    @JsonKey(name: 'luckL') required num? luckL,\\n    @JsonKey(name: 'defenseB') required num? defenseB,\\n  }) = \_CameraDTO;\\n\\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; \_$CameraDTOFromJson(json);\\n}\\n\\nclass TotalStats {\\n  final num searchQ;\\n  final num attackE;\\n  final num luckL;\\n  final num defenseB;\\n\\n  TotalStats({\\n    required this.searchQ,\\n    required this.attackE,\\n    required this.luckL,\\n    required this.defenseB,\\n  });\\n}\\n\\n@riverpod\\nclass EditingDeckState extends \_$EditingDeckState {\\n  @override\\n  List&lt;CameraDTO&gt; build() =&gt; \[\];\\n\\n  /// 全体のカメラリストをセットするメソッド\\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\\n    state = List.from(newCameraList)..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\\n  }\\n\\n  /// 新しいカメラを追加するメソッド\\n  void addCamera(CameraDTO camera) {\\n    state = \[...state, camera\]..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\\n  }\\n\\n  /// 指定したIDのカメラを削除するメソッド\\n  void deleteCameraById(String cameraId) {\\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList()\\n      ..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\\n  }\\n\\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\\n  TotalStats get totalStats =&gt; TotalStats(\\n        searchQ: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0)),\\n        attackE: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0)),\\n        luckL: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0)),\\n        defenseB: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0)),\\n      );\\n}"}\]}
+{"updates": [{"pattern": ".*", "replacement": "import 'package:flutter_riverpod/flutter_riverpod.dart';\nimport 'package:freezed_annotation/freezed_annotation.dart';\n\npart 'editing_deck_state.freezed.dart';\npart 'editing_deck_state.g.dart';\n\n@freezed\nclass CameraDTO with _$CameraDTO {\n  factory CameraDTO({\n    @JsonKey(name: 'cameraId') required String? cameraId,\n    @JsonKey(name: 'cameraName') required String? cameraName,\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\n    @JsonKey(name: 'rarity') String? rarity,\n    @JsonKey(name: 'level') num? level,\n    @JsonKey(name: 'searchQ') required num? searchQ,\n    @JsonKey(name: 'attackE') required num? attackE,\n    @JsonKey(name: 'luckL') required num? luckL,\n    @JsonKey(name: 'defenseB') required num? defenseB,\n  }) = _CameraDTO;\n\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CameraDTOFromJson(json);\n}\n\nclass TotalStats {\n  final num searchQ;\n  final num attackE;\n  final num luckL;\n  final num defenseB;\n\n  TotalStats({\n    required this.searchQ,\n    required this.attackE,\n    required this.luckL,\n    required this.defenseB,\n  });\n}\n\n@riverpod\nclass EditingDeckState extends _$EditingDeckState {\n  @override\n  List&lt;CameraDTO&gt; build() =&gt; [];\n\n  /// 全体のカメラリストをセットするメソッド\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\n    state = List.from(newCameraList)..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\n  }\n\n  /// 新しいカメラを追加するメソッド\n  void addCamera(CameraDTO camera) {\n    state = [...state, camera]..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\n  }\n\n  /// 指定したIDのカメラを削除するメソッド\n  void deleteCameraById(String cameraId) {\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList()\n      ..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\n  }\n\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\n  TotalStats get totalStats =&gt; TotalStats(\n        searchQ: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0)),\n        attackE: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0)),\n        luckL: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0)),\n        defenseB: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0)),\n      );\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/24 20:55:37*
 
-{"result": "Successfully updated text document with textdoc\_id '67936dfb59cc8191837dee96ef989bda'", "textdoc\_id": "67936dfb59cc8191837dee96ef989bda"}
+{"result": "Successfully updated text document with textdoc_id '67936dfb59cc8191837dee96ef989bda'", "textdoc_id": "67936dfb59cc8191837dee96ef989bda"}
 
 ---
 
@@ -368,13 +368,13 @@ List&lt;CameraDTO&gt; にアクセスする際にレベル順が高いものか�
 
 変更を行い、`List&lt;CameraDTO&gt;` を常にレベル順（降順）でソートされるようにしました。以下の対応を行いました：
 
-1. \*\*`setCameraList`\*\*:
+1. **`setCameraList`**:
    - 新しいカメラリストをセットする際に、レベル順でソートするようにしました。
 
-2. \*\*`addCamera`\*\*:
+2. **`addCamera`**:
    - 新しいカメラを追加した後に、レベル順でリストをソートするようにしました。
 
-3. \*\*`deleteCameraById`\*\*:
+3. **`deleteCameraById`**:
    - 指定したカメラを削除した後に、レベル順でリストをソートするようにしました。
 
 これにより、`state` を直接操作した場合でも、カメラリストは常にレベル順で扱われます。他に気になる点があればお知らせください！
@@ -391,14 +391,14 @@ List&lt;CameraDTO&gt;の拡張で..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.
 ## 🤖 アシスタント
 *2025/1/24 20:56:50*
 
-{"updates": \[{"pattern": ".\*", "replacement": "import 'package:flutter\_riverpod/flutter\_riverpod.dart';\\nimport 'package:freezed\_annotation/freezed\_annotation.dart';\\n\\npart 'editing\_deck\_state.freezed.dart';\\npart 'editing\_deck\_state.g.dart';\\n\\n@freezed\\nclass CameraDTO with \_$CameraDTO {\\n  factory CameraDTO({\\n    @JsonKey(name: 'cameraId') required String? cameraId,\\n    @JsonKey(name: 'cameraName') required String? cameraName,\\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\\n    @JsonKey(name: 'rarity') String? rarity,\\n    @JsonKey(name: 'level') num? level,\\n    @JsonKey(name: 'searchQ') required num? searchQ,\\n    @JsonKey(name: 'attackE') required num? attackE,\\n    @JsonKey(name: 'luckL') required num? luckL,\\n    @JsonKey(name: 'defenseB') required num? defenseB,\\n  }) = \_CameraDTO;\\n\\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; \_$CameraDTOFromJson(json);\\n}\\n\\nclass TotalStats {\\n  final num searchQ;\\n  final num attackE;\\n  final num luckL;\\n  final num defenseB;\\n\\n  TotalStats({\\n    required this.searchQ,\\n    required this.attackE,\\n    required this.luckL,\\n    required this.defenseB,\\n  });\\n}\\n\\nextension SortByLevel on List&lt;CameraDTO&gt; {\\n  List&lt;CameraDTO&gt; sortedByLevel() {\\n    return List.from(this)..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\\n  }\\n}\\n\\n@riverpod\\nclass EditingDeckState extends \_$EditingDeckState {\\n  @override\\n  List&lt;CameraDTO&gt; build() =&gt; \[\];\\n\\n  /// 全体のカメラリストをセットするメソッド\\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\\n    state = newCameraList.sortedByLevel();\\n  }\\n\\n  /// 新しいカメラを追加するメソッド\\n  void addCamera(CameraDTO camera) {\\n    state = \[...state, camera\].sortedByLevel();\\n  }\\n\\n  /// 指定したIDのカメラを削除するメソッド\\n  void deleteCameraById(String cameraId) {\\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList().sortedByLevel();\\n  }\\n\\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\\n  TotalStats get totalStats =&gt; TotalStats(\\n        searchQ: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0)),\\n        attackE: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0)),\\n        luckL: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0)),\\n        defenseB: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0)),\\n      );\\n}"}\]}
+{"updates": [{"pattern": ".*", "replacement": "import 'package:flutter_riverpod/flutter_riverpod.dart';\nimport 'package:freezed_annotation/freezed_annotation.dart';\n\npart 'editing_deck_state.freezed.dart';\npart 'editing_deck_state.g.dart';\n\n@freezed\nclass CameraDTO with _$CameraDTO {\n  factory CameraDTO({\n    @JsonKey(name: 'cameraId') required String? cameraId,\n    @JsonKey(name: 'cameraName') required String? cameraName,\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\n    @JsonKey(name: 'rarity') String? rarity,\n    @JsonKey(name: 'level') num? level,\n    @JsonKey(name: 'searchQ') required num? searchQ,\n    @JsonKey(name: 'attackE') required num? attackE,\n    @JsonKey(name: 'luckL') required num? luckL,\n    @JsonKey(name: 'defenseB') required num? defenseB,\n  }) = _CameraDTO;\n\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$CameraDTOFromJson(json);\n}\n\nclass TotalStats {\n  final num searchQ;\n  final num attackE;\n  final num luckL;\n  final num defenseB;\n\n  TotalStats({\n    required this.searchQ,\n    required this.attackE,\n    required this.luckL,\n    required this.defenseB,\n  });\n}\n\nextension SortByLevel on List&lt;CameraDTO&gt; {\n  List&lt;CameraDTO&gt; sortedByLevel() {\n    return List.from(this)..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0));\n  }\n}\n\n@riverpod\nclass EditingDeckState extends _$EditingDeckState {\n  @override\n  List&lt;CameraDTO&gt; build() =&gt; [];\n\n  /// 全体のカメラリストをセットするメソッド\n  void setCameraList(List&lt;CameraDTO&gt; newCameraList) {\n    state = newCameraList.sortedByLevel();\n  }\n\n  /// 新しいカメラを追加するメソッド\n  void addCamera(CameraDTO camera) {\n    state = [...state, camera].sortedByLevel();\n  }\n\n  /// 指定したIDのカメラを削除するメソッド\n  void deleteCameraById(String cameraId) {\n    state = state.where((camera) =&gt; camera.cameraId != cameraId).toList().sortedByLevel();\n  }\n\n  /// 各ステータス (searchQ, attackE, luckL, defenseB) の合計値を個別に計算して取得するメソッド\n  TotalStats get totalStats =&gt; TotalStats(\n        searchQ: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0)),\n        attackE: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0)),\n        luckL: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0)),\n        defenseB: state.fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0)),\n      );\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/24 20:56:50*
 
-{"result": "Successfully updated text document with textdoc\_id '67936dfb59cc8191837dee96ef989bda'", "textdoc\_id": "67936dfb59cc8191837dee96ef989bda"}
+{"result": "Successfully updated text document with textdoc_id '67936dfb59cc8191837dee96ef989bda'", "textdoc_id": "67936dfb59cc8191837dee96ef989bda"}
 
 ---
 
@@ -408,11 +408,11 @@ List&lt;CameraDTO&gt;の拡張で..sort((a, b) =&gt; (b.level ?? 0).compareTo(a.
 `List&lt;CameraDTO&gt;` に対して拡張メソッド `sortedByLevel` を追加しました。この変更により、リストをソートするロジックを一箇所にまとめ、繰り返し記述する必要がなくなりました。
 
 ### 主な変更点:
-1. \*\*`SortByLevel` 拡張メソッド\*\*:
+1. **`SortByLevel` 拡張メソッド**:
    - `List&lt;CameraDTO&gt;` に対して `sortedByLevel` メソッドを追加。
    - リストをレベル順 (降順) にソートするロジックを簡潔に記述可能。
 
-2. \*\*`setCameraList`、`addCamera`、`deleteCameraById` の更新\*\*:
+2. **`setCameraList`、`addCamera`、`deleteCameraById` の更新**:
    - 各メソッドでリストをソートする際に、`sortedByLevel` を利用するよう変更。
 
 これにより、コードの可読性と保守性が向上しました。他に改善点やご要望があれば教えてください！
@@ -692,7 +692,7 @@ class DeckScreen extends ConsumerWidget {
 
 以下を拡張してtotalSearchQのような合計値にアクセスできるように拡張して欲しい
 
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
 
 extension ListCameraDtoX on List&lt;CameraDTO&gt; {
   List&lt;CameraDTO&gt; sorted() {
@@ -704,7 +704,7 @@ extension ListCameraDtoX on List&lt;CameraDTO&gt; {
 }
 
 @freezed
-class CameraDTO with \_$CameraDTO {
+class CameraDTO with _$CameraDTO {
   factory CameraDTO({
     @JsonKey(name: 'cameraId') required String? cameraId,
     @JsonKey(name: 'cameraName') required String? cameraName,
@@ -715,10 +715,10 @@ class CameraDTO with \_$CameraDTO {
     @JsonKey(name: 'attackE') required num? attackE,
     @JsonKey(name: 'luckL') required num? luckL,
     @JsonKey(name: 'defenseB') required num? defenseB,
-  }) = \_CameraDTO;
+  }) = _CameraDTO;
 
   factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$CameraDTOFromJson(jsonMap);
+      _$CameraDTOFromJson(jsonMap);
 }
 
 ---
@@ -726,14 +726,14 @@ class CameraDTO with \_$CameraDTO {
 ## 🤖 アシスタント
 *2025/1/24 22:49:03*
 
-{"updates": \[{"pattern": ".\*", "replacement": "import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';\\n\\nextension ListCameraDtoX on List&lt;CameraDTO&gt; {\\n  /// レベルでソートされたリストを返す\\n  List&lt;CameraDTO&gt; sorted() {\\n    return List.from(this)\\n      ..sort(\\n        (a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0),\\n      );\\n  }\\n\\n  /// searchQ の合計値を取得する\\n  num get totalSearchQ =&gt; fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0));\\n\\n  /// attackE の合計値を取得する\\n  num get totalAttackE =&gt; fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0));\\n\\n  /// luckL の合計値を取得する\\n  num get totalLuckL =&gt; fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0));\\n\\n  /// defenseB の合計値を取得する\\n  num get totalDefenseB =&gt; fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0));\\n\\n  /// 各ステータスの合計値をまとめて取得する\\n  Map&lt;String, num&gt; get totalStats =&gt; {\\n        'searchQ': totalSearchQ,\\n        'attackE': totalAttackE,\\n        'luckL': totalLuckL,\\n        'defenseB': totalDefenseB,\\n      };\\n}\\n\\n@freezed\\nclass CameraDTO with \_$CameraDTO {\\n  factory CameraDTO({\\n    @JsonKey(name: 'cameraId') required String? cameraId,\\n    @JsonKey(name: 'cameraName') required String? cameraName,\\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\\n    @JsonKey(name: 'rarity') String? rarity,\\n    @JsonKey(name: 'level') num? level,\\n    @JsonKey(name: 'searchQ') required num? searchQ,\\n    @JsonKey(name: 'attackE') required num? attackE,\\n    @JsonKey(name: 'luckL') required num? luckL,\\n    @JsonKey(name: 'defenseB') required num? defenseB,\\n  }) = \_CameraDTO;\\n\\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;\\n      \_$CameraDTOFromJson(jsonMap);\\n}"}\]}
+{"updates": [{"pattern": ".*", "replacement": "import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';\n\nextension ListCameraDtoX on List&lt;CameraDTO&gt; {\n  /// レベルでソートされたリストを返す\n  List&lt;CameraDTO&gt; sorted() {\n    return List.from(this)\n      ..sort(\n        (a, b) =&gt; (b.level ?? 0).compareTo(a.level ?? 0),\n      );\n  }\n\n  /// searchQ の合計値を取得する\n  num get totalSearchQ =&gt; fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.searchQ ?? 0));\n\n  /// attackE の合計値を取得する\n  num get totalAttackE =&gt; fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.attackE ?? 0));\n\n  /// luckL の合計値を取得する\n  num get totalLuckL =&gt; fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.luckL ?? 0));\n\n  /// defenseB の合計値を取得する\n  num get totalDefenseB =&gt; fold&lt;num&gt;(0, (sum, camera) =&gt; sum + (camera.defenseB ?? 0));\n\n  /// 各ステータスの合計値をまとめて取得する\n  Map&lt;String, num&gt; get totalStats =&gt; {\n        'searchQ': totalSearchQ,\n        'attackE': totalAttackE,\n        'luckL': totalLuckL,\n        'defenseB': totalDefenseB,\n      };\n}\n\n@freezed\nclass CameraDTO with _$CameraDTO {\n  factory CameraDTO({\n    @JsonKey(name: 'cameraId') required String? cameraId,\n    @JsonKey(name: 'cameraName') required String? cameraName,\n    @JsonKey(name: 'cameraUrl') required String? cameraUrl,\n    @JsonKey(name: 'rarity') String? rarity,\n    @JsonKey(name: 'level') num? level,\n    @JsonKey(name: 'searchQ') required num? searchQ,\n    @JsonKey(name: 'attackE') required num? attackE,\n    @JsonKey(name: 'luckL') required num? luckL,\n    @JsonKey(name: 'defenseB') required num? defenseB,\n  }) = _CameraDTO;\n\n  factory CameraDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;\n      _$CameraDTOFromJson(jsonMap);\n}"}]}
 
 ---
 
 ## 🔧 ツール
 *2025/1/24 22:49:03*
 
-{"result": "Successfully updated text document with textdoc\_id '67936dfb59cc8191837dee96ef989bda'", "textdoc\_id": "67936dfb59cc8191837dee96ef989bda"}
+{"result": "Successfully updated text document with textdoc_id '67936dfb59cc8191837dee96ef989bda'", "textdoc_id": "67936dfb59cc8191837dee96ef989bda"}
 
 ---
 

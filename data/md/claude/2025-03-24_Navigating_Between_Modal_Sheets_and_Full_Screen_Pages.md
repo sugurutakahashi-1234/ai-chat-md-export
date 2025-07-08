@@ -48,7 +48,7 @@ void showShootableSpotDetailSheet(String spotId) {
             ),
           );
         },
-      ).then((\_) {
+      ).then((_) {
         ref.read(showShootableSpotDetailNotifierProvider.notifier).hide();
       });
     }
@@ -57,7 +57,7 @@ void showShootableSpotDetailSheet(String spotId) {
 
 final shootableSpotDetailRouter = GoRouter(
   initialLocation: Screen.shootableSpotDetail.path,
-  routes: \[
+  routes: [
     GoRoute(
       path: Screen.shootableSpotDetail.path,
       builder: (context, state) {
@@ -77,7 +77,7 @@ final shootableSpotDetailRouter = GoRouter(
       path: Screen.weaveSpot.path,
       builder: (context, state) =&gt; const WeaveSpotPage(),
     ),
-  \],
+  ],
 );
 
 ---

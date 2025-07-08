@@ -56,7 +56,7 @@ struct ChatBubbleView: View {
                 Button {
                     onStockExpression(message)
                 } label: {
-                    Image("common\_expression\_stock")
+                    Image("common_expression_stock")
                         .tint(expressionStockImageColor)
                 }
                 .padding(.top, 4)

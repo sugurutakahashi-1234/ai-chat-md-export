@@ -580,7 +580,7 @@ for pattern in patterns {
 ## 👤 ユーザー
 *2023/9/5 17:03:17*
 
-var description: String は使って欲しくない "\\(MatchType.prefix)"でよいです。
+var description: String は使って欲しくない "\(MatchType.prefix)"でよいです。
 
 ---
 

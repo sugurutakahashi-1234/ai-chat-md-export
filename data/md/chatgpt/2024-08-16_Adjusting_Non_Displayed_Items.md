@@ -10,14 +10,14 @@
 以下について、displayedItemでない要素のサイズを少し小さくしたり暗くすることは可能なのか？
 
 public struct SimplePositionScrollDesignView: View {
-    let items: \[ScrollDesignViewItem\]
+    let items: [ScrollDesignViewItem]
     @State var displayedItem: ScrollDesignViewItem?
 
     public var body: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 15) {
-                    ForEach(items, id: \\.id) { item in
+                    ForEach(items, id: \.id) { item in
                         GeometryReader { itemGeometry in
                             RoundedRectangle(cornerRadius: 16)
                                 .fill(item.color.gradient)
@@ -25,7 +25,7 @@ public struct SimplePositionScrollDesignView: View {
                                 .onAppear {
                                     updateDisplayedColor(geometry: itemGeometry, containerWidth: geometry.size.width, item: item)
                                 }
-                                .onChange(of: itemGeometry.frame(in: .global)) { \_ in
+                                .onChange(of: itemGeometry.frame(in: .global)) { _ in
                                     updateDisplayedColor(geometry: itemGeometry, containerWidth: geometry.size.width, item: item)
                                 }
                         }
@@ -39,7 +39,7 @@ public struct SimplePositionScrollDesignView: View {
         .frame(height: 100)
         .overlay {
             if let displayedItem {
-                Text("\\(displayedItem.color)")
+                Text("\(displayedItem.color)")
             }
         }
     }

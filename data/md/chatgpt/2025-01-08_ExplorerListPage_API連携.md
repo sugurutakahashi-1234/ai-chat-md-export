@@ -9,7 +9,7 @@
 
 ExplorerListPage を表示したときに毎回取得APIをコールしてほしい。またリバーポッドとhooksを使ってほしい
 
-import 'package:carousel\_slider/carousel\_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ExplorerListPage extends StatelessWidget {
@@ -32,16 +32,16 @@ class ExplorerListPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Select explorer'),
-        actions: \[
+        actions: [
           IconButton(
             onPressed: () =&gt; Navigator.pop(context),
             icon: const Icon(Icons.close),
             tooltip: 'Close',
           ),
-        \],
+        ],
       ),
       body: Column(
-        children: \[
+        children: [
           const SizedBox(height: 16),
           Expanded(
             child: CarouselSlider(
@@ -52,7 +52,7 @@ class ExplorerListPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-        \],
+        ],
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
@@ -74,15 +74,15 @@ class ExplorerListPage extends StatelessWidget {
 }
 
 import 'package:flutter/foundation.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/api\_provider.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/api_provider.dart';
 
-part 'get\_explorer\_info.g.dart';
+part 'get_explorer_info.g.dart';
 
 @riverpod
-class GetExplorerNotifier extends \_$GetExplorerNotifier {
+class GetExplorerNotifier extends _$GetExplorerNotifier {
   @override
   Future&lt;List&lt;ExplorerDTO&gt;?&gt; build() async =&gt; null;
 
@@ -243,53 +243,53 @@ The following SocketException was thrown resolving an image codec:
 Failed host lookup: 'armani.name' (OS Error: nodename nor servname provided, or not known, errno = 8)
 
 When the exception was thrown, this was the stack:
-#0      \_NativeSocket.startConnect (dart:io-patch/socket\_patch.dart:721:35)
-socket\_patch.dart:721
-#1      \_RawSocket.startConnect (dart:io-patch/socket\_patch.dart:1920:26)
-socket\_patch.dart:1920
-#2      RawSocket.startConnect (dart:io-patch/socket\_patch.dart:27:23)
-socket\_patch.dart:27
-#3      Socket.\_startConnect (dart:io-patch/socket\_patch.dart:2144:22)
-socket\_patch.dart:2144
+#0      _NativeSocket.startConnect (dart:io-patch/socket_patch.dart:721:35)
+socket_patch.dart:721
+#1      _RawSocket.startConnect (dart:io-patch/socket_patch.dart:1920:26)
+socket_patch.dart:1920
+#2      RawSocket.startConnect (dart:io-patch/socket_patch.dart:27:23)
+socket_patch.dart:27
+#3      Socket._startConnect (dart:io-patch/socket_patch.dart:2144:22)
+socket_patch.dart:2144
 #4      Socket.startConnect (dart:io/socket.dart:825:21)
 socket.dart:825
-#5      \_ConnectionTarget.connect (dart:\_http/http\_impl.dart:2498:20)
-http\_impl.dart:2498
-#6      \_HttpClient.\_getConnection.connect (dart:\_http/http\_impl.dart:2937:12)
-http\_impl.dart:2937
-#7      \_HttpClient.\_getConnection (dart:\_http/http\_impl.dart:2942:12)
-http\_impl.dart:2942
-#8      \_HttpClient.\_openUrl (dart:\_http/http\_impl.dart:2797:12)
-http\_impl.dart:2797
-#9      \_HttpClient.getUrl (dart:\_http/http\_impl.dart:2639:48)
-http\_impl.dart:2639
-#10     NetworkImage.\_loadAsync (package:flutter/src/painting/\_network\_image\_io.dart:104:59)
-\_network\_image\_io.dart:104
-#11     NetworkImage.loadImage (package:flutter/src/painting/\_network\_image\_io.dart:66:14)
-\_network\_image\_io.dart:66
-#12     ImageProvider.resolveStreamForKey.&lt;anonymous closure&gt; (package:flutter/src/painting/image\_provider.dart:526:39)
-image\_provider.dart:526
-#13     ImageCache.putIfAbsent (package:flutter/src/painting/image\_cache.dart:383:22)
-image\_cache.dart:383
-#14     ImageProvider.resolveStreamForKey (package:flutter/src/painting/image\_provider.dart:523:81)
-image\_provider.dart:523
-#15     ScrollAwareImageProvider.resolveStreamForKey (package:flutter/src/widgets/scroll\_aware\_image\_provider.dart:107:19)
-scroll\_aware\_image\_provider.dart:107
-#16     ImageProvider.resolve.&lt;anonymous closure&gt; (package:flutter/src/painting/image\_provider.dart:372:9)
-image\_provider.dart:372
-#17     ImageProvider.\_createErrorHandlerAndKey.&lt;anonymous closure&gt; (package:flutter/src/painting/image\_provider.dart:485:24)
-image\_provider.dart:485
-#18     SynchronousFuture.then (package:flutter/src/foundation/synchronous\_future.dart:43:27)
-synchronous\_future.dart:43
-#19     ImageProvider.\_createErrorHandlerAndKey (package:flutter/src/painting/image\_provider.dart:482:9)
-image\_provider.dart:482
-#20     ImageProvider.resolve (package:flutter/src/painting/image\_provider.dart:369:5)
-image\_provider.dart:369
-#21     \_ImageState.\_resolveImage (package:flutter/src/widgets/image.dart:1135:16)
+#5      _ConnectionTarget.connect (dart:_http/http_impl.dart:2498:20)
+http_impl.dart:2498
+#6      _HttpClient._getConnection.connect (dart:_http/http_impl.dart:2937:12)
+http_impl.dart:2937
+#7      _HttpClient._getConnection (dart:_http/http_impl.dart:2942:12)
+http_impl.dart:2942
+#8      _HttpClient._openUrl (dart:_http/http_impl.dart:2797:12)
+http_impl.dart:2797
+#9      _HttpClient.getUrl (dart:_http/http_impl.dart:2639:48)
+http_impl.dart:2639
+#10     NetworkImage._loadAsync (package:flutter/src/painting/_network_image_io.dart:104:59)
+_network_image_io.dart:104
+#11     NetworkImage.loadImage (package:flutter/src/painting/_network_image_io.dart:66:14)
+_network_image_io.dart:66
+#12     ImageProvider.resolveStreamForKey.&lt;anonymous closure&gt; (package:flutter/src/painting/image_provider.dart:526:39)
+image_provider.dart:526
+#13     ImageCache.putIfAbsent (package:flutter/src/painting/image_cache.dart:383:22)
+image_cache.dart:383
+#14     ImageProvider.resolveStreamForKey (package:flutter/src/painting/image_provider.dart:523:81)
+image_provider.dart:523
+#15     ScrollAwareImageProvider.resolveStreamForKey (package:flutter/src/widgets/scroll_aware_image_provider.dart:107:19)
+scroll_aware_image_provider.dart:107
+#16     ImageProvider.resolve.&lt;anonymous closure&gt; (package:flutter/src/painting/image_provider.dart:372:9)
+image_provider.dart:372
+#17     ImageProvider._createErrorHandlerAndKey.&lt;anonymous closure&gt; (package:flutter/src/painting/image_provider.dart:485:24)
+image_provider.dart:485
+#18     SynchronousFuture.then (package:flutter/src/foundation/synchronous_future.dart:43:27)
+synchronous_future.dart:43
+#19     ImageProvider._createErrorHandlerAndKey (package:flutter/src/painting/image_provider.dart:482:9)
+image_provider.dart:482
+#20     ImageProvider.resolve (package:flutter/src/painting/image_provider.dart:369:5)
+image_provider.dart:369
+#21     _ImageState._resolveImage (package:flutter/src/widgets/image.dart:1135:16)
 image.dart:1135
-#22     \_ImageState.didChangeDependencies (package:flutter/src/widgets/image.dart:1085:5)
+#22     _ImageState.didChangeDependencies (package:flutter/src/widgets/image.dart:1085:5)
 image.dart:1085
-#23     StatefulElement.\_firstBuild (package:flutter/src/widgets/framework.dart:5780:11)
+#23     StatefulElement._firstBuild (package:flutter/src/widgets/framework.dart:5780:11)
 framework.dart:5780
 #24     ComponentElement.mount (package:flutter/src/widgets/framework.dart:5607:5)
 framework.dart:5607
@@ -312,25 +312,25 @@ sliver.dart:967
 framework.dart:3038
 #162    SliverMultiBoxAdaptorElement.createChild (package:flutter/src/widgets/sliver.dart:959:12)
 sliver.dart:959
-#163    RenderSliverMultiBoxAdaptor.\_createOrObtainChild.&lt;anonymous closure&gt; (package:flutter/src/rendering/sliver\_multi\_box\_adaptor.dart:367:23)
-sliver\_multi\_box\_adaptor.dart:367
+#163    RenderSliverMultiBoxAdaptor._createOrObtainChild.&lt;anonymous closure&gt; (package:flutter/src/rendering/sliver_multi_box_adaptor.dart:367:23)
+sliver_multi_box_adaptor.dart:367
 #164    RenderObject.invokeLayoutCallback.&lt;anonymous closure&gt; (package:flutter/src/rendering/object.dart:2738:59)
 object.dart:2738
-#165    PipelineOwner.\_enableMutationsToDirtySubtrees (package:flutter/src/rendering/object.dart:1108:15)
+#165    PipelineOwner._enableMutationsToDirtySubtrees (package:flutter/src/rendering/object.dart:1108:15)
 object.dart:1108
 #166    RenderObject.invokeLayoutCallback (package:flutter/src/rendering/object.dart:2738:14)
 object.dart:2738
-#167    RenderSliverMultiBoxAdaptor.\_createOrObtainChild (package:flutter/src/rendering/sliver\_multi\_box\_adaptor.dart:356:5)
-sliver\_multi\_box\_adaptor.dart:356
-#168    RenderSliverMultiBoxAdaptor.insertAndLayoutChild (package:flutter/src/rendering/sliver\_multi\_box\_adaptor.dart:504:5)
+#167    RenderSliverMultiBoxAdaptor._createOrObtainChild (package:flutter/src/rendering/sliver_multi_box_adaptor.dart:356:5)
+sliver_multi_box_adaptor.dart:356
+#168    RenderSliverMultiBoxAdaptor.insertAndLayoutChild (package:flutter/src/rendering/sliver_multi_box_adaptor.dart:504:5)
 s
 
-import 'package:carousel\_slider/carousel\_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/get\_explorer\_info.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/get_explorer_info.dart';
 
 class ExplorerListPage extends HookConsumerWidget {
   const ExplorerListPage({super.key});
@@ -341,12 +341,12 @@ class ExplorerListPage extends HookConsumerWidget {
 
     useEffect(
       () {
-        WidgetsBinding.instance.addPostFrameCallback((\_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           ref.read(getExplorerNotifierProvider.notifier).executeRequest();
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     Widget buildExplorerCard(ExplorerDTO explorer) {
@@ -357,7 +357,7 @@ class ExplorerListPage extends HookConsumerWidget {
         elevation: 4,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: \[
+          children: [
             if (explorer.explorerImage != null)
               Image.network(
                 explorer.explorerImage!,
@@ -374,7 +374,7 @@ class ExplorerListPage extends HookConsumerWidget {
               explorer.explorerDescription ?? 'No description available',
               textAlign: TextAlign.center,
             ),
-          \],
+          ],
         ),
       );
     }
@@ -383,22 +383,22 @@ class ExplorerListPage extends HookConsumerWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Select explorer'),
-        actions: \[
+        actions: [
           IconButton(
             onPressed: () =&gt; Navigator.pop(context),
             icon: const Icon(Icons.close),
             tooltip: 'Close',
           ),
-        \],
+        ],
       ),
       body: explorerState.when(
         data: (explorers) {
-          if ((explorers ?? \[\]).isEmpty) {
+          if ((explorers ?? []).isEmpty) {
             return const Center(child: Text('No explorers available.'));
           }
 
           return Column(
-            children: \[
+            children: [
               const SizedBox(height: 16),
               Expanded(
                 child: CarouselSlider(
@@ -407,15 +407,15 @@ class ExplorerListPage extends HookConsumerWidget {
                     enableInfiniteScroll: false,
                     enlargeCenterPage: true,
                   ),
-                  items: (explorers ?? \[\]).map(buildExplorerCard).toList(),
+                  items: (explorers ?? []).map(buildExplorerCard).toList(),
                 ),
               ),
               const SizedBox(height: 16),
-            \],
+            ],
           );
         },
         loading: () =&gt; const Center(child: CircularProgressIndicator()),
-        error: (error, \_) =&gt; Center(child: Text('Error: $error')),
+        error: (error, _) =&gt; Center(child: Text('Error: $error')),
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
@@ -563,9 +563,9 @@ Widget buildExplorerCard(ExplorerDTO explorer) {
 *2025/1/8 17:27:40*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-CPd5quDqiRK83LsenbqLYM",
-  "size\_bytes": 75252,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-CPd5quDqiRK83LsenbqLYM",
+  "size_bytes": 75252,
   "width": 516,
   "height": 469,
   "fovea": null,
@@ -573,19 +573,19 @@ Widget buildExplorerCard(ExplorerDTO explorer) {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 このようにしたい。ちょっと色々違うので修正してほしい。
 
 @freezed
-class ExplorerDTO with \_$ExplorerDTO {
+class ExplorerDTO with _$ExplorerDTO {
   factory ExplorerDTO({
     @JsonKey(name: 'explorerId') required String? explorerId,
     @JsonKey(name: 'tokenId') required String? tokenId,
@@ -601,19 +601,19 @@ class ExplorerDTO with \_$ExplorerDTO {
     @JsonKey(name: 'decoyFinding') required bool? decoyFinding,
     @JsonKey(name: 'totalSearch') required num? totalSearch,
     @JsonKey(name: 'totalSpotFound') required num? totalSpotFound,
-  }) = \_ExplorerDTO;
+  }) = _ExplorerDTO;
 
   factory ExplorerDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$ExplorerDTOFromJson(jsonMap);
+      _$ExplorerDTOFromJson(jsonMap);
 }
 
-import 'package:carousel\_slider/carousel\_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/get\_explorer\_info.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/get_explorer_info.dart';
 
 class ExplorerListPage extends HookConsumerWidget {
   const ExplorerListPage({super.key});
@@ -624,12 +624,12 @@ class ExplorerListPage extends HookConsumerWidget {
 
     useEffect(
       () {
-        WidgetsBinding.instance.addPostFrameCallback((\_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           ref.read(getExplorerNotifierProvider.notifier).executeRequest();
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     Widget buildExplorerCard(ExplorerDTO explorer) {
@@ -644,7 +644,7 @@ class ExplorerListPage extends HookConsumerWidget {
         elevation: 4,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: \[
+          children: [
             imageUrl != null
                 ? Image.network(
                     imageUrl,
@@ -653,13 +653,13 @@ class ExplorerListPage extends HookConsumerWidget {
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(
-                        Icons.broken\_image\_outlined,
+                        Icons.broken_image_outlined,
                         size: 100,
                       );
                     },
                   )
                 : const Icon(
-                    Icons.hide\_image\_outlined,
+                    Icons.hide_image_outlined,
                     size: 100,
                   ),
             const SizedBox(height: 8),
@@ -671,7 +671,7 @@ class ExplorerListPage extends HookConsumerWidget {
               explorer.explorerDescription ?? 'No description available',
               textAlign: TextAlign.center,
             ),
-          \],
+          ],
         ),
       );
     }
@@ -680,21 +680,21 @@ class ExplorerListPage extends HookConsumerWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Select explorer'),
-        actions: \[
+        actions: [
           IconButton(
             onPressed: () =&gt; context.pop(),
             icon: const Icon(Icons.close),
           ),
-        \],
+        ],
       ),
       body: explorerState.when(
         data: (explorers) {
-          if ((explorers ?? \[\]).isEmpty) {
+          if ((explorers ?? []).isEmpty) {
             return const Center(child: Text('No explorers available.'));
           }
 
           return Column(
-            children: \[
+            children: [
               const SizedBox(height: 16),
               Expanded(
                 child: CarouselSlider(
@@ -703,15 +703,15 @@ class ExplorerListPage extends HookConsumerWidget {
                     enableInfiniteScroll: false,
                     enlargeCenterPage: true,
                   ),
-                  items: (explorers ?? \[\]).map(buildExplorerCard).toList(),
+                  items: (explorers ?? []).map(buildExplorerCard).toList(),
                 ),
               ),
               const SizedBox(height: 16),
-            \],
+            ],
           );
         },
         loading: () =&gt; const Center(child: CircularProgressIndicator()),
-        error: (error, \_) =&gt; Center(child: Text('Error: $error')),
+        error: (error, _) =&gt; Center(child: Text('Error: $error')),
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(

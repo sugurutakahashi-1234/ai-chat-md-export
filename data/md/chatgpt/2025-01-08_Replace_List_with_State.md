@@ -10,7 +10,7 @@
 final cards = List.generateを消してexplorerStateを使ってほしい。
 
 @freezed
-class ExplorerDTO with \_$ExplorerDTO {
+class ExplorerDTO with _$ExplorerDTO {
   factory ExplorerDTO({
     @JsonKey(name: 'explorerId') required String? explorerId,
     @JsonKey(name: 'tokenId') required String? tokenId,
@@ -26,17 +26,17 @@ class ExplorerDTO with \_$ExplorerDTO {
     @JsonKey(name: 'decoyFinding') required bool? decoyFinding,
     @JsonKey(name: 'totalSearch') required num? totalSearch,
     @JsonKey(name: 'totalSpotFound') required num? totalSpotFound,
-  }) = \_ExplorerDTO;
+  }) = _ExplorerDTO;
 
   factory ExplorerDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$ExplorerDTOFromJson(jsonMap);
+      _$ExplorerDTOFromJson(jsonMap);
 }
 
-import 'package:carousel\_slider/carousel\_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/explorers/get\_explorer\_info.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/explorers/get_explorer_info.dart';
 
 class ExplorerListPage extends HookConsumerWidget {
   const ExplorerListPage({super.key});
@@ -47,12 +47,12 @@ class ExplorerListPage extends HookConsumerWidget {
 
     useEffect(
       () {
-        WidgetsBinding.instance.addPostFrameCallback((\_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           ref.read(getExplorerNotifierProvider.notifier).executeRequest();
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     // 仮データ（削除してexplorerStateに置き換えたい）
@@ -71,16 +71,16 @@ class ExplorerListPage extends HookConsumerWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Select explorer'),
-        actions: \[
+        actions: [
           IconButton(
             onPressed: () =&gt; Navigator.pop(context),
             icon: const Icon(Icons.close),
             tooltip: 'Close',
           ),
-        \],
+        ],
       ),
       body: Column(
-        children: \[
+        children: [
           const SizedBox(height: 16),
           Expanded(
             child: CarouselSlider(
@@ -91,7 +91,7 @@ class ExplorerListPage extends HookConsumerWidget {
             ),
           ),
           const SizedBox(height: 16),
-        \],
+        ],
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
@@ -260,7 +260,7 @@ class ExplorerListPage extends HookConsumerWidget {
 *2025/1/8 15:49:24*
 
 The method 'map' can't be unconditionally invoked because the receiver can be 'null'.
-Try making the call conditional (using '?.') or adding a null check to the target ('!').dartunchecked\_use\_of\_nullable\_value
+Try making the call conditional (using '?.') or adding a null check to the target ('!').dartunchecked_use_of_nullable_value
 
 items: explorers.map(buildExplorerCard).toList(),
 
@@ -311,8 +311,8 @@ This will resolve the error while ensuring the app remains robust against null d
 if (explorers.isEmpty) {
 
 The property 'isEmpty' can't be unconditionally accessed because the receiver can be 'null'.
-Try making the access conditional (using '?.') or adding a null check to the target ('!').dartunchecked\_use\_of\_nullable\_valueThe property 'isEmpty' can't be unconditionally accessed because the receiver can be 'null'.
-Try making the access conditional (using '?.') or adding a null check to the target ('!').dartunchecked\_use\_of\_nullable\_value
+Try making the access conditional (using '?.') or adding a null check to the target ('!').dartunchecked_use_of_nullable_valueThe property 'isEmpty' can't be unconditionally accessed because the receiver can be 'null'.
+Try making the access conditional (using '?.') or adding a null check to the target ('!').dartunchecked_use_of_nullable_value
 
 ---
 

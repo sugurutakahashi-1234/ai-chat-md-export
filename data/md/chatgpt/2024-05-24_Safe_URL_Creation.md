@@ -13,15 +13,15 @@ extension URL: RandomValueProvider {
     }
 
     public static var randomImageUrl: URL {
-        let width: String = "\\(Int.random(in: 1...16))0"
-        let height: String = "\\(Int.random(in: 1...16))0"
-        return URL(string: "https://via.placeholder.com/\\(width)x\\(height)/444444/FFFFFF")!
+        let width: String = "\(Int.random(in: 1...16))0"
+        let height: String = "\(Int.random(in: 1...16))0"
+        return URL(string: "https://via.placeholder.com/\(width)x\(height)/444444/FFFFFF")!
     }
 
     public static func randomImageUrl(title: String) -&gt; URL {
-        let width: String = "\\(Int.random(in: 1...16))0"
-        let height: String = "\\(Int.random(in: 1...16))0"
-        return URL(string: "https://via.placeholder.com/\\(width)x\\(height)/444444/FFFFFF/?text=\\(title)")!
+        let width: String = "\(Int.random(in: 1...16))0"
+        let height: String = "\(Int.random(in: 1...16))0"
+        return URL(string: "https://via.placeholder.com/\(width)x\(height)/444444/FFFFFF/?text=\(title)")!
     }
 }
 
@@ -35,7 +35,7 @@ extension URL: PlaceholderProvider {
     }
     
     public static func placeholderImageUrl(title: String) -&gt; URL {
-        URL(string: "https://via.placeholder.com/160x90/444444/FFFFFF/?text=\\(title)")!
+        URL(string: "https://via.placeholder.com/160x90/444444/FFFFFF/?text=\(title)")!
     }
 }
 

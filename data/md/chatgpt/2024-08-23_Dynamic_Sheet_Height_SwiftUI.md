@@ -11,10 +11,10 @@ sheetの高さを中のコンテンツの高さに依存させる方法はある
 
 public struct BoxEditView: View {
     @StateObject private var presenter: BoxEditPresenter
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     public init(talkBox: TalkBox) {
-        \_presenter = .init(wrappedValue: BoxEditPresenter(talkBox: talkBox))
+        _presenter = .init(wrappedValue: BoxEditPresenter(talkBox: talkBox))
     }
 
     public var body: some View {
@@ -92,14 +92,14 @@ public struct BoxEditView: View {
                     .padding(.bottom, 8)
 
                     VStack(spacing: 5) {
-                        ForEach(presenter.talkBox.accounts, id: \\.id) { account in
+                        ForEach(presenter.talkBox.accounts, id: \.id) { account in
                             HStack {
                                 CachedAsyncImageView(imageUrl: account.imageUrl)
                                     .frame(width: 48, height: 48)
                                     .clipShape(.circle)
                                     .padding(.trailing, 16)
 
-                                Text("\\(account.name)さん")
+                                Text("\(account.name)さん")
 
                                 Spacer()
                             }
@@ -154,7 +154,7 @@ public struct BoxEditView: View {
         .appErrorAlert(isPresented: $presenter.showAlert, appError: presenter.appError)
         .sheet(isPresented: $presenter.showBoxLeave) {
             VStack {
-                Text("退出してもボックス内のあなたの投稿データは消えません\\nこのボックス内での投稿を消したい場合は、ボックスを退出する前に削除することをおすすめします")
+                Text("退出してもボックス内のあなたの投稿データは消えません\nこのボックス内での投稿を消したい場合は、ボックスを退出する前に削除することをおすすめします")
                 
                 Button {
                     presenter.onTapLeaveBoxOk()
@@ -634,25 +634,25 @@ iOS16.4以降ではいろいろ機能が追加されて異いるらしい。
 
 ### iOS 16.4以降の主な新機能と改善点
 
-1. \*\*Web Push通知のサポート\*\*:
+1. **Web Push通知のサポート**:
    - iOS 16.4から、SafariなどのウェブアプリがWeb Push通知をサポートするようになりました。これにより、ホーム画面に追加したウェブアプリでもプッシュ通知を受け取ることが可能になりました。
 
-2. \*\*Webアプリのバッジ表示\*\*:
+2. **Webアプリのバッジ表示**:
    - ウェブアプリは、iOSのホーム画面に追加されたときにバッジを表示できるようになりました。これにより、未読メッセージや通知数をユーザーに視覚的に示すことができます。
 
-3. \*\*Matterアクセサリの改善\*\*:
+3. **Matterアクセサリの改善**:
    - Matter（スマートホームの相互運用性標準）のサポートが改善され、Matter対応アクセサリの管理がより安定し、互換性が向上しました。
 
-4. \*\*5Gスタンドアロンのサポート\*\*:
+4. **5Gスタンドアロンのサポート**:
    - 一部のキャリアで、5Gスタンドアロンモードがサポートされました。これにより、5Gの高速通信をフルに活用することができます。
 
-5. \*\*SafariのWebKit機能の改善\*\*:
+5. **SafariのWebKit機能の改善**:
    - WebKitの改善により、Safariでのウェブ閲覧がさらに高速化され、より多くのウェブ標準に対応するようになりました。
 
-6. \*\*新しいUnicode 15.0絵文字\*\*:
+6. **新しいUnicode 15.0絵文字**:
    - iOS 16.4には、Unicode 15.0に基づく新しい絵文字が追加されています。
 
-7. \*\*`SwiftUI`の改善\*\*:
+7. **`SwiftUI`の改善**:
    - `SwiftUI`のいくつかの新機能や改善が追加されました。たとえば、`NavigationStack`や`NavigationSplitView`の改善に
 
 ---

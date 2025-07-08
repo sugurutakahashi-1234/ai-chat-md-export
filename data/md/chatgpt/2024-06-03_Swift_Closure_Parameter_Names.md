@@ -168,16 +168,16 @@ performOperation(using: multiplication)
 
 struct PropertyView&lt;T: Encodable&gt;: View {
     @Binding var showToast: Bool
-    let objects: \[T\]
+    let objects: [T]
     let onTapElement: (object: Any) -&gt; Void
 
     public var body: some View {
-        ForEach(Array(objects.enumerated()), id: \\.offset) { index, object in
+        ForEach(Array(objects.enumerated()), id: \.offset) { index, object in
             Section {
                 propertyView(object: object)
             } header: {
                 HStack {
-                    Text("\\(type(of: object))\[\\(index)\]")
+                    Text("\(type(of: object))[\(index)]")
 
                     Spacer()
 

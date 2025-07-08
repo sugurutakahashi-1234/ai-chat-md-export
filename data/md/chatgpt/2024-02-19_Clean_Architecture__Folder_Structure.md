@@ -18,17 +18,17 @@
 
 ### フレームワーク層に依存するフォルダ
 
-- \*\*`Infrastructure`\*\*
+- **`Infrastructure`**
   - このフォルダは、外部フレームワークやライブラリ、データベースアクセス、ファイルシステムの操作など、アプリケーションの外部に依存する具体的な実装を含みます。クリーンアーキテクチャーでは、このような外部依存性は内部のビジネスロジックから分離されるべきです。
 
 ### フレームワーク層に依存しないフォルダ
 
-- \*\*`Core`\*\* または \*\*`Domain`\*\*
+- **`Core`** または **`Domain`**
   - このフォルダは、アプリケーションのビジネスルールやエンティティ、バリューオブジェクト、ドメインサービスなど、フレームワークやインフラストラクチャに依存しない、アプリケーションの核となる部分を含みます。ここに置かれるコードは、アプリケーションのビジネスロジックを反映し、再利用可能で、テストしやすい形であるべきです。
 
 ### 補足
 
-- \*\*`Application`\*\*
+- **`Application`**
   - このフォルダは、`Core`/`Domain`と`Infrastructure`の中間に位置し、アプリケーションのユースケースやサービスを実装します。`Application`層は、`Domain`層を使ってシステムのビジネスロジックを実行し、`Infrastructure`層との橋渡しをするが、直接的なインフラストラクチャの詳細には依存しません。
 
 このようにフォルダを分けることで、依存関係のルール（依存性の逆転の原則など）に従い、高いレベルの抽象化を持つコードが低いレベルの詳細に依存しないように構成することが可能になります。
@@ -49,12 +49,12 @@
 
 ### フレームワーク層に依存するフォルダ
 
-- \*\*`FrameworkDependent`\*\*
+- **`FrameworkDependent`**
   - このフォルダは、フレームワークや外部ライブラリへの依存を含む実装が置かれます。具体的には、フレームワーク固有の機能、外部APIの呼び出し、データベースアクセスの実装などがここに含まれます。
 
 ### フレームワーク層に依存しないフォルダ
 
-- \*\*`FrameworkIndependent`\*\*
+- **`FrameworkIndependent`**
   - このフォルダには、フレームワークや外部のライブラリ、その他の外部要素から独立した、純粋なビジネスロジックやドメインモデルが含まれます。ここにあるコードは、アプリケーションの核心的な機能を担い、再利用性とテスト容易性を重視しています。
 
 この命名法は、プロジェクトの構造内での各フォルダの役割と依存性の関係を明確にし、開発者がコードの配置に関する意思決定を行う際の指針を提供します。
@@ -75,19 +75,19 @@
 
 ### フレームワーク層に依存するフォルダの候補
 
-1. \*\*`DependsOnFramework`\*\*
-2. \*\*`WithFramework`\*\*
-3. \*\*`FrameworkSpecific`\*\*
-4. \*\*`BoundToFramework`\*\*
-5. \*\*`FrameworkLinked`\*\*
+1. **`DependsOnFramework`**
+2. **`WithFramework`**
+3. **`FrameworkSpecific`**
+4. **`BoundToFramework`**
+5. **`FrameworkLinked`**
 
 ### フレームワーク層に依存しないフォルダの候補
 
-1. \*\*`FrameworkAgnostic`\*\*
-2. \*\*`IndependentOfFramework`\*\*
-3. \*\*`FrameworkNeutral`\*\*
-4. \*\*`BeyondFramework`\*\*
-5. \*\*`NoFramework`\*\*
+1. **`FrameworkAgnostic`**
+2. **`IndependentOfFramework`**
+3. **`FrameworkNeutral`**
+4. **`BeyondFramework`**
+5. **`NoFramework`**
 
 これらのフォルダ名は、それぞれのフォルダが持つべき特性をより明確に表現しています。`DependsOnFramework`や`WithFramework`などは、フレームワークとの結びつきが強いコードを格納する場所であることを示し、`FrameworkAgnostic`や`IndependentOfFramework`などは、フレームワークから独立していて、どのような環境でも使えるようなコードが置かれることを意味しています。これにより、コードの管理や新しい開発者の理解が容易になります。
 
@@ -107,21 +107,21 @@ xxxxRouterのような命名を考えている。もうすこし候補を挙げ�
 
 ### フレームワーク層に依存するフォルダの候補
 
-1. \*\*`FrameworkDependentRouter`\*\*
-2. \*\*`FrameworkBoundRouter`\*\*
-3. \*\*`FrameworkTiedRouter`\*\*
-4. \*\*`FrameworkLinkedRouter`\*\*
-5. \*\*`FrameworkSpecificRouter`\*\*
+1. **`FrameworkDependentRouter`**
+2. **`FrameworkBoundRouter`**
+3. **`FrameworkTiedRouter`**
+4. **`FrameworkLinkedRouter`**
+5. **`FrameworkSpecificRouter`**
 
 これらはフレームワークに依存する部分、つまり外部ライブラリやフレームワークの機能を直接利用するコードを格納するフォルダの命名に適しています。
 
 ### フレームワーク層に依存しないフォルダの候補
 
-1. \*\*`FrameworkAgnosticRouter`\*\*
-2. \*\*`FrameworkFreeRouter`\*\*
-3. \*\*`FrameworkIndependentRouter`\*\*
-4. \*\*`FrameworkNeutralRouter`\*\*
-5. \*\*`CoreRouter`\*\*
+1. **`FrameworkAgnosticRouter`**
+2. **`FrameworkFreeRouter`**
+3. **`FrameworkIndependentRouter`**
+4. **`FrameworkNeutralRouter`**
+5. **`CoreRouter`**
 
 これらはフレームワークから独立しており、アプリケーションのビジネスロジックやドメインルールを実装するコードを格納するフォルダの命名に適しています。特に`CoreRouter`は、そのフォルダがアプリケーションの核心的なビジネスロジックを扱うことを強調しています。
 
@@ -141,16 +141,16 @@ NoFrameworkのような候補をもっとあげてほしい
 
 フレームワーク層に依存しないフォルダの命名について、`NoFramework`に類似した明確で直感的な命名規則を提案します。これらの命名は、コードがフレームワークや外部ライブラリから独立していることを示すのに役立ちます。
 
-1. \*\*`FrameworkFree`\*\*
-2. \*\*`FrameworkLess`\*\*
-3. \*\*`IndependentCore`\*\*
-4. \*\*`PureLogic`\*\*
-5. \*\*`BaseCore`\*\*
-6. \*\*`CoreDomain`\*\*
-7. \*\*`StandaloneLogic`\*\*
-8. \*\*`UniversalCode`\*\*
-9. \*\*`UnboundCore`\*\*
-10. \*\*`FrameworkNeutral`\*\*
+1. **`FrameworkFree`**
+2. **`FrameworkLess`**
+3. **`IndependentCore`**
+4. **`PureLogic`**
+5. **`BaseCore`**
+6. **`CoreDomain`**
+7. **`StandaloneLogic`**
+8. **`UniversalCode`**
+9. **`UnboundCore`**
+10. **`FrameworkNeutral`**
 
 これらの名前は、フレームワークからの独立性を強調することにより、そのフォルダ内のコードがアプリケーションの中核的なビジネスロジックやドメインモデルに集中していることを明示します。このような命名規則を採用することで、プロジェクトの構造がより明瞭になり、開発者がどのようなコードをどこに配置すべきかについて直感的な理解を深めることができます。
 
@@ -168,16 +168,16 @@ NoFrameworkRouter, NonFrameworkRouter, TestRouter, このようなイメージ�
 
 `NoFrameworkRouter`、`NonFrameworkRouter`、`TestRouter`のような命名規則に基づいて、フレームワーク層に依存しないフォルダのための追加の命名候補を提案します。これらの名前は、フレームワークから独立したコードの配置に適していることを示すために設計されています。
 
-1. \*\*`BareRouter`\*\*
-2. \*\*`PureRouter`\*\*
-3. \*\*`SimpleRouter`\*\*
-4. \*\*`BaseRouter`\*\*
-5. \*\*`CoreRouter`\*\*
-6. \*\*`UniversalRouter`\*\*
-7. \*\*`StandaloneRouter`\*\*
-8. \*\*`NeutralRouter`\*\*
-9. \*\*`IndependentRouter`\*\*
-10. \*\*`FrameworkExemptRouter`\*\*
+1. **`BareRouter`**
+2. **`PureRouter`**
+3. **`SimpleRouter`**
+4. **`BaseRouter`**
+5. **`CoreRouter`**
+6. **`UniversalRouter`**
+7. **`StandaloneRouter`**
+8. **`NeutralRouter`**
+9. **`IndependentRouter`**
+10. **`FrameworkExemptRouter`**
 
 これらの名前は、フレームワークに依存しないルーティングロジックや、アプリケーションの中核的な機能を担うコードのためのフォルダを指定する際に有用です。`TestRouter`のように、特定の目的（この場合はテスト）に特化した命名も考慮すると良いでしょう。これらの命名規則は、プロジェクト内でのコードの整理と理解を容易にすることを目的としています。
 

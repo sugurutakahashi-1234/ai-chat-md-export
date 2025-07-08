@@ -25,9 +25,9 @@ struct PasswordField: View {
     @FocusState var isSecureFieldFocused: Bool
     @State var isFirstEntryAfterToggle = false
     
-    init(\_ titleKey: LocalizedStringKey, text: Binding&lt;String&gt;) {
+    init(_ titleKey: LocalizedStringKey, text: Binding&lt;String&gt;) {
         self.titleKey = titleKey
-        \_text = text
+        _text = text
     }
     
     var body: some View {
@@ -169,7 +169,7 @@ struct MyApp: App {
 ## 👤 ユーザー
 *2024/7/25 15:18:50*
 
-@available(iOS 17.0, \*) となってしまう、
+@available(iOS 17.0, *) となってしまう、
 
 ---
 

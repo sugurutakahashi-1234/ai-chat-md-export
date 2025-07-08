@@ -22,7 +22,7 @@
     "dev": "pnpm kill && pnpm -r --parallel --if-present dev",
     "dev:server": "pnpm --filter @myapp/server dev",
     "dev:web": "pnpm --filter @myapp/web-client dev",
-    "dev:mock": "pnpm kill && concurrently \\"pnpm dev:mock:server\\" \\"pnpm dev:mock:web\\"",
+    "dev:mock": "pnpm kill && concurrently \"pnpm dev:mock:server\" \"pnpm dev:mock:web\"",
     "dev:mock:server": "pnpm --filter @myapp/web-client dev:mock:server",
     "dev:mock:web": "pnpm --filter @myapp/web-client dev:mock:web",
     "kill": "for p in 3000 5173 4010 5555 6006; do lsof -ti :$p | xargs kill -9 2&gt;/dev/null || true; done && echo '✅ Killed processes on ports 3000, 5173, 4010, 5555, and 6006'",
@@ -83,9 +83,9 @@
     "validate:renovate": "npx --yes --package renovate -- renovate-config-validator --strict",
     "validate:renovate:changed": "git diff --cached --name-only | grep -q renovate.json5 && pnpm validate:renovate || echo 'renovate.json5 unchanged, skipping validation'",
     "validate:prisma": "pnpm --filter @myapp/database db:validate",
-    "validate:prisma:changed": "git diff --cached --name-only | grep -E '(schema\\\\.prisma|packages/database/)' && pnpm validate:prisma || echo 'Prisma files unchanged, skipping validation'",
+    "validate:prisma:changed": "git diff --cached --name-only | grep -E '(schema\\.prisma|packages/database/)' && pnpm validate:prisma || echo 'Prisma files unchanged, skipping validation'",
     "validate:openapi": "pnpm --filter @myapp/server openapi:validate && pnpm --filter @myapp/api-client openapi:validate",
-    "validate:openapi:changed": "git diff --cached --name-only | grep -q 'openapi\\\\.yaml' && pnpm validate:openapi || echo 'OpenAPI files unchanged, skipping validation'",
+    "validate:openapi:changed": "git diff --cached --name-only | grep -q 'openapi\\.yaml' && pnpm validate:openapi || echo 'OpenAPI files unchanged, skipping validation'",
     "validate:all": "pnpm validate:renovate && pnpm validate:prisma && pnpm validate:openapi",
     "// 🔍 デッドコード検出": "",
     "knip:check": "knip -c knip/knip.config.ts --reporter markdown",
@@ -107,24 +107,24 @@
     "env:with:stg": "npx dotenvx run -f dotenvx/.env.stg -fk .env.keys --",
     "env:with:prod": "npx dotenvx run -f dotenvx/.env.prod -fk .env.keys --",
     "// 🔐 環境変数（ファイル作成、CI）": "",
-    "env:ci:local": "DOTENV\_PRIVATE\_KEY\_LOCAL=$DOTENV\_PRIVATE\_KEY\_LOCAL npx dotenvx run -f dotenvx/.env.local --stdout &gt; .env",
-    "env:ci:test": "DOTENV\_PRIVATE\_KEY\_TEST=$DOTENV\_PRIVATE\_KEY\_TEST npx dotenvx run -f dotenvx/.env.test --stdout &gt; .env",
-    "env:ci:dev": "DOTENV\_PRIVATE\_KEY\_DEV=$DOTENV\_PRIVATE\_KEY\_DEV npx dotenvx run -f dotenvx/.env.dev --stdout &gt; .env",
-    "env:ci:stg": "DOTENV\_PRIVATE\_KEY\_STG=$DOTENV\_PRIVATE\_KEY\_STG npx dotenvx run -f dotenvx/.env.stg --stdout &gt; .env",
-    "env:ci:prod": "DOTENV\_PRIVATE\_KEY\_PROD=$DOTENV\_PRIVATE\_KEY\_PROD npx dotenvx run -f dotenvx/.env.prod --stdout &gt; .env",
+    "env:ci:local": "DOTENV_PRIVATE_KEY_LOCAL=$DOTENV_PRIVATE_KEY_LOCAL npx dotenvx run -f dotenvx/.env.local --stdout &gt; .env",
+    "env:ci:test": "DOTENV_PRIVATE_KEY_TEST=$DOTENV_PRIVATE_KEY_TEST npx dotenvx run -f dotenvx/.env.test --stdout &gt; .env",
+    "env:ci:dev": "DOTENV_PRIVATE_KEY_DEV=$DOTENV_PRIVATE_KEY_DEV npx dotenvx run -f dotenvx/.env.dev --stdout &gt; .env",
+    "env:ci:stg": "DOTENV_PRIVATE_KEY_STG=$DOTENV_PRIVATE_KEY_STG npx dotenvx run -f dotenvx/.env.stg --stdout &gt; .env",
+    "env:ci:prod": "DOTENV_PRIVATE_KEY_PROD=$DOTENV_PRIVATE_KEY_PROD npx dotenvx run -f dotenvx/.env.prod --stdout &gt; .env",
     "// 🔐 環境変数（メモリ内処理、CI）": "",
-    "env:with:ci:local": "DOTENV\_PRIVATE\_KEY\_LOCAL=$DOTENV\_PRIVATE\_KEY\_LOCAL npx dotenvx run -f dotenvx/.env.local --",
-    "env:with:ci:test": "DOTENV\_PRIVATE\_KEY\_TEST=$DOTENV\_PRIVATE\_KEY\_TEST npx dotenvx run -f dotenvx/.env.test --",
-    "env:with:ci:dev": "DOTENV\_PRIVATE\_KEY\_DEV=$DOTENV\_PRIVATE\_KEY\_DEV npx dotenvx run -f dotenvx/.env.dev --",
-    "env:with:ci:stg": "DOTENV\_PRIVATE\_KEY\_STG=$DOTENV\_PRIVATE\_KEY\_STG npx dotenvx run -f dotenvx/.env.stg --",
-    "env:with:ci:prod": "DOTENV\_PRIVATE\_KEY\_PROD=$DOTENV\_PRIVATE\_KEY\_PROD npx dotenvx run -f dotenvx/.env.prod --",
+    "env:with:ci:local": "DOTENV_PRIVATE_KEY_LOCAL=$DOTENV_PRIVATE_KEY_LOCAL npx dotenvx run -f dotenvx/.env.local --",
+    "env:with:ci:test": "DOTENV_PRIVATE_KEY_TEST=$DOTENV_PRIVATE_KEY_TEST npx dotenvx run -f dotenvx/.env.test --",
+    "env:with:ci:dev": "DOTENV_PRIVATE_KEY_DEV=$DOTENV_PRIVATE_KEY_DEV npx dotenvx run -f dotenvx/.env.dev --",
+    "env:with:ci:stg": "DOTENV_PRIVATE_KEY_STG=$DOTENV_PRIVATE_KEY_STG npx dotenvx run -f dotenvx/.env.stg --",
+    "env:with:ci:prod": "DOTENV_PRIVATE_KEY_PROD=$DOTENV_PRIVATE_KEY_PROD npx dotenvx run -f dotenvx/.env.prod --",
     "// 🔐 環境変数（表示、テスト）": "",
-    "env:show": "echo '=== .env.local ===' && npx dotenvx decrypt -f dotenvx/.env.local -fk .env.keys --stdout 2&gt;/dev/null && echo '\\n=== .env.test ===' && npx dotenvx decrypt -f dotenvx/.env.test -fk .env.keys --stdout 2&gt;/dev/null && echo '\\n=== .env.dev ===' && npx dotenvx decrypt -f dotenvx/.env.dev -fk .env.keys --stdout 2&gt;/dev/null && echo '\\n=== .env.stg ===' && npx dotenvx decrypt -f dotenvx/.env.stg -fk .env.keys --stdout 2&gt;/dev/null && echo '\\n=== .env.prod ===' && npx dotenvx decrypt -f dotenvx/.env.prod -fk .env.keys --stdout 2&gt;/dev/null",
+    "env:show": "echo '=== .env.local ===' && npx dotenvx decrypt -f dotenvx/.env.local -fk .env.keys --stdout 2&gt;/dev/null && echo '\n=== .env.test ===' && npx dotenvx decrypt -f dotenvx/.env.test -fk .env.keys --stdout 2&gt;/dev/null && echo '\n=== .env.dev ===' && npx dotenvx decrypt -f dotenvx/.env.dev -fk .env.keys --stdout 2&gt;/dev/null && echo '\n=== .env.stg ===' && npx dotenvx decrypt -f dotenvx/.env.stg -fk .env.keys --stdout 2&gt;/dev/null && echo '\n=== .env.prod ===' && npx dotenvx decrypt -f dotenvx/.env.prod -fk .env.keys --stdout 2&gt;/dev/null",
     "env:validate": "pnpm --filter @myapp/shared test:env && echo '✅ Environment validation passed!' || (echo '⚠️ Environment validation failed!' && exit 1)",
     "// 🧹 クリーンアップ": "",
-    "clean": "pnpm kill && find . -name 'dist' -type d -not -path './node\_modules/\*' -exec rm -rf {} + && find . -path '\*/src/generated' -type d -not -path './node\_modules/\*' -exec rm -rf {} + && find . -name '\*.tsbuildinfo' -type f -not -path './node\_modules/\*' -exec rm -f {} +",
+    "clean": "pnpm kill && find . -name 'dist' -type d -not -path './node_modules/*' -exec rm -rf {} + && find . -path '*/src/generated' -type d -not -path './node_modules/*' -exec rm -rf {} + && find . -name '*.tsbuildinfo' -type f -not -path './node_modules/*' -exec rm -f {} +",
     "clean:build": "pnpm clean && pnpm codegen && pnpm build",
-    "clean:install": "pnpm clean && rm -rf node\_modules && pnpm install",
+    "clean:install": "pnpm clean && rm -rf node_modules && pnpm install",
     "// 📦 依存関係管理": "",
     "deps:check": "pnpm outdated -r",
     "deps:update": "pnpm update -r --latest",
@@ -160,10 +160,10 @@ name: ci
 
 on:
   push:
-    branches: \[main\]
-  pull\_request:
-    branches: \[main\]
-    types: \[opened, synchronize, reopened, ready\_for\_review\]
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
   contents: read
@@ -179,7 +179,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.53.1-noble
 
     # ドラフトPRをスキップ
-    if: github.event.pull\_request.draft == false
+    if: github.event.pull_request.draft == false
     
     steps:
       - name: Checkout
@@ -200,7 +200,7 @@ jobs:
       
       - name: Setup test environment
         env:
-          DOTENV\_PRIVATE\_KEY\_TEST: ${{ secrets.DOTENV\_PRIVATE\_KEY\_TEST }}
+          DOTENV_PRIVATE_KEY_TEST: ${{ secrets.DOTENV_PRIVATE_KEY_TEST }}
         run: pnpm env:ci:test
   
       - name: Codegen
@@ -228,7 +228,7 @@ jobs:
 
       - name: Setup test environment
         env:
-          DOTENV\_PRIVATE\_KEY\_TEST: ${{ secrets.DOTENV\_PRIVATE\_KEY\_TEST }}
+          DOTENV_PRIVATE_KEY_TEST: ${{ secrets.DOTENV_PRIVATE_KEY_TEST }}
         run: pnpm env:ci:test
 
 ---
@@ -313,10 +313,10 @@ with:
 以下のイメージであった。
 https://github.com/dotenvx/dotenvx?tab=readme-ov-file#encryption
 
-つまり、DOTENV\_PRIVATE\_KEY\_TESTを環境変数登録していれば、
+つまり、DOTENV_PRIVATE_KEY_TESTを環境変数登録していれば、
 
 以下が動くのかの質問だった
-"env:ci:test": "DOTENV\_PRIVATE\_KEY\_TEST=$DOTENV\_PRIVATE\_KEY\_TEST npx dotenvx run -f dotenvx/.env.test --stdout &gt; .env",
+"env:ci:test": "DOTENV_PRIVATE_KEY_TEST=$DOTENV_PRIVATE_KEY_TEST npx dotenvx run -f dotenvx/.env.test --stdout &gt; .env",
 
 ---
 
@@ -379,7 +379,7 @@ DOTENV_PRIVATE_KEY=$DOTENV_PRIVATE_KEY_TEST ...
 ## 👤 ユーザー
 *2025/6/19 21:49:25*
 
-DOTENV\_PRIVATE\_KEY="$DOTENV\_PRIVATE\_KEY\_TEST" ダブルコーテーションがあるとまずいか。 これはいるのか
+DOTENV_PRIVATE_KEY="$DOTENV_PRIVATE_KEY_TEST" ダブルコーテーションがあるとまずいか。 これはいるのか
 
 ---
 

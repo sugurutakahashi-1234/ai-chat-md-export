@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/5/31 11:32:37*
 
-全文小文字で\_つなぎ
+全文小文字で_つなぎ
 
 Code Gen From OpenAPI Spec
 
@@ -16,6 +16,6 @@ Code Gen From OpenAPI Spec
 ## 🤖 アシスタント
 *2024/5/31 11:32:38*
 
-code\_gen\_from\_openapi\_spec
+code_gen_from_openapi_spec
 
 ---

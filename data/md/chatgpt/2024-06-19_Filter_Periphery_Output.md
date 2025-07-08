@@ -160,7 +160,7 @@ echo "Periphery Scan Completed!!!!"
 ## 👤 ユーザー
 *2024/6/19 12:54:47*
 
-filtered\_result.txt を作らずにできないか？
+filtered_result.txt を作らずにできないか？
 
 ---
 

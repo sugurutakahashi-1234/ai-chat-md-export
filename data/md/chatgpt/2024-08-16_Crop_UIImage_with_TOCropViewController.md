@@ -210,14 +210,14 @@ struct CropViewController: UIViewControllerRepresentable {
 ## 👤 ユーザー
 *2024/8/16 13:48:11*
 
-@Environment(\\.presentationMode) private var presentationMode ではなくて、dissmisを使って欲しい
+@Environment(\.presentationMode) private var presentationMode ではなくて、dissmisを使って欲しい
 
 ---
 
 ## 🤖 アシスタント
 *2024/8/16 13:48:27*
 
-User prefers to use `dismiss` instead of `@Environment(\\.presentationMode) private var presentationMode`.
+User prefers to use `dismiss` instead of `@Environment(\.presentationMode) private var presentationMode`.
 
 ---
 

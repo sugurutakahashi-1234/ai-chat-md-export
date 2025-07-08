@@ -39,8 +39,8 @@ public final class LocalDataStoreDriver: LocalDataStoreDriverProtocol, @unchecke
     @UserDefaultsWrapperNilable(key: .apnsToken, defaultValue: nil)
     public var apnsToken: Data?
 
-    @UserDefaultsWrapper(key: .stampHistorys, defaultValue: \[StampHistory\]())
-    public var stampHistorys: \[StampHistory\]
+    @UserDefaultsWrapper(key: .stampHistorys, defaultValue: [StampHistory]())
+    public var stampHistorys: [StampHistory]
 
     /// あまりしたくないが Combine が伝搬されないのでシングルトンにしている。 状態は LocalDataStoreDriver に持たせるのではなくて別の状態を持つ Driver に任せた方がいいかもしれない
     public static let shared = LocalDataStoreDriver()
@@ -98,19 +98,19 @@ final class RootPresenter: ObservableObject {
         logDriver.initLog()
 
         AppDelegateNotificationStaticDriver.didRegisterForRemoteNotificationsWithDeviceToken
-            .sink { \[weak self\] deviceToken in
+            .sink { [weak self] deviceToken in
                 guard let self else {
                     return
                 }
-                self.logDriver.debugLog("deviceToken: \\(deviceToken.deviceTokenHexString)")
+                self.logDriver.debugLog("deviceToken: \(deviceToken.deviceTokenHexString)")
                 self.pushNotificationDriver.setApnsToken(apnsToken: deviceToken)
                 self.localDataStoreDriver.apnsToken = deviceToken
             }
             .store(in: &cancellables)
 
         UserNotificationCenterDelegateNotificationStaticDriver.userNotificationCenterDidReceive
-            .sink { \[weak self\] url in
-                self?.logDriver.debugLog("Receive URL: \\(url.absoluteString)")
+            .sink { [weak self] url in
+                self?.logDriver.debugLog("Receive URL: \(url.absoluteString)")
                 UIApplication.shared.open(url)
             }
             .store(in: &cancellables)
@@ -142,10 +142,10 @@ final class RootPresenter: ObservableObject {
     }
 
     func onOpenUrl(url: URL) {
-        logDriver.debugLog("Open Url: \\(url.absoluteString)")
+        logDriver.debugLog("Open Url: \(url.absoluteString)")
 
         let customUrlSchema = CustomUrlSchema(url: url)
-        logDriver.debugLog("CustomUrlSchema: \\(customUrlSchema)")
+        logDriver.debugLog("CustomUrlSchema: \(customUrlSchema)")
 
         AppStateSingletonDriver.shared.update(customUrlSchema: customUrlSchema)
     }

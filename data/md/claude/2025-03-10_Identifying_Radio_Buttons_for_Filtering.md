@@ -72,7 +72,7 @@
 チェックマークを非表示にできるのか？また、色とかも変えたい
 
 import 'package:flutter/material.dart';
-/// Flutter code sample for \[FilterChip\].
+/// Flutter code sample for [FilterChip].
 enum ExerciseFilter { walking, running, cycling, hiking }
 void main() =&gt; runApp(const ChipApp());
 class ChipApp extends StatelessWidget {
@@ -91,9 +91,9 @@ class ChipApp extends StatelessWidget {
 class FilterChipExample extends StatefulWidget {
   const FilterChipExample({super.key});
   @override
-  State&lt;FilterChipExample&gt; createState() =&gt; \_FilterChipExampleState();
+  State&lt;FilterChipExample&gt; createState() =&gt; _FilterChipExampleState();
 }
-class \_FilterChipExampleState extends State&lt;FilterChipExample&gt; {
+class _FilterChipExampleState extends State&lt;FilterChipExample&gt; {
   Set&lt;ExerciseFilter&gt; filters = &lt;ExerciseFilter&gt;{};
   @override
   Widget build(BuildContext context) {
@@ -101,7 +101,7 @@ class \_FilterChipExampleState extends State&lt;FilterChipExample&gt; {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: &lt;Widget&gt;\[
+        children: &lt;Widget&gt;[
           Text('Choose an exercise', style: textTheme.labelLarge),
           const SizedBox(height: 5.0),
           Wrap(
@@ -128,7 +128,7 @@ class \_FilterChipExampleState extends State&lt;FilterChipExample&gt; {
             'Looking for: ${filters.map((ExerciseFilter e) =&gt; e.name).join(', ')}',
             style: textTheme.labelLarge,
           ),
-        \],
+        ],
       ),
     );
   }

@@ -11,7 +11,7 @@
 
 public struct AppIntroductionView: View {
     @StateObject private var presenter = AppIntroductionPresenter()
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     public init() {
         // TabViewのIndicator色設定
@@ -268,7 +268,7 @@ enum OnboardingStep: CaseIterable {
 
 public struct AppIntroductionView: View {
     @StateObject private var presenter = AppIntroductionPresenter()
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     public init() {
         // TabViewのIndicator色設定
@@ -390,7 +390,7 @@ private extension AppIntroductionView {
     }
 }
 
-struct AppIntroductionView\_Previews: PreviewProvider {
+struct AppIntroductionView_Previews: PreviewProvider {
     static var previews: some View {
         AppIntroductionView()
     }

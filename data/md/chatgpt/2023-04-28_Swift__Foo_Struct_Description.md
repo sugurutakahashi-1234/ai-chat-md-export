@@ -10,7 +10,7 @@
 いかのstruct Foo {
     let int: Int
     let optionalInt: Int?
-    let array: \[Int\]
+    let array: [Int]
     let url: URL
     let optionalUrl: URL?
 }
@@ -95,7 +95,7 @@ struct Person: Decodable {
 struct Foo {
     let int: Int
     let optionalInt: Int?
-    let array: \[Int\]
+    let array: [Int]
     let url: URL
     let optionalUrl: URL?
 }
@@ -222,12 +222,12 @@ func divide(_ a: Int, by b: Int) -> Int? {
 以下のコードのよくないところ教えて
 
 struct MenuView: View {
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
     @StateObject var menuPresenter: MenuPresenter
 
     var body: some View {
         NavigationStack {
-            List(menuPresenter.menus, id: \\.self.id) { menu in
+            List(menuPresenter.menus, id: \.self.id) { menu in
                 NavigationLink(value: menu) {
                     Text(menu.name)
                 }

@@ -236,11 +236,11 @@ pub3.send(false) // It will print "true" because there's one "true"
 
 複数のPublisher（4つ以上）から最新の値を組み合わせて処理するには、以下のようなアプローチがあります。
 
-1. \*\*Nested CombineLatest:\*\* `CombineLatest`をネストして使用することができます。つまり、2つのPublisherの組み合わせを1つのPublisherとみなし、そのPublisherと次のPublisherを組み合わせる、という処理を繰り返します。これにより、任意の数のPublisherを組み合わせることができます。ただし、この方法はコードが複雑になりがちであり、特に大量のPublisherを扱う場合には扱いづらいという欠点があります。
+1. **Nested CombineLatest:** `CombineLatest`をネストして使用することができます。つまり、2つのPublisherの組み合わせを1つのPublisherとみなし、そのPublisherと次のPublisherを組み合わせる、という処理を繰り返します。これにより、任意の数のPublisherを組み合わせることができます。ただし、この方法はコードが複雑になりがちであり、特に大量のPublisherを扱う場合には扱いづらいという欠点があります。
 
-2. \*\*Custom CombineLatest Operator:\*\* 独自のCombineLatest演算子を作成することも可能です。この演算子は、任意の数のPublisherを引数に取り、それらの最新の値を組み合わせることができます。ただし、この方法を使用するためにはCombineフレームワークとSwiftの高度な機能に深く精通している必要があります。
+2. **Custom CombineLatest Operator:** 独自のCombineLatest演算子を作成することも可能です。この演算子は、任意の数のPublisherを引数に取り、それらの最新の値を組み合わせることができます。ただし、この方法を使用するためにはCombineフレームワークとSwiftの高度な機能に深く精通している必要があります。
 
-3. \*\*Third-Party Libraries:\*\* サードパーティのライブラリを使用することも一つの選択肢です。例えば、`CombineExt`ライブラリには`CombineLatestMany`というメソッドが含まれており、これを使用すれば任意の数のPublisherを組み合わせることができます。ただし、サードパーティのライブラリを使用することはプロジェクトの依存関係を増やすことを意味します。
+3. **Third-Party Libraries:** サードパーティのライブラリを使用することも一つの選択肢です。例えば、`CombineExt`ライブラリには`CombineLatestMany`というメソッドが含まれており、これを使用すれば任意の数のPublisherを組み合わせることができます。ただし、サードパーティのライブラリを使用することはプロジェクトの依存関係を増やすことを意味します。
 
 これらのアプローチはそれぞれメリットとデメリットがあり、用途によって最適な方法は変わります。要件や制約によって適切なアプローチを選ぶことが重要です。
 
@@ -288,7 +288,7 @@ let subscription = Publishers.CombineLatest3(pub1, pub2, pub3)
 
 以下のような記事を見たけど
 
-func arrayFromTuple&lt;T, U&gt;(tuple: T) -&gt; \[U\] {
+func arrayFromTuple&lt;T, U&gt;(tuple: T) -&gt; [U] {
     return Mirror(reflecting: tuple).children.map { $0.value as! U }
 }
 

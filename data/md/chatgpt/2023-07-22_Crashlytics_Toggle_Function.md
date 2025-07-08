@@ -15,7 +15,7 @@ public enum CrashLogger {
         Crashlytics.crashlytics().setUserID(id)
     }
 
-    public static func sendError(domain: String, code: Int, userInfo: \[String: Any\]? = nil) {
+    public static func sendError(domain: String, code: Int, userInfo: [String: Any]? = nil) {
         sendError(error: .init(domain: domain, code: code, userInfo: userInfo))
     }
 

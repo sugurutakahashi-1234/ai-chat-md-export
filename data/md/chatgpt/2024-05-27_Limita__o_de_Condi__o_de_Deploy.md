@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/5/27 17:18:01*
 
-以下は tbls\_gen\_docs が更新された時を限定にしたい
+以下は tbls_gen_docs が更新された時を限定にしたい
 
 name: mkdocs deploy
 
@@ -15,7 +15,7 @@ on:
   push:
     branches:
       - main
-  workflow\_dispatch:
+  workflow_dispatch:
 
 permissions:
   contents: write

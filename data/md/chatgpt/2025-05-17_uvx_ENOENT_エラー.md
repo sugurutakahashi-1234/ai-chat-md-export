@@ -9,13 +9,13 @@
 
 どういうエラーであるか？
 
-2025-05-17T06:19:04.215Z \[obsidian-mcp-uvx\] \[info\] Initializing server...
-2025-05-17T06:19:04.288Z \[obsidian-mcp-uvx\] \[error\] spawn uvx ENOENT {"context":"connection","stack":"Error: spawn uvx ENOENT\\n    at ChildProcess.\_handle.onexit (node:internal/child\_process:285:19)\\n    at onErrorNT (node:internal/child\_process:483:16)\\n    at process.processTicksAndRejections (node:internal/process/task\_queues:82:21)"}
-2025-05-17T06:19:04.288Z \[obsidian-mcp-uvx\] \[error\] spawn uvx ENOENT {"stack":"Error: spawn uvx ENOENT\\n    at ChildProcess.\_handle.onexit (node:internal/child\_process:285:19)\\n    at onErrorNT (node:internal/child\_process:483:16)\\n    at process.processTicksAndRejections (node:internal/process/task\_queues:82:21)"}
-2025-05-17T06:19:04.292Z \[obsidian-mcp-uvx\] \[info\] Server transport closed
-2025-05-17T06:19:04.292Z \[obsidian-mcp-uvx\] \[info\] Client transport closed
-2025-05-17T06:19:04.293Z \[obsidian-mcp-uvx\] \[info\] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
-2025-05-17T06:19:04.293Z \[obsidian-mcp-uvx\] \[error\] Server disconnected. For troubleshooting guidance, please visit our \[debugging documentation\](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
+2025-05-17T06:19:04.215Z [obsidian-mcp-uvx] [info] Initializing server...
+2025-05-17T06:19:04.288Z [obsidian-mcp-uvx] [error] spawn uvx ENOENT {"context":"connection","stack":"Error: spawn uvx ENOENT\n    at ChildProcess._handle.onexit (node:internal/child_process:285:19)\n    at onErrorNT (node:internal/child_process:483:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)"}
+2025-05-17T06:19:04.288Z [obsidian-mcp-uvx] [error] spawn uvx ENOENT {"stack":"Error: spawn uvx ENOENT\n    at ChildProcess._handle.onexit (node:internal/child_process:285:19)\n    at onErrorNT (node:internal/child_process:483:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)"}
+2025-05-17T06:19:04.292Z [obsidian-mcp-uvx] [info] Server transport closed
+2025-05-17T06:19:04.292Z [obsidian-mcp-uvx] [info] Client transport closed
+2025-05-17T06:19:04.293Z [obsidian-mcp-uvx] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
+2025-05-17T06:19:04.293Z [obsidian-mcp-uvx] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
 
 ---
 

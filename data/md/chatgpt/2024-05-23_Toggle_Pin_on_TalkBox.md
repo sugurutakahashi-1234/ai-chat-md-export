@@ -31,14 +31,14 @@ extension TalkBox: RandomValueProvider {
 
 
 final class APIDriver: Sendable {
-    func getTalkBox() async throws -&gt; \[TalkBox\] {
+    func getTalkBox() async throws -&gt; [TalkBox] {
         (0...Int.random(in: 19...21)).map { order in
-            TalkBox(id: .uuid, order: order, imageUrl: .placeholderImageUrl(title: "\\(order)"), isPinned: false)
+            TalkBox(id: .uuid, order: order, imageUrl: .placeholderImageUrl(title: "\(order)"), isPinned: false)
         }
     }
 
     func postTalkBox(talkBox: TalkBox) async throws -&gt; TalkBox {
-        TalkBox(id: .uuid, order: .random, imageUrl: .placeholderImageUrl(title: "\\(Int.random)"), isPinned: false)
+        TalkBox(id: .uuid, order: .random, imageUrl: .placeholderImageUrl(title: "\(Int.random)"), isPinned: false)
     }
     
     func putTalkBox(talkBox: TalkBox) async throws -&gt; TalkBox {
@@ -250,7 +250,7 @@ leaveTalkBox の場合に talkBoxes から削除する方法を知りたい
         do {
             try await apiDriver.leaveTalkBox(talkBox: talkBox)
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -441,7 +441,7 @@ id: 4, order: 4, isPinned: false
 以下を使ってうまく表せないか？
 
 public extension Sequence {
-    func sorted(order: SortOrder) -&gt; \[Element\] where Element: Comparable {
+    func sorted(order: SortOrder) -&gt; [Element] where Element: Comparable {
         switch order {
         case .ascending:
             return sorted { $0 &lt; $1 }
@@ -450,12 +450,12 @@ public extension Sequence {
         }
     }
 
-    func sorted(by keyPath: KeyPath&lt;Element, some Comparable&gt;, order: SortOrder) -&gt; \[Element\] {
+    func sorted(by keyPath: KeyPath&lt;Element, some Comparable&gt;, order: SortOrder) -&gt; [Element] {
         switch order {
         case .ascending:
-            sorted { $0\[keyPath: keyPath\] &lt; $1\[keyPath: keyPath\] }
+            sorted { $0[keyPath: keyPath] &lt; $1[keyPath: keyPath] }
         case .descending:
-            sorted { $0\[keyPath: keyPath\] &gt; $1\[keyPath: keyPath\] }
+            sorted { $0[keyPath: keyPath] &gt; $1[keyPath: keyPath] }
         }
     }
 }
@@ -543,7 +543,7 @@ id: 4, order: 4, isPinned: false
 *2024/5/24 13:54:40*
 
 .sorted { $0.isPinned && !$1.isPinned } はどういう意味？
-.sorted(by: \\.isPinned, order: .ascending) とはできないの？
+.sorted(by: \.isPinned, order: .ascending) とはできないの？
 
 ---
 

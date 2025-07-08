@@ -13,9 +13,9 @@ SeeSoに聞きたいこと
 Swiftによる iOS アプリで SeeSo を使っている
 SwiftUI で SeeSoを組み込んでいる
 キャリブレーションを行っている
-キャリブレーションした値を `setCalibrationData(calibrationData: \[Double\])` によって設定している
+キャリブレーションした値を `setCalibrationData(calibrationData: [Double])` によって設定している
 質問
-キャリブレーション実行時に `.ignoresSafeArea()` している場合に、別の画面で `setCalibrationData(calibrationData: \[Double\])` してキャリブレーションデータを使いまわした際に、その画面で `.ignoresSafeArea()` をしている場合と、`.ignoresSafeArea()` していない場合の両方で使用できるか？それとも、`.ignoresSafeArea()` している画面でしか使えないのか？
+キャリブレーション実行時に `.ignoresSafeArea()` している場合に、別の画面で `setCalibrationData(calibrationData: [Double])` してキャリブレーションデータを使いまわした際に、その画面で `.ignoresSafeArea()` をしている場合と、`.ignoresSafeArea()` していない場合の両方で使用できるか？それとも、`.ignoresSafeArea()` している画面でしか使えないのか？
 
 ---
 
@@ -32,7 +32,7 @@ SwiftUI で SeeSoを組み込んでいる
 
 私は現在、Swiftを使用してiOSアプリを開発しており、その中でSeeSoの機能を組み込んでいます。特に、SwiftUIを用いての組み込みを行い、キャリブレーションの実施もしています。
 
-キャリブレーション完了後、得られたデータを `setCalibrationData(calibrationData: \[Double\])` メソッドで設定して利用しているのですが、一つ疑問が生まれましたので質問させていただきます。
+キャリブレーション完了後、得られたデータを `setCalibrationData(calibrationData: [Double])` メソッドで設定して利用しているのですが、一つ疑問が生まれましたので質問させていただきます。
 
 キャリブレーションを実行する際の画面で `.ignoresSafeArea()` を適用しているとした場合、そのキャリブレーションデータを別の画面で再利用したいと考えています。再利用する際の画面で `.ignoresSafeArea()` を適用している場合と、適用していない場合、両方でキャリブレーションデータは問題なく利用できるでしょうか？それとも、キャリブレーションを行った時と同じ `.ignoresSafeArea()` の設定がないと、データの再利用はできないのでしょうか？
 
@@ -40,7 +40,7 @@ SwiftUI で SeeSoを組み込んでいる
 
 よろしくお願い申し上げます。
 
-\[あなたの名前\]
+[あなたの名前]
 
 ---
 
@@ -68,7 +68,7 @@ Dear SeeSo Support Team,
 
 I am currently developing an iOS app using Swift and have integrated SeeSo's functionalities into it. Specifically, I'm using SwiftUI for the integration and have also carried out the calibration process.
 
-After calibration, I am setting the obtained data with the `setCalibrationData(calibrationData: \[Double\])` method. However, a question has arisen regarding its reuse.
+After calibration, I am setting the obtained data with the `setCalibrationData(calibrationData: [Double])` method. However, a question has arisen regarding its reuse.
 
 If I apply `.ignoresSafeArea()` on the screen during the calibration process, I'm considering reusing the calibration data on another screen. Can I seamlessly use the calibration data on both screens that apply `.ignoresSafeArea()` and those that don't? Or do I need to maintain the same `.ignoresSafeArea()` setting as during the calibration for the data to be reused effectively?
 
@@ -76,7 +76,7 @@ I apologize for any inconvenience and would greatly appreciate your guidance on 
 
 Best regards,
 
-\[Your Name\]
+[Your Name]
 
 ---
 

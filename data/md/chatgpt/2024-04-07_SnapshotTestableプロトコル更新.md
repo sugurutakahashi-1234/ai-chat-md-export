@@ -9,11 +9,11 @@
 
 以下のようなプログラムがあるとして
 
-struct SFSymbolsListView\_Previews: PreviewProvider, SnapshotTestable {
+struct SFSymbolsListView_Previews: PreviewProvider, SnapshotTestable {
     static var snapshots: PreviewSnapshots&lt;Void&gt; {
         .init(
-            configurations: \[.init(name: "", state: ())\],
-            configure: { \_ in
+            configurations: [.init(name: "", state: ())],
+            configure: { _ in
                 SFSymbolsListView()
                     .navigationStacked()
             }
@@ -37,12 +37,12 @@ public extension SnapshotTestable {
 問題なのが、今後いかが繰り返しになることが予想されるので、
 
  .init(
-            configurations: \[.init(name: "", state: ())\],
-            configure: { \_ in
+            configurations: [.init(name: "", state: ())],
+            configure: { _ in
 
 以下を書くだけで、同等の処理になるようにしたい。どうすればいいか？
 
-struct SFSymbolsListView\_Previews {
+struct SFSymbolsListView_Previews {
     @MainActor
     static var snapshotView: some View {
         SFSymbolsListView()

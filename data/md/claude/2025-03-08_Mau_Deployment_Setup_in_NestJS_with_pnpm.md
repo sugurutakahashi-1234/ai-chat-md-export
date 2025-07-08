@@ -11,8 +11,8 @@
 $ pnpm install -g mau
 
 
- ERR\_PNPM\_NO\_GLOBAL\_BIN\_DIR  Unable to find the global bin directory
-Run "pnpm setup" to create it automatically, or set the global-bin-dir setting, or the PNPM\_HOME env variable. The global bin directory should be in the PATH.
+ ERR_PNPM_NO_GLOBAL_BIN_DIR  Unable to find the global bin directory
+Run "pnpm setup" to create it automatically, or set the global-bin-dir setting, or the PNPM_HOME env variable. The global bin directory should be in the PATH.
 
 ---
 
@@ -249,7 +249,7 @@ Already up to date
 Progress: resolved 11, reused 11, downloaded 0, added 0, done
  WARN  mau has no binaries
 Done in 963ms using pnpm v10.6.1
-~/git/suguruTakahashi-1234/nestjs-swagger-sample  ‹main\*› $ mau deploy         
+~/git/suguruTakahashi-1234/nestjs-swagger-sample  ‹main*› $ mau deploy         
 zsh: command not found: mau
 
 ---
@@ -357,21 +357,21 @@ node:internal/modules/cjs/loader:1244
   ^
 Error: Cannot find module 'mau'
 Require stack:
-- /Users/sugurutakahashi/git/suguruTakahashi-1234/nestjs-swagger-sample/my-nest-project/\[eval\]
-    at Function.\_resolveFilename (node:internal/modules/cjs/loader:1241:15)
-    at Function.\_load (node:internal/modules/cjs/loader:1066:27)
-    at TracingChannel.traceSync (node:diagnostics\_channel:322:14)
+- /Users/sugurutakahashi/git/suguruTakahashi-1234/nestjs-swagger-sample/my-nest-project/[eval]
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1241:15)
+    at Function._load (node:internal/modules/cjs/loader:1066:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
     at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
     at Module.require (node:internal/modules/cjs/loader:1327:12)
     at require (node:internal/modules/helpers:136:16)
-    at \[eval\]:1:1
+    at [eval]:1:1
     at runScriptInThisContext (node:internal/vm:209:10)
     at node:internal/process/execution:118:14
-    at \[eval\]-wrapper:6:24 {
-  code: 'MODULE\_NOT\_FOUND',
-  requireStack: \[
-    '/Users/sugurutakahashi/git/suguruTakahashi-1234/nestjs-swagger-sample/my-nest-project/\[eval\]'
-  \]
+    at [eval]-wrapper:6:24 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/sugurutakahashi/git/suguruTakahashi-1234/nestjs-swagger-sample/my-nest-project/[eval]'
+  ]
 }
 Node.js v23.4.0
 
@@ -427,13 +427,13 @@ find /Users/sugurutakahashi/Library/pnpm/global/5/node_modules/mau -type f -name
 ## 👤 ユーザー
 *2025/3/8 19:09:44*
 
-$ ls -la /Users/sugurutakahashi/Library/pnpm/global/5/node\_modules/                                                                                                          1 ↵
+$ ls -la /Users/sugurutakahashi/Library/pnpm/global/5/node_modules/                                                                                                          1 ↵
 total 16
 drwxr-xr-x@ 5 sugurutakahashi  staff  160  3  8 19:08 .
 drwxr-xr-x@ 6 sugurutakahashi  staff  192  3  8 19:08 ..
 -rw-r--r--@ 1 sugurutakahashi  staff  876  3  8 19:08 .modules.yaml
 -rw-r--r--@ 1 sugurutakahashi  staff  615  3  8 19:08 .pnpm-workspace-state.json
-lrwxr-xr-x@ 1 sugurutakahashi  staff   35  3  8 19:06 mau -&gt; ../.pnpm/mau@0.3.3/node\_modules/mau
+lrwxr-xr-x@ 1 sugurutakahashi  staff   35  3  8 19:06 mau -&gt; ../.pnpm/mau@0.3.3/node_modules/mau
 
 ---
 
@@ -475,7 +475,7 @@ cat /Users/sugurutakahashi/Library/pnpm/global/5/.pnpm/mau@0.3.3/node_modules/ma
 ## 👤 ユーザー
 *2025/3/8 19:10:12*
 
-$ ls -la /Users/sugurutakahashi/Library/pnpm/global/5/.pnpm/mau@0.3.3/node\_modules/mau
+$ ls -la /Users/sugurutakahashi/Library/pnpm/global/5/.pnpm/mau@0.3.3/node_modules/mau
 total 56
 drwxr-xr-x@ 15 sugurutakahashi  staff   480  3  8 19:06 .
 drwxr-xr-x@  9 sugurutakahashi  staff   288  3  8 19:06 ..
@@ -487,12 +487,12 @@ drwxr-xr-x@  6 sugurutakahashi  staff   192  3  8 19:06 example
 -rw-r--r--@  1 sugurutakahashi  staff   759  3  8 19:06 Gruntfile.js
 drwxr-xr-x@  9 sugurutakahashi  staff   288  3  8 19:06 lib
 -rw-r--r--@  1 sugurutakahashi  staff  1153  3  8 19:06 LICENSE.txt
-drwxr-xr-x@  3 sugurutakahashi  staff    96  3  8 19:06 node\_modules
+drwxr-xr-x@  3 sugurutakahashi  staff    96  3  8 19:06 node_modules
 -rw-r--r--@  1 sugurutakahashi  staff  1046  3  8 19:06 package.json
 -rw-r--r--@  1 sugurutakahashi  staff  1390  3  8 19:06 README.md
 drwxr-xr-x@  5 sugurutakahashi  staff   160  3  8 19:06 store
 drwxr-xr-x@  3 sugurutakahashi  staff    96  3  8 19:06 test
-~/git/suguruTakahashi-1234/nestjs-swagger-sample/my-nest-project  ‹main\*› $ cat /Users/sugurutakahashi/Library/pnpm/global/5/.pnpm/mau@0.3.3/node\_modules/mau/package.json
+~/git/suguruTakahashi-1234/nestjs-swagger-sample/my-nest-project  ‹main*› $ cat /Users/sugurutakahashi/Library/pnpm/global/5/.pnpm/mau@0.3.3/node_modules/mau/package.json
 {
   "name": "mau",
   "version": "0.3.3",
@@ -511,9 +511,9 @@ drwxr-xr-x@  3 sugurutakahashi  staff    96  3  8 19:06 test
     "node": "&gt;=7"
   },
   "scripts": {
-    "doc": "jsdoc2md --files lib/\*.js store/\*.js --template doc/api.hbs &gt; doc/api.md",
+    "doc": "jsdoc2md --files lib/*.js store/*.js --template doc/api.hbs &gt; doc/api.md",
     "test": "grunt test",
-    "test-coverage": "istanbul cover \_mocha --report lcovonly -- --exit -R spec test/unit/\*\*/\*.js"
+    "test-coverage": "istanbul cover _mocha --report lcovonly -- --exit -R spec test/unit/**/*.js"
   },
   "dependencies": {
     "async": "^2.3.0",
@@ -535,7 +535,7 @@ drwxr-xr-x@  3 sugurutakahashi  staff    96  3  8 19:06 test
     "mocha-lcov-reporter": "^1.3.0"
   }
 }
-~/git/suguruTakahashi-1234/nestjs-swagger-sample/my-nest-project  ‹main\*› $
+~/git/suguruTakahashi-1234/nestjs-swagger-sample/my-nest-project  ‹main*› $
 
 ---
 
@@ -544,7 +544,7 @@ drwxr-xr-x@  3 sugurutakahashi  staff    96  3  8 19:06 test
 
 これで状況がかなり明確になりました。このインストールされている「mau」パッケージは、NestJSのデプロイツールではなく、全く別のものです。パッケージの説明を見ると「Query Engine」となっており、NestJSのデプロイに関連するものではありません。
 
-このパッケージは \[GitHub の forfuturellc/mau\](https://github.com/forfuturellc/mau) リポジトリのもので、NestJSのREADMEに記載されている \[mau.nestjs.com\](https://mau.nestjs.com) のものとは異なります。
+このパッケージは [GitHub の forfuturellc/mau](https://github.com/forfuturellc/mau) リポジトリのもので、NestJSのREADMEに記載されている [mau.nestjs.com](https://mau.nestjs.com) のものとは異なります。
 
 これが混乱の原因です。つまり、NPMレジストリ上の「mau」という名前のパッケージは、NestJSのデプロイツールではなく、別の目的のためのパッケージなのです。
 
@@ -552,7 +552,7 @@ NestJSのMauデプロイツールは、おそらく別の名前でパッケー�
 
 解決策としては：
 
-1. NestJSの公式サイト（\[mau.nestjs.com\](https://mau.nestjs.com)）を確認して、正確なインストール手順を得る
+1. NestJSの公式サイト（[mau.nestjs.com](https://mau.nestjs.com)）を確認して、正確なインストール手順を得る
 2. NestJSの最新のドキュメントでデプロイに関する情報を確認する
 3. 現時点ではMauを使わず、AWS、Heroku、Vercelなど他の一般的なデプロイ方法を検討する
 

@@ -9,7 +9,7 @@
 
 何がおかしいのか？
 
-import \* as tseslint from "typescript-eslint";
+import * as tseslint from "typescript-eslint";
 // import unicornPlugin from "eslint-plugin-unicorn";
 // import sonarjsPlugin from "eslint-plugin-sonarjs";
 // import prettierConfig from "eslint-config-prettier";
@@ -19,7 +19,7 @@ export default tseslint.config(
   tseslint.configs.strictTypeChecked,
   // 各種プラグインとルール
   {
-    ignores: \["dist/\*\*", "node\_modules/\*\*"\],
+    ignores: ["dist/**", "node_modules/**"],
   }
 );
 
@@ -32,21 +32,21 @@ ESLint: 9.27.0
 Error: Error while loading rule '@typescript-eslint/await-thenable': You have used a rule which requires type information, but don't have parserOptions set to generate type information for this file. See https://typescript-eslint.io/getting-started/typed-linting for enabling linting with type information.
 Parser: typescript-eslint/parser
 Occurred while linting /Users/sugurutakahashi/git/typescript-learning/eslint.config.ts
-    at throwError (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/@typescript-eslint+utils@8.32.1\_eslint@9.27.0\_jiti@2.4.2\_\_typescript@5.8.3/node\_modules/@typescript-eslint/utils/dist/eslint-utils/getParserServices.js:38:11)
-    at getParserServices (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/@typescript-eslint+utils@8.32.1\_eslint@9.27.0\_jiti@2.4.2\_\_typescript@5.8.3/node\_modules/@typescript-eslint/utils/dist/eslint-utils/getParserServices.js:27:9)
-    at create (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/@typescript-eslint+eslint-plugin@8.32.1\_@typescript-eslint+parser@8.32.1\_eslint@9.27.0\_\_52a6b238ce47455b8bfba127112fa932/node\_modules/@typescript-eslint/eslint-plugin/dist/rules/await-thenable.js:60:55)
-    at Object.create (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/@typescript-eslint+utils@8.32.1\_eslint@9.27.0\_jiti@2.4.2\_\_typescript@5.8.3/node\_modules/@typescript-eslint/utils/dist/eslint-utils/RuleCreator.js:31:20)
-    at createRuleListeners (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/linter/linter.js:1134:15)
-    at /Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/linter/linter.js:1287:7
+    at throwError (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/@typescript-eslint+utils@8.32.1_eslint@9.27.0_jiti@2.4.2__typescript@5.8.3/node_modules/@typescript-eslint/utils/dist/eslint-utils/getParserServices.js:38:11)
+    at getParserServices (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/@typescript-eslint+utils@8.32.1_eslint@9.27.0_jiti@2.4.2__typescript@5.8.3/node_modules/@typescript-eslint/utils/dist/eslint-utils/getParserServices.js:27:9)
+    at create (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/@typescript-eslint+eslint-plugin@8.32.1_@typescript-eslint+parser@8.32.1_eslint@9.27.0__52a6b238ce47455b8bfba127112fa932/node_modules/@typescript-eslint/eslint-plugin/dist/rules/await-thenable.js:60:55)
+    at Object.create (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/@typescript-eslint+utils@8.32.1_eslint@9.27.0_jiti@2.4.2__typescript@5.8.3/node_modules/@typescript-eslint/utils/dist/eslint-utils/RuleCreator.js:31:20)
+    at createRuleListeners (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/linter/linter.js:1134:15)
+    at /Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/linter/linter.js:1287:7
     at Array.forEach (&lt;anonymous&gt;)
-    at runRules (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/linter/linter.js:1203:31)
-    at #flatVerifyWithoutProcessors (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/linter/linter.js:2282:22)
-    at Linter.\_verifyWithFlatConfigArrayAndWithoutProcessors (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/linter/linter.js:2373:43)
-    at Linter.\_verifyWithFlatConfigArray (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/linter/linter.js:2476:15)
-    at Linter.verify (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/linter/linter.js:1838:10)
-    at Linter.verifyAndFix (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/linter/linter.js:2741:20)
-    at verifyText (/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/eslint/eslint.js:301:45)
-    at /Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint/lib/eslint/eslint.js:818
+    at runRules (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/linter/linter.js:1203:31)
+    at #flatVerifyWithoutProcessors (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/linter/linter.js:2282:22)
+    at Linter._verifyWithFlatConfigArrayAndWithoutProcessors (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/linter/linter.js:2373:43)
+    at Linter._verifyWithFlatConfigArray (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/linter/linter.js:2476:15)
+    at Linter.verify (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/linter/linter.js:1838:10)
+    at Linter.verifyAndFix (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/linter/linter.js:2741:20)
+    at verifyText (/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/eslint/eslint.js:301:45)
+    at /Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint/lib/eslint/eslint.js:818
 
 ---
 
@@ -122,17 +122,17 @@ export default tseslint.config(
 $ tree -aL 2     
 .
 ├── .git
-│   ├── COMMIT\_EDITMSG
+│   ├── COMMIT_EDITMSG
 │   ├── config
 │   ├── description
-│   ├── FETCH\_HEAD
+│   ├── FETCH_HEAD
 │   ├── HEAD
 │   ├── hooks
 │   ├── index
 │   ├── info
 │   ├── logs
 │   ├── objects
-│   ├── ORIG\_HEAD
+│   ├── ORIG_HEAD
 │   └── refs
 ├── .gitignore
 ├── .npmrc
@@ -141,24 +141,24 @@ $ tree -aL 2
 │   ├── index.js
 │   └── utils
 ├── eslint.config.ts
-├── node\_modules
+├── node_modules
 │   ├── .bin
 │   ├── .modules.yaml
 │   ├── .pnpm
 │   ├── .pnpm-workspace-state.json
 │   ├── @eslint
 │   ├── @types
-│   ├── eslint -&gt; .pnpm/eslint@9.27.0\_jiti@2.4.2/node\_modules/eslint
-│   ├── eslint-config-prettier -&gt; .pnpm/eslint-config-prettier@10.1.5\_eslint@9.27.0\_jiti@2.4.2\_/node\_modules/eslint-config-prettier
-│   ├── eslint-plugin-import -&gt; .pnpm/eslint-plugin-import@2.31.0\_@typescript-eslint+parser@8.32.1\_eslint@9.27.0\_jiti@2.4.2\_\_\_10016e8bc489fbf6ad153fdbf1313af0/node\_modules/eslint-plugin-import
-│   ├── eslint-plugin-sonarjs -&gt; .pnpm/eslint-plugin-sonarjs@3.0.2\_eslint@9.27.0\_jiti@2.4.2\_/node\_modules/eslint-plugin-sonarjs
-│   ├── eslint-plugin-unicorn -&gt; .pnpm/eslint-plugin-unicorn@59.0.1\_eslint@9.27.0\_jiti@2.4.2\_/node\_modules/eslint-plugin-unicorn
-│   ├── globals -&gt; .pnpm/globals@16.1.0/node\_modules/globals
-│   ├── jiti -&gt; .pnpm/jiti@2.4.2/node\_modules/jiti
-│   ├── prettier -&gt; .pnpm/prettier@3.5.3/node\_modules/prettier
-│   ├── tsx -&gt; .pnpm/tsx@4.19.4/node\_modules/tsx
-│   ├── typescript -&gt; .pnpm/typescript@5.8.3/node\_modules/typescript
-│   └── typescript-eslint -&gt; .pnpm/typescript-eslint@8.32.1\_eslint@9.27.0\_jiti@2.4.2\_\_typescript@5.8.3/node\_modules/typescript-eslint
+│   ├── eslint -&gt; .pnpm/eslint@9.27.0_jiti@2.4.2/node_modules/eslint
+│   ├── eslint-config-prettier -&gt; .pnpm/eslint-config-prettier@10.1.5_eslint@9.27.0_jiti@2.4.2_/node_modules/eslint-config-prettier
+│   ├── eslint-plugin-import -&gt; .pnpm/eslint-plugin-import@2.31.0_@typescript-eslint+parser@8.32.1_eslint@9.27.0_jiti@2.4.2___10016e8bc489fbf6ad153fdbf1313af0/node_modules/eslint-plugin-import
+│   ├── eslint-plugin-sonarjs -&gt; .pnpm/eslint-plugin-sonarjs@3.0.2_eslint@9.27.0_jiti@2.4.2_/node_modules/eslint-plugin-sonarjs
+│   ├── eslint-plugin-unicorn -&gt; .pnpm/eslint-plugin-unicorn@59.0.1_eslint@9.27.0_jiti@2.4.2_/node_modules/eslint-plugin-unicorn
+│   ├── globals -&gt; .pnpm/globals@16.1.0/node_modules/globals
+│   ├── jiti -&gt; .pnpm/jiti@2.4.2/node_modules/jiti
+│   ├── prettier -&gt; .pnpm/prettier@3.5.3/node_modules/prettier
+│   ├── tsx -&gt; .pnpm/tsx@4.19.4/node_modules/tsx
+│   ├── typescript -&gt; .pnpm/typescript@5.8.3/node_modules/typescript
+│   └── typescript-eslint -&gt; .pnpm/typescript-eslint@8.32.1_eslint@9.27.0_jiti@2.4.2__typescript@5.8.3/node_modules/typescript-eslint
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -171,18 +171,18 @@ $ tree -aL 2
 
 {
   "compilerOptions": {
-    "target": "ES2024" /\* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. \*/,
-    "module": "NodeNext" /\* Specify what module code is generated. \*/,
-    "moduleResolution": "NodeNext" /\* Specify how modules are resolved. \*/,
-    "esModuleInterop": true /\* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. \*/,
-    "forceConsistentCasingInFileNames": true /\* Ensure that casing is correct in imports. \*/,
-    "strict": true /\* Enable all strict type-checking options. \*/,
+    "target": "ES2024" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "NodeNext" /* Specify what module code is generated. */,
+    "moduleResolution": "NodeNext" /* Specify how modules are resolved. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": true /* Enable all strict type-checking options. */,
     "skipLibCheck": true,
-    "outDir": "dist" /\* 追加: 出力ディレクトリを指定 \*/,
-    "rootDir": "." /\* 追加: 入力ディレクトリを指定 \*/,
+    "outDir": "dist" /* 追加: 出力ディレクトリを指定 */,
+    "rootDir": "." /* 追加: 入力ディレクトリを指定 */,
     "rewriteRelativeImportExtensions": true
   },
-  "include": \["src/\*\*/\*", "eslint.config.ts"\] /\* eslint.config.tsを含める \*/
+  "include": ["src/**/*", "eslint.config.ts"] /* eslint.config.tsを含める */
 }
 
 ---
@@ -278,7 +278,7 @@ export default tseslint.config(
 
 import importPlugin from "eslint-plugin-import";
 
-モジュール 'eslint-plugin-import' の宣言ファイルが見つかりませんでした。'/Users/sugurutakahashi/git/typescript-learning/node\_modules/.pnpm/eslint-plugin-import@2.31.0\_@typescript-eslint+parser@8.32.1\_eslint@9.27.0\_jiti@2.4.2\_\_\_10016e8bc489fbf6ad153fdbf1313af0/node\_modules/eslint-plugin-import/lib/index.js' は暗黙的に 'any' 型になります。存在する場合は `npm i --save-dev @types/eslint-plugin-import` を試すか、`declare module 'eslint-plugin-import';` を含む新しい宣言 (.d.ts) ファイルを追加しますts(7016)
+モジュール 'eslint-plugin-import' の宣言ファイルが見つかりませんでした。'/Users/sugurutakahashi/git/typescript-learning/node_modules/.pnpm/eslint-plugin-import@2.31.0_@typescript-eslint+parser@8.32.1_eslint@9.27.0_jiti@2.4.2___10016e8bc489fbf6ad153fdbf1313af0/node_modules/eslint-plugin-import/lib/index.js' は暗黙的に 'any' 型になります。存在する場合は `npm i --save-dev @types/eslint-plugin-import` を試すか、`declare module 'eslint-plugin-import';` を含む新しい宣言 (.d.ts) ファイルを追加しますts(7016)
 
 ---
 
@@ -345,7 +345,7 @@ const importPlugin = require("eslint-plugin-import");
 *2025/5/19 21:12:37*
 
 $ pnpm add -D @types/eslint-plugin-import                                                                                                     1 ↵
- ERR\_PNPM\_FETCH\_404  GET https://registry.npmjs.org/@types%2Feslint-plugin-import: Not Found - 404
+ ERR_PNPM_FETCH_404  GET https://registry.npmjs.org/@types%2Feslint-plugin-import: Not Found - 404
 This error happened while installing a direct dependency of /Users/sugurutakahashi/git/typescript-learning
 @types/eslint-plugin-import is not in the npm registry, or you have no permission to fetch it.
 No authorization header was set for the request.

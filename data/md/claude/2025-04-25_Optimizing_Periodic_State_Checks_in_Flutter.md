@@ -29,7 +29,7 @@ useEffect(() {
                             },
                           );
                           return timer.cancel;
-                        }, \[invincibleUntil?.millisecondsSinceEpoch\]);
+                        }, [invincibleUntil?.millisecondsSinceEpoch]);
 
 ---
 
@@ -593,7 +593,7 @@ Widget build(BuildContext context, WidgetRef ref) {
 ## 👤 ユーザー
 *2025/4/25 13:31:39*
 
-ちなみに, \[guildSpotDetailAsyncValue.value?.invincibleUntil?.millisecondsSinceEpoch\]);としている理由ってわかるかな？
+ちなみに, [guildSpotDetailAsyncValue.value?.invincibleUntil?.millisecondsSinceEpoch]);としている理由ってわかるかな？
 
 ---
 
@@ -604,11 +604,11 @@ guildSpotDetailAsyncValue.value?.invincibleUntil?.millisecondsSinceEpoch を依�
 
 この式の細かい部分を分析すると：
 
-1. \*\*nullセーフティ\*\*: `?.` 演算子を使用することで、guildSpotDetailAsyncValueの値がnullでもエラーにならずに処理を続行できます。
+1. **nullセーフティ**: `?.` 演算子を使用することで、guildSpotDetailAsyncValueの値がnullでもエラーにならずに処理を続行できます。
 
-2. \*\*ミリ秒への変換\*\*: `millisecondsSinceEpoch` プロパティを使用することで、DateTime型の比較ではなく整数値（ミリ秒）での比較になります。これにより、依存配列での比較がより効率的かつ正確になります。
+2. **ミリ秒への変換**: `millisecondsSinceEpoch` プロパティを使用することで、DateTime型の比較ではなく整数値（ミリ秒）での比較になります。これにより、依存配列での比較がより効率的かつ正確になります。
 
-3. \*\*再レンダリングの最適化\*\*: useEffectの依存配列に値としてDateTimeオブジェクト自体を渡すと、参照の比較になり、値が同じでも再レンダリングが発生する可能性があります。ミリ秒に変換すると純粋な数値の比較になるため、不要な再レンダリングを防げます。
+3. **再レンダリングの最適化**: useEffectの依存配列に値としてDateTimeオブジェクト自体を渡すと、参照の比較になり、値が同じでも再レンダリングが発生する可能性があります。ミリ秒に変換すると純粋な数値の比較になるため、不要な再レンダリングを防げます。
 
 Flutter Hooksにおいて、useEffectの依存配列には「値の変化を検知したい状態」を入れます。今回のケースでは、無敵時間（invincibleUntil）が変わった時だけタイマーを再設定すれば良いので、そのミリ秒値を依存配列に設定しています。
 
@@ -728,15 +728,15 @@ class AttackButton extends HookConsumerWidget {
 
 Flutterにおける再描画のタイミングは、状態の変更によってトリガーされます。今回のケースでは以下のタイミングで再描画が発生します：
 
-1. \*\*useState/StateProviderの値が変更された時\*\*：
+1. **useState/StateProviderの値が変更された時**：
    - `isInvincible.value = true/false` が実行されると、その状態を使用しているウィジェットの再描画がトリガーされます
 
-2. \*\*タイマーによる状態更新時\*\*：
+2. **タイマーによる状態更新時**：
    - 0.5秒ごとに実行されるタイマーコールバック内で、`isInvincible.value` が変更された場合に再描画が発生します
    - ただし、値が実際に変わった時（例：trueからfalseに変わった時）のみ再描画されます。同じ値への更新（trueからtrueへの更新）では再描画は発生しません
 
-3. \*\*useEffectの依存配列の値が変わった時\*\*：
-   - `\[guildSpotDetailAsyncValue.value?.invincibleUntil?.millisecondsSinceEpoch\]` の値が変わると、useEffect内のコードが再実行され、タイマーがリセットされます
+3. **useEffectの依存配列の値が変わった時**：
+   - `[guildSpotDetailAsyncValue.value?.invincibleUntil?.millisecondsSinceEpoch]` の値が変わると、useEffect内のコードが再実行され、タイマーがリセットされます
 
 具体的な処理の流れは以下のようになります：
 

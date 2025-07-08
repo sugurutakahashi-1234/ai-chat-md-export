@@ -84,16 +84,16 @@ public protocol AppErrorConvertible: Error {
 
 このコードには、アプリケーションのエラーを表す `AppError` enumと、それに関連する機能が含まれています。以下の点を理解しました。
 
-1. \*\*`AppError` enum\*\*
+1. **`AppError` enum**
    - さまざまなエラーケースを表す列挙型です。エラーは共通のものから、ログイン、基本情報登録、カメラ権限、サウンド権限などの特定の機能に関連するものまでさまざまです。
    - `AppError`は、さまざまなマネージャーやインタラクターエラーを含むことができることも示しています。これにより、具体的な下位レベルのエラータイプを保持することができます。
 
-2. \*\*`asAppError` extension\*\*
+2. **`asAppError` extension**
    - `Error` プロトコルを拡張して、エラーを `AppError` に変換する機能を追加しています。
    - この拡張は、任意のエラーオブジェクトを `AppError` タイプに変換するための機能を提供します。すでに `AppError` タイプの場合はそのまま返し、そうでない場合は `customError` として `localizedDescription` を含む形で返します。
    - このメソッドの名前は将来的に `toAppError` にリネームすることが考慮されていることがコメントで示されています。
 
-3. \*\*`AppErrorConvertible` protocol\*\*
+3. **`AppErrorConvertible` protocol**
    - `asAppError` プロパティを持つことを要求するプロトコルです。
    - このプロトコルを採用することで、特定のエラータイプを `AppError` タイプに変換する機能を持つことが要求されます。
 

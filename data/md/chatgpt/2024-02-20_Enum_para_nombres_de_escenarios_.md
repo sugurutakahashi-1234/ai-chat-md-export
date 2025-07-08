@@ -58,7 +58,7 @@ public struct Scenario {
     ///   - line: A line number where defined this scenario in file.
     ///   - content: A closure that make a new content with passed context.
     public init(
-        \_ name: ScenarioName,
+        _ name: ScenarioName,
         layout: ScenarioLayout,
         file: StaticString = #file,
         line: UInt = #line,
@@ -80,7 +80,7 @@ public struct Scenario {
     ///   - line: A line number where defined this scenario in file.
     ///   - content: A closure that make a new content.
     public init(
-        \_ name: ScenarioName,
+        _ name: ScenarioName,
         layout: ScenarioLayout,
         file: StaticString = #file,
         line: UInt = #line,
@@ -91,7 +91,7 @@ public struct Scenario {
             layout: layout,
             file: file,
             line: line,
-            content: { \_ in content() }
+            content: { _ in content() }
         )
     }
 }
@@ -251,7 +251,7 @@ enum ScenarioType: String {
 // Scenario構造体を拡張して、ScenarioTypeを受け入れるイニシャライザを追加
 extension Scenario {
     init(
-        \_ type: ScenarioType,
+        _ type: ScenarioType,
         layout: ScenarioLayout,
         file: StaticString = #file,
         line: UInt = #line,

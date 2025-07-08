@@ -13,7 +13,7 @@ GoogleMap のところでラーになっているらしい
 FlutterError (RenderConstrainedBox object was given an infinite size during layout.
 This probably means that it is a render object that tries to be as big as possible, but it was put inside another render object that allows its children to pick their own size.
 The nearest ancestor providing an unbounded width constraint is: RenderFlex#b23f7 relayoutBoundary=up2 NEEDS-LAYOUT NEEDS-PAINT NEEDS-COMPOSITING-BITS-UPDATE:
-  creator: Row ← Positioned ← Stack ← KeyedSubtree-\[GlobalKey#f9d12\] ← \_BodyBuilder ← MediaQuery ← LayoutId-\[&lt;\_ScaffoldSlot.body&gt;\] ← CustomMultiChildLayout ← \_ActionsScope ← Actions ← AnimatedBuilder ← DefaultTextStyle ← ⋯
+  creator: Row ← Positioned ← Stack ← KeyedSubtree-[GlobalKey#f9d12] ← _BodyBuilder ← MediaQuery ← LayoutId-[&lt;_ScaffoldSlot.body&gt;] ← CustomMultiChildLayout ← _ActionsScope ← Actions ← AnimatedBuilder ← DefaultTextStyle ← ⋯
   parentData: right=16.0; bottom=16.0; left=16.0; offset=Offset(0.0, 0.0) (can use size)
   constraints: BoxConstraints(w=361.0, 0.0&lt;=h&lt;=Infinity)
   size: MISSING
@@ -24,8 +24,8 @@ The nearest ancestor providing an unbounded width constraint is: RenderFlex#b23f
   textDirection: ltr
   verticalDirection: down
 The nearest ancestor providing an unbounded height constraint is: RenderStack#0ab06 relayoutBoundary=up1 NEEDS-LAYOUT NEEDS-PAINT NEEDS-COMPOSITING-BITS-UPDATE:
-  creator: Stack ← KeyedSubtree-\[GlobalKey#f9d12\] ← \_BodyBuilder ← MediaQuery ← LayoutId-\[&lt;\_ScaffoldSlot.body&gt;\] ← CustomMultiChildLayout ← \_ActionsScope ← Actions ← AnimatedBuilder ← DefaultTextStyle ← AnimatedDefaultTextStyle ← \_InkFeatures-\[GlobalKey#b6c31 ink renderer\] ← ⋯
-  parentData: offset=Offset(0.0, 0.0); id=\_ScaffoldSlot.body (can use size)
+  creator: Stack ← KeyedSubtree-[GlobalKey#f9d12] ← _BodyBuilder ← MediaQuery ← LayoutId-[&lt;_ScaffoldSlot.body&gt;] ← CustomMultiChildLayout ← _ActionsScope ← Actions ← AnimatedBuilder ← DefaultTextStyle ← AnimatedDefaultTextStyle ← _InkFeatures-[GlobalKey#b6c31 ink renderer] ← ⋯
+  parentData: offset=Offset(0.0, 0.0); id=_ScaffoldSlot.body (can use size)
   constraints: BoxConstraints(0.0&lt;=w&lt;=393.0, 0.0&lt;=h&lt;=645.0)
   size: Size(393.0, 645.0)
   alignment: AlignmentDirectional.topStart
@@ -40,11 +40,11 @@ See https://flutter.dev/to/unbounded-constraints for more information.)
 
 
 import 'package:flutter/material.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/pages/explorer\_list\_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/pages/explorer_list_page.dart';
 
 class MapPage extends HookConsumerWidget {
   const MapPage({super.key});
@@ -53,13 +53,13 @@ class MapPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Stack(
-        children: \[
+        children: [
           Center(
             child: ElevatedButton(
               onPressed: () {
                 context.push(Screen.shooting.path);
               },
-              child: const Icon(Icons.camera\_alt),
+              child: const Icon(Icons.camera_alt),
             ),
           ),
           Positioned(
@@ -68,7 +68,7 @@ class MapPage extends HookConsumerWidget {
             right: 16,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: \[
+              children: [
                 const GoogleMap(
                   initialCameraPosition: CameraPosition(
                     target: LatLng(45.521563, -122.677433),
@@ -79,7 +79,7 @@ class MapPage extends HookConsumerWidget {
                   onPressed: () {
                     debugPrint('TODO: My Location');
                   },
-                  child: const Icon(Icons.my\_location),
+                  child: const Icon(Icons.my_location),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -94,7 +94,7 @@ class MapPage extends HookConsumerWidget {
                       ),
                       builder: (context) {
                         return SizedBox(
-                          height: MediaQuery.of(context).size.height \* 0.5,
+                          height: MediaQuery.of(context).size.height * 0.5,
                           child: const ExplorerListPage(),
                         );
                       },
@@ -110,11 +110,11 @@ class MapPage extends HookConsumerWidget {
                     ),
                   ),
                   child: const Row(
-                    children: \[
+                    children: [
                       Icon(Icons.explore),
                       SizedBox(width: 8),
                       Text('Explore'),
-                    \],
+                    ],
                   ),
                 ),
                 ElevatedButton(
@@ -123,10 +123,10 @@ class MapPage extends HookConsumerWidget {
                   },
                   child: const Icon(Icons.photo),
                 ),
-              \],
+              ],
             ),
           ),
-        \],
+        ],
       ),
     );
   }

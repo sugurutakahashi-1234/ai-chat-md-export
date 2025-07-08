@@ -246,7 +246,7 @@ pnpmで以下でやっているのだけれどもうまく読み込まれない
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
@@ -269,12 +269,12 @@ pnpmで以下でやっているのだけれどもうまく読み込まれない
     "start": "node dist/index.js",
     "generate-client": "openapi2aspida -i src/openapi.yaml -o src/api"
   },
-  "keywords": \[\],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
-    "@myapp/shared": "workspace:\*",
+    "@myapp/shared": "workspace:*",
     "@hono/node-server": "1.14.2",
     "@hono/swagger-ui": "0.5.1",
     "hono": "4.7.10"
@@ -465,24 +465,24 @@ pnpm install
 $ tree -aL 2
 .
 ├── .git
-│   ├── COMMIT\_EDITMSG
+│   ├── COMMIT_EDITMSG
 │   ├── config
 │   ├── description
-│   ├── FETCH\_HEAD
+│   ├── FETCH_HEAD
 │   ├── HEAD
 │   ├── hooks
 │   ├── index
 │   ├── info
 │   ├── logs
 │   ├── objects
-│   ├── ORIG\_HEAD
+│   ├── ORIG_HEAD
 │   └── refs
 ├── .github
 │   └── copilot-instructions.md
 ├── .gitignore
 ├── .npmrc
 ├── .nvmrc
-├── node\_modules
+├── node_modules
 │   ├── .modules.yaml
 │   ├── .pnpm
 │   └── .pnpm-workspace-state.json
@@ -864,9 +864,9 @@ dist/
 
 以下の解説をしてほしい
 
-\*// 追加する設定\* "alwaysStrict": false, "noImplicitUseStrict": true, "importsNotUsedAsValues": "remove"
+*// 追加する設定* "alwaysStrict": false, "noImplicitUseStrict": true, "importsNotUsedAsValues": "remove"
 
-"biome.lspBin": "node\_modules/.bin/biome"
+"biome.lspBin": "node_modules/.bin/biome"
 
 "editor.formatOnSave": true, "editor.codeActionsOnSave": { "source.organizeImports.biome": true, "source.fixAll.biome": true },
 
@@ -885,68 +885,68 @@ dist/
 ## TypeScript設定の解説
 
 ### `"alwaysStrict": false`
-- \*\*機能\*\*: 生成されるJavaScriptファイルに自動的に `"use strict";` ディレクティブを追加するかどうかを制御します。
-- \*\*false に設定すると\*\*: TypeScriptが各出力ファイルの先頭に `"use strict";` を自動追加しなくなります。
-- \*\*使用例\*\*: ECMAScript モジュールでは既にstrict modeが有効なので、この設定を false にすることで冗長な use strict 宣言を避けられます。
-- \*\*注意点\*\*: この設定を false にしても、TypeScriptのtypeチェック自体はstrict modeで行われます。これは出力されるJSコードにのみ影響します。
+- **機能**: 生成されるJavaScriptファイルに自動的に `"use strict";` ディレクティブを追加するかどうかを制御します。
+- **false に設定すると**: TypeScriptが各出力ファイルの先頭に `"use strict";` を自動追加しなくなります。
+- **使用例**: ECMAScript モジュールでは既にstrict modeが有効なので、この設定を false にすることで冗長な use strict 宣言を避けられます。
+- **注意点**: この設定を false にしても、TypeScriptのtypeチェック自体はstrict modeで行われます。これは出力されるJSコードにのみ影響します。
 
 ### `"noImplicitUseStrict": true`
-- \*\*機能\*\*: どの条件下でも `"use strict";` ディレクティブを出力ファイルに含めないようにします。
-- \*\*true に設定すると\*\*: 生成されるJavaScriptファイルに `"use strict";` が完全に含まれなくなります。
-- \*\*使用例\*\*: 古いJavaScriptとの互換性が必要な場合や、特定のフレームワークで問題が発生する場合に使用します。
-- \*\*注意点\*\*: この設定はあまり一般的ではなく、通常は `alwaysStrict: false` だけで十分です。また、最新のTypeScriptではこのオプションは非推奨になっています。
+- **機能**: どの条件下でも `"use strict";` ディレクティブを出力ファイルに含めないようにします。
+- **true に設定すると**: 生成されるJavaScriptファイルに `"use strict";` が完全に含まれなくなります。
+- **使用例**: 古いJavaScriptとの互換性が必要な場合や、特定のフレームワークで問題が発生する場合に使用します。
+- **注意点**: この設定はあまり一般的ではなく、通常は `alwaysStrict: false` だけで十分です。また、最新のTypeScriptではこのオプションは非推奨になっています。
 
 ### `"importsNotUsedAsValues": "remove"`
-- \*\*機能\*\*: 型のみのインポート（値としては使用されないインポート）の扱いを決定します。
-- \*\*"remove" に設定すると\*\*: 型のみのインポートをJavaScriptの出力から完全に削除します。
-- \*\*使用例\*\*: バンドルサイズを小さくしたい場合や、不要なインポートを排除したい場合に役立ちます。
-- \*\*注意点\*\*: この設定は TypeScript 4.5 以降、`"verbatimModuleSyntax": true` または `"preserveValueImports": false` に置き換えられています。
+- **機能**: 型のみのインポート（値としては使用されないインポート）の扱いを決定します。
+- **"remove" に設定すると**: 型のみのインポートをJavaScriptの出力から完全に削除します。
+- **使用例**: バンドルサイズを小さくしたい場合や、不要なインポートを排除したい場合に役立ちます。
+- **注意点**: この設定は TypeScript 4.5 以降、`"verbatimModuleSyntax": true` または `"preserveValueImports": false` に置き換えられています。
 
 ## VSCode Biome設定の解説
 
-### `"biome.lspBin": "node\_modules/.bin/biome"`
-- \*\*機能\*\*: VSCodeがどのBiome実行ファイルを使用するかを指定します。
-- \*\*設定内容\*\*: プロジェクト内にローカルインストールされたBiomeを使用します。
-- \*\*利点\*\*: 
+### `"biome.lspBin": "node_modules/.bin/biome"`
+- **機能**: VSCodeがどのBiome実行ファイルを使用するかを指定します。
+- **設定内容**: プロジェクト内にローカルインストールされたBiomeを使用します。
+- **利点**: 
   1. グローバルインストールされたBiomeではなく、プロジェクト固有のバージョンを使用します
   2. チーム全体で同じバージョンのBiomeを使用できます
   3. プロジェクトごとに異なる設定を適用できます
-- \*\*注意点\*\*: この設定を有効にするには、プロジェクトにBiomeが開発依存関係としてインストールされている必要があります。
+- **注意点**: この設定を有効にするには、プロジェクトにBiomeが開発依存関係としてインストールされている必要があります。
 
 ## VSCode編集設定の解説
 
 ### `"editor.formatOnSave": true`
-- \*\*機能\*\*: ファイル保存時に自動的にフォーマット機能を実行します。
-- \*\*設定内容\*\*: 保存するたびに設定されたフォーマッタ（この場合はBiome）がコードを整形します。
-- \*\*利点\*\*: 手動で整形コマンドを実行する手間が省け、常に一貫したコードスタイルを維持できます。
-- \*\*注意点\*\*: フォーマッターが望まないコードスタイルの変更を行う場合は、`biome.json`でフォーマット設定をカスタマイズしてください。
+- **機能**: ファイル保存時に自動的にフォーマット機能を実行します。
+- **設定内容**: 保存するたびに設定されたフォーマッタ（この場合はBiome）がコードを整形します。
+- **利点**: 手動で整形コマンドを実行する手間が省け、常に一貫したコードスタイルを維持できます。
+- **注意点**: フォーマッターが望まないコードスタイルの変更を行う場合は、`biome.json`でフォーマット設定をカスタマイズしてください。
 
 ### `"editor.codeActionsOnSave": { "source.organizeImports.biome": true, "source.fixAll.biome": true }`
-- \*\*機能\*\*: ファイル保存時に実行される自動修正アクションを指定します。
-- \*\*設定内容\*\*:
+- **機能**: ファイル保存時に実行される自動修正アクションを指定します。
+- **設定内容**:
   - `"source.organizeImports.biome": true`: Biomeによるインポート文の整理（未使用のインポートの削除、アルファベット順の並べ替えなど）
   - `"source.fixAll.biome": true`: Biomeで修正可能なすべてのリントエラーを自動修正
-- \*\*利点\*\*: 保存するたびにコードが自動的に整理され、修正可能なエラーが解消されます。
-- \*\*注意点\*\*: 時々、意図しない変更が行われる場合があります。その場合は特定のルールをBiome設定で無効化するか、この機能をオフにして手動で修正を適用してください。
+- **利点**: 保存するたびにコードが自動的に整理され、修正可能なエラーが解消されます。
+- **注意点**: 時々、意図しない変更が行われる場合があります。その場合は特定のルールをBiome設定で無効化するか、この機能をオフにして手動で修正を適用してください。
 
 ### `"editor.codeActionsOnSave": { "quickfix.biome": "explicit", "source.organizeImports.biome": "explicit" }`
-- \*\*機能\*\*: ファイル保存時の自動修正アクションをより明示的に制御します。
-- \*\*設定内容\*\*:
+- **機能**: ファイル保存時の自動修正アクションをより明示的に制御します。
+- **設定内容**:
   - `"quickfix.biome": "explicit"`: 明示的（explicit）に示された場合にのみBiomeのクイックフィックスを適用します。
   - `"source.organizeImports.biome": "explicit"`: 同様に、明示的に指示された場合にのみインポートの整理を行います。
-- \*\*利点\*\*: 
+- **利点**: 
   1. VSCode 1.75以降で推奨される新しい設定形式です
   2. より細かく制御でき、意図しない自動修正を避けられます
   3. `true`/`false`の代わりに`"explicit"`を使用することで、明示的なアクションだけが適用されます
-- \*\*注意点\*\*: この設定は前の `"editor.codeActionsOnSave"` 設定を置き換えるもので、両方を同時に使用する場合は後に記述された設定が優先されます。
+- **注意点**: この設定は前の `"editor.codeActionsOnSave"` 設定を置き換えるもので、両方を同時に使用する場合は後に記述された設定が優先されます。
 
 ## まとめ
 
 これらの設定は、TypeScriptのコンパイル出力と開発環境の設定に関するものです：
 
-1. \*\*TypeScript設定\*\*: `"use strict"` の冗長な出力を防ぎ、型のみのインポートを効率的に処理します
-2. \*\*Biome設定\*\*: プロジェクト固有のBiomeインスタンスを使用し、グローバル設定による問題を避けます
-3. \*\*VSCode設定\*\*: 保存時の自動フォーマットと修正機能を有効にして、一貫したコードスタイルを維持します
+1. **TypeScript設定**: `"use strict"` の冗長な出力を防ぎ、型のみのインポートを効率的に処理します
+2. **Biome設定**: プロジェクト固有のBiomeインスタンスを使用し、グローバル設定による問題を避けます
+3. **VSCode設定**: 保存時の自動フォーマットと修正機能を有効にして、一貫したコードスタイルを維持します
 
 これらを適切に組み合わせることで、開発プロセスがスムーズになり、「Redundant use strict directive」のようなエラーを効果的に防止できます。プロジェクトの要件に応じて、これらの設定を調整してください。
 
@@ -955,7 +955,7 @@ dist/
 ## 👤 ユーザー
 *2025/5/21 22:00:25*
 
-biome.lspBin": "node\_modules/.bin/biome" の場所の調べ方
+biome.lspBin": "node_modules/.bin/biome" の場所の調べ方
 
 ---
 
@@ -1075,7 +1075,7 @@ pnpm list -g @biomejs/biome
 ## 👤 ユーザー
 *2025/5/21 22:01:10*
 
-pnpm で入れたからnode\_modules/.bin/biomeではなさそう
+pnpm で入れたからnode_modules/.bin/biomeではなさそう
 
 ---
 

@@ -18,15 +18,15 @@ VNSequenceRequestHandlerとVNImageRequestHandlerの違いを教えて欲しい
 
 以下は、`VNSequenceRequestHandler` と `VNImageRequestHandler` の主な違いを示しています：
 
-1. \*\*目的\*\*:
+1. **目的**:
    - `VNImageRequestHandler`: これは静止画像の分析を行うためのものです。ある特定の画像に対して1回または複数回のVisionリクエストを実行するために使用します。
    - `VNSequenceRequestHandler`: これはシーケンスの分析を行うためのものです。主に動画やリアルタイムキャプチャストリームの各フレームを分析する際に使用されます。このハンドラは、フレーム間の一貫性や情報の伝達を考慮して処理を行うことができます。
 
-2. \*\*使用シーン\*\*:
+2. **使用シーン**:
    - `VNImageRequestHandler`: 静止画像の認識や分析タスクに使用します。例えば、写真に写っている顔を検出したり、テキストを認識したりする場合などです。
    - `VNSequenceRequestHandler`: 動画のフレームを順番に処理する場合や、リアルタイムのカメラフィードを分析する場合に使用します。顔のトラッキングや物体の追跡など、シーケンス全体での情報の一貫性が必要なタスクに適しています。
 
-3. \*\*持続性\*\*:
+3. **持続性**:
    - `VNImageRequestHandler`: 通常、1つの画像の分析が完了するとこのハンドラは破棄されます。
    - `VNSequenceRequestHandler`: シーケンスの分析中は持続的に存在し、複数のフレーム間で情報を維持することができます。
 
@@ -37,7 +37,7 @@ VNSequenceRequestHandlerとVNImageRequestHandlerの違いを教えて欲しい
 ## 👤 ユーザー
 *2023/8/26 17:39:51*
 
-VNSequenceRequestHandlerとVNRequestを使って、perform(\_ requests: \[VNRequest\]) throwsで処理する処理をサンプルに書いて欲しい
+VNSequenceRequestHandlerとVNRequestを使って、perform(_ requests: [VNRequest]) throwsで処理する処理をサンプルに書いて欲しい
 
 ---
 
@@ -90,7 +90,7 @@ func processFrame(_ pixelBuffer: CVPixelBuffer) {
 ## 👤 ユーザー
 *2023/8/26 17:41:14*
 
-processFrame のレスポンス \[VNFaceObservation\]? とするようにできないのか？あ
+processFrame のレスポンス [VNFaceObservation]? とするようにできないのか？あ
 
 ---
 

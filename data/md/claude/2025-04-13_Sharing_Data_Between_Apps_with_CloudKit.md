@@ -18,15 +18,15 @@ CloudKitを使って別のアプリから同じ値を参照することは可能
 
 CloudKitでは主に以下の方法で別アプリからのデータ共有が可能です：
 
-1. \*\*同じ開発者アカウント内のアプリ間共有\*\*：
+1. **同じ開発者アカウント内のアプリ間共有**：
    - 同じApple Developer Programアカウントで公開されたアプリ間では、同じコンテナIDを使用することでデータを共有できます。
    - これにより、異なるアプリが同じCloudKitデータベースにアクセス可能になります。
 
-2. \*\*異なる開発者間の共有\*\*：
+2. **異なる開発者間の共有**：
    - CloudKit共有機能を使用して、ユーザーの許可の下でデータを他のユーザーや他のアプリと共有できます。
    - これには適切な権限設定が必要です。
 
-3. \*\*パブリックデータベース\*\*：
+3. **パブリックデータベース**：
    - パブリックデータベースを使用すると、アプリのユーザー全員がアクセスできるデータを保存できます。
    - これは読み取り専用または特定の条件下での読み書きが可能です。
 
@@ -206,22 +206,22 @@ let container = CKContainer(identifier: "iCloud.group.com.yourcompany.appgroup")
 
 一番のイメージなんだけど、このコードだとどこに必要になりそうか？
 
-\*\*@main\*\*
-\*\*struct\*\* ProductionApp: App {
-    \*\*var\*\* sharedModelContainer: ModelContainer = {
-        \*\*let\*\* schema = Schema(\[
-            Item.\*\*self\*\*,
-        \])
-        \*\*let\*\* modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: \*\*false\*\*)
+**@main**
+**struct** ProductionApp: App {
+    **var** sharedModelContainer: ModelContainer = {
+        **let** schema = Schema([
+            Item.**self**,
+        ])
+        **let** modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: **false**)
 
-        \*\*do\*\* {
-            \*\*return\*\* \*\*try\*\* ModelContainer(for: schema, configurations: \[modelConfiguration\])
-        } \*\*catch\*\* {
-            fatalError("Could not create ModelContainer: \\(error)")
+        **do** {
+            **return** **try** ModelContainer(for: schema, configurations: [modelConfiguration])
+        } **catch** {
+            fatalError("Could not create ModelContainer: \(error)")
         }
     }()
 
-    \*\*var\*\* body: \*\*some\*\* Scene {
+    **var** body: **some** Scene {
         WindowGroup {
             ContentView()
         }

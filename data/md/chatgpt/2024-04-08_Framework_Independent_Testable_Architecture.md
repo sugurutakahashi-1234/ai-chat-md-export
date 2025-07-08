@@ -67,7 +67,7 @@ READMEに書きたい。
 
 ### Framework-Independent Testable Architecture (FITA)
 
-!\[\](./asset/drawio/architecture.drawio.svg)
+![](./asset/drawio/architecture.drawio.svg)
 
 ### FITA メリットデメリット
 
@@ -84,20 +84,20 @@ For your README, you might consider structuring the section on the Framework-Ind
 
 FITA represents a design philosophy aimed at creating software architectures that are not tied to specific frameworks, thereby making them more flexible and easier to test. This approach encourages the development of systems that can be maintained and scaled more effectively over time.
 
-!\[Architecture Diagram\](./asset/drawio/architecture.drawio.svg)
+![Architecture Diagram](./asset/drawio/architecture.drawio.svg)
 
 ### Advantages and Disadvantages of FITA
 
 #### Advantages
-- \*\*Framework Independence\*\*: By not relying on specific frameworks, FITA allows for greater flexibility in choosing the tools and libraries that best suit the project's needs, making it easier to adapt to new technologies.
-- \*\*Enhanced Testability\*\*: The architecture promotes the creation of more testable code, facilitating automated testing and continuous integration/continuous deployment (CI/CD) practices.
-- \*\*Improved Maintainability\*\*: With a clear separation of concerns, the system components can be updated or replaced with minimal impact on other parts of the system.
-- \*\*Scalability\*\*: FITA is designed with scalability in mind, allowing for easier expansion and modification of the system as requirements evolve.
+- **Framework Independence**: By not relying on specific frameworks, FITA allows for greater flexibility in choosing the tools and libraries that best suit the project's needs, making it easier to adapt to new technologies.
+- **Enhanced Testability**: The architecture promotes the creation of more testable code, facilitating automated testing and continuous integration/continuous deployment (CI/CD) practices.
+- **Improved Maintainability**: With a clear separation of concerns, the system components can be updated or replaced with minimal impact on other parts of the system.
+- **Scalability**: FITA is designed with scalability in mind, allowing for easier expansion and modification of the system as requirements evolve.
 
 #### Disadvantages
-- \*\*Initial Complexity\*\*: Setting up a FITA can be more complex and time-consuming than using a monolithic framework, especially for developers unfamiliar with this approach.
-- \*\*Learning Curve\*\*: There might be a steeper learning curve as developers need to understand and manage the interactions between different parts of the system without the guidance of a single framework.
-- \*\*Tooling and Documentation\*\*: Finding tools, libraries, and documentation that support a framework-independent approach might be challenging, as many resources are tailored to specific frameworks.
+- **Initial Complexity**: Setting up a FITA can be more complex and time-consuming than using a monolithic framework, especially for developers unfamiliar with this approach.
+- **Learning Curve**: There might be a steeper learning curve as developers need to understand and manage the interactions between different parts of the system without the guidance of a single framework.
+- **Tooling and Documentation**: Finding tools, libraries, and documentation that support a framework-independent approach might be challenging, as many resources are tailored to specific frameworks.
 
 By weighing these pros and cons, teams can better decide whether adopting a Framework-Independent Testable Architecture aligns with their project goals and resources.
 
@@ -125,20 +125,20 @@ READMEに書くための、Framework-Independent Testable Architecture (FITA)に
 
 FITAは、特定のフレームワークに依存しないソフトウェアアーキテクチャを作成することを目指した設計哲学を表します。これにより、プロジェクトのニーズに最も適したツールやライブラリをより柔軟に選択でき、新しい技術への適応が容易になります。
 
-!\[アーキテクチャ図\](./asset/drawio/architecture.drawio.svg)
+![アーキテクチャ図](./asset/drawio/architecture.drawio.svg)
 
 ### FITAのメリットとデメリット
 
 #### メリット
-- \*\*フレームワーク独立性\*\*: 特定のフレームワークに依存しないため、プロジェクトの要件に最も合ったツールやライブラリを選択する柔軟性が増します。
-- \*\*テスト容易性の向上\*\*: よりテストしやすいコードの作成を促進し、自動テストやCI/CD（継続的インテグレーション/継続的デリバリー）の実践を容易にします。
-- \*\*保守性の向上\*\*: 懸念の分離が明確なため、システムのコンポーネントを他の部分に最小限の影響で更新または置き換えることができます。
-- \*\*スケーラビリティ\*\*: FITAはスケーラビリティを念頭に置いて設計されており、要件が進化するにつれてシステムの拡張や変更が容易になります。
+- **フレームワーク独立性**: 特定のフレームワークに依存しないため、プロジェクトの要件に最も合ったツールやライブラリを選択する柔軟性が増します。
+- **テスト容易性の向上**: よりテストしやすいコードの作成を促進し、自動テストやCI/CD（継続的インテグレーション/継続的デリバリー）の実践を容易にします。
+- **保守性の向上**: 懸念の分離が明確なため、システムのコンポーネントを他の部分に最小限の影響で更新または置き換えることができます。
+- **スケーラビリティ**: FITAはスケーラビリティを念頭に置いて設計されており、要件が進化するにつれてシステムの拡張や変更が容易になります。
 
 #### デメリット
-- \*\*初期の複雑さ\*\*: モノリシックなフレームワークを使用するよりも、FITAの設定はより複雑で時間がかかる場合があり、このアプローチに不慣れな開発者にとっては特にそうです。
-- \*\*学習曲線\*\*: 開発者は、単一のフレームワークの指導なしにシステムの異なる部分間の相互作用を理解し、管理する必要があるため、学習曲線が急になる可能性があります。
-- \*\*ツールとドキュメント\*\*: フレームワークに依存しないアプローチをサポートするツール、ライブラリ、およびドキュメントを見つけることは、多くのリソースが特定のフレームワークに合わせて作られているため、難しいかもしれません。
+- **初期の複雑さ**: モノリシックなフレームワークを使用するよりも、FITAの設定はより複雑で時間がかかる場合があり、このアプローチに不慣れな開発者にとっては特にそうです。
+- **学習曲線**: 開発者は、単一のフレームワークの指導なしにシステムの異なる部分間の相互作用を理解し、管理する必要があるため、学習曲線が急になる可能性があります。
+- **ツールとドキュメント**: フレームワークに依存しないアプローチをサポートするツール、ライブラリ、およびドキュメントを見つけることは、多くのリソースが特定のフレームワークに合わせて作られているため、難しいかもしれません。
 
 これらのメリットとデメリットを検討することで、チームはFITAの採用がプロジェクトの目標とリソースに合致するかどうかをよりよく判断できるでしょう。
 

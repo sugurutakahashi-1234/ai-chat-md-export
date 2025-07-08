@@ -17,20 +17,20 @@ public extension RandomProvidable {
     static var random: Self {
         let all = Array(allCases)
         let index = Int.random(in: 0..&lt;all.count)
-        return all\[index\]
+        return all[index]
     }
 }
 
 public extension Array where Element: RandomProvidable {
-    static var randomSamples: \[Element\] {
+    static var randomSamples: [Element] {
         Array(repeating: Element.random, count: 5)
     }
 
-    static func randomSamples(count: Int) -&gt; \[Element\] {
+    static func randomSamples(count: Int) -&gt; [Element] {
         Array(repeating: Element.random, count: count)
     }
 
-    static func randomSamples(countRange: ClosedRange&lt;Int&gt; = 0...3, isEmptyAllowed: Bool = false) -&gt; \[Element\] {
+    static func randomSamples(countRange: ClosedRange&lt;Int&gt; = 0...3, isEmptyAllowed: Bool = false) -&gt; [Element] {
         let adjustedRange = isEmptyAllowed ? countRange : (Swift.max(1, countRange.lowerBound)...countRange.upperBound)
         let count = Int.random(in: adjustedRange)
         return Array(repeating: Element.random, count: count)
@@ -196,7 +196,7 @@ public extension RandomProvidable {
     static var random: Self {
         let all = Array(allCases)
         let index = Int.random(in: 0..&lt;all.count)
-        return all\[index\]
+        return all[index]
     }
 }
 

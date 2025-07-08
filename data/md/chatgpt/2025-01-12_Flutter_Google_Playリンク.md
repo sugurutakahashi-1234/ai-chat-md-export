@@ -8,7 +8,7 @@
 *2025/1/12 23:02:45*
 
 FlutterからAndroid端末からstoreページを立ち上げる
-https://play.google.com/store/apps/details?id=com.snapitonline.snap\_it
+https://play.google.com/store/apps/details?id=com.snapitonline.snap_it
 
 ---
 

@@ -14,7 +14,7 @@ useEffect(
         // });
         return null;
       },
-      \[\],
+      [],
     );
 
 useEffect の初期化処理をon Pressedでも行いあい
@@ -80,7 +80,7 @@ class MyWidget extends HookConsumerWidget {
 ## 👤 ユーザー
 *2024/12/23 20:58:48*
 
-useEffect の \[\] とかに入れるのはだめなの？
+useEffect の [] とかに入れるのはだめなの？
 
 ---
 

@@ -8,9 +8,9 @@
 *2024/4/15 20:38:04*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-PVkYjFNEs7x9N45eVE8lsaSc",
-  "size\_bytes": 219121,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-PVkYjFNEs7x9N45eVE8lsaSc",
+  "size_bytes": 219121,
   "width": 794,
   "height": 1524,
   "fovea": null,
@@ -35,7 +35,7 @@ FIA では、依存性の注入をプロジェクトでのアプリケーショ�
 
 ### ｘｘｘｘ
 
-Swfit Package Manager の登場によって、\[isowords\](https://github.com/pointfreeco/isowords) を例にするように、自身のアプリケーションを容易にマルチモジュール、マルチプロジェクト構成を採用することができるようになりました。
+Swfit Package Manager の登場によって、[isowords](https://github.com/pointfreeco/isowords) を例にするように、自身のアプリケーションを容易にマルチモジュール、マルチプロジェクト構成を採用することができるようになりました。
 
 一般的な Swfit Package Manager のモジュールの分割は、機能単位（Feature 単位）モジュールでの分割になりますが、FIA では、Clean Architecture でのレイヤー単位でモジュールを分割を採用しています。
 
@@ -230,12 +230,12 @@ GitHubのReadmeに図を挿入する場所は、読者がテキスト情報を�
 
 ## 目次
 
-- \[概要\](#概要)
-- \[FIAの採用背景\](#FIAの採用背景)
-- \[FIAのメリットとデメリット\](#FIAのメリットとデメリット)
-- \[アーキテクチャの構造\](#アーキテクチャの構造)
-- \[実装\](#実装)
-- \[テスタビリティ\](#テスタビリティ)
+- [概要](#概要)
+- [FIAの採用背景](#FIAの採用背景)
+- [FIAのメリットとデメリット](#FIAのメリットとデメリット)
+- [アーキテクチャの構造](#アーキテクチャの構造)
+- [実装](#実装)
+- [テスタビリティ](#テスタビリティ)
 
 ## 概要
 

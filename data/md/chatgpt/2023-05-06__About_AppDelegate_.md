@@ -18,12 +18,12 @@ AppDelegateは、iOSアプリケーションの主要なエントリポイント
 
 通常、AppDelegateは`UIApplicationDelegate`プロトコルを採用し、そのメソッドを実装してアプリのライフサイクルイベントを管理します。主なメソッドには以下のようなものがあります：
 
-1. `application(\_:didFinishLaunchingWithOptions:)` - アプリが起動した直後に呼ばれる。アプリの初期化処理や設定をここで行う。
-2. `applicationDidBecomeActive(\_:)` - アプリがアクティブな状態になったときに呼ばれる。アプリがバックグラウンドから復帰する際に実行される処理をここで行う。
-3. `applicationWillResignActive(\_:)` - アプリがアクティブでなくなる前に呼ばれる。アプリがバックグラウンドへ移行する際の処理をここで行う。
-4. `applicationDidEnterBackground(\_:)` - アプリがバックグラウンドに入った後に呼ばれる。バックグラウンドで実行されるタスクをここで行う。
-5. `applicationWillEnterForeground(\_:)` - アプリがバックグラウンドからフォアグラウンドに移行する前に呼ばれる。フォアグラウンドに戻る準備をする処理をここで行う。
-6. `applicationWillTerminate(\_:)` - アプリが終了する直前に呼ばれる。アプリの終了時に行うべき処理をここで行う。
+1. `application(_:didFinishLaunchingWithOptions:)` - アプリが起動した直後に呼ばれる。アプリの初期化処理や設定をここで行う。
+2. `applicationDidBecomeActive(_:)` - アプリがアクティブな状態になったときに呼ばれる。アプリがバックグラウンドから復帰する際に実行される処理をここで行う。
+3. `applicationWillResignActive(_:)` - アプリがアクティブでなくなる前に呼ばれる。アプリがバックグラウンドへ移行する際の処理をここで行う。
+4. `applicationDidEnterBackground(_:)` - アプリがバックグラウンドに入った後に呼ばれる。バックグラウンドで実行されるタスクをここで行う。
+5. `applicationWillEnterForeground(_:)` - アプリがバックグラウンドからフォアグラウンドに移行する前に呼ばれる。フォアグラウンドに戻る準備をする処理をここで行う。
+6. `applicationWillTerminate(_:)` - アプリが終了する直前に呼ばれる。アプリの終了時に行うべき処理をここで行う。
 
 また、iOS 13以降では、シーンデリゲートを導入することで、複数のウィンドウやマルチタスクをサポートすることができます。この場合、AppDelegateはアプリ全体のライフサイクルを管理し、シーンデリゲートは各ウィンドウのライフサイクルを管理します。
 

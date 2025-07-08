@@ -15,10 +15,10 @@ ElevatedButton(
                         },
                         child: const Row(
                           mainAxisSize: MainAxisSize.min,
-                          children: \[
+                          children: [
                             Text('Join an existing guild'),
-                            Icon(Icons.arrow\_forward),
-                          \],
+                            Icon(Icons.arrow_forward),
+                          ],
                         ),
                       ),
 

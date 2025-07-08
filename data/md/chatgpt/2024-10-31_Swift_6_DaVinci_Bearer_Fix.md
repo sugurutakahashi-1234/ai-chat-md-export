@@ -19,15 +19,15 @@ Swift6に変えて発生するようになった。直して欲しい
 private class DaVinciBearerRequestBuilder&lt;T&gt;: URLSessionRequestBuilder&lt;T&gt;, @unchecked Sendable {
     private let evaluateUseCase: EvaluateTokenUpdateUseCase = EvaluateTokenUpdateUseCaseImpl.newInstance()
 
-    // TODO: #652 \[Swift6\] OpenAPIClient Swift 6, override しないように対応する
+    // TODO: #652 [Swift6] OpenAPIClient Swift 6, override しないように対応する
     @discardableResult
-    override func execute(\_ apiResponseQueue: DispatchQueue = OpenAPIClient.shared.apiResponseQueue, \_ completion: @escaping (Result&lt;Response&lt;T&gt;, ErrorResponse&gt;) -&gt; Void) -&gt; RequestTask {
+    override func execute(_ apiResponseQueue: DispatchQueue = OpenAPIClient.shared.apiResponseQueue, _ completion: @escaping (Result&lt;Response&lt;T&gt;, ErrorResponse&gt;) -&gt; Void) -&gt; RequestTask {
         guard requiresAuthentication else {
             return super.execute(apiResponseQueue, completion)
         }
 
         let accessToken = KeychainAuthTokenStore.newInstance().accessToken ?? ""
-        addHeaders(\["Authorization": "Bearer \\(accessToken)"\])
+        addHeaders(["Authorization": "Bearer \(accessToken)"])
 
         super.execute(apiResponseQueue) { result in
             self.evaluateUseCase.execute(
@@ -48,39 +48,39 @@ private class DaVinciBearerRequestBuilder&lt;T&gt;: URLSessionRequestBuilder&lt;
 
 open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecked Sendable {
 
-    /\*\*
+    /**
      May be assigned if you want to control the authentication challenges.
-     \*/
+     */
     public var taskDidReceiveChallenge: OpenAPIClientAPIChallengeHandler?
 
-    required public init(method: String, URLString: String, parameters: \[String: Any\]?, headers: \[String: String\] = \[:\], requiresAuthentication: Bool, openAPIClient: OpenAPIClient = OpenAPIClient.shared) {
+    required public init(method: String, URLString: String, parameters: [String: Any]?, headers: [String: String] = [:], requiresAuthentication: Bool, openAPIClient: OpenAPIClient = OpenAPIClient.shared) {
         super.init(method: method, URLString: URLString, parameters: parameters, headers: headers, requiresAuthentication: requiresAuthentication, openAPIClient: openAPIClient)
     }
 
-    /\*\*
+    /**
      May be overridden by a subclass if you want to control the URLSession
      configuration.
-     \*/
+     */
     open func createURLSession() -&gt; URLSessionProtocol {
         return URLSessionRequestBuilderConfiguration.shared.defaultURLSession
     }
 
-    /\*\*
+    /**
      May be overridden by a subclass if you want to control the Content-Type
      that is given to an uploaded form part.
 
      Return nil to use the default behavior (inferring the Content-Type from
      the file extension).  Return the desired Content-Type otherwise.
-     \*/
+     */
     open func contentTypeForFormPart(fileURL: URL) -&gt; String? {
         return nil
     }
 
-    /\*\*
+    /**
      May be overridden by a subclass if you want to control the URLRequest
      configuration (e.g. to override the cache policy).
-     \*/
-    open func createURLRequest(urlSession: URLSessionProtocol, method: HTTPMethod, encoding: ParameterEncoding, headers: \[String: String\]) throws -&gt; URLRequest {
+     */
+    open func createURLRequest(urlSession: URLSessionProtocol, method: HTTPMethod, encoding: ParameterEncoding, headers: [String: String]) throws -&gt; URLRequest {
 
         guard let url = URL(string: URLString) else {
             throw DownloadException.requestMissingURL
@@ -100,11 +100,11 @@ open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecke
     }
 
     @discardableResult
-    override open func execute(completion: @Sendable @escaping (\_ result: Swift.Result&lt;Response&lt;T&gt;, ErrorResponse&gt;) -&gt; Void) -&gt; RequestTask {
+    override open func execute(completion: @Sendable @escaping (_ result: Swift.Result&lt;Response&lt;T&gt;, ErrorResponse&gt;) -&gt; Void) -&gt; RequestTask {
         let urlSession = createURLSession()
 
         guard let xMethod = HTTPMethod(rawValue: method) else {
-            fatalError("Unsupported Http method - \\(method)")
+            fatalError("Unsupported Http method - \(method)")
         }
 
         let encoding: ParameterEncoding
@@ -114,7 +114,7 @@ open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecke
             encoding = URLEncoding()
 
         case .options, .post, .put, .patch, .delete, .trace, .connect:
-            let contentType = headers\["Content-Type"\] ?? "application/json"
+            let contentType = headers["Content-Type"] ?? "application/json"
 
             if contentType.hasPrefix("application/") && contentType.contains("json") {
                 encoding = JSONDataEncoding()
@@ -125,7 +125,7 @@ open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecke
             } else if contentType.hasPrefix("application/octet-stream"){
                 encoding = OctetStreamEncoding()
             } else {
-                fatalError("Unsupported Media Type - \\(contentType)")
+                fatalError("Unsupported Media Type - \(contentType)")
             }
         }
 
@@ -159,8 +159,8 @@ open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecke
 
                     self.onProgressReady?(dataTask.progress)
 
-                    URLSessionRequestBuilderConfiguration.shared.challengeHandlerStore\[dataTask.taskIdentifier\] = self.taskDidReceiveChallenge
-                    URLSessionRequestBuilderConfiguration.shared.credentialStore\[dataTask.taskIdentifier\] = self.credential
+                    URLSessionRequestBuilderConfiguration.shared.challengeHandlerStore[dataTask.taskIdentifier] = self.taskDidReceiveChallenge
+                    URLSessionRequestBuilderConfiguration.shared.credentialStore[dataTask.taskIdentifier] = self.credential
 
                     self.requestTask.set(task: dataTask)
 
@@ -183,12 +183,12 @@ open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecke
 
     private func cleanupRequest() {
         if let task = requestTask.get() {
-            URLSessionRequestBuilderConfiguration.shared.challengeHandlerStore\[task.taskIdentifier\] = nil
-            URLSessionRequestBuilderConfiguration.shared.credentialStore\[task.taskIdentifier\] = nil
+            URLSessionRequestBuilderConfiguration.shared.challengeHandlerStore[task.taskIdentifier] = nil
+            URLSessionRequestBuilderConfiguration.shared.credentialStore[task.taskIdentifier] = nil
         }
     }
 
-    fileprivate func processRequestResponse(urlRequest: URLRequest, data: Data?, response: URLResponse?, error: Error?, completion: @escaping (\_ result: Swift.Result&lt;Response&lt;T&gt;, ErrorResponse&gt;) -&gt; Void) {
+    fileprivate func processRequestResponse(urlRequest: URLRequest, data: Data?, response: URLResponse?, error: Error?, completion: @escaping (_ result: Swift.Result&lt;Response&lt;T&gt;, ErrorResponse&gt;) -&gt; Void) {
 
         if let error = error {
             completion(.failure(ErrorResponse.error(-1, data, response, error)))
@@ -211,18 +211,18 @@ open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecke
             completion(.success(Response(response: httpResponse, body: () as! T, bodyData: data)))
 
         default:
-            fatalError("Unsupported Response Body Type - \\(String(describing: T.self))")
+            fatalError("Unsupported Response Body Type - \(String(describing: T.self))")
         }
 
     }
 
-    open func buildHeaders() -&gt; \[String: String\] {
-        var httpHeaders: \[String: String\] = \[:\]
+    open func buildHeaders() -&gt; [String: String] {
+        var httpHeaders: [String: String] = [:]
         for (key, value) in openAPIClient.customHeaders {
-            httpHeaders\[key\] = value
+            httpHeaders[key] = value
         }
         for (key, value) in headers {
-            httpHeaders\[key\] = value
+            httpHeaders[key] = value
         }
         return httpHeaders
     }
@@ -247,7 +247,7 @@ open class URLSessionRequestBuilder&lt;T&gt;: RequestBuilder&lt;T&gt;, @unchecke
             filename = contentItem
             return filename?
                 .replacingCharacters(in: range, with: "")
-                .replacingOccurrences(of: "\\"", with: "")
+                .replacingOccurrences(of: "\"", with: "")
                 .trimmingCharacters(in: .whitespacesAndNewlines)
         }
 

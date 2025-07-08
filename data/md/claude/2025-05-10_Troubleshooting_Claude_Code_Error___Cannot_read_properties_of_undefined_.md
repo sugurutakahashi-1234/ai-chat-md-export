@@ -11,22 +11,22 @@ Claude Code のMCPでエラーになっているみたい
 
 
 TypeError: Cannot read properties of undefined (reading 'prototype')
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:317:25482
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:13:402
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:317:25601
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:13:402
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:319:3206
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:13:402
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:319:6228
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:13:402
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:319:7433
-    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node\_modules/@anthropic-ai/claude-code/cli.js:13:402
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:317:25482
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:13:402
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:317:25601
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:13:402
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:319:3206
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:13:402
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:319:6228
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:13:402
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:319:7433
+    at file:///Users/sugurutakahashi/.nvm/versions/node/v22.15.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:13:402
 Node.js v24.0.0
-2025-05-10T14:40:13.484Z \[claude\] \[info\] Server transport closed
-2025-05-10T14:40:13.484Z \[claude\] \[info\] Client transport closed
-2025-05-10T14:40:13.484Z \[claude\] \[info\] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
-2025-05-10T14:40:13.484Z \[claude\] \[error\] Server disconnected. For troubleshooting guidance, please visit our \[debugging documentation\](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
-2025-05-10T14:40:13.485Z \[claude\] \[info\] Client transport closed
+2025-05-10T14:40:13.484Z [claude] [info] Server transport closed
+2025-05-10T14:40:13.484Z [claude] [info] Client transport closed
+2025-05-10T14:40:13.484Z [claude] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
+2025-05-10T14:40:13.484Z [claude] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
+2025-05-10T14:40:13.485Z [claude] [info] Client transport closed
 
 ---
 

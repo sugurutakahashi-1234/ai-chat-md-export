@@ -72,7 +72,7 @@ async {
 ## 👤 ユーザー
 *2023/7/16 15:08:55*
 
-func fetchAll(urls: \[URL\]) async throws -&gt; \[Data\] とデータを返すような処理だけど、何も返さないような例を作成してほしい。1秒待ってプリントする処理と2秒待ってプリントする処理と3秒魔ｔってprint
+func fetchAll(urls: [URL]) async throws -&gt; [Data] とデータを返すような処理だけど、何も返さないような例を作成してほしい。1秒待ってプリントする処理と2秒待ってプリントする処理と3秒魔ｔってprint
 
 ---
 
@@ -310,7 +310,7 @@ Task {
 *2023/7/16 15:15:23*
 
 以下を実行した結果出力結果が以下であった。
-print("Failed to complete all tasks: \\(error)")
+print("Failed to complete all tasks: \(error)")
 
 Slept for 1 seconds
 Slept for 3 seconds
@@ -326,8 +326,8 @@ func sleepAndPrint(seconds: Int, throwError: Bool = false) async throws {
     if throwError {
         throw TaskError.runtimeError("An error occurred during task execution")
     }
-    try await Task.sleep(nanoseconds: UInt64(seconds) \* 1\_000\_000\_000) // nanoseconds
-    print("Slept for \\(seconds) seconds")
+    try await Task.sleep(nanoseconds: UInt64(seconds) * 1_000_000_000) // nanoseconds
+    print("Slept for \(seconds) seconds")
 }
 func performTasks() async {
     do {
@@ -357,7 +357,7 @@ func performTasks() async {
             }
         }
     } catch {
-        print("Failed to complete all tasks: \\(error)")
+        print("Failed to complete all tasks: \(error)")
     }
 }
 
@@ -370,9 +370,9 @@ Task {
 ## 🤖 アシスタント
 *2023/7/16 15:15:44*
 
-コードの実行結果を見ると、1秒と3秒のタスクが完了していますが、2秒のタスクがエラーを投げています（`sleepAndPrint(seconds: 2, throwError: true)`）。それにより、`"Failed to complete all tasks: \\(error)"` が出力されています。
+コードの実行結果を見ると、1秒と3秒のタスクが完了していますが、2秒のタスクがエラーを投げています（`sleepAndPrint(seconds: 2, throwError: true)`）。それにより、`"Failed to complete all tasks: \(error)"` が出力されています。
 
-`withThrowingTaskGroup` は、投げられた最初のエラーを再スローします。そのため、2秒のタスクがエラーを投げると、それ以降のタスク（この場合、3秒のタスク）の完了を待たずに、`withThrowingTaskGroup` がそのエラーを再スローします。それにより `catch` ブロックが実行され、`"Failed to complete all tasks: \\(error)"` が出力されます。
+`withThrowingTaskGroup` は、投げられた最初のエラーを再スローします。そのため、2秒のタスクがエラーを投げると、それ以降のタスク（この場合、3秒のタスク）の完了を待たずに、`withThrowingTaskGroup` がそのエラーを再スローします。それにより `catch` ブロックが実行され、`"Failed to complete all tasks: \(error)"` が出力されます。
 
 ただし、このエラーはタスクの処理を中断しないため、3秒のタスクは引き続き実行され、`"Slept for 3 seconds"` が出力されます。
 
@@ -385,7 +385,7 @@ Task {
 ## 👤 ユーザー
 *2023/7/16 15:15:58*
 
-print("Failed to complete all tasks: \\(error)") ブロックに処理がきていないみたいなんだけど
+print("Failed to complete all tasks: \(error)") ブロックに処理がきていないみたいなんだけど
 
 ---
 
@@ -467,7 +467,7 @@ func performTasks() async {
             }
         }
     } catch {
-        print("Failed to complete all tasks: \\(error)")
+        print("Failed to complete all tasks: \(error)")
     }
 }
 

@@ -9,16 +9,16 @@
 
 nil ってjson decord できないの？
 
-Error(appError: DomainLayer.AppError.customError("Failed to decode apnsToken: valueNotFound(Foundation.Data, Swift.DecodingError.Context(codingPath: \[\], debugDescription: \\"Cannot get unkeyed decoding container -- found null value instead\\", underlyingError: nil)), defaultValue: nil"), errorName: "customError(\\"Failed to decode apnsToken: valueNotFound(Foundation.Data, Swift.DecodingError.Context(codingPath: \[\], debugDescription: \\\\\\"Cannot get unkeyed decoding container -- found null value instead\\\\\\", underlyingError: nil)), defaultValue: nil\\")"), file: UserDefaultsWrappable.swift, function: getFromUserDefaults(), line: 32
+Error(appError: DomainLayer.AppError.customError("Failed to decode apnsToken: valueNotFound(Foundation.Data, Swift.DecodingError.Context(codingPath: [], debugDescription: \"Cannot get unkeyed decoding container -- found null value instead\", underlyingError: nil)), defaultValue: nil"), errorName: "customError(\"Failed to decode apnsToken: valueNotFound(Foundation.Data, Swift.DecodingError.Context(codingPath: [], debugDescription: \\\"Cannot get unkeyed decoding container -- found null value instead\\\", underlyingError: nil)), defaultValue: nil\")"), file: UserDefaultsWrappable.swift, function: getFromUserDefaults(), line: 32
 
 do {
             let decodedValue = try T.decoder.decode(T.self, from: data)
-            OSLogDriver.debugLog("Return UserDefaults value, key: \\(key), value: \\(decodedValue)")
+            OSLogDriver.debugLog("Return UserDefaults value, key: \(key), value: \(decodedValue)")
             return decodedValue
         } catch {
             guard let
-            OSLogDriver.errorLog("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))", level: .fault)
-            assertionFailure("Failed to decode \\(key): \\(error), defaultValue: \\(String(describing: defaultValue))")
+            OSLogDriver.errorLog("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))", level: .fault)
+            assertionFailure("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue))")
             return defaultValue
         }
 
@@ -33,11 +33,11 @@ do {
 
 この問題を解決するには、以下のアプローチを検討できます：
 
-1. \*\*オプショナル型の使用\*\*：対象の値が`nil`（`null`）になり得る場合、そのプロパティをオプショナル型として定義することで、デコーダーが`null`値を受け入れるようにできます。
+1. **オプショナル型の使用**：対象の値が`nil`（`null`）になり得る場合、そのプロパティをオプショナル型として定義することで、デコーダーが`null`値を受け入れるようにできます。
 
-2. \*\*カスタムデコードロジック\*\*：デフォルトのデコーダー動作では期待通りに処理できない場合、`Decodable`プロトコルを実装してカスタムデコードロジックを提供することができます。これにより、`null`値が見つかった場合の振る舞いを細かく制御できます。
+2. **カスタムデコードロジック**：デフォルトのデコーダー動作では期待通りに処理できない場合、`Decodable`プロトコルを実装してカスタムデコードロジックを提供することができます。これにより、`null`値が見つかった場合の振る舞いを細かく制御できます。
 
-3. \*\*データの検証と修正\*\*：送信元のデータを修正し、期待される形式になるようにすることも一つの解決策です。これはデータの構造を制御できる場合に特に有効です。
+3. **データの検証と修正**：送信元のデータを修正し、期待される形式になるようにすることも一つの解決策です。これはデータの構造を制御できる場合に特に有効です。
 
 デコード処理を行う前に、期待されるデータ型とJSONデータの構造が一致しているか慎重に確認することが重要です。また、オプショナル型やデフォルト値を適切に利用することで、データが不完全または不正確な場合でもアプリケーションが適切に動作するようにすることができます。
 

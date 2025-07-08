@@ -11,16 +11,16 @@
 
 extension GraphQLRequest {
 
-    /\*\*
-     \* ユーザ情報取得(ログインユーザ)
-     \*
-     \* @return ログインユーザ情報
-     \*/
+    /**
+     * ユーザ情報取得(ログインユーザ)
+     *
+     * @return ログインユーザ情報
+     */
     static func getUser() -&gt; GraphQLRequest&lt;User&gt; {
-        let operationName = "get\_user"
+        let operationName = "get_user"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
+        query \(operationName) {
+          \(operationName) {
             id
             name
             email
@@ -30,61 +30,61 @@ extension GraphQLRequest {
         """
         return GraphQLRequest&lt;User&gt;(
             document: document,
-            variables: \[:\],
+            variables: [:],
             responseType: User.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* ユーザ属性コンテンツ取得
-     \*
-     \* @return ユーザ属性情報の選択項目
-     \*/
+    /**
+     * ユーザ属性コンテンツ取得
+     *
+     * @return ユーザ属性情報の選択項目
+     */
     static func getUserAttributeContents() -&gt; GraphQLRequest&lt;UserAttributeContents&gt; {
-        let operationName = "get\_user\_attribute\_contents"
+        let operationName = "get_user_attribute_contents"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
+        query \(operationName) {
+          \(operationName) {
             genders
             occupations
             industries
             educations
-            annual\_incomes
-            residence\_types
+            annual_incomes
+            residence_types
             locations
-            marital\_statuses
-            household\_sizes
+            marital_statuses
+            household_sizes
           }
         }
         """
         return GraphQLRequest&lt;UserAttributeContents&gt;(
             document: document,
-            variables: \[:\],
+            variables: [:],
             responseType: UserAttributeContents.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* ユーザ属性情報取得(ログインユーザ)
-     \*
-     \* @return ユーザ属性情報
-     \*/
+    /**
+     * ユーザ属性情報取得(ログインユーザ)
+     *
+     * @return ユーザ属性情報
+     */
     static func getUserAttribute() -&gt; GraphQLRequest&lt;UserAttributes&gt; {
-        let operationName = "get\_user\_attributes"
+        let operationName = "get_user_attributes"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
-            user\_id
-            date\_of\_birth
+        query \(operationName) {
+          \(operationName) {
+            user_id
+            date_of_birth
             gender
-            annual\_income
+            annual_income
             occupation
             industry
-            marital\_status
-            residence\_type
-            household\_size
+            marital_status
+            residence_type
+            household_size
             location
             education
             device
@@ -93,67 +93,67 @@ extension GraphQLRequest {
         """
         return GraphQLRequest&lt;UserAttributes&gt;(
             document: document,
-            variables: \[:\],
+            variables: [:],
             responseType: UserAttributes.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* お願い一覧取得
-     \*
-     \* 備考
-     \* - 並び順は、created\_atの降順
-     \*
-     \* @param measurement\_type 調査種別 ※任意
-     \* @return お願い一覧情報
-     \*/
-    static func listResearches(measurement\_type: MeasurementType?) -&gt; GraphQLRequest&lt;\[Research\]&gt; {
-        let operationName = "list\_researches"
+    /**
+     * お願い一覧取得
+     *
+     * 備考
+     * - 並び順は、created_atの降順
+     *
+     * @param measurement_type 調査種別 ※任意
+     * @return お願い一覧情報
+     */
+    static func listResearches(measurement_type: MeasurementType?) -&gt; GraphQLRequest&lt;[Research]&gt; {
+        let operationName = "list_researches"
         let document = """
-        query \\(operationName)($measurement\_type: String) {
-          \\(operationName)(measurement\_type: $measurement\_type) {
+        query \(operationName)($measurement_type: String) {
+          \(operationName)(measurement_type: $measurement_type) {
             id
             title
-            opening\_at
-            closing\_at
-            image\_uri
+            opening_at
+            closing_at
+            image_uri
             description
-            reward\_points
-            org\_name
-            measurement\_types
+            reward_points
+            org_name
+            measurement_types
             duration
           }
         }
         """
-        return GraphQLRequest&lt;\[Research\]&gt;(
+        return GraphQLRequest&lt;[Research]&gt;(
             document: document,
-            variables: \["measurement\_type": measurement\_type ?? ""\],
-            responseType: \[Research\].self,
+            variables: ["measurement_type": measurement_type ?? ""],
+            responseType: [Research].self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* お願い詳細情報取得
-     \*
-     \* @param id 調査ID
-     \* @return お願い詳細情報
-     \*/
+    /**
+     * お願い詳細情報取得
+     *
+     * @param id 調査ID
+     * @return お願い詳細情報
+     */
     static func getResearch(byId id: String) -&gt; GraphQLRequest&lt;Research&gt; {
-        let operationName = "get\_research"
+        let operationName = "get_research"
         let document = """
-        query \\(operationName)($id: String!) {
-          \\(operationName)(id: $id) {
+        query \(operationName)($id: String!) {
+          \(operationName)(id: $id) {
             id
             title
-            opening\_at
-            closing\_at
-            image\_uri
+            opening_at
+            closing_at
+            image_uri
             description
-            reward\_points
-            org\_name
-            measurement\_types
+            reward_points
+            org_name
+            measurement_types
             measurements
             duration
           }
@@ -161,95 +161,95 @@ extension GraphQLRequest {
         """
         return GraphQLRequest&lt;Research&gt;(
             document: document,
-            variables: \["id": id\],
+            variables: ["id": id],
             responseType: Research.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* 動画タスク情報取得
-     \*
-     \* @param id タスクID
-     \* @return 動画タスク情報
-     \*/
+    /**
+     * 動画タスク情報取得
+     *
+     * @param id タスクID
+     * @return 動画タスク情報
+     */
     static func getVideoMeasurement(byId id: String) -&gt; GraphQLRequest&lt;VideoMeasurement&gt; {
-        // TODO situation\_descriptionについては空になります。
-        let operationName = "get\_video\_measurement"
+        // TODO situation_descriptionについては空になります。
+        let operationName = "get_video_measurement"
         let document = """
-        query \\(operationName)($id: String!) {
-          \\(operationName)(id: $id) {
+        query \(operationName)($id: String!) {
+          \(operationName)(id: $id) {
             id
-            research\_id
+            research_id
             order
-            measurement\_type
-            file\_uri
-            situation\_description
+            measurement_type
+            file_uri
+            situation_description
           }
         }
         """
         return GraphQLRequest&lt;VideoMeasurement&gt;(
             document: document,
-            variables: \["id": id\],
+            variables: ["id": id],
             responseType: VideoMeasurement.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* サイト調査タスク情報取得
-     \*
-     \* @param id タスクID
-     \* @return サイト調査タスク情報
-     \*/
+    /**
+     * サイト調査タスク情報取得
+     *
+     * @param id タスクID
+     * @return サイト調査タスク情報
+     */
     static func getWebsiteMeasurement(byId id: String) -&gt; GraphQLRequest&lt;WebsiteMeasurement&gt; {
-        // TODO situation\_descriptionについては空になります。
-        let operationName = "get\_website\_measurement"
+        // TODO situation_descriptionについては空になります。
+        let operationName = "get_website_measurement"
         let document = """
-        query \\(operationName)($id: String!) {
-          \\(operationName)(id: $id) {
+        query \(operationName)($id: String!) {
+          \(operationName)(id: $id) {
             id
-            research\_id
+            research_id
             order
-            measurement\_type
-            site\_url
-            situation\_description
+            measurement_type
+            site_url
+            situation_description
           }
         }
         """
         return GraphQLRequest&lt;WebsiteMeasurement&gt;(
             document: document,
-            variables: \["id": id\],
+            variables: ["id": id],
             responseType: WebsiteMeasurement.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* ポイント履歴取得(ログインユーザ)
-     \* 
-     \* 備考
-     \* - 並び順は、created\_at(ポイント獲得日)の降順
-     \*
-     \* @return ポイント履歴情報
-     \*/
-    static func listPointHistories() -&gt; GraphQLRequest&lt;\[PointHistory\]&gt; {
-        // TODO situation\_descriptionについては空になります。
-        let operationName = "list\_point\_histories"
+    /**
+     * ポイント履歴取得(ログインユーザ)
+     * 
+     * 備考
+     * - 並び順は、created_at(ポイント獲得日)の降順
+     *
+     * @return ポイント履歴情報
+     */
+    static func listPointHistories() -&gt; GraphQLRequest&lt;[PointHistory]&gt; {
+        // TODO situation_descriptionについては空になります。
+        let operationName = "list_point_histories"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
-            created\_at
-            org\_name
-            research\_title
+        query \(operationName) {
+          \(operationName) {
+            created_at
+            org_name
+            research_title
             point
           }
         }
         """
-        return GraphQLRequest&lt;\[PointHistory\]&gt;(
+        return GraphQLRequest&lt;[PointHistory]&gt;(
             document: document,
-            variables: \[:\],
-            responseType: \[PointHistory\].self,
+            variables: [:],
+            responseType: [PointHistory].self,
             decodePath: operationName
         )
     }
@@ -662,17 +662,17 @@ public struct User {
 }
 
 public struct UserAttributeContents {
-    public let genders: \[String\]
-    public let occupations: \[String\]
-    public let industries: \[String\]
-    public let educations: \[String\]
-    public let annualIncomes: \[String\]
-    public let residenceTypes: \[String\]
-    public let locations: \[String\]
-    public let maritalStatuses: \[String\]
-    public let householdSizes: \[String\]
+    public let genders: [String]
+    public let occupations: [String]
+    public let industries: [String]
+    public let educations: [String]
+    public let annualIncomes: [String]
+    public let residenceTypes: [String]
+    public let locations: [String]
+    public let maritalStatuses: [String]
+    public let householdSizes: [String]
 
-    public init(genders: \[String\], occupations: \[String\], industries: \[String\], educations: \[String\], annualIncomes: \[String\], residenceTypes: \[String\], locations: \[String\], maritalStatuses: \[String\], householdSizes: \[String\]) {
+    public init(genders: [String], occupations: [String], industries: [String], educations: [String], annualIncomes: [String], residenceTypes: [String], locations: [String], maritalStatuses: [String], householdSizes: [String]) {
         self.genders = genders
         self.occupations = occupations
         self.industries = industries
@@ -724,11 +724,11 @@ public struct Research {
     public let description: String
     public let rewardPoints: Int
     public let orgName: String?
-    public let measurementTypes: \[MeasurementType\]
-    public let measurements: \[Measurement\]
+    public let measurementTypes: [MeasurementType]
+    public let measurements: [Measurement]
     public let duration: Int
 
-    public init(id: String, title: String, openingAt: Date, closingAt: Date, imageUri: String, description: String, rewardPoints: Int, orgName: String?, measurementTypes: \[MeasurementType\], measurements: \[Measurement\], duration: Int) {
+    public init(id: String, title: String, openingAt: Date, closingAt: Date, imageUri: String, description: String, rewardPoints: Int, orgName: String?, measurementTypes: [MeasurementType], measurements: [Measurement], duration: Int) {
         self.id = id
         self.title = title
         self.openingAt = openingAt
@@ -825,28 +825,28 @@ public struct User: Embeddable {
 
 
 public struct UserAttributeContents: Embeddable {
-  var genders: \[String\]
-  var occupations: \[String\]
-  var industries: \[String\]
-  var educations: \[String\]
-  var annual\_incomes: \[String\]
-  var residence\_types: \[String\]
-  var locations: \[String\]
-  var marital\_statuses: \[String\]
-  var household\_sizes: \[String\]
+  var genders: [String]
+  var occupations: [String]
+  var industries: [String]
+  var educations: [String]
+  var annual_incomes: [String]
+  var residence_types: [String]
+  var locations: [String]
+  var marital_statuses: [String]
+  var household_sizes: [String]
 }
 
 
 public struct UserAttributes: Embeddable {
-  var user\_id: String
-  var date\_of\_birth: Temporal.Date
+  var user_id: String
+  var date_of_birth: Temporal.Date
   var gender: String?
-  var annual\_income: String?
+  var annual_income: String?
   var occupation: String?
   var industry: String?
-  var marital\_status: String?
-  var residence\_type: String?
-  var household\_size: String?
+  var marital_status: String?
+  var residence_type: String?
+  var household_size: String?
   var location: String?
   var education: String?
   var device: String?
@@ -862,41 +862,41 @@ public enum MeasurementType: String, EnumPersistable {
 public struct Research: Embeddable {
   var id: String
   var title: String
-  var opening\_at: Temporal.DateTime
-  var closing\_at: Temporal.DateTime
-  var image\_uri: String
+  var opening_at: Temporal.DateTime
+  var closing_at: Temporal.DateTime
+  var image_uri: String
   var description: String
-  var reward\_points: Int
-  var org\_name: String?
-  var measurement\_types: \[MeasurementType\]
-  var measurements: \[Measurement\]
+  var reward_points: Int
+  var org_name: String?
+  var measurement_types: [MeasurementType]
+  var measurements: [Measurement]
   var duration: Int
 }
 
 
 public struct VideoMeasurement: Embeddable {
   var id: String
-  var research\_id: String
+  var research_id: String
   var order: Int
-  var measurement\_type: MeasurementType
-  var file\_uri: String
-  var situation\_description: String
+  var measurement_type: MeasurementType
+  var file_uri: String
+  var situation_description: String
 }
 
 public struct WebsiteMeasurement: Embeddable {
   var id: String
-  var research\_id: String
+  var research_id: String
   var order: Int
-  var measurement\_type: MeasurementType
-  var site\_url: String
-  var situation\_description: String
+  var measurement_type: MeasurementType
+  var site_url: String
+  var situation_description: String
 }
 
 
 public struct PointHistory: Embeddable {
-  var created\_at: Temporal.DateTime
-  var org\_name: String?
-  var research\_title: String
+  var created_at: Temporal.DateTime
+  var org_name: String?
+  var research_title: String
   var point: Int
 }
 
@@ -1124,10 +1124,10 @@ class AmplifyApiRequestManager: ApiRequestManagerProtocol {
         let result = try await Amplify.API.query(request: .getUser())
         switch result {
         case .success(let resultData):
-            AppLogger.debugLog("Amplify API Success: \\(resultData)", category: .network)
+            AppLogger.debugLog("Amplify API Success: \(resultData)", category: .network)
             return .init(from: resultData)
         case .failure(let error):
-            AppLogger.debugLog("Amplify API Error: \\(error)", category: .network, level: .error)
+            AppLogger.debugLog("Amplify API Error: \(error)", category: .network, level: .error)
             throw error
         }
     }
@@ -1136,7 +1136,7 @@ class AmplifyApiRequestManager: ApiRequestManagerProtocol {
     
     func getUserAttribute() async throws -&gt; EmomilCore.UserAttributes {}
     
-    func getResearches(measurementType: EmomilCore.MeasurementType?) async throws -&gt; \[EmomilCore.Research\] {}
+    func getResearches(measurementType: EmomilCore.MeasurementType?) async throws -&gt; [EmomilCore.Research] {}
     
     func getResearch(id: String) async throws -&gt; EmomilCore.Research {}
     
@@ -1144,31 +1144,31 @@ class AmplifyApiRequestManager: ApiRequestManagerProtocol {
     
     func getWebsiteMeasurement(id: String) async throws -&gt; EmomilCore.WebsiteMeasurement {}
     
-    func getPointHistories() async throws -&gt; \[EmomilCore.PointHistory\] {}
+    func getPointHistories() async throws -&gt; [EmomilCore.PointHistory] {}
 }
 
 (2)
 
 import Amplify
 
-/\*\*
- \* GraphQLのリクエスト定義（参照）
- \*
- \* 備考
- \* - Cognito認証済みのユーザのみ実行可能
- \*/
+/**
+ * GraphQLのリクエスト定義（参照）
+ *
+ * 備考
+ * - Cognito認証済みのユーザのみ実行可能
+ */
 extension GraphQLRequest {
 
-    /\*\*
-     \* ユーザ情報取得(ログインユーザ)
-     \*
-     \* @return ログインユーザ情報
-     \*/
+    /**
+     * ユーザ情報取得(ログインユーザ)
+     *
+     * @return ログインユーザ情報
+     */
     static func getUser() -&gt; GraphQLRequest&lt;User&gt; {
-        let operationName = "get\_user"
+        let operationName = "get_user"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
+        query \(operationName) {
+          \(operationName) {
             id
             name
             email
@@ -1178,61 +1178,61 @@ extension GraphQLRequest {
         """
         return GraphQLRequest&lt;User&gt;(
             document: document,
-            variables: \[:\],
+            variables: [:],
             responseType: User.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* ユーザ属性コンテンツ取得
-     \*
-     \* @return ユーザ属性情報の選択項目
-     \*/
+    /**
+     * ユーザ属性コンテンツ取得
+     *
+     * @return ユーザ属性情報の選択項目
+     */
     static func getUserAttributeContents() -&gt; GraphQLRequest&lt;UserAttributeContents&gt; {
-        let operationName = "get\_user\_attribute\_contents"
+        let operationName = "get_user_attribute_contents"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
+        query \(operationName) {
+          \(operationName) {
             genders
             occupations
             industries
             educations
-            annual\_incomes
-            residence\_types
+            annual_incomes
+            residence_types
             locations
-            marital\_statuses
-            household\_sizes
+            marital_statuses
+            household_sizes
           }
         }
         """
         return GraphQLRequest&lt;UserAttributeContents&gt;(
             document: document,
-            variables: \[:\],
+            variables: [:],
             responseType: UserAttributeContents.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* ユーザ属性情報取得(ログインユーザ)
-     \*
-     \* @return ユーザ属性情報
-     \*/
+    /**
+     * ユーザ属性情報取得(ログインユーザ)
+     *
+     * @return ユーザ属性情報
+     */
     static func getUserAttribute() -&gt; GraphQLRequest&lt;UserAttributes&gt; {
-        let operationName = "get\_user\_attributes"
+        let operationName = "get_user_attributes"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
-            user\_id
-            date\_of\_birth
+        query \(operationName) {
+          \(operationName) {
+            user_id
+            date_of_birth
             gender
-            annual\_income
+            annual_income
             occupation
             industry
-            marital\_status
-            residence\_type
-            household\_size
+            marital_status
+            residence_type
+            household_size
             location
             education
             device
@@ -1241,67 +1241,67 @@ extension GraphQLRequest {
         """
         return GraphQLRequest&lt;UserAttributes&gt;(
             document: document,
-            variables: \[:\],
+            variables: [:],
             responseType: UserAttributes.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* お願い一覧取得
-     \*
-     \* 備考
-     \* - 並び順は、created\_atの降順
-     \*
-     \* @param measurement\_type 調査種別 ※任意
-     \* @return お願い一覧情報
-     \*/
-    static func listResearches(measurement\_type: MeasurementType?) -&gt; GraphQLRequest&lt;\[Research\]&gt; {
-        let operationName = "list\_researches"
+    /**
+     * お願い一覧取得
+     *
+     * 備考
+     * - 並び順は、created_atの降順
+     *
+     * @param measurement_type 調査種別 ※任意
+     * @return お願い一覧情報
+     */
+    static func listResearches(measurement_type: MeasurementType?) -&gt; GraphQLRequest&lt;[Research]&gt; {
+        let operationName = "list_researches"
         let document = """
-        query \\(operationName)($measurement\_type: String) {
-          \\(operationName)(measurement\_type: $measurement\_type) {
+        query \(operationName)($measurement_type: String) {
+          \(operationName)(measurement_type: $measurement_type) {
             id
             title
-            opening\_at
-            closing\_at
-            image\_uri
+            opening_at
+            closing_at
+            image_uri
             description
-            reward\_points
-            org\_name
-            measurement\_types
+            reward_points
+            org_name
+            measurement_types
             duration
           }
         }
         """
-        return GraphQLRequest&lt;\[Research\]&gt;(
+        return GraphQLRequest&lt;[Research]&gt;(
             document: document,
-            variables: \["measurement\_type": measurement\_type ?? ""\],
-            responseType: \[Research\].self,
+            variables: ["measurement_type": measurement_type ?? ""],
+            responseType: [Research].self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* お願い詳細情報取得
-     \*
-     \* @param id 調査ID
-     \* @return お願い詳細情報
-     \*/
+    /**
+     * お願い詳細情報取得
+     *
+     * @param id 調査ID
+     * @return お願い詳細情報
+     */
     static func getResearch(byId id: String) -&gt; GraphQLRequest&lt;Research&gt; {
-        let operationName = "get\_research"
+        let operationName = "get_research"
         let document = """
-        query \\(operationName)($id: String!) {
-          \\(operationName)(id: $id) {
+        query \(operationName)($id: String!) {
+          \(operationName)(id: $id) {
             id
             title
-            opening\_at
-            closing\_at
-            image\_uri
+            opening_at
+            closing_at
+            image_uri
             description
-            reward\_points
-            org\_name
-            measurement\_types
+            reward_points
+            org_name
+            measurement_types
             measurements
             duration
           }
@@ -1309,95 +1309,95 @@ extension GraphQLRequest {
         """
         return GraphQLRequest&lt;Research&gt;(
             document: document,
-            variables: \["id": id\],
+            variables: ["id": id],
             responseType: Research.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* 動画タスク情報取得
-     \*
-     \* @param id タスクID
-     \* @return 動画タスク情報
-     \*/
+    /**
+     * 動画タスク情報取得
+     *
+     * @param id タスクID
+     * @return 動画タスク情報
+     */
     static func getVideoMeasurement(byId id: String) -&gt; GraphQLRequest&lt;VideoMeasurement&gt; {
-        // TODO situation\_descriptionについては空になります。
-        let operationName = "get\_video\_measurement"
+        // TODO situation_descriptionについては空になります。
+        let operationName = "get_video_measurement"
         let document = """
-        query \\(operationName)($id: String!) {
-          \\(operationName)(id: $id) {
+        query \(operationName)($id: String!) {
+          \(operationName)(id: $id) {
             id
-            research\_id
+            research_id
             order
-            measurement\_type
-            file\_uri
-            situation\_description
+            measurement_type
+            file_uri
+            situation_description
           }
         }
         """
         return GraphQLRequest&lt;VideoMeasurement&gt;(
             document: document,
-            variables: \["id": id\],
+            variables: ["id": id],
             responseType: VideoMeasurement.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* サイト調査タスク情報取得
-     \*
-     \* @param id タスクID
-     \* @return サイト調査タスク情報
-     \*/
+    /**
+     * サイト調査タスク情報取得
+     *
+     * @param id タスクID
+     * @return サイト調査タスク情報
+     */
     static func getWebsiteMeasurement(byId id: String) -&gt; GraphQLRequest&lt;WebsiteMeasurement&gt; {
-        // TODO situation\_descriptionについては空になります。
-        let operationName = "get\_website\_measurement"
+        // TODO situation_descriptionについては空になります。
+        let operationName = "get_website_measurement"
         let document = """
-        query \\(operationName)($id: String!) {
-          \\(operationName)(id: $id) {
+        query \(operationName)($id: String!) {
+          \(operationName)(id: $id) {
             id
-            research\_id
+            research_id
             order
-            measurement\_type
-            site\_url
-            situation\_description
+            measurement_type
+            site_url
+            situation_description
           }
         }
         """
         return GraphQLRequest&lt;WebsiteMeasurement&gt;(
             document: document,
-            variables: \["id": id\],
+            variables: ["id": id],
             responseType: WebsiteMeasurement.self,
             decodePath: operationName
         )
     }
 
-    /\*\*
-     \* ポイント履歴取得(ログインユーザ)
-     \* 
-     \* 備考
-     \* - 並び順は、created\_at(ポイント獲得日)の降順
-     \*
-     \* @return ポイント履歴情報
-     \*/
-    static func listPointHistories() -&gt; GraphQLRequest&lt;\[PointHistory\]&gt; {
-        // TODO situation\_descriptionについては空になります。
-        let operationName = "list\_point\_histories"
+    /**
+     * ポイント履歴取得(ログインユーザ)
+     * 
+     * 備考
+     * - 並び順は、created_at(ポイント獲得日)の降順
+     *
+     * @return ポイント履歴情報
+     */
+    static func listPointHistories() -&gt; GraphQLRequest&lt;[PointHistory]&gt; {
+        // TODO situation_descriptionについては空になります。
+        let operationName = "list_point_histories"
         let document = """
-        query \\(operationName) {
-          \\(operationName) {
-            created\_at
-            org\_name
-            research\_title
+        query \(operationName) {
+          \(operationName) {
+            created_at
+            org_name
+            research_title
             point
           }
         }
         """
-        return GraphQLRequest&lt;\[PointHistory\]&gt;(
+        return GraphQLRequest&lt;[PointHistory]&gt;(
             document: document,
-            variables: \[:\],
-            responseType: \[PointHistory\].self,
+            variables: [:],
+            responseType: [PointHistory].self,
             decodePath: operationName
         )
     }
@@ -1578,14 +1578,14 @@ let gqlType = MeasurementType(from: coreType)
 
 以下について、measurementTypeがnilのときは引数もnilになるように対応してほしい。
 
-func getResearches(measurementType: EmomilCore.MeasurementType?) async throws -&gt; \[EmomilCore.Research\] {
-        let result = try await Amplify.API.query(request: .listResearches(measurement\_type: MeasurementType(from: measurementType)))
+func getResearches(measurementType: EmomilCore.MeasurementType?) async throws -&gt; [EmomilCore.Research] {
+        let result = try await Amplify.API.query(request: .listResearches(measurement_type: MeasurementType(from: measurementType)))
         switch result {
         case .success(let resultData):
-            AppLogger.debugLog("Amplify API Success: \\(resultData)", category: .network)
+            AppLogger.debugLog("Amplify API Success: \(resultData)", category: .network)
             return resultData.map { EmomilCore.Research(from: $0) }
         case .failure(let error):
-            AppLogger.debugLog("Amplify API Error: \\(error)", category: .network, level: .error)
+            AppLogger.debugLog("Amplify API Error: \(error)", category: .network, level: .error)
             throw error
         }
     }

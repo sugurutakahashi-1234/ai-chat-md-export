@@ -346,31 +346,31 @@ PRDとDEVが完全に分離された環境で、APIが外部に公開されて�
 ## フロントLB方式の一般性について
 
 ### 一般的ではない理由
-1. \*\*複雑性の増加\*\*
+1. **複雑性の増加**
    - ネットワーク構成が複雑になり、管理オーバーヘッドが増加
    - 障害点が増えるリスク
    - デバッグや問題解決が難しくなる場合がある
 
-2. \*\*より一般的な代替アプローチ\*\*
+2. **より一般的な代替アプローチ**
    - マイクロサービスアーキテクチャではAPIゲートウェイやサービスメッシュが一般的
    - Kubernetes環境ではIngress Controllerやサービスメッシュ（Istio, Linkerdなど）
    - 多環境管理にはBlue/Green deploymentやCanary releaseなどのCI/CD手法
 
-3. \*\*コストの増加\*\*
+3. **コストの増加**
    - 追加のLBによるインフラコスト増加
    - 運用管理コストの増加
 
 ### 代わりに一般的なアプローチ
 
-1. \*\*API Gateway / Ingress Controller\*\*
+1. **API Gateway / Ingress Controller**
    - GCP: Cloud EndpointsやApigee
    - マルチ環境のルーティングをアプリケーションレベルで管理
 
-2. \*\*サービスメッシュ\*\*
+2. **サービスメッシュ**
    - Istio, Linkerd, App Mesh
    - トラフィック管理、セキュリティ、可観測性を統合的に提供
 
-3. \*\*Feature Flags\*\*
+3. **Feature Flags**
    - アプリケーションコードレベルでの機能制御
    - LaunchDarkly, Flagsmith, Flip等のサービス
 

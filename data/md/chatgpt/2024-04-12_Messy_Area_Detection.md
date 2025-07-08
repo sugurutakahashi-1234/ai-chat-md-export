@@ -84,9 +84,9 @@ Non-Clean Area でも通じるか？ もっと良い表現はないか？
 
 プログラム設計における「Clean Area」とその反対を表す表現を選ぶ際には、その文脈をより明確に反映する単語を選ぶと良いでしょう。クリーンアーキテクチャーの文脈では、以下のような表現が考えられます：
 
-- \*\*Clean Domain\*\* と \*\*Unclean Domain\*\*
-- \*\*Core Area\*\* と \*\*Peripheral Area\*\*
-- \*\*Main Zone\*\* と \*\*Auxiliary Zone\*\*
+- **Clean Domain** と **Unclean Domain**
+- **Core Area** と **Peripheral Area**
+- **Main Zone** と **Auxiliary Zone**
 
 ここで、「Unclean Domain」は技術的な文脈において、主要なビジネスロジックや設計原則から外れた部分を指すのに適しています。これは、「汚染された領域」という意味で、設計の純粋さや整理された構造から逸脱した部分を示しています。
 

@@ -15,8 +15,8 @@ bottomNavigationBar: SafeArea(
 としてほしい
 
 import 'package:flutter/material.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
 
 class DeckDetailPage extends StatelessWidget {
   const DeckDetailPage({super.key});
@@ -28,14 +28,14 @@ class DeckDetailPage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: \[
+          children: [
             ElevatedButton(
               onPressed: () {
                 context.pop();
               },
               child: const Text('Save'),
             ),
-          \],
+          ],
         ),
       ),
     );

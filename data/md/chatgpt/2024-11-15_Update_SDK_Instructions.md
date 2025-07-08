@@ -10,11 +10,11 @@
 &lt;windows&gt;
 &lt;instructions&gt;
 You are being provided with textfield content from windows the user has asked you to focus on.
-User-selected text is enclosed within &lt;user\_\_selection&gt; tags (these tags are not part of the original content and should never be included in your response). When the user has selected text, focus your response on that text. For example, if the user asks about "this," they are likely referring to the selected text.
+User-selected text is enclosed within &lt;user__selection&gt; tags (these tags are not part of the original content and should never be included in your response). When the user has selected text, focus your response on that text. For example, if the user asks about "this," they are likely referring to the selected text.
 &lt;/instructions&gt;
 &lt;window&gt;
 &lt;title&gt;DISample — Package.swift&lt;/title&gt;
-&lt;app\_name&gt;Xcode&lt;/app\_name&gt;
+&lt;app_name&gt;Xcode&lt;/app_name&gt;
 &lt;textfields&gt;
 &lt;textfield id="0"&gt;// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
@@ -32,11 +32,11 @@ private extension String {
     }
 }
 
-let swiftFlags = \[
+let swiftFlags = [
     "-Xfrontend", "-warn-long-expression-type-checking=300",
     "-Xfrontend", "-warn-long-function-bodies=300",
     "-enable-actor-data-race-checks",
-\]
+]
 
 /// Ref: https://github.com/treastrain/swift-upcomingfeatureflags-cheatsheet
 /// Ref: https://zenn.dev/treastrain/articles/d2fd1b44e3ead5
@@ -48,19 +48,19 @@ extension SwiftSetting {
 /// Ref: https://github.com/treastrain/swift-upcomingfeatureflags-cheatsheet
 /// Ref: https://zenn.dev/treastrain/articles/d2fd1b44e3ead5
 extension SwiftSetting: @retroactive CaseIterable {
-    public static var allCases: \[Self\] {
-        \[
+    public static var allCases: [Self] {
+        [
             .existentialAny,
             .otherSwiftFlags,
-        \]
+        ]
     }
 }
 
 struct DependencyLibrary: @unchecked Sendable {
-    let dependencies: \[PackageDescription.Target.Dependency\]
-    let plugins: \[PackageDescription.Target.PluginUsage\]
+    let dependencies: [PackageDescription.Target.Dependency]
+    let plugins: [PackageDescription.Target.PluginUsage]
 
-    init(\_ dependencies: \[PackageDescription.Target.Dependency\] = \[\], plugins: \[PackageDescription.Target.PluginUsage\] = \[\]) {
+    init(_ dependencies: [PackageDescription.Target.Dependency] = [], plugins: [PackageDescription.Target.PluginUsage] = []) {
         self.dependencies = dependencies
         self.plugins = plugins
     }
@@ -70,7 +70,7 @@ enum MacroTargetType: CaseIterable, @unchecked Sendable {
     case swiftMacroSample
 
     private var name: String {
-        "\\(self)".initialUppercased
+        "\(self)".initialUppercased
     }
 
     var target: PackageDescription.Target {
@@ -92,7 +92,7 @@ enum FrameworkTargetType: CaseIterable, @unchecked Sendable {
     case license
 
     var folderName: String {
-        "\\(self)".initialUppercased
+        "\(self)".initialUppercased
     }
 }
 
@@ -103,13 +103,13 @@ enum TargetType: CaseIterable, @unchecked Sendable {
     case presentation
     case previewCatalog
 
-    static var allCases: \[TargetType\] {
-        FrameworkTargetType.allCases.map { .framework($0) } + \[
+    static var allCases: [TargetType] {
+        FrameworkTargetType.allCases.map { .framework($0) } + [
             .dependencyInjection,
             .domain,
             .presentation,
             .previewCatalog,
-        \]
+        ]
     }
 
     var folderName: String {
@@ -117,25 +117,25 @@ enum TargetType: CaseIterable, @unchecked Sendable {
         case .framework:
             "Framework"
         default:
-            "\\(self)".initialUppercased
+            "\(self)".initialUppercased
         }
     }
 
     var path: String {
         switch self {
         case .framework(let frameworkTargetType):
-            "./Sources/\\(folderName)/\\(frameworkTargetType.folderName)"
+            "./Sources/\(folderName)/\(frameworkTargetType.folderName)"
         default:
-            "./Sources/\\(folderName)/"
+            "./Sources/\(folderName)/"
         }
     }
 
     var name: String {
         switch self {
         case .framework(let frameworkTargetType):
-            "\\(frameworkTargetType.folderName)Framework"
+            "\(frameworkTargetType.folderName)Framework"
         default:
-            "\\(folderName)Layer"
+            "\(folderName)Layer"
         }
     }
 
@@ -154,26 +154,26 @@ enum TargetType: CaseIterable, @unchecked Sendable {
     }
 
     var product: PackageDescription.Product {
-        .library(name: name, targets: \[name\])
+        .library(name: name, targets: [name])
     }
 
-    var resources: \[Resource\]? {
+    var resources: [Resource]? {
         switch self {
         case .domain:
-            \[
+            [
                 // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
                 .process("Resources"),
-            \]
+            ]
         case .presentation:
-            \[
+            [
                 // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
                 .process("Resources"),
-            \]
+            ]
         case .framework(.firebase):
-            \[
+            [
                 // Staging 環境の GoogleService-Info.plist のコピー (testTarget でインテグレーションテストをしたいときに参照する)
                 .process("Resources/GoogleService-Info-For-Testing.plist"),
-            \]
+            ]
         default:
             nil
         }
@@ -187,20 +187,20 @@ enum TestTargetType: CaseIterable, Sendable {
     case viewSnapshotTest
 
     var name: String {
-        "\\(self)".initialUppercased
+        "\(self)".initialUppercased
     }
 
-    private var exclude: \[String\] {
+    private var exclude: [String] {
         switch self {
         case .viewSnapshotTest:
             // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
-            \["\_\_Snapshots\_\_"\]
+            ["__Snapshots__"]
         default:
-            \[\]
+            []
         }
     }
 
-    private var resources: \[Resource\]? {
+    private var resources: [Resource]? {
         nil
     }
 
@@ -238,12 +238,12 @@ private extension PackageDescription.Target.Dependency {
 let package = Package(
     name: "DISampleAppPackage",
     defaultLocalization: "ja",
-    platforms: \[
+    platforms: [
         .iOS(.v17),
         .macOS(.v14),
-    \],
+    ],
     products: TargetType.allCases.map { $0.product },
-    dependencies: \[
+    dependencies: [
         // Library
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.24.0"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
@@ -253,19 +253,19 @@ let package = Package(
         .package(url: "https://github.com/cybozu/LicenseList.git", from: "1.1.1"),
 
         // Test
-        .package(url: "&lt;user\_\_selection&gt;https://github.com/apple/swift-testing.git&lt;/user\_\_selection&gt;", from: "0.7.0"),
+        .package(url: "&lt;user__selection&gt;https://github.com/apple/swift-testing.git&lt;/user__selection&gt;", from: "0.7.0"),
 
         // for CLI
         .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
         .package(url: "https://github.com/daikimat/depermaid.git", from: "1.1.0"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
         
-    \],
+    ],
     targets: MacroTargetType.allCases.map { $0.target } + TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
 )
 
 /// Ref: https://github.com/treastrain/swift-upcomingfeatureflags-cheatsheet
-package.targets.filter { !\[.system, .binary, .plugin, .macro\].contains($0.type) }.forEach { $0.swiftSettings = SwiftSetting.allCases }
+package.targets.filter { ![.system, .binary, .plugin, .macro].contains($0.type) }.forEach { $0.swiftSettings = SwiftSetting.allCases }
 
 // MARK: - Macro
 
@@ -273,10 +273,10 @@ extension MacroTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
         case .swiftMacroSample:
-            .init(\[
+            .init([
                 .swiftSyntaxMacros,
                 .swiftCompilerPlugin,
-            \])
+            ])
         }
     }
 }
@@ -287,38 +287,38 @@ extension TargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
         case .dependencyInjection:
-            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + \[
+            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
                 TargetType.presentation.dependency,
-            \])
+            ])
         case .domain:
             .init()
         case .framework(.firebase):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .firebaseAnalytics,
                 .firebaseRemoteConfig,
                 .firebaseCrashlytics,
-            \])
+            ])
         case .framework(.device):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .deviceKit,
-            \])
+            ])
         case .framework(.license):
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .licenseList,
-            \])
+            ])
         case .presentation:
-            .init(\[
+            .init([
                 TargetType.domain.dependency,
                 .previewSnapshots,
-            \])
+            ])
         case .previewCatalog:
-            .init(\[
+            .init([
                 TargetType.presentation.dependency, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
                 .previewGallery,
-            \])
+            ])
         }
     }
 }
@@ -330,25 +330,25 @@ extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
         case .driverTest:
-            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + \[
+            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
                 .testing,
-            \])
+            ])
         case .interactorTest:
-            .init(\[
+            .init([
                 TargetType.dependencyInjection.dependency,
                 .testing,
-            \])
+            ])
         case .presenterTest:
-            .init(\[
+            .init([
                 TargetType.presentation.dependency,
                 .testing,
-            \])
+            ])
         case .viewSnapshotTest:
-            .init(\[
+            .init([
                 TargetType.presentation.dependency,
                 .previewSnapshotsTesting,
                 .testing,
-            \])
+            ])
         }
     }
 }

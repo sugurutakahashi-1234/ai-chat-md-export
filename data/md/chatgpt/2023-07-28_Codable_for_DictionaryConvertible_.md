@@ -11,18 +11,18 @@ Swiftで以下の処理をCodableでリファクタ表現できるかな
 
 public extension DictionaryConvertible {
     // TODO: もしかすると Codable で簡単に書き直せるかもしれない
-    func asDictionary(caseFormat: CaseFormat = .original) -&gt; \[String: Any\] {
+    func asDictionary(caseFormat: CaseFormat = .original) -&gt; [String: Any] {
         let mirror = Mirror(reflecting: self)
-        var dictionary: \[String: Any\] = \[:\]
+        var dictionary: [String: Any] = [:]
 
         mirror.children.forEach { child in
             guard let keyName = child.label else { return }
 
             switch caseFormat {
             case .original:
-                dictionary\[keyName\] = child.value
+                dictionary[keyName] = child.value
             case .snakeCase:
-                dictionary\[keyName.toSnakeCase\] = child.value
+                dictionary[keyName.toSnakeCase] = child.value
             }
         }
 

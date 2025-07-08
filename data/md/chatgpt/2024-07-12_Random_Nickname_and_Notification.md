@@ -11,10 +11,10 @@ randomNickname のように SNSのサービスのrandomNotificationTitle を定�
 
 extension String {
     public static var randomNickname: String {
-        let names = \[
+        let names = [
             "たっくん", "ケンタ", "りょうちゃん123", "みっちゃん",
             "ユウタ", "まゆみん", "いっちゃん2世", "アヤ",
-        \]
+        ]
         return names.randomElement()!
     }
 }

@@ -14,7 +14,7 @@ struct AudioListView: View {
     @StateObject private var presenter: AudioListPresenter
 
     init() {
-        \_presenter = .init(wrappedValue: .init())
+        _presenter = .init(wrappedValue: .init())
     }
 
     var body: some View {
@@ -45,7 +45,7 @@ struct AudioListView: View {
         }
         .navigationTitle("Audio List")
         .overlayLoading(isPresented: $presenter.isLoading, isGestureReactable: false)
-        .appErrorAlert(isPresented: $presenter.showAlert, appError: presenter.appError, onOk: { \_ in
+        .appErrorAlert(isPresented: $presenter.showAlert, appError: presenter.appError, onOk: { _ in
             presenter.onTapOkDelete()
         })
         .task {

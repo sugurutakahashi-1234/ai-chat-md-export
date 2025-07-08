@@ -14,14 +14,14 @@ Running Gradle task 'assembleDebug'...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
-Execution failed for task ':flutter\_plugin\_android\_lifecycle:compileDebugJavaWithJavac'.
-&gt; Could not resolve all files for configuration ':flutter\_plugin\_android\_lifecycle:androidJdkImage'.
-   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=\_internal\_android\_jdk\_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
+* What went wrong:
+Execution failed for task ':flutter_plugin_android_lifecycle:compileDebugJavaWithJavac'.
+&gt; Could not resolve all files for configuration ':flutter_plugin_android_lifecycle:androidJdkImage'.
+   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=_internal_android_jdk_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
       &gt; Execution failed for JdkImageTransform: /Users/sugurutakahashi/Library/Android/sdk/platforms/android-34/core-for-system-modules.jar.
          &gt; Error while executing process /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/jlink with arguments {--module-path /Users/sugurutakahashi/.gradle/caches/8.11.1/transforms/288b69b188ca5de189edbf644c0bd21b-b36eac96-5623-4976-a183-df1c07584d6f/transformed/output/temp/jmod --add-modules java.base --output /Users/sugurutakahashi/.gradle/caches/8.11.1/transforms/288b69b188ca5de189edbf644c0bd21b-b36eac96-5623-4976-a183-df1c07584d6f/transformed/output/jdkImage --disable-plugin system-modules}
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -370,22 +370,22 @@ plugins {
 }
 
 android {
-    namespace = "com.example.snpit\_guild\_app"
+    namespace = "com.example.snpit_guild_app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION\_1\_8
-        targetCompatibility = JavaVersion.VERSION\_1\_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION\_1\_8
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.snpit\_guild\_app"
+        applicationId = "com.example.snpit_guild_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -514,22 +514,22 @@ plugins {
 }
 
 android {
-    namespace = "com.example.snpit\_guild\_app"
+    namespace = "com.example.snpit_guild_app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION\_1\_8
-        targetCompatibility = JavaVersion.VERSION\_1\_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION\_1\_8
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.snpit\_guild\_app"
+        applicationId = "com.example.snpit_guild_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -693,7 +693,7 @@ Running Gradle task 'assembleDebug'...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
+* What went wrong:
 A problem occurred configuring root project 'android'.
 &gt; Could not resolve all artifacts for configuration 'classpath'.
    &gt; Could not find com.android.tools.build:gradle:8.11.1.
@@ -703,7 +703,7 @@ A problem occurred configuring root project 'android'.
      Required by:
          root project :
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -805,39 +805,39 @@ Android Gradle Plugin（`com.android.tools.build:gradle`）や Gradle Wrapper �
 
 ---
 
-### \*\*1. Android Gradle Plugin のバージョン確認\*\*
+### **1. Android Gradle Plugin のバージョン確認**
 公式ドキュメントで最新の Android Gradle Plugin バージョンを確認できます：
 
-- \*\*Android Developers - Update the IDE and Gradle Plugin\*\*
-  - URL: \[https://developer.android.com/studio/releases/gradle-plugin\](https://developer.android.com/studio/releases/gradle-plugin)
+- **Android Developers - Update the IDE and Gradle Plugin**
+  - URL: [https://developer.android.com/studio/releases/gradle-plugin](https://developer.android.com/studio/releases/gradle-plugin)
 
 このページには、各 Android Gradle Plugin バージョンに対応する Gradle のバージョン互換性も記載されています。
 
 ---
 
-### \*\*2. Gradle Wrapper のバージョン確認\*\*
+### **2. Gradle Wrapper のバージョン確認**
 Gradle の公式リリースノートを確認すると、最新および安定版の Gradle バージョンが記載されています。
 
-- \*\*Gradle Release Notes\*\*
-  - URL: \[https://docs.gradle.org/current/release-notes.html\](https://docs.gradle.org/current/release-notes.html)
+- **Gradle Release Notes**
+  - URL: [https://docs.gradle.org/current/release-notes.html](https://docs.gradle.org/current/release-notes.html)
 
 ---
 
-### \*\*3. Maven Repository\*\*
+### **3. Maven Repository**
 `com.android.tools.build:gradle` のバージョンを直接確認する場合は Maven Repository も便利です：
 
-- \*\*Maven Repository - Android Tools Build\*\*
-  - URL: \[https://mvnrepository.com/artifact/com.android.tools.build/gradle\](https://mvnrepository.com/artifact/com.android.tools.build/gradle)
+- **Maven Repository - Android Tools Build**
+  - URL: [https://mvnrepository.com/artifact/com.android.tools.build/gradle](https://mvnrepository.com/artifact/com.android.tools.build/gradle)
 
 このページでは、利用可能な全バージョンを確認できます。
 
 ---
 
-### \*\*4. Flutter Compatibility\*\*
+### **4. Flutter Compatibility**
 Flutter の公式ドキュメントでは、Flutter と Android Gradle Plugin の互換性に関する情報も提供されています：
 
-- \*\*Flutter - Adding Android App\*\*
-  - URL: \[https://docs.flutter.dev/development/add-to-app/android/project-setup\](https://docs.flutter.dev/development/add-to-app/android/project-setup)
+- **Flutter - Adding Android App**
+  - URL: [https://docs.flutter.dev/development/add-to-app/android/project-setup](https://docs.flutter.dev/development/add-to-app/android/project-setup)
 
 ---
 
@@ -849,9 +849,9 @@ Flutter の公式ドキュメントでは、Flutter と Android Gradle Plugin �
 *2024/12/12 16:56:27*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-J3Q88nZSg68rpCt7A4tbDf",
-  "size\_bytes": 426410,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-J3Q88nZSg68rpCt7A4tbDf",
+  "size_bytes": 426410,
   "width": 2048,
   "height": 980,
   "fovea": null,
@@ -859,13 +859,13 @@ Flutter の公式ドキュメントでは、Flutter と Android Gradle Plugin �
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 つまりどういうこと、この左右の差がわかっていない
@@ -968,14 +968,14 @@ Running Gradle task 'assembleDebug'...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
-Execution failed for task ':flutter\_plugin\_android\_lifecycle:compileDebugJavaWithJavac'.
-&gt; Could not resolve all files for configuration ':flutter\_plugin\_android\_lifecycle:androidJdkImage'.
-   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=\_internal\_android\_jdk\_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
+* What went wrong:
+Execution failed for task ':flutter_plugin_android_lifecycle:compileDebugJavaWithJavac'.
+&gt; Could not resolve all files for configuration ':flutter_plugin_android_lifecycle:androidJdkImage'.
+   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=_internal_android_jdk_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
       &gt; Execution failed for JdkImageTransform: /Users/sugurutakahashi/Library/Android/sdk/platforms/android-34/core-for-system-modules.jar.
          &gt; Error while executing process /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/jlink with arguments {--module-path /Users/sugurutakahashi/.gradle/caches/8.11.1/transforms/288b69b188ca5de189edbf644c0bd21b-8bdbc71f-a854-47fa-bf22-3c47c7becba8/transformed/output/temp/jmod --add-modules java.base --output /Users/sugurutakahashi/.gradle/caches/8.11.1/transforms/288b69b188ca5de189edbf644c0bd21b-8bdbc71f-a854-47fa-bf22-3c47c7becba8/transformed/output/jdkImage --disable-plugin system-modules}
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -1197,53 +1197,53 @@ java -version
 ## 🤖 アシスタント
 *2024/12/12 17:08:33*
 
-以下は、\*\*現在の推奨される組み合わせ\*\*の情報源です。それぞれ、Android Gradle Plugin、Gradle、Java（JDK）の互換性情報が公式に提供されているソースから確認できます。
+以下は、**現在の推奨される組み合わせ**の情報源です。それぞれ、Android Gradle Plugin、Gradle、Java（JDK）の互換性情報が公式に提供されているソースから確認できます。
 
 ---
 
-### \*\*1. Android Gradle Plugin の互換性情報\*\*
-- \*\*公式ソース\*\*: \[Android Gradle Plugin Release Notes\](https://developer.android.com/studio/releases/gradle-plugin)
+### **1. Android Gradle Plugin の互換性情報**
+- **公式ソース**: [Android Gradle Plugin Release Notes](https://developer.android.com/studio/releases/gradle-plugin)
   
 このページでは、Android Gradle Plugin の各バージョンに必要な Gradle の最小バージョンが記載されています。さらに、Java バージョンの要件についても説明があります。
 
-#### \*\*例\*\*
-\[Android Gradle Plugin 8.7 リリースノート\](https://developer.android.com/studio/releases/gradle-plugin#8-7-0)
+#### **例**
+[Android Gradle Plugin 8.7 リリースノート](https://developer.android.com/studio/releases/gradle-plugin#8-7-0)
 - 推奨される Java バージョンは JDK 11 または JDK 17。
 - 必要な Gradle バージョンは 8.9 以上。
 
 ---
 
-### \*\*2. Gradle の互換性情報\*\*
-- \*\*公式ソース\*\*: \[Gradle Release Notes\](https://docs.gradle.org/current/release-notes.html)
+### **2. Gradle の互換性情報**
+- **公式ソース**: [Gradle Release Notes](https://docs.gradle.org/current/release-notes.html)
 
 Gradle のリリースノートには、各バージョンでサポートされている Java バージョンの一覧が記載されています。
 
-#### \*\*例\*\*
-\[Gradle 8.9 リリースノート\](https://docs.gradle.org/8.9/release-notes.html)
+#### **例**
+[Gradle 8.9 リリースノート](https://docs.gradle.org/8.9/release-notes.html)
 - サポートされる Java バージョン: JDK 11 および JDK 17。
 
 ---
 
-### \*\*3. Flutter の互換性情報\*\*
-- \*\*公式ソース\*\*: \[Flutter Android Project Setup\](https://docs.flutter.dev/development/add-to-app/android/project-setup)
+### **3. Flutter の互換性情報**
+- **公式ソース**: [Flutter Android Project Setup](https://docs.flutter.dev/development/add-to-app/android/project-setup)
 
 Flutter の公式ドキュメントでは、Flutter プロジェクトでの Android Gradle Plugin と Gradle の設定について説明されています。Flutter のバージョンがサポートする Android Gradle Plugin バージョンを参考に、必要な Java バージョンを間接的に確認できます。
 
 ---
 
-### \*\*ソースのまとめ\*\*
+### **ソースのまとめ**
 | 情報元                                     | 説明                                                                                       |
 |--------------------------------------------|------------------------------------------------------------------------------------------|
-| \[Android Gradle Plugin Release Notes\](https://developer.android.com/studio/releases/gradle-plugin) | Android Gradle Plugin のバージョンと互換性のある Gradle や推奨される JDK を確認できます。          |
-| \[Gradle Release Notes\](https://docs.gradle.org/current/release-notes.html)        | Gradle バージョンごとに対応する JDK の互換性情報を確認できます。                                      |
-| \[Flutter Android Project Setup\](https://docs.flutter.dev/development/add-to-app/android/project-setup) | Flutter プロジェクトでの Android Gradle Plugin と Gradle の設定例を提供します。                      |
+| [Android Gradle Plugin Release Notes](https://developer.android.com/studio/releases/gradle-plugin) | Android Gradle Plugin のバージョンと互換性のある Gradle や推奨される JDK を確認できます。          |
+| [Gradle Release Notes](https://docs.gradle.org/current/release-notes.html)        | Gradle バージョンごとに対応する JDK の互換性情報を確認できます。                                      |
+| [Flutter Android Project Setup](https://docs.flutter.dev/development/add-to-app/android/project-setup) | Flutter プロジェクトでの Android Gradle Plugin と Gradle の設定例を提供します。                      |
 
 ---
 
-### \*\*現在の組み合わせの推奨理由\*\*
+### **現在の組み合わせの推奨理由**
 公式ソースをもとに以下のようにまとめました：
 
-| \*\*Android Gradle Plugin\*\* | \*\*Gradle Version\*\* | \*\*Java Version (JDK)\*\*   |
+| **Android Gradle Plugin** | **Gradle Version** | **Java Version (JDK)**   |
 |----------------------------|--------------------|--------------------------|
 | 8.7                        | 8.9                | JDK 11 または JDK 17     |
 | 8.6                        | 8.7                | JDK 11 または JDK 17     |
@@ -1253,7 +1253,7 @@ Flutter の公式ドキュメントでは、Flutter プロジェクトでの And
 
 ---
 
-### \*\*補足\*\*
+### **補足**
 公式ドキュメントに基づいて設定を見直してください。不明点があれば、具体的な設定ファイルや構成を共有いただければさらにサポートいたします！
 
 ---
@@ -1268,14 +1268,14 @@ Running Gradle task 'assembleDebug'...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
-Execution failed for task ':flutter\_plugin\_android\_lifecycle:compileDebugJavaWithJavac'.
-&gt; Could not resolve all files for configuration ':flutter\_plugin\_android\_lifecycle:androidJdkImage'.
-   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=\_internal\_android\_jdk\_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
+* What went wrong:
+Execution failed for task ':flutter_plugin_android_lifecycle:compileDebugJavaWithJavac'.
+&gt; Could not resolve all files for configuration ':flutter_plugin_android_lifecycle:androidJdkImage'.
+   &gt; Failed to transform core-for-system-modules.jar to match attributes {artifactType=_internal_android_jdk_image, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
       &gt; Execution failed for JdkImageTransform: /Users/sugurutakahashi/Library/Android/sdk/platforms/android-34/core-for-system-modules.jar.
          &gt; Error while executing process /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/jlink with arguments {--module-path /Users/sugurutakahashi/.gradle/caches/8.9/transforms/3213d97f918138e0d97f280c8ffb5027-226dd3fd-eb66-4384-a2a2-8a2f7cb2783b/transformed/output/temp/jmod --add-modules java.base --output /Users/sugurutakahashi/.gradle/caches/8.9/transforms/3213d97f918138e0d97f280c8ffb5027-226dd3fd-eb66-4384-a2a2-8a2f7cb2783b/transformed/output/jdkImage --disable-plugin system-modules}
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -1457,7 +1457,7 @@ pluginManagement {
         return flutterSdkPath
     }()
 
-    includeBuild("$flutterSdkPath/packages/flutter\_tools/gradle")
+    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
         google()
@@ -1549,34 +1549,34 @@ plugins {
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 Running Gradle task 'assembleDebug'...
 Your project is configured with Android NDK 23.1.7779620, but the following plugin(s) depend on a different Android NDK version:
-- flutter\_plugin\_android\_lifecycle requires Android NDK 27.0.12077973
-- geolocator\_android requires Android NDK 27.0.12077973
-- google\_maps\_flutter\_android requires Android NDK 27.0.12077973
+- flutter_plugin_android_lifecycle requires Android NDK 27.0.12077973
+- geolocator_android requires Android NDK 27.0.12077973
+- google_maps_flutter_android requires Android NDK 27.0.12077973
 Fix this issue by using the highest Android NDK version (they are backward compatible).
-Add the following to /Users/sugurutakahashi/git/gallusys/snpit\_guild\_app/android/app/build.gradle:
+Add the following to /Users/sugurutakahashi/git/gallusys/snpit_guild_app/android/app/build.gradle:
 
     android {
         ndkVersion = "27.0.12077973"
         ...
     }
 
-warning: \[options\] source value 8 is obsolete and will be removed in a future release
-warning: \[options\] target value 8 is obsolete and will be removed in a future release
-warning: \[options\] To suppress warnings about obsolete options, use -Xlint:-options.
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
 3 warnings
-e: /Users/sugurutakahashi/.gradle/caches/8.9/transforms/8908176abc5d21d8dbdee76c2585c7de/transformed/jetified-kotlin-stdlib-1.9.0.jar!/META-INF/kotlin-stdlib-jdk7.kotlin\_module: Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 1.9.0, expected version is 1.7.1.
-e: /Users/sugurutakahashi/.gradle/caches/8.9/transforms/8908176abc5d21d8dbdee76c2585c7de/transformed/jetified-kotlin-stdlib-1.9.0.jar!/META-INF/kotlin-stdlib-jdk8.kotlin\_module: Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 1.9.0, expected version is 1.7.1.
-e: /Users/sugurutakahashi/.gradle/caches/8.9/transforms/8908176abc5d21d8dbdee76c2585c7de/transformed/jetified-kotlin-stdlib-1.9.0.jar!/META-INF/kotlin-stdlib.kotlin\_module: Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 1.9.0, expected version is 1.7.1.
-e: /Users/sugurutakahashi/.gradle/caches/8.9/transforms/c355d00b6e1333280b9344365c02a425/transformed/jetified-kotlin-stdlib-common-1.9.0.jar!/META-INF/kotlin-stdlib-common.kotlin\_module: Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 1.9.0, expected version is 1.7.1.
+e: /Users/sugurutakahashi/.gradle/caches/8.9/transforms/8908176abc5d21d8dbdee76c2585c7de/transformed/jetified-kotlin-stdlib-1.9.0.jar!/META-INF/kotlin-stdlib-jdk7.kotlin_module: Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 1.9.0, expected version is 1.7.1.
+e: /Users/sugurutakahashi/.gradle/caches/8.9/transforms/8908176abc5d21d8dbdee76c2585c7de/transformed/jetified-kotlin-stdlib-1.9.0.jar!/META-INF/kotlin-stdlib-jdk8.kotlin_module: Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 1.9.0, expected version is 1.7.1.
+e: /Users/sugurutakahashi/.gradle/caches/8.9/transforms/8908176abc5d21d8dbdee76c2585c7de/transformed/jetified-kotlin-stdlib-1.9.0.jar!/META-INF/kotlin-stdlib.kotlin_module: Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 1.9.0, expected version is 1.7.1.
+e: /Users/sugurutakahashi/.gradle/caches/8.9/transforms/c355d00b6e1333280b9344365c02a425/transformed/jetified-kotlin-stdlib-common-1.9.0.jar!/META-INF/kotlin-stdlib-common.kotlin_module: Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 1.9.0, expected version is 1.7.1.
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
+* What went wrong:
 Execution failed for task ':app:compileDebugKotlin'.
 &gt; A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
    &gt; Compilation error. See log for more details
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -1585,15 +1585,15 @@ Execution failed for task ':app:compileDebugKotlin'.
 BUILD FAILED in 20s
 
 ┌─ Flutter Fix ────────────────────────────────────────────────────────────────────────────────┐
-│ \[!\] Your project requires a newer version of the Kotlin Gradle plugin.                       │
+│ [!] Your project requires a newer version of the Kotlin Gradle plugin.                       │
 │ Find the latest version on https://kotlinlang.org/docs/releases.html#release-details, then   │
 │ update the                                                                                   │
 │ version number of the plugin with id "org.jetbrains.kotlin.android" in the plugins block of  │
-│ /Users/sugurutakahashi/git/gallusys/snpit\_guild\_app/android/settings.gradle.                 │
+│ /Users/sugurutakahashi/git/gallusys/snpit_guild_app/android/settings.gradle.                 │
 │                                                                                              │
 │ Alternatively (if your project was created before Flutter 3.19), update                      │
-│ /Users/sugurutakahashi/git/gallusys/snpit\_guild\_app/android/build.gradle                     │
-│ ext.kotlin\_version = '&lt;latest-version&gt;'                                                      │
+│ /Users/sugurutakahashi/git/gallusys/snpit_guild_app/android/build.gradle                     │
+│ ext.kotlin_version = '&lt;latest-version&gt;'                                                      │
 └──────────────────────────────────────────────────────────────────────────────────────────────┘
 Error: Gradle task assembleDebug failed with exit code 1
 

@@ -51,7 +51,7 @@ ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TAR
 ## 👤 ユーザー
 *2023/5/6 14:22:17*
 
-${PODS\_ROOT} 、${DWARF\_DSYM\_FOLDER\_PATH}、${DWARF\_DSYM\_FILE\_NAME} ってなんですか？
+${PODS_ROOT} 、${DWARF_DSYM_FOLDER_PATH}、${DWARF_DSYM_FILE_NAME} ってなんですか？
 
 ---
 
@@ -79,7 +79,7 @@ ${PODS\_ROOT} 、${DWARF\_DSYM\_FOLDER\_PATH}、${DWARF\_DSYM\_FILE\_NAME} っ�
 
 Swift Package Manager を使っているんだけど独自の Package を作成している場合でもそのスクリプトで大丈夫？
 
-また、DWARF\_DSYM\_FOLDER\_PATHやDWARF\_DSYM\_FILE\_NAME はどこかで宣言する必要はある？
+また、DWARF_DSYM_FOLDER_PATHやDWARF_DSYM_FILE_NAME はどこかで宣言する必要はある？
 
 ---
 
@@ -112,7 +112,7 @@ ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TAR
 公式ドキュメントを見ると以下のようなことが書いてあったけどどういうこと？
 
 プロジェクトの dSYM ファイルの場所を指定すると、Crashlytics は大規模なアプリの dSYM をより迅速に処理できます。
-プロジェクトのビルド済み Info.plist ファイルの場所。  $(SRCROOT)/$(BUILT\_PRODUCTS\_DIR)/$(INFOPLIST\_PATH)  プロジェクトのビルド済み Info.plist ファイルの場所を指定すると、Crashlytics はアプリのバージョンを dSYM に関連付けることができます。
+プロジェクトのビルド済み Info.plist ファイルの場所。  $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)  プロジェクトのビルド済み Info.plist ファイルの場所を指定すると、Crashlytics はアプリのバージョンを dSYM に関連付けることができます。
 
 ---
 

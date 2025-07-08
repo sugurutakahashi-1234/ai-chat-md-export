@@ -8,9 +8,9 @@
 *2024/6/19 10:48:01*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-j3rUoiWyQuDMcB5ZG7LuWGvi",
-  "size\_bytes": 142821,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-j3rUoiWyQuDMcB5ZG7LuWGvi",
+  "size_bytes": 142821,
   "width": 1156,
   "height": 1144,
   "fovea": null,
@@ -18,13 +18,13 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 SwiftUIで音声再生時に音量などを表す簡易的な波形を表現したい。正確ではなくて良いのだが、デフォルメされた波形を表現したい。イメージとしてはこんなイメージである。
@@ -364,9 +364,9 @@ struct ContentView_Previews: PreviewProvider {
 
 この場合、縦軸と横軸の意味は以下の通りです。
 
-- \*\*縦軸 (Y軸)\*\*: 波形の棒の高さを表し、音量レベルを示します。音量が大きいほど棒の高さが高くなります。具体的には、音声のデシベルレベルを正規化した値に基づいて高さが決まります。
+- **縦軸 (Y軸)**: 波形の棒の高さを表し、音量レベルを示します。音量が大きいほど棒の高さが高くなります。具体的には、音声のデシベルレベルを正規化した値に基づいて高さが決まります。
 
-- \*\*横軸 (X軸)\*\*: 時間の経過を表します。最新の音量データが右端に追加され、古いデータは左端に移動します。これは波形が左から右に流れていくように見える効果を生み出します。
+- **横軸 (X軸)**: 時間の経過を表します。最新の音量データが右端に追加され、古いデータは左端に移動します。これは波形が左から右に流れていくように見える効果を生み出します。
 
 このビューでは、最新の音量レベルが継続的に表示され、過去の音量レベルが時間の経過とともに左に流れていきます。これにより、波形が動いているように見え、リアルタイムの音声データの変動を視覚化することができます。
 

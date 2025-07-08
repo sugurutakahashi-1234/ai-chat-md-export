@@ -49,7 +49,7 @@ public final class RecordingDriver: Sendable {
 
     public init() {}
 
-    public func setMeteringTimerInterval(\_ interval: TimeInterval) {
+    public func setMeteringTimerInterval(_ interval: TimeInterval) {
         meteringTimerInterval = interval
         if !recordingTimer.isEmpty {
             stopMeteringTimer()
@@ -59,15 +59,15 @@ public final class RecordingDriver: Sendable {
 
     public func startRecording(recordingConfig: RecordingConfig) throws {
         let audioFilename = recordingConfigDriver.audioFilePath
-            .appendingPathComponent("\\(Date.ios8601)")
+            .appendingPathComponent("\(Date.ios8601)")
             .appendingPathExtension(recordingConfig.audioFormat.fileExtension.rawValue)
 
-        let settings = \[
+        let settings = [
             AVFormatIDKey: Int(recordingConfig.audioFormat.audioFormatID),
             AVSampleRateKey: recordingConfig.audioSampleRate.rawValue,
             AVNumberOfChannelsKey: recordingConfig.audioChannel.rawValue,
             AVEncoderAudioQualityKey: recordingConfig.audioEncodeQuality.toAVAudioQuality.rawValue,
-        \]
+        ]
 
         AudioServicesPlaySystemSound(SystemSoundID(SystemSound.startRecording.systemSoundID))
 
@@ -79,7 +79,7 @@ public final class RecordingDriver: Sendable {
             try AVAudioSession.sharedInstance().setCategory(
                 recordingConfig.audioSessionCategory.toAVAudioSessionCategory,
                 mode: recordingConfig.audioSessionMode.toAVAudioSessionMode,
-                options: \[\]
+                options: []
             )
             OSLogger.debugLog("Start: session active")
             try AVAudioSession.sharedInstance().setActive(true)
@@ -126,7 +126,7 @@ public final class RecordingDriver: Sendable {
         recordingTimeSubject.value = 0
 
         Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 self?.recordingTimeSubject.value += 1
             }
             .store(in: &recordingTimer)
@@ -140,7 +140,7 @@ public final class RecordingDriver: Sendable {
         recordingVolumeLevelsSubject.value = 0.0
 
         Timer.publish(every: meteringTimerInterval, on: .main, in: .common).autoconnect()
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 guard let self else {
                     return
                 }
@@ -160,7 +160,7 @@ import Combine
 
 public final class AudioPlayDriver: AudioPlayDriverProtocol {
     private nonisolated(unsafe) var player: AVPlayer?
-    private nonisolated(unsafe) var cancellables: Set&lt;AnyCancellable&gt; = \[\]
+    private nonisolated(unsafe) var cancellables: Set&lt;AnyCancellable&gt; = []
     private nonisolated(unsafe) let errorSubject = PassthroughSubject&lt;AppError, Never&gt;()
     private nonisolated(unsafe) let currentTimeSubject = CurrentValueSubject&lt;TimeInterval, Never&gt;(0.0)
     private nonisolated(unsafe) let durationSubject = CurrentValueSubject&lt;TimeInterval, Never&gt;(0.0)
@@ -199,19 +199,19 @@ public final class AudioPlayDriver: AudioPlayDriverProtocol {
         // 0.1 秒ごとに再生時刻を通知
         Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
             .combineLatest(isPlayingSubject, isSeekingSubject)
-            .filter { \_, isPlaying, isSeeking in
+            .filter { _, isPlaying, isSeeking in
                 isPlaying && !isSeeking // 再生中かつseekしていないときのみ更新
             }
-            .map { \[weak self\] \_, \_, \_ in
+            .map { [weak self] _, _, _ in
                 self?.player?.currentTime().seconds ?? 0
             }
-            .assign(to: \\.value, on: currentTimeSubject)
+            .assign(to: \.value, on: currentTimeSubject)
             .store(in: &cancellables)
 
         // 再生準備が完了したら再生時間を通知
-        player?.currentItem?.publisher(for: \\.status)
+        player?.currentItem?.publisher(for: \.status)
             .receive(on: RunLoop.main)
-            .compactMap { \[weak self\] status in
+            .compactMap { [weak self] status in
                 switch status {
                 case .readyToPlay:
                     return self?.player?.currentItem?.duration.seconds
@@ -219,12 +219,12 @@ public final class AudioPlayDriver: AudioPlayDriverProtocol {
                     return nil
                 }
             }
-            .assign(to: \\.value, on: durationSubject)
+            .assign(to: \.value, on: durationSubject)
             .store(in: &cancellables)
 
         // 動画を最後まで見終わったら再生開始状態にリセット
         NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 guard let self else {
                     return
                 }
@@ -238,7 +238,7 @@ public final class AudioPlayDriver: AudioPlayDriverProtocol {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
-            OSLogger.errorLog("Audio playback failed: \\(error)")
+            OSLogger.errorLog("Audio playback failed: \(error)")
             errorSubject.send(error.toAppError)
         }
     }
@@ -256,7 +256,7 @@ public final class AudioPlayDriver: AudioPlayDriverProtocol {
     public func seek(to time: TimeInterval) {
         isSeekingSubject.send(true)
         let cmTime = CMTime(seconds: time, preferredTimescale: 600)
-        player?.seek(to: cmTime) { \[weak self\] completed in
+        player?.seek(to: cmTime) { [weak self] completed in
             guard let self else {
                 return
             }

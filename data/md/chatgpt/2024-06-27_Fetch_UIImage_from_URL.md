@@ -116,7 +116,7 @@ Task {
 ## 👤 ユーザー
 *2024/6/27 15:00:54*
 
-let (data, \_) = try await URLSession(configuration: .default).data(from: url) と何が違うのかな
+let (data, _) = try await URLSession(configuration: .default).data(from: url) と何が違うのかな
 
 ---
 
@@ -186,21 +186,21 @@ func fetchImage(from urlString: String) async -> UIImage? {
 
 この処理の以下の処理は非同期で実施したい
 
-let (data, \_) = try await URLSession.shared.data(from: audio.postedBy.imageUrl)
-                    remoteControlDriver.updateNowPlayingInfo(title: "Title: \\(talkThreadTitle)", artist: "Artist: \\(audio.postedBy.name)", artwork: UIImage(data: data)!)
+let (data, _) = try await URLSession.shared.data(from: audio.postedBy.imageUrl)
+                    remoteControlDriver.updateNowPlayingInfo(title: "Title: \(talkThreadTitle)", artist: "Artist: \(audio.postedBy.name)", artwork: UIImage(data: data)!)
 
 audioPlayTask = Task {
             do {
                 let talkThreadTitle: String = selectedTalkThread.title
                 for audio in audios {
                     try await dependency.audioPlayDriver.play(audioSource: .remoteAudioURL(audio.audioUrl))
-                    let (data, \_) = try await URLSession.shared.data(from: audio.postedBy.imageUrl)
-                    remoteControlDriver.updateNowPlayingInfo(title: "Title: \\(talkThreadTitle)", artist: "Artist: \\(audio.postedBy.name)", artwork: UIImage(data: data)!)
+                    let (data, _) = try await URLSession.shared.data(from: audio.postedBy.imageUrl)
+                    remoteControlDriver.updateNowPlayingInfo(title: "Title: \(talkThreadTitle)", artist: "Artist: \(audio.postedBy.name)", artwork: UIImage(data: data)!)
                 }
             } catch is CancellationError {
                 dependency.logDriver.debugLog("Task was cancelled.")
             } catch {
-                dependency.logDriver.errorLog("\\(error)")
+                dependency.logDriver.errorLog("\(error)")
                 appError = error.toAppError
                 showAlert = true
             }

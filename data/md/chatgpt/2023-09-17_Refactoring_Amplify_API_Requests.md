@@ -32,11 +32,11 @@ public final class AmplifyApiRequestManager: ApiRequestManagerProtocol {
         }
     }
 
-    public func getResearches(measurementType: EmomilCore.MeasurementType?) async throws -&gt; \[EmomilCore.Research\] {
-        let request: GraphQLRequest = .listResearches(measurement\_type: MeasurementType(from: measurementType))
+    public func getResearches(measurementType: EmomilCore.MeasurementType?) async throws -&gt; [EmomilCore.Research] {
+        let request: GraphQLRequest = .listResearches(measurement_type: MeasurementType(from: measurementType))
 
         LoggerContainer.requestLog(request: request)
-        // measurement\_type が nil の場合は全件取得になる
+        // measurement_type が nil の場合は全件取得になる
         let result = try await Amplify.API.query(request: request)
 
         switch result {
@@ -70,9 +70,9 @@ public final class AmplifyApiRequestManager: ApiRequestManagerProtocol {
     public func getOrCreateDevice(device: EmomilCore.DeviceInfo) async throws -&gt; EmomilCore.DomainDevice {
         let request: GraphQLRequest = .getOrCreateDevice(
             name: device.modelIdentifier,
-            screen\_width: device.screenWidth,
-            screen\_height: device.screenHeight,
-            pixels\_per\_point: device.pixelsPerPoint ?? 0 // TODO: Amplify Deviceモデルにこのパラーメーターがないため、暫定的にアンラップしている
+            screen_width: device.screenWidth,
+            screen_height: device.screenHeight,
+            pixels_per_point: device.pixelsPerPoint ?? 0 // TODO: Amplify Deviceモデルにこのパラーメーターがないため、暫定的にアンラップしている
         )
 
         LoggerContainer.requestLog(request: request)

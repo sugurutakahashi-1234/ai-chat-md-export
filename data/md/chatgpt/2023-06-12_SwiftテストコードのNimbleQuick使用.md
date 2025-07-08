@@ -130,16 +130,16 @@ class StringExtensionSpec: QuickSpec {
 
 public struct AnalyticsLogEvent {
     public let name: String
-    public let properties: \[String: Any\]?
+    public let properties: [String: Any]?
 
-    public init(name: String, properties: \[String: Any\]? = nil) {
+    public init(name: String, properties: [String: Any]? = nil) {
         self.name = name
         self.properties = properties
     }
 }
 
 private extension AnalyticsLogEvent {
-    var basicAnalyticsProperties: \[String: AnalyticsPropertyValue\]? {
+    var basicAnalyticsProperties: [String: AnalyticsPropertyValue]? {
         guard let properties else {
             // プロパティを持たない場合もあるので異常系ではない
             return nil
@@ -163,7 +163,7 @@ private extension AnalyticsLogEvent {
                 return dateFormatter.string(from: dateValue)
             default:
                 // ここでエラーになった場合は AnalyticsPropertyValue の型になるように適宜 switch文を修正して下さい
-                assertionFailure("Value type not supported: \\(type(of: value))")
+                assertionFailure("Value type not supported: \(type(of: value))")
                 return String(describing: value)
             }
         }

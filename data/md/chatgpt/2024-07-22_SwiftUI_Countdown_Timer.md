@@ -10,7 +10,7 @@
 60秒カウントダウnnの処理
 
 Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
-            .compactMap { \[weak self\] \_ in
+            .compactMap { [weak self] _ in
             }
             .assign(to: &$resendableRemainingTime)
             .store(in: &cancellables)

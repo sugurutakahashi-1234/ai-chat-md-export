@@ -136,7 +136,7 @@ struct MyApp: App {
 }
 
 // Previews
-struct FirstView\_Previews: PreviewProvider {
+struct FirstView_Previews: PreviewProvider {
     static var previews: some View {
         let dummyRepo = DummyRepository()
         let dummyVM = FirstViewModel(repository: dummyRepo)
@@ -152,7 +152,7 @@ struct FirstView\_Previews: PreviewProvider {
     }
 }
 
-struct SecondView\_Previews: PreviewProvider {
+struct SecondView_Previews: PreviewProvider {
     static var previews: some View {
         let dummyRepo = DummyRepository()
         let dummyVM = SecondViewModel(repository: dummyRepo)

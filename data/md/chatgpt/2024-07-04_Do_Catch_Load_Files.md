@@ -11,12 +11,12 @@
 
     func loadCacheFiles() {
         do {
-            let fileUrls = try FileManageDriver.getFiles(directory: Constants.FilePath.stampDirectory, extensions: \[.png\])
+            let fileUrls = try FileManageDriver.getFiles(directory: Constants.FilePath.stampDirectory, extensions: [.png])
             stampFiles = fileUrls.map { url in
                 (path: url.lastPathComponent, image: try? FileManageDriver.loadImageFromCache(fileName: url.lastPathComponent, directory: Constants.FilePath.stampDirectory))
             }
         } catch {
-            print("Error while enumerating files \\(directoryType.directoryUrl.path): \\(error.localizedDescription)")
+            print("Error while enumerating files \(directoryType.directoryUrl.path): \(error.localizedDescription)")
         }
     }
 
@@ -50,7 +50,7 @@ func loadCacheFiles() {
 
 以下の差
 
-    public var pathComponents: \[String\] { get }
+    public var pathComponents: [String] { get }
 
     /// Returns the last path component of the URL, or an empty string if the path is an empty string.
     public var lastPathComponent: String { get }

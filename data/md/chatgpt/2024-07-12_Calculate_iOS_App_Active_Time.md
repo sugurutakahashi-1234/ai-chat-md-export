@@ -242,7 +242,7 @@ struct ContentView: View {
 ## 👤 ユーザー
 *2024/7/12 10:23:35*
 
-SceneDelegate と @Environment(\\.scenePhase) var scenePhase の機能は重複しているのかそれぞれ役割があるのか教えてほしい
+SceneDelegate と @Environment(\.scenePhase) var scenePhase の機能は重複しているのかそれぞれ役割があるのか教えてほしい
 
 ---
 
@@ -315,7 +315,7 @@ struct ActiveTimeApp: App {
 ## 👤 ユーザー
 *2024/7/12 10:24:22*
 
-@Environment(\\.scenePhase) var scenePhase だけで利用時間を調べることはできるのか？
+@Environment(\.scenePhase) var scenePhase だけで利用時間を調べることはできるのか？
 
 ---
 

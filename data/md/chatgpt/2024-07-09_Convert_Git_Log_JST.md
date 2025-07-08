@@ -9,7 +9,7 @@
 
 JSTということをわかりやすくしたい
 
-git log 0.1.0-rc.2..HEAD --oneline --pretty=format:"\[%cd\] %cr %h%n%s%n" --date=format:'%Y/%m/%d %H:%M:%S'
+git log 0.1.0-rc.2..HEAD --oneline --pretty=format:"[%cd] %cr %h%n%s%n" --date=format:'%Y/%m/%d %H:%M:%S'
 
 ---
 

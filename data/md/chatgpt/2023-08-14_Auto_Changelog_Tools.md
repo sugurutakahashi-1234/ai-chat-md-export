@@ -16,25 +16,25 @@ CHANGELOG.md の自動生成ツールで一般的なものを教えて欲しい�
 
 `CHANGELOG.md` の自動生成をサポートするツールは、プロジェクトの履歴や変更内容を効率的にトラックし、関係者に明確に伝えるのに役立ちます。以下はそのようなツールの一部です：
 
-1. \*\*standard-version\*\*: 
+1. **standard-version**: 
    - JavaScript/Node.jsプロジェクト向け。
    - `semver`（セマンティックバージョニング）と `Conventional Commits` スタイルのコミットメッセージを利用して、CHANGELOGを自動生成。
    - 新しいバージョン番号の自動提案や、タグの生成もサポート。
 
-2. \*\*semantic-release\*\*: 
+2. **semantic-release**: 
    - Continuous Integration (CI) サービスと統合することで、自動的にバージョン番号を決定し、パッケージを公開し、CHANGELOGを更新する。
    - プラグインアーキテクチャを持っており、拡張性が高い。
 
-3. \*\*lerna\*\*: 
+3. **lerna**: 
    - JavaScriptのマルチパッケージプロジェクトを管理するためのツール。
    - 変更を検出し、変更のあったパッケージのバージョンを更新。
    - CHANGELOGの自動生成もサポートしている。
 
-4. \*\*github-changelog-generator\*\*: 
+4. **github-changelog-generator**: 
    - GitHubのリポジトリに基づいて、CHANGELOGを生成。
    - プルリクエストやイシューの情報を利用して詳細なCHANGELOGを作成。
 
-5. \*\*auto-changelog\*\*: 
+5. **auto-changelog**: 
    - コミットログやタグからCHANGELOGを自動生成。
    - 様々なテンプレートやオプションでカスタマイズが可能。
 

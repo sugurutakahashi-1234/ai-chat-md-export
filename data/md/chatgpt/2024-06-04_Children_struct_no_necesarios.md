@@ -14,7 +14,7 @@ struct PropertyViewBody: View {
     let onTapElement: (any Encodable) -&gt; Void
 
     var body: some View {
-        ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \\.offset) { \_, child in
+        ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \.offset) { _, child in
             if let label = child.label, let childValue = child.value as? any Encodable {
                 PropertyChildView(label: label, childValue: childValue, onTapElement: onTapElement)
             }

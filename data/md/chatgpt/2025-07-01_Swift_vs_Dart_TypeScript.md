@@ -105,17 +105,17 @@ Dart は `async/await` + isolate、TypeScript は JS の非同期モデル（Web
 ## 🤖 アシスタント
 *2025/7/2 0:45:22*
 
-### Kotlin の「書きやすさポジション」は Swift ↔ Dart/TypeScript の \*\*中間よりやや Swift 寄り\*\*
+### Kotlin の「書きやすさポジション」は Swift ↔ Dart/TypeScript の **中間よりやや Swift 寄り**
 
 | 以前挙げた項目 | Kotlin での表現力 | コメント |
 |---|---|---|
-| \*\*1. 関連値付き enum ＋網羅的パターンマッチ\*\* | \*\*◎\*\* `sealed class / interface` + `data class` サブクラス化で実現。`when` は exhaustiveness をコンパイル時チェック (else 不要) citeturn3search0 | 生成コードは Swift より 2–3 行多いが、Dart/TS の boiler-plate よりは圧倒的に少ない。 |
-| \*\*2. `associatedtype` 相当 & 条件付き適合\*\* | \*\*○▲\*\* ジェネリック＋`where` 制約で大半は書けるが、\*\*型ごとに実装を変える\*\* “真の associatedtype” には届かず。\*\*条件付き適合\*\*も拡張関数レベル止まりで、Swift ほど自在ではない。 |
-| \*\*3. PropertyWrapper\*\* | \*\*◎\*\* `property delegates`（`by Delegates.observable` など）として標準機能で提供 citeturn1search0。独自 delegate も 1 ファイルで書け、Swift とほぼ同等の簡潔さ。 |
-| \*\*4. Result Builder / DSL\*\* | \*\*◎\*\* ラムダ \*\*with receiver\*\* + `@DslMarker` に加え、近年 \*\*context receivers → context parameters\*\* が正式採用され DSL がさらに簡潔に citeturn2search1turn0search7。HTML DSL などは kotlinx.html が実例。 |
-| \*\*5. KeyPath 的参照\*\* | \*\*○\*\* プロパティ参照 `User::name` は型安全。ただし実行時には `KProperty` 反射オブジェクトで、Swift の `KeyPath` ほどゼロコストではない。 |
-| \*\*6. 自動合成\*\* | \*\*◎\*\* `data class` が `equals / hashCode / copy / toString` を自動生成。JSON も `kotlinx.serialization`（プラグインだけで完結）。Swift の `Codable` にかなり近い体験。 |
-| \*\*7. 構造化並行 & Actor\*\* | \*\*◎\*\* コルーチンは \*\*言語＋標準ライブラリ\*\*で一体化。Kotlin 2.x で \*\*structured concurrency\*\* が正式ドキュメント化 citeturn0search2。スレッドセーフ保証（`Sendable` 相当）は無いが、`CoroutineScope` によるキャンセル木で安全性を確保。 |
+| **1. 関連値付き enum ＋網羅的パターンマッチ** | **◎** `sealed class / interface` + `data class` サブクラス化で実現。`when` は exhaustiveness をコンパイル時チェック (else 不要) citeturn3search0 | 生成コードは Swift より 2–3 行多いが、Dart/TS の boiler-plate よりは圧倒的に少ない。 |
+| **2. `associatedtype` 相当 & 条件付き適合** | **○▲** ジェネリック＋`where` 制約で大半は書けるが、**型ごとに実装を変える** “真の associatedtype” には届かず。**条件付き適合**も拡張関数レベル止まりで、Swift ほど自在ではない。 |
+| **3. PropertyWrapper** | **◎** `property delegates`（`by Delegates.observable` など）として標準機能で提供 citeturn1search0。独自 delegate も 1 ファイルで書け、Swift とほぼ同等の簡潔さ。 |
+| **4. Result Builder / DSL** | **◎** ラムダ **with receiver** + `@DslMarker` に加え、近年 **context receivers → context parameters** が正式採用され DSL がさらに簡潔に citeturn2search1turn0search7。HTML DSL などは kotlinx.html が実例。 |
+| **5. KeyPath 的参照** | **○** プロパティ参照 `User::name` は型安全。ただし実行時には `KProperty` 反射オブジェクトで、Swift の `KeyPath` ほどゼロコストではない。 |
+| **6. 自動合成** | **◎** `data class` が `equals / hashCode / copy / toString` を自動生成。JSON も `kotlinx.serialization`（プラグインだけで完結）。Swift の `Codable` にかなり近い体験。 |
+| **7. 構造化並行 & Actor** | **◎** コルーチンは **言語＋標準ライブラリ**で一体化。Kotlin 2.x で **structured concurrency** が正式ドキュメント化 citeturn0search2。スレッドセーフ保証（`Sendable` 相当）は無いが、`CoroutineScope` によるキャンセル木で安全性を確保。 |
 
 ---
 
@@ -123,37 +123,37 @@ Dart は `async/await` + isolate、TypeScript は JS の非同期モデル（Web
 
 ### Swift とほぼ互角・あるいは勝る
 
-1. \*\*DSL 構築\*\*  
+1. **DSL 構築**  
    - `context parameters` により依存解決も簡潔。  
-2. \*\*プロパティラッパー相当\*\*  
+2. **プロパティラッパー相当**  
    - `observable`, `vetoable`, `lazy` などが標準で充実。  
-3. \*\*コルーチン\*\*  
+3. **コルーチン**  
    - クロスプラットフォーム（JVM/Native/Wasm/JS）で統一 API。  
 
 ### Swift にまだ及ばない
 
-1. \*\*Associated Type & Conditional Conformance\*\*  
+1. **Associated Type & Conditional Conformance**  
    - “実装側が決める関連型” を表せず、拡張にも where 句が付けられない。  
-2. \*\*ゼロコスト KeyPath\*\*  
+2. **ゼロコスト KeyPath**  
    - リフレクション経由なのでランタイムコストは避けられない。  
-3. \*\*コンパイラ保証付きスレッドセーフ\*\* (`Sendable`)  
+3. **コンパイラ保証付きスレッドセーフ** (`Sendable`)  
    - 現状は設計／コードレビューで担保する必要がある。  
 
 ### Dart / TypeScript との比較
 
 | 観点 | Kotlin vs Dart | Kotlin vs TypeScript |
 |---|---|---|
-| \*\*ボイラープレート量\*\* | ほぼ同数行かやや少ない | 明らかに少ない（TS は型情報と実装を二重に書く場面が多い） |
-| \*\*非同期モデル\*\* | コルーチンが優勢（isolate 依存より柔軟） | コルーチン API が Promise チェーンより読みやすい |
-| \*\*高速マクロ／コード生成依存度\*\* | 小さい（標準言語機能で完結） | 小さい（TS はデコレータや AST 変換が未標準） |
+| **ボイラープレート量** | ほぼ同数行かやや少ない | 明らかに少ない（TS は型情報と実装を二重に書く場面が多い） |
+| **非同期モデル** | コルーチンが優勢（isolate 依存より柔軟） | コルーチン API が Promise チェーンより読みやすい |
+| **高速マクロ／コード生成依存度** | 小さい（標準言語機能で完結） | 小さい（TS はデコレータや AST 変換が未標準） |
 
 ---
 
 ### 実務での選定ヒント
 
-- \*\*UI DSL を多用する Android / Compose Multiplatform\*\* → Kotlin は Swift と同じ感覚で DSL を書ける。  
-- \*\*複雑なエラー型（関連値 enum）\*\* を共有したい場合 → Kotlin の sealed class が Dart/TS より手間が少なく、Swift 移植もスムーズ。  
-- \*\*高度なジェネリクス依存ライブラリ\*\* を書く場合 → Swift のほうが still 有利。Kotlin だけで完結させるなら設計を多少妥協。  
+- **UI DSL を多用する Android / Compose Multiplatform** → Kotlin は Swift と同じ感覚で DSL を書ける。  
+- **複雑なエラー型（関連値 enum）** を共有したい場合 → Kotlin の sealed class が Dart/TS より手間が少なく、Swift 移植もスムーズ。  
+- **高度なジェネリクス依存ライブラリ** を書く場合 → Swift のほうが still 有利。Kotlin だけで完結させるなら設計を多少妥協。  
 
 &gt; 「Swift ほぼそのままのエレガンスで書けるが、型レベルメタプログラミングの頂点は Swift が一歩リード」── これが Kotlin の現在地と言えます。
 

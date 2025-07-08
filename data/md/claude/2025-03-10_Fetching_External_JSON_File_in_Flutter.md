@@ -186,7 +186,7 @@ class MaintenanceAwareWidget extends ConsumerWidget {
 
 これは最低でも書かなければいけないのか？MaintenanceModelより、これから他のbool値や最低アプリバージョンとかも含まれるかもしれないので、それを見越した名前にしてほしい。
 
-@freezed class MaintenanceModel with \*$MaintenanceModel { const factory MaintenanceModel({ @Default(false) bool maintenance, }) = \*MaintenanceModel; factory MaintenanceModel.fromJson(Map&lt;String, dynamic&gt; json) =&gt; \_$MaintenanceModelFromJson(json); }
+@freezed class MaintenanceModel with *$MaintenanceModel { const factory MaintenanceModel({ @Default(false) bool maintenance, }) = *MaintenanceModel; factory MaintenanceModel.fromJson(Map&lt;String, dynamic&gt; json) =&gt; _$MaintenanceModelFromJson(json); }
 
 ---
 

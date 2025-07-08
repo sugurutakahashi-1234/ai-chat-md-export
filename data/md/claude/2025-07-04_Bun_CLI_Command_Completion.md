@@ -91,28 +91,28 @@ Bunの補完機能は、開発者体験を重視した設計により、npmやpn
 ## 👤 ユーザー
 *2025/7/4 22:28:13*
 
-bun completions &gt; ~/.local/share/zsh/site-functions/\_bunこれってどこに書かれているの?
+bun completions &gt; ~/.local/share/zsh/site-functions/_bunこれってどこに書かれているの?
 
 ---
 
 ## 🤖 アシスタント
 *2025/7/4 22:28:33*
 
-`bun completions &gt; ~/.local/share/zsh/site-functions/\_bun` というコマンドについて、提供された検索結果を確認しましたが、このコマンドは実際にはドキュメントに記載されていないようです。
+`bun completions &gt; ~/.local/share/zsh/site-functions/_bun` というコマンドについて、提供された検索結果を確認しましたが、このコマンドは実際にはドキュメントに記載されていないようです。
 
 検索結果から確認できた情報：
 
-1. \*\*Bunの公式リポジトリ\*\*には補完ファイルが存在します：
+1. **Bunの公式リポジトリ**には補完ファイルが存在します：
    - `completions/bun.zsh` (Zsh用)
    - `completions/bun.fish` (Fish用)
 
-2. \*\*自動インストールについて\*\*：
+2. **自動インストールについて**：
    - Bunは初回インストールやアップグレード時に自動的に補完をインストールします
    - インストール先はOSやシェルの設定によって自動的に決定されます
 
-3. \*\*手動インストールの具体的な方法\*\*は、検索結果のドキュメントには明確に記載されていませんでした。
+3. **手動インストールの具体的な方法**は、検索結果のドキュメントには明確に記載されていませんでした。
 
-私が提示した `~/.local/share/zsh/site-functions/\_bun` というパスは、Zshの一般的な補完ファイルの配置場所に基づいた推測でした。正確な手動インストール方法については、以下を確認することをお勧めします：
+私が提示した `~/.local/share/zsh/site-functions/_bun` というパスは、Zshの一般的な補完ファイルの配置場所に基づいた推測でした。正確な手動インストール方法については、以下を確認することをお勧めします：
 
 - Bunの公式ドキュメント
 - `bun completions --help` コマンドの出力
@@ -172,7 +172,7 @@ Bunは自動的に補完をインストールするので、すでにどこか�
 
 bun completions                                                                                                                                                                         1 ↵
 Enabled loading bun's completions in .zshrc
-Installed completions to /Users/sugurutakahashi/.bun/\_bun
+Installed completions to /Users/sugurutakahashi/.bun/_bun
 
 ---
 

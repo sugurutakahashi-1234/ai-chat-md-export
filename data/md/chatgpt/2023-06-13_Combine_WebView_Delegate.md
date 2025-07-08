@@ -20,9 +20,9 @@ protocol TrackingWebViewDelegate: AnyObject {
         documentSize: CGSize
     )
     func didFinishLoadingInitialURL()
-    func onTrackingEvent(\_ event: TrackingWebEvent)
-    func visibleElementsDetected(\_ elements: VisibleElements)
-    func windowScrollPosition(\_ windowScrollPosition: WindowScrollPosition)
+    func onTrackingEvent(_ event: TrackingWebEvent)
+    func visibleElementsDetected(_ elements: VisibleElements)
+    func windowScrollPosition(_ windowScrollPosition: WindowScrollPosition)
 }
 
 private let javascript = """
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var windowWidth = window.innerWidth || document.documentElement.clientWidth;
         var windowHeight = window.innerHeight || document.documentElement.clientHeight;
         window.webkit.messageHandlers.jsMessenger.postMessage({
-            type: "document\_size",
+            type: "document_size",
             width: windowWidth,
             height: windowHeight,
         })
@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInterval(visibleElementsTimer)
         }
         visibleElementsTimer = setInterval(() =&gt; {
-            var elements = \[\];
-            Array.from(document.body.querySelectorAll("\[id\]")).forEach((el) =&gt; {
+            var elements = [];
+            Array.from(document.body.querySelectorAll("[id]")).forEach((el) =&gt; {
               let rect = el.getBoundingClientRect();
               if (isElementVisible(rect)) {
                 elements.push({
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             if (elements.length &gt; 0) {
                 window.webkit.messageHandlers.jsMessenger.postMessage({
-                    type: "visible\_elements",
+                    type: "visible_elements",
                     elements: elements,
                 })
             }
@@ -88,21 +88,21 @@ document.addEventListener('DOMContentLoaded', function() {
             video.addEventListener("play", () =&gt; {
                 window.webkit.messageHandlers.jsMessenger.postMessage({
                     type: "event",
-                    event\_type: "video\_play",
+                    event_type: "video_play",
                     source: source
                 });
             });
             video.addEventListener("pause", () =&gt; {
                 window.webkit.messageHandlers.jsMessenger.postMessage({
                     type: "event",
-                    event\_type: "video\_pause",
+                    event_type: "video_pause",
                     source: source
                 });
             });
             video.addEventListener("ended", () =&gt; {
                 window.webkit.messageHandlers.jsMessenger.postMessage({
                     type: "event",
-                    event\_type: "video\_ended",
+                    event_type: "video_ended",
                     source: source
                 });
             });
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 setInterval(() =&gt; {
     window.webkit.messageHandlers.jsMessenger.postMessage({
-        type: "window\_scroll\_position",
+        type: "window_scroll_position",
         scrollLeft: window.scrollX,
         scrollTop: window.scrollY,
     })
@@ -122,7 +122,7 @@ document.addEventListener("click", function(e) {
     var tagClicked = document.elementFromPoint(e.clientX, e.clientY);
     window.webkit.messageHandlers.jsMessenger.postMessage({
         type: "event",
-        event\_type: "click",
+        event_type: "click",
         x: e.clientX,
         y: e.clientY,
         targetOuterHTML: tagClicked.outerHTML.toString(),
@@ -141,11 +141,11 @@ document.addEventListener("scroll", function(e) {
       scrollTop: e.target.scrollTop ?? window.scrollY,
     };
     if (scrollEndTimer === null) {
-        window.webkit.messageHandlers.jsMessenger.postMessage({ event\_type: "scroll\_begin", ...data });
+        window.webkit.messageHandlers.jsMessenger.postMessage({ event_type: "scroll_begin", ...data });
     }
     clearTimeout(scrollEndTimer)
     scrollEndTimer = setTimeout(() =&gt; {
-        window.webkit.messageHandlers.jsMessenger.postMessage({ event\_type: "scroll\_end", ...data });
+        window.webkit.messageHandlers.jsMessenger.postMessage({ event_type: "scroll_end", ...data });
         scrollEndTimer = null;
     }, 100);
 }, true);
@@ -155,7 +155,7 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
     let url: URL
     weak var delegate: TrackingWebViewDelegate?
     private var offsetY = 0.0
-    private var observers: \[NSKeyValueObservation\] = \[\]
+    private var observers: [NSKeyValueObservation] = []
     let webView = WKWebView()
     @Published var isReady = false
 
@@ -173,7 +173,7 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 
         // WEBサイトの更新が反映されないことがあった為、キャッシュクリア
         WKWebsiteDataStore.default().removeData(
-            ofTypes: \[WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache\],
+            ofTypes: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache],
             modifiedSince: Date(timeIntervalSince1970: 0),
             completionHandler: {}
         )
@@ -188,29 +188,29 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 
     private func setupObservers() {
         func subscriber(for keyPath: KeyPath&lt;WKWebView, some Any&gt;) -&gt; NSKeyValueObservation {
-            webView.observe(keyPath, options: \[.prior\]) { \[weak self\] \_, change in
+            webView.observe(keyPath, options: [.prior]) { [weak self] _, change in
                 if change.isPrior {
                     self?.objectWillChange.send()
                 }
             }
         }
         // Setup observers for all KVO compliant properties
-        observers = \[
-            subscriber(for: \\.title),
-            subscriber(for: \\.url),
-            subscriber(for: \\.isLoading),
-            subscriber(for: \\.estimatedProgress),
-            subscriber(for: \\.hasOnlySecureContent),
-            subscriber(for: \\.serverTrust),
-            subscriber(for: \\.canGoBack),
-            subscriber(for: \\.canGoForward),
-            subscriber(for: \\.themeColor),
-            subscriber(for: \\.underPageBackgroundColor),
-            subscriber(for: \\.microphoneCaptureState),
-            subscriber(for: \\.cameraCaptureState),
-        \]
-        if #available(iOS 16.0, \*) {
-            observers.append(subscriber(for: \\.fullscreenState))
+        observers = [
+            subscriber(for: \.title),
+            subscriber(for: \.url),
+            subscriber(for: \.isLoading),
+            subscriber(for: \.estimatedProgress),
+            subscriber(for: \.hasOnlySecureContent),
+            subscriber(for: \.serverTrust),
+            subscriber(for: \.canGoBack),
+            subscriber(for: \.canGoForward),
+            subscriber(for: \.themeColor),
+            subscriber(for: \.underPageBackgroundColor),
+            subscriber(for: \.microphoneCaptureState),
+            subscriber(for: \.cameraCaptureState),
+        ]
+        if #available(iOS 16.0, *) {
+            observers.append(subscriber(for: \.fullscreenState))
         }
         // 6月リリースのテストマーケ版ではiOS16以上を対応するので一旦、iOS16未満は無視する
     }
@@ -280,35 +280,35 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
         )
     }
 
-    private func handleEvent(\_ dict: \[String: Any\]) {
-        guard let event\_type = dict\["event\_type"\] as? String else {
+    private func handleEvent(_ dict: [String: Any]) {
+        guard let event_type = dict["event_type"] as? String else {
             return
         }
-        switch event\_type {
+        switch event_type {
         case "click":
-            guard let x = dict\["x"\] as? Double,
-                  let y = dict\["y"\] as? Double
+            guard let x = dict["x"] as? Double,
+                  let y = dict["y"] as? Double
             else {
                 return
             }
-            let targetOuterHTML = dict\["targetOuterHTML"\] as? String ?? nil
+            let targetOuterHTML = dict["targetOuterHTML"] as? String ?? nil
             var domRect: DOMRect? = nil
-            if let rect = dict\["targetBoundingClientRect"\] as? \[String: Double\] {
+            if let rect = dict["targetBoundingClientRect"] as? [String: Double] {
                 domRect = DOMRect.from(dict: rect)
             }
             delegate?.onTrackingEvent(
                 Click(datetime: Date(), x: x, y: y, targetOuterHTML: targetOuterHTML, targetBoundingClientRect: domRect))
-        case "scroll\_begin", "scroll\_end":
-            guard let scrollLeft = dict\["scrollLeft"\] as? Double,
-                  let scrollTop = dict\["scrollTop"\] as? Double
+        case "scroll_begin", "scroll_end":
+            guard let scrollLeft = dict["scrollLeft"] as? Double,
+                  let scrollTop = dict["scrollTop"] as? Double
             else {
                 return
             }
-            let isBegin = event\_type == "scroll\_begin"
-            let targetId = dict\["targetId"\] as? String
-            let targetTagName = dict\["targetTagName"\] as? String
+            let isBegin = event_type == "scroll_begin"
+            let targetId = dict["targetId"] as? String
+            let targetTagName = dict["targetTagName"] as? String
             var domRect: DOMRect? = nil
-            if let rect = dict\["targetBoundingClientRect"\] as? \[String: Double\] {
+            if let rect = dict["targetBoundingClientRect"] as? [String: Double] {
                 domRect = DOMRect.from(dict: rect)
             }
             let scroll = Scroll(
@@ -321,36 +321,36 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
                 targetBoundingClientRect: domRect
             )
             delegate?.onTrackingEvent(scroll)
-        case "video\_play":
-            let event = VideoPlay(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_play":
+            let event = VideoPlay(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
-        case "video\_pause":
-            let event = VideoPause(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_pause":
+            let event = VideoPause(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
-        case "video\_ended":
-            let event = VideoEnded(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_ended":
+            let event = VideoEnded(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
         default:
             break
         }
     }
 
-    private func handleDocumentSize(\_ dict: \[String: Any\]) {
-        guard let width = dict\["width"\] as? Double,
-              let height = dict\["height"\] as? Double
+    private func handleDocumentSize(_ dict: [String: Any]) {
+        guard let width = dict["width"] as? Double,
+              let height = dict["height"] as? Double
         else {
             return
         }
         documentSize = CGSize(width: width, height: height)
     }
 
-    private func handleVisibleElements(\_ dict: \[String: Any\]) {
-        guard let elements = dict\["elements"\] as? \[\[String: Any\]\] else {
+    private func handleVisibleElements(_ dict: [String: Any]) {
+        guard let elements = dict["elements"] as? [[String: Any]] else {
             return
         }
-        let \_elements: \[VisibleElement\] = elements.compactMap {
-            guard let id = $0\["id"\] as? String,
-                  let rect = $0\["boundingClientRect"\] as? \[String: Double\],
+        let _elements: [VisibleElement] = elements.compactMap {
+            guard let id = $0["id"] as? String,
+                  let rect = $0["boundingClientRect"] as? [String: Double],
                   let domRect = DOMRect.from(dict: rect)
             else {
                 return nil
@@ -361,14 +361,14 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
             )
         }
         delegate?.visibleElementsDetected(VisibleElements(
-            elements: \_elements,
+            elements: _elements,
             datetime: Date()
         ))
     }
 
-    private func handleWindowScrollPosition(\_ dict: \[String: Any\]) {
-        guard let scrollLeft = dict\["scrollLeft"\] as? Double,
-              let scrollTop = dict\["scrollTop"\] as? Double
+    private func handleWindowScrollPosition(_ dict: [String: Any]) {
+        guard let scrollLeft = dict["scrollLeft"] as? Double,
+              let scrollTop = dict["scrollTop"] as? Double
         else {
             return
         }
@@ -381,11 +381,11 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 }
 
 extension TrackingWebPresenter: WKNavigationDelegate {
-    func webView(\_ webView: WKWebView, didStartProvisionalNavigation \_: WKNavigation!) {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation _: WKNavigation!) {
         trackPageView(url: webView.url)
     }
 
-    func webView(\_: WKWebView, didFinish \_: WKNavigation!) {
+    func webView(_: WKWebView, didFinish _: WKNavigation!) {
         if isReady {
             return
         }
@@ -395,7 +395,7 @@ extension TrackingWebPresenter: WKNavigationDelegate {
 }
 
 extension TrackingWebPresenter: WKUIDelegate {
-    func webView(\_ webView: WKWebView, createWebViewWith \_: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures \_: WKWindowFeatures) -&gt; WKWebView? {
+    func webView(_ webView: WKWebView, createWebViewWith _: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures _: WKWindowFeatures) -&gt; WKWebView? {
         if navigationAction.targetFrame?.isMainFrame != true {
             webView.load(navigationAction.request)
         }
@@ -404,9 +404,9 @@ extension TrackingWebPresenter: WKUIDelegate {
 }
 
 extension TrackingWebPresenter: WKScriptMessageHandler {
-    func userContentController(\_: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard let dict = message.body as? \[String: Any\],
-              let type = dict\["type"\] as? String
+    func userContentController(_: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard let dict = message.body as? [String: Any],
+              let type = dict["type"] as? String
         else {
             return
         }
@@ -414,11 +414,11 @@ extension TrackingWebPresenter: WKScriptMessageHandler {
         switch type {
         case "event":
             handleEvent(dict)
-        case "document\_size":
+        case "document_size":
             handleDocumentSize(dict)
-        case "visible\_elements":
+        case "visible_elements":
             handleVisibleElements(dict)
-        case "window\_scroll\_position":
+        case "window_scroll_position":
             handleWindowScrollPosition(dict)
         default:
             break
@@ -612,9 +612,9 @@ struct TrackingWebEvents: Encodable {
     var navigationBarFrame: CGRect?
     var webViewFrame: CGRect?
     var documentSize: CGSize?
-    var events = \[TrackingWebEvent\]()
-    var visibleElements = \[VisibleElements\]()
-    var windowScrollPositions = \[WindowScrollPosition\]()
+    var events = [TrackingWebEvent]()
+    var visibleElements = [VisibleElements]()
+    var windowScrollPositions = [WindowScrollPosition]()
 }
 
 extension WebViewTrackerRootPresenter: TrackingWebViewDelegate {
@@ -634,15 +634,15 @@ extension WebViewTrackerRootPresenter: TrackingWebViewDelegate {
 
     func didFinishLoadingInitialURL() {}
 
-    func onTrackingEvent(\_ event: TrackingWebEvent) {
+    func onTrackingEvent(_ event: TrackingWebEvent) {
         tracker.events.append(event)
     }
 
-    func visibleElementsDetected(\_ elements: VisibleElements) {
+    func visibleElementsDetected(_ elements: VisibleElements) {
         tracker.visibleElements.append(elements)
     }
 
-    func windowScrollPosition(\_ windowScrollPosition: WindowScrollPosition) {
+    func windowScrollPosition(_ windowScrollPosition: WindowScrollPosition) {
         tracker.windowScrollPositions.append(windowScrollPosition)
     }
 }
@@ -738,7 +738,7 @@ public struct WebViewTrackerRootView: View {
 class WebViewTrackerRootPresenter: ObservableObject {
     @Published var state = State.webBrowsing
     private let webEventsURL = FileManager.default.directoryURL(directory: .document)
-        .appendingPathComponent("web\_events.json")
+        .appendingPathComponent("web_events.json")
 
     enum State {
         case webBrowsing
@@ -782,15 +782,15 @@ extension WebViewTrackerRootPresenter: TrackingWebViewDelegate {
 
     func didFinishLoadingInitialURL() {}
 
-    func onTrackingEvent(\_ event: TrackingWebEvent) {
+    func onTrackingEvent(_ event: TrackingWebEvent) {
         tracker.events.append(event)
     }
 
-    func visibleElementsDetected(\_ elements: VisibleElements) {
+    func visibleElementsDetected(_ elements: VisibleElements) {
         tracker.visibleElements.append(elements)
     }
 
-    func windowScrollPosition(\_ windowScrollPosition: WindowScrollPosition) {
+    func windowScrollPosition(_ windowScrollPosition: WindowScrollPosition) {
         tracker.windowScrollPositions.append(windowScrollPosition)
     }
 }
@@ -802,11 +802,11 @@ public struct WebView: View, UIViewRepresentable {
         self.webView = webView
     }
 
-    public func makeUIView(context \_: UIViewRepresentableContext&lt;WebView&gt;) -&gt; WKWebView {
+    public func makeUIView(context _: UIViewRepresentableContext&lt;WebView&gt;) -&gt; WKWebView {
         webView
     }
 
-    public func updateUIView(\_: WKWebView, context \_: UIViewRepresentableContext&lt;WebView&gt;) {}
+    public func updateUIView(_: WKWebView, context _: UIViewRepresentableContext&lt;WebView&gt;) {}
 }
 
 
@@ -856,7 +856,7 @@ struct TrackingWebView: View {
     }
 }
 
-struct AppWebView\_Previews: PreviewProvider {
+struct AppWebView_Previews: PreviewProvider {
     static var previews: some View {
         TrackingWebView(presenter: TrackingWebPresenter(
             url: URL(string: "https://amazon.co.jp")!
@@ -871,16 +871,16 @@ protocol TrackingWebViewDelegate: AnyObject {
         documentSize: CGSize
     )
     func didFinishLoadingInitialURL()
-    func onTrackingEvent(\_ event: TrackingWebEvent)
-    func visibleElementsDetected(\_ elements: VisibleElements)
-    func windowScrollPosition(\_ windowScrollPosition: WindowScrollPosition)
+    func onTrackingEvent(_ event: TrackingWebEvent)
+    func visibleElementsDetected(_ elements: VisibleElements)
+    func windowScrollPosition(_ windowScrollPosition: WindowScrollPosition)
 }
 
 final class TrackingWebPresenter: NSObject, ObservableObject {
     let url: URL
     weak var delegate: TrackingWebViewDelegate?
     private var offsetY = 0.0
-    private var observers: \[NSKeyValueObservation\] = \[\]
+    private var observers: [NSKeyValueObservation] = []
     let webView = WKWebView()
     @Published var isReady = false
 
@@ -898,7 +898,7 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 
         // WEBサイトの更新が反映されないことがあった為、キャッシュクリア
         WKWebsiteDataStore.default().removeData(
-            ofTypes: \[WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache\],
+            ofTypes: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache],
             modifiedSince: Date(timeIntervalSince1970: 0),
             completionHandler: {}
         )
@@ -913,29 +913,29 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 
     private func setupObservers() {
         func subscriber(for keyPath: KeyPath&lt;WKWebView, some Any&gt;) -&gt; NSKeyValueObservation {
-            webView.observe(keyPath, options: \[.prior\]) { \[weak self\] \_, change in
+            webView.observe(keyPath, options: [.prior]) { [weak self] _, change in
                 if change.isPrior {
                     self?.objectWillChange.send()
                 }
             }
         }
         // Setup observers for all KVO compliant properties
-        observers = \[
-            subscriber(for: \\.title),
-            subscriber(for: \\.url),
-            subscriber(for: \\.isLoading),
-            subscriber(for: \\.estimatedProgress),
-            subscriber(for: \\.hasOnlySecureContent),
-            subscriber(for: \\.serverTrust),
-            subscriber(for: \\.canGoBack),
-            subscriber(for: \\.canGoForward),
-            subscriber(for: \\.themeColor),
-            subscriber(for: \\.underPageBackgroundColor),
-            subscriber(for: \\.microphoneCaptureState),
-            subscriber(for: \\.cameraCaptureState),
-        \]
-        if #available(iOS 16.0, \*) {
-            observers.append(subscriber(for: \\.fullscreenState))
+        observers = [
+            subscriber(for: \.title),
+            subscriber(for: \.url),
+            subscriber(for: \.isLoading),
+            subscriber(for: \.estimatedProgress),
+            subscriber(for: \.hasOnlySecureContent),
+            subscriber(for: \.serverTrust),
+            subscriber(for: \.canGoBack),
+            subscriber(for: \.canGoForward),
+            subscriber(for: \.themeColor),
+            subscriber(for: \.underPageBackgroundColor),
+            subscriber(for: \.microphoneCaptureState),
+            subscriber(for: \.cameraCaptureState),
+        ]
+        if #available(iOS 16.0, *) {
+            observers.append(subscriber(for: \.fullscreenState))
         }
         // 6月リリースのテストマーケ版ではiOS16以上を対応するので一旦、iOS16未満は無視する
     }
@@ -1005,35 +1005,35 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
         )
     }
 
-    private func handleEvent(\_ dict: \[String: Any\]) {
-        guard let event\_type = dict\["event\_type"\] as? String else {
+    private func handleEvent(_ dict: [String: Any]) {
+        guard let event_type = dict["event_type"] as? String else {
             return
         }
-        switch event\_type {
+        switch event_type {
         case "click":
-            guard let x = dict\["x"\] as? Double,
-                  let y = dict\["y"\] as? Double
+            guard let x = dict["x"] as? Double,
+                  let y = dict["y"] as? Double
             else {
                 return
             }
-            let targetOuterHTML = dict\["targetOuterHTML"\] as? String ?? nil
+            let targetOuterHTML = dict["targetOuterHTML"] as? String ?? nil
             var domRect: DOMRect? = nil
-            if let rect = dict\["targetBoundingClientRect"\] as? \[String: Double\] {
+            if let rect = dict["targetBoundingClientRect"] as? [String: Double] {
                 domRect = DOMRect.from(dict: rect)
             }
             delegate?.onTrackingEvent(
                 Click(datetime: Date(), x: x, y: y, targetOuterHTML: targetOuterHTML, targetBoundingClientRect: domRect))
-        case "scroll\_begin", "scroll\_end":
-            guard let scrollLeft = dict\["scrollLeft"\] as? Double,
-                  let scrollTop = dict\["scrollTop"\] as? Double
+        case "scroll_begin", "scroll_end":
+            guard let scrollLeft = dict["scrollLeft"] as? Double,
+                  let scrollTop = dict["scrollTop"] as? Double
             else {
                 return
             }
-            let isBegin = event\_type == "scroll\_begin"
-            let targetId = dict\["targetId"\] as? String
-            let targetTagName = dict\["targetTagName"\] as? String
+            let isBegin = event_type == "scroll_begin"
+            let targetId = dict["targetId"] as? String
+            let targetTagName = dict["targetTagName"] as? String
             var domRect: DOMRect? = nil
-            if let rect = dict\["targetBoundingClientRect"\] as? \[String: Double\] {
+            if let rect = dict["targetBoundingClientRect"] as? [String: Double] {
                 domRect = DOMRect.from(dict: rect)
             }
             let scroll = Scroll(
@@ -1046,36 +1046,36 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
                 targetBoundingClientRect: domRect
             )
             delegate?.onTrackingEvent(scroll)
-        case "video\_play":
-            let event = VideoPlay(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_play":
+            let event = VideoPlay(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
-        case "video\_pause":
-            let event = VideoPause(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_pause":
+            let event = VideoPause(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
-        case "video\_ended":
-            let event = VideoEnded(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_ended":
+            let event = VideoEnded(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
         default:
             break
         }
     }
 
-    private func handleDocumentSize(\_ dict: \[String: Any\]) {
-        guard let width = dict\["width"\] as? Double,
-              let height = dict\["height"\] as? Double
+    private func handleDocumentSize(_ dict: [String: Any]) {
+        guard let width = dict["width"] as? Double,
+              let height = dict["height"] as? Double
         else {
             return
         }
         documentSize = CGSize(width: width, height: height)
     }
 
-    private func handleVisibleElements(\_ dict: \[String: Any\]) {
-        guard let elements = dict\["elements"\] as? \[\[String: Any\]\] else {
+    private func handleVisibleElements(_ dict: [String: Any]) {
+        guard let elements = dict["elements"] as? [[String: Any]] else {
             return
         }
-        let \_elements: \[VisibleElement\] = elements.compactMap {
-            guard let id = $0\["id"\] as? String,
-                  let rect = $0\["boundingClientRect"\] as? \[String: Double\],
+        let _elements: [VisibleElement] = elements.compactMap {
+            guard let id = $0["id"] as? String,
+                  let rect = $0["boundingClientRect"] as? [String: Double],
                   let domRect = DOMRect.from(dict: rect)
             else {
                 return nil
@@ -1086,14 +1086,14 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
             )
         }
         delegate?.visibleElementsDetected(VisibleElements(
-            elements: \_elements,
+            elements: _elements,
             datetime: Date()
         ))
     }
 
-    private func handleWindowScrollPosition(\_ dict: \[String: Any\]) {
-        guard let scrollLeft = dict\["scrollLeft"\] as? Double,
-              let scrollTop = dict\["scrollTop"\] as? Double
+    private func handleWindowScrollPosition(_ dict: [String: Any]) {
+        guard let scrollLeft = dict["scrollLeft"] as? Double,
+              let scrollTop = dict["scrollTop"] as? Double
         else {
             return
         }
@@ -1106,11 +1106,11 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 }
 
 extension TrackingWebPresenter: WKNavigationDelegate {
-    func webView(\_ webView: WKWebView, didStartProvisionalNavigation \_: WKNavigation!) {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation _: WKNavigation!) {
         trackPageView(url: webView.url)
     }
 
-    func webView(\_: WKWebView, didFinish \_: WKNavigation!) {
+    func webView(_: WKWebView, didFinish _: WKNavigation!) {
         if isReady {
             return
         }
@@ -1120,7 +1120,7 @@ extension TrackingWebPresenter: WKNavigationDelegate {
 }
 
 extension TrackingWebPresenter: WKUIDelegate {
-    func webView(\_ webView: WKWebView, createWebViewWith \_: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures \_: WKWindowFeatures) -&gt; WKWebView? {
+    func webView(_ webView: WKWebView, createWebViewWith _: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures _: WKWindowFeatures) -&gt; WKWebView? {
         if navigationAction.targetFrame?.isMainFrame != true {
             webView.load(navigationAction.request)
         }
@@ -1129,9 +1129,9 @@ extension TrackingWebPresenter: WKUIDelegate {
 }
 
 extension TrackingWebPresenter: WKScriptMessageHandler {
-    func userContentController(\_: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard let dict = message.body as? \[String: Any\],
-              let type = dict\["type"\] as? String
+    func userContentController(_: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard let dict = message.body as? [String: Any],
+              let type = dict["type"] as? String
         else {
             return
         }
@@ -1139,11 +1139,11 @@ extension TrackingWebPresenter: WKScriptMessageHandler {
         switch type {
         case "event":
             handleEvent(dict)
-        case "document\_size":
+        case "document_size":
             handleDocumentSize(dict)
-        case "visible\_elements":
+        case "visible_elements":
             handleVisibleElements(dict)
-        case "window\_scroll\_position":
+        case "window_scroll_position":
             handleWindowScrollPosition(dict)
         default:
             break
@@ -1159,9 +1159,9 @@ struct TrackingWebEvents: Encodable {
     var navigationBarFrame: CGRect?
     var webViewFrame: CGRect?
     var documentSize: CGSize?
-    var events = \[TrackingWebEvent\]()
-    var visibleElements = \[VisibleElements\]()
-    var windowScrollPositions = \[WindowScrollPosition\]()
+    var events = [TrackingWebEvent]()
+    var visibleElements = [VisibleElements]()
+    var windowScrollPositions = [WindowScrollPosition]()
 }
 
 ---
@@ -1171,24 +1171,24 @@ struct TrackingWebEvents: Encodable {
 
 コード全体を見て、以下の提案をします：
 
-1. \*\*Error Handling:\*\* 現在、コード内でエラーを検出したときには、`WebViewTrackerRootPresenter` の `state` にエラーが設定されますが、これはエラーメッセージの詳細を提供するのに十分ではないかもしれません。エラーハンドリングを改善するために、より具体的なエラー情報（エラーメッセージやエラーコードなど）を `state` に含めるようにすると良いでしょう。
+1. **Error Handling:** 現在、コード内でエラーを検出したときには、`WebViewTrackerRootPresenter` の `state` にエラーが設定されますが、これはエラーメッセージの詳細を提供するのに十分ではないかもしれません。エラーハンドリングを改善するために、より具体的なエラー情報（エラーメッセージやエラーコードなど）を `state` に含めるようにすると良いでしょう。
 
-2. \*\*Separation of Concerns (関心の分離):\*\* いくつかのクラスや構造体が、特定の責任を持ちすぎているように見えます。例えば、`TrackingWebPresenter` クラスは WebView の管理、イベントトラッキング、そしてデータ変換も行っています。これらの役割をより特化したクラスや関数に分割することで、コードの再利用性とテストの容易さを向上させることができます。
+2. **Separation of Concerns (関心の分離):** いくつかのクラスや構造体が、特定の責任を持ちすぎているように見えます。例えば、`TrackingWebPresenter` クラスは WebView の管理、イベントトラッキング、そしてデータ変換も行っています。これらの役割をより特化したクラスや関数に分割することで、コードの再利用性とテストの容易さを向上させることができます。
 
-3. \*\*Code Comments (コードコメント):\*\* コード内には多くの複雑なロジックが含まれていますが、それらの説明や目的を理解するためのコメントが少ないです。コードが何を行っているのか、なぜそのような設計がなされたのかを理解するためには、適切なコメントが役立つでしょう。
+3. **Code Comments (コードコメント):** コード内には多くの複雑なロジックが含まれていますが、それらの説明や目的を理解するためのコメントが少ないです。コードが何を行っているのか、なぜそのような設計がなされたのかを理解するためには、適切なコメントが役立つでしょう。
 
-4. \*\*Strong Typing (強い型付け):\*\* JavaScript からのメッセージをハンドリングする際に、任意の辞書をパースしています。これは型安全性を損ない、ランタイムエラーの可能性を高めます。JavaScriptからのメッセージを明確に定義した構造体にデコードすることを検討してみてください。
+4. **Strong Typing (強い型付け):** JavaScript からのメッセージをハンドリングする際に、任意の辞書をパースしています。これは型安全性を損ない、ランタイムエラーの可能性を高めます。JavaScriptからのメッセージを明確に定義した構造体にデコードすることを検討してみてください。
 
-5. \*\*User Interface (ユーザーインターフェース):\*\* エラーが発生した場合には、シンプルなエラーメッセージを表示しています。しかし、ユーザーがアクションを再試行したり、エラー情報を共有したりするためのインターフェースを提供することで、よりユーザーフレンドリーなアプリになります。
+5. **User Interface (ユーザーインターフェース):** エラーが発生した場合には、シンプルなエラーメッセージを表示しています。しかし、ユーザーがアクションを再試行したり、エラー情報を共有したりするためのインターフェースを提供することで、よりユーザーフレンドリーなアプリになります。
 
-6. \*\*Code Duplication (コードの重複):\*\* いくつかの場所でコードの重複が見受けられます。例えば、`handleEvent` メソッド内の各イベントタイプの処理は非常に似ています。これらのコードを一般化して共通の関数に抽
+6. **Code Duplication (コードの重複):** いくつかの場所でコードの重複が見受けられます。例えば、`handleEvent` メソッド内の各イベントタイプの処理は非常に似ています。これらのコードを一般化して共通の関数に抽
 
 ---
 
 ## 🤖 アシスタント
 *2023/6/14 2:46:17*
 
-.anchor-bot&lt;|im\_sep|&gt;このコードのレビューに基づき、いくつかの改善の提案をします。
+.anchor-bot&lt;|im_sep|&gt;このコードのレビューに基づき、いくつかの改善の提案をします。
 
 1. データ処理の分離:
    `WebViewTrackerRootPresenter` クラスはデータの保存に関しては責任を負っていますが、その部分を別のデータ管理クラスに分離することをお勧めします。これにより、Presenterはビジネスロジックに専念でき、データ管理とビジネスロジックの間のクリーンな境界が形成されます。
@@ -1253,9 +1253,9 @@ delegate経由で行なっている処理を止めたいということは、あ
 
 具体的な解決策を提案するには、現在のコードや設計の具体的な内容について更に情報が必要ですが、一般的なアプローチとしては以下のようなものがあります：
 
-- \*\*処理をより小さな部品に分解する\*\*：各部品が一つの特定のタスクを担当するようにします。これにより、各部品をテストしやすくなり、問題が発生したときに特定の部品を修正することができます。
-- \*\*Factoryパターンを使用する\*\*：Factoryパターンを使用して、特定のオブジェクトの作成を抽象化します。これにより、オブジェクトの生成が他のオブジェクトから独立して行われ、見通しの改善に役立つ可能性があります。
-- \*\*依存関係の注入\*\*：依存関係の注入を使用して、特定のオブジェクトに必要な依存オブジェクトを外部から供給します。これにより、特定のオブジェクトが特定の処理を自身で行うのではなく、それが供給されるため、オブジェクト間の疎結合性が保たれ、見通しが改善されます。
+- **処理をより小さな部品に分解する**：各部品が一つの特定のタスクを担当するようにします。これにより、各部品をテストしやすくなり、問題が発生したときに特定の部品を修正することができます。
+- **Factoryパターンを使用する**：Factoryパターンを使用して、特定のオブジェクトの作成を抽象化します。これにより、オブジェクトの生成が他のオブジェクトから独立して行われ、見通しの改善に役立つ可能性があります。
+- **依存関係の注入**：依存関係の注入を使用して、特定のオブジェクトに必要な依存オブジェクトを外部から供給します。これにより、特定のオブジェクトが特定の処理を自身で行うのではなく、それが供給されるため、オブジェクト間の疎結合性が保たれ、見通しが改善されます。
 
 具体的な解決策を提案するためには、具体的なコードや設計について更に情報が必要です。どのような処理を delegate 経由で行っているのか、それらの処理がどのように関連しているのかなど、より詳細な情報を提供していただけると、より具体的なアドバイスが可能となります。
 
@@ -1267,7 +1267,7 @@ delegate経由で行なっている処理を止めたいということは、あ
 class WebViewTrackerRootPresenter: ObservableObject {
     @Published var state = State.webBrowsing
     private let webEventsURL = FileManager.default.directoryURL(directory: .document)
-        .appendingPathComponent("web\_events.json")
+        .appendingPathComponent("web_events.json")
 
     enum State {
         case webBrowsing
@@ -1311,15 +1311,15 @@ extension WebViewTrackerRootPresenter: TrackingWebViewDelegate {
 
     func didFinishLoadingInitialURL() {}
 
-    func onTrackingEvent(\_ event: TrackingWebEvent) {
+    func onTrackingEvent(_ event: TrackingWebEvent) {
         tracker.events.append(event)
     }
 
-    func visibleElementsDetected(\_ elements: VisibleElements) {
+    func visibleElementsDetected(_ elements: VisibleElements) {
         tracker.visibleElements.append(elements)
     }
 
-    func windowScrollPosition(\_ windowScrollPosition: WindowScrollPosition) {
+    func windowScrollPosition(_ windowScrollPosition: WindowScrollPosition) {
         tracker.windowScrollPositions.append(windowScrollPosition)
     }
 }
@@ -1328,7 +1328,7 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
     let url: URL
     weak var delegate: TrackingWebViewDelegate?
     private var offsetY = 0.0
-    private var observers: \[NSKeyValueObservation\] = \[\]
+    private var observers: [NSKeyValueObservation] = []
     let webView = WKWebView()
     @Published var isReady = false
 
@@ -1346,7 +1346,7 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 
         // WEBサイトの更新が反映されないことがあった為、キャッシュクリア
         WKWebsiteDataStore.default().removeData(
-            ofTypes: \[WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache\],
+            ofTypes: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache],
             modifiedSince: Date(timeIntervalSince1970: 0),
             completionHandler: {}
         )
@@ -1361,29 +1361,29 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 
     private func setupObservers() {
         func subscriber(for keyPath: KeyPath&lt;WKWebView, some Any&gt;) -&gt; NSKeyValueObservation {
-            webView.observe(keyPath, options: \[.prior\]) { \[weak self\] \_, change in
+            webView.observe(keyPath, options: [.prior]) { [weak self] _, change in
                 if change.isPrior {
                     self?.objectWillChange.send()
                 }
             }
         }
         // Setup observers for all KVO compliant properties
-        observers = \[
-            subscriber(for: \\.title),
-            subscriber(for: \\.url),
-            subscriber(for: \\.isLoading),
-            subscriber(for: \\.estimatedProgress),
-            subscriber(for: \\.hasOnlySecureContent),
-            subscriber(for: \\.serverTrust),
-            subscriber(for: \\.canGoBack),
-            subscriber(for: \\.canGoForward),
-            subscriber(for: \\.themeColor),
-            subscriber(for: \\.underPageBackgroundColor),
-            subscriber(for: \\.microphoneCaptureState),
-            subscriber(for: \\.cameraCaptureState),
-        \]
-        if #available(iOS 16.0, \*) {
-            observers.append(subscriber(for: \\.fullscreenState))
+        observers = [
+            subscriber(for: \.title),
+            subscriber(for: \.url),
+            subscriber(for: \.isLoading),
+            subscriber(for: \.estimatedProgress),
+            subscriber(for: \.hasOnlySecureContent),
+            subscriber(for: \.serverTrust),
+            subscriber(for: \.canGoBack),
+            subscriber(for: \.canGoForward),
+            subscriber(for: \.themeColor),
+            subscriber(for: \.underPageBackgroundColor),
+            subscriber(for: \.microphoneCaptureState),
+            subscriber(for: \.cameraCaptureState),
+        ]
+        if #available(iOS 16.0, *) {
+            observers.append(subscriber(for: \.fullscreenState))
         }
         // 6月リリースのテストマーケ版ではiOS16以上を対応するので一旦、iOS16未満は無視する
     }
@@ -1453,35 +1453,35 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
         )
     }
 
-    private func handleEvent(\_ dict: \[String: Any\]) {
-        guard let event\_type = dict\["event\_type"\] as? String else {
+    private func handleEvent(_ dict: [String: Any]) {
+        guard let event_type = dict["event_type"] as? String else {
             return
         }
-        switch event\_type {
+        switch event_type {
         case "click":
-            guard let x = dict\["x"\] as? Double,
-                  let y = dict\["y"\] as? Double
+            guard let x = dict["x"] as? Double,
+                  let y = dict["y"] as? Double
             else {
                 return
             }
-            let targetOuterHTML = dict\["targetOuterHTML"\] as? String ?? nil
+            let targetOuterHTML = dict["targetOuterHTML"] as? String ?? nil
             var domRect: DOMRect? = nil
-            if let rect = dict\["targetBoundingClientRect"\] as? \[String: Double\] {
+            if let rect = dict["targetBoundingClientRect"] as? [String: Double] {
                 domRect = DOMRect.from(dict: rect)
             }
             delegate?.onTrackingEvent(
                 Click(datetime: Date(), x: x, y: y, targetOuterHTML: targetOuterHTML, targetBoundingClientRect: domRect))
-        case "scroll\_begin", "scroll\_end":
-            guard let scrollLeft = dict\["scrollLeft"\] as? Double,
-                  let scrollTop = dict\["scrollTop"\] as? Double
+        case "scroll_begin", "scroll_end":
+            guard let scrollLeft = dict["scrollLeft"] as? Double,
+                  let scrollTop = dict["scrollTop"] as? Double
             else {
                 return
             }
-            let isBegin = event\_type == "scroll\_begin"
-            let targetId = dict\["targetId"\] as? String
-            let targetTagName = dict\["targetTagName"\] as? String
+            let isBegin = event_type == "scroll_begin"
+            let targetId = dict["targetId"] as? String
+            let targetTagName = dict["targetTagName"] as? String
             var domRect: DOMRect? = nil
-            if let rect = dict\["targetBoundingClientRect"\] as? \[String: Double\] {
+            if let rect = dict["targetBoundingClientRect"] as? [String: Double] {
                 domRect = DOMRect.from(dict: rect)
             }
             let scroll = Scroll(
@@ -1494,36 +1494,36 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
                 targetBoundingClientRect: domRect
             )
             delegate?.onTrackingEvent(scroll)
-        case "video\_play":
-            let event = VideoPlay(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_play":
+            let event = VideoPlay(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
-        case "video\_pause":
-            let event = VideoPause(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_pause":
+            let event = VideoPause(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
-        case "video\_ended":
-            let event = VideoEnded(datetime: Date(), source: dict\["source"\] as? String)
+        case "video_ended":
+            let event = VideoEnded(datetime: Date(), source: dict["source"] as? String)
             delegate?.onTrackingEvent(event)
         default:
             break
         }
     }
 
-    private func handleDocumentSize(\_ dict: \[String: Any\]) {
-        guard let width = dict\["width"\] as? Double,
-              let height = dict\["height"\] as? Double
+    private func handleDocumentSize(_ dict: [String: Any]) {
+        guard let width = dict["width"] as? Double,
+              let height = dict["height"] as? Double
         else {
             return
         }
         documentSize = CGSize(width: width, height: height)
     }
 
-    private func handleVisibleElements(\_ dict: \[String: Any\]) {
-        guard let elements = dict\["elements"\] as? \[\[String: Any\]\] else {
+    private func handleVisibleElements(_ dict: [String: Any]) {
+        guard let elements = dict["elements"] as? [[String: Any]] else {
             return
         }
-        let \_elements: \[VisibleElement\] = elements.compactMap {
-            guard let id = $0\["id"\] as? String,
-                  let rect = $0\["boundingClientRect"\] as? \[String: Double\],
+        let _elements: [VisibleElement] = elements.compactMap {
+            guard let id = $0["id"] as? String,
+                  let rect = $0["boundingClientRect"] as? [String: Double],
                   let domRect = DOMRect.from(dict: rect)
             else {
                 return nil
@@ -1534,14 +1534,14 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
             )
         }
         delegate?.visibleElementsDetected(VisibleElements(
-            elements: \_elements,
+            elements: _elements,
             datetime: Date()
         ))
     }
 
-    private func handleWindowScrollPosition(\_ dict: \[String: Any\]) {
-        guard let scrollLeft = dict\["scrollLeft"\] as? Double,
-              let scrollTop = dict\["scrollTop"\] as? Double
+    private func handleWindowScrollPosition(_ dict: [String: Any]) {
+        guard let scrollLeft = dict["scrollLeft"] as? Double,
+              let scrollTop = dict["scrollTop"] as? Double
         else {
             return
         }
@@ -1554,11 +1554,11 @@ final class TrackingWebPresenter: NSObject, ObservableObject {
 }
 
 extension TrackingWebPresenter: WKNavigationDelegate {
-    func webView(\_ webView: WKWebView, didStartProvisionalNavigation \_: WKNavigation!) {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation _: WKNavigation!) {
         trackPageView(url: webView.url)
     }
 
-    func webView(\_: WKWebView, didFinish \_: WKNavigation!) {
+    func webView(_: WKWebView, didFinish _: WKNavigation!) {
         if isReady {
             return
         }
@@ -1568,7 +1568,7 @@ extension TrackingWebPresenter: WKNavigationDelegate {
 }
 
 extension TrackingWebPresenter: WKUIDelegate {
-    func webView(\_ webView: WKWebView, createWebViewWith \_: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures \_: WKWindowFeatures) -&gt; WKWebView? {
+    func webView(_ webView: WKWebView, createWebViewWith _: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures _: WKWindowFeatures) -&gt; WKWebView? {
         if navigationAction.targetFrame?.isMainFrame != true {
             webView.load(navigationAction.request)
         }
@@ -1577,9 +1577,9 @@ extension TrackingWebPresenter: WKUIDelegate {
 }
 
 extension TrackingWebPresenter: WKScriptMessageHandler {
-    func userContentController(\_: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard let dict = message.body as? \[String: Any\],
-              let type = dict\["type"\] as? String
+    func userContentController(_: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard let dict = message.body as? [String: Any],
+              let type = dict["type"] as? String
         else {
             return
         }
@@ -1587,11 +1587,11 @@ extension TrackingWebPresenter: WKScriptMessageHandler {
         switch type {
         case "event":
             handleEvent(dict)
-        case "document\_size":
+        case "document_size":
             handleDocumentSize(dict)
-        case "visible\_elements":
+        case "visible_elements":
             handleVisibleElements(dict)
-        case "window\_scroll\_position":
+        case "window_scroll_position":
             handleWindowScrollPosition(dict)
         default:
             break
@@ -1605,9 +1605,9 @@ protocol TrackingWebViewDelegate: AnyObject {
         documentSize: CGSize
     )
     func didFinishLoadingInitialURL()
-    func onTrackingEvent(\_ event: TrackingWebEvent)
-    func visibleElementsDetected(\_ elements: VisibleElements)
-    func windowScrollPosition(\_ windowScrollPosition: WindowScrollPosition)
+    func onTrackingEvent(_ event: TrackingWebEvent)
+    func visibleElementsDetected(_ elements: VisibleElements)
+    func windowScrollPosition(_ windowScrollPosition: WindowScrollPosition)
 }
 
 ---
@@ -1781,9 +1781,9 @@ struct TrackingWebEvents: Encodable {
     var navigationBarFrame: CGRect?
     var webViewFrame: CGRect?
     var documentSize: CGSize?
-    var events = \[TrackingWebEvent\]()
-    var visibleElements = \[VisibleElements\]()
-    var windowScrollPositions = \[WindowScrollPosition\]()
+    var events = [TrackingWebEvent]()
+    var visibleElements = [VisibleElements]()
+    var windowScrollPositions = [WindowScrollPosition]()
 }
 
 ---
@@ -1965,13 +1965,13 @@ protocol TrackingWebEvent: Encodable {
 typealias EncodableTrackingWebEvent = TrackingWebEvent & Encodable
 
 enum TrackingWebEventType: String {
-    case pageView = "page\_view"
+    case pageView = "page_view"
     case click
-    case scrollBegin = "scroll\_begin"
-    case scrollEnd = "scroll\_end"
-    case videoPlay = "video\_play"
-    case videoPause = "video\_pause"
-    case videoEnded = "video\_ended"
+    case scrollBegin = "scroll_begin"
+    case scrollEnd = "scroll_end"
+    case videoPlay = "video_play"
+    case videoPause = "video_pause"
+    case videoEnded = "video_ended"
 }
 
 struct PageView: EncodableTrackingWebEvent {
@@ -2224,7 +2224,7 @@ import "google/protobuf/timestamp.proto";
 message Interaction {
   google.protobuf.Timestamp timestamp = 0;
   oneof event {
-    PageViewEvent page\_view = 1;
+    PageViewEvent page_view = 1;
     ClickEvent click = 2;
     ScrollEvent scroll = 3;
   }
@@ -2253,13 +2253,13 @@ message ScrollEvent {
 
 Swiftの構造体とProtobufのメッセージを対応させると次のようになります。
 
-\*\*PageView\*\*:
+**PageView**:
 Swiftの`PageView`の中にある`url`は、`PageViewEvent`の`url`としてマッピングされます。
 
-\*\*Click\*\*:
+**Click**:
 Swiftの`Click`の中にある`x`は、`ClickEvent`の`left`としてマッピングされます。同様に、`y`は`top`としてマッピングされます。`targetOuterHTML`は、`ClickEvent`の`target`としてマッピングされます。
 
-\*\*Scroll\*\*:
+**Scroll**:
 Swiftの`Scroll`の中にある`scrollLeft`は、`ScrollEvent`の`left`としてマッピングされます。同様に、`scrollTop`は`top`としてマッピングされます。`targetId`または`targetTagName`（どちらが適切な情報を提供するかによる）は、`ScrollEvent`の`target`としてマッピングされます。
 
 そして、それぞれのSwiftのイベント構造体の`datetime`は、Protobufの`Interaction`の`timestamp`としてマッピングされます。

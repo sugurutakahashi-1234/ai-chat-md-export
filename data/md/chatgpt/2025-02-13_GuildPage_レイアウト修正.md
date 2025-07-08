@@ -11,28 +11,28 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:flutter\_svg/svg.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/camera\_dto\_x.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/camera_dto_x.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
 
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/update\_guild\_member.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/get\_user.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_map\_spot.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/withdraw\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/guild\_icon.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/guild\_member\_column.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/parameters\_bar\_column.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/total\_parameters\_row.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/update_guild_member.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/get_user.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_map_spot.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/withdraw_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/guild_icon.dart';
+import 'package:snpit_guild_app/presentation/widgets/guild_member_column.dart';
+import 'package:snpit_guild_app/presentation/widgets/parameters_bar_column.dart';
+import 'package:snpit_guild_app/presentation/widgets/total_parameters_row.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
 
 class GuildPage extends HookConsumerWidget {
   const GuildPage({super.key});
@@ -79,7 +79,7 @@ class GuildPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -96,7 +96,7 @@ class GuildPage extends HookConsumerWidget {
           data: (guild) {
             if (guild != null) {
               // ギルド情報に所属している場合
-              return \_GuildContent(
+              return _GuildContent(
                 guild: guild,
                 myUserId: myUserId,
                 onRefresh: onRefresh,
@@ -107,7 +107,7 @@ class GuildPage extends HookConsumerWidget {
                 physics: AlwaysScrollableScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: \_NoGuildWidget(),
+                  child: _NoGuildWidget(),
                 ),
               );
             }
@@ -115,7 +115,7 @@ class GuildPage extends HookConsumerWidget {
           loading: () {
             return const Center(child: CircularProgressIndicator());
           },
-          error: (error, \_) {
+          error: (error, _) {
             return Center(child: Text('Error: $error'));
           },
         ),
@@ -125,8 +125,8 @@ class GuildPage extends HookConsumerWidget {
 }
 
 /// ギルド情報がある場合のコンテンツをまとめたWidget
-class \_GuildContent extends HookConsumerWidget {
-  const \_GuildContent({
+class _GuildContent extends HookConsumerWidget {
+  const _GuildContent({
     required this.guild,
     required this.myUserId,
     required this.onRefresh,
@@ -161,20 +161,20 @@ class \_GuildContent extends HookConsumerWidget {
     final luckL = guild.luckL ?? 0;
     final defenseB = guild.defenseB ?? 0;
 
-    final guildMemberList = guild.guildMembers ?? \[\];
+    final guildMemberList = guild.guildMembers ?? [];
 
     return DefaultTabController(
       length: 2, // Tabの数
       child: Column(
-        children: \[
+        children: [
           Expanded(
             child: NestedScrollView(
               physics: const BouncingScrollPhysics(),
               headerSliverBuilder: (context, innerBoxIsScrolled) {
-                return \[
+                return [
                   // ギルドヘッダー部分
                   SliverToBoxAdapter(
-                    child: \_GuildHeader(
+                    child: _GuildHeader(
                       guildId: guildId,
                       guildName: guildName,
                       guildAvatar: guild.guildAvatar,
@@ -190,7 +190,7 @@ class \_GuildContent extends HookConsumerWidget {
                   // タブ部分（固定ヘッダー）
                   SliverPersistentHeader(
                     pinned: true,
-                    delegate: \_SliverTabBarDelegate(
+                    delegate: _SliverTabBarDelegate(
                       TabBar(
                         dividerColor: ColorToken.secondary,
                         indicator: UnderlineTabIndicator(
@@ -204,14 +204,14 @@ class \_GuildContent extends HookConsumerWidget {
                         ),
                         labelColor: ColorToken.text,
                         unselectedLabelColor: ColorToken.secondary,
-                        tabs: const \[
+                        tabs: const [
                           Tab(text: 'Members'),
                           Tab(text: 'Spots'),
-                        \],
+                        ],
                       ),
                     ),
                   ),
-                \];
+                ];
               },
               // タブビュー
               body: Padding(
@@ -221,29 +221,29 @@ class \_GuildContent extends HookConsumerWidget {
                   top: 24,
                 ),
                 child: TabBarView(
-                  children: \[
+                  children: [
                     // Members Tab
-                    \_GuildMembersTab(
+                    _GuildMembersTab(
                       guildId: guildId,
                       guildMemberList: guildMemberList,
                       onRefresh: onRefresh,
                     ),
                     // Spots Tab
-                    const \_SpotsTab(),
-                  \],
+                    const _SpotsTab(),
+                  ],
                 ),
               ),
             ),
           ),
-        \],
+        ],
       ),
     );
   }
 }
 
 /// ギルドのヘッダー部分（ギルド名やギルドIDなどの表示）
-class \_GuildHeader extends StatelessWidget {
-  const \_GuildHeader({
+class _GuildHeader extends StatelessWidget {
+  const _GuildHeader({
     required this.guildId,
     required this.guildName,
     required this.guildAvatar,
@@ -272,7 +272,7 @@ class \_GuildHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
-        children: \[
+        children: [
           const SizedBox(height: 24),
           DecoratedBox(
             decoration: BoxDecoration(
@@ -283,7 +283,7 @@ class \_GuildHeader extends StatelessWidget {
               ),
             ),
             child: Column(
-              children: \[
+              children: [
                 GestureDetector(
                   onTap: () {
                     Clipboard.setData(
@@ -309,7 +309,7 @@ class \_GuildHeader extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: \[
+                      children: [
                         SvgPicture.asset(
                           Assets.images.triangleDots.path,
                         ),
@@ -318,7 +318,7 @@ class \_GuildHeader extends StatelessWidget {
                           guildId,
                           style: const TextStyle(fontSize: 14),
                         ),
-                      \],
+                      ],
                     ),
                   ),
                 ),
@@ -343,7 +343,7 @@ class \_GuildHeader extends StatelessWidget {
                 const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: \[
+                  children: [
                     const Icon(
                       Icons.people,
                       size: 24,
@@ -354,7 +354,7 @@ class \_GuildHeader extends StatelessWidget {
                       '$guildMembersCount',
                       style: const TextStyle(fontSize: 14),
                     ),
-                  \],
+                  ],
                 ),
                 const SizedBox(height: 24),
                 const Padding(
@@ -372,20 +372,20 @@ class \_GuildHeader extends StatelessWidget {
                   defenceValue: defenseB,
                 ),
                 const SizedBox(height: 24),
-              \],
+              ],
             ),
           ),
           const SizedBox(height: 24),
 
           // ギルドの管理者または所有者の場合のみ管理者画面への導線を表示
-          if (isAdminOrOwner) ...\[
+          if (isAdminOrOwner) ...[
             OutlinedButton(
               onPressed: () {
                 context.push(Screen.guildManage.path);
               },
               child: Stack(
                 alignment: Alignment.centerRight,
-                children: \[
+                children: [
                   const Center(
                     child: Text('Manage this guild'),
                   ),
@@ -406,25 +406,25 @@ class \_GuildHeader extends StatelessWidget {
                             ),
                           )
                         : const Icon(
-                            Icons.arrow\_forward,
+                            Icons.arrow_forward,
                             size: 24,
                             color: ColorToken.text,
                           ),
                   ),
-                \],
+                ],
               ),
             ),
             const SizedBox(height: 8),
-          \],
-        \],
+          ],
+        ],
       ),
     );
   }
 }
 
 /// Membersタブのリスト部分
-class \_GuildMembersTab extends HookConsumerWidget {
-  const \_GuildMembersTab({
+class _GuildMembersTab extends HookConsumerWidget {
+  const _GuildMembersTab({
     required this.guildId,
     required this.guildMemberList,
     required this.onRefresh,
@@ -494,12 +494,12 @@ class \_GuildMembersTab extends HookConsumerWidget {
 
     return 
     // Column(
-    //   children: \[
+    //   children: [
         ListView.builder(
           itemCount: filteredGuildMemberList.length,
           itemBuilder: (context, index) {
 
-            final guildMember = filteredGuildMemberList\[index\];
+            final guildMember = filteredGuildMemberList[index];
             final userName = guildMember.username ?? '';
             final userPhotoUrl = guildMember.avatar;
             final searchQ = guildMember.decks?.firstOrNull?.searchQ ?? 0;
@@ -507,7 +507,7 @@ class \_GuildMembersTab extends HookConsumerWidget {
             final luckL = guildMember.decks?.firstOrNull?.luckL ?? 0;
             final defenseB = guildMember.decks?.firstOrNull?.defenseB ?? 0;
             final cameraList =
-                guildMember.decks?.firstOrNull?.deckCameras?.sorted() ?? \[\];
+                guildMember.decks?.firstOrNull?.deckCameras?.sorted() ?? [];
 
             return Padding(
               padding: const EdgeInsets.only(bottom: 8),
@@ -522,7 +522,7 @@ class \_GuildMembersTab extends HookConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Row(
-                    children: \[
+                    children: [
                       Expanded(
                         child: GuildMemberColumn(
                           userName: userName,
@@ -538,7 +538,7 @@ class \_GuildMembersTab extends HookConsumerWidget {
                           defenseB: defenseB,
                         ),
                       ),
-                    \],
+                    ],
                   ),
                 ),
               ),
@@ -557,19 +557,19 @@ class \_GuildMembersTab extends HookConsumerWidget {
       //     ),
       //   ),
       //   const SizedBox(height: 24),
-      // \],
+      // ],
     );
   }
 }
 
 /// ギルド未所属の場合に表示されるWidget
-class \_NoGuildWidget extends StatelessWidget {
-  const \_NoGuildWidget();
+class _NoGuildWidget extends StatelessWidget {
+  const _NoGuildWidget();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: \[
+      children: [
         const SizedBox(height: 48),
         const Text(
           'No guild affiliation',
@@ -593,7 +593,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 Assets.images.joinGuildFig.path,
               ),
@@ -604,22 +604,22 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text('Join an existing guild'),
                     ),
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 16),
@@ -630,7 +630,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 Assets.images.createGuildFig.path,
               ),
@@ -641,49 +641,49 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(child: Text('Host a new guild')),
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 48),
-      \],
+      ],
     );
   }
 }
 
 // Spotsタブ
-class \_SpotsTab extends HookConsumerWidget {
-  const \_SpotsTab();
+class _SpotsTab extends HookConsumerWidget {
+  const _SpotsTab();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const SingleChildScrollView(
       child: Column(
-        children: \[
+        children: [
           SizedBox(height: 24),
           Text('Coming Soon!'),
           SizedBox(height: 24),
-        \],
+        ],
       ),
     );
   }
 }
 
 /// タブバーを SliverPersistentHeader として使うためのデリゲート
-class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
-  \_SliverTabBarDelegate(this.tabBar);
+class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverTabBarDelegate(this.tabBar);
 
   final TabBar tabBar;
 
@@ -705,7 +705,7 @@ class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(\_SliverTabBarDelegate oldDelegate) {
+  bool shouldRebuild(_SliverTabBarDelegate oldDelegate) {
     return oldDelegate.tabBar != tabBar;
   }
 }
@@ -715,47 +715,47 @@ class \_SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
 ## 🔧 ツール
 *2025/2/13 21:32:25*
 
-\*\*新しい試みを検討中\*\*
+**新しい試みを検討中**
 
-`\_GuildMembersTab` コードを見ていると、`ListView.builder` の後にコメントアウトされた `OutlinedButton` が見つかる。これを `column` に追加したいけど、レイアウトが崩れてエラーになるのが現状。
+`_GuildMembersTab` コードを見ていると、`ListView.builder` の後にコメントアウトされた `OutlinedButton` が見つかる。これを `column` に追加したいけど、レイアウトが崩れてエラーになるのが現状。
 
-\*\*レイアウトの修正を模索中\*\*
+**レイアウトの修正を模索中**
 
 `ListView.builder` にコメントアウトされた `OutlinedButton` を追加しようとしているが、レイアウトが崩れてエラーが発生している。
 
-\*\*レイアウトを修正する\*\*
+**レイアウトを修正する**
 
 `ListView` を `Column` 内に配置し、`Expanded` 使用を改善する方法を模索中。`SingleChildScrollView` も検討し、`RefreshIndicator` の動作を維持したい。
 
-\*\*最適な方法を探る\*\*
+**最適な方法を探る**
 
 `ListView` と `OutlinedButton` のレイアウトを検討し、`Expanded` の使用を見直す。スムーズなスクロールを維持しつつ、デザインを改善する方法を探っている。
 
-\*\*探究している方法\*\*
+**探究している方法**
 
 小さなアイテム数に限定していると、スクロールが難しい。全画面をNestedScrollViewにし、TabBarViewの子をSingleChildScrollViewやCustomScrollViewにする方法を模索中。
 
-\*\*考えているスケール\*\*
+**考えているスケール**
 
 `ListView.builder`のアイテム数を`RefreshIndicator`に合わせ、短い内容でも、継続的にスクロール可能にする`physics`を追加している。
 
-\*\*スクロール制御を追加する方法を探る\*\*
+**スクロール制御を追加する方法を探る**
 
 `ListView.builder`を`RefreshIndicator`で包み、`AlwaysScrollableScrollPhysics`を追加することで、短いコンテンツでもスクロール可能にする方法を探っている。
 
-\*\*スクロールとボタンの位置調整\*\*
+**スクロールとボタンの位置調整**
 
-スクロール可能な`ListView`とともに`OutlinedButton`を配置し、ボタンを画面下部に固定する方法を模索中。\_flutter\_sticky\_headerライブラリの`StickyHeaderBuilder`を使用するのはどうだろう。
+スクロール可能な`ListView`とともに`OutlinedButton`を配置し、ボタンを画面下部に固定する方法を模索中。_flutter_sticky_headerライブラリの`StickyHeaderBuilder`を使用するのはどうだろう。
 
-\*\*スクロールとボタンの調整\*\*
+**スクロールとボタンの調整**
 
 単一スクロールビューとカラムを使って、リストとボタンを配置し、リストが短いときはリストビューを使う方法を模索している。
 
-\*\*対話している異なる概念\*\*
+**対話している異なる概念**
 
 RefreshIndicatorやNestedScrollViewを活用し、TabBarViewの各子にCustomScrollViewやSliverListを使う方法を検討中。カラムとExpandedの制約のミスマッチがエラーを引き起こす可能性についても言及している。
 
-\*\*リスト構造を組み立てる\*\*
+**リスト構造を組み立てる**
 
 Expandedを外し、リスト内の各アイテムを管理する方法を検討している。最後のアイテムはボタンで、スクロール可能な単一リストにまとめている。
 

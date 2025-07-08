@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/6/12 15:53:34*
 
-env.package\_pathやenv.documentation\_targetは正しく反映されるか？
+env.package_pathやenv.documentation_targetは正しく反映されるか？
 
 # Swift-DocC を GitHub Pages に Host する
 name: Swift-DocC Host
@@ -15,12 +15,12 @@ name: Swift-DocC Host
 on:
   push:
     tags:
-      - "\*"
-  workflow\_dispatch:
+      - "*"
+  workflow_dispatch:
 
 env:
-  package\_path: SmallTalkPackage
-  documentation\_target: DomainLayer
+  package_path: SmallTalkPackage
+  documentation_target: DomainLayer
 
 # Allow one concurrent deployment
 concurrency:
@@ -36,16 +36,16 @@ jobs:
     runs-on: macos-14
     env:
       # Ref: https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md#xcode
-      DEVELOPER\_DIR: /Applications/Xcode\_15.4.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
       - name: build docc
         # Ref: https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/publishing-to-github-pages/#Generating-the-Documentation-Site
         run: |
-          swift package --package-path ${{ env.package\_path }} --allow-writing-to-directory ./docs \\
-          generate-documentation --target ${{ env.documentation\_target }} \\
-          --disable-indexing \\
-          --transform-for-static-hosting \\
+          swift package --package-path ${{ env.package_path }} --allow-writing-to-directory ./docs \
+          generate-documentation --target ${{ env.documentation_target }} \
+          --disable-indexing \
+          --transform-for-static-hosting \
           --output-path ./docs
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -56,7 +56,7 @@ jobs:
     # Add a dependency to the build job
     needs: build
 
-    # Grant GITHUB\_TOKEN the permissions required to make a Pages deployment
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
         pages: write      # to deploy to Pages
         id-token: write   # to verify the deployment originates from an appropriate source
@@ -64,7 +64,7 @@ jobs:
     # Deploy to the github-pages environment
     environment:
         name: github-pages
-        url: ${{ steps.deployment.outputs.page\_url }}
+        url: ${{ steps.deployment.outputs.page_url }}
 
     # Specify runner + deployment step
     runs-on: ubuntu-latest

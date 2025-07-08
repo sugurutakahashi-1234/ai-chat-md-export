@@ -10,19 +10,19 @@
 FutureOr と Future の違い
 
 import 'package:geolocator/geolocator.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'current\_location.g.dart';
+part 'current_location.g.dart';
 
 @riverpod
-class CurrentLocationNotifier extends \_$CurrentLocationNotifier {
+class CurrentLocationNotifier extends _$CurrentLocationNotifier {
   @override
   FutureOr&lt;LatLng&gt; build() async {
-    return await \_getCurrentLocation();
+    return await _getCurrentLocation();
   }
 
-  Future&lt;LatLng&gt; \_getCurrentLocation() async {
+  Future&lt;LatLng&gt; _getCurrentLocation() async {
     final serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       await Geolocator.openLocationSettings();

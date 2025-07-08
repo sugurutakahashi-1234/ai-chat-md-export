@@ -12,16 +12,16 @@
 また簡単な実装をしてほしい
 
 extension AppRootDIContainer: UNUserNotificationCenterDelegate {    
-    public func userNotificationCenter(\_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -&gt; UNNotificationPresentationOptions {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -&gt; UNNotificationPresentationOptions {
 
     }
 
     
-    public func userNotificationCenter(\_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
         
     }
 
-    public func userNotificationCenter(\_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
         
     }
 }

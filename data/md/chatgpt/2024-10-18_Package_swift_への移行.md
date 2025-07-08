@@ -8,9 +8,9 @@
 *2024/10/18 20:10:47*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-5hBC0cDvnNZfideZpEBOABRz",
-  "size\_bytes": 200937,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-5hBC0cDvnNZfideZpEBOABRz",
+  "size_bytes": 200937,
   "width": 2048,
   "height": 662,
   "fovea": null,
@@ -18,13 +18,13 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 これを package.swiftに移行したい
@@ -145,23 +145,23 @@ import PackageDescription
 
 let package = Package(
     name: "DaVinciPackage",
-    products: \[
-        .library(name: "DaVinciPackage", targets: \["DaVinciPackage"\]),
-    \],
-    dependencies: \[
+    products: [
+        .library(name: "DaVinciPackage", targets: ["DaVinciPackage"]),
+    ],
+    dependencies: [
         .package(url: "https://github.com/Flight-School/AnyCodable", exact: "0.6.7"),
         .package(url: "git@github.com:progrit/DaVinciIOSOpenAPI.git", revision: "edb27a8e50f1b568f6e63132af5b0e406a9322c"),
         .package(url: "https://github.com/firebase/firebase-ios-sdk", exact: "10.27.0"),
-        .package(url: "https://github.com/adjust/ios\_sdk", exact: "5.0.0"),
+        .package(url: "https://github.com/adjust/ios_sdk", exact: "5.0.0"),
         .package(url: "https://github.com/kean/Nuke", exact: "12.6.0"),
         .package(url: "https://github.com/mrackwitz/Version.git", exact: "0.8.0")
-    \],
-    targets: \[
+    ],
+    targets: [
         .target(
             name: "DaVinciPackage",
-            dependencies: \[\]
+            dependencies: []
         ),
-    \]
+    ]
 )
 
 ---

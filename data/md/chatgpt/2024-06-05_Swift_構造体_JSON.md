@@ -19,7 +19,7 @@ public struct Company {}
 
 public struct Geo {}
 
-\[
+[
   {
     "id": 0,
     "name": "string",
@@ -43,7 +43,7 @@ public struct Geo {}
       "bs": "string"
     }
   }
-\]
+]
 
 ---
 
@@ -147,9 +147,9 @@ extension DomainLayer.User {
 
 修正してほしい
 
-    private func getUsers() async throws -&gt; \[DomainLayer.User\] {
+    private func getUsers() async throws -&gt; [DomainLayer.User] {
         do {
-            let response: \[Components.Schemas.User\] = try await client.getUsers()
+            let response: [Components.Schemas.User] = try await client.getUsers()
 
             switch response {
             case .ok(let okResponse):
@@ -160,15 +160,15 @@ extension DomainLayer.User {
             case .notFound(let notFoundResponse):
                 switch notFoundResponse.body {
                 case .json(let error):
-                    OSLogger.errorLog("\\(error)")
+                    OSLogger.errorLog("\(error)")
                     throw error
                 }
-            case .undocumented(statusCode: let statusCode, \_):
-                OSLogger.errorLog("\\(statusCode)")
+            case .undocumented(statusCode: let statusCode, _):
+                OSLogger.errorLog("\(statusCode)")
                 throw error
             }
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             throw error
         }
     }

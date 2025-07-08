@@ -30,13 +30,13 @@ Notion の mcpサーバーにアクセスできる？
 {
   "mcpServers": {
     "notionApi": {
-      "command": "/Users/sugurutakahashi/.local/state/fnm\_multishells/16514\_1746694346445/bin/npx",
-      "args": \[
+      "command": "/Users/sugurutakahashi/.local/state/fnm_multishells/16514_1746694346445/bin/npx",
+      "args": [
         "-y",
         "@notionhq/notion-mcp-server"
-      \],
+      ],
       "env": {
-        "OPENAPI\_MCP\_HEADERS": "{\\"Authorization\\": \\"Bearer ntn\_12516787372499JcKI1BkaQTbB2Bjl6qgVOVvCDlFIW3Zs\\", \\"Notion-Version\\": \\"2022-06-28\\" }"
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\" }"
       }
     }
   }
@@ -49,7 +49,7 @@ Notion の mcpサーバーにアクセスできる？
 
 この設定を見る限り、Notionの内部APIサーバー（MCP: Model-Controller-Presenter）にアクセスしようとしているようです。設定自体の構文は正しいように見えますが、いくつか気になる点があります：
 
-1. Bearerトークン（`ntn\_12516787372499JcKI1BkaQTbB2Bjl6qgVOVvCDlFIW3Zs`）が設定に直接記載されています。これは通常、セキュリティ上の観点から避けるべきです。
+1. Bearerトークン（`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`）が設定に直接記載されています。これは通常、セキュリティ上の観点から避けるべきです。
 
 2. `@notionhq/notion-mcp-server` というパッケージは公式のNotionパッケージではないように思われます。Notion公式のAPIパッケージは `@notionhq/client` です。
 

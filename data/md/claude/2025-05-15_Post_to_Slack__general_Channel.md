@@ -59,13 +59,13 @@ This block is not supported on your current device yet.
 
     "slack-mcp": {
       "command": "npx",
-      "args": \[
+      "args": [
         "-y",
         "@modelcontextprotocol/server-slack"
-      \],
+      ],
       "env": {
-        "SLACK\_BOT\_TOKEN": "xoxb-8707264329396-8923786075280-GQxagv9XWF4N62jllxke0Fmw",
-        "SLACK\_TEAM\_ID": "T08LT7S9PBN"
+        "SLACK_BOT_TOKEN": "xoxb-8707264329396-8923786075280-GQxagv9XWF4N62jllxke0Fmw",
+        "SLACK_TEAM_ID": "T08LT7S9PBN"
       }
     }
 

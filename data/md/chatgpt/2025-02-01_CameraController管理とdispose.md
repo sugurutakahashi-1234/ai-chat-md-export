@@ -20,7 +20,7 @@ Future&lt;CameraController?&gt; getCameraController(Ref ref) async {
   }
 
   final cameraController = CameraController(
-    cameras\[0\],
+    cameras[0],
     ResolutionPreset.max,
     imageFormatGroup: ImageFormatGroup.jpeg,
   );
@@ -34,20 +34,20 @@ Future&lt;CameraController?&gt; getCameraController(Ref ref) async {
 
 
 import 'dart:io';
-import 'package:cached\_network\_image/cached\_network\_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image/image.dart' as img;
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/providers/camera\_controller\_provider.dart';
-import 'package:snpit\_guild\_app/presentation/providers/current\_location.dart';
-import 'package:snpit\_guild\_app/presentation/providers/shot\_photo.dart';
-import 'package:snpit\_guild\_app/presentation/providers/weave\_target\_spot.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/providers/camera_controller_provider.dart';
+import 'package:snpit_guild_app/presentation/providers/current_location.dart';
+import 'package:snpit_guild_app/presentation/providers/shot_photo.dart';
+import 'package:snpit_guild_app/presentation/providers/weave_target_spot.dart';
 
 class ShootingPage extends HookConsumerWidget {
   const ShootingPage({super.key});
@@ -171,15 +171,15 @@ class ShootingPage extends HookConsumerWidget {
           ),
           body: Stack(
             alignment: Alignment.center,
-            children: \[
+            children: [
               Column(
-                children: \[
+                children: [
                   Container(
                     height: 80,
                     color: ColorPallet.gray1000,
                   ),
                   Stack(
-                    children: \[
+                    children: [
                       SizedBox(
                         width: screenWidth,
                         height: screenWidth,
@@ -211,15 +211,15 @@ class ShootingPage extends HookConsumerWidget {
                             ),
                           ),
                         ),
-                    \],
+                    ],
                   ),
                   Expanded(
                     child: Stack(
                       clipBehavior: Clip.none,
-                      children: \[
+                      children: [
                         Container(color: ColorPallet.gray1000),
                         Column(
-                          children: \[
+                          children: [
                             const SizedBox(height: 40),
                             Padding(
                               padding: const EdgeInsets.symmetric(
@@ -235,10 +235,10 @@ class ShootingPage extends HookConsumerWidget {
                             Expanded(
                               child: Stack(
                                 alignment: Alignment.center,
-                                children: \[
+                                children: [
                                   // バツボタンが押せるように Row と Spacer で描画範囲を広げている
                                   Row(
-                                    children: \[
+                                    children: [
                                       const Spacer(),
                                       GestureDetector(
                                         onTap: () async {
@@ -253,7 +253,7 @@ class ShootingPage extends HookConsumerWidget {
                                             backgroundColor:
                                                 ColorToken.primaryDark,
                                             child: Icon(
-                                              Icons.camera\_alt\_outlined,
+                                              Icons.camera_alt_outlined,
                                               color: ColorToken.text,
                                               size: 36,
                                             ),
@@ -261,13 +261,13 @@ class ShootingPage extends HookConsumerWidget {
                                         ),
                                       ),
                                       const Spacer(),
-                                    \],
+                                    ],
                                   ),
                                   Positioned(
                                     right: 56,
                                     child: Stack(
                                       alignment: Alignment.center,
-                                      children: \[
+                                      children: [
                                         CircleAvatar(
                                           radius: 18,
                                           backgroundColor: ColorToken.bgWhite
@@ -283,18 +283,18 @@ class ShootingPage extends HookConsumerWidget {
                                             context.pop();
                                           },
                                         ),
-                                      \],
+                                      ],
                                     ),
                                   ),
-                                \],
+                                ],
                               ),
                             ),
-                          \],
+                          ],
                         ),
-                      \],
+                      ],
                     ),
                   ),
-                \],
+                ],
               ),
               if (isProcessingState.value)
                 const Positioned.fill(
@@ -305,7 +305,7 @@ class ShootingPage extends HookConsumerWidget {
                     ),
                   ),
                 ),
-            \],
+            ],
           ),
         );
       },
@@ -314,7 +314,7 @@ class ShootingPage extends HookConsumerWidget {
           body: Center(child: CircularProgressIndicator()),
         );
       },
-      error: (error, \_) {
+      error: (error, _) {
         return Scaffold(
           body: Center(
             child: Text('Failed to initialize the camera: $error'),
@@ -330,19 +330,19 @@ class ShootingPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/2/1 11:17:26*
 
-\*\*Managing CameraController disposal\*\*
+**Managing CameraController disposal**
 
 I'm working through the best way to manage CameraController disposal, considering Riverpod's stateful provider and onDispose methods to ensure proper cleanup.
 
-\*\*Managing camera controller\*\*
+**Managing camera controller**
 
 I’m thinking through using a Riverpod provider with autoDispose for CameraController. This manages lifecycle, ensuring disposal when no longer in use, and aligns with best practices.
 
-\*\*Contemplating state management\*\*
+**Contemplating state management**
 
 I'm examining the use of StateNotifier for camera management, potentially within the same provider with autoDispose. This approach suits asynchronous CameraController initialization and lifecycle management in the widget tree.
 
-\*\*Organizing the provider\*\*
+**Organizing the provider**
 
 I’m mapping out best practices for storing CameraController in a separate @riverpod, keeping the provider's disposal logic separate from the widget's file to ensure smooth Riverpod handling.
 
@@ -551,7 +551,7 @@ Future<CameraController?> getCameraController(Ref ref) async {
 *2025/2/1 11:21:08*
 
 @riverpod アノテーションの以下の記述のどちらを使った方がいいのか？
-現状プロジェクトではAsyncNotifierとはせずに\_$の表記を使っている。
+現状プロジェクトではAsyncNotifierとはせずに_$の表記を使っている。
 また、どちらでもonDisposeは定義できるのか？
 
 @riverpod
@@ -560,30 +560,30 @@ class MyCameraController extends AsyncNotifier&lt;CameraController?&gt; {
 }
 
 @riverpod
-class MyCameraControllerNotifier extends \_$MyCameraControllerNotifier {}
+class MyCameraControllerNotifier extends _$MyCameraControllerNotifier {}
 
 ---
 
 ## 🔧 ツール
 *2025/2/1 11:21:30*
 
-\*\*Deciding between Riverpod approaches\*\*
+**Deciding between Riverpod approaches**
 
 The question involves deciding between function-based declarators like `@riverpod` versus class-based ones like `@riverpod class MyCameraControllerNotifier`. The current Riverpod 2.x recommends functions for simplicity.
 
-\*\*Analyzing approaches\*\*
+**Analyzing approaches**
 
 I'm examining function-based and class-based Riverpod approaches. Classes are ideal for advanced functionality, including onDispose. It's interesting to see that classes offer greater control.
 
-\*\*Evaluating methods\*\*
+**Evaluating methods**
 
 The new approach auto-generates code, while the older approach requires explicit base class definition. The latest method is more efficient and adaptable.
 
-\*\*Adopting the new method\*\*
+**Adopting the new method**
 
 The new approach uses class naming with a `$` prefix to avoid conflicts. `onDispose` can be defined in either method, offering a more streamlined and conflict-free implementation.
 
-\*\*Choosing the optimal method\*\*
+**Choosing the optimal method**
 
 I’m leaning towards naming classes with a `$` prefix to prevent conflicts. Defining `onDispose` is also feasible in both approaches. Essentially, the type of functionality remains the same.
 
@@ -713,7 +713,7 @@ Riverpod 2.x 以降のドキュメントでは、**大きく2種類の書き方*
 以下で参照されなくなったタイミングでautoDisposeeしてほしい
 
 @riverpod
-class CameraControllerNotifier extends \_$CameraControllerNotifier {
+class CameraControllerNotifier extends _$CameraControllerNotifier {
   @override
   Future&lt;CameraController?&gt; build() async {
     final cameras = await availableCameras();
@@ -721,7 +721,7 @@ class CameraControllerNotifier extends \_$CameraControllerNotifier {
       return null;
     }
     final controller = CameraController(
-      cameras\[0\],
+      cameras[0],
       ResolutionPreset.max,
       imageFormatGroup: ImageFormatGroup.jpeg,
     );
@@ -738,32 +738,32 @@ class CameraControllerNotifier extends \_$CameraControllerNotifier {
 ## 🔧 ツール
 *2025/2/1 12:51:03*
 
-\*\*Maximizing the code\*\*  
+**Maximizing the code**  
 I’m enhancing the code snippet for `CameraControllerNotifier` with an auto-dispose mechanism using the `@riverpod` annotation and `ref.onDispose` to manage resources effectively.
 
-\*\*Considering `@riverpod(keepAlive: false)`\*\*  
+**Considering `@riverpod(keepAlive: false)`**  
 Hmm, it seems like the `@autoDispose` annotation might be more optimal for managing resource disposal effectively, as it ensures the controller is disposed of when no longer needed.
 
-\*\*Implementing resource disposal\*\*  
+**Implementing resource disposal**  
 I’m exploring the use of `@riverpod` with `@autoDispose`, ensuring that the `CameraController` is properly disposed of when it’s no longer needed, streamlining resource management effectively.
 
-\*\*Finalizing the solution\*\*  
+**Finalizing the solution**  
 I’m concluding that using `@autoDispose` with `@riverpod` for `CameraControllerNotifier` ensures proper resource management, especially for asynchronous builders and lock controllers, optimizing performance reliability.
 
-\*\*Clarifying the option\*\*  
+**Clarifying the option**  
 By examining the official documentation, I'm confirming that `@Riverpod(keepAlive: false)` ensures automatic disposal for providers, optimizing resource management and enhancing performance reliability.
 
-\*\*Confirming autogrowth\*\*
+**Confirming autogrowth**
 
 I’m revisiting the idea that `@Riverpod(keepAlive: false)`, `@riverpodAutoDispose`, and `@autoDispose` annotations effectively ensure automatic disposal in Riverpod 2. The `ref.onDispose` method is also utilized.
 
-\*\*Enhancing automatic disposal\*\*  
+**Enhancing automatic disposal**  
 Integrating `autoDispose` into the annotation, along with `ref.onDispose(() =&gt; controller.dispose())` in the build method, ensures providers automatically dispose of when no longer active, streamlining resource management.
 
-\*\*Leaning towards automatic disposal\*\*  
+**Leaning towards automatic disposal**  
 I’m concluding that adding `@Riverpod(autoDispose: true)` is the best approach. It simplifies the setup and ensures efficient resource management.
 
-\*\*Considering manual disposal\*\*
+**Considering manual disposal**
 
 This marks a shift towards using `ref.onDispose` for resource management in Riverpod 2, ensuring efficient cleanup and avoiding potential memory leaks.
 

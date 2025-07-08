@@ -15,13 +15,13 @@ public final class APIRequestDriverProtocolMock: APIRequestDriverProtocol, @unch
 
 
     public private(set) var getUsersCallCount = 0
-    public var getUsersHandler: (() async throws -&gt; (\[DomainLayer.User\]))?
-    public func getUsers() async throws -&gt; \[DomainLayer.User\] {
+    public var getUsersHandler: (() async throws -&gt; ([DomainLayer.User]))?
+    public func getUsers() async throws -&gt; [DomainLayer.User] {
         getUsersCallCount += 1
         if let getUsersHandler = getUsersHandler {
             return try await getUsersHandler()
         }
-        return \[DomainLayer.User\]()
+        return [DomainLayer.User]()
     }
 
     public private(set) var getUserByIdCallCount = 0

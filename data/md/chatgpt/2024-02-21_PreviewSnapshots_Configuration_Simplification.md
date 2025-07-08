@@ -11,7 +11,7 @@
 
 public struct PreviewSnapshots&lt;State&gt; {
     /// Array of configurations to apply to the view for preview and snapshot testing.
-    public let configurations: \[Configuration\]
+    public let configurations: [Configuration]
     
     /// Function to configure the `View` being tested given a configuration state.
     public let configure: (State) -&gt; AnyView
@@ -22,7 +22,7 @@ public struct PreviewSnapshots&lt;State&gt; {
     ///   - configurations: The list of configurations to construct for previews and snapshot testing.
     ///   - configure: A closure that constructs the `View` to be previewed/tested given a configuration state.
     public init&lt;V: View&gt;(
-        configurations: \[Configuration\],
+        configurations: [Configuration],
         configure: @escaping (State) -&gt; V
     ) {
         self.configurations = configurations
@@ -139,18 +139,18 @@ public struct NonFrameworkDependencyInjector: AppRootRouterDependency {
 このとき
 
 
-struct LicenseListView\_Previews: PreviewProvider {
+struct LicenseListView_Previews: PreviewProvider {
     static var previews: some View {
         snapshots.previews.previewLayout(.sizeThatFits)
     }
 
     static var snapshots: PreviewSnapshots&lt;AppRootRouterDependency&gt; {
         .init(
-            configurations: \[
+            configurations: [
                 .init(type: .small, state: NonFrameworkDependencyInjector.sizeS),
                 .init(type: .medium, state: NonFrameworkDependencyInjector.sizeM),
                 .init(type: .large, state: NonFrameworkDependencyInjector.sizeL),
-            \],
+            ],
             configure: { state in
                 LicenseListView(router: AppRootRouter.empty, dependency: state)
             }
@@ -160,19 +160,19 @@ struct LicenseListView\_Previews: PreviewProvider {
 
 を
 
-            configurations: \[
+            configurations: [
                 .init(type: .small),
                 .init(type: .medium),
                 .init(type: .largeL),
-            \],
+            ],
 
 もしくは
 
-            configurations: \[
+            configurations: [
                 .init(NonFrameworkDependencyInjector.sizeS),
                 .init(NonFrameworkDependencyInjector.sizeM),
                 .init( NonFrameworkDependencyInjector.sizeL),
-            \],
+            ],
 
 したい。
 
@@ -261,11 +261,11 @@ Swiftコンパイラは、`PreviewSnapshots.Configuration`の初期化子で期�
 
 以下のステップで問題を解決できるかもしれません：
 
-1. \*\*`PreviewSnapshots`の`State`型制約を確認する\*\*: `PreviewSnapshots`で`State`型が`AppRootRouterDependency`に適合していることを保証します。これはジェネリック定義に型制約を追加することで達成できますが、既に`State`を`AppRootRouterDependency`の具体的な実装として使用しているので、このアプローチは適用できないかもしれません。
+1. **`PreviewSnapshots`の`State`型制約を確認する**: `PreviewSnapshots`で`State`型が`AppRootRouterDependency`に適合していることを保証します。これはジェネリック定義に型制約を追加することで達成できますが、既に`State`を`AppRootRouterDependency`の具体的な実装として使用しているので、このアプローチは適用できないかもしれません。
 
-2. \*\*明示的なキャストを使用する\*\*: コンパイラが自動的に型を推論できない場合は、明示的に型をキャストすることで解決できる場合があります。ただし、このケースでは`type.di`が既に正しい型を返しているので、この方法は必要ありません。
+2. **明示的なキャストを使用する**: コンパイラが自動的に型を推論できない場合は、明示的に型をキャストすることで解決できる場合があります。ただし、このケースでは`type.di`が既に正しい型を返しているので、この方法は必要ありません。
 
-3. \*\*ジェネリック`State`の使用を再評価する\*\*: もし`PreviewSnapshots`の`State`が常に`NonFrameworkDependencyInjector`型であるならば、ジェネリックを使用せずに直接この型を指定することで問題を回避できます。
+3. **ジェネリック`State`の使用を再評価する**: もし`PreviewSnapshots`の`State`が常に`NonFrameworkDependencyInjector`型であるならば、ジェネリックを使用せずに直接この型を指定することで問題を回避できます。
 
 このエラーは、`PreviewSnapshots.Configuration`の初期化子内で`State`型が`NonFrameworkDependencyInjector`に適切にマッピングされていないことに関連しています。提供されたコードスニペットからは、`State`型の全体的な使用方法とコンテキストを完全に理解するのが難しいため、具体的な修正方法を提案するのは難しいです。`PreviewSnapshots`や`Configuration`のジェネリック型を適切に扱い、期待される型に正しくマッピングすることが重要です。
 

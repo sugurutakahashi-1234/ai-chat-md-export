@@ -23,14 +23,14 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
         self.defaultValue = defaultValue
     }
 
-    public mutating func updateUserDefaults(\_ userDefaults: UserDefaults) {
+    public mutating func updateUserDefaults(_ userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
     }
 
     public var wrappedValue: T {
         get {
             guard let userDefaults else {
-                assertionFailure("Unset UserDefaults \\(key)")
+                assertionFailure("Unset UserDefaults \(key)")
                 return defaultValue
             }
             guard let data = userDefaults.data(forKey: key.rawValue) else {
@@ -40,20 +40,20 @@ public struct UserDefaultsWrapper&lt;T: UserDefaultsCodable&gt; {
                 let decodedValue = try T.decoder.decode(T.self, from: data)
                 return decodedValue
             } catch {
-                assertionFailure("Failed to decode \\(key): \\(error)")
+                assertionFailure("Failed to decode \(key): \(error)")
                 return defaultValue
             }
         }
         set {
             do {
                 guard let userDefaults else {
-                    assertionFailure("Unset UserDefaults \\(key)")
+                    assertionFailure("Unset UserDefaults \(key)")
                     return
                 }
                 let encodedValue = try T.encoder.encode(newValue)
                 userDefaults.set(encodedValue, forKey: key.rawValue)
             } catch {
-                assertionFailure("Failed to encode \\(key): \\(error)")
+                assertionFailure("Failed to encode \(key): \(error)")
             }
         }
     }

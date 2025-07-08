@@ -49,31 +49,31 @@ public enum UICatalogType: SwiftUIForEachable {
 #!/bin/bash
 
 # 引数の数の確認
-if \[ "$#" -ne 2 \]; then
+if [ "$#" -ne 2 ]; then
     echo "Need args: $0 &lt;DI Container&gt; &lt;View&gt;"
     exit 1
 fi
 
-mint\_package\_name="MintCLIPackage"
-product\_package\_name="SmallTalkPackage"
-di\_container\_name="$1"
-screen\_name="$2"
-template\_path="./sourcery/template/presentation\_code\_gen"
-source\_dir="${product\_package\_name}/Sources/Presentation"
+mint_package_name="MintCLIPackage"
+product_package_name="SmallTalkPackage"
+di_container_name="$1"
+screen_name="$2"
+template_path="./sourcery/template/presentation_code_gen"
+source_dir="${product_package_name}/Sources/Presentation"
 
-output\_presentation\_dir="${source\_dir}/View/${screen\_name}"
-output\_di\_container\_dependency\_dir="${source\_dir}/DIContainerDependency"
-output\_test\_dir="${product\_package\_name}/Tests"
-output\_test\_case\_dir="${product\_package\_name}/Sources/UICatalog/Entity"
+output_presentation_dir="${source_dir}/View/${screen_name}"
+output_di_container_dependency_dir="${source_dir}/DIContainerDependency"
+output_test_dir="${product_package_name}/Tests"
+output_test_case_dir="${product_package_name}/Sources/UICatalog/Entity"
 
-current\_user=$(whoami)
-current\_date=$(date "+%Y/%m/%d")
+current_user=$(whoami)
+current_date=$(date "+%Y/%m/%d")
 
 # --force-parse のオプションが拡張子を別にしないと効かないため、それを回避するためのワークアラウンド処理
-remove\_sourcery\_header() {
-    local target\_directory="$1"
+remove_sourcery_header() {
+    local target_directory="$1"
     # ファイルの先頭1行を読み込み、「// Generated using Sourcery」の文字列が含まれている場合、最初の3行を削除する
-    find "$target\_directory" -type f -name "\*.swift" | while read -r file; do
+    find "$target_directory" -type f -name "*.swift" | while read -r file; do
         head=$(head -n 1 "$file")
         if echo "$head" | grep -q "// Generated using Sourcery"; then
             echo "Updating file: $file"
@@ -83,54 +83,54 @@ remove\_sourcery\_header() {
 }
 
 # 出力ディレクトリが存在しない場合は作成
-mkdir -p "$output\_presentation\_dir"
-mkdir -p "$output\_di\_container\_dependency\_dir"
-mkdir -p "$output\_test\_dir"
-mkdir -p "$output\_test\_case\_dir"
+mkdir -p "$output_presentation_dir"
+mkdir -p "$output_di_container_dependency_dir"
+mkdir -p "$output_test_dir"
+mkdir -p "$output_test_case_dir"
 
 # View 関連
 for component in "PresenterDependency" "Presenter" "View"
 do
-    swift run --package-path "$mint\_package\_name" mint run sourcery \\
-              --sources "$source\_dir" \\
-              --templates "$template\_path/${component}.stencil" \\
-              --output "$output\_presentation\_dir/${screen\_name}${component}.swift" \\
-              --args "screenName=$screen\_name","diContainerName=$di\_container\_name","userName=$current\_user","date=$current\_date"
+    swift run --package-path "$mint_package_name" mint run sourcery \
+              --sources "$source_dir" \
+              --templates "$template_path/${component}.stencil" \
+              --output "$output_presentation_dir/${screen_name}${component}.swift" \
+              --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove\_sourcery\_header "$output\_presentation\_dir"
+remove_sourcery_header "$output_presentation_dir"
 
 # DIContainer 関連
 for component in "DIContainerDependency"
 do
-swift run --package-path "$mint\_package\_name" mint run sourcery --disableCache \\
-          --sources "$source\_dir" \\
-          --templates "$template\_path/${component}.stencil" \\
-          --output "$output\_di\_container\_dependency\_dir/${di\_container\_name}${component}.swift" \\
-          --args "screenName=$screen\_name","diContainerName=$di\_container\_name","userName=$current\_user","date=$current\_date"
+swift run --package-path "$mint_package_name" mint run sourcery --disableCache \
+          --sources "$source_dir" \
+          --templates "$template_path/${component}.stencil" \
+          --output "$output_di_container_dependency_dir/${di_container_name}${component}.swift" \
+          --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove\_sourcery\_header "$output\_di\_container\_dependency\_dir"
+remove_sourcery_header "$output_di_container_dependency_dir"
 
 # Test 関連
 for component in "ViewSnapshotTest" "PresenterTest"
 do
-    swift run --package-path "$mint\_package\_name" mint run sourcery \\
-                --sources "$source\_dir" \\
-                --templates "$template\_path/${component}.stencil" \\
-                --output "$output\_test\_dir/${component}/${screen\_name}${component}.swift" \\
-                --args "screenName=$screen\_name","diContainerName=$di\_container\_name","userName=$current\_user","date=$current\_date"
+    swift run --package-path "$mint_package_name" mint run sourcery \
+                --sources "$source_dir" \
+                --templates "$template_path/${component}.stencil" \
+                --output "$output_test_dir/${component}/${screen_name}${component}.swift" \
+                --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove\_sourcery\_header "$output\_test\_dir"
+remove_sourcery_header "$output_test_dir"
 
 # UICatalog 関連
 for component in "ViewTestCase"
 do
-    swift run --package-path "$mint\_package\_name" mint run sourcery \\
-                --sources "$source\_dir" \\
-                --templates "$template\_path/${component}.stencil" \\
-                --output "$output\_test\_case\_dir/${component}/${screen\_name}${component}.swift" \\
-                --args "screenName=$screen\_name","diContainerName=$di\_container\_name","userName=$current\_user","date=$current\_date"
+    swift run --package-path "$mint_package_name" mint run sourcery \
+                --sources "$source_dir" \
+                --templates "$template_path/${component}.stencil" \
+                --output "$output_test_case_dir/${component}/${screen_name}${component}.swift" \
+                --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove\_sourcery\_header "$output\_test\_case\_dir"
+remove_sourcery_header "$output_test_case_dir"
 
 echo "Sourcery DONE!!"
 
@@ -325,31 +325,31 @@ bash generate_uicatalog_type.sh
 #!/bin/bash
 
 # 引数の数の確認
-if \[ "$#" -ne 2 \]; then
+if [ "$#" -ne 2 ]; then
     echo "Need args: $0 &lt;DI Container&gt; &lt;View&gt;"
     exit 1
 fi
 
-mint\_package\_name="MintCLIPackage"
-product\_package\_name="SmallTalkPackage"
-di\_container\_name="$1"
-screen\_name="$2"
-template\_path="./sourcery/template/presentation\_code\_gen"
-source\_dir="${product\_package\_name}/Sources/Presentation"
+mint_package_name="MintCLIPackage"
+product_package_name="SmallTalkPackage"
+di_container_name="$1"
+screen_name="$2"
+template_path="./sourcery/template/presentation_code_gen"
+source_dir="${product_package_name}/Sources/Presentation"
 
-output\_presentation\_dir="${source\_dir}/View/${screen\_name}"
-output\_di\_container\_dependency\_dir="${source\_dir}/DIContainerDependency"
-output\_test\_dir="${product\_package\_name}/Tests"
-output\_test\_case\_dir="${product\_package\_name}/Sources/UICatalog/Entity"
+output_presentation_dir="${source_dir}/View/${screen_name}"
+output_di_container_dependency_dir="${source_dir}/DIContainerDependency"
+output_test_dir="${product_package_name}/Tests"
+output_test_case_dir="${product_package_name}/Sources/UICatalog/Entity"
 
-current\_user=$(whoami)
-current\_date=$(date "+%Y/%m/%d")
+current_user=$(whoami)
+current_date=$(date "+%Y/%m/%d")
 
 # --force-parse のオプションが拡張子を別にしないと効かないため、それを回避するためのワークアラウンド処理
-remove\_sourcery\_header() {
-    local target\_directory="$1"
+remove_sourcery_header() {
+    local target_directory="$1"
     # ファイルの先頭1行を読み込み、「// Generated using Sourcery」の文字列が含まれている場合、最初の3行を削除する
-    find "$target\_directory" -type f -name "\*.swift" | while read -r file; do
+    find "$target_directory" -type f -name "*.swift" | while read -r file; do
         head=$(head -n 1 "$file")
         if echo "$head" | grep -q "// Generated using Sourcery"; then
             echo "Updating file: $file"
@@ -359,54 +359,54 @@ remove\_sourcery\_header() {
 }
 
 # 出力ディレクトリが存在しない場合は作成
-mkdir -p "$output\_presentation\_dir"
-mkdir -p "$output\_di\_container\_dependency\_dir"
-mkdir -p "$output\_test\_dir"
-mkdir -p "$output\_test\_case\_dir"
+mkdir -p "$output_presentation_dir"
+mkdir -p "$output_di_container_dependency_dir"
+mkdir -p "$output_test_dir"
+mkdir -p "$output_test_case_dir"
 
 # View 関連
 for component in "PresenterDependency" "Presenter" "View"
 do
-    swift run --package-path "$mint\_package\_name" mint run sourcery \\
-              --sources "$source\_dir" \\
-              --templates "$template\_path/${component}.stencil" \\
-              --output "$output\_presentation\_dir/${screen\_name}${component}.swift" \\
-              --args "screenName=$screen\_name","diContainerName=$di\_container\_name","userName=$current\_user","date=$current\_date"
+    swift run --package-path "$mint_package_name" mint run sourcery \
+              --sources "$source_dir" \
+              --templates "$template_path/${component}.stencil" \
+              --output "$output_presentation_dir/${screen_name}${component}.swift" \
+              --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove\_sourcery\_header "$output\_presentation\_dir"
+remove_sourcery_header "$output_presentation_dir"
 
 # DIContainer 関連
 for component in "DIContainerDependency"
 do
-swift run --package-path "$mint\_package\_name" mint run sourcery --disableCache \\
-          --sources "$source\_dir" \\
-          --templates "$template\_path/${component}.stencil" \\
-          --output "$output\_di\_container\_dependency\_dir/${di\_container\_name}${component}.swift" \\
-          --args "screenName=$screen\_name","diContainerName=$di\_container\_name","userName=$current\_user","date=$current\_date"
+swift run --package-path "$mint_package_name" mint run sourcery --disableCache \
+          --sources "$source_dir" \
+          --templates "$template_path/${component}.stencil" \
+          --output "$output_di_container_dependency_dir/${di_container_name}${component}.swift" \
+          --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove\_sourcery\_header "$output\_di\_container\_dependency\_dir"
+remove_sourcery_header "$output_di_container_dependency_dir"
 
 # Test 関連
 for component in "ViewSnapshotTest" "PresenterTest"
 do
-    swift run --package-path "$mint\_package\_name" mint run sourcery \\
-                --sources "$source\_dir" \\
-                --templates "$template\_path/${component}.stencil" \\
-                --output "$output\_test\_dir/${component}/${screen\_name}${component}.swift" \\
-                --args "screenName=$screen\_name","diContainerName=$di\_container\_name","userName=$current\_user","date=$current\_date"
+    swift run --package-path "$mint_package_name" mint run sourcery \
+                --sources "$source_dir" \
+                --templates "$template_path/${component}.stencil" \
+                --output "$output_test_dir/${component}/${screen_name}${component}.swift" \
+                --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove\_sourcery\_header "$output\_test\_dir"
+remove_sourcery_header "$output_test_dir"
 
 # UICatalog 関連
 for component in "ViewTestCase"
 do
-    swift run --package-path "$mint\_package\_name" mint run sourcery \\
-                --sources "$source\_dir" \\
-                --templates "$template\_path/${component}.stencil" \\
-                --output "$output\_test\_case\_dir/${component}/${screen\_name}${component}.swift" \\
-                --args "screenName=$screen\_name","diContainerName=$di\_container\_name","userName=$current\_user","date=$current\_date"
+    swift run --package-path "$mint_package_name" mint run sourcery \
+                --sources "$source_dir" \
+                --templates "$template_path/${component}.stencil" \
+                --output "$output_test_case_dir/${component}/${screen_name}${component}.swift" \
+                --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove\_sourcery\_header "$output\_test\_case\_dir"
+remove_sourcery_header "$output_test_case_dir"
 
 echo "Sourcery DONE!!"
 
@@ -690,7 +690,7 @@ echo "Sourcery DONE!!"
 
 以下になった
 
-error: ./sourcery/template/presentation\_code\_gen/UICatalogType.stencil: Unknown filter 'lowercaseFirst'. Found similar filters: 'lowercase', 'lowercase', 'lowercase'.
+error: ./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown filter 'lowercaseFirst'. Found similar filters: 'lowercase', 'lowercase', 'lowercase'.
 
 ---
 
@@ -1004,7 +1004,7 @@ echo "Sourcery DONE!!"
 
 以下のエラーになった
 
-error: ./sourcery/template/presentation\_code\_gen/UICatalogType.stencil: Unknown filter 'endsWith'. Found similar filters: 'indent', 'inherits', 'indent'.
+error: ./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown filter 'endsWith'. Found similar filters: 'indent', 'inherits', 'indent'.
 
 ---
 
@@ -1515,7 +1515,7 @@ public enum UICatalogType: SwiftUIForEachable {
 
 カスタムフィルタなしのアプローチがよくて、以下のエラーになった
 
-./sourcery/template/presentation\_code\_gen/UICatalogType.stencil: Unknown filter 'slice'. Found similar filters: 'split', 'split'.
+./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown filter 'slice'. Found similar filters: 'split', 'split'.
 
 以下を参照にするとよさそう
 https://stencil.fuller.li/en/latest/builtins.html#built-in-filters-1
@@ -1668,8 +1668,8 @@ echo "Sourcery DONE!!"
 
 以下になった
 
-error: ./sourcery/template/presentation\_code\_gen/UICatalogType.stencil: Unknown filter ')'.
-./sourcery/template/presentation\_code\_gen/UICatalogType.stencil: Unknown filter ')'
+error: ./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown filter ')'.
+./sourcery/template/presentation_code_gen/UICatalogType.stencil: Unknown filter ')'
 
 ---
 

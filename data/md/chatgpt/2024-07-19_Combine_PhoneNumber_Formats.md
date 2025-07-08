@@ -23,26 +23,26 @@ public final class PhoneNumberDriver: PhoneNumberDriverProtocol {
         OSLogger.deinitLog()
     }
 
-    public var allCountries: \[Country\] {
+    public var allCountries: [Country] {
         get throws {
-            try phoneNumberKit.allCountries().map { iso3166\_1RegionCode in
-                guard let countryCode = phoneNumberKit.countryCode(for: iso3166\_1RegionCode) else {
+            try phoneNumberKit.allCountries().map { iso3166_1RegionCode in
+                guard let countryCode = phoneNumberKit.countryCode(for: iso3166_1RegionCode) else {
                     OSLogger.errorLog(AppError.customError())
                     throw AppError.customError()
                 }
-                return Country(iso3166\_1RegionCode: iso3166\_1RegionCode, code: Int(countryCode))
+                return Country(iso3166_1RegionCode: iso3166_1RegionCode, code: Int(countryCode))
             }
         }
     }
 
     public func formatAsPartial(country: Country, rawPhoneNumber: String) -&gt; String {
         // withPrefix: true にすると "+81 90-1234-5678" のような形式になる
-        PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: country.iso3166\_1RegionCode, withPrefix: false).formatPartial(rawPhoneNumber)
+        PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: country.iso3166_1RegionCode, withPrefix: false).formatPartial(rawPhoneNumber)
     }
 
     public func formatAsInternational(country: Country, partialFormattedPhoneNumber: String) throws -&gt; String {
         do {
-            let parsedNumber = try phoneNumberKit.parse(partialFormattedPhoneNumber, withRegion: country.iso3166\_1RegionCode)
+            let parsedNumber = try phoneNumberKit.parse(partialFormattedPhoneNumber, withRegion: country.iso3166_1RegionCode)
             return phoneNumberKit.format(parsedNumber, toType: .e164, withPrefix: true)
         } catch {
             OSLogger.errorLog(error.toAppError)
@@ -128,7 +128,7 @@ do {
 
 public protocol PhoneNumberDriverProtocol: AnyObject, Sendable {
     /// 全ての Country 一覧
-    var allCountries: \[Country\] { get throws }
+    var allCountries: [Country] { get throws }
 
     /// 分割した形式にフォーマットされた電話番号を返却する
     /// - Parameters:

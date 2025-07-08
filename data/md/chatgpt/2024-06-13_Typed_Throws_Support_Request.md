@@ -27,9 +27,9 @@ I would like to request support for the new Typed Throws feature as described in
 Integrating this feature into Mockolo would enhance its utility and alignment with the latest Swift language developments. Specifically, supporting Typed Throws would allow generated mocks to accurately reflect the error types defined in protocols and classes, ensuring that error handling remains consistent and robust across both production and test code.
 
 Here are some potential benefits of adding support for Typed Throws in Mockolo:
-1. \*\*Type Safety\*\*: Ensuring that only the specified error types can be thrown improves code reliability and reduces the likelihood of runtime errors.
-2. \*\*Better Documentation\*\*: By explicitly declaring the error types, the code becomes more self-documenting, aiding developers in understanding and using the APIs correctly.
-3. \*\*Enhanced Testing\*\*: Generated mocks that support Typed Throws can be used to more accurately simulate and test various error scenarios, leading to more thorough and effective testing.
+1. **Type Safety**: Ensuring that only the specified error types can be thrown improves code reliability and reduces the likelihood of runtime errors.
+2. **Better Documentation**: By explicitly declaring the error types, the code becomes more self-documenting, aiding developers in understanding and using the APIs correctly.
+3. **Enhanced Testing**: Generated mocks that support Typed Throws can be used to more accurately simulate and test various error scenarios, leading to more thorough and effective testing.
 
 I believe that incorporating this feature will significantly enhance the functionality and value of Mockolo. Thank you for considering this request, and I look forward to your response.
 
@@ -177,7 +177,7 @@ Mansoor
 
 ---
 
-I am awaiting a response to the following issue: \[Support for Typed Throws (SE-0413)\](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0413-typed-throws.md).
+I am awaiting a response to the following issue: [Support for Typed Throws (SE-0413)](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0413-typed-throws.md).
 
 ---
 

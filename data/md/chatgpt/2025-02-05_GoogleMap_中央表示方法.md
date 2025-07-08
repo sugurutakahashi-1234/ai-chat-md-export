@@ -12,39 +12,39 @@ GoogleMapのウィジェットが画面の中央真ん中から広がる様に�
 StackをCenterにしているが他にやった方がいいことはあるのか？
   import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
-import 'package:snpit\_guild\_app/domain/spot\_type.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/entities/extensions/convert\_to\_domain.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/spots/get\_guild\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/item\_boxes/get\_item\_box\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/spots/get\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/get\_user.dart';
-import 'package:snpit\_guild\_app/presentation/providers/current\_location.dart';
-import 'package:snpit\_guild\_app/presentation/providers/exploded\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/flavor\_provider.dart';
-import 'package:snpit\_guild\_app/presentation/providers/on\_exploring.dart';
-import 'package:snpit\_guild\_app/presentation/providers/should\_refresh\_map\_spot.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_explorer\_list.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_our\_spot\_detail.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_shootable\_spot\_detail.dart';
-import 'package:snpit\_guild\_app/presentation/providers/show\_spot\_list.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/explored\_result\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/item\_box\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/dialogs/location\_access\_dialog.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/item\_box\_icon.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/spot\_icon.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/spot\_photo\_carousel.dart';
-import 'package:snpit\_guild\_app/presentation/widgets/square\_image.dart';
-import 'package:snpit\_guild\_app/utils/location\_utils.dart';
-import 'package:snpit\_guild\_app/utils/snack\_bar\_utils.dart';
-import 'package:widget\_to\_marker/widget\_to\_marker.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
+import 'package:snpit_guild_app/domain/spot_type.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/entities/extensions/convert_to_domain.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/spots/get_guild_spot_list.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/item_boxes/get_item_box_list.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/spots/get_spot_list.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/get_user.dart';
+import 'package:snpit_guild_app/presentation/providers/current_location.dart';
+import 'package:snpit_guild_app/presentation/providers/exploded_spot_list.dart';
+import 'package:snpit_guild_app/presentation/providers/flavor_provider.dart';
+import 'package:snpit_guild_app/presentation/providers/on_exploring.dart';
+import 'package:snpit_guild_app/presentation/providers/should_refresh_map_spot.dart';
+import 'package:snpit_guild_app/presentation/providers/show_explorer_list.dart';
+import 'package:snpit_guild_app/presentation/providers/show_our_spot_detail.dart';
+import 'package:snpit_guild_app/presentation/providers/show_shootable_spot_detail.dart';
+import 'package:snpit_guild_app/presentation/providers/show_spot_list.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/explored_result_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/item_box_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/dialogs/location_access_dialog.dart';
+import 'package:snpit_guild_app/presentation/widgets/item_box_icon.dart';
+import 'package:snpit_guild_app/presentation/widgets/spot_icon.dart';
+import 'package:snpit_guild_app/presentation/widgets/spot_photo_carousel.dart';
+import 'package:snpit_guild_app/presentation/widgets/square_image.dart';
+import 'package:snpit_guild_app/utils/location_utils.dart';
+import 'package:snpit_guild_app/utils/snack_bar_utils.dart';
+import 'package:widget_to_marker/widget_to_marker.dart';
 
 /// 逆三角形を描画するシンプルな Painter
 class TrianglePainter extends CustomPainter {
@@ -89,7 +89,7 @@ class MapPage extends HookConsumerWidget {
       // 1km ≈ 0.009度 (厳密でなくてOK)
       // 今回は 1~10km 程度なのでこれで十分
       final radiusKm = radiusMeters / 1000.0;
-      final delta = 0.009 \* radiusKm;
+      final delta = 0.009 * radiusKm;
 
       // 南西端と北東端をざっくり決める
       final southwest = LatLng(
@@ -134,7 +134,7 @@ class MapPage extends HookConsumerWidget {
     Future&lt;void&gt; onTapItemBoxMarker(ItemBoxDTO itemBox) async {
       await showDialog&lt;void&gt;(
         context: context,
-        builder: (\_) {
+        builder: (_) {
           return ItemBoxDialog(itemBox: itemBox);
         },
       );
@@ -159,18 +159,18 @@ class MapPage extends HookConsumerWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            boxShadow: \[
+            boxShadow: [
               BoxShadow(
                 blurRadius: 8,
                 color: ColorToken.bgBlack.withAlpha(50),
                 spreadRadius: 2,
                 offset: const Offset(0, 2),
               ),
-            \],
+            ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: \[
+            children: [
               SpotIcon(spotType: spotType),
               Transform.translate(
                 offset: const Offset(0, -4),
@@ -179,7 +179,7 @@ class MapPage extends HookConsumerWidget {
                   painter: TrianglePainter(color: ColorToken.bgWhite),
                 ),
               ),
-            \],
+            ],
           ),
         ),
       );
@@ -193,18 +193,18 @@ class MapPage extends HookConsumerWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            boxShadow: \[
+            boxShadow: [
               BoxShadow(
                 blurRadius: 8,
                 color: ColorToken.bgBlack.withAlpha(50),
                 spreadRadius: 2,
                 offset: const Offset(0, 2),
               ),
-            \],
+            ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: \[
+            children: [
               DecoratedBox(
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -234,7 +234,7 @@ class MapPage extends HookConsumerWidget {
                   painter: TrianglePainter(color: ColorToken.bgWhite),
                 ),
               ),
-            \],
+            ],
           ),
         ),
       );
@@ -259,7 +259,7 @@ class MapPage extends HookConsumerWidget {
       );
 
       return Marker(
-        markerId: MarkerId('spot\_$spotId'),
+        markerId: MarkerId('spot_$spotId'),
         position: LatLng(lat, lng),
         icon: iconDescriptor,
         onTap: () async {
@@ -284,7 +284,7 @@ class MapPage extends HookConsumerWidget {
       );
 
       return Marker(
-        markerId: MarkerId('itemBox\_$itemBoxId'),
+        markerId: MarkerId('itemBox_$itemBoxId'),
         position: LatLng(lat, lng),
         icon: iconDescriptor,
         onTap: () async {
@@ -303,11 +303,11 @@ class MapPage extends HookConsumerWidget {
       final neededMarkerIds = &lt;String&gt;{};
       for (final spot in newSpotList) {
         final spotId = spot.spotId ?? '';
-        neededMarkerIds.add('spot\_$spotId');
+        neededMarkerIds.add('spot_$spotId');
       }
       for (final box in newItemBoxList) {
         final boxId = box.itemBoxId ?? '';
-        neededMarkerIds.add('itemBox\_$boxId');
+        neededMarkerIds.add('itemBox_$boxId');
       }
 
       // 既存マーカーから「不要になったもの」を削除する
@@ -324,7 +324,7 @@ class MapPage extends HookConsumerWidget {
 
       // Spot のリストを順に処理し、1つずつ再描画して反映
       for (final spot in newSpotList) {
-        final markerId = MarkerId('spot\_${spot.spotId}');
+        final markerId = MarkerId('spot_${spot.spotId}');
         // buildSpotMarker (必ず再生成して再描画する)
         final newMarker = await buildSpotMarker(
           spot: spot,
@@ -352,7 +352,7 @@ class MapPage extends HookConsumerWidget {
 
       // ItemBox も同様に処理
       for (final itemBox in newItemBoxList) {
-        final markerId = MarkerId('itemBox\_${itemBox.itemBoxId}');
+        final markerId = MarkerId('itemBox_${itemBox.itemBoxId}');
         final newMarker = await buildItemBoxMarker(
           itemBox: itemBox,
           onTapItemBoxMarker: (box) async {
@@ -409,7 +409,7 @@ class MapPage extends HookConsumerWidget {
 
         // range は km 単位なので、メートルに換算（×1000）
         final explorerRangeKm = exploringState.explorer?.range ?? 0;
-        final rangeInMeters = explorerRangeKm \* 1000.0;
+        final rangeInMeters = explorerRangeKm * 1000.0;
 
         final circle = Circle(
           circleId: const CircleId('explorerCircle'),
@@ -461,13 +461,13 @@ class MapPage extends HookConsumerWidget {
                 ),
               )
               .toList() ??
-          \[\];
+          [];
 
       ref.read(shouldRefreshMapSpotNotifierProvider.notifier).trigger();
 
       await showDialog&lt;void&gt;(
         context: context,
-        builder: (\_) =&gt; ExploredResultDialog(
+        builder: (_) =&gt; ExploredResultDialog(
           spotPhotoItemList: spotPhotoItems,
         ),
       );
@@ -529,7 +529,7 @@ class MapPage extends HookConsumerWidget {
           await onRefresh();
         });
         // フォアグラウンド復帰で位置情報再取得
-        final observer = \_LifecycleObserver(
+        final observer = _LifecycleObserver(
           onResume: () async {
             final refreshedLocation =
                 ref.refresh(currentLocationNotifierProvider);
@@ -539,7 +539,7 @@ class MapPage extends HookConsumerWidget {
         WidgetsBinding.instance.addObserver(observer);
         return () =&gt; WidgetsBinding.instance.removeObserver(observer);
       },
-      \[\],
+      [],
     );
 
     ref
@@ -565,7 +565,7 @@ class MapPage extends HookConsumerWidget {
         data: (currentLocation) {
           return Center(
             child: Stack(
-              children: \[
+              children: [
                 GoogleMap(
                   initialCameraPosition: CameraPosition(
                     target: currentLocation,
@@ -598,7 +598,7 @@ class MapPage extends HookConsumerWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: \[
+                      children: [
                         // 現在地へ戻るボタン
                         SizedBox(
                           width: 48,
@@ -609,7 +609,7 @@ class MapPage extends HookConsumerWidget {
                               await onTapNearMe();
                             },
                             child: const Icon(
-                              Icons.near\_me,
+                              Icons.near_me,
                               size: 24,
                               color: ColorToken.secondaryDark,
                             ),
@@ -641,7 +641,7 @@ class MapPage extends HookConsumerWidget {
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
-                              children: \[
+                              children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 4),
                                   child: onExploringStateValue.isExploring
@@ -674,7 +674,7 @@ class MapPage extends HookConsumerWidget {
                                   ),
                                 ),
                                 const Spacer(),
-                              \],
+                              ],
                             ),
                           ),
                         ),
@@ -683,7 +683,7 @@ class MapPage extends HookConsumerWidget {
                           data: (spotList) {
                             // 上位2つを取り出し、順序を逆にする
                             final displaySpotList =
-                                (spotList?.take(2).toList() ?? \[\])
+                                (spotList?.take(2).toList() ?? [])
                                     .reversed
                                     .toList();
                             return SizedBox(
@@ -704,12 +704,12 @@ class MapPage extends HookConsumerWidget {
                                   child: Stack(
                                     clipBehavior: Clip.none,
                                     alignment: Alignment.bottomRight,
-                                    children: \[
+                                    children: [
                                       for (var i = 0; i &lt; 2; i++)
                                         if (i &lt; displaySpotList.length)
                                           Positioned(
-                                            left: i \* -4.0,
-                                            top: i \* -4.0,
+                                            left: i * -4.0,
+                                            top: i * -4.0,
                                             child: SizedBox(
                                               width: 44,
                                               height: 44,
@@ -732,7 +732,7 @@ class MapPage extends HookConsumerWidget {
                                                     ),
                                                     child: SquareImage(
                                                       imageUrl:
-                                                          displaySpotList\[i\]
+                                                          displaySpotList[i]
                                                               .photoUrl,
                                                       size: 44,
                                                     ),
@@ -741,7 +741,7 @@ class MapPage extends HookConsumerWidget {
                                               ),
                                             ),
                                           ),
-                                    \],
+                                    ],
                                   ),
                                 ),
                               ),
@@ -750,7 +750,7 @@ class MapPage extends HookConsumerWidget {
                           loading: () {
                             return const SizedBox.shrink();
                           },
-                          error: (error, \_) {
+                          error: (error, _) {
                             return SizedBox(
                               width: 48,
                               height: 48,
@@ -768,18 +768,18 @@ class MapPage extends HookConsumerWidget {
                             );
                           },
                         ),
-                      \],
+                      ],
                     ),
                   ),
                 ),
-              \],
+              ],
             ),
           );
         },
         loading: () {
           return const Center(child: CircularProgressIndicator());
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Padding(
             padding: const EdgeInsets.all(24),
             child: Center(
@@ -787,7 +787,7 @@ class MapPage extends HookConsumerWidget {
                 onPressed: () async {
                   await showDialog&lt;void&gt;(
                     context: context,
-                    builder: (\_) {
+                    builder: (_) {
                       return const LocationAccessDialog();
                     },
                   );
@@ -804,8 +804,8 @@ class MapPage extends HookConsumerWidget {
   }
 }
 
-class \_LifecycleObserver extends WidgetsBindingObserver {
-  \_LifecycleObserver({this.onResume});
+class _LifecycleObserver extends WidgetsBindingObserver {
+  _LifecycleObserver({this.onResume});
   final VoidCallback? onResume;
 
   @override
@@ -821,19 +821,19 @@ class \_LifecycleObserver extends WidgetsBindingObserver {
 ## 🔧 ツール
 *2025/2/6 1:02:52*
 
-\*\*Googleマップの展開\*\*
+**Googleマップの展開**
 
 GoogleMapウィジェットを画面の中央から広げる構造になっている。StackのCenterを使用しているが、全体のウィジェットを中央に配置する可能性がある。
 
-\*\*画面の有効活用\*\*
+**画面の有効活用**
 
 GoogleMapを画面全体に拡大するには、Centerウィジェットを削除し対応する。中央から広げたい場合、Stackのalignmentプロパティを設定するか、ContainerやAlignウィジェットを使用して中央に配置する。
 
-\*\*画面の活用\*\*
+**画面の活用**
 
 GoogleMapを画面全体に広げるには、Centerを外してStackを使い、Positioned.fillを設定する。通常はフルスクリーン表示が好ましい。
 
-\*\*解決策を探る\*\*
+**解決策を探る**
 
 GoogleMapを画面全体に広げるには、Centerを外してStackを使い、Positioned.fillを設定するのが標準的な方法ですね。
 

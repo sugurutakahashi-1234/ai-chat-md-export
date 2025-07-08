@@ -46,7 +46,7 @@ struct CachedAsyncImageView: View {
                             .scaledToFill()
                     )
                     .clipped()
-            } else if let \_ = appError {
+            } else if let _ = appError {
                 AsyncImageErrorView()
             } else {
                 AsyncImageLoadingView()
@@ -81,8 +81,8 @@ struct CachedAsyncImageView: View {
 
 @MainActor
 final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: ObservableObject {
-    @Published private(set) var stampGroups: \[StampGroup\] = \[\]
-    @Published private(set) var stamps: \[Stamp\] = \[\]
+    @Published private(set) var stampGroups: [StampGroup] = []
+    @Published private(set) var stamps: [Stamp] = []
     @Published private(set) var stampGroupSelectType: StampGroupSelectType = .history
     @Published private(set) var selectedStamp: Stamp?
 
@@ -104,7 +104,7 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
             .map { stampGroupSelectType in
                 switch stampGroupSelectType {
                 case .history:
-                    dependency.localDataStoreDriver.stampHistorys.sorted(by: \\.postedAt, order: .descending).map { $0.stamp }.reduce(into: \[Stamp\]()) { result, stamp in
+                    dependency.localDataStoreDriver.stampHistorys.sorted(by: \.postedAt, order: .descending).map { $0.stamp }.reduce(into: [Stamp]()) { result, stamp in
                         // 同じスタンプ は フィルタリングして除外する（Set 型は順番を保持しないので不向き）
                         if !result.contains(where: { $0 == stamp }) {
                             result.append(stamp)
@@ -132,7 +132,7 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
         do {
             stampGroups = try await dependency.apiRequestDriver.getStampGroups()
         } catch {
-            dependency.logDriver.errorLog("\\(error)")
+            dependency.logDriver.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -160,14 +160,14 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
             try await dependency.apiRequestDriver.postStamp(stamp: stamp, talkThread: talkThread)
 
             // スタンプを送信して履歴を 100 件まで登録する（重複 OK として、表示するときにフィルタリングする）
-            dependency.localDataStoreDriver.stampHistorys = (dependency.localDataStoreDriver.stampHistorys + \[StampHistory(stamp: stamp, postedAt: .now)\]).suffix(100)
+            dependency.localDataStoreDriver.stampHistorys = (dependency.localDataStoreDriver.stampHistorys + [StampHistory(stamp: stamp, postedAt: .now)]).suffix(100)
 
             // 閉じた先で toast を表示させるので、この画面では toast は表示しない（Bindingでも実装可能であるが取り回しが面倒なのでこうしている）
             dependency.toastDriver.showToast(.postedStamp)
 
             shouldDismiss = true
         } catch {
-            dependency.logDriver.errorLog("\\(error)")
+            dependency.logDriver.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -182,7 +182,7 @@ final class StampListPresenter&lt;Dependency: StampListPresenterDependency&gt;: 
                 dependency.audioPlayDriver.pause()
                 try await dependency.audioPlayDriver.play(audioSource: .remoteAudioURL(stampAudio.audioUrl))
             } catch {
-                dependency.logDriver.errorLog("\\(error)")
+                dependency.logDriver.errorLog("\(error)")
                 appError = error.toAppError
                 showAlert = true
             }

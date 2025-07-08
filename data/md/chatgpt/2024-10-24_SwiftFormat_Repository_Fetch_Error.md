@@ -24,7 +24,7 @@ Fetched https://github.com/kylef/Spectre.git from cache (1.44s)
 Fetched https://github.com/nicklockwood/SwiftFormat from cache (22.17s)
 error: Couldn’t get the list of tags:
     fatal: cannot use bare repository '/Users/sugurutakahashi/git/daVinciAppiOS/DaVinciDevToolsPackage/.build/repositories/SwiftFormat-92afd852' (safe.bareRepository is 'explicit')
-make: \*\*\* \[swiftformat-run\] Error 1
+make: *** [swiftformat-run] Error 1
 
 ---
 

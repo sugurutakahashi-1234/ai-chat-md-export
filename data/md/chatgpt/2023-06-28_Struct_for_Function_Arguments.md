@@ -9,7 +9,7 @@
 
 swiftで以下の関数の引数をまとめたstructを定義したい。
 
-func uploadAnalysisResults(measurementId: String, userId: User.ID, sessionId: String, gazeRelativeCGPoints: \[RelativeCGPoint\], interactionDataModels: \[InteractionDataModel\]) async throws
+func uploadAnalysisResults(measurementId: String, userId: User.ID, sessionId: String, gazeRelativeCGPoints: [RelativeCGPoint], interactionDataModels: [InteractionDataModel]) async throws
 
 ---
 

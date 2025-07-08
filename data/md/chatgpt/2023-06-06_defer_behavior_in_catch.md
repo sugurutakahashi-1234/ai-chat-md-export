@@ -21,7 +21,7 @@ func onAppear() async {
             }.value
         } catch {
             // 予期せぬ自動ログインのエラー（有効期限切れなどでもない）
-            print("\\(error): \\(error.localizedDescription)")
+            print("\(error): \(error.localizedDescription)")
         }
     }
 

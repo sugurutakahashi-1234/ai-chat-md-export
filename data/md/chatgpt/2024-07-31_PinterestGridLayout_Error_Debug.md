@@ -22,20 +22,20 @@ struct PinterestGridLayout: Layout {
         self.horizontalPadding = horizontalPadding
     }
 
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache \_: inout ()) -&gt; CGSize {
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache _: inout ()) -&gt; CGSize {
         // 各列の高さを保持する配列
         var columnHeights = Array(repeating: CGFloat(0), count: columns)
         // 提案された幅からパディングと横スペーシングを引いて各列の幅を計算
-        let width = (proposal.replacingUnspecifiedDimensions().width - 2 \* horizontalPadding - CGFloat(columns - 1) \* horizontalSpacing) / CGFloat(columns)
+        let width = (proposal.replacingUnspecifiedDimensions().width - 2 * horizontalPadding - CGFloat(columns - 1) * horizontalSpacing) / CGFloat(columns)
 
         // 各サブビューのサイズを計算し、最も短い列に配置する
         for index in subviews.indices {
             // 最も高さが低い列を見つける
             let columnIndex = columnHeights.firstIndex(of: columnHeights.min() ?? 0) ?? 0
             // サブビューのサイズを計算
-            let size = subviews\[index\].sizeThatFits(ProposedViewSize(width: width, height: nil))
+            let size = subviews[index].sizeThatFits(ProposedViewSize(width: width, height: nil))
             // 列の高さを更新（サブビューの高さ + 縦スペーシング）
-            columnHeights\[columnIndex\] += size.height + verticalSpacing
+            columnHeights[columnIndex] += size.height + verticalSpacing
         }
 
         // 最も高い列の高さを全体の高さとして返す（最後のスペーシングは引く）
@@ -43,27 +43,27 @@ struct PinterestGridLayout: Layout {
         return CGSize(width: proposal.width ?? 0, height: height)
     }
 
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache \_: inout ()) {
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache _: inout ()) {
         // 各列の高さを保持する配列
         var columnHeights = Array(repeating: CGFloat(0), count: columns)
         // 各列の幅を計算
-        let columnWidth = (bounds.width - 2 \* horizontalPadding - CGFloat(columns - 1) \* horizontalSpacing) / CGFloat(columns)
+        let columnWidth = (bounds.width - 2 * horizontalPadding - CGFloat(columns - 1) * horizontalSpacing) / CGFloat(columns)
 
         // 各サブビューを最も短い列に配置する
         for index in subviews.indices {
             // 最も高さが低い列を見つける
             let columnIndex = columnHeights.firstIndex(of: columnHeights.min() ?? 0) ?? 0
             // 配置する位置を計算
-            let x = horizontalPadding + CGFloat(columnIndex) \* (columnWidth + horizontalSpacing)
-            let y = columnHeights\[columnIndex\]
+            let x = horizontalPadding + CGFloat(columnIndex) * (columnWidth + horizontalSpacing)
+            let y = columnHeights[columnIndex]
 
             // サブビューのサイズを計算
-            let size = subviews\[index\].sizeThatFits(ProposedViewSize(width: columnWidth, height: nil))
+            let size = subviews[index].sizeThatFits(ProposedViewSize(width: columnWidth, height: nil))
             // サブビューを指定された位置に配置
-            subviews\[index\].place(at: CGPoint(x: x, y: y), anchor: .topLeading, proposal: ProposedViewSize(width: columnWidth, height: size.height))
+            subviews[index].place(at: CGPoint(x: x, y: y), anchor: .topLeading, proposal: ProposedViewSize(width: columnWidth, height: size.height))
 
             // 列の高さを更新（サブビューの高さ + 縦スペーシング）
-            columnHeights\[columnIndex\] += size.height + verticalSpacing
+            columnHeights[columnIndex] += size.height + verticalSpacing
         }
     }
 }

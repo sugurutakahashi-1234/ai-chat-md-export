@@ -10,15 +10,15 @@
 getSpotDetail を使うように変更してほしい
 
 import 'package:flutter/foundation.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/api\_provider.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/api_provider.dart';
 
-part 'get\_spot\_detail\_info.g.dart';
+part 'get_spot_detail_info.g.dart';
 
 @Riverpod(keepAlive: true)
-class GetSpotDetailNotifier extends \_$GetSpotDetailNotifier {
+class GetSpotDetailNotifier extends _$GetSpotDetailNotifier {
   @override
   Future&lt;SpotDetailResponseDTOData?&gt; build() async =&gt; null;
 
@@ -39,12 +39,12 @@ class GetSpotDetailNotifier extends \_$GetSpotDetailNotifier {
 }
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class SpotDetailPage extends HookConsumerWidget {
   const SpotDetailPage({super.key, required this.spotId});
@@ -56,7 +56,7 @@ class SpotDetailPage extends HookConsumerWidget {
     final imageUrl = useState(UriExtensions.randomImageUrl.toString());
 
     // TODO: 仮実装
-    final items = \[
+    final items = [
       const ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 16),
         title: Text('Difficulty level'),
@@ -73,7 +73,7 @@ class SpotDetailPage extends HookConsumerWidget {
         ),
         trailing: const Row(
           mainAxisSize: MainAxisSize.min,
-          children: \[
+          children: [
             Text(
               'Your Guild',
               style: TextStyle(
@@ -82,29 +82,29 @@ class SpotDetailPage extends HookConsumerWidget {
             ),
             SizedBox(width: 8),
             Icon(
-              Icons.arrow\_forward\_ios,
+              Icons.arrow_forward_ios,
               size: 16,
               color: ColorToken.text,
             ),
-          \],
+          ],
         ),
         onTap: () {
           // TODO: spotId を付与する
           context.push(Screen.ourSpotDetail.path);
         },
       ),
-    \];
+    ];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow\_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        actions: \[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -112,20 +112,20 @@ class SpotDetailPage extends HookConsumerWidget {
               Navigator.of(context, rootNavigator: true).pop();
             },
           ),
-        \],
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: \[
+          children: [
             AspectRatio(
               aspectRatio: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Stack(
                   fit: StackFit.expand,
-                  children: \[
+                  children: [
                     // 角丸にボーダー を入れるには Container x Padding を使う
                     Container(
                       decoration: BoxDecoration(
@@ -160,7 +160,7 @@ class SpotDetailPage extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
             ),
@@ -180,19 +180,19 @@ class SpotDetailPage extends HookConsumerWidget {
                 children: List.generate(
                   items.length,
                   (index) =&gt; Column(
-                    children: \[
-                      items\[index\],
+                    children: [
+                      items[index],
                       if (index &lt; items.length - 1) // 最後のアイテムには線を追加しない
                         Container(
                           height: 0.5,
                           color: ColorToken.border,
                         ),
-                    \],
+                    ],
                   ),
                 ),
               ),
             ),
-          \],
+          ],
         ),
       ),
     );
@@ -204,23 +204,23 @@ class SpotDetailPage extends HookConsumerWidget {
 ## 🔧 ツール
 *2025/1/9 19:41:51*
 
-\*\*Pulling data\*\*
+**Pulling data**
 
 I’m working through fetching spot details using getSpotDetail from the server in a Flutter app's "SpotDetailPage" widget. Considering FutureBuilder or ref.listen for data management.
 
-\*\*Implementing with Riverpod\*\*
+**Implementing with Riverpod**
 
 I’m using Riverpod to fetch spot details by calling getSpotDetail and subscribing to spotDetailNotifierProvider. Progress is steady, and I explored efficient methods for data retrieval.
 
-\*\*Crafting the provider\*\*
+**Crafting the provider**
 
 OK, I’m thinking about forming a Riverpod AutoDisposeNotifier provider for getSpotDetailNotifier. This involves using generated code and a useEffect method in SpotDetailPage to manage the UI state.
 
-\*\*Pulling data\*\*
+**Pulling data**
 
 Kicking off by watching getSpotDetailNotifierProvider, then calling getSpotDetail in useEffect. Handling UI states—data, loading, error—while showcasing image and name processing.
 
-\*\*Fetching and highlighting\*\*
+**Fetching and highlighting**
 
 I'm piecing together how to fetch data using getSpotDetail in SpotDetailPage, focusing on a random image from spotDetail?.imageUrl, with an option to set a default image.
 
@@ -485,11 +485,11 @@ class SpotDetailPage extends HookConsumerWidget {
 ## 👤 ユーザー
 *2025/1/9 20:13:36*
 
-imageUrl は getSpotDetailNotifierProvider のADMIN\_PHOTOSな photoUrl なんだ。複数ある可能性があるけど、最初に見つかったphotoUrlをそれにしてほしい。
+imageUrl は getSpotDetailNotifierProvider のADMIN_PHOTOSな photoUrl なんだ。複数ある可能性があるけど、最初に見つかったphotoUrlをそれにしてほしい。
 
 /// Detail information of the spot.
 @freezed
-class SpotDetailResponseDTOData with \_$SpotDetailResponseDTOData {
+class SpotDetailResponseDTOData with _$SpotDetailResponseDTOData {
   factory SpotDetailResponseDTOData({
     @JsonKey(name: 'spotId') required String? spotId,
     @JsonKey(name: 'guildId') String? guildId,
@@ -504,14 +504,14 @@ class SpotDetailResponseDTOData with \_$SpotDetailResponseDTOData {
     @JsonKey(name: 'autoIncome') required num? autoIncome,
     @JsonKey(name: 'attackIncome') required num? attackIncome,
     @JsonKey(name: 'spotPhotos') required List&lt;SpotPhotoDTO&gt;? spotPhotos,
-  }) = \_SpotDetailResponseDTOData;
+  }) = _SpotDetailResponseDTOData;
 
   factory SpotDetailResponseDTOData.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$SpotDetailResponseDTODataFromJson(jsonMap);
+      _$SpotDetailResponseDTODataFromJson(jsonMap);
 }
 
 @freezed
-class SpotPhotoDTO with \_$SpotPhotoDTO {
+class SpotPhotoDTO with _$SpotPhotoDTO {
   factory SpotPhotoDTO({
     @JsonKey(name: 'photoHash') required String? photoHash,
     @JsonKey(name: 'photoName') required String? photoName,
@@ -519,20 +519,20 @@ class SpotPhotoDTO with \_$SpotPhotoDTO {
     @JsonKey(name: 'photoUrl') required String? photoUrl,
     @JsonKey(name: 'photoType') required SpotPhotoDTOPhotoType? photoType,
     @JsonKey(name: 'photoStatus') required SpotPhotoDTOPhotoStatus? photoStatus,
-  }) = \_SpotPhotoDTO;
+  }) = _SpotPhotoDTO;
 
   factory SpotPhotoDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$SpotPhotoDTOFromJson(jsonMap);
+      _$SpotPhotoDTOFromJson(jsonMap);
 }
 
 
 enum SpotPhotoDTOPhotoType {
-  @JsonValue('ADMIN\_PHOTOS')
-  ADMIN\_PHOTOS,
-  @JsonValue('USER\_PHOTOS')
-  USER\_PHOTOS,
-  @JsonValue('DECOY\_PHOTOS')
-  DECOY\_PHOTOS,
+  @JsonValue('ADMIN_PHOTOS')
+  ADMIN_PHOTOS,
+  @JsonValue('USER_PHOTOS')
+  USER_PHOTOS,
+  @JsonValue('DECOY_PHOTOS')
+  DECOY_PHOTOS,
 }
 
 ---
@@ -540,9 +540,9 @@ enum SpotPhotoDTOPhotoType {
 ## 🔧 ツール
 *2025/1/9 20:14:22*
 
-\*\*Locating admin photo URL\*\*
+**Locating admin photo URL**
 
-I’m mapping out how to identify the first `photoUrl` in `SpotDetailPage` with a `photoType` of `ADMIN\_PHOTOS`. This involves filtering and retrieving the photo from the data, and setting it in the widget state.
+I’m mapping out how to identify the first `photoUrl` in `SpotDetailPage` with a `photoType` of `ADMIN_PHOTOS`. This involves filtering and retrieving the photo from the data, and setting it in the widget state.
 
 ---
 

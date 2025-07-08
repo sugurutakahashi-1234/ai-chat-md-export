@@ -7,15 +7,15 @@
 ## 👤 ユーザー
 *2023/8/2 8:17:08*
 
-以下の "\\(type(of: self)).init: \\(ObjectIdentifier(self))" をどのclass でも使えるような共通変数を定義してほしい
+以下の "\(type(of: self)).init: \(ObjectIdentifier(self))" をどのclass でも使えるような共通変数を定義してほしい
 
 class HogeClass {
     init(dependencyInjector: AnythingAreaCalculationMeasuredLinesSetPresenterDependency) {
-        print("\\(type(of: self)).init: \\(ObjectIdentifier(self))")
+        print("\(type(of: self)).init: \(ObjectIdentifier(self))")
     }
 
     deinit {
-        print("\\(type(of: self)).deinit: \\(ObjectIdentifier(self))")
+        print("\(type(of: self)).deinit: \(ObjectIdentifier(self))")
     }
 }
 

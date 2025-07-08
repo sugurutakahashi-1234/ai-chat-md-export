@@ -38,7 +38,7 @@ public enum FileManageStaticDriver {
         }
     }
 
-    public static func getFiles(directory: URL, extensions: \[FileExtension\]) throws -&gt; \[URL\] {
+    public static func getFiles(directory: URL, extensions: [FileExtension]) throws -&gt; [URL] {
         try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil).filter { fileUrl in
             extensions.contains { $0.rawValue == fileUrl.pathExtension }
         }
@@ -68,7 +68,7 @@ public enum FileManageStaticDriver {
                 throw FileManageDriverError.unexpected
             }
 
-            OSLogger.debugLog("Completed: load image cache URL: \\(fileUrl)")
+            OSLogger.debugLog("Completed: load image cache URL: \(fileUrl)")
             return image
         } catch {
             // OSLogger.errorLog(error.toAppError) 正常系のためエラーログは不要である
@@ -86,7 +86,7 @@ public enum FileManageStaticDriver {
 
         do {
             try data.write(to: fileUrl)
-            OSLogger.debugLog("Completed: save image cache URL: \\(fileUrl)")
+            OSLogger.debugLog("Completed: save image cache URL: \(fileUrl)")
         } catch {
             OSLogger.errorLog(error.toAppError)
             throw FileManageDriverError.unexpected
@@ -95,7 +95,7 @@ public enum FileManageStaticDriver {
 
     public static func getDirectorySize(directory: URL) throws(FileManageDriverError) -&gt; Int {
         let fileManager = FileManager.default
-        let resourceKeys: \[URLResourceKey\] = \[.isRegularFileKey, .fileSizeKey\]
+        let resourceKeys: [URLResourceKey] = [.isRegularFileKey, .fileSizeKey]
 
         guard let enumerator = fileManager.enumerator(at: directory, includingPropertiesForKeys: resourceKeys) else {
             throw FileManageDriverError.unexpected

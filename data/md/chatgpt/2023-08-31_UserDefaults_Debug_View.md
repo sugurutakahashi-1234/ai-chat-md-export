@@ -166,53 +166,53 @@ public class UserDefaultsManager: UserDefaultsManagerProtocol {
         // しかしながら、この Clean Architecture でこの Class 自体を Mock で差し替えることができるためその機能自体不要である気がしている
         // TODO: Mock を作成したあとにこのイニシャライザは必要かどうかを検討する（イニシャライザのために以下のような記述をしなければならず、書き忘れによるバグの原因でもあるので消したい）
 
-        \_launchAppCount = UserDefaultsWrapper(key: .launchAppCount, defaultValue: 0)
-        \_launchAppCount.updateUserDefaults(userDefaults)
+        _launchAppCount = UserDefaultsWrapper(key: .launchAppCount, defaultValue: 0)
+        _launchAppCount.updateUserDefaults(userDefaults)
 
-        \_appUserId = UserDefaultsWrapper(key: .appUserId, defaultValue: OptionalString(value: nil))
-        \_appUserId.updateUserDefaults(userDefaults)
+        _appUserId = UserDefaultsWrapper(key: .appUserId, defaultValue: OptionalString(value: nil))
+        _appUserId.updateUserDefaults(userDefaults)
 
-        \_isLoginSessionValid = UserDefaultsWrapper(key: .isLoginSessionValid, defaultValue: false)
-        \_isLoginSessionValid.updateUserDefaults(userDefaults)
+        _isLoginSessionValid = UserDefaultsWrapper(key: .isLoginSessionValid, defaultValue: false)
+        _isLoginSessionValid.updateUserDefaults(userDefaults)
 
-        \_isAppIntroductionShown = UserDefaultsWrapper(key: .isAppIntroductionShown, defaultValue: false)
-        \_isAppIntroductionShown.updateUserDefaults(userDefaults)
+        _isAppIntroductionShown = UserDefaultsWrapper(key: .isAppIntroductionShown, defaultValue: false)
+        _isAppIntroductionShown.updateUserDefaults(userDefaults)
 
-        \_isUserAttributesRegistered = UserDefaultsWrapper(key: .isUserAttributesRegistered, defaultValue: false)
-        \_isUserAttributesRegistered.updateUserDefaults(userDefaults)
+        _isUserAttributesRegistered = UserDefaultsWrapper(key: .isUserAttributesRegistered, defaultValue: false)
+        _isUserAttributesRegistered.updateUserDefaults(userDefaults)
 
-        \_isDeviceAccessRequestShown = UserDefaultsWrapper(key: .isDeviceAccessRequestShown, defaultValue: false)
-        \_isDeviceAccessRequestShown.updateUserDefaults(userDefaults)
+        _isDeviceAccessRequestShown = UserDefaultsWrapper(key: .isDeviceAccessRequestShown, defaultValue: false)
+        _isDeviceAccessRequestShown.updateUserDefaults(userDefaults)
 
-        \_isGazeCalibrationDone = UserDefaultsWrapper(key: .isGazeCalibrationDone, defaultValue: false)
-        \_isGazeCalibrationDone.updateUserDefaults(userDefaults)
+        _isGazeCalibrationDone = UserDefaultsWrapper(key: .isGazeCalibrationDone, defaultValue: false)
+        _isGazeCalibrationDone.updateUserDefaults(userDefaults)
 
-        \_portraitCalibrationData = UserDefaultsWrapper(key: .portraitCalibrationData, defaultValue: OptionalDoubleArray(value: nil))
-        \_portraitCalibrationData.updateUserDefaults(userDefaults)
+        _portraitCalibrationData = UserDefaultsWrapper(key: .portraitCalibrationData, defaultValue: OptionalDoubleArray(value: nil))
+        _portraitCalibrationData.updateUserDefaults(userDefaults)
 
-        \_landscapeRightCalibrationData = UserDefaultsWrapper(key: .landscapeRightCalibrationData, defaultValue: OptionalDoubleArray(value: nil))
-        \_landscapeRightCalibrationData.updateUserDefaults(userDefaults)
+        _landscapeRightCalibrationData = UserDefaultsWrapper(key: .landscapeRightCalibrationData, defaultValue: OptionalDoubleArray(value: nil))
+        _landscapeRightCalibrationData.updateUserDefaults(userDefaults)
 
-        \_isEnableAppLogAnalytics = UserDefaultsWrapper(key: .isEnableAppLogAnalytics, defaultValue: true)
-        \_isEnableAppLogAnalytics.updateUserDefaults(userDefaults)
+        _isEnableAppLogAnalytics = UserDefaultsWrapper(key: .isEnableAppLogAnalytics, defaultValue: true)
+        _isEnableAppLogAnalytics.updateUserDefaults(userDefaults)
 
-        \_isEnableJSONEncode = UserDefaultsWrapper(key: .isEnableJSONEncode, defaultValue: false)
-        \_isEnableJSONEncode.updateUserDefaults(userDefaults)
+        _isEnableJSONEncode = UserDefaultsWrapper(key: .isEnableJSONEncode, defaultValue: false)
+        _isEnableJSONEncode.updateUserDefaults(userDefaults)
 
-        \_isEnableLocalBackup = UserDefaultsWrapper(key: .isEnableLocalBackup, defaultValue: false)
-        \_isEnableLocalBackup.updateUserDefaults(userDefaults)
+        _isEnableLocalBackup = UserDefaultsWrapper(key: .isEnableLocalBackup, defaultValue: false)
+        _isEnableLocalBackup.updateUserDefaults(userDefaults)
 
-        \_isEnableSavingImagesWhileCapturing = UserDefaultsWrapper(key: .isEnableSavingImagesWhileCapturing, defaultValue: false)
-        \_isEnableSavingImagesWhileCapturing.updateUserDefaults(userDefaults)
+        _isEnableSavingImagesWhileCapturing = UserDefaultsWrapper(key: .isEnableSavingImagesWhileCapturing, defaultValue: false)
+        _isEnableSavingImagesWhileCapturing.updateUserDefaults(userDefaults)
 
-        \_isEnableAnchorDebugView = UserDefaultsWrapper(key: .isEnableAnchorDebugView, defaultValue: false)
-        \_isEnableAnchorDebugView.updateUserDefaults(userDefaults)
+        _isEnableAnchorDebugView = UserDefaultsWrapper(key: .isEnableAnchorDebugView, defaultValue: false)
+        _isEnableAnchorDebugView.updateUserDefaults(userDefaults)
 
-        \_isEnableEmotionDebugView = UserDefaultsWrapper(key: .isEnableEmotionDebugView, defaultValue: false)
-        \_isEnableEmotionDebugView.updateUserDefaults(userDefaults)
+        _isEnableEmotionDebugView = UserDefaultsWrapper(key: .isEnableEmotionDebugView, defaultValue: false)
+        _isEnableEmotionDebugView.updateUserDefaults(userDefaults)
 
-        \_isEnableInteractionDebugView = UserDefaultsWrapper(key: .isEnableInteractionDebugView, defaultValue: false)
-        \_isEnableInteractionDebugView.updateUserDefaults(userDefaults)
+        _isEnableInteractionDebugView = UserDefaultsWrapper(key: .isEnableInteractionDebugView, defaultValue: false)
+        _isEnableInteractionDebugView.updateUserDefaults(userDefaults)
     }
 }
 
@@ -322,9 +322,9 @@ public struct OptionalString: UserDefaultsCodable {
 }
 
 public struct OptionalDoubleArray: UserDefaultsCodable {
-    public let value: \[Double\]?
+    public let value: [Double]?
 
-    public init(value: \[Double\]?) {
+    public init(value: [Double]?) {
         self.value = value
     }
 }
@@ -641,53 +641,53 @@ public class UserDefaultsManager: UserDefaultsManagerProtocol {
         // しかしながら、この Clean Architecture でこの Class 自体を Mock で差し替えることができるためその機能自体不要である気がしている
         // TODO: Mock を作成したあとにこのイニシャライザは必要かどうかを検討する（イニシャライザのために以下のような記述をしなければならず、書き忘れによるバグの原因でもあるので消したい）
 
-        \_launchAppCount = UserDefaultsWrapper(key: .launchAppCount, defaultValue: 0)
-        \_launchAppCount.updateUserDefaults(userDefaults)
+        _launchAppCount = UserDefaultsWrapper(key: .launchAppCount, defaultValue: 0)
+        _launchAppCount.updateUserDefaults(userDefaults)
 
-        \_appUserId = UserDefaultsWrapper(key: .appUserId, defaultValue: OptionalString(value: nil))
-        \_appUserId.updateUserDefaults(userDefaults)
+        _appUserId = UserDefaultsWrapper(key: .appUserId, defaultValue: OptionalString(value: nil))
+        _appUserId.updateUserDefaults(userDefaults)
 
-        \_isLoginSessionValid = UserDefaultsWrapper(key: .isLoginSessionValid, defaultValue: false)
-        \_isLoginSessionValid.updateUserDefaults(userDefaults)
+        _isLoginSessionValid = UserDefaultsWrapper(key: .isLoginSessionValid, defaultValue: false)
+        _isLoginSessionValid.updateUserDefaults(userDefaults)
 
-        \_isAppIntroductionShown = UserDefaultsWrapper(key: .isAppIntroductionShown, defaultValue: false)
-        \_isAppIntroductionShown.updateUserDefaults(userDefaults)
+        _isAppIntroductionShown = UserDefaultsWrapper(key: .isAppIntroductionShown, defaultValue: false)
+        _isAppIntroductionShown.updateUserDefaults(userDefaults)
 
-        \_isUserAttributesRegistered = UserDefaultsWrapper(key: .isUserAttributesRegistered, defaultValue: false)
-        \_isUserAttributesRegistered.updateUserDefaults(userDefaults)
+        _isUserAttributesRegistered = UserDefaultsWrapper(key: .isUserAttributesRegistered, defaultValue: false)
+        _isUserAttributesRegistered.updateUserDefaults(userDefaults)
 
-        \_isDeviceAccessRequestShown = UserDefaultsWrapper(key: .isDeviceAccessRequestShown, defaultValue: false)
-        \_isDeviceAccessRequestShown.updateUserDefaults(userDefaults)
+        _isDeviceAccessRequestShown = UserDefaultsWrapper(key: .isDeviceAccessRequestShown, defaultValue: false)
+        _isDeviceAccessRequestShown.updateUserDefaults(userDefaults)
 
-        \_isGazeCalibrationDone = UserDefaultsWrapper(key: .isGazeCalibrationDone, defaultValue: false)
-        \_isGazeCalibrationDone.updateUserDefaults(userDefaults)
+        _isGazeCalibrationDone = UserDefaultsWrapper(key: .isGazeCalibrationDone, defaultValue: false)
+        _isGazeCalibrationDone.updateUserDefaults(userDefaults)
 
-        \_portraitCalibrationData = UserDefaultsWrapper(key: .portraitCalibrationData, defaultValue: OptionalDoubleArray(value: nil))
-        \_portraitCalibrationData.updateUserDefaults(userDefaults)
+        _portraitCalibrationData = UserDefaultsWrapper(key: .portraitCalibrationData, defaultValue: OptionalDoubleArray(value: nil))
+        _portraitCalibrationData.updateUserDefaults(userDefaults)
 
-        \_landscapeRightCalibrationData = UserDefaultsWrapper(key: .landscapeRightCalibrationData, defaultValue: OptionalDoubleArray(value: nil))
-        \_landscapeRightCalibrationData.updateUserDefaults(userDefaults)
+        _landscapeRightCalibrationData = UserDefaultsWrapper(key: .landscapeRightCalibrationData, defaultValue: OptionalDoubleArray(value: nil))
+        _landscapeRightCalibrationData.updateUserDefaults(userDefaults)
 
-        \_isEnableAppLogAnalytics = UserDefaultsWrapper(key: .isEnableAppLogAnalytics, defaultValue: true)
-        \_isEnableAppLogAnalytics.updateUserDefaults(userDefaults)
+        _isEnableAppLogAnalytics = UserDefaultsWrapper(key: .isEnableAppLogAnalytics, defaultValue: true)
+        _isEnableAppLogAnalytics.updateUserDefaults(userDefaults)
 
-        \_isEnableJSONEncode = UserDefaultsWrapper(key: .isEnableJSONEncode, defaultValue: false)
-        \_isEnableJSONEncode.updateUserDefaults(userDefaults)
+        _isEnableJSONEncode = UserDefaultsWrapper(key: .isEnableJSONEncode, defaultValue: false)
+        _isEnableJSONEncode.updateUserDefaults(userDefaults)
 
-        \_isEnableLocalBackup = UserDefaultsWrapper(key: .isEnableLocalBackup, defaultValue: false)
-        \_isEnableLocalBackup.updateUserDefaults(userDefaults)
+        _isEnableLocalBackup = UserDefaultsWrapper(key: .isEnableLocalBackup, defaultValue: false)
+        _isEnableLocalBackup.updateUserDefaults(userDefaults)
 
-        \_isEnableSavingImagesWhileCapturing = UserDefaultsWrapper(key: .isEnableSavingImagesWhileCapturing, defaultValue: false)
-        \_isEnableSavingImagesWhileCapturing.updateUserDefaults(userDefaults)
+        _isEnableSavingImagesWhileCapturing = UserDefaultsWrapper(key: .isEnableSavingImagesWhileCapturing, defaultValue: false)
+        _isEnableSavingImagesWhileCapturing.updateUserDefaults(userDefaults)
 
-        \_isEnableAnchorDebugView = UserDefaultsWrapper(key: .isEnableAnchorDebugView, defaultValue: false)
-        \_isEnableAnchorDebugView.updateUserDefaults(userDefaults)
+        _isEnableAnchorDebugView = UserDefaultsWrapper(key: .isEnableAnchorDebugView, defaultValue: false)
+        _isEnableAnchorDebugView.updateUserDefaults(userDefaults)
 
-        \_isEnableEmotionDebugView = UserDefaultsWrapper(key: .isEnableEmotionDebugView, defaultValue: false)
-        \_isEnableEmotionDebugView.updateUserDefaults(userDefaults)
+        _isEnableEmotionDebugView = UserDefaultsWrapper(key: .isEnableEmotionDebugView, defaultValue: false)
+        _isEnableEmotionDebugView.updateUserDefaults(userDefaults)
 
-        \_isEnableInteractionDebugView = UserDefaultsWrapper(key: .isEnableInteractionDebugView, defaultValue: false)
-        \_isEnableInteractionDebugView.updateUserDefaults(userDefaults)
+        _isEnableInteractionDebugView = UserDefaultsWrapper(key: .isEnableInteractionDebugView, defaultValue: false)
+        _isEnableInteractionDebugView.updateUserDefaults(userDefaults)
     }
 }
 

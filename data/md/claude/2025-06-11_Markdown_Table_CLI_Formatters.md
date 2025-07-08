@@ -111,30 +111,30 @@ BiomeとPrettierを併用する場合は、それぞれの対象ファイルを�
 
 以下、4つのCLIツールのGitHubリポジトリとスター数を確認できるリンクです：
 
-## 1. \*\*Prettier\*\*
+## 1. **Prettier**
 🔗 https://github.com/prettier/prettier  
-!\[GitHub stars\](https://img.shields.io/github/stars/prettier/prettier?style=social)
+![GitHub stars](https://img.shields.io/github/stars/prettier/prettier?style=social)
 
-## 2. \*\*dprint\*\*
+## 2. **dprint**
 🔗 https://github.com/dprint/dprint  
-!\[GitHub stars\](https://img.shields.io/github/stars/dprint/dprint?style=social)
+![GitHub stars](https://img.shields.io/github/stars/dprint/dprint?style=social)
 
-## 3. \*\*mdformat\*\*
+## 3. **mdformat**
 🔗 https://github.com/executablebooks/mdformat  
-!\[GitHub stars\](https://img.shields.io/github/stars/executablebooks/mdformat?style=social)
+![GitHub stars](https://img.shields.io/github/stars/executablebooks/mdformat?style=social)
 
-## 4. \*\*markdownlint\*\*
+## 4. **markdownlint**
 🔗 https://github.com/DavidAnson/markdownlint  
-!\[GitHub stars\](https://img.shields.io/github/stars/DavidAnson/markdownlint?style=social)
+![GitHub stars](https://img.shields.io/github/stars/DavidAnson/markdownlint?style=social)
 
 ### 簡単な比較
 
 | ツール | 言語 | 特徴 |
 |--------|------|------|
-| \*\*Prettier\*\* | JavaScript | 最も人気。多言語対応（JS/TS/CSS/HTML/MD等） |
-| \*\*dprint\*\* | Rust | 高速。プラグインシステムで拡張可能 |
-| \*\*mdformat\*\* | Python | マークダウン専用。CommonMark準拠 |
-| \*\*markdownlint\*\* | JavaScript | リンター機能も持つ。ルールが豊富 |
+| **Prettier** | JavaScript | 最も人気。多言語対応（JS/TS/CSS/HTML/MD等） |
+| **dprint** | Rust | 高速。プラグインシステムで拡張可能 |
+| **mdformat** | Python | マークダウン専用。CommonMark準拠 |
+| **markdownlint** | JavaScript | リンター機能も持つ。ルールが豊富 |
 
 各リンクをクリックすると、現在のスター数やプロジェクトの詳細を確認できます。
 

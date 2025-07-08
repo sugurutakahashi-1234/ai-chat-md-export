@@ -8,7 +8,7 @@
 *2024/12/7 22:30:38*
 
 he method is used to change a property.
-Try converting the method to a setter.dartuse\_setters\_to\_change\_properties
+Try converting the method to a setter.dartuse_setters_to_change_properties
 v
 
 ---

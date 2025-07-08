@@ -17,17 +17,17 @@ Swift で 音声再生の際にいい感じの波形図を出したい
 
 Swiftで音声再生時に波形を表示するための有名なライブラリには以下のものがあります：
 
-1. \*\*WaveformView\*\*: シンプルでカスタマイズ可能な音声波形を表示するライブラリです。リアルタイムの波形表示にも対応しています。
-   - GitHub: \[WaveformView\](https://github.com/petergithens/WaveformView)
+1. **WaveformView**: シンプルでカスタマイズ可能な音声波形を表示するライブラリです。リアルタイムの波形表示にも対応しています。
+   - GitHub: [WaveformView](https://github.com/petergithens/WaveformView)
 
-2. \*\*AudioKit\*\*: 非常に強力で多機能なオーディオライブラリで、音声処理や波形表示など多岐にわたる機能を提供します。カスタマイズ性が高いですが、学習コストもやや高めです。
-   - GitHub: \[AudioKit\](https://github.com/AudioKit/AudioKit)
+2. **AudioKit**: 非常に強力で多機能なオーディオライブラリで、音声処理や波形表示など多岐にわたる機能を提供します。カスタマイズ性が高いですが、学習コストもやや高めです。
+   - GitHub: [AudioKit](https://github.com/AudioKit/AudioKit)
 
-3. \*\*EZAudio\*\*: 使いやすいオーディオビジュアライゼーションライブラリで、波形やスペクトルを表示することができます。
-   - GitHub: \[EZAudio\](https://github.com/syedhali/EZAudio)
+3. **EZAudio**: 使いやすいオーディオビジュアライゼーションライブラリで、波形やスペクトルを表示することができます。
+   - GitHub: [EZAudio](https://github.com/syedhali/EZAudio)
 
-4. \*\*FDWaveformView\*\*: 音声ファイルの波形を表示するためのシンプルで高速なライブラリです。
-   - GitHub: \[FDWaveformView\](https://github.com/fulldecent/FDWaveformView)
+4. **FDWaveformView**: 音声ファイルの波形を表示するためのシンプルで高速なライブラリです。
+   - GitHub: [FDWaveformView](https://github.com/fulldecent/FDWaveformView)
 
 これらのライブラリを使用すると、音声再生時に美しい波形図を表示することができます。それぞれのライブラリのドキュメントやサンプルコードを参考にして、プロジェクトに最適なものを選んでください。
 
@@ -45,15 +45,15 @@ Swiftで音声再生時に波形を表示するための有名なライブラリ
 
 ストリーミング再生に対応した波形表示を行うために使えるライブラリは以下の通りです：
 
-1. \*\*AudioKit\*\*: 非常に多機能なオーディオライブラリで、リアルタイムの音声処理とビジュアライゼーションが可能です。ストリーミング再生にも対応しており、カスタマイズ性が高いため、リアルタイムの波形表示を実現することができます。
+1. **AudioKit**: 非常に多機能なオーディオライブラリで、リアルタイムの音声処理とビジュアライゼーションが可能です。ストリーミング再生にも対応しており、カスタマイズ性が高いため、リアルタイムの波形表示を実現することができます。
 
-   - GitHub: \[AudioKit\](https://github.com/AudioKit/AudioKit)
+   - GitHub: [AudioKit](https://github.com/AudioKit/AudioKit)
    
-   \*\*注意\*\*: AudioKitは学習コストがやや高いですが、ドキュメントが充実しているので、詳細なチュートリアルやサンプルコードを参考にすると良いでしょう。
+   **注意**: AudioKitは学習コストがやや高いですが、ドキュメントが充実しているので、詳細なチュートリアルやサンプルコードを参考にすると良いでしょう。
 
-2. \*\*EZAudio\*\*: リアルタイムのオーディオビジュアライゼーションをサポートしており、ストリーミング再生中の波形表示も可能です。シンプルで使いやすいインターフェースが特徴です。
+2. **EZAudio**: リアルタイムのオーディオビジュアライゼーションをサポートしており、ストリーミング再生中の波形表示も可能です。シンプルで使いやすいインターフェースが特徴です。
 
-   - GitHub: \[EZAudio\](https://github.com/syedhali/EZAudio)
+   - GitHub: [EZAudio](https://github.com/syedhali/EZAudio)
 
 これらのライブラリを利用することで、ストリーミング再生中に波形をリアルタイムで表示することができます。プロジェクトの要件に応じて最適なライブラリを選んでください。
 
@@ -502,13 +502,13 @@ struct WaveformView: View {
 
 以下になった
 
-\*\*\* Terminating app due to uncaught exception 'com.apple.coreaudio.avfaudio', reason: 'required condition is false: IsFormatSampleRateAndChannelCountValid(format)'
-\*\*\* First throw call stack:
+*** Terminating app due to uncaught exception 'com.apple.coreaudio.avfaudio', reason: 'required condition is false: IsFormatSampleRateAndChannelCountValid(format)'
+*** First throw call stack:
 (0x18f924f20 0x1877aa018 0x18fa2366c 0x1a949c198 0x1a94fe714 0x1a957808c 0x1063af530 0x1063ad6b0 0x19395eed4 0x1939574e8 0x1939567f0 0x19395564c 0x193953d7c 0x193953b0c 0x193868c6c 0x191b32a4c 0x190f913b4 0x190f90f38 0x190fec0e0 0x190f61028 0x190faad7c 0x191bdbff4 0x191bd976c 0x191bd93b0 0x191bda254 0x18f8f7834 0x18f8f77c8 0x18f8f5298 0x18f8f4484 0x18f8f3cd8 0x1d47a41a8 0x191f2c90c 0x191fe09d0 0x193ae4148 0x193a90714 0x193a9c4d0 0x105f488e4 0x105f489b4 0x1b2fa5e4c)
 libc++abi: terminating due to uncaught exception of type NSException
 AURemoteIO.cpp:1,162 failed: 18,446,744,073,709,540,765 (enable 1, outf&lt; 2 ch,      0 Hz, Float32, deinterleaved&gt; inf&lt; 2 ch,      0 Hz, Float32, deinterleaved&gt;)
 AURemoteIO.cpp:1,162 failed: 18,446,744,073,709,540,765 (enable 1, outf&lt; 2 ch,      0 Hz, Float32, deinterleaved&gt; inf&lt; 2 ch,      0 Hz, Float32, deinterleaved&gt;)
-AVAEInternal.h:76 required condition is false: \[AVAEGraphNode.mm:832:CreateRecordingTap: (IsFormatSampleRateAndChannelCountValid(format))\]
+AVAEInternal.h:76 required condition is false: [AVAEGraphNode.mm:832:CreateRecordingTap: (IsFormatSampleRateAndChannelCountValid(format))]
 
 ---
 
@@ -677,8 +677,8 @@ struct AudioWaveformView: View {
                     
                     path.move(to: CGPoint(x: 0, y: midHeight))
                     for (index, point) in points.enumerated() {
-                        let x = width \* CGFloat(index) / CGFloat(points.count)
-                        let y = midHeight - (CGFloat(point) \* midHeight)
+                        let x = width * CGFloat(index) / CGFloat(points.count)
+                        let y = midHeight - (CGFloat(point) * midHeight)
                         path.addLine(to: CGPoint(x: x, y: y))
                     }
                 }
@@ -708,7 +708,7 @@ class AudioWaveformPresenter: ObservableObject {
     private var audioEngine = AVAudioEngine()
     private var mixerNode = AVAudioMixerNode()
     private var tapInstalled = false
-    @Published var waveformPoints: \[Float\] = \[\]
+    @Published var waveformPoints: [Float] = []
     
     func setup() {
         guard let url = URL(string: "https://your-streaming-url/stream.mp3") else {
@@ -723,14 +723,14 @@ class AudioWaveformPresenter: ObservableObject {
         audioEngine.attach(mixerNode)
         audioEngine.connect(mixerNode, to: audioEngine.mainMixerNode, format: format)
         
-        mixerNode.installTap(onBus: 0, bufferSize: 1024, format: format) { \[weak self\] (buffer, \_) in
+        mixerNode.installTap(onBus: 0, bufferSize: 1024, format: format) { [weak self] (buffer, _) in
             self?.updateWaveform(buffer: buffer)
         }
         
         do {
             try audioEngine.start()
         } catch {
-            print("Error starting audio engine: \\(error)")
+            print("Error starting audio engine: \(error)")
         }
     }
     
@@ -749,7 +749,7 @@ class AudioWaveformPresenter: ObservableObject {
         let channelDataValue = channelData.pointee
         let channelDataValueArray = stride(from: 0,
                                            to: Int(buffer.frameLength),
-                                           by: buffer.stride).map { channelDataValue\[$0\] }
+                                           by: buffer.stride).map { channelDataValue[$0] }
         DispatchQueue.main.async {
             self.waveformPoints = channelDataValueArray
         }
@@ -910,8 +910,8 @@ struct AudioWaveformView: View {
                     
                     path.move(to: CGPoint(x: 0, y: midHeight))
                     for (index, point) in points.enumerated() {
-                        let x = width \* CGFloat(index) / CGFloat(points.count)
-                        let y = midHeight - (CGFloat(point) \* midHeight)
+                        let x = width * CGFloat(index) / CGFloat(points.count)
+                        let y = midHeight - (CGFloat(point) * midHeight)
                         path.addLine(to: CGPoint(x: x, y: y))
                     }
                 }
@@ -940,7 +940,7 @@ class AudioWaveformPresenter: ObservableObject {
     private var playerNode = AVAudioPlayerNode()
     private var audioEngine = AVAudioEngine()
     private var mixerNode = AVAudioMixerNode()
-    @Published var waveformPoints: \[Float\] = \[\]
+    @Published var waveformPoints: [Float] = []
     
     func setup() {
         guard let url = URL(string: "https://your-streaming-url/stream.mp3") else {
@@ -966,14 +966,14 @@ class AudioWaveformPresenter: ObservableObject {
         audioEngine.connect(playerNode, to: mixerNode, format: audioFormat)
         audioEngine.connect(mixerNode, to: audioEngine.mainMixerNode, format: audioFormat)
         
-        mixerNode.installTap(onBus: 0, bufferSize: 1024, format: audioFormat) { \[weak self\] (buffer, \_) in
+        mixerNode.installTap(onBus: 0, bufferSize: 1024, format: audioFormat) { [weak self] (buffer, _) in
             self?.updateWaveform(buffer: buffer)
         }
         
         do {
             try audioEngine.start()
         } catch {
-            print("Error starting audio engine: \\(error)")
+            print("Error starting audio engine: \(error)")
         }
         
         playerNode.scheduleFile(try! AVAudioFile(forReading: url), at: nil, completionHandler: nil)
@@ -996,7 +996,7 @@ class AudioWaveformPresenter: ObservableObject {
         let channelDataValue = channelData.pointee
         let channelDataValueArray = stride(from: 0,
                                            to: Int(buffer.frameLength),
-                                           by: buffer.stride).map { channelDataValue\[$0\] }
+                                           by: buffer.stride).map { channelDataValue[$0] }
         DispatchQueue.main.async {
             self.waveformPoints = channelDataValueArray
         }
@@ -1664,9 +1664,9 @@ class AudioWaveformPresenter: ObservableObject {
 *2024/6/21 12:26:53*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-aormEw3esnMQGftA076fTCQQ",
-  "size\_bytes": 155848,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-aormEw3esnMQGftA076fTCQQ",
+  "size_bytes": 155848,
   "width": 1418,
   "height": 617,
   "fovea": null,
@@ -1674,13 +1674,13 @@ class AudioWaveformPresenter: ObservableObject {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 
@@ -1806,9 +1806,9 @@ class AudioWaveformPresenter: ObservableObject {
 *2024/6/21 12:27:34*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-goDq4TBToQtvoaUHaP3AhKEL",
-  "size\_bytes": 239371,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-goDq4TBToQtvoaUHaP3AhKEL",
+  "size_bytes": 239371,
   "width": 1461,
   "height": 857,
   "fovea": null,
@@ -1816,13 +1816,13 @@ class AudioWaveformPresenter: ObservableObject {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 
@@ -1992,9 +1992,9 @@ class AudioWaveformPresenter: ObservableObject {
 *2024/6/21 12:28:22*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-bEvKtcVlea6aJhz1lLku7jb2",
-  "size\_bytes": 233863,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-bEvKtcVlea6aJhz1lLku7jb2",
+  "size_bytes": 233863,
   "width": 1488,
   "height": 778,
   "fovea": null,
@@ -2002,13 +2002,13 @@ class AudioWaveformPresenter: ObservableObject {
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 

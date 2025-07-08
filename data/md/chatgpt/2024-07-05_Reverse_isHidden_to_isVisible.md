@@ -28,7 +28,7 @@ public extension View {
     ///
     /// - seeAlso: https://stackoverflow.com/questions/56490250/dynamically-hiding-view-in-swiftui
     @MainActor @ViewBuilder
-    func isHidden(\_ hidden: Bool, shouldRemove: Bool = false) -&gt; some View {
+    func isHidden(_ hidden: Bool, shouldRemove: Bool = false) -&gt; some View {
         if hidden {
             if !shouldRemove {
                 self.hidden()

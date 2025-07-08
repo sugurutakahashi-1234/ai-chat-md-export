@@ -1315,9 +1315,9 @@ class LoginViewModel: ObservableObject {
 
 それは使用するコンテキストによるのですが、一般的には以下のような考え方があります：
 
-1. \*\*`UserDefault` プロパティラッパーが `ObservableObject` を実装するアプローチ\*\*：この方法は `UserDefault` プロパティラッパー自体が値の変更を監視するため、`UserSettings` 以外の場所でも `UserDefault` を使用する場合に便利です。そのため、一部の情報が特定のViewModelでのみ必要な場合、それぞれのViewModelに直接 `UserDefault` を注入できます。しかし、全体的なコードがやや複雑になる可能性があります。
+1. **`UserDefault` プロパティラッパーが `ObservableObject` を実装するアプローチ**：この方法は `UserDefault` プロパティラッパー自体が値の変更を監視するため、`UserSettings` 以外の場所でも `UserDefault` を使用する場合に便利です。そのため、一部の情報が特定のViewModelでのみ必要な場合、それぞれのViewModelに直接 `UserDefault` を注入できます。しかし、全体的なコードがやや複雑になる可能性があります。
 
-2. \*\*`UserSettings` が `ObservableObject` を実装するアプローチ\*\*：この方法は `UserSettings` クラスがすべての設定情報を管理し、その変更を監視します。これは、アプリ全体の設定情報が一箇所で管理されていることを明示的に示しています。しかし、このアプローチは全ての設定情報が `UserSettings` に依存していることを意味します。
+2. **`UserSettings` が `ObservableObject` を実装するアプローチ**：この方法は `UserSettings` クラスがすべての設定情報を管理し、その変更を監視します。これは、アプリ全体の設定情報が一箇所で管理されていることを明示的に示しています。しかし、このアプローチは全ての設定情報が `UserSettings` に依存していることを意味します。
 
 どちらのアプローチを選ぶべきかは、アプリの具体的な要件と設計による部分が大きいです。そのため、アプリ全体の設定を一箇所で管理することが有益なのか、それとも個々の設定をより細かく管理することが有益なのか、それぞれのアプローチの利点と欠点を考慮して決定することが重要です。
 
@@ -3349,7 +3349,7 @@ let userSettings = UserSettings(userDefaults: mockUserDefaults)
 ## 👤 ユーザー
 *2023/5/29 13:03:22*
 
-`\_isFirstLogin = UserDefaultsWrapper(key: UserDefaultsKeys.isFirstLogin.rawValue, defaultValue: true, userDefaults: userDefaults)` と `@UserDefaultsWrapper(key: UserDefaultsKeys.isFirstLogin.rawValue, defaultValue: true)` の部分の違いを教えて欲しい
+`_isFirstLogin = UserDefaultsWrapper(key: UserDefaultsKeys.isFirstLogin.rawValue, defaultValue: true, userDefaults: userDefaults)` と `@UserDefaultsWrapper(key: UserDefaultsKeys.isFirstLogin.rawValue, defaultValue: true)` の部分の違いを教えて欲しい
 
 ---
 
@@ -3360,9 +3360,9 @@ let userSettings = UserSettings(userDefaults: mockUserDefaults)
 
 しかし、Swiftのプロパティラッパーには一部制約があります。具体的には、プロパティラッパーのインスタンス化時に自身のプロパティを参照することができません。そのため、このコードは `userDefaults` プロパティを `UserDefaultsWrapper` の初期化子に渡そうとしますが、そのプロパティはまだ初期化されていません。これはSwiftの制約により許可されません。
 
-この制約を回避するために、プロパティラッパーを直接インスタンス化し、それをバックストアプロパティ (ここでは `\_isFirstLogin`) に割り当てます。ここで使用するアンダースコアは、通常はプロパティラッパーが内部的に使用するためのものです。プロパティラッパーの実装を直接制御するために、バックストアプロパティに直接アクセスしています。
+この制約を回避するために、プロパティラッパーを直接インスタンス化し、それをバックストアプロパティ (ここでは `_isFirstLogin`) に割り当てます。ここで使用するアンダースコアは、通常はプロパティラッパーが内部的に使用するためのものです。プロパティラッパーの実装を直接制御するために、バックストアプロパティに直接アクセスしています。
 
-この結果、`UserSettings` の初期化子は `UserDefaults` インスタンスを受け取り、そのインスタンスを `\_isFirstLogin` にバインドします。これにより、`UserSettings` のインスタンスが作成されるときに、`UserDefaults` を注入することが可能になります。
+この結果、`UserSettings` の初期化子は `UserDefaults` インスタンスを受け取り、そのインスタンスを `_isFirstLogin` にバインドします。これにより、`UserSettings` のインスタンスが作成されるときに、`UserDefaults` を注入することが可能になります。
 
 ---
 

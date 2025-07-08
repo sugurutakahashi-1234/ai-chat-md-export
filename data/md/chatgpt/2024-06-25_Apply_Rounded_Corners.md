@@ -10,7 +10,7 @@
 角丸にならない
 
 public struct TalkThreadListScrollView: View {
-    let talkThreads: \[TalkThread\]
+    let talkThreads: [TalkThread]
     let spacing: CGFloat
     let padding: CGFloat
 
@@ -18,7 +18,7 @@ public struct TalkThreadListScrollView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: spacing) {
-                    ForEach(talkThreads, id: \\.id) { talkThread in
+                    ForEach(talkThreads, id: \.id) { talkThread in
                         AsyncImage(url: talkThread.imageUrl, transaction: .init(animation: .bouncy)) { asyncImagePhase in
                             switch asyncImagePhase {
                             case .success(let image):
@@ -37,11 +37,11 @@ public struct TalkThreadListScrollView: View {
                                 AsyncImageLoadingView()
                             }
                         }
-                        .frame(width: geometry.size.width - padding \* 2)
+                        .frame(width: geometry.size.width - padding * 2)
                         // これがないと長押しのタップ領域が正しく反映されない
                         // Ref: 【SwiftUI】contentShapeでTap領域を広げる - https://qiita.com/shiz/items/96585bddbc442683b78c
                         .contentShape(RoundedRectangle(cornerRadius: 8))
-                        // Ref: \[SwiftUI\] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
+                        // Ref: [SwiftUI] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
                         .contextMenu {
                             Button {
                                 //presenter.onTapPost()

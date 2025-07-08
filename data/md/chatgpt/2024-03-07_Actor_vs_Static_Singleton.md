@@ -23,7 +23,7 @@ public actor LogDriver2 {
         self.firebaseLogDriver = firebaseLogDriver
     }
 
-    public func log(\_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    public func log(_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         osLogDriver.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
         firebaseLogDriver?.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
     }
@@ -41,7 +41,7 @@ public actor LogDriver {
         LogDriver.firebaseLogDriver = firebaseLogDriver
     }
 
-    public static func log(\_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    public static func log(_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         osLogDriver.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
         firebaseLogDriver?.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
     }
@@ -67,9 +67,9 @@ Swiftの`actor`を使用したシングルトンの実装についてのパフ�
 
 ### パフォーマンスの観点
 
-- \*\*メモリ使用量\*\*: 両方のアプローチで大きな違いはないはずです。どちらのケースもシングルトンパターンを使用しているため、各ドライバーのインスタンスはアプリケーションのライフサイクル中に一度だけ作成されます。
-- \*\*アクセス速度\*\*: `LogDriver2`のインスタンスメソッドを呼び出す際には、Swiftの`actor`モデルによる追加のオーバーヘッドが生じる可能性があります。これは、アクターがデータ競合を防ぐためにシリアライズされたアクセスを保証するためです。一方で、`LogDriver`の静的メソッドはこのような追加のチェックが少ないため、理論上はわずかに高速かもしれません。
-- \*\*スレッドセーフティ\*\*: `actor`を使用することで、`LogDriver2`はスレッドセーフなアクセスを提供します。`LogDriver`もスレッドセーフであると考えられますが、これは静的プロパティへのアクセスが適切に管理されている場合に限ります。`actor`の使用は、スレッドセーフティをより明確に保証するため、この点で`LogDriver2`が優れていると言えます。
+- **メモリ使用量**: 両方のアプローチで大きな違いはないはずです。どちらのケースもシングルトンパターンを使用しているため、各ドライバーのインスタンスはアプリケーションのライフサイクル中に一度だけ作成されます。
+- **アクセス速度**: `LogDriver2`のインスタンスメソッドを呼び出す際には、Swiftの`actor`モデルによる追加のオーバーヘッドが生じる可能性があります。これは、アクターがデータ競合を防ぐためにシリアライズされたアクセスを保証するためです。一方で、`LogDriver`の静的メソッドはこのような追加のチェックが少ないため、理論上はわずかに高速かもしれません。
+- **スレッドセーフティ**: `actor`を使用することで、`LogDriver2`はスレッドセーフなアクセスを提供します。`LogDriver`もスレッドセーフであると考えられますが、これは静的プロパティへのアクセスが適切に管理されている場合に限ります。`actor`の使用は、スレッドセーフティをより明確に保証するため、この点で`LogDriver2`が優れていると言えます。
 
 ### 結論
 
@@ -103,8 +103,8 @@ Swiftの`actor`を使用したシングルトンの実装についてのパフ�
 
 ### 明確さの観点から
 
-- \*\*`LogDriver`\*\* は静的メソッドとプロパティを使用しているため、シングルトンであることがコード上で非常に明確です。使用する際には、インスタンス化することなく、クラス名を通じて直接アクセスします。これにより、シングルトンパターンの意図が直感的に理解しやすくなります。
-- \*\*`LogDriver2`\*\* は`.shared`インスタンスを通じてアクセスするため、シングルトンであることも明確ですが、このアクセス方法は`LogDriver`の静的アクセスに比べるとわずかに間接的です。しかし、この方法はシングルトンパターンの典型的な実装であり、多くの開発者にとって馴染み深いものです。
+- **`LogDriver`** は静的メソッドとプロパティを使用しているため、シングルトンであることがコード上で非常に明確です。使用する際には、インスタンス化することなく、クラス名を通じて直接アクセスします。これにより、シングルトンパターンの意図が直感的に理解しやすくなります。
+- **`LogDriver2`** は`.shared`インスタンスを通じてアクセスするため、シングルトンであることも明確ですが、このアクセス方法は`LogDriver`の静的アクセスに比べるとわずかに間接的です。しかし、この方法はシングルトンパターンの典型的な実装であり、多くの開発者にとって馴染み深いものです。
 
 結論として、どちらの実装もシングルトンであることを明確にしていますが、`LogDriver`の方がその意図をコード上で少し直接的に表現しています。ただし、この差は主にスタイルと個人の好みに関わるものであり、実際の使用においては、どちらのアプローチも適切に機能します。
 

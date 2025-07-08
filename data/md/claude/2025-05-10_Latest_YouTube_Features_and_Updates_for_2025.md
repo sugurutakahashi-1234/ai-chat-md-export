@@ -119,7 +119,7 @@ MCPはAIがYouTubeを含む様々なアプリとシームレスに連携する�
 ## 👤 ユーザー
 *2025/5/10 18:34:06*
 
-YOUTUBE\_LIST\_CAPTIONとかMCP連携しているはずなんだけど
+YOUTUBE_LIST_CAPTIONとかMCP連携しているはずなんだけど
 
 ---
 
@@ -165,7 +165,7 @@ This block is not supported on your current device yet.
 ## 👤 ユーザー
 *2025/5/10 18:34:39*
 
-https://www.youtube.com/watch?v=MhllIM-P\_vsをYOUTUBE\_LIST\_CAPTION\_TRACKやってほしい
+https://www.youtube.com/watch?v=MhllIM-P_vsをYOUTUBE_LIST_CAPTION_TRACKやってほしい
 
 ---
 

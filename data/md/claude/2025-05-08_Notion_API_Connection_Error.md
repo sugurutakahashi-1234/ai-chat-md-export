@@ -19,13 +19,13 @@
 {
   "mcpServers": {
     "notionApi": {
-      "command": "/Users/sugurutakahashi/.local/state/fnm\_multishells/16514\_1746694346445/bin/npx",
-      "args": \[
+      "command": "/Users/sugurutakahashi/.local/state/fnm_multishells/16514_1746694346445/bin/npx",
+      "args": [
         "-y",
         "@notionhq/notion-mcp-server"
-      \],
+      ],
       "env": {
-        "OPENAPI\_MCP\_HEADERS": "{\\"Authorization\\": \\"Bearer ntn\_12516787372499JcKI1BkaQTbB2Bjl6qgVOVvCDlFIW3Zs\\", \\"Notion-Version\\": \\"2022-06-28\\" }"
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\" }"
       }
     }
   }
@@ -40,7 +40,7 @@ Good evening! I see you're encountering an error with the Notion API connection.
 
 The error appears to be related to the Notion integration you're trying to use. Based on the information provided, here are a few things you might want to check:
 
-1. Your Notion API token (I can see it starts with "ntn\_1251...") might be expired or invalid
+1. Your Notion API token (I can see it starts with "ntn_1251...") might be expired or invalid
 2. There could be network connectivity issues
 3. The Notion API version you're using ("2022-06-28") might need to be updated
 
@@ -69,7 +69,7 @@ Would you like me to search for more specific information about this error or he
 
 このエラーは、使用しようとしているNotion統合に関連していると思われます。提供された情報に基づくと、以下のいくつかの点を確認するとよいでしょう：
 
-1. Notion APIトークン（「ntn\_1251...」で始まるもの）が期限切れまたは無効になっている可能性
+1. Notion APIトークン（「ntn_1251...」で始まるもの）が期限切れまたは無効になっている可能性
 2. ネットワーク接続の問題がある可能性
 3. 使用しているNotion APIのバージョン（「2022-06-28」）の更新が必要かもしれない
 
@@ -102,7 +102,7 @@ Would you like me to search for more specific information about this error or he
    - インストールされていない場合は、公式サイトからダウンロードしてインストール
 
 2. パス設定の確認
-   - `.zshrc`や`.bash\_profile`などのシェル設定ファイルでNodeのパスが正しく設定されているか確認
+   - `.zshrc`や`.bash_profile`などのシェル設定ファイルでNodeのパスが正しく設定されているか確認
    - fnmを使用しているようなので、fnmの設定も確認
 
 3. fnmの設定を確認
@@ -126,9 +126,9 @@ Would you like me to search for more specific information about this error or he
 
 npxの問題は解消されている気がしていて以下はどういう意味だろう
 
-2025-05-08T09:12:08.672Z \[notionApi\] \[info\] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
-2025-05-08T09:12:08.672Z \[notionApi\] \[error\] Server disconnected. For troubleshooting guidance, please visit our \[debugging documentation\](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
-2025-05-08T09:12:08.672Z \[notionApi\] \[info\] Client transport closed
+2025-05-08T09:12:08.672Z [notionApi] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
+2025-05-08T09:12:08.672Z [notionApi] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
+2025-05-08T09:12:08.672Z [notionApi] [info] Client transport closed
 
 ---
 
@@ -185,31 +185,31 @@ Nodeコマンドが見つからないという問題を解決すれば、MCPサ�
 *2025/5/8 18:18:30*
 
 ~  $ which npx
-/Users/sugurutakahashi/.local/state/fnm\_multishells/42570\_1746695812501/bin/npx
+/Users/sugurutakahashi/.local/state/fnm_multishells/42570_1746695812501/bin/npx
 ~  $ which node
-/Users/sugurutakahashi/.local/state/fnm\_multishells/42570\_1746695812501/bin/node
+/Users/sugurutakahashi/.local/state/fnm_multishells/42570_1746695812501/bin/node
 
 ~  $ cat .zshrc
 # Oh My Zsh (Comment-Out Removed)
 export ZSH="$HOME/.oh-my-zsh"
-ZSH\_THEME="macovsky"
+ZSH_THEME="macovsky"
 plugins=(git zsh-completions zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-bat)
 source $ZSH/oh-my-zsh.sh
 # bat
-export BAT\_THEME="Dracula"
-export BAT\_STYLE="plain"
+export BAT_THEME="Dracula"
+export BAT_STYLE="plain"
 # rbenv
 
 {
   "mcpServers": {
     "notionApi": {
-      "command": "/Users/sugurutakahashi/.local/state/fnm\_multishells/42570\_1746695812501/bin/npx",
-      "args": \[
+      "command": "/Users/sugurutakahashi/.local/state/fnm_multishells/42570_1746695812501/bin/npx",
+      "args": [
         "-y",
         "@notionhq/notion-mcp-server"
-      \],
+      ],
       "env": {
-        "OPENAPI\_MCP\_HEADERS": "{\\"Authorization\\": \\"Bearer ntn\_12516787372499JcKI1BkaQTbB2Bjl6qgVOVvCDlFIW3Zs\\", \\"Notion-Version\\": \\"2022-06-28\\" }"
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\" }"
       }
     }
   }
@@ -219,17 +219,17 @@ eval "$(rbenv init - zsh)"
 # flutter
 export PATH="$PATH:$HOME/development/flutter/bin"
 # flutter Java
-export JAVA\_HOME=$(/usr/libexec/java\_home -v 17)
-export PATH=$JAVA\_HOME/bin:$PATH
-## \[Completion\]
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+export PATH=$JAVA_HOME/bin:$PATH
+## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
-\[\[ -f /Users/sugurutakahashi/.dart-cli-completion/zsh-config.zsh \]\] && . /Users/sugurutakahashi/.dart-cli-completion/zsh-config.zsh || true
-## \[/Completion\]
+[[ -f /Users/sugurutakahashi/.dart-cli-completion/zsh-config.zsh ]] && . /Users/sugurutakahashi/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
 # pnpm
-export PNPM\_HOME="/Users/sugurutakahashi/Library/pnpm"
+export PNPM_HOME="/Users/sugurutakahashi/Library/pnpm"
 case ":$PATH:" in
-  \*":$PNPM\_HOME:"\*) ;;
-  \*) export PATH="$PNPM\_HOME:$PATH" ;;
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 # adb
@@ -322,9 +322,9 @@ brew install node
 ## 👤 ユーザー
 *2025/5/8 18:29:19*
 
-2025-05-08T09:28:08.319Z \[notionApi\] \[info\] Initializing server...
-2025-05-08T09:28:08.368Z \[notionApi\] \[info\] Server started and connected successfully
-2025-05-08T09:28:08.369Z \[notionApi\] \[info\] Message from client: {"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0}
+2025-05-08T09:28:08.319Z [notionApi] [info] Initializing server...
+2025-05-08T09:28:08.368Z [notionApi] [info] Server started and connected successfully
+2025-05-08T09:28:08.369Z [notionApi] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0}
 npm error code ENOENT
 npm error syscall spawn sh
 npm error path /
@@ -332,24 +332,24 @@ npm error errno -2
 npm error enoent spawn sh ENOENT
 npm error enoent This is related to npm not being able to find a file.
 npm error enoent
-npm error A complete log of this run can be found in: /Users/sugurutakahashi/.npm/\_logs/2025-05-08T09\_28\_08\_415Z-debug-0.log
-2025-05-08T09:28:08.836Z \[notionApi\] \[info\] Server transport closed
-2025-05-08T09:28:08.836Z \[notionApi\] \[info\] Client transport closed
-2025-05-08T09:28:08.836Z \[notionApi\] \[info\] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
-2025-05-08T09:28:08.836Z \[notionApi\] \[error\] Server disconnected. For troubleshooting guidance, please visit our \[debugging documentation\](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
-2025-05-08T09:28:08.837Z \[notionApi\] \[info\] Client transport closed
+npm error A complete log of this run can be found in: /Users/sugurutakahashi/.npm/_logs/2025-05-08T09_28_08_415Z-debug-0.log
+2025-05-08T09:28:08.836Z [notionApi] [info] Server transport closed
+2025-05-08T09:28:08.836Z [notionApi] [info] Client transport closed
+2025-05-08T09:28:08.836Z [notionApi] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
+2025-05-08T09:28:08.836Z [notionApi] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
+2025-05-08T09:28:08.837Z [notionApi] [info] Client transport closed
 
 {
   "mcpServers": {
     "notionApi": {
-      "command": "/Users/sugurutakahashi/.local/state/fnm\_multishells/16514\_1746694346445/bin/npx",
-      "args": \[
+      "command": "/Users/sugurutakahashi/.local/state/fnm_multishells/16514_1746694346445/bin/npx",
+      "args": [
         "-y",
         "@notionhq/notion-mcp-server"
-      \],
+      ],
       "env": {
-        "OPENAPI\_MCP\_HEADERS": "{\\"Authorization\\": \\"Bearer ntn\_12516787372499JcKI1BkaQTbB2Bjl6qgVOVvCDlFIW3Zs\\", \\"Notion-Version\\": \\"2022-06-28\\" }",
-        "PATH": "/Users/sugurutakahashi/.local/state/fnm\_multishells/16514\_1746694346445/bin:${PATH}"
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\" }",
+        "PATH": "/Users/sugurutakahashi/.local/state/fnm_multishells/16514_1746694346445/bin:${PATH}"
       }
     }
   }
@@ -486,16 +486,16 @@ npm install -g @notionhq/notion-mcp-server
 
 新しいエラーになった
 
-2025-05-08T09:30:06.280Z \[notionApi\] \[info\] Initializing server...
-2025-05-08T09:30:06.328Z \[notionApi\] \[info\] Server started and connected successfully
+2025-05-08T09:30:06.280Z [notionApi] [info] Initializing server...
+2025-05-08T09:30:06.328Z [notionApi] [info] Server started and connected successfully
 env: node: No such file or directory
-2025-05-08T09:30:06.331Z \[notionApi\] \[info\] Message from client: {"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0}
-2025-05-08T09:30:06.331Z \[notionApi\] \[error\] write EPIPE {"context":"connection","stack":"Error: write EPIPE\\n    at afterWriteDispatched (node:internal/stream\_base\_commons:161:15)\\n    at writeGeneric (node:internal/stream\_base\_commons:152:3)\\n    at Socket.\_writeGeneric (node:net:958:11)\\n    at Socket.\_write (node:net:970:8)\\n    at writeOrBuffer (node:internal/streams/writable:572:12)\\n    at \_write (node:internal/streams/writable:501:10)\\n    at Writable.write (node:internal/streams/writable:510:10)\\n    at /Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index.js:109:2240\\n    at new Promise (&lt;anonymous&gt;)\\n    at B$e.send (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index.js:109:2095)"}
-2025-05-08T09:30:06.332Z \[notionApi\] \[info\] Server transport closed
-2025-05-08T09:30:06.332Z \[notionApi\] \[info\] Client transport closed
-2025-05-08T09:30:06.332Z \[notionApi\] \[info\] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
-2025-05-08T09:30:06.332Z \[notionApi\] \[error\] Server disconnected. For troubleshooting guidance, please visit our \[debugging documentation\](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
-2025-05-08T09:30:06.332Z \[notionApi\] \[info\] Client transport closed
+2025-05-08T09:30:06.331Z [notionApi] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0}
+2025-05-08T09:30:06.331Z [notionApi] [error] write EPIPE {"context":"connection","stack":"Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:161:15)\n    at writeGeneric (node:internal/stream_base_commons:152:3)\n    at Socket._writeGeneric (node:net:958:11)\n    at Socket._write (node:net:970:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Writable.write (node:internal/streams/writable:510:10)\n    at /Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index.js:109:2240\n    at new Promise (&lt;anonymous&gt;)\n    at B$e.send (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index.js:109:2095)"}
+2025-05-08T09:30:06.332Z [notionApi] [info] Server transport closed
+2025-05-08T09:30:06.332Z [notionApi] [info] Client transport closed
+2025-05-08T09:30:06.332Z [notionApi] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
+2025-05-08T09:30:06.332Z [notionApi] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}
+2025-05-08T09:30:06.332Z [notionApi] [info] Client transport closed
 
 ---
 
@@ -593,10 +593,10 @@ npm install @notionhq/notion-mcp-server
 ## 👤 ユーザー
 *2025/5/8 18:33:41*
 
-なんかターミナルを開くたびに毎回このときの59806\_1746696769769番号が違うんだ
+なんかターミナルを開くたびに毎回このときの59806_1746696769769番号が違うんだ
 
 which npx
-/Users/sugurutakahashi/.local/state/fnm\_multishells/59806\_1746696769769/bin/npx
+/Users/sugurutakahashi/.local/state/fnm_multishells/59806_1746696769769/bin/npx
 ~  $
 
 ---
@@ -832,19 +832,19 @@ npxの実行速度はNode.jsバージョンマネージャー（nvm、fnm、volt
 
 ### 実行速度の比較
 
-1. \*\*nvm (Node Version Manager)\*\*
+1. **nvm (Node Version Manager)**
    - 最も古くから存在する人気のバージョンマネージャー
    - シェルスクリプトで実装されており、比較的遅い
    - 起動時にシェル関数を初期化するため、シェルの起動が遅くなる傾向がある
    - npxを実行する際も、バージョン解決のオーバーヘッドが大きい
 
-2. \*\*fnm (Fast Node Manager)\*\*
+2. **fnm (Fast Node Manager)**
    - Rustで実装されており、nvmよりかなり高速
    - 初期化も早く、シェル起動時の遅延が少ない
    - マルチシェルサポートのために一時ディレクトリを使用するが、バージョン解決は比較的高速
    - npxの実行速度も一般的にnvmより速い
 
-3. \*\*Volta\*\*
+3. **Volta**
    - Rustで実装されており、非常に高速
    - ツールへのシンボリックリンクを固定パスに作成する方式
    - シェル初期化のオーバーヘッドが少なく、コマンド実行が最も速い傾向がある
@@ -852,16 +852,16 @@ npxの実行速度はNode.jsバージョンマネージャー（nvm、fnm、volt
 
 ### 各マネージャーのパフォーマンスに影響する要因
 
-1. \*\*実装言語\*\*
+1. **実装言語**
    - シェルスクリプト (nvm) vs Rust (fnm, Volta)
    - コンパイル言語で実装されたマネージャーの方が高速
 
-2. \*\*バージョン解決の仕組み\*\*
+2. **バージョン解決の仕組み**
    - nvmは各コマンド実行時に多くのシェルコードを実行する
    - fnmはよりシンプルな解決メカニズムを持つ
    - Voltaはシンボリックリンクを通じて直接バイナリにアクセスし、オーバーヘッドが最小
 
-3. \*\*キャッシュの仕組み\*\*
+3. **キャッシュの仕組み**
    - Voltaは優れたキャッシュ戦略を持つ
    - fnmもある程度のキャッシュを実装している
    - nvmはキャッシュが比較的弱い

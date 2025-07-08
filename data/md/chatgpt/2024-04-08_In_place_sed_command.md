@@ -7,9 +7,9 @@
 ## 👤 ユーザー
 *2024/4/8 17:08:46*
 
-temp\_file   wi
+temp_file   wi
 
-sed "s|${root\_path}/||g" $output\_file &gt; temp\_file && mv temp\_file $output\_file
+sed "s|${root_path}/||g" $output_file &gt; temp_file && mv temp_file $output_file
 
 ---
 

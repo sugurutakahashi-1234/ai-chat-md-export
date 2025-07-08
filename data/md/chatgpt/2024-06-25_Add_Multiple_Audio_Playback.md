@@ -16,7 +16,7 @@ import Combine
 /// NSObject は AVAudioPlayerDelegate の適応のために必要
 public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol {
     private nonisolated(unsafe) var player: AVAudioPlayer?
-    private nonisolated(unsafe) var cancellables: Set&lt;AnyCancellable&gt; = \[\]
+    private nonisolated(unsafe) var cancellables: Set&lt;AnyCancellable&gt; = []
     private nonisolated(unsafe) let currentTimeSubject = CurrentValueSubject&lt;TimeInterval, Never&gt;(0.0)
     private nonisolated(unsafe) let durationSubject = CurrentValueSubject&lt;TimeInterval, Never&gt;(0.0)
     private nonisolated(unsafe) let isPlayingSubject = CurrentValueSubject&lt;Bool, Never&gt;(false)
@@ -65,30 +65,30 @@ public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol {
             // 0.1 秒ごとに現在の再生時刻を通知
             Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
                 .combineLatest(isPlayingSubject, isSeekingSubject)
-                .filter { \_, isPlaying, isSeeking in
+                .filter { _, isPlaying, isSeeking in
                     isPlaying && !isSeeking // 再生中かつseekしていないときのみ更新
                 }
-                .map { \[weak self\] \_, \_, \_ in
+                .map { [weak self] _, _, _ in
                     self?.player?.currentTime ?? 0
                 }
                 .removeDuplicates()
-                .assign(to: \\.value, on: currentTimeSubject)
+                .assign(to: \.value, on: currentTimeSubject)
                 .store(in: &cancellables)
 
             // 0.1 秒ごとに現在の再生時刻を通知
             Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-                .map { \[weak self\] \_ in
+                .map { [weak self] _ in
                     self?.player?.duration ?? 0.0
                 }
                 .removeDuplicates()
-                .assign(to: \\.value, on: durationSubject)
+                .assign(to: \.value, on: durationSubject)
                 .store(in: &cancellables)
 
             // 再生セッション設定
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             throw error
         }
     }
@@ -117,11 +117,11 @@ public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol {
     // TODO: DownloadDriver みたいに一般化してもよいかも
     private func download(url: URL) async throws -&gt; Data {
         do {
-            let (data, \_) = try await URLSession(configuration: .default).data(from: url)
+            let (data, _) = try await URLSession(configuration: .default).data(from: url)
             OSLogger.debugLog("Completed: Download")
             return data
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             throw error
         }
     }
@@ -130,14 +130,14 @@ public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol {
         recordingVolumeLevelSubject.value = 0.0
 
         Timer.publish(every: meteringTimerInterval, on: .main, in: .common).autoconnect()
-            .compactMap { \[weak self\] \_ in
+            .compactMap { [weak self] _ in
                 guard let self, let player else {
                     return nil
                 }
                 player.updateMeters()
                 return AudioUtils.normalized(decibel: Double(player.averagePower(forChannel: 0)))
             }
-            .assign(to: \\.value, on: recordingVolumeLevelSubject)
+            .assign(to: \.value, on: recordingVolumeLevelSubject)
             .store(in: &meteringTimer)
     }
 
@@ -147,7 +147,7 @@ public final class AudioPlayDriver: NSObject, AudioPlayDriverProtocol {
 }
 
 extension AudioPlayDriver: AVAudioPlayerDelegate {
-    public func audioPlayerDidFinishPlaying(\_ player: AVAudioPlayer, successfully \_: Bool) {
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully _: Bool) {
         stopMeteringTimer()
         player.currentTime = 0
         isPlayingSubject.send(false)

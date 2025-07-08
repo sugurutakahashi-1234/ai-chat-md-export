@@ -15,11 +15,11 @@ Flutterでflavorを扱いたい。基本的にはprd,stg,devの3つを使う。e
 ## 🔧 ツール
 *2025/1/27 0:21:58*
 
-\*\*Setting flavor options\*\*
+**Setting flavor options**
 
 I’m diving into flavors in Flutter by defining an enum and tying environment variables to each in an extension. Using Riverpod to manage these settings dynamically.
 
-\*\*Configuring runtime flavors\*\*
+**Configuring runtime flavors**
 
 I’m showing how to set up flavors in Dart using Riverpod, allowing dynamic runtime adjustments through command-line arguments and updating environment variables accordingly.
 
@@ -198,31 +198,31 @@ fvm flutter run --debug --flavor dev
 ## 🔧 ツール
 *2025/1/27 0:24:41*
 
-\*\*Clarifying flavor usage\*\*
+**Clarifying flavor usage**
 
 Hmm, I’m thinking about the user’s request for "flutter run --debug --flavor dev" and how it interacts with single or multiple main.dart files, especially in iOS or Android projects.
 
-\*\*Configuring different builds\*\*
+**Configuring different builds**
 
 I’m exploring how to set up various product flavors in Android via build.gradle. This method allows for managing staging, testing, and production builds effectively.
 
-\*\*Setting flavors\*\*
+**Setting flavors**
 
 I'm piecing together how to pass flavors from the CLI using `flutter run --flavor dev --dart-define=FLAVOR=dev`, and ensuring Android and iOS configurations support these flavors.
 
-\*\*Mapping out Xcode schemes\*\*
+**Mapping out Xcode schemes**
 
 I'm thinking about defining Xcode schemes for product flavors and passing them to Flutter. Considering entry points or environment variables for flavor configuration.
 
-\*\*Setting up product flavors\*\*
+**Setting up product flavors**
 
 I’m defining product flavors in build.gradle with suffixes and versions. Then, I’ll adjust main.dart files for development, staging, and production, ensuring compatibility with `fvm flutter run --debug --flavor dev`.
 
-\*\*Integrating CLI commands\*\*
+**Integrating CLI commands**
 
 I’m combining `fvm flutter run --debug --flavor dev --dart-define=FLAVOR=dev` to streamline environment setups in Android and iOS, focusing on simplifying main.dart file configurations.
 
-\*\*Clarifying build flavor influence\*\*
+**Clarifying build flavor influence**
 
 I’m noting that `flutter run --flavor dev` primarily impacts the native side, not the Flutter environment, which helps in understanding the distinction between build flavors and Flutter environment variables.
 
@@ -610,11 +610,11 @@ ProviderScopeのProviderScopeする必要はあるのか？
 ## 🔧 ツール
 *2025/1/27 0:32:09*
 
-\*\*Determining ProviderScope needs\*\*
+**Determining ProviderScope needs**
 
 I’m thinking through the necessity of a nested ProviderScope versus a single top-level scope. Typically, one top-level ProviderScope suffices, but nested ones can be used for specific providers within a widget subtree.
 
-\*\*Revisiting the approach\*\*
+**Revisiting the approach**
 
 You can manage overrides and flavors with a single top-level ProviderScope. Nested ProviderScopes are typically unnecessary for standard usage.
 
@@ -687,8 +687,8 @@ void main() {
 
 @Riverpod(keepAlive: true)
 Future&lt;Uri&gt; baseUri(Ref ref) async {
-  // TODO: \[Flavor\] 環境ごとに Flavor を設定する
-  // TODO: \[Flavor\] 実行時に --flavor dev などの引数を渡すことで Flavor を切り替えられるようにする
+  // TODO: [Flavor] 環境ごとに Flavor を設定する
+  // TODO: [Flavor] 実行時に --flavor dev などの引数を渡すことで Flavor を切り替えられるようにする
   const flavor = Flavor.dev;
 
   // Flavor による base URI の切り替え
@@ -736,25 +736,25 @@ Future&lt;Uri&gt; baseUri(Ref ref) async {
 ## 🔧 ツール
 *2025/1/27 0:38:06*
 
-\*\*Refining Riverpod code\*\*
+**Refining Riverpod code**
 
 I’m aiming to enhance the Riverpod code by isolating the flavorProvider and introducing an extension on Flavor with an asynchronous function to manage platform-specific logic.
 
-\*\*Evaluating options\*\*
+**Evaluating options**
 
 I’m weighing the feasibility of an async extension on Flavor versus a synchronous method for handling platform-specific logic and environment variables. Synchronous methods might be more practical.
 
-\*\*Crafting platform logic\*\*
+**Crafting platform logic**
 
-I’m outlining the use of device\_info\_plus for iOS detection and specifying async logic in FlavorExtension to manage platform-specific base URIs effectively across different environments.
+I’m outlining the use of device_info_plus for iOS detection and specifying async logic in FlavorExtension to manage platform-specific base URIs effectively across different environments.
 
-\*\*Integrating dependencies\*\*
+**Integrating dependencies**
 
-I’m planning to incorporate 'dart:io' and 'device\_info\_plus' to manage platform specifics. By defining an async method for baseUri, I can handle asynchronous logic for different environments effectively.
+I’m planning to incorporate 'dart:io' and 'device_info_plus' to manage platform specifics. By defining an async method for baseUri, I can handle asynchronous logic for different environments effectively.
 
-\*\*Pulling together asynchronous logic\*\*
+**Pulling together asynchronous logic**
 
-I’m combining Riverpod with device\_info\_plus, and incorporating async logic in FlavorX to ensure platform-specific base URIs are managed effectively. This approach aligns perfectly with our objectives.
+I’m combining Riverpod with device_info_plus, and incorporating async logic in FlavorX to ensure platform-specific base URIs are managed effectively. This approach aligns perfectly with our objectives.
 
 ---
 

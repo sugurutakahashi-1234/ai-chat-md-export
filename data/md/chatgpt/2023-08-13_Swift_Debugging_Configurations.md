@@ -10,32 +10,32 @@
 これってどういう意味でしょうか？
 
 {
-    "configurations": \[
+    "configurations": [
         {
             "type": "lldb",
             "request": "launch",
-            "sourceLanguages": \[
+            "sourceLanguages": [
                 "swift"
-            \],
+            ],
             "name": "Debug EmotionAnalysisValidation (EmotionAnalysisPackage)",
             "program": "${workspaceFolder:emomil-app-ios}/EmotionAnalysisPackage/.build/debug/EmotionAnalysisValidation",
-            "args": \[\],
+            "args": [],
             "cwd": "${workspaceFolder:emomil-app-ios}/EmotionAnalysisPackage",
             "preLaunchTask": "swift: Build Debug EmotionAnalysisValidation (EmotionAnalysisPackage)"
         },
         {
             "type": "lldb",
             "request": "launch",
-            "sourceLanguages": \[
+            "sourceLanguages": [
                 "swift"
-            \],
+            ],
             "name": "Release EmotionAnalysisValidation (EmotionAnalysisPackage)",
             "program": "${workspaceFolder:emomil-app-ios}/EmotionAnalysisPackage/.build/release/EmotionAnalysisValidation",
-            "args": \[\],
+            "args": [],
             "cwd": "${workspaceFolder:emomil-app-ios}/EmotionAnalysisPackage",
             "preLaunchTask": "swift: Build Release EmotionAnalysisValidation (EmotionAnalysisPackage)"
         }
-    \]
+    ]
 }
 
 ---
@@ -47,7 +47,7 @@
 
 以下は、このJSONの主な内容をまとめたものです：
 
-1. \*\*Debug EmotionAnalysisValidation (EmotionAnalysisPackage)\*\*
+1. **Debug EmotionAnalysisValidation (EmotionAnalysisPackage)**
 
    - `type`: `lldb` - 使用するデバッガはLLDBです。LLDBはLLVMプロジェクトの一部として開発されているデバッガです。
    - `request`: `launch` - デバッグのタイプとしてアプリケーションの起動が要求されています。
@@ -57,7 +57,7 @@
    - `cwd`: カレントワーキングディレクトリ。EmotionAnalysisPackageディレクトリを指定しています。
    - `preLaunchTask`: デバッグを開始する前に実行するタスク。SwiftでEmotionAnalysisValidationをデバッグビルドするタスクが指定されています。
 
-2. \*\*Release EmotionAnalysisValidation (EmotionAnalysisPackage)\*\*
+2. **Release EmotionAnalysisValidation (EmotionAnalysisPackage)**
 
    - 同上ですが、`.build/release/EmotionAnalysisValidation`というリリースビルドのパスを使用する点が異なります。
 
@@ -79,27 +79,27 @@
 
 以下は、この設定を使用してデバッグを開始する手順です：
 
-1. \*\*VSCodeを開く\*\*
+1. **VSCodeを開く**
    
    最初に、対象のプロジェクトのルートディレクトリでVSCodeを開きます。
 
-2. \*\*`.vscode`ディレクトリを確認\*\*
+2. **`.vscode`ディレクトリを確認**
 
    プロジェクトのルートディレクトリ内に`.vscode`という名前のディレクトリが存在するか確認します。存在しない場合は、新しく作成します。
 
-3. \*\*`launch.json`を配置\*\*
+3. **`launch.json`を配置**
 
    `.vscode`ディレクトリの中に、提供された内容を持つ`launch.json`ファイルを作成または編集します。
 
-4. \*\*デバッグビューに移動\*\*
+4. **デバッグビューに移動**
 
    VSCodeのサイドバーにあるデバッグアイコン（虫のようなアイコン）をクリックして、デバッゲィングビューに移動します。
 
-5. \*\*デバッグセッションを選択\*\*
+5. **デバッグセッションを選択**
 
    上部にあるドロップダウンリストから、実行したいデバッグセッション（例： "Debug EmotionAnalysisValidation (EmotionAnalysisPackage)"）を選択します。
 
-6. \*\*デバッグを開始\*\*
+6. **デバッグを開始**
 
    緑色の三角アイコン（またはF5キー）をクリックすることでデバッグを開始できます。この操作をすると、`preLaunchTask`に指定されているタスクが最初に実行され、その後、`program`に指定されているプログラムがデバッグモードで起動されます。
 

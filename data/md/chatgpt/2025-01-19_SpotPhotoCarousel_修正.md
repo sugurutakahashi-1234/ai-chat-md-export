@@ -15,11 +15,11 @@ spotPhotoUrlとspotOwnership を持つような別のclassを作ってそれの�
 でまた、SpotPhotoCarouselを使う際に、現在選択中のspotOwnership に連動して、SpotPhotoCarousel の上に表示しているタイトルを変更させたい。
 いい方法を考えてほしい。なるべくシンプルがいいです。
 
-import 'package:carousel\_slider/carousel\_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_pallet.dart';
-import 'package:snpit\_guild\_app/domain/design/color\_token.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:snpit_guild_app/domain/design/color_pallet.dart';
+import 'package:snpit_guild_app/domain/design/color_token.dart';
 
 enum SpotOwnership { owner, enemy, neutral }
 
@@ -39,7 +39,7 @@ class SpotPhotoCarousel extends HookWidget {
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: \[
+      children: [
         CarouselSlider(
           items: spotPhotoUrls.map((photoUrl) {
             return Builder(
@@ -72,7 +72,7 @@ class SpotPhotoCarousel extends HookWidget {
                             return const ColoredBox(
                               color: ColorToken.bgDark,
                               child: Icon(
-                                Icons.broken\_image\_outlined,
+                                Icons.broken_image_outlined,
                                 size: 96,
                                 color: ColorToken.text,
                               ),
@@ -94,7 +94,7 @@ class SpotPhotoCarousel extends HookWidget {
             },
           ),
         ),
-        if (spotPhotoUrls.length &gt; 1) ...\[
+        if (spotPhotoUrls.length &gt; 1) ...[
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -112,8 +112,8 @@ class SpotPhotoCarousel extends HookWidget {
               );
             }),
           ),
-        \],
-      \],
+        ],
+      ],
     );
   }
 }
@@ -123,59 +123,59 @@ class SpotPhotoCarousel extends HookWidget {
 ## 🔧 ツール
 *2025/1/19 19:54:30*
 
-\*\*Reimagining photo display\*\*
+**Reimagining photo display**
 
 I'm piecing together a new image display by tweaking `SpotPhotoCarousel` with an array of objects combining photo URLs and ownership. The goal: seamlessly show photos and update the title based on the selected photo's ownership.
 
-\*\*Refactoring the approach\*\*
+**Refactoring the approach**
 
 I’m streamlining the code by redefining `SpotPhotoCarousel` arguments, creating `SpotPhotoItem` with `url` and `ownership`, and updating the title to reflect the selected photo's ownership.
 
-\*\*Updating the framework\*\*
+**Updating the framework**
 
 I’m replacing old arguments in `SpotPhotoCarousel` with `SpotPhotoItem` properties, while carefully preserving existing comments. Progressing, I’m ensuring the new class integrates seamlessly.
 
-\*\*Refining the carousel\*\*
+**Refining the carousel**
 
 I’m creating `SpotPhotoItem` for the carousel's photo and ownership, replacing old arguments in `SpotPhotoCarousel`, and planning to set border colors based on each item's ownership status.
 
-\*\*Clarifying ownership criteria\*\*
+**Clarifying ownership criteria**
 
 I'm considering whether the user desires uniform ownership for the whole carousel or per item, to decide on setting a single or multiple ownerships.
 
-\*\*Refining carousel interactions\*\*
+**Refining carousel interactions**
 
 I’m refining carousel functionality by updating the title to reflect the current photo's ownership, using `item.spotOwnership` to set border colors, and considering the use of bullet points.
 
-\*\*Adapting the design\*\*
+**Adapting the design**
 
 I’m using a `Text` widget above the carousel to update the title dynamically based on the selected photo's ownership, ensuring the code remains minimal and clear of extra comments.
 
-\*\*Finalizing carousel adjustments\*\*
+**Finalizing carousel adjustments**
 
 I’m wrapping up the carousel setup by dynamically updating the title above the carousel based on ownership status, ensuring the code stays streamlined with only necessary imports and existing comments.
 
-\*\*Structuring the design\*\*
+**Structuring the design**
 
 I’m integrating a `Text` widget above the carousel, dynamically updating based on ownership. The aim is to keep the code base minimal and clear of extraneous comments.
 
-\*\*Ensuring clarity\*\*
+**Ensuring clarity**
 
 OK, let me see. I’m confirming the absence of documentation comments and imports. The new class will be defined straightforwardly, maintaining clear, concise essential code.
 
-\*\*Streamlining the Carousel\*\*
+**Streamlining the Carousel**
 
 I’m finalizing the `SpotPhotoCarousel` class by integrating `SpotPhotoItem`, removing redundant parameters, and updating the title dynamically. The goal is to keep the code clear and concise.
 
-\*\*Enhancing carousel functionality\*\*
+**Enhancing carousel functionality**
 
 I’m refining the `SpotPhotoCarousel` class by incorporating `SpotPhotoItem`, updating dynamic titles based on ownership, and ensuring the code remains concise and clear of undesired comments or imports.
 
-\*\*Crafting the code\*\*
+**Crafting the code**
 
 I’m wrapping up the `SpotPhotoCarousel` class by refining `SpotPhotoItem` integration, ensuring clear dynamic titles, and keeping the code concise and free from extraneous comments or imports.
 
-\*\*Piecing together the carousel\*\*
+**Piecing together the carousel**
 
 I’m finalizing the `SpotPhotoCarousel` class by embedding dynamic titles and adjusting border colors based on `SpotPhotoItem` ownership, ensuring the code is clear and free from unnecessary comments.
 
@@ -319,31 +319,31 @@ class SpotPhotoCarousel extends HookWidget {
 ## 🔧 ツール
 *2025/1/19 21:10:30*
 
-\*\*Customizing titles\*\*
+**Customizing titles**
 
 The user seeks to dynamically adjust the SpotPhotoCarousel's title based on the parent widget's selected spotOwnership, aiming for a streamlined method with minimal code involvement.
 
-\*\*Enhancing functionality\*\*
+**Enhancing functionality**
 
 By passing a "title" directly from the parent, SpotPhotoCarousel becomes more streamlined. The parent handles ownership logic, setting the title organically without additional complications.
 
-\*\*Refining title management\*\*
+**Refining title management**
 
 Using the parent widget to pass the SpotPhotoCarousel's title keeps things simple. The parent manages spotOwnership changes, ensuring effective CarouselSlider functionality and title updates.
 
-\*\*Clarifying SpotPhotoCarousel\*\*
+**Clarifying SpotPhotoCarousel**
 
 Proposing the parent widget to dynamically assign a title to SpotPhotoCarousel, based on spotOwnership. This method simplifies the widget while simplifying the spotOwnership interaction.
 
-\*\*Enhancing SpotPhotoCarousel\*\*
+**Enhancing SpotPhotoCarousel**
 
 Maintaining border colors for each item and passing a `title` parameter from the parent widget to align with the current ownership simplifies the code and keeps the widget focused.
 
-\*\*Focusing on key widgets\*\*
+**Focusing on key widgets**
 
 The aim is to highlight the parent widget and SpotPhotoCarousel, strictly considering the impact of SpotOwnership on the title, ensuring a streamlined, task-relevant example.
 
-\*\*Crafting the interface\*\*
+**Crafting the interface**
 
 I’m working through SpotPhotoCarousel's parent widget, integrating ownership buttons and dynamically setting the title. Also maintaining the `SpotPhotoItem` implementation.
 

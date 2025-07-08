@@ -10,8 +10,8 @@
 swift の struct を文字列でコピーするコードを書きたい。見やすくするためにはどうすればいいか？
 
 struct Address {
-    var city: \[String\]
-    var postalCode: \[Int\]
+    var city: [String]
+    var postalCode: [Int]
     var cityType: CityType
 }
 
@@ -19,7 +19,7 @@ struct Person {
     var name: String
     var age: Int
     var isEmployed: Bool
-    var address: \[Address\]
+    var address: [Address]
 }
 
 ---
@@ -267,7 +267,7 @@ if let jsonString = encodeWithCustomIndentation(person, indent: 4) {
 以下の処理をUIPasteboard.general.stringへの代入を一箇所まとめてほしい
 
 Button {
-                            UIPasteboard.general.string = "\\(object)"
+                            UIPasteboard.general.string = "\(object)"
                             
                             if let encodableObject = object as? Encodable {
                                 let encoder = JSONEncoder()
@@ -470,10 +470,10 @@ UIPasteboard.general.string = {
                                         let jsonString = String(data: jsonData, encoding: .utf8)
                                         return jsonString
                                     } else {
-                                        return"\\(object)"
+                                        return"\(object)"
                                     }
                                 } else {
-                                    return"\\(object)"
+                                    return"\(object)"
                                 }
                             }()
 

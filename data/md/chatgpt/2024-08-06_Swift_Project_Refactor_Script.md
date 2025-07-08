@@ -294,9 +294,9 @@ find . -type f -name "*InteractorDependency.swift" -delete
 ## 👤 ユーザー
 *2024/8/6 10:35:42*
 
-\* はなんでも入るワイルドカードとして機能するのか？
+* はなんでも入るワイルドカードとして機能するのか？
 
-解析処理は\*DriverProviderとあった場合にそのDriverの名前を使ってそこを入れ替えて欲しいという意味である。
+解析処理は*DriverProviderとあった場合にそのDriverの名前を使ってそこを入れ替えて欲しいという意味である。
 
 ---
 
@@ -894,7 +894,7 @@ echo "Completed folder deletion"
 ## 👤 ユーザー
 *2024/8/6 11:05:23*
 
-package\_nameとかにしてほしい。
+package_nameとかにしてほしい。
 
 ---
 
@@ -1270,24 +1270,24 @@ echo "Completed file deletion"
 シェルスクリプトの名前は、実行する操作をシンプルに示すように以下の候補を挙げます。
 
 ### replace操作スクリプト
-- `replace\_text.sh`
-- `bulk\_replace.sh`
-- `text\_replacer.sh`
+- `replace_text.sh`
+- `bulk_replace.sh`
+- `text_replacer.sh`
 
 ### 解析処理スクリプト
-- `analyze\_and\_append\_init.sh`
-- `dependency\_analyzer.sh`
-- `init\_appender.sh`
+- `analyze_and_append_init.sh`
+- `dependency_analyzer.sh`
+- `init_appender.sh`
 
 ### フォルダ削除スクリプト
-- `delete\_directories.sh`
-- `remove\_folders.sh`
-- `cleanup\_folders.sh`
+- `delete_directories.sh`
+- `remove_folders.sh`
+- `cleanup_folders.sh`
 
 ### ファイル削除スクリプト
-- `delete\_files.sh`
-- `remove\_matching\_files.sh`
-- `cleanup\_files.sh`
+- `delete_files.sh`
+- `remove_matching_files.sh`
+- `cleanup_files.sh`
 
 これらの候補からお好きな名前を選んでいただければと思います。
 
@@ -1296,7 +1296,7 @@ echo "Completed file deletion"
 ## 👤 ユーザー
 *2024/8/6 11:10:36*
 
-find\_delete\_file と delete\_file\_and\_folder と presenter\_init\_gen と replace\_text かな
+find_delete_file と delete_file_and_folder と presenter_init_gen と replace_text かな
 
 ---
 
@@ -1714,56 +1714,56 @@ echo "🎉 Completed find_delete_file operations"
 ## 👤 ユーザー
 *2024/8/6 11:19:37*
 
-この処理は \*PresenterDependency.swift のファイルについて全て処理して欲しい
+この処理は *PresenterDependency.swift のファイルについて全て処理して欲しい
 
 #!/bin/bash
 
-echo "🔍 Starting presenter\_init\_gen dependency analysis and init method append"
+echo "🔍 Starting presenter_init_gen dependency analysis and init method append"
 
-for file in \*PresenterDependency.swift; do
-  if \[ ! -f "$file" \]; then
+for file in *PresenterDependency.swift; do
+  if [ ! -f "$file" ]; then
     echo "❌ Error: File $file not found."
     exit 1
   fi
 
-  presenter\_file="${file/Dependency/}"
-  presenter\_file="${presenter\_file/PresenterDependency/Presenter}"
+  presenter_file="${file/Dependency/}"
+  presenter_file="${presenter_file/PresenterDependency/Presenter}"
 
-  if \[ ! -f "$presenter\_file" \]; then
-    echo "❌ Error: Corresponding presenter file $presenter\_file not found for $file."
+  if [ ! -f "$presenter_file" ]; then
+    echo "❌ Error: Corresponding presenter file $presenter_file not found for $file."
     exit 1
   fi
 
-  echo "📄 Processing $file and updating $presenter\_file"
+  echo "📄 Processing $file and updating $presenter_file"
 
-  providers=$(grep 'DriverProvider' "$file" | awk -F': ' '{print $2}' | tr -d '{} ' | tr ',' '\\n')
+  providers=$(grep 'DriverProvider' "$file" | awk -F': ' '{print $2}' | tr -d '{} ' | tr ',' '\n')
 
   properties=""
-  init\_params=""
-  init\_body=""
+  init_params=""
+  init_body=""
 
   for provider in $providers; do
-    driver\_var=$(echo "$provider" | sed 's/Provider/Driver/')
-    properties+="    private let $driver\_var: any ${provider}Protocol\\n"
-    init\_params+="$driver\_var: any ${provider}Protocol = ${provider}(), "
-    init\_body+="        self.$driver\_var = $driver\_var\\n"
+    driver_var=$(echo "$provider" | sed 's/Provider/Driver/')
+    properties+="    private let $driver_var: any ${provider}Protocol\n"
+    init_params+="$driver_var: any ${provider}Protocol = ${provider}(), "
+    init_body+="        self.$driver_var = $driver_var\n"
   done
 
   # Remove trailing comma and space
-  init\_params=${init\_params%, }
+  init_params=${init_params%, }
 
-  init\_method="$properties\\n    init($init\_params) {\\n$init\_body    }\\n"
+  init_method="$properties\n    init($init_params) {\n$init_body    }\n"
 
   # Append init method to presenter file if not already present
-  if ! grep -q "init(" "$presenter\_file"; then
-    echo -e "$init\_method" &gt;&gt; "$presenter\_file"
-    echo "✅ Appended init method to $presenter\_file"
+  if ! grep -q "init(" "$presenter_file"; then
+    echo -e "$init_method" &gt;&gt; "$presenter_file"
+    echo "✅ Appended init method to $presenter_file"
   else
-    echo "ℹ️ init method already exists in $presenter\_file"
+    echo "ℹ️ init method already exists in $presenter_file"
   fi
 done
 
-echo "🎉 Completed presenter\_init\_gen dependency analysis and init method append"
+echo "🎉 Completed presenter_init_gen dependency analysis and init method append"
 
 ---
 
@@ -2109,7 +2109,7 @@ echo "🎉 Completed presenter_init_gen dependency analysis and init method appe
 
 こうなった、
 
-🔍 Starting presenter\_init\_gen dependency analysis and init method append
+🔍 Starting presenter_init_gen dependency analysis and init method append
 📄 Processing ./SmallTalkPackage/Sources/Presentation/View/QRCodeScanner/QRCodeScannerPresenterDependency.swift and updating ./SmallTalkPackage/Sources/Presentation/View/QRCodeScanner/QRCodeScannerPresenter.swift
 🔧 Found providers: 
 ℹ️ init method already exists in ./SmallTalkPackage/Sources/Presentation/View/QRCodeScanner/QRCodeScannerPresenter.swift
@@ -2240,7 +2240,7 @@ DeviceInfoDriverProvider
 QRCodeDriverProvider
 ℹ️ init method already exists in ./SmallTalkPackage/Sources/Presentation/View/QRCodeGenerator/QRCodeGeneratorPresenter.swift
 ⏭️ Skipping ./SmallTalkPackage/Sources/Presentation/Domain/Protocol/Utility/CommonPresenterDependency.swift
-🎉 Completed presenter\_init\_gen dependency analysis and init method append
+🎉 Completed presenter_init_gen dependency analysis and init method append
 
 ---
 

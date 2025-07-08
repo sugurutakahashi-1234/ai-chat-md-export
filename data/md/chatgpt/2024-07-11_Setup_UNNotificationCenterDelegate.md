@@ -26,21 +26,21 @@ public final class UserNotificationCenterDriver: NSObject, UNUserNotificationCen
 
     /// アプリがフォアグラウンドにいるときに通知が表示される直前に呼び出され、通知のプレゼンテーションオプションを指定する
     @MainActor
-    public func userNotificationCenter(\_: UNUserNotificationCenter, willPresent \_: UNNotification) async -&gt; UNNotificationPresentationOptions {
+    public func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification) async -&gt; UNNotificationPresentationOptions {
         UserNotificationCenterDelegateNotificationDriver.userNotificationCenterWillPresent.send(())
-        return \[.banner, .sound, .badge\]
+        return [.banner, .sound, .badge]
     }
 
     /// ユーザーが通知に対してアクションを取ったときに呼び出される
     @MainActor
-    public func userNotificationCenter(\_: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-        if let url = response.notification.request.content.userInfo\["url"\] as? String, let deeplinkURL = URL(string: url) {
+    public func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        if let url = response.notification.request.content.userInfo["url"] as? String, let deeplinkURL = URL(string: url) {
             UserNotificationCenterDelegateNotificationDriver.userNotificationCenterDidReceive.send(deeplinkURL)
         }
     }
 
     // 以下は OS の通知設定から任意の画面を表示する動線を加えることができる （Facebook のアプリ参照）
-    // public func userNotificationCenter(\_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {}
+    // public func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {}
 }
 
 extension UNUserNotificationCenter: @unchecked @retroactive Sendable {}

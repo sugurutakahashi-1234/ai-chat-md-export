@@ -15,15 +15,15 @@ iOS や Android でなるべくそれらのOSやOSバージョン、そのデバ
   final deviceName = deviceInfo.packageName;
 
 
-import 'package:device\_info\_plus/device\_info\_plus.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:package\_info\_plus/package\_info\_plus.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/presentation/providers/access\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/base\_uri\_provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/presentation/providers/access_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/base_uri_provider.dart';
 
-part 'dio\_provider.g.dart';
+part 'dio_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 Future&lt;Dio&gt; dio(Ref ref) async {
@@ -41,12 +41,12 @@ Future&lt;Dio&gt; dio(Ref ref) async {
       baseUrl: baseUri.toString(),
       headers: {
         'Content-Type': 'application/json',
-        'package\_name': packageInfo.packageName, // ae.zealnova.snpitguild
-        'app\_version': packageInfo.version, // 0.0.1
-        'build\_number': packageInfo.buildNumber, // 1
-        'system\_name': systemName, // iOS, Android
-        'system\_version': systemVersion, // 18.4, 34
-        'device\_name': deviceName // iPhone 16 Pro, Redmi 14C
+        'package_name': packageInfo.packageName, // ae.zealnova.snpitguild
+        'app_version': packageInfo.version, // 0.0.1
+        'build_number': packageInfo.buildNumber, // 1
+        'system_name': systemName, // iOS, Android
+        'system_version': systemVersion, // 18.4, 34
+        'device_name': deviceName // iPhone 16 Pro, Redmi 14C
       },
       connectTimeout: const Duration(seconds: 30),
       sendTimeout: const Duration(seconds: 30),
@@ -60,7 +60,7 @@ Future&lt;Dio&gt; dio(Ref ref) async {
         final accessToken = await ref.read(accessTokenNotifierProvider.future);
 
         if (accessToken != null) {
-          options.headers\['access\_token'\] = accessToken;
+          options.headers['access_token'] = accessToken;
         }
 
         return handler.next(options);

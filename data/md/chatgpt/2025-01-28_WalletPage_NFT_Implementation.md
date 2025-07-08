@@ -8,9 +8,9 @@
 *2025/1/28 19:03:06*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-2eSBuiEjNfFoRCqx7tzAMH",
-  "size\_bytes": 36161,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-2eSBuiEjNfFoRCqx7tzAMH",
+  "size_bytes": 36161,
   "width": 292,
   "height": 488,
   "fovea": null,
@@ -18,13 +18,13 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 添付した画像の画面を実装して欲しい。
@@ -41,9 +41,9 @@ NFTというクラスには String nftId, String tokenId, String name, String im
 タップした時の処理はWidget build(BuildContext context, WidgetRef ref) {に onTapNft() として定義して欲しい。
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/users/nfts/get\_nfts.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/users/nfts/get_nfts.dart';
 
 class WalletPage extends HookConsumerWidget {
   const WalletPage({super.key});
@@ -59,7 +59,7 @@ class WalletPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     return Scaffold(
@@ -73,7 +73,7 @@ class WalletPage extends HookConsumerWidget {
             child: CircularProgressIndicator(),
           );
         },
-        error: (error, \_) {
+        error: (error, _) {
           return Center(
             child: Text('Error: $error'),
           );
@@ -86,20 +86,20 @@ class WalletPage extends HookConsumerWidget {
 
 
 @freezed
-class GetUserNftsResponseDTOData with \_$GetUserNftsResponseDTOData {
+class GetUserNftsResponseDTOData with _$GetUserNftsResponseDTOData {
   factory GetUserNftsResponseDTOData({
     @JsonKey(name: 'wallet') String? wallet,
     @JsonKey(name: 'stp') num? stp,
     @JsonKey(name: 'explorers') required List&lt;ExplorerDTO&gt;? explorers,
     @JsonKey(name: 'flags') required List&lt;FlagDTO&gt;? flags,
-  }) = \_GetUserNftsResponseDTOData;
+  }) = _GetUserNftsResponseDTOData;
 
   factory GetUserNftsResponseDTOData.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$GetUserNftsResponseDTODataFromJson(jsonMap);
+      _$GetUserNftsResponseDTODataFromJson(jsonMap);
 }
 
 @freezed
-class ExplorerDTO with \_$ExplorerDTO {
+class ExplorerDTO with _$ExplorerDTO {
   factory ExplorerDTO({
     @JsonKey(name: 'explorerId') required String? explorerId,
     @JsonKey(name: 'tokenId') required String? tokenId,
@@ -115,15 +115,15 @@ class ExplorerDTO with \_$ExplorerDTO {
     @JsonKey(name: 'decoyFinding') required bool? decoyFinding,
     @JsonKey(name: 'totalSearch') required num? totalSearch,
     @JsonKey(name: 'totalSpotFound') required num? totalSpotFound,
-  }) = \_ExplorerDTO;
+  }) = _ExplorerDTO;
 
   factory ExplorerDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$ExplorerDTOFromJson(jsonMap);
+      _$ExplorerDTOFromJson(jsonMap);
 }
 
 
 @freezed
-class FlagDTO with \_$FlagDTO {
+class FlagDTO with _$FlagDTO {
   factory FlagDTO({
     @JsonKey(name: 'flagId') required String? flagId,
     @JsonKey(name: 'tokenId') required String? tokenId,
@@ -139,17 +139,17 @@ class FlagDTO with \_$FlagDTO {
     @JsonKey(name: 'flagIncome') required num? flagIncome,
     @JsonKey(name: 'leftHandId') String? leftHandId,
     @JsonKey(name: 'rightHand') String? rightHand,
-  }) = \_FlagDTO;
+  }) = _FlagDTO;
 
   factory FlagDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$FlagDTOFromJson(jsonMap);
+      _$FlagDTOFromJson(jsonMap);
 }
 
 
-part 'get\_nfts.g.dart';
+part 'get_nfts.g.dart';
 
 @Riverpod(keepAlive: true)
-class GetNftsNotifier extends \_$GetNftsNotifier {
+class GetNftsNotifier extends _$GetNftsNotifier {
   @override
   Future&lt;GetUserNftsResponseDTOData?&gt; build() async =&gt; null;
 

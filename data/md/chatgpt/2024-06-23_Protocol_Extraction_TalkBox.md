@@ -9,23 +9,23 @@
 
 protocolのみ抽出して欲しい
 
-    public func getTalkBox() async throws -&gt; \[TalkBox\] {
-        (0...Int.random(in: 19...21)).map { \_ in
+    public func getTalkBox() async throws -&gt; [TalkBox] {
+        (0...Int.random(in: 19...21)).map { _ in
             let lastPostedAt: Date = .random
-            return TalkBox(id: .uuid, imageUrl: .placeholderImageUrl(title: "\\(lastPostedAt.toString(.MMdd))"), lastPostedAt: lastPostedAt, hasUnreadThread: .random, isBookmarked: .random, isMuted: .random, threads: .randoms)
+            return TalkBox(id: .uuid, imageUrl: .placeholderImageUrl(title: "\(lastPostedAt.toString(.MMdd))"), lastPostedAt: lastPostedAt, hasUnreadThread: .random, isBookmarked: .random, isMuted: .random, threads: .randoms)
         }
     }
 
-    public func postTalkBox(talkBox \_: TalkBox) async throws -&gt; TalkBox {
+    public func postTalkBox(talkBox _: TalkBox) async throws -&gt; TalkBox {
         let lastPostedAt: Date = .random
-        return TalkBox(id: .uuid, imageUrl: .placeholderImageUrl(title: "\\(lastPostedAt.toString(.MMdd))"), lastPostedAt: lastPostedAt, hasUnreadThread: .random, isBookmarked: .random, isMuted: .random, threads: .randoms)
+        return TalkBox(id: .uuid, imageUrl: .placeholderImageUrl(title: "\(lastPostedAt.toString(.MMdd))"), lastPostedAt: lastPostedAt, hasUnreadThread: .random, isBookmarked: .random, isMuted: .random, threads: .randoms)
     }
 
     public func putTalkBox(talkBox: TalkBox) async throws -&gt; TalkBox {
         TalkBox(id: talkBox.id, imageUrl: talkBox.imageUrl, lastPostedAt: talkBox.lastPostedAt, hasUnreadThread: .random, isBookmarked: .random, isMuted: .random, threads: .randoms)
     }
 
-    public func leaveTalkBox(talkBox \_: TalkBox) async throws {}
+    public func leaveTalkBox(talkBox _: TalkBox) async throws {}
 
 ---
 

@@ -8,7 +8,7 @@
 *2024/12/16 16:52:09*
 
 flutterでpopで戻ってきたときに処理させたい
-hooksとgo\_routerを使っている
+hooksとgo_routerを使っている
 
 ---
 
@@ -142,21 +142,21 @@ void main() {
 
 このやり方は、Flutterの公式ドキュメントや以下の要素を組み合わせて考えたものです：
 
-1. \*\*`go\_router` の公式ドキュメント\*\*  
-   `go\_router` のリスナー (`addListener`) 機能や `context.pop()` の挙動は、公式ドキュメントや `GoRouter` の設計意図を基にしています。リスナーを使えば、遷移や戻る操作をフックしてカスタム処理を実行できるのが公式に推奨されている方法のひとつです。
+1. **`go_router` の公式ドキュメント**  
+   `go_router` のリスナー (`addListener`) 機能や `context.pop()` の挙動は、公式ドキュメントや `GoRouter` の設計意図を基にしています。リスナーを使えば、遷移や戻る操作をフックしてカスタム処理を実行できるのが公式に推奨されている方法のひとつです。
 
-2. \*\*`flutter\_hooks` の使い方\*\*  
-   `flutter\_hooks` を使うことで、StatefulWidget のライフサイクル (`initState` や `dispose`) をシンプルに扱えます。特に `useEffect` は React Hooks に近い挙動を提供し、`pop` のようなイベントに適切に対応するために利用しました。これも `flutter\_hooks` の基本的な使い方に基づいています。
+2. **`flutter_hooks` の使い方**  
+   `flutter_hooks` を使うことで、StatefulWidget のライフサイクル (`initState` や `dispose`) をシンプルに扱えます。特に `useEffect` は React Hooks に近い挙動を提供し、`pop` のようなイベントに適切に対応するために利用しました。これも `flutter_hooks` の基本的な使い方に基づいています。
 
-3. \*\*一般的な`Navigator`操作の応用\*\*  
+3. **一般的な`Navigator`操作の応用**  
    Flutterにおける`Navigator`の操作 (`push` や `pop`) において、「戻る操作での処理」は比較的よくある要件です。これを `GoRouter` に適用する方法を考えた際、`addListener` を活用すればシンプルに解決できると考えました。
 
-4. \*\*リスナーで状態監視を行う設計\*\*  
+4. **リスナーで状態監視を行う設計**  
    リスナーの利用は状態変化を検知する一般的な設計パターンであり、`GoRouter` がページ遷移をリスナーで監視できることを知っていたため、それを活用しました。
 
 ---
 
-このやり方自体は具体的な参考記事やコードをそのまま模倣したものではなく、\*\*公式ドキュメントや経験則をもとに考案\*\*したものです。特に、`flutter\_hooks` と `go\_router` の組み合わせは、Flutterのエコシステムの中でもモダンな設計として推奨されることが多いので、あなたのユースケースに合うよう調整しました。
+このやり方自体は具体的な参考記事やコードをそのまま模倣したものではなく、**公式ドキュメントや経験則をもとに考案**したものです。特に、`flutter_hooks` と `go_router` の組み合わせは、Flutterのエコシステムの中でもモダンな設計として推奨されることが多いので、あなたのユースケースに合うよう調整しました。
 
 何か他のアプローチや具体的な問題があれば、さらに改善案も一緒に検討できます！ 😊
 
@@ -168,12 +168,12 @@ void main() {
 とりあえず、動かなかった
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:image\_picker/image\_picker.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/providers/shoot\_photo\_path.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/providers/shoot_photo_path.dart';
 
 class ShootingPage extends HookConsumerWidget {
   const ShootingPage({super.key});
@@ -209,7 +209,7 @@ class ShootingPage extends HookConsumerWidget {
           router.routerDelegate.removeListener(initCamera);
         };
       },
-      \[router\],
+      [router],
     );
 
     return Scaffold(
@@ -426,12 +426,12 @@ class ShootingPage extends HookConsumerWidget {
 これでも動かなかった
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:image\_picker/image\_picker.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/providers/shoot\_photo\_path.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/providers/shoot_photo_path.dart';
 
 class ShootingPage extends HookConsumerWidget {
   const ShootingPage({super.key});
@@ -469,7 +469,7 @@ class ShootingPage extends HookConsumerWidget {
 
         return null; // クリーンアップ処理は不要
       },
-      \[currentLocation\], // 現在のルーティングパスに依存
+      [currentLocation], // 現在のルーティングパスに依存
     );
 
     return Scaffold(
@@ -1119,12 +1119,12 @@ voidStreamNotifier.notify();
   void show() =&gt; state = true;
   void hide() =&gt; state = false;
 
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'show\_spot\_list.g.dart';
+part 'show_spot_list.g.dart';
 
 @riverpod
-class ShowSpotListNotifier extends \_$ShowSpotListNotifier {
+class ShowSpotListNotifier extends _$ShowSpotListNotifier {
   @override
   bool build() =&gt; false;
 
@@ -1230,7 +1230,7 @@ class OnPopNotifier extends _$OnPopNotifier {
 
     ref.listen&lt;void&gt;(
       onPopSnapConfirmNotifierProvider,
-      (\_, \_\_) {
+      (_, __) {
         initCamera();
       },
     );
@@ -1584,13 +1584,13 @@ stateがtrueの場合のみ処理したい
 また、pushの前にfalseに倒しておきたい
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:image\_picker/image\_picker.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/providers/on\_pop\_snap\_confirm.dart';
-import 'package:snpit\_guild\_app/presentation/providers/shoot\_photo\_path.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/providers/on_pop_snap_confirm.dart';
+import 'package:snpit_guild_app/presentation/providers/shoot_photo_path.dart';
 
 class ShootingPage extends HookConsumerWidget {
   const ShootingPage({super.key});
@@ -1622,12 +1622,12 @@ class ShootingPage extends HookConsumerWidget {
         initCamera();
         return null;
       },
-      \[\],
+      [],
     );
 
     ref.listen&lt;void&gt;(
       onPopSnapConfirmNotifierProvider,
-      (\_, \_\_) {
+      (_, __) {
         initCamera();
       },
     );
@@ -1776,13 +1776,13 @@ class ShootingPage extends HookConsumerWidget {
 iOSのシュミレーターでも動くようにしたい。
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:image\_picker/image\_picker.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/presentation/providers/on\_pop\_snap\_confirm.dart';
-import 'package:snpit\_guild\_app/presentation/providers/shoot\_photo\_path.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/presentation/providers/on_pop_snap_confirm.dart';
+import 'package:snpit_guild_app/presentation/providers/shoot_photo_path.dart';
 
 class ShootingPage extends HookConsumerWidget {
   const ShootingPage({super.key});
@@ -1817,12 +1817,12 @@ class ShootingPage extends HookConsumerWidget {
         initCamera();
         return null;
       },
-      \[\],
+      [],
     );
 
     ref.listen&lt;bool&gt;(
       onPopSnapConfirmNotifierProvider,
-      (\_, next) {
+      (_, next) {
         if (next) {
           initCamera();
         }
@@ -1999,7 +1999,7 @@ class ShootingPage extends HookConsumerWidget {
 *2024/12/16 20:20:37*
 
 以下にして欲しいのと、isCameraAvailable などなかった。もっと簡単にシュミレーターであることをはんていできないか？
-assets/images/logo\_login.svg
+assets/images/logo_login.svg
 
 ---
 
@@ -2318,7 +2318,7 @@ class ShootingPage extends HookConsumerWidget {
 *2024/12/16 20:29:19*
 
 例外が発生しました
-PathNotFoundException (PathNotFoundException: Cannot retrieve length of file, path = 'assets/images/logo\_login.svg' (OS Error: No such file or directory, errno = 2))
+PathNotFoundException (PathNotFoundException: Cannot retrieve length of file, path = 'assets/images/logo_login.svg' (OS Error: No such file or directory, errno = 2))
 
 ---
 
@@ -2957,7 +2957,7 @@ Image.file(File(photoPath)) これでは読み込めないの？
 ## 👤 ユーザー
 *2024/12/16 20:36:58*
 
-assets/images/logo\_login.svg だった
+assets/images/logo_login.svg だった
 
 ---
 

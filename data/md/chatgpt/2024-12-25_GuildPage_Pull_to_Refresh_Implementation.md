@@ -11,17 +11,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:flutter\_svg/svg.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild\_info.dart';
-import 'package:snpit\_guild\_app/presentation/providers/on\_created\_guild.dart';
-import 'package:snpit\_guild\_app/utils/extensions/uri\_extensions.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild_info.dart';
+import 'package:snpit_guild_app/presentation/providers/on_created_guild.dart';
+import 'package:snpit_guild_app/utils/extensions/uri_extensions.dart';
 
 class GuildPage extends HookConsumerWidget {
   const GuildPage({super.key});
@@ -37,13 +37,13 @@ class GuildPage extends HookConsumerWidget {
         });
         return null;
       },
-      \[\],
+      [],
     );
 
     // ギルドが作成された場合ギルド情報を取得する
     ref.listen&lt;bool&gt;(
       onCreatedGuildNotifierProvider,
-      (\_, next) async {
+      (_, next) async {
         if (next) {
           await ref.read(getMyGuildNotifierProvider.notifier).executeRequest();
         }
@@ -62,18 +62,18 @@ class GuildPage extends HookConsumerWidget {
               return DefaultTabController(
                 length: 2, // Tabの数
                 child: Column(
-                  children: \[
+                  children: [
                     Container(
                       padding: const EdgeInsets.all(16),
                       child: Column(
-                        children: \[
+                        children: [
                           DecoratedBox(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(color: ColorToken.secondary),
                             ),
                             child: Column(
-                              children: \[
+                              children: [
                                 GestureDetector(
                                   onTap: () {
                                     Clipboard.setData(
@@ -104,7 +104,7 @@ class GuildPage extends HookConsumerWidget {
                                     ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
-                                      children: \[
+                                      children: [
                                         SvgPicture.asset(
                                           Assets.images.triangleDots.path,
                                         ),
@@ -115,7 +115,7 @@ class GuildPage extends HookConsumerWidget {
                                             fontSize: 14,
                                           ),
                                         ),
-                                      \],
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -145,7 +145,7 @@ class GuildPage extends HookConsumerWidget {
                                 const SizedBox(height: 8),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: \[
+                                  children: [
                                     const Icon(
                                       Icons.people,
                                       size: 24,
@@ -158,7 +158,7 @@ class GuildPage extends HookConsumerWidget {
                                         fontSize: 14,
                                       ),
                                     ),
-                                  \],
+                                  ],
                                 ),
                                 const SizedBox(height: 24),
                                 const Padding(
@@ -172,18 +172,18 @@ class GuildPage extends HookConsumerWidget {
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
-                                  children: \[
-                                    \_buildStatColumn('Search', 3879, 'Q'),
-                                    \_buildStatColumn('Attack', 1230, 'E'),
-                                    \_buildStatColumn('Luck', 893, 'L'),
-                                    \_buildStatColumn('Defence', 905, 'B'),
-                                  \],
+                                  children: [
+                                    _buildStatColumn('Search', 3879, 'Q'),
+                                    _buildStatColumn('Attack', 1230, 'E'),
+                                    _buildStatColumn('Luck', 893, 'L'),
+                                    _buildStatColumn('Defence', 905, 'B'),
+                                  ],
                                 ),
                                 const SizedBox(height: 24),
-                              \],
+                              ],
                             ),
                           ),
-                        \],
+                        ],
                       ),
                     ),
                     TabBar(
@@ -199,21 +199,21 @@ class GuildPage extends HookConsumerWidget {
                       ),
                       labelColor: ColorToken.text,
                       unselectedLabelColor: ColorToken.secondary,
-                      tabs: const \[
+                      tabs: const [
                         Tab(text: 'Members'),
                         Tab(text: 'Spots'),
-                      \],
+                      ],
                     ),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(24),
                         child: TabBarView(
-                          children: \[
+                          children: [
                             // Members Tab
                             ListView.builder(
                               itemCount: guildInfo.guildMembers?.length ?? 0,
                               itemBuilder: (context, index) {
-                                final member = guildInfo.guildMembers!\[index\];
+                                final member = guildInfo.guildMembers![index];
                                 return Padding(
                                   padding: const EdgeInsets.only(bottom: 8),
                                   child: DecoratedBox(
@@ -226,14 +226,14 @@ class GuildPage extends HookConsumerWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(16),
                                       child: Row(
-                                        children: \[
+                                        children: [
                                           Expanded(
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
-                                              children: \[
+                                              children: [
                                                 Row(
-                                                  children: \[
+                                                  children: [
                                                     CircleAvatar(
                                                       radius: 16,
                                                       backgroundImage:
@@ -259,7 +259,7 @@ class GuildPage extends HookConsumerWidget {
                                                         ),
                                                       ),
                                                     ),
-                                                  \],
+                                                  ],
                                                 ),
                                                 const SizedBox(height: 10),
                                                 Row(
@@ -288,22 +288,22 @@ class GuildPage extends HookConsumerWidget {
                                                     ),
                                                   ),
                                                 ),
-                                              \],
+                                              ],
                                             ),
                                           ),
                                           Expanded(
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.end,
-                                              children: \[
-                                                \_buildStatRow('Q', 13),
-                                                \_buildStatRow('E', 48),
-                                                \_buildStatRow('L', 7),
-                                                \_buildStatRow('B', 5),
-                                              \],
+                                              children: [
+                                                _buildStatRow('Q', 13),
+                                                _buildStatRow('E', 48),
+                                                _buildStatRow('L', 7),
+                                                _buildStatRow('B', 5),
+                                              ],
                                             ),
                                           ),
-                                        \],
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -313,11 +313,11 @@ class GuildPage extends HookConsumerWidget {
 
                             // Spots Tab
                             const Center(child: Text('COMING SOON...')),
-                          \],
+                          ],
                         ),
                       ),
                     ),
-                  \],
+                  ],
                 ),
               );
             } else {
@@ -326,14 +326,14 @@ class GuildPage extends HookConsumerWidget {
                 physics: AlwaysScrollableScrollPhysics(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: \_NoGuildWidget(),
+                  child: _NoGuildWidget(),
                 ),
               );
             }
           },
           loading: () =&gt; const Center(child: CircularProgressIndicator()),
           error: (error, stackTrace) {
-            WidgetsBinding.instance.addPostFrameCallback((\_) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Error: $error')),
               );
@@ -348,9 +348,9 @@ class GuildPage extends HookConsumerWidget {
     );
   }
 
-  Widget \_buildStatColumn(String title, int value, String subtext) {
+  Widget _buildStatColumn(String title, int value, String subtext) {
     return Column(
-      children: \[
+      children: [
         Text(
           title,
           style: const TextStyle(
@@ -371,14 +371,14 @@ class GuildPage extends HookConsumerWidget {
             color: ColorToken.secondary,
           ),
         ),
-      \],
+      ],
     );
   }
 
-  Widget \_buildStatRow(String label, int value) {
+  Widget _buildStatRow(String label, int value) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
-      children: \[
+      children: [
         const SizedBox(
           width: 40,
         ),
@@ -411,18 +411,18 @@ class GuildPage extends HookConsumerWidget {
             borderRadius: BorderRadius.circular(2),
           ),
         ),
-      \],
+      ],
     );
   }
 }
 
-class \_NoGuildWidget extends StatelessWidget {
-  const \_NoGuildWidget();
+class _NoGuildWidget extends StatelessWidget {
+  const _NoGuildWidget();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: \[
+      children: [
         const SizedBox(height: 48),
         const Text(
           'No guild affiliation',
@@ -446,7 +446,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 Assets.images.joinGuildFig.path,
               ),
@@ -457,7 +457,7 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text(
                         'Join an existing guild',
@@ -466,15 +466,15 @@ class \_NoGuildWidget extends StatelessWidget {
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 16),
@@ -485,7 +485,7 @@ class \_NoGuildWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(24),
           child: Column(
-            children: \[
+            children: [
               Image.asset(
                 Assets.images.createGuildFig.path,
               ),
@@ -496,26 +496,26 @@ class \_NoGuildWidget extends StatelessWidget {
                 },
                 child: const Stack(
                   alignment: Alignment.center,
-                  children: \[
+                  children: [
                     Center(
                       child: Text('Host a new guild'),
                     ),
                     Positioned(
                       right: 0,
                       child: Icon(
-                        Icons.arrow\_forward,
+                        Icons.arrow_forward,
                         size: 24,
                         color: ColorToken.text,
                       ),
                     ),
-                  \],
+                  ],
                 ),
               ),
-            \],
+            ],
           ),
         ),
         const SizedBox(height: 48),
-      \],
+      ],
     );
   }
 }
@@ -528,26 +528,26 @@ class \_NoGuildWidget extends StatelessWidget {
 This `GuildPage` implementation includes a `RefreshIndicator` to enable pull-to-refresh functionality regardless of whether guild information exists. Here's how it works:
 
 ### Key Points
-1. \*\*`RefreshIndicator` Usage:\*\*
+1. **`RefreshIndicator` Usage:**
    - Wrapping the entire body content in a `RefreshIndicator` allows refreshing guild information with a pull-down gesture.
    - The `onRefresh` callback triggers a refresh operation by calling the `executeRequest` method on `getMyGuildNotifierProvider`.
 
-2. \*\*Guild Information Handling:\*\*
+2. **Guild Information Handling:**
    - When guild information exists (`guildInfo != null`), the `DefaultTabController` and other UI elements are rendered.
-   - If no guild information is available, a `\_NoGuildWidget` is shown.
+   - If no guild information is available, a `_NoGuildWidget` is shown.
 
-3. \*\*Listening for Changes:\*\*
+3. **Listening for Changes:**
    - Using `ref.listen` on the `onCreatedGuildNotifierProvider` ensures the guild information is re-fetched when a new guild is created.
 
-4. \*\*Design Details:\*\*
+4. **Design Details:**
    - `TabBar` and `TabBarView` manage the layout for "Members" and "Spots" tabs.
    - Member details and statistics are displayed dynamically using `ListView.builder`.
-   - `\_NoGuildWidget` provides actions for joining or hosting a guild when no guild information is available.
+   - `_NoGuildWidget` provides actions for joining or hosting a guild when no guild information is available.
 
 ### Suggestions for Further Improvements
-- \*\*Loading State:\*\* Consider enhancing the `CircularProgressIndicator` to indicate that a refresh operation is in progress.
-- \*\*Error Handling:\*\* Improve error handling and user feedback in the `error` section, perhaps by adding retry options or more detailed messages.
-- \*\*UI Consistency:\*\*
+- **Loading State:** Consider enhancing the `CircularProgressIndicator` to indicate that a refresh operation is in progress.
+- **Error Handling:** Improve error handling and user feedback in the `error` section, perhaps by adding retry options or more detailed messages.
+- **UI Consistency:**
   - Ensure alignment and spacing are consistent across different screen sizes.
   - Use `MediaQuery` for responsive paddings or dynamic styles where applicable.
 

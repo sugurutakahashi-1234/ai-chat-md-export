@@ -11,7 +11,7 @@ onExploringNotifierProvider について、bool でコントロールしてい�
 
 
 @freezed
-class ExplorerDTO with \_$ExplorerDTO {
+class ExplorerDTO with _$ExplorerDTO {
   factory ExplorerDTO({
     @JsonKey(name: 'explorerId') required String? explorerId,
     @JsonKey(name: 'tokenId') required String? tokenId,
@@ -27,16 +27,16 @@ class ExplorerDTO with \_$ExplorerDTO {
     @JsonKey(name: 'decoyFinding') required bool? decoyFinding,
     @JsonKey(name: 'totalSearch') required num? totalSearch,
     @JsonKey(name: 'totalSpotFound') required num? totalSpotFound,
-  }) = \_ExplorerDTO;
+  }) = _ExplorerDTO;
 
   factory ExplorerDTO.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$ExplorerDTOFromJson(jsonMap);
+      _$ExplorerDTOFromJson(jsonMap);
 }
 
 
 
 @riverpod
-class OnExploringNotifier extends \_$OnExploringNotifier {
+class OnExploringNotifier extends _$OnExploringNotifier {
   @override
   bool build() =&gt; false;
 
@@ -96,13 +96,13 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
                     ),
                   )
                   .toList() ??
-              \[\];
+              [];
 
           ref.read(shouldRefreshMapSpotNotifierProvider.notifier).trigger();
 
           await showDialog&lt;void&gt;(
             context: context,
-            builder: (\_) =&gt; ExploredResultDialog(
+            builder: (_) =&gt; ExploredResultDialog(
               spotPhotoItemList: spotPhotoItems,
             ),
           );
@@ -118,23 +118,23 @@ class OnExploringNotifier extends \_$OnExploringNotifier {
 
 It's clear the user is working through how to store and update the ExplorerDTO within OnExploringNotifier. Their goal is to adjust the circle's radius to match the ExplorerDTO's range (converted to meters).
 
-\*\*Defining a new approach\*\*
+**Defining a new approach**
 
 I'm assembling a new provider to manage the selected ExplorerDTO. The goal is to utilize a listener method to dynamically adjust the circle's radius based on the ExplorerDTO's range.
 
-\*\*Refining the approach\*\*
+**Refining the approach**
 
 I'm rethinking the Circle creation method, suggesting a state model with both exploration status and ExplorerDTO. This might streamline radius adjustments and offer a more cohesive solution.
 
-\*\*Revisiting state management\*\*
+**Revisiting state management**
 
 I'm exploring the use of a state model with exploration status and ExplorerDTO, allowing for dynamic radius adjustments in the listener based on the ExplorerDTO's range, converted to kilometers.
 
-\*\*Balancing options\*\*
+**Balancing options**
 
 I'm weighing whether to keep the Notifier's state inclusive of both flags and DTO, or to separate the DTO into its own provider and adjust the listener accordingly for radius adjustments.
 
-\*\*Implementing state separation\*\*
+**Implementing state separation**
 
 I’m working through a state separation method, with the Notifier managing flags and DTOs, and the listener adjusting the circle's radius based on the transformed range.
 

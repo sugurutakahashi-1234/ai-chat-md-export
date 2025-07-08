@@ -9,7 +9,7 @@
 
 await が入るように守成してほしい
 
-@available(iOS 18.0, \*)
+@available(iOS 18.0, *)
 #Preview {
     @Previewable @State var selectedImage: UIImage? = try? await URLSessionDownloadStaticDriver.imageDownload(url: .placeholderImageUrl)
     

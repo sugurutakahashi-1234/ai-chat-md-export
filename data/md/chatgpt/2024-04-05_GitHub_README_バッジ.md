@@ -104,34 +104,34 @@ Shields.ioは、GitHubリポジトリの様々な情報をビジュアル化す�
 
 ### GitHub リポジトリ関連
 
-- \*\*GitHub Stars\*\*: リポジトリのスター数。
-- \*\*GitHub Forks\*\*: リポジトリのフォーク数。
-- \*\*GitHub Issues\*\*: リポジトリのオープンされているイシュー数。
-- \*\*GitHub Closed Issues\*\*: リポジトリのクローズされたイシュー数。
-- \*\*GitHub Pull Requests\*\*: オープンされているプルリクエストの数。
-- \*\*GitHub Closed Pull Requests\*\*: クローズされたプルリクエストの数。
-- \*\*GitHub Merged Pull Requests\*\*: マージされたプルリクエストの数。
-- \*\*GitHub Release\*\*: 最新のリリースバージョン。
-- \*\*GitHub Commits\*\*: 特定のブランチのコミット数。
-- \*\*GitHub Contributors\*\*: コントリビューターの数。
-- \*\*GitHub License\*\*: リポジトリのライセンス。
-- \*\*GitHub Last Commit\*\*: 最後のコミットの日付。
-- \*\*GitHub Languages\*\*: リポジトリで使用されている言語とその割合。
-- \*\*GitHub Code Size\*\*: リポジトリのコードサイズ。
-- \*\*GitHub Repo Size\*\*: リポジトリ全体のサイズ。
+- **GitHub Stars**: リポジトリのスター数。
+- **GitHub Forks**: リポジトリのフォーク数。
+- **GitHub Issues**: リポジトリのオープンされているイシュー数。
+- **GitHub Closed Issues**: リポジトリのクローズされたイシュー数。
+- **GitHub Pull Requests**: オープンされているプルリクエストの数。
+- **GitHub Closed Pull Requests**: クローズされたプルリクエストの数。
+- **GitHub Merged Pull Requests**: マージされたプルリクエストの数。
+- **GitHub Release**: 最新のリリースバージョン。
+- **GitHub Commits**: 特定のブランチのコミット数。
+- **GitHub Contributors**: コントリビューターの数。
+- **GitHub License**: リポジトリのライセンス。
+- **GitHub Last Commit**: 最後のコミットの日付。
+- **GitHub Languages**: リポジトリで使用されている言語とその割合。
+- **GitHub Code Size**: リポジトリのコードサイズ。
+- **GitHub Repo Size**: リポジトリ全体のサイズ。
 
 ### GitHub ユーザー・組織関連
 
-- \*\*GitHub Followers\*\*: 特定のユーザーのフォロワー数。
-- \*\*GitHub Following\*\*: 特定のユーザーがフォローしている数。
-- \*\*GitHub Gists\*\*: 特定のユーザーのGist数。
-- \*\*GitHub Repositories\*\*: 特定のユーザーまたは組織のリポジトリ数。
+- **GitHub Followers**: 特定のユーザーのフォロワー数。
+- **GitHub Following**: 特定のユーザーがフォローしている数。
+- **GitHub Gists**: 特定のユーザーのGist数。
+- **GitHub Repositories**: 特定のユーザーまたは組織のリポジトリ数。
 
 ### その他のメトリクス
 
-- \*\*GitHub Sponsors\*\*: ユーザーまたは組織をサポートするスポンサーの数。
-- \*\*GitHub Discussions\*\*: リポジトリでのディスカッションの数。
-- \*\*GitHub Activity\*\*: リポジトリの最近のアクティビティ状況。
+- **GitHub Sponsors**: ユーザーまたは組織をサポートするスポンサーの数。
+- **GitHub Discussions**: リポジトリでのディスカッションの数。
+- **GitHub Activity**: リポジトリの最近のアクティビティ状況。
 
 これらの情報をREADMEにバッジとして追加することで、プロジェクトのステータスを簡単に把握し、訪問者に対して有用な情報を提供することができます。Shields.ioのウェブサイトでは、これらのバッジをカスタマイズして生成するための具体的なURLや設定オプションが提供されています。
 

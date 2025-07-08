@@ -11,16 +11,16 @@ ContributingのReadmeの記載をもうすこし記述してほしい。
 
 ## Contributing
 
-\[!\[GitHub contributors\](https://img.shields.io/github/contributors/suguruTakahashi-1234/DISample)\](https://github.com/suguruTakahashi-1234/DISample/graphs/contributors)
+[![GitHub contributors](https://img.shields.io/github/contributors/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/graphs/contributors)
 
-- \[CONTRIBUTING\](CONTRIBUTING)
-- \[CODE\_OF\_CONDUCT\](CODE\_OF\_CONDUCT)
+- [CONTRIBUTING](CONTRIBUTING)
+- [CODE_OF_CONDUCT](CODE_OF_CONDUCT)
 
 ## License
 
-\[!\[GitHub license\](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)\](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE)
 
-See the \[LICENSE\](LICENSE) file for license rights and limitations (MIT).
+See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
 
 ---
 
@@ -72,7 +72,7 @@ Make sure to replace `[project name]` with the actual name of your project. This
 *2024/4/5 17:07:46*
 
 もうちょっと簡素でいいんだ。
-CONTRIBUTING と CODE\_OF\_CONDUCT を見てね。ぐらいで。
+CONTRIBUTING と CODE_OF_CONDUCT を見てね。ぐらいで。
 
 ---
 

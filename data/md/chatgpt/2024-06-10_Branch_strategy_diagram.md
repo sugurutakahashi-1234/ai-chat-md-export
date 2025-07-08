@@ -70,9 +70,9 @@ gitGraph
 *2024/6/10 9:47:12*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-trC2G0QfWTP9D0Fi4e3MuZEm",
-  "size\_bytes": 74177,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-trC2G0QfWTP9D0Fi4e3MuZEm",
+  "size_bytes": 74177,
   "width": 996,
   "height": 474,
   "fovea": null,
@@ -80,13 +80,13 @@ gitGraph
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 これをMermaidで記述してほしい

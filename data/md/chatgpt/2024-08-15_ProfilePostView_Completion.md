@@ -61,7 +61,7 @@ public struct ProfilePostView: View {
     @FocusState private var isFocused: Bool
 
     public init() {
-        \_presenter = .init(wrappedValue: ProfilePostPresenter())
+        _presenter = .init(wrappedValue: ProfilePostPresenter())
     }
 
     public var body: some View {

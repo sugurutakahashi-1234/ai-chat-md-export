@@ -9,7 +9,7 @@
 
 以下を英語にしてほしい
 
-\[Host Swift-DocC\](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift\_docc\_hosting.yml) の GitHub Actions によって、以下のリンクにドメイン層のコードの Swift-DocC をホスティングしています。
+[Host Swift-DocC](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml) の GitHub Actions によって、以下のリンクにドメイン層のコードの Swift-DocC をホスティングしています。
 
 ---
 
@@ -18,6 +18,6 @@
 
 The English translation of your text is:
 
-"The GitHub Actions of \[Host Swift-DocC\](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift\_docc\_hosting.yml) are hosting the Swift-DocC of the domain layer code at the following link."
+"The GitHub Actions of [Host Swift-DocC](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml) are hosting the Swift-DocC of the domain layer code at the following link."
 
 ---

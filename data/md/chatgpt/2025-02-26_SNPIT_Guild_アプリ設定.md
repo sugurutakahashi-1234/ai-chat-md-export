@@ -36,7 +36,7 @@ SNPIT Guild is the app under review. However, it requires you to install and set
 SNPIT Guild は現在審査中のアプリですが、使用するにはまず SNPIT アプリをインストールしてセットアップする必要があります。以下の手順に従ってください。
 
 1. SNPIT アプリを以下のリンクからダウンロードしてください:  
-   \[https://apps.apple.com/jp/app/snpit-snap-to-earn/id6456411024\](https://apps.apple.com/jp/app/snpit-snap-to-earn/id6456411024)  
+   [https://apps.apple.com/jp/app/snpit-snap-to-earn/id6456411024](https://apps.apple.com/jp/app/snpit-snap-to-earn/id6456411024)  
 2. SNPIT アプリを起動する  
 3. 「Sign in（サインイン）」をタップする  
 4. 「Enter Your Email（メールアドレスを入力）」に `example@snpit.com` を入力する  

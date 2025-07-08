@@ -1024,12 +1024,12 @@ struct SoundTestView: View {
     var body: some View {
         List {
             Section("System Sound") {
-                ForEach(SystemSoundType.allCases, id: \\.self) { sound in
+                ForEach(SystemSoundType.allCases, id: \.self) { sound in
                     Button {
                         onTapSoundType(sound)
                     } label: {
                         HStack {
-                            Text("\\(sound)")
+                            Text("\(sound)")
                             Spacer()
                             if isPlaying {
                                 ProgressView()
@@ -1044,7 +1044,7 @@ struct SoundTestView: View {
         .navigationTitle("Sound Test")
     }
     
-    private func onTapSoundType(\_ sound: SystemSoundType) {
+    private func onTapSoundType(_ sound: SystemSoundType) {
         Task {
             isPlaying = true
             await SystemSoundDriver.play(systemSoundType: sound)

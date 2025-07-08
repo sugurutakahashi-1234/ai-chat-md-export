@@ -11,7 +11,7 @@ userと pointHistories は非同期で呼べる気がする
 
 final class PointRootPresenter: ObservableObject {
     @Published private(set) var user: User?
-    @Published private(set) var pointHistories: \[PointHistory\] = \[\]
+    @Published private(set) var pointHistories: [PointHistory] = []
     private let apiRequestManager: ApiRequestManagerProtocol
 
     // TODO: AmplifyApiRequestManagerに変更する

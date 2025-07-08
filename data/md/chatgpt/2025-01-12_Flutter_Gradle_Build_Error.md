@@ -12,11 +12,11 @@ Running Gradle task 'assembleDebug'...
 
 FAILURE: Build failed with an exception.
 
-\* What went wrong:
+* What went wrong:
 Execution failed for task ':app:compileFlutterBuildDebug'.
 &gt; A problem occurred starting process 'command '/Users/sugurutakahashi/fvm/versions/3.27.1/bin/flutter''
 
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.

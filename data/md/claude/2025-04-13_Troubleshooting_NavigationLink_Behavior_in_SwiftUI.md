@@ -9,20 +9,20 @@
 
 ナビゲーション遷移がおかしい。ItemDetailViewからNavigationLinkで遷移させてもPush遷移しないんだ。
 
-\*\*import\*\* SwiftUI
-\*\*import\*\* SwiftData
+**import** SwiftUI
+**import** SwiftData
 
-\*\*struct\*\* ContentView: View {
-    @Environment(\\.modelContext) \*\*private\*\* \*\*var\*\* modelContext
-    @Query \*\*private\*\* \*\*var\*\* items: \[Item\]
-    @State \*\*private\*\* \*\*var\*\* newItemText = ""
-    @State \*\*private\*\* \*\*var\*\* showingAddSheet = \*\*false\*\*
+**struct** ContentView: View {
+    @Environment(\.modelContext) **private** **var** modelContext
+    @Query **private** **var** items: [Item]
+    @State **private** **var** newItemText = ""
+    @State **private** **var** showingAddSheet = **false**
 
-    \*\*var\*\* body: \*\*some\*\* View {
+    **var** body: **some** View {
         NavigationSplitView {
             
                 List {
-                    ForEach(items) { item \*\*in\*\*
+                    ForEach(items) { item **in**
                         NavigationLink {
                             
                             ItemDetailView(item: item)
@@ -47,7 +47,7 @@
                     }
                     ToolbarItem {
                         Button {
-                            showingAddSheet = \*\*true\*\*
+                            showingAddSheet = **true**
                         } label: {
                             Label("Add Item", systemImage: "plus")
                         }
@@ -62,7 +62,7 @@
         }
     }
 
-    \*\*private\*\* \*\*var\*\* addItemView: \*\*some\*\* View {
+    **private** **var** addItemView: **some** View {
         NavigationStack {
             Form {
                 TextField("Enter text", text: $newItemText)
@@ -72,41 +72,41 @@
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         newItemText = ""
-                        showingAddSheet = \*\*false\*\*
+                        showingAddSheet = **false**
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add") {
                         addItem(text: newItemText)
                         newItemText = ""
-                        showingAddSheet = \*\*false\*\*
+                        showingAddSheet = **false**
                     }
                 }
             }
         }
-        .presentationDetents(\[.medium\])
+        .presentationDetents([.medium])
     }
 
-    \*\*private\*\* \*\*func\*\* addItem(text: String) {
+    **private** **func** addItem(text: String) {
         withAnimation {
-            \*\*let\*\* newItem = Item(text: text, timestamp: Date())
+            **let** newItem = Item(text: text, timestamp: Date())
             modelContext.insert(newItem)
         }
     }
 
-    \*\*private\*\* \*\*func\*\* deleteItems(offsets: IndexSet) {
+    **private** **func** deleteItems(offsets: IndexSet) {
         withAnimation {
-            \*\*for\*\* index \*\*in\*\* offsets {
-                modelContext.delete(items\[index\])
+            **for** index **in** offsets {
+                modelContext.delete(items[index])
             }
         }
     }
 }
 
-\*\*struct\*\* ItemDetailView: View {
-    @Bindable \*\*var\*\* item: Item
+**struct** ItemDetailView: View {
+    @Bindable **var** item: Item
     
-    \*\*var\*\* body: \*\*some\*\* View {
+    **var** body: **some** View {
             List {
                 Section(header: Text("Item Details")) {
                     NavigationLink {
@@ -119,7 +119,7 @@
                             .lineLimit(1)
                     }
                     
-                    Text("Created: \\(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                    Text("Created: \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -131,7 +131,7 @@
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.\*\*self\*\*, inMemory: \*\*true\*\*)
+        .modelContainer(for: Item.**self**, inMemory: **true**)
 }
 
 ---

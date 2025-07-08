@@ -14,7 +14,7 @@ public enum RemoteConfigType: CaseIterable {
     case appInfo
     
     var keyName: String {
-        "\\(self)".toSnakeCase
+        "\(self)".toSnakeCase
     }
     
     var defaultValue: any RemoteConfigurable {

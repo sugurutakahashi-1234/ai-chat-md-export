@@ -15,7 +15,7 @@ public struct TransferableUIImage: Transferable {
     }
 
     public static var transferRepresentation: some TransferRepresentation {
-        ProxyRepresentation(exporting: \\.imageUrl)
+        ProxyRepresentation(exporting: \.imageUrl)
     }
 }
 

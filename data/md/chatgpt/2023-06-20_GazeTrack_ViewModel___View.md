@@ -56,28 +56,28 @@ public final class GazeTrackCalibrationInteractor: GazeTrackCalibrationInteracto
 
         gazeTrackManager
             .gazeTrackEventPublisher
-            .sink { \[weak self\] event in
+            .sink { [weak self] event in
                 guard let self else { return }
 
                 switch event {
                 case .initialized(let trackerVoid, let error):
-                    AppLogger.debugLog("Event: \\(event), TrackerVoid: \\(String(describing: trackerVoid)), Error: \\(error)")
+                    AppLogger.debugLog("Event: \(event), TrackerVoid: \(String(describing: trackerVoid)), Error: \(error)")
 
                     self.errorSubject.send(error)
 
                 case .started:
-                    AppLogger.debugLog("Event: \\(event)")
+                    AppLogger.debugLog("Event: \(event)")
 
                 case .stopped(let error):
-                    AppLogger.debugLog("Event: \\(event), Error: \\(error)", level: .error)
+                    AppLogger.debugLog("Event: \(event), Error: \(error)", level: .error)
 
                     self.errorSubject.send(error)
 
                 case .gaze(let gazeInformation):
-                    AppLogger.debugLog("Event: \\(event), Gaze Information: \\(gazeInformation)")
+                    AppLogger.debugLog("Event: \(event), Gaze Information: \(gazeInformation)")
 
                 case .calibrationNextPoint(let x, let y):
-                    AppLogger.debugLog("Event: \\(event), X: \\(x), Y: \\(y)")
+                    AppLogger.debugLog("Event: \(event), X: \(x), Y: \(y)")
 
                     do {
                         try self.gazeTrackManager.startCalibrationCollectSamples()
@@ -86,12 +86,12 @@ public final class GazeTrackCalibrationInteractor: GazeTrackCalibrationInteracto
                     }
 
                 case .calibrationProgress(let progress):
-                    AppLogger.debugLog("Event: \\(event), Progress: \\(progress)")
+                    AppLogger.debugLog("Event: \(event), Progress: \(progress)")
                     
                     self.progressSubject.send(progress)
 
                 case .calibrationFinished(let calibrationData):
-                    AppLogger.debugLog("Event: \\(event), Calibration Data: \\(calibrationData)")
+                    AppLogger.debugLog("Event: \(event), Calibration Data: \(calibrationData)")
 
                     switch orientation {
                     case .portrait:
@@ -103,16 +103,16 @@ public final class GazeTrackCalibrationInteractor: GazeTrackCalibrationInteracto
                     self.calibrationNextPointSubject.send(completion: .finished)
 
                 case .image(let timestamp, let image):
-                    AppLogger.debugLog("Event: \\(event), Timestamp: \\(timestamp), Image: \\(image)")
+                    AppLogger.debugLog("Event: \(event), Timestamp: \(timestamp), Image: \(image)")
 
                 case .attention(let timestampBegin, let timestampEnd, let score):
-                    AppLogger.debugLog("Event: \\(event), Timestamp Begin: \\(timestampBegin), Timestamp End: \\(timestampEnd), Score: \\(score)")
+                    AppLogger.debugLog("Event: \(event), Timestamp Begin: \(timestampBegin), Timestamp End: \(timestampEnd), Score: \(score)")
 
                 case .blink(let timestamp, let isBlinkLeft, let isBlinkRight, let isBlink, let eyeOpenness):
-                    AppLogger.debugLog("Event: \\(event), Timestamp: \\(timestamp), Is Blink Left: \\(isBlinkLeft), Is Blink Right: \\(isBlinkRight), Is Blink: \\(isBlink), Eye Openness: \\(eyeOpenness)")
+                    AppLogger.debugLog("Event: \(event), Timestamp: \(timestamp), Is Blink Left: \(isBlinkLeft), Is Blink Right: \(isBlinkRight), Is Blink: \(isBlink), Eye Openness: \(eyeOpenness)")
 
                 case .drowsiness(let timestamp, let isDrowsiness):
-                    AppLogger.debugLog("Event: \\(event), Timestamp: \\(timestamp), Is Drowsiness: \\(isDrowsiness)")
+                    AppLogger.debugLog("Event: \(event), Timestamp: \(timestamp), Is Drowsiness: \(isDrowsiness)")
                 }
             }
             .store(in: &cancellableSet)
@@ -787,7 +787,7 @@ struct ProgressCircle_Previews: PreviewProvider {
 ## 👤 ユーザー
 *2023/6/20 12:53:35*
 
-progressPercentageがnilの場合はText("\\(progressPercentage ?? 0)%")ごと削除してほしい
+progressPercentageがnilの場合はText("\(progressPercentage ?? 0)%")ごと削除してほしい
 
 ---
 
@@ -836,7 +836,7 @@ public struct ProgressCircle: View {
                 .fill(CoreAssets.Color.PrimaryBackgroundNoGradation.primaryBackgroundNoGradation100.swiftUIColor)
                 .frame(width: Self.circleDiameter, height: Self.circleDiameter)
             if let progressPercentage = progressPercentage {
-                Text("\\(progressPercentage)%")
+                Text("\(progressPercentage)%")
                     .typographyStyle(.caption2)
                     .foregroundColor(CoreAssets.Color.Neutral.white.swiftUIColor)
             }
@@ -981,7 +981,7 @@ struct GazeTrackCalibrationView: View {
 ## 🤖 アシスタント
 *2023/6/20 13:24:37*
 
-SwiftUIの `.position(\_:)` メソッドは、Viewの中心点を指定した座標に配置します。したがって、`ProgressCircle`の場合、座標`(position.x, position.y)`は円の中心を指しています。
+SwiftUIの `.position(_:)` メソッドは、Viewの中心点を指定した座標に配置します。したがって、`ProgressCircle`の場合、座標`(position.x, position.y)`は円の中心を指しています。
 
 また、基本的に座標系は左上が原点で、x座標は左から右に増加し、y座標は上から下に増加します。つまり、座標(0,0)は画面の左上隅を指します。
 
@@ -990,7 +990,7 @@ SwiftUIの `.position(\_:)` メソッドは、Viewの中心点を指定した座
 ## 👤 ユーザー
 *2023/6/20 13:34:56*
 
-"スマートフォンを顔から30cmほどはなして、\\n画面上の赤い丸を見続けてください" を画面中央から70pt下げて欲しい
+"スマートフォンを顔から30cmほどはなして、\n画面上の赤い丸を見続けてください" を画面中央から70pt下げて欲しい
 
 @MainActor
 final class PortraitGazeTrackCalibrationPresenter: ObservableObject {
@@ -1010,19 +1010,19 @@ final class PortraitGazeTrackCalibrationPresenter: ObservableObject {
             .map { x, y -&gt; CGPoint in
                 CGPoint(x: x, y: y)
             }
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 self?.shouldShowNextScreen = true
-            } receiveValue: { \[weak self\] point in
+            } receiveValue: { [weak self] point in
                 self?.calibrationPoint = point
             }
             .store(in: &cancellableSet)
         
         gazeTrackCalibrationInteractor.progressPublisher
-            .map { Int($0 \* 100) }
+            .map { Int($0 * 100) }
             .assign(to: &$progressPercentage)
         
         gazeTrackCalibrationInteractor.errorPublisher
-            .sink { \[weak self\] error in
+            .sink { [weak self] error in
                 self?.error = error
                 self?.shouldShowAlert = true
             }
@@ -1044,7 +1044,7 @@ final class PortraitGazeTrackCalibrationPresenter: ObservableObject {
 }
 
 public struct PortraitGazeTrackCalibrationView: View {
-    @Environment(\\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var presenter = PortraitGazeTrackCalibrationPresenter()
     
 
@@ -1054,7 +1054,7 @@ public struct PortraitGazeTrackCalibrationView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             if presenter.isPreparingCalibration {
-                Text("スマートフォンを顔から30cmほどはなして、\\n画面上の赤い丸を見続けてください")
+                Text("スマートフォンを顔から30cmほどはなして、\n画面上の赤い丸を見続けてください")
                     .typographyStyle(.body2)
                     .foregroundColor(CoreAssets.Color.Neutral.white.swiftUIColor)
             }
@@ -1148,7 +1148,7 @@ public struct PortraitGazeTrackCalibrationView: View {
 ## 👤 ユーザー
 *2023/6/20 18:19:46*
 
-以下について、.sink { \[weak self\] \_ in
+以下について、.sink { [weak self] _ in
                 self?.shouldShowNextScreen = true
             } をちゃんとハンドリングしてほしい。成功の場合のみshouldShowNextScreen = trueとしてほしい
 
@@ -1156,9 +1156,9 @@ public struct PortraitGazeTrackCalibrationView: View {
             .map { x, y -&gt; CGPoint in
                 CGPoint(x: x, y: y)
             }
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 self?.shouldShowNextScreen = true
-            } receiveValue: { \[weak self\] point in
+            } receiveValue: { [weak self] point in
                 self?.calibrationPoint = point
             }
             .store(in: &cancellableSet)

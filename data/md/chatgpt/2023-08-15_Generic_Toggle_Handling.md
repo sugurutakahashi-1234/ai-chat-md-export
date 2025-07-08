@@ -20,7 +20,7 @@ enum DebugChangeStatusType: CaseIterable, Identifiable {
     }
 
     var name: String {
-        "\\(self)".camelCaseToSpaces.localizedCapitalized
+        "\(self)".camelCaseToSpaces.localizedCapitalized
     }
 }
 
@@ -86,7 +86,7 @@ struct DebugChangeStatusView: View {
     }
 }
 
-struct DebugChangeStatusView\_Previews: PreviewProvider {
+struct DebugChangeStatusView_Previews: PreviewProvider {
     static var previews: some View {
         DebugChangeStatusView()
     }
@@ -646,24 +646,24 @@ ForEach(DebugChangeStatusType.allCases) { type in
 
 この問題に関して「これがベストだ」という答えはないのですが、それぞれのアプローチには以下のような特徴やメリット、デメリットがあります。
 
-1. \*\*関数を２つ（`value` と `setValue`）に分ける方法\*\*:
-   - \*\*メリット\*\*:
+1. **関数を２つ（`value` と `setValue`）に分ける方法**:
+   - **メリット**:
      - 関数が一つの役割しか持たないため、単一の責任の原則（Single Responsibility Principle）を守っている。
      - 各関数は小さいため、理解しやすい。
-   - \*\*デメリット\*\*:
+   - **デメリット**:
      - 同じ`switch`文を２回書く必要がある。
 
-2. \*\*Bindingを使用して1つの関数にまとめる方法\*\*:
-   - \*\*メリット\*\*:
+2. **Bindingを使用して1つの関数にまとめる方法**:
+   - **メリット**:
      - 重複する`switch`文がないため、コード量が少なくなる。
      - UIのBindingとの相性が良い。
-   - \*\*デメリット\*\*:
+   - **デメリット**:
      - Bindingのget/setのロジックが1つの関数内にまとめられているため、少し長くなる。
 
 どちらの方法を選ぶかは、以下のような要因によって異なります：
 
-- \*\*コードの綺麗さ\*\*：`switch`文の重複を避けたい場合、Bindingを使用して1つの関数にまとめる方法が良いでしょう。
-- \*\*関数の単純さ\*\*：関数を1つのタスクに限定したい場合、関数を２つに分ける方法が適しています。
+- **コードの綺麗さ**：`switch`文の重複を避けたい場合、Bindingを使用して1つの関数にまとめる方法が良いでしょう。
+- **関数の単純さ**：関数を1つのタスクに限定したい場合、関数を２つに分ける方法が適しています。
 
 私の意見としては、SwiftUIで頻繁にBindingを使用するため、`Binding`を利用して１つの関数にまとめる方が直感的で、またコードの重複も減少するので、この場合は2つ目の方法を推奨します。しかし、最終的にはプロジェクトのコーディング規約やチームの好み、またその他の要因に応じて選択するのがベストです。
 

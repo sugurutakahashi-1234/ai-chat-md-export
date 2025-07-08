@@ -59,16 +59,16 @@ Four Key Metricsのような開発生産性指標の向上を目指した開発�
 【参考情報】
 ■ note
 ユーザーの感動体験を生み出す YappliのiOSエンジニアチームとは？ #ヤプリなひとびと
-https://note.com/times\_yappli/n/nb4b9060065c6
+https://note.com/times_yappli/n/nb4b9060065c6
 「ソフトウェアを扱うことに躊躇しない文化へ」 岸川 克己がヤプリと実現したい未来 #ヤプリなひとびと
-https://note.com/times\_yappli/n/n5831272ee6e7
+https://note.com/times_yappli/n/n5831272ee6e7
 
 ■ ヤプリのテックブログ（iOS）
 https://tech.yappli.io/archive/category/iOS
 
 ■ Yappli Tech Conference 2023（iOS）
 動画： https://www.youtube.com/watch?v=RYG6fHSZkRs
-スライド：https://speakerdeck.com/nao\_randd/challenges-and-improvements-of-permission-requests-in-yappli
+スライド：https://speakerdeck.com/nao_randd/challenges-and-improvements-of-permission-requests-in-yappli
 
 ■ spotifyラジオ（iOS）
 https://podcasters.spotify.com/pod/show/yappo-delivery/episodes/12-iOS-e2huqia

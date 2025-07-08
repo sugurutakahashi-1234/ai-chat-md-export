@@ -13,9 +13,9 @@ Stringに変えてほしい
             switch self {
             case .promotionVideo:
                 #if DEBUG
-                URL(string: "https://dev.static.progrit.work/diatalk/onboarding\_movie.mp4")!
+                URL(string: "https://dev.static.progrit.work/diatalk/onboarding_movie.mp4")!
                 #else
-                URL(string: "https://static.progrit.work/diatalk/onboarding\_movie.mp4")!
+                URL(string: "https://static.progrit.work/diatalk/onboarding_movie.mp4")!
                 #endif
             case .termsOfService:
                 URL(string: "https://www.diatalk.com/terms/")!

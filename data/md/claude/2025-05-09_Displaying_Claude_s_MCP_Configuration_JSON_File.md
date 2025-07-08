@@ -180,79 +180,79 @@ This block is not supported on your current device yet.
 ## 👤 ユーザー
 *2025/5/9 15:50:52*
 
-GITHUB\_PERSONAL\_ACCESS\_TOKEN を設定する必要があるが、これの権限はどのようなものにすべきか？
+GITHUB_PERSONAL_ACCESS_TOKEN を設定する必要があるが、これの権限はどのようなものにすべきか？
 
 ---
 
 ## 🤖 アシスタント
 *2025/5/9 15:51:10*
 
-GitHubのMCPサーバーに使用する`GITHUB\_PERSONAL\_ACCESS\_TOKEN`の権限設定については、使用する予定の機能に基づいて適切に設定するべきです。GitHubのMCPサーバーはさまざまなGitHub APIの機能にアクセスできるため、適切な権限設定が重要です。
+GitHubのMCPサーバーに使用する`GITHUB_PERSONAL_ACCESS_TOKEN`の権限設定については、使用する予定の機能に基づいて適切に設定するべきです。GitHubのMCPサーバーはさまざまなGitHub APIの機能にアクセスできるため、適切な権限設定が重要です。
 
 以下の主要なスコープを機能領域ごとに整理します：
 
 ## 基本的なリポジトリアクセス
-- \*\*repo\*\*: リポジトリの完全なアクセス（下記のすべてを含む）
-  - \*\*repo:status\*\*: コミットのステータスアクセス
-  - \*\*repo\_deployment\*\*: デプロイメントの管理
-  - \*\*public\_repo\*\*: パブリックリポジトリのみのアクセス
-  - \*\*repo:invite\*\*: リポジトリの招待管理
+- **repo**: リポジトリの完全なアクセス（下記のすべてを含む）
+  - **repo:status**: コミットのステータスアクセス
+  - **repo_deployment**: デプロイメントの管理
+  - **public_repo**: パブリックリポジトリのみのアクセス
+  - **repo:invite**: リポジトリの招待管理
 
 ## コードとファイル操作
-- \*\*contents:read\*\*: ファイルの読み取り
-- \*\*contents:write\*\*: ファイルの作成・更新
+- **contents:read**: ファイルの読み取り
+- **contents:write**: ファイルの作成・更新
 
 ## Issue とプルリクエスト
-- \*\*issues:read\*\*: Issueの閲覧
-- \*\*issues:write\*\*: Issueの作成・更新
-- \*\*pull\_requests:read\*\*: PRの閲覧
-- \*\*pull\_requests:write\*\*: PRの作成・管理
+- **issues:read**: Issueの閲覧
+- **issues:write**: Issueの作成・更新
+- **pull_requests:read**: PRの閲覧
+- **pull_requests:write**: PRの作成・管理
 
 ## セキュリティ機能
-- \*\*security\_events:read\*\*: コードスキャニングアラートの閲覧
-- \*\*security\_events:write\*\*: コードスキャニングアラートの管理
+- **security_events:read**: コードスキャニングアラートの閲覧
+- **security_events:write**: コードスキャニングアラートの管理
 
 ## ユーザー情報
-- \*\*read:user\*\*: ユーザープロフィール情報の読み取り
-- \*\*user:email\*\*: メールアドレスの読み取り
+- **read:user**: ユーザープロフィール情報の読み取り
+- **user:email**: メールアドレスの読み取り
 
 ## 推奨設定
 
 GitHub MCPサーバーを使用する際は、以下の原則に従って権限を設定することをお勧めします：
 
-1. \*\*最小権限の原則\*\*: 必要な機能のみへのアクセスを許可する
-2. \*\*用途に合わせた設定\*\*: 使用する予定のツールセットに応じて権限を選択する
+1. **最小権限の原則**: 必要な機能のみへのアクセスを許可する
+2. **用途に合わせた設定**: 使用する予定のツールセットに応じて権限を選択する
 
 ### 一般的な使用シナリオに基づく推奨設定
 
-1. \*\*基本的な閲覧用\*\*:
+1. **基本的な閲覧用**:
    - `repo:status`
    - `read:user`
    - `issues:read`
-   - `pull\_requests:read`
+   - `pull_requests:read`
 
-2. \*\*ファイル操作とコード管理\*\*:
+2. **ファイル操作とコード管理**:
    - 上記のすべて
    - `contents:read`
    - `contents:write`（ファイルの作成・更新が必要な場合）
 
-3. \*\*Issue/PR管理\*\*:
+3. **Issue/PR管理**:
    - 上記のすべて
    - `issues:write`
-   - `pull\_requests:write`
+   - `pull_requests:write`
 
-4. \*\*すべての機能\*\*（フルアクセス - 注意して使用）:
+4. **すべての機能**（フルアクセス - 注意して使用）:
    - `repo`（すべてのリポジトリアクセスを含む）
    - `read:user`
    - `user:email`（必要な場合）
 
 ## セキュリティの注意点
 
-1. \*\*トークンの有効期限\*\*: 長期的なトークンよりも、有効期限の設定されたトークンを使用することをお勧めします。
-2. \*\*範囲を制限\*\*: 本当に必要な権限のみを付与し、不要な権限は付与しないでください。
-3. \*\*環境変数として安全に保存\*\*: トークンはコード内にハードコードせず、環境変数として安全に保存してください。
+1. **トークンの有効期限**: 長期的なトークンよりも、有効期限の設定されたトークンを使用することをお勧めします。
+2. **範囲を制限**: 本当に必要な権限のみを付与し、不要な権限は付与しないでください。
+3. **環境変数として安全に保存**: トークンはコード内にハードコードせず、環境変数として安全に保存してください。
 
-GitHub MCPサーバーでは`GITHUB\_TOOLSETS`環境変数を使用して特定のツールセットのみを有効にすることも可能です（例：`repos,issues,pull\_requests`）。このようにツールセットを制限することで、トークンに必要な権限も自然と制限できるため、セキュリティの観点からも良い方法です。
+GitHub MCPサーバーでは`GITHUB_TOOLSETS`環境変数を使用して特定のツールセットのみを有効にすることも可能です（例：`repos,issues,pull_requests`）。このようにツールセットを制限することで、トークンに必要な権限も自然と制限できるため、セキュリティの観点からも良い方法です。
 
 使用目的と使用する機能に応じて、適切なスコープを選択することをお勧めします。不確かな場合は、最初は最小限の権限から始めて、必要に応じて権限を追加していくアプローチが安全です。
 
@@ -267,16 +267,16 @@ GitHub MCPサーバーでは`GITHUB\_TOOLSETS`環境変数を使用して特定�
 
 "github": {
       "command": "docker",
-      "args": \[
+      "args": [
         "run",
         "-i",
         "--rm",
         "-e",
-        "GITHUB\_PERSONAL\_ACCESS\_TOKEN",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
         "ghcr.io/github/github-mcp-server"
-      \],
+      ],
       "env": {
-        "GITHUB\_PERSONAL\_ACCESS\_TOKEN": "ghp\_gV64wfRxNio9sfCqcoMNrRpiTiArt54Sxvdj"
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "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"
       }
     }
 

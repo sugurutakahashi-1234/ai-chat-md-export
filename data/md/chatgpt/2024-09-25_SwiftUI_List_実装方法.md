@@ -8,9 +8,9 @@
 *2024/9/25 17:48:26*
 
 {
-  "content\_type": "image\_asset\_pointer",
-  "asset\_pointer": "file-service://file-hkaF27pIv3ltca0PwDsmxcoJ",
-  "size\_bytes": 61575,
+  "content_type": "image_asset_pointer",
+  "asset_pointer": "file-service://file-hkaF27pIv3ltca0PwDsmxcoJ",
+  "size_bytes": 61575,
   "width": 777,
   "height": 932,
   "fovea": null,
@@ -18,13 +18,13 @@
     "dalle": null,
     "gizmo": null,
     "generation": null,
-    "container\_pixel\_height": null,
-    "container\_pixel\_width": null,
-    "emu\_omit\_glimpse\_image": null,
-    "emu\_patches\_override": null,
+    "container_pixel_height": null,
+    "container_pixel_width": null,
+    "emu_omit_glimpse_image": null,
+    "emu_patches_override": null,
     "sanitized": true,
-    "asset\_pointer\_link": null,
-    "watermarked\_asset\_pointer": null
+    "asset_pointer_link": null,
+    "watermarked_asset_pointer": null
   }
 }
 これをSwiftUIのListを使って記述したい

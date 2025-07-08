@@ -141,7 +141,7 @@ Xcodeまたは[App Store Connect](https://appstoreconnect.apple.com/)を通じ�
 
 このプロジェクトのCI/CDの環境はXcode Cloudによって構築されています。
 
-Xcode Cloudの設定はXcodeまたは\[App Store Connect\](https://appstoreconnect.apple.com/)からを確認してください。
+Xcode Cloudの設定はXcodeまたは[App Store Connect](https://appstoreconnect.apple.com/)からを確認してください。
 
 ---
 
@@ -150,6 +150,6 @@ Xcode Cloudの設定はXcodeまたは\[App Store Connect\](https://appstoreconne
 
 The CI/CD environment for this project is built using Xcode Cloud.
 
-Please check the Xcode Cloud settings via Xcode or \[App Store Connect\](https://appstoreconnect.apple.com/).
+Please check the Xcode Cloud settings via Xcode or [App Store Connect](https://appstoreconnect.apple.com/).
 
 ---

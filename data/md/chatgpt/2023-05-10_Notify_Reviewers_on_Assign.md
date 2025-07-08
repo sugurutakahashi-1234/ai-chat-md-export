@@ -10,17 +10,17 @@
 name: Notify Reviewers on Assign
 
 on:
-  pull\_request:
+  pull_request:
     types:
-      - review\_requested
-  check\_suite:
+      - review_requested
+  check_suite:
     types:
       - completed
 
 jobs:
-  notify\_reviewers:
+  notify_reviewers:
     runs-on: ubuntu-latest
-    if: ${{ github.event.check\_suite.conclusion == 'success' }}
+    if: ${{ github.event.check_suite.conclusion == 'success' }}
 
     steps:
     - name: Checkout repository
@@ -28,47 +28,47 @@ jobs:
 
     - name: Notify Reviewers on Slack
       env:
-        SLACK\_WEBHOOK\_URL: ${{ secrets.SLACK\_WEBHOOK\_URL }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       run: |
-        # Get pull request information from the check\_suite event
-        PR\_URL="${{ github.event.pull\_request.html\_url }}"
-        PR\_TITLE="${{ github.event.pull\_request.title }}"
-        PR\_AUTHOR="${{ github.event.pull\_request.user.login }}"
-        PR\_NUMBER="${{ github.event.pull\_request.number }}"
+        # Get pull request information from the check_suite event
+        PR_URL="${{ github.event.pull_request.html_url }}"
+        PR_TITLE="${{ github.event.pull_request.title }}"
+        PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+        PR_NUMBER="${{ github.event.pull_request.number }}"
 
         # Fetch the reviewers who have not yet approved the pull request.
         echo "Fetching requested reviewers..."
-        REVIEWERS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB\_TOKEN }}" \\
-          https://api.github.com/repos/${{ github.repository }}/pulls/$PR\_NUMBER/reviews \\
-          | jq -r '.\[\] | select(.state!="APPROVED") | .user.login')
+        REVIEWERS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER/reviews \
+          | jq -r '.[] | select(.state!="APPROVED") | .user.login')
 
-        if \[ -z "$REVIEWERS" \]; then
+        if [ -z "$REVIEWERS" ]; then
           echo "No reviewers found or all reviewers have approved."
           exit 0
         fi
 
         # Map the GitHub usernames to their corresponding Slack usernames.
         echo "Fetching slack usernames..."
-        SLACK\_USERNAMES=""
+        SLACK_USERNAMES=""
         for REVIEWER in $REVIEWERS
         do
-          SLACK\_USERNAME=$(jq -r --arg github\_user "$REVIEWER" '.\[$github\_user\]' .github/github\_to\_slack\_mapping.json)
-          if \[ "$SLACK\_USERNAME" != "null" \]; then
-            SLACK\_USERNAMES="$SLACK\_USERNAMES @$SLACK\_USERNAME"
+          SLACK_USERNAME=$(jq -r --arg github_user "$REVIEWER" '.[$github_user]' .github/github_to_slack_mapping.json)
+          if [ "$SLACK_USERNAME" != "null" ]; then
+            SLACK_USERNAMES="$SLACK_USERNAMES @$SLACK_USERNAME"
           fi
         done
 
-        if \[ -z "$SLACK\_USERNAMES" \]; then
+        if [ -z "$SLACK_USERNAMES" ]; then
           echo "No slack usernames found."
           exit 0
         fi
 
         # Prepare the message to be sent on Slack.
-        MESSAGE="$SLACK\_USERNAMES レビューをお願いします。\\nPR の CI が通りました。\\n\\n$PR\_TITLE\\n$PR\_URL\\n\\nby @$PR\_AUTHOR"
+        MESSAGE="$SLACK_USERNAMES レビューをお願いします。\nPR の CI が通りました。\n\n$PR_TITLE\n$PR_URL\n\nby @$PR_AUTHOR"
 
         # Send the message to the Slack channel using Incoming Webhook.
         echo "Sending message to slack..."
-        curl -X POST -H 'Content-type: application/json' --data "{'text':'$MESSAGE'}" $SLACK\_WEBHOOK\_URL
+        curl -X POST -H 'Content-type: application/json' --data "{'text':'$MESSAGE'}" $SLACK_WEBHOOK_URL
 
 
 このGitHubワークフローで以下のようなエラーになったんだけど解決方法を教えて欲しい
@@ -115,9 +115,9 @@ jq -r '. | select(.state!="APPROVED") | .user.login'
 ## 👤 ユーザー
 *2023/5/11 0:05:23*
 
-REVIEWERS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB\_TOKEN }}" \\
-          https://api.github.com/repos/${{ github.repository }}/pulls/$PR\_NUMBER/reviews \\
-          | jq -r '.\[\] | select(.state!="APPROVED") | .user.login') 
+REVIEWERS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER/reviews \
+          | jq -r '.[] | select(.state!="APPROVED") | .user.login') 
 これが正解？
 
 ---
@@ -365,7 +365,7 @@ jobs:
 ## 🤖 アシスタント
 *2023/5/11 0:20:43*
 
-HOOK\_URL
+HOOK_URL
 
 この修正により、未レビューのレビュワーにのみ通知が送信されるようになります。以下が修正されたワークフローの手順です：
 
@@ -484,7 +484,7 @@ GitHub APIでレビューの状態を取得する際、次のようなステー�
 
 - `COMMENTED`: レビュワーが一般的なコメントを提出した。
 - `APPROVED`: レビュワーがプルリクエストを承認した。
-- `CHANGES\_REQUESTED`: レビュワーが変更を要求した。
+- `CHANGES_REQUESTED`: レビュワーが変更を要求した。
 - `DISMISSED`: レビュワーのレビューが取り消された。
 - `PENDING`: レビューがまだ提出されていない。
 
@@ -495,7 +495,7 @@ GitHub APIでレビューの状態を取得する際、次のようなステー�
 ## 👤 ユーザー
 *2023/5/11 0:28:17*
 
-REVIEWED\_REVIEWERS=$(echo "$REVIEWS" | jq -r 'group\_by(.user.login) | .\[\] | .\[0\].user.login') は何を取得しているの？
+REVIEWED_REVIEWERS=$(echo "$REVIEWS" | jq -r 'group_by(.user.login) | .[] | .[0].user.login') は何を取得しているの？
 
 ---
 
@@ -507,18 +507,18 @@ REVIEWED\_REVIEWERS=$(echo "$REVIEWS" | jq -r 'group\_by(.user.login) | .\[\] | 
 以下がコマンドの説明です:
 
 1. `echo "$REVIEWS"`: `$REVIEWS`変数に格納されているJSONデータを出力します。
-2. `jq -r 'group\_by(.user.login) | .\[\] | .\[0\].user.login'`: `jq`コマンドを使ってJSONデータを処理します。まず、`group\_by(.user.login)`でJSONデータを`.user.login`フィールド（レビュワーのGitHubユーザー名）でグループ化します。この操作により、各レビュワーごとにレビューがまとめられます。
-3. `| .\[\]`: グループ化されたレビューを個別の要素に展開します。
-4. `| .\[0\].user.login`: 展開された各グループから最初の要素（`.user.login`フィールド）を取得します。これにより、各レビュワーの最初のレビューが取得されます。これが実質的に各レビュワーのレビューの存在を確認する方法となります。
+2. `jq -r 'group_by(.user.login) | .[] | .[0].user.login'`: `jq`コマンドを使ってJSONデータを処理します。まず、`group_by(.user.login)`でJSONデータを`.user.login`フィールド（レビュワーのGitHubユーザー名）でグループ化します。この操作により、各レビュワーごとにレビューがまとめられます。
+3. `| .[]`: グループ化されたレビューを個別の要素に展開します。
+4. `| .[0].user.login`: 展開された各グループから最初の要素（`.user.login`フィールド）を取得します。これにより、各レビュワーの最初のレビューが取得されます。これが実質的に各レビュワーのレビューの存在を確認する方法となります。
 
-`REVIEWED\_REVIEWERS`変数には、プルリクエストで少なくとも1つのレビューを提出したレビュワーのGitHubユーザー名が格納されます。このリストを使って、レビューがまだリクエストされているが提出されていないレビュワーを特定できます。
+`REVIEWED_REVIEWERS`変数には、プルリクエストで少なくとも1つのレビューを提出したレビュワーのGitHubユーザー名が格納されます。このリストを使って、レビューがまだリクエストされているが提出されていないレビュワーを特定できます。
 
 ---
 
 ## 👤 ユーザー
 *2023/5/11 0:30:59*
 
-未レビューという表現が誤っていたよ、ごめん。現在、COMMENTED, APPROVED, CHANGES\_REQUESTED のような状態以外のユーザーに通知したいという意味だったよ。それでコードを全部直してくれる？
+未レビューという表現が誤っていたよ、ごめん。現在、COMMENTED, APPROVED, CHANGES_REQUESTED のような状態以外のユーザーに通知したいという意味だったよ。それでコードを全部直してくれる？
 
 ---
 

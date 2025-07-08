@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2023/6/15 20:04:15*
 
-enum で排他制御になっているところをoptionalとしてeye\_movementとblinkを同じ階層で持って欲しい
+enum で排他制御になっているところをoptionalとしてeye_movementとblinkを同じ階層で持って欲しい
 
 syntax = "proto3";
 
@@ -17,7 +17,7 @@ message Anchor {
   // 作成日時
   google.protobuf.Timestamp timestamp = 1;
   oneof type {
-    EyeMovement eye\_movement = 2;
+    EyeMovement eye_movement = 2;
     Blink blink = 3;
   }
 }
@@ -28,7 +28,7 @@ message EyeMovement {
   // 目線のy座標
   double top = 2;
   // 眼球運動状態
-  EyeMovementState eye\_movement\_state = 3;
+  EyeMovementState eye_movement_state = 3;
 }
 
 enum EyeMovementState {
@@ -39,11 +39,11 @@ enum EyeMovementState {
 
 message Blink {
   // 右目の瞬き
-  bool blink\_right = 1;
+  bool blink_right = 1;
   // 左目の瞬き
-  bool blink\_left = 2;
+  bool blink_left = 2;
   // TODO(rnarkk)
-  // double eye\_openness = 3;
+  // double eye_openness = 3;
 }
 
 ---

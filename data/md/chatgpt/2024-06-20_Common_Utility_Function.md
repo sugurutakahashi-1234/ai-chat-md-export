@@ -61,7 +61,7 @@ public final class RecordingDriver: Sendable {
 
     public init() {}
 
-    public func setMeteringTimerInterval(\_ interval: TimeInterval) {
+    public func setMeteringTimerInterval(_ interval: TimeInterval) {
         meteringTimerInterval = interval
         if !recordingTimer.isEmpty {
             stopMeteringTimer()
@@ -71,15 +71,15 @@ public final class RecordingDriver: Sendable {
 
     public func startRecording(recordingConfig: RecordingConfig) throws {
         let audioFilename = recordingConfigDriver.audioFilePath
-            .appendingPathComponent("\\(Date.ios8601)")
+            .appendingPathComponent("\(Date.ios8601)")
             .appendingPathExtension(recordingConfig.audioFormat.fileExtension.rawValue)
 
-        let settings = \[
+        let settings = [
             AVFormatIDKey: Int(recordingConfig.audioFormat.audioFormatID),
             AVSampleRateKey: recordingConfig.audioSampleRate.rawValue,
             AVNumberOfChannelsKey: recordingConfig.audioChannel.rawValue,
             AVEncoderAudioQualityKey: recordingConfig.audioEncodeQuality.toAVAudioQuality.rawValue,
-        \]
+        ]
 
         AudioServicesPlaySystemSound(SystemSoundID(SystemSound.startRecording.systemSoundID))
 
@@ -91,7 +91,7 @@ public final class RecordingDriver: Sendable {
             try AVAudioSession.sharedInstance().setCategory(
                 recordingConfig.audioSessionCategory.toAVAudioSessionCategory,
                 mode: recordingConfig.audioSessionMode.toAVAudioSessionMode,
-                options: \[\]
+                options: []
             )
             OSLogger.debugLog("Start: session active")
             try AVAudioSession.sharedInstance().setActive(true)
@@ -138,7 +138,7 @@ public final class RecordingDriver: Sendable {
         recordingTimeSubject.value = 0
 
         Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 self?.recordingTimeSubject.value += 1
             }
             .store(in: &recordingTimer)
@@ -152,7 +152,7 @@ public final class RecordingDriver: Sendable {
         recordingVolumeLevelsSubject.value = 0.0
 
         Timer.publish(every: meteringTimerInterval, on: .main, in: .common).autoconnect()
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 guard let self else {
                     return
                 }

@@ -21,7 +21,7 @@ public enum RemoteConfigType: CaseIterable, Sendable {
     }
 
     public var keyName: String {
-        "\\(self)".toSnakeCase
+        "\(self)".toSnakeCase
     }
 
     public var entityType: any RemoteConfigurable.Type {

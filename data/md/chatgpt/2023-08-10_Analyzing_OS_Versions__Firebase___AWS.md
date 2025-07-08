@@ -16,12 +16,12 @@ iOSアプリでFirebase、AWSのサービスを使っていてユーザーのOS�
 
 ユーザーのOSバージョンの分布を調べることは、FirebaseとAWSのいくつかのサービスを使用して可能です。以下にその方法について詳しく説明します：
 
-1. \*\*Firebase Analytics\*\*:
+1. **Firebase Analytics**:
    - FirebaseのAnalyticsツールは、ユーザーのOSバージョンやデバイスモデル、地理的位置などの情報を収集できます。
    - アプリでFirebase SDKをセットアップし、Firebase Analyticsを有効にすることで、自動的にユーザーのOSバージョン情報を収集できます。
    - Firebaseコンソールのダッシュボードにアクセスすれば、収集したデータの概観を確認できます。
 
-2. \*\*AWS Mobile Analytics (現在はAmazon Pinpointとして知られています)\*\*:
+2. **AWS Mobile Analytics (現在はAmazon Pinpointとして知られています)**:
    - Amazon Pinpointも、アプリの使用状況やユーザーエンゲージメントの詳細なデータを提供します。
    - AWS SDKを使用してアプリに組み込み、Amazon Pinpointの設定を行うことで、ユーザーのOSバージョンやその他のデバイス情報を収集できます。
    - AWS Management ConsoleからPinpointのダッシュボードにアクセスすることで、データを確認できます。

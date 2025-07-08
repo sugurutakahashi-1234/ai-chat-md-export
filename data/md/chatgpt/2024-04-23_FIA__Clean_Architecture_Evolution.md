@@ -289,7 +289,7 @@ https://github.com/suguruTakahashi-1234/fia-practical-sample
 
 ---
 
-&lt;!-- \_class : lead invert--&gt;
+&lt;!-- _class : lead invert--&gt;
 
 ## まとめ
 
@@ -299,10 +299,10 @@ https://github.com/suguruTakahashi-1234/fia-practical-sample
 
 ### 主要なアーキテクチャパターン
 
-- \*\*Layered Architecture 系\*\*：MVVM, MVP, VIPERなど
-- \*\*Redux 系\*\*：TCA, ReSwiftなど
-- \*\*Clean Architecture 系\*\*：VIPERなど
-- \*\*新提案：FIA\*\*
+- **Layered Architecture 系**：MVVM, MVP, VIPERなど
+- **Redux 系**：TCA, ReSwiftなど
+- **Clean Architecture 系**：VIPERなど
+- **新提案：FIA**
 
 ### FIAの実装と利点
 
@@ -318,7 +318,7 @@ FIAを導入することで、iOSアプリの開発プロセスがどのよう�
 
 ---
 
-&lt;!-- \_class : lead invert--&gt;
+&lt;!-- _class : lead invert--&gt;
 
 # ご清聴ありがとうございました！
 
@@ -342,7 +342,7 @@ FIAを導入することで、iOSアプリの開発プロセスがどのよう�
 
 ---
 
-&lt;!-- \_class : lead invert--&gt;
+&lt;!-- _class : lead invert--&gt;
 
 ## まとめ
 
@@ -368,13 +368,13 @@ Framework-Independent Architecture（FIA）を用いることで、iOSアプリ�
 
 ---
 
-&lt;!-- \_class : lead invert--&gt;
+&lt;!-- _class : lead invert--&gt;
 
 ## まとめ
 
-- \*\*FIAの導入\*\*: Clean Architectureを基に、iOSアプリの独立性とメンテナンス性を向上。
-- \*\*ビルド時間の短縮\*\*: Framework層に非依存にすることで、ビルドプロセスが高速化。
-- \*\*ツールの活用\*\*: Sourcery、Mockoloを利用し、実装の効率化とテストの容易化を実現。
+- **FIAの導入**: Clean Architectureを基に、iOSアプリの独立性とメンテナンス性を向上。
+- **ビルド時間の短縮**: Framework層に非依存にすることで、ビルドプロセスが高速化。
+- **ツールの活用**: Sourcery、Mockoloを利用し、実装の効率化とテストの容易化を実現。
 
 ---
 
@@ -667,15 +667,15 @@ https://github.com/suguruTakahashi-1234/fia-practical-sample
 
 ---
 
-&lt;!-- \_class : lead invert--&gt;
+&lt;!-- _class : lead invert--&gt;
 
 ## まとめ
 
-- \*\*FIAの導入\*\*: Clean Architectureを基に、iOSアプリの独立性とメンテナンス性を向上。
-- \*\*ビルド時間の短縮\*\*: Framework層に非依存にすることで、ビルドプロセスが高速化。
-- \*\*ツールの活用\*\*: Sourcery、Mockoloを利用し、実装の効率化とテストの容易化を実現。
-- \*\*DIコンテナの導入\*\*: アプリケーション層の柔軟性を保ちながら依存性管理を効率化。
-- \*\*テストの最適化\*\*: FIAによるテストプロセスの加速と、XCUITestの実行時間の短縮。
+- **FIAの導入**: Clean Architectureを基に、iOSアプリの独立性とメンテナンス性を向上。
+- **ビルド時間の短縮**: Framework層に非依存にすることで、ビルドプロセスが高速化。
+- **ツールの活用**: Sourcery、Mockoloを利用し、実装の効率化とテストの容易化を実現。
+- **DIコンテナの導入**: アプリケーション層の柔軟性を保ちながら依存性管理を効率化。
+- **テストの最適化**: FIAによるテストプロセスの加速と、XCUITestの実行時間の短縮。
 
 ---
 
@@ -697,15 +697,15 @@ FIA の紹介にもっとフォーカスしてほしい
 
 ---
 
-&lt;!-- \_class : lead invert--&gt;
+&lt;!-- _class : lead invert--&gt;
 
 ## FIAの重要ポイント
 
-- \*\*非依存性\*\*: FIAはFramework層に依存しないことで、アーキテクチャの柔軟性と独立性を保証します。
-- \*\*高速ビルド\*\*: Framework層の変更がアプリ全体に影響を与えないため、ビルド時間が大幅に短縮されます。
-- \*\*テストの効率化\*\*: テストプロセスが独立しているため、XCUITestなどのUIテストが迅速に実施可能。
-- \*\*維持管理の容易さ\*\*: FIAによるクリアな依存関係と層の分離が、アプリのメンテナンスを容易にします。
-- \*\*拡張性\*\*: 新しいフレームワークやライブラリへの移行が容易で、将来的な技術的変更に柔軟に対応可能。
+- **非依存性**: FIAはFramework層に依存しないことで、アーキテクチャの柔軟性と独立性を保証します。
+- **高速ビルド**: Framework層の変更がアプリ全体に影響を与えないため、ビルド時間が大幅に短縮されます。
+- **テストの効率化**: テストプロセスが独立しているため、XCUITestなどのUIテストが迅速に実施可能。
+- **維持管理の容易さ**: FIAによるクリアな依存関係と層の分離が、アプリのメンテナンスを容易にします。
+- **拡張性**: 新しいフレームワークやライブラリへの移行が容易で、将来的な技術的変更に柔軟に対応可能。
 
 ---
 
@@ -727,16 +727,16 @@ FIAのまとめというよりはこのスライドをまとめてほしいん�
 
 ---
 
-&lt;!-- \_class : lead invert--&gt;
+&lt;!-- _class : lead invert--&gt;
 
 ## まとめ
 
-- \*\*FIAの紹介\*\*: Clean Architectureを拡張し、iOSアプリの独立性と効率を高めるアーキテクチャです。
-- \*\*主要な利点\*\*:
+- **FIAの紹介**: Clean Architectureを拡張し、iOSアプリの独立性と効率を高めるアーキテクチャです。
+- **主要な利点**:
   - ビルド時間の短縮: Framework層に依存しない構造により、開発プロセスが加速。
   - テスタビリティの向上: 独立したテストが可能で、迅速なフィードバックループを提供。
   - 維持管理の容易さ: クリアな層分けがアップデートや修正を簡素化。
-- \*\*実装の課題とツール\*\*:
+- **実装の課題とツール**:
   - 課題: ボイラーコードの増加、DIコンテナの複雑化。
   - 解決策: Sourcery、Mockoloなどの自動化ツールを利用。
 

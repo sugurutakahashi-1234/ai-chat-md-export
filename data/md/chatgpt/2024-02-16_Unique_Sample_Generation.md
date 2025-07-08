@@ -17,19 +17,19 @@ public protocol SampleValueProvidable {
 }
 
 public extension Array where Element: SampleValueProvidable {
-    static var samples: \[Element\] {
+    static var samples: [Element] {
         Array(repeating: Element.sample, count: 5)
     }
 
-    static var emptySample: \[Element\] {
-        \[\]
+    static var emptySample: [Element] {
+        []
     }
 
-    static func samples(count: Int) -&gt; \[Element\] {
+    static func samples(count: Int) -&gt; [Element] {
         Array(repeating: Element.sample, count: count)
     }
 
-    static func samples(countRange: ClosedRange&lt;Int&gt; = 0...3, isEmptyAllowed: Bool = false) -&gt; \[Element\] {
+    static func samples(countRange: ClosedRange&lt;Int&gt; = 0...3, isEmptyAllowed: Bool = false) -&gt; [Element] {
         let adjustedRange = isEmptyAllowed ? countRange : (Swift.max(1, countRange.lowerBound)...countRange.upperBound)
         let count = Int.random(in: adjustedRange)
         return Array(repeating: Element.sample, count: count)
@@ -112,10 +112,10 @@ extension String: RandomValueProvidable {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString = ""
 
-        for \_ in 0..&lt;count {
+        for _ in 0..&lt;count {
             let randomValue = Int.random(in: 0..&lt;base.count)
             let index: Index = base.index(base.startIndex, offsetBy: randomValue)
-            let character: Character = base\[index\]
+            let character: Character = base[index]
             randomString += String(character)
         }
         return randomString

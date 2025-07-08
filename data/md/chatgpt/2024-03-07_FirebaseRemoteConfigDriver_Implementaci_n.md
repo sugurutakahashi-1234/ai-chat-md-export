@@ -34,7 +34,7 @@ public struct FirebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocol {
         }
         catch {
             print("Config not fetched")
-            print("Error: \\(error.localizedDescription)")
+            print("Error: \(error.localizedDescription)")
         }
         
         do {
@@ -45,7 +45,7 @@ public struct FirebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocol {
             print(hoge)
         } catch {
             print("decoder error")
-            print("Error: \\(error.localizedDescription)")
+            print("Error: \(error.localizedDescription)")
         }
     }
 
@@ -58,7 +58,7 @@ public struct FirebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocol {
         // ここを実装してほしい
     }
     
-    public getValue(\_ remoteConfigType: RemoteConfigType) -&gt; any RemoteConfigable {
+    public getValue(_ remoteConfigType: RemoteConfigType) -&gt; any RemoteConfigable {
         // ここを実装してほしい
     }
 }
@@ -68,7 +68,7 @@ public enum RemoteConfigType: CaseIterable {
     case appInfo
     
     var keyName: String {
-        "\\(self)".toSnakeCase
+        "\(self)".toSnakeCase
     }
     
     var defaultValue: any RemoteConfigable {
@@ -225,17 +225,17 @@ RemoteConfigable という名前を変えたい。
 
 `RemoteConfigable` という名前を変更したい場合、そのプロトコルが何を表しているのか、その目的や使用方法に基づいて、より適切または分かりやすい名前を考えることが重要です。このプロトコルは、Firebase Remote Configから取得した設定値をデコードするためのデフォルト値を提供することが目的です。以下、いくつかの名前の候補を挙げます：
 
-1. \*\*設定可能\*\*: 直訳すると「Configurable」になりますが、このコンテキストでは「Firebase Remote Configからの設定を適用可能な」という意味合いで使います。
+1. **設定可能**: 直訳すると「Configurable」になりますが、このコンテキストでは「Firebase Remote Configからの設定を適用可能な」という意味合いで使います。
 
-2. \*\*遠隔設定対応\*\*: 「Remote Config Support」という意味で、Firebase Remote Configを通じて設定を受け取ることができるクラスや構造体に対して使います。
+2. **遠隔設定対応**: 「Remote Config Support」という意味で、Firebase Remote Configを通じて設定を受け取ることができるクラスや構造体に対して使います。
 
-3. \*\*設定項目\*\*: 「ConfigItem」に相当します。Firebase Remote Configから取得する各設定項目を表すクラスや構造体に適用する場合に使うと良いでしょう。
+3. **設定項目**: 「ConfigItem」に相当します。Firebase Remote Configから取得する各設定項目を表すクラスや構造体に適用する場合に使うと良いでしょう。
 
-4. \*\*適用設定型\*\*: 「ApplicableConfigType」という意味で、Firebase Remote Configから取得した設定を適用するための型であることを示します。
+4. **適用設定型**: 「ApplicableConfigType」という意味で、Firebase Remote Configから取得した設定を適用するための型であることを示します。
 
-5. \*\*設定反映型\*\*: 「ConfigReflectable」に相当し、Firebase Remote Configからの設定を反映できる型であることを示します。
+5. **設定反映型**: 「ConfigReflectable」に相当し、Firebase Remote Configからの設定を反映できる型であることを示します。
 
-6. \*\*設定受信型\*\*: 「ConfigReceivable」という意味で、Firebase Remote Configから設定を受け取る能力がある型を指します。
+6. **設定受信型**: 「ConfigReceivable」という意味で、Firebase Remote Configから設定を受け取る能力がある型を指します。
 
 選択する名前は、そのプロトコルがどのような役割を持ち、どのように使用されるかによって異なります。プロジェクトのコンテキストや既存の命名規則に合わせて、最も適切と思われる名前を選んでください。
 

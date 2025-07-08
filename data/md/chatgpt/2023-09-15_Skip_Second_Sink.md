@@ -8,26 +8,26 @@
 *2023/9/15 20:30:47*
 
 以下の処理で、
-.sink { \[weak self\] \_ in
+.sink { [weak self] _ in
                 LoggerContainer.log(.fulfillAllInteractionConditionRequirement(.init()))
                 self?.enableSessionEndedButton()
             }
 のブロックに来た時に、
-.sink { \[weak self\] interactionCondition in
+.sink { [weak self] interactionCondition in
                 LoggerContainer.log(.matchInteractionCondition(.init(interactionConditionId: interactionCondition.id)))
-                self?.handleTimeSeriesDataUseCase.send(interaction: .init(eventType: .conditionPartCompleted(.init(id: interactionCondition.id, eventType: interactionCondition.eventTypeName, parameters: "\\(interactionCondition.parameters)"))))
+                self?.handleTimeSeriesDataUseCase.send(interaction: .init(eventType: .conditionPartCompleted(.init(id: interactionCondition.id, eventType: interactionCondition.eventTypeName, parameters: "\(interactionCondition.parameters)"))))
             }
 を実行しないように制御する方法を教えて欲しい。
 
         interactionConditionMatchingDriver.matchedInteractionConditionPublisher
-            .sink { \[weak self\] interactionCondition in
+            .sink { [weak self] interactionCondition in
                 LoggerContainer.log(.matchInteractionCondition(.init(interactionConditionId: interactionCondition.id)))
-                self?.handleTimeSeriesDataUseCase.send(interaction: .init(eventType: .conditionPartCompleted(.init(id: interactionCondition.id, eventType: interactionCondition.eventTypeName, parameters: "\\(interactionCondition.parameters)"))))
+                self?.handleTimeSeriesDataUseCase.send(interaction: .init(eventType: .conditionPartCompleted(.init(id: interactionCondition.id, eventType: interactionCondition.eventTypeName, parameters: "\(interactionCondition.parameters)"))))
             }
             .store(in: &cancellables)
 
         interactionConditionMatchingDriver.matchedInteractionConditionIdsPublisher
-            .compactMap { \[weak self\] matchedInteractionConditionIds in
+            .compactMap { [weak self] matchedInteractionConditionIds in
                 guard let self, let requirementType = self.websiteMeasurement.requirementType else {
                     return nil
                 }
@@ -35,7 +35,7 @@
             }
             .filter { $0 }
             .first() // filter -&gt; first で条件を満たした場合の一度しか処理が通過しないようにする
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 LoggerContainer.log(.fulfillAllInteractionConditionRequirement(.init()))
                 self?.enableSessionEndedButton()
             }

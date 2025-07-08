@@ -114,7 +114,7 @@ for child in mirror.children {
 ## 👤 ユーザー
 *2023/7/22 6:12:11*
 
-以下の  dictionary\[keyName\] = child.value や dictionary\[keyName.toSnakeCase\] = child.value でこのような対応をいれたい
+以下の  dictionary[keyName] = child.value や dictionary[keyName.toSnakeCase] = child.value でこのような対応をいれたい
 
 public enum CaseFormat {
     case original
@@ -122,23 +122,23 @@ public enum CaseFormat {
 }
 
 public protocol DictionaryConvertible {
-    func asDictionary(caseFormat: CaseFormat) -&gt; \[String: Any\]
+    func asDictionary(caseFormat: CaseFormat) -&gt; [String: Any]
 }
 
 public extension DictionaryConvertible {
     // TODO: もしかすると Codable で簡単に書き直せるかもしれない
-    func asDictionary(caseFormat: CaseFormat = .original) -&gt; \[String: Any\] {
+    func asDictionary(caseFormat: CaseFormat = .original) -&gt; [String: Any] {
         let mirror = Mirror(reflecting: self)
-        var dictionary: \[String: Any\] = \[:\]
+        var dictionary: [String: Any] = [:]
 
         mirror.children.forEach { child in
             guard let keyName = child.label else { return }
 
             switch caseFormat {
             case .original:
-                dictionary\[keyName\] = child.value
+                dictionary[keyName] = child.value
             case .snakeCase:
-                dictionary\[keyName.toSnakeCase\] = child.value
+                dictionary[keyName.toSnakeCase] = child.value
             }
         }
 

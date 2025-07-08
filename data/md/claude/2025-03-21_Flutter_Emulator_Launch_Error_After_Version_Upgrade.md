@@ -12,10 +12,10 @@ Flutterのバージョンをあげてエミュレーターで起動しようと�
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 Running Gradle task 'assembleDevDebug'...
 FAILURE: Build failed with an exception.
-\* What went wrong:
+* What went wrong:
 Execution failed for task ':app:compileFlutterBuildDevDebug'.
 &gt; A problem occurred starting process 'command '/Users/sugurutakahashi/fvm/versions/3.29.2/bin/flutter''
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -93,11 +93,11 @@ cd android
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 Running Gradle task 'assembleDevDebug'...
 FAILURE: Build failed with an exception.
-\* What went wrong:
+* What went wrong:
 Execution failed for task ':gradle:compileGroovy'.
 &gt; Failed to run Gradle Worker Daemon
    &gt; A problem occurred starting process 'Gradle Worker Daemon 2'
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.
@@ -503,36 +503,36 @@ AGP（Android Gradle Plugin）やその他の依存関係のバージョンを�
 
 ### バージョンアップのデメリット
 
-1. \*\*プロジェクトの非互換性\*\*
+1. **プロジェクトの非互換性**
    - 古いコードやプラグインが新バージョンに対応していない場合、ビルドエラーが発生
    - サードパーティのライブラリが最新バージョンに追いついていないことがある
 
-2. \*\*変更への対応が必要\*\*
+2. **変更への対応が必要**
    - API変更やDeprecated機能の削除により、コードの書き換えが必要になる
    - ビルド構成ファイル（build.gradle）の構文変更に対応する必要がある
 
-3. \*\*ビルド時間の増加\*\*
+3. **ビルド時間の増加**
    - 新しいバージョンでは機能が追加され、ビルドプロセスが複雑化することがある
    - 初回ビルド時に新しいツールチェーンをダウンロードする時間がかかる
 
-4. \*\*安定性の問題\*\*
+4. **安定性の問題**
    - 最新バージョンはバグや未解決の問題を含んでいる可能性がある
    - 実運用環境での使用実績が少ないため、予期しない問題が発生する可能性
 
-5. \*\*チーム内の知識ギャップ\*\*
+5. **チーム内の知識ギャップ**
    - チームメンバーが新バージョンの変更点や新機能に慣れるまで時間がかかる
    - ドキュメントやオンラインリソースが少ない場合がある
 
-6. \*\*既存の開発環境との互換性\*\*
+6. **既存の開発環境との互換性**
    - CI/CDパイプラインの更新が必要になる可能性
    - 他のツールやプラグインとの相互作用で問題が生じる可能性
 
 ### 特にAGP 8.xへのアップグレードにおける具体的な問題
 
-- \*\*Java 17要件\*\*: JDK 17以上が必要となり、古いプロジェクトやライブラリとの互換性問題
-- \*\*Gradle DSL構文の変更\*\*: ビルドスクリプトの書き方が変わり、修正が必要
-- \*\*署名設定の変更\*\*: アプリ署名の方法が変わり、設定の更新が必要な場合がある
-- \*\*NDKバージョンの互換性\*\*: 特定のネイティブコードを使用している場合、NDK互換性の問題
+- **Java 17要件**: JDK 17以上が必要となり、古いプロジェクトやライブラリとの互換性問題
+- **Gradle DSL構文の変更**: ビルドスクリプトの書き方が変わり、修正が必要
+- **署名設定の変更**: アプリ署名の方法が変わり、設定の更新が必要な場合がある
+- **NDKバージョンの互換性**: 特定のネイティブコードを使用している場合、NDK互換性の問題
 
 ### バランスのとれたアプローチ
 
@@ -560,16 +560,16 @@ AGPを最新にすることは、必ずしも「いけない」というわけ�
 
 ### AGPを最新にすることのメリット
 
-1. \*\*新機能の利用\*\*
+1. **新機能の利用**
    - 最新のAndroid開発機能を利用できる
    - ビルドパフォーマンスの改善
    - 新しいAPIレベルのサポート
 
-2. \*\*セキュリティとバグ修正\*\*
+2. **セキュリティとバグ修正**
    - 既知の問題が修正されている
    - セキュリティの脆弱性が対応済み
 
-3. \*\*長期的なメンテナンス\*\*
+3. **長期的なメンテナンス**
    - 古いバージョンはサポートが終了する可能性がある
    - 将来的なアップデートが容易になる
 
@@ -577,18 +577,18 @@ AGPを最新にすることは、必ずしも「いけない」というわけ�
 
 あなたの場合、Meerkat (Android Studio 2024.3.1)を使用していることを考えると、最新のAGP (8.7.x系)に対応させるのは理にかなっています。ただし、以下のポイントに注意しながら進めると良いでしょう：
 
-1. \*\*段階的なアップグレード\*\*
+1. **段階的なアップグレード**
    - 7.3.1から一気に8.7.3に上げるのではなく、まず8.0や8.1などの中間バージョンを試してみる
    - 各ステップでビルドとテストを行う
 
-2. \*\*変更点の把握\*\*
+2. **変更点の把握**
    - AGPの各バージョンでの変更点を確認する
    - 特にbreaking changesに注意する
 
-3. \*\*プロジェクトのバックアップ\*\*
+3. **プロジェクトのバックアップ**
    - git等のバージョン管理を活用し、いつでも戻れるようにしておく
 
-4. \*\*依存関係の確認\*\*
+4. **依存関係の確認**
    - サードパーティライブラリが最新AGPに対応しているか確認
    - Gradle、Kotlin、JDKなどの関連バージョンも適切に更新
 
@@ -602,11 +602,11 @@ AGPを最新にすることは、必ずしも「いけない」というわけ�
 Meerkat Android Studio 2024.3.1 にアップデートしたことによって色々動かなくなっているように思える
 Meerkat での最新バージョンで適応されるバージョンを全て適応させたい。
 
-distributionBase=GRADLE\_USER\_HOME
+distributionBase=GRADLE_USER_HOME
 distributionPath=wrapper/dists
-zipStoreBase=GRADLE\_USER\_HOME
+zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
-distributionUrl=https\\://services.gradle.org/distributions/gradle-8.9-all.zip
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-all.zip
 
 ---
 
@@ -838,7 +838,7 @@ plugins {
 *2025/3/21 21:36:45*
 
 これはなんなのか？
-distributionUrl=https\\://services.gradle.org/distributions/gradle-8.9-all.zip
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-all.zip
 
 あとこれは？
 ndkVersion = "27.0.12077973"
@@ -850,14 +850,14 @@ ndkVersion = "27.0.12077973"
 
 それぞれについて説明します：
 
-### `distributionUrl=https\\://services.gradle.org/distributions/gradle-8.9-all.zip`
+### `distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-all.zip`
 
 これは `gradle-wrapper.properties` ファイルにある設定で、プロジェクトが使用する Gradle のバージョンを指定しています。
 
-- \*\*役割\*\*: Gradle ビルドツール自体のバージョンを指定
-- \*\*意味\*\*: Gradle 8.9 バージョンをダウンロードして使用する
-- \*\*"-all"\*\*: ドキュメントやソースコードを含む完全なディストリビューション
-- \*\*自動ダウンロード\*\*: 指定されたバージョンがまだマシンにない場合、自動的にダウンロードされる
+- **役割**: Gradle ビルドツール自体のバージョンを指定
+- **意味**: Gradle 8.9 バージョンをダウンロードして使用する
+- **"-all"**: ドキュメントやソースコードを含む完全なディストリビューション
+- **自動ダウンロード**: 指定されたバージョンがまだマシンにない場合、自動的にダウンロードされる
 
 これは Android Gradle Plugin (AGP) のバージョンとは別物で、ビルドシステム本体のバージョンを示します。AGP と Gradle 自体には互換性の要件があり、たとえば AGP 8.11.1 は Gradle 8.0 以上を必要とします。
 
@@ -865,9 +865,9 @@ ndkVersion = "27.0.12077973"
 
 これは Android のネイティブ開発キット (NDK) のバージョンを指定しています。
 
-- \*\*役割\*\*: C/C++ コードをコンパイルするための NDK バージョンを指定
-- \*\*用途\*\*: JNI (Java Native Interface) や CMake を使用したネイティブコードがプロジェクトに含まれる場合に使用
-- \*\*意味\*\*: プロジェクトは NDK バージョン 27.0.12077973 を使用する
+- **役割**: C/C++ コードをコンパイルするための NDK バージョンを指定
+- **用途**: JNI (Java Native Interface) や CMake を使用したネイティブコードがプロジェクトに含まれる場合に使用
+- **意味**: プロジェクトは NDK バージョン 27.0.12077973 を使用する
 
 NDK はネイティブコード（C/C++）を Android アプリの一部として開発する際に必要です。プロジェクトがネイティブコードを使用しない場合でも、この設定によって将来ネイティブコードを追加する際の互換性が確保されます。
 
@@ -883,10 +883,10 @@ NDK はネイティブコード（C/C++）を Android アプリの一部とし�
 Launching lib/main.dart on sdk gphone64 arm64 in debug mode...
 
 FAILURE: Build failed with an exception.
-\* Where:
-Settings file '/Users/sugurutakahashi/git/gallusys/snpit\_guild\_app/android/settings.gradle' line: 21
-\* What went wrong:
-Plugin \[id: 'com.android.application', version: '8.11.1', apply: false\] was not found in any of the following sources:
+* Where:
+Settings file '/Users/sugurutakahashi/git/gallusys/snpit_guild_app/android/settings.gradle' line: 21
+* What went wrong:
+Plugin [id: 'com.android.application', version: '8.11.1', apply: false] was not found in any of the following sources:
 - Gradle Core Plugins (plugin is not in 'org.gradle' namespace)
 - Included Builds (No included builds contain this plugin)
 - Plugin Repositories (could not resolve plugin artifact 'com.android.application:com.android.application.gradle.plugin:8.11.1')
@@ -894,7 +894,7 @@ Plugin \[id: 'com.android.application', version: '8.11.1', apply: false\] was no
  Google
  MavenRepo
  Gradle Central Plugin Repository
-\* Try:
+* Try:
 &gt; Run with --stacktrace option to get the stack trace.
 &gt; Run with --info or --debug option to get more log output.
 &gt; Run with --scan to get full insights.

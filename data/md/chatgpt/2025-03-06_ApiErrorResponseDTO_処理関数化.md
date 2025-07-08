@@ -10,17 +10,17 @@
 このApiErrorResponseDTOに変換する処理を関数化してほしい
 
 final errorResponse = error.response?.data as Map&lt;String, dynamic&gt;?;
-      final code = errorResponse?\['code'\] as num?;
-      final statusCode = errorResponse?\['statusCode'\] as num?;
+      final code = errorResponse?['code'] as num?;
+      final statusCode = errorResponse?['statusCode'] as num?;
       ApiErrorResponseDTOErrorTypeEnum? errorType;
-      if (errorResponse?\['errorType'\] != null) {
-        final errorTypeStr = errorResponse?\['errorType'\] as String;
+      if (errorResponse?['errorType'] != null) {
+        final errorTypeStr = errorResponse?['errorType'] as String;
         errorType = ApiErrorResponseDTOErrorTypeEnum.values.firstWhere(
           (e) =&gt; e.name == errorTypeStr,
           orElse: () =&gt; ApiErrorResponseDTOErrorTypeEnum.UNKNOWN,
         );
       }
-      final errorMessage = errorResponse?\['errorMessage'\] as String?;
+      final errorMessage = errorResponse?['errorMessage'] as String?;
       final apiErrorResponseDTO = ApiErrorResponseDTO(
         (b) =&gt; b
           ..code = code
@@ -30,7 +30,7 @@ final errorResponse = error.response?.data as Map&lt;String, dynamic&gt;?;
       );
 
 @riverpod
-class LeaveGuildNotifier extends \_$LeaveGuildNotifier {
+class LeaveGuildNotifier extends _$LeaveGuildNotifier {
   @override
   Future&lt;String?&gt; build() async =&gt; null;
 
@@ -54,17 +54,17 @@ class LeaveGuildNotifier extends \_$LeaveGuildNotifier {
       dioExceptionHandling(error);
       // checkForApiError(error.response?.data);
       final errorResponse = error.response?.data as Map&lt;String, dynamic&gt;?;
-      final code = errorResponse?\['code'\] as num?;
-      final statusCode = errorResponse?\['statusCode'\] as num?;
+      final code = errorResponse?['code'] as num?;
+      final statusCode = errorResponse?['statusCode'] as num?;
       ApiErrorResponseDTOErrorTypeEnum? errorType;
-      if (errorResponse?\['errorType'\] != null) {
-        final errorTypeStr = errorResponse?\['errorType'\] as String;
+      if (errorResponse?['errorType'] != null) {
+        final errorTypeStr = errorResponse?['errorType'] as String;
         errorType = ApiErrorResponseDTOErrorTypeEnum.values.firstWhere(
           (e) =&gt; e.name == errorTypeStr,
           orElse: () =&gt; ApiErrorResponseDTOErrorTypeEnum.UNKNOWN,
         );
       }
-      final errorMessage = errorResponse?\['errorMessage'\] as String?;
+      final errorMessage = errorResponse?['errorMessage'] as String?;
       final apiErrorResponseDTO = ApiErrorResponseDTO(
         (b) =&gt; b
           ..code = code
@@ -90,7 +90,7 @@ class LeaveGuildNotifier extends \_$LeaveGuildNotifier {
 
 APIエラーメッセージを解釈している
 
-\*\*エラーハンドリングの最適化\*\*
+**エラーハンドリングの最適化**
 
 エラーメッセージを `ApiErrorResponseDTO` に変換する関数を構築中。エラーコード、ステータスコード、エラータイプ、エラーメッセージを適切に抽出し、変換を効率化している。
 

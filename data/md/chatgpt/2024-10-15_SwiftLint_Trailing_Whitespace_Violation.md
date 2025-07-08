@@ -9,12 +9,12 @@
 
 $ swift run --package-path DaVinciDevToolsPackage mint run swiftlint autocorrect daVinci/Source/UI/FreeTrialPromotion/CreditExplanation/CreditExplanationView.swift
 Building for debugging...
-\[1/1\] Write swift-version-1A65EA83E6E01767.txt
+[1/1] Write swift-version-1A65EA83E6E01767.txt
 Build of product 'mint' complete! (0.12s)
-warning: The "validates\_start\_with\_lowercase" configuration now expects a severity (warning or error). The boolean value 'true' will still enable it as an error. It is now deprecated and will be removed in a future release.
+warning: The "validates_start_with_lowercase" configuration now expects a severity (warning or error). The boolean value 'true' will still enable it as an error. It is now deprecated and will be removed in a future release.
 Linting Swift files at paths autocorrect, daVinci/Source/UI/FreeTrialPromotion/CreditExplanation/CreditExplanationView.swift
 Linting 'CreditExplanationView.swift' (1/1)
-/Users/sugurutakahashi/git/daVinciAppIOS/daVinci/Source/UI/FreeTrialPromotion/CreditExplanation/CreditExplanationView.swift:11:1: warning: Trailing Whitespace Violation: Lines should not have trailing whitespace (trailing\_whitespace)
+/Users/sugurutakahashi/git/daVinciAppIOS/daVinci/Source/UI/FreeTrialPromotion/CreditExplanation/CreditExplanationView.swift:11:1: warning: Trailing Whitespace Violation: Lines should not have trailing whitespace (trailing_whitespace)
 Done linting! Found 1 violation, 0 serious in 1 file.
 
 ---

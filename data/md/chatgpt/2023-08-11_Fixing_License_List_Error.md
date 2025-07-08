@@ -7,12 +7,12 @@
 ## 👤 ユーザー
 *2023/8/11 11:01:56*
 
-以下のコードでCannot convert return expression of type '()' to return type '\[License\]'というエラーになる
+以下のコードでCannot convert return expression of type '()' to return type '[License]'というエラーになる
 
 final public class LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     public init() {}
     
-    public var licenseList: \[License\] {
+    public var licenseList: [License] {
         LicensesPlugin.licenses.map { License(from: $0) }.filter { !$0.text.isEmpty }.append(contentsOf: NonSPMLibrary.allCases.map { License(from: $0) })
     }
 }

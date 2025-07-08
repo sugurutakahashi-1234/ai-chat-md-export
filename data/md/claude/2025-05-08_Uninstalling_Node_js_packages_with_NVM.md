@@ -14,11 +14,11 @@
 =&gt; If you wish to uninstall them at a later point (or re-install them under your
 =&gt; `nvm` node installs), you can remove them from the system Node as follows:
      $ nvm use system
-     $ npm uninstall -g a\_module
+     $ npm uninstall -g a_module
 =&gt; Close and reopen your terminal to start using nvm or run the following to use it now:
-export NVM\_DIR="$HOME/.nvm"
-\[ -s "$NVM\_DIR/nvm.sh" \] && \\. "$NVM\_DIR/nvm.sh"  # This loads nvm
-\[ -s "$NVM\_DIR/bash\_completion" \] && \\. "$NVM\_DIR/bash\_completion"  # This loads nvm bash\_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ---
 

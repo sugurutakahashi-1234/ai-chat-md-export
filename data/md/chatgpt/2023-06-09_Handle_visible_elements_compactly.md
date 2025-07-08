@@ -9,21 +9,21 @@
 
 この処理をcompactMapに変えて欲しい
 
-var \_elements = \[VisibleElement\]()
+var _elements = [VisibleElement]()
         elements.forEach {
-            guard let id = $0\["id"\] as? String,
-                  let rect = $0\["boundingClientRect"\] as? \[String: Double\],
+            guard let id = $0["id"] as? String,
+                  let rect = $0["boundingClientRect"] as? [String: Double],
                   let domRect = DOMRect.from(dict: rect)
             else {
                 return
             }
-            \_elements.append(VisibleElement(
+            _elements.append(VisibleElement(
                 id: id,
                 boundingClientRect: domRect
             ))
         }
         delegate?.visibleElementsDetected(VisibleElements(
-            elements: \_elements,
+            elements: _elements,
             datetime: Date()
         )
 

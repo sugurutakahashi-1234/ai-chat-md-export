@@ -103,46 +103,46 @@ TestFlightの招待リンクに含まれる `join/xxxxxxxx` の `xxxxxxxx` の�
 
 ---
 
-### \*\*方法1: TestFlightアプリから取得\*\*
-1. \*\*TestFlightを開く\*\*
-2. \*\*対象アプリを選択\*\*
-3. \*\*「TestFlightの招待リンクを共有」\*\*
-4. \*\*コピーしたリンクを確認\*\*
+### **方法1: TestFlightアプリから取得**
+1. **TestFlightを開く**
+2. **対象アプリを選択**
+3. **「TestFlightの招待リンクを共有」**
+4. **コピーしたリンクを確認**
    - `https://testflight.apple.com/join/xxxxxxxx`
    - `xxxxxxxx` の部分が必要なID
 
 ---
 
-### \*\*方法2: App Store Connect から取得\*\*
-1. \[App Store Connect\](https://appstoreconnect.apple.com/) にログイン
-2. \*\*TestFlightタブを開く\*\*
-3. \*\*「パブリックリンクを取得」\*\*
+### **方法2: App Store Connect から取得**
+1. [App Store Connect](https://appstoreconnect.apple.com/) にログイン
+2. **TestFlightタブを開く**
+3. **「パブリックリンクを取得」**
 4. 生成されたリンクをコピーすると、 `https://testflight.apple.com/join/xxxxxxxx` の形式になっている
 
 ---
 
-### \*\*方法3: すでにTestFlightにインストール済みのアプリから取得\*\*
-1. \*\*`info.plist` を確認\*\*
+### **方法3: すでにTestFlightにインストール済みのアプリから取得**
+1. **`info.plist` を確認**
    - TestFlightのアプリに関する情報が `info.plist` に含まれている場合がある（ただし、リンクそのものはない）
    
-2. \*\*アプリの `bundleIdentifier` から推測\*\*
+2. **アプリの `bundleIdentifier` から推測**
    - `com.example.appname` を `https://testflight.apple.com/join/` に組み合わせる
 
 ---
 
-### \*\*方法4: 直接TestFlightのリンクを開く\*\*
+### **方法4: 直接TestFlightのリンクを開く**
 1. `https://testflight.apple.com/v1/applications` のエンドポイントを探す（直接アクセスは不可）
 2. Macの`Console.app`（コンソール）で、TestFlightのネットワークリクエストを監視し、TestFlightアプリがアクセスしているURLを探す
 
 ---
 
-### \*\*方法5: TestFlightのログを取得\*\*
+### **方法5: TestFlightのログを取得**
 TestFlightの動作ログを取得して、どのURLにアクセスしているか確認することもできます。
 
 ---
 
-### \*\*結論\*\*
-一番簡単なのは \*\*TestFlightアプリ or App Store Connect から直接取得\*\* する方法です。  
+### **結論**
+一番簡単なのは **TestFlightアプリ or App Store Connect から直接取得** する方法です。  
 もしリンクが消えてしまった場合は、App Store Connectで再度作成できます！
 
 ---

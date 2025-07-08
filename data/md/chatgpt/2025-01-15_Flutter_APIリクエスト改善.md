@@ -11,15 +11,15 @@ Flutterで以下を使ってリクエストした後に
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/api\_provider.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/api_provider.dart';
 
-part 'upload\_photo.g.dart';
+part 'upload_photo.g.dart';
 
 @riverpod
-class UploadPhotoNotifier extends \_$UploadPhotoNotifier {
+class UploadPhotoNotifier extends _$UploadPhotoNotifier {
   @override
   Future&lt;PhotoUploadResponseDTOData?&gt; build() async =&gt; null;
 
@@ -49,15 +49,15 @@ class UploadPhotoNotifier extends \_$UploadPhotoNotifier {
 
 /// Photo data
 @freezed
-class PhotoUploadResponseDTOData with \_$PhotoUploadResponseDTOData {
+class PhotoUploadResponseDTOData with _$PhotoUploadResponseDTOData {
   factory PhotoUploadResponseDTOData({
     @JsonKey(name: 'hash') required String? hash,
     @JsonKey(name: 'url') required String? url,
     @JsonKey(name: 'message') String? message,
-  }) = \_PhotoUploadResponseDTOData;
+  }) = _PhotoUploadResponseDTOData;
 
   factory PhotoUploadResponseDTOData.fromJson(Map&lt;String, dynamic&gt; jsonMap) =&gt;
-      \_$PhotoUploadResponseDTODataFromJson(jsonMap);
+      _$PhotoUploadResponseDTODataFromJson(jsonMap);
 }
 
 ---

@@ -12,54 +12,54 @@
 name: Project Board PR Handler
 
 on:
-  pull\_request:
+  pull_request:
     types:
       - opened
       - reopened
-      - ready\_for\_review
+      - ready_for_review
       - closed
 
 env:
-  gh\_token: ${{ secrets.IOS\_TEAM\_PAT }} # IOS\_TEAM\_PAT: project, read:org, repo
-  gh\_organization: suguruTakahashi-1234
-  project\_id: 1
-  in\_review\_issue: In Review (Issue)
-  in\_review\_pr: 👀 In Review (PR)
-  qa\_accept: QA Accept
+  gh_token: ${{ secrets.IOS_TEAM_PAT }} # IOS_TEAM_PAT: project, read:org, repo
+  gh_organization: suguruTakahashi-1234
+  project_id: 1
+  in_review_issue: In Review (Issue)
+  in_review_pr: 👀 In Review (PR)
+  qa_accept: QA Accept
   done: ✅ Done
 
 jobs:
   # issue をリンクさせて移動させているが自動で closed してしまうので微妙である。その PR のコミットメッセージに含まれる issue 番号(#xxx) の一覧をリストで取得して、そのリストに対して、eonsteinhaeuser/project-beta-automations@v2.2.1 を使って、移動させるのが理想
-  move\_issue\_on\_pr\_open:
-    name: move\_issue\_on\_pr\_open
+  move_issue_on_pr_open:
+    name: move_issue_on_pr_open
     runs-on: ubuntu-latest
-    if: github.event\_name == 'pull\_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready\_for\_review')
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready_for_review')
     steps:
-      - name: Move to ${{ env.in\_review\_issue }}
+      - name: Move to ${{ env.in_review_issue }}
         uses: leonsteinhaeuser/project-beta-automations@v2.2.1
         with:
-          gh\_token: ${{ env.gh\_token }}
-          user: ${{ env.gh\_organization }}
-          project\_id:  ${{ env.project\_id }}
-          resource\_node\_id: ${{ github.event.pull\_request.node\_id }}
-          status\_value: ${{ env.in\_review\_issue }}
-          move\_related\_issues: true
+          gh_token: ${{ env.gh_token }}
+          user: ${{ env.gh_organization }}
+          project_id:  ${{ env.project_id }}
+          resource_node_id: ${{ github.event.pull_request.node_id }}
+          status_value: ${{ env.in_review_issue }}
+          move_related_issues: true
 
-  move\_pr\_on\_pr\_open:
-    name: move\_pr\_on\_pr\_open
+  move_pr_on_pr_open:
+    name: move_pr_on_pr_open
     runs-on: ubuntu-latest
-    needs: move\_issue\_on\_pr\_open
-    if: github.event\_name == 'pull\_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready\_for\_review')
+    needs: move_issue_on_pr_open
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready_for_review')
     steps:
-      - name: Move to ${{ env.in\_review\_pr }}
+      - name: Move to ${{ env.in_review_pr }}
         uses: leonsteinhaeuser/project-beta-automations@v2.2.1
         with:
-          gh\_token: ${{ env.gh\_token }}
-          user: ${{ env.gh\_organization }}
-          project\_id:  ${{ env.project\_id }}
-          resource\_node\_id: ${{ github.event.pull\_request.node\_id }}
-          status\_value: ${{ env.in\_review\_pr }}
-          move\_related\_issues: false
+          gh_token: ${{ env.gh_token }}
+          user: ${{ env.gh_organization }}
+          project_id:  ${{ env.project_id }}
+          resource_node_id: ${{ github.event.pull_request.node_id }}
+          status_value: ${{ env.in_review_pr }}
+          move_related_issues: false
 
 ---
 
@@ -138,7 +138,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/16 13:28:09*
 
-resource\_node\_ids: ${{ env.issues }} は存在しない。resource\_node\_id を一つづつ渡すように修正してほしい。
+resource_node_ids: ${{ env.issues }} は存在しない。resource_node_id を一つづつ渡すように修正してほしい。
 
 ---
 
@@ -335,7 +335,7 @@ jobs:
 
 違う違う。
 
-move\_issue\_on\_pr\_open で leonsteinhaeuser/project-beta-automations@v2.2.1 を使ってほしいんだ
+move_issue_on_pr_open で leonsteinhaeuser/project-beta-automations@v2.2.1 を使ってほしいんだ
 
 ---
 
@@ -522,7 +522,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/16 13:34:21*
 
-resource\_node\_id は node\_id が必要みたい。
+resource_node_id は node_id が必要みたい。
 
 ---
 
@@ -645,7 +645,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/16 14:10:56*
 
-get\_issue\_node\_ids せずとも issue.node\_id でアクセスできないものなの？
+get_issue_node_ids せずとも issue.node_id でアクセスできないものなの？
 
 ---
 

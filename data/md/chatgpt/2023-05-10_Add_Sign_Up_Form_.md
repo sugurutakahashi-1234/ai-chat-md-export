@@ -22,7 +22,7 @@ public struct LoginView: View {
     public init() {}
 
     public var body: some View {
-        if #available(iOS 16.0, \*) {
+        if #available(iOS 16.0, *) {
             NavigationStack {
                 ScrollView(.vertical) {
                     VStack {
@@ -36,7 +36,7 @@ public struct LoginView: View {
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
 
-                        Text("Welcome, \\(loginPresenter.idToken)")
+                        Text("Welcome, \(loginPresenter.idToken)")
                             .padding()
 
                         Button {
@@ -101,7 +101,7 @@ class LoginPresenter: ObservableObject {
             try await authManager.signUp(username: "", password: password, email: email)
             print("User created successfully")
         } catch {
-            alertMessage = "Error creating user: \\(error.localizedDescription)"
+            alertMessage = "Error creating user: \(error.localizedDescription)"
             showAlert = true
         }
     }
@@ -112,7 +112,7 @@ class LoginPresenter: ObservableObject {
             try await authManager.signIn(password: password, email: email)
             print("User signed in successfully")
         } catch {
-            alertMessage = "Error signing in: \\(error.localizedDescription)"
+            alertMessage = "Error signing in: \(error.localizedDescription)"
             showAlert = true
         }
     }
@@ -122,7 +122,7 @@ class LoginPresenter: ObservableObject {
         do {
             try await authManager.signOut()
         } catch {
-            alertMessage = "Error signing in: \\(error.localizedDescription)"
+            alertMessage = "Error signing in: \(error.localizedDescription)"
             showAlert = true
         }
     }
@@ -1231,10 +1231,10 @@ func configureAmplify() {
 Amplifyのエラー一覧は、公式のGitHubリポジトリ内にある各プラグインのソースコードで定義されています。エラーに関する情報は、以下のリンクでそれぞれのプラグインのソースコードを参照してください。
 
 1. Auth (AWSCognitoAuthPlugin) エラー:
-- \[Amplify.AuthError\](https://github.com/aws-amplify/amplify-ios/blob/main/Amplify/Categories/Auth/Error/AuthError.swift)
+- [Amplify.AuthError](https://github.com/aws-amplify/amplify-ios/blob/main/Amplify/Categories/Auth/Error/AuthError.swift)
 
 2. Storage (AWSS3StoragePlugin) エラー:
-- \[Amplify.StorageError\](https://github.com/aws-amplify/amplify-ios/blob/main/Amplify/Categories/Storage/Error/StorageError.swift)
+- [Amplify.StorageError](https://github.com/aws-amplify/amplify-ios/blob/main/Amplify/Categories/Storage/Error/StorageError.swift)
 
 上記のリンクから、それぞれのプラグインで定義されているエラーの一覧と説明を確認できます。ただし、これらのエラーは一部のみであり、Amplify全体で発生する可能性のあるエラーをすべて網羅しているわけではありません。他のプラグインやサービスに関するエラーを確認するには、対応するソースコードを参照してください。
 

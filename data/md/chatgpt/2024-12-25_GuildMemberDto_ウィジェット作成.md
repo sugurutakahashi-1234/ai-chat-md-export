@@ -12,7 +12,7 @@ member（GuildMemberDto）を引数にしたプライベートウィジェット
 ListView.builder(
                               itemCount: guildInfo.guildMembers?.length ?? 0,
                               itemBuilder: (context, index) {
-                                final member = guildInfo.guildMembers!\[index\];
+                                final member = guildInfo.guildMembers![index];
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 8,
@@ -28,7 +28,7 @@ ListView.builder(
                                     child: Padding(
                                       padding: const EdgeInsets.all(12),
                                       child: Row(
-                                        children: \[
+                                        children: [
                                           CircleAvatar(
                                             radius: 16,
                                             backgroundImage: NetworkImage(
@@ -41,7 +41,7 @@ ListView.builder(
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
-                                              children: \[
+                                              children: [
                                                 Text(
                                                   maxLines: 1,
                                                   overflow:
@@ -80,21 +80,21 @@ ListView.builder(
                                                     ),
                                                   ),
                                                 ),
-                                              \],
+                                              ],
                                             ),
                                           ),
                                           const SizedBox(width: 12),
                                           Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.end,
-                                            children: \[
-                                              \_buildStatRow('Q', 13),
-                                              \_buildStatRow('E', 48),
-                                              \_buildStatRow('L', 7),
-                                              \_buildStatRow('B', 5),
-                                            \],
+                                            children: [
+                                              _buildStatRow('Q', 13),
+                                              _buildStatRow('E', 48),
+                                              _buildStatRow('L', 7),
+                                              _buildStatRow('B', 5),
+                                            ],
                                           ),
-                                        \],
+                                        ],
                                       ),
                                     ),
                                   ),

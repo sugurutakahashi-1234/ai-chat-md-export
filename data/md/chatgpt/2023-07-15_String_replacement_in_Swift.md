@@ -7,13 +7,13 @@
 ## 👤 ユーザー
 *2023/7/15 17:03:07*
 
-Swiftで以下のようなoutputDirectoryPathの文字列について/をすべて\_に変更する処理を書いて欲しい。
+Swiftで以下のようなoutputDirectoryPathの文字列について/をすべて_に変更する処理を書いて欲しい。
 
-let measurementId = "measurement\_id\_1"
-        let userId = "user\_id\_2"
-        let sessionId = "session\_id\_3"
+let measurementId = "measurement_id_1"
+        let userId = "user_id_2"
+        let sessionId = "session_id_3"
         let fileExtension = "mp4"
-        let outputDirectoryPath = "recordings/measurements/\\(measurementId)/users/\\(userId)/sessions\\(sessionId).\\(fileExtension)"
+        let outputDirectoryPath = "recordings/measurements/\(measurementId)/users/\(userId)/sessions\(sessionId).\(fileExtension)"
 
 ---
 

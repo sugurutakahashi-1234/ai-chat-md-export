@@ -9,7 +9,7 @@
 
 以下のコードでエラーになったんだけどどう修正すればいい？
 
-AVCaptureDevice.requestAccess(for: .video) { \[weak self\] \_ in
+AVCaptureDevice.requestAccess(for: .video) { [weak self] _ in
             await MainActor.run {
                 self?.cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
             }

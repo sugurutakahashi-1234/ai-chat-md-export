@@ -387,7 +387,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/16 0:17:46*
 
-secrets.GITHUB\_TOKENはデフォルトだとダメなんだっけ？
+secrets.GITHUB_TOKENはデフォルトだとダメなんだっけ？
 
 ---
 
@@ -687,7 +687,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/16 9:35:54*
 
-結局 const projectId = 'YOUR\_PROJECT\_ID'; // ここにプロジェクトIDを入力 で定義した projectIdを使っていない気がする
+結局 const projectId = 'YOUR_PROJECT_ID'; // ここにプロジェクトIDを入力 で定義した projectIdを使っていない気がする
 
 ---
 

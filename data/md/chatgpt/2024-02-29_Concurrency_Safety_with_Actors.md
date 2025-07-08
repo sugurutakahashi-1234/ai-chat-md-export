@@ -14,17 +14,17 @@ Static property 'loggers' is not concurrency-safe because it is non-isolated glo
 このようなエラーが発生している。
 
 public protocol LoggerContainable {
-    func log(\_: LogEventType, level: LogLevel, file: String, function: String, line: Int)
+    func log(_: LogEventType, level: LogLevel, file: String, function: String, line: Int)
 }
 
 public struct LoggerContainer {
-    private static var loggers: \[any LoggerContainable\] = \[\]
+    private static var loggers: [any LoggerContainable] = []
 
     public static func append(logger: some LoggerContainable) {
         loggers.append(logger)
     }
 
-    public static func log(\_ event: LogEventType, level: LogLevel = .notice, file: String = #file, function: String = #function, line: Int = #line) {
+    public static func log(_ event: LogEventType, level: LogLevel = .notice, file: String = #file, function: String = #function, line: Int = #line) {
         loggers.forEach { $0.log(event, level: level, file: file.lastPathComponent, function: function, line: line) }
     }
 }

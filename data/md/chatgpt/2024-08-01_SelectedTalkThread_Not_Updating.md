@@ -10,7 +10,7 @@
 selectedTalkThread がスワイプによって格納できていない。どうしてだろう。
 
 final class ThreadListPresenter&lt;Dependency: ThreadListPresenterDependency&gt;: ObservableObject {
-    @Published private(set) var talkThreads: \[TalkThread\] = \[\]
+    @Published private(set) var talkThreads: [TalkThread] = []
     @Published var selectedTalkThread: TalkThread?
 }
 
@@ -20,13 +20,13 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
 
     public init(dependency: Dependency, talkBox: TalkBox) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: ThreadListPresenter(dependency: dependency, talkBox: talkBox))
+        _presenter = .init(wrappedValue: ThreadListPresenter(dependency: dependency, talkBox: talkBox))
     }
 
     public var body: some View {
         VStack {
             // iOS 16 では pageing ができないため iOS 16 対応するのであれば 別途対応する
-            if #available(iOS 17.0, \*) {
+            if #available(iOS 17.0, *) {
                 ThreadListScrollView(
                     selectedTalkThread: $presenter.selectedTalkThread,
                     talkThreads: presenter.talkThreads,
@@ -70,17 +70,17 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
         }
         .sheet(isPresented: $presenter.showStampListView) {
             if let talkThread = presenter.selectedTalkThread {
-                if #available(iOS 16.4, \*) {
+                if #available(iOS 16.4, *) {
                     StampListView(dependency: dependency, talkThread: talkThread)
                         .ignoresSafeArea(edges: .bottom)
                         .navigationStacked()
-                        .presentationDetents(\[.fraction(0.8)\])
-                        .presentationBackground(.clear) // @available(iOS 16.4, \*)
+                        .presentationDetents([.fraction(0.8)])
+                        .presentationBackground(.clear) // @available(iOS 16.4, *)
                 } else {
                     StampListView(dependency: dependency, talkThread: talkThread)
                         .ignoresSafeArea(edges: .bottom)
                         .navigationStacked()
-                        .presentationDetents(\[.fraction(0.8)\])
+                        .presentationDetents([.fraction(0.8)])
                 }
             }
         }
@@ -99,27 +99,27 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
     }
 }
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 struct ThreadListScrollView: View {
     @Binding var selectedTalkThread: TalkThread?
-    let talkThreads: \[TalkThread\]
+    let talkThreads: [TalkThread]
     let spacing: CGFloat
     let padding: CGFloat
     let onTapTalkThread: () -&gt; Void
     let onTapStampReaction: () -&gt; Void
     let onDownSwipe: () -&gt; Void
     let onUpSwipe: () -&gt; Void
-    let volumeLevels: \[Double\]
+    let volumeLevels: [Double]
     let volumeLevelColumns: Int
     let isPlaying: Bool
 
-    @State private var activeOffsetY: \[String: CGFloat\] = \[:\]
+    @State private var activeOffsetY: [String: CGFloat] = [:]
 
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: spacing) {
-                    ForEach(talkThreads, id: \\.id) { talkThread in
+                    ForEach(talkThreads, id: \.id) { talkThread in
                         ZStack {
                             VStack {
                                 Text("↓スワイプでコメント")
@@ -172,7 +172,7 @@ struct ThreadListScrollView: View {
                                                 }
                                             }
                                         }
-                                        .environment(\\.layoutDirection, .rightToLeft)
+                                        .environment(\.layoutDirection, .rightToLeft)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .frame(height: 80)
@@ -191,7 +191,7 @@ struct ThreadListScrollView: View {
                                 }
                                 .animation(.easeInOut, value: isPlaying)
                             }
-                            .offset(y: activeOffsetY\[talkThread.id\] ?? 0)
+                            .offset(y: activeOffsetY[talkThread.id] ?? 0)
                             // 普通の .gesture だとスクロールと干渉してスクロールできなくなる
                             .simultaneousGesture(
                                 DragGesture()
@@ -200,7 +200,7 @@ struct ThreadListScrollView: View {
 
                                         // 下スワイプのみ許可
                                         if newOffset &gt; 0 {
-                                            activeOffsetY\[talkThread.id\] = newOffset
+                                            activeOffsetY[talkThread.id] = newOffset
                                         }
 
                                         // 上スワイプは許可しないが onUpSwipe を実行
@@ -210,26 +210,26 @@ struct ThreadListScrollView: View {
 
                                         // 下スワイプ
                                         if newOffset &gt; 100 {
-                                            activeOffsetY\[talkThread.id\] = 0
+                                            activeOffsetY[talkThread.id] = 0
                                             onDownSwipe()
                                         }
                                     }
-                                    .onEnded { \_ in
-                                        activeOffsetY\[talkThread.id\] = 0
+                                    .onEnded { _ in
+                                        activeOffsetY[talkThread.id] = 0
                                     }
                             )
                             .onTapGesture {
                                 onTapTalkThread()
                             }
                             // offsetY = 0 としたときになめらかにアニメーションするように
-                            .animation(.default, value: activeOffsetY\[talkThread.id\])
+                            .animation(.default, value: activeOffsetY[talkThread.id])
                         }
-                        .frame(width: geometry.size.width - padding \* 2)
+                        .frame(width: geometry.size.width - padding * 2)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         // これがないと長押しのタップ領域が正しく反映されない
                         // Ref: 【SwiftUI】contentShapeでTap領域を広げる - https://qiita.com/shiz/items/96585bddbc442683b78c
                         .contentShape(RoundedRectangle(cornerRadius: 8))
-                        // Ref: \[SwiftUI\] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
+                        // Ref: [SwiftUI] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
                         .contextMenu {
                             Button {
                                 onTapStampReaction()
@@ -566,13 +566,13 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
 
     public init(dependency: Dependency, talkBox: TalkBox) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: ThreadListPresenter(dependency: dependency, talkBox: talkBox))
+        _presenter = .init(wrappedValue: ThreadListPresenter(dependency: dependency, talkBox: talkBox))
     }
 
     public var body: some View {
         VStack {
             // iOS 16 では pageing ができないため iOS 16 対応するのであれば 別途対応する
-            if #available(iOS 17.0, \*) {
+            if #available(iOS 17.0, *) {
                 ThreadListScrollView(
                     selectedTalkThread: $presenter.selectedTalkThread,
                     talkThreads: presenter.talkThreads,
@@ -616,17 +616,17 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
         }
         .sheet(isPresented: $presenter.showStampListView) {
             if let talkThread = presenter.selectedTalkThread {
-                if #available(iOS 16.4, \*) {
+                if #available(iOS 16.4, *) {
                     StampListView(dependency: dependency, talkThread: talkThread)
                         .ignoresSafeArea(edges: .bottom)
                         .navigationStacked()
-                        .presentationDetents(\[.fraction(0.8)\])
-                        .presentationBackground(.clear) // @available(iOS 16.4, \*)
+                        .presentationDetents([.fraction(0.8)])
+                        .presentationBackground(.clear) // @available(iOS 16.4, *)
                 } else {
                     StampListView(dependency: dependency, talkThread: talkThread)
                         .ignoresSafeArea(edges: .bottom)
                         .navigationStacked()
-                        .presentationDetents(\[.fraction(0.8)\])
+                        .presentationDetents([.fraction(0.8)])
                 }
             }
         }
@@ -645,27 +645,27 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
     }
 }
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 struct ThreadListScrollView: View {
     @Binding var selectedTalkThread: TalkThread?
-    let talkThreads: \[TalkThread\]
+    let talkThreads: [TalkThread]
     let spacing: CGFloat
     let padding: CGFloat
     let onTapTalkThread: () -&gt; Void
     let onTapStampReaction: () -&gt; Void
     let onDownSwipe: () -&gt; Void
     let onUpSwipe: () -&gt; Void
-    let volumeLevels: \[Double\]
+    let volumeLevels: [Double]
     let volumeLevelColumns: Int
     let isPlaying: Bool
 
-    @State private var activeOffsetY: \[String: CGFloat\] = \[:\]
+    @State private var activeOffsetY: [String: CGFloat] = [:]
 
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: spacing) {
-                    ForEach(talkThreads, id: \\.id) { talkThread in
+                    ForEach(talkThreads, id: \.id) { talkThread in
                         ZStack {
                             VStack {
                                 Text("↓スワイプでコメント")
@@ -718,7 +718,7 @@ struct ThreadListScrollView: View {
                                                 }
                                             }
                                         }
-                                        .environment(\\.layoutDirection, .rightToLeft)
+                                        .environment(\.layoutDirection, .rightToLeft)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .frame(height: 80)
@@ -737,7 +737,7 @@ struct ThreadListScrollView: View {
                                 }
                                 .animation(.easeInOut, value: isPlaying)
                             }
-                            .offset(y: activeOffsetY\[talkThread.id\] ?? 0)
+                            .offset(y: activeOffsetY[talkThread.id] ?? 0)
                             // 普通の .gesture だとスクロールと干渉してスクロールできなくなる
                             .gesture(
                                 DragGesture()
@@ -746,7 +746,7 @@ struct ThreadListScrollView: View {
 
                                         // 下スワイプのみ許可
                                         if newOffset &gt; 0 {
-                                            activeOffsetY\[talkThread.id\] = newOffset
+                                            activeOffsetY[talkThread.id] = newOffset
                                         }
 
                                         // 上スワイプは許可しないが onUpSwipe を実行
@@ -756,26 +756,26 @@ struct ThreadListScrollView: View {
 
                                         // 下スワイプ
                                         if newOffset &gt; 100 {
-                                            activeOffsetY\[talkThread.id\] = 0
+                                            activeOffsetY[talkThread.id] = 0
                                             onDownSwipe()
                                         }
                                     }
-                                    .onEnded { \_ in
-                                        activeOffsetY\[talkThread.id\] = 0
+                                    .onEnded { _ in
+                                        activeOffsetY[talkThread.id] = 0
                                     }
                             )
                             .onTapGesture {
                                 onTapTalkThread()
                             }
                             // offsetY = 0 としたときになめらかにアニメーションするように
-                            .animation(.default, value: activeOffsetY\[talkThread.id\])
+                            .animation(.default, value: activeOffsetY[talkThread.id])
                         }
-                        .frame(width: geometry.size.width - padding \* 2)
+                        .frame(width: geometry.size.width - padding * 2)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         // これがないと長押しのタップ領域が正しく反映されない
                         // Ref: 【SwiftUI】contentShapeでTap領域を広げる - https://qiita.com/shiz/items/96585bddbc442683b78c
                         .contentShape(RoundedRectangle(cornerRadius: 8))
-                        // Ref: \[SwiftUI\] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
+                        // Ref: [SwiftUI] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
                         .contextMenu {
                             Button {
                                 onTapStampReaction()
@@ -999,13 +999,13 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
 
     public init(dependency: Dependency, talkBox: TalkBox) {
         self.dependency = dependency
-        \_presenter = .init(wrappedValue: ThreadListPresenter(dependency: dependency, talkBox: talkBox))
+        _presenter = .init(wrappedValue: ThreadListPresenter(dependency: dependency, talkBox: talkBox))
     }
 
     public var body: some View {
         VStack {
             // iOS 16 では pageing ができないため iOS 16 対応するのであれば 別途対応する
-            if #available(iOS 17.0, \*) {
+            if #available(iOS 17.0, *) {
                 ThreadListScrollView(
                     selectedTalkThread: $presenter.selectedTalkThread,
                     talkThreads: presenter.talkThreads,
@@ -1049,17 +1049,17 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
         }
         .sheet(isPresented: $presenter.showStampListView) {
             if let talkThread = presenter.selectedTalkThread {
-                if #available(iOS 16.4, \*) {
+                if #available(iOS 16.4, *) {
                     StampListView(dependency: dependency, talkThread: talkThread)
                         .ignoresSafeArea(edges: .bottom)
                         .navigationStacked()
-                        .presentationDetents(\[.fraction(0.8)\])
-                        .presentationBackground(.clear) // @available(iOS 16.4, \*)
+                        .presentationDetents([.fraction(0.8)])
+                        .presentationBackground(.clear) // @available(iOS 16.4, *)
                 } else {
                     StampListView(dependency: dependency, talkThread: talkThread)
                         .ignoresSafeArea(edges: .bottom)
                         .navigationStacked()
-                        .presentationDetents(\[.fraction(0.8)\])
+                        .presentationDetents([.fraction(0.8)])
                 }
             }
         }
@@ -1078,27 +1078,27 @@ public struct ThreadListView&lt;Dependency: RootDIContainerDependency&gt;: View 
     }
 }
 
-@available(iOS 17.0, \*)
+@available(iOS 17.0, *)
 struct ThreadListScrollView: View {
     @Binding var selectedTalkThread: TalkThread?
-    let talkThreads: \[TalkThread\]
+    let talkThreads: [TalkThread]
     let spacing: CGFloat
     let padding: CGFloat
     let onTapTalkThread: () -&gt; Void
     let onTapStampReaction: () -&gt; Void
     let onDownSwipe: () -&gt; Void
     let onUpSwipe: () -&gt; Void
-    let volumeLevels: \[Double\]
+    let volumeLevels: [Double]
     let volumeLevelColumns: Int
     let isPlaying: Bool
 
-    @State private var activeOffsetY: \[String: CGFloat\] = \[:\]
+    @State private var activeOffsetY: [String: CGFloat] = [:]
 
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: spacing) {
-                    ForEach(talkThreads, id: \\.id) { talkThread in
+                    ForEach(talkThreads, id: \.id) { talkThread in
                         ZStack {
                             VStack {
                                 Text("↓スワイプでコメント")
@@ -1151,7 +1151,7 @@ struct ThreadListScrollView: View {
                                                 }
                                             }
                                         }
-                                        .environment(\\.layoutDirection, .rightToLeft)
+                                        .environment(\.layoutDirection, .rightToLeft)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .frame(height: 80)
@@ -1170,7 +1170,7 @@ struct ThreadListScrollView: View {
                                 }
                                 .animation(.easeInOut, value: isPlaying)
                             }
-                            .offset(y: activeOffsetY\[talkThread.id\] ?? 0)
+                            .offset(y: activeOffsetY[talkThread.id] ?? 0)
                             // 普通の .gesture だとスクロールと干渉してスクロールできなくなる
                             .simultaneousGesture(
                                 DragGesture()
@@ -1179,7 +1179,7 @@ struct ThreadListScrollView: View {
 
                                         // 下スワイプのみ許可
                                         if newOffset &gt; 0 {
-                                            activeOffsetY\[talkThread.id\] = newOffset
+                                            activeOffsetY[talkThread.id] = newOffset
                                         }
 
                                         // 上スワイプは許可しないが onUpSwipe を実行
@@ -1189,26 +1189,26 @@ struct ThreadListScrollView: View {
 
                                         // 下スワイプ
                                         if newOffset &gt; 100 {
-                                            activeOffsetY\[talkThread.id\] = 0
+                                            activeOffsetY[talkThread.id] = 0
                                             onDownSwipe()
                                         }
                                     }
-                                    .onEnded { \_ in
-                                        activeOffsetY\[talkThread.id\] = 0
+                                    .onEnded { _ in
+                                        activeOffsetY[talkThread.id] = 0
                                     }
                             )
                             .onTapGesture {
                                 onTapTalkThread()
                             }
                             // offsetY = 0 としたときになめらかにアニメーションするように
-                            .animation(.default, value: activeOffsetY\[talkThread.id\])
+                            .animation(.default, value: activeOffsetY[talkThread.id])
                         }
-                        .frame(width: geometry.size.width - padding \* 2)
+                        .frame(width: geometry.size.width - padding * 2)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         // これがないと長押しのタップ領域が正しく反映されない
                         // Ref: 【SwiftUI】contentShapeでTap領域を広げる - https://qiita.com/shiz/items/96585bddbc442683b78c
                         .contentShape(RoundedRectangle(cornerRadius: 8))
-                        // Ref: \[SwiftUI\] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
+                        // Ref: [SwiftUI] contextMenu modifier タップしたViewの背景色を消す方法 - https://zenn.dev/your3i/articles/f03210a0270a5b
                         .contextMenu {
                             Button {
                                 onTapStampReaction()

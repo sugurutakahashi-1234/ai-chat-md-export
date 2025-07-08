@@ -18,7 +18,7 @@ public struct LogDriver&lt;T: OSLogDriverProtocol, U: FirebaseLogDriverProtocol&
         self.firebaseLogDriver = firebaseLogDriver
     }
     
-    public func log(\_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    public func log(_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         osLogDriver.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
         firebaseLogDriver.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
     }

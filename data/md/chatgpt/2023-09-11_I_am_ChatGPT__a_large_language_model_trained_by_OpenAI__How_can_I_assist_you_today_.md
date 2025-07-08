@@ -35,9 +35,9 @@ public struct InteractionCondition {
 
     public let id: InteractionCondition.ID
     public let eventType: String
-    public let parameters: \[ConditionParameter\]
+    public let parameters: [ConditionParameter]
 
-    public init(id: InteractionCondition.ID, eventType: String, parameters: \[ConditionParameter\]) {
+    public init(id: InteractionCondition.ID, eventType: String, parameters: [ConditionParameter]) {
         self.id = id
         self.eventType = eventType
         self.parameters = parameters
@@ -45,8 +45,8 @@ public struct InteractionCondition {
 }
 
 public enum RequirementType {
-    case and(requirementTypes: \[RequirementType\])
-    case or(requirementTypes: \[RequirementType\])
+    case and(requirementTypes: [RequirementType])
+    case or(requirementTypes: [RequirementType])
     case condition(interactionCondition: InteractionCondition)
 }
 
@@ -74,15 +74,15 @@ public enum AmplifyMatchType: String, EnumPersistable {
 
 public struct AmplifyRequirement: Embeddable {
   var type: AmplifyRequirementType
-  var and: \[AmplifyRequirement?\]?
-  var or: \[AmplifyRequirement?\]?
+  var and: [AmplifyRequirement?]?
+  var or: [AmplifyRequirement?]?
   var condition: AmplifyInteractionCondition?
 }
 
 public struct AmplifyInteractionCondition: Embeddable {
   var id: String
-  var event\_type: String
-  var parameters: \[AmplifyConditionParameter\]
+  var event_type: String
+  var parameters: [AmplifyConditionParameter]
 }
 
 public struct AmplifyConditionParameter: Embeddable {
@@ -1233,8 +1233,8 @@ extension GraphQLRequest {
 
 public struct Requirement: Embeddable {
   var type: RequirementType
-  var and: \[Requirement?\]?
-  var or: \[Requirement?\]?
+  var and: [Requirement?]?
+  var or: [Requirement?]?
   var condition: InteractionCondition?
 }
 

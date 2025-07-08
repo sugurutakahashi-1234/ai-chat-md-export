@@ -118,12 +118,12 @@
 
 以下はこの設定から読み取れる内容になります：
 
-1. \*\*Default Rules (デフォルトのルール)\*\*:
+1. **Default Rules (デフォルトのルール)**:
     - デフォルトで有効になっているルール群ですが、その中で特に以下のルールが無効化されています：
         1. `hoistPatternLet`: このルールは、`if case .foo(let bar):` というパターンを `if case let .foo(bar):` と書き換えるものですが、無効化されています。
-        2. `preferKeyPath`: このルールは、`map { $0.asAppError }` を `map(\\.asAppError)` に書き換えるものですが、エラーが出る可能性があるため無効化されています。
+        2. `preferKeyPath`: このルールは、`map { $0.asAppError }` を `map(\.asAppError)` に書き換えるものですが、エラーが出る可能性があるため無効化されています。
 
-2. \*\*Opt-in Rules (オプトインのルール)\*\*:
+2. **Opt-in Rules (オプトインのルール)**:
     - デフォルトでは無効になっているルール群ですが、その中で以下のルールが有効化されています：
         1. `wrapEnumCases`: このルールは、Enum の宣言時に `case` を省略させないようにするものです。
 
@@ -271,87 +271,87 @@
 
 ### Default Rules (enabled by default):
 
-- \[ \] `\[andOperator\](#andOperator)`
-- \[ \] `\[anyObjectProtocol\](#anyObjectProtocol)`
-- \[ \] `\[assertionFailures\](#assertionFailures)`
-- \[ \] `\[blankLinesAroundMark\](#blankLinesAroundMark)`
-- \[ \] `\[blankLinesAtEndOfScope\](#blankLinesAtEndOfScope)`
-- \[ \] `\[blankLinesAtStartOfScope\](#blankLinesAtStartOfScope)`
-- \[ \] `\[blankLinesBetweenScopes\](#blankLinesBetweenScopes)`
-- \[ \] `\[braces\](#braces)`
-- \[ \] `\[conditionalAssignment\](#conditionalAssignment)`
-- \[ \] `\[consecutiveBlankLines\](#consecutiveBlankLines)`
-- \[ \] `\[consecutiveSpaces\](#consecutiveSpaces)`
-- \[ \] `\[duplicateImports\](#duplicateImports)`
-- \[ \] `\[elseOnSameLine\](#elseOnSameLine)`
-- \[ \] `\[emptyBraces\](#emptyBraces)`
-- \[ \] `\[enumNamespaces\](#enumNamespaces)`
-- \[ \] `\[extensionAccessControl\](#extensionAccessControl)`
-- \[ \] `\[fileHeader\](#fileHeader)`
-- \[ \] `\[genericExtensions\](#genericExtensions)`
-- \[ \] `\[hoistAwait\](#hoistAwait)`
-- \[ \] `\[hoistTry\](#hoistTry)`
-- \[ \] `\[indent\](#indent)`
-- \[ \] `\[initCoderUnavailable\](#initCoderUnavailable)`
-- \[ \] `\[leadingDelimiters\](#leadingDelimiters)`
-- \[ \] `\[linebreakAtEndOfFile\](#linebreakAtEndOfFile)`
-- \[ \] `\[linebreaks\](#linebreaks)`
-- \[ \] `\[modifierOrder\](#modifierOrder)`
-- \[ \] `\[numberFormatting\](#numberFormatting)`
-- \[ \] `\[opaqueGenericParameters\](#opaqueGenericParameters)`
-- \[ \] `\[redundantBackticks\](#redundantBackticks)`
-- \[ \] `\[redundantBreak\](#redundantBreak)`
-- \[ \] `\[redundantClosure\](#redundantClosure)`
-- \[ \] `\[redundantExtensionACL\](#redundantExtensionACL)`
-- \[ \] `\[redundantFileprivate\](#redundantFileprivate)`
-- \[ \] `\[redundantGet\](#redundantGet)`
-- \[ \] `\[redundantInit\](#redundantInit)`
-- \[ \] `\[redundantLetError\](#redundantLetError)`
-- \[ \] `\[redundantNilInit\](#redundantNilInit)`
-- \[ \] `\[redundantObjc\](#redundantObjc)`
-- \[ \] `\[redundantOptionalBinding\](#redundantOptionalBinding)`
-- \[ \] `\[redundantParens\](#redundantParens)`
-- \[ \] `\[redundantPattern\](#redundantPattern)`
-- \[ \] `\[redundantRawValues\](#redundantRawValues)`
-- \[ \] `\[redundantReturn\](#redundantReturn)`
-- \[ \] `\[redundantSelf\](#redundantSelf)`
-- \[ \] `\[redundantType\](#redundantType)`
-- \[ \] `\[redundantVoidReturnType\](#redundantVoidReturnType)`
-- \[ \] `\[semicolons\](#semicolons)`
-- \[ \] `\[sortedImports\](#sortedImports)`
-- \[ \] `\[spaceAroundBraces\](#spaceAroundBraces)`
-- \[ \] `\[spaceAroundBrackets\](#spaceAroundBrackets)`
-- \[ \] `\[spaceAroundComments\](#spaceAroundComments)`
-- \[ \] `\[spaceAroundGenerics\](#spaceAroundGenerics)`
-- \[ \] `\[spaceAroundOperators\](#spaceAroundOperators)`
-- \[ \] `\[spaceAroundParens\](#spaceAroundParens)`
-- \[ \] `\[spaceInsideBraces\](#spaceInsideBraces)`
-- \[ \] `\[spaceInsideBrackets\](#spaceInsideBrackets)`
-- \[ \] `\[spaceInsideComments\](#spaceInsideComments)`
-- \[ \] `\[spaceInsideGenerics\](#spaceInsideGenerics)`
-- \[ \] `\[spaceInsideParens\](#spaceInsideParens)`
-- \[ \] `\[strongOutlets\](#strongOutlets)`
-- \[ \] `\[strongifiedSelf\](#strongifiedSelf)`
-- \[ \] `\[todos\](#todos)`
-- \[ \] `\[trailingCommas\](#trailingCommas)`
-- \[ \] `\[trailingSpace\](#trailingSpace)`
-- \[ \] `\[typeSugar\](#typeSugar)`
-- \[ \] `\[unusedArguments\](#unusedArguments)`
-- \[ \] `\[void\](#void)`
-- \[ \] `\[wrapAttributes\](#wrapAttributes)`
-- \[ \] `\[wrapSingleLineComments\](#wrapSingleLineComments)`
-- \[ \] `\[yodaConditions\](#yodaConditions)`
+- [ ] `[andOperator](#andOperator)`
+- [ ] `[anyObjectProtocol](#anyObjectProtocol)`
+- [ ] `[assertionFailures](#assertionFailures)`
+- [ ] `[blankLinesAroundMark](#blankLinesAroundMark)`
+- [ ] `[blankLinesAtEndOfScope](#blankLinesAtEndOfScope)`
+- [ ] `[blankLinesAtStartOfScope](#blankLinesAtStartOfScope)`
+- [ ] `[blankLinesBetweenScopes](#blankLinesBetweenScopes)`
+- [ ] `[braces](#braces)`
+- [ ] `[conditionalAssignment](#conditionalAssignment)`
+- [ ] `[consecutiveBlankLines](#consecutiveBlankLines)`
+- [ ] `[consecutiveSpaces](#consecutiveSpaces)`
+- [ ] `[duplicateImports](#duplicateImports)`
+- [ ] `[elseOnSameLine](#elseOnSameLine)`
+- [ ] `[emptyBraces](#emptyBraces)`
+- [ ] `[enumNamespaces](#enumNamespaces)`
+- [ ] `[extensionAccessControl](#extensionAccessControl)`
+- [ ] `[fileHeader](#fileHeader)`
+- [ ] `[genericExtensions](#genericExtensions)`
+- [ ] `[hoistAwait](#hoistAwait)`
+- [ ] `[hoistTry](#hoistTry)`
+- [ ] `[indent](#indent)`
+- [ ] `[initCoderUnavailable](#initCoderUnavailable)`
+- [ ] `[leadingDelimiters](#leadingDelimiters)`
+- [ ] `[linebreakAtEndOfFile](#linebreakAtEndOfFile)`
+- [ ] `[linebreaks](#linebreaks)`
+- [ ] `[modifierOrder](#modifierOrder)`
+- [ ] `[numberFormatting](#numberFormatting)`
+- [ ] `[opaqueGenericParameters](#opaqueGenericParameters)`
+- [ ] `[redundantBackticks](#redundantBackticks)`
+- [ ] `[redundantBreak](#redundantBreak)`
+- [ ] `[redundantClosure](#redundantClosure)`
+- [ ] `[redundantExtensionACL](#redundantExtensionACL)`
+- [ ] `[redundantFileprivate](#redundantFileprivate)`
+- [ ] `[redundantGet](#redundantGet)`
+- [ ] `[redundantInit](#redundantInit)`
+- [ ] `[redundantLetError](#redundantLetError)`
+- [ ] `[redundantNilInit](#redundantNilInit)`
+- [ ] `[redundantObjc](#redundantObjc)`
+- [ ] `[redundantOptionalBinding](#redundantOptionalBinding)`
+- [ ] `[redundantParens](#redundantParens)`
+- [ ] `[redundantPattern](#redundantPattern)`
+- [ ] `[redundantRawValues](#redundantRawValues)`
+- [ ] `[redundantReturn](#redundantReturn)`
+- [ ] `[redundantSelf](#redundantSelf)`
+- [ ] `[redundantType](#redundantType)`
+- [ ] `[redundantVoidReturnType](#redundantVoidReturnType)`
+- [ ] `[semicolons](#semicolons)`
+- [ ] `[sortedImports](#sortedImports)`
+- [ ] `[spaceAroundBraces](#spaceAroundBraces)`
+- [ ] `[spaceAroundBrackets](#spaceAroundBrackets)`
+- [ ] `[spaceAroundComments](#spaceAroundComments)`
+- [ ] `[spaceAroundGenerics](#spaceAroundGenerics)`
+- [ ] `[spaceAroundOperators](#spaceAroundOperators)`
+- [ ] `[spaceAroundParens](#spaceAroundParens)`
+- [ ] `[spaceInsideBraces](#spaceInsideBraces)`
+- [ ] `[spaceInsideBrackets](#spaceInsideBrackets)`
+- [ ] `[spaceInsideComments](#spaceInsideComments)`
+- [ ] `[spaceInsideGenerics](#spaceInsideGenerics)`
+- [ ] `[spaceInsideParens](#spaceInsideParens)`
+- [ ] `[strongOutlets](#strongOutlets)`
+- [ ] `[strongifiedSelf](#strongifiedSelf)`
+- [ ] `[todos](#todos)`
+- [ ] `[trailingCommas](#trailingCommas)`
+- [ ] `[trailingSpace](#trailingSpace)`
+- [ ] `[typeSugar](#typeSugar)`
+- [ ] `[unusedArguments](#unusedArguments)`
+- [ ] `[void](#void)`
+- [ ] `[wrapAttributes](#wrapAttributes)`
+- [ ] `[wrapSingleLineComments](#wrapSingleLineComments)`
+- [ ] `[yodaConditions](#yodaConditions)`
 
 ### Opt-in Rules (disabled by default):
 
-- \[ \] `\[acronyms\](#acronyms)`
-- \[ \] `\[blockComments\](#blockComments)`
-- \[ \] `\[docComments\](#docComments)`
-- \[ \] `\[isEmpty\](#isEmpty)`
-- \[ \] `\[markTypes\](#markTypes)`
-- \[ \] `\[organizeDeclarations\](#organizeDeclarations)`
-- \[ \] `\[sortedSwitchCases\](#sortedSwitchCases)`
-- \[ \] `\[wrapSwitchCases\](#wrapSwitchCases)`
+- [ ] `[acronyms](#acronyms)`
+- [ ] `[blockComments](#blockComments)`
+- [ ] `[docComments](#docComments)`
+- [ ] `[isEmpty](#isEmpty)`
+- [ ] `[markTypes](#markTypes)`
+- [ ] `[organizeDeclarations](#organizeDeclarations)`
+- [ ] `[sortedSwitchCases](#sortedSwitchCases)`
+- [ ] `[wrapSwitchCases](#wrapSwitchCases)`
 
 こちらのリストは前回の設定と比較して新たに追加されるべきルールの一覧です。
 

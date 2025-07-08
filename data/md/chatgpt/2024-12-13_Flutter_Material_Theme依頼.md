@@ -16,7 +16,7 @@ Flutter で Material Theme を決めたいデザイナーになんてお願い�
 
 FlutterでMaterial Themeを決める際に、デザイナーにお願いする内容を伝える場合、以下のようなポイントを含めると良いでしょう:
 
-### 1. \*\*目的を明確にする\*\*
+### 1. **目的を明確にする**
 - アプリ全体の雰囲気やブランドイメージを反映するテーマを作成する必要があることを伝えます。
 
 例:  
@@ -24,11 +24,11 @@ FlutterでMaterial Themeを決める際に、デザイナーにお願いする�
 
 ---
 
-### 2. \*\*具体的な要素を提示\*\*
+### 2. **具体的な要素を提示**
 Material Themeでは以下の要素が重要ですので、これを伝えます:
-- \*\*Color Palette（カラーパレット）\*\*: Primary, Secondary, Background, Surface, Errorなどの色。
-- \*\*Typography（タイポグラフィ）\*\*: 見出しや本文のフォントとサイズ。
-- \*\*Component Styling（コンポーネントスタイリング）\*\*: ボタン、カード、スナックバー、ダイアログなどの外観。
+- **Color Palette（カラーパレット）**: Primary, Secondary, Background, Surface, Errorなどの色。
+- **Typography（タイポグラフィ）**: 見出しや本文のフォントとサイズ。
+- **Component Styling（コンポーネントスタイリング）**: ボタン、カード、スナックバー、ダイアログなどの外観。
 
 例:  
 「Material Designに基づいたテーマを作成するために、以下の項目を決めていただきたいです：  
@@ -38,17 +38,17 @@ Material Themeでは以下の要素が重要ですので、これを伝えます
 
 ---
 
-### 3. \*\*参考資料を提供\*\*
-- \*\*FlutterのMaterial Design仕様\*\*のURLや参考リンクを提供します。  
-  - \[Material 3 のガイドライン\](https://m3.material.io/)
-  - \[FlutterのTheming解説\](https://flutter.dev/docs/cookbook/design/themes)
+### 3. **参考資料を提供**
+- **FlutterのMaterial Design仕様**のURLや参考リンクを提供します。  
+  - [Material 3 のガイドライン](https://m3.material.io/)
+  - [FlutterのTheming解説](https://flutter.dev/docs/cookbook/design/themes)
 
 例:  
 「FlutterのMaterial Designのガイドラインはこちらにあります。これを参考にしつつ、アプリに合うカスタムテーマを作成いただけると助かります。」
 
 ---
 
-### 4. \*\*デザインツールの活用を提案\*\*
+### 4. **デザインツールの活用を提案**
 FigmaやAdobe XDでデザインを作成する場合、Flutterで実装しやすいようにデザインを整理してもらうことをお願いすると良いです。
 
 例:  
@@ -56,7 +56,7 @@ FigmaやAdobe XDでデザインを作成する場合、Flutterで実装しやす
 
 ---
 
-### 5. \*\*デザイナーとのコラボレーションを提案\*\*
+### 5. **デザイナーとのコラボレーションを提案**
 具体的なフィードバックが得られるように、初期案を作成してもらい、デザイナーと一緒に調整を進める姿勢を示します。
 
 例:  

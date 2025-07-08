@@ -22,7 +22,7 @@ final class AudioPlayerPresenter: ObservableObject {
 
     let audioUrl: URL
     private var player: AVPlayer?
-    private var cancellables: Set&lt;AnyCancellable&gt; = \[\]
+    private var cancellables: Set&lt;AnyCancellable&gt; = []
     private let fileManageDriver: FileManageDriver = FileManageDriver()
 
     init(audioUrl: URL) {
@@ -38,10 +38,10 @@ final class AudioPlayerPresenter: ObservableObject {
         // 0.1 秒ごとに再生時刻と seek bar を同期させる
         Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
             .combineLatest($isPlaying, $isSeeking)
-            .filter { \_, isPlaying, isSeeking in
+            .filter { _, isPlaying, isSeeking in
                 isPlaying && !isSeeking // 再生中かつseekしていないときのみ更新
             }
-            .map { \[weak self\] \_, \_, \_ in
+            .map { [weak self] _, _, _ in
                 self?.player?.currentTime().seconds ?? 0
             }
             .assign(to: &$currentTime)
@@ -49,7 +49,7 @@ final class AudioPlayerPresenter: ObservableObject {
         // 動画を最後まで見終わったら再生開始状態にリセットする
         NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
             .receive(on: RunLoop.main)
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 guard let self else {
                     return
                 }
@@ -60,9 +60,9 @@ final class AudioPlayerPresenter: ObservableObject {
             .store(in: &cancellables)
 
         // 再生準備が完了したら再生時間をセットする
-        player?.currentItem?.publisher(for: \\.status)
+        player?.currentItem?.publisher(for: \.status)
             .receive(on: RunLoop.main)
-            .sink { \[weak self\] status in
+            .sink { [weak self] status in
                 switch status {
                 case .readyToPlay:
                     self?.isLoading = false
@@ -80,7 +80,7 @@ final class AudioPlayerPresenter: ObservableObject {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
-            OSLogger.errorLog("Audio playback failed: \\(error)")
+            OSLogger.errorLog("Audio playback failed: \(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -116,7 +116,7 @@ final class AudioPlayerPresenter: ObservableObject {
             try fileManageDriver.removeItemIfExists(at: audioUrl)
             shouldDismiss = true
         } catch {
-            OSLogger.errorLog("\\(error)")
+            OSLogger.errorLog("\(error)")
             appError = error.toAppError
             showAlert = true
         }
@@ -124,7 +124,7 @@ final class AudioPlayerPresenter: ObservableObject {
 
     func seek(to time: TimeInterval) {
         let cmTime = CMTime(seconds: time, preferredTimescale: 600)
-        player?.seek(to: cmTime) { \[weak self\] completed in
+        player?.seek(to: cmTime) { [weak self] completed in
             guard let self else {
                 return
             }
@@ -546,33 +546,33 @@ AVAudioPlayer と AVPlayer のどちらがいいってあるの？
 ### AVAudioPlayer
 
 #### 特徴
-- \*\*オーディオファイルの再生\*\*：ローカルに保存されたオーディオファイルを再生するのに適しています。
-- \*\*シンプルな API\*\*：音楽ファイルの再生、停止、再生位置の取得/設定などの基本的な操作が簡単にできます。
-- \*\*オーディオファイルのフォーマット\*\*：MP3、AAC、WAV などの一般的なオーディオファイルフォーマットに対応しています。
-- \*\*デコード\*\*：オーディオデコードは内部で行われます。
-- \*\*低レイテンシー\*\*：音声の再生に対して低レイテンシーが要求される場合に適しています。
+- **オーディオファイルの再生**：ローカルに保存されたオーディオファイルを再生するのに適しています。
+- **シンプルな API**：音楽ファイルの再生、停止、再生位置の取得/設定などの基本的な操作が簡単にできます。
+- **オーディオファイルのフォーマット**：MP3、AAC、WAV などの一般的なオーディオファイルフォーマットに対応しています。
+- **デコード**：オーディオデコードは内部で行われます。
+- **低レイテンシー**：音声の再生に対して低レイテンシーが要求される場合に適しています。
 
 #### 適した用途
-- \*\*ローカルのオーディオファイル再生\*\*：ローカルに保存されたオーディオファイル（音楽ファイル、効果音など）を再生するアプリケーション。
-- \*\*簡単なオーディオ操作\*\*：基本的な再生、停止、シークなどの操作だけが必要な場合。
+- **ローカルのオーディオファイル再生**：ローカルに保存されたオーディオファイル（音楽ファイル、効果音など）を再生するアプリケーション。
+- **簡単なオーディオ操作**：基本的な再生、停止、シークなどの操作だけが必要な場合。
 
 ### AVPlayer
 
 #### 特徴
-- \*\*ストリーミング\*\*：ネットワーク経由でのオーディオおよびビデオのストリーミング再生が可能です。
-- \*\*ビデオ再生\*\*：オーディオだけでなく、ビデオの再生もサポートしています。
-- \*\*柔軟性\*\*：リモート URL のサポート、プレイリストの再生、リアルタイムのストリーミング、ライブストリーミングなど、広範な機能を提供します。
-- \*\*アドバンスト機能\*\*：字幕のサポート、複数のトラックの再生、ピクチャーインピクチャーなどの高度な機能が利用できます。
+- **ストリーミング**：ネットワーク経由でのオーディオおよびビデオのストリーミング再生が可能です。
+- **ビデオ再生**：オーディオだけでなく、ビデオの再生もサポートしています。
+- **柔軟性**：リモート URL のサポート、プレイリストの再生、リアルタイムのストリーミング、ライブストリーミングなど、広範な機能を提供します。
+- **アドバンスト機能**：字幕のサポート、複数のトラックの再生、ピクチャーインピクチャーなどの高度な機能が利用できます。
 
 #### 適した用途
-- \*\*ストリーミングオーディオ/ビデオ\*\*：ネットワーク経由でのメディアストリーミングが必要な場合。
-- \*\*ビデオコンテンツ\*\*：ビデオコンテンツの再生が必要な場合。
-- \*\*高度な再生機能\*\*：プレイリストの再生、ライブストリーミング、複数トラックのサポートなど、より複雑なメディア再生機能が必要な場合。
+- **ストリーミングオーディオ/ビデオ**：ネットワーク経由でのメディアストリーミングが必要な場合。
+- **ビデオコンテンツ**：ビデオコンテンツの再生が必要な場合。
+- **高度な再生機能**：プレイリストの再生、ライブストリーミング、複数トラックのサポートなど、より複雑なメディア再生機能が必要な場合。
 
 ### まとめ
 
-- \*\*ローカルオーディオファイルの簡単な再生\*\*には `AVAudioPlayer` が適しています。例えば、効果音やシンプルな音楽プレーヤーアプリなど。
-- \*\*ネットワークストリーミングやビデオ再生\*\*には `AVPlayer` が適しています。例えば、動画ストリーミングサービスやライブストリーミングアプリなど。
+- **ローカルオーディオファイルの簡単な再生**には `AVAudioPlayer` が適しています。例えば、効果音やシンプルな音楽プレーヤーアプリなど。
+- **ネットワークストリーミングやビデオ再生**には `AVPlayer` が適しています。例えば、動画ストリーミングサービスやライブストリーミングアプリなど。
 
 具体的な要件に基づいて、どちらのクラスを使用するかを選択してください。
 

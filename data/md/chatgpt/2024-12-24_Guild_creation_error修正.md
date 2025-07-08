@@ -10,15 +10,15 @@
 エラー理由を考えて欲しい
 
 import 'package:flutter/foundation.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guild\_api\_provider.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guild_api_provider.dart';
 
-part 'create\_guild.g.dart';
+part 'create_guild.g.dart';
 
 @riverpod
-class CreateGuildNotifier extends \_$CreateGuildNotifier {
+class CreateGuildNotifier extends _$CreateGuildNotifier {
   @override
   Future&lt;String?&gt; build() async =&gt; null;
 
@@ -42,7 +42,7 @@ class CreateGuildNotifier extends \_$CreateGuildNotifier {
   }
 }
 
-flutter: \*\*\* Response \*\*\*
+flutter: *** Response ***
 flutter: uri: http://localhost:3002/v1/guilds?
 flutter: statusCode: 200
 flutter: headers:
@@ -58,25 +58,25 @@ flutter: {"code":-1,"errorMessage":"User not belong to any guild"}
 flutter:
 flutter: Response Body: GuildInfoResponseDto(code: -1, errorMessage: User not belong to any guild, data: null)
 flutter: Response Body.data: null
-flutter: \*\*\* Request \*\*\*
+flutter: *** Request ***
 flutter: uri: http://localhost:3002/v1/guilds?
 flutter: method: POST
 flutter: responseType: ResponseType.json
 flutter: followRedirects: true
-\[🔔 Dio\] \_$CreateGuildRequestDtoImpl cannot be used to imply a default content-type, please set a proper content-type in the request.
-\[🔔 Dio\] #0      ImplyContentTypeInterceptor.onRequest (package:dio/src/interceptors/imply\_content\_type.dart:33:22)
-         #1      DioMixin.fetch.requestInterceptorWrapper.&lt;anonymous closure&gt;.&lt;anonymous closure&gt; (package:dio/src/dio\_mixin.dart:398:17)
-dio\_mixin.dart:398
+[🔔 Dio] _$CreateGuildRequestDtoImpl cannot be used to imply a default content-type, please set a proper content-type in the request.
+[🔔 Dio] #0      ImplyContentTypeInterceptor.onRequest (package:dio/src/interceptors/imply_content_type.dart:33:22)
+         #1      DioMixin.fetch.requestInterceptorWrapper.&lt;anonymous closure&gt;.&lt;anonymous closure&gt; (package:dio/src/dio_mixin.dart:398:17)
+dio_mixin.dart:398
          #2      new Future.&lt;anonymous closure&gt; (dart:async/future.dart:258:40)
 future.dart:258
-         #3      Timer.\_createTimer.&lt;anonymous closure&gt; (dart:async-patch/timer\_patch.dart:18:15)
-timer\_patch.dart:18
-         #4      \_Timer.\_runTimers (dart:isolate-patch/timer\_impl.dart:398:19)
-timer\_impl.dart:398
-         #5      \_Timer.\_handleMessage (dart:isolate-patch/timer\_impl.dart:429:5)
-timer\_impl.dart:429
-         #6      \_RawReceivePort.\_handleMessage (dart:isolate-patch/isolate\_patch.dart:184:12)
-isolate\_patch.dart:184
+         #3      Timer._createTimer.&lt;anonymous closure&gt; (dart:async-patch/timer_patch.dart:18:15)
+timer_patch.dart:18
+         #4      _Timer._runTimers (dart:isolate-patch/timer_impl.dart:398:19)
+timer_impl.dart:398
+         #5      _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:429:5)
+timer_impl.dart:429
+         #6      _RawReceivePort._handleMessage (dart:isolate-patch/isolate_patch.dart:184:12)
+isolate_patch.dart:184
 flutter: persistentConnection: true
 flutter: connectTimeout: null
 flutter: sendTimeout: null
@@ -87,9 +87,9 @@ flutter: headers:
 flutter: data:
 flutter: CreateGuildRequestDto(guildName: TODO: ギルド名を入力, guildDescription: TODO: ギルド名を入力, guildAvatar: null, guildBanner: null)
 flutter:
-flutter: \*\*\* DioException \*\*\*:
+flutter: *** DioException ***:
 flutter: uri: http://localhost:3002/v1/guilds?
-flutter: DioException \[bad response\]: This exception was thrown because the response has a status code of 400 and RequestOptions.validateStatus was configured to throw for this status code.
+flutter: DioException [bad response]: This exception was thrown because the response has a status code of 400 and RequestOptions.validateStatus was configured to throw for this status code.
 The status code of 400 has the following meaning: "Client error - the request contains bad syntax or cannot be fulfilled"
 Read more about status codes at https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 In order to resolve this exception you typically have either to verify and fix your request code or you have to fix the server code.
@@ -104,7 +104,7 @@ flutter:  content-length: 172
 flutter:  etag: W/"ac-JrFE2B+VN4hNiTAZKVNrJpASrTw"
 flutter:  content-type: application/json; charset=utf-8
 flutter: Response Text:
-flutter: {"message":\["guildName must be shorter than or equal to 50 characters","guildName should not be empty","guildName must be a string"\],"error":"Bad Request","statusCode":400}
+flutter: {"message":["guildName must be shorter than or equal to 50 characters","guildName should not be empty","guildName must be a string"],"error":"Bad Request","statusCode":400}
 
 ---
 
@@ -286,10 +286,10 @@ final response = await api.guildControllerCreateGuild(
 *2024/12/24 16:41:17*
 
 import 'package:dio/dio.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'dio\_provider.g.dart';
+part 'dio_provider.g.dart';
 
 @riverpod
 Dio dio(Ref ref) {

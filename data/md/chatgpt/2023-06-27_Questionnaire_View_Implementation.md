@@ -12,7 +12,7 @@ public struct QuestionnaireView: View {
     @StateObject var presenter: QuestionnairePresenter
 
     public init(questionnaire: MissionValueType.Questionnaire) {
-        \_presenter = StateObject(wrappedValue: QuestionnairePresenter(questionnaire: questionnaire))
+        _presenter = StateObject(wrappedValue: QuestionnairePresenter(questionnaire: questionnaire))
         // TextEditの背景設定のためのコード
         UITextView.appearance().backgroundColor = .clear
     }
@@ -25,8 +25,8 @@ public struct QuestionnaireView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     EmomilIconBubbleView(text: CoreStrings.EmomilMission.Questionnaire.bubble(presenter.questionAnswers.count), type: .horizontal)
 
-                    ForEach(0..&lt;presenter.questionAnswers.count, id: \\.self) { index in
-                        let questionAnswer = presenter.questionAnswers\[index\]
+                    ForEach(0..&lt;presenter.questionAnswers.count, id: \.self) { index in
+                        let questionAnswer = presenter.questionAnswers[index]
                         VStack(alignment: .leading, spacing: 4) {
                             Text(CoreStrings.EmomilMission.Questionnaire.Question.title(index + 1, questionAnswer.question.title))
                                 .typographyStyle(.body1)
@@ -34,7 +34,7 @@ public struct QuestionnaireView: View {
 
                             switch questionAnswer.question.answerType {
                             case .freeDescription:
-                                if #available(iOS 16.0, \*) {
+                                if #available(iOS 16.0, *) {
                                     textEditView(questionAnswer: questionAnswer)
                                         .scrollContentBackground(.hidden)
                                 } else {

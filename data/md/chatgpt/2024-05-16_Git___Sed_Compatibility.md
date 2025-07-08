@@ -9,7 +9,7 @@
 
 以下のコマンドラインはmacでもlinuxでもどちらでも動く？
 
-git log --oneline --merges --pretty=format:"\[%cs\] %s %b" | sed -E 's|Merge pull request #\[0-9\]+ from \[^/\]+/||'
+git log --oneline --merges --pretty=format:"[%cs] %s %b" | sed -E 's|Merge pull request #[0-9]+ from [^/]+/||'
 
 ---
 
@@ -18,10 +18,10 @@ git log --oneline --merges --pretty=format:"\[%cs\] %s %b" | sed -E 's|Merge pul
 
 はい、そのコマンドラインはmacOSでもLinuxでも動作します。`git`と`sed`の使い方に依存しているため、両方の環境で問題なく実行できるはずです。ただし、`sed`のオプションの違いに注意する必要があります。
 
-- `git log --oneline --merges --pretty=format:"\[%cs\] %s %b"`:
+- `git log --oneline --merges --pretty=format:"[%cs] %s %b"`:
   - `git`コマンドの部分で、ログの出力形式を指定しています。これはmacOSとLinuxの両方で同じです。
 
-- `sed -E 's|Merge pull request #\[0-9\]+ from \[^/\]+/||'`:
+- `sed -E 's|Merge pull request #[0-9]+ from [^/]+/||'`:
   - `sed`コマンドの部分では、正規表現を使って特定の文字列を置換しています。`-E`オプションは拡張正規表現を使用するためのもので、これもmacOSとLinuxで同じです。
 
 一般的に、上記のコマンドは両方のOSで同じように動作するはずです。念のため、`sed`のバージョンが大きく異なる場合や、特殊な設定がある場合には、動作確認を行うと良いでしょう。
@@ -90,18 +90,18 @@ echo "$modified_output"
 
 今こういう出力だけど、feature/35 と 【Xcode】Xcode 15.4 アップデート を同じインデントで揃えたい。日付の項目が同じ幅なのでできると思う
 
-$ git log HEAD --oneline --merges --pretty=format:"\[%cs\] %s %b" | sed -E 's|Merge pull request #\[0-9\]+ from \[^/\]+/||' | awk '{print $0 "\\n"}'
-\[2024-05-15\] feature/35 【Xcode】Xcode 15.4 アップデート
+$ git log HEAD --oneline --merges --pretty=format:"[%cs] %s %b" | sed -E 's|Merge pull request #[0-9]+ from [^/]+/||' | awk '{print $0 "\n"}'
+[2024-05-15] feature/35 【Xcode】Xcode 15.4 アップデート
 
-\[2024-05-14\] feature/25 【GitHub Actions】Milestone、ラベルを GitHub Actions によって自動追加するようにした
+[2024-05-14] feature/25 【GitHub Actions】Milestone、ラベルを GitHub Actions によって自動追加するようにした
 
-\[2024-05-13\] feature/17-18 【機能検証】【録音】【再生】【TestFlight】【Renovate】音声入力と再生の検証
+[2024-05-13] feature/17-18 【機能検証】【録音】【再生】【TestFlight】【Renovate】音声入力と再生の検証
 
-\[2024-05-02\] feature/15-16-17-18 
+[2024-05-02] feature/15-16-17-18 
 
-\[2024-05-02\] feature/3-4-5-6-7-8-9 【GitHub】開発環境の改善（SwiftFormat、Mint、Makefile、Swift 6対応、GitHub Template、pre-commit、README 更新、PR自動アサイン GitHub Actions）
+[2024-05-02] feature/3-4-5-6-7-8-9 【GitHub】開発環境の改善（SwiftFormat、Mint、Makefile、Swift 6対応、GitHub Template、pre-commit、README 更新、PR自動アサイン GitHub Actions）
 
-\[2024-05-02\] feature/1 【新規プロジェクト作成】新規プロジェクトを作成する #1
+[2024-05-02] feature/1 【新規プロジェクト作成】新規プロジェクトを作成する #1
 
 ---
 
@@ -347,7 +347,7 @@ git log HEAD --oneline --merges --pretty=format:"[%cs] %s %b" \
 
 こういう表記の方がいいかも。コミット間の改行はそのままで
 
-\[2024-05-02\] feature/3-4-5-6-7-8-9
+[2024-05-02] feature/3-4-5-6-7-8-9
     【GitHub】開発環境の改善（SwiftFormat、Mint、Makefile、Swift 6対応、GitHub Template、pre-commit、README 更新、PR自動アサイン GitHub Actions）
 
 ---

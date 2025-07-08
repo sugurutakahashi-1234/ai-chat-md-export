@@ -103,13 +103,13 @@ addValue と setValue の違いを推して欲しい
 ## 🤖 アシスタント
 *2023/6/22 3:20:37*
 
-`addValue(\_:forHTTPHeaderField:)`と`setValue(\_:forHTTPHeaderField:)`はどちらも`URLRequest`のメソッドで、HTTPリクエストヘッダーに値を追加するために使われます。しかしその挙動は若干異なります。
+`addValue(_:forHTTPHeaderField:)`と`setValue(_:forHTTPHeaderField:)`はどちらも`URLRequest`のメソッドで、HTTPリクエストヘッダーに値を追加するために使われます。しかしその挙動は若干異なります。
 
-- `addValue(\_:forHTTPHeaderField:)`: このメソッドは、指定したヘッダフィールドに新たな値を追加します。もし既にそのヘッダフィールドに値が存在する場合は、新たな値が既存の値の後ろに追加され、コンマで区切られます。これは、ヘッダフィールドが複数の値を許容する場合に使われます。
+- `addValue(_:forHTTPHeaderField:)`: このメソッドは、指定したヘッダフィールドに新たな値を追加します。もし既にそのヘッダフィールドに値が存在する場合は、新たな値が既存の値の後ろに追加され、コンマで区切られます。これは、ヘッダフィールドが複数の値を許容する場合に使われます。
 
-- `setValue(\_:forHTTPHeaderField:)`: このメソッドは、指定したヘッダフィールドに新たな値を設定します。もし既にそのヘッダフィールドに値が存在する場合は、その値が新たな値で置き換えられます。
+- `setValue(_:forHTTPHeaderField:)`: このメソッドは、指定したヘッダフィールドに新たな値を設定します。もし既にそのヘッダフィールドに値が存在する場合は、その値が新たな値で置き換えられます。
 
-"Authorization"ヘッダのような、通常は1つの値しか持たないヘッダフィールドに対しては、`setValue(\_:forHTTPHeaderField:)`を使用することが一般的です。なぜなら、そのヘッダフィールドに新たな値を追加するのではなく、既存の値を新たな値で置き換えたいからです。
+"Authorization"ヘッダのような、通常は1つの値しか持たないヘッダフィールドに対しては、`setValue(_:forHTTPHeaderField:)`を使用することが一般的です。なぜなら、そのヘッダフィールドに新たな値を追加するのではなく、既存の値を新たな値で置き換えたいからです。
 
 ---
 
@@ -492,7 +492,7 @@ struct AuthTokenURLRequestInterceptor: URLRequestInterceptor {
         self.authTokenProvider = authTokenProvider
     }
 
-    func intercept(\_ request: URLRequest) async throws -&gt; URLRequest {
+    func intercept(_ request: URLRequest) async throws -&gt; URLRequest {
 
         guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else {
             throw APIError.unknown("Could not get mutable request", "")

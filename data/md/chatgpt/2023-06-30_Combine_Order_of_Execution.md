@@ -10,17 +10,17 @@
 SwiftのCombineについての質問です。
 passthroughsubjectに値をsendしてして、それをサブスクライブしている処理で、別の配列にappendしています。
 
-このとき、全く別の処理でsend(completion: .finished) したとき、別の配列にappendする処理と .sink { \[weak self\] completion in } の .finished の処理はどっちが先に終えるのか？
+このとき、全く別の処理でsend(completion: .finished) したとき、別の配列にappendする処理と .sink { [weak self] completion in } の .finished の処理はどっちが先に終えるのか？
 
 sampleSubject
-            .sink { \[weak self\] completion in
+            .sink { [weak self] completion in
                 switch completion {
                 case .finished:
 
                 case .failure(let error):
                     
                 }
-            } receiveValue: { \[weak self\] num in
+            } receiveValue: { [weak self] num in
                 self?.array.append(num)
             }
             .store(in: &cancellableSet)

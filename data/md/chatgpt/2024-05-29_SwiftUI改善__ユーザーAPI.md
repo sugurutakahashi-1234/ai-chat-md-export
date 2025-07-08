@@ -19,7 +19,7 @@ import SwiftUI
 import OpenAPIURLSession
 
 public struct ContentView: View {
-    @State var users: \[Components.Schemas.User\] = \[\]
+    @State var users: [Components.Schemas.User] = []
     let client: Client
 
     public init() {
@@ -76,8 +76,8 @@ public struct ContentView: View {
             case .json(let users):
                 self.users = users
             }
-        case .undocumented(statusCode: let statusCode, \_):
-            print("\\(statusCode)")
+        case .undocumented(statusCode: let statusCode, _):
+            print("\(statusCode)")
         }
     }
 
@@ -88,10 +88,10 @@ public struct ContentView: View {
         case .ok(let okResponse):
             switch okResponse.body {
             case .json(let user):
-                self.users = \[user\]
+                self.users = [user]
             }
-        case .undocumented(statusCode: let statusCode, \_):
-            print("\\(statusCode)")
+        case .undocumented(statusCode: let statusCode, _):
+            print("\(statusCode)")
         }
     }
 }
@@ -108,9 +108,9 @@ import SimpleToast
 
 struct ResponsePropertyView&lt;T: Encodable&gt;: View {
     @State var showToast: Bool = false
-    let objects: \[T\]
+    let objects: [T]
     
-    init(objects: \[T\]) {
+    init(objects: [T]) {
         self.objects = objects
     }
 
@@ -129,19 +129,19 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
                             .buttonStyle(.borderless)
                         }
 
-                        Text("\\(try! jsonString(objects: objects))")
+                        Text("\(try! jsonString(objects: objects))")
                     }
                 } label: {
                     Text("Response")
                 }
             }
 
-            ForEach(Array(objects.enumerated()), id: \\.offset) { index, object in
+            ForEach(Array(objects.enumerated()), id: \.offset) { index, object in
                 Section {
                     propertyView(object: object)
                 } header: {
                     HStack {
-                        Text("\\(type(of: object))\[\\(index)\]")
+                        Text("\(type(of: object))[\(index)]")
 
                         Spacer()
 
@@ -174,7 +174,7 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
     }
 
     func propertyView(object: Any) -&gt; some View {
-        AnyView(ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \\.offset) { index, child in
+        AnyView(ForEach(Array(Mirror(reflecting: object).children.enumerated()), id: \.offset) { index, child in
             if let label = child.label {
                 let childMirror = Mirror(reflecting: child.value)
                 if childMirror.displayStyle == .struct || childMirror.displayStyle == .class {
@@ -183,19 +183,19 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
                     } label: {
                         Text(label)
                     }
-                } else if let subObjects = child.value as? \[Any\] {
+                } else if let subObjects = child.value as? [Any] {
                     DisclosureGroup {
-                        ForEach(Array(subObjects.enumerated()), id: \\.offset) { subIndex, subObject in
+                        ForEach(Array(subObjects.enumerated()), id: \.offset) { subIndex, subObject in
                             let subObjectMirror = Mirror(reflecting: subObject)
                             if subObjectMirror.displayStyle == .struct || subObjectMirror.displayStyle == .class {
                                 DisclosureGroup {
                                     propertyView(object: subObject)
                                 } label: {
                                     HStack(alignment: .top) {
-                                        Text("\\(type(of: subObject))")
+                                        Text("\(type(of: subObject))")
                                             .foregroundStyle(.black)
                                         Spacer()
-                                        Text("\\(type(of: subObject))\[\\(subIndex)\]")
+                                        Text("\(type(of: subObject))[\(subIndex)]")
                                     }
                                 }
                             } else {
@@ -203,10 +203,10 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
                                     onTapElement(object: subObject)
                                 } label: {
                                     HStack(alignment: .top) {
-                                        Text("\[\\(subIndex)\]")
+                                        Text("[\(subIndex)]")
                                             .foregroundStyle(.black)
                                         Spacer()
-                                        Text("\\(subObject)")
+                                        Text("\(subObject)")
                                     }
                                 }
                             }
@@ -216,7 +216,7 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
                             Text(label)
                                 .foregroundStyle(.black)
                             Spacer()
-                            Text("\\(Mirror(reflecting: child.value).subjectType)")
+                            Text("\(Mirror(reflecting: child.value).subjectType)")
                         }
                     }
                 } else {
@@ -227,7 +227,7 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
                             Text(label)
                                 .foregroundStyle(.black)
                             Spacer()
-                            Text("\\(child.value)")
+                            Text("\(child.value)")
                         }
                     }
                 }
@@ -236,10 +236,10 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
                     onTapElement(object: child.value)
                 } label: {
                     HStack(alignment: .top) {
-                        Text("\[\\(index)\]")
+                        Text("[\(index)]")
                             .foregroundStyle(.black)
                         Spacer()
-                        Text("\\(child.value)")
+                        Text("\(child.value)")
                     }
                 }
             }
@@ -251,7 +251,7 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
             do {
                 return try jsonString(object: object)
             } catch {
-                return "\\(object)"
+                return "\(object)"
             }
         }()
         
@@ -274,7 +274,7 @@ struct ResponsePropertyView&lt;T: Encodable&gt;: View {
         return jsonString
     }
     
-    func jsonString&lt;U: Encodable&gt;(objects: \[U\]) throws -&gt; String {
+    func jsonString&lt;U: Encodable&gt;(objects: [U]) throws -&gt; String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
 
@@ -295,8 +295,8 @@ enum CityType: Codable {
 }
 
 struct Address: Codable {
-    var city: \[String\]
-    var postalCode: \[Int\]
+    var city: [String]
+    var postalCode: [Int]
     var cityType: CityType
 }
 
@@ -304,29 +304,29 @@ struct Person: Codable {
     var name: String
     var age: Int
     var isEmployed: Bool
-    var address: \[Address\]
+    var address: [Address]
 }
 
 struct Persons: Codable {
-    var persons: \[Person\]
+    var persons: [Person]
 }
 
 // MARK: - Preview
 
 #Preview {
     NavigationStack {
-        ResponsePropertyView(objects: \[
-            Persons(persons: \[
-                Person(name: "John Doe", age: 30, isEmployed: true, address: \[
-                    Address(city: \["New Yorあああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああk", "トーキョー"\], postalCode: \[10001, 10002\], cityType: .urban),
-                    Address(city: \["New York", "トーキョー"\], postalCode:\[10001, 10002\], cityType: .urban),
-                \]),
-                Person(name: "John Doe", age: 30, isEmployed: true, address: \[
-                    Address(city: \["New York", "トーキョー"\], postalCode: \[10001, 10002\], cityType: .urban),
-                    Address(city: \["New York", "トーキョー"\], postalCode: \[10001, 10002\], cityType: .urban),
-                \])
-            \])
-        \])
+        ResponsePropertyView(objects: [
+            Persons(persons: [
+                Person(name: "John Doe", age: 30, isEmployed: true, address: [
+                    Address(city: ["New Yorあああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああk", "トーキョー"], postalCode: [10001, 10002], cityType: .urban),
+                    Address(city: ["New York", "トーキョー"], postalCode:[10001, 10002], cityType: .urban),
+                ]),
+                Person(name: "John Doe", age: 30, isEmployed: true, address: [
+                    Address(city: ["New York", "トーキョー"], postalCode: [10001, 10002], cityType: .urban),
+                    Address(city: ["New York", "トーキョー"], postalCode: [10001, 10002], cityType: .urban),
+                ])
+            ])
+        ])
     }
 }
 

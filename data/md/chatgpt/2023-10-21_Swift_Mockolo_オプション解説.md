@@ -89,10 +89,10 @@ mockolo --import "SomeFramework" --import "AnotherModule" -s ./ -d ./OutputPath/
 
 OVERVIEW: Mockolo: Swift mock generator.
 
-USAGE: mockolo \[&lt;options&gt;\] --destination &lt;destination&gt;
+USAGE: mockolo [&lt;options&gt;] --destination &lt;destination&gt;
 
 OPTIONS:
-  --allow-set-call-count  If set, generated \*CallCount vars will be allowed to set manually.
+  --allow-set-call-count  If set, generated *CallCount vars will be allowed to set manually.
   --annotation &lt;annotation&gt;
                           A custom annotation string used to indicate if a type should be mocked (default = @mockable). (default: @mockable)
   -j, --concurrency-limit &lt;n&gt;
@@ -108,7 +108,7 @@ OPTIONS:
                           List of filename suffix(es) without the file extensions to exclude from parsing (separated by a space).
   --header &lt;header&gt;       A custom header documentation to be added to the beginning of a generated mock file.
   -l, --logging-level &lt;n&gt; The logging level to use. Default is set to 0 (info only). Set 1 for verbose, 2 for warning, and 3 for error. (default: 0)
-  --macro &lt;macro&gt;         If set, #if \[macro\] / #endif will be added to the generated mock file content to guard compilation.
+  --macro &lt;macro&gt;         If set, #if [macro] / #endif will be added to the generated mock file content to guard compilation.
   --mock-all              If set, it will mock all types (protocols and classes) with a mock annotation (default is set to false and only mocks protocols with a mock annotation).
   --mock-filelist &lt;mock-filelist&gt;
                           Path to a file containing a list of dependent files (separated by a new line) of modules this target depends on.
@@ -136,7 +136,7 @@ OPTIONS:
 
 この出力は、Mockoloのコマンドラインツールがサポートするさまざまなオプションの概要を示しています。以下、各オプションの詳細な説明です：
 
-1. `--allow-set-call-count`: このオプションを設定すると、生成された\*CallCount変数を手動で設定できるようになります。これにより、テスト中にメソッドが呼び出された回数をカスタマイズできます。
+1. `--allow-set-call-count`: このオプションを設定すると、生成された*CallCount変数を手動で設定できるようになります。これにより、テスト中にメソッドが呼び出された回数をカスタマイズできます。
 
 2. `--annotation &lt;annotation&gt;`: モック化する型を示すために使用されるカスタムアノテーション文字列。デフォルトは`@mockable`です。
 
@@ -156,7 +156,7 @@ OPTIONS:
 
 10. `-l, --logging-level &lt;n&gt;`: 使用するログレベル。デフォルトは0（情報のみ）です。1は詳細、2は警告、3はエラーです。
 
-11. `--macro &lt;macro&gt;`: 設定すると、生成されたモックファイルの内容を守るために、`#if \[macro\] / #endif`が追加されます。
+11. `--macro &lt;macro&gt;`: 設定すると、生成されたモックファイルの内容を守るために、`#if [macro] / #endif`が追加されます。
 
 12. `--mock-all`: 設定すると、すべての型（プロトコルとクラス）がモックアノテーションと共にモックされます（デフォルトはfalseで、モックアノテーションと共にプロトコルのみがモックされます）。
 
@@ -227,10 +227,10 @@ Xcodeプロジェクトでビルドプロセス中にスクリプトを実行す
 
 こんな感じで、Makefile に実行コマンドを記述していて、make mockolo-run を実行したいんだ。
 
-$ ls                                                                             ?\[feature/819-mock\]
+$ ls                                                                             ?[feature/819-mock]
 Configs                         EmomilAppProduction             EmomilToolsPackage              Mintfile                        Scripts
 Docs                            EmomilAppStaging                EmotionAnalysisApp              Periphery                       Swift-DocC
-EmomilApp.xcworkspace           EmomilBinaryTargetPackage       EmotionAnalysisPackage          PlaygroundPackage               ci\_scripts
+EmomilApp.xcworkspace           EmomilBinaryTargetPackage       EmotionAnalysisPackage          PlaygroundPackage               ci_scripts
 EmomilAppDevelop                EmomilPackage                   Makefile
 
 ---
@@ -299,7 +299,7 @@ make mockolo-run
 
 こんな感じのエラーになった
 
-'emomiltoolspackage': Invalid manifest (compiled with: \["/Applications/Xcode\_15.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc", "-vfsoverlay", "/var/folders/mx/7cxmh1mn3r130jwl9l2pfgph0000gn/T/TemporaryDirectory.8nQ03q/vfs.yaml", "-L", "/Applications/Xcode\_15.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI", "-lPackageDescription", "-Xlinker", "-rpath", "-Xlinker", "/Applications/Xcode\_15.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI", "-target", "arm64-apple-macosx13.0", "-sdk", "/Applications/Xcode\_15.0.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator17.0.sdk", "-F", "/Applications/Xcode\_15.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks", "-I", "/Applications/Xcode\_15.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib", "-L", "/Applications/Xcode\_15.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib", "-swift-version", "5", "-I", "/Applications/Xcode\_15.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI", "-sdk", "/Applications/Xcode\_15.0.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator17.0.sdk", "-package-description-version", "5.9.0", "/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilToolsPackage/Package.swift", "-Xfrontend", "-disable-implicit-concurrency-module-import", "-Xfrontend", "-disable-implicit-string-processing-module-import", "-o", "/var/folders/mx/7cxmh1mn3r130jwl9l2pfgph0000gn/T/TemporaryDirectory.kjFlOD/emomiltoolspackage-manifest"\])
+'emomiltoolspackage': Invalid manifest (compiled with: ["/Applications/Xcode_15.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc", "-vfsoverlay", "/var/folders/mx/7cxmh1mn3r130jwl9l2pfgph0000gn/T/TemporaryDirectory.8nQ03q/vfs.yaml", "-L", "/Applications/Xcode_15.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI", "-lPackageDescription", "-Xlinker", "-rpath", "-Xlinker", "/Applications/Xcode_15.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI", "-target", "arm64-apple-macosx13.0", "-sdk", "/Applications/Xcode_15.0.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator17.0.sdk", "-F", "/Applications/Xcode_15.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks", "-I", "/Applications/Xcode_15.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib", "-L", "/Applications/Xcode_15.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib", "-swift-version", "5", "-I", "/Applications/Xcode_15.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI", "-sdk", "/Applications/Xcode_15.0.1.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator17.0.sdk", "-package-description-version", "5.9.0", "/Users/sugurutakahashi/git/emomil-app-ios-xcode-14.2/EmomilToolsPackage/Package.swift", "-Xfrontend", "-disable-implicit-concurrency-module-import", "-Xfrontend", "-disable-implicit-string-processing-module-import", "-o", "/var/folders/mx/7cxmh1mn3r130jwl9l2pfgph0000gn/T/TemporaryDirectory.kjFlOD/emomiltoolspackage-manifest"])
 
 ---
 

@@ -35,15 +35,15 @@ final class RecordingDriver {
 
     func startRecording(recordingConfig: RecordingConfig) throws {
         let audioFilename = fileManageDriver.getDirectoryUrl(directoryType: .tmp)
-            .appendingPathComponent("\\(Date.ios8601)")
+            .appendingPathComponent("\(Date.ios8601)")
             .appendingPathExtension(recordingConfig.audioFormat.fileExtension.rawValue)
 
-        let settings = \[
+        let settings = [
             AVFormatIDKey: Int(recordingConfig.audioFormat.audioFormatID),
             AVSampleRateKey: recordingConfig.audioSampleRate.rawValue,
             AVNumberOfChannelsKey: recordingConfig.audioChannel.rawValue,
             AVEncoderAudioQualityKey: recordingConfig.audioEncodeQuality.toAVAudioQuality.rawValue
-        \]
+        ]
 
         try AVAudioSession.sharedInstance().setCategory(.playback)
         try AVAudioSession.sharedInstance().setActive(true)
@@ -54,7 +54,7 @@ final class RecordingDriver {
             try AVAudioSession.sharedInstance().setCategory(
                 recordingConfig.audioSessionCategory.toAVAudioSessionCategory,
                 mode: recordingConfig.audioSessionMode.toAVAudioSessionMode,
-                options: \[\]
+                options: []
             )
             OSLogger.debugLog("Start: session active")
             try AVAudioSession.sharedInstance().setActive(true)
@@ -93,7 +93,7 @@ final class RecordingDriver {
         recordingTime = 0
 
         Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-            .sink { \[weak self\] \_ in
+            .sink { [weak self] _ in
                 self?.recordingTime += 1
             }
             .store(in: &cancellables)

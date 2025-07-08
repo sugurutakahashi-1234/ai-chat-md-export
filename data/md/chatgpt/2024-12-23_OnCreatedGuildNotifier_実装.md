@@ -7,15 +7,15 @@
 ## 👤 ユーザー
 *2024/12/23 22:00:00*
 
-on\_created\_guild を作って欲しい
+on_created_guild を作って欲しい
 
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'on\_pop\_snap\_confirm.g.dart';
+part 'on_pop_snap_confirm.g.dart';
 
 // pop で画面を戻った際にもカメラを通知するためのフラグ
 @riverpod
-class OnPopSnapConfirmNotifier extends \_$OnPopSnapConfirmNotifier {
+class OnPopSnapConfirmNotifier extends _$OnPopSnapConfirmNotifier {
   @override
   bool build() =&gt; state = false;
 

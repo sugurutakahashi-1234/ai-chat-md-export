@@ -14,7 +14,7 @@ import { defaultPlugins, defineConfig } from "@hey-api/openapi-ts";
 export default defineConfig({
 	input: "./openapi.json",
 	output: "src/generated/backend-client",
-	plugins: \[
+	plugins: [
 		...defaultPlugins,
 		"@hey-api/schemas",
 		{
@@ -27,7 +27,7 @@ export default defineConfig({
 			name: "@hey-api/sdk",
 			validator: true,
 		},
-	\],
+	],
 });
 
 import { defineConfig } from "@hey-api/openapi-ts";
@@ -35,7 +35,7 @@ import { defineConfig } from "@hey-api/openapi-ts";
 export default defineConfig({
   input: "../docs/openapi.json",
   output: "src/client",
-  plugins: \[
+  plugins: [
     "@hey-api/client-fetch",
     "@tanstack/react-query",
     "zod",
@@ -43,7 +43,7 @@ export default defineConfig({
       name: "@hey-api/sdk",
       validator: true,
     },
-  \],
+  ],
 });
 
 ---

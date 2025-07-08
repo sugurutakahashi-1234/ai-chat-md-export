@@ -20,7 +20,7 @@ UIViewRepresentable プロトコルを実装することで、SwiftUI と UIKit 
 
 1. `makeUIView(context:)` : ここでは、新しい UIKit ベースのビューを作成し、初期化します。このメソッドは、ビューが最初に作成されるときに一度だけ呼び出されます。
 
-2. `updateUIView(\_:context:)` : ここでは、UIKit ベースのビューの状態を更新します。このメソッドは、ビューのプロパティが変更されるたびに呼び出されます。
+2. `updateUIView(_:context:)` : ここでは、UIKit ベースのビューの状態を更新します。このメソッドは、ビューのプロパティが変更されるたびに呼び出されます。
 
 UIViewRepresentable プロトコルを使用することで、SwiftUI のプロジェクトに UIKit ベースのビューを簡単に統合でき、徐々に SwiftUI への移行を進めることができます。
 
@@ -44,7 +44,7 @@ UIViewRepresentable の実装に ViewModel を組み込むためには、次の�
 
 2. UIViewRepresentable を実装する SwiftUI ビューに、作成した ViewModel をプロパティとして追加します。ViewModel を状態オブジェクト（@StateObject）や環境オブジェクト（@EnvironmentObject）として宣言することが一般的です。
 
-3. `makeUIView(context:)` および `updateUIView(\_:context:)` メソッドの中で、ViewModel のデータにアクセスして UIKit ベースのビューを更新します。
+3. `makeUIView(context:)` および `updateUIView(_:context:)` メソッドの中で、ViewModel のデータにアクセスして UIKit ベースのビューを更新します。
 
 4. 必要に応じて、UIKit ベースのビューから ViewModel にコールバックを送信することもできます。これには、UIViewRepresentable の Coordinator を使用します。Coordinator を使って UIKit のデリゲートメソッドやターゲットアクションをキャプチャし、それらを ViewModel のメソッドに転送します。
 
@@ -69,7 +69,7 @@ UIViewRepresentable を実装する際に、@State や @Binding などの SwiftU
 
 UIViewRepresentable の実装において、@State や @Binding の変数が更新されると、以下の効果があります。
 
-1. 変数が更新されると、SwiftUI はビューの再描画をトリガーします。このプロセスの一環として、`updateUIView(\_:context:)` メソッドが呼び出されます。このメソッド内で、更新された変数の値に基づいて UIKit ベースのビューを更新することができます。
+1. 変数が更新されると、SwiftUI はビューの再描画をトリガーします。このプロセスの一環として、`updateUIView(_:context:)` メソッドが呼び出されます。このメソッド内で、更新された変数の値に基づいて UIKit ベースのビューを更新することができます。
 
 2. @Binding を使用している場合、関連するすべてのビューに変更が伝播されます。これにより、他のビューも変更に応じて再描画されます。
 

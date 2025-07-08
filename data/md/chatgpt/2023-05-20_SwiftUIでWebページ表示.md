@@ -444,7 +444,7 @@ if navigationAction.targetFrame == nil  {} としているのはなぜ？
 ## 🤖 アシスタント
 *2023/5/20 18:42:14*
 
-`WKNavigationAction`のプロパティ`targetFrame`は、ナビゲーションアクションが現在のフレーム内で行われる予定の場合にそのフレームを表す`WKFrameInfo`オブジェクトを返します。しかし、新しいウィンドウやタブを開くリンク（`target="\_blank"`が設定されている）をクリックした場合、その`targetFrame`は`nil`となります。
+`WKNavigationAction`のプロパティ`targetFrame`は、ナビゲーションアクションが現在のフレーム内で行われる予定の場合にそのフレームを表す`WKFrameInfo`オブジェクトを返します。しかし、新しいウィンドウやタブを開くリンク（`target="_blank"`が設定されている）をクリックした場合、その`targetFrame`は`nil`となります。
 
 したがって、`if navigationAction.targetFrame == nil`のチェックを行うことで、新しいウィンドウやタブを開こうとするナビゲーションアクションを特定することができます。
 
@@ -594,35 +594,35 @@ func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
 
 それが全て正常であるならば、他にもいくつか考えられる可能性があります。
 
-1. \*\*コンテンツブロッカー:\*\*  ユーザーがコンテンツブロッカーを使用していると、一部のリンクやJavascriptが正常に動作しない場合があります。
+1. **コンテンツブロッカー:**  ユーザーがコンテンツブロッカーを使用していると、一部のリンクやJavascriptが正常に動作しない場合があります。
 
-2. \*\*リンクがJavascriptによって制御されている:\*\* `target="\_blank"`属性を持つリンクでも、そのリンクがJavascriptによって制御されている場合、`webView(\_:createWebViewWith:configuration:for:navigationAction:windowFeatures:)`メソッドが呼び出されないことがあります。
+2. **リンクがJavascriptによって制御されている:** `target="_blank"`属性を持つリンクでも、そのリンクがJavascriptによって制御されている場合、`webView(_:createWebViewWith:configuration:for:navigationAction:windowFeatures:)`メソッドが呼び出されないことがあります。
 
-3. \*\*バグ:\*\* `WKWebView`には、時折奇妙なバグが見つかります。これはその一つかもしれません。
+3. **バグ:** `WKWebView`には、時折奇妙なバグが見つかります。これはその一つかもしれません。
 
-問題を更に調査するには、上記の項目を一つ一つ確認してみてください。また、リンクが正しく`target="\_blank"`を指定しているかどうか、該当のHTMLを見てみると良いでしょう。もし可能であれば、問題が発生している具体的なURLを共有していただければと思います。
+問題を更に調査するには、上記の項目を一つ一つ確認してみてください。また、リンクが正しく`target="_blank"`を指定しているかどうか、該当のHTMLを見てみると良いでしょう。もし可能であれば、問題が発生している具体的なURLを共有していただければと思います。
 
 ---
 
 ## 👤 ユーザー
 *2023/5/20 18:52:27*
 
-`target="\_blank` を指定しているかどうかを確認する方法は？
+`target="_blank` を指定しているかどうかを確認する方法は？
 
 ---
 
 ## 🤖 アシスタント
 *2023/5/20 18:53:02*
 
-`target="\_blank"`が指定されているかどうかを確認するには、WebページのHTMLソースを調査するのが一番簡単です。以下にその手順を示します。
+`target="_blank"`が指定されているかどうかを確認するには、WebページのHTMLソースを調査するのが一番簡単です。以下にその手順を示します。
 
-1. \*\*ブラウザを使用してページを開く:\*\* 問題が発生しているWebページを、デスクトップブラウザ（Chrome、Firefox、Safariなど）で開きます。
+1. **ブラウザを使用してページを開く:** 問題が発生しているWebページを、デスクトップブラウザ（Chrome、Firefox、Safariなど）で開きます。
 
-2. \*\*ページのソースコードを表示する:\*\* ほとんどのブラウザでは、右クリックメニューから"ページのソースを表示"または"ページのソースコードを表示"を選択することで、ページのソースコードを表示することができます。または、特定のキーボードショートカット（ChromeやFirefoxでは`Ctrl+U`（Windows/Linux）または`Cmd+Option+U`（Mac））を使用することも可能です。
+2. **ページのソースコードを表示する:** ほとんどのブラウザでは、右クリックメニューから"ページのソースを表示"または"ページのソースコードを表示"を選択することで、ページのソースコードを表示することができます。または、特定のキーボードショートカット（ChromeやFirefoxでは`Ctrl+U`（Windows/Linux）または`Cmd+Option+U`（Mac））を使用することも可能です。
 
-3. \*\*`target="\_blank"`を検索する:\*\* ページのソースコードが表示されたら、`target="\_blank"`を含む行を検索します。これには通常、ブラウザの"検索"機能（通常は`Ctrl+F`または`Cmd+F`）を使用します。
+3. **`target="_blank"`を検索する:** ページのソースコードが表示されたら、`target="_blank"`を含む行を検索します。これには通常、ブラウザの"検索"機能（通常は`Ctrl+F`または`Cmd+F`）を使用します。
 
-`target="\_blank"`属性が含まれているリンクが見つかった場合、そのリンクは新しいタブまたは新しいウィンドウで開くことを意図しています。
+`target="_blank"`属性が含まれているリンクが見つかった場合、そのリンクは新しいタブまたは新しいウィンドウで開くことを意図しています。
 
 ただし、特定のJavaScriptコードによってリンクの動作が制御されている場合、この方法で確認しても完全な情報を得ることができない場合があります。そのようなケースでは、ブラウザの開発者ツール（"検証"オプション）を使ってリンク要素を直接確認すると良いでしょう。
 
@@ -1163,12 +1163,12 @@ func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigatio
 ## 🤖 アシスタント
 *2023/5/20 19:27:01*
 
-`webView(\_:decidePolicyFor:decisionHandler:)`メソッドは `WKNavigationDelegate` プロトコルの一部です。このメソッドは、ナビゲーションアクションが許可されるべきかどうかを決定するときにWebKitによって呼び出されます。
+`webView(_:decidePolicyFor:decisionHandler:)`メソッドは `WKNavigationDelegate` プロトコルの一部です。このメソッドは、ナビゲーションアクションが許可されるべきかどうかを決定するときにWebKitによって呼び出されます。
 
 詳しくは以下のリンクをご参照ください。
-\[WKNavigationDelegate - webView(\_:decidePolicyFor:decisionHandler:)\](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455641-webview)
+[WKNavigationDelegate - webView(_:decidePolicyFor:decisionHandler:)](https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455641-webview)
 
-それに対して `WKUIDelegate` は、主にJavaScriptの`alert`, `confirm`, `prompt`などのUI関連の処理を扱うデリゲートメソッドを提供します。これには `webView(\_:createWebViewWith:for:windowFeatures:)` といったメソッドが含まれます。
+それに対して `WKUIDelegate` は、主にJavaScriptの`alert`, `confirm`, `prompt`などのUI関連の処理を扱うデリゲートメソッドを提供します。これには `webView(_:createWebViewWith:for:windowFeatures:)` といったメソッドが含まれます。
 
 ---
 

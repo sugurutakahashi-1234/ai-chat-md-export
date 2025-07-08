@@ -11,14 +11,14 @@ ResponseView(objects: responseObjects) Type 'any Encodable' cannot conform to 'E
 
 struct ResponseView&lt;T: Encodable&gt;: View {
     @State var showToast: Bool = false
-    let objects: \[T\]
+    let objects: [T]
     
     public var body: some View {
         Section {
             NavigationLink {
                 ScrollView {
                     VStack(alignment: .leading) {
-                        SelectableTextView(text: "\\(try! JSONHandler.jsonString(objects: objects))")
+                        SelectableTextView(text: "\(try! JSONHandler.jsonString(objects: objects))")
                     }
                     .padding()
                 }
@@ -58,7 +58,7 @@ struct ResponseView&lt;T: Encodable&gt;: View {
             do {
                 return try JSONHandler.jsonString(object: object)
             } catch {
-                return "\\(object)"
+                return "\(object)"
             }
         }()
         
@@ -76,16 +76,16 @@ enum ApiError: LocalizedError {
     
     // alert title
     var errorDescription: String? {
-        "\\(self)"
+        "\(self)"
     }
 }
 
 public struct ContentView: View {
     @State var showToast: Bool = false
-    @State var responseObjects: \[Encodable\] = \[\]
-    @State var getUsersResponse: \[Components.Schemas.User\] = \[\]
-    @State var getUserByIdResponse: \[Components.Schemas.User\] = \[\]
-    @State var hoge: \[Persons\] = \[\]
+    @State var responseObjects: [Encodable] = []
+    @State var getUsersResponse: [Components.Schemas.User] = []
+    @State var getUserByIdResponse: [Components.Schemas.User] = []
+    @State var hoge: [Persons] = []
     @State var userId: Int = 1
     @State var selectedApi: ApiType = .getUser
     @State var isLoading: Bool = false
@@ -116,8 +116,8 @@ public struct ContentView: View {
             List {
                 
                 Picker(selection: $selectedApi) {
-                    ForEach(ApiType.allCases, id: \\.self) { apiType in
-                        Text("\\(apiType)")
+                    ForEach(ApiType.allCases, id: \.self) { apiType in
+                        Text("\(apiType)")
                     }
                 } label: {
                     Text("API")
@@ -138,11 +138,11 @@ public struct ContentView: View {
                 }
     
                 ResponseView(objects: responseObjects)
-                    .redacted(reason: isLoading ? .placeholder : \[\])
+                    .redacted(reason: isLoading ? .placeholder : [])
                     .shimmering(active: isLoading)
 
                 PropertyView(showToast: $showToast, objects: responseObjects)
-                    .redacted(reason: isLoading ? .placeholder : \[\])
+                    .redacted(reason: isLoading ? .placeholder : [])
                     .shimmering(active: isLoading)
             }
             .simpleToast(isPresented: $showToast, options: SimpleToastOptions(
@@ -176,7 +176,7 @@ public struct ContentView: View {
     }
 
     private func getUsers() async {
-        getUsersResponse = \[\]
+        getUsersResponse = []
         isLoading = true
         defer {
             isLoading = false
@@ -193,19 +193,19 @@ public struct ContentView: View {
         case .notFound(let notFoundResponse):
             switch notFoundResponse.body {
             case .json(let error):
-                print("\\(error)")
+                print("\(error)")
                 apiError = .notFound
                 showAlert = true
             }
-        case .undocumented(statusCode: let statusCode, \_):
-            print("\\(statusCode)")
+        case .undocumented(statusCode: let statusCode, _):
+            print("\(statusCode)")
             apiError = .undocumented
             showAlert = true
         }
     }
 
     private func getUserById(id: Int) async {
-        getUserByIdResponse = \[\]
+        getUserByIdResponse = []
         isLoading = true
         defer {
             isLoading = false
@@ -217,17 +217,17 @@ public struct ContentView: View {
         case .ok(let okResponse):
             switch okResponse.body {
             case .json(let user):
-                self.getUserByIdResponse = \[user\]
+                self.getUserByIdResponse = [user]
             }
         case .notFound(let notFoundResponse):
             switch notFoundResponse.body {
             case .json(let error):
-                print("\\(error)")
+                print("\(error)")
                 apiError = .notFound
                 showAlert = true
             }
-        case .undocumented(statusCode: let statusCode, \_):
-            print("\\(statusCode)")
+        case .undocumented(statusCode: let statusCode, _):
+            print("\(statusCode)")
             apiError = .undocumented
             showAlert = true
         }

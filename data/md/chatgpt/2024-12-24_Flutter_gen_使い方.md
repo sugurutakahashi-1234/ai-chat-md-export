@@ -7,7 +7,7 @@
 ## 👤 ユーザー
 *2024/12/24 15:31:48*
 
-flutter\_gen 使い方
+flutter_gen 使い方
 
 ---
 
@@ -132,13 +132,13 @@ flutter_gen:
 loginFig が表示されない
 
 import 'package:flutter/material.dart';
-import 'package:flutter\_hooks/flutter\_hooks.dart';
-import 'package:flutter\_svg/flutter\_svg.dart';
-import 'package:go\_router/go\_router.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/domain/screen.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/domain/screen.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
 
 class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
@@ -158,7 +158,7 @@ class LoginPage extends HookConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: \[
+                children: [
                   GestureDetector(
                     onLongPress: () {
                       // TODO: flavor が dev の場合のみの機能
@@ -179,7 +179,7 @@ class LoginPage extends HookConsumerWidget {
                       prefixIcon: Padding(
                         padding: EdgeInsets.all(12),
                         child: Icon(
-                          Icons.email\_outlined,
+                          Icons.email_outlined,
                           color: ColorToken.text,
                           size: 24,
                         ),
@@ -195,7 +195,7 @@ class LoginPage extends HookConsumerWidget {
                     },
                     child: const Text('Login'),
                   ),
-                \],
+                ],
               ),
             ),
           ),
@@ -422,7 +422,7 @@ SvgPicture.asset(
 ## 👤 ユーザー
 *2024/12/24 15:36:27*
 
-flutter: SVG asset loading failed: assets/images/login\_fig.svg
+flutter: SVG asset loading failed: assets/images/login_fig.svg
 
 ---
 
@@ -582,12 +582,12 @@ flutter:
   assets:
     - assets/images/
 
-flutter\_gen:
+flutter_gen:
   assets:
     outputs:
-      directory\_path\_enabled: true
+      directory_path_enabled: true
   integrations:
-    flutter\_svg: true
+    flutter_svg: true
 
 ---
 
@@ -837,6 +837,6 @@ SVGファイルに問題があるかもしれません。Flutterでは一部のS
 
 ---
 
-### 1. \*\*SVGファイル
+### 1. **SVGファイル
 
 ---

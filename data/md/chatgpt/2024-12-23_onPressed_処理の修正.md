@@ -10,15 +10,15 @@
 onPressed の処理が何か間違っている
 
 import 'package:flutter/foundation.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guild\_api\_provider.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guild_api_provider.dart';
 
-part 'create\_guild.g.dart';
+part 'create_guild.g.dart';
 
 @riverpod
-class CreateGuildNotifier extends \_$CreateGuildNotifier {
+class CreateGuildNotifier extends _$CreateGuildNotifier {
   @override
   Future&lt;String?&gt; build() async =&gt; null;
 

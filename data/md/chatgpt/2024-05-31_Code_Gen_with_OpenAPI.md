@@ -12,22 +12,22 @@ exit 0 とした以降の処理はやってほしくない。
 name: Code Gen From OpenAPI Spec
 
 on:
-  repository\_dispatch:
-    types: \[update-open-api-spec\]
-  workflow\_dispatch:
+  repository_dispatch:
+    types: [update-open-api-spec]
+  workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
 
 env:
-  # gh\_token: ${{ secrets.IOS\_TEAM\_PAT }} # IOS\_TEAM\_PAT: project, read:org, repo
+  # gh_token: ${{ secrets.IOS_TEAM_PAT }} # IOS_TEAM_PAT: project, read:org, repo
   # iOS
-  ios\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  ios\_openapi\_path: schema/openapi.yaml
+  ios_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  ios_openapi_path: schema/openapi.yaml
   # Server Side
-  server\_side\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  server\_side\_openapi\_path: server-side-repository/openapi.yaml
+  server_side_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  server_side_openapi_path: server-side-repository/openapi.yaml
 
 jobs:
   code-gen-from-open-api-spec:
@@ -35,7 +35,7 @@ jobs:
     runs-on: macos-14
     env:
       # Ref: https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md#xcode
-      DEVELOPER\_DIR: /Applications/Xcode\_15.4.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
 
     timeout-minutes: 300
 
@@ -43,27 +43,27 @@ jobs:
     - name: Checkout iOS repo
       uses: actions/checkout@v4
       with:
-        repository: ${{ env.ios\_repo }}
+        repository: ${{ env.ios_repo }}
         path: ios-repo
-        # token: ${{ env.gh\_token }}
+        # token: ${{ env.gh_token }}
 
     - name: Checkout Server Side repo
       uses: actions/checkout@v4
       with:
-        repository: ${{ env.server\_side\_repo }}
+        repository: ${{ env.server_side_repo }}
         path: server-repo
-        ref: ${{ github.event.client\_payload.ref || 'refs/heads/main' }}
-        # token: ${{ env.gh\_token }}
+        ref: ${{ github.event.client_payload.ref || 'refs/heads/main' }}
+        # token: ${{ env.gh_token }}
 
     - name: Check for differences in OpenAPI spec
-      id: check\_diff
+      id: check_diff
       run: |
-        if diff server-repo/${{ env.server\_side\_openapi\_path }} ios-repo/${{ env.ios\_openapi\_path }}; then
+        if diff server-repo/${{ env.server_side_openapi_path }} ios-repo/${{ env.ios_openapi_path }}; then
           echo "No changes in OpenAPI spec."
           exit 0
         else
           echo "Changes detected in OpenAPI spec."
-          cp -f server-repo/${{ env.server\_side\_openapi\_path }} ios-repo/${{ env.ios\_openapi\_path }}
+          cp -f server-repo/${{ env.server_side_openapi_path }} ios-repo/${{ env.ios_openapi_path }}
         fi
 
     - name: Generate code from OpenAPI spec
@@ -77,8 +77,8 @@ jobs:
       if: success()
       uses: peter-evans/create-pull-request@v6
       with:
-        # token: ${{ secrets.IOS\_TEAM\_PAT }}
-        commit-message: 【OpenAPI】Update generated code from OpenAPI spec \[ci skip\]
+        # token: ${{ secrets.IOS_TEAM_PAT }}
+        commit-message: 【OpenAPI】Update generated code from OpenAPI spec [ci skip]
         branch: feature/code-gen-from-open-api-spec
         title: 【OpenAPI】Update generated code from OpenAPI spec
         body: This PR updates the generated code from the latest OpenAPI spec.
@@ -370,7 +370,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/31 16:14:39*
 
-echo "changes\_detected=false" &gt;&gt; $GITHUB\_OUTPUT とした後に終了する旨のechoをした方がいい気がする、また、明示的にここで終わりということを示すために exit 0 などがあった方がいい気がしてきた
+echo "changes_detected=false" &gt;&gt; $GITHUB_OUTPUT とした後に終了する旨のechoをした方がいい気がする、また、明示的にここで終わりということを示すために exit 0 などがあった方がいい気がしてきた
 
 ---
 
@@ -476,11 +476,11 @@ on:
       - main
     paths:
       - server-side-repository/openapi.yaml
-  workflow\_dispatch:
+  workflow_dispatch:
 
 env:
-  ios\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  event\_type: update-open-api-spec
+  ios_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  event_type: update-open-api-spec
 
 jobs:
   trigger-codegen:
@@ -489,9 +489,9 @@ jobs:
       - name: Trigger iOS repo workflow
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.IOS\_TEAM\_PAT }} # Permission: repo, read:org, project
-          repository: ${{ env.ios\_repo }}
-          event-type: ${{ env.event\_type }}
+          token: ${{ secrets.IOS_TEAM_PAT }} # Permission: repo, read:org, project
+          repository: ${{ env.ios_repo }}
+          event-type: ${{ env.event_type }}
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
 
@@ -499,22 +499,22 @@ jobs:
 name: Code Gen From OpenAPI Spec
 
 on:
-  repository\_dispatch:
-    types: \[update-open-api-spec\]
-  workflow\_dispatch:
+  repository_dispatch:
+    types: [update-open-api-spec]
+  workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
 
 env:
-  # gh\_token: ${{ secrets.IOS\_TEAM\_PAT }} # IOS\_TEAM\_PAT: project, read:org, repo
+  # gh_token: ${{ secrets.IOS_TEAM_PAT }} # IOS_TEAM_PAT: project, read:org, repo
   # iOS
-  ios\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  ios\_openapi\_path: schema/openapi.yaml
+  ios_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  ios_openapi_path: schema/openapi.yaml
   # Server Side
-  server\_side\_repo: suguruTakahashi-1234/swift-openapi-gen-sample
-  server\_side\_openapi\_path: server-side-repository/openapi.yaml
+  server_side_repo: suguruTakahashi-1234/swift-openapi-gen-sample
+  server_side_openapi_path: server-side-repository/openapi.yaml
 
 jobs:
   code-gen-from-open-api-spec:
@@ -522,7 +522,7 @@ jobs:
     runs-on: macos-14
     env:
       # Ref: https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md#xcode
-      DEVELOPER\_DIR: /Applications/Xcode\_15.4.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
 
     timeout-minutes: 300
 
@@ -530,44 +530,44 @@ jobs:
     - name: Checkout iOS repo
       uses: actions/checkout@v4
       with:
-        repository: ${{ env.ios\_repo }}
+        repository: ${{ env.ios_repo }}
         path: ios-repo
-        # token: ${{ env.gh\_token }}
+        # token: ${{ env.gh_token }}
 
     - name: Checkout Server Side repo
       uses: actions/checkout@v4
       with:
-        repository: ${{ env.server\_side\_repo }}
+        repository: ${{ env.server_side_repo }}
         path: server-repo
-        ref: ${{ github.event.client\_payload.ref || 'refs/heads/main' }}
-        # token: ${{ env.gh\_token }}
+        ref: ${{ github.event.client_payload.ref || 'refs/heads/main' }}
+        # token: ${{ env.gh_token }}
 
     - name: Check for differences in OpenAPI spec
-      id: check\_diff
+      id: check_diff
       run: |
-        if diff server-repo/${{ env.server\_side\_openapi\_path }} ios-repo/${{ env.ios\_openapi\_path }}; then
-          echo "changes\_detected=false" &gt;&gt; $GITHUB\_OUTPUT
+        if diff server-repo/${{ env.server_side_openapi_path }} ios-repo/${{ env.ios_openapi_path }}; then
+          echo "changes_detected=false" &gt;&gt; $GITHUB_OUTPUT
           echo "No changes in OpenAPI spec. Exiting."
           exit 0
         else
-          echo "changes\_detected=true" &gt;&gt; $GITHUB\_OUTPUT
+          echo "changes_detected=true" &gt;&gt; $GITHUB_OUTPUT
           echo "Changes detected in OpenAPI spec. Proceeding with code generation."
-          cp -f server-repo/${{ env.server\_side\_openapi\_path }} ios-repo/${{ env.ios\_openapi\_path }}
+          cp -f server-repo/${{ env.server_side_openapi_path }} ios-repo/${{ env.ios_openapi_path }}
         fi
 
     - name: Generate code from OpenAPI spec
-      if: steps.check\_diff.outputs.changes\_detected == 'true'
+      if: steps.check_diff.outputs.changes_detected == 'true'
       run: |
         make -C ios-repo open-api-gen
         git -C ios-repo status
         git -C ios-repo diff
 
     - name: Create Pull Request
-      if: steps.check\_diff.outputs.changes\_detected == 'true'
+      if: steps.check_diff.outputs.changes_detected == 'true'
       uses: peter-evans/create-pull-request@v6
       with:
-        # token: ${{ secrets.IOS\_TEAM\_PAT }}
-        commit-message: 【OpenAPI】Update generated code from OpenAPI spec \[ci skip\]
+        # token: ${{ secrets.IOS_TEAM_PAT }}
+        commit-message: 【OpenAPI】Update generated code from OpenAPI spec [ci skip]
         branch: feature/code-gen-from-open-api-spec
         title: 【OpenAPI】Update generated code from OpenAPI spec
         body: This PR updates the generated code from the latest OpenAPI spec.
@@ -705,10 +705,10 @@ jobs:
 *2024/5/31 16:21:44*
 
 以下のような改行はしてほしくない。
-client\_payloadのコミットメッセージが含まれるのがいい気がしている。
+client_payloadのコミットメッセージが含まれるのがいい気がしている。
 
 title: "【OpenAPI】Update generated code from OpenAPI spec - ${{
-          github.event.client\_payload.ref\_name
+          github.event.client_payload.ref_name
 
 ---
 
@@ -842,7 +842,7 @@ jobs:
 ## 👤 ユーザー
 *2024/5/31 16:22:57*
 
-GITHUB\_ENV より OUTPUTのほうがよくないか？
+GITHUB_ENV より OUTPUTのほうがよくないか？
 
 ---
 
@@ -977,7 +977,7 @@ jobs:
 
 こうなった
 
-Run echo "commit\_message=$(git log -1 --pretty=format:'%s')" &gt;&gt; $GITHUB\_OUTPUT
+Run echo "commit_message=$(git log -1 --pretty=format:'%s')" &gt;&gt; $GITHUB_OUTPUT
 fatal: not a git repository (or any of the parent directories): .git
 
 ---

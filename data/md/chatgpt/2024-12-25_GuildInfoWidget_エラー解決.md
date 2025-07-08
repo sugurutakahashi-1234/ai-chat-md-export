@@ -11,13 +11,13 @@ GuildInfoWidget のように外に出したらエラーになってしまった
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter\_svg/svg.dart';
-import 'package:hooks\_riverpod/hooks\_riverpod.dart';
-import 'package:snpit\_guild\_app/gen/assets.gen.dart';
-import 'package:snpit\_guild\_app/infrastructure/snapit\_guild\_api/snapit\_guild\_api.openapi.dart';
-import 'package:snpit\_guild\_app/presentation/design\_token/color\_token.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/get\_guild\_info.dart';
-import 'package:snpit\_guild\_app/presentation/providers/api\_client/guilds/update\_guild\_member.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:snpit_guild_app/gen/assets.gen.dart';
+import 'package:snpit_guild_app/infrastructure/snapit_guild_api/snapit_guild_api.openapi.dart';
+import 'package:snpit_guild_app/presentation/design_token/color_token.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/get_guild_info.dart';
+import 'package:snpit_guild_app/presentation/providers/api_client/guilds/update_guild_member.dart';
 
 class GuildRequestPage extends HookConsumerWidget {
   const GuildRequestPage({super.key});
@@ -33,7 +33,7 @@ class GuildRequestPage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Join an existing guild'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow\_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             // ギルドの Top 画面に戻るため popUntil を使用
             Navigator.of(context).popUntil((route) =&gt; route.isFirst);
@@ -54,14 +54,14 @@ class GuildRequestPage extends HookConsumerWidget {
 
             // return Column(
             //   crossAxisAlignment: CrossAxisAlignment.stretch,
-            //   children: \[
+            //   children: [
             //     DecoratedBox(
             //       decoration: BoxDecoration(
             //         borderRadius: BorderRadius.circular(8),
             //         border: Border.all(color: ColorToken.secondary),
             //       ),
             //       child: Column(
-            //         children: \[
+            //         children: [
             //           GestureDetector(
             //             onTap: () {
             //               Clipboard.setData(
@@ -90,7 +90,7 @@ class GuildRequestPage extends HookConsumerWidget {
             //               ),
             //               child: Row(
             //                 mainAxisSize: MainAxisSize.min,
-            //                 children: \[
+            //                 children: [
             //                   SvgPicture.asset(
             //                     Assets.images.triangleDots.path,
             //                   ),
@@ -101,7 +101,7 @@ class GuildRequestPage extends HookConsumerWidget {
             //                       fontSize: 14,
             //                     ),
             //                   ),
-            //                 \],
+            //                 ],
             //               ),
             //             ),
             //           ),
@@ -131,7 +131,7 @@ class GuildRequestPage extends HookConsumerWidget {
             //           const SizedBox(height: 8),
             //           Row(
             //             mainAxisAlignment: MainAxisAlignment.center,
-            //             children: \[
+            //             children: [
             //               const Icon(
             //                 Icons.people,
             //                 size: 24,
@@ -144,10 +144,10 @@ class GuildRequestPage extends HookConsumerWidget {
             //                   fontSize: 14,
             //                 ),
             //               ),
-            //             \],
+            //             ],
             //           ),
             //           const SizedBox(height: 24),
-            //         \],
+            //         ],
             //       ),
             //     ),
             //     const SizedBox(height: 24),
@@ -179,7 +179,7 @@ class GuildRequestPage extends HookConsumerWidget {
             //             child: const Padding(
             //               padding: EdgeInsets.all(16),
             //               child: Column(
-            //                 children: \[
+            //                 children: [
             //                   Text(
             //                     'Request sent',
             //                     style: TextStyle(
@@ -193,7 +193,7 @@ class GuildRequestPage extends HookConsumerWidget {
             //                     textAlign: TextAlign.center,
             //                     style: TextStyle(fontSize: 16),
             //                   ),
-            //                 \],
+            //                 ],
             //               ),
             //             ),
             //           );
@@ -202,7 +202,7 @@ class GuildRequestPage extends HookConsumerWidget {
             //       loading: () =&gt;
             //           const Center(child: CircularProgressIndicator()),
             //       error: (error, stack) {
-            //         WidgetsBinding.instance.addPostFrameCallback((\_) {
+            //         WidgetsBinding.instance.addPostFrameCallback((_) {
             //           if (context.mounted) {
             //             ScaffoldMessenger.of(context).showSnackBar(
             //               SnackBar(
@@ -214,7 +214,7 @@ class GuildRequestPage extends HookConsumerWidget {
             //         return Center(child: Text('An error occurred: $error'));
             //       },
             //     ),
-            //   \],
+            //   ],
             // );
           },
           loading: () =&gt; const Center(child: CircularProgressIndicator()),
@@ -235,14 +235,14 @@ class GuildInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: \[
+      children: [
         DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: ColorToken.secondary),
           ),
           child: Column(
-            children: \[
+            children: [
               GestureDetector(
                 onTap: () {
                   Clipboard.setData(
@@ -271,7 +271,7 @@ class GuildInfoWidget extends StatelessWidget {
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: \[
+                    children: [
                       SvgPicture.asset(
                         Assets.images.triangleDots.path,
                       ),
@@ -282,7 +282,7 @@ class GuildInfoWidget extends StatelessWidget {
                           fontSize: 14,
                         ),
                       ),
-                    \],
+                    ],
                   ),
                 ),
               ),
@@ -312,7 +312,7 @@ class GuildInfoWidget extends StatelessWidget {
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: \[
+                children: [
                   const Icon(
                     Icons.people,
                     size: 24,
@@ -325,13 +325,13 @@ class GuildInfoWidget extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                \],
+                ],
               ),
               const SizedBox(height: 24),
-            \],
+            ],
           ),
         ),
-      \],
+      ],
     );
   }
 }
@@ -397,7 +397,7 @@ import 'package:snpit_guild_app/presentation/widgets/guild_info_widget.dart';
 ## 👤 ユーザー
 *2024/12/25 12:38:04*
 
-\[ERROR:flutter/runtime/dart\_vm\_initializer.cc(40)\] Unhandled Exception: Unable to load asset: "assets/images/triangle\_dots.svg".
+[ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: Unable to load asset: "assets/images/triangle_dots.svg".
 
 ---
 

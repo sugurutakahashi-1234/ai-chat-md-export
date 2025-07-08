@@ -10,15 +10,15 @@
 name: Notify Reviewers on Successful Checks
 
 on:
-  check\_suite:
+  check_suite:
     types:
       - completed
 
 jobs:
-  notify\_reviewers:
+  notify_reviewers:
     runs-on: ubuntu-latest
-    # Execute the job only if the check\_suite event is related to a pull request and all checks are successful
-    if: ${{ github.event.check\_suite.conclusion == 'success' && github.event.check\_suite.pull\_requests\[0\] }}
+    # Execute the job only if the check_suite event is related to a pull request and all checks are successful
+    if: ${{ github.event.check_suite.conclusion == 'success' && github.event.check_suite.pull_requests[0] }}
 
     steps:
     - name: Checkout repository
@@ -26,51 +26,51 @@ jobs:
 
     - name: Notify Reviewers on Slack
       env:
-        SLACK\_WEBHOOK\_URL: ${{ secrets.SLACK\_WEBHOOK\_URL }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       run: |
-        # Get pull request information from the check\_suite event
-        PR\_URL="${{ github.event.check\_suite.pull\_requests\[0\].html\_url }}"
-        PR\_TITLE="${{ github.event.check\_suite.pull\_requests\[0\].title }}"
-        PR\_AUTHOR="${{ github.event.check\_suite.pull\_requests\[0\].user.login }}"
-        PR\_NUMBER="${{ github.event.check\_suite.pull\_requests\[0\].number }}"
+        # Get pull request information from the check_suite event
+        PR_URL="${{ github.event.check_suite.pull_requests[0].html_url }}"
+        PR_TITLE="${{ github.event.check_suite.pull_requests[0].title }}"
+        PR_AUTHOR="${{ github.event.check_suite.pull_requests[0].user.login }}"
+        PR_NUMBER="${{ github.event.check_suite.pull_requests[0].number }}"
 
         # Fetch the requested reviewers who have not yet approved the pull request
         echo "Fetching requested reviewers..."
-        REVIEWERS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB\_TOKEN }}" \\
-          https://api.github.com/repos/${{ github.repository }}/pulls/$PR\_NUMBER/reviews \\
-          | jq -r '.\[\] | select(.state!="APPROVED") | .user.login')
+        REVIEWERS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER/reviews \
+          | jq -r '.[] | select(.state!="APPROVED") | .user.login')
 
         # Exit early if there are no reviewers or all reviewers have approved
-        if \[ -z "$REVIEWERS" \]; then
+        if [ -z "$REVIEWERS" ]; then
           echo "No reviewers found or all reviewers have approved."
           exit 0
         fi
 
         # Fetch the Slack usernames for the GitHub reviewers using the mapping file
         echo "Fetching slack usernames..."
-        SLACK\_USERNAMES=""
+        SLACK_USERNAMES=""
         for REVIEWER in $REVIEWERS
         do
-          SLACK\_USERNAME=$(jq -r --arg github\_user "$REVIEWER" '.\[$github\_user\]' .github/github\_to\_slack\_mapping.json)
-          if \[ "$SLACK\_USERNAME" != "null" \]; then
-            SLACK\_USERNAMES="$SLACK\_USERNAMES @$SLACK\_USERNAME"
+          SLACK_USERNAME=$(jq -r --arg github_user "$REVIEWER" '.[$github_user]' .github/github_to_slack_mapping.json)
+          if [ "$SLACK_USERNAME" != "null" ]; then
+            SLACK_USERNAMES="$SLACK_USERNAMES @$SLACK_USERNAME"
           fi
         done
 
         # Exit early if there are no corresponding Slack usernames
-        if \[ -z "$SLACK\_USERNAMES" \]; then
+        if [ -z "$SLACK_USERNAMES" ]; then
           echo "No slack usernames found."
           exit 0
         fi
 
         # Create the message to be sent to Slack
-        MESSAGE="$SLACK\_USERNAMES レビューをお願いします。\\nPR の CI が通りました。\\n\\n$PR\_TITLE\\n$PR\_URL\\n\\nby @$PR\_AUTHOR"
+        MESSAGE="$SLACK_USERNAMES レビューをお願いします。\nPR の CI が通りました。\n\n$PR_TITLE\n$PR_URL\n\nby @$PR_AUTHOR"
 
         # Send the message to Slack
         echo "Sending message to slack..."
-        curl -X POST -H 'Content-type: application/json' --data "{'text':'$MESSAGE'}" $SLACK\_WEBHOOK\_URL
+        curl -X POST -H 'Content-type: application/json' --data "{'text':'$MESSAGE'}" $SLACK_WEBHOOK_URL
 
-これで、if: ${{ github.event.check\_suite.conclusion == 'success' && github.event.check\_suite.pull\_requests\[0\] }} とするのではなくて別の方法を取りたい
+これで、if: ${{ github.event.check_suite.conclusion == 'success' && github.event.check_suite.pull_requests[0] }} とするのではなくて別の方法を取りたい
 
 ---
 

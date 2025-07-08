@@ -24,14 +24,14 @@ public enum AnswerValue {
     case multipleAnswers(Set&lt;String&gt;)
 }
 
-let answersDict = answers.map { answerInput -&gt; \[String: String\] in
-            var dict: \[String: String\] = \[:\]
-            dict\["question\_id"\] = answerInput.questionId
+let answersDict = answers.map { answerInput -&gt; [String: String] in
+            var dict: [String: String] = [:]
+            dict["question_id"] = answerInput.questionId
             switch answerInput.value {
             case .singleAnswer(let answer):
-                dict\["value"\] = "\\"\\(answer)\\""
+                dict["value"] = "\"\(answer)\""
             case .multipleAnswers(let answers):
-                dict\["value"\] = answers.description
+                dict["value"] = answers.description
             case .none:
                 break
             }

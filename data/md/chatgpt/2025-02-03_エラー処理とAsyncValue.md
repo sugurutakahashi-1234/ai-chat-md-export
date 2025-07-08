@@ -10,18 +10,18 @@
 これってエラー時に初期値nullにしたほうがいいかな？
 
   import 'dart:io';
-import 'package:device\_info\_plus/device\_info\_plus.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google\_maps\_flutter/google\_maps\_flutter.dart';
-import 'package:riverpod\_annotation/riverpod\_annotation.dart';
-import 'package:snpit\_guild\_app/domain/flavor.dart';
-import 'package:snpit\_guild\_app/presentation/providers/flavor\_provider.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:snpit_guild_app/domain/flavor.dart';
+import 'package:snpit_guild_app/presentation/providers/flavor_provider.dart';
 
-part 'current\_location.g.dart';
+part 'current_location.g.dart';
 
 @riverpod
-class CurrentLocationNotifier extends \_$CurrentLocationNotifier {
+class CurrentLocationNotifier extends _$CurrentLocationNotifier {
   @override
   Future&lt;LatLng&gt; build() async {
     return getCurrentLocation();
@@ -101,23 +101,23 @@ class CurrentLocationNotifier extends \_$CurrentLocationNotifier {
 ## 🔧 ツール
 *2025/2/3 15:01:29*
 
-\*\*Evaluating error handling\*\*
+**Evaluating error handling**
 
 I'm thinking through whether to set an initial value of null on error. The code uses Riverpod to fetch and store location data, potentially setting null on failure. The current setup throws an exception, raising the question of a more graceful failure.
 
-\*\*Breaking down the options\*\*
+**Breaking down the options**
 
 I’m considering whether to return a null LatLng or handle errors in Riverpod using AsyncValue.error(...). Letting the error bubble up distinguishes between success and failure better.
 
-\*\*Navigating best practices\*\*
+**Navigating best practices**
 
 Using AsyncValue with states, optionally adding a fallback, is optimal. Avoid returning null for LatLng to prevent errors or null pointer exceptions, as it might cause issues for users relying on valid data.
 
-\*\*Evaluating approaches\*\*
+**Evaluating approaches**
 
 I'm leaning towards letting errors bubble up for clarity, instead of setting the initial location to null or storing a fallback location.
 
-\*\*Prioritizing error handling\*\*
+**Prioritizing error handling**
 
 I’m emphasizing managing errors via Riverpod's AsyncValue.error(...) over returning null to avoid widespread null checks and ensure clear, effective error handling.
 
@@ -203,15 +203,15 @@ ref.watch(currentLocationNotifierProvider).when(
 ## 🔧 ツール
 *2025/2/3 15:02:37*
 
-\*\*Exception handling strategy\*\*
+**Exception handling strategy**
 
 OK, let me see. This approach involves catching exceptions, updating the state to represent an error (like `AsyncValue.error`), and subsequently rethrowing the exception or returning a fallback value. It's a balanced approach to error management.
 
-\*\*Enhancing location handling\*\*
+**Enhancing location handling**
 
 Wrapping the location retrieval in a `try-catch` block to manage exceptions effectively. This ensures a more robust handling of errors, leading to improved overall functionality.
 
-\*\*Polishing the process\*\*
+**Polishing the process**
 
 Wrapping the location retrieval in a `try-catch` block smartly manages any exceptions, ensuring state updates to reflect errors or proceed with the current location, leading to a smoother experience.
 

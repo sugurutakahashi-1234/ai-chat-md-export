@@ -25,7 +25,7 @@ import EmotionAnalysisCore
 import Foundation
 
 public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInteractorProtocol {
-    private let calibrationData: \[Double\]
+    private let calibrationData: [Double]
     private let measurementId: String
     private let userId: User.ID
     private let sessionId: String
@@ -35,7 +35,7 @@ public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInterac
     private let errorSubject = PassthroughSubject&lt;Error, Never&gt;()
 
     private var cancellableSet = Set&lt;AnyCancellable&gt;()
-    private var sampleBufferAndTimestamp: \[(sampleBuffer: CMSampleBuffer, timestamp: Date)\] = \[\]
+    private var sampleBufferAndTimestamp: [(sampleBuffer: CMSampleBuffer, timestamp: Date)] = []
 
     public var errorPublisher: AnyPublisher&lt;Error, Never&gt; {
         errorSubject.eraseToAnyPublisher()
@@ -60,11 +60,11 @@ public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInterac
 
         gazeTrackManager
             .gazeTrackEventPublisher
-            .sink { \[weak self\] event in
+            .sink { [weak self] event in
                 switch event {
                 case .canStartTracking(let canStartTracking):
                     guard let self else { return }
-                    AppLogger.debugLog("Event: \\(event), CanStartTracking: \\(String(describing: canStartTracking))")
+                    AppLogger.debugLog("Event: \(event), CanStartTracking: \(String(describing: canStartTracking))")
                     guard canStartTracking else { return }
 
                     do {
@@ -76,7 +76,7 @@ public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInterac
                     }
 
                 case .initialized(let trackerVoid, let error):
-                    AppLogger.debugLog("Event: \\(event), TrackerVoid: \\(String(describing: trackerVoid)), Error: \\(error)")
+                    AppLogger.debugLog("Event: \(event), TrackerVoid: \(String(describing: trackerVoid)), Error: \(error)")
 
                     if error != .none {
                         // ハンドリングすべきエラーのみを送信する
@@ -84,7 +84,7 @@ public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInterac
                     }
 
                 case .stopped(let error):
-                    AppLogger.debugLog("Event: \\(event), Error: \\(error)", level: .error)
+                    AppLogger.debugLog("Event: \(event), Error: \(error)", level: .error)
 
                     if error != .none {
                         // ハンドリングすべきエラーのみを送信する
@@ -92,7 +92,7 @@ public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInterac
                     }
 
                 case .image(let timestamp, let sampleBuffer):
-                    AppLogger.debugLog("Event: \\(event), Timestamp: \\(timestamp), Image: \\(sampleBuffer)")
+                    AppLogger.debugLog("Event: \(event), Timestamp: \(timestamp), Image: \(sampleBuffer)")
                     self?.sampleBufferAndTimestamp.append((sampleBuffer: sampleBuffer, timestamp: timestamp))
 
                 default:
@@ -113,8 +113,8 @@ public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInterac
         try await serializeAndUploadInteractor.serializeAndUpload(target: SerializableUploadTarget.emotion(key: emotionDataKey, dataModels: emotionDataModels))
     }
 
-    public func analyzeEmotion() async throws -&gt; \[EmotionDataModel\] {
-        var emotionPredictionResult: \[EmotionPredictionResult\] = \[\]
+    public func analyzeEmotion() async throws -&gt; [EmotionDataModel] {
+        var emotionPredictionResult: [EmotionPredictionResult] = []
 
         try await withThrowingTaskGroup(of: EmotionPredictionResult.self) { group in
             for (sampleBuffer, timestamp) in sampleBufferAndTimestamp {
@@ -129,15 +129,15 @@ public final class VideoWatchingAnalysisInteractor: VideoWatchingAnalysisInterac
             }
         }
 
-        return emotionPredictionResult.flatMap { predictEmotionResult -&gt; \[EmotionDataModel\] in
+        return emotionPredictionResult.flatMap { predictEmotionResult -&gt; [EmotionDataModel] in
             predictEmotionResult.emotionDataModels
         }
     }
 }
 
 private extension VideoWatchingAnalysisInteractor {
-    func getCalibrationData(orientation: AppUIInterfaceOrientation, userDefaultsManager: UserDefaultsManagerProtocol) throws -&gt; \[Double\] {
-        let optionalCalibrationData: \[Double\]? = {
+    func getCalibrationData(orientation: AppUIInterfaceOrientation, userDefaultsManager: UserDefaultsManagerProtocol) throws -&gt; [Double] {
+        let optionalCalibrationData: [Double]? = {
             switch orientation {
             case .portrait:
                 return userDefaultsManager.portraitCalibrationData.value
@@ -147,7 +147,7 @@ private extension VideoWatchingAnalysisInteractor {
         }()
 
         guard let unwrappedCalibrationData = optionalCalibrationData else {
-            AppLogger.debugLog("calibration data not found: \\(String(describing: orientation))", level: .error)
+            AppLogger.debugLog("calibration data not found: \(String(describing: orientation))", level: .error)
             throw VideoWatchingAnalysisInteractorError.calibrationDataNotFound
         }
 
@@ -155,20 +155,20 @@ private extension VideoWatchingAnalysisInteractor {
     }
 }
 
-// TODO: EmotionAnalysis 側に定義する & EmotionAnalysis.predictWithFaceDetection() -&gt; \[ImageItem\] を -&gt; PredictEmotionResult とする
+// TODO: EmotionAnalysis 側に定義する & EmotionAnalysis.predictWithFaceDetection() -&gt; [ImageItem] を -&gt; PredictEmotionResult とする
 public struct EmotionPredictionResult {
     public let id: String = UUID().uuidString
     public let timestamp: Date
-    public let imageItem: \[ImageItem\]
+    public let imageItem: [ImageItem]
 
-    public init(timestamp: Date, imageItem: \[ImageItem\]) {
+    public init(timestamp: Date, imageItem: [ImageItem]) {
         self.timestamp = timestamp
         self.imageItem = imageItem
     }
 }
 
 private extension EmotionPredictionResult {
-    var emotionDataModels: \[EmotionDataModel\] {
+    var emotionDataModels: [EmotionDataModel] {
         imageItem.map { item in
             EmotionDataModel(
                 timestamp: item.timestamp.asDateFromMilliseconds, // Date型に変換

@@ -9,12 +9,12 @@
 
 npm install せずに実行したい
 
-openapi-generator-cli generate \\                                                                                                                                                                                                                            127 ↵
-              -i daVinciAppApi/fastapi/app/openapi/openapi.json \\
-              -g swift5 \\
-              -o DaVinciIOSOpenAPI \\
-              --additional-properties=removeMigrationProjectNameClass=true,responseAs=AsyncAwait \\
-              --skip-validate-spec \\
+openapi-generator-cli generate \                                                                                                                                                                                                                            127 ↵
+              -i daVinciAppApi/fastapi/app/openapi/openapi.json \
+              -g swift5 \
+              -o DaVinciIOSOpenAPI \
+              --additional-properties=removeMigrationProjectNameClass=true,responseAs=AsyncAwait \
+              --skip-validate-spec \
               --model-name-suffix=DTO
 
 ---

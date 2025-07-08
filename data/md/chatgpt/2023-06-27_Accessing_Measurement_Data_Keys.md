@@ -17,7 +17,7 @@ public protocol MeasurementDataKey: DataKey {
 
 public extension MeasurementDataKey {
     var localFileNameSuffix: String {
-        "\\(measurementId)\_\\(userId)\_\\(sessionId)\_\\(Date().asISO8601WithFractionalSeconds)"
+        "\(measurementId)_\(userId)_\(sessionId)_\(Date().asISO8601WithFractionalSeconds)"
     }
 }
 public struct InteractionDataKey: MeasurementDataKey {
@@ -32,11 +32,11 @@ public struct InteractionDataKey: MeasurementDataKey {
     }
 
     public var path: String {
-        "raw/interactions/measurements/\\(measurementId)/users/\\(userId)/sessions/\\(sessionId)"
+        "raw/interactions/measurements/\(measurementId)/users/\(userId)/sessions/\(sessionId)"
     }
 
     public var localFileName: String {
-        "\\(Constants.OutputFileNames.interaction.rawValue)\_\\(localFileNameSuffix)"
+        "\(Constants.OutputFileNames.interaction.rawValue)_\(localFileNameSuffix)"
     }
 }
 public struct AnchorDataKey: MeasurementDataKey {
@@ -51,11 +51,11 @@ public struct AnchorDataKey: MeasurementDataKey {
     }
 
     public var path: String {
-        "raw/anchors/measurements/\\(measurementId)/users/\\(userId)/sessions/\\(sessionId)"
+        "raw/anchors/measurements/\(measurementId)/users/\(userId)/sessions/\(sessionId)"
     }
 
     public var localFileName: String {
-        "\\(Constants.OutputFileNames.anchor.rawValue)\_\\(localFileNameSuffix)"
+        "\(Constants.OutputFileNames.anchor.rawValue)_\(localFileNameSuffix)"
     }
 }
 public struct EmotionDataKey: MeasurementDataKey {
@@ -70,11 +70,11 @@ public struct EmotionDataKey: MeasurementDataKey {
     }
 
     public var path: String {
-        "raw/emotions/measurements/\\(measurementId)/users/\\(userId)/sessions/\\(sessionId)"
+        "raw/emotions/measurements/\(measurementId)/users/\(userId)/sessions/\(sessionId)"
     }
 
     public var localFileName: String {
-        "\\(Constants.OutputFileNames.emotion.rawValue)\_\\(localFileNameSuffix)"
+        "\(Constants.OutputFileNames.emotion.rawValue)_\(localFileNameSuffix)"
     }
 }
 public protocol DataKey {

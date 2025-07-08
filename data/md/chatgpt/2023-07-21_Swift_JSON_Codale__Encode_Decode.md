@@ -87,7 +87,7 @@ if let jsonData = jsonString.data(using: .utf8) {
 ## 👤 ユーザー
 *2023/7/21 13:15:58*
 
-DecodeやencodeするStringに改行コードの \\n があるときの話です。
+DecodeやencodeするStringに改行コードの \n があるときの話です。
 
 ---
 
@@ -177,7 +177,7 @@ World!
 ## 🤖 アシスタント
 *2023/7/21 13:19:41*
 
-JSONエンコード時に `\\n` やその他の制御文字がエスケープされなかった場合、それはエンコーダが正しく機能していない可能性があります。もしくは、特定のエスケープが無効になるように設定されている可能性があります。しかし、Swiftの `JSONEncoder` は通常、制御文字を正しくエスケープします。
+JSONエンコード時に `\n` やその他の制御文字がエスケープされなかった場合、それはエンコーダが正しく機能していない可能性があります。もしくは、特定のエスケープが無効になるように設定されている可能性があります。しかし、Swiftの `JSONEncoder` は通常、制御文字を正しくエスケープします。
 
 もし、それが発生しているコードのサンプルがあれば提供いただけますか？具体的な状況を理解するためにはそれが有用です。
 
@@ -197,17 +197,17 @@ struct User: Codable {
     var message: String
 }
 
-let user = User(name: "John", message: "Hello\\nWorld!")
+let user = User(name: "John", message: "Hello\nWorld!")
 
 let encoder = JSONEncoder()
 
 do {
     let data = try encoder.encode(user)
     if let jsonString = String(data: data, encoding: .utf8) {
-        print(jsonString) // {"name":"John","message":"Hello\\nWorld!"}
+        print(jsonString) // {"name":"John","message":"Hello\nWorld!"}
     }
 } catch {
-    print("Error encoding: \\(error)")
+    print("Error encoding: \(error)")
 }
 
 ---

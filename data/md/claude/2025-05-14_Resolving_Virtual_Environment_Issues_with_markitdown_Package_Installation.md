@@ -9,7 +9,7 @@
 
 uv をインストール済みで以下ができないで困っている
 
-~/git/markitdown  ‹main› $ uv pip install -e 'packages/markitdown\[all\]'                                                                           127 ↵
+~/git/markitdown  ‹main› $ uv pip install -e 'packages/markitdown[all]'                                                                           127 ↵
 error: Failed to inspect Python interpreter from virtual environment at `/Users/sugurutakahashi/.venv/bin/python3`
   Caused by: Python interpreter not found at `/Users/sugurutakahashi/.venv/bin/python3`
 
@@ -17,7 +17,7 @@ error: Failed to inspect Python interpreter from virtual environment at `/Users/
 git clone https://github.com/microsoft/markitdown.git
 cd markitdown
 # インストール (すべての機能を含む)
-pip install -e 'packages/markitdown\[all\]'
+pip install -e 'packages/markitdown[all]'
 # MCPパッケージも別途インストール
 pip install -e 'packages/markitdown-mcp'
 
@@ -80,9 +80,9 @@ uv-tool-uvx 0.6.16 (Homebrew 2025-04-22)
   ------------
 &lt; hello world! &gt;
   ------------
-   \\   ^\_\_^
-    \\  (oo)\\\_\_\_\_\_\_\_
-       (\_\_)\\       )\\/\\
+   \   ^__^
+    \  (oo)_______
+       (__)\       )\/\
            ||----w |
            ||     ||
 
@@ -284,7 +284,7 @@ source .venv/bin/activate
 
 以下のコマンドをみたときにすべきことは？
 
-pip install -e 'packages/markitdown\[all\]'
+pip install -e 'packages/markitdown[all]'
 
 ---
 
