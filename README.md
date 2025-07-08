@@ -1,4 +1,4 @@
-# chat-history-conv
+# ai-chat-md-export
 
 ChatGPTとClaudeのチャット履歴をMarkdownに変換するBun対応CLIツール
 
@@ -18,8 +18,8 @@ ChatGPTとClaudeのチャット履歴をMarkdownに変換するBun対応CLIツ�
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/suguruTakahashi-1234/chat-history-conv.git
-cd chat-history-conv
+git clone https://github.com/suguruTakahashi-1234/ai-chat-md-export.git
+cd ai-chat-md-export
 
 # Bunで依存関係をインストール
 bun install
@@ -46,7 +46,27 @@ data/raw/
 
 ## 使い方
 
-### 基本的な使い方（推奨）
+### NPMパッケージとして使用（リリース後）
+
+```bash
+# npxで直接実行
+npx ai-chat-md-export -i conversations.json -o output/
+
+# bunxで実行
+bunx ai-chat-md-export -i conversations.json -o output/
+
+# pnpxで実行
+pnpx ai-chat-md-export -i conversations.json -o output/
+
+# yarn dlxで実行
+yarn dlx ai-chat-md-export -i conversations.json -o output/
+
+# グローバルインストール
+npm install -g ai-chat-md-export
+ai-chat-md-export -i conversations.json -o output/
+```
+
+### 基本的な使い方（開発時）
 
 ```bash
 # ChatGPTとClaudeの両方を変換
@@ -74,7 +94,7 @@ bun run conv:claude:watch    # → claude-warnings.log
 bun run src/cli.ts -i <入力パス> -o <出力パス> --format <形式>
 
 # ビルド済みバイナリを使用
-./bin/chat-history-conv -i <入力パス> -o <出力パス>
+./bin/ai-chat-md-export -i <入力パス> -o <出力パス>
 ```
 
 ## 出力先
@@ -105,7 +125,7 @@ data/md/
 ## ディレクトリ構造
 
 ```
-chat-history-conv/
+ai-chat-md-export/
 ├── src/              # ソースコード
 │   ├── cli.ts        # CLIエントリポイント
 │   ├── loaders/      # 各サービス用ローダー

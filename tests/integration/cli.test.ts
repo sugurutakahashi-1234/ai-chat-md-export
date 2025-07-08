@@ -20,7 +20,7 @@ describe("CLI Integration Tests", () => {
     const result = await $`bun ${cliPath} -h`.quiet();
     const output = result.text();
 
-    expect(output).toContain("chat-history-conv");
+    expect(output).toContain("ai-chat-md-export");
     expect(output).toContain(
       "Convert ChatGPT and Claude export data to Markdown",
     );

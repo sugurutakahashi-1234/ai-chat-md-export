@@ -1,16 +1,16 @@
 {
-  "name": "chat-history-conv",
+  "name": "ai-chat-md-export",
   "version": "0.1.0",
   "description": "CLI tool to convert ChatGPT and Claude chat history to Markdown",
   "type": "module",
   "private": true,
   "bin": {
-    "chat-history-conv": "bin/chat-history-conv"
+    "ai-chat-md-export": "bin/ai-chat-md-export"
   },
   "scripts": {
     "dev": "bun run src/cli.ts -h",
     "typecheck": "bunx tsc --noEmit",
-    "build": "bun build src/cli.ts --compile --outfile bin/chat-history-conv",
+    "build": "bun build src/cli.ts --compile --outfile bin/ai-chat-md-export",
     "lint": "biome check --write .",
     "lint:check": "biome check .",
     "format": "biome format --write .",
@@ -18,22 +18,24 @@
     "test": "bun test",
     "test:watch": "bun test --watch",
     "clean": "rm -rf bun.lock node_modules bin",
+    "deps:check": "bunx npm-check-updates --deep",
+    "deps:update": "bunx npm-check-updates -u --deep && bun install",
     "knip": "knip",
     "knip:fix": "knip --fix",
     "ci": "bun run typecheck && bun run lint:check && bun run test && bun run knip",
-    "conv:chatgpt": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt --format chatgpt",
-    "conv:claude": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude",
+    "conv:chatgpt": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt -f chatgpt",
+    "conv:claude": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude -f claude",
     "conv:all": "bun run conv:chatgpt && bun run conv:claude",
-    "conv:chatgpt:watch": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt --format chatgpt 2>&1 | tee chatgpt-warnings.log",
-    "conv:claude:watch": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude 2>&1 | tee claude-warnings.log"
+    "conv:chatgpt:watch": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt -f chatgpt 2>&1 | tee chatgpt-warnings.log",
+    "conv:claude:watch": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude -f claude 2>&1 | tee claude-warnings.log"
   },
   "dependencies": {
     "commander": "^14.0.0",
-    "zod": "^3.25.75"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.6",
-    "@types/bun": "latest",
+    "@biomejs/biome": "^2.1.1",
+    "@types/bun": "^1.2.18",
     "@types/node": "^24.0.10",
     "knip": "^5.61.3",
     "typescript": "^5.8.3"

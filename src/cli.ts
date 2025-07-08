@@ -19,6 +19,14 @@ const optionsSchema = z.object({
   output: z.string().optional(),
   format: z.enum(["chatgpt", "claude", "auto"]).default("auto"),
   copyRaw: z.boolean().default(false),
+  since: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format")
+    .optional(),
+  until: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format")
+    .optional(),
 });
 
 type Options = z.infer<typeof optionsSchema>;
@@ -49,31 +57,51 @@ async function detectFormat(filePath: string): Promise<"chatgpt" | "claude"> {
 
 async function main() {
   program
-    .name("chat-history-conv")
+    .name("ai-chat-md-export")
     .description("Convert ChatGPT and Claude export data to Markdown")
     .version(packageJson.version)
     .requiredOption("-i, --input <path>", "Input file or directory path")
-    .option("-o, --output <path>", "Output directory (default: data/md/)")
+    .option("-o, --output <path>", "Output directory (default: current directory)")
     .option(
       "-f, --format <format>",
       "Input format (chatgpt, claude, auto)",
       "auto",
     )
     .option("--copy-raw", "Copy raw data to data/raw/", false)
+    .option(
+      "--since <date>",
+      "Include conversations started on or after this date (YYYY-MM-DD)",
+    )
+    .option(
+      "--until <date>",
+      "Include conversations started on or before this date (YYYY-MM-DD)",
+    )
     .addHelpText(
       "after",
       `\nExamples:
   # Convert a single ChatGPT export file
-  $ chat-history-conv -i conversations.json
+  $ ai-chat-md-export -i conversations.json
 
   # Convert all JSON files in a directory
-  $ chat-history-conv -i exports/ -o output/
+  $ ai-chat-md-export -i exports/ -o output/
 
   # Specify format explicitly
-  $ chat-history-conv -i claude_export.json -f claude
+  $ ai-chat-md-export -i claude_export.json -f claude
 
   # Copy raw data while converting
-  $ chat-history-conv -i data.json --copy-raw`,
+  $ ai-chat-md-export -i data.json --copy-raw
+
+  # Filter by date range
+  $ ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
+
+  # Filter conversations from a specific date
+  $ ai-chat-md-export -i data.json --since 2024-06-01
+
+Note on Date Filtering:
+  - Dates refer to when conversations were STARTED, not last updated
+  - ChatGPT: Uses 'create_time' field
+  - Claude: Uses 'created_at' field
+  - Both --since and --until dates are inclusive`,
     )
     .parse();
 
@@ -89,7 +117,7 @@ async function main() {
 
 async function processInput(options: Options) {
   const inputPath = path.resolve(options.input);
-  const outputDir = path.resolve(options.output || "data/md");
+  const outputDir = path.resolve(options.output || process.cwd());
 
   const stat = await fs.stat(inputPath);
 
@@ -153,7 +181,29 @@ async function processFile(
 
   await fs.mkdir(outputDir, { recursive: true });
 
-  for (const conv of conversations) {
+  // Filter by date if --since or --until is specified
+  let filteredConversations = conversations;
+  if (options.since || options.until) {
+    const originalCount = conversations.length;
+    filteredConversations = conversations.filter((conv) => {
+      const convDate = conv.date; // Already in YYYY-MM-DD format
+      if (options.since && convDate < options.since) return false;
+      if (options.until && convDate > options.until) return false;
+      return true;
+    });
+    const filteredCount = filteredConversations.length;
+    console.log(
+      `  Filtered: ${filteredCount} of ${originalCount} conversations (by start date)`,
+    );
+    if (options.since || options.until) {
+      const dateRange = [];
+      if (options.since) dateRange.push(`from ${options.since}`);
+      if (options.until) dateRange.push(`to ${options.until}`);
+      console.log(`  Date range: ${dateRange.join(" ")}`);
+    }
+  }
+
+  for (const conv of filteredConversations) {
     const markdown = convertToMarkdown(conv);
     const fileName = `${conv.date}_${conv.title.replace(/[^a-zA-Z0-9ぁ-んァ-ヶー一-龠]/g, "_")}.md`;
     const outputPath = path.join(outputDir, fileName);
