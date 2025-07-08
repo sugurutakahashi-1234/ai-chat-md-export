@@ -18,7 +18,9 @@
     "test": "bun test",
     "test:watch": "bun test --watch",
     "clean": "rm -rf bun.lock node_modules bin",
-    "ci": "bun run typecheck && bun run lint:check && bun run test",
+    "knip": "knip",
+    "knip:fix": "knip --fix",
+    "ci": "bun run typecheck && bun run lint:check && bun run test && bun run knip",
     "conv:chatgpt": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt --format chatgpt",
     "conv:claude": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude",
     "conv:all": "bun run conv:chatgpt && bun run conv:claude",
@@ -33,6 +35,7 @@
     "@biomejs/biome": "^2.0.6",
     "@types/bun": "latest",
     "@types/node": "^24.0.10",
+    "knip": "^5.61.3",
     "typescript": "^5.8.3"
   }
 }

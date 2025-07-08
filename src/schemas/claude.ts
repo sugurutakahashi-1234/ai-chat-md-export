@@ -43,4 +43,3 @@ export const claudeConversationSchema = z
 
 // Export type definitions
 export type ClaudeConversation = z.infer<typeof claudeConversationSchema>;
-export type ClaudeMessage = z.infer<typeof claudeMessageSchema>;

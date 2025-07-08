@@ -64,4 +64,3 @@ export const chatGPTConversationSchema = z
 // Export type definitions
 export type ChatGPTConversation = z.infer<typeof chatGPTConversationSchema>;
 export type ChatGPTNode = z.infer<typeof chatGPTNodeSchema>;
-export type ChatGPTMessage = z.infer<typeof chatGPTMessageSchema>;
