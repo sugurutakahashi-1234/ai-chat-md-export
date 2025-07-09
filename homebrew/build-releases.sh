@@ -12,7 +12,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # Get version from package.json
-VERSION=$(grep '"version"' package.json | cut -d '"' -f 4)
+VERSION=$(jq -r '.version' package.json)
 
 echo -e "${GREEN}Building ai-chat-md-export v${VERSION} for Homebrew...${NC}"
 
@@ -21,15 +21,15 @@ mkdir -p dist
 
 # Build for each platform
 echo -e "${YELLOW}Building for macOS ARM64...${NC}"
-bun build src/cli.ts --compile --target=darwin-arm64 --outfile dist/ai-chat-md-export
+bun build src/cli.ts --compile --target=bun-darwin-arm64 --outfile dist/ai-chat-md-export
 mv dist/ai-chat-md-export dist/ai-chat-md-export-darwin-arm64
 
 echo -e "${YELLOW}Building for macOS x64...${NC}"
-bun build src/cli.ts --compile --target=darwin-x64 --outfile dist/ai-chat-md-export
+bun build src/cli.ts --compile --target=bun-darwin-x64 --outfile dist/ai-chat-md-export
 mv dist/ai-chat-md-export dist/ai-chat-md-export-darwin-x64
 
 echo -e "${YELLOW}Building for Linux x64...${NC}"
-bun build src/cli.ts --compile --target=linux-x64 --outfile dist/ai-chat-md-export
+bun build src/cli.ts --compile --target=bun-linux-x64 --outfile dist/ai-chat-md-export
 mv dist/ai-chat-md-export dist/ai-chat-md-export-linux-x64
 
 # Create release directory
