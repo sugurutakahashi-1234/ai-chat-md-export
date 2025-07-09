@@ -36,19 +36,63 @@ export function sanitizeFileNameSimple(fileName: string): string {
 }
 
 /**
+ * Convert string to a safe filename with Unicode support
+ * Preserves most Unicode characters including Japanese, Chinese, Korean, etc.
+ * Only encodes truly problematic characters for filesystem safety
+ */
+export function sanitizeFileNameUnicode(fileName: string): string {
+  // Characters that are problematic on most filesystems
+  // biome-ignore lint/suspicious/noControlCharactersInRegex: Control characters are intentionally excluded
+  const dangerousChars = /[<>:"/\\|?*\x00-\x1f？]/g;
+  
+  // Replace dangerous characters with their URL-encoded equivalents
+  let result = fileName;
+  
+  // Replace each dangerous character with its encoded form
+  result = result.replace(dangerousChars, (char) => {
+    return encodeURIComponent(char);
+  });
+  
+  // Replace spaces with underscores for better readability
+  result = result.replace(/\s+/g, "_");
+  
+  // Remove leading and trailing dots (problematic on some systems)
+  result = result.replace(/^\.+/, "").replace(/\.+$/, "");
+  
+  // Trim whitespace
+  result = result.trim();
+  
+  return result;
+}
+
+export type FilenameEncoding = "url-safe" | "unicode" | "simple";
+
+/**
  * Generate a filename
  * @param date - Date string in YYYY-MM-DD format
  * @param title - Title of the conversation
- * @param useUrlSafe - Whether to use URL-safe encoding (default: true)
+ * @param encoding - Encoding type: "url-safe", "unicode" (default), or "simple"
  */
 export function generateFileName(
   date: string,
   title: string,
-  useUrlSafe = true,
+  encoding: FilenameEncoding = "unicode",
 ): string {
-  const sanitizedTitle = useUrlSafe
-    ? sanitizeFileName(title)
-    : sanitizeFileNameSimple(title);
+  let sanitizedTitle: string;
+  
+  switch (encoding) {
+    case "url-safe":
+      sanitizedTitle = sanitizeFileName(title);
+      break;
+    case "unicode":
+      sanitizedTitle = sanitizeFileNameUnicode(title);
+      break;
+    case "simple":
+      sanitizedTitle = sanitizeFileNameSimple(title);
+      break;
+    default:
+      sanitizedTitle = sanitizeFileName(title);
+  }
 
   // Truncate if filename is too long
   // Consider: date(10) + "_"(1) + ".md"(3) = 14 characters

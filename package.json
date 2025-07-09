@@ -36,6 +36,7 @@
     "ci": "bun run typecheck && bun run lint:check && bun run build && bun run test && bun run knip",
     "example:chatgpt": "bun run src/cli.ts -i input/chatgpt/conversations.json -o output/chatgpt -f chatgpt",
     "example:claude": "bun run src/cli.ts -i input/claude/conversations.json -o output/claude -f claude",
+    "example:all": "bun run example:chatgpt && bun run example:claude",
     "release": "release-it"
   },
   "dependencies": {

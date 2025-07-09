@@ -3,6 +3,7 @@ import {
   generateFileName,
   sanitizeFileName,
   sanitizeFileNameSimple,
+  sanitizeFileNameUnicode,
 } from "../../src/utils/filename";
 
 describe("sanitizeFileName", () => {
@@ -64,22 +65,62 @@ describe("sanitizeFileNameSimple", () => {
   });
 });
 
+describe("sanitizeFileNameUnicode", () => {
+  it("preserves Japanese characters", () => {
+    expect(sanitizeFileNameUnicode("日本語のテスト")).toBe("日本語のテスト");
+    expect(sanitizeFileNameUnicode("こんにちは世界")).toBe("こんにちは世界");
+    expect(sanitizeFileNameUnicode("カタカナテスト")).toBe("カタカナテスト");
+  });
+
+  it("preserves other Unicode characters", () => {
+    expect(sanitizeFileNameUnicode("Hello 世界")).toBe("Hello_世界");
+    expect(sanitizeFileNameUnicode("Test 文件 File")).toBe("Test_文件_File");
+    expect(sanitizeFileNameUnicode("🎌 日本")).toBe("🎌_日本");
+  });
+
+  it("encodes dangerous characters", () => {
+    expect(sanitizeFileNameUnicode("file/name")).toBe("file%2Fname");
+    expect(sanitizeFileNameUnicode("test:file")).toBe("test%3Afile");
+    expect(sanitizeFileNameUnicode('test"file')).toBe("test%22file");
+    expect(sanitizeFileNameUnicode("明日の天気は？")).toBe("明日の天気は%EF%BC%9F");
+  });
+
+  it("handles mixed content", () => {
+    expect(sanitizeFileNameUnicode("SwiftUI:ナビゲーション")).toBe(
+      "SwiftUI%3Aナビゲーション",
+    );
+    expect(sanitizeFileNameUnicode("React/Vue比較")).toBe("React%2FVue比較");
+  });
+});
+
 describe("generateFileName", () => {
   it("generates filename in URL-safe mode", () => {
-    expect(generateFileName("2025-01-01", "Hello World")).toBe(
+    expect(generateFileName("2025-01-01", "Hello World", "url-safe")).toBe(
       "2025-01-01_Hello_World.md",
     );
-    expect(generateFileName("2025-01-01", "Test File")).toBe(
+    expect(generateFileName("2025-01-01", "Test File", "url-safe")).toBe(
       "2025-01-01_Test_File.md",
     );
   });
 
   it("generates filename in simple mode", () => {
-    expect(generateFileName("2025-01-01", "Hello World", false)).toBe(
+    expect(generateFileName("2025-01-01", "Hello World", "simple")).toBe(
       "2025-01-01_Hello_World.md",
     );
-    expect(generateFileName("2025-01-01", "Test File", false)).toBe(
+    expect(generateFileName("2025-01-01", "Test File", "simple")).toBe(
       "2025-01-01_Test_File.md",
+    );
+  });
+
+  it("generates filename in unicode mode with Japanese", () => {
+    expect(generateFileName("2025-01-01", "日本語のテスト", "unicode")).toBe(
+      "2025-01-01_日本語のテスト.md",
+    );
+    expect(generateFileName("2025-01-01", "こんにちは世界", "unicode")).toBe(
+      "2025-01-01_こんにちは世界.md",
+    );
+    expect(generateFileName("2025-01-01", "明日の天気は？", "unicode")).toBe(
+      "2025-01-01_明日の天気は%EF%BC%9F.md",
     );
   });
 
@@ -92,6 +133,12 @@ describe("generateFileName", () => {
   it("safely handles titles with special characters", () => {
     expect(generateFileName("2025-01-01", "test/file:name|test")).toBe(
       "2025-01-01_test%2Ffile%3Aname%7Ctest.md",
+    );
+  });
+
+  it("defaults to unicode encoding", () => {
+    expect(generateFileName("2025-01-01", "日本語")).toBe(
+      "2025-01-01_日本語.md",
     );
   });
 });

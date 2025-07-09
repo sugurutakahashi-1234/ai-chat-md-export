@@ -6,6 +6,7 @@ import { loadChatGPT } from "./loaders/chatgpt.js";
 import { loadClaude } from "./loaders/claude.js";
 import { convertToMarkdown } from "./markdown.js";
 import type { Conversation } from "./types.js";
+import type { FilenameEncoding } from "./utils/filename.js";
 import { generateFileName } from "./utils/filename.js";
 
 export const optionsSchema = z.object({
@@ -23,6 +24,9 @@ export const optionsSchema = z.object({
   quiet: z.boolean().default(false),
   dryRun: z.boolean().default(false),
   search: z.string().optional(),
+  filenameEncoding: z
+    .enum(["url-safe", "unicode", "simple"])
+    .default("unicode"),
 });
 
 export type Options = z.infer<typeof optionsSchema>;
@@ -173,7 +177,11 @@ export async function processFile(
 
   for (const conv of filteredConversations) {
     const markdown = convertToMarkdown(conv);
-    const fileName = generateFileName(conv.date, conv.title);
+    const fileName = generateFileName(
+      conv.date,
+      conv.title,
+      options.filenameEncoding as FilenameEncoding,
+    );
     const outputPath = path.join(outputDir, fileName);
 
     try {
@@ -253,6 +261,11 @@ export async function main(): Promise<void> {
     .option("-q, --quiet", "Suppress progress messages")
     .option("--dry-run", "Show what would be done without writing files")
     .option("--search <keyword>", "Filter conversations containing keyword")
+    .option(
+      "--filename-encoding <encoding>",
+      "Filename encoding: url-safe, unicode (default), or simple",
+      "unicode",
+    )
     .addHelpText(
       "after",
       `\nExamples:
