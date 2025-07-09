@@ -27,6 +27,9 @@ const optionsSchema = z.object({
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format")
     .optional(),
+  quiet: z.boolean().default(false),
+  dryRun: z.boolean().default(false),
+  search: z.string().optional(),
 });
 
 type Options = z.infer<typeof optionsSchema>;
@@ -78,6 +81,9 @@ async function main() {
       "--until <date>",
       "Include conversations started on or before this date (YYYY-MM-DD)",
     )
+    .option("-q, --quiet", "Suppress progress messages")
+    .option("--dry-run", "Show what would be done without writing files")
+    .option("--search <keyword>", "Filter conversations containing keyword")
     .addHelpText(
       "after",
       `\nExamples:
@@ -96,11 +102,28 @@ async function main() {
   # Filter conversations from a specific date
   $ ai-chat-md-export -i data.json --since 2024-06-01
 
+  # Search for conversations containing a keyword
+  $ ai-chat-md-export -i data.json --search "machine learning"
+
+  # Preview what would be done without writing files
+  $ ai-chat-md-export -i data.json --dry-run
+
+  # Run silently (only show errors)
+  $ ai-chat-md-export -i data.json -o output/ --quiet
+
+  # Combine multiple options
+  $ ai-chat-md-export -i data.json --since 2024-01-01 --search "API" --quiet
+
 Note on Date Filtering:
   - Dates refer to when conversations were STARTED, not last updated
   - ChatGPT: Uses 'create_time' field
   - Claude: Uses 'created_at' field
-  - Both --since and --until dates are inclusive`,
+  - Both --since and --until dates are inclusive
+
+Note on Search:
+  - Search is case-insensitive
+  - Searches in both conversation titles and message contents
+  - Partial matches are supported`,
     )
     .parse();
 
@@ -139,7 +162,9 @@ async function processFile(
   outputDir: string,
   options: Options,
 ) {
-  console.log(`Processing: ${filePath}`);
+  if (!options.quiet) {
+    console.log(`Processing: ${filePath}`);
+  }
 
   let format: string;
   try {
@@ -155,9 +180,9 @@ async function processFile(
   let conversations: Conversation[];
   try {
     if (format === "chatgpt") {
-      conversations = await loadChatGPT(filePath);
+      conversations = await loadChatGPT(filePath, { quiet: options.quiet });
     } else if (format === "claude") {
-      conversations = await loadClaude(filePath);
+      conversations = await loadClaude(filePath, { quiet: options.quiet });
     } else {
       throw new Error(
         `Unsupported format: ${format}\n` +
@@ -178,28 +203,56 @@ async function processFile(
     );
   }
 
-  await fs.mkdir(outputDir, { recursive: true });
-
-  // Filter by date if --since or --until is specified
+  // Apply filters
   let filteredConversations = conversations;
+  const originalCount = conversations.length;
+  
+  // Filter by date if --since or --until is specified
   if (options.since || options.until) {
-    const originalCount = conversations.length;
-    filteredConversations = conversations.filter((conv) => {
+    filteredConversations = filteredConversations.filter((conv) => {
       const convDate = conv.date; // Already in YYYY-MM-DD format
       if (options.since && convDate < options.since) return false;
       if (options.until && convDate > options.until) return false;
       return true;
     });
-    const filteredCount = filteredConversations.length;
+  }
+  
+  // Filter by search keyword if --search is specified
+  if (options.search) {
+    const searchLower = options.search.toLowerCase();
+    filteredConversations = filteredConversations.filter((conv) => {
+      // Search in title
+      if (conv.title.toLowerCase().includes(searchLower)) return true;
+      // Search in messages
+      return conv.messages.some((msg) => 
+        msg.content.toLowerCase().includes(searchLower)
+      );
+    });
+  }
+  
+  const filteredCount = filteredConversations.length;
+  if ((options.since || options.until || options.search) && !options.quiet) {
     console.log(
-      `  Filtered: ${filteredCount} of ${originalCount} conversations (by start date)`,
+      `  Filtered: ${filteredCount} of ${originalCount} conversations`,
     );
+    const filters = [];
     if (options.since || options.until) {
       const dateRange = [];
       if (options.since) dateRange.push(`from ${options.since}`);
       if (options.until) dateRange.push(`to ${options.until}`);
-      console.log(`  Date range: ${dateRange.join(" ")}`);
+      filters.push(`date ${dateRange.join(" ")}`);
     }
+    if (options.search) {
+      filters.push(`keyword "${options.search}"`);
+    }
+    if (filters.length > 0) {
+      console.log(`  Filters: ${filters.join(", ")}`);
+    }
+  }
+
+  // Only create output directory if we have files to write
+  if (!options.dryRun && filteredConversations.length > 0) {
+    await fs.mkdir(outputDir, { recursive: true });
   }
 
   for (const conv of filteredConversations) {
@@ -208,8 +261,12 @@ async function processFile(
     const outputPath = path.join(outputDir, fileName);
 
     try {
-      await fs.writeFile(outputPath, markdown, "utf-8");
-      console.log(`  → ${outputPath}`);
+      if (!options.dryRun) {
+        await fs.writeFile(outputPath, markdown, "utf-8");
+      }
+      if (!options.quiet) {
+        console.log(`  → ${options.dryRun ? "[DRY RUN] Would write:" : ""} ${outputPath}`);
+      }
     } catch (error) {
       console.error(
         `Warning: Failed to write file: ${outputPath}\n` +
@@ -228,21 +285,29 @@ async function processDirectory(
   const jsonFiles = files.filter((f) => f.endsWith(".json"));
 
   if (jsonFiles.length === 0) {
-    console.log(`No JSON files found in directory: ${dirPath}`);
+    if (!options.quiet) {
+      console.log(`No JSON files found in directory: ${dirPath}`);
+    }
     return;
   }
 
-  console.log(`Found ${jsonFiles.length} JSON file(s) to process\n`);
+  if (!options.quiet) {
+    console.log(`Found ${jsonFiles.length} JSON file(s) to process\n`);
+  }
 
   for (let i = 0; i < jsonFiles.length; i++) {
     const file = jsonFiles[i];
     if (!file) continue;
     const filePath = path.join(dirPath, file);
-    console.log(`[${i + 1}/${jsonFiles.length}] Processing ${file}...`);
+    if (!options.quiet) {
+      console.log(`[${i + 1}/${jsonFiles.length}] Processing ${file}...`);
+    }
     await processFile(filePath, outputDir, options);
   }
 
-  console.log(`\nCompleted processing ${jsonFiles.length} file(s)`);
+  if (!options.quiet) {
+    console.log(`\nCompleted processing ${jsonFiles.length} file(s)`);
+  }
 }
 
 main();

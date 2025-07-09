@@ -126,16 +126,21 @@
       "Bash(jq:*)",
       "Bash(sed:*)",
       "Bash(chat-history-conv:*)",
-      "Bash(./bin/ai-chat-md-export:*)"
+      "Bash(./bin/ai-chat-md-export:*)",
+      "WebFetch(domain:gist.github.com)"
     ],
     "deny": []
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": ["playwright"],
+  "enabledMcpjsonServers": [
+    "playwright"
+  ],
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": [
+        "@playwright/mcp@latest"
+      ]
     }
   }
 }

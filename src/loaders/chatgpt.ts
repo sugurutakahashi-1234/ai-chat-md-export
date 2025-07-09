@@ -10,7 +10,10 @@ import {
   validateWithDetails,
 } from "../utils/schema-validator.js";
 
-export async function loadChatGPT(filePath: string): Promise<Conversation[]> {
+export async function loadChatGPT(
+  filePath: string,
+  options: { quiet?: boolean } = {},
+): Promise<Conversation[]> {
   const content = await fs.readFile(filePath, "utf-8");
   const data = JSON.parse(content);
 
@@ -65,15 +68,17 @@ export async function loadChatGPT(filePath: string): Promise<Conversation[]> {
     );
   }
 
-  // サマリー情報を表示
-  console.log(`\n✅ Successfully loaded ${successCount} conversations`);
+  // Display summary information
+  if (!options.quiet) {
+    console.log(`\n✅ Successfully loaded ${successCount} conversations`);
 
-  if (skippedFields.size > 0) {
-    console.log(`\n📋 Skipped fields during conversion:`);
-    console.log(`  - ${Array.from(skippedFields).sort().join(", ")}`);
-    console.log(
-      `    * These fields are not included in the converted Markdown`,
-    );
+    if (skippedFields.size > 0) {
+      console.log(`\n📋 Skipped fields during conversion:`);
+      console.log(`  - ${Array.from(skippedFields).sort().join(", ")}`);
+      console.log(
+        `    * These fields are not included in the converted Markdown`,
+      );
+    }
   }
 
   return conversations;
@@ -109,11 +114,11 @@ function traverseNode(
         if (typeof part === "string") {
           return part;
         } else if (part && typeof part === "object") {
-          // content_typeとtextフィールドを持つオブジェクトの場合
+          // For objects with content_type and text fields
           if ("text" in part && typeof part.text === "string") {
             return part.text;
           }
-          // その他のオブジェクトの場合は文字列化
+          // Stringify other objects
           return JSON.stringify(part, null, 2);
         }
         return "";
@@ -126,7 +131,7 @@ function traverseNode(
         content: contentParts.join("\n"),
       };
 
-      // timestampがある場合のみ追加
+      // Add timestamp only if it exists
       if (node.message.create_time) {
         message.timestamp = new Date(
           node.message.create_time * 1000,

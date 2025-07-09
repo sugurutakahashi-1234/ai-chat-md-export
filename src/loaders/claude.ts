@@ -9,7 +9,10 @@ import {
   validateWithDetails,
 } from "../utils/schema-validator.js";
 
-export async function loadClaude(filePath: string): Promise<Conversation[]> {
+export async function loadClaude(
+  filePath: string,
+  options: { quiet?: boolean } = {},
+): Promise<Conversation[]> {
   const content = await fs.readFile(filePath, "utf-8");
   const data = JSON.parse(content);
 
@@ -114,14 +117,16 @@ export async function loadClaude(filePath: string): Promise<Conversation[]> {
   }
 
   // Display summary information
-  console.log(`\n✅ Successfully loaded ${successCount} conversations`);
+  if (!options.quiet) {
+    console.log(`\n✅ Successfully loaded ${successCount} conversations`);
 
-  if (skippedFields.size > 0) {
-    console.log(`\n📋 Skipped fields during conversion:`);
-    console.log(`  - ${Array.from(skippedFields).sort().join(", ")}`);
-    console.log(
-      `    * These fields are not included in the converted Markdown`,
-    );
+    if (skippedFields.size > 0) {
+      console.log(`\n📋 Skipped fields during conversion:`);
+      console.log(`  - ${Array.from(skippedFields).sort().join(", ")}`);
+      console.log(
+        `    * These fields are not included in the converted Markdown`,
+      );
+    }
   }
 
   return conversations;

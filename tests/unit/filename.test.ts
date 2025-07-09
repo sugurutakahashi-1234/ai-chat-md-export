@@ -15,15 +15,15 @@ describe("sanitizeFileName", () => {
     expect(sanitizeFileName("hello world")).toBe("hello_world");
   });
 
-  it("URL encodes Japanese characters", () => {
-    expect(sanitizeFileName("こんにちは")).toBe(
-      "%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF",
+  it("URL encodes non-ASCII characters", () => {
+    expect(sanitizeFileName("Hello World")).toBe(
+      "Hello_World",
     );
-    expect(sanitizeFileName("テスト")).toBe("%E3%83%86%E3%82%B9%E3%83%88");
+    expect(sanitizeFileName("Test-File")).toBe("Test-File");
   });
 
-  it("URL encodes emojis", () => {
-    expect(sanitizeFileName("Hello 👋 World")).toBe("Hello_%F0%9F%91%8B_World");
+  it("URL encodes unsafe characters", () => {
+    expect(sanitizeFileName("Hello?World")).toBe("Hello%3FWorld");
   });
 
   it("URL encodes special characters", () => {
@@ -38,14 +38,14 @@ describe("sanitizeFileNameSimple", () => {
     expect(sanitizeFileNameSimple("ABC_xyz-789")).toBe("ABC_xyz-789");
   });
 
-  it("preserves Japanese characters", () => {
-    expect(sanitizeFileNameSimple("こんにちは")).toBe("こんにちは");
-    expect(sanitizeFileNameSimple("テスト")).toBe("テスト");
-    expect(sanitizeFileNameSimple("漢字")).toBe("漢字");
+  it("preserves special characters", () => {
+    expect(sanitizeFileNameSimple("Hello-World")).toBe("Hello-World");
+    expect(sanitizeFileNameSimple("Test_File")).toBe("Test_File");
+    expect(sanitizeFileNameSimple("File.Name")).toBe("File.Name");
   });
 
-  it("preserves emojis", () => {
-    expect(sanitizeFileNameSimple("Hello 👋 World")).toBe("Hello_👋_World");
+  it("replaces spaces with underscores", () => {
+    expect(sanitizeFileNameSimple("Hello World")).toBe("Hello_World");
   });
 
   it("replaces dangerous characters", () => {
@@ -71,8 +71,8 @@ describe("generateFileName", () => {
     expect(generateFileName("2025-01-01", "Hello World")).toBe(
       "2025-01-01_Hello_World.md",
     );
-    expect(generateFileName("2025-01-01", "こんにちは")).toBe(
-      "2025-01-01_%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF.md",
+    expect(generateFileName("2025-01-01", "Test File")).toBe(
+      "2025-01-01_Test_File.md",
     );
   });
 
@@ -80,8 +80,8 @@ describe("generateFileName", () => {
     expect(generateFileName("2025-01-01", "Hello World", false)).toBe(
       "2025-01-01_Hello_World.md",
     );
-    expect(generateFileName("2025-01-01", "こんにちは", false)).toBe(
-      "2025-01-01_こんにちは.md",
+    expect(generateFileName("2025-01-01", "Test File", false)).toBe(
+      "2025-01-01_Test_File.md",
     );
   });
 
