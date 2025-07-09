@@ -33,10 +33,14 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Finder (MacOS) folder config
 .DS_Store
 
+# Homebrew releases
+releases/
+
 # Bun
 .bun/
 *.bun
 bun.lockb
+.*.bun-build
 
 # compiled binaries
 dist/

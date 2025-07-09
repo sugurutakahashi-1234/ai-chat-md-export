@@ -4,6 +4,11 @@
   "description": "CLI tool to convert ChatGPT and Claude chat history to Markdown",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  },
+  "engineStrict": false,
   "bin": {
     "ai-chat-md-export": "bin/ai-chat-md-export.js"
   },
@@ -12,18 +17,15 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "dev": "bun run bin/ai-chat-md-export.js -h",
-    "typecheck": "bunx tsc --noEmit",
-    "build": "bun build src/cli.ts --compile --outfile dist/ai-chat-md-export",
+    "help": "bun run bin/ai-chat-md-export.js -h",
+    "typecheck": "tsc --noEmit",
+    "build": "bun build src/cli.ts --compile --outfile dist/ai-chat-md-export && rm -f .*.bun-build",
     "lint": "biome check --write .",
     "lint:check": "biome check .",
     "format": "biome format --write .",
     "format:check": "biome format .",
     "test": "bun test",
-    "test:unit": "bun test tests/unit",
-    "test:integration": "bun test tests/integration",
-    "test:e2e": "bun run build && bun test tests/e2e",
-    "test:watch": "bun test --watch",
+    "test:binary": "bun run build && bun test tests/binary",
     "test:coverage": "bun test --coverage",
     "test:coverage:html": "bun test --coverage && lcov-viewer lcov coverage/lcov.info -o coverage/html",
     "clean": "rm -rf bun.lock node_modules bin",
@@ -31,7 +33,8 @@
     "deps:update": "bunx npm-check-updates -u --deep && bun install",
     "knip": "knip",
     "knip:fix": "knip --fix",
-    "ci": "bun run typecheck && bun run lint:check && bun run test && bun run build && bun run test:e2e && bun run knip",
+    "ci": "bun run typecheck && bun run lint:check && bun run test && bun run build && bun run test:binary && bun run knip",
+    "homebrew:build": "bash homebrew/build-releases.sh",
     "conv:chatgpt": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt -f chatgpt",
     "conv:claude": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude -f claude",
     "conv:all": "bun run conv:chatgpt && bun run conv:claude",

@@ -126,9 +126,15 @@
       "Bash(jq:*)",
       "Bash(sed:*)",
       "Bash(chat-history-conv:*)",
-      "Bash(./bin/ai-chat-md-export:*)",
       "WebFetch(domain:gist.github.com)",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "Bash(find:*)",
+      "Bash(deno:*)",
+      "Bash(time node:*)",
+      "Bash(do time bun run:*)",
+      "Bash(time bun run:*)",
+      "Bash(time npx tsx:*)",
+      "Bash(npm pack:*)"
     ],
     "deny": []
   },

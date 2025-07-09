@@ -18,36 +18,65 @@ A Bun-powered CLI tool to convert ChatGPT and Claude chat history to Markdown
 
 ## Requirements
 
-- **Bun**: Latest version (for development and runtime)
-- **Node.js**: v24+ (optional, for npm package usage)
+- **Node.js**: v18+ (for npm/pnpm/yarn users)
+- **Bun**: v1.0+ (optional, for faster execution)
 
 ## Installation
 
-### As a CLI Tool (Recommended)
+### Homebrew (macOS/Linux)
 
 ```bash
-# Clone the repository
-git clone https://github.com/suguruTakahashi-1234/ai-chat-md-export.git
-cd ai-chat-md-export
+# Tap the repository
+brew tap sugurutakahashi/tap
 
-# Install dependencies with Bun
-bun install
-
-# Build the binary
-bun run build
+# Install the tool
+brew install ai-chat-md-export
 ```
 
-### As an NPM Package (After Release)
+> **Note**: Homebrew formula is ready in the `homebrew/` directory. To enable Homebrew installation:
+> 1. Create a GitHub release with platform-specific binaries
+> 2. Update SHA256 hashes in `homebrew/ai-chat-md-export.rb`
+> 3. Set up the tap repository at `sugurutakahashi/homebrew-tap`
+> 
+> For now, you can use npm/bun installation or download binaries from [GitHub Releases](https://github.com/sugurutakahashi/chat-history-conv/releases).
+
+### As a Development Dependency (Recommended)
+
+```bash
+# npm
+npm install --save-dev ai-chat-md-export
+
+# Bun (for faster execution)
+bun add -d ai-chat-md-export
+
+# pnpm
+pnpm add -D ai-chat-md-export
+
+# yarn
+yarn add -D ai-chat-md-export
+```
+
+### Global Installation
+
+```bash
+# npm
+npm install -g ai-chat-md-export
+
+# Bun
+bun add -g ai-chat-md-export
+```
+
+### Direct Execution (No Installation)
 
 ```bash
 # Run directly with npx
-npx ai-chat-md-export -i conversations.json -o output/
+npx ai-chat-md-export -i conversations.json
 
-# Run with bunx
-bunx ai-chat-md-export -i conversations.json -o output/
+# Run with bunx (faster)
+bunx ai-chat-md-export -i conversations.json
 
 # Run with pnpx
-pnpx ai-chat-md-export -i conversations.json -o output/
+pnpx ai-chat-md-export -i conversations.json
 
 # Run with yarn dlx
 yarn dlx ai-chat-md-export -i conversations.json -o output/
@@ -78,7 +107,11 @@ data/raw/
 
 ## Usage
 
-### Basic Commands (Development)
+### Performance Note
+
+When using Bun (`bunx`, `bun run`, etc.), the tool runs significantly faster (approximately 20x) compared to Node.js. This is because Bun can directly execute TypeScript without transpilation.
+
+### Basic Commands
 
 ```bash
 # Convert both ChatGPT and Claude data
@@ -199,7 +232,7 @@ ai-chat-md-export/
 ├── tests/            # Test files
 │   ├── unit/         # Unit tests
 │   ├── integration/  # Integration tests
-│   └── e2e/          # End-to-end tests
+│   └── binary/       # Binary executable tests
 └── data/
     ├── raw/          # Place exported data here
     │   ├── chatgpt/
@@ -220,10 +253,10 @@ ai-chat-md-export/
 | `bun run lint` | Lint and fix code |
 | `bun run lint:check` | Check linting without fixing |
 | `bun run format` | Format code |
-| `bun test` | Run unit tests |
+| `bun test` | Run all tests (except binary) |
 | `bun run test:coverage` | Run tests with coverage |
 | `bun run test:coverage:html` | Generate HTML coverage report |
-| `bun run test:e2e` | Run end-to-end tests |
+| `bun run test:binary` | Run binary executable tests |
 | `bun run ci` | Run all CI checks |
 | `bun run knip` | Check for unused code |
 
@@ -259,7 +292,7 @@ bun test tests/unit/cli.test.ts
 The project uses a comprehensive CI workflow:
 
 ```bash
-# Run all CI checks (type check, lint, test, build, e2e)
+# Run all CI checks (type check, lint, test, build, binary)
 bun run ci
 ```
 

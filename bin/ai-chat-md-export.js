@@ -1,7 +1,7 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 // This file serves as the entry point for the CLI tool
-// It supports both Bun and Node.js runtime environments
+// It automatically uses the appropriate runtime (Bun, Node.js, etc.)
 
-import { main } from "../src/cli.js";
+import { main } from "../src/cli.ts";
 
 main();
