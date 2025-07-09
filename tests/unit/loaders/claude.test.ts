@@ -56,8 +56,12 @@ describe("loadClaude with inline data", () => {
 
   test("loads valid Claude conversation", async () => {
     const testFile = path.join(tempDir, "test-claude.json");
-    await fs.writeFile(testFile, JSON.stringify(createValidClaudeData()), "utf-8");
-    
+    await fs.writeFile(
+      testFile,
+      JSON.stringify(createValidClaudeData()),
+      "utf-8",
+    );
+
     const conversations = await loadClaude(testFile);
 
     expect(conversations).toHaveLength(1);
@@ -71,8 +75,12 @@ describe("loadClaude with inline data", () => {
 
   test("extracts messages with correct roles", async () => {
     const testFile = path.join(tempDir, "test-claude-roles.json");
-    await fs.writeFile(testFile, JSON.stringify(createValidClaudeData()), "utf-8");
-    
+    await fs.writeFile(
+      testFile,
+      JSON.stringify(createValidClaudeData()),
+      "utf-8",
+    );
+
     const conversations = await loadClaude(testFile);
     const messages = conversations[0]?.messages || [];
 
@@ -115,8 +123,12 @@ describe("loadClaude with inline data", () => {
 
   test("logs success message with count", async () => {
     const testFile = path.join(tempDir, "test-claude-log.json");
-    await fs.writeFile(testFile, JSON.stringify(createValidClaudeData()), "utf-8");
-    
+    await fs.writeFile(
+      testFile,
+      JSON.stringify(createValidClaudeData()),
+      "utf-8",
+    );
+
     await loadClaude(testFile);
 
     expect(
@@ -227,11 +239,11 @@ describe("loadClaude with inline data", () => {
 
     await loadClaude(testFile);
 
-    expect(
-      consoleOutput.some((line) => line.includes("Skipped fields")),
-    ).toBe(true);
-    expect(
-      consoleOutput.some((line) => line.includes("extra_field")),
-    ).toBe(true);
+    expect(consoleOutput.some((line) => line.includes("Skipped fields"))).toBe(
+      true,
+    );
+    expect(consoleOutput.some((line) => line.includes("extra_field"))).toBe(
+      true,
+    );
   });
 });

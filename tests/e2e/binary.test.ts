@@ -28,7 +28,9 @@ describe("Binary Integration Tests", () => {
     const output = result.text();
 
     expect(output).toContain("ai-chat-md-export");
-    expect(output).toContain("Convert ChatGPT and Claude export data to Markdown");
+    expect(output).toContain(
+      "Convert ChatGPT and Claude export data to Markdown",
+    );
     expect(output).toContain("-i, --input");
     expect(output).toContain("-o, --output");
     expect(output).toContain("-f, --format");
@@ -60,16 +62,20 @@ describe("Binary Integration Tests", () => {
     }
 
     const inputFile = path.join(fixturesDir, "e2e/binary-test.json");
-    
+
     // Test --quiet --dry-run
-    const quietResult = await $`${binaryPath} -i ${inputFile} --quiet --dry-run`.quiet();
+    const quietResult =
+      await $`${binaryPath} -i ${inputFile} --quiet --dry-run`.quiet();
     expect(quietResult.exitCode).toBe(0);
     expect(quietResult.stdout.toString()).toBe("");
 
     // Test --search
-    const searchResult = await $`${binaryPath} -i ${inputFile} --search "binary" --dry-run`.quiet();
+    const searchResult =
+      await $`${binaryPath} -i ${inputFile} --search "binary" --dry-run`.quiet();
     expect(searchResult.exitCode).toBe(0);
-    expect(searchResult.stdout.toString()).toContain("Filtered: 1 of 1 conversations");
+    expect(searchResult.stdout.toString()).toContain(
+      "Filtered: 1 of 1 conversations",
+    );
   });
 
   test("binary handles errors correctly", async () => {
@@ -84,7 +90,8 @@ describe("Binary Integration Tests", () => {
       await $`${binaryPath} -i /nonexistent/file.json`.quiet();
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
-      const stderr = (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+      const stderr =
+        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
       expect(stderr).toContain("Error:");
       expect(stderr).toContain("ENOENT");
     }

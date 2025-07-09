@@ -10,7 +10,7 @@ describe("Filtering Features", () => {
 
   beforeEach(async () => {
     await fs.mkdir(tempDir, { recursive: true });
-    
+
     // Create test data with searchable content and different dates
     const testData = [
       {
@@ -97,7 +97,11 @@ describe("Filtering Features", () => {
             message: {
               id: "msg-fff",
               author: { role: "user" },
-              content: { parts: ["I need help with machine learning for my data science project"] },
+              content: {
+                parts: [
+                  "I need help with machine learning for my data science project",
+                ],
+              },
               create_time: 1719792000,
             },
             children: ["ggg"],
@@ -119,7 +123,7 @@ describe("Filtering Features", () => {
         },
       },
     ];
-    
+
     testFile = path.join(tempDir, "test-conversations.json");
     await fs.writeFile(testFile, JSON.stringify(testData), "utf-8");
   });
@@ -131,42 +135,45 @@ describe("Filtering Features", () => {
   describe("Date Filtering", () => {
     test("filters conversations with --since", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 2 of 3 conversations");
-      
+
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(2);
-      expect(files.some(f => f.includes("2023-12-31"))).toBe(false);
-      expect(files.some(f => f.includes("2024-01-01"))).toBe(true);
-      expect(files.some(f => f.includes("2024-07-01"))).toBe(true);
+      expect(files.some((f) => f.includes("2023-12-31"))).toBe(false);
+      expect(files.some((f) => f.includes("2024-01-01"))).toBe(true);
+      expect(files.some((f) => f.includes("2024-07-01"))).toBe(true);
     });
 
     test("filters conversations with --until", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --until 2024-06-30`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --until 2024-06-30`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 2 of 3 conversations");
-      
+
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(2);
-      expect(files.some(f => f.includes("2023-12-31"))).toBe(true);
-      expect(files.some(f => f.includes("2024-01-01"))).toBe(true);
-      expect(files.some(f => f.includes("2024-07-01"))).toBe(false);
+      expect(files.some((f) => f.includes("2023-12-31"))).toBe(true);
+      expect(files.some((f) => f.includes("2024-01-01"))).toBe(true);
+      expect(files.some((f) => f.includes("2024-07-01"))).toBe(false);
     });
 
     test("filters conversations with both --since and --until", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01 --until 2024-06-30`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01 --until 2024-06-30`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 1 of 3 conversations");
-      
+
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(1);
       expect(files[0]).toContain("2024-01-01");
@@ -177,7 +184,9 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} --since "2024/01/01"`.quiet();
         expect(true).toBe(false); // Should not reach here
       } catch (error) {
-        const stderr = (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+        const stderr =
+          (error as { stderr?: { toString(): string } }).stderr?.toString() ||
+          "";
         expect(stderr).toContain("Date must be in YYYY-MM-DD format");
       }
     });
@@ -186,27 +195,29 @@ describe("Filtering Features", () => {
   describe("Search Filtering", () => {
     test("filters conversations by keyword in title", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "Machine"`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "Machine"`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 2 of 3 conversations"); // Matches both "Machine Learning" and "machine learning" in Data Science content
       expect(output).toContain('keyword "Machine"');
-      
+
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(2);
-      expect(files.some(f => f.includes("Machine_Learning"))).toBe(true);
-      expect(files.some(f => f.includes("Data_Science"))).toBe(true);
+      expect(files.some((f) => f.includes("Machine_Learning"))).toBe(true);
+      expect(files.some((f) => f.includes("Data_Science"))).toBe(true);
     });
 
     test("filters conversations by keyword in content", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "neural"`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "neural"`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 1 of 3 conversations");
-      
+
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(1);
       expect(files[0]).toContain("Machine_Learning");
@@ -214,12 +225,13 @@ describe("Filtering Features", () => {
 
     test("search is case-insensitive", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "REST"`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "REST"`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 1 of 3 conversations");
-      
+
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(1);
       expect(files[0]).toContain("API");
@@ -227,12 +239,13 @@ describe("Filtering Features", () => {
 
     test("searches across multiple conversations", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "machine learning"`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "machine learning"`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 2 of 3 conversations");
-      
+
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(2);
       // Should find both "Machine Learning Discussion" and "Data Science Project"
@@ -240,12 +253,13 @@ describe("Filtering Features", () => {
 
     test("handles no search matches", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "nonexistent"`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "nonexistent"`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 0 of 3 conversations");
-      
+
       // Directory shouldn't be created when no files to write
       const dirExists = await fs.stat(outputDir).catch(() => null);
       expect(dirExists).toBeNull();
@@ -255,14 +269,15 @@ describe("Filtering Features", () => {
   describe("Combined Filters", () => {
     test("search and date filter together", async () => {
       const outputDir = path.join(tempDir, "output");
-      const result = await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01 --search "machine"`.quiet();
-      
+      const result =
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01 --search "machine"`.quiet();
+
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
       expect(output).toContain("Filtered: 1 of 3 conversations");
       expect(output).toContain("date from 2024-01-01");
       expect(output).toContain('keyword "machine"');
-      
+
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(1);
       expect(files[0]).toContain("Data_Science"); // Only the July conversation matches both filters

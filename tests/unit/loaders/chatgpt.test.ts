@@ -85,8 +85,12 @@ describe("loadChatGPT with inline data", () => {
 
   test("loads valid ChatGPT conversation", async () => {
     const testFile = path.join(tempDir, "test-chatgpt.json");
-    await fs.writeFile(testFile, JSON.stringify(createValidChatGPTData()), "utf-8");
-    
+    await fs.writeFile(
+      testFile,
+      JSON.stringify(createValidChatGPTData()),
+      "utf-8",
+    );
+
     const conversations = await loadChatGPT(testFile);
 
     expect(conversations).toHaveLength(1);
@@ -100,8 +104,12 @@ describe("loadChatGPT with inline data", () => {
 
   test("extracts messages in correct order", async () => {
     const testFile = path.join(tempDir, "test-chatgpt-order.json");
-    await fs.writeFile(testFile, JSON.stringify(createValidChatGPTData()), "utf-8");
-    
+    await fs.writeFile(
+      testFile,
+      JSON.stringify(createValidChatGPTData()),
+      "utf-8",
+    );
+
     const conversations = await loadChatGPT(testFile);
     const messages = conversations[0]?.messages || [];
 
@@ -149,8 +157,12 @@ describe("loadChatGPT with inline data", () => {
 
   test("logs success message with count", async () => {
     const testFile = path.join(tempDir, "test-chatgpt-log.json");
-    await fs.writeFile(testFile, JSON.stringify(createValidChatGPTData()), "utf-8");
-    
+    await fs.writeFile(
+      testFile,
+      JSON.stringify(createValidChatGPTData()),
+      "utf-8",
+    );
+
     await loadChatGPT(testFile);
 
     expect(
@@ -212,7 +224,7 @@ describe("loadChatGPT with inline data", () => {
     const conversations = await loadChatGPT(testFile);
     const messages = conversations[0]?.messages || [];
     expect(messages[0]?.content).toBe(
-      "Part 1\nPart 2\n" + JSON.stringify({ other: "data" }, null, 2),
+      `Part 1\nPart 2\n${JSON.stringify({ other: "data" }, null, 2)}`,
     );
   });
 
@@ -236,11 +248,11 @@ describe("loadChatGPT with inline data", () => {
 
     await loadChatGPT(testFile);
 
-    expect(
-      consoleOutput.some((line) => line.includes("Skipped fields")),
-    ).toBe(true);
-    expect(
-      consoleOutput.some((line) => line.includes("extra_field")),
-    ).toBe(true);
+    expect(consoleOutput.some((line) => line.includes("Skipped fields"))).toBe(
+      true,
+    );
+    expect(consoleOutput.some((line) => line.includes("extra_field"))).toBe(
+      true,
+    );
   });
 });
