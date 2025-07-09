@@ -1,0 +1,47 @@
+# Development files
+.release-it.json
+biome.jsonc
+bunfig.toml
+knip.config.ts
+tsconfig.json
+tsconfig.tsbuildinfo
+CLAUDE.md
+
+# Test files
+tests/
+coverage/
+
+# Example and demo files
+input/
+output/
+
+# Build artifacts
+.*.bun-build
+releases/
+
+# Homebrew
+homebrew/
+
+# IDE
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
+
+# Development dependencies config
+bun.lock
+pnpm-lock.yaml
+yarn.lock
+
+# Only include compiled dist for bin usage
+src/
+!dist/

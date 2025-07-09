@@ -57,5 +57,9 @@ bin/ai-chat-md-export
 # CLAUDE.md
 
 # User data directories
-input/
+# Keep directory structure but ignore actual data files
+input/*
+!input/.gitkeep
+!input/*/
+input/*/*.json
 output/

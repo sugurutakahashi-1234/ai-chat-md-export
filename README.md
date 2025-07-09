@@ -1,5 +1,8 @@
 # ai-chat-md-export
 
+[![npm version](https://badge.fury.io/js/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A Bun-powered CLI tool to convert ChatGPT and Claude chat history to Markdown
 
 ## Features

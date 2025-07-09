@@ -29,7 +29,14 @@
   },
   "overrides": [
     {
-      "includes": ["**/coverage/**"],
+      "includes": [
+        "**/coverage/**",
+        "**/input/**",
+        "**/output/**",
+        "**/dist/**",
+        "**/releases/**",
+        "**/node_modules/**"
+      ],
       "linter": {
         "enabled": false
       },

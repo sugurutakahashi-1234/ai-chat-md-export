@@ -1,0 +1,30 @@
+{
+  "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
+  "git": {
+    "requireBranch": "main",
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}",
+    "pushRepo": "origin",
+    "requireCommits": true,
+    "requireCleanWorkingDir": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "v${version}",
+    "releaseNotes": null,
+    "assets": ["releases/*.tar.gz", "releases/SHA256SUMS.txt"]
+  },
+  "npm": {
+    "publish": true,
+    "publishPath": ".",
+    "tag": "latest",
+    "otp": "",
+    "ignoreVersion": false,
+    "skipChecks": false
+  },
+  "hooks": {
+    "before:init": ["bun run ci"],
+    "after:bump": ["bun run build", "bun run homebrew:build"],
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+  }
+}

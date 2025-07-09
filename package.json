@@ -3,7 +3,6 @@
   "version": "0.1.1",
   "description": "CLI tool to convert ChatGPT and Claude chat history to Markdown",
   "type": "module",
-  "private": true,
   "engines": {
     "node": ">=18.0.0",
     "bun": ">=1.0.0"
@@ -29,21 +28,15 @@
     "test:binary": "bun run build && bun test tests/binary",
     "test:coverage": "bun test --coverage",
     "test:coverage:html": "bun test --coverage && lcov-viewer lcov coverage/lcov.info -o coverage/html",
-    "clean": "rm -rf bun.lock node_modules releases dist coverage .*.bun-build tsconfig.tsbuildinfo",
+    "clean": "rm -rf bun.lock node_modules releases dist coverage .*.bun-build tsconfig.tsbuildinfo output/*.md && bun install",
     "deps:check": "bunx npm-check-updates --deep",
     "deps:update": "bunx npm-check-updates -u --deep && bun install",
     "knip": "knip",
     "knip:fix": "knip --fix",
     "ci": "bun run typecheck && bun run lint:check && bun run build && bun run test && bun run knip",
-    "example:chatgpt": "echo 'Place your ChatGPT conversations.json in input/ then run: bun run src/cli.ts -i input/chatgpt-conversations.json -o output/ -f chatgpt'",
-    "example:claude": "echo 'Place your Claude conversations.json in input/ then run: bun run src/cli.ts -i input/claude-conversations.json -o output/ -f claude'",
-    "demo:quiet": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --quiet --dry-run",
-    "demo:dry-run": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --dry-run",
-    "demo:search": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --search 'hello' --dry-run",
-    "demo:search-no-match": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --search 'nonexistent' --dry-run",
-    "demo:combined": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --quiet --dry-run --search 'hello'",
-    "demo:date-filter": "bun run src/cli.ts -i tests/fixtures/chatgpt/multi-date.json --dry-run && bun run src/cli.ts -i tests/fixtures/chatgpt/multi-date.json --since 2024-01-01 --dry-run",
-    "demo:all": "bun run demo:quiet && bun run demo:dry-run && bun run demo:search && bun run demo:search-no-match && bun run demo:combined && bun run demo:date-filter"
+    "example:chatgpt": "bun run src/cli.ts -i input/chatgpt/conversations.json -o output/chatgpt -f chatgpt",
+    "example:claude": "bun run src/cli.ts -i input/claude/conversations.json -o output/claude -f claude",
+    "release": "release-it"
   },
   "dependencies": {
     "commander": "^14.0.0",
@@ -55,6 +48,31 @@
     "@types/bun": "^1.2.18",
     "@types/node": "^24.0.12",
     "knip": "^5.61.3",
+    "release-it": "^19.0.3",
     "typescript": "^5.8.3"
-  }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "chatgpt",
+    "claude",
+    "ai",
+    "chat",
+    "export",
+    "markdown",
+    "cli",
+    "converter"
+  ],
+  "author": "Suguru Takahashi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sugurutakahashi-1234/ai-chat-md-export.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues"
+  },
+  "homepage": "https://github.com/sugurutakahashi-1234/ai-chat-md-export#readme"
 }
