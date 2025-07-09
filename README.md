@@ -1,184 +1,328 @@
 # ai-chat-md-export
 
-ChatGPTとClaudeのチャット履歴をMarkdownに変換するBun対応CLIツール
+A Bun-powered CLI tool to convert ChatGPT and Claude chat history to Markdown
 
-## 機能
+## Features
 
-- ChatGPTとClaudeのエクスポートデータを読み込み
-- Markdown形式に変換して保存
-- 詳細なスキーマ検証とエラーレポート
-- 未知のフィールドの検出（形式変更の検知）
-- Zodによる厳格な型安全性
-- 複数の形式を自動検出（ChatGPT、Claude JSON、Claude NDJSON）
-- 単一バイナリとしての配布が可能（Bunのコンパイル機能使用）
+- Load and convert ChatGPT and Claude export data
+- Convert to Markdown format with proper formatting
+- Detailed schema validation and error reporting
+- Detection of unknown fields (format change detection)
+- Strict type safety with Zod
+- Automatic format detection (ChatGPT, Claude JSON)
+- Date filtering with `--since` and `--until` options
+- Keyword search with `--search` option
+- Quiet mode with `--quiet` for silent operation
+- Dry-run mode with `--dry-run` to preview operations
+- Can be distributed as a single binary (using Bun's compile feature)
 
-## セットアップ
+## Requirements
 
-### 1. インストール
+- **Bun**: Latest version (for development and runtime)
+- **Node.js**: v24+ (optional, for npm package usage)
+
+## Installation
+
+### As a CLI Tool (Recommended)
 
 ```bash
-# リポジトリをクローン
+# Clone the repository
 git clone https://github.com/suguruTakahashi-1234/ai-chat-md-export.git
 cd ai-chat-md-export
 
-# Bunで依存関係をインストール
+# Install dependencies with Bun
 bun install
+
+# Build the binary
+bun run build
 ```
 
-### 2. データの準備
-
-#### ChatGPTからのエクスポート
-1. ChatGPTの設定画面から「Data controls」→「Export data」を選択
-2. エクスポートされたZIPファイルを解凍
-3. `conversations.json`を`data/raw/chatgpt/`に配置
-
-#### Claudeからのエクスポート
-1. Claudeの設定画面から「Account」→「Export your data」を選択
-2. エクスポートされたJSONファイルを`data/raw/claude/conversations.json`として配置
-
-```
-data/raw/
-├── chatgpt/
-│   └── conversations.json  # ChatGPTからエクスポートしたJSON
-└── claude/
-    └── conversations.json  # ClaudeからエクスポートしたJSON
-```
-
-## 使い方
-
-### NPMパッケージとして使用（リリース後）
+### As an NPM Package (After Release)
 
 ```bash
-# npxで直接実行
+# Run directly with npx
 npx ai-chat-md-export -i conversations.json -o output/
 
-# bunxで実行
+# Run with bunx
 bunx ai-chat-md-export -i conversations.json -o output/
 
-# pnpxで実行
+# Run with pnpx
 pnpx ai-chat-md-export -i conversations.json -o output/
 
-# yarn dlxで実行
+# Run with yarn dlx
 yarn dlx ai-chat-md-export -i conversations.json -o output/
 
-# グローバルインストール
+# Global installation
 npm install -g ai-chat-md-export
 ai-chat-md-export -i conversations.json -o output/
 ```
 
-### 基本的な使い方（開発時）
+## Data Preparation
+
+### Exporting from ChatGPT
+1. Go to ChatGPT settings → "Data controls" → "Export data"
+2. Extract the downloaded ZIP file
+3. Place `conversations.json` in `data/raw/chatgpt/`
+
+### Exporting from Claude
+1. Go to Claude settings → "Account" → "Export your data"
+2. Place the exported JSON file as `data/raw/claude/conversations.json`
+
+```
+data/raw/
+├── chatgpt/
+│   └── conversations.json  # ChatGPT export JSON
+└── claude/
+    └── conversations.json  # Claude export JSON
+```
+
+## Usage
+
+### Basic Commands (Development)
 
 ```bash
-# ChatGPTとClaudeの両方を変換
+# Convert both ChatGPT and Claude data
 bun run conv:all
 
-# ChatGPTのみ変換
+# Convert ChatGPT only
 bun run conv:chatgpt
 
-# Claudeのみ変換
+# Convert Claude only
 bun run conv:claude
 ```
 
-### 警告付き実行（形式変更の検出）
+### Commands with Warning Detection
 
 ```bash
-# 未知のフィールドやスキーマエラーをログファイルに出力
+# Output unknown fields and schema errors to log files
 bun run conv:chatgpt:watch  # → chatgpt-warnings.log
-bun run conv:claude:watch    # → claude-warnings.log
+bun run conv:claude:watch   # → claude-warnings.log
 ```
 
-### カスタムパスでの実行
+### CLI Options
 
 ```bash
-# CLIを直接使用
-bun run src/cli.ts -i <入力パス> -o <出力パス> --format <形式>
+# Basic usage
+bun run src/cli.ts -i <input> -o <output>
 
-# ビルド済みバイナリを使用
-./bin/ai-chat-md-export -i <入力パス> -o <出力パス>
+# Or use the built binary
+./dist/ai-chat-md-export -i <input> -o <output>
+
+# Or use the bin entry point
+bun bin/ai-chat-md-export.js -i <input> -o <output>
 ```
 
-## 出力先
+#### Available Options
 
-変換されたMarkdownファイルは以下に保存されます：
+| Option | Short | Description | Default |
+|--------|-------|-------------|---------|
+| `--input` | `-i` | Input file or directory path (required) | - |
+| `--output` | `-o` | Output directory | Current directory |
+| `--format` | `-f` | Input format (`chatgpt`, `claude`, `auto`) | `auto` |
+| `--since` | - | Include conversations from this date (YYYY-MM-DD) | - |
+| `--until` | - | Include conversations until this date (YYYY-MM-DD) | - |
+| `--search` | - | Filter conversations containing keyword | - |
+| `--quiet` | `-q` | Suppress progress messages | `false` |
+| `--dry-run` | - | Preview what would be done without writing files | `false` |
+| `--help` | `-h` | Show help | - |
+| `--version` | `-V` | Show version | - |
+
+### Usage Examples
+
+```bash
+# Convert a single ChatGPT export file
+ai-chat-md-export -i conversations.json
+
+# Convert all JSON files in a directory
+ai-chat-md-export -i exports/ -o output/
+
+# Specify format explicitly
+ai-chat-md-export -i claude_export.json -f claude
+
+# Filter by date range
+ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
+
+# Filter conversations from a specific date
+ai-chat-md-export -i data.json --since 2024-06-01
+
+# Search for conversations containing a keyword
+ai-chat-md-export -i data.json --search "machine learning"
+
+# Preview what would be done without writing files
+ai-chat-md-export -i data.json --dry-run
+
+# Run silently (only show errors)
+ai-chat-md-export -i data.json -o output/ --quiet
+
+# Combine multiple options
+ai-chat-md-export -i data.json --since 2024-01-01 --search "API" --quiet
+```
+
+### Note on Filtering
+
+- **Date Filtering**: Dates refer to when conversations were STARTED, not last updated
+  - ChatGPT: Uses `create_time` field
+  - Claude: Uses `created_at` field
+  - Both `--since` and `--until` dates are inclusive
+- **Search**: 
+  - Case-insensitive search
+  - Searches in both conversation titles and message contents
+  - Partial matches are supported
+
+## Output
+
+Converted Markdown files are saved in:
 
 ```
 data/md/
 ├── chatgpt/
-│   └── YYYY-MM-DD_タイトル.md
+│   └── YYYY-MM-DD_Title.md
 └── claude/
-    └── YYYY-MM-DD_タイトル.md
+    └── YYYY-MM-DD_Title.md
 ```
 
-## スクリプト一覧
-
-| コマンド | 説明 |
-|---------|------|
-| `bun run conv:all` | ChatGPTとClaudeの両方を変換 |
-| `bun run conv:chatgpt` | ChatGPTデータのみ変換 |
-| `bun run conv:claude` | Claudeデータのみ変換 |
-| `bun run conv:chatgpt:watch` | ChatGPT変換（警告ログ付き） |
-| `bun run conv:claude:watch` | Claude変換（警告ログ付き） |
-| `bun run build` | 単一バイナリをビルド |
-| `bun run typecheck` | 型チェック |
-| `bun run lint` | コードのリント＆修正 |
-
-## ディレクトリ構造
+## Project Structure
 
 ```
 ai-chat-md-export/
-├── src/              # ソースコード
-│   ├── cli.ts        # CLIエントリポイント
-│   ├── loaders/      # 各サービス用ローダー
-│   ├── schemas/      # Zodスキーマ定義
-│   ├── utils/        # ユーティリティ
-│   └── markdown.ts   # Markdown変換
-├── bin/              # ビルド済みバイナリ
+├── bin/              # Entry point for CLI
+│   └── ai-chat-md-export.js
+├── src/              # Source code
+│   ├── index.ts      # Package exports
+│   ├── cli.ts        # CLI logic
+│   ├── loaders/      # Service-specific loaders
+│   ├── schemas/      # Zod schema definitions
+│   ├── utils/        # Utilities
+│   └── markdown.ts   # Markdown conversion
+├── dist/             # Built binaries
+│   └── ai-chat-md-export
+├── tests/            # Test files
+│   ├── unit/         # Unit tests
+│   ├── integration/  # Integration tests
+│   └── e2e/          # End-to-end tests
 └── data/
-    ├── raw/          # エクスポートした生データを配置
+    ├── raw/          # Place exported data here
     │   ├── chatgpt/
     │   └── claude/
-    └── md/           # 変換済みMarkdown出力先
+    └── md/           # Converted Markdown output
         ├── chatgpt/
         └── claude/
 ```
 
-## 開発
+## Development
+
+### Scripts
+
+| Command | Description |
+|---------|-------------|
+| `bun run build` | Build single binary |
+| `bun run typecheck` | Run TypeScript type checking |
+| `bun run lint` | Lint and fix code |
+| `bun run lint:check` | Check linting without fixing |
+| `bun run format` | Format code |
+| `bun test` | Run unit tests |
+| `bun run test:coverage` | Run tests with coverage |
+| `bun run test:coverage:html` | Generate HTML coverage report |
+| `bun run test:e2e` | Run end-to-end tests |
+| `bun run ci` | Run all CI checks |
+| `bun run knip` | Check for unused code |
+
+### Building
 
 ```bash
-# 型チェック
-bun run typecheck
-
-# リント
-bun run lint
-
-# フォーマット
-bun run format
-
-# ビルド（型チェック付き）
+# Type check and build
 bun run build:all
+
+# Build only (compiles to dist/ai-chat-md-export)
+bun run build
 ```
 
-## トラブルシューティング
+### Testing
 
-### エクスポート形式が変更された場合
+```bash
+# Run all tests
+bun test
 
-`conv:*:watch` コマンドを使用すると、未知のフィールドやスキーマエラーが検出されます：
+# Run tests with coverage
+bun run test:coverage
+
+# Generate HTML coverage report
+bun run test:coverage:html
+# Open coverage/html/index.html in browser
+
+# Run specific test files
+bun test tests/unit/cli.test.ts
+```
+
+### CI/CD
+
+The project uses a comprehensive CI workflow:
+
+```bash
+# Run all CI checks (type check, lint, test, build, e2e)
+bun run ci
+```
+
+## Configuration
+
+### TypeScript
+
+The project uses strict TypeScript configuration (`tsconfig.base.json`):
+- `strict: true` - Enables all strict type checking options
+- Includes `noImplicitAny`, `strictNullChecks`, etc.
+- Ensures maximum type safety
+
+### Linting and Formatting
+
+Uses Biome for fast, opinionated code formatting and linting:
+- Configuration in `biome.json`
+- Automatic fixes with `bun run lint`
+
+## Troubleshooting
+
+### Export Format Changes
+
+Use `conv:*:watch` commands to detect unknown fields or schema errors:
 
 ```bash
 bun run conv:chatgpt:watch
-# chatgpt-warnings.log を確認
+# Check chatgpt-warnings.log
 ```
 
-ログには以下の情報が含まれます：
-- 未知のフィールド名
-- 型の不一致
-- 必須フィールドの欠落
+Log includes:
+- Unknown field names
+- Type mismatches
+- Missing required fields
 
-### Claudeのデータ形式について
+### Claude Data Formats
 
-Claudeは以下の形式をサポート：
-- JSON配列形式（新形式）：`sender`フィールドで役割を判定
-- JSON配列形式（旧形式）：`role`フィールドで役割を判定
-- NDJSON形式（改行区切りJSON）
+Claude supports the following formats:
+- JSON array format (new): Role determined by `sender` field
+- JSON array format (old): Role determined by `role` field
 
-形式は自動検出されます。最新のClaudeエクスポートでは、メッセージの役割が`sender`フィールド（"human"/"assistant"）で表現されています。
+Format is auto-detected. Latest Claude exports use the `sender` field ("human"/"assistant") for message roles.
+
+### Memory Issues with Large Files
+
+For very large export files, the tool loads the entire file into memory. If you encounter memory issues:
+1. Split large export files into smaller chunks
+2. Process files individually instead of directories
+3. Increase Node.js/Bun memory limit if needed
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please ensure:
+- All tests pass (`bun test`)
+- Code is properly formatted (`bun run lint`)
+- Type checking passes (`bun run typecheck`)
+- CI checks pass (`bun run ci`)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

@@ -99,7 +99,7 @@ describe("processInput", () => {
       dryRun: true,
     };
 
-    // processInputは内部でprocessFileを呼び出すので、エラーなく実行されることを確認
+    // processInput calls processFile internally, verify it runs without error
     await expect(processInput(options)).resolves.toBeUndefined();
   });
 
@@ -216,7 +216,7 @@ describe("processFile", () => {
 
     await processFile(filePath, outputDir, options);
 
-    // ファイルが作成されたことを確認
+    // Verify the file was created
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles.length).toBeGreaterThan(0);
     expect(outputFiles[0]).toMatch(/\.md$/);
@@ -294,7 +294,7 @@ describe("processFile", () => {
 
     await processFile(filePath, outputDir, options);
 
-    // ファイルが作成されていないことを確認
+    // Verify no file was created
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles).toHaveLength(0);
   });
@@ -351,7 +351,7 @@ describe("processFile", () => {
 
     await processFile(filePath, outputDir, options);
 
-    // 日付範囲内の会話のみが処理されることを確認
+    // Verify only conversations within date range are processed
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles).toHaveLength(1);
   });
@@ -407,7 +407,7 @@ describe("processFile", () => {
 
     await processFile(filePath, outputDir, options);
 
-    // "python"を含む会話のみが処理されることを確認
+    // Verify only conversations containing "python" are processed
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles).toHaveLength(1);
   });
@@ -427,7 +427,7 @@ describe("processDirectory", () => {
   });
 
   test("processes all JSON files in directory", async () => {
-    // 複数のJSONファイルを作成
+    // Create multiple JSON files
     const file1 = path.join(tempDir, "file1.json");
     const file2 = path.join(tempDir, "file2.json");
     const nonJsonFile = path.join(tempDir, "readme.txt");
@@ -453,7 +453,7 @@ describe("processDirectory", () => {
     ];
     await fs.writeFile(file1, JSON.stringify(chatgptData), "utf-8");
 
-    // file2用に異なるデータを作成
+    // Create different data for file2
     const chatgptData2 = [
       {
         mapping: {
@@ -486,7 +486,7 @@ describe("processDirectory", () => {
 
     await processDirectory(tempDir, outputDir, options);
 
-    // 2つのJSONファイルが処理されたことを確認
+    // Verify two JSON files were processed
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles.length).toBe(2);
   });
@@ -503,7 +503,7 @@ describe("processDirectory", () => {
       dryRun: false,
     };
 
-    // エラーなく実行されることを確認
+    // Verify it runs without error
     await expect(
       processDirectory(emptyDir, outputDir, options),
     ).resolves.toBeUndefined();

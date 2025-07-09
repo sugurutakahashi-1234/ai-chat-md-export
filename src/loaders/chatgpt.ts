@@ -104,7 +104,7 @@ function traverseNode(
   nodeId: string,
   mapping: Record<string, ChatGPTNode>,
   messages: Conversation["messages"],
-) {
+): void {
   const node = mapping[nodeId];
   if (!node) return;
 

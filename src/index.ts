@@ -1,5 +1,5 @@
-// メインエクスポートファイル
-// このファイルはパッケージとして使用される場合のエントリポイント
+// Main export file
+// This file serves as the entry point when used as a package
 
 export {
   detectFormat,

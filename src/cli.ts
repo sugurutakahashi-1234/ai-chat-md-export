@@ -56,7 +56,7 @@ export async function detectFormat(
   );
 }
 
-export async function processInput(options: Options) {
+export async function processInput(options: Options): Promise<void> {
   const inputPath = path.resolve(options.input);
   const outputDir = path.resolve(options.output || process.cwd());
 
@@ -80,7 +80,7 @@ export async function processFile(
   filePath: string,
   outputDir: string,
   options: Options,
-) {
+): Promise<void> {
   if (!options.quiet) {
     console.log(`Processing: ${filePath}`);
   }
@@ -201,7 +201,7 @@ export async function processDirectory(
   dirPath: string,
   outputDir: string,
   options: Options,
-) {
+): Promise<void> {
   const files = await fs.readdir(dirPath);
   const jsonFiles = files.filter((f) => f.endsWith(".json"));
 
@@ -231,7 +231,7 @@ export async function processDirectory(
   }
 }
 
-export async function main() {
+export async function main(): Promise<void> {
   program
     .name("ai-chat-md-export")
     .description("Convert ChatGPT and Claude export data to Markdown")
@@ -305,7 +305,13 @@ Note on Search:
   try {
     await processInput(options);
   } catch (error) {
-    console.error("Error:", error instanceof Error ? error.message : error);
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : typeof error === "string"
+          ? error
+          : "An unknown error occurred";
+    console.error("Error:", errorMessage);
     process.exit(1);
   }
 }
