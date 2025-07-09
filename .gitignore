@@ -56,5 +56,6 @@ bin/ai-chat-md-export
 # .claude/
 # CLAUDE.md
 
-# 生データのみ除外（Markdownは含める）
-data/raw/
+# User data directories
+input/
+output/

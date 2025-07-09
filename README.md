@@ -91,19 +91,19 @@ ai-chat-md-export -i conversations.json -o output/
 ### Exporting from ChatGPT
 1. Go to ChatGPT settings → "Data controls" → "Export data"
 2. Extract the downloaded ZIP file
-3. Place `conversations.json` in `data/raw/chatgpt/`
+3. Place `conversations.json` in the `input/` directory (rename to `chatgpt-conversations.json` if you have multiple exports)
 
 ### Exporting from Claude
 1. Go to Claude settings → "Account" → "Export your data"
-2. Place the exported JSON file as `data/raw/claude/conversations.json`
+2. Place the exported JSON file in the `input/` directory (rename to `claude-conversations.json` if you have multiple exports)
 
 ```
-data/raw/
-├── chatgpt/
-│   └── conversations.json  # ChatGPT export JSON
-└── claude/
-    └── conversations.json  # Claude export JSON
+input/
+├── chatgpt-conversations.json  # ChatGPT export
+└── claude-conversations.json   # Claude export
 ```
+
+> **Note**: The `input/` and `output/` directories are gitignored to protect your personal data. These directories are created automatically with the project.
 
 ## Usage
 
@@ -111,26 +111,34 @@ data/raw/
 
 When using Bun (`bunx`, `bun run`, etc.), the tool runs significantly faster (approximately 20x) compared to Node.js. This is because Bun can directly execute TypeScript without transpilation.
 
-### Basic Commands
+### Quick Start
 
 ```bash
-# Convert both ChatGPT and Claude data
-bun run conv:all
+# Show example commands for your own data
+bun run example:all
 
-# Convert ChatGPT only
-bun run conv:chatgpt
-
-# Convert Claude only
-bun run conv:claude
+# Try with sample data
+bun run demo:all
 ```
 
-### Commands with Warning Detection
+### Converting Your Own Data
 
-```bash
-# Output unknown fields and schema errors to log files
-bun run conv:chatgpt:watch  # → chatgpt-warnings.log
-bun run conv:claude:watch   # → claude-warnings.log
-```
+1. Place your exported JSON files in the `input/` directory:
+   - ChatGPT: `input/chatgpt-conversations.json`
+   - Claude: `input/claude-conversations.json`
+
+2. Run the conversion:
+   ```bash
+   # Convert ChatGPT data
+   bun run src/cli.ts -i input/chatgpt-conversations.json -o output/ -f chatgpt
+   
+   # Convert Claude data
+   bun run src/cli.ts -i input/claude-conversations.json -o output/ -f claude
+   
+   # Or convert all JSON files in the input directory
+   bun run src/cli.ts -i input/ -o output/
+   ```
+
 
 ### CLI Options
 
@@ -204,14 +212,12 @@ ai-chat-md-export -i data.json --since 2024-01-01 --search "API" --quiet
 
 ## Output
 
-Converted Markdown files are saved in:
+Converted Markdown files are saved in the `output/` directory:
 
 ```
-data/md/
-├── chatgpt/
-│   └── YYYY-MM-DD_Title.md
-└── claude/
-    └── YYYY-MM-DD_Title.md
+output/
+├── YYYY-MM-DD_ChatGPT_Title.md
+└── YYYY-MM-DD_Claude_Title.md
 ```
 
 ## Project Structure
@@ -233,13 +239,9 @@ ai-chat-md-export/
 │   ├── unit/         # Unit tests
 │   ├── integration/  # Integration tests
 │   └── binary/       # Binary executable tests
-└── data/
-    ├── raw/          # Place exported data here
-    │   ├── chatgpt/
-    │   └── claude/
-    └── md/           # Converted Markdown output
-        ├── chatgpt/
-        └── claude/
+├── input/            # Place your exported JSON files here (gitignored)
+├── output/           # Converted Markdown files go here (gitignored)
+└── tests/fixtures/   # Sample data for testing and demos
 ```
 
 ## Development
