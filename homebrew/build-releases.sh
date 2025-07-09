@@ -34,35 +34,31 @@ mkdir -p releases
 
 # Create tar.gz archives
 echo -e "${YELLOW}Creating archives...${NC}"
-cd dist
 
-# For each binary, create a directory with just the binary name and tar it
+# For each binary, create tar.gz with renamed binary
 for platform in darwin-arm64 darwin-x64 linux-x64; do
-  mkdir -p temp-release
-  cp "ai-chat-md-export-${platform}" temp-release/ai-chat-md-export
-  tar -czf "../releases/ai-chat-md-export-${platform}.tar.gz" -C temp-release ai-chat-md-export
-  rm -rf temp-release
+  # Create temp directory in dist
+  mkdir -p dist/temp-release
+  cp "dist/ai-chat-md-export-${platform}" dist/temp-release/ai-chat-md-export
+  tar -czf "releases/ai-chat-md-export-${platform}.tar.gz" -C dist/temp-release ai-chat-md-export
+  rm -rf dist/temp-release
   echo -e "${GREEN}Created: releases/ai-chat-md-export-${platform}.tar.gz${NC}"
 done
 
-cd ..
-
 # Calculate SHA256 hashes
 echo -e "${YELLOW}Calculating SHA256 hashes...${NC}"
-cd releases
 
-echo "# SHA256 Hashes for v${VERSION}" > SHA256SUMS.txt
-echo "" >> SHA256SUMS.txt
+echo "# SHA256 Hashes for v${VERSION}" > releases/SHA256SUMS.txt
+echo "" >> releases/SHA256SUMS.txt
 
-for file in *.tar.gz; do
+for file in releases/*.tar.gz; do
   if [[ -f "$file" ]]; then
+    filename=$(basename "$file")
     SHA=$(shasum -a 256 "$file" | awk '{print $1}')
-    echo "${SHA}  ${file}" >> SHA256SUMS.txt
-    echo -e "${GREEN}${file}: ${SHA}${NC}"
+    echo "${SHA}  ${filename}" >> releases/SHA256SUMS.txt
+    echo -e "${GREEN}${filename}: ${SHA}${NC}"
   fi
 done
-
-cd ..
 
 echo -e "${GREEN}Build complete! Files are in the 'releases' directory.${NC}"
 echo -e "${YELLOW}Next steps:${NC}"
