@@ -5,7 +5,7 @@ import { $ } from "bun";
 
 describe("Filtering Features", () => {
   const tempDir = path.join(process.cwd(), "tests/temp");
-  const cliPath = path.join(process.cwd(), "src/cli.ts");
+  const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
   let testFile: string;
 
   beforeEach(async () => {

@@ -5,7 +5,7 @@ import { $ } from "bun";
 
 describe("Output Options", () => {
   const tempDir = path.join(process.cwd(), "tests/temp");
-  const cliPath = path.join(process.cwd(), "src/cli.ts");
+  const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
   let testFile: string;
 
   // Minimal test data for output options testing
