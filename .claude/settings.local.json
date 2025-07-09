@@ -135,7 +135,8 @@
       "Bash(time npx tsx:*)",
       "Bash(npm pack:*)",
       "WebFetch(domain:stackoverflow.com)",
-      "Bash(tar:*)"
+      "Bash(tar:*)",
+      "Bash(time:*)"
     ],
     "deny": []
   },

@@ -37,6 +37,9 @@
     "example:chatgpt": "bun run src/cli.ts -i input/chatgpt/conversations.json -o output/chatgpt -f chatgpt",
     "example:claude": "bun run src/cli.ts -i input/claude/conversations.json -o output/claude -f claude",
     "example:all": "bun run example:chatgpt && bun run example:claude",
+    "example:chatgpt:binary": "./dist/ai-chat-md-export -i input/chatgpt/conversations.json -o output/chatgpt -f chatgpt",
+    "example:claude:binary": "./dist/ai-chat-md-export -i input/claude/conversations.json -o output/claude -f claude",
+    "example:all:binary": "bun run example:chatgpt:binary && bun run example:claude:binary",
     "release": "release-it"
   },
   "dependencies": {

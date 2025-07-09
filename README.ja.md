@@ -33,16 +33,17 @@ ai-chat-md-export -i data.json --dry-run
 
 ### オプション
 
-| オプション | 短縮形 | 説明 |
-|--------|-------|-------------|
-| `--input` | `-i` | 入力ファイル・ディレクトリ（必須） |
-| `--output` | `-o` | 出力ディレクトリ |
-| `--format` | `-f` | フォーマット: `chatgpt`、`claude`、`auto` |
-| `--since` | - | 開始日（YYYY-MM-DD） |
-| `--until` | - | 終了日（YYYY-MM-DD） |
-| `--search` | - | 検索キーワード |
-| `--quiet` | `-q` | 出力を抑制 |
-| `--dry-run` | - | プレビューモード |
+| オプション | 短縮形 | 説明 | デフォルト |
+|--------|-------|-------------|---------|
+| `--input` | `-i` | 入力ファイル・ディレクトリ（必須） | - |
+| `--output` | `-o` | 出力ディレクトリ | カレントディレクトリ |
+| `--format` | `-f` | フォーマット: `chatgpt`、`claude`、`auto` | `auto` |
+| `--since` | - | 開始日（YYYY-MM-DD） | - |
+| `--until` | - | 終了日（YYYY-MM-DD） | - |
+| `--search` | - | 検索キーワード | - |
+| `--filename-encoding` | - | ファイル名エンコーディング: `unicode`、`url-safe`、`simple` | `unicode` |
+| `--quiet` | `-q` | 出力を抑制 | - |
+| `--dry-run` | - | プレビューモード | - |
 
 ## コントリビューション
 

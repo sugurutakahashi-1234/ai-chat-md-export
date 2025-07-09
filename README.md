@@ -35,16 +35,17 @@ ai-chat-md-export -i data.json --dry-run
 
 ### Options
 
-| Option | Short | Description |
-|--------|-------|-------------|
-| `--input` | `-i` | Input file or directory (required) |
-| `--output` | `-o` | Output directory |
-| `--format` | `-f` | Format: `chatgpt`, `claude`, `auto` |
-| `--since` | - | Filter from date (YYYY-MM-DD) |
-| `--until` | - | Filter until date (YYYY-MM-DD) |
-| `--search` | - | Search keyword |
-| `--quiet` | `-q` | Suppress output |
-| `--dry-run` | - | Preview mode |
+| Option | Short | Description | Default |
+|--------|-------|-------------|---------|
+| `--input` | `-i` | Input file or directory (required) | - |
+| `--output` | `-o` | Output directory | Current directory |
+| `--format` | `-f` | Format: `chatgpt`, `claude`, `auto` | `auto` |
+| `--since` | - | Filter from date (YYYY-MM-DD) | - |
+| `--until` | - | Filter until date (YYYY-MM-DD) | - |
+| `--search` | - | Search keyword | - |
+| `--filename-encoding` | - | Filename encoding: `unicode`, `url-safe`, `simple` | `unicode` |
+| `--quiet` | `-q` | Suppress output | - |
+| `--dry-run` | - | Preview mode | - |
 
 ## Contributing
 
