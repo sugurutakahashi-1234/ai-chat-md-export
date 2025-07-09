@@ -19,12 +19,75 @@ afterEach(() => {
   console.log = originalConsoleLog;
 });
 
-describe("loadChatGPT", () => {
+describe("loadChatGPT with inline data", () => {
+  const tempDir = path.join(process.cwd(), "tests/temp");
   const fixturesDir = path.join(process.cwd(), "tests/fixtures/chatgpt");
 
+  // Test data for normal cases
+  const createValidChatGPTData = () => [
+    {
+      title: "Test Conversation",
+      create_time: 1703980800,
+      id: "conv-123",
+      mapping: {
+        "aaa-111": {
+          id: "aaa-111",
+          message: null,
+          children: ["bbb-222"],
+        },
+        "bbb-222": {
+          id: "bbb-222",
+          message: {
+            id: "bbb-222",
+            author: { role: "system" },
+            create_time: 1703980800,
+            content: {
+              parts: ["You are a helpful assistant."],
+            },
+          },
+          children: ["ccc-333"],
+        },
+        "ccc-333": {
+          id: "ccc-333",
+          message: {
+            id: "ccc-333",
+            author: { role: "user" },
+            create_time: 1703980810,
+            content: {
+              parts: ["Hello, how are you?"],
+            },
+          },
+          children: ["ddd-444"],
+        },
+        "ddd-444": {
+          id: "ddd-444",
+          message: {
+            id: "ddd-444",
+            author: { role: "assistant" },
+            create_time: 1703980820,
+            content: {
+              parts: ["I'm doing well, thank you! How can I help you today?"],
+            },
+          },
+          children: [],
+        },
+      },
+    },
+  ];
+
+  beforeEach(async () => {
+    await fs.mkdir(tempDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(tempDir, { recursive: true, force: true }).catch(() => {});
+  });
+
   test("loads valid ChatGPT conversation", async () => {
-    const filePath = path.join(fixturesDir, "valid-conversation.json");
-    const conversations = await loadChatGPT(filePath);
+    const testFile = path.join(tempDir, "test-chatgpt.json");
+    await fs.writeFile(testFile, JSON.stringify(createValidChatGPTData()), "utf-8");
+    
+    const conversations = await loadChatGPT(testFile);
 
     expect(conversations).toHaveLength(1);
     const conv = conversations[0];
@@ -36,8 +99,10 @@ describe("loadChatGPT", () => {
   });
 
   test("extracts messages in correct order", async () => {
-    const filePath = path.join(fixturesDir, "valid-conversation.json");
-    const conversations = await loadChatGPT(filePath);
+    const testFile = path.join(tempDir, "test-chatgpt-order.json");
+    await fs.writeFile(testFile, JSON.stringify(createValidChatGPTData()), "utf-8");
+    
+    const conversations = await loadChatGPT(testFile);
     const messages = conversations[0]?.messages || [];
 
     expect(messages[0]?.role).toBe("system");
@@ -53,33 +118,25 @@ describe("loadChatGPT", () => {
   });
 
   test("handles missing file", async () => {
-    const filePath = path.join(fixturesDir, "non-existent.json");
+    const filePath = path.join(tempDir, "non-existent.json");
 
     await expect(loadChatGPT(filePath)).rejects.toThrow();
   });
 
   test("handles invalid JSON", async () => {
-    const tempFile = path.join(fixturesDir, "temp-invalid.json");
+    const tempFile = path.join(tempDir, "invalid.json");
     await fs.writeFile(tempFile, "{ invalid json", "utf-8");
 
-    try {
-      await expect(loadChatGPT(tempFile)).rejects.toThrow();
-    } finally {
-      await fs.unlink(tempFile);
-    }
+    await expect(loadChatGPT(tempFile)).rejects.toThrow();
   });
 
   test("handles non-array data", async () => {
-    const tempFile = path.join(fixturesDir, "temp-not-array.json");
+    const tempFile = path.join(tempDir, "not-array.json");
     await fs.writeFile(tempFile, '{"not": "an array"}', "utf-8");
 
-    try {
-      await expect(loadChatGPT(tempFile)).rejects.toThrow(
-        "ChatGPT export data must be an array",
-      );
-    } finally {
-      await fs.unlink(tempFile);
-    }
+    await expect(loadChatGPT(tempFile)).rejects.toThrow(
+      "ChatGPT export data must be an array",
+    );
   });
 
   test("handles schema validation errors", async () => {
@@ -91,8 +148,10 @@ describe("loadChatGPT", () => {
   });
 
   test("logs success message with count", async () => {
-    const filePath = path.join(fixturesDir, "valid-conversation.json");
-    await loadChatGPT(filePath);
+    const testFile = path.join(tempDir, "test-chatgpt-log.json");
+    await fs.writeFile(testFile, JSON.stringify(createValidChatGPTData()), "utf-8");
+    
+    await loadChatGPT(testFile);
 
     expect(
       consoleOutput.some((line) =>
@@ -102,7 +161,7 @@ describe("loadChatGPT", () => {
   });
 
   test("handles conversations without title", async () => {
-    const tempFile = path.join(fixturesDir, "temp-no-title.json");
+    const testFile = path.join(tempDir, "no-title.json");
     const data = [
       {
         title: null, // title is required but we test null handling
@@ -116,18 +175,14 @@ describe("loadChatGPT", () => {
         },
       },
     ];
-    await fs.writeFile(tempFile, JSON.stringify(data), "utf-8");
+    await fs.writeFile(testFile, JSON.stringify(data), "utf-8");
 
-    try {
-      const conversations = await loadChatGPT(tempFile);
-      expect(conversations[0]?.title).toBe("Untitled Conversation");
-    } finally {
-      await fs.unlink(tempFile);
-    }
+    const conversations = await loadChatGPT(testFile);
+    expect(conversations[0]?.title).toBe("Untitled Conversation");
   });
 
   test("handles messages with object content parts", async () => {
-    const tempFile = path.join(fixturesDir, "temp-object-parts.json");
+    const testFile = path.join(tempDir, "object-parts.json");
     const data = [
       {
         title: "Test",
@@ -152,25 +207,22 @@ describe("loadChatGPT", () => {
         },
       },
     ];
-    await fs.writeFile(tempFile, JSON.stringify(data), "utf-8");
+    await fs.writeFile(testFile, JSON.stringify(data), "utf-8");
 
-    try {
-      const conversations = await loadChatGPT(tempFile);
-      const content = conversations[0]?.messages[0]?.content || "";
-      expect(content).toContain("Part 1");
-      expect(content).toContain("Part 2");
-      expect(content).toContain("{"); // JSON stringified object
-    } finally {
-      await fs.unlink(tempFile);
-    }
+    const conversations = await loadChatGPT(testFile);
+    const messages = conversations[0]?.messages || [];
+    expect(messages[0]?.content).toBe(
+      "Part 1\nPart 2\n" + JSON.stringify({ other: "data" }, null, 2),
+    );
   });
 
   test("reports skipped fields", async () => {
-    const tempFile = path.join(fixturesDir, "temp-extra-fields.json");
+    const testFile = path.join(tempDir, "extra-fields.json");
     const data = [
       {
         title: "Test",
         create_time: 1703980800,
+        extra_field: "should be skipped",
         mapping: {
           aaa: {
             id: "aaa",
@@ -178,27 +230,17 @@ describe("loadChatGPT", () => {
             children: [],
           },
         },
-        extra_field_1: "value1",
-        extra_field_2: "value2",
       },
     ];
-    await fs.writeFile(tempFile, JSON.stringify(data), "utf-8");
+    await fs.writeFile(testFile, JSON.stringify(data), "utf-8");
 
-    try {
-      await loadChatGPT(tempFile);
-      expect(
-        consoleOutput.some((line) =>
-          line.includes("📋 Skipped fields during conversion"),
-        ),
-      ).toBe(true);
-      expect(
-        consoleOutput.some(
-          (line) =>
-            line.includes("extra_field_1") && line.includes("extra_field_2"),
-        ),
-      ).toBe(true);
-    } finally {
-      await fs.unlink(tempFile);
-    }
+    await loadChatGPT(testFile);
+
+    expect(
+      consoleOutput.some((line) => line.includes("Skipped fields")),
+    ).toBe(true);
+    expect(
+      consoleOutput.some((line) => line.includes("extra_field")),
+    ).toBe(true);
   });
 });

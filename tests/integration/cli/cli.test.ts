@@ -42,7 +42,7 @@ describe("CLI Integration Tests", () => {
   });
 
   test("converts ChatGPT file", async () => {
-    const inputFile = path.join(fixturesDir, "chatgpt/valid-conversation.json");
+    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
     const outputDir = path.join(tempDir, "output");
 
     const result =
@@ -58,9 +58,9 @@ describe("CLI Integration Tests", () => {
       path.join(outputDir, outputFiles[0] || ""),
       "utf-8",
     );
-    expect(content).toContain("# Test Conversation");
-    expect(content).toContain("You are a helpful assistant.");
-    expect(content).toContain("Hello, how are you?");
+    expect(content).toContain("# E2E CLI Test Conversation");
+    expect(content).toContain("You are a helpful assistant for E2E testing.");
+    expect(content).toContain("Hello, this is an E2E test!");
   });
 
   test("converts Claude file", async () => {
@@ -85,7 +85,7 @@ describe("CLI Integration Tests", () => {
   });
 
   test("auto-detects format", async () => {
-    const inputFile = path.join(fixturesDir, "chatgpt/valid-conversation.json");
+    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
     const outputDir = path.join(tempDir, "output");
 
     const result =
@@ -103,7 +103,7 @@ describe("CLI Integration Tests", () => {
 
     // Copy test files
     await fs.copyFile(
-      path.join(fixturesDir, "chatgpt/valid-conversation.json"),
+      path.join(fixturesDir, "e2e/cli-test.json"),
       path.join(inputDir, "chatgpt.json"),
     );
     await fs.copyFile(

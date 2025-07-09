@@ -10,13 +10,6 @@ describe("Binary Integration Tests", () => {
 
   beforeEach(async () => {
     await fs.mkdir(tempDir, { recursive: true });
-    
-    // Check if binary exists
-    try {
-      await fs.access(binaryPath);
-    } catch {
-      console.warn(`Binary not found at ${binaryPath}. Run 'bun run build' first.`);
-    }
   });
 
   afterEach(async () => {
@@ -49,13 +42,13 @@ describe("Binary Integration Tests", () => {
       return;
     }
 
-    const inputFile = path.join(fixturesDir, "chatgpt/valid-conversation.json");
+    const inputFile = path.join(fixturesDir, "e2e/binary-test.json");
     const result = await $`${binaryPath} -i ${inputFile} --dry-run`.quiet();
 
     expect(result.exitCode).toBe(0);
     const output = result.stdout.toString();
     expect(output).toContain("[DRY RUN] Would write:");
-    expect(output).toContain("2023-12-31_Test_Conversation.md");
+    expect(output).toContain("2024-01-01_Binary_E2E_Test.md");
   });
 
   test("binary handles all new options", async () => {
@@ -66,7 +59,7 @@ describe("Binary Integration Tests", () => {
       return;
     }
 
-    const inputFile = path.join(fixturesDir, "chatgpt/valid-conversation.json");
+    const inputFile = path.join(fixturesDir, "e2e/binary-test.json");
     
     // Test --quiet --dry-run
     const quietResult = await $`${binaryPath} -i ${inputFile} --quiet --dry-run`.quiet();
@@ -74,7 +67,7 @@ describe("Binary Integration Tests", () => {
     expect(quietResult.stdout.toString()).toBe("");
 
     // Test --search
-    const searchResult = await $`${binaryPath} -i ${inputFile} --search "hello" --dry-run`.quiet();
+    const searchResult = await $`${binaryPath} -i ${inputFile} --search "binary" --dry-run`.quiet();
     expect(searchResult.exitCode).toBe(0);
     expect(searchResult.stdout.toString()).toContain("Filtered: 1 of 1 conversations");
   });
