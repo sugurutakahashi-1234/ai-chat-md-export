@@ -8,9 +8,6 @@ import { convertToMarkdown } from "./markdown.js";
 import type { Conversation } from "./types.js";
 import { generateFileName } from "./utils/filename.js";
 
-// Version is hardcoded to avoid runtime file reading issues in compiled binary
-const VERSION = "0.1.0";
-
 export const optionsSchema = z.object({
   input: z.string(),
   output: z.string().optional(),
@@ -235,7 +232,6 @@ export async function main(): Promise<void> {
   program
     .name("ai-chat-md-export")
     .description("Convert ChatGPT and Claude export data to Markdown")
-    .version(VERSION)
     .requiredOption("-i, --input <path>", "Input file or directory path")
     .option(
       "-o, --output <path>",

@@ -38,7 +38,7 @@ brew install ai-chat-md-export
 > 2. Update SHA256 hashes in `homebrew/ai-chat-md-export.rb`
 > 3. Set up the tap repository at `sugurutakahashi/homebrew-tap`
 > 
-> For now, you can use npm/bun installation or download binaries from [GitHub Releases](https://github.com/sugurutakahashi/chat-history-conv/releases).
+> For now, you can use npm/bun installation or download binaries from [GitHub Releases](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases).
 
 ### As a Development Dependency (Recommended)
 

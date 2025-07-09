@@ -134,7 +134,10 @@
       "Bash(do time bun run:*)",
       "Bash(time bun run:*)",
       "Bash(time npx tsx:*)",
-      "Bash(npm pack:*)"
+      "Bash(npm pack:*)",
+      "WebFetch(domain:stackoverflow.com)",
+      "Bash(./dist/ai-chat-md-export --version)",
+      "Bash(./dist/ai-chat-md-export:*)"
     ],
     "deny": []
   },
