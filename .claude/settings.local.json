@@ -132,15 +132,11 @@
     "deny": []
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "playwright"
-  ],
+  "enabledMcpjsonServers": ["playwright"],
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
+      "args": ["@playwright/mcp@latest"]
     }
   }
 }

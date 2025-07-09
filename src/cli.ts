@@ -206,7 +206,7 @@ async function processFile(
   // Apply filters
   let filteredConversations = conversations;
   const originalCount = conversations.length;
-  
+
   // Filter by date if --since or --until is specified
   if (options.since || options.until) {
     filteredConversations = filteredConversations.filter((conv) => {
@@ -216,7 +216,7 @@ async function processFile(
       return true;
     });
   }
-  
+
   // Filter by search keyword if --search is specified
   if (options.search) {
     const searchLower = options.search.toLowerCase();
@@ -224,12 +224,12 @@ async function processFile(
       // Search in title
       if (conv.title.toLowerCase().includes(searchLower)) return true;
       // Search in messages
-      return conv.messages.some((msg) => 
-        msg.content.toLowerCase().includes(searchLower)
+      return conv.messages.some((msg) =>
+        msg.content.toLowerCase().includes(searchLower),
       );
     });
   }
-  
+
   const filteredCount = filteredConversations.length;
   if ((options.since || options.until || options.search) && !options.quiet) {
     console.log(
@@ -265,7 +265,9 @@ async function processFile(
         await fs.writeFile(outputPath, markdown, "utf-8");
       }
       if (!options.quiet) {
-        console.log(`  → ${options.dryRun ? "[DRY RUN] Would write:" : ""} ${outputPath}`);
+        console.log(
+          `  → ${options.dryRun ? "[DRY RUN] Would write:" : ""} ${outputPath}`,
+        );
       }
     } catch (error) {
       console.error(

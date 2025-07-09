@@ -16,9 +16,7 @@ describe("sanitizeFileName", () => {
   });
 
   it("URL encodes non-ASCII characters", () => {
-    expect(sanitizeFileName("Hello World")).toBe(
-      "Hello_World",
-    );
+    expect(sanitizeFileName("Hello World")).toBe("Hello_World");
     expect(sanitizeFileName("Test-File")).toBe("Test-File");
   });
 

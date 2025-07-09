@@ -27,7 +27,14 @@
     "conv:claude": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude -f claude",
     "conv:all": "bun run conv:chatgpt && bun run conv:claude",
     "conv:chatgpt:watch": "bun run src/cli.ts -i data/raw/chatgpt/conversations.json -o data/md/chatgpt -f chatgpt 2>&1 | tee chatgpt-warnings.log",
-    "conv:claude:watch": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude -f claude 2>&1 | tee claude-warnings.log"
+    "conv:claude:watch": "bun run src/cli.ts -i data/raw/claude/conversations.json -o data/md/claude -f claude 2>&1 | tee claude-warnings.log",
+    "demo:quiet": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --quiet --dry-run",
+    "demo:dry-run": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --dry-run",
+    "demo:search": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --search 'hello' --dry-run",
+    "demo:search-no-match": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --search 'nonexistent' --dry-run",
+    "demo:combined": "bun run src/cli.ts -i tests/fixtures/chatgpt/valid-conversation.json --quiet --dry-run --search 'hello'",
+    "demo:date-filter": "bun run src/cli.ts -i tests/fixtures/chatgpt/multi-date.json --dry-run && bun run src/cli.ts -i tests/fixtures/chatgpt/multi-date.json --since 2024-01-01 --dry-run",
+    "demo:all": "bun run demo:quiet && bun run demo:dry-run && bun run demo:search && bun run demo:search-no-match && bun run demo:combined && bun run demo:date-filter"
   },
   "dependencies": {
     "commander": "^14.0.0",
@@ -36,7 +43,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.1.1",
     "@types/bun": "^1.2.18",
-    "@types/node": "^24.0.10",
+    "@types/node": "^24.0.12",
     "knip": "^5.61.3",
     "typescript": "^5.8.3"
   }
