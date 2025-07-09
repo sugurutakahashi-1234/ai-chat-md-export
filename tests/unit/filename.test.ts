@@ -82,7 +82,9 @@ describe("sanitizeFileNameUnicode", () => {
     expect(sanitizeFileNameUnicode("file/name")).toBe("file%2Fname");
     expect(sanitizeFileNameUnicode("test:file")).toBe("test%3Afile");
     expect(sanitizeFileNameUnicode('test"file')).toBe("test%22file");
-    expect(sanitizeFileNameUnicode("明日の天気は？")).toBe("明日の天気は%EF%BC%9F");
+    expect(sanitizeFileNameUnicode("明日の天気は？")).toBe(
+      "明日の天気は%EF%BC%9F",
+    );
   });
 
   it("handles mixed content", () => {

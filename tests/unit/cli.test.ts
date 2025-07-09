@@ -97,6 +97,7 @@ describe("processInput", () => {
       format: "auto",
       quiet: true,
       dryRun: true,
+      filenameEncoding: "unicode",
     };
 
     // processInput calls processFile internally, verify it runs without error
@@ -134,6 +135,7 @@ describe("processInput", () => {
       format: "auto",
       quiet: true,
       dryRun: true,
+      filenameEncoding: "unicode",
     };
 
     await expect(processInput(options)).resolves.toBeUndefined();
@@ -147,6 +149,7 @@ describe("processInput", () => {
       format: "auto",
       quiet: true,
       dryRun: true,
+      filenameEncoding: "unicode",
     };
 
     await expect(processInput(options)).rejects.toThrow();
@@ -212,6 +215,7 @@ describe("processFile", () => {
       format: "chatgpt",
       quiet: true,
       dryRun: false,
+      filenameEncoding: "unicode",
     };
 
     await processFile(filePath, outputDir, options);
@@ -253,6 +257,7 @@ describe("processFile", () => {
       format: "claude",
       quiet: true,
       dryRun: false,
+      filenameEncoding: "unicode",
     };
 
     await processFile(filePath, outputDir, options);
@@ -290,6 +295,7 @@ describe("processFile", () => {
       format: "auto",
       quiet: true,
       dryRun: true,
+      filenameEncoding: "unicode",
     };
 
     await processFile(filePath, outputDir, options);
@@ -345,6 +351,7 @@ describe("processFile", () => {
       format: "auto",
       quiet: true,
       dryRun: false,
+      filenameEncoding: "unicode",
       since: "2024-01-01",
       until: "2024-01-31",
     };
@@ -402,6 +409,7 @@ describe("processFile", () => {
       format: "auto",
       quiet: true,
       dryRun: false,
+      filenameEncoding: "unicode",
       search: "python",
     };
 
@@ -482,6 +490,7 @@ describe("processDirectory", () => {
       format: "auto",
       quiet: true,
       dryRun: false,
+      filenameEncoding: "unicode",
     };
 
     await processDirectory(tempDir, outputDir, options);
@@ -501,6 +510,7 @@ describe("processDirectory", () => {
       format: "auto",
       quiet: true,
       dryRun: false,
+      filenameEncoding: "unicode",
     };
 
     // Verify it runs without error

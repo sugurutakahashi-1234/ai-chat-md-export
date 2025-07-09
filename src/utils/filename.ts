@@ -44,24 +44,24 @@ export function sanitizeFileNameUnicode(fileName: string): string {
   // Characters that are problematic on most filesystems
   // biome-ignore lint/suspicious/noControlCharactersInRegex: Control characters are intentionally excluded
   const dangerousChars = /[<>:"/\\|?*\x00-\x1f？]/g;
-  
+
   // Replace dangerous characters with their URL-encoded equivalents
   let result = fileName;
-  
+
   // Replace each dangerous character with its encoded form
   result = result.replace(dangerousChars, (char) => {
     return encodeURIComponent(char);
   });
-  
+
   // Replace spaces with underscores for better readability
   result = result.replace(/\s+/g, "_");
-  
+
   // Remove leading and trailing dots (problematic on some systems)
   result = result.replace(/^\.+/, "").replace(/\.+$/, "");
-  
+
   // Trim whitespace
   result = result.trim();
-  
+
   return result;
 }
 
@@ -79,7 +79,7 @@ export function generateFileName(
   encoding: FilenameEncoding = "unicode",
 ): string {
   let sanitizedTitle: string;
-  
+
   switch (encoding) {
     case "url-safe":
       sanitizedTitle = sanitizeFileName(title);
