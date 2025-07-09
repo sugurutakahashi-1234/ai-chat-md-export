@@ -125,7 +125,6 @@
       "Bash(npm test)",
       "Bash(jq:*)",
       "Bash(sed:*)",
-      "Bash(chat-history-conv:*)",
       "WebFetch(domain:gist.github.com)",
       "mcp__ide__getDiagnostics",
       "Bash(find:*)",
@@ -136,8 +135,6 @@
       "Bash(time npx tsx:*)",
       "Bash(npm pack:*)",
       "WebFetch(domain:stackoverflow.com)",
-      "Bash(./dist/ai-chat-md-export --version)",
-      "Bash(./dist/ai-chat-md-export:*)",
       "Bash(tar:*)"
     ],
     "deny": []
