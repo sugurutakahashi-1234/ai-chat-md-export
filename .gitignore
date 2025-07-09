@@ -38,8 +38,9 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 *.bun
 bun.lockb
 
-# binaries
-bin/
+# compiled binaries
+dist/
+bin/ai-chat-md-export
 
 # editor
 .vscode/

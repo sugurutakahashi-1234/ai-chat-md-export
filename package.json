@@ -5,12 +5,16 @@
   "type": "module",
   "private": true,
   "bin": {
-    "ai-chat-md-export": "bin/ai-chat-md-export"
+    "ai-chat-md-export": "bin/ai-chat-md-export.js"
+  },
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
   },
   "scripts": {
-    "dev": "bun run src/cli.ts -h",
+    "dev": "bun run bin/ai-chat-md-export.js -h",
     "typecheck": "bunx tsc --noEmit",
-    "build": "bun build src/cli.ts --compile --outfile bin/ai-chat-md-export",
+    "build": "bun build src/cli.ts --compile --outfile dist/ai-chat-md-export",
     "lint": "biome check --write .",
     "lint:check": "biome check .",
     "format": "biome format --write .",

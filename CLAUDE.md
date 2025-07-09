@@ -5,8 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 重要な指示
 
 **すべての作業は日本語で行います**
-- コメント、説明文、エラーメッセージ、質問への回答など、すべて日本語で記述
-- コードのコメントも日本語で統一
+- チャットの言語は日本語で、コードのコメントやREADMEの記述は英語で行います。
 
 **作業完了時の処理**
 - タスクの最後に必ず`bun run ci`コマンドを実行してCI全体をチェック

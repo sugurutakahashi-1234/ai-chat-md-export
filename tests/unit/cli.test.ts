@@ -7,7 +7,7 @@ import {
   processDirectory,
   processFile,
   processInput,
-} from "../../src/cli-main.js";
+} from "../../src/cli.js";
 
 describe("detectFormat", () => {
   const tempDir = path.join(process.cwd(), "tests/temp/cli-main");

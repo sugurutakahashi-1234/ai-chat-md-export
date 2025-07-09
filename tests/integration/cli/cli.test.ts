@@ -6,7 +6,7 @@ import { $ } from "bun";
 describe("CLI Integration Tests", () => {
   const tempDir = path.join(process.cwd(), "tests/temp");
   const fixturesDir = path.join(process.cwd(), "tests/fixtures");
-  const cliPath = path.join(process.cwd(), "src/cli.ts");
+  const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
 
   beforeEach(async () => {
     await fs.mkdir(tempDir, { recursive: true });

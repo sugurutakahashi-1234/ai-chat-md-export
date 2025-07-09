@@ -6,7 +6,7 @@ import { $ } from "bun";
 describe("Binary Integration Tests", () => {
   const tempDir = path.join(process.cwd(), "tests/temp");
   const fixturesDir = path.join(process.cwd(), "tests/fixtures");
-  const binaryPath = path.join(process.cwd(), "bin/ai-chat-md-export");
+  const binaryPath = path.join(process.cwd(), "dist/ai-chat-md-export");
 
   beforeEach(async () => {
     await fs.mkdir(tempDir, { recursive: true });
