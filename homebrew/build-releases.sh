@@ -21,16 +21,13 @@ mkdir -p dist
 
 # Build for each platform
 echo -e "${YELLOW}Building for macOS ARM64...${NC}"
-bun build src/cli.ts --compile --target=bun-darwin-arm64 --outfile dist/ai-chat-md-export
-mv dist/ai-chat-md-export dist/ai-chat-md-export-darwin-arm64
+bun build src/cli.ts --compile --target=bun-darwin-arm64 --outfile dist/ai-chat-md-export-darwin-arm64
 
 echo -e "${YELLOW}Building for macOS x64...${NC}"
-bun build src/cli.ts --compile --target=bun-darwin-x64 --outfile dist/ai-chat-md-export
-mv dist/ai-chat-md-export dist/ai-chat-md-export-darwin-x64
+bun build src/cli.ts --compile --target=bun-darwin-x64 --outfile dist/ai-chat-md-export-darwin-x64
 
 echo -e "${YELLOW}Building for Linux x64...${NC}"
-bun build src/cli.ts --compile --target=bun-linux-x64 --outfile dist/ai-chat-md-export
-mv dist/ai-chat-md-export dist/ai-chat-md-export-linux-x64
+bun build src/cli.ts --compile --target=bun-linux-x64 --outfile dist/ai-chat-md-export-linux-x64
 
 # Create release directory
 mkdir -p releases
