@@ -1,7 +1,6 @@
 #!/usr/bin/env bun
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { program } from "commander";
 import { z } from "zod";
 import { loadChatGPT } from "./loaders/chatgpt.js";
@@ -10,10 +9,8 @@ import { convertToMarkdown } from "./markdown.js";
 import type { Conversation } from "./types.js";
 import { generateFileName } from "./utils/filename.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const packageJson = JSON.parse(
-  await fs.readFile(path.join(__dirname, "../package.json"), "utf-8"),
-);
+// Version is hardcoded to avoid runtime file reading issues in compiled binary
+const VERSION = "0.1.0";
 
 const optionsSchema = z.object({
   input: z.string(),
@@ -62,7 +59,7 @@ async function main() {
   program
     .name("ai-chat-md-export")
     .description("Convert ChatGPT and Claude export data to Markdown")
-    .version(packageJson.version)
+    .version(VERSION)
     .requiredOption("-i, --input <path>", "Input file or directory path")
     .option(
       "-o, --output <path>",
