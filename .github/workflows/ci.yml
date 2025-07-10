@@ -44,6 +44,9 @@ jobs:
 
       - name: Test coverage
         run: bun test --coverage
+        
+      - name: Test Node.js execution
+        run: bun run test:node
 
       - name: Check dependencies
         run: bun run knip

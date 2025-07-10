@@ -13,6 +13,7 @@ import {
 } from "./utils/error-formatter.js";
 import type { FilenameEncoding } from "./utils/filename.js";
 import { generateFileName } from "./utils/filename.js";
+import { VERSION } from "./version.js";
 
 export const optionsSchema = z.object({
   input: z.string(),
@@ -254,6 +255,7 @@ export async function processDirectory(
 export async function main(): Promise<void> {
   program
     .name("ai-chat-md-export")
+    .version(VERSION)
     .description("Convert ChatGPT and Claude export data to Markdown")
     .requiredOption("-i, --input <path>", "Input file or directory path")
     .option(

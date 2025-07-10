@@ -24,7 +24,7 @@
   },
   "hooks": {
     "before:init": ["bun run ci"],
-    "after:bump": ["bun run build", "bun run homebrew:build"],
+    "after:bump": ["bun run update:version", "bun run build", "bun run homebrew:build"],
     "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
   },
   "plugins": {
