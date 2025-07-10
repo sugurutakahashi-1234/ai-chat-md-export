@@ -33,6 +33,14 @@
   "bin": {
     "ai-chat-md-export": "bin/ai-chat-md-export.js"
   },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
   "scripts": {
     "help": "bun run bin/ai-chat-md-export.js -h",
     "typecheck": "tsc --noEmit",

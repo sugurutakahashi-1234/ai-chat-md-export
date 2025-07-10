@@ -33,6 +33,36 @@ ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
 ai-chat-md-export -i data.json --dry-run
 ```
 
+## Programmatic API
+
+You can also use this package as a library in your TypeScript/JavaScript projects:
+
+```typescript
+import { 
+  loadChatGPT, 
+  loadClaude, 
+  convertToMarkdown,
+  type Conversation 
+} from "ai-chat-md-export";
+
+// Load and convert ChatGPT conversations
+const conversations = await loadChatGPT("conversations.json");
+const markdown = convertToMarkdown(conversations[0]);
+
+// Process Claude data
+const claudeConvs = await loadClaude("claude-export.json");
+claudeConvs.forEach(conv => {
+  const md = convertToMarkdown(conv);
+  console.log(md);
+});
+
+// Work with the Conversation type
+function processConversation(conv: Conversation) {
+  console.log(`Title: ${conv.title}`);
+  console.log(`Messages: ${conv.messages.length}`);
+}
+```
+
 ### Options
 
 | Option | Short | Description | Default |

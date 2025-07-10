@@ -31,6 +31,36 @@ ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
 ai-chat-md-export -i data.json --dry-run
 ```
 
+## プログラマティックAPI
+
+TypeScript/JavaScriptプロジェクトでライブラリとして使用することもできます：
+
+```typescript
+import { 
+  loadChatGPT, 
+  loadClaude, 
+  convertToMarkdown,
+  type Conversation 
+} from "ai-chat-md-export";
+
+// ChatGPTの会話を読み込んで変換
+const conversations = await loadChatGPT("conversations.json");
+const markdown = convertToMarkdown(conversations[0]);
+
+// Claudeのデータを処理
+const claudeConvs = await loadClaude("claude-export.json");
+claudeConvs.forEach(conv => {
+  const md = convertToMarkdown(conv);
+  console.log(md);
+});
+
+// Conversation型を使用
+function processConversation(conv: Conversation) {
+  console.log(`タイトル: ${conv.title}`);
+  console.log(`メッセージ数: ${conv.messages.length}`);
+}
+```
+
 ### オプション
 
 | オプション | 短縮形 | 説明 | デフォルト |
