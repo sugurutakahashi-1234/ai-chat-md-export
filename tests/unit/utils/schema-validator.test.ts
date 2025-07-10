@@ -30,7 +30,7 @@ describe("validateWithDetails", () => {
     expect(result.errors).toHaveLength(1);
     if (result.errors?.[0]) {
       expect(result.errors[0].path).toBe("age");
-      expect(result.errors[0].message).toContain("Expected number");
+      expect(result.errors[0].message).toContain("expected number");
     }
   });
 

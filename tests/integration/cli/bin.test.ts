@@ -165,8 +165,8 @@ describe("CLI Integration Tests", () => {
       const output =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
       // The error now comes from Zod validation rather than commander
-      expect(output).toContain("Invalid enum value");
-      expect(output).toContain("Expected 'chatgpt' | 'claude' | 'auto'");
+      expect(output).toContain("invalid_value");
+      expect(output).toContain("expected one of");
     }
   });
 

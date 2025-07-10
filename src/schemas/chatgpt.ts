@@ -18,7 +18,7 @@ export const chatGPTMessageSchema = z
     author: z.object({
       role: z.enum(["user", "assistant", "system", "tool"]),
       name: z.string().nullable().optional(),
-      metadata: z.record(z.unknown()).optional(),
+      metadata: z.record(z.string(), z.unknown()).optional(),
     }),
     content: z
       .object({
@@ -32,7 +32,7 @@ export const chatGPTMessageSchema = z
     status: z.string().optional(),
     end_turn: z.boolean().nullable().optional(),
     weight: z.number().optional(),
-    metadata: z.record(z.unknown()).optional(),
+    metadata: z.record(z.string(), z.unknown()).optional(),
     recipient: z.string().optional(),
   })
   .passthrough() satisfies z.ZodSchema; // Allow unknown fields
@@ -51,7 +51,7 @@ export const chatGPTConversationSchema = z
     title: z.string().nullable().optional(),
     create_time: z.number().nullable(),
     update_time: z.number().optional(),
-    mapping: z.record(chatGPTNodeSchema),
+    mapping: z.record(z.string(), chatGPTNodeSchema),
     moderation_results: z.array(z.unknown()).optional(),
     current_node: z.string().optional(),
     conversation_id: z.string().optional(),

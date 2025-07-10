@@ -48,7 +48,9 @@ export async function loadChatGPT(
     successCount++;
 
     const parsed = result.data as ChatGPTConversation;
-    const messages = extractMessages(parsed.mapping);
+    const messages = extractMessages(
+      parsed.mapping as Record<string, ChatGPTNode>,
+    );
 
     const date = parsed.create_time
       ? new Date(parsed.create_time * 1000)
