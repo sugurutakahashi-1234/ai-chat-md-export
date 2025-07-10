@@ -37,11 +37,11 @@ export function convertToMarkdown(conversation: Conversation): string {
 }
 
 function processContent(text: string): string {
-  // Process "This block is not supported" messages - keep it simple and generic
+  // Process "This block is not supported" messages - just show the original message
   if (text.includes("This block is not supported")) {
     return text.replace(
       /```\s*(This block is not supported[^`]*?)```/gs,
-      (_, content) => `*[Unsupported: ${content.trim()}]*`,
+      (_, content) => content.trim(),
     );
   }
 

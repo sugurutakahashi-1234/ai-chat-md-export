@@ -144,32 +144,28 @@ describe("convertToMarkdown", () => {
       {
         content:
           "```\nThis block is not supported by the current environment.\n```",
-        expected:
-          "*[Unsupported: This block is not supported by the current environment.]*",
+        expected: "This block is not supported by the current environment.",
       },
       {
         content: "```\nThis block is not supported: Image Generation\n```",
-        expected:
-          "*[Unsupported: This block is not supported: Image Generation]*",
+        expected: "This block is not supported: Image Generation",
       },
       {
         content: "```\nThis block is not supported for DALL-E\n```",
-        expected: "*[Unsupported: This block is not supported for DALL-E]*",
+        expected: "This block is not supported for DALL-E",
       },
       {
         content: "```\nThis block is not supported with Code Interpreter.\n```",
-        expected:
-          "*[Unsupported: This block is not supported with Code Interpreter.]*",
+        expected: "This block is not supported with Code Interpreter.",
       },
       {
         content: "```\nThis block is not supported\n```",
-        expected: "*[Unsupported: This block is not supported]*",
+        expected: "This block is not supported",
       },
       {
         content:
           "```\nThis block is not supported on your current device yet.\n```",
-        expected:
-          "*[Unsupported: This block is not supported on your current device yet.]*",
+        expected: "This block is not supported on your current device yet.",
       },
     ];
 
