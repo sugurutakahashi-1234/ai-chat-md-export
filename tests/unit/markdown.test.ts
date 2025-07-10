@@ -247,4 +247,29 @@ describe("convertToMarkdown", () => {
     const hrCount = (markdown.match(/^---$/gm) || []).length;
     expect(hrCount).toBeGreaterThan(2); // At least one after header and one between messages
   });
+
+  test("unescapes HTML entities in code blocks", () => {
+    const conversation: Conversation = {
+      id: "test-123",
+      title: "Test",
+      date: "2024-01-01",
+      messages: [
+        {
+          role: "assistant",
+          content:
+            "Here's some code:\n```typescript\nif (value &lt; 10 &amp;&amp; value &gt; 0) {\n  console.log(&quot;Value is between 0 and 10&quot;);\n}\n```",
+        },
+      ],
+    };
+
+    const markdown = convertToMarkdown(conversation);
+
+    // Should unescape HTML entities in code blocks
+    expect(markdown).toContain("if (value < 10 && value > 0)");
+    expect(markdown).toContain('console.log("Value is between 0 and 10")');
+    expect(markdown).not.toContain("&lt;");
+    expect(markdown).not.toContain("&gt;");
+    expect(markdown).not.toContain("&amp;");
+    expect(markdown).not.toContain("&quot;");
+  });
 });

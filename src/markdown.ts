@@ -74,7 +74,14 @@ function processContent(text: string): string {
   );
 
   processedText = processedText.replace(/__CODE_BLOCK_(\d+)__/g, (_, index) => {
-    return codeBlocks[Number(index)] || "";
+    const codeBlock = codeBlocks[Number(index)] || "";
+    // Unescape HTML entities in code blocks
+    return codeBlock
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&amp;/g, "&")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'");
   });
 
   return processedText;
