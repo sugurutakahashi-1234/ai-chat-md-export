@@ -40,3 +40,6 @@ Thumbs.db
 bun.lock
 pnpm-lock.yaml
 yarn.lock
+
+# Source TypeScript files (compiled versions in lib/ are included)
+src/

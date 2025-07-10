@@ -44,7 +44,9 @@ bun.lockb
 
 # compiled binaries
 dist/
-bin/ai-chat-md-export
+
+# TypeScript build output
+lib/
 
 # editor
 .vscode/

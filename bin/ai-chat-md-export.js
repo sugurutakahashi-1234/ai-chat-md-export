@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // This file serves as the entry point for the CLI tool
-// It automatically uses the appropriate runtime (Bun, Node.js, etc.)
+// Uses compiled JavaScript for npm distribution
 
-import { main } from "../src/cli.ts";
+import { main } from "../lib/cli.js";
 
 main();
