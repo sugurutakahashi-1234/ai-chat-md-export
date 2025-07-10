@@ -37,6 +37,13 @@ Thumbs.db
 # CI/CD
 .github/
 
+# Scripts (development only)
+scripts/
+
+# Claude AI settings
+.claude/
+CLAUDE.md
+
 # Development dependencies config
 bun.lock
 pnpm-lock.yaml
