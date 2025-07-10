@@ -165,6 +165,12 @@ describe("convertToMarkdown", () => {
         content: "```\nThis block is not supported\n```",
         expected: "*[Unsupported: This block is not supported]*",
       },
+      {
+        content:
+          "```\nThis block is not supported on your current device yet.\n```",
+        expected:
+          "*[Unsupported: This block is not supported on your current device yet.]*",
+      },
     ];
 
     for (const testCase of testCases) {

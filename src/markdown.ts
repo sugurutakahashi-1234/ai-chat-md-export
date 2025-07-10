@@ -11,14 +11,13 @@ export function convertToMarkdown(conversation: Conversation): string {
   lines.push("");
 
   for (const message of conversation.messages) {
-    const roleLabel =
-      message.role === "user"
-        ? "👤 User"
-        : message.role === "assistant"
-          ? "🤖 Assistant"
-          : message.role === "system"
-            ? "⚙️ System"
-            : "🔧 Tool";
+    const roleLabelMap = {
+      user: "👤 User",
+      assistant: "🤖 Assistant",
+      system: "⚙️ System",
+      tool: "🔧 Tool",
+    } as const;
+    const roleLabel = roleLabelMap[message.role] || "🔧 Tool";
 
     lines.push(`## ${roleLabel}`);
     if (message.timestamp) {
