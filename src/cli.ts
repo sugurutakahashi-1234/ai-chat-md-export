@@ -6,6 +6,11 @@ import { loadChatGPT } from "./loaders/chatgpt.js";
 import { loadClaude } from "./loaders/claude.js";
 import { convertToMarkdown } from "./markdown.js";
 import type { Conversation } from "./types.js";
+import {
+  formatErrorMessage,
+  getErrorMessage,
+  getRelativePath,
+} from "./utils/error-formatter.js";
 import type { FilenameEncoding } from "./utils/filename.js";
 import { generateFileName } from "./utils/filename.js";
 
@@ -67,10 +72,13 @@ export async function processInput(options: Options): Promise<void> {
     await processDirectory(inputPath, outputDir, options);
   } else {
     throw new Error(
-      `Invalid input path: ${inputPath}\n` +
-        `The path must be either:\n` +
-        `- A valid JSON file (e.g., conversations.json)\n` +
-        `- A directory containing JSON files`,
+      formatErrorMessage("Invalid input path", {
+        file: inputPath,
+        reason:
+          "The path must be either:\n" +
+          "- A valid JSON file (e.g., conversations.json)\n" +
+          "- A directory containing JSON files",
+      }),
     );
   }
 }
@@ -81,7 +89,7 @@ export async function processFile(
   options: Options,
 ): Promise<void> {
   if (!options.quiet) {
-    console.log(`Processing: ${filePath}`);
+    console.log(`Processing: ${getRelativePath(filePath)}`);
   }
 
   let format: string;
@@ -90,8 +98,10 @@ export async function processFile(
       options.format === "auto" ? await detectFormat(filePath) : options.format;
   } catch (error) {
     throw new Error(
-      `Failed to detect file format: ${error instanceof Error ? error.message : "Unknown error"}\n` +
-        `File: ${filePath}`,
+      formatErrorMessage("Failed to detect file format", {
+        file: filePath,
+        reason: getErrorMessage(error),
+      }),
     );
   }
 
@@ -103,8 +113,9 @@ export async function processFile(
       conversations = await loadClaude(filePath, { quiet: options.quiet });
     } else {
       throw new Error(
-        `Unsupported format: ${format}\n` +
-          `Supported formats are: chatgpt, claude, auto`,
+        formatErrorMessage(`Unsupported format: ${format}`, {
+          reason: "Supported formats are: chatgpt, claude, auto",
+        }),
       );
     }
   } catch (error) {
@@ -115,9 +126,11 @@ export async function processFile(
       throw error;
     }
     throw new Error(
-      `Failed to load file: ${error instanceof Error ? error.message : "Unknown error"}\n` +
-        `File: ${filePath}\n` +
-        `Format: ${format}`,
+      formatErrorMessage("Failed to load file", {
+        file: filePath,
+        format: format,
+        reason: getErrorMessage(error),
+      }),
     );
   }
 
@@ -188,13 +201,15 @@ export async function processFile(
       }
       if (!options.quiet) {
         console.log(
-          `  → ${options.dryRun ? "[DRY RUN] Would write:" : ""} ${outputPath}`,
+          `  → ${options.dryRun ? "[DRY RUN] Would write:" : ""} ${getRelativePath(outputPath)}`,
         );
       }
     } catch (error) {
       console.error(
-        `Warning: Failed to write file: ${outputPath}\n` +
-          `Reason: ${error instanceof Error ? error.message : "Unknown error"}`,
+        formatErrorMessage("Warning: Failed to write file", {
+          file: outputPath,
+          reason: getErrorMessage(error),
+        }),
       );
     }
   }
@@ -210,7 +225,9 @@ export async function processDirectory(
 
   if (jsonFiles.length === 0) {
     if (!options.quiet) {
-      console.log(`No JSON files found in directory: ${dirPath}`);
+      console.log(
+        `No JSON files found in directory: ${getRelativePath(dirPath)}`,
+      );
     }
     return;
   }

@@ -42,6 +42,5 @@ bun.lock
 pnpm-lock.yaml
 yarn.lock
 
-# Only include compiled dist for bin usage
+# Source files (not needed for CLI tool)
 src/
-!dist/
