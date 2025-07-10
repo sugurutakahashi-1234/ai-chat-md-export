@@ -24,9 +24,7 @@ export const optionsSchema = z.object({
   quiet: z.boolean().default(false),
   dryRun: z.boolean().default(false),
   search: z.string().optional(),
-  filenameEncoding: z
-    .enum(["url-safe", "unicode", "simple"])
-    .default("unicode"),
+  filenameEncoding: z.enum(["standard", "preserve"]).default("standard"),
 });
 
 export type Options = z.infer<typeof optionsSchema>;
@@ -263,8 +261,8 @@ export async function main(): Promise<void> {
     .option("--search <keyword>", "Filter conversations containing keyword")
     .option(
       "--filename-encoding <encoding>",
-      "Filename encoding: url-safe, unicode (default), or simple",
-      "unicode",
+      "Filename encoding: standard (default) or preserve",
+      "standard",
     )
     .addHelpText(
       "after",

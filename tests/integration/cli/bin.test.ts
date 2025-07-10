@@ -197,9 +197,7 @@ describe("CLI Integration Tests", () => {
 
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles).toHaveLength(1);
-    // Should produce URL-encoded filename
-    expect(outputFiles[0]).toBe(
-      "2023-12-31_Test%2FWith%3ASpecial*Characters%3F.md",
-    );
+    // Should produce sanitized filename with standard encoding
+    expect(outputFiles[0]).toBe("2023-12-31_Test_With_Special_Characters_.md");
   });
 });

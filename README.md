@@ -43,7 +43,7 @@ ai-chat-md-export -i data.json --dry-run
 | `--since` | - | Filter from date (YYYY-MM-DD) | - |
 | `--until` | - | Filter until date (YYYY-MM-DD) | - |
 | `--search` | - | Search keyword | - |
-| `--filename-encoding` | - | Filename encoding: `unicode`, `url-safe`, `simple` | `unicode` |
+| `--filename-encoding` | - | Filename encoding: `standard`, `preserve` | `standard` |
 | `--quiet` | `-q` | Suppress output | - |
 | `--dry-run` | - | Preview mode | - |
 

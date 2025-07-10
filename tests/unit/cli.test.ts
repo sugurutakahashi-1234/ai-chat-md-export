@@ -97,7 +97,7 @@ describe("processInput", () => {
       format: "auto",
       quiet: true,
       dryRun: true,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
     };
 
     // processInput calls processFile internally, verify it runs without error
@@ -135,7 +135,7 @@ describe("processInput", () => {
       format: "auto",
       quiet: true,
       dryRun: true,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
     };
 
     await expect(processInput(options)).resolves.toBeUndefined();
@@ -149,7 +149,7 @@ describe("processInput", () => {
       format: "auto",
       quiet: true,
       dryRun: true,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
     };
 
     await expect(processInput(options)).rejects.toThrow();
@@ -215,7 +215,7 @@ describe("processFile", () => {
       format: "chatgpt",
       quiet: true,
       dryRun: false,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
     };
 
     await processFile(filePath, outputDir, options);
@@ -257,7 +257,7 @@ describe("processFile", () => {
       format: "claude",
       quiet: true,
       dryRun: false,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
     };
 
     await processFile(filePath, outputDir, options);
@@ -295,7 +295,7 @@ describe("processFile", () => {
       format: "auto",
       quiet: true,
       dryRun: true,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
     };
 
     await processFile(filePath, outputDir, options);
@@ -351,7 +351,7 @@ describe("processFile", () => {
       format: "auto",
       quiet: true,
       dryRun: false,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
       since: "2024-01-01",
       until: "2024-01-31",
     };
@@ -409,7 +409,7 @@ describe("processFile", () => {
       format: "auto",
       quiet: true,
       dryRun: false,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
       search: "python",
     };
 
@@ -490,7 +490,7 @@ describe("processDirectory", () => {
       format: "auto",
       quiet: true,
       dryRun: false,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
     };
 
     await processDirectory(tempDir, outputDir, options);
@@ -510,7 +510,7 @@ describe("processDirectory", () => {
       format: "auto",
       quiet: true,
       dryRun: false,
-      filenameEncoding: "unicode",
+      filenameEncoding: "standard",
     };
 
     // Verify it runs without error

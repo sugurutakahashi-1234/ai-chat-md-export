@@ -17,7 +17,6 @@ export type { Conversation, Message } from "./types.js";
 export type { FilenameEncoding } from "./utils/filename.js";
 export {
   generateFileName,
-  sanitizeFileName,
-  sanitizeFileNameSimple,
-  sanitizeFileNameUnicode,
+  sanitizeFileNamePreserve,
+  sanitizeFileNameStandard,
 } from "./utils/filename.js";

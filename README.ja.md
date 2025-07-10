@@ -41,7 +41,7 @@ ai-chat-md-export -i data.json --dry-run
 | `--since` | - | 開始日（YYYY-MM-DD） | - |
 | `--until` | - | 終了日（YYYY-MM-DD） | - |
 | `--search` | - | 検索キーワード | - |
-| `--filename-encoding` | - | ファイル名エンコーディング: `unicode`、`url-safe`、`simple` | `unicode` |
+| `--filename-encoding` | - | ファイル名エンコーディング: `standard`、`preserve` | `standard` |
 | `--quiet` | `-q` | 出力を抑制 | - |
 | `--dry-run` | - | プレビューモード | - |
 
