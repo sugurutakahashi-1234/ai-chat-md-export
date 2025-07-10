@@ -128,9 +128,9 @@ export async function processFile(
   // Filter by date if --since or --until is specified
   if (options.since || options.until) {
     filteredConversations = filteredConversations.filter((conv) => {
-      const convDate = conv.date; // Already in YYYY-MM-DD format
-      if (options.since && convDate < options.since) return false;
-      if (options.until && convDate > options.until) return false;
+      const convDateStr = conv.date.toISOString().split("T")[0] as string;
+      if (options.since && convDateStr < options.since) return false;
+      if (options.until && convDateStr > options.until) return false;
       return true;
     });
   }

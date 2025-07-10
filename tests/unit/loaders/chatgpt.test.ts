@@ -98,7 +98,8 @@ describe("loadChatGPT with inline data", () => {
     expect(conv).toBeDefined();
     expect(conv).toHaveProperty("id", "conv-123");
     expect(conv).toHaveProperty("title", "Test Conversation");
-    expect(conv).toHaveProperty("date", "2023-12-31");
+    expect(conv?.date).toBeInstanceOf(Date);
+    expect(conv?.date.toISOString().split("T")[0]).toBe("2023-12-31");
     expect(conv?.messages).toHaveLength(3); // system, user, assistant
   });
 

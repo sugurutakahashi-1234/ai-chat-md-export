@@ -49,16 +49,16 @@ export async function loadClaude(
     const parsed = result.data as ClaudeConversation;
 
     // Safely process date
-    let date: string;
+    let date: Date;
     try {
       const parsedDate = new Date(parsed.created_at);
       if (!Number.isNaN(parsedDate.getTime())) {
-        date = parsedDate.toISOString().split("T")[0] as string;
+        date = parsedDate;
       } else {
-        date = new Date().toISOString().split("T")[0] as string;
+        date = new Date();
       }
     } catch {
-      date = new Date().toISOString().split("T")[0] as string;
+      date = new Date();
     }
 
     conversations.push({

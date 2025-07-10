@@ -7,7 +7,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test Conversation",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         {
           role: "user",
@@ -25,7 +25,10 @@ describe("convertToMarkdown", () => {
     const markdown = convertToMarkdown(conversation);
 
     expect(markdown).toContain("# Test Conversation");
-    expect(markdown).toContain("Date: 2024-01-01");
+    // Check that the date is formatted with time and timezone
+    expect(markdown).toMatch(
+      /Date: 2024-01-01 \d{2}:\d{2}:\d{2} [+-]\d{2}:\d{2}/,
+    );
     expect(markdown).toContain("## 👤 User");
     expect(markdown).toContain("Hello, world!");
     expect(markdown).toContain("## 🤖 Assistant");
@@ -37,7 +40,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         {
           role: "user",
@@ -62,7 +65,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         { role: "user", content: "User message" },
         { role: "assistant", content: "Assistant message" },
@@ -83,7 +86,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         {
           role: "user",
@@ -102,7 +105,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         {
           role: "assistant",
@@ -122,7 +125,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         {
           role: "assistant",
@@ -168,7 +171,7 @@ describe("convertToMarkdown", () => {
       const conversation: Conversation = {
         id: "test-123",
         title: "Test",
-        date: "2024-01-01",
+        date: new Date("2024-01-01"),
         messages: [
           {
             role: "assistant",
@@ -187,7 +190,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         {
           role: "user",
@@ -211,7 +214,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         {
           role: "user",
@@ -235,7 +238,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         { role: "user", content: "Message 1" },
         { role: "assistant", content: "Message 2" },
@@ -252,7 +255,7 @@ describe("convertToMarkdown", () => {
     const conversation: Conversation = {
       id: "test-123",
       title: "Test",
-      date: "2024-01-01",
+      date: new Date("2024-01-01"),
       messages: [
         {
           role: "assistant",

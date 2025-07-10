@@ -5,7 +5,7 @@ export function convertToMarkdown(conversation: Conversation): string {
 
   lines.push(`# ${conversation.title}`);
   lines.push("");
-  lines.push(`Date: ${conversation.date}`);
+  lines.push(`Date: ${formatTimestamp(conversation.date)}`);
   lines.push("");
   lines.push("---");
   lines.push("");

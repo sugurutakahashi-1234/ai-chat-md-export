@@ -69,7 +69,8 @@ describe("loadClaude with inline data", () => {
     expect(conv).toBeDefined();
     expect(conv).toHaveProperty("id", "conv-456");
     expect(conv).toHaveProperty("title", "Test Claude Conversation");
-    expect(conv).toHaveProperty("date", "2024-01-01");
+    expect(conv?.date).toBeInstanceOf(Date);
+    expect(conv?.date.toISOString().split("T")[0]).toBe("2024-01-01");
     expect(conv?.messages).toHaveLength(2);
   });
 
@@ -221,7 +222,9 @@ describe("loadClaude with inline data", () => {
     await fs.writeFile(testFile, JSON.stringify(data), "utf-8");
 
     const conversations = await loadClaude(testFile);
-    expect(conversations[0]?.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    // Date should be a Date object representing today
+    expect(conversations[0]?.date).toBeInstanceOf(Date);
+    expect(conversations[0]?.date.toISOString()).toBeDefined();
   });
 
   test("reports skipped fields", async () => {

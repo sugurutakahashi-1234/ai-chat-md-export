@@ -69,43 +69,43 @@ describe("sanitizeFileNamePreserve", () => {
 
 describe("generateFileName", () => {
   it("generates filename in standard mode", () => {
-    expect(generateFileName("2025-01-01", "Hello World", "standard")).toBe(
-      "2025-01-01_Hello_World.md",
-    );
-    expect(generateFileName("2025-01-01", "Test File", "standard")).toBe(
-      "2025-01-01_Test_File.md",
-    );
-    expect(generateFileName("2025-01-01", "test/file")).toBe(
+    expect(
+      generateFileName(new Date("2025-01-01"), "Hello World", "standard"),
+    ).toBe("2025-01-01_Hello_World.md");
+    expect(
+      generateFileName(new Date("2025-01-01"), "Test File", "standard"),
+    ).toBe("2025-01-01_Test_File.md");
+    expect(generateFileName(new Date("2025-01-01"), "test/file")).toBe(
       "2025-01-01_test_file.md",
     );
   });
 
   it("generates filename in preserve mode with Japanese", () => {
-    expect(generateFileName("2025-01-01", "日本語のテスト", "preserve")).toBe(
-      "2025-01-01_日本語のテスト.md",
-    );
-    expect(generateFileName("2025-01-01", "こんにちは世界", "preserve")).toBe(
-      "2025-01-01_こんにちは世界.md",
-    );
-    expect(generateFileName("2025-01-01", "明日の天気は？", "preserve")).toBe(
-      "2025-01-01_明日の天気は？.md",
-    );
+    expect(
+      generateFileName(new Date("2025-01-01"), "日本語のテスト", "preserve"),
+    ).toBe("2025-01-01_日本語のテスト.md");
+    expect(
+      generateFileName(new Date("2025-01-01"), "こんにちは世界", "preserve"),
+    ).toBe("2025-01-01_こんにちは世界.md");
+    expect(
+      generateFileName(new Date("2025-01-01"), "明日の天気は？", "preserve"),
+    ).toBe("2025-01-01_明日の天気は？.md");
   });
 
   it("truncates long titles", () => {
     const longTitle = "a".repeat(250);
-    const result = generateFileName("2025-01-01", longTitle);
+    const result = generateFileName(new Date("2025-01-01"), longTitle);
     expect(result.length).toBeLessThanOrEqual(210); // date + _ + 200 chars + .md
   });
 
   it("safely handles titles with special characters", () => {
-    expect(generateFileName("2025-01-01", "test/file:name|test")).toBe(
-      "2025-01-01_test_file_name_test.md",
-    );
+    expect(
+      generateFileName(new Date("2025-01-01"), "test/file:name|test"),
+    ).toBe("2025-01-01_test_file_name_test.md");
   });
 
   it("defaults to standard encoding", () => {
-    expect(generateFileName("2025-01-01", "test/file")).toBe(
+    expect(generateFileName(new Date("2025-01-01"), "test/file")).toBe(
       "2025-01-01_test_file.md",
     );
   });

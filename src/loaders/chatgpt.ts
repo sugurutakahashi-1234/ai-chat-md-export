@@ -51,13 +51,13 @@ export async function loadChatGPT(
     const messages = extractMessages(parsed.mapping);
 
     const date = parsed.create_time
-      ? new Date(parsed.create_time * 1000).toISOString().split("T")[0]
-      : new Date().toISOString().split("T")[0];
+      ? new Date(parsed.create_time * 1000)
+      : new Date();
 
     conversations.push({
       id: parsed.id || Object.keys(parsed.mapping)[0] || "unknown",
       title: parsed.title || "Untitled Conversation",
-      date: date as string,
+      date,
       messages,
     });
   }

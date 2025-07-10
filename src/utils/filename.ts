@@ -50,12 +50,12 @@ export type FilenameEncoding = "standard" | "preserve";
 
 /**
  * Generate a filename
- * @param date - Date string in YYYY-MM-DD format
+ * @param date - Date object
  * @param title - Title of the conversation
  * @param encoding - Encoding type: "standard" (default) or "preserve"
  */
 export function generateFileName(
-  date: string,
+  date: Date,
   title: string,
   encoding: FilenameEncoding = "standard",
 ): string {
@@ -80,5 +80,8 @@ export function generateFileName(
       ? sanitizedTitle.substring(0, maxTitleLength)
       : sanitizedTitle;
 
-  return `${date}_${truncatedTitle}.md`;
+  // Extract date part in YYYY-MM-DD format
+  const dateString = date.toISOString().split("T")[0];
+
+  return `${dateString}_${truncatedTitle}.md`;
 }

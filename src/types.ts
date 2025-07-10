@@ -1,7 +1,7 @@
 export interface Conversation {
   id: string;
   title: string;
-  date: string;
+  date: Date;
   messages: Message[];
 }
 
