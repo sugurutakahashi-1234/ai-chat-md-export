@@ -5,7 +5,6 @@ bunfig.toml
 knip.config.ts
 tsconfig.json
 tsconfig.tsbuildinfo
-CLAUDE.md
 
 # Test files
 tests/
