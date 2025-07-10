@@ -26,5 +26,22 @@
     "before:init": ["bun run ci"],
     "after:bump": ["bun run build", "bun run homebrew:build"],
     "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "✨ Features" },
+          { "type": "fix", "section": "🐛 Bug Fixes" },
+          { "type": "docs", "section": "📚 Documentation" },
+          { "type": "style", "section": "💄 Styling" },
+          { "type": "refactor", "section": "♻️ Code Refactoring" },
+          { "type": "test", "section": "✅ Tests" },
+          { "type": "chore", "section": "🔧 Maintenance" }
+        ]
+      },
+      "infile": "CHANGELOG.md"
+    }
   }
 }
