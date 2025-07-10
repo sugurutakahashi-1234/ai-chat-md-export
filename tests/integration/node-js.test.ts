@@ -1,18 +1,18 @@
 /**
  * Node.js Compatibility Integration Tests
- * 
+ *
  * This test suite ensures that the TypeScript-compiled JavaScript works correctly
  * in standard Node.js environments. This is critical because:
- * 
+ *
  * 1. The package is distributed via npm for Node.js users
  * 2. Not all users have Bun installed
  * 3. The compiled JavaScript in lib/ must work with Node.js module resolution
- * 
+ *
  * These tests verify:
  * - The bin/ai-chat-md-export.js CLI entry point works with Node.js
  * - All CLI features function correctly in Node.js runtime
  * - Error handling works as expected
- * 
+ *
  * Note: Tests skip if lib/ directory doesn't exist (not built yet)
  */
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";

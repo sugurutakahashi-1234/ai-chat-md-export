@@ -17,6 +17,7 @@ output/
 # Build artifacts
 .*.bun-build
 releases/
+dist/
 
 # Homebrew
 homebrew/

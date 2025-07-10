@@ -56,6 +56,7 @@
     "test": "bun test",
     "test:binary": "bun run build && bun test tests/binary",
     "test:node": "bun run build:js && bun test tests/integration/node-js.test.ts",
+    "test:e2e": "bun run scripts/test-npm-package.js",
     "test:coverage": "bun test --coverage",
     "test:coverage:html": "bun test --coverage && lcov-viewer lcov coverage/lcov.info -o coverage/html",
     "deps:check": "bunx npm-check-updates --deep",
