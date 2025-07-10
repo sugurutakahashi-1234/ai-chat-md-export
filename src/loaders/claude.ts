@@ -104,7 +104,7 @@ export async function loadClaude(
         return {
           role,
           content,
-          timestamp: msg.created_at || new Date().toISOString(),
+          timestamp: msg.created_at ? new Date(msg.created_at) : new Date(),
         };
       }),
     });

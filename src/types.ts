@@ -8,5 +8,5 @@ export interface Conversation {
 export interface Message {
   role: "user" | "assistant" | "system" | "tool";
   content: string;
-  timestamp?: string;
+  timestamp?: Date;
 }

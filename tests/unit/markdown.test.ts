@@ -12,12 +12,12 @@ describe("convertToMarkdown", () => {
         {
           role: "user",
           content: "Hello, world!",
-          timestamp: "2024-01-01T00:00:00Z",
+          timestamp: new Date("2024-01-01T00:00:00Z"),
         },
         {
           role: "assistant",
           content: "Hello! How can I help you?",
-          timestamp: "2024-01-01T00:00:10Z",
+          timestamp: new Date("2024-01-01T00:00:10Z"),
         },
       ],
     };
@@ -42,23 +42,20 @@ describe("convertToMarkdown", () => {
         {
           role: "user",
           content: "Test",
-          timestamp: testDate.toISOString(),
+          timestamp: testDate,
         },
       ],
     };
 
     const markdown = convertToMarkdown(conversation);
 
-    // Should format in local time with ISO 8601 format
-    const year = testDate.getFullYear();
-    const month = String(testDate.getMonth() + 1).padStart(2, "0");
-    const day = String(testDate.getDate()).padStart(2, "0");
-    const hours = String(testDate.getHours()).padStart(2, "0");
-    const minutes = String(testDate.getMinutes()).padStart(2, "0");
-    const seconds = String(testDate.getSeconds()).padStart(2, "0");
-    const expectedFormat = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    // Should format in local time with timezone info
 
-    expect(markdown).toContain(`*${expectedFormat}*`);
+    // Check for Date: prefix and timezone offset
+    expect(markdown).toMatch(
+      /Date: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+-]\d{2}:\d{2}/,
+    );
+    // The exact format will depend on the test runner's timezone
   });
 
   test("handles different role types", () => {

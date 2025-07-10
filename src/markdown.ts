@@ -22,7 +22,7 @@ export function convertToMarkdown(conversation: Conversation): string {
 
     lines.push(`## ${roleLabel}`);
     if (message.timestamp) {
-      lines.push(`*${formatTimestamp(message.timestamp)}*`);
+      lines.push(`Date: ${formatTimestamp(message.timestamp)}`);
     }
     lines.push("");
 
@@ -94,9 +94,9 @@ function escapeMarkdown(text: string): string {
   );
 }
 
-function formatTimestamp(timestamp: string): string {
-  const date = new Date(timestamp);
-  // Format in ISO 8601 style for international compatibility
+function formatTimestamp(timestamp: Date): string {
+  const date = timestamp;
+  // Format with timezone offset only
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
@@ -104,5 +104,12 @@ function formatTimestamp(timestamp: string): string {
   const minutes = String(date.getMinutes()).padStart(2, "0");
   const seconds = String(date.getSeconds()).padStart(2, "0");
 
-  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  // Get timezone offset
+  const tzOffset = -date.getTimezoneOffset();
+  const tzHours = Math.floor(Math.abs(tzOffset) / 60);
+  const tzMinutes = Math.abs(tzOffset) % 60;
+  const tzSign = tzOffset >= 0 ? "+" : "-";
+  const tzString = `${tzSign}${String(tzHours).padStart(2, "0")}:${String(tzMinutes).padStart(2, "0")}`;
+
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${tzString}`;
 }

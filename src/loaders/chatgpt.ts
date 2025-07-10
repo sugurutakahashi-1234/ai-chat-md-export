@@ -133,9 +133,7 @@ function traverseNode(
 
       // Add timestamp only if it exists
       if (node.message.create_time) {
-        message.timestamp = new Date(
-          node.message.create_time * 1000,
-        ).toISOString();
+        message.timestamp = new Date(node.message.create_time * 1000);
       }
 
       messages.push(message);
