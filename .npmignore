@@ -41,6 +41,3 @@ Thumbs.db
 bun.lock
 pnpm-lock.yaml
 yarn.lock
-
-# Source files (not needed for CLI tool)
-src/

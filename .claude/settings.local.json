@@ -136,9 +136,7 @@
       "Bash(npm pack:*)",
       "WebFetch(domain:stackoverflow.com)",
       "Bash(tar:*)",
-      "Bash(time:*)",
-      "Bash(./bin/cli.js:*)",
-      "Bash(./dist/ai-chat-md-export:*)"
+      "Bash(time:*)"
     ],
     "deny": []
   },
