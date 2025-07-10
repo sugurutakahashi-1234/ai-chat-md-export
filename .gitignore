@@ -53,8 +53,10 @@ bin/ai-chat-md-export
 
 # cursor rules
 .cursor/
-# .claude/
-# CLAUDE.md
+
+# Claude AI settings
+.claude/
+CLAUDE.md
 
 # User data directories
 # Keep directory structure but ignore actual data files
