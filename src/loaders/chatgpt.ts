@@ -1,10 +1,10 @@
-import { promises as fs } from "node:fs";
 import {
   type ChatGPTConversation,
   type ChatGPTNode,
   chatGPTConversationSchema,
 } from "../schemas/chatgpt.js";
 import type { Conversation } from "../types.js";
+import { logLoadingSummary, readJSONFile } from "../utils/loader-helpers.js";
 import {
   formatValidationReport,
   validateWithDetails,
@@ -14,8 +14,7 @@ export async function loadChatGPT(
   filePath: string,
   options: { quiet?: boolean } = {},
 ): Promise<Conversation[]> {
-  const content = await fs.readFile(filePath, "utf-8");
-  const data = JSON.parse(content);
+  const data = await readJSONFile(filePath);
 
   if (!Array.isArray(data)) {
     throw new Error("ChatGPT export data must be an array");
@@ -71,17 +70,12 @@ export async function loadChatGPT(
   }
 
   // Display summary information
-  if (!options.quiet) {
-    console.log(`\n✅ Successfully loaded ${successCount} conversations`);
-
-    if (skippedFields.size > 0) {
-      console.log(`\n📋 Skipped fields during conversion:`);
-      console.log(`  - ${Array.from(skippedFields).sort().join(", ")}`);
-      console.log(
-        `    * These fields are not included in the converted Markdown`,
-      );
-    }
-  }
+  logLoadingSummary({
+    successCount,
+    exportType: "ChatGPT",
+    skippedFields,
+    quiet: options.quiet ?? false,
+  });
 
   return conversations;
 }

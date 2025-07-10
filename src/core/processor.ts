@@ -117,6 +117,9 @@ export async function processFile(
     await fs.mkdir(outputDir, { recursive: true });
   }
 
+  // Track write errors to report at the end
+  const writeErrors: Array<{ file: string; error: string }> = [];
+
   for (const conv of filteredConversations) {
     const markdown = convertToMarkdown(conv);
     const fileName = generateFileName(
@@ -136,13 +139,39 @@ export async function processFile(
         );
       }
     } catch (error) {
-      console.error(
-        formatErrorMessage("Warning: Failed to write file", {
-          file: outputPath,
-          reason: getErrorMessage(error),
-        }),
-      );
+      const errorMessage = getErrorMessage(error);
+      writeErrors.push({ file: outputPath, error: errorMessage });
+
+      // Still log individual error if not quiet
+      if (!options.quiet) {
+        console.error(
+          formatErrorMessage("Warning: Failed to write file", {
+            file: outputPath,
+            reason: errorMessage,
+          }),
+        );
+      }
     }
+  }
+
+  // Report summary of write errors at the end
+  if (writeErrors.length > 0) {
+    const errorSummary = formatErrorMessage(
+      `Failed to write ${writeErrors.length} file(s)`,
+      {
+        reason:
+          writeErrors.length <= 3
+            ? writeErrors
+                .map((e) => `${getRelativePath(e.file)}: ${e.error}`)
+                .join("\n")
+            : `First 3 errors:\n${writeErrors
+                .slice(0, 3)
+                .map((e) => `${getRelativePath(e.file)}: ${e.error}`)
+                .join("\n")}\n...and ${writeErrors.length - 3} more`,
+      },
+    );
+
+    throw new Error(errorSummary);
   }
 }
 
