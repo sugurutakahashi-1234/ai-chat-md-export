@@ -1,1 +1,3 @@
+bun run lint
+bun run format
 bun run lint:check && git diff --exit-code

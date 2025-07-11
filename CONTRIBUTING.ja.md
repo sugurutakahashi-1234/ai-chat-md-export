@@ -73,9 +73,18 @@ Settings → Secrets and variables → Actions で設定：
 | `NPM_TOKEN` | npm公開用 | npm.com → Access Tokens → Generate (Automation) |
 | `HOMEBREW_GITHUB_API_TOKEN` | Homebrew tap更新用 | GitHub → Settings → Developer settings → Personal access tokens → Generate (repoスコープ) |
 
+### リリースプロセスのテスト
+
+実際にリリースせずにリリースプロセスをテストする：
+
+```bash
+# リリース時に何が起こるかをテスト
+bun run release:dry-run
+```
+
 ### 手動リリース（メンテナー向け）
 
-ローカルでリリースが必要な場合：
+ローカルでリリースが必要な場合（非推奨）：
 
 ```bash
 # すべてがクリーンであることを確認

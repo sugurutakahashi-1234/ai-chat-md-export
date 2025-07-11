@@ -75,9 +75,18 @@ Configure these in Settings → Secrets and variables → Actions:
 | `NPM_TOKEN` | For npm publishing | npm.com → Access Tokens → Generate (Automation) |
 | `HOMEBREW_GITHUB_API_TOKEN` | For Homebrew tap updates | GitHub → Settings → Developer settings → Personal access tokens → Generate (repo scope) |
 
+### Testing Release Process
+
+To test the release process without actually releasing:
+
+```bash
+# Test what would happen during a release
+bun run release:dry-run
+```
+
 ### Manual Release (for maintainers)
 
-If you need to release locally:
+If you need to release locally (not recommended):
 
 ```bash
 # Ensure everything is clean

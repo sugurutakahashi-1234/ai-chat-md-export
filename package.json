@@ -68,6 +68,7 @@
     "clean": "rm -rf bun.lock node_modules releases dist coverage .*.bun-build tsconfig.tsbuildinfo output/chatgpt/*.md output/claude/*.md && bun install",
     "clean:build": "bun run clean && bun run ci",
     "release": "release-it",
+    "release:dry-run": "release-it --dry-run",
     "example:chatgpt": "bun bin/ai-chat-md-export.js -i input/chatgpt/conversations.json -o output/chatgpt -f chatgpt",
     "example:claude": "bun bin/ai-chat-md-export.js -i input/claude/conversations.json -o output/claude -f claude",
     "example:all": "bun run example:chatgpt && bun run example:claude",
