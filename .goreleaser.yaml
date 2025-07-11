@@ -1,0 +1,119 @@
+# .goreleaser.yaml
+version: 2
+
+project_name: ai-chat-md-export
+
+before:
+  hooks:
+    - bun install
+
+builds:
+  - id: ai-chat-md-export
+    builder: bun
+    binary: ai-chat-md-export
+    targets:
+      - darwin_amd64
+      - darwin_arm64
+      - linux_amd64
+      - linux_arm64
+    # Main entry point
+    main: ./src/cli.ts
+    # Bun build environment variables
+    env:
+      - BUN_BUILD_COMPILE=1
+      - BUN_BUILD_MINIFY=1
+      - BUN_BUILD_SOURCEMAP=1
+
+archives:
+  - id: default
+    builds:
+      - ai-chat-md-export
+    format: tar.gz
+    # Use generic name inside archive
+    name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    # Archive format overrides
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE
+      - README.md
+
+release:
+  # Read existing CHANGELOG.md created by release-it
+  # GitHub Release will be created/updated with these notes
+  footer: |
+    ---
+    
+    ## Installation
+    
+    ### npm
+    ```bash
+    npm install -g {{ .ProjectName }}
+    ```
+    
+    ### Homebrew
+    ```bash
+    brew tap sugurutakahashi-1234/{{ .ProjectName }}
+    brew install {{ .ProjectName }}
+    ```
+  
+  # Use CHANGELOG.md for release notes
+  # release-it already created and committed this file
+  header: |
+    ## What's Changed
+    
+    See [CHANGELOG.md](https://github.com/{{ .Env.GITHUB_REPOSITORY }}/blob/main/CHANGELOG.md) for detailed changes.
+
+checksum:
+  name_template: "SHA256SUMS.txt"
+  algorithm: sha256
+
+changelog:
+  # Disable changelog generation since release-it handles it
+  disable: true
+
+brews:
+  - name: ai-chat-md-export
+    # GitHub repository to push the formula to
+    repository:
+      owner: sugurutakahashi-1234
+      name: homebrew-ai-chat-md-export
+      branch: main
+      # Use GitHub App token or PAT with repo permissions
+      token: "{{ .Env.HOMEBREW_GITHUB_API_TOKEN }}"
+      
+    # Git author for formula commits
+    commit_author:
+      name: goreleaserbot
+      email: goreleaserbot@users.noreply.github.com
+      
+    # Commit message template
+    commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+    
+    # Formula folder inside the tap repository
+    directory: Formula
+    
+    # Homepage for the formula
+    homepage: "https://github.com/sugurutakahashi-1234/{{ .ProjectName }}"
+    
+    # Formula description
+    description: "CLI tool to convert ChatGPT and Claude chat history to Markdown"
+    
+    # License
+    license: "MIT"
+    
+    # No dependencies needed - Bun compiles to standalone binary
+    
+    # Installation steps
+    install: |
+      bin.install "ai-chat-md-export"
+    
+    # Test block
+    test: |
+      assert_match "ai-chat-md-export", shell_output("#{bin}/ai-chat-md-export --help")
+      assert_match version.to_s, shell_output("#{bin}/ai-chat-md-export --version")
+
+# Announce release in various channels
+announce:
+  skip: true  # Can enable later for Discord, Slack, Twitter, etc.

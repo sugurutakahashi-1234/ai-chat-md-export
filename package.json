@@ -49,7 +49,6 @@
     "build:binary": "bun build src/cli.ts --compile --outfile dist/ai-chat-md-export && rm -f .*.bun-build",
     "update:version": "bun run scripts/update-version.js",
     "build": "bun run build:js && bun run build:binary",
-    "homebrew:build": "bash homebrew/build-releases.sh && rm -f .*.bun-build",
     "lint": "biome check --write .",
     "lint:check": "biome check .",
     "format": "biome format --write .",

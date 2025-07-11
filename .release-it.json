@@ -9,10 +9,7 @@
     "requireCleanWorkingDir": true
   },
   "github": {
-    "release": true,
-    "releaseName": "v${version}",
-    "releaseNotes": null,
-    "assets": ["releases/*.tar.gz", "releases/SHA256SUMS.txt"]
+    "release": false
   },
   "npm": {
     "publish": true,
@@ -24,11 +21,7 @@
   },
   "hooks": {
     "before:init": ["bun run ci"],
-    "after:bump": [
-      "bun run update:version",
-      "bun run build",
-      "bun run homebrew:build"
-    ],
+    "after:bump": ["bun run update:version", "bun run build"],
     "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
   },
   "plugins": {

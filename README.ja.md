@@ -27,7 +27,7 @@ npm install -g ai-chat-md-export
 ### Homebrew (macOS/Linux)
 
 ```bash
-brew tap sugurutakahashi-1234/tap
+brew tap sugurutakahashi-1234/ai-chat-md-export
 brew install ai-chat-md-export
 ```
 
