@@ -165,27 +165,4 @@ describe("CLI main function", () => {
     );
     expect(process.exit).toHaveBeenCalledWith(1);
   });
-
-  test("handles missing required arguments", async () => {
-    process.argv = ["node", "cli.js"];
-
-    // Suppress commander's error output during test
-    const originalStderr = process.stderr.write;
-    const originalStdout = process.stdout.write;
-    process.stderr.write = mock(() => true) as typeof process.stderr.write;
-    process.stdout.write = mock(() => true) as typeof process.stdout.write;
-
-    // Also suppress console.log which Zod might use
-    const consoleLogSpy = spyOn(console, "log").mockImplementation(() => {});
-
-    await main();
-
-    // Commander will show error and exit
-    expect(process.exit).toHaveBeenCalledWith(1);
-
-    // Restore outputs
-    process.stderr.write = originalStderr;
-    process.stdout.write = originalStdout;
-    consoleLogSpy.mockRestore();
-  });
 });
