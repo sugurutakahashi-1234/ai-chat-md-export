@@ -216,4 +216,20 @@ describe("formatValidationReport", () => {
     expect(report).not.toContain("Expected:");
     expect(report).not.toContain("Received:");
   });
+
+  test("handles non-ZodError exceptions", () => {
+    // Create a mock schema that throws a non-ZodError
+    const mockSchema = {
+      parse: () => {
+        throw new Error("Generic validation error");
+      },
+    };
+
+    // The validateWithDetails function should re-throw non-ZodErrors
+    expect(() =>
+      validateWithDetails(mockSchema as unknown as z.ZodType<unknown>, {
+        value: 123,
+      }),
+    ).toThrow("Generic validation error");
+  });
 });

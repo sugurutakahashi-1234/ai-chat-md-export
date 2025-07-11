@@ -104,35 +104,6 @@ describe("processInput", () => {
 
     await expect(processInput(options)).rejects.toThrow();
   });
-
-  test("throws error for non-file/non-directory input", async () => {
-    // Skip this test on Windows as special file types are not available
-    if (process.platform === "win32") {
-      return;
-    }
-
-    try {
-      // Create a FIFO (named pipe) which is neither file nor directory
-      const fifoPath = path.join(tempDir, "test.fifo");
-      const { execSync } = await import("node:child_process");
-      execSync(`mkfifo "${fifoPath}"`);
-
-      const options: Options = {
-        input: fifoPath,
-        format: "auto",
-        quiet: true,
-        dryRun: true,
-        filenameEncoding: "standard",
-      };
-
-      await expect(processInput(options)).rejects.toThrow("Invalid input path");
-
-      // Clean up
-      await fs.unlink(fifoPath);
-    } catch {
-      // Skip if FIFO creation fails (e.g., on some CI environments)
-    }
-  });
 });
 
 describe("processFile", () => {

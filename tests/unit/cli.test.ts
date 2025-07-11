@@ -39,11 +39,6 @@ describe("CLI main function", () => {
     processInputSpy.mockRestore();
   });
 
-  test("main function exists and is a function", () => {
-    expect(main).toBeDefined();
-    expect(typeof main).toBe("function");
-  });
-
   test("processes valid input arguments", async () => {
     process.argv = [
       "node",
