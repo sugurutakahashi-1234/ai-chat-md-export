@@ -1,8 +1,11 @@
 # ai-chat-md-export
 
-[![npm version](https://badge.fury.io/js/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
+[![Homebrew](https://img.shields.io/badge/Homebrew-tap-orange.svg)](https://github.com/sugurutakahashi-1234/homebrew-tap)
+[![CI](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export/graph/badge.svg?token=KPN7UZ7ATY)](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
 
 ChatGPTとClaudeのチャット履歴をMarkdownに変換
 
@@ -15,8 +18,17 @@ ChatGPTとClaudeのチャット履歴をMarkdownに変換
 
 ## インストール
 
+### npm
+
 ```bash
 npm install -g ai-chat-md-export
+```
+
+### Homebrew (macOS/Linux)
+
+```bash
+brew tap sugurutakahashi-1234/tap
+brew install ai-chat-md-export
 ```
 
 ## 使い方
@@ -25,6 +37,12 @@ npm install -g ai-chat-md-export
 # conversations.jsonを変換
 ai-chat-md-export -i conversations.json
 
+# ディレクトリ内のすべてのJSONファイルを変換
+ai-chat-md-export -i exports/ -o output/
+
+# 日付範囲でフィルタ
+ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
+
 # 日付とキーワードでフィルタ
 ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
 
@@ -32,37 +50,7 @@ ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
 ai-chat-md-export -i data.json --dry-run
 ```
 
-## プログラマティックAPI
-
-TypeScript/JavaScriptプロジェクトでライブラリとして使用することもできます：
-
-```typescript
-import { 
-  loadChatGPT, 
-  loadClaude, 
-  convertToMarkdown,
-  type Conversation 
-} from "ai-chat-md-export";
-
-// ChatGPTの会話を読み込んで変換
-const conversations = await loadChatGPT("conversations.json");
-const markdown = convertToMarkdown(conversations[0]);
-
-// Claudeのデータを処理
-const claudeConvs = await loadClaude("claude-export.json");
-claudeConvs.forEach(conv => {
-  const md = convertToMarkdown(conv);
-  console.log(md);
-});
-
-// Conversation型を使用
-function processConversation(conv: Conversation) {
-  console.log(`タイトル: ${conv.title}`);
-  console.log(`メッセージ数: ${conv.messages.length}`);
-}
-```
-
-### オプション
+## オプション
 
 | オプション | 短縮形 | 説明 | デフォルト |
 |--------|-------|-------------|---------|

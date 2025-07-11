@@ -1,8 +1,11 @@
 # ai-chat-md-export
 
-[![npm version](https://badge.fury.io/js/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
+[![Homebrew](https://img.shields.io/badge/Homebrew-tap-orange.svg)](https://github.com/sugurutakahashi-1234/homebrew-tap)
+[![CI](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export/graph/badge.svg?token=KPN7UZ7ATY)](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
 
 Convert ChatGPT and Claude chat history to Markdown
 
@@ -17,8 +20,17 @@ Convert ChatGPT and Claude chat history to Markdown
 
 ## Installation
 
+### npm
+
 ```bash
 npm install -g ai-chat-md-export
+```
+
+### Homebrew (macOS/Linux)
+
+```bash
+brew tap sugurutakahashi-1234/tap
+brew install ai-chat-md-export
 ```
 
 ## Usage
@@ -27,6 +39,12 @@ npm install -g ai-chat-md-export
 # Convert conversations.json
 ai-chat-md-export -i conversations.json
 
+# Convert all JSON files in a directory
+ai-chat-md-export -i exports/ -o output/
+
+# Filter by date range
+ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
+
 # Filter by date and keyword
 ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
 
@@ -34,37 +52,7 @@ ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
 ai-chat-md-export -i data.json --dry-run
 ```
 
-## Programmatic API
-
-You can also use this package as a library in your TypeScript/JavaScript projects:
-
-```typescript
-import { 
-  loadChatGPT, 
-  loadClaude, 
-  convertToMarkdown,
-  type Conversation 
-} from "ai-chat-md-export";
-
-// Load and convert ChatGPT conversations
-const conversations = await loadChatGPT("conversations.json");
-const markdown = convertToMarkdown(conversations[0]);
-
-// Process Claude data
-const claudeConvs = await loadClaude("claude-export.json");
-claudeConvs.forEach(conv => {
-  const md = convertToMarkdown(conv);
-  console.log(md);
-});
-
-// Work with the Conversation type
-function processConversation(conv: Conversation) {
-  console.log(`Title: ${conv.title}`);
-  console.log(`Messages: ${conv.messages.length}`);
-}
-```
-
-### Options
+## Options
 
 | Option | Short | Description | Default |
 |--------|-------|-------------|---------|
