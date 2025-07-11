@@ -35,7 +35,8 @@
         "**/output/**",
         "**/dist/**",
         "**/releases/**",
-        "**/node_modules/**"
+        "**/node_modules/**",
+        "**/.claude/settings.local.json"
       ],
       "linter": {
         "enabled": false

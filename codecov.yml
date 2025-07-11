@@ -1,0 +1,33 @@
+# Codecov configuration
+# https://docs.codecov.io/docs/codecov-yaml
+
+coverage:
+  status:
+    project:
+      default:
+        # Minimum coverage thresholds (same as bunfig.toml)
+        target: 80%
+        threshold: 2%  # Allow 2% decrease in coverage
+        
+    patch:
+      default:
+        # Coverage for new/modified code
+        target: 80%
+        threshold: 2%
+
+comment:
+  # Configure how Codecov comments on PRs
+  layout: "reach,diff,flags,tree"
+  behavior: default
+  require_changes: false
+  
+# Flags removed as we're only testing with Node.js 24
+
+# Ignore certain files from coverage
+ignore:
+  - "tests/**"
+  - "scripts/**"
+  - "dist/**"
+  - "lib/**"
+  - "**/*.d.ts"
+  - "node_modules/**"

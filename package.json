@@ -42,6 +42,7 @@
     }
   },
   "scripts": {
+    "prepare": "husky",
     "help": "bun run bin/ai-chat-md-export.js -h",
     "typecheck": "tsc --noEmit",
     "build:js": "tsc",
@@ -59,11 +60,12 @@
     "test:e2e": "bun run scripts/test-npm-package.js",
     "test:coverage": "bun test --coverage",
     "test:coverage:html": "bun test --coverage && lcov-viewer lcov coverage/lcov.info -o coverage/html",
+    "codecov:validate": "cat codecov.yml | curl --data-binary @- https://codecov.io/validate",
     "deps:check": "bunx npm-check-updates --deep",
     "deps:update": "bunx npm-check-updates -u --deep && bun install",
     "knip": "knip",
     "knip:fix": "knip --fix",
-    "ci": "bun run typecheck && bun run lint:check && bun run build && bun run test && bun run knip",
+    "ci": "bun run format && bun run typecheck && bun run lint:check && bun run build && bun run test:coverage && bun run knip",
     "clean": "rm -rf bun.lock node_modules releases dist coverage .*.bun-build tsconfig.tsbuildinfo output/chatgpt/*.md output/claude/*.md && bun install",
     "clean:build": "bun run clean && bun run ci",
     "release": "release-it",

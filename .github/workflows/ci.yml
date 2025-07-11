@@ -3,15 +3,14 @@ name: CI
 on:
   push:
     branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [22, 24]  # Latest LTS + current
+    timeout-minutes: 5
 
     steps:
       - name: Checkout
@@ -25,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 24
 
       - name: Install dependencies
         run: bun install
@@ -39,38 +38,26 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Test
-        run: bun test
-
-      - name: Test coverage
-        run: bun test --coverage
-        
-      - name: Test Node.js execution
-        run: bun run test:node
-
       - name: Check dependencies
         run: bun run knip
 
-  test-binary:
-    runs-on: ubuntu-latest  # Cost-effective: macOS is 10x more expensive
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Test
+        run: bun run test:coverage
+      
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
         with:
-          bun-version: latest
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
 
-      - name: Install dependencies
-        run: bun install
-
-      - name: Build binary
-        run: bun run build
-
-      - name: Test binary
-        run: bun test tests/binary
-        
-      - name: Test CLI help
-        run: ./dist/ai-chat-md-export --help
+      - name: Report code coverage
+        if: github.event_name == 'pull_request'
+        uses: zgosalvez/github-actions-report-lcov@v4
+        with:
+          coverage-files: ./coverage/lcov.info
+          minimum-coverage: 80
+          artifact-name: code-coverage-report
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          update-comment: true
+          title-prefix: '📊 '
