@@ -257,3 +257,58 @@ describe("loadChatGPT with inline data", () => {
     );
   });
 });
+
+describe("loadChatGPT edge cases", () => {
+  const tempDir = path.join(process.cwd(), "tests/temp");
+
+  beforeEach(async () => {
+    await fs.mkdir(tempDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(tempDir, { recursive: true, force: true }).catch(() => {});
+  });
+
+  test("handles content parts that are not strings or well-formed objects", async () => {
+    const testFile = path.join(tempDir, "non-string-parts.json");
+
+    const data = [
+      {
+        title: "Test with various part types",
+        id: "conv-1",
+        create_time: 1703980800,
+        mapping: {
+          "msg-1": {
+            id: "msg-1",
+            message: {
+              id: "msg-1",
+              author: { role: "user" },
+              create_time: 1703980800,
+              content: {
+                parts: [
+                  "Hello", // string - kept
+                  { someProperty: "value" }, // object without text property - should stringify
+                  "", // empty string - should be filtered out
+                  { text: "World" }, // object with text property - should extract text
+                ],
+              },
+            },
+            children: [],
+          },
+        },
+      },
+    ];
+
+    await fs.writeFile(testFile, JSON.stringify(data), "utf-8");
+
+    const conversations = await loadChatGPT(testFile, { quiet: true });
+    expect(conversations).toHaveLength(1);
+    const messages = conversations[0]?.messages;
+    expect(messages).toHaveLength(1);
+    // Should contain "Hello", stringified object, and "World"
+    const messageText = messages[0]?.content || "";
+    expect(messageText).toContain("Hello");
+    expect(messageText).toContain("someProperty");
+    expect(messageText).toContain("World");
+  });
+});

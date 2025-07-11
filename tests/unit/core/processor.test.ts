@@ -106,18 +106,19 @@ describe("processInput", () => {
   });
 
   test("throws error for non-file/non-directory input", async () => {
-    // Skip this test on Windows as mkfifo is not available
+    // Skip this test on Windows as special file types are not available
     if (process.platform === "win32") {
       return;
     }
 
     try {
-      // Create a symbolic link to a non-existent file
-      const symlinkPath = path.join(tempDir, "broken-symlink");
-      await fs.symlink(path.join(tempDir, "non-existent"), symlinkPath);
+      // Create a FIFO (named pipe) which is neither file nor directory
+      const fifoPath = path.join(tempDir, "test.fifo");
+      const { execSync } = await import("node:child_process");
+      execSync(`mkfifo "${fifoPath}"`);
 
       const options: Options = {
-        input: symlinkPath,
+        input: fifoPath,
         format: "auto",
         quiet: true,
         dryRun: true,
@@ -125,8 +126,11 @@ describe("processInput", () => {
       };
 
       await expect(processInput(options)).rejects.toThrow("Invalid input path");
+
+      // Clean up
+      await fs.unlink(fifoPath);
     } catch {
-      // Skip if symlink creation fails
+      // Skip if FIFO creation fails (e.g., on some CI environments)
     }
   });
 });
@@ -630,6 +634,8 @@ describe("processFile", () => {
       dryRun: false,
       filenameEncoding: "standard",
       search: "python",
+      since: "2024-01-01",
+      until: "2024-12-31",
     };
 
     // Capture console output
@@ -643,6 +649,212 @@ describe("processFile", () => {
       expect(logs.some((log) => log.includes("Filters:"))).toBe(true);
     } finally {
       console.log = originalLog;
+    }
+  });
+
+  test("handles multiple file write errors and reports summary", async () => {
+    const filePath = path.join(tempDir, "test.json");
+    const readOnlyDir = path.join(tempDir, "readonly");
+
+    // Create test data with multiple conversations
+    const chatgptData = [
+      {
+        mapping: {
+          "1": {
+            id: "1",
+            message: {
+              id: "1",
+              author: { role: "user" },
+              create_time: 1704067200,
+              content: { content_type: "text", parts: ["Test 1"] },
+            },
+            parent: null,
+            children: [],
+          },
+        },
+        title: "Test 1",
+        create_time: 1704067200,
+      },
+      {
+        mapping: {
+          "2": {
+            id: "2",
+            message: {
+              id: "2",
+              author: { role: "user" },
+              create_time: 1704067201,
+              content: { content_type: "text", parts: ["Test 2"] },
+            },
+            parent: null,
+            children: [],
+          },
+        },
+        title: "Test 2",
+        create_time: 1704067201,
+      },
+      {
+        mapping: {
+          "3": {
+            id: "3",
+            message: {
+              id: "3",
+              author: { role: "user" },
+              create_time: 1704067202,
+              content: { content_type: "text", parts: ["Test 3"] },
+            },
+            parent: null,
+            children: [],
+          },
+        },
+        title: "Test 3",
+        create_time: 1704067202,
+      },
+      {
+        mapping: {
+          "4": {
+            id: "4",
+            message: {
+              id: "4",
+              author: { role: "user" },
+              create_time: 1704067203,
+              content: { content_type: "text", parts: ["Test 4"] },
+            },
+            parent: null,
+            children: [],
+          },
+        },
+        title: "Test 4",
+        create_time: 1704067203,
+      },
+    ];
+
+    await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
+    await fs.mkdir(readOnlyDir, { recursive: true });
+
+    // Make directory read-only on Unix systems
+    if (process.platform !== "win32") {
+      await fs.chmod(readOnlyDir, 0o555);
+    }
+
+    const options: Options = {
+      input: filePath,
+      output: readOnlyDir,
+      format: "chatgpt",
+      quiet: true, // Set quiet to true to test error summary only
+      dryRun: false,
+      filenameEncoding: "standard",
+    };
+
+    // Capture console output
+    const originalError = console.error;
+    const errors: string[] = [];
+    console.error = (...args) => errors.push(args.join(" "));
+
+    try {
+      if (process.platform === "win32") {
+        // Skip on Windows
+        return;
+      }
+
+      // Should throw with error summary
+      await expect(processFile(filePath, readOnlyDir, options)).rejects.toThrow(
+        /Failed to write 4 file\(s\)/,
+      );
+
+      // Since quiet is true, individual errors should not be logged
+      expect(errors.length).toBe(0);
+    } finally {
+      console.error = originalError;
+      if (process.platform !== "win32") {
+        await fs.chmod(readOnlyDir, 0o755);
+      }
+    }
+  });
+
+  test("logs individual write errors when not quiet", async () => {
+    const filePath = path.join(tempDir, "test-errors.json");
+    const readOnlyDir = path.join(tempDir, "readonly2");
+
+    // Create test data with 2 conversations
+    const chatgptData = [
+      {
+        mapping: {
+          "1": {
+            id: "1",
+            message: {
+              id: "1",
+              author: { role: "user" },
+              create_time: 1704067200,
+              content: { content_type: "text", parts: ["Test 1"] },
+            },
+            parent: null,
+            children: [],
+          },
+        },
+        title: "Test 1",
+        create_time: 1704067200,
+      },
+      {
+        mapping: {
+          "2": {
+            id: "2",
+            message: {
+              id: "2",
+              author: { role: "user" },
+              create_time: 1704067201,
+              content: { content_type: "text", parts: ["Test 2"] },
+            },
+            parent: null,
+            children: [],
+          },
+        },
+        title: "Test 2",
+        create_time: 1704067201,
+      },
+    ];
+
+    await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
+    await fs.mkdir(readOnlyDir, { recursive: true });
+
+    // Make directory read-only on Unix systems
+    if (process.platform !== "win32") {
+      await fs.chmod(readOnlyDir, 0o555);
+    }
+
+    const options: Options = {
+      input: filePath,
+      output: readOnlyDir,
+      format: "chatgpt",
+      quiet: false, // Not quiet - should log individual errors
+      dryRun: false,
+      filenameEncoding: "standard",
+    };
+
+    // Capture console output
+    const originalError = console.error;
+    const errors: string[] = [];
+    console.error = (...args) => errors.push(args.join(" "));
+
+    try {
+      if (process.platform === "win32") {
+        // Skip on Windows
+        return;
+      }
+
+      await expect(processFile(filePath, readOnlyDir, options)).rejects.toThrow(
+        /Failed to write 2 file\(s\)/,
+      );
+
+      // Should have logged individual errors
+      expect(
+        errors.filter((err) => err.includes("Warning: Failed to write file"))
+          .length,
+      ).toBe(2);
+    } finally {
+      console.error = originalError;
+      if (process.platform !== "win32") {
+        await fs.chmod(readOnlyDir, 0o755);
+      }
     }
   });
 });

@@ -1,9 +1,10 @@
-import { program } from "commander";
+import { Command } from "commander";
 import { processInput } from "./core/processor.js";
 import { optionsSchema } from "./utils/options.js";
 import { VERSION } from "./version.js";
 
 export async function main(): Promise<void> {
+  const program = new Command();
   program
     .name("ai-chat-md-export")
     .version(VERSION)
@@ -77,9 +78,8 @@ Note on Search:
     )
     .parse();
 
-  const options = optionsSchema.parse(program.opts());
-
   try {
+    const options = optionsSchema.parse(program.opts());
     await processInput(options);
   } catch (error) {
     const errorMessage =
