@@ -58,9 +58,31 @@ jobs:
           disable_search: false                   # Enable automatic coverage file search
           report_type: coverage                   # Specify coverage report type
 
-      - name: Setup LCOV
+      - name: Cache LCOV binaries
         if: github.event_name == 'pull_request'
-        uses: hrishikesh-kadam/setup-lcov@v1
+        id: cache-lcov
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/bin
+          key: ${{ runner.os }}-lcov-2.3.1
+          restore-keys: |
+            ${{ runner.os }}-lcov-
+
+      - name: Install LCOV
+        if: github.event_name == 'pull_request' && steps.cache-lcov.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.local/bin
+          # Install LCOV from APT (faster than building from source)
+          sudo apt-get update
+          sudo apt-get install -y lcov
+          # Copy to user directory for caching
+          cp /usr/bin/lcov ~/.local/bin/
+          cp /usr/bin/genhtml ~/.local/bin/
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Add LCOV to PATH
+        if: github.event_name == 'pull_request' && steps.cache-lcov.outputs.cache-hit == 'true'
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Report code coverage
         if: github.event_name == 'pull_request'
