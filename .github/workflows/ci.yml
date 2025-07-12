@@ -38,11 +38,11 @@ jobs:
       - name: Lint
         run: bun run lint:check
 
-      - name: Check dependencies
-        run: bun run knip
-
       - name: Build
         run: bun run build
+
+      - name: Check dependencies
+        run: bun run knip
 
       - name: Test
         run: bun run test:coverage
