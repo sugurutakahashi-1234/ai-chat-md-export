@@ -1,5 +1,6 @@
 # dependencies (bun install)
 node_modules
+node_modules_bak
 
 # output
 out
