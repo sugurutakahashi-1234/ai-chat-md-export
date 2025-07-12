@@ -50,13 +50,13 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/lcov.info
-          verbose: true
-          fail_ci_if_error: false
-          flags: unittests
-          disable_search: false
-          report_type: coverage
+          token: ${{ secrets.CODECOV_TOKEN }}     # Required for private repos
+          files: ./coverage/lcov.info             # Path to coverage report
+          verbose: true                           # Enable verbose logging for debugging
+          fail_ci_if_error: false                 # Don't fail CI if upload fails
+          flags: unittests                        # Tag coverage as unit tests
+          disable_search: false                   # Enable automatic coverage file search
+          report_type: coverage                   # Specify coverage report type
 
       - name: Setup LCOV
         if: github.event_name == 'pull_request'
