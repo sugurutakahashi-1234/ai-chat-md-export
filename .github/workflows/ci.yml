@@ -33,6 +33,8 @@ jobs:
           echo "=== Bun version ==="
           bun --version
           echo "=== Installing dependencies ==="
+          # Use npm to install @biomejs/biome to ensure platform-specific binary is installed
+          npm install --no-save @biomejs/cli-linux-x64
           bun install --frozen-lockfile
           echo "=== Checking node_modules/@biomejs ==="
           ls -la node_modules/@biomejs/ || echo "Directory not found"
