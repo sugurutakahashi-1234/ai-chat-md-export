@@ -90,5 +90,8 @@
     "knip": "^5.61.3",
     "release-it": "^19.0.3",
     "typescript": "^5.8.3"
-  }
+  },
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }
