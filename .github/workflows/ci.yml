@@ -61,3 +61,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           update-comment: true
           title-prefix: '📊 '
+
+      - name: Knip
+        run: bun run knip
+ 
