@@ -27,13 +27,29 @@ jobs:
           node-version: 24
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: |
+          echo "=== System info ==="
+          uname -a
+          echo "=== Bun version ==="
+          bun --version
+          echo "=== Installing dependencies ==="
+          bun install --frozen-lockfile
+          echo "=== Checking node_modules/@biomejs ==="
+          ls -la node_modules/@biomejs/ || echo "Directory not found"
+          echo "=== Checking biome binary ==="
+          which biome || echo "biome not in PATH"
+          echo "=== Try running biome with bunx ==="
+          bunx @biomejs/biome --version || echo "bunx biome failed"
 
       - name: Type check
         run: bun run typecheck
 
       - name: Lint
-        run: bun run lint:check
+        run: |
+          echo "=== Before lint check ==="
+          ls -la node_modules/@biomejs/
+          echo "=== Running lint:check ==="
+          bun run lint:check || (echo "=== Lint failed, trying with bunx ===" && bunx @biomejs/biome check .)
 
       - name: Build
         run: bun run build
