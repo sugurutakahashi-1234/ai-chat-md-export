@@ -61,8 +61,8 @@ jobs:
       - name: Install LCOV
         if: github.event_name == 'pull_request'
         run: |
-          sudo apt-get update
-          sudo apt-get install -y lcov
+          # Skip update if not needed (saves ~10s)
+          sudo apt-get install -y lcov || (sudo apt-get update && sudo apt-get install -y lcov)
 
       - name: Report code coverage
         if: github.event_name == 'pull_request'
