@@ -1,0 +1,30 @@
+name: pr-title-check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  check-title:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Subject must start with lowercase
+          subjectPattern: ^(?![A-Z]).+$
+          subjectPatternError: |
+            The subject "{subject}" found in the pull request title "{title}"
+            must start with a lowercase letter.
+
+            ✅ Good: "feat: add new feature"
+            ❌ Bad: "feat: Add new feature"
+
+          # Allow WIP PRs
+          wip: true
