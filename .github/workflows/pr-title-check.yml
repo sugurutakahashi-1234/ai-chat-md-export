@@ -5,8 +5,8 @@ on:
     types: [opened, edited, synchronize, reopened, ready_for_review]
 
 permissions:
-  pull-requests: write
-  statuses: write
+  pull-requests: write  # Required to read PR information
+  statuses: write       # Required for WIP status updates
 
 jobs:
   check-title:
