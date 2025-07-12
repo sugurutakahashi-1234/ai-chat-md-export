@@ -1,0 +1,87 @@
+{
+  // Renovate configuration file
+  // https://docs.renovatebot.com/configuration-options/
+
+  // Renovate is an automated dependency update tool
+  // https://github.com/marketplace/renovate
+
+  // This configuration file is used to customize Renovate's behavior
+  // https://github.com/settings/installations
+
+  
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  
+  // Inherit basic settings
+  // "config:best-practices" includes:
+  // - rangeStrategy: "pin" (fully pinned versions)
+  // - separateMajorMinor: true (separate major/minor)
+  // - separateMinorPatch: true (separate minor/patch)
+  // - :pinAllExceptPeerDependencies (pin everything except peerDependencies)
+  // - :pinDevDependencies (pin devDependencies)
+  // - helpers:pinGitHubActionDigests (pin GitHub Actions by digest)
+  "extends": [
+    "config:best-practices"
+  ],
+  
+  "timezone": "Asia/Tokyo",
+  "enabled": true,
+  "packageRules": [
+    // Disable automerge (all updates require manual review)
+    {
+      "automerge": false,
+      "matchPackageNames": [
+        "*"
+      ]
+    },
+
+    // Disable digest pinning for GitHub Actions, Dockerfile, and Docker Compose
+    {
+      "matchManagers": [
+        "github-actions",
+        "dockerfile",
+        "docker-compose"
+      ],
+      "pinDigests": false
+    },
+  ],
+  
+  // Schedule: weekdays 10:00-17:00
+  "schedule": [
+    "* 10-17 * * 1-5"
+  ],
+
+  // PR settings (unlimited PRs allowed, up to 10 concurrently)
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 10,
+  "labels": [],
+  "draftPR": true,
+  
+  // Commit message: "chore: [Renovate] update {{depName}}"
+  "commitMessagePrefix": "chore:",
+  "commitMessageAction": "[Renovate] update",
+  "commitMessageTopic": "{{depName}}",
+  
+  // Branch settings
+  "branchPrefix": "feature/renovate-",
+  "baseBranches": [
+    "$default"
+  ],
+  "branchNameStrict": true,
+  "prTitleStrict": true,
+  
+  // Vulnerability alerts
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": []
+  },
+  
+  // Dependency Dashboard settings
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "[Renovate] Dependency Update Dashboard",
+  "dependencyDashboardHeader": "This issue is automatically created by Renovate to track the status of all dependency updates. Check the status of each PR and merge as needed.",
+  "dependencyDashboardFooter": "For more details, see [renovate.json5](https://github.com/sugurutakahashi-1234/ai-chat-md-export/blob/main/renovate.json5).",
+  "dependencyDashboardLabels": [],
+  
+  // Ignore dependencies
+  "ignoreDeps": []
+}

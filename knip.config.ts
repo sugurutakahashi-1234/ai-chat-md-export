@@ -6,6 +6,7 @@ const config: KnipConfig = {
     "tests/integration/node-js.test.ts", // Uses $`node ${cliPath}` syntax which knip misinterprets
   ],
   ignoreDependencies: ["tslib"],
+  ignoreBinaries: ["du", "awk"], // Used in deps:size script
   ignoreExportsUsedInFile: true,
   includeEntryExports: true,
   typescript: {
