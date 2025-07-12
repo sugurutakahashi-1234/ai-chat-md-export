@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git"
@@ -34,6 +34,7 @@
         "**/input/**",
         "**/output/**",
         "**/dist/**",
+        "**/lib/**",
         "**/releases/**",
         "**/node_modules/**",
         "**/.claude/settings.local.json"
