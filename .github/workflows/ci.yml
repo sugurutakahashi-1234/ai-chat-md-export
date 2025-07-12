@@ -11,6 +11,9 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      pull-requests: write
+      contents: read
 
     steps:
       - name: Checkout
@@ -26,8 +29,8 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y lcov
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -64,3 +67,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           update-comment: true
           title-prefix: '📊 '
+        continue-on-error: true
