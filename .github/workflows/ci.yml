@@ -52,6 +52,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
+          verbose: true
+          fail_ci_if_error: false
+          name: codecov-coverage
 
       - name: Setup LCOV
         if: github.event_name == 'pull_request'
