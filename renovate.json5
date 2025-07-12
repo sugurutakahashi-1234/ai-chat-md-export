@@ -1,6 +1,13 @@
 {
   // Renovate configuration file
   // https://docs.renovatebot.com/configuration-options/
+
+  // Renovate is an automated dependency update tool
+  // https://github.com/marketplace/renovate
+
+  // This configuration file is used to customize Renovate's behavior
+  // https://github.com/settings/installations
+
   
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   
