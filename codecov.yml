@@ -17,13 +17,14 @@ coverage:
 
 comment:
   # Configure how Codecov comments on PRs
-  layout: "reach,diff,flags,tree,files"  # Include file-level coverage details
+  layout: "header,reach,diff,flags,tree,files"  # Include header with links and file-level coverage details
   behavior: default
   require_changes: false
   require_base: false        # Don't require base branch for comparison
   require_head: true         # Require head branch to exist
   show_carryforward_flags: true
   show_critical_paths: true  # Show files that are critical for coverage
+  hide_project_coverage: false  # Show project coverage in the comment
   
 # Flags removed as we're only testing with Node.js 24
 

@@ -54,7 +54,9 @@ jobs:
           files: ./coverage/lcov.info
           verbose: true
           fail_ci_if_error: false
-          name: codecov-coverage
+          flags: unittests
+          disable_search: false
+          report_type: coverage
 
       - name: Setup LCOV
         if: github.event_name == 'pull_request'
