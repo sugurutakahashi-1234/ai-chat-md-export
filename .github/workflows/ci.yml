@@ -69,7 +69,7 @@ jobs:
             ${{ runner.os }}-lcov-
 
       - name: Install LCOV
-        if: github.event_name == 'pull_request' && steps.cache-lcov.outputs.cache-hit != 'true'
+        if: github.event_name == 'pull_request' && steps.cache-lcov.outputs.cache-hit == 'false'
         run: |
           mkdir -p ~/.local/bin
           # Install LCOV from APT (faster than building from source)
