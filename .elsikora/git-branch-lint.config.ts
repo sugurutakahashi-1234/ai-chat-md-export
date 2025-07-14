@@ -15,7 +15,10 @@ const config: IBranchLintConfig = {
     "build",
     "revert",
   ],
-  ignore: ["main"],
+  ignore: [
+    "main",
+    "release-please--branches--main--components--ai-chat-md-export",
+  ],
   rules: {
     "branch-pattern": ":type/:name",
     "branch-subject-pattern": "[a-z0-9-]+",

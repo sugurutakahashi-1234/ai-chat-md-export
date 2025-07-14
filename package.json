@@ -3,8 +3,7 @@
   "version": "0.1.1",
   "description": "CLI tool to convert ChatGPT and Claude chat history to Markdown",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "keywords": [
     "chatgpt",
@@ -43,6 +42,13 @@
       "default": "./lib/index.js"
     }
   },
+  "files": [
+    "bin",
+    "lib",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "prepare": "husky",
     "help": "bun run bin/ai-chat-md-export.js -h",

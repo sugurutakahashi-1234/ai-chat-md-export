@@ -6,11 +6,12 @@
       "release-type": "node",
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
-      "draft": false,
+      "draft": true,
       "prerelease": false,
       "include-v-in-tag": true,
       "skip-github-release": false,
       "skip-github-tag": false,
+      "skip-labeling": true,
       "extra-files": [
         {
           "type": "generic",
