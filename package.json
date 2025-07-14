@@ -48,7 +48,6 @@
     "lib",
     "LICENSE",
     "README.md",
-    "README.ja.md",
     "CHANGELOG.md"
   ],
   "scripts": {
