@@ -1,1 +1,2 @@
+bun run git-branch-lint
 bun run ci
