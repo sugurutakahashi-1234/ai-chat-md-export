@@ -9,6 +9,7 @@
       "draft": true,
       "prerelease": false,
       "include-v-in-tag": true,
+      "include-component-in-tag": false,
       "skip-github-release": false,
       "always-update": true,
       "pull-request-title-pattern": "chore: release v${version}",
