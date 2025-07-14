@@ -46,8 +46,10 @@
   "files": [
     "bin",
     "lib",
-    "!**/*.test.*",
-    "!**/*.spec.*"
+    "LICENSE",
+    "README.md",
+    "README.ja.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "prepare": "husky",
