@@ -1,3 +1,6 @@
+# Prevent direct commits to main
+[ "$(git branch --show-current)" = "main" ] && echo "❌ No direct commits to main!" && exit 1
+
 bun run lint
 bun run format
 bun run lint:check && git diff --exit-code

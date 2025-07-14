@@ -1,2 +1,5 @@
+# Prevent direct push to main
+[ "$(git branch --show-current)" = "main" ] && echo "❌ No direct push to main!" && exit 1
+
 bun run validate:branch
 bun run ci
