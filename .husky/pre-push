@@ -1,2 +1,2 @@
-bun run git-branch-lint
+bun run validate:branch
 bun run ci

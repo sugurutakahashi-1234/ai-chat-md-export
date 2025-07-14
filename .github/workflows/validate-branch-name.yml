@@ -1,4 +1,4 @@
-name: branch-lint
+name: validate-branch-name
 
 on:
   pull_request:
@@ -24,4 +24,4 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Validate branch name
-        run: bun run branch-lint
+        run: bun run validate:branch
