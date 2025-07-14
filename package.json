@@ -43,6 +43,12 @@
       "default": "./lib/index.js"
     }
   },
+  "files": [
+    "bin",
+    "lib",
+    "!**/*.test.*",
+    "!**/*.spec.*"
+  ],
   "scripts": {
     "prepare": "husky",
     "help": "bun run bin/ai-chat-md-export.js -h",
