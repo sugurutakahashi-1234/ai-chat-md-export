@@ -24,4 +24,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Validate branch name
-        run: bun run validate:branch
+        run: |
+          # GitHub Actions checks out in detached HEAD state
+          # Use the PR head branch name from the event context
+          export GIT_BRANCH_LINT_BRANCH_NAME="${{ github.head_ref }}"
+          bun run validate:branch
