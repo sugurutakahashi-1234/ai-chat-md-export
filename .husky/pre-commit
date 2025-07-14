@@ -1,3 +1,12 @@
+# Check if committing to main branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [ "$branch" = "main" ]; then
+  echo "❌ Direct commits to main branch are not allowed!"
+  echo "Please create a feature branch:"
+  echo "  git checkout -b feat/your-feature-name"
+  exit 1
+fi
+
 bun run lint
 bun run format
 bun run lint:check && git diff --exit-code

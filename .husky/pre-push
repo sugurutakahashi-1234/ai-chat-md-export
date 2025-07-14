@@ -1,2 +1,10 @@
+# Check if pushing to main branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [ "$branch" = "main" ]; then
+  echo "❌ Direct push to main branch is not allowed!"
+  echo "Please create a pull request instead."
+  exit 1
+fi
+
 bun run validate:branch
 bun run ci
