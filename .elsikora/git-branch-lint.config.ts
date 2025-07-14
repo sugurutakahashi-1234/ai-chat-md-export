@@ -15,7 +15,7 @@ const config: IBranchLintConfig = {
     "build",
     "revert",
   ],
-  ignore: ["main", "develop"],
+  ignore: ["main"],
   rules: {
     "branch-pattern": ":type/:name",
     "branch-subject-pattern": "[a-z0-9-]+",
