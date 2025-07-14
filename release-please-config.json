@@ -9,9 +9,23 @@
       "draft": true,
       "prerelease": false,
       "include-v-in-tag": true,
+      "include-component-in-tag": false,
       "skip-github-release": false,
-      "skip-github-tag": false,
-      "skip-labeling": true,
+      "always-update": true,
+      "pull-request-title-pattern": "chore: release v${version}",
+      "pull-request-header": ":robot: I have created a release",
+      "changelog-sections": [
+        { "type": "feat", "section": "✨ Features" },
+        { "type": "fix", "section": "🐛 Bug Fixes" },
+        { "type": "perf", "section": "⚡ Performance Improvements" },
+        { "type": "docs", "section": "📚 Documentation" },
+        { "type": "style", "section": "💄 Styling" },
+        { "type": "refactor", "section": "♻️ Code Refactoring" },
+        { "type": "test", "section": "✅ Tests" },
+        { "type": "build", "section": "📦 Build System" },
+        { "type": "ci", "section": "👷 CI/CD" },
+        { "type": "chore", "section": "🔧 Maintenance" }
+      ],
       "extra-files": [
         {
           "type": "generic",
@@ -19,19 +33,5 @@
         }
       ]
     }
-  },
-  "pull-request-title-pattern": "chore: release v${version}",
-  "pull-request-header": ":robot: I have created a release",
-  "changelog-sections": [
-    { "type": "feat", "section": "✨ Features" },
-    { "type": "fix", "section": "🐛 Bug Fixes" },
-    { "type": "perf", "section": "⚡ Performance Improvements" },
-    { "type": "docs", "section": "📚 Documentation" },
-    { "type": "style", "section": "💄 Styling" },
-    { "type": "refactor", "section": "♻️ Code Refactoring" },
-    { "type": "test", "section": "✅ Tests" },
-    { "type": "build", "section": "📦 Build System" },
-    { "type": "ci", "section": "👷 CI/CD" },
-    { "type": "chore", "section": "🔧 Maintenance" }
-  ]
+  }
 }
