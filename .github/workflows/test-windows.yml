@@ -1,0 +1,48 @@
+name: test-windows
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Bun (for build)
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build TypeScript to JavaScript
+        run: bun run build:js
+
+      - name: Run Bun tests
+        run: bun test
+
+      - name: Test npm package installation
+        run: |
+          # Create package
+          npm pack
+          
+          # Get package filename
+          $packageFile = Get-ChildItem -Filter "*.tgz" | Select-Object -First 1
+          echo "📦 Created package: $($packageFile.Name)"
+          
+          # Install globally
+          npm install -g $packageFile.FullName
+          
+          # Test global command
+          ai-chat-md-export --version
+          ai-chat-md-export --help

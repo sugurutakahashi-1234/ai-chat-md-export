@@ -1,0 +1,59 @@
+{
+  "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
+  "git": {
+    "requireBranch": "main",
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}",
+    "pushRepo": "origin",
+    "requireCommits": true,
+    "requireCleanWorkingDir": true,
+    "requireUpstream": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "v${version}",
+    "releaseNotes": "echo \"${changelog}\"",
+    "draft": false,
+    "preRelease": false
+  },
+  "npm": {
+    "publish": true,
+    "publishPath": ".",
+    "tag": "latest",
+    "otp": "",
+    "ignoreVersion": false,
+    "skipChecks": false
+  },
+  "hooks": {
+    "before:init": ["bun run ci"],
+    "after:bump": ["bun run build"],
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "✨ Features" },
+          { "type": "fix", "section": "🐛 Bug Fixes" },
+          { "type": "perf", "section": "⚡ Performance Improvements" },
+          { "type": "docs", "section": "📚 Documentation" },
+          { "type": "style", "section": "💄 Styling" },
+          { "type": "refactor", "section": "♻️ Code Refactoring" },
+          { "type": "test", "section": "✅ Tests" },
+          { "type": "build", "section": "📦 Build System" },
+          { "type": "ci", "section": "👷 CI/CD" },
+          { "type": "chore", "section": "🔧 Maintenance" }
+        ]
+      },
+      "infile": "CHANGELOG.md"
+    },
+    "@release-it/bumper": {
+      "out": {
+        "file": "src/version.ts",
+        "search": "export const VERSION = \"[0-9.]+\";",
+        "replace": "export const VERSION = \"${version}\";"
+      }
+    }
+  }
+}

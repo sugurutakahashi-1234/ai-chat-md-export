@@ -1,0 +1,67 @@
+# dependencies (bun install)
+node_modules
+node_modules_bak
+
+# output
+out
+dist
+*.tgz
+
+# code coverage
+coverage
+*.lcov
+
+# logs
+logs
+_.log
+report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS) folder config
+.DS_Store
+
+# Bun
+.bun/
+*.bun
+bun.lockb
+.*.bun-build
+
+# compiled binaries
+dist/
+
+# TypeScript build output
+lib/
+
+# editor
+.vscode/
+*.swp
+*.swo
+
+# cursor rules
+.cursor/
+
+# Claude AI settings
+.claude/
+CLAUDE.md
+
+# User data directories
+# Keep directory structure but ignore actual data files
+input/*
+!input/.gitkeep
+!input/*/
+input/*/*.json
+output/

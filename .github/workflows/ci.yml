@@ -1,0 +1,80 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Type check
+        run: bun run typecheck
+
+      - name: Lint
+        run: bun run lint:check
+
+      - name: Build
+        run: bun run build
+
+      - name: Check dependencies
+        run: bun run knip
+
+      - name: Test
+        run: bun run test:coverage
+
+      - name: Run E2E test
+        run: bun run test:e2e
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}     # Required for private repos
+          files: ./coverage/lcov.info             # Path to coverage report
+          verbose: true                           # Enable verbose logging for debugging
+          fail_ci_if_error: false                 # Don't fail CI if upload fails
+          flags: unittests                        # Tag coverage as unit tests
+          disable_search: false                   # Enable automatic coverage file search
+          report_type: coverage                   # Specify coverage report type
+
+      - name: Install LCOV
+        if: github.event_name == 'pull_request'
+        run: |
+          # Skip update if not needed (saves ~10s)
+          sudo apt-get install -y lcov || (sudo apt-get update && sudo apt-get install -y lcov)
+
+      - name: Report code coverage
+        if: github.event_name == 'pull_request'
+        uses: zgosalvez/github-actions-report-lcov@v4
+        with:
+          coverage-files: ./coverage/lcov.info
+          artifact-name: code-coverage-report
+          minimum-coverage: 75
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          title-prefix: '📊 '
+          additional-message: 'Code coverage report for this PR'
+          update-comment: true

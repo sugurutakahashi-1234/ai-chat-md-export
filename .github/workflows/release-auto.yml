@@ -1,0 +1,57 @@
+# .github/workflows/release-auto.yml
+# Automatic release workflow using release-please
+# Triggered on push to main branch
+# Creates: Release PR → Git tag, GitHub release, npm package
+name: Release Auto (npm + GitHub)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please Action
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      # The following steps only run if a release was created
+      - name: Checkout
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        if: ${{ steps.release.outputs.release_created }}
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        if: ${{ steps.release.outputs.release_created }}
+        run: bun install --frozen-lockfile
+
+      - name: Run CI
+        if: ${{ steps.release.outputs.release_created }}
+        run: bun run ci
+
+      - name: Build
+        if: ${{ steps.release.outputs.release_created }}
+        run: bun run build
+
+      - name: Publish to npm
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          npm publish --access public
