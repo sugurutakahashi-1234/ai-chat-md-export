@@ -2,7 +2,7 @@
 # Automatic release workflow using release-please
 # Triggered on push to main branch
 # Creates: Release PR → Git tag, GitHub release, npm package
-name: Release Auto (npm + GitHub)
+name: npm-release-auto
 
 on:
   push:
@@ -48,6 +48,13 @@ jobs:
       - name: Build
         if: ${{ steps.release.outputs.release_created }}
         run: bun run build
+
+      - name: Setup Node.js
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Publish to npm
         if: ${{ steps.release.outputs.release_created }}

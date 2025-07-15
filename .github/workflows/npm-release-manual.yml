@@ -2,7 +2,7 @@
 # Manual release workflow using release-it
 # Triggered manually via GitHub Actions UI
 # Creates: Git tag, GitHub release, npm package
-name: Release Manual (npm + GitHub)
+name: npm-release-manual
 
 on:
   workflow_dispatch:
@@ -39,6 +39,12 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+
+      - name: Setup Node.js (for npm publish via release-it)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -88,10 +94,6 @@ jobs:
             echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
           fi
 
-      - name: Configure npm
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          
       - name: Run release-it
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
