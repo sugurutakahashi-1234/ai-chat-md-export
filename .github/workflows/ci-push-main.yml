@@ -80,7 +80,7 @@ jobs:
       - name: Run GoReleaser (snapshot)
         uses: goreleaser/goreleaser-action@v6
         with:
-          version: '~> v2'
+          version: 'latest'
           args: build --snapshot --clean --skip=validate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

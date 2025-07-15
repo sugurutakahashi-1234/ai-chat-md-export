@@ -1,4 +1,5 @@
 # .goreleaser.yaml
+# GoReleaser configuration reference: https://goreleaser.com/customization/
 version: 2
 
 project_name: ai-chat-md-export
@@ -7,6 +8,8 @@ before:
   hooks:
     - bun install --frozen-lockfile
 
+# Bun Builder configuration
+# https://goreleaser.com/customization/builds/bun/
 builds:
   - id: ai-chat-md-export
     builder: bun
@@ -19,20 +22,27 @@ builds:
       - linux-arm64         # Linux ARM64 (Raspberry Pi, AWS Graviton, etc.)
       - windows-x64-modern  # Windows x64 (modern CPUs with AVX2)
 
+# Archive configuration
+# https://goreleaser.com/customization/archive/
+# Migration guide: https://goreleaser.com/deprecations#archivesformat
 archives:
   - id: default
-    builds:
+    ids:
       - ai-chat-md-export
-    format: tar.gz
+    formats:
+      - tar.gz
     name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     format_overrides:
       - goos: windows
-        format: zip
+        formats:
+          - zip
     files:
       - LICENSE
       - README.md
       - CHANGELOG.md
 
+# Release configuration
+# https://goreleaser.com/customization/release/
 release:
   # Use existing release created by release-please
   mode: keep-existing
@@ -48,7 +58,10 @@ changelog:
   # Disable changelog generation since release-please handles it
   disable: true
 
-brews:
+# Homebrew Casks configuration (replacement for deprecated 'brews')
+# https://goreleaser.com/customization/homebrew_casks/
+# Migration from brews: https://goreleaser.com/deprecations#brews
+homebrew_casks:
   - name: ai-chat-md-export
     # GitHub repository to push the formula to
     repository:
@@ -67,7 +80,11 @@ brews:
     commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
     
     # Formula folder inside the tap repository
-    directory: Formula
+    directory: Casks
+    
+    # Conflicts with existing formula (if any)
+    conflicts:
+      - formula: ai-chat-md-export
     
     # Homepage for the formula
     homepage: "https://github.com/sugurutakahashi-1234/{{ .ProjectName }}"
@@ -79,14 +96,6 @@ brews:
     license: "MIT"
     
     # No dependencies needed - Bun compiles to standalone binary
-    
-    # Installation steps
-    install: |
-      bin.install "ai-chat-md-export"
-    
-    # Test block
-    test: |
-      assert_match "ai-chat-md-export", shell_output("#{bin}/ai-chat-md-export --help")
 
 # Announce release in various channels
 announce:
