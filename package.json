@@ -69,8 +69,8 @@
     "validate:codecov": "cat codecov.yml | curl --data-binary @- https://codecov.io/validate",
     "validate:renovate": "$(which npx) --yes --package renovate -- renovate-config-validator renovate.json5 --strict",
     "validate:branch": "git-branch-lint",
-    "deps:check": "bunx npm-check-updates --deep",
-    "deps:update": "bunx npm-check-updates -u --deep && bun install",
+    "deps:check": "bunx ncu --deep",
+    "deps:update": "bunx ncu -u --deep && bun install",
     "deps:size": "du -sk node_modules/* node_modules/@*/* 2>/dev/null | sort -nr | head -30 | awk 'BEGIN{print \"Package                                        Size    Visual\"} {kb=$1; path=$2; gsub(/node_modules\\//, \"\", path); if(kb>1024) {mb=kb/1024; size=sprintf(\"%.1fM\", mb)} else {size=sprintf(\"%dK\", kb)} printf \"%-45s %7s  \", path, size; bar_len=int(kb/1000); if(bar_len<1) bar_len=1; if(bar_len>40) bar_len=40; for(i=0; i<bar_len; i++) printf \"█\"; print \"\"}' && echo && echo \"Total: $(du -sh node_modules 2>/dev/null | awk '{print $1}')\"",
     "knip": "knip --config knip.config.ts",
     "knip:fix": "knip --config knip.config.ts --fix",
@@ -102,7 +102,6 @@
     "@types/node": "24.0.13",
     "husky": "9.1.7",
     "knip": "5.61.3",
-    "npm-check-updates": "18.0.1",
     "release-it": "19.0.3",
     "typescript": "5.8.3"
   }

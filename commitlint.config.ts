@@ -12,6 +12,9 @@ const config: UserConfig = {
 
     // Require minimum 5 characters in subject
     "subject-min-length": [2, "always", 5],
+
+    // Limit subject line to 72 characters (GitHub PR title friendly)
+    "subject-max-length": [2, "always", 72],
   },
 
   ignores: [
