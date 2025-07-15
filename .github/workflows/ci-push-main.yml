@@ -107,7 +107,7 @@ jobs:
       matrix:
         # Test all supported platforms natively
         # - ubuntu-latest: Linux x64
-        # - ubuntu-24.04-arm: Linux ARM64 (native ARM64 runner, available since 2025-01-16)
+        # - ubuntu-24.04-arm: Linux ARM64 (native ARM64 runner, available since 2025-01-16, public repositories only)
         # - macos-13: macOS Intel
         # - macos-latest: macOS Apple Silicon (M1/M2)
         # - windows-latest: Windows x64
