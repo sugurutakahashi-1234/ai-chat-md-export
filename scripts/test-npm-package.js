@@ -1,4 +1,15 @@
 #!/usr/bin/env bun
+/**
+ * NPM Package E2E Test
+ *
+ * Tests the complete NPM package lifecycle:
+ * 1. Create package with `npm pack`
+ * 2. Install globally with `npm install -g`
+ * 3. Run CLI commands from global PATH
+ * 4. Clean up installation
+ *
+ * This simulates the actual user experience when installing from NPM.
+ */
 import { execSync } from "node:child_process";
 import { existsSync, rmSync } from "node:fs";
 import { join } from "node:path";
