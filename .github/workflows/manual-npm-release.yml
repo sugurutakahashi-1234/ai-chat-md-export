@@ -28,6 +28,7 @@ permissions:
 jobs:
   manual-npm-release:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4
