@@ -105,10 +105,24 @@ jobs:
     needs: goreleaser-build
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        # Test all supported platforms natively
+        # - ubuntu-latest: Linux x64
+        # - ubuntu-24.04-arm: Linux ARM64 (native ARM64 runner, available since 2025-01-16)
+        # - macos-13: macOS Intel
+        # - macos-latest: macOS Apple Silicon (M1/M2)
+        # - windows-latest: Windows x64
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-13, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
@@ -116,20 +130,5 @@ jobs:
           path: dist
 
       - name: Test binary
-        run: |
-          # Find the binary
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            BINARY=$(find dist -name "ai-chat-md-export.exe" -type f | head -1)
-          else
-            BINARY=$(find dist -name "ai-chat-md-export" -type f ! -name "*.exe" | head -1)
-            chmod +x $BINARY
-          fi
-          
-          echo "📦 Testing binary: $BINARY"
-          
-          # Test version
-          $BINARY --version
-          
-          # Test help
-          $BINARY --help
-        shell: bash
+        run: bun scripts/test-goreleaser.js
+
