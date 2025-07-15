@@ -2,7 +2,7 @@
 # Manual release workflow using release-it
 # Triggered manually via GitHub Actions UI
 # Creates: Git tag, GitHub release, npm package
-name: npm-release-manual
+name: cd-npm-release-manual
 
 on:
   workflow_dispatch:
