@@ -13,6 +13,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  packages: write
 
 jobs:
   cd-npm-release-auto:
