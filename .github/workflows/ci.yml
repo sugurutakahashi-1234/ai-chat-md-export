@@ -45,7 +45,7 @@ jobs:
         run: bun run test:coverage
 
       - name: Run E2E test
-        run: bun run test:e2e
+        run: bun run test:e2e:npm
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
