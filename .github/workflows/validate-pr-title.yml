@@ -18,14 +18,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # Subject must start with lowercase
-          subjectPattern: ^(?![A-Z]).+$
+          # Subject must start with lowercase and be max 72 chars
+          subjectPattern: ^(?![A-Z]).{1,72}$
           subjectPatternError: |
             The subject "{subject}" found in the pull request title "{title}"
-            must start with a lowercase letter.
+            must start with a lowercase letter and be 72 characters or less.
 
-            ✅ Good: "feat: add new feature"
-            ❌ Bad: "feat: Add new feature"
+            ✅ Good: "feat: add new feature" (lowercase, under 72 chars)
+            ❌ Bad: "feat: Add new feature" (uppercase)
+            ❌ Bad: "feat: this is a very long commit message that exceeds the maximum allowed length of 72 characters" (too long)
 
           # Allow WIP PRs
           wip: true
