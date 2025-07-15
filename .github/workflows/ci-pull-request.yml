@@ -43,6 +43,7 @@ jobs:
         run: bun run test:coverage
 
       - name: Upload coverage to Codecov
+        if: github.actor != 'github-actions[bot]'
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}     # Required for private repos
@@ -60,7 +61,7 @@ jobs:
           sudo apt-get install -y lcov || (sudo apt-get update && sudo apt-get install -y lcov)
 
       - name: Report code coverage
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.actor != 'github-actions[bot]'
         uses: zgosalvez/github-actions-report-lcov@v4
         with:
           coverage-files: ./coverage/lcov.info

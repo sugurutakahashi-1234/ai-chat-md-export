@@ -12,6 +12,7 @@ jobs:
   validate-pr-title:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Check PR title
         uses: amannn/action-semantic-pull-request@v5

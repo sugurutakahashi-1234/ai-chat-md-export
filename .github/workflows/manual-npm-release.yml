@@ -2,7 +2,7 @@
 # Manual release workflow using release-it
 # Triggered manually via GitHub Actions UI
 # Creates: Git tag, GitHub release, npm package
-name: cd-npm-release-manual
+name: manual-npm-release
 
 on:
   workflow_dispatch:
@@ -26,8 +26,9 @@ permissions:
   id-token: write
 
 jobs:
-  cd-npm-release-manual:
+  manual-npm-release:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4
