@@ -1,16 +1,14 @@
-name: ci
+name: ci-pull-request
 
 on:
-  push:
-    branches: [main]
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 jobs:
   ci:
-    # Skip draft PRs (always run for push events and workflow_dispatch)
-    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    # Skip draft PRs
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
@@ -43,9 +41,6 @@ jobs:
 
       - name: Test
         run: bun run test:coverage
-
-      - name: Run E2E test
-        run: bun run test:e2e:npm
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5

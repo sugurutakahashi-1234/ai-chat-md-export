@@ -1,4 +1,4 @@
-name: homebrew-release
+name: cd-homebrew-release
 
 on:
   release:
