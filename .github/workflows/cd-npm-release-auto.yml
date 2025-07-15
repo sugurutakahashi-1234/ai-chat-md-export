@@ -15,7 +15,7 @@ permissions:
   issues: write
 
 jobs:
-  release-please:
+  cd-npm-release-auto:
     runs-on: ubuntu-latest
     steps:
       - name: Release Please Action

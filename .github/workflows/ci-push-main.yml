@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci:
+  ci-push-main:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:

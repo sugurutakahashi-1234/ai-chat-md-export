@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci:
+  ci-pull-request:
     # Skip draft PRs
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest

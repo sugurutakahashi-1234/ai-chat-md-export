@@ -9,7 +9,7 @@ permissions:
   statuses: write       # Required for WIP status updates
 
 jobs:
-  check-title:
+  validate-pr-title:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
@@ -21,12 +21,11 @@ jobs:
           # Subject must start with lowercase and be max 72 chars
           subjectPattern: ^(?![A-Z]).{1,72}$
           subjectPatternError: |
-            The subject "{subject}" found in the pull request title "{title}"
-            must start with a lowercase letter and be 72 characters or less.
-
-            ✅ Good: "feat: add new feature" (lowercase, under 72 chars)
-            ❌ Bad: "feat: Add new feature" (uppercase)
-            ❌ Bad: "feat: this is a very long commit message that exceeds the maximum allowed length of 72 characters" (too long)
+            PR title must start with lowercase and be ≤72 characters.
+            Current: {subject}
+            
+            ✅ Good: "add new feature"
+            ❌ Bad: "Add new feature" or titles >72 chars
 
           # Allow WIP PRs
           wip: true
