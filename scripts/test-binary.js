@@ -5,7 +5,7 @@ import { join } from "node:path";
 
 const projectRoot = join(import.meta.dir, "..");
 
-console.log("🧪 Testing GoReleaser binary...\n");
+console.log("🧪 Testing binary...\n");
 
 try {
   // Detect current platform
@@ -40,11 +40,15 @@ try {
   if (!existsSync(binaryPath)) {
     console.error("\n❌ Binary not found at:", binaryPath);
     console.error("\nPlease build first with:");
-    console.error("   bun run build:goreleaser");
+    console.error("   bun run build:binary");
     console.error("\nOr build for current platform only:");
     console.error(
       `   TARGET=${target} goreleaser build --snapshot --clean --skip=validate --single-target`,
     );
+    console.error("\nIf GoReleaser is not installed:");
+    console.error("   brew install goreleaser");
+    console.error("   or");
+    console.error("   brew bundle  # Install from Brewfile");
     process.exit(1);
   }
 

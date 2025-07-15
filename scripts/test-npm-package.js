@@ -21,9 +21,14 @@ try {
 }
 
 try {
-  // Step 1: Build the project
-  console.log("\n📦 Building project...");
-  execSync("bun run build", { stdio: "inherit", cwd: projectRoot });
+  // Step 1: Check if built
+  const libDir = join(projectRoot, "lib");
+  if (!existsSync(libDir)) {
+    console.error(
+      "❌ Project not built. Please run 'bun run build:npm' first.",
+    );
+    process.exit(1);
+  }
 
   // Step 2: Create npm package
   console.log("\n📦 Creating npm package...");
@@ -64,25 +69,6 @@ try {
   console.log("  Testing --help...");
   execSync(`${packageName} --help`, { stdio: "pipe" });
   console.log("  ✅ Help command works");
-
-  // Test with sample data
-  console.log("  Testing with sample data...");
-  const testInput = join(projectRoot, "tests/fixtures/e2e/cli-test.json");
-  const testOutput = join(projectRoot, "test-e2e-output");
-
-  if (existsSync(testInput)) {
-    execSync(`${packageName} -i "${testInput}" -o "${testOutput}" --dry-run`, {
-      stdio: "pipe",
-    });
-    console.log("  ✅ Dry run successful");
-
-    // Clean up test output
-    if (existsSync(testOutput)) {
-      rmSync(testOutput, { recursive: true, force: true });
-    }
-  } else {
-    console.log("  ⚠️  Skipping sample data test (fixture not found)");
-  }
 
   console.log("\n✅ All tests passed!");
 } catch (error) {

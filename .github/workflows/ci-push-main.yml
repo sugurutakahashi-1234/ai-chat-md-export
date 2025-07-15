@@ -130,5 +130,5 @@ jobs:
           path: dist
 
       - name: Test binary
-        run: bun scripts/test-goreleaser.js
+        run: bun scripts/test-binary.js
 
