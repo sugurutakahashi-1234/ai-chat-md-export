@@ -2,10 +2,15 @@
 
 [![npm version](https://img.shields.io/npm/v/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
 [![Homebrew](https://img.shields.io/badge/Homebrew-tap-orange.svg)](https://github.com/sugurutakahashi-1234/homebrew-tap)
-[![CI](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci.yml)
+[![CI](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci-push-main.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci-push-main.yml)
+[![npm Release](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-npm-release-auto.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-npm-release-auto.yml)
+[![Homebrew Release](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-homebrew-release.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-homebrew-release.yml)
 [![codecov](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export/graph/badge.svg?token=KPN7UZ7ATY)](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
+[![node](https://img.shields.io/node/v/ai-chat-md-export)](https://nodejs.org)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/ai-chat-md-export)](https://bundlephobia.com/package/ai-chat-md-export)
+[![Types](https://img.shields.io/npm/types/ai-chat-md-export)](https://www.npmjs.com/package/ai-chat-md-export)
 
 ChatGPTとClaudeのチャット履歴をMarkdownに変換
 
@@ -52,17 +57,17 @@ ai-chat-md-export -i data.json --dry-run
 
 ## オプション
 
-| オプション | 短縮形 | 説明 | デフォルト |
-|--------|-------|-------------|---------|
-| `--input` | `-i` | 入力ファイル・ディレクトリ（必須） | - |
-| `--output` | `-o` | 出力ディレクトリ | カレントディレクトリ |
-| `--format` | `-f` | フォーマット: `chatgpt`、`claude`、`auto` | `auto` |
-| `--since` | - | 開始日（YYYY-MM-DD） | - |
-| `--until` | - | 終了日（YYYY-MM-DD） | - |
-| `--search` | - | 検索キーワード | - |
-| `--filename-encoding` | - | ファイル名エンコーディング: `standard`、`preserve` | `standard` |
-| `--quiet` | `-q` | 出力を抑制 | - |
-| `--dry-run` | - | プレビューモード | - |
+| オプション            | 短縮形 | 説明                                               | デフォルト           |
+| --------------------- | ------ | -------------------------------------------------- | -------------------- |
+| `--input`             | `-i`   | 入力ファイル・ディレクトリ（必須）                 | -                    |
+| `--output`            | `-o`   | 出力ディレクトリ                                   | カレントディレクトリ |
+| `--format`            | `-f`   | フォーマット: `chatgpt`、`claude`、`auto`          | `auto`               |
+| `--since`             | -      | 開始日（YYYY-MM-DD）                               | -                    |
+| `--until`             | -      | 終了日（YYYY-MM-DD）                               | -                    |
+| `--search`            | -      | 検索キーワード                                     | -                    |
+| `--filename-encoding` | -      | ファイル名エンコーディング: `standard`、`preserve` | `standard`           |
+| `--quiet`             | `-q`   | 出力を抑制                                         | -                    |
+| `--dry-run`           | -      | プレビューモード                                   | -                    |
 
 ## コントリビューション
 

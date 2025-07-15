@@ -2,10 +2,15 @@
 
 [![npm version](https://img.shields.io/npm/v/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
 [![Homebrew](https://img.shields.io/badge/Homebrew-tap-orange.svg)](https://github.com/sugurutakahashi-1234/homebrew-tap)
-[![CI](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci.yml)
+[![CI](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci-push-main.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci-push-main.yml)
+[![npm Release](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-npm-release-auto.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-npm-release-auto.yml)
+[![Homebrew Release](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-homebrew-release.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-homebrew-release.yml)
 [![codecov](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export/graph/badge.svg?token=KPN7UZ7ATY)](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
+[![node](https://img.shields.io/node/v/ai-chat-md-export)](https://nodejs.org)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/ai-chat-md-export)](https://bundlephobia.com/package/ai-chat-md-export)
+[![Types](https://img.shields.io/npm/types/ai-chat-md-export)](https://www.npmjs.com/package/ai-chat-md-export)
 
 Convert ChatGPT and Claude chat history to Markdown
 
@@ -54,17 +59,17 @@ ai-chat-md-export -i data.json --dry-run
 
 ## Options
 
-| Option | Short | Description | Default |
-|--------|-------|-------------|---------|
-| `--input` | `-i` | Input file or directory (required) | - |
-| `--output` | `-o` | Output directory | Current directory |
-| `--format` | `-f` | Format: `chatgpt`, `claude`, `auto` | `auto` |
-| `--since` | - | Filter from date (YYYY-MM-DD) | - |
-| `--until` | - | Filter until date (YYYY-MM-DD) | - |
-| `--search` | - | Search keyword | - |
-| `--filename-encoding` | - | Filename encoding: `standard`, `preserve` | `standard` |
-| `--quiet` | `-q` | Suppress output | - |
-| `--dry-run` | - | Preview mode | - |
+| Option                | Short | Description                               | Default           |
+| --------------------- | ----- | ----------------------------------------- | ----------------- |
+| `--input`             | `-i`  | Input file or directory (required)        | -                 |
+| `--output`            | `-o`  | Output directory                          | Current directory |
+| `--format`            | `-f`  | Format: `chatgpt`, `claude`, `auto`       | `auto`            |
+| `--since`             | -     | Filter from date (YYYY-MM-DD)             | -                 |
+| `--until`             | -     | Filter until date (YYYY-MM-DD)            | -                 |
+| `--search`            | -     | Search keyword                            | -                 |
+| `--filename-encoding` | -     | Filename encoding: `standard`, `preserve` | `standard`        |
+| `--quiet`             | `-q`  | Suppress output                           | -                 |
+| `--dry-run`           | -     | Preview mode                              | -                 |
 
 ## Contributing
 
