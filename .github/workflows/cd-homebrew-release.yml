@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 jobs:
-  goreleaser:
+  cd-homebrew-release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,7 +32,7 @@ jobs:
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
-          version: '~> v2'
+          version: 'latest'
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

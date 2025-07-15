@@ -1,3 +1,12 @@
+/**
+ * CLI Integration Tests (Bun Runtime)
+ *
+ * Tests the CLI functionality using Bun runtime directly.
+ * These tests run the CLI script through Bun without building/packaging,
+ * making them fast for development and catching issues early.
+ *
+ * Coverage: Help text, file conversion, error handling, directory processing
+ */
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";

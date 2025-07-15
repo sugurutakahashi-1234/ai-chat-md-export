@@ -26,7 +26,7 @@ permissions:
   id-token: write
 
 jobs:
-  release-npm:
+  cd-npm-release-manual:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
