@@ -115,17 +115,17 @@ ai-chat-md-export -i conversations.json --quiet
 
 ## Command-line Options
 
-| オプション            | 短縮 | 説明                                      | デフォルト        |
-| --------------------- | ---- | ----------------------------------------- | ----------------- |
-| `--input`             | `-i` | 入力ファイルまたはディレクトリ（必須）    | -                 |
-| `--output`            | `-o` | 出力ディレクトリ                          | カレントディレクトリ |
-| `--format`            | `-f` | フォーマット: `chatgpt`, `claude`, `auto` | `auto`            |
-| `--since`             | -    | 開始日でフィルタ (YYYY-MM-DD)             | -                 |
-| `--until`             | -    | 終了日でフィルタ (YYYY-MM-DD)             | -                 |
-| `--search`            | -    | 検索キーワード                            | -                 |
-| `--filename-encoding` | -    | ファイル名エンコーディング: `standard`, `preserve` | `standard` |
-| `--quiet`             | `-q` | 出力を抑制                                | -                 |
-| `--dry-run`           | -    | プレビューモード                          | -                 |
+| オプション | 説明 | デフォルト |
+| ---------- | ---- | ---------- |
+| `-i, --input <path>` | 入力ファイルまたはディレクトリ（必須） | - |
+| `-o, --output <path>` | 出力ディレクトリ | `.` |
+| `-f, --format <format>` | 入力フォーマット（`chatgpt`/`claude`/`auto`） | `auto` |
+| `--since <date>` | 開始日でフィルタ (YYYY-MM-DD) | - |
+| `--until <date>` | 終了日でフィルタ (YYYY-MM-DD) | - |
+| `--search <keyword>` | 会話内を検索 | - |
+| `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`） | `standard` |
+| `-q, --quiet` | 進捗メッセージを抑制 | - |
+| `--dry-run` | ファイルを作成せずにプレビュー | - |
 
 ## Getting conversations.json
 
@@ -164,6 +164,49 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 - **タイムスタンプ**: すべてのタイムスタンプをローカルタイムゾーンに変換
 - **クリーンな出力**: 明確なメッセージ区切りで読みやすいMarkdownを生成
 
+## 日付フィルタリングの詳細
+
+`--since`と`--until`オプションは、会話が**開始された**日付に基づいてフィルタリングします（最終更新日ではありません）：
+
+- **ChatGPT**: エクスポートの`create_time`フィールドを使用
+- **Claude**: エクスポートの`created_at`フィールドを使用
+- **日付形式**: YYYY-MM-DD（例：2024-01-15）
+- **タイムゾーン**: すべての日付はローカルタイムゾーンで解釈されます
+- **包括的フィルタリング**: --sinceと--untilの両方の日付は包括的です
+
+例：
+```bash
+# 2024年の会話
+ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
+
+# 過去30日間の会話（今日が2024-12-15の場合）
+ai-chat-md-export -i data.json --since 2024-11-15
+
+# 特定の日の会話のみ
+ai-chat-md-export -i data.json --since 2024-06-01 --until 2024-06-01
+```
+
+## 検索機能
+
+`--search`オプションは強力なフィルタリング機能を提供します：
+
+- **大文字小文字を区別しない**: "API"、"api"、"Api"などすべてにマッチ
+- **どこでも検索**: 会話タイトルとすべてのメッセージ内容の両方
+- **部分一致**: "learn"は"learning"、"machine learning"などにマッチ
+- **複数の単語**: 入力されたとおりの正確なフレーズを検索
+
+例：
+```bash
+# Pythonに関するすべての会話を検索
+ai-chat-md-export -i data.json --search "python"
+
+# 特定のエラーメッセージを検索
+ai-chat-md-export -i data.json --search "TypeError: cannot read property"
+
+# 日付フィルタリングと組み合わせ
+ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
+```
+
 ## More Examples
 
 複数の会話を含む完全な例については、[examples](examples/)ディレクトリを参照してください：
@@ -182,8 +225,11 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 ### 文字エンコーディングの問題
 出力に文字化けが表示される場合：
 - ターミナルがUTF-8エンコーディングをサポートしていることを確認
-- 非ASCII文字のファイル名には `--filename-encoding preserve` オプションを試す
 - `conversations.json` ファイルが適切にエンコードされていることを確認
+
+ファイル名エンコーディングの問題については：
+- `--filename-encoding standard`（デフォルト）: オペレーティングシステム間で最大の互換性を持つようにファイル名をサニタイズ
+- `--filename-encoding preserve`: 会話タイトルから元の文字を保持しますが、特殊文字を含む場合は一部のシステムで問題が発生する可能性があります
 
 ### 会話が見つからない
 一部の会話が出力に表示されない場合：

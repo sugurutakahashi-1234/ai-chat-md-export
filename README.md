@@ -117,17 +117,17 @@ ai-chat-md-export -i conversations.json --quiet
 
 ## Command-line Options
 
-| Option                | Short | Description                               | Default           |
-| --------------------- | ----- | ----------------------------------------- | ----------------- |
-| `--input`             | `-i`  | Input file or directory (required)        | -                 |
-| `--output`            | `-o`  | Output directory                          | Current directory |
-| `--format`            | `-f`  | Format: `chatgpt`, `claude`, `auto`       | `auto`            |
-| `--since`             | -     | Filter from date (YYYY-MM-DD)             | -                 |
-| `--until`             | -     | Filter until date (YYYY-MM-DD)            | -                 |
-| `--search`            | -     | Search keyword                            | -                 |
-| `--filename-encoding` | -     | Filename encoding: `standard`, `preserve` | `standard`        |
-| `--quiet`             | `-q`  | Suppress output                           | -                 |
-| `--dry-run`           | -     | Preview mode                              | -                 |
+| Option | Description | Default |
+| ------ | ----------- | ------- |
+| `-i, --input <path>` | Input file or directory path (required) | - |
+| `-o, --output <path>` | Output directory | `.` |
+| `-f, --format <format>` | Input format (`chatgpt`/`claude`/`auto`) | `auto` |
+| `--since <date>` | Filter from date (YYYY-MM-DD) | - |
+| `--until <date>` | Filter until date (YYYY-MM-DD) | - |
+| `--search <keyword>` | Search in conversations | - |
+| `--filename-encoding <encoding>` | Filename encoding (`standard`/`preserve`) | `standard` |
+| `-q, --quiet` | Suppress progress messages | - |
+| `--dry-run` | Preview mode without creating files | - |
 
 ## Getting conversations.json
 
@@ -168,6 +168,49 @@ Key features:
 - **Timestamps**: Converts all timestamps to your local timezone
 - **Clean output**: Generates readable Markdown with clear message separation
 
+## Date Filtering Details
+
+The `--since` and `--until` options filter conversations based on when they were **started**, not when they were last updated:
+
+- **ChatGPT**: Uses the `create_time` field from the export
+- **Claude**: Uses the `created_at` field from the export
+- **Date format**: YYYY-MM-DD (e.g., 2024-01-15)
+- **Timezone**: All dates are interpreted in your local timezone
+- **Inclusive filtering**: Both --since and --until dates are inclusive
+
+Examples:
+```bash
+# Conversations from 2024
+ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
+
+# Conversations from the last 30 days (if today is 2024-12-15)
+ai-chat-md-export -i data.json --since 2024-11-15
+
+# Only conversations from a specific day
+ai-chat-md-export -i data.json --since 2024-06-01 --until 2024-06-01
+```
+
+## Search Functionality
+
+The `--search` option provides powerful filtering capabilities:
+
+- **Case-insensitive**: Matches "API", "api", "Api", etc.
+- **Searches everywhere**: Both conversation titles and all message contents
+- **Partial matching**: "learn" matches "learning", "machine learning", etc.
+- **Multiple words**: Searches for the exact phrase as entered
+
+Examples:
+```bash
+# Find all conversations about Python
+ai-chat-md-export -i data.json --search "python"
+
+# Search for a specific error message
+ai-chat-md-export -i data.json --search "TypeError: cannot read property"
+
+# Combine with date filtering
+ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
+```
+
 ## More Examples
 
 For complete examples with multiple conversations, see the [examples](examples/) directory:
@@ -186,8 +229,11 @@ The tool processes files in batches. For very large conversation histories:
 ### Character encoding issues
 If you see garbled text in your output:
 - Ensure your terminal supports UTF-8 encoding
-- Try the `--filename-encoding preserve` option for non-ASCII filenames
 - Check that your `conversations.json` file is properly encoded
+
+For filename encoding issues:
+- `--filename-encoding standard` (default): Sanitizes filenames for maximum compatibility across operating systems
+- `--filename-encoding preserve`: Keeps original characters from conversation titles, but may cause issues on some systems with special characters
 
 ### Missing conversations
 If some conversations don't appear in the output:

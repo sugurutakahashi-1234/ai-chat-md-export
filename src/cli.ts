@@ -38,43 +38,17 @@ export async function main(): Promise<void> {
     .addHelpText(
       "after",
       `\nExamples:
-  # Convert a single ChatGPT export file
+  # Convert a single export file
   $ ai-chat-md-export -i conversations.json
 
-  # Convert all JSON files in a directory
-  $ ai-chat-md-export -i exports/ -o output/
+  # Filter by date and search
+  $ ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
 
-  # Specify format explicitly
-  $ ai-chat-md-export -i claude_export.json -f claude
-
-  # Filter by date range
-  $ ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
-
-  # Filter conversations from a specific date
-  $ ai-chat-md-export -i data.json --since 2024-06-01
-
-  # Search for conversations containing a keyword
-  $ ai-chat-md-export -i data.json --search "machine learning"
-
-  # Preview what would be done without writing files
+  # Preview without creating files
   $ ai-chat-md-export -i data.json --dry-run
 
-  # Run silently (only show errors)
-  $ ai-chat-md-export -i data.json -o output/ --quiet
-
-  # Combine multiple options
-  $ ai-chat-md-export -i data.json --since 2024-01-01 --search "API" --quiet
-
-Note on Date Filtering:
-  - Dates refer to when conversations were STARTED, not last updated
-  - ChatGPT: Uses 'create_time' field
-  - Claude: Uses 'created_at' field
-  - Both --since and --until dates are inclusive
-
-Note on Search:
-  - Search is case-insensitive
-  - Searches in both conversation titles and message contents
-  - Partial matches are supported`,
+For more options and detailed documentation:
+  https://www.npmjs.com/package/ai-chat-md-export`,
     )
     .parse();
 
