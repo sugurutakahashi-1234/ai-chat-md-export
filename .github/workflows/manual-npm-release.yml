@@ -101,7 +101,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          bun run release -- ${{ steps.set_version.outputs.VERSION }} --ci --no-hooks
+          bun run release:it -- ${{ steps.set_version.outputs.VERSION }} --ci --no-hooks
 
       - name: Get created tag
         id: get_tag
