@@ -13,6 +13,8 @@
 
 ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに変換
 
+[English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
+
 ## Quick Start
 
 ```bash
