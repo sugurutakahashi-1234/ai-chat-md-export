@@ -25,7 +25,4 @@ ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/out
 
 # Claude examples
 ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/
-
-# All examples at once
-ai-chat-md-export -i examples/ -o examples/
 ```
