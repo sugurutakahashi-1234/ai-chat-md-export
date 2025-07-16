@@ -1,3 +1,20 @@
+/**
+ * Output Options Integration Tests
+ *
+ * Tests CLI output options like --quiet and --dry-run through actual execution.
+ * Verifies user-visible behavior and output control.
+ *
+ * IMPORTANT: This tests OUTPUT BEHAVIOR from the user's perspective only.
+ * DO NOT test internal implementation details here.
+ *
+ * FOCUS ON:
+ * - --quiet suppresses expected output
+ * - --dry-run prevents file creation
+ * - Error messages still appear in quiet mode
+ * - Combination of output options
+ *
+ * Internal logic for these options is tested in unit/core/processor.test.ts
+ */
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";

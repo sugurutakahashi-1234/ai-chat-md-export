@@ -1,3 +1,20 @@
+/**
+ * Filtering Features Integration Tests
+ *
+ * Tests the date and search filtering functionality through CLI execution.
+ * Focuses on user-facing behavior and output messages.
+ *
+ * IMPORTANT: This tests filtering from the USER'S PERSPECTIVE only.
+ * DO NOT test internal filter logic here - that's covered in unit/core/filter.test.ts
+ *
+ * FOCUS ON:
+ * - CLI arguments for filtering work correctly
+ * - Filter statistics in output messages
+ * - Correct files are created/skipped
+ * - Combined filter behavior
+ *
+ * Detailed filter logic belongs in unit tests.
+ */
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";

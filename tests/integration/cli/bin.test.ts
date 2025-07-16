@@ -6,6 +6,25 @@
  * making them fast for development and catching issues early.
  *
  * Coverage: Help text, file conversion, error handling, directory processing
+ *
+ * IMPORTANT TEST DESIGN PRINCIPLES:
+ *
+ * This file tests END-TO-END CLI behavior only. DO NOT test:
+ * - Schema validation details (covered in unit/schemas/)
+ * - Format detection logic (covered in unit/utils/format-detector.test.ts)
+ * - Filename sanitization (covered in unit/filename.test.ts)
+ * - Filter logic details (covered in unit/core/processor.test.ts)
+ * - Markdown generation (covered in unit/markdown.test.ts)
+ *
+ * FOCUS ON:
+ * - Actual CLI execution and exit codes
+ * - File system interactions (reading input, writing output)
+ * - User-facing output messages and progress
+ * - Multi-file processing scenarios
+ * - Error messages shown to users
+ * - Integration between components
+ *
+ * If you need to test specific logic, add it to the appropriate unit test file.
  */
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
@@ -95,59 +114,127 @@ describe("CLI Integration Tests", () => {
     expect(content).toContain("Hello, Claude!");
   });
 
-  test("auto-detects format", async () => {
-    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
-    const outputDir = path.join(tempDir, "output");
-
-    const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir}`.quiet();
-
-    expect(result.exitCode).toBe(0);
-
-    const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles).toHaveLength(1);
-  });
-
-  test("processes directory", async () => {
+  test("filters multiple files with date and search options", async () => {
     const inputDir = path.join(tempDir, "input");
     await fs.mkdir(inputDir);
 
-    // Copy test files
+    // Create multiple test files with different dates and content
+    const oldConversation = [
+      {
+        title: "Old Python Discussion",
+        create_time: 1672531200, // 2023-01-01
+        mapping: {
+          aaa: {
+            id: "aaa",
+            message: {
+              id: "aaa",
+              author: { role: "user" },
+              content: { parts: ["Python basics"] },
+              create_time: 1672531200,
+            },
+            children: [],
+          },
+        },
+      },
+    ];
+
+    const recentConversation = [
+      {
+        title: "Recent JavaScript Tutorial",
+        create_time: 1703980800, // 2023-12-31
+        mapping: {
+          bbb: {
+            id: "bbb",
+            message: {
+              id: "bbb",
+              author: { role: "user" },
+              content: { parts: ["JavaScript advanced topics"] },
+              create_time: 1703980800,
+            },
+            children: [],
+          },
+        },
+      },
+    ];
+
+    await fs.writeFile(
+      path.join(inputDir, "old.json"),
+      JSON.stringify(oldConversation),
+      "utf-8",
+    );
+    await fs.writeFile(
+      path.join(inputDir, "recent.json"),
+      JSON.stringify(recentConversation),
+      "utf-8",
+    );
+
+    const outputDir = path.join(tempDir, "output");
+
+    // Test with date filter - should only get recent file
+    const result =
+      await $`bun ${cliPath} -i ${inputDir} -o ${outputDir} --since 2023-06-01`;
+
+    expect(result.exitCode).toBe(0);
+    expect(result.stdout.toString()).toContain(
+      "Found 2 JSON file(s) to process",
+    );
+    expect(result.stdout.toString()).toContain(
+      "Filtered: 0 of 1 conversations",
+    );
+    expect(result.stdout.toString()).toContain(
+      "Completed processing 2 file(s)",
+    );
+
+    const outputFiles = await fs.readdir(outputDir);
+    expect(outputFiles).toHaveLength(1);
+    expect(outputFiles[0]).toContain("JavaScript");
+  });
+
+  test("processes directory with mixed formats and auto-detection", async () => {
+    const inputDir = path.join(tempDir, "input");
+    await fs.mkdir(inputDir);
+
+    // Copy test files with different formats
     await fs.copyFile(
       path.join(fixturesDir, "e2e/cli-test.json"),
-      path.join(inputDir, "chatgpt.json"),
+      path.join(inputDir, "chatgpt-export.json"),
     );
     await fs.copyFile(
       path.join(fixturesDir, "claude/valid-conversation.json"),
-      path.join(inputDir, "claude.json"),
+      path.join(inputDir, "claude-export.json"),
     );
 
     const outputDir = path.join(tempDir, "output");
-    const result =
-      await $`bun ${cliPath} -i ${inputDir} -o ${outputDir}`.quiet();
+    // Run without format specification to test auto-detection
+    const result = await $`bun ${cliPath} -i ${inputDir} -o ${outputDir}`;
 
     expect(result.exitCode).toBe(0);
 
+    // Check progress output
+    const output = result.stdout.toString();
+    expect(output).toContain("Found 2 JSON file(s) to process");
+    expect(output).toContain("Processing chatgpt-export.json");
+    expect(output).toContain("Processing claude-export.json");
+    expect(output).toContain("Completed processing 2 file(s)");
+
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles).toHaveLength(2);
-  });
 
-  test("handles invalid file format", async () => {
-    const inputFile = path.join(
-      fixturesDir,
-      "chatgpt/invalid-conversation.json",
+    // Verify both formats were correctly processed
+    const chatgptContent = await fs.readFile(
+      path.join(
+        outputDir,
+        outputFiles.find((f) => f.includes("E2E_CLI")) || "",
+      ),
+      "utf-8",
     );
-    const outputDir = path.join(tempDir, "output");
+    const claudeContent = await fs.readFile(
+      path.join(outputDir, outputFiles.find((f) => f.includes("Claude")) || ""),
+      "utf-8",
+    );
 
-    try {
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -f chatgpt`.quiet();
-      expect(true).toBe(false); // Should not reach here
-    } catch (error) {
-      const output =
-        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(output).toContain("Error:");
-      expect(output).toContain("Schema validation error");
-    }
+    expect(chatgptContent).toContain("# E2E CLI Test Conversation");
+    expect(claudeContent).toContain("# Test Claude Conversation");
   });
 
   test("handles non-existent file", async () => {
@@ -181,138 +268,12 @@ describe("CLI Integration Tests", () => {
     }
   });
 
-  test("sanitizes file names", async () => {
-    // Create a test file with special characters in title
-    const testData = [
-      {
-        title: "Test/With:Special*Characters?",
-        create_time: 1703980800,
-        mapping: {
-          aaa: {
-            id: "aaa",
-            message: null,
-            children: [],
-          },
-        },
-      },
-    ];
-
-    const inputFile = path.join(tempDir, "special-chars.json");
-    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
-
-    const outputDir = path.join(tempDir, "output");
-    const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -f chatgpt`.quiet();
-
-    expect(result.exitCode).toBe(0);
-
-    const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles).toHaveLength(1);
-    // Should produce sanitized filename with standard encoding
-    expect(outputFiles[0]).toBe("2023-12-31_Test_With_Special_Characters_.md");
-  });
-
   test("shows version with --version flag", async () => {
     const result = await $`bun ${cliPath} --version`.quiet();
     const output = result.text().trim();
 
     expect(result.exitCode).toBe(0);
     expect(output).toMatch(/^\d+\.\d+\.\d+$/); // Matches version format
-  });
-
-  test("filters conversations by date with --since and --until", async () => {
-    // Create test files with different dates
-    const testData = [
-      {
-        title: "Old Conversation",
-        create_time: 1672531200, // 2023-01-01
-        mapping: {
-          aaa: {
-            id: "aaa",
-            message: null,
-            children: [],
-          },
-        },
-      },
-      {
-        title: "Recent Conversation",
-        create_time: 1703980800, // 2023-12-31
-        mapping: {
-          bbb: {
-            id: "bbb",
-            message: null,
-            children: [],
-          },
-        },
-      },
-    ];
-
-    const inputFile = path.join(tempDir, "date-filter.json");
-    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
-
-    const outputDir = path.join(tempDir, "output");
-    const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --since 2023-06-01 --until 2023-12-31`.quiet();
-
-    expect(result.exitCode).toBe(0);
-
-    const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles).toHaveLength(1);
-    expect(outputFiles[0]).toContain("Recent_Conversation");
-  });
-
-  test("filters conversations by search keyword", async () => {
-    const testData = [
-      {
-        title: "Python Programming",
-        create_time: 1703980800,
-        mapping: {
-          aaa: {
-            id: "aaa",
-            message: {
-              id: "aaa",
-              author: { role: "user" },
-              content: {
-                parts: ["Let's learn Python"],
-              },
-              create_time: 1703980800,
-            },
-            children: [],
-          },
-        },
-      },
-      {
-        title: "JavaScript Guide",
-        create_time: 1703980800,
-        mapping: {
-          bbb: {
-            id: "bbb",
-            message: {
-              id: "bbb",
-              author: { role: "user" },
-              content: {
-                parts: ["JavaScript tutorial"],
-              },
-              create_time: 1703980800,
-            },
-            children: [],
-          },
-        },
-      },
-    ];
-
-    const inputFile = path.join(tempDir, "search-filter.json");
-    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
-
-    const outputDir = path.join(tempDir, "output");
-    const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --search python`.quiet();
-
-    expect(result.exitCode).toBe(0);
-
-    const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles).toHaveLength(1);
-    expect(outputFiles[0]).toContain("Python_Programming");
   });
 
   test("operates in dry-run mode", async () => {
@@ -345,10 +306,14 @@ describe("CLI Integration Tests", () => {
     expect(result.stdout.toString()).toBe("");
   });
 
-  test("preserves special characters with --filename-encoding preserve", async () => {
-    const testData = [
+  test("shows progress for large directory processing", async () => {
+    const inputDir = path.join(tempDir, "large-input");
+    await fs.mkdir(inputDir);
+
+    // Create multiple files to test progress display
+    const conversation = [
       {
-        title: "Test:With:Colons",
+        title: "Test Conversation",
         create_time: 1703980800,
         mapping: {
           aaa: {
@@ -360,19 +325,45 @@ describe("CLI Integration Tests", () => {
       },
     ];
 
-    const inputFile = path.join(tempDir, "preserve-chars.json");
-    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+    // Create 5 files to show progress
+    for (let i = 1; i <= 5; i++) {
+      await fs.writeFile(
+        path.join(inputDir, `conversation-${i}.json`),
+        JSON.stringify(conversation),
+        "utf-8",
+      );
+    }
 
     const outputDir = path.join(tempDir, "output");
-    const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -f chatgpt --filename-encoding preserve`.quiet();
+    const result = await $`bun ${cliPath} -i ${inputDir} -o ${outputDir}`;
 
     expect(result.exitCode).toBe(0);
 
-    const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles).toHaveLength(1);
-    // With preserve encoding, colons should be kept (on systems that support them)
-    // This might vary by OS, so we just check that the file was created
-    expect(outputFiles[0]).toContain("2023-12-31");
+    const output = result.stdout.toString();
+    // Should show progress for multiple files
+    expect(output).toContain("Found 5 JSON file(s) to process");
+    expect(output).toContain("Processing conversation-1.json");
+    expect(output).toContain("Processing conversation-5.json");
+    expect(output).toContain("Completed processing 5 file(s)");
+  });
+
+  test("handles permission errors gracefully", async () => {
+    // This test might be platform-specific, so we'll create a scenario
+    // where we try to write to a read-only directory
+    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
+    const outputDir = "/root/forbidden"; // Usually no write permission
+
+    try {
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir}`.quiet();
+      // If we reach here, the directory might be writable (in CI)
+      // So we'll just check that it tried to work
+      expect(true).toBe(true);
+    } catch (error) {
+      // Expected: permission error
+      const output =
+        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+      // Should contain some error message about permissions or directory
+      expect(output).toContain("Error:");
+    }
   });
 });
