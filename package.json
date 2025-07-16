@@ -81,8 +81,8 @@
     "release:it": "release-it",
     "release:it:dry-run": "release-it --dry-run",
     "release:please:dry-run": "bunx release-please release-pr --token=$(gh auth token) --repo-url=sugurutakahashi-1234/ai-chat-md-export --debug --dry-run",
-    "example:chatgpt": "bun bin/ai-chat-md-export.js -i input/chatgpt-conversations.json -o output/chatgpt -f chatgpt",
-    "example:claude": "bun bin/ai-chat-md-export.js -i input/claude-conversations.json -o output/claude -f claude",
+    "example:chatgpt": "bun bin/ai-chat-md-export.js -i sandbox/chatgpt/chatgpt-conversations.json -o sandbox/chatgpt/output -f chatgpt",
+    "example:claude": "bun bin/ai-chat-md-export.js -i sandbox/claude/claude-conversations.json -o sandbox/claude/output -f claude",
     "example:all": "bun run example:chatgpt && bun run example:claude"
   },
   "dependencies": {
@@ -101,7 +101,7 @@
     "@types/node": "24.0.14",
     "husky": "9.1.7",
     "knip": "5.61.3",
-    "release-it": "19.0.3",
+    "release-it": "19.0.4",
     "typescript": "5.8.3"
   }
 }

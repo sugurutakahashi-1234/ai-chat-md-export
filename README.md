@@ -13,7 +13,7 @@
 
 Convert ChatGPT and Claude chat history to readable Markdown files
 
-[Japanese](README.ja.md)
+[English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
 
 ## Quick Start
 
@@ -41,19 +41,73 @@ Running the command above will generate files like:
 
 Each file contains a nicely formatted conversation with timestamps, user/assistant markers, and preserved formatting.
 
-## Installation
+## What You'll Get
 
-### npm
+Transform complex JSON exports into clean, readable Markdown:
 
-```bash
-npm install -g ai-chat-md-export
+### Input (conversations.json from ChatGPT)
+```json
+{
+  "title": "Hello World",
+  "create_time": 1736899200,
+  "mapping": {
+    "msg-1": {
+      "message": {
+        "author": { "role": "user" },
+        "content": {
+          "parts": ["Hello! How are you?"]
+        }
+      }
+    },
+    "msg-2": {
+      "message": {
+        "author": { "role": "assistant" },
+        "content": {
+          "parts": ["Hi there! I'm doing well, thank you for asking. How can I help you today?"]
+        }
+      }
+    }
+  }
+}
 ```
+
+### → Output (2025-01-15_Hello_World.md)
+```markdown
+# Hello World
+Date: 2025-01-15 18:00:00 +09:00
+
+---
+
+## 👤 User
+Date: 2025-01-15 18:00:00 +09:00
+
+Hello! How are you?
+
+---
+
+## 🤖 Assistant
+Date: 2025-01-15 18:00:10 +09:00
+
+Hi there! I'm doing well, thank you for asking. How can I help you today?
+
+---
+```
+
+✨ **Features**: Clean formatting • Timestamps • Visual markers • Preserves code blocks & formatting
+
+## Installation
 
 ### Homebrew (macOS/Linux)
 
 ```bash
 brew tap sugurutakahashi-1234/ai-chat-md-export
 brew install ai-chat-md-export
+```
+
+### npm
+
+```bash
+npm install -g ai-chat-md-export
 ```
 
 ## What is ai-chat-md-export?
@@ -66,6 +120,19 @@ brew install ai-chat-md-export
 - **Readable formatting** for easy viewing in any Markdown editor
 - **Search and organize** your chat history with standard tools
 - **Share or version control** conversations as needed
+
+## Privacy & Security
+
+### 🔒 Offline-First Design
+
+This tool is designed to operate **locally on your device** without requiring internet connectivity:
+
+- **No network requests**: The tool itself does not make any external API calls or network connections
+- **Local processing only**: All conversion operations are performed entirely on your machine
+- **No data collection**: We don't include any analytics, telemetry, or tracking functionality
+- **Your data stays local**: Conversations are read from and written to your local filesystem only
+
+Ideal for organizations and individuals who prioritize data privacy. You can review our [source code](https://github.com/sugurutakahashi-1234/ai-chat-md-export) to verify that the tool contains no network-related code. Note that while our code doesn't make external connections, we cannot guarantee the behavior of all dependencies.
 
 ## Usage
 
@@ -231,9 +298,37 @@ If some conversations don't appear in the output:
 - Verify the JSON structure matches ChatGPT or Claude format
 - Use `--dry-run` to preview which conversations will be converted
 
+## Roadmap
+
+### ✅ Completed Features
+
+- [x] ChatGPT conversation export support
+- [x] Claude conversation export support
+- [x] Auto-format detection (`--format auto`)
+- [x] Date range filtering (`--since`, `--until`)
+- [x] Keyword search functionality (`--search`)
+- [x] Timezone-aware timestamp conversion
+- [x] Dry-run mode for preview (`--dry-run`)
+- [x] npm package distribution
+- [x] Homebrew formula support
+
+### 🚧 In Progress
+
+- [ ] **Export to JSON format** - Structured JSON output option
+- [ ] **Progress bar** - Visual feedback for long operations
+
+### 📋 Planned Features
+
+- [ ] **Gemini support** - Export conversations from Google Gemini
+- [ ] **Export statistics** - Display conversation count, message count, date range
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## Contact
+
+If you have any questions or feedback, you can reach me on X/Twitter: [@ikuraikuraaaaaa](https://x.com/ikuraikuraaaaaa)
 
 ## License
 

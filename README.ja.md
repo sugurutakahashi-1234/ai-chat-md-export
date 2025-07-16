@@ -13,6 +13,8 @@
 
 ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに変換
 
+[English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
+
 ## Quick Start
 
 ```bash
@@ -39,19 +41,73 @@ ai-chat-md-export -i conversations.json
 
 各ファイルには、タイムスタンプ、ユーザー/アシスタントマーカー、整形された会話が含まれています。
 
-## Installation
+## What You'll Get
 
-### npm
+複雑なJSONエクスポートをクリーンで読みやすいMarkdownに変換：
 
-```bash
-npm install -g ai-chat-md-export
+### Input (ChatGPTからのconversations.json)
+```json
+{
+  "title": "Hello World",
+  "create_time": 1736899200,
+  "mapping": {
+    "msg-1": {
+      "message": {
+        "author": { "role": "user" },
+        "content": {
+          "parts": ["こんにちは！元気ですか？"]
+        }
+      }
+    },
+    "msg-2": {
+      "message": {
+        "author": { "role": "assistant" },
+        "content": {
+          "parts": ["こんにちは！元気です、ありがとうございます。今日はどのようなお手伝いができますか？"]
+        }
+      }
+    }
+  }
+}
 ```
+
+### → Output (2025-01-15_Hello_World.md)
+```markdown
+# Hello World
+Date: 2025-01-15 18:00:00 +09:00
+
+---
+
+## 👤 User
+Date: 2025-01-15 18:00:00 +09:00
+
+こんにちは！元気ですか？
+
+---
+
+## 🤖 Assistant
+Date: 2025-01-15 18:00:10 +09:00
+
+こんにちは！元気です、ありがとうございます。今日はどのようなお手伝いができますか？
+
+---
+```
+
+✨ **特徴**: クリーンなフォーマット • タイムスタンプ • 視覚的マーカー • コードブロックと書式を保持
+
+## Installation
 
 ### Homebrew (macOS/Linux)
 
 ```bash
 brew tap sugurutakahashi-1234/ai-chat-md-export
 brew install ai-chat-md-export
+```
+
+### npm
+
+```bash
+npm install -g ai-chat-md-export
 ```
 
 ## What is ai-chat-md-export?
@@ -64,6 +120,19 @@ brew install ai-chat-md-export
 - **読みやすいフォーマット**: どんなMarkdownエディタでも快適に閲覧
 - **履歴の検索・整理**: 標準的なツールでチャット履歴を検索・管理
 - **共有やバージョン管理**: 必要に応じて会話を共有・Gitで管理
+
+## Privacy & Security
+
+### 🔒 Offline-First Design
+
+このツールは**インターネット接続を必要とせず**、お使いのデバイス上でローカルに動作するよう設計されています：
+
+- **ネットワークリクエストなし**: ツール自体は外部APIコールやネットワーク接続を行いません
+- **ローカル処理のみ**: すべての変換処理はお使いのマシン上で完結します
+- **データ収集なし**: 分析、テレメトリ、トラッキング機能は一切含まれていません
+- **データはローカルに保持**: 会話データはローカルファイルシステムからの読み込みと書き込みのみ
+
+データプライバシーを重視する組織や個人に適しています。[ソースコード](https://github.com/sugurutakahashi-1234/ai-chat-md-export)をご確認いただければ、ネットワーク関連のコードが含まれていないことを検証できます。なお、私たちのコードは外部接続を行いませんが、すべての依存関係の動作を保証することはできません。
 
 ## Usage
 
@@ -227,9 +296,37 @@ ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
 - JSON構造がChatGPTまたはClaudeの形式と一致することを確認
 - `--dry-run` を使用してどの会話が変換されるかをプレビュー
 
+## Roadmap
+
+### ✅ Completed Features
+
+- [x] ChatGPT会話エクスポート対応
+- [x] Claude会話エクスポート対応
+- [x] 自動フォーマット検出 (`--format auto`)
+- [x] 日付範囲フィルタリング (`--since`, `--until`)
+- [x] キーワード検索機能 (`--search`)
+- [x] タイムゾーン対応のタイムスタンプ変換
+- [x] ドライランモード (`--dry-run`)
+- [x] npmパッケージ配布
+- [x] Homebrewサポート
+
+### 🚧 In Progress
+
+- [ ] **JSON形式へのエクスポート** - 構造化されたJSON出力オプション
+- [ ] **プログレスバー** - 長時間処理時の視覚的フィードバック
+
+### 📋 Planned Features
+
+- [ ] **Geminiサポート** - Google Geminiからの会話エクスポート
+- [ ] **エクスポート統計** - 会話数、メッセージ数、期間などの表示
+
 ## Contributing
 
 [CONTRIBUTING.md](CONTRIBUTING.md)を参照してください
+
+## Contact
+
+ご質問やフィードバックがございましたら、X/Twitterでお気軽にご連絡ください: [@ikuraikuraaaaaa](https://x.com/ikuraikuraaaaaa)
 
 ## License
 
