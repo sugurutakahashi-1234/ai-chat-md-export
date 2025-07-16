@@ -67,6 +67,19 @@ brew install ai-chat-md-export
 - **Search and organize** your chat history with standard tools
 - **Share or version control** conversations as needed
 
+## Privacy & Security
+
+### 🔒 Offline-First Design
+
+This tool is designed to operate **locally on your device** without requiring internet connectivity:
+
+- **No network requests**: The tool itself does not make any external API calls or network connections
+- **Local processing only**: All conversion operations are performed entirely on your machine
+- **No data collection**: We don't include any analytics, telemetry, or tracking functionality
+- **Your data stays local**: Conversations are read from and written to your local filesystem only
+
+Ideal for organizations and individuals who prioritize data privacy. You can review our [source code](https://github.com/sugurutakahashi-1234/ai-chat-md-export) to verify that the tool contains no network-related code. Note that while our code doesn't make external connections, we cannot guarantee the behavior of all dependencies.
+
 ## Usage
 
 ### Basic usage
