@@ -45,8 +45,10 @@ describe("CLI Integration Tests", () => {
     } catch (error) {
       const output =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(output).toContain("required option");
-      expect(output).toContain("-i, --input");
+      expect(output).toContain("Error: Input file is required.");
+      expect(output).toContain(
+        "Try 'ai-chat-md-export --help' for usage information.",
+      );
     }
   });
 
@@ -208,5 +210,169 @@ describe("CLI Integration Tests", () => {
     expect(outputFiles).toHaveLength(1);
     // Should produce sanitized filename with standard encoding
     expect(outputFiles[0]).toBe("2023-12-31_Test_With_Special_Characters_.md");
+  });
+
+  test("shows version with --version flag", async () => {
+    const result = await $`bun ${cliPath} --version`.quiet();
+    const output = result.text().trim();
+
+    expect(result.exitCode).toBe(0);
+    expect(output).toMatch(/^\d+\.\d+\.\d+$/); // Matches version format
+  });
+
+  test("filters conversations by date with --since and --until", async () => {
+    // Create test files with different dates
+    const testData = [
+      {
+        title: "Old Conversation",
+        create_time: 1672531200, // 2023-01-01
+        mapping: {
+          aaa: {
+            id: "aaa",
+            message: null,
+            children: [],
+          },
+        },
+      },
+      {
+        title: "Recent Conversation",
+        create_time: 1703980800, // 2023-12-31
+        mapping: {
+          bbb: {
+            id: "bbb",
+            message: null,
+            children: [],
+          },
+        },
+      },
+    ];
+
+    const inputFile = path.join(tempDir, "date-filter.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
+    const outputDir = path.join(tempDir, "output");
+    const result =
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --since 2023-06-01 --until 2023-12-31`.quiet();
+
+    expect(result.exitCode).toBe(0);
+
+    const outputFiles = await fs.readdir(outputDir);
+    expect(outputFiles).toHaveLength(1);
+    expect(outputFiles[0]).toContain("Recent_Conversation");
+  });
+
+  test("filters conversations by search keyword", async () => {
+    const testData = [
+      {
+        title: "Python Programming",
+        create_time: 1703980800,
+        mapping: {
+          aaa: {
+            id: "aaa",
+            message: {
+              id: "aaa",
+              author: { role: "user" },
+              content: {
+                parts: ["Let's learn Python"],
+              },
+              create_time: 1703980800,
+            },
+            children: [],
+          },
+        },
+      },
+      {
+        title: "JavaScript Guide",
+        create_time: 1703980800,
+        mapping: {
+          bbb: {
+            id: "bbb",
+            message: {
+              id: "bbb",
+              author: { role: "user" },
+              content: {
+                parts: ["JavaScript tutorial"],
+              },
+              create_time: 1703980800,
+            },
+            children: [],
+          },
+        },
+      },
+    ];
+
+    const inputFile = path.join(tempDir, "search-filter.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
+    const outputDir = path.join(tempDir, "output");
+    const result =
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --search python`.quiet();
+
+    expect(result.exitCode).toBe(0);
+
+    const outputFiles = await fs.readdir(outputDir);
+    expect(outputFiles).toHaveLength(1);
+    expect(outputFiles[0]).toContain("Python_Programming");
+  });
+
+  test("operates in dry-run mode", async () => {
+    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
+    const outputDir = path.join(tempDir, "output");
+
+    const result =
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --dry-run`.quiet();
+
+    expect(result.exitCode).toBe(0);
+
+    // Output directory should not be created in dry-run mode
+    const dirExists = await fs
+      .access(outputDir)
+      .then(() => true)
+      .catch(() => false);
+    expect(dirExists).toBe(false);
+  });
+
+  test("operates in quiet mode", async () => {
+    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
+    const outputDir = path.join(tempDir, "output");
+
+    // Capture stdout to verify quiet mode
+    const result =
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --quiet`;
+
+    expect(result.exitCode).toBe(0);
+    // In quiet mode, there should be no output
+    expect(result.stdout.toString()).toBe("");
+  });
+
+  test("preserves special characters with --filename-encoding preserve", async () => {
+    const testData = [
+      {
+        title: "Test:With:Colons",
+        create_time: 1703980800,
+        mapping: {
+          aaa: {
+            id: "aaa",
+            message: null,
+            children: [],
+          },
+        },
+      },
+    ];
+
+    const inputFile = path.join(tempDir, "preserve-chars.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
+    const outputDir = path.join(tempDir, "output");
+    const result =
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -f chatgpt --filename-encoding preserve`.quiet();
+
+    expect(result.exitCode).toBe(0);
+
+    const outputFiles = await fs.readdir(outputDir);
+    expect(outputFiles).toHaveLength(1);
+    // With preserve encoding, colons should be kept (on systems that support them)
+    // This might vary by OS, so we just check that the file was created
+    expect(outputFiles[0]).toContain("2023-12-31");
   });
 });

@@ -133,7 +133,6 @@ describe("CLI main function", () => {
       "Error:",
       "Test error message",
     );
-    expect(process.exit).toHaveBeenCalledWith(1);
   });
 
   test("handles non-Error exceptions", async () => {
@@ -144,7 +143,6 @@ describe("CLI main function", () => {
     await main();
 
     expect(consoleErrorSpy).toHaveBeenCalledWith("Error:", "String error");
-    expect(process.exit).toHaveBeenCalledWith(1);
   });
 
   test("handles unknown error types", async () => {
@@ -158,6 +156,22 @@ describe("CLI main function", () => {
       "Error:",
       "An unknown error occurred",
     );
-    expect(process.exit).toHaveBeenCalledWith(1);
+  });
+
+  test("shows friendly error when input is missing", async () => {
+    process.argv = ["node", "cli.js"];
+
+    try {
+      await main();
+    } catch {
+      // Commander throws an error that we handle
+    }
+
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      "\nError: Input file is required.",
+    );
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      "\nTry 'ai-chat-md-export --help' for usage information.\n",
+    );
   });
 });

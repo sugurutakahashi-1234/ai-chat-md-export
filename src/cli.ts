@@ -50,6 +50,30 @@ export async function main(): Promise<void> {
 For more options and detailed documentation:
   https://www.npmjs.com/package/ai-chat-md-export`,
     )
+    .exitOverride((err) => {
+      if (err.code === "commander.missingMandatoryOptionValue") {
+        console.error("\nError: Input file is required.");
+        console.error(
+          "\nTry 'ai-chat-md-export --help' for usage information.\n",
+        );
+        process.exit(1);
+      }
+      if (err.code === "commander.helpDisplayed") {
+        process.exit(0);
+      }
+      if (err.code === "commander.version") {
+        process.exit(0);
+      }
+      throw err;
+    })
+    .configureOutput({
+      outputError: (str, write) => {
+        // Suppress the default commander error output for missing mandatory options
+        if (!str.includes("required option")) {
+          write(str);
+        }
+      },
+    })
     .parse();
 
   try {
