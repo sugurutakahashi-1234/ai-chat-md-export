@@ -244,6 +244,30 @@ If some conversations don't appear in the output:
 - Verify the JSON structure matches ChatGPT or Claude format
 - Use `--dry-run` to preview which conversations will be converted
 
+## Roadmap
+
+### ✅ Completed Features
+
+- [x] ChatGPT conversation export support
+- [x] Claude conversation export support
+- [x] Auto-format detection (`--format auto`)
+- [x] Date range filtering (`--since`, `--until`)
+- [x] Keyword search functionality (`--search`)
+- [x] Timezone-aware timestamp conversion
+- [x] Dry-run mode for preview (`--dry-run`)
+- [x] npm package distribution
+- [x] Homebrew formula support
+
+### 🚧 In Progress
+
+- [ ] **Export to JSON format** - Structured JSON output option
+- [ ] **Progress bar** - Visual feedback for long operations
+
+### 📋 Planned Features
+
+- [ ] **Gemini support** - Export conversations from Google Gemini
+- [ ] **Export statistics** - Display conversation count, message count, date range
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)

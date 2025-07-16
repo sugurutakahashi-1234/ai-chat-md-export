@@ -65,9 +65,9 @@ brew install ai-chat-md-export
 - **履歴の検索・整理**: 標準的なツールでチャット履歴を検索・管理
 - **共有やバージョン管理**: 必要に応じて会話を共有・Gitで管理
 
-## プライバシーとセキュリティ
+## Privacy & Security
 
-### 🔒 オフラインファースト設計
+### 🔒 Offline-First Design
 
 このツールは**インターネット接続を必要とせず**、お使いのデバイス上でローカルに動作するよう設計されています：
 
@@ -239,6 +239,30 @@ ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
 - エクスポート日を確認 - エクスポート日までの会話のみが含まれます
 - JSON構造がChatGPTまたはClaudeの形式と一致することを確認
 - `--dry-run` を使用してどの会話が変換されるかをプレビュー
+
+## Roadmap
+
+### ✅ Completed Features
+
+- [x] ChatGPT会話エクスポート対応
+- [x] Claude会話エクスポート対応
+- [x] 自動フォーマット検出 (`--format auto`)
+- [x] 日付範囲フィルタリング (`--since`, `--until`)
+- [x] キーワード検索機能 (`--search`)
+- [x] タイムゾーン対応のタイムスタンプ変換
+- [x] ドライランモード (`--dry-run`)
+- [x] npmパッケージ配布
+- [x] Homebrewサポート
+
+### 🚧 In Progress
+
+- [ ] **JSON形式へのエクスポート** - 構造化されたJSON出力オプション
+- [ ] **プログレスバー** - 長時間処理時の視覚的フィードバック
+
+### 📋 Planned Features
+
+- [ ] **Geminiサポート** - Google Geminiからの会話エクスポート
+- [ ] **エクスポート統計** - 会話数、メッセージ数、期間などの表示
 
 ## Contributing
 
