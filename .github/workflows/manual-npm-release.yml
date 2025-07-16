@@ -102,3 +102,20 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           bun run release -- ${{ steps.set_version.outputs.VERSION }} --ci --no-hooks
+
+      - name: Get created tag
+        id: get_tag
+        run: |
+          # Get the version from package.json (which release-it just updated)
+          VERSION=$(jq -r .version package.json)
+          TAG_NAME="v${VERSION}"
+          echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
+          echo "Created tag: ${TAG_NAME}"
+
+      - name: Trigger Homebrew Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🍺 Triggering Homebrew release for tag ${{ steps.get_tag.outputs.tag_name }}"
+          gh workflow run cd-homebrew-release.yml \
+            -f tag_name=${{ steps.get_tag.outputs.tag_name }}

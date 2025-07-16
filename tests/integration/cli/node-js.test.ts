@@ -6,6 +6,20 @@
  *
  * Verifies: Node.js compatibility, module resolution, CLI functionality
  * Requires: `bun run build:npm` to generate lib/ directory
+ *
+ * IMPORTANT TEST DESIGN PRINCIPLES:
+ *
+ * This file tests CROSS-RUNTIME COMPATIBILITY only. It ensures that:
+ * - The compiled JavaScript runs correctly in Node.js
+ * - Basic CLI functionality works across runtimes
+ * - No Bun-specific APIs are accidentally used
+ *
+ * DO NOT add detailed functional tests here. Those belong in:
+ * - bin.test.ts for comprehensive CLI integration tests
+ * - Unit tests for specific component logic
+ *
+ * KEEP THESE TESTS MINIMAL - just enough to verify Node.js compatibility.
+ * If a test passes in bin.test.ts but fails here, it's likely a runtime issue.
  */
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";

@@ -63,3 +63,22 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish
+
+      - name: Get created tag
+        if: ${{ steps.release.outputs.release_created }}
+        id: get_tag
+        run: |
+          # Get the version from package.json (which release-please just updated)
+          VERSION=$(jq -r .version package.json)
+          TAG_NAME="v${VERSION}"
+          echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
+          echo "Created tag: ${TAG_NAME}"
+
+      - name: Trigger Homebrew Release
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🍺 Triggering Homebrew release for tag ${{ steps.get_tag.outputs.tag_name }}"
+          gh workflow run cd-homebrew-release.yml \
+            -f tag_name=${{ steps.get_tag.outputs.tag_name }}

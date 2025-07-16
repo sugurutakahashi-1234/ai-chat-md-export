@@ -74,6 +74,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: stable
+          cache: false  # Disable Go module caching since this is not a Go project
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -81,7 +82,7 @@ jobs:
       - name: Run GoReleaser (snapshot)
         uses: goreleaser/goreleaser-action@v6
         with:
-          version: 'latest'
+          version: '~> v2'
           args: build --snapshot --clean --skip=validate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -109,10 +110,12 @@ jobs:
         # Test all supported platforms natively
         # - ubuntu-latest: Linux x64
         # - ubuntu-24.04-arm: Linux ARM64 (native ARM64 runner, available since 2025-01-16, public repositories only)
-        # - macos-13: macOS Intel
-        # - macos-latest: macOS Apple Silicon (M1/M2)
+        # - macos-13: macOS Intel (commented out due to high runner costs)
+        # - macos-latest: macOS Apple Silicon (M1/M2) (commented out due to high runner costs)
         # - windows-latest: Windows x64
-        os: [ubuntu-latest, ubuntu-24.04-arm, macos-13, macos-latest, windows-latest]
+        # Note: macOS runners are significantly more expensive than Linux/Windows runners
+        # macOS costs 10x more than Linux runners, so they are disabled for cost savings
+        os: [ubuntu-latest, ubuntu-24.04-arm, windows-latest] # macos-13, macos-latest commented out for cost reasons
     runs-on: ${{ matrix.os }}
     timeout-minutes: 5
     
@@ -133,4 +136,3 @@ jobs:
 
       - name: Test binary
         run: bun scripts/test-binary.js
-

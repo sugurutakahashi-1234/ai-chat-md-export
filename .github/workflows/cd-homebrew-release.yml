@@ -3,6 +3,12 @@ name: Homebrew Release
 on:
   release:
     types: [published]  # Triggered when release-please publishes a release
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release tag to build (e.g., v1.2.3)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -14,11 +20,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Validate tag format
+        if: github.event_name == 'workflow_dispatch'
+        id: validate_tag
+        uses: matt-usurp/validate-semver@v2
+        with:
+          version: ${{ github.event.inputs.tag_name }}
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           fetch-tags: true
+          ref: ${{ github.event.inputs.tag_name || github.ref }}
+
+      - name: Check if tag exists
+        if: github.event_name == 'workflow_dispatch'
+        id: check_tag
+        uses: mukunku/tag-exists-action@v1.6.0
+        with:
+          tag: v${{ steps.validate_tag.outputs.version }}
+
+      - name: Fail if tag not found
+        if: github.event_name == 'workflow_dispatch' && steps.check_tag.outputs.exists == 'false'
+        run: |
+          echo "Error: Tag v${{ steps.validate_tag.outputs.version }} does not exist"
+          exit 1
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -29,11 +56,12 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: stable
+          cache: false  # Disable Go module caching since this is not a Go project
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
-          version: 'latest'
+          version: '~> v2'
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
