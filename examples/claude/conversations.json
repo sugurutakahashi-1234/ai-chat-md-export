@@ -1,0 +1,66 @@
+[
+  {
+    "uuid": "conv-weather-123",
+    "name": "Weather Chat",
+    "created_at": "2025-01-14T09:30:00.000Z",
+    "updated_at": "2025-01-14T09:35:00.000Z",
+    "chat_messages": [
+      {
+        "uuid": "msg-w1",
+        "text": "What's the weather like where you are?",
+        "sender": "human",
+        "created_at": "2025-01-14T09:30:00.000Z"
+      },
+      {
+        "uuid": "msg-w2",
+        "text": "I don't have access to real-time weather data or location information, so I can't tell you the current weather conditions. However, I'd be happy to help you find weather information if you tell me which location you're interested in! You could check weather websites like weather.com or weather apps for current conditions.",
+        "sender": "assistant",
+        "created_at": "2025-01-14T09:30:15.000Z"
+      },
+      {
+        "uuid": "msg-w3",
+        "text": "Oh right, that makes sense. Do you have any tips for checking the weather forecast?",
+        "sender": "human",
+        "created_at": "2025-01-14T09:32:00.000Z"
+      },
+      {
+        "uuid": "msg-w4",
+        "text": "Here are some reliable ways to check weather forecasts:\n\n1. **Weather Apps**: Apps like Weather.com, AccuWeather, or your phone's built-in weather app provide detailed forecasts\n\n2. **National Weather Service**: For US locations, weather.gov offers official government forecasts\n\n3. **Google Search**: Simply searching \"weather [your city]\" gives you a quick forecast\n\n4. **Local News**: TV and radio stations often have dedicated meteorologists for your area\n\n5. **Extended Forecasts**: For planning ahead, look for 7-10 day forecasts, but remember they become less accurate beyond 3-5 days\n\nPro tip: Check multiple sources for important weather-dependent plans!",
+        "sender": "assistant",
+        "created_at": "2025-01-14T09:32:30.000Z"
+      }
+    ]
+  },
+  {
+    "uuid": "conv-recipe-456",
+    "name": "Recipe Help",
+    "created_at": "2025-01-16T15:00:00.000Z",
+    "updated_at": "2025-01-16T15:10:00.000Z",
+    "chat_messages": [
+      {
+        "uuid": "msg-r1",
+        "text": "I have eggs, cheese, and spinach. What can I make for breakfast?",
+        "sender": "human",
+        "created_at": "2025-01-16T15:00:00.000Z"
+      },
+      {
+        "uuid": "msg-r2",
+        "text": "Great ingredients! Here are some delicious breakfast options:\n\n1. **Spinach and Cheese Omelet**:\n   - Beat 2-3 eggs\n   - Sauté spinach briefly\n   - Pour eggs in pan, add spinach and cheese\n   - Fold in half when set\n\n2. **Scrambled Eggs with Spinach**:\n   - Scramble eggs with a splash of milk\n   - Add torn spinach leaves while cooking\n   - Top with cheese at the end\n\n3. **Breakfast Frittata**:\n   - Mix eggs with cheese and spinach\n   - Cook in oven-safe pan\n   - Finish under broiler for 2-3 minutes\n\n4. **Egg Muffins**:\n   - Mix all ingredients\n   - Pour into muffin tin\n   - Bake at 350°F for 15-20 minutes\n\nAll of these are nutritious and can be made in under 20 minutes!",
+        "sender": "assistant",
+        "created_at": "2025-01-16T15:00:20.000Z"
+      },
+      {
+        "uuid": "msg-r3",
+        "text": "The omelet sounds perfect! Any tips for making it fluffy?",
+        "sender": "human",
+        "created_at": "2025-01-16T15:05:00.000Z"
+      },
+      {
+        "uuid": "msg-r4",
+        "text": "Absolutely! Here are my best tips for a fluffy omelet:\n\n1. **Room temperature eggs**: Take them out 10 minutes before cooking\n\n2. **Add liquid**: 1 tablespoon of milk or water per 2 eggs\n\n3. **Whisk thoroughly**: Beat until you see bubbles - this incorporates air\n\n4. **Medium-low heat**: Too high heat makes eggs tough\n\n5. **Butter the pan well**: Use about 1 tablespoon for richness\n\n6. **Don't overstir**: Once eggs are in the pan, gently push cooked edges toward center\n\n7. **Remove from heat early**: The omelet continues cooking from residual heat\n\n**Pro tip**: Some chefs add a tiny pinch of baking powder for extra fluffiness!\n\nThe key is gentle heat and not overworking the eggs. Good luck with your omelet!",
+        "sender": "assistant",
+        "created_at": "2025-01-16T15:05:45.000Z"
+      }
+    ]
+  }
+]

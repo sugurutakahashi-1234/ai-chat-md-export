@@ -80,8 +80,8 @@
     "clean:build": "bun run clean:install && bun run ci",
     "release:it:dry-run": "release-it --dry-run",
     "release:please:dry-run": "bunx release-please release-pr --token=$(gh auth token) --repo-url=sugurutakahashi-1234/ai-chat-md-export --debug --dry-run",
-    "example:chatgpt": "bun bin/ai-chat-md-export.js -i input/chatgpt/conversations.json -o output/chatgpt -f chatgpt",
-    "example:claude": "bun bin/ai-chat-md-export.js -i input/claude/conversations.json -o output/claude -f claude",
+    "example:chatgpt": "bun bin/ai-chat-md-export.js -i input/chatgpt-conversations.json -o output/chatgpt -f chatgpt",
+    "example:claude": "bun bin/ai-chat-md-export.js -i input/claude-conversations.json -o output/claude -f claude",
     "example:all": "bun run example:chatgpt && bun run example:claude"
   },
   "dependencies": {

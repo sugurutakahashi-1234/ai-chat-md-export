@@ -4,7 +4,6 @@ export function convertToMarkdown(conversation: Conversation): string {
   const lines: string[] = [];
 
   lines.push(`# ${conversation.title}`);
-  lines.push("");
   lines.push(`Date: ${formatTimestamp(conversation.date)}`);
   lines.push("");
   lines.push("---");
