@@ -268,6 +268,10 @@ ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
 
 [CONTRIBUTING.md](CONTRIBUTING.md)を参照してください
 
+## Contact
+
+ご質問やフィードバックがございましたら、X/Twitterでお気軽にご連絡ください: [@ikuraikuraaaaaa](https://x.com/ikuraikuraaaaaa)
+
 ## License
 
 MIT © [Suguru Takahashi](https://github.com/sugurutakahashi-1234)

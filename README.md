@@ -272,6 +272,10 @@ If some conversations don't appear in the output:
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
 
+## Contact
+
+If you have any questions or feedback, you can reach me on X/Twitter: [@ikuraikuraaaaaa](https://x.com/ikuraikuraaaaaa)
+
 ## License
 
 MIT © [Suguru Takahashi](https://github.com/sugurutakahashi-1234)
