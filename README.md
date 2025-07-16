@@ -14,7 +14,7 @@
 
 Convert ChatGPT and Claude chat history to Markdown
 
-[日本語版 README](README.ja.md)
+[Japanese](README.ja.md)
 
 ## Features
 

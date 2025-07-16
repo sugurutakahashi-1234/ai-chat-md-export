@@ -1,6 +1,6 @@
 # Contributing
 
-[日本語版](CONTRIBUTING.ja.md)
+[Japanese](CONTRIBUTING.ja.md)
 
 ## Development Setup
 
