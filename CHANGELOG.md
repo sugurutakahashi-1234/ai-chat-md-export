@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.6.1](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.6.0...v0.6.1) (2025-07-16)
+
+
+### 🐛 Bug Fixes
+
+* disable husky hooks in CI/CD environments for release workflows ([#30](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/30)) ([e44af61](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/e44af614939ae0dbf257c7e2538018403d0f3d94))
+* enable Homebrew releases from release-please and manual workflows ([#27](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/27)) ([8c0b888](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/8c0b888c7dff1db4e6b4c97793e98359d9089c33))
+* improve release workflow and documentation ([#29](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/29)) ([7698b39](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/7698b395e63b1d746c2a44a844fe45c29c89c01e))
+
 ## [0.6.0](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.5.0...v0.6.0) (2025-07-15)
 
 
