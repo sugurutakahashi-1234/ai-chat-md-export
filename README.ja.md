@@ -8,7 +8,6 @@
 [![codecov](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export/graph/badge.svg?token=KPN7UZ7ATY)](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
-[![node](https://img.shields.io/node/v/ai-chat-md-export)](https://nodejs.org)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/ai-chat-md-export)](https://bundlephobia.com/package/ai-chat-md-export)
 [![Types](https://img.shields.io/npm/types/ai-chat-md-export)](https://www.npmjs.com/package/ai-chat-md-export)
 
@@ -29,7 +28,7 @@ ai-chat-md-export -i conversations.json
 
 これで会話が美しいMarkdownファイルになりました！
 
-### 出力例
+### Example Output
 
 上記のコマンドを実行すると、次のようなファイルが生成されます：
 
@@ -57,23 +56,14 @@ brew install ai-chat-md-export
 
 ## What is ai-chat-md-export?
 
-`ai-chat-md-export`は、AIチャットの会話履歴を整形されたMarkdownファイルに変換するコマンドラインツールです。
+`ai-chat-md-export`は、ChatGPTやClaudeの会話履歴を整理された読みやすいMarkdownファイルに変換するCLIツールです。
 
-### なぜこのツールが必要？
+### Key benefits
 
-- **会話の保存**: 貴重なAIとのやり取りが失われたり削除される前にエクスポート
-- **読みやすさの向上**: 任意のMarkdownリーダーで適切にフォーマットされた会話を閲覧
-- **簡単な検索**: テキストエディタやgrepでチャット履歴を検索可能
-- **バージョン管理**: Gitで変更を追跡し、会話を保存
-- **知識の共有**: 特定の会話を同僚と簡単に共有
-
-### 実際の使用例
-
-- **技術文書化**: 問題解決セッションをドキュメントに変換
-- **学習アーカイブ**: AIチュータリングセッションから個人的な知識ベースを構築
-- **ブログコンテンツ**: 興味深い議論をブログ記事の下書きに変換
-- **チームでの知識共有**: AI支援の調査をチームと共有
-- **プロンプトエンジニアリング**: 成功したプロンプトと応答を保存・分析
+- **AIチャットの保存**: 削除や消失前に大切な会話をエクスポート
+- **読みやすいフォーマット**: どんなMarkdownエディタでも快適に閲覧
+- **履歴の検索・整理**: 標準的なツールでチャット履歴を検索・管理
+- **共有やバージョン管理**: 必要に応じて会話を共有・Gitで管理
 
 ## Usage
 
@@ -115,17 +105,17 @@ ai-chat-md-export -i conversations.json --quiet
 
 ## Command-line Options
 
-| オプション | 説明 | デフォルト |
-| ---------- | ---- | ---------- |
-| `-i, --input <path>` | 入力ファイルまたはディレクトリ（必須） | - |
-| `-o, --output <path>` | 出力ディレクトリ | `.` |
-| `-f, --format <format>` | 入力フォーマット（`chatgpt`/`claude`/`auto`） | `auto` |
-| `--since <date>` | 開始日でフィルタ (YYYY-MM-DD) | - |
-| `--until <date>` | 終了日でフィルタ (YYYY-MM-DD) | - |
-| `--search <keyword>` | 会話内を検索 | - |
+| オプション                       | 説明                                                | デフォルト |
+| -------------------------------- | --------------------------------------------------- | ---------- |
+| `-i, --input <path>`             | 入力ファイルまたはディレクトリ（必須）              | -          |
+| `-o, --output <path>`            | 出力ディレクトリ                                    | `.`        |
+| `-f, --format <format>`          | 入力フォーマット（`chatgpt`/`claude`/`auto`）       | `auto`     |
+| `--since <date>`                 | 開始日でフィルタ (YYYY-MM-DD)                       | -          |
+| `--until <date>`                 | 終了日でフィルタ (YYYY-MM-DD)                       | -          |
+| `--search <keyword>`             | 会話内を検索                                        | -          |
 | `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`） | `standard` |
-| `-q, --quiet` | 進捗メッセージを抑制 | - |
-| `--dry-run` | ファイルを作成せずにプレビュー | - |
+| `-q, --quiet`                    | 進捗メッセージを抑制                                | -          |
+| `--dry-run`                      | ファイルを作成せずにプレビュー                      | -          |
 
 ## Getting conversations.json
 
@@ -164,7 +154,7 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 - **タイムスタンプ**: すべてのタイムスタンプをローカルタイムゾーンに変換
 - **クリーンな出力**: 明確なメッセージ区切りで読みやすいMarkdownを生成
 
-## 日付フィルタリングの詳細
+## Date Filtering Details
 
 `--since`と`--until`オプションは、会話が**開始された**日付に基づいてフィルタリングします（最終更新日ではありません）：
 
@@ -186,7 +176,7 @@ ai-chat-md-export -i data.json --since 2024-11-15
 ai-chat-md-export -i data.json --since 2024-06-01 --until 2024-06-01
 ```
 
-## 検索機能
+## Search Functionality
 
 `--search`オプションは強力なフィルタリング機能を提供します：
 
@@ -216,13 +206,13 @@ ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
 
 ## Troubleshooting
 
-### 大きなファイルの処理に時間がかかる
+### Large files taking too long to process
 このツールはファイルをバッチで処理します。非常に大きな会話履歴の場合：
 - `--since` と `--until` を使用して特定の日付範囲を処理
 - エクスポートを複数の小さなファイルに分割
 - `--search` を使用して関連する会話のみを抽出
 
-### 文字エンコーディングの問題
+### Character encoding issues
 出力に文字化けが表示される場合：
 - ターミナルがUTF-8エンコーディングをサポートしていることを確認
 - `conversations.json` ファイルが適切にエンコードされていることを確認
@@ -231,7 +221,7 @@ ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
 - `--filename-encoding standard`（デフォルト）: オペレーティングシステム間で最大の互換性を持つようにファイル名をサニタイズ
 - `--filename-encoding preserve`: 会話タイトルから元の文字を保持しますが、特殊文字を含む場合は一部のシステムで問題が発生する可能性があります
 
-### 会話が見つからない
+### Missing conversations
 一部の会話が出力に表示されない場合：
 - エクスポート日を確認 - エクスポート日までの会話のみが含まれます
 - JSON構造がChatGPTまたはClaudeの形式と一致することを確認
