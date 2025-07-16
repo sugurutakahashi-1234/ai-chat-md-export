@@ -41,19 +41,73 @@ Running the command above will generate files like:
 
 Each file contains a nicely formatted conversation with timestamps, user/assistant markers, and preserved formatting.
 
-## Installation
+## What You'll Get
 
-### npm
+Transform complex JSON exports into clean, readable Markdown:
 
-```bash
-npm install -g ai-chat-md-export
+### Input (conversations.json from ChatGPT)
+```json
+{
+  "title": "Hello World",
+  "create_time": 1736899200,
+  "mapping": {
+    "msg-1": {
+      "message": {
+        "author": { "role": "user" },
+        "content": {
+          "parts": ["Hello! How are you?"]
+        }
+      }
+    },
+    "msg-2": {
+      "message": {
+        "author": { "role": "assistant" },
+        "content": {
+          "parts": ["Hi there! I'm doing well, thank you for asking. How can I help you today?"]
+        }
+      }
+    }
+  }
+}
 ```
+
+### → Output (2025-01-15_Hello_World.md)
+```markdown
+# Hello World
+Date: 2025-01-15 18:00:00 +09:00
+
+---
+
+## 👤 User
+Date: 2025-01-15 18:00:00 +09:00
+
+Hello! How are you?
+
+---
+
+## 🤖 Assistant
+Date: 2025-01-15 18:00:10 +09:00
+
+Hi there! I'm doing well, thank you for asking. How can I help you today?
+
+---
+```
+
+✨ **Features**: Clean formatting • Timestamps • Visual markers • Preserves code blocks & formatting
+
+## Installation
 
 ### Homebrew (macOS/Linux)
 
 ```bash
 brew tap sugurutakahashi-1234/ai-chat-md-export
 brew install ai-chat-md-export
+```
+
+### npm
+
+```bash
+npm install -g ai-chat-md-export
 ```
 
 ## What is ai-chat-md-export?

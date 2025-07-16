@@ -41,19 +41,73 @@ ai-chat-md-export -i conversations.json
 
 每个文件都包含格式优美的对话，带有时间戳、用户/助手标记，并保留了原始格式。
 
-## Installation
+## What You'll Get
 
-### npm
+将复杂的 JSON 导出转换为清晰、可读的 Markdown：
 
-```bash
-npm install -g ai-chat-md-export
+### Input (来自 ChatGPT 的 conversations.json)
+```json
+{
+  "title": "Hello World",
+  "create_time": 1736899200,
+  "mapping": {
+    "msg-1": {
+      "message": {
+        "author": { "role": "user" },
+        "content": {
+          "parts": ["你好！你好吗？"]
+        }
+      }
+    },
+    "msg-2": {
+      "message": {
+        "author": { "role": "assistant" },
+        "content": {
+          "parts": ["你好！我很好，谢谢您的问候。今天我能帮您做些什么？"]
+        }
+      }
+    }
+  }
+}
 ```
+
+### → Output (2025-01-15_Hello_World.md)
+```markdown
+# Hello World
+Date: 2025-01-15 18:00:00 +09:00
+
+---
+
+## 👤 User
+Date: 2025-01-15 18:00:00 +09:00
+
+你好！你好吗？
+
+---
+
+## 🤖 Assistant
+Date: 2025-01-15 18:00:10 +09:00
+
+你好！我很好，谢谢您的问候。今天我能帮您做些什么？
+
+---
+```
+
+✨ **特点**: 清晰的格式 • 时间戳 • 可视化标记 • 保留代码块和格式
+
+## Installation
 
 ### Homebrew (macOS/Linux)
 
 ```bash
 brew tap sugurutakahashi-1234/ai-chat-md-export
 brew install ai-chat-md-export
+```
+
+### npm
+
+```bash
+npm install -g ai-chat-md-export
 ```
 
 ## What is ai-chat-md-export?

@@ -41,19 +41,73 @@ ai-chat-md-export -i conversations.json
 
 各ファイルには、タイムスタンプ、ユーザー/アシスタントマーカー、整形された会話が含まれています。
 
-## Installation
+## What You'll Get
 
-### npm
+複雑なJSONエクスポートをクリーンで読みやすいMarkdownに変換：
 
-```bash
-npm install -g ai-chat-md-export
+### Input (ChatGPTからのconversations.json)
+```json
+{
+  "title": "Hello World",
+  "create_time": 1736899200,
+  "mapping": {
+    "msg-1": {
+      "message": {
+        "author": { "role": "user" },
+        "content": {
+          "parts": ["こんにちは！元気ですか？"]
+        }
+      }
+    },
+    "msg-2": {
+      "message": {
+        "author": { "role": "assistant" },
+        "content": {
+          "parts": ["こんにちは！元気です、ありがとうございます。今日はどのようなお手伝いができますか？"]
+        }
+      }
+    }
+  }
+}
 ```
+
+### → Output (2025-01-15_Hello_World.md)
+```markdown
+# Hello World
+Date: 2025-01-15 18:00:00 +09:00
+
+---
+
+## 👤 User
+Date: 2025-01-15 18:00:00 +09:00
+
+こんにちは！元気ですか？
+
+---
+
+## 🤖 Assistant
+Date: 2025-01-15 18:00:10 +09:00
+
+こんにちは！元気です、ありがとうございます。今日はどのようなお手伝いができますか？
+
+---
+```
+
+✨ **特徴**: クリーンなフォーマット • タイムスタンプ • 視覚的マーカー • コードブロックと書式を保持
+
+## Installation
 
 ### Homebrew (macOS/Linux)
 
 ```bash
 brew tap sugurutakahashi-1234/ai-chat-md-export
 brew install ai-chat-md-export
+```
+
+### npm
+
+```bash
+npm install -g ai-chat-md-export
 ```
 
 ## What is ai-chat-md-export?
