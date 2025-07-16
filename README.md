@@ -22,14 +22,14 @@ Convert ChatGPT and Claude chat history to readable Markdown files
 # 1. Install the tool
 npm install -g ai-chat-md-export
 
-# 2. Get your conversations.json file (see Getting conversations.json)
-# Export from ChatGPT or Claude
+# 2. Export your conversations from ChatGPT or Claude
+# → Get conversations.json file (see "Getting conversations.json" section below)
 
 # 3. Convert to Markdown
 ai-chat-md-export -i conversations.json
 ```
 
-That's it! Your conversations are now beautiful Markdown files.
+That's it! Your conversations are now organized, searchable Markdown files.
 
 ### Example Output
 
@@ -41,18 +41,6 @@ Running the command above will generate files like:
 ```
 
 Each file contains a nicely formatted conversation with timestamps, user/assistant markers, and preserved formatting.
-
-## What is ai-chat-md-export?
-
-`ai-chat-md-export` is a command-line tool that converts your AI chat conversations into clean, readable Markdown files. 
-
-### Why use this tool?
-
-- **Preserve your conversations**: Export your valuable AI interactions before they're lost or deleted
-- **Better readability**: View conversations in any Markdown reader with proper formatting
-- **Easy searching**: Search through your chat history using any text editor or grep
-- **Version control**: Track changes and store conversations in Git
-- **Share knowledge**: Easily share specific conversations with colleagues
 
 ## Installation
 
@@ -68,6 +56,26 @@ npm install -g ai-chat-md-export
 brew tap sugurutakahashi-1234/ai-chat-md-export
 brew install ai-chat-md-export
 ```
+
+## What is ai-chat-md-export?
+
+`ai-chat-md-export` is a command-line tool that converts your AI chat conversations into clean, readable Markdown files. 
+
+### Why use this tool?
+
+- **Preserve your conversations**: Export your valuable AI interactions before they're lost or deleted
+- **Better readability**: View conversations in any Markdown reader with proper formatting
+- **Easy searching**: Search through your chat history using any text editor or grep
+- **Version control**: Track changes and store conversations in Git
+- **Share knowledge**: Easily share specific conversations with colleagues
+
+### Real-world use cases
+
+- **Technical Documentation**: Convert problem-solving sessions into documentation
+- **Learning Archive**: Build a personal knowledge base from AI tutoring sessions
+- **Blog Content**: Transform interesting discussions into blog post drafts
+- **Team Knowledge Sharing**: Share AI-assisted research with your team
+- **Prompt Engineering**: Save and analyze successful prompts and responses
 
 ## Usage
 
@@ -149,50 +157,6 @@ Note: The download link expires after 24 hours, so download promptly.
 7. If you received a `.dms` file, rename it to `.zip` and extract
 8. Find `conversations.json` in the root directory
 
-## Example Output
-
-### Input (ChatGPT JSON):
-```json
-{
-  "title": "Math Question",
-  "create_time": 1736899200,
-  "mapping": {
-    "msg-1": {
-      "message": {
-        "author": {"role": "user"},
-        "content": {"parts": ["What is the square root of 144?"]}
-      }
-    }
-  }
-}
-```
-
-### Command:
-```bash
-ai-chat-md-export -i conversations.json
-```
-
-### Output (2025-01-15_Math_Question.md):
-```markdown
-# Math Question
-Date: 2025-01-15 09:00:00 +09:00
-
----
-
-## 👤 User
-Date: 2025-01-15 09:00:00 +09:00
-
-What is the square root of 144?
-
----
-
-## 🤖 Assistant
-Date: 2025-01-15 09:00:10 +09:00
-
-The square root of 144 is 12.
-
----
-```
 
 ## How it Works
 
@@ -210,6 +174,26 @@ For complete examples with multiple conversations, see the [examples](examples/)
 
 - **ChatGPT**: [Sample conversations](examples/chatgpt/) with multi-turn dialogues
 - **Claude**: [Sample conversations](examples/claude/) with various conversation types
+
+## Troubleshooting
+
+### Large files taking too long to process
+The tool processes files in batches. For very large conversation histories:
+- Use `--since` and `--until` to process specific date ranges
+- Split your export into multiple smaller files
+- Use `--search` to extract only relevant conversations
+
+### Character encoding issues
+If you see garbled text in your output:
+- Ensure your terminal supports UTF-8 encoding
+- Try the `--filename-encoding preserve` option for non-ASCII filenames
+- Check that your `conversations.json` file is properly encoded
+
+### Missing conversations
+If some conversations don't appear in the output:
+- Check the export date - only conversations up to the export date are included
+- Verify the JSON structure matches ChatGPT or Claude format
+- Use `--dry-run` to preview which conversations will be converted
 
 ## Contributing
 
