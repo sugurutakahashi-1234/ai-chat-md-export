@@ -60,8 +60,7 @@ CLAUDE.md
 
 # User data directories
 # Keep directory structure but ignore actual data files
-/input/*
-!/input/.gitkeep
-!/input/*/
-/input/*/*.json
-/output/
+/sandbox/*
+!/sandbox/*/
+/sandbox/*/*.json
+/sandbox/*/output/
