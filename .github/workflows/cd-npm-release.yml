@@ -63,3 +63,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish
+
+      - name: Trigger Homebrew Release
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🍺 Triggering Homebrew release for tag ${{ steps.release.outputs.tag_name }}"
+          gh workflow run cd-homebrew-release.yml \
+            -f tag_name=${{ steps.release.outputs.tag_name }}

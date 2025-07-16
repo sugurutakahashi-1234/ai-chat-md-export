@@ -102,3 +102,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           bun run release -- ${{ steps.set_version.outputs.VERSION }} --ci --no-hooks
+
+      - name: Trigger Homebrew Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME=$(git describe --tags --abbrev=0)
+          echo "🍺 Triggering Homebrew release for tag $TAG_NAME"
+          gh workflow run cd-homebrew-release.yml \
+            -f tag_name=$TAG_NAME
