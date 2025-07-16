@@ -8,7 +8,6 @@
 [![codecov](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export/graph/badge.svg?token=KPN7UZ7ATY)](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
-[![node](https://img.shields.io/node/v/ai-chat-md-export)](https://nodejs.org)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/ai-chat-md-export)](https://bundlephobia.com/package/ai-chat-md-export)
 [![Types](https://img.shields.io/npm/types/ai-chat-md-export)](https://www.npmjs.com/package/ai-chat-md-export)
 
@@ -59,23 +58,14 @@ brew install ai-chat-md-export
 
 ## What is ai-chat-md-export?
 
-`ai-chat-md-export` is a command-line tool that converts your AI chat conversations into clean, readable Markdown files. 
+`ai-chat-md-export` is a CLI tool that converts your ChatGPT and Claude conversations into organized, readable Markdown files.
 
-### Why use this tool?
+### Key benefits
 
-- **Preserve your conversations**: Export your valuable AI interactions before they're lost or deleted
-- **Better readability**: View conversations in any Markdown reader with proper formatting
-- **Easy searching**: Search through your chat history using any text editor or grep
-- **Version control**: Track changes and store conversations in Git
-- **Share knowledge**: Easily share specific conversations with colleagues
-
-### Real-world use cases
-
-- **Technical Documentation**: Convert problem-solving sessions into documentation
-- **Learning Archive**: Build a personal knowledge base from AI tutoring sessions
-- **Blog Content**: Transform interesting discussions into blog post drafts
-- **Team Knowledge Sharing**: Share AI-assisted research with your team
-- **Prompt Engineering**: Save and analyze successful prompts and responses
+- **Preserve your AI chats** before they're lost or deleted
+- **Readable formatting** for easy viewing in any Markdown editor
+- **Search and organize** your chat history with standard tools
+- **Share or version control** conversations as needed
 
 ## Usage
 
@@ -117,17 +107,17 @@ ai-chat-md-export -i conversations.json --quiet
 
 ## Command-line Options
 
-| Option | Description | Default |
-| ------ | ----------- | ------- |
-| `-i, --input <path>` | Input file or directory path (required) | - |
-| `-o, --output <path>` | Output directory | `.` |
-| `-f, --format <format>` | Input format (`chatgpt`/`claude`/`auto`) | `auto` |
-| `--since <date>` | Filter from date (YYYY-MM-DD) | - |
-| `--until <date>` | Filter until date (YYYY-MM-DD) | - |
-| `--search <keyword>` | Search in conversations | - |
+| Option                           | Description                               | Default    |
+| -------------------------------- | ----------------------------------------- | ---------- |
+| `-i, --input <path>`             | Input file or directory path (required)   | -          |
+| `-o, --output <path>`            | Output directory                          | `.`        |
+| `-f, --format <format>`          | Input format (`chatgpt`/`claude`/`auto`)  | `auto`     |
+| `--since <date>`                 | Filter from date (YYYY-MM-DD)             | -          |
+| `--until <date>`                 | Filter until date (YYYY-MM-DD)            | -          |
+| `--search <keyword>`             | Search in conversations                   | -          |
 | `--filename-encoding <encoding>` | Filename encoding (`standard`/`preserve`) | `standard` |
-| `-q, --quiet` | Suppress progress messages | - |
-| `--dry-run` | Preview mode without creating files | - |
+| `-q, --quiet`                    | Suppress progress messages                | -          |
+| `--dry-run`                      | Preview mode without creating files       | -          |
 
 ## Getting conversations.json
 
