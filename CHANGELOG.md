@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.6](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.7.5...v0.7.6) (2025-07-17)
+
+
+### 🐛 Bug Fixes
+
+* add missing closing bracket in Homebrew Cask post-install hook ([#44](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/44)) ([8d8f47f](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/8d8f47fc7468641df9d9afdd6671b6d6832c9a7e))
+
 ## [0.7.5](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.7.4...v0.7.5) (2025-07-17)
 
 
