@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
   "git": {
     "requireBranch": "main",
-    "commitMessage": "chore: release v${version}",
+    "commitMessage": "chore: release v${version} [release-it]",
     "tagName": "v${version}",
     "pushRepo": "origin",
     "requireCommits": true,
@@ -25,9 +25,12 @@
     "skipChecks": false
   },
   "hooks": {
-    "before:init": ["bun run ci"],
+    "before:init": ["export HUSKY=0", "bun run ci"],
     "after:bump": ["bun run build"],
-    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+    "after:release": [
+      "echo Successfully released ${name} v${version} to ${repo.repository}",
+      "bun run trigger:workflow:cd-homebrew-release"
+    ]
   },
   "plugins": {
     "@release-it/conventional-changelog": {

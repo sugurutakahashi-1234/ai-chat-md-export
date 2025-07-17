@@ -6,7 +6,7 @@ const config: KnipConfig = {
     "tests/integration/cli/node-js.test.ts", // Uses $`node ${cliPath}` syntax which knip misinterprets
   ],
   ignoreDependencies: ["tslib", "@commitlint/cli"],
-  ignoreBinaries: ["du", "awk", "goreleaser"], // du,awk: deps:size script, goreleaser: build scripts
+  ignoreBinaries: ["du", "awk", "goreleaser", "gh", "jq"], // du,awk: deps:size script, goreleaser: build scripts, gh: release scripts, jq: trigger:homebrew
   ignoreExportsUsedInFile: true,
   includeEntryExports: true,
   typescript: {

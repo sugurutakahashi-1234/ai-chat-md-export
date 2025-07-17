@@ -13,7 +13,7 @@
       "include-component-in-tag": false,
       "skip-github-release": false,
       "always-update": true,
-      "pull-request-title-pattern": "chore: release v${version}",
+      "pull-request-title-pattern": "chore: release v${version} [release-please]",
       "pull-request-header": ":robot: I have created a release",
       "changelog-sections": [
         { "type": "feat", "section": "✨ Features" },

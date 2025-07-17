@@ -31,11 +31,9 @@
     {
       "includes": [
         "**/coverage/**",
-        "**/input/**",
-        "**/output/**",
+        "**/sandbox/**",
         "**/dist/**",
         "**/lib/**",
-        "**/releases/**",
         "**/node_modules/**",
         "**/.claude/settings.local.json"
       ],
