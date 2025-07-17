@@ -1,9 +1,13 @@
 name: Homebrew Release
 
 on:
-  release:
-    types: [published]  # Triggered when release-please publishes a release
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release tag WITH v prefix (e.g., v1.2.3, NOT 1.2.3)'
+        required: true
+        type: string
+  workflow_call:
     inputs:
       tag_name:
         description: 'Release tag WITH v prefix (e.g., v1.2.3, NOT 1.2.3)'
