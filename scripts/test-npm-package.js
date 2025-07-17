@@ -21,14 +21,26 @@ const packageName = "ai-chat-md-export";
 let packageFile = null;
 let isInstalled = false;
 
-// Clean up any existing installation first
+// Clean up any existing Homebrew installation first
 try {
-  console.log("🧹 Checking for existing installation...");
+  console.log("🧹 Checking for existing Homebrew installation...");
+  execSync(`brew list ${packageName}`, { stdio: "pipe" });
+  console.log("📦 Found Homebrew installation, uninstalling...");
+  execSync(`brew uninstall ${packageName}`, { stdio: "pipe" });
+  console.log("✅ Removed Homebrew installation");
+} catch (_e) {
+  // Package not installed via Homebrew, which is fine
+  console.log("✅ No Homebrew installation found");
+}
+
+// Clean up any existing npm installation
+try {
+  console.log("🧹 Checking for existing npm installation...");
   execSync(`npm uninstall -g ${packageName}`, { stdio: "pipe" });
-  console.log("✅ Removed existing installation");
+  console.log("✅ Removed existing npm installation");
 } catch (_e) {
   // Package not installed, which is fine
-  console.log("✅ No existing installation found");
+  console.log("✅ No existing npm installation found");
 }
 
 try {
@@ -92,10 +104,20 @@ try {
   if (isInstalled) {
     try {
       execSync(`npm uninstall -g ${packageName}`, { stdio: "pipe" });
-      console.log("✅ Package uninstalled");
+      console.log("✅ npm package uninstalled");
     } catch (_e) {
-      console.warn("⚠️  Failed to uninstall package");
+      console.warn("⚠️  Failed to uninstall npm package");
     }
+  }
+
+  // Also check and clean up any Homebrew installation that might have been created
+  try {
+    execSync(`brew list ${packageName}`, { stdio: "pipe" });
+    console.log("📦 Found Homebrew installation during cleanup, removing...");
+    execSync(`brew uninstall ${packageName}`, { stdio: "pipe" });
+    console.log("✅ Homebrew package uninstalled");
+  } catch (_e) {
+    // Not installed via Homebrew, which is expected
   }
 
   if (packageFile && existsSync(join(projectRoot, packageFile))) {
