@@ -110,6 +110,21 @@ brew install ai-chat-md-export
 npm install -g ai-chat-md-export
 ```
 
+### 直接下载 (Windows / 其他)
+
+预构建的二进制文件可从[发布页面](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases/latest)获取。
+
+#### Windows
+1. 下载 [ai-chat-md-export-windows-amd64.zip](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases/latest/download/ai-chat-md-export-windows-amd64.zip)
+2. 解压缩文件
+3. 将解压后的文件夹添加到PATH，或直接运行：
+   ```cmd
+   ai-chat-md-export.exe -i conversations.json
+   ```
+
+#### macOS / Linux
+从发布页面下载适合您平台的`.tar.gz`文件。
+
 ## What is ai-chat-md-export?
 
 `ai-chat-md-export` 是一个 CLI 工具，可以将您的 ChatGPT 和 Claude 对话转换为组织良好、可读的 Markdown 文件。
