@@ -69,7 +69,7 @@ homebrew_casks:
       name: homebrew-tap
       branch: main
       # Use GitHub App token or PAT with repo permissions
-      token: "{{ .Env.HOMEBREW_GITHUB_API_TOKEN }}"
+      token: "{{ .Env.HOMEBREW_TAP_PUSH_TOKEN }}"
       
     # Git author for formula commits
     commit_author:
