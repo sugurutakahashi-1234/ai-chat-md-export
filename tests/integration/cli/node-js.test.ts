@@ -98,10 +98,10 @@ describe("Node.js Execution Tests", () => {
       await $`node ${cliPath} -i /nonexistent/file.json`.quiet();
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
-      const stdout =
-        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
-      expect(stdout).toContain("Error:");
-      expect(stdout).toContain("ENOENT");
+      const stderr =
+        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+      expect(stderr).toContain("✗");
+      expect(stderr).toContain("ENOENT");
     }
   });
 
@@ -119,6 +119,6 @@ describe("Node.js Execution Tests", () => {
 
     expect(result.exitCode).toBe(0);
     const output = result.stdout.toString();
-    expect(output).toContain("[DRY RUN] Would write:");
+    expect(output).toContain("[DRY RUN]");
   });
 });

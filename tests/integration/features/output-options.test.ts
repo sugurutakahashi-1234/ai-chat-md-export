@@ -75,11 +75,11 @@ describe("Output Options", () => {
         await $`bun ${cliPath} -i /nonexistent/file.json --quiet`.quiet();
         expect(true).toBe(false); // Should not reach here
       } catch (error) {
-        const stdout =
-          (error as { stdout?: { toString(): string } }).stdout?.toString() ||
+        const stderr =
+          (error as { stderr?: { toString(): string } }).stderr?.toString() ||
           "";
-        expect(stdout).toContain("Error:");
-        expect(stdout).toContain("ENOENT");
+        expect(stderr).toContain("✗");
+        expect(stderr).toContain("ENOENT");
       }
     });
   });
@@ -92,7 +92,7 @@ describe("Output Options", () => {
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
-      expect(output).toContain("[DRY RUN] Would write:");
+      expect(output).toContain("[DRY RUN]");
       expect(output).toContain("2023-12-31_Test_Conversation.md");
 
       // Verify no files were created

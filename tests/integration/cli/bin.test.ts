@@ -62,10 +62,12 @@ describe("CLI Integration Tests", () => {
       await $`bun ${cliPath}`.quiet();
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
-      const output =
+      const stderr =
+        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+      expect(stderr).toContain("✗ Input file is required.");
+      const stdout =
         (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
-      expect(output).toContain("Error: Input file is required.");
-      expect(output).toContain(
+      expect(stdout).toContain(
         "Try 'ai-chat-md-export --help' for usage information.",
       );
     }
@@ -245,10 +247,10 @@ describe("CLI Integration Tests", () => {
       await $`bun ${cliPath} -i ${inputFile} -o ${outputDir}`.quiet();
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
-      const output =
-        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
-      expect(output).toContain("Error:");
-      expect(output).toContain("ENOENT");
+      const stderr =
+        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+      expect(stderr).toContain("✗");
+      expect(stderr).toContain("ENOENT");
     }
   });
 
@@ -260,11 +262,11 @@ describe("CLI Integration Tests", () => {
       await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -f unsupported`.quiet();
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
-      const output =
-        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
+      const stderr =
+        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
       // The error now comes from Zod validation rather than commander
-      expect(output).toContain("invalid_value");
-      expect(output).toContain("expected one of");
+      expect(stderr).toContain("✗");
+      expect(stderr).toContain("expected one of");
     }
   });
 
@@ -360,10 +362,10 @@ describe("CLI Integration Tests", () => {
       expect(true).toBe(true);
     } catch (error) {
       // Expected: permission error
-      const output =
-        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
+      const stderr =
+        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
       // Should contain some error message about permissions or directory
-      expect(output).toContain("Error:");
+      expect(stderr).toContain("✗");
     }
   });
 });

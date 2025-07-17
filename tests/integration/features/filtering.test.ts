@@ -201,10 +201,11 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} --since "2024/01/01"`.quiet();
         expect(true).toBe(false); // Should not reach here
       } catch (error) {
-        const stdout =
-          (error as { stdout?: { toString(): string } }).stdout?.toString() ||
+        const stderr =
+          (error as { stderr?: { toString(): string } }).stderr?.toString() ||
           "";
-        expect(stdout).toContain("Date must be in YYYY-MM-DD format");
+        expect(stderr).toContain("✗");
+        expect(stderr).toContain("Date must be in YYYY-MM-DD format");
       }
     });
   });
