@@ -96,6 +96,16 @@ homebrew_casks:
     license: "MIT"
     
     # No dependencies needed - Bun compiles to standalone binary
+    
+    # Post-install hook to remove quarantine attributes
+    # This prevents macOS Gatekeeper from blocking the binary
+    # Reference: https://goreleaser.com/customization/homebrew_casks/#signing-and-notarizing
+    hooks:
+      post:
+        install: |
+          if system_command("/usr/bin/xattr", args: ["-h"]).exit_status == 0
+            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/ai-chat-md-export"
+          end
 
 # Announce release in various channels
 announce:
