@@ -3,9 +3,19 @@ name: force-version-bump
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Target version WITHOUT v prefix (e.g., 0.7.0)'
+      version_type:
+        description: 'Version bump type'
         required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+          - custom
+      custom_version:
+        description: 'Custom version WITHOUT v prefix (only for "custom" type)'
+        required: false
         type: string
       reason:
         description: 'Reason for version bump'
@@ -27,10 +37,59 @@ jobs:
           fetch-depth: 0
           ref: main
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Get current version
+        id: current_version
+        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Validate custom version format
+        if: github.event.inputs.version_type == 'custom'
+        id: validate_version
+        uses: matt-usurp/validate-semver@v2
+        with:
+          version: ${{ github.event.inputs.custom_version }}
+
+      - name: Calculate next version
+        id: next_version
+        run: |
+          CURRENT="${{ steps.current_version.outputs.version }}"
+          echo "Current version: $CURRENT"
+          
+          if [ "${{ github.event.inputs.version_type }}" = "custom" ]; then
+            if [ -z "${{ github.event.inputs.custom_version }}" ]; then
+              echo "::error::Custom version is required when version_type is 'custom'"
+              exit 1
+            fi
+            NEXT="${{ steps.validate_version.outputs.version }}"
+          else
+            # Use npx semver to calculate next version
+            NEXT=$(npx semver@latest $CURRENT -i ${{ github.event.inputs.version_type }})
+          fi
+          
+          echo "Next version: $NEXT"
+          echo "version=$NEXT" >> $GITHUB_OUTPUT
+
+      - name: Compare versions
+        uses: madhead/semver-utils@v4
+        id: version_compare
+        with:
+          version: ${{ steps.next_version.outputs.version }}
+          compare-to: ${{ steps.current_version.outputs.version }}
+
+      - name: Verify version increase
+        if: steps.version_compare.outputs.comparison-result != '>'
+        run: |
+          echo "::error::New version (${{ steps.next_version.outputs.version }}) must be greater than current version (${{ steps.current_version.outputs.version }})"
+          exit 1
 
       - name: Create empty commit with Release-As
         env:
@@ -38,7 +97,15 @@ jobs:
         run: |
           git commit --allow-empty -m "chore: ${{ github.event.inputs.reason }}
 
-          Release-As: ${{ github.event.inputs.version }}"
+          Release-As: ${{ steps.next_version.outputs.version }}"
 
       - name: Push to main
         run: git push origin main
+
+      - name: Summary
+        run: |
+          echo "## Version Bump Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Current version: ${{ steps.current_version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- New version: ${{ steps.next_version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Bump type: ${{ github.event.inputs.version_type }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Release-Please will create a PR with this version" >> $GITHUB_STEP_SUMMARY
