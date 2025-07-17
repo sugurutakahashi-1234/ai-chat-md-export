@@ -7,6 +7,7 @@ import {
   spyOn,
   test,
 } from "bun:test";
+import pc from "picocolors";
 import { main } from "../../src/cli.js";
 import * as processor from "../../src/core/processor.js";
 
@@ -14,6 +15,7 @@ describe("CLI main function", () => {
   let originalArgv: string[];
   let originalExit: typeof process.exit;
   let consoleErrorSpy: ReturnType<typeof spyOn>;
+  let consoleLogSpy: ReturnType<typeof spyOn>;
   let processInputSpy: ReturnType<typeof spyOn>;
 
   beforeEach(() => {
@@ -24,8 +26,9 @@ describe("CLI main function", () => {
     // Mock process.exit to prevent test runner from exiting
     process.exit = mock(() => {}) as never;
 
-    // Spy on console.error
+    // Spy on console.error and console.log
     consoleErrorSpy = spyOn(console, "error").mockImplementation(() => {});
+    consoleLogSpy = spyOn(console, "log").mockImplementation(() => {});
 
     // Spy on processInput
     processInputSpy = spyOn(processor, "processInput").mockResolvedValue();
@@ -36,6 +39,7 @@ describe("CLI main function", () => {
     process.argv = originalArgv;
     process.exit = originalExit;
     consoleErrorSpy.mockRestore();
+    consoleLogSpy.mockRestore();
     processInputSpy.mockRestore();
   });
 
@@ -130,8 +134,7 @@ describe("CLI main function", () => {
     await main();
 
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      "Error:",
-      "Test error message",
+      pc.red(pc.bold("✗ Test error message")),
     );
   });
 
@@ -142,7 +145,9 @@ describe("CLI main function", () => {
 
     await main();
 
-    expect(consoleErrorSpy).toHaveBeenCalledWith("Error:", "String error");
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      pc.red(pc.bold("✗ String error")),
+    );
   });
 
   test("handles unknown error types", async () => {
@@ -153,8 +158,7 @@ describe("CLI main function", () => {
     await main();
 
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      "Error:",
-      "An unknown error occurred",
+      pc.red(pc.bold("✗ An unknown error occurred")),
     );
   });
 
@@ -168,9 +172,9 @@ describe("CLI main function", () => {
     }
 
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      "\nError: Input file is required.",
+      pc.red(pc.bold("✗ Input file is required.")),
     );
-    expect(consoleErrorSpy).toHaveBeenCalledWith(
+    expect(consoleLogSpy).toHaveBeenCalledWith(
       "\nTry 'ai-chat-md-export --help' for usage information.\n",
     );
   });

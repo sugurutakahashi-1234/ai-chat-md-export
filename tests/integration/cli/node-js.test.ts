@@ -98,10 +98,10 @@ describe("Node.js Execution Tests", () => {
       await $`node ${cliPath} -i /nonexistent/file.json`.quiet();
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
-      const stderr =
-        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(stderr).toContain("Error:");
-      expect(stderr).toContain("ENOENT");
+      const stdout =
+        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
+      expect(stdout).toContain("Error:");
+      expect(stdout).toContain("ENOENT");
     }
   });
 

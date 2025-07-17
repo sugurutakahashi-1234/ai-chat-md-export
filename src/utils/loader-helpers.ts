@@ -1,4 +1,5 @@
 import { promises as fs } from "node:fs";
+import { createLogger } from "./logger.js";
 
 /**
  * Read and parse JSON file
@@ -22,16 +23,14 @@ export interface LoadingSummaryOptions {
 }
 
 export function logLoadingSummary(options: LoadingSummaryOptions): void {
-  if (options.quiet) {
-    return;
-  }
+  const logger = createLogger({ quiet: options.quiet ?? false });
 
-  console.log(`\n✅ Successfully loaded ${options.successCount} conversations`);
+  logger.success(`Successfully loaded ${options.successCount} conversations`);
 
   if (options.skippedFields && options.skippedFields.size > 0) {
-    console.log(`\n📋 Skipped fields during conversion:`);
-    console.log(`  - ${Array.from(options.skippedFields).sort().join(", ")}`);
-    console.log(
+    logger.section("📋 Skipped fields during conversion");
+    logger.info(`  - ${Array.from(options.skippedFields).sort().join(", ")}`);
+    logger.info(
       `    * These fields are not included in the converted Markdown`,
     );
   }

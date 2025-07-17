@@ -1,5 +1,6 @@
 import { Command } from "commander";
 import { processInput } from "./core/processor.js";
+import { logger } from "./utils/logger.js";
 import { optionsSchema } from "./utils/options.js";
 import { VERSION } from "./version.js";
 
@@ -7,7 +8,7 @@ export async function main(): Promise<void> {
   const program = new Command();
   program
     .name("ai-chat-md-export")
-    .version(VERSION)
+    .version(VERSION, "-v, --version")
     .description("Convert ChatGPT and Claude export data to Markdown")
     .requiredOption("-i, --input <path>", "Input file or directory path")
     .option(
@@ -52,8 +53,8 @@ For more options and detailed documentation:
     )
     .exitOverride((err) => {
       if (err.code === "commander.missingMandatoryOptionValue") {
-        console.error("\nError: Input file is required.");
-        console.error(
+        logger.error("Input file is required.");
+        logger.info(
           "\nTry 'ai-chat-md-export --help' for usage information.\n",
         );
         process.exit(1);
@@ -86,7 +87,7 @@ For more options and detailed documentation:
         : typeof error === "string"
           ? error
           : "An unknown error occurred";
-    console.error("Error:", errorMessage);
+    logger.error(errorMessage);
     process.exit(1);
   }
 }

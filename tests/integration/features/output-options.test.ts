@@ -75,11 +75,11 @@ describe("Output Options", () => {
         await $`bun ${cliPath} -i /nonexistent/file.json --quiet`.quiet();
         expect(true).toBe(false); // Should not reach here
       } catch (error) {
-        const stderr =
-          (error as { stderr?: { toString(): string } }).stderr?.toString() ||
+        const stdout =
+          (error as { stdout?: { toString(): string } }).stdout?.toString() ||
           "";
-        expect(stderr).toContain("Error:");
-        expect(stderr).toContain("ENOENT");
+        expect(stdout).toContain("Error:");
+        expect(stdout).toContain("ENOENT");
       }
     });
   });

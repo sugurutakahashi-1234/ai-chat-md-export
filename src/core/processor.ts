@@ -12,6 +12,7 @@ import {
 import type { FilenameEncoding } from "../utils/filename.js";
 import { generateFileName } from "../utils/filename.js";
 import { detectFormat } from "../utils/format-detector.js";
+import { createLogger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
 import { applyFilters } from "./filter.js";
 
@@ -43,9 +44,8 @@ export async function processFile(
   outputDir: string,
   options: Options,
 ): Promise<void> {
-  if (!options.quiet) {
-    console.log(`Processing: ${getRelativePath(filePath)}`);
-  }
+  const logger = createLogger({ quiet: options.quiet });
+  logger.info(`Processing: ${getRelativePath(filePath)}`);
 
   let format: string;
   try {
@@ -93,9 +93,10 @@ export async function processFile(
   const { filteredConversations, stats } = applyFilters(conversations, options);
 
   // Log filter stats if not quiet
-  if ((options.since || options.until || options.search) && !options.quiet) {
-    console.log(
-      `  Filtered: ${stats.filteredCount} of ${stats.originalCount} conversations`,
+  if (options.since || options.until || options.search) {
+    logger.stat(
+      "Filtered",
+      `${stats.filteredCount} of ${stats.originalCount} conversations`,
     );
     const filters = [];
     if (options.since || options.until) {
@@ -108,7 +109,7 @@ export async function processFile(
       filters.push(`keyword "${options.search}"`);
     }
     if (filters.length > 0) {
-      console.log(`  Filters: ${filters.join(", ")}`);
+      logger.stat("Filters", filters.join(", "));
     }
   }
 
@@ -133,24 +134,18 @@ export async function processFile(
       if (!options.dryRun) {
         await fs.writeFile(outputPath, markdown, "utf-8");
       }
-      if (!options.quiet) {
-        console.log(
-          `  → ${options.dryRun ? "[DRY RUN] Would write:" : ""} ${getRelativePath(outputPath)}`,
-        );
-      }
+      logger.output(getRelativePath(outputPath), options.dryRun);
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       writeErrors.push({ file: outputPath, error: errorMessage });
 
       // Still log individual error if not quiet
-      if (!options.quiet) {
-        console.error(
-          formatErrorMessage("Warning: Failed to write file", {
-            file: outputPath,
-            reason: errorMessage,
-          }),
-        );
-      }
+      logger.warn(
+        formatErrorMessage("Failed to write file", {
+          file: outputPath,
+          reason: errorMessage,
+        }),
+      );
     }
   }
 
@@ -184,29 +179,24 @@ export async function processDirectory(
   const jsonFiles = files.filter((f) => f.endsWith(".json"));
 
   if (jsonFiles.length === 0) {
-    if (!options.quiet) {
-      console.log(
-        `No JSON files found in directory: ${getRelativePath(dirPath)}`,
-      );
-    }
+    const logger = createLogger({ quiet: options.quiet });
+    logger.info(
+      `No JSON files found in directory: ${getRelativePath(dirPath)}`,
+    );
     return;
   }
 
-  if (!options.quiet) {
-    console.log(`Found ${jsonFiles.length} JSON file(s) to process\n`);
-  }
+  const logger = createLogger({ quiet: options.quiet });
+  logger.section(`Found ${jsonFiles.length} JSON file(s) to process`);
 
   for (let i = 0; i < jsonFiles.length; i++) {
     const file = jsonFiles[i];
     if (!file) continue;
     const filePath = path.join(dirPath, file);
-    if (!options.quiet) {
-      console.log(`[${i + 1}/${jsonFiles.length}] Processing ${file}...`);
-    }
+    logger.progress(i + 1, jsonFiles.length, `Processing ${file}...`);
     await processFile(filePath, outputDir, options);
   }
 
-  if (!options.quiet) {
-    console.log(`\nCompleted processing ${jsonFiles.length} file(s)`);
-  }
+  logger.success(`Completed processing ${jsonFiles.length} file(s)`);
+  logger.info(""); // Add empty line
 }

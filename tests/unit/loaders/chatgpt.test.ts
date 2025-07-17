@@ -168,7 +168,7 @@ describe("loadChatGPT with inline data", () => {
 
     expect(
       consoleOutput.some((line) =>
-        line.includes("✅ Successfully loaded 1 conversations"),
+        line.includes("✓ Successfully loaded 1 conversations"),
       ),
     ).toBe(true);
   });

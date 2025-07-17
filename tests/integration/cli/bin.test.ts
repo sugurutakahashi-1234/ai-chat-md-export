@@ -63,7 +63,7 @@ describe("CLI Integration Tests", () => {
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
       const output =
-        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
       expect(output).toContain("Error: Input file is required.");
       expect(output).toContain(
         "Try 'ai-chat-md-export --help' for usage information.",
@@ -246,7 +246,7 @@ describe("CLI Integration Tests", () => {
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
       const output =
-        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
       expect(output).toContain("Error:");
       expect(output).toContain("ENOENT");
     }
@@ -261,7 +261,7 @@ describe("CLI Integration Tests", () => {
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
       const output =
-        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
       // The error now comes from Zod validation rather than commander
       expect(output).toContain("invalid_value");
       expect(output).toContain("expected one of");
@@ -361,7 +361,7 @@ describe("CLI Integration Tests", () => {
     } catch (error) {
       // Expected: permission error
       const output =
-        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+        (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
       // Should contain some error message about permissions or directory
       expect(output).toContain("Error:");
     }
