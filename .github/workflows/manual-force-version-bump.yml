@@ -29,6 +29,7 @@ permissions:
 jobs:
   create-release-commit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,6 +52,14 @@ jobs:
         id: current_version
         run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
+      - name: Check custom version is provided
+        if: github.event.inputs.version_type == 'custom'
+        run: |
+          if [ -z "${{ github.event.inputs.custom_version }}" ]; then
+            echo "::error::Custom version is required when version_type is 'custom'"
+            exit 1
+          fi
+
       - name: Validate custom version format
         if: github.event.inputs.version_type == 'custom'
         id: validate_version
@@ -65,14 +74,13 @@ jobs:
           echo "Current version: $CURRENT"
           
           if [ "${{ github.event.inputs.version_type }}" = "custom" ]; then
-            if [ -z "${{ github.event.inputs.custom_version }}" ]; then
-              echo "::error::Custom version is required when version_type is 'custom'"
-              exit 1
-            fi
             NEXT="${{ steps.validate_version.outputs.version }}"
           else
             # Use npx semver to calculate next version
-            NEXT=$(npx semver@latest $CURRENT -i ${{ github.event.inputs.version_type }})
+            NEXT=$(npx semver@latest $CURRENT -i ${{ github.event.inputs.version_type }}) || {
+              echo "::error::Failed to calculate next version"
+              exit 1
+            }
           fi
           
           echo "Next version: $NEXT"
@@ -108,4 +116,7 @@ jobs:
           echo "- Current version: ${{ steps.current_version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
           echo "- New version: ${{ steps.next_version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
           echo "- Bump type: ${{ github.event.inputs.version_type }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Release-Please will create a PR with this version" >> $GITHUB_STEP_SUMMARY
+          echo "- Comparison result: ${{ steps.version_compare.outputs.comparison-result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "Release-Please will automatically create a PR with this version." >> $GITHUB_STEP_SUMMARY
