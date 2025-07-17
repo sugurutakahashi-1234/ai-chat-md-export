@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.7.2](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.6.2...v0.7.2) (2025-07-17)
+
+
+### ✨ Features
+
+* add GitHub App token support for protected branch pushes ([#33](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/33)) ([b86ce8a](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/b86ce8a9e5e315e1549055da7a50ac8090bfbd1f))
+
+
+### 🐛 Bug Fixes
+
+* add permissions to pr-auto-assign workflow ([#36](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/36)) ([a8d3311](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/a8d33111be7475ec08c87dcd90d4f561eda11822))
+* remove reason parameter from manual version bump workflow ([#35](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/35)) ([cb329ed](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/cb329edc8701946a7451b94599065fab704edb09))
+
+
+### 🔧 Maintenance
+
+* Force version bump to resolve version mismatch ([5eebb5d](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/5eebb5df53db02cbe5e1333b910d6c7b60c3dac7))
+
 ## [0.6.2](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.6.1...v0.6.2) (2025-07-17)
 
 
