@@ -100,7 +100,7 @@ Hi there! I'm doing well, thank you for asking. How can I help you today?
 ### Homebrew (macOS/Linux)
 
 ```bash
-brew tap sugurutakahashi-1234/homebrew-tap
+brew tap sugurutakahashi-1234/tap
 brew install ai-chat-md-export
 ```
 
