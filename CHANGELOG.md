@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.6.1...v0.6.2) (2025-07-17)
+
+
+### 🐛 Bug Fixes
+
+* configure release workflows for local execution and version management ([#31](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/31)) ([2196266](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/2196266d7ef4e2cfd8954cffbeb4bc1d17ba72eb))
+
 ## [0.6.1](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.6.0...v0.6.1) (2025-07-16)
 
 
