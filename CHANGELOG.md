@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.5](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.7.4...v0.7.5) (2025-07-17)
+
+
+### 🐛 Bug Fixes
+
+* add post-install hook to remove macOS quarantine attributes ([#42](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/42)) ([fbb9985](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/fbb99855a8fe18dc8a17da3849641b853be6ce96))
+
 ## [0.7.4](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.7.3...v0.7.4) (2025-07-17)
 
 
