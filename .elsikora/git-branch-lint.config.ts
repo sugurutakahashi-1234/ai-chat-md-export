@@ -2,12 +2,10 @@ import type { IBranchLintConfig } from "@elsikora/git-branch-lint";
 
 const config: IBranchLintConfig = {
   branches: [
-    // GitFlow branch types (still actively used)
-    "feature", // New features
+    // Standard GitFlow branch types
+    "feature", // New features (branched from develop)
     "release", // Prepare for a new production release
-    "hotfix", // Quick fixes to production
-    "bugfix", // Bug fixes for development branch
-    "support", // Support branches for older versions
+    "hotfix", // Emergency fixes to production (branched from main)
 
     // Conventional Commits-based branch types
     // These align with commit message types for consistency
@@ -24,7 +22,10 @@ const config: IBranchLintConfig = {
     "revert", // Reverting previous commits
   ],
   ignore: [
+    // GitFlow main branches (long-lived)
     "main",
+    "develop", // GitFlow development branch
+
     // Release Please creates this branch automatically for release management
     "release-please--branches--main--components--ai-chat-md-export",
   ],
