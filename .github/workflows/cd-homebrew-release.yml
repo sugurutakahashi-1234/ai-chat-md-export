@@ -34,6 +34,15 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
+      - name: Validate tag has v prefix
+        run: |
+          if [[ ! "${{ env.TAG_NAME }}" =~ ^v ]]; then
+            echo "Error: Tag name must start with 'v' prefix (e.g., v1.2.3)"
+            echo "Received: ${{ env.TAG_NAME }}"
+            exit 1
+          fi
+          echo "Tag format validated: ${{ env.TAG_NAME }}"
+
       - name: Validate tag format
         id: validate_tag
         uses: matt-usurp/validate-semver@v2
