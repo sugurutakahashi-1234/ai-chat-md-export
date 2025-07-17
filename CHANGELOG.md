@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.3](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.7.2...v0.7.3) (2025-07-17)
+
+
+### 🐛 Bug Fixes
+
+* add id-token permission to npm release workflow ([#38](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/38)) ([ba851d4](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/ba851d4d89793b5b9427f7e7f82e95aa89fc894d))
+* use workflow_call instead of gh workflow run for Homebrew release ([#37](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/37)) ([bd0d893](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/bd0d893c81bf142f4745cab211869d81380bbd6d))
+
 ## [0.7.2](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.6.2...v0.7.2) (2025-07-17)
 
 
