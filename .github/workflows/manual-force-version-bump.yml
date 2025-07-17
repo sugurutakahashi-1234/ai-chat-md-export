@@ -13,13 +13,8 @@ on:
           - minor
           - major
       custom_version:
-        description: 'Custom version WITHOUT v prefix (e.g., 1.2.3, NOT v1.2.3)'
+        description: 'Custom version WITHOUT v prefix (e.g., 1.2.3, NOT v1.2.3) - If provided, this takes precedence; if empty, version_type will be used'
         required: false
-        type: string
-      reason:
-        description: 'Reason for version bump'
-        required: false
-        default: 'Force version bump to resolve version mismatch'
         type: string
 
 permissions:
@@ -108,7 +103,7 @@ jobs:
         env:
           HUSKY: 0
         run: |
-          git commit --allow-empty -m "chore: ${{ github.event.inputs.reason }}
+          git commit --allow-empty -m "chore: bump version to ${{ steps.next_version.outputs.version }}
 
           Release-As: ${{ steps.next_version.outputs.version }}"
 
