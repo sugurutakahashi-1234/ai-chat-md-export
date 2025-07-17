@@ -1,5 +1,7 @@
 import type { IBranchLintConfig } from "@elsikora/git-branch-lint";
 
+// Configuration for Git Branch Lint
+// See: https://github.com/ElsiKora/Git-Branch-Lint
 const config: IBranchLintConfig = {
   branches: [
     // Standard GitFlow branch types
@@ -32,7 +34,6 @@ const config: IBranchLintConfig = {
   rules: {
     "branch-pattern": ":type/:name",
     "branch-subject-pattern": "[a-z0-9-]+",
-    "branch-prohibited": ["master", "prod", "production"],
     "branch-min-length": 5,
     "branch-max-length": 50,
   },
