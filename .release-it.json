@@ -25,9 +25,12 @@
     "skipChecks": false
   },
   "hooks": {
-    "before:init": ["bun run ci"],
+    "before:init": ["export HUSKY=0", "bun run ci"],
     "after:bump": ["bun run build"],
-    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+    "after:release": [
+      "echo Successfully released ${name} v${version} to ${repo.repository}",
+      "gh workflow run cd-homebrew-release.yml -f tag_name=v${version}"
+    ]
   },
   "plugins": {
     "@release-it/conventional-changelog": {
