@@ -5,14 +5,13 @@ on:
     inputs:
       version_type:
         description: 'Version bump type'
-        required: true
+        required: false
         default: 'patch'
         type: choice
         options:
           - patch
           - minor
           - major
-          - custom
       custom_version:
         description: 'Custom version WITHOUT v prefix (e.g., 1.2.3, NOT v1.2.3)'
         required: false
@@ -29,7 +28,7 @@ permissions:
 jobs:
   create-release-commit:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -52,16 +51,15 @@ jobs:
         id: current_version
         run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
-      - name: Check custom version is provided
-        if: github.event.inputs.version_type == 'custom'
+      - name: Validate inputs
         run: |
-          if [ -z "${{ github.event.inputs.custom_version }}" ]; then
-            echo "::error::Custom version is required when version_type is 'custom'"
+          if [ -z "${{ github.event.inputs.custom_version }}" ] && [ -z "${{ github.event.inputs.version_type }}" ]; then
+            echo "::error::Either version_type or custom_version must be provided"
             exit 1
           fi
 
       - name: Validate custom version format
-        if: github.event.inputs.version_type == 'custom'
+        if: github.event.inputs.custom_version != ''
         id: validate_version
         uses: matt-usurp/validate-semver@v2
         with:
@@ -73,7 +71,7 @@ jobs:
           CURRENT="${{ steps.current_version.outputs.version }}"
           echo "Current version: $CURRENT"
           
-          if [ "${{ github.event.inputs.version_type }}" = "custom" ]; then
+          if [ -n "${{ github.event.inputs.custom_version }}" ]; then
             NEXT="${{ steps.validate_version.outputs.version }}"
           else
             # Use npx semver to calculate next version
