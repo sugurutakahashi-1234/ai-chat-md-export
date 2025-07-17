@@ -14,6 +14,7 @@ permissions:
   pull-requests: write
   issues: write
   packages: write
+  # Required for the cd-homebrew-release workflow that uses GitHub App authentication
   id-token: write
 
 jobs:
