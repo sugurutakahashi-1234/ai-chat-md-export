@@ -23,6 +23,9 @@ jobs:
   cd-homebrew-release:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      # Unified input handling for both workflow_dispatch and workflow_call
+      TAG_NAME: ${{ github.event.inputs.tag_name || inputs.tag_name }}
     steps:
       - name: Generate GitHub App Token
         id: generate-token
@@ -36,14 +39,14 @@ jobs:
         id: validate_tag
         uses: matt-usurp/validate-semver@v2
         with:
-          version: ${{ github.event.inputs.tag_name }}
+          version: ${{ env.TAG_NAME }}
 
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           fetch-tags: true
-          ref: ${{ github.event.inputs.tag_name || github.ref }}
+          ref: ${{ env.TAG_NAME || github.ref }}
 
       - name: Check if tag exists
         if: github.event_name == 'workflow_dispatch'
