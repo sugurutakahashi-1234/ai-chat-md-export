@@ -110,6 +110,21 @@ brew install ai-chat-md-export
 npm install -g ai-chat-md-export
 ```
 
+### 直接ダウンロード (Windows / その他)
+
+ビルド済みバイナリは[リリースページ](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases/latest)から入手できます。
+
+#### Windows
+1. [ai-chat-md-export-windows-amd64.zip](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases/latest/download/ai-chat-md-export-windows-amd64.zip)をダウンロード
+2. ZIPファイルを展開
+3. 展開したフォルダをPATHに追加するか、直接実行:
+   ```cmd
+   ai-chat-md-export.exe -i conversations.json
+   ```
+
+#### macOS / Linux
+リリースページから適切な`.tar.gz`ファイルをダウンロードしてください。
+
 ## What is ai-chat-md-export?
 
 `ai-chat-md-export`は、ChatGPTやClaudeの会話履歴を整理された読みやすいMarkdownファイルに変換するCLIツールです。

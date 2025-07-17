@@ -110,6 +110,21 @@ brew install ai-chat-md-export
 npm install -g ai-chat-md-export
 ```
 
+### Direct Download (Windows / Others)
+
+Pre-built binaries are available on the [releases page](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases/latest).
+
+#### Windows
+1. Download [ai-chat-md-export-windows-amd64.zip](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases/latest/download/ai-chat-md-export-windows-amd64.zip)
+2. Extract the zip file
+3. Add the extracted folder to your PATH, or run directly:
+   ```cmd
+   ai-chat-md-export.exe -i conversations.json
+   ```
+
+#### macOS / Linux
+Download the appropriate `.tar.gz` file from the releases page for your platform.
+
 ## What is ai-chat-md-export?
 
 `ai-chat-md-export` is a CLI tool that converts your ChatGPT and Claude conversations into organized, readable Markdown files.
