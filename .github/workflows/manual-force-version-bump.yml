@@ -1,4 +1,4 @@
-name: force-version-bump
+name: manual-force-version-bump
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ on:
           - major
           - custom
       custom_version:
-        description: 'Custom version WITHOUT v prefix (only for "custom" type)'
+        description: 'Custom version (✓ 0.7.0, 1.0.0 ✗ v0.7.0, v1.0.0) - only for "custom" type'
         required: false
         type: string
       reason:
