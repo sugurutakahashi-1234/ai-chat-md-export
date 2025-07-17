@@ -100,7 +100,7 @@ Date: 2025-01-15 18:00:10 +09:00
 ### Homebrew (macOS/Linux)
 
 ```bash
-brew tap sugurutakahashi-1234/ai-chat-md-export
+brew tap sugurutakahashi-1234/homebrew-tap
 brew install ai-chat-md-export
 ```
 

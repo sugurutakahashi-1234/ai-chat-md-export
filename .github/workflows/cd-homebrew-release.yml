@@ -76,7 +76,8 @@ jobs:
           version: '~> v2'
           args: release --clean
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Use GitHub App token instead of default GITHUB_TOKEN for cross-repo access
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
           HOMEBREW_TAP_PUSH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Upload artifacts
