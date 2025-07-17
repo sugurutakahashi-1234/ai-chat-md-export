@@ -33,6 +33,10 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            ai-chat-md-export
+            homebrew-tap
 
       - name: Validate tag has v prefix
         run: |
