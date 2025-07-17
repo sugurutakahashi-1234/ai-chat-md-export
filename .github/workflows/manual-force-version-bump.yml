@@ -62,6 +62,16 @@ jobs:
 
       - name: Validate custom version format
         if: github.event.inputs.custom_version != ''
+        run: |
+          if [[ "${{ github.event.inputs.custom_version }}" =~ ^v ]]; then
+            echo "Error: Custom version must NOT include 'v' prefix (e.g., 1.2.3, NOT v1.2.3)"
+            echo "Received: ${{ github.event.inputs.custom_version }}"
+            exit 1
+          fi
+          echo "Custom version format validated: ${{ github.event.inputs.custom_version }}"
+
+      - name: Validate custom version semver
+        if: github.event.inputs.custom_version != ''
         id: validate_version
         uses: matt-usurp/validate-semver@v2
         with:

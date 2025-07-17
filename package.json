@@ -68,6 +68,7 @@
     "test:coverage:html": "bun test --coverage && bunx @lcov-viewer/cli lcov coverage/lcov.info -o coverage/html",
     "validate:codecov": "cat codecov.yml | curl --data-binary @- https://codecov.io/validate",
     "validate:renovate": "$(which npx) --yes --package renovate -- renovate-config-validator renovate.json5 --strict",
+    "validate:goreleaser": "goreleaser check",
     "validate:branch": "git-branch-lint",
     "deps:check": "bunx ncu --deep",
     "deps:update": "bunx ncu -u --deep && bun install",

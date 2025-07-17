@@ -1,9 +1,13 @@
 name: Homebrew Release
 
 on:
-  release:
-    types: [published]  # Triggered when release-please publishes a release
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release tag WITH v prefix (e.g., v1.2.3, NOT 1.2.3)'
+        required: true
+        type: string
+  workflow_call:
     inputs:
       tag_name:
         description: 'Release tag WITH v prefix (e.g., v1.2.3, NOT 1.2.3)'
@@ -19,6 +23,9 @@ jobs:
   cd-homebrew-release:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      # Unified input handling for both workflow_dispatch and workflow_call
+      TAG_NAME: ${{ github.event.inputs.tag_name || inputs.tag_name }}
     steps:
       - name: Generate GitHub App Token
         id: generate-token
@@ -27,29 +34,36 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
+      - name: Validate tag has v prefix
+        run: |
+          if [[ ! "${{ env.TAG_NAME }}" =~ ^v ]]; then
+            echo "Error: Tag name must start with 'v' prefix (e.g., v1.2.3)"
+            echo "Received: ${{ env.TAG_NAME }}"
+            exit 1
+          fi
+          echo "Tag format validated: ${{ env.TAG_NAME }}"
+
       - name: Validate tag format
-        if: github.event_name == 'workflow_dispatch'
         id: validate_tag
         uses: matt-usurp/validate-semver@v2
         with:
-          version: ${{ github.event.inputs.tag_name }}
+          version: ${{ env.TAG_NAME }}
 
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           fetch-tags: true
-          ref: ${{ github.event.inputs.tag_name || github.ref }}
+          ref: ${{ env.TAG_NAME || github.ref }}
 
       - name: Check if tag exists
-        if: github.event_name == 'workflow_dispatch'
         id: check_tag
         uses: mukunku/tag-exists-action@v1.6.0
         with:
           tag: v${{ steps.validate_tag.outputs.version }}
 
       - name: Fail if tag not found
-        if: github.event_name == 'workflow_dispatch' && steps.check_tag.outputs.exists == 'false'
+        if: steps.check_tag.outputs.exists == 'false'
         run: |
           echo "Error: Tag v${{ steps.validate_tag.outputs.version }} does not exist"
           exit 1
@@ -71,7 +85,8 @@ jobs:
           version: '~> v2'
           args: release --clean
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Use GitHub App token instead of default GITHUB_TOKEN for cross-repo access
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
           HOMEBREW_TAP_PUSH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Upload artifacts

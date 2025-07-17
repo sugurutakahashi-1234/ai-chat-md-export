@@ -19,6 +19,9 @@ jobs:
   cd-npm-release:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.get_tag.outputs.tag_name }}
     steps:
       - name: Release Please Action
         id: release
@@ -74,10 +77,13 @@ jobs:
           echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
           echo "Created tag: ${TAG_NAME}"
 
-      - name: Trigger Homebrew Release
-        if: ${{ steps.release.outputs.release_created }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "🍺 Triggering Homebrew release for tag ${{ steps.get_tag.outputs.tag_name }}"
-          bun run trigger:workflow:cd-homebrew-release
+  # Trigger Homebrew release workflow
+  # Note: workflow_call can only be used at the job level, not as a step
+  # That's why this is a separate job instead of a step in cd-npm-release
+  trigger-homebrew-release:
+    needs: cd-npm-release
+    if: ${{ needs.cd-npm-release.outputs.release_created == 'true' }}
+    uses: ./.github/workflows/cd-homebrew-release.yml
+    with:
+      tag_name: ${{ needs.cd-npm-release.outputs.tag_name }}
+    secrets: inherit

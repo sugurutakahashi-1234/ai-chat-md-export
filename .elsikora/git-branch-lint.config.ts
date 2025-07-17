@@ -5,23 +5,23 @@ import type { IBranchLintConfig } from "@elsikora/git-branch-lint";
 const config: IBranchLintConfig = {
   branches: [
     // Standard GitFlow branch types
-    "feature", // New features (branched from develop)
-    "release", // Prepare for a new production release
-    "hotfix", // Emergency fixes to production (branched from main)
+    "feature",
+    "release",
+    "hotfix",
+    "bugfix",
 
     // Conventional Commits-based branch types
     // These align with commit message types for consistency
-    "feat", // New features (Conventional Commits style)
-    "fix", // Bug fixes (Conventional Commits style)
-    "docs", // Documentation only changes
-    "style", // Code style changes (formatting, missing semi-colons, etc)
-    "refactor", // Code refactoring without changing functionality
-    "test", // Adding or correcting tests
-    "chore", // Maintenance tasks, dependency updates, etc
-    "ci", // Changes to CI configuration files and scripts
-    "perf", // Performance improvements
-    "build", // Changes affecting build system or dependencies
-    "revert", // Reverting previous commits
+    "feat",
+    "fix",
+    "perf",
+    "docs",
+    "style",
+    "refactor",
+    "test",
+    "build",
+    "ci",
+    "chore",
   ],
   ignore: [
     // GitFlow main branches (long-lived)
