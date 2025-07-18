@@ -14,11 +14,6 @@ export abstract class BaseError extends Error {
 
 /**
  * Error thrown when validation fails
- *
- * Used in tests for error handling scenarios. While not currently used in production code,
- * this error class is essential for testing error paths and may be used in future validation implementations.
- *
- * @public
  */
 export class ValidationError extends BaseError {
   readonly validationErrors?: unknown;
