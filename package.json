@@ -107,7 +107,7 @@
     "@types/node": "24.0.14",
     "@ysk8hori/typescript-graph": "^0.26.3",
     "husky": "9.1.7",
-    "knip": "5.61.3",
+    "knip": "5.62.0",
     "release-it": "19.0.4",
     "typescript": "5.8.3"
   }

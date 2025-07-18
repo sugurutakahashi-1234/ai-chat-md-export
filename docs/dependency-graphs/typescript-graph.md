@@ -107,6 +107,7 @@ flowchart LR
     src/core/format//detector.ts-->src/core/format//handler.ts
     src/core/format//detector.ts-->src/core/handler//registry.ts
     src/core/processor.ts-->src/handlers/index.ts
+    src/core/processor.ts-->src/types.ts
     src/core/processor.ts-->src/utils/error//formatter.ts
     src/core/processor.ts-->src/utils/logger.ts
     src/core/processor.ts-->src/utils/options.ts
