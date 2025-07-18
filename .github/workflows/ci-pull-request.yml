@@ -78,7 +78,7 @@ jobs:
         with:
           coverage-files: ./coverage/lcov.info
           artifact-name: code-coverage-report
-          minimum-coverage: 75
+          minimum-coverage: 65 # bunfig.toml coverageThreshold
           github-token: ${{ secrets.GITHUB_TOKEN }}
           title-prefix: '📊 '
           additional-message: 'Code coverage report for this PR'

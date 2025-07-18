@@ -1,22 +1,10 @@
-import { promises as fs } from "node:fs";
-
-export async function detectFormat(
-  filePath: string,
-): Promise<"chatgpt" | "claude"> {
-  const content = await fs.readFile(filePath, "utf-8");
-
-  // Try parsing as JSON first
-  try {
-    const data = JSON.parse(content);
-    if (Array.isArray(data)) {
-      if (data[0]?.mapping) {
-        return "chatgpt";
-      } else if (data[0]?.chat_messages && data[0]?.uuid) {
-        return "claude";
-      }
+export function detectFormat(data: unknown): "chatgpt" | "claude" {
+  if (Array.isArray(data) && data.length > 0) {
+    if (data[0]?.mapping) {
+      return "chatgpt";
+    } else if (data[0]?.chat_messages && data[0]?.uuid) {
+      return "claude";
     }
-  } catch {
-    // Not a valid JSON
   }
 
   throw new Error(

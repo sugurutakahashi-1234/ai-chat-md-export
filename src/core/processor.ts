@@ -54,12 +54,25 @@ export async function processFile(
   const logger = createLogger({ quiet: options.quiet });
   logger.info(`Processing: ${getRelativePath(filePath)}`);
 
+  // Read file content once
+  let fileContent: string;
+  let data: unknown;
+  try {
+    fileContent = await fs.readFile(filePath, "utf-8");
+    data = JSON.parse(fileContent);
+  } catch (error) {
+    throw new Error(
+      formatErrorMessage("Failed to read or parse file", {
+        file: filePath,
+        reason: getErrorMessage(error),
+      }),
+    );
+  }
+
   let format: string;
   try {
     format =
-      options.platform === "auto"
-        ? await detectFormat(filePath)
-        : options.platform;
+      options.platform === "auto" ? detectFormat(data) : options.platform;
   } catch (error) {
     throw new Error(
       formatErrorMessage("Failed to detect file format", {
@@ -72,9 +85,9 @@ export async function processFile(
   let conversations: Conversation[];
   try {
     if (format === "chatgpt") {
-      conversations = await loadChatGPT(filePath, { quiet: options.quiet });
+      conversations = await loadChatGPT(data, { quiet: options.quiet });
     } else if (format === "claude") {
-      conversations = await loadClaude(filePath, { quiet: options.quiet });
+      conversations = await loadClaude(data, { quiet: options.quiet });
     } else {
       throw new Error(
         formatErrorMessage(`Unsupported format: ${format}`, {

@@ -4,18 +4,16 @@ import {
   chatGPTConversationSchema,
 } from "../schemas/chatgpt.js";
 import type { Conversation } from "../types.js";
-import { logLoadingSummary, readJSONFile } from "../utils/loader-helpers.js";
+import { logLoadingSummary } from "../utils/loader-logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
 } from "../utils/schema-validator.js";
 
 export async function loadChatGPT(
-  filePath: string,
+  data: unknown,
   options: { quiet?: boolean } = {},
 ): Promise<Conversation[]> {
-  const data = await readJSONFile(filePath);
-
   if (!Array.isArray(data)) {
     throw new Error("ChatGPT export data must be an array");
   }

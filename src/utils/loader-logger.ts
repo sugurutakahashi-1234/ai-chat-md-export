@@ -1,16 +1,4 @@
-import { promises as fs } from "node:fs";
 import { createLogger } from "./logger.js";
-
-/**
- * Read and parse JSON file
- * @param filePath - Path to JSON file
- * @returns Parsed JSON data
- * @throws Error if file cannot be read or JSON is invalid
- */
-export async function readJSONFile(filePath: string): Promise<unknown> {
-  const content = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(content);
-}
 
 /**
  * Format summary stats for console output

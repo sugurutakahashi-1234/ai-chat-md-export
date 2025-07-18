@@ -13,7 +13,7 @@ export const claudeMessageContentSchema = z
 export const claudeMessageSchema = z
   .object({
     // Support both new format (using sender) and old format (using role)
-    role: z.enum(["user", "assistant"]).optional(),
+    role: z.enum(["user", "assistant", "human"]).optional(),
     sender: z.enum(["human", "assistant"]).optional(),
     content: z
       .union([z.string(), z.array(claudeMessageContentSchema)])

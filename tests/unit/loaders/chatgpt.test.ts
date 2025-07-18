@@ -84,14 +84,8 @@ describe("loadChatGPT with inline data", () => {
   });
 
   test("loads valid ChatGPT conversation", async () => {
-    const testFile = path.join(tempDir, "test-chatgpt.json");
-    await fs.writeFile(
-      testFile,
-      JSON.stringify(createValidChatGPTData()),
-      "utf-8",
-    );
-
-    const conversations = await loadChatGPT(testFile);
+    const data = createValidChatGPTData();
+    const conversations = await loadChatGPT(data);
 
     expect(conversations).toHaveLength(1);
     const conv = conversations[0];
@@ -104,14 +98,8 @@ describe("loadChatGPT with inline data", () => {
   });
 
   test("extracts messages in correct order", async () => {
-    const testFile = path.join(tempDir, "test-chatgpt-order.json");
-    await fs.writeFile(
-      testFile,
-      JSON.stringify(createValidChatGPTData()),
-      "utf-8",
-    );
-
-    const conversations = await loadChatGPT(testFile);
+    const data = createValidChatGPTData();
+    const conversations = await loadChatGPT(data);
     const messages = conversations[0]?.messages || [];
 
     expect(messages[0]?.role).toBe("system");
@@ -129,96 +117,67 @@ describe("loadChatGPT with inline data", () => {
   test("handles missing file", async () => {
     const filePath = path.join(tempDir, "non-existent.json");
 
-    await expect(loadChatGPT(filePath)).rejects.toThrow();
+    await expect(fs.readFile(filePath, "utf-8")).rejects.toThrow();
   });
 
   test("handles invalid JSON", async () => {
     const tempFile = path.join(tempDir, "invalid.json");
     await fs.writeFile(tempFile, "{ invalid json", "utf-8");
 
-    await expect(loadChatGPT(tempFile)).rejects.toThrow();
+    const content = await fs.readFile(tempFile, "utf-8");
+    expect(() => JSON.parse(content)).toThrow();
   });
 
   test("handles non-array data", async () => {
-    const tempFile = path.join(tempDir, "not-array.json");
-    await fs.writeFile(tempFile, '{"not": "an array"}', "utf-8");
+    const data = { not: "an array" };
 
-    await expect(loadChatGPT(tempFile)).rejects.toThrow(
+    await expect(loadChatGPT(data)).rejects.toThrow(
       "ChatGPT export data must be an array",
     );
   });
 
   test("handles schema validation errors", async () => {
-    const filePath = path.join(fixturesDir, "invalid-conversation.json");
+    const data = await fs.readFile(
+      path.join(fixturesDir, "invalid-conversation.json"),
+      "utf-8",
+    );
+    const parsedData = JSON.parse(data);
 
-    await expect(loadChatGPT(filePath)).rejects.toThrow(
+    await expect(loadChatGPT(parsedData)).rejects.toThrow(
       "Schema validation error",
     );
   });
 
   test("logs success message with count", async () => {
-    const testFile = path.join(tempDir, "test-chatgpt-log.json");
-    await fs.writeFile(
-      testFile,
-      JSON.stringify(createValidChatGPTData()),
-      "utf-8",
-    );
+    const data = createValidChatGPTData();
+    await loadChatGPT(data, { quiet: false });
 
-    await loadChatGPT(testFile);
-
-    expect(
-      consoleOutput.some((line) =>
-        line.includes("✓ Successfully loaded 1 conversations"),
-      ),
-    ).toBe(true);
+    const logMessages = consoleOutput.join("\n");
+    expect(logMessages).toContain("Successfully loaded 1 conversations");
   });
 
   test("handles conversations without title", async () => {
-    const testFile = path.join(tempDir, "no-title.json");
-    const data = [
-      {
-        title: null, // title is required but we test null handling
-        create_time: 1703980800,
-        mapping: {
-          aaa: {
-            id: "aaa",
-            message: null,
-            children: [],
-          },
-        },
-      },
-    ];
-    await fs.writeFile(testFile, JSON.stringify(data), "utf-8");
+    const data = createValidChatGPTData();
+    // @ts-expect-error - Testing without title
+    delete data[0].title;
 
-    const conversations = await loadChatGPT(testFile);
+    const conversations = await loadChatGPT(data);
     expect(conversations[0]?.title).toBe("Untitled Conversation");
   });
 
   test("reports skipped fields", async () => {
-    const testFile = path.join(tempDir, "extra-fields.json");
-    const data = [
-      {
-        title: "Test",
-        create_time: 1703980800,
-        extra_field: "should be skipped",
-        mapping: {
-          aaa: {
-            id: "aaa",
-            message: null,
-            children: [],
-          },
-        },
-      },
-    ];
-    await fs.writeFile(testFile, JSON.stringify(data), "utf-8");
+    const data = createValidChatGPTData();
+    // @ts-expect-error - Add unknown field for testing
+    data[0].customField = "unknown field";
+    // @ts-expect-error - Add another unknown field
+    data[0].anotherField = 123;
 
-    await loadChatGPT(testFile);
+    await loadChatGPT(data, { quiet: false });
 
-    expect(consoleOutput.some((line) => line.includes("Skipped fields"))).toBe(
-      true,
-    );
-    expect(consoleOutput.some((line) => line.includes("extra_field"))).toBe(
-      true,
-    );
+    const logMessages = consoleOutput.join("\n");
+    expect(logMessages).toContain("Successfully loaded 1 conversations");
+    expect(logMessages).toContain("Skipped fields during conversion");
+    expect(logMessages).toContain("anotherField");
+    expect(logMessages).toContain("customField");
   });
 });

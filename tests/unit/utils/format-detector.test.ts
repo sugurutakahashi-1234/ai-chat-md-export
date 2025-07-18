@@ -1,52 +1,29 @@
-import { afterEach, beforeEach, describe, expect, test } from "bun:test";
-import { promises as fs } from "node:fs";
-import path from "node:path";
+import { describe, expect, test } from "bun:test";
 import { detectFormat } from "../../../src/utils/format-detector.js";
 
 describe("detectFormat", () => {
-  const tempDir = path.join(process.cwd(), "tests/temp/format-detector");
-
-  beforeEach(async () => {
-    await fs.mkdir(tempDir, { recursive: true });
-  });
-
-  afterEach(async () => {
-    await fs.rm(tempDir, { recursive: true, force: true });
-  });
-
-  test("detects ChatGPT format", async () => {
-    const filePath = path.join(tempDir, "chatgpt.json");
+  test("detects ChatGPT format", () => {
     const chatgptData = [{ mapping: {}, title: "Test" }];
-    await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
-
-    const format = await detectFormat(filePath);
+    const format = detectFormat(chatgptData);
     expect(format).toBe("chatgpt");
   });
 
-  test("detects Claude format", async () => {
-    const filePath = path.join(tempDir, "claude.json");
+  test("detects Claude format", () => {
     const claudeData = [{ chat_messages: [], uuid: "test-uuid" }];
-    await fs.writeFile(filePath, JSON.stringify(claudeData), "utf-8");
-
-    const format = await detectFormat(filePath);
+    const format = detectFormat(claudeData);
     expect(format).toBe("claude");
   });
 
-  test("throws error for unknown format", async () => {
-    const filePath = path.join(tempDir, "unknown.json");
+  test("throws error for unknown format", () => {
     const unknownData = [{ someField: "value" }];
-    await fs.writeFile(filePath, JSON.stringify(unknownData), "utf-8");
-
-    await expect(detectFormat(filePath)).rejects.toThrow(
+    expect(() => detectFormat(unknownData)).toThrow(
       "Cannot detect file format",
     );
   });
 
-  test("throws error for invalid JSON", async () => {
-    const filePath = path.join(tempDir, "invalid.json");
-    await fs.writeFile(filePath, "{ invalid json", "utf-8");
-
-    await expect(detectFormat(filePath)).rejects.toThrow(
+  test("throws error for invalid JSON", () => {
+    const invalidData = "not an array";
+    expect(() => detectFormat(invalidData)).toThrow(
       "Cannot detect file format",
     );
   });

@@ -3,18 +3,16 @@ import {
   claudeConversationSchema,
 } from "../schemas/claude.js";
 import type { Conversation } from "../types.js";
-import { logLoadingSummary, readJSONFile } from "../utils/loader-helpers.js";
+import { logLoadingSummary } from "../utils/loader-logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
 } from "../utils/schema-validator.js";
 
 export async function loadClaude(
-  filePath: string,
+  data: unknown,
   options: { quiet?: boolean } = {},
 ): Promise<Conversation[]> {
-  const data = await readJSONFile(filePath);
-
   if (!Array.isArray(data)) {
     throw new Error("Claude export data must be an array");
   }
@@ -48,17 +46,8 @@ export async function loadClaude(
     const parsed = result.data as ClaudeConversation;
 
     // Safely process date
-    let date: Date;
-    try {
-      const parsedDate = new Date(parsed.created_at);
-      if (!Number.isNaN(parsedDate.getTime())) {
-        date = parsedDate;
-      } else {
-        date = new Date();
-      }
-    } catch {
-      date = new Date();
-    }
+    const parsedDate = new Date(parsed.created_at);
+    const date = parsedDate;
 
     conversations.push({
       id: parsed.uuid,
@@ -75,6 +64,15 @@ export async function loadClaude(
         // Content field exists (array format)
         else if ("content" in msg && Array.isArray(msg.content)) {
           const texts = msg.content
+            .filter((c) => {
+              // Only include "text" type content, exclude "thinking" type
+              return (
+                typeof c === "object" &&
+                c !== null &&
+                "type" in c &&
+                c.type === "text"
+              );
+            })
             .map((c) => {
               if (typeof c === "object" && c !== null && "text" in c) {
                 return c.text;
@@ -94,7 +92,8 @@ export async function loadClaude(
         if ("sender" in msg) {
           role = msg.sender === "human" ? "user" : "assistant";
         } else if ("role" in msg && msg.role) {
-          role = msg.role;
+          // Convert old format role field (human -> user)
+          role = msg.role === "human" ? "user" : "assistant";
         } else {
           // Default value
           role = "user";

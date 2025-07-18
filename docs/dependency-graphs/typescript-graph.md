@@ -21,7 +21,7 @@ flowchart LR
         end
         subgraph src/utils["/utils"]
             src/utils/logger.ts["logger.ts"]
-            src/utils/loader//helpers.ts["loader-helpers.ts"]
+            src/utils/loader//logger.ts["loader-logger.ts"]
             src/utils/schema//validator.ts["schema-validator.ts"]
             src/utils/error//formatter.ts["error-formatter.ts"]
             src/utils/filename.ts["filename.ts"]
@@ -46,16 +46,16 @@ flowchart LR
     src/converters/markdown.ts-->src/types.ts
     src/schemas/chatgpt.ts-->node//modules/zod/index.d.cts
     src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
-    src/utils/loader//helpers.ts-->src/utils/logger.ts
+    src/utils/loader//logger.ts-->src/utils/logger.ts
     src/utils/schema//validator.ts-->node//modules/zod/index.d.cts
     src/loaders/chatgpt.ts-->src/schemas/chatgpt.ts
     src/loaders/chatgpt.ts-->src/types.ts
-    src/loaders/chatgpt.ts-->src/utils/loader//helpers.ts
+    src/loaders/chatgpt.ts-->src/utils/loader//logger.ts
     src/loaders/chatgpt.ts-->src/utils/schema//validator.ts
     src/schemas/claude.ts-->node//modules/zod/index.d.cts
     src/loaders/claude.ts-->src/schemas/claude.ts
     src/loaders/claude.ts-->src/types.ts
-    src/loaders/claude.ts-->src/utils/loader//helpers.ts
+    src/loaders/claude.ts-->src/utils/loader//logger.ts
     src/loaders/claude.ts-->src/utils/schema//validator.ts
     src/utils/options.ts-->node//modules/zod/index.d.cts
     src/core/filter.ts-->src/types.ts

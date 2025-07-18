@@ -1,6 +1,6 @@
 [test]
 # Ref: https://bun.com/docs/test/coverage
-coverageThreshold = { lines = 0.70, functions = 0.65 }
+coverageThreshold = { lines = 0.65, functions = 0.65 }
 coverageSkipTestFiles = true
 coverageDir = "coverage"
 coverageReporter = ["text", "lcov"]

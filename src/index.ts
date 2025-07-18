@@ -3,21 +3,14 @@
 
 // CLI entry point
 export { main } from "./cli.js";
-export {
-  convertSingleConversationToJson,
-  convertToJson,
-} from "./converters/json.js";
+export { convertToJson } from "./converters/json.js";
 // Converters
 export {
   convertMultipleToMarkdown,
   convertToMarkdown,
 } from "./converters/markdown.js";
 // Core functionality
-export {
-  processDirectory,
-  processFile,
-  processInput,
-} from "./core/processor.js";
+export { processInput } from "./core/processor.js";
 // Loaders
 export { loadChatGPT } from "./loaders/chatgpt.js";
 export { loadClaude } from "./loaders/claude.js";
