@@ -6,7 +6,7 @@ bun run ci
 
 # Auto-update dependency graph
 if git diff HEAD --name-only | grep -qE "^src/.*\.ts$"; then
-  bun run depgraph:mermaid
+  bun run dependency:graph:mermaid
   git diff --quiet docs/dependency-graphs/typescript-graph.md || {
     git add docs/dependency-graphs/typescript-graph.md
     git commit -m "chore: update dependency graph [auto-generated]" --no-verify

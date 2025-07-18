@@ -45,14 +45,13 @@ jobs:
       - name: Generate TypeScript dependency graph
         uses: ysk8hori/delta-typescript-graph-action@v1.2.3
         with:
-          tsconfig: './tsconfig.json'
-          exclude: 'lib'
+          tsconfig: './tsconfig.dependency-graph.json' # Use dedicated config instead of tsconfig.json to include test files in dependency analysis
           orientation: 'LR' # Change to 'TB' for top-bottom orientation
           max-size: 30 # default is 30, adjust as needed
           show-metrics: true
           comment-title: '📊 Dependency Graph Changes'
           in-details: true
-          include-index-file-dependencies: true
+          include-index-file-dependencies: false # Set to true if you want to include index.ts dependencies
           debug: true
 
       - name: Upload coverage to Codecov
