@@ -11,23 +11,25 @@ flowchart LR
         src/version.ts["version.ts"]
         src/cli.ts["cli.ts"]
         src/index.ts["index.ts"]
-        subgraph src/converters["/converters"]
-            src/converters/json.ts["json.ts"]
-            src/converters/markdown.ts["markdown.ts"]
-        end
         subgraph src/core["/core"]
             src/core/format//handler.ts["format-handler.ts"]
             src/core/handler//registry.ts["handler-registry.ts"]
             src/core/base//handler.ts["base-handler.ts"]
+            src/core/file//loader.ts["file-loader.ts"]
+            src/core/output//converter.ts["output-converter.ts"]
+            src/core/converter//registry.ts["converter-registry.ts"]
+            src/core/conversation//converter.ts["conversation-converter.ts"]
+            src/core/file//writer.ts["file-writer.ts"]
             src/core/filter.ts["filter.ts"]
+            src/core/format//detector.ts["format-detector.ts"]
             src/core/processor.ts["processor.ts"]
         end
         subgraph src/utils["/utils"]
             src/utils/logger.ts["logger.ts"]
             src/utils/schema//validator.ts["schema-validator.ts"]
             src/utils/error//formatter.ts["error-formatter.ts"]
-            src/utils/filename.ts["filename.ts"]
             src/utils/options.ts["options.ts"]
+            src/utils/filename.ts["filename.ts"]
         end
         subgraph src/schemas["/schemas"]
             src/schemas/chatgpt.ts["chatgpt.ts"]
@@ -38,14 +40,19 @@ flowchart LR
             src/handlers/claude//handler.ts["claude-handler.ts"]
             src/handlers/index.ts["index.ts"]
         end
+        subgraph src/converters["/converters"]
+            src/converters/json.ts["json.ts"]
+            src/converters/json//converter.ts["json-converter.ts"]
+            src/converters/markdown.ts["markdown.ts"]
+            src/converters/markdown//converter.ts["markdown-converter.ts"]
+            src/converters/index.ts["index.ts"]
+        end
     end
     subgraph node//modules["node_modules"]
         node//modules/zod/index.d.cts["zod"]
         node//modules/picocolors/picocolors.d.ts["picocolors"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
-    src/converters/json.ts-->src/types.ts
-    src/converters/markdown.ts-->src/types.ts
     src/core/format//handler.ts-->node//modules/zod/index.d.cts
     src/core/format//handler.ts-->src/types.ts
     src/core/handler//registry.ts-->src/core/format//handler.ts
@@ -68,30 +75,59 @@ flowchart LR
     src/handlers/index.ts-->src/handlers/chatgpt//handler.ts
     src/handlers/index.ts-->src/handlers/claude//handler.ts
     src/utils/options.ts-->node//modules/zod/index.d.cts
+    src/core/file//loader.ts-->src/utils/error//formatter.ts
+    src/core/output//converter.ts-->src/types.ts
+    src/core/converter//registry.ts-->src/core/output//converter.ts
+    src/converters/json.ts-->src/types.ts
+    src/converters/json//converter.ts-->src/core/output//converter.ts
+    src/converters/json//converter.ts-->src/types.ts
+    src/converters/json//converter.ts-->src/converters/json.ts
+    src/converters/markdown.ts-->src/types.ts
+    src/converters/markdown//converter.ts-->src/core/output//converter.ts
+    src/converters/markdown//converter.ts-->src/types.ts
+    src/converters/markdown//converter.ts-->src/converters/markdown.ts
+    src/converters/index.ts-->src/core/converter//registry.ts
+    src/converters/index.ts-->src/converters/json//converter.ts
+    src/converters/index.ts-->src/converters/markdown//converter.ts
+    src/core/conversation//converter.ts-->src/converters/index.ts
+    src/core/conversation//converter.ts-->src/types.ts
+    src/core/conversation//converter.ts-->src/utils/options.ts
+    src/core/conversation//converter.ts-->src/core/converter//registry.ts
+    src/core/conversation//converter.ts-->src/core/output//converter.ts
+    src/core/file//writer.ts-->src/types.ts
+    src/core/file//writer.ts-->src/utils/error//formatter.ts
+    src/core/file//writer.ts-->src/utils/filename.ts
+    src/core/file//writer.ts-->src/utils/logger.ts
+    src/core/file//writer.ts-->src/utils/options.ts
+    src/core/file//writer.ts-->src/core/conversation//converter.ts
     src/core/filter.ts-->src/types.ts
     src/core/filter.ts-->src/utils/options.ts
-    src/core/processor.ts-->src/converters/json.ts
-    src/core/processor.ts-->src/converters/markdown.ts
+    src/core/format//detector.ts-->src/utils/error//formatter.ts
+    src/core/format//detector.ts-->src/utils/options.ts
+    src/core/format//detector.ts-->src/core/format//handler.ts
+    src/core/format//detector.ts-->src/core/handler//registry.ts
     src/core/processor.ts-->src/handlers/index.ts
-    src/core/processor.ts-->src/types.ts
     src/core/processor.ts-->src/utils/error//formatter.ts
-    src/core/processor.ts-->src/utils/filename.ts
     src/core/processor.ts-->src/utils/logger.ts
     src/core/processor.ts-->src/utils/options.ts
+    src/core/processor.ts-->src/core/file//loader.ts
+    src/core/processor.ts-->src/core/file//writer.ts
     src/core/processor.ts-->src/core/filter.ts
-    src/core/processor.ts-->src/core/format//handler.ts
-    src/core/processor.ts-->src/core/handler//registry.ts
+    src/core/processor.ts-->src/core/format//detector.ts
     src/cli.ts-->node//modules/commander/typings/index.d.ts
     src/cli.ts-->src/core/processor.ts
     src/cli.ts-->src/utils/logger.ts
     src/cli.ts-->src/utils/options.ts
     src/cli.ts-->src/version.ts
     src/index.ts-->src/cli.ts
+    src/index.ts-->src/converters/index.ts
     src/index.ts-->src/converters/json.ts
     src/index.ts-->src/converters/markdown.ts
-    src/index.ts-->src/core/format//handler.ts
     src/index.ts-->src/core/base//handler.ts
+    src/index.ts-->src/core/converter//registry.ts
+    src/index.ts-->src/core/format//handler.ts
     src/index.ts-->src/core/handler//registry.ts
+    src/index.ts-->src/core/output//converter.ts
     src/index.ts-->src/core/processor.ts
     src/index.ts-->src/handlers/index.ts
     src/index.ts-->src/types.ts

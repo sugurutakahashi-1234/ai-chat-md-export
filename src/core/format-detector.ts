@@ -1,7 +1,4 @@
-import {
-  formatErrorMessage,
-  getErrorMessage,
-} from "../utils/error-formatter.js";
+import { formatErrorMessage } from "../utils/error-formatter.js";
 import type { Options } from "../utils/options.js";
 import type { FormatHandler } from "./format-handler.js";
 import { defaultRegistry } from "./handler-registry.js";

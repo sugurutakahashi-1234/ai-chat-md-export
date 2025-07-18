@@ -3,6 +3,7 @@
 
 // CLI entry point
 export { main } from "./cli.js";
+export { JsonConverter, MarkdownConverter } from "./converters/index.js";
 export { convertToJson } from "./converters/json.js";
 // Converters
 export {
@@ -11,8 +12,13 @@ export {
 } from "./converters/markdown.js";
 export type { ParsedConversation } from "./core/base-handler.js";
 export { BaseFormatHandler } from "./core/base-handler.js";
+export {
+  ConverterRegistry,
+  defaultConverterRegistry,
+} from "./core/converter-registry.js";
 export type { FormatHandler, LoadOptions } from "./core/format-handler.js";
 export { defaultRegistry, HandlerRegistry } from "./core/handler-registry.js";
+export type { OutputConverter } from "./core/output-converter.js";
 // Core functionality
 export { processInput } from "./core/processor.js";
 // Handlers

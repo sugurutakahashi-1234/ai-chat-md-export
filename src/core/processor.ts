@@ -1,13 +1,4 @@
-import { promises as fs } from "node:fs";
 import path from "node:path";
-import {
-  convertSingleConversationToJson,
-  convertToJson,
-} from "../converters/json.js";
-import {
-  convertMultipleToMarkdown,
-  convertToMarkdown,
-} from "../converters/markdown.js";
 import { registerDefaultHandlers } from "../handlers/index.js";
 import type { Conversation } from "../types.js";
 import {
@@ -15,24 +6,27 @@ import {
   getErrorMessage,
   getRelativePath,
 } from "../utils/error-formatter.js";
-import type { FilenameEncoding } from "../utils/filename.js";
-import { generateFileName } from "../utils/filename.js";
 import { createLogger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
+import { FileLoader } from "./file-loader.js";
+import { FileWriter } from "./file-writer.js";
 import { applyFilters } from "./filter.js";
-import type { FormatHandler } from "./format-handler.js";
-import { defaultRegistry } from "./handler-registry.js";
+import { FormatDetector } from "./format-detector.js";
 
 // Initialize default handlers on module load
 registerDefaultHandlers();
+
+const fileLoader = new FileLoader();
+const formatDetector = new FormatDetector();
+const fileWriter = new FileWriter();
 
 export async function processInput(options: Options): Promise<void> {
   const inputPath = path.resolve(options.input);
   const outputDir = path.resolve(options.output || process.cwd());
 
-  const stat = await fs.stat(inputPath);
+  const isFile = await fileLoader.isFile(inputPath);
 
-  if (stat.isFile()) {
+  if (isFile) {
     await processFile(inputPath, outputDir, options);
   } else {
     await processDirectory(inputPath, outputDir, options);
@@ -47,47 +41,11 @@ export async function processFile(
   const logger = createLogger({ quiet: options.quiet });
   logger.info(`Processing: ${getRelativePath(filePath)}`);
 
-  // Read file content once
-  let fileContent: string;
-  let data: unknown;
-  try {
-    fileContent = await fs.readFile(filePath, "utf-8");
-    data = JSON.parse(fileContent);
-  } catch (error) {
-    throw new Error(
-      formatErrorMessage("Failed to read or parse file", {
-        file: filePath,
-        reason: getErrorMessage(error),
-      }),
-    );
-  }
+  // Read file content
+  const data = await fileLoader.loadJsonFile(filePath);
 
   // Detect format handler
-  let handler: FormatHandler;
-  if (options.platform === "auto") {
-    const detectedHandler = defaultRegistry.detectFormat(data);
-    if (!detectedHandler) {
-      throw new Error(
-        formatErrorMessage("Cannot detect file format", {
-          file: filePath,
-          reason:
-            "The file does not match any known format (ChatGPT or Claude)",
-        }),
-      );
-    }
-    handler = detectedHandler;
-  } else {
-    const selectedHandler = defaultRegistry.getById(options.platform);
-    if (!selectedHandler) {
-      throw new Error(
-        formatErrorMessage(`Unsupported format: ${options.platform}`, {
-          file: filePath,
-          reason: "Supported formats are: chatgpt, claude, auto",
-        }),
-      );
-    }
-    handler = selectedHandler;
-  }
+  const handler = formatDetector.detectHandler(data, options, filePath);
 
   // Load conversations using the handler
   let conversations: Conversation[];
@@ -133,100 +91,12 @@ export async function processFile(
     }
   }
 
-  // Only create output directory if we have files to write
-  if (!options.dryRun && filteredConversations.length > 0) {
-    await fs.mkdir(outputDir, { recursive: true });
-  }
-
-  // Track write errors to report at the end
-  const writeErrors: Array<{ file: string; error: string }> = [];
-
-  if (options.split) {
-    // Split mode: Write each conversation to a separate file
-    for (const conv of filteredConversations) {
-      const content =
-        options.format === "json"
-          ? convertSingleConversationToJson(conv)
-          : convertToMarkdown(conv);
-      const extension = options.format === "json" ? ".json" : ".md";
-      const fileName = generateFileName(
-        conv.date,
-        conv.title,
-        options.filenameEncoding as FilenameEncoding,
-      ).replace(/\.md$/, extension);
-      const outputPath = path.join(outputDir, fileName);
-
-      try {
-        if (!options.dryRun) {
-          await fs.writeFile(outputPath, content, "utf-8");
-        }
-        logger.output(getRelativePath(outputPath), options.dryRun);
-      } catch (error) {
-        const errorMessage = getErrorMessage(error);
-        writeErrors.push({ file: outputPath, error: errorMessage });
-
-        // Still log individual error if not quiet
-        logger.warn(
-          formatErrorMessage("Failed to write file", {
-            file: outputPath,
-            reason: errorMessage,
-          }),
-        );
-      }
-    }
-  } else {
-    // No-split mode: Write all conversations to a single file
-    const content =
-      options.format === "json"
-        ? convertToJson(filteredConversations)
-        : convertMultipleToMarkdown(filteredConversations);
-    const fileName =
-      options.format === "json"
-        ? "all-conversations.json"
-        : "all-conversations.md";
-    const outputPath = path.join(outputDir, fileName);
-
-    try {
-      if (!options.dryRun) {
-        await fs.writeFile(outputPath, content, "utf-8");
-      }
-      logger.output(getRelativePath(outputPath), options.dryRun);
-      logger.stat(
-        "Combined",
-        `${filteredConversations.length} conversations into one file`,
-      );
-    } catch (error) {
-      const errorMessage = getErrorMessage(error);
-      writeErrors.push({ file: outputPath, error: errorMessage });
-
-      logger.warn(
-        formatErrorMessage("Failed to write file", {
-          file: outputPath,
-          reason: errorMessage,
-        }),
-      );
-    }
-  }
-
-  // Report summary of write errors at the end
-  if (writeErrors.length > 0) {
-    const errorSummary = formatErrorMessage(
-      `Failed to write ${writeErrors.length} file(s)`,
-      {
-        reason:
-          writeErrors.length <= 3
-            ? writeErrors
-                .map((e) => `${getRelativePath(e.file)}: ${e.error}`)
-                .join("\n")
-            : `First 3 errors:\n${writeErrors
-                .slice(0, 3)
-                .map((e) => `${getRelativePath(e.file)}: ${e.error}`)
-                .join("\n")}\n...and ${writeErrors.length - 3} more`,
-      },
-    );
-
-    throw new Error(errorSummary);
-  }
+  // Write filtered conversations
+  await fileWriter.writeConversations(
+    filteredConversations,
+    outputDir,
+    options,
+  );
 }
 
 export async function processDirectory(
@@ -234,8 +104,7 @@ export async function processDirectory(
   outputDir: string,
   options: Options,
 ): Promise<void> {
-  const files = await fs.readdir(dirPath);
-  const jsonFiles = files.filter((f) => f.endsWith(".json"));
+  const jsonFiles = await fileLoader.listJsonFiles(dirPath);
 
   if (jsonFiles.length === 0) {
     const logger = createLogger({ quiet: options.quiet });
