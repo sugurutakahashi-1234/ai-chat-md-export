@@ -50,9 +50,7 @@ jobs:
           max-size: 30 # default is 30, adjust as needed
           show-metrics: true
           comment-title: '📊 Dependency Graph Changes'
-          in-details: true
           include-index-file-dependencies: false # Set to true if you want to include index.ts dependencies
-          debug: true
 
       - name: Upload coverage to Codecov
         if: github.actor != 'github-actions[bot]'
