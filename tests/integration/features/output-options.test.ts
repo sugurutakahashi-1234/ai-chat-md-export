@@ -78,7 +78,7 @@ describe("Output Options", () => {
         const stderr =
           (error as { stderr?: { toString(): string } }).stderr?.toString() ||
           "";
-        expect(stderr).toContain("Error:");
+        expect(stderr).toContain("✗");
         expect(stderr).toContain("ENOENT");
       }
     });
@@ -92,7 +92,7 @@ describe("Output Options", () => {
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
-      expect(output).toContain("[DRY RUN] Would write:");
+      expect(output).toContain("[DRY RUN]");
       expect(output).toContain("2023-12-31_Test_Conversation.md");
 
       // Verify no files were created

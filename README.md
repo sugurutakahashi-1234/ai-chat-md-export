@@ -191,6 +191,7 @@ ai-chat-md-export -i conversations.json --quiet
 
 | Option                           | Description                               | Default    |
 | -------------------------------- | ----------------------------------------- | ---------- |
+| `-v, --version`                  | Display version number                    | -          |
 | `-i, --input <path>`             | Input file or directory path (required)   | -          |
 | `-o, --output <path>`            | Output directory                          | `.`        |
 | `-f, --format <format>`          | Input format (`chatgpt`/`claude`/`auto`)  | `auto`     |

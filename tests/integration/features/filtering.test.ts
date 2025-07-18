@@ -204,6 +204,7 @@ describe("Filtering Features", () => {
         const stderr =
           (error as { stderr?: { toString(): string } }).stderr?.toString() ||
           "";
+        expect(stderr).toContain("✗");
         expect(stderr).toContain("Date must be in YYYY-MM-DD format");
       }
     });

@@ -64,7 +64,7 @@
     "test:e2e:npm": "bun run build:npm && bun scripts/test-npm-package.js",
     "test:e2e:binary": "bun run build:binary && bun scripts/test-binary.js",
     "test:all": "bun run test && bun run test:e2e:npm && bun run test:e2e:binary",
-    "test:coverage": "bun test --coverage",
+    "test:coverage": "NO_COLOR=1 bun test --coverage",
     "test:coverage:html": "bun test --coverage && bunx @lcov-viewer/cli lcov coverage/lcov.info -o coverage/html",
     "validate:codecov": "cat codecov.yml | curl --data-binary @- https://codecov.io/validate",
     "validate:renovate": "$(which npx) --yes --package renovate -- renovate-config-validator renovate.json5 --strict",
@@ -91,6 +91,7 @@
   },
   "dependencies": {
     "commander": "14.0.0",
+    "picocolors": "^1.1.1",
     "zod": "4.0.5"
   },
   "devDependencies": {

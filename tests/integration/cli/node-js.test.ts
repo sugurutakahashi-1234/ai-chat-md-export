@@ -100,7 +100,7 @@ describe("Node.js Execution Tests", () => {
     } catch (error) {
       const stderr =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(stderr).toContain("Error:");
+      expect(stderr).toContain("✗");
       expect(stderr).toContain("ENOENT");
     }
   });
@@ -119,6 +119,6 @@ describe("Node.js Execution Tests", () => {
 
     expect(result.exitCode).toBe(0);
     const output = result.stdout.toString();
-    expect(output).toContain("[DRY RUN] Would write:");
+    expect(output).toContain("[DRY RUN]");
   });
 });
