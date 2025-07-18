@@ -406,7 +406,7 @@ describe("processFile", () => {
     };
 
     await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
-      "Failed to detect file format",
+      "Cannot detect file format",
     );
   });
 

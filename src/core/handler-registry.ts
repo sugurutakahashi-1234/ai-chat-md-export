@@ -33,13 +33,6 @@ export class HandlerRegistry {
   }
 
   /**
-   * Get all registered handlers
-   */
-  getAllHandlers(): FormatHandler[] {
-    return Array.from(this.handlers.values());
-  }
-
-  /**
    * Check if a handler is registered
    */
   hasHandler(id: string): boolean {

@@ -15,13 +15,9 @@ export { defaultRegistry, HandlerRegistry } from "./core/handler-registry.js";
 export { processInput } from "./core/processor.js";
 // Handlers
 export { ChatGPTHandler, ClaudeHandler } from "./handlers/index.js";
-// Loaders
-export { loadChatGPT } from "./loaders/chatgpt.js";
-export { loadClaude } from "./loaders/claude.js";
 // Types
 export type { Conversation, Message } from "./types.js";
 export type { FilenameEncoding } from "./utils/filename.js";
 export { generateFileName } from "./utils/filename.js";
 // Utilities
-export { detectFormat } from "./utils/format-detector.js";
 export { type Options, optionsSchema } from "./utils/options.js";

@@ -4,7 +4,7 @@ import {
   claudeConversationSchema,
 } from "../schemas/claude.js";
 import type { Conversation } from "../types.js";
-import { logLoadingSummary } from "../utils/loader-logger.js";
+import { createLogger } from "../utils/logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
@@ -70,37 +70,27 @@ export class ClaudeHandler implements FormatHandler<ClaudeConversation[]> {
         title: parsed.name || "Untitled Conversation",
         date,
         messages: parsed.chat_messages.map((msg) => {
-          // Get content from text field
-          let content: string = "";
-
-          // Direct text field exists
+          // Get content from message
+          let content = "";
           if ("text" in msg && typeof msg.text === "string") {
             content = msg.text;
-          }
-          // Content field exists (array format)
-          else if ("content" in msg && Array.isArray(msg.content)) {
-            const texts = msg.content
-              .filter((c) => {
-                // Only include "text" type content, exclude "thinking" type
-                return (
-                  typeof c === "object" &&
-                  c !== null &&
-                  "type" in c &&
-                  c.type === "text"
-                );
-              })
-              .map((c) => {
-                if (typeof c === "object" && c !== null && "text" in c) {
-                  return c.text;
-                }
-                return undefined;
-              })
-              .filter((t): t is string => typeof t === "string");
-            content = texts.length > 0 ? texts.join("\n") : "";
-          }
-          // Role exists (old format)
-          else if ("role" in msg && "content" in msg) {
-            content = typeof msg.content === "string" ? msg.content : "";
+          } else if ("content" in msg) {
+            if (typeof msg.content === "string") {
+              content = msg.content;
+            } else if (Array.isArray(msg.content)) {
+              // Extract text from content array, filtering out "thinking" type
+              content = msg.content
+                .filter(
+                  (c) =>
+                    typeof c === "object" &&
+                    c !== null &&
+                    "type" in c &&
+                    c.type === "text" &&
+                    "text" in c,
+                )
+                .map((c) => (c as { text: string }).text)
+                .join("\n");
+            }
           }
 
           // Determine role from sender field
@@ -131,12 +121,10 @@ export class ClaudeHandler implements FormatHandler<ClaudeConversation[]> {
     }
 
     // Display summary information
-    logLoadingSummary({
-      successCount,
-      exportType: this.name,
-      skippedFields,
-      quiet: options.quiet ?? false,
-    });
+    if (!options.quiet) {
+      const logger = createLogger({ quiet: false });
+      logger.success(`Successfully loaded ${successCount} conversations`);
+    }
 
     return conversations;
   }

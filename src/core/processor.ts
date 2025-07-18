@@ -34,18 +34,8 @@ export async function processInput(options: Options): Promise<void> {
 
   if (stat.isFile()) {
     await processFile(inputPath, outputDir, options);
-  } else if (stat.isDirectory()) {
-    await processDirectory(inputPath, outputDir, options);
   } else {
-    throw new Error(
-      formatErrorMessage("Invalid input path", {
-        file: inputPath,
-        reason:
-          "The path must be either:\n" +
-          "- A valid JSON file (e.g., conversations.json)\n" +
-          "- A directory containing JSON files",
-      }),
-    );
+    await processDirectory(inputPath, outputDir, options);
   }
 }
 
@@ -73,40 +63,35 @@ export async function processFile(
   }
 
   // Detect format handler
-  let handler: FormatHandler | undefined;
-  try {
-    if (options.platform === "auto") {
-      handler = defaultRegistry.detectFormat(data);
-      if (!handler) {
-        throw new Error(
-          "Cannot detect file format. The file does not match any known format (ChatGPT or Claude).",
-        );
-      }
-    } else {
-      handler = defaultRegistry.getById(options.platform);
-      if (!handler) {
-        throw new Error(
-          formatErrorMessage(`Unsupported format: ${options.platform}`, {
-            reason: "Supported formats are: chatgpt, claude, auto",
-          }),
-        );
-      }
+  let handler: FormatHandler;
+  if (options.platform === "auto") {
+    const detectedHandler = defaultRegistry.detectFormat(data);
+    if (!detectedHandler) {
+      throw new Error(
+        formatErrorMessage("Cannot detect file format", {
+          file: filePath,
+          reason:
+            "The file does not match any known format (ChatGPT or Claude)",
+        }),
+      );
     }
-  } catch (error) {
-    throw new Error(
-      formatErrorMessage("Failed to detect file format", {
-        file: filePath,
-        reason: getErrorMessage(error),
-      }),
-    );
+    handler = detectedHandler;
+  } else {
+    const selectedHandler = defaultRegistry.getById(options.platform);
+    if (!selectedHandler) {
+      throw new Error(
+        formatErrorMessage(`Unsupported format: ${options.platform}`, {
+          file: filePath,
+          reason: "Supported formats are: chatgpt, claude, auto",
+        }),
+      );
+    }
+    handler = selectedHandler;
   }
 
   // Load conversations using the handler
   let conversations: Conversation[];
   try {
-    if (!handler) {
-      throw new Error("Handler not found");
-    }
     conversations = await handler.load(data, { quiet: options.quiet });
   } catch (error) {
     if (
@@ -118,7 +103,7 @@ export async function processFile(
     throw new Error(
       formatErrorMessage("Failed to load file", {
         file: filePath,
-        format: handler?.name || "unknown",
+        format: handler.name,
         reason: getErrorMessage(error),
       }),
     );

@@ -5,7 +5,7 @@ import {
   chatGPTConversationSchema,
 } from "../schemas/chatgpt.js";
 import type { Conversation } from "../types.js";
-import { logLoadingSummary } from "../utils/loader-logger.js";
+import { createLogger } from "../utils/logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
@@ -83,12 +83,10 @@ export class ChatGPTHandler implements FormatHandler<ChatGPTConversation[]> {
     }
 
     // Display summary information
-    logLoadingSummary({
-      successCount,
-      exportType: this.name,
-      skippedFields,
-      quiet: options.quiet ?? false,
-    });
+    if (!options.quiet) {
+      const logger = createLogger({ quiet: false });
+      logger.success(`Successfully loaded ${successCount} conversations`);
+    }
 
     return conversations;
   }

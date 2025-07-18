@@ -39,14 +39,3 @@ export interface LoadOptions {
    */
   quiet?: boolean;
 }
-
-interface ValidationError {
-  path: string;
-  message: string;
-}
-
-interface LoadResult {
-  conversations: Conversation[];
-  warnings?: string[];
-  skippedFields?: Set<string>;
-}
