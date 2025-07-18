@@ -37,7 +37,7 @@ describe("Node.js Execution Tests", () => {
   });
 
   afterEach(async () => {
-    await $`rm -rf ${tempDir}`.quiet();
+    await fs.rm(tempDir, { recursive: true, force: true });
   });
 
   test("Node.js can execute compiled JavaScript", async () => {

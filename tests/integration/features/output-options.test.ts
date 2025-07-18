@@ -53,7 +53,7 @@ describe("Output Options", () => {
   });
 
   afterEach(async () => {
-    await $`rm -rf ${tempDir}`.quiet();
+    await fs.rm(tempDir, { recursive: true, force: true });
   });
 
   describe("--quiet option", () => {

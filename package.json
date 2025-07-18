@@ -86,8 +86,8 @@
     "release:it:dry-run": "release-it --dry-run",
     "release:please:dry-run": "bunx release-please release-pr --token=$(gh auth token) --repo-url=sugurutakahashi-1234/ai-chat-md-export --debug --dry-run",
     "trigger:workflow:cd-homebrew-release": "gh workflow run cd-homebrew-release.yml -f tag_name=v$(jq -r .version package.json)",
-    "example:chatgpt": "bun bin/ai-chat-md-export.js -i sandbox/chatgpt/chatgpt-conversations.json -o sandbox/chatgpt/output -p chatgpt",
-    "example:claude": "bun bin/ai-chat-md-export.js -i sandbox/claude/claude-conversations.json -o sandbox/claude/output -p claude",
+    "example:chatgpt": "rm -rf sandbox/chatgpt/output && bun bin/ai-chat-md-export.js -i sandbox/chatgpt/chatgpt-conversations.json -o sandbox/chatgpt/output -p chatgpt",
+    "example:claude": "rm -rf sandbox/claude/output && bun bin/ai-chat-md-export.js -i sandbox/claude/claude-conversations.json -o sandbox/claude/output -p claude",
     "example:all": "bun run example:chatgpt && bun run example:claude"
   },
   "dependencies": {

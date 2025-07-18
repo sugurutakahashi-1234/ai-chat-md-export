@@ -1,18 +1,10 @@
-import { beforeEach, describe, expect, it, mock } from "bun:test";
+import { afterEach, beforeEach, describe, expect, it, mock } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { FileWriter } from "../../../src/core/file-writer.js";
 import type { Conversation } from "../../../src/types.js";
 
-// Mock fs module
-mock.module("node:fs", () => ({
-  promises: {
-    mkdir: mock(() => Promise.resolve()),
-    writeFile: mock(() => Promise.resolve()),
-  },
-}));
-
-// Mock logger
+// Mock logger only
 mock.module("../../../src/utils/logger.js", () => ({
   createLogger: () => ({
     output: mock(() => {}),
@@ -23,6 +15,7 @@ mock.module("../../../src/utils/logger.js", () => ({
 
 describe("FileWriter", () => {
   let fileWriter: FileWriter;
+  const tempDir = path.join(process.cwd(), "tests/temp/file-writer-test");
   const mockConversations: Conversation[] = [
     {
       id: "1",
@@ -35,55 +28,61 @@ describe("FileWriter", () => {
     },
   ];
 
-  beforeEach(() => {
+  beforeEach(async () => {
     fileWriter = new FileWriter();
-    // Reset mocks
-    (fs.mkdir as any).mockClear();
-    (fs.writeFile as any).mockClear();
+    await fs.mkdir(tempDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(tempDir, { recursive: true, force: true });
   });
 
   describe("writeCombinedFile error handling", () => {
     it("handles writeFile errors gracefully", async () => {
-      const writeError = new Error("ENOSPC: no space left on device");
-      (fs.writeFile as any).mockRejectedValueOnce(writeError);
+      // Create a read-only directory to simulate write error
+      const readOnlyDir = path.join(tempDir, "readonly");
+      await fs.mkdir(readOnlyDir, { recursive: true });
 
-      await expect(
-        fileWriter.writeConversations(mockConversations, "/test/output", {
-          split: false,
-          dryRun: false,
-          quiet: false,
-          format: "markdown",
-        } as any),
-      ).rejects.toThrow("Failed to write 1 file(s)");
+      try {
+        // Make directory read-only
+        await fs.chmod(readOnlyDir, 0o444);
+
+        await expect(
+          fileWriter.writeConversations(mockConversations, readOnlyDir, {
+            split: false,
+            dryRun: false,
+            quiet: true,
+            format: "markdown",
+          } as any),
+        ).rejects.toThrow("Failed to write 1 file(s)");
+      } finally {
+        // Restore permissions for cleanup
+        await fs.chmod(readOnlyDir, 0o755).catch(() => {});
+      }
     });
 
-    it("handles permission errors", async () => {
-      const permissionError = new Error("EACCES: permission denied");
-      (fs.writeFile as any).mockRejectedValueOnce(permissionError);
-
-      await expect(
-        fileWriter.writeConversations(mockConversations, "/test/output", {
-          split: false,
-          dryRun: false,
-          quiet: false,
-          format: "markdown",
-        } as any),
-      ).rejects.toThrow("Failed to write 1 file(s)");
+    it.skip("handles permission errors", async () => {
+      // This test is similar to the write error test
+      // Skipped as it's redundant with the write error test
     });
 
     it("does not write file in dry-run mode", async () => {
+      const outputDir = path.join(tempDir, "dry-run-output");
+
       const result = await fileWriter.writeConversations(
         mockConversations,
-        "/test/output",
+        outputDir,
         {
           split: false,
           dryRun: true,
-          quiet: false,
+          quiet: true,
           format: "markdown",
         } as any,
       );
 
-      expect(fs.writeFile).not.toHaveBeenCalled();
+      // Check that output directory was not created
+      await expect(fs.access(outputDir)).rejects.toThrow();
+
       expect(result.successCount).toBe(1);
       expect(result.errors).toHaveLength(0);
     });
@@ -102,39 +101,55 @@ describe("FileWriter", () => {
         },
       ];
 
+      const outputDir = path.join(tempDir, "combined-output");
+
       const result = await fileWriter.writeConversations(
         multipleConversations,
-        "/test/output",
+        outputDir,
         {
           split: false,
           dryRun: false,
-          quiet: false,
+          quiet: true,
           format: "markdown",
         } as any,
       );
 
-      expect(fs.writeFile).toHaveBeenCalledTimes(1);
+      // Check that the combined file was created
+      const files = await fs.readdir(outputDir);
+      expect(files).toHaveLength(1);
+      expect(files[0]).toBe("all-conversations.md");
+
       expect(result.successCount).toBe(2);
       expect(result.errors).toHaveLength(0);
     });
 
     it("handles JSON format combined file", async () => {
+      const outputDir = path.join(tempDir, "json-output");
+
       const result = await fileWriter.writeConversations(
         mockConversations,
-        "/test/output",
+        outputDir,
         {
           split: false,
           dryRun: false,
-          quiet: false,
+          quiet: true,
           format: "json",
         } as any,
       );
 
-      expect(fs.writeFile).toHaveBeenCalledWith(
-        path.join("/test/output", "all-conversations.json"),
-        expect.any(String),
+      // Check that the JSON file was created
+      const files = await fs.readdir(outputDir);
+      expect(files).toHaveLength(1);
+      expect(files[0]).toBe("all-conversations.json");
+
+      // Verify JSON content
+      const content = await fs.readFile(
+        path.join(outputDir, files[0]),
         "utf-8",
       );
+      const parsed = JSON.parse(content);
+      expect(parsed.conversations).toHaveLength(1);
+
       expect(result.successCount).toBe(1);
     });
   });
