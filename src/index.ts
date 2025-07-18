@@ -24,11 +24,7 @@ export { loadClaude } from "./loaders/claude.js";
 // Types
 export type { Conversation, Message } from "./types.js";
 export type { FilenameEncoding } from "./utils/filename.js";
-export {
-  generateFileName,
-  sanitizeFileNamePreserve,
-  sanitizeFileNameStandard,
-} from "./utils/filename.js";
+export { generateFileName } from "./utils/filename.js";
 // Utilities
 export { detectFormat } from "./utils/format-detector.js";
 export { type Options, optionsSchema } from "./utils/options.js";
