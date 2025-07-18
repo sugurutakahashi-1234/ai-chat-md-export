@@ -15,20 +15,6 @@ export function createTypeGuard<T>(
 }
 
 /**
- * Safely parses a value with a Zod schema and returns the parsed value or undefined
- * @param schema - Zod schema to parse with
- * @param value - Value to parse
- * @returns Parsed value or undefined if parsing fails
- */
-export function safeParse<T>(
-  schema: z.ZodSchema<T>,
-  value: unknown,
-): T | undefined {
-  const result = schema.safeParse(value);
-  return result.success ? result.data : undefined;
-}
-
-/**
  * Asserts that a value matches a Zod schema, throwing a detailed error if not
  * @param schema - Zod schema to validate against
  * @param value - Value to validate

@@ -1,5 +1,6 @@
 import { Command } from "commander";
 import { processInput } from "./core/processor.js";
+import { formatErrorWithContext } from "./utils/error-formatter.js";
 import { logger } from "./utils/logger.js";
 import { optionsSchema } from "./utils/options.js";
 import { VERSION } from "./version.js";
@@ -80,12 +81,7 @@ For more options and detailed documentation:
     const options = optionsSchema.parse(program.opts());
     await processInput(options);
   } catch (error) {
-    const errorMessage =
-      error instanceof Error
-        ? error.message
-        : typeof error === "string"
-          ? error
-          : "An unknown error occurred";
+    const errorMessage = formatErrorWithContext(error);
     logger.error(errorMessage);
     process.exit(1);
   }

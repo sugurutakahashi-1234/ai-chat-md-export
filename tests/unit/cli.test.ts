@@ -164,7 +164,11 @@ describe("CLI main function", () => {
     await main();
 
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      pc.red(pc.bold("✗ An unknown error occurred")),
+      pc.red(
+        pc.bold(`✗ Unexpected error object: {
+  "unknown": "error"
+}`),
+      ),
     );
   });
 

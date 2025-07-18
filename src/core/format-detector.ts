@@ -1,4 +1,4 @@
-import { formatErrorMessage } from "../utils/error-formatter.js";
+import { FormatError } from "../errors/custom-errors.js";
 import type { Options } from "../utils/options.js";
 import type { FormatHandler } from "./format-handler.js";
 import { defaultRegistry } from "./handler-registry.js";
@@ -15,24 +15,24 @@ export class FormatDetector {
     if (options.platform === "auto") {
       const detectedHandler = defaultRegistry.detectFormat(data);
       if (!detectedHandler) {
-        throw new Error(
-          formatErrorMessage("Cannot detect file format", {
-            file: filePath,
-            reason:
-              "The file does not match any known format (ChatGPT or Claude)",
-          }),
-        );
+        throw new FormatError("Cannot detect file format", "auto", {
+          file: filePath,
+          reason:
+            "The file does not match any known format (ChatGPT or Claude)",
+        });
       }
       return detectedHandler;
     }
 
     const selectedHandler = defaultRegistry.getById(options.platform);
     if (!selectedHandler) {
-      throw new Error(
-        formatErrorMessage(`Unsupported format: ${options.platform}`, {
+      throw new FormatError(
+        `Unsupported format: ${options.platform}`,
+        options.platform,
+        {
           file: filePath,
           reason: "Supported formats are: chatgpt, claude, auto",
-        }),
+        },
       );
     }
     return selectedHandler;

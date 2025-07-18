@@ -1,4 +1,5 @@
 import type { ZodType } from "zod";
+import { ValidationError } from "../errors/custom-errors.js";
 import type { Conversation } from "../types.js";
 import { createLogger } from "../utils/logger.js";
 import {
@@ -55,8 +56,10 @@ export abstract class BaseFormatHandler<T = unknown>
     }
 
     if (validationErrors.length > 0) {
-      throw new Error(
+      throw new ValidationError(
         `Schema validation error:\n${validationErrors.join("\n\n")}`,
+        { errorCount: validationErrors.length },
+        validationErrors,
       );
     }
 

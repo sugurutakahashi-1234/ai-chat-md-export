@@ -1,8 +1,6 @@
 import { promises as fs } from "node:fs";
-import {
-  formatErrorMessage,
-  getErrorMessage,
-} from "../utils/error-formatter.js";
+import { FileError } from "../errors/custom-errors.js";
+import { getErrorMessage } from "../utils/error-formatter.js";
 
 export class FileLoader {
   /**
@@ -13,12 +11,9 @@ export class FileLoader {
       const fileContent = await fs.readFile(filePath, "utf-8");
       return JSON.parse(fileContent);
     } catch (error) {
-      throw new Error(
-        formatErrorMessage("Failed to read or parse file", {
-          file: filePath,
-          reason: getErrorMessage(error),
-        }),
-      );
+      throw new FileError("Failed to read or parse file", filePath, "read", {
+        originalError: getErrorMessage(error),
+      });
     }
   }
 
