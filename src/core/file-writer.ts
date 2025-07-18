@@ -1,21 +1,25 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { z } from "zod";
 import type { Conversation } from "../types.js";
 import {
   formatErrorMessage,
   getErrorMessage,
   getRelativePath,
 } from "../utils/error-formatter.js";
-import type { FilenameEncoding } from "../utils/filename.js";
 import { generateFileName } from "../utils/filename.js";
 import { createLogger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
+import { createTypeGuard } from "../utils/type-guards.js";
 import { ConversationConverter } from "./conversation-converter.js";
 
 export interface WriteResult {
   successCount: number;
   errors: Array<{ file: string; error: string }>;
 }
+
+const filenameEncodingSchema = z.enum(["standard", "preserve"]);
+const isFilenameEncoding = createTypeGuard(filenameEncodingSchema);
 
 export class FileWriter {
   private readonly converter = new ConversationConverter();
@@ -51,10 +55,13 @@ export class FileWriter {
     for (const conv of conversations) {
       const content = this.converter.convertSingle(conv, options);
       const extension = this.converter.getExtension(options);
+      const filenameEncoding = isFilenameEncoding(options.filenameEncoding)
+        ? options.filenameEncoding
+        : "standard";
       const fileName = generateFileName(
         conv.date,
         conv.title,
-        options.filenameEncoding as FilenameEncoding,
+        filenameEncoding,
       ).replace(/\.md$/, extension);
       const outputPath = path.join(outputDir, fileName);
 

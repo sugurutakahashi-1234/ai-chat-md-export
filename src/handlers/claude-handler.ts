@@ -7,6 +7,7 @@ import {
   claudeConversationSchema,
 } from "../schemas/claude.js";
 import type { Conversation } from "../types.js";
+import { assertType } from "../utils/type-guards.js";
 
 export class ClaudeHandler extends BaseFormatHandler<ClaudeConversation[]> {
   readonly id = "claude";
@@ -34,7 +35,11 @@ export class ClaudeHandler extends BaseFormatHandler<ClaudeConversation[]> {
       data: item,
       schema: claudeConversationSchema,
       transform: (validatedData: unknown) => {
-        const parsed = validatedData as ClaudeConversation;
+        const parsed = assertType(
+          claudeConversationSchema,
+          validatedData,
+          "Claude conversation transform",
+        );
         const date = new Date(parsed.created_at);
 
         return {
@@ -69,7 +74,11 @@ export class ClaudeHandler extends BaseFormatHandler<ClaudeConversation[]> {
                 c.type === "text" &&
                 "text" in c,
             )
-            .map((c) => (c as { text: string }).text)
+            .map((c) => {
+              // Type is already checked in filter above
+              const textContent = c as { type: string; text: string };
+              return textContent.text;
+            })
             .join("\n");
         }
       }

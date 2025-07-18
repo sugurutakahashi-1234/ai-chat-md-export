@@ -8,6 +8,7 @@ import {
   chatGPTConversationSchema,
 } from "../schemas/chatgpt.js";
 import type { Conversation } from "../types.js";
+import { assertType } from "../utils/type-guards.js";
 
 export class ChatGPTHandler extends BaseFormatHandler<ChatGPTConversation[]> {
   readonly id = "chatgpt";
@@ -34,10 +35,12 @@ export class ChatGPTHandler extends BaseFormatHandler<ChatGPTConversation[]> {
       data: item,
       schema: chatGPTConversationSchema,
       transform: (validatedData: unknown) => {
-        const parsed = validatedData as ChatGPTConversation;
-        const messages = this.extractMessages(
-          parsed.mapping as Record<string, ChatGPTNode>,
+        const parsed = assertType(
+          chatGPTConversationSchema,
+          validatedData,
+          "ChatGPT conversation transform",
         );
+        const messages = this.extractMessages(parsed.mapping);
 
         const date = parsed.create_time
           ? new Date(parsed.create_time * 1000)
