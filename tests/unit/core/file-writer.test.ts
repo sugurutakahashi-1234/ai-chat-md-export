@@ -10,6 +10,11 @@ mock.module("../../../src/utils/logger.js", () => ({
     output: mock(() => {}),
     warn: mock(() => {}),
     stat: mock(() => {}),
+    info: mock(() => {}),
+    error: mock(() => {}),
+    success: mock(() => {}),
+    section: mock(() => {}),
+    progress: mock(() => {}),
   }),
 }));
 
