@@ -91,6 +91,7 @@ flowchart LR
     src/converters/index.ts-->src/converters/markdown//converter.ts
     src/core/conversation//converter.ts-->src/converters/index.ts
     src/core/conversation//converter.ts-->src/types.ts
+    src/core/conversation//converter.ts-->src/utils/error//formatter.ts
     src/core/conversation//converter.ts-->src/utils/options.ts
     src/core/conversation//converter.ts-->src/core/converter//registry.ts
     src/core/conversation//converter.ts-->src/core/output//converter.ts

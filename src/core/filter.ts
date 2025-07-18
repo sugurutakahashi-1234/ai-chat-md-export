@@ -14,7 +14,9 @@ export function filterByDate(
   if (!since && !until) return conversations;
 
   return conversations.filter((conv) => {
-    const convDateStr = conv.date.toISOString().split("T")[0] as string;
+    // ISO date string always contains 'T', so split will always return at least one element
+    const isoDateParts = conv.date.toISOString().split("T");
+    const convDateStr = isoDateParts[0] ?? "";
     if (since && convDateStr < since) return false;
     if (until && convDateStr > until) return false;
     return true;
