@@ -148,10 +148,12 @@ describe("applyFilters", () => {
   test("applies date and search filters together", () => {
     const options = {
       input: "",
-      format: "auto" as const,
+      platform: "auto" as const,
+      format: "markdown" as const,
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard" as const,
+      split: true,
       since: "2024-01-01",
       search: "python",
     };
@@ -168,10 +170,12 @@ describe("applyFilters", () => {
   test("returns stats with no filters", () => {
     const options = {
       input: "",
-      format: "auto" as const,
+      platform: "auto" as const,
+      format: "markdown" as const,
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard" as const,
+      split: true,
     };
 
     const result = applyFilters(conversations, options);

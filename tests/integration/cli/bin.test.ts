@@ -197,13 +197,13 @@ describe("CLI Integration Tests", () => {
     await fs.mkdir(inputDir);
 
     // Copy test files with different formats
-    await fs.copyFile(
-      path.join(fixturesDir, "e2e/cli-test.json"),
+    await Bun.write(
       path.join(inputDir, "chatgpt-export.json"),
+      Bun.file(path.join(fixturesDir, "e2e/cli-test.json")),
     );
-    await fs.copyFile(
-      path.join(fixturesDir, "claude/valid-conversation.json"),
+    await Bun.write(
       path.join(inputDir, "claude-export.json"),
+      Bun.file(path.join(fixturesDir, "claude/valid-conversation.json")),
     );
 
     const outputDir = path.join(tempDir, "output");
@@ -288,10 +288,12 @@ describe("CLI Integration Tests", () => {
     expect(result.exitCode).toBe(0);
 
     // Output directory should not be created in dry-run mode
-    const dirExists = await fs
-      .access(outputDir)
-      .then(() => true)
-      .catch(() => false);
+    let dirExists = true;
+    try {
+      await fs.readdir(outputDir);
+    } catch {
+      dirExists = false;
+    }
     expect(dirExists).toBe(false);
   });
 
