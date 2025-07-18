@@ -51,7 +51,7 @@ describe("CLI main function", () => {
       "test.json",
       "-o",
       "output",
-      "-f",
+      "-p",
       "chatgpt",
     ];
 
@@ -60,13 +60,15 @@ describe("CLI main function", () => {
     expect(processInputSpy).toHaveBeenCalledWith({
       input: "test.json",
       output: "output",
-      format: "chatgpt",
+      platform: "chatgpt",
       since: undefined,
       until: undefined,
       search: undefined,
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     });
   });
 
@@ -78,13 +80,15 @@ describe("CLI main function", () => {
     expect(processInputSpy).toHaveBeenCalledWith({
       input: "test.json",
       output: undefined,
-      format: "auto",
+      platform: "auto",
       since: undefined,
       until: undefined,
       search: undefined,
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     });
   });
 
@@ -96,7 +100,7 @@ describe("CLI main function", () => {
       "test.json",
       "-o",
       "output",
-      "-f",
+      "-p",
       "claude",
       "--since",
       "2024-01-01",
@@ -115,13 +119,15 @@ describe("CLI main function", () => {
     expect(processInputSpy).toHaveBeenCalledWith({
       input: "test.json",
       output: "output",
-      format: "claude",
+      platform: "claude",
       since: "2024-01-01",
       until: "2024-12-31",
       search: "test keyword",
       quiet: true,
       dryRun: true,
       filenameEncoding: "preserve",
+      format: "markdown",
+      split: true,
     });
   });
 

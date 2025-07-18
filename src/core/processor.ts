@@ -1,8 +1,15 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import {
+  convertSingleConversationToJson,
+  convertToJson,
+} from "../converters/json.js";
+import {
+  convertMultipleToMarkdown,
+  convertToMarkdown,
+} from "../converters/markdown.js";
 import { loadChatGPT } from "../loaders/chatgpt.js";
 import { loadClaude } from "../loaders/claude.js";
-import { convertToMarkdown } from "../markdown.js";
 import type { Conversation } from "../types.js";
 import {
   formatErrorMessage,
@@ -50,7 +57,9 @@ export async function processFile(
   let format: string;
   try {
     format =
-      options.format === "auto" ? await detectFormat(filePath) : options.format;
+      options.platform === "auto"
+        ? await detectFormat(filePath)
+        : options.platform;
   } catch (error) {
     throw new Error(
       formatErrorMessage("Failed to detect file format", {
@@ -121,25 +130,64 @@ export async function processFile(
   // Track write errors to report at the end
   const writeErrors: Array<{ file: string; error: string }> = [];
 
-  for (const conv of filteredConversations) {
-    const markdown = convertToMarkdown(conv);
-    const fileName = generateFileName(
-      conv.date,
-      conv.title,
-      options.filenameEncoding as FilenameEncoding,
-    );
+  if (options.split) {
+    // Split mode: Write each conversation to a separate file
+    for (const conv of filteredConversations) {
+      const content =
+        options.format === "json"
+          ? convertSingleConversationToJson(conv)
+          : convertToMarkdown(conv);
+      const extension = options.format === "json" ? ".json" : ".md";
+      const fileName = generateFileName(
+        conv.date,
+        conv.title,
+        options.filenameEncoding as FilenameEncoding,
+      ).replace(/\.md$/, extension);
+      const outputPath = path.join(outputDir, fileName);
+
+      try {
+        if (!options.dryRun) {
+          await fs.writeFile(outputPath, content, "utf-8");
+        }
+        logger.output(getRelativePath(outputPath), options.dryRun);
+      } catch (error) {
+        const errorMessage = getErrorMessage(error);
+        writeErrors.push({ file: outputPath, error: errorMessage });
+
+        // Still log individual error if not quiet
+        logger.warn(
+          formatErrorMessage("Failed to write file", {
+            file: outputPath,
+            reason: errorMessage,
+          }),
+        );
+      }
+    }
+  } else {
+    // No-split mode: Write all conversations to a single file
+    const content =
+      options.format === "json"
+        ? convertToJson(filteredConversations)
+        : convertMultipleToMarkdown(filteredConversations);
+    const fileName =
+      options.format === "json"
+        ? "all-conversations.json"
+        : "all-conversations.md";
     const outputPath = path.join(outputDir, fileName);
 
     try {
       if (!options.dryRun) {
-        await fs.writeFile(outputPath, markdown, "utf-8");
+        await fs.writeFile(outputPath, content, "utf-8");
       }
       logger.output(getRelativePath(outputPath), options.dryRun);
+      logger.stat(
+        "Combined",
+        `${filteredConversations.length} conversations into one file`,
+      );
     } catch (error) {
       const errorMessage = getErrorMessage(error);
       writeErrors.push({ file: outputPath, error: errorMessage });
 
-      // Still log individual error if not quiet
       logger.warn(
         formatErrorMessage("Failed to write file", {
           file: outputPath,

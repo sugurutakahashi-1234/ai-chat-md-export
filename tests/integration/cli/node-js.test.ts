@@ -75,7 +75,7 @@ describe("Node.js Execution Tests", () => {
     const outputDir = path.join(tempDir, "output");
 
     const result =
-      await $`node ${cliPath} -i ${inputFile} -o ${outputDir} -f chatgpt`.quiet();
+      await $`node ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt`.quiet();
 
     expect(result.exitCode).toBe(0);
 

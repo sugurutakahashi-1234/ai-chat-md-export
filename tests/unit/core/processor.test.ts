@@ -44,10 +44,12 @@ describe("processInput", () => {
 
     const options: Options = {
       input: filePath,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: true,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     // processInput calls processFile internally, verify it runs without error
@@ -82,10 +84,12 @@ describe("processInput", () => {
 
     const options: Options = {
       input: dirPath,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: true,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     await expect(processInput(options)).resolves.toBeUndefined();
@@ -96,10 +100,12 @@ describe("processInput", () => {
 
     const options: Options = {
       input: invalidPath,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: true,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     await expect(processInput(options)).rejects.toThrow();
@@ -162,10 +168,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "chatgpt",
+      platform: "chatgpt",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     await processFile(filePath, outputDir, options);
@@ -204,10 +212,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "claude",
+      platform: "claude",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     await processFile(filePath, outputDir, options);
@@ -242,10 +252,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: true,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     await processFile(filePath, outputDir, options);
@@ -298,10 +310,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
       since: "2024-01-01",
       until: "2024-01-31",
     };
@@ -356,10 +370,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
       search: "python",
     };
 
@@ -381,10 +397,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
@@ -399,7 +417,7 @@ describe("processFile", () => {
     const options = {
       input: filePath,
       output: outputDir,
-      format: "unsupported" as "chatgpt" | "claude" | "auto",
+      platform: "unsupported" as "chatgpt" | "claude" | "auto",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard" as const,
@@ -429,10 +447,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "chatgpt",
+      platform: "chatgpt",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
@@ -466,10 +486,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     // Capture console output
@@ -527,10 +549,12 @@ describe("processFile", () => {
     const options: Options = {
       input: filePath,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
       search: "python",
       since: "2024-01-01",
       until: "2024-12-31",
@@ -617,10 +641,12 @@ describe("processDirectory", () => {
     const options: Options = {
       input: tempDir,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     await processDirectory(tempDir, outputDir, options);
@@ -637,10 +663,12 @@ describe("processDirectory", () => {
     const options: Options = {
       input: emptyDir,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: true,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     // Verify it runs without error
@@ -656,10 +684,12 @@ describe("processDirectory", () => {
     const options: Options = {
       input: emptyDir,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     // Capture console output
@@ -706,10 +736,12 @@ describe("processDirectory", () => {
     const options: Options = {
       input: tempDir,
       output: outputDir,
-      format: "auto",
+      platform: "auto",
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     };
 
     // Capture console output

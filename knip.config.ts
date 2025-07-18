@@ -1,12 +1,13 @@
 import type { KnipConfig } from "knip";
 
 const config: KnipConfig = {
-  project: ["src/**/*.ts", "tests/**/*.ts"],
+  entry: ["src/cli.ts"],
+  project: ["src/**/*.ts"],
   ignore: [
     "tests/integration/cli/node-js.test.ts", // Uses $`node ${cliPath}` syntax which knip misinterprets
   ],
   ignoreDependencies: ["tslib", "@commitlint/cli"],
-  ignoreBinaries: ["du", "awk", "goreleaser", "gh", "jq"], // du,awk: deps:size script, goreleaser: build scripts, gh: release scripts, jq: trigger:homebrew
+  ignoreBinaries: ["du", "awk", "goreleaser", "gh"], // du,awk: deps:size script, goreleaser: build scripts, gh: release scripts
   ignoreExportsUsedInFile: true,
   includeEntryExports: true,
   typescript: {

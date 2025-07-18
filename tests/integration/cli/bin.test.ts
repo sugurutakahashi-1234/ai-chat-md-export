@@ -78,7 +78,7 @@ describe("CLI Integration Tests", () => {
     const outputDir = path.join(tempDir, "output");
 
     const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -f chatgpt`.quiet();
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt`.quiet();
 
     expect(result.exitCode).toBe(0);
 
@@ -100,7 +100,7 @@ describe("CLI Integration Tests", () => {
     const outputDir = path.join(tempDir, "output");
 
     const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -f claude`.quiet();
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p claude`.quiet();
 
     expect(result.exitCode).toBe(0);
 

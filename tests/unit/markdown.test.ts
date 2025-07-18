@@ -1,5 +1,8 @@
 import { describe, expect, test } from "bun:test";
-import { convertToMarkdown } from "../../src/markdown.js";
+import {
+  convertMultipleToMarkdown,
+  convertToMarkdown,
+} from "../../src/converters/markdown.js";
 import type { Conversation } from "../../src/types.js";
 
 describe("convertToMarkdown", () => {
@@ -276,5 +279,77 @@ describe("convertToMarkdown", () => {
     expect(markdown).not.toContain("&gt;");
     expect(markdown).not.toContain("&amp;");
     expect(markdown).not.toContain("&quot;");
+  });
+});
+
+describe("convertMultipleToMarkdown", () => {
+  test("combines multiple conversations with separators", () => {
+    const conversations: Conversation[] = [
+      {
+        id: "test-1",
+        title: "First Conversation",
+        date: new Date("2024-01-01"),
+        messages: [
+          {
+            role: "user",
+            content: "First message",
+          },
+        ],
+      },
+      {
+        id: "test-2",
+        title: "Second Conversation",
+        date: new Date("2024-01-02"),
+        messages: [
+          {
+            role: "assistant",
+            content: "Second message",
+          },
+        ],
+      },
+    ];
+
+    const markdown = convertMultipleToMarkdown(conversations);
+
+    // Check both conversations are included
+    expect(markdown).toContain("# First Conversation");
+    expect(markdown).toContain("# Second Conversation");
+    expect(markdown).toContain("First message");
+    expect(markdown).toContain("Second message");
+
+    // Check that conversations are separated by the specific separator
+    // between two complete conversations
+    const firstConvEnd = markdown.indexOf("# Second Conversation");
+    const betweenConversations = markdown.substring(0, firstConvEnd);
+    expect(betweenConversations).toContain("\n\n---\n\n");
+  });
+
+  test("handles empty conversations array", () => {
+    const markdown = convertMultipleToMarkdown([]);
+    expect(markdown).toBe("");
+  });
+
+  test("handles single conversation", () => {
+    const conversation: Conversation = {
+      id: "test-1",
+      title: "Single Conversation",
+      date: new Date("2024-01-01"),
+      messages: [
+        {
+          role: "user",
+          content: "Only message",
+        },
+      ],
+    };
+
+    const markdown = convertMultipleToMarkdown([conversation]);
+
+    // Should have the conversation content
+    expect(markdown).toContain("# Single Conversation");
+    expect(markdown).toContain("Only message");
+
+    // With a single conversation, there won't be the specific triple-dash
+    // separator that appears BETWEEN conversations, but there will still be
+    // the normal markdown separators within the conversation
   });
 });

@@ -1,0 +1,27 @@
+{
+  "id": "root-1",
+  "title": "Math Question",
+  "date": "2025-01-15T00:00:00.000Z",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is the square root of 144?",
+      "timestamp": "2025-01-15T00:00:00.000Z"
+    },
+    {
+      "role": "assistant",
+      "content": "The square root of 144 is 12.\n\nThis is because 12 × 12 = 144.",
+      "timestamp": "2025-01-15T00:00:10.000Z"
+    },
+    {
+      "role": "user",
+      "content": "Thank you! That makes sense.",
+      "timestamp": "2025-01-15T00:00:40.000Z"
+    },
+    {
+      "role": "assistant",
+      "content": "You're welcome! If you have any more math questions, feel free to ask.",
+      "timestamp": "2025-01-15T00:00:50.000Z"
+    }
+  ]
+}

@@ -17,9 +17,10 @@ export async function main(): Promise<void> {
     )
     .option(
       "-f, --format <format>",
-      "Input format (chatgpt, claude, auto)",
-      "auto",
+      "Output format (markdown, json)",
+      "markdown",
     )
+    .option("--no-split", "Combine all conversations into a single file")
     .option(
       "--since <date>",
       "Include conversations started on or after this date (YYYY-MM-DD)",
@@ -28,25 +29,23 @@ export async function main(): Promise<void> {
       "--until <date>",
       "Include conversations started on or before this date (YYYY-MM-DD)",
     )
-    .option("-q, --quiet", "Suppress progress messages")
-    .option("--dry-run", "Show what would be done without writing files")
     .option("--search <keyword>", "Filter conversations containing keyword")
+    .option(
+      "-p, --platform <platform>",
+      "Input platform (chatgpt, claude, auto)",
+      "auto",
+    )
     .option(
       "--filename-encoding <encoding>",
       "Filename encoding: standard (default) or preserve",
       "standard",
     )
+    .option("-q, --quiet", "Suppress progress messages")
+    .option("--dry-run", "Show what would be done without writing files")
     .addHelpText(
       "after",
-      `\nExamples:
-  # Convert a single export file
+      `\nExample:
   $ ai-chat-md-export -i conversations.json
-
-  # Filter by date and search
-  $ ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
-
-  # Preview without creating files
-  $ ai-chat-md-export -i data.json --dry-run
 
 For more options and detailed documentation:
   https://www.npmjs.com/package/ai-chat-md-export`,

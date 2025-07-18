@@ -151,56 +151,40 @@ Ideal for organizations and individuals who prioritize data privacy. You can rev
 
 ## Usage
 
-### Basic usage
-
 ```bash
-# Convert a single conversations.json file
+# Basic: Convert conversations.json to Markdown files
 ai-chat-md-export -i conversations.json
 
-# Convert all JSON files in a directory
-ai-chat-md-export -i exports/ -o output/
-
 # Specify output directory
-ai-chat-md-export -i conversations.json -o markdown/
-```
+ai-chat-md-export -i conversations.json -o output/
 
-### Filtering options
-
-```bash
-# Filter by date range
-ai-chat-md-export -i conversations.json --since 2024-01-01 --until 2024-12-31
-
-# Search for specific keywords
-ai-chat-md-export -i conversations.json --search "API"
-
-# Combine filters
+# Filter by date or keyword
 ai-chat-md-export -i conversations.json --since 2024-01-01 --search "Python"
-```
 
-### Other options
+# Export as JSON format
+ai-chat-md-export -i conversations.json -f json
 
-```bash
-# Preview what would be converted without creating files
-ai-chat-md-export -i conversations.json --dry-run
-
-# Quiet mode (suppress progress messages)
-ai-chat-md-export -i conversations.json --quiet
+# Combine all conversations into a single file
+ai-chat-md-export -i conversations.json --no-split
 ```
 
 ## Command-line Options
 
-| Option                           | Description                               | Default    |
-| -------------------------------- | ----------------------------------------- | ---------- |
-| `-v, --version`                  | Display version number                    | -          |
-| `-i, --input <path>`             | Input file or directory path (required)   | -          |
-| `-o, --output <path>`            | Output directory                          | `.`        |
-| `-f, --format <format>`          | Input format (`chatgpt`/`claude`/`auto`)  | `auto`     |
-| `--since <date>`                 | Filter from date (YYYY-MM-DD)             | -          |
-| `--until <date>`                 | Filter until date (YYYY-MM-DD)            | -          |
-| `--search <keyword>`             | Search in conversations                   | -          |
-| `--filename-encoding <encoding>` | Filename encoding (`standard`/`preserve`) | `standard` |
-| `-q, --quiet`                    | Suppress progress messages                | -          |
-| `--dry-run`                      | Preview mode without creating files       | -          |
+| Option                           | Description                                                             | Default    |
+| -------------------------------- | ----------------------------------------------------------------------- | ---------- |
+| `-h, --help`                     | Display help information                                                | -          |
+| `-v, --version`                  | Display version number                                                  | -          |
+| `-i, --input <path>`             | Input file or directory path (required)                                 | -          |
+| `-o, --output <path>`            | Output directory                                                        | `.`        |
+| `-f, --format <format>`          | Output format (`markdown`/`json`)                                       | `markdown` |
+| `--no-split`                     | Combine all conversations into one file (default: split files)          | -          |
+| `--since <date>`                 | Filter from date (YYYY-MM-DD). Filters by conversation start date       | -          |
+| `--until <date>`                 | Filter until date (YYYY-MM-DD). Inclusive filtering                     | -          |
+| `--search <keyword>`             | Search in conversations. Case-insensitive, searches titles and messages | -          |
+| `-p, --platform <platform>`      | Input platform (`chatgpt`/`claude`/`auto`)                              | `auto`     |
+| `--filename-encoding <encoding>` | Filename encoding (`standard`/`preserve`)                               | `standard` |
+| `-q, --quiet`                    | Suppress progress messages                                              | -          |
+| `--dry-run`                      | Preview mode without creating files                                     | -          |
 
 ## Getting conversations.json
 
@@ -231,65 +215,15 @@ Note: The download link expires after 24 hours, so download promptly.
 8. Find `conversations.json` in the root directory
 
 
-## How it Works
+## Features
 
-The tool automatically detects whether your input is from ChatGPT or Claude and handles the conversion accordingly. ChatGPT uses a tree-based conversation structure while Claude uses a flat message array, but you don't need to worry about these differences - the tool takes care of everything.
-
-Key features:
-- **Auto-detection**: Automatically identifies the format
+- **Auto-detection**: Automatically identifies ChatGPT or Claude format
 - **Preserves formatting**: Code blocks, lists, and special characters are maintained
-- **Timestamps**: Converts all timestamps to your local timezone
-- **Clean output**: Generates readable Markdown with clear message separation
+- **Flexible filtering**: Filter by date range (`--since`, `--until`) or search keywords
+- **Multiple output formats**: Markdown (default) or JSON
+- **Customizable output**: Split files or combine into one
 
-## Date Filtering Details
-
-The `--since` and `--until` options filter conversations based on when they were **started**, not when they were last updated:
-
-- **ChatGPT**: Uses the `create_time` field from the export
-- **Claude**: Uses the `created_at` field from the export
-- **Date format**: YYYY-MM-DD (e.g., 2024-01-15)
-- **Timezone**: All dates are interpreted in your local timezone
-- **Inclusive filtering**: Both --since and --until dates are inclusive
-
-Examples:
-```bash
-# Conversations from 2024
-ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
-
-# Conversations from the last 30 days (if today is 2024-12-15)
-ai-chat-md-export -i data.json --since 2024-11-15
-
-# Only conversations from a specific day
-ai-chat-md-export -i data.json --since 2024-06-01 --until 2024-06-01
-```
-
-## Search Functionality
-
-The `--search` option provides powerful filtering capabilities:
-
-- **Case-insensitive**: Matches "API", "api", "Api", etc.
-- **Searches everywhere**: Both conversation titles and all message contents
-- **Partial matching**: "learn" matches "learning", "machine learning", etc.
-- **Multiple words**: Searches for the exact phrase as entered
-
-Examples:
-```bash
-# Find all conversations about Python
-ai-chat-md-export -i data.json --search "python"
-
-# Search for a specific error message
-ai-chat-md-export -i data.json --search "TypeError: cannot read property"
-
-# Combine with date filtering
-ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
-```
-
-## More Examples
-
-For complete examples with multiple conversations, see the [examples](examples/) directory:
-
-- **ChatGPT**: [Sample conversations](examples/chatgpt/) with multi-turn dialogues
-- **Claude**: [Sample conversations](examples/claude/) with various conversation types
+For examples, see the [examples](examples/) directory.
 
 ## Troubleshooting
 
@@ -320,17 +254,18 @@ If some conversations don't appear in the output:
 
 - [x] ChatGPT conversation export support
 - [x] Claude conversation export support
-- [x] Auto-format detection (`--format auto`)
+- [x] Auto-format detection
 - [x] Date range filtering (`--since`, `--until`)
 - [x] Keyword search functionality (`--search`)
 - [x] Timezone-aware timestamp conversion
 - [x] Dry-run mode for preview (`--dry-run`)
+- [x] Export to JSON format (`-f json`)
+- [x] Combine conversations into single file (`--no-split`)
 - [x] npm package distribution
 - [x] Homebrew formula support
 
 ### 🚧 In Progress
 
-- [ ] **Export to JSON format** - Structured JSON output option
 - [ ] **Progress bar** - Visual feedback for long operations
 
 ### 📋 Planned Features
