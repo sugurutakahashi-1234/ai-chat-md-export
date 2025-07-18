@@ -168,6 +168,8 @@ ai-chat-md-export -i conversations.json -f json
 ai-chat-md-export -i conversations.json --no-split
 ```
 
+For more examples, see the [examples](examples/) directory.
+
 ## Command-line Options
 
 | Option                           | Description                                                             | Default    |
@@ -214,16 +216,6 @@ Note: The download link expires after 24 hours, so download promptly.
 7. If you received a `.dms` file, rename it to `.zip` and extract
 8. Find `conversations.json` in the root directory
 
-
-## Features
-
-- **Auto-detection**: Automatically identifies ChatGPT or Claude format
-- **Preserves formatting**: Code blocks, lists, and special characters are maintained
-- **Flexible filtering**: Filter by date range (`--since`, `--until`) or search keywords
-- **Multiple output formats**: Markdown (default) or JSON
-- **Customizable output**: Split files or combine into one
-
-For examples, see the [examples](examples/) directory.
 
 ## Troubleshooting
 

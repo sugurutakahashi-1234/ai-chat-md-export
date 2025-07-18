@@ -168,6 +168,8 @@ ai-chat-md-export -i conversations.json -f json
 ai-chat-md-export -i conversations.json --no-split
 ```
 
+更多示例请参见 [examples](examples/) 目录。
+
 ## Command-line Options
 
 | 选项                             | 描述                                                             | 默认值     |
@@ -214,16 +216,6 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 7. 如果收到的是 `.dms` 文件，将其重命名为 `.zip` 并解压
 8. 在根目录中找到 `conversations.json`
 
-
-## Features
-
-- **自动检测**：自动识别 ChatGPT 或 Claude 格式
-- **保留格式**：保持代码块、列表和特殊字符
-- **灵活过滤**：按日期范围（`--since`、`--until`）或搜索关键词过滤
-- **多种输出格式**：Markdown（默认）或 JSON
-- **可自定义输出**：分割文件或合并为一个文件
-
-有关示例，请参见 [examples](examples/) 目录。
 
 ## Troubleshooting
 

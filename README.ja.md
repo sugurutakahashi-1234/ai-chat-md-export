@@ -168,6 +168,8 @@ ai-chat-md-export -i conversations.json -f json
 ai-chat-md-export -i conversations.json --no-split
 ```
 
+その他の例については、[examples](examples/)ディレクトリを参照してください。
+
 ## Command-line Options
 
 | オプション                       | 説明                                                                    | デフォルト |
@@ -213,16 +215,6 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 6. `claude-export.dms`またはZIPファイルをダウンロード
 7. `.dms`ファイルを受け取った場合は、`.zip`にリネームして展開
 8. ルートディレクトリに`conversations.json`が含まれています
-
-## Features
-
-- **自動検出**: ChatGPTまたはClaudeの形式を自動的に識別
-- **フォーマット保持**: コードブロック、リスト、特殊文字を維持
-- **柔軟なフィルタリング**: 日付範囲（`--since`、`--until`）または検索キーワードでフィルタ
-- **複数の出力形式**: Markdown（デフォルト）またはJSON
-- **カスタマイズ可能な出力**: ファイル分割または1つにまとめる
-
-例については、[examples](examples/)ディレクトリを参照してください。
 
 ## Troubleshooting
 
