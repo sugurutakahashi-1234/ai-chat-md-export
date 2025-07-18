@@ -15,7 +15,15 @@ class Logger {
   }
 
   private format(level: LogLevel, message: string): string {
-    // Check TTY only
+    // Check NO_COLOR environment variable (industry standard)
+    // biome-ignore lint/complexity/useLiteralKeys: TypeScript's noUncheckedIndexedAccess requires bracket notation
+    const noColorEnv = process.env["NO_COLOR"];
+    const hasNoColor = noColorEnv !== undefined && noColorEnv !== "";
+
+    // NO_COLOR takes precedence
+    if (hasNoColor) return message;
+
+    // Otherwise check TTY
     const useColor = process.stdout.isTTY;
     if (!useColor) return message;
 
