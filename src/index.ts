@@ -9,6 +9,8 @@ export {
   convertMultipleToMarkdown,
   convertToMarkdown,
 } from "./converters/markdown.js";
+export type { ParsedConversation } from "./core/base-handler.js";
+export { BaseFormatHandler } from "./core/base-handler.js";
 export type { FormatHandler, LoadOptions } from "./core/format-handler.js";
 export { defaultRegistry, HandlerRegistry } from "./core/handler-registry.js";
 // Core functionality

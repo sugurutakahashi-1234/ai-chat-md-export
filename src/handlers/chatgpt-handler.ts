@@ -1,17 +1,15 @@
-import type { FormatHandler, LoadOptions } from "../core/format-handler.js";
+import {
+  BaseFormatHandler,
+  type ParsedConversation,
+} from "../core/base-handler.js";
 import {
   type ChatGPTConversation,
   type ChatGPTNode,
   chatGPTConversationSchema,
 } from "../schemas/chatgpt.js";
 import type { Conversation } from "../types.js";
-import { createLogger } from "../utils/logger.js";
-import {
-  formatValidationReport,
-  validateWithDetails,
-} from "../utils/schema-validator.js";
 
-export class ChatGPTHandler implements FormatHandler<ChatGPTConversation[]> {
+export class ChatGPTHandler extends BaseFormatHandler<ChatGPTConversation[]> {
   readonly id = "chatgpt";
   readonly name = "ChatGPT";
   readonly schema = chatGPTConversationSchema.array();
@@ -29,66 +27,30 @@ export class ChatGPTHandler implements FormatHandler<ChatGPTConversation[]> {
     );
   }
 
-  async load(
+  protected parseConversations(
     data: ChatGPTConversation[],
-    options: LoadOptions = {},
-  ): Promise<Conversation[]> {
-    const conversations: Conversation[] = [];
-    const validationErrors: string[] = [];
-    const skippedFields = new Set<string>();
-    let successCount = 0;
+  ): ParsedConversation[] {
+    return data.map((item) => ({
+      data: item,
+      schema: chatGPTConversationSchema,
+      transform: (validatedData: unknown) => {
+        const parsed = validatedData as ChatGPTConversation;
+        const messages = this.extractMessages(
+          parsed.mapping as Record<string, ChatGPTNode>,
+        );
 
-    for (let i = 0; i < data.length; i++) {
-      const result = validateWithDetails(chatGPTConversationSchema, data[i], {
-        name: `Conversation #${i + 1}`,
-      });
+        const date = parsed.create_time
+          ? new Date(parsed.create_time * 1000)
+          : new Date();
 
-      if (!result.success) {
-        const report = formatValidationReport(result);
-        validationErrors.push(`Conversation #${i + 1}:\n${report}`);
-        continue;
-      }
-
-      if (result.warnings) {
-        // Collect unknown fields
-        for (const warning of result.warnings) {
-          if (warning.unknownFields) {
-            warning.unknownFields.forEach((field) => skippedFields.add(field));
-          }
-        }
-      }
-      successCount++;
-
-      const parsed = result.data as ChatGPTConversation;
-      const messages = this.extractMessages(
-        parsed.mapping as Record<string, ChatGPTNode>,
-      );
-
-      const date = parsed.create_time
-        ? new Date(parsed.create_time * 1000)
-        : new Date();
-
-      conversations.push({
-        id: parsed.id || Object.keys(parsed.mapping)[0] || "unknown",
-        title: parsed.title || "Untitled Conversation",
-        date,
-        messages,
-      });
-    }
-
-    if (validationErrors.length > 0) {
-      throw new Error(
-        `Schema validation error:\n${validationErrors.join("\n\n")}`,
-      );
-    }
-
-    // Display summary information
-    if (!options.quiet) {
-      const logger = createLogger({ quiet: false });
-      logger.success(`Successfully loaded ${successCount} conversations`);
-    }
-
-    return conversations;
+        return {
+          id: parsed.id || Object.keys(parsed.mapping)[0] || "unknown",
+          title: parsed.title || "Untitled Conversation",
+          date,
+          messages,
+        };
+      },
+    }));
   }
 
   private extractMessages(

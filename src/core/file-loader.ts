@@ -1,0 +1,40 @@
+import { promises as fs } from "node:fs";
+import {
+  formatErrorMessage,
+  getErrorMessage,
+} from "../utils/error-formatter.js";
+
+export class FileLoader {
+  /**
+   * Read and parse JSON file
+   */
+  async loadJsonFile(filePath: string): Promise<unknown> {
+    try {
+      const fileContent = await fs.readFile(filePath, "utf-8");
+      return JSON.parse(fileContent);
+    } catch (error) {
+      throw new Error(
+        formatErrorMessage("Failed to read or parse file", {
+          file: filePath,
+          reason: getErrorMessage(error),
+        }),
+      );
+    }
+  }
+
+  /**
+   * Check if path is file or directory
+   */
+  async isFile(path: string): Promise<boolean> {
+    const stat = await fs.stat(path);
+    return stat.isFile();
+  }
+
+  /**
+   * List JSON files in directory
+   */
+  async listJsonFiles(dirPath: string): Promise<string[]> {
+    const files = await fs.readdir(dirPath);
+    return files.filter((f) => f.endsWith(".json"));
+  }
+}

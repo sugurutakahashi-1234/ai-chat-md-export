@@ -1,16 +1,14 @@
-import type { FormatHandler, LoadOptions } from "../core/format-handler.js";
+import {
+  BaseFormatHandler,
+  type ParsedConversation,
+} from "../core/base-handler.js";
 import {
   type ClaudeConversation,
   claudeConversationSchema,
 } from "../schemas/claude.js";
 import type { Conversation } from "../types.js";
-import { createLogger } from "../utils/logger.js";
-import {
-  formatValidationReport,
-  validateWithDetails,
-} from "../utils/schema-validator.js";
 
-export class ClaudeHandler implements FormatHandler<ClaudeConversation[]> {
+export class ClaudeHandler extends BaseFormatHandler<ClaudeConversation[]> {
   readonly id = "claude";
   readonly name = "Claude";
   readonly schema = claudeConversationSchema.array();
@@ -29,103 +27,70 @@ export class ClaudeHandler implements FormatHandler<ClaudeConversation[]> {
     );
   }
 
-  async load(
+  protected parseConversations(
     data: ClaudeConversation[],
-    options: LoadOptions = {},
-  ): Promise<Conversation[]> {
-    const conversations: Conversation[] = [];
-    const validationErrors: string[] = [];
-    const skippedFields = new Set<string>();
-    let successCount = 0;
+  ): ParsedConversation[] {
+    return data.map((item) => ({
+      data: item,
+      schema: claudeConversationSchema,
+      transform: (validatedData: unknown) => {
+        const parsed = validatedData as ClaudeConversation;
+        const date = new Date(parsed.created_at);
 
-    for (let i = 0; i < data.length; i++) {
-      const result = validateWithDetails(claudeConversationSchema, data[i], {
-        name: `Conversation #${i + 1}`,
-      });
+        return {
+          id: parsed.uuid,
+          title: parsed.name || "Untitled Conversation",
+          date,
+          messages: this.transformMessages(parsed.chat_messages),
+        };
+      },
+    }));
+  }
 
-      if (!result.success) {
-        const report = formatValidationReport(result);
-        validationErrors.push(`Conversation #${i + 1}:\n${report}`);
-        continue;
-      }
-
-      if (result.warnings) {
-        // Collect unknown fields
-        for (const warning of result.warnings) {
-          if (warning.unknownFields) {
-            warning.unknownFields.forEach((field) => skippedFields.add(field));
-          }
+  private transformMessages(
+    messages: ClaudeConversation["chat_messages"],
+  ): Conversation["messages"] {
+    return messages.map((msg) => {
+      // Get content from message
+      let content = "";
+      if ("text" in msg && typeof msg.text === "string") {
+        content = msg.text;
+      } else if ("content" in msg) {
+        if (typeof msg.content === "string") {
+          content = msg.content;
+        } else if (Array.isArray(msg.content)) {
+          // Extract text from content array, filtering out "thinking" type
+          content = msg.content
+            .filter(
+              (c) =>
+                typeof c === "object" &&
+                c !== null &&
+                "type" in c &&
+                c.type === "text" &&
+                "text" in c,
+            )
+            .map((c) => (c as { text: string }).text)
+            .join("\n");
         }
       }
-      successCount++;
 
-      const parsed = result.data as ClaudeConversation;
+      // Determine role from sender field
+      let role: "user" | "assistant";
+      if ("sender" in msg) {
+        role = msg.sender === "human" ? "user" : "assistant";
+      } else if ("role" in msg && msg.role) {
+        // Convert old format role field (human -> user)
+        role = msg.role === "human" ? "user" : "assistant";
+      } else {
+        // Default value
+        role = "user";
+      }
 
-      // Safely process date
-      const parsedDate = new Date(parsed.created_at);
-      const date = parsedDate;
-
-      conversations.push({
-        id: parsed.uuid,
-        title: parsed.name || "Untitled Conversation",
-        date,
-        messages: parsed.chat_messages.map((msg) => {
-          // Get content from message
-          let content = "";
-          if ("text" in msg && typeof msg.text === "string") {
-            content = msg.text;
-          } else if ("content" in msg) {
-            if (typeof msg.content === "string") {
-              content = msg.content;
-            } else if (Array.isArray(msg.content)) {
-              // Extract text from content array, filtering out "thinking" type
-              content = msg.content
-                .filter(
-                  (c) =>
-                    typeof c === "object" &&
-                    c !== null &&
-                    "type" in c &&
-                    c.type === "text" &&
-                    "text" in c,
-                )
-                .map((c) => (c as { text: string }).text)
-                .join("\n");
-            }
-          }
-
-          // Determine role from sender field
-          let role: "user" | "assistant";
-          if ("sender" in msg) {
-            role = msg.sender === "human" ? "user" : "assistant";
-          } else if ("role" in msg && msg.role) {
-            // Convert old format role field (human -> user)
-            role = msg.role === "human" ? "user" : "assistant";
-          } else {
-            // Default value
-            role = "user";
-          }
-
-          return {
-            role,
-            content,
-            timestamp: msg.created_at ? new Date(msg.created_at) : new Date(),
-          };
-        }),
-      });
-    }
-
-    if (validationErrors.length > 0) {
-      throw new Error(
-        `Schema validation error:\n${validationErrors.join("\n\n")}`,
-      );
-    }
-
-    // Display summary information
-    if (!options.quiet) {
-      const logger = createLogger({ quiet: false });
-      logger.success(`Successfully loaded ${successCount} conversations`);
-    }
-
-    return conversations;
+      return {
+        role,
+        content,
+        timestamp: msg.created_at ? new Date(msg.created_at) : new Date(),
+      };
+    });
   }
 }
