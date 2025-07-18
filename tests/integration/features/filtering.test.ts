@@ -146,7 +146,7 @@ describe("Filtering Features", () => {
   });
 
   afterEach(async () => {
-    await fs.rm(tempDir, { recursive: true, force: true });
+    await $`rm -rf ${tempDir}`.quiet();
   });
 
   describe("Date Filtering", () => {

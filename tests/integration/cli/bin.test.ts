@@ -41,7 +41,7 @@ describe("CLI Integration Tests", () => {
   });
 
   afterEach(async () => {
-    await fs.rm(tempDir, { recursive: true, force: true });
+    await $`rm -rf ${tempDir}`.quiet();
   });
 
   test("shows help with -h flag", async () => {

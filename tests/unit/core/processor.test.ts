@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { $ } from "bun";
 import {
   processDirectory,
   processFile,
@@ -16,7 +17,7 @@ describe("processInput", () => {
   });
 
   afterEach(async () => {
-    await fs.rm(tempDir, { recursive: true, force: true });
+    await $`rm -rf ${tempDir}`.quiet();
   });
 
   test("processes file input", async () => {
@@ -122,7 +123,7 @@ describe("processFile", () => {
   });
 
   afterEach(async () => {
-    await fs.rm(tempDir, { recursive: true, force: true });
+    await $`rm -rf ${tempDir}`.quiet();
   });
 
   test("processes ChatGPT file successfully", async () => {
@@ -585,7 +586,7 @@ describe("processDirectory", () => {
   });
 
   afterEach(async () => {
-    await fs.rm(tempDir, { recursive: true, force: true });
+    await $`rm -rf ${tempDir}`.quiet();
   });
 
   test("processes all JSON files in directory", async () => {
