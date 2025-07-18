@@ -1,15 +1,17 @@
-export function detectFormat(data: unknown): "chatgpt" | "claude" {
-  if (Array.isArray(data) && data.length > 0) {
-    if (data[0]?.mapping) {
-      return "chatgpt";
-    } else if (data[0]?.chat_messages && data[0]?.uuid) {
-      return "claude";
-    }
-  }
+import { defaultRegistry } from "../core/handler-registry.js";
+import { registerDefaultHandlers } from "../handlers/index.js";
 
-  throw new Error(
-    `Cannot detect file format. The file should be either:\n` +
-      `- ChatGPT export: JSON array with 'mapping' field\n` +
-      `- Claude export: JSON array with 'chat_messages' and 'uuid' fields`,
-  );
+// Ensure handlers are registered
+registerDefaultHandlers();
+
+function detectFormat(data: unknown): "chatgpt" | "claude" {
+  const handler = defaultRegistry.detectFormat(data);
+  if (!handler) {
+    throw new Error(
+      `Cannot detect file format. The file should be either:\n` +
+        `- ChatGPT export: JSON array with 'mapping' field\n` +
+        `- Claude export: JSON array with 'chat_messages' and 'uuid' fields`,
+    );
+  }
+  return handler.id as "chatgpt" | "claude";
 }

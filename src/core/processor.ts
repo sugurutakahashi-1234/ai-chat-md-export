@@ -8,8 +8,7 @@ import {
   convertMultipleToMarkdown,
   convertToMarkdown,
 } from "../converters/markdown.js";
-import { loadChatGPT } from "../loaders/chatgpt.js";
-import { loadClaude } from "../loaders/claude.js";
+import { registerDefaultHandlers } from "../handlers/index.js";
 import type { Conversation } from "../types.js";
 import {
   formatErrorMessage,
@@ -18,10 +17,14 @@ import {
 } from "../utils/error-formatter.js";
 import type { FilenameEncoding } from "../utils/filename.js";
 import { generateFileName } from "../utils/filename.js";
-import { detectFormat } from "../utils/format-detector.js";
 import { createLogger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
 import { applyFilters } from "./filter.js";
+import type { FormatHandler } from "./format-handler.js";
+import { defaultRegistry } from "./handler-registry.js";
+
+// Initialize default handlers on module load
+registerDefaultHandlers();
 
 export async function processInput(options: Options): Promise<void> {
   const inputPath = path.resolve(options.input);
@@ -69,10 +72,26 @@ export async function processFile(
     );
   }
 
-  let format: string;
+  // Detect format handler
+  let handler: FormatHandler | undefined;
   try {
-    format =
-      options.platform === "auto" ? detectFormat(data) : options.platform;
+    if (options.platform === "auto") {
+      handler = defaultRegistry.detectFormat(data);
+      if (!handler) {
+        throw new Error(
+          "Cannot detect file format. The file does not match any known format (ChatGPT or Claude).",
+        );
+      }
+    } else {
+      handler = defaultRegistry.getById(options.platform);
+      if (!handler) {
+        throw new Error(
+          formatErrorMessage(`Unsupported format: ${options.platform}`, {
+            reason: "Supported formats are: chatgpt, claude, auto",
+          }),
+        );
+      }
+    }
   } catch (error) {
     throw new Error(
       formatErrorMessage("Failed to detect file format", {
@@ -82,19 +101,13 @@ export async function processFile(
     );
   }
 
+  // Load conversations using the handler
   let conversations: Conversation[];
   try {
-    if (format === "chatgpt") {
-      conversations = await loadChatGPT(data, { quiet: options.quiet });
-    } else if (format === "claude") {
-      conversations = await loadClaude(data, { quiet: options.quiet });
-    } else {
-      throw new Error(
-        formatErrorMessage(`Unsupported format: ${format}`, {
-          reason: "Supported formats are: chatgpt, claude, auto",
-        }),
-      );
+    if (!handler) {
+      throw new Error("Handler not found");
     }
+    conversations = await handler.load(data, { quiet: options.quiet });
   } catch (error) {
     if (
       error instanceof Error &&
@@ -105,7 +118,7 @@ export async function processFile(
     throw new Error(
       formatErrorMessage("Failed to load file", {
         file: filePath,
-        format: format,
+        format: handler?.name || "unknown",
         reason: getErrorMessage(error),
       }),
     );

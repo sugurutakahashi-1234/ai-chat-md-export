@@ -13,6 +13,8 @@ const config: KnipConfig = {
   typescript: {
     config: ["tsconfig.json"],
   },
+  // Ignore unused exports for backward compatibility
+  exclude: ["exports", "types"],
 };
 
 export default config;

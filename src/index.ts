@@ -9,8 +9,12 @@ export {
   convertMultipleToMarkdown,
   convertToMarkdown,
 } from "./converters/markdown.js";
+export type { FormatHandler, LoadOptions } from "./core/format-handler.js";
+export { defaultRegistry, HandlerRegistry } from "./core/handler-registry.js";
 // Core functionality
 export { processInput } from "./core/processor.js";
+// Handlers
+export { ChatGPTHandler, ClaudeHandler } from "./handlers/index.js";
 // Loaders
 export { loadChatGPT } from "./loaders/chatgpt.js";
 export { loadClaude } from "./loaders/claude.js";
