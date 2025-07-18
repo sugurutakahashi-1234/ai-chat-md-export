@@ -191,6 +191,7 @@ ai-chat-md-export -i conversations.json --quiet
 
 | 选项                             | 描述                                      | 默认值     |
 | -------------------------------- | ----------------------------------------- | ---------- |
+| `-v, --version`                  | 显示版本号                                | -          |
 | `-i, --input <path>`             | 输入文件或目录路径（必需）                | -          |
 | `-o, --output <path>`            | 输出目录                                  | `.`        |
 | `-f, --format <format>`          | 输入格式（`chatgpt`/`claude`/`auto`）     | `auto`     |
