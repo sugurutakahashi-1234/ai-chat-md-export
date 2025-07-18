@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
-      pull-requests: write
       contents: read
+      pull-requests: write
 
     steps:
       - name: Checkout
@@ -41,6 +41,19 @@ jobs:
 
       - name: Test
         run: bun run test:coverage
+
+      - name: Generate TypeScript dependency graph
+        uses: ysk8hori/delta-typescript-graph-action@v1.2.3
+        with:
+          tsconfig: './tsconfig.json'
+          exclude: 'lib'
+          orientation: 'LR' # Change to 'TB' for top-bottom orientation
+          max-size: 30 # default is 30, adjust as needed
+          show-metrics: true
+          comment-title: '📊 Dependency Graph Changes'
+          in-details: true
+          include-index-file-dependencies: true
+          debug: true
 
       - name: Upload coverage to Codecov
         if: github.actor != 'github-actions[bot]'
