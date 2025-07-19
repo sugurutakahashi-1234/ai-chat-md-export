@@ -1,8 +1,11 @@
 [test]
-# This configuration is intentionally minimal because the primary goal is to write meaningful tests,
-# not just to achieve high coverage numbers. Therefore, only the minimum required coverage is enforced.
 # Ref: https://bun.com/docs/test/coverage
-coverageThreshold = { lines = 0.50, functions = 0.50 }
+
+# NOTE: Due to a bug in Bun 1.2.x, specifying coverageThreshold as an object (e.g., { lines = 0.8, functions = 0.8 })
+# applies the threshold to each file individually, not to the overall coverage.
+# As a result, even if the overall coverage meets the threshold, the process may exit with code 1.
+# Therefore, the coverageThreshold setting is currently commented out.
+# coverageThreshold = 0.80
 coverageSkipTestFiles = true
 coverageDir = "coverage"
 coverageReporter = ["text", "lcov"]
