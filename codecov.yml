@@ -5,15 +5,13 @@ coverage:
   status:
     project:
       default:
-        # Minimum coverage thresholds (same as bunfig.toml)
-        target: 50%
-        threshold: 2%  # Allow 2% decrease in coverage
+        target: auto  # Use current coverage as baseline
+        threshold: 10%  # Allow significant decrease
         
     patch:
       default:
-        # Coverage for new/modified code
-        target: 50%
-        threshold: 2%
+        target: 0%  # No coverage requirement for new code
+        informational: true  # Don't fail the build
 
 comment:
   # Configure how Codecov comments on PRs

@@ -10,10 +10,30 @@
 [![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/ai-chat-md-export)](https://bundlephobia.com/package/ai-chat-md-export)
 [![Types](https://img.shields.io/npm/types/ai-chat-md-export)](https://www.npmjs.com/package/ai-chat-md-export)
+[![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
+[![GitHub issues](https://img.shields.io/github/issues/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/commit-activity)
+[![GitHub contributors](https://img.shields.io/github/contributors/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/contributors)
 
 ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに変換
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
+
+## 目次
+
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
+- [Privacy & Security](#privacy--security)
+- [Usage](#usage)
+- [Command-line Options](#command-line-options)
+- [Getting conversations.json](#getting-conversationsjson)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Contact](#contact)
+- [License](#license)
 
 ## Quick Start
 
@@ -127,14 +147,27 @@ npm install -g ai-chat-md-export
 
 ## What is ai-chat-md-export?
 
-`ai-chat-md-export`は、ChatGPTやClaudeの会話履歴を整理された読みやすいMarkdownファイルに変換するCLIツールです。
+ChatGPTやClaudeの会話履歴を整理された読みやすいMarkdownファイルに変換するCLIツールです。
 
-### Key benefits
+### Key Features
 
-- **AIチャットの保存**: 削除や消失前に大切な会話を保存
-- **読みやすいフォーマット**: どんなMarkdownエディタでも快適に閲覧
-- **履歴の検索・整理**: 標準的なツールでチャット履歴を検索・管理
-- **共有やバージョン管理**: 必要に応じて会話を共有
+**Core Functionality**
+- 🚀 **高速で効率的** - 数千の会話を数秒で処理
+- 📝 **クリーンなMarkdown出力** - 整形された読みやすいMarkdownファイル
+- 🔍 **高度なフィルタリング** - 日付範囲、キーワードでフィルタリング
+- 🌍 **マルチプラットフォーム対応** - ChatGPTとClaudeのエクスポートに対応
+
+**Convenience**
+- 📅 **スマートなファイル命名** - 日付で整理され、サニタイズされた会話タイトル
+- 💻 **クロスプラットフォーム** - Windows、macOS、Linuxで利用可能
+- 🎯 **柔軟な出力** - 会話を分割または単一ファイルに結合
+- 🛠️ **開発者フレンドリー** - TypeScript、完全な型安全性、十分なテスト
+
+**Key Benefits**
+- **AIチャットの保存** - 削除や消失前に大切な会話を保存
+- **読みやすいフォーマット** - どんなMarkdownエディタでも快適に閲覧
+- **履歴の検索・整理** - 標準的なツールでチャット履歴を検索・管理
+- **共有やバージョン管理** - 必要に応じて会話を共有
 
 ## Privacy & Security
 
@@ -176,7 +209,7 @@ ai-chat-md-export -i conversations.json --no-split
 | -------------------------------- | ----------------------------------------------------------------------- | ---------- |
 | `-h, --help`                     | ヘルプ情報を表示                                                        | -          |
 | `-v, --version`                  | バージョン番号を表示                                                    | -          |
-| `-i, --input <path>`             | 入力ファイルまたはディレクトリパス（必須）                              | -          |
+| `-i, --input <path>`             | 入力ファイルパス（必須）                                                | -          |
 | `-o, --output <path>`            | 出力ディレクトリ                                                        | `.`        |
 | `-f, --format <format>`          | 出力フォーマット（`markdown`/`json`）                                   | `markdown` |
 | `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割）        | -          |
@@ -219,9 +252,9 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 ## Troubleshooting
 
 ### Large files taking too long to process
-このツールはファイルをバッチで処理します。非常に大きな会話履歴の場合：
+非常に大きな会話履歴の場合：
 - `--since`と`--until`を使用して特定の日付範囲を処理
-- エクスポートを複数の小さなファイルに分割
+- メモリ不足の場合は、一度に1つのファイルを処理
 - `--search`を使用して関連する会話のみを抽出
 
 ### Character encoding issues
@@ -266,7 +299,7 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 
 ## Contributing
 
-[CONTRIBUTING.md](CONTRIBUTING.md)を参照してください
+コントリビューションを歓迎します！開発環境のセットアップ、テストガイドライン、プルリクエストの提出方法については、[CONTRIBUTING.md](CONTRIBUTING.md)を参照してください
 
 ## Contact
 

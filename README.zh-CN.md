@@ -10,10 +10,30 @@
 [![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/ai-chat-md-export)](https://bundlephobia.com/package/ai-chat-md-export)
 [![Types](https://img.shields.io/npm/types/ai-chat-md-export)](https://www.npmjs.com/package/ai-chat-md-export)
+[![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
+[![GitHub issues](https://img.shields.io/github/issues/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/commit-activity)
+[![GitHub contributors](https://img.shields.io/github/contributors/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/contributors)
 
 将 ChatGPT 和 Claude 聊天记录转换为可读的 Markdown 文件
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
+
+## 目录
+
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
+- [Privacy & Security](#privacy--security)
+- [Usage](#usage)
+- [Command-line Options](#command-line-options)
+- [Getting conversations.json](#getting-conversationsjson)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Contact](#contact)
+- [License](#license)
 
 ## Quick Start
 
@@ -129,12 +149,25 @@ npm install -g ai-chat-md-export
 
 `ai-chat-md-export` 是一个 CLI 工具，可以将您的 ChatGPT 和 Claude 对话转换为组织良好、可读的 Markdown 文件。
 
-### Key benefits
+### Key Features
 
-- **保存您的 AI 聊天记录**：在它们丢失或被删除之前保存下来
-- **可读格式**：在任何 Markdown 编辑器中轻松查看
-- **搜索和组织**：使用标准工具搜索和管理您的聊天历史
-- **共享或版本控制**：根据需要共享或管理对话
+**Core Functionality**
+- 🚀 **快速高效** - 在几秒钟内处理数千个对话
+- 📝 **清晰的 Markdown 输出** - 格式良好、易读的 Markdown 文件
+- 🔍 **高级过滤** - 按日期范围、搜索关键字过滤
+- 🌍 **多平台支持** - 支持 ChatGPT 和 Claude 导出
+
+**Convenience**
+- 📅 **智能文件命名** - 按日期组织，使用清理后的对话标题
+- 💻 **跨平台** - 适用于 Windows、macOS 和 Linux
+- 🎯 **灵活的输出** - 分割对话或合并到单个文件
+- 🛠️ **开发者友好** - TypeScript、完全类型安全、充分测试
+
+**Key Benefits**
+- **保存您的 AI 聊天记录** - 在它们丢失或被删除之前保存下来
+- **可读格式** - 在任何 Markdown 编辑器中轻松查看
+- **搜索和组织** - 使用标准工具搜索和管理您的聊天历史
+- **共享或版本控制** - 根据需要共享或管理对话
 
 ## Privacy & Security
 
@@ -176,7 +209,7 @@ ai-chat-md-export -i conversations.json --no-split
 | -------------------------------- | --------------------------------------------------------------- | ---------- |
 | `-h, --help`                     | 显示帮助信息                                                     | -          |
 | `-v, --version`                  | 显示版本号                                                       | -          |
-| `-i, --input <path>`             | 输入文件或目录路径（必需）                                        | -          |
+| `-i, --input <path>`             | 输入文件路径（必需）                                              | -          |
 | `-o, --output <path>`            | 输出目录                                                         | `.`        |
 | `-f, --format <format>`          | 输出格式（`markdown`/`json`）                                    | `markdown` |
 | `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件）                        | -          |
@@ -220,9 +253,9 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 ## Troubleshooting
 
 ### Large files taking too long to process
-该工具分批处理文件。对于非常大的对话历史：
+对于非常大的对话历史：
 - 使用 `--since` 和 `--until` 处理特定日期范围
-- 将导出拆分为多个较小的文件
+- 如果遇到内存问题，请一次处理一个文件
 - 使用 `--search` 仅提取相关对话
 
 ### Character encoding issues
@@ -267,7 +300,7 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 
 ## Contributing
 
-请参见 [CONTRIBUTING.md](CONTRIBUTING.md)
+欢迎贡献！有关开发设置、测试指南和如何提交拉取请求，请参见 [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Contact
 

@@ -38,9 +38,13 @@ jobs:
 
       - name: Test
         run: bun run test:coverage
+        env:
+          NO_COLOR: 1
 
       - name: Run E2E test (NPM)
         run: bun run test:e2e:npm
+        env:
+          NO_COLOR: 1
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
