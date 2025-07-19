@@ -41,5 +41,10 @@
   "npm.scriptRunner": "bun",
   "debug.javascript.defaultRuntimeExecutable": {
     "pwa-node": "bun"
-  }
+  },
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "file": ".github/commit-message-rules.md"
+    }
+  ]
 }
