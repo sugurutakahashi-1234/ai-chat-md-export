@@ -1,22 +1,8 @@
-import { afterEach, beforeEach, describe, expect, it, mock } from "bun:test";
+import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { FileWriter } from "../../../src/core/file-writer.js";
 import type { Conversation } from "../../../src/types.js";
-
-// Mock logger only
-mock.module("../../../src/utils/logger.js", () => ({
-  createLogger: () => ({
-    output: mock(() => {}),
-    warn: mock(() => {}),
-    stat: mock(() => {}),
-    info: mock(() => {}),
-    error: mock(() => {}),
-    success: mock(() => {}),
-    section: mock(() => {}),
-    progress: mock(() => {}),
-  }),
-}));
 
 describe("FileWriter", () => {
   let fileWriter: FileWriter;
