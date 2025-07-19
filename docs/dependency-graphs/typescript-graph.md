@@ -29,7 +29,6 @@ flowchart LR
             src/converters/json//converter.ts["json-converter.ts"]
             src/converters/markdown.ts["markdown.ts"]
             src/converters/markdown//converter.ts["markdown-converter.ts"]
-            src/converters/index.ts["index.ts"]
         end
         subgraph src/errors["/errors"]
             src/errors/custom//errors.ts["custom-errors.ts"]
@@ -49,7 +48,6 @@ flowchart LR
         subgraph src/handlers["/handlers"]
             src/handlers/chatgpt//handler.ts["chatgpt-handler.ts"]
             src/handlers/claude//handler.ts["claude-handler.ts"]
-            src/handlers/index.ts["index.ts"]
         end
     end
     subgraph node//modules["node_modules"]
@@ -135,23 +133,6 @@ flowchart LR
     src/cli.ts-->src/utils/logger.ts
     src/cli.ts-->src/utils/options.ts
     src/cli.ts-->src/version.ts
-    src/converters/index.ts-->src/converters/json//converter.ts
-    src/converters/index.ts-->src/converters/markdown//converter.ts
-    src/handlers/index.ts-->src/handlers/chatgpt//handler.ts
-    src/handlers/index.ts-->src/handlers/claude//handler.ts
     src/index.ts-->src/cli.ts
-    src/index.ts-->src/converters/index.ts
-    src/index.ts-->src/converters/json.ts
-    src/index.ts-->src/converters/markdown.ts
-    src/index.ts-->src/core/base//handler.ts
-    src/index.ts-->src/core/converter//registry.ts
-    src/index.ts-->src/core/format//handler.ts
-    src/index.ts-->src/core/handler//registry.ts
-    src/index.ts-->src/core/output//converter.ts
-    src/index.ts-->src/core/processor.ts
-    src/index.ts-->src/handlers/index.ts
-    src/index.ts-->src/types.ts
-    src/index.ts-->src/utils/filename.ts
-    src/index.ts-->src/utils/options.ts
 ```
 
