@@ -1,8 +1,4 @@
 import path from "node:path";
-import { JsonConverter } from "../converters/json-converter.js";
-import { MarkdownConverter } from "../converters/markdown-converter.js";
-import { ChatGPTHandler } from "../handlers/chatgpt-handler.js";
-import { ClaudeHandler } from "../handlers/claude-handler.js";
 import type { Conversation } from "../types.js";
 import {
   formatErrorMessage,
@@ -11,19 +7,15 @@ import {
 } from "../utils/error-formatter.js";
 import { createLogger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
-import { ConverterRegistry } from "./converter-registry.js";
 import { FileLoader } from "./file-loader.js";
 import { FileWriter } from "./file-writer.js";
 import { applyFilters } from "./filter.js";
 import { FormatDetector } from "./format-detector.js";
-import { HandlerRegistry } from "./handler-registry.js";
 
 /**
  * Processor configuration
  */
 export interface ProcessorConfig {
-  handlerRegistry?: HandlerRegistry;
-  converterRegistry?: ConverterRegistry;
   fileLoader?: FileLoader;
   fileWriter?: FileWriter;
   formatDetector?: FormatDetector;
@@ -36,31 +28,12 @@ export class Processor {
   private readonly fileLoader: FileLoader;
   private readonly formatDetector: FormatDetector;
   private readonly fileWriter: FileWriter;
-  private readonly handlerRegistry: HandlerRegistry;
-  private readonly converterRegistry: ConverterRegistry;
 
   constructor(config: ProcessorConfig = {}) {
     // Use provided instances or create defaults
-    this.handlerRegistry = config.handlerRegistry || new HandlerRegistry();
-    this.converterRegistry =
-      config.converterRegistry || new ConverterRegistry();
     this.fileLoader = config.fileLoader || new FileLoader();
-    this.fileWriter =
-      config.fileWriter || new FileWriter(this.converterRegistry);
-    this.formatDetector =
-      config.formatDetector || new FormatDetector(this.handlerRegistry);
-
-    // Register default handlers if using default registry
-    if (!config.handlerRegistry) {
-      this.handlerRegistry.register(new ChatGPTHandler());
-      this.handlerRegistry.register(new ClaudeHandler());
-    }
-
-    // Register default converters if using default registry
-    if (!config.converterRegistry) {
-      this.converterRegistry.register(new JsonConverter());
-      this.converterRegistry.register(new MarkdownConverter());
-    }
+    this.fileWriter = config.fileWriter || new FileWriter();
+    this.formatDetector = config.formatDetector || new FormatDetector();
   }
 
   async processInput(options: Options): Promise<void> {

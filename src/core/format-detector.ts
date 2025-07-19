@@ -1,13 +1,18 @@
 import { FormatError } from "../errors/custom-errors.js";
+import { ChatGPTHandler } from "../handlers/chatgpt-handler.js";
+import { ClaudeHandler } from "../handlers/claude-handler.js";
 import type { Options } from "../utils/options.js";
 import type { FormatHandler } from "./format-handler.js";
-import type { HandlerRegistry } from "./handler-registry.js";
 
 export class FormatDetector {
-  private readonly handlerRegistry: HandlerRegistry;
+  private readonly handlers: Record<string, FormatHandler>;
 
-  constructor(handlerRegistry: HandlerRegistry) {
-    this.handlerRegistry = handlerRegistry;
+  constructor() {
+    // Direct implementation instead of registry pattern
+    this.handlers = {
+      chatgpt: new ChatGPTHandler(),
+      claude: new ClaudeHandler(),
+    };
   }
   /**
    * Detect or get format handler based on options
@@ -18,18 +23,19 @@ export class FormatDetector {
     filePath: string,
   ): FormatHandler {
     if (options.platform === "auto") {
-      const detectedHandler = this.handlerRegistry.detectFormat(data);
-      if (!detectedHandler) {
-        throw new FormatError("Cannot detect file format", "auto", {
-          file: filePath,
-          reason:
-            "The file does not match any known format (ChatGPT or Claude)",
-        });
+      // Try each handler's detect method
+      for (const handler of Object.values(this.handlers)) {
+        if (handler.detect(data)) {
+          return handler;
+        }
       }
-      return detectedHandler;
+      throw new FormatError("Cannot detect file format", "auto", {
+        file: filePath,
+        reason: "The file does not match any known format (ChatGPT or Claude)",
+      });
     }
 
-    const selectedHandler = this.handlerRegistry.getById(options.platform);
+    const selectedHandler = this.handlers[options.platform];
     if (!selectedHandler) {
       throw new FormatError(
         `Unsupported format: ${options.platform}`,

@@ -3,25 +3,21 @@ import { MarkdownConverter } from "../converters/markdown-converter.js";
 import type { Conversation } from "../types.js";
 import { formatErrorMessage } from "../utils/error-formatter.js";
 import type { Options } from "../utils/options.js";
-import { ConverterRegistry } from "./converter-registry.js";
 import type { OutputConverter } from "./output-converter.js";
 
 export class ConversationConverter {
-  private readonly converterRegistry: ConverterRegistry;
+  private readonly converters: Record<string, OutputConverter>;
 
-  constructor(converterRegistry?: ConverterRegistry) {
-    if (converterRegistry) {
-      this.converterRegistry = converterRegistry;
-    } else {
-      // Create default registry and register converters
-      this.converterRegistry = new ConverterRegistry();
-      this.converterRegistry.register(new JsonConverter());
-      this.converterRegistry.register(new MarkdownConverter());
-    }
+  constructor() {
+    // Direct implementation instead of registry pattern
+    this.converters = {
+      json: new JsonConverter(),
+      markdown: new MarkdownConverter(),
+    };
   }
 
   private getConverter(options: Options): OutputConverter {
-    const converter = this.converterRegistry.getById(options.format);
+    const converter = this.converters[options.format];
     if (!converter) {
       throw new Error(
         formatErrorMessage(`Unsupported output format: ${options.format}`, {

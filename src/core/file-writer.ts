@@ -12,7 +12,6 @@ import { createLogger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
 import { createTypeGuard } from "../utils/type-guards.js";
 import { ConversationConverter } from "./conversation-converter.js";
-import type { ConverterRegistry } from "./converter-registry.js";
 
 export interface WriteResult {
   successCount: number;
@@ -25,8 +24,8 @@ const isFilenameEncoding = createTypeGuard(filenameEncodingSchema);
 export class FileWriter {
   private readonly converter: ConversationConverter;
 
-  constructor(converterRegistry?: ConverterRegistry) {
-    this.converter = new ConversationConverter(converterRegistry);
+  constructor() {
+    this.converter = new ConversationConverter();
   }
 
   /**
