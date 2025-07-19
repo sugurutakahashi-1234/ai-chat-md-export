@@ -52,6 +52,8 @@ jobs:
 
       - name: Generate TypeScript dependency graph
         uses: ysk8hori/delta-typescript-graph-action@v1.2.3
+        env:
+          HUSKY: 0
         with:
           tsconfig: './tsconfig.dependency-graph.json' # Use dedicated config instead of tsconfig.json to include test files in dependency analysis
           orientation: 'LR' # Change to 'TB' for top-bottom orientation
