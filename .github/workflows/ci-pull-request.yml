@@ -75,21 +75,3 @@ jobs:
           flags: unittests                        # Tag coverage as unit tests
           disable_search: false                   # Enable automatic coverage file search
           report_type: coverage                   # Specify coverage report type
-
-      - name: Install LCOV
-        if: github.event_name == 'pull_request'
-        run: |
-          # Skip update if not needed (saves ~10s)
-          sudo apt-get install -y lcov || (sudo apt-get update && sudo apt-get install -y lcov)
-
-      - name: Report code coverage
-        if: github.event_name == 'pull_request' && github.actor != 'github-actions[bot]'
-        uses: zgosalvez/github-actions-report-lcov@v4
-        with:
-          coverage-files: ./coverage/lcov.info
-          artifact-name: code-coverage-report
-          minimum-coverage: 50 # bunfig.toml coverageThreshold
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          title-prefix: '📊 '
-          additional-message: 'Code coverage report for this PR'
-          update-comment: true
