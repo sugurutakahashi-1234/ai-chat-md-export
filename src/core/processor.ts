@@ -40,13 +40,7 @@ export class Processor {
     const inputPath = path.resolve(options.input);
     const outputDir = path.resolve(options.output || process.cwd());
 
-    const isFile = await this.fileLoader.isFile(inputPath);
-
-    if (isFile) {
-      await this.processFile(inputPath, outputDir, options);
-    } else {
-      await this.processDirectory(inputPath, outputDir, options);
-    }
+    await this.processFile(inputPath, outputDir, options);
   }
 
   private async processFile(
@@ -116,36 +110,6 @@ export class Processor {
       outputDir,
       options,
     );
-  }
-
-  private async processDirectory(
-    dirPath: string,
-    outputDir: string,
-    options: Options,
-  ): Promise<void> {
-    const jsonFiles = await this.fileLoader.listJsonFiles(dirPath);
-
-    if (jsonFiles.length === 0) {
-      const logger = createLogger({ quiet: options.quiet });
-      logger.info(
-        `No JSON files found in directory: ${getRelativePath(dirPath)}`,
-      );
-      return;
-    }
-
-    const logger = createLogger({ quiet: options.quiet });
-    logger.section(`Found ${jsonFiles.length} JSON file(s) to process`);
-
-    for (let i = 0; i < jsonFiles.length; i++) {
-      const file = jsonFiles[i];
-      if (!file) continue;
-      const filePath = path.join(dirPath, file);
-      logger.progress(i + 1, jsonFiles.length, `Processing ${file}...`);
-      await this.processFile(filePath, outputDir, options);
-    }
-
-    logger.success(`Completed processing ${jsonFiles.length} file(s)`);
-    logger.info(""); // Add empty line
   }
 }
 

@@ -11,7 +11,7 @@ export async function main(): Promise<void> {
     .name("ai-chat-md-export")
     .version(VERSION, "-v, --version")
     .description("Convert ChatGPT and Claude export data to Markdown")
-    .requiredOption("-i, --input <path>", "Input file or directory path")
+    .requiredOption("-i, --input <path>", "Input file path")
     .option(
       "-o, --output <path>",
       "Output directory (default: current directory)",

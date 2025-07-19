@@ -176,7 +176,7 @@ ai-chat-md-export -i conversations.json --no-split
 | -------------------------------- | --------------------------------------------------------------- | ---------- |
 | `-h, --help`                     | 显示帮助信息                                                     | -          |
 | `-v, --version`                  | 显示版本号                                                       | -          |
-| `-i, --input <path>`             | 输入文件或目录路径（必需）                                        | -          |
+| `-i, --input <path>`             | 输入文件路径（必需）                                              | -          |
 | `-o, --output <path>`            | 输出目录                                                         | `.`        |
 | `-f, --format <format>`          | 输出格式（`markdown`/`json`）                                    | `markdown` |
 | `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件）                        | -          |
@@ -220,9 +220,9 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 ## Troubleshooting
 
 ### Large files taking too long to process
-该工具分批处理文件。对于非常大的对话历史：
+对于非常大的对话历史：
 - 使用 `--since` 和 `--until` 处理特定日期范围
-- 将导出拆分为多个较小的文件
+- 如果遇到内存问题，请一次处理一个文件
 - 使用 `--search` 仅提取相关对话
 
 ### Character encoding issues

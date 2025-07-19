@@ -176,7 +176,7 @@ For more examples, see the [examples](examples/) directory.
 | -------------------------------- | ----------------------------------------------------------------------- | ---------- |
 | `-h, --help`                     | Display help information                                                | -          |
 | `-v, --version`                  | Display version number                                                  | -          |
-| `-i, --input <path>`             | Input file or directory path (required)                                 | -          |
+| `-i, --input <path>`             | Input file path (required)                                              | -          |
 | `-o, --output <path>`            | Output directory                                                        | `.`        |
 | `-f, --format <format>`          | Output format (`markdown`/`json`)                                       | `markdown` |
 | `--no-split`                     | Combine all conversations into one file (default: split files)          | -          |
@@ -220,9 +220,9 @@ Note: The download link expires after 24 hours, so download promptly.
 ## Troubleshooting
 
 ### Large files taking too long to process
-The tool processes files in batches. For very large conversation histories:
+For very large conversation histories:
 - Use `--since` and `--until` to process specific date ranges
-- Split your export into multiple smaller files
+- Process one file at a time if experiencing memory issues
 - Use `--search` to extract only relevant conversations
 
 ### Character encoding issues

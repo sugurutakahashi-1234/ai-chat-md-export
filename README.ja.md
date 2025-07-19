@@ -176,7 +176,7 @@ ai-chat-md-export -i conversations.json --no-split
 | -------------------------------- | ----------------------------------------------------------------------- | ---------- |
 | `-h, --help`                     | ヘルプ情報を表示                                                        | -          |
 | `-v, --version`                  | バージョン番号を表示                                                    | -          |
-| `-i, --input <path>`             | 入力ファイルまたはディレクトリパス（必須）                              | -          |
+| `-i, --input <path>`             | 入力ファイルパス（必須）                                                | -          |
 | `-o, --output <path>`            | 出力ディレクトリ                                                        | `.`        |
 | `-f, --format <format>`          | 出力フォーマット（`markdown`/`json`）                                   | `markdown` |
 | `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割）        | -          |
@@ -219,9 +219,9 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 ## Troubleshooting
 
 ### Large files taking too long to process
-このツールはファイルをバッチで処理します。非常に大きな会話履歴の場合：
+非常に大きな会話履歴の場合：
 - `--since`と`--until`を使用して特定の日付範囲を処理
-- エクスポートを複数の小さなファイルに分割
+- メモリ不足の場合は、一度に1つのファイルを処理
 - `--search`を使用して関連する会話のみを抽出
 
 ### Character encoding issues
