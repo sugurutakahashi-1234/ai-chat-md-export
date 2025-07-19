@@ -13,10 +13,27 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
 [![GitHub issues](https://img.shields.io/github/issues/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/commit-activity)
+[![GitHub contributors](https://img.shields.io/github/contributors/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/contributors)
 
 ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに変換
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
+
+## 目次
+
+- [Quick Start](#quick-start)
+- [インストール](#インストール)
+- [ai-chat-md-exportとは？](#ai-chat-md-exportとは)
+- [プライバシーとセキュリティ](#プライバシーとセキュリティ)
+- [使用方法](#使用方法)
+- [コマンドラインオプション](#コマンドラインオプション)
+- [conversations.jsonの取得方法](#conversationsjsonの取得方法)
+- [トラブルシューティング](#トラブルシューティング)
+- [ロードマップ](#ロードマップ)
+- [コントリビュート](#コントリビュート)
+- [お問い合わせ](#お問い合わせ)
+- [ライセンス](#ライセンス)
 
 ## Quick Start
 
@@ -98,7 +115,7 @@ Date: 2025-01-15 18:00:10 +09:00
 
 ✨ **特徴**: クリーンなフォーマット • タイムスタンプ • 視覚的マーカー • コードブロックと書式を保持
 
-## Installation
+## インストール
 
 ### Homebrew (macOS/Linux)
 
@@ -128,18 +145,31 @@ npm install -g ai-chat-md-export
 #### macOS / Linux
 リリースページから適切な`.tar.gz`ファイルをダウンロードしてください。
 
-## What is ai-chat-md-export?
+## ai-chat-md-exportとは？
 
-`ai-chat-md-export`は、ChatGPTやClaudeの会話履歴を整理された読みやすいMarkdownファイルに変換するCLIツールです。
+ChatGPTやClaudeの会話履歴を整理された読みやすいMarkdownファイルに変換するCLIツールです。
 
-### Key benefits
+### 主な特徴
 
-- **AIチャットの保存**: 削除や消失前に大切な会話を保存
-- **読みやすいフォーマット**: どんなMarkdownエディタでも快適に閲覧
-- **履歴の検索・整理**: 標準的なツールでチャット履歴を検索・管理
-- **共有やバージョン管理**: 必要に応じて会話を共有
+**基本機能**
+- 🚀 **高速で効率的** - 数千の会話を数秒で処理
+- 📝 **クリーンなMarkdown出力** - 整形された読みやすいMarkdownファイル
+- 🔍 **高度なフィルタリング** - 日付範囲、キーワードでフィルタリング
+- 🌍 **マルチプラットフォーム対応** - ChatGPTとClaudeのエクスポートに対応
 
-## Privacy & Security
+**利便性**
+- 📅 **スマートなファイル命名** - 日付で整理され、サニタイズされた会話タイトル
+- 💻 **クロスプラットフォーム** - Windows、macOS、Linuxで利用可能
+- 🎯 **柔軟な出力** - 会話を分割または単一ファイルに結合
+- 🛠️ **開発者フレンドリー** - TypeScript、完全な型安全性、十分なテスト
+
+**主な利点**
+- **AIチャットの保存** - 削除や消失前に大切な会話を保存
+- **読みやすいフォーマット** - どんなMarkdownエディタでも快適に閲覧
+- **履歴の検索・整理** - 標準的なツールでチャット履歴を検索・管理
+- **共有やバージョン管理** - 必要に応じて会話を共有
+
+## プライバシーとセキュリティ
 
 ### 🔒 Offline-First Design
 
@@ -267,9 +297,9 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 - [ ] **Geminiサポート** - Google Geminiからの会話エクスポート
 - [ ] **エクスポート統計** - 会話数、メッセージ数、日付範囲を表示
 
-## Contributing
+## コントリビュート
 
-[CONTRIBUTING.md](CONTRIBUTING.md)を参照してください
+コントリビューションを歓迎します！開発環境のセットアップ、テストガイドライン、プルリクエストの提出方法については、[CONTRIBUTING.md](CONTRIBUTING.md)を参照してください
 
 ## Contact
 

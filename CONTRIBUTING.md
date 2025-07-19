@@ -16,11 +16,37 @@ We welcome all kinds of contributions:
 
 This project is developed using [Bun](https://bun.sh/) as the primary runtime and package manager. While npm, yarn, or pnpm will also work, we recommend using Bun for the best development experience.
 
+### Prerequisites
+
+- Node.js >= 24
+- Bun (latest version)
+
+### Setup
+
 ```bash
+# Clone the repository
+git clone https://github.com/sugurutakahashi-1234/ai-chat-md-export.git
+cd ai-chat-md-export
+
 # Install dependencies
 bun install
 
-# Run all checks before submitting PR
+# For macOS users with Homebrew: Install additional tools
+# (Required for building binaries and managing releases)
+brew bundle
+```
+
+### Testing
+
+```bash
+# Run all tests
+bun test
+```
+
+### Code Quality
+
+```bash
+# Run CI pipeline (format, lint, typecheck, build, test)
 bun run ci
 ```
 

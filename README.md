@@ -13,10 +13,27 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
 [![GitHub issues](https://img.shields.io/github/issues/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/commit-activity)
+[![GitHub contributors](https://img.shields.io/github/contributors/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/contributors)
 
 Convert ChatGPT and Claude chat history to readable Markdown files
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
+
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
+- [Privacy & Security](#privacy--security)
+- [Usage](#usage)
+- [Command-line Options](#command-line-options)
+- [Getting conversations.json](#getting-conversationsjson)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Contact](#contact)
+- [License](#license)
 
 ## Quick Start
 
@@ -132,12 +149,25 @@ Download the appropriate `.tar.gz` file from the releases page for your platform
 
 `ai-chat-md-export` is a CLI tool that converts your ChatGPT and Claude conversations into organized, readable Markdown files.
 
-### Key benefits
+### Key Features
 
-- **Preserve your AI chats** before they're lost or deleted
-- **Readable formatting** for easy viewing in any Markdown editor
-- **Search and organize** your chat history with standard tools
-- **Share or version control** conversations as needed
+**Core Functionality**
+- 🚀 **Fast & Efficient** - Process thousands of conversations in seconds
+- 📝 **Clean Markdown Output** - Well-formatted, readable Markdown files
+- 🔍 **Advanced Filtering** - Filter by date range, search keywords
+- 🌍 **Multi-platform Support** - Works with ChatGPT and Claude exports
+
+**Convenience**
+- 📅 **Smart File Naming** - Organized by date with sanitized conversation titles
+- 💻 **Cross-Platform** - Available for Windows, macOS, and Linux
+- 🎯 **Flexible Output** - Split conversations or combine into single file
+- 🛠️ **Developer Friendly** - TypeScript, full type safety, well-tested
+
+**Key Benefits**
+- **Preserve your AI chats** - Before they're lost or deleted
+- **Readable formatting** - Easy viewing in any Markdown editor
+- **Search and organize** - Your chat history with standard tools
+- **Share or version control** - Conversations as needed
 
 ## Privacy & Security
 
@@ -270,7 +300,7 @@ If some conversations don't appear in the output:
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+We welcome contributions! For development setup, testing guidelines, and how to submit pull requests, see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Contact
 
