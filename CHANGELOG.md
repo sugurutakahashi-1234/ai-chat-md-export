@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.8.0](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.7.6...v0.8.0) (2025-07-19)
+
+
+### ✨ Features
+
+* add -v option support and improve error message display ([#47](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/47)) ([033e1b4](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/033e1b42f89ef738e1ea6f1d44c14893f1ad9ad6))
+* add JSON output format and split/combine options ([#50](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/50)) ([7e9706b](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/7e9706bcae7822db270f23f2f3ff2503ceee52b8))
+* remove directory input support for simpler codebase ([#51](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/51)) ([c3a300c](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/c3a300c36ff6c62a64cdfd83a018e8dd691161a3))
+
 ## [0.7.6](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.7.5...v0.7.6) (2025-07-17)
 
 
