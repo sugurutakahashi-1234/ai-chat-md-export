@@ -1,5 +1,5 @@
 import {
-  BaseFormatHandler,
+  BasePlatformParser,
   type ParsedConversation,
 } from "../core/base-handler.js";
 import {
@@ -10,9 +10,13 @@ import {
 import type { Conversation } from "../types.js";
 import { assertType } from "../utils/type-guards.js";
 
-export class ChatGPTHandler extends BaseFormatHandler<ChatGPTConversation[]> {
-  readonly id = "chatgpt";
-  readonly name = "ChatGPT";
+/**
+ * ChatGPT platform parser
+ *
+ * Handles parsing and converting ChatGPT export data
+ * to the common conversation format.
+ */
+export class ChatGPTHandler extends BasePlatformParser<ChatGPTConversation[]> {
   readonly schema = chatGPTConversationSchema.array();
 
   detect(data: unknown): boolean {

@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it } from "bun:test";
-import { ConversationConverter } from "../../../src/core/conversation-converter.js";
+import { OutputManager } from "../../../src/core/output-manager.js";
 import type { Conversation } from "../../../src/types.js";
 
-describe("ConversationConverter", () => {
-  let converter: ConversationConverter;
+describe("OutputManager", () => {
+  let outputManager: OutputManager;
   const mockConversation: Conversation = {
     id: "1",
     title: "Test Conversation",
@@ -15,13 +15,13 @@ describe("ConversationConverter", () => {
   };
 
   beforeEach(() => {
-    converter = new ConversationConverter();
+    outputManager = new OutputManager();
   });
 
   describe("error handling", () => {
     it("throws error for unsupported format in convertSingle", () => {
       expect(() =>
-        converter.convertSingle(mockConversation, {
+        outputManager.convertSingle(mockConversation, {
           format: "unsupported" as any,
         } as any),
       ).toThrow("Unsupported output format: unsupported");
@@ -29,7 +29,7 @@ describe("ConversationConverter", () => {
 
     it("throws error for unsupported format in convertMultiple", () => {
       expect(() =>
-        converter.convertMultiple([mockConversation], {
+        outputManager.convertMultiple([mockConversation], {
           format: "unsupported" as any,
         } as any),
       ).toThrow("Unsupported output format: unsupported");
@@ -37,7 +37,7 @@ describe("ConversationConverter", () => {
 
     it("throws error for unsupported format in getExtension", () => {
       expect(() =>
-        converter.getExtension({
+        outputManager.getExtension({
           format: "xml" as any,
         } as any),
       ).toThrow("Unsupported output format: xml");
@@ -45,7 +45,7 @@ describe("ConversationConverter", () => {
 
     it("throws error for unsupported format in getDefaultFilename", () => {
       expect(() =>
-        converter.getDefaultFilename({
+        outputManager.getDefaultFilename({
           format: "csv" as any,
         } as any),
       ).toThrow("Unsupported output format: csv");
@@ -53,7 +53,7 @@ describe("ConversationConverter", () => {
 
     it("includes supported formats in error message", () => {
       try {
-        converter.convertSingle(mockConversation, {
+        outputManager.convertSingle(mockConversation, {
           format: "invalid" as any,
         } as any);
       } catch (error) {
@@ -79,7 +79,7 @@ describe("ConversationConverter", () => {
         },
       ];
 
-      const result = converter.convertMultiple(conversations, {
+      const result = outputManager.convertMultiple(conversations, {
         format: "markdown",
       } as any);
 
@@ -90,7 +90,7 @@ describe("ConversationConverter", () => {
 
     it("converts multiple conversations to JSON", () => {
       const conversations = [mockConversation];
-      const result = converter.convertMultiple(conversations, {
+      const result = outputManager.convertMultiple(conversations, {
         format: "json",
       } as any);
 
@@ -104,14 +104,14 @@ describe("ConversationConverter", () => {
 
   describe("getDefaultFilename", () => {
     it("returns markdown filename for markdown format", () => {
-      const filename = converter.getDefaultFilename({
+      const filename = outputManager.getDefaultFilename({
         format: "markdown",
       } as any);
       expect(filename).toBe("all-conversations.md");
     });
 
     it("returns json filename for json format", () => {
-      const filename = converter.getDefaultFilename({
+      const filename = outputManager.getDefaultFilename({
         format: "json",
       } as any);
       expect(filename).toBe("all-conversations.json");

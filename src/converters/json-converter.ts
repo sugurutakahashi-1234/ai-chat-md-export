@@ -1,10 +1,14 @@
-import type { OutputConverter } from "../core/output-converter.js";
+import type { OutputFormatter } from "../core/output-formatter.js";
 import type { Conversation } from "../types.js";
 import { convertSingleConversationToJson, convertToJson } from "./json.js";
 
-export class JsonConverter implements OutputConverter {
-  readonly id = "json";
-  readonly name = "JSON";
+/**
+ * JSON output formatter
+ *
+ * Formats conversations as JSON for data exchange
+ * and programmatic processing.
+ */
+export class JsonConverter implements OutputFormatter {
   readonly extension = ".json";
 
   convertSingle(conversation: Conversation): string {

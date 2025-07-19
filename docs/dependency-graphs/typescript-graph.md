@@ -19,18 +19,18 @@ flowchart LR
             src/utils/logger.ts["logger.ts"]
             src/utils/options.ts["options.ts"]
             src/utils/filename.ts["filename.ts"]
-            src/utils/type//guards.ts["type-guards.ts"]
             src/utils/schema//validator.ts["schema-validator.ts"]
+            src/utils/type//guards.ts["type-guards.ts"]
         end
         subgraph src/core["/core"]
             src/core/file//loader.ts["file-loader.ts"]
-            src/core/output//converter.ts["output-converter.ts"]
-            src/core/conversation//converter.ts["conversation-converter.ts"]
+            src/core/output//formatter.ts["output-formatter.ts"]
+            src/core/output//manager.ts["output-manager.ts"]
             src/core/file//writer.ts["file-writer.ts"]
             src/core/filter.ts["filter.ts"]
-            src/core/format//handler.ts["format-handler.ts"]
+            src/core/platform//parser.ts["platform-parser.ts"]
             src/core/base//handler.ts["base-handler.ts"]
-            src/core/format//detector.ts["format-detector.ts"]
+            src/core/platform//detector.ts["platform-detector.ts"]
             src/core/processor.ts["processor.ts"]
         end
         subgraph src/converters["/converters"]
@@ -58,42 +58,40 @@ flowchart LR
     src/utils/options.ts-->node//modules/zod/index.d.cts
     src/core/file//loader.ts-->src/errors/custom//errors.ts
     src/core/file//loader.ts-->src/utils/error//formatter.ts
-    src/utils/type//guards.ts-->node//modules/zod/index.d.cts
-    src/core/output//converter.ts-->src/types.ts
+    src/core/output//formatter.ts-->src/types.ts
     src/converters/json.ts-->src/types.ts
-    src/converters/json//converter.ts-->src/core/output//converter.ts
+    src/converters/json//converter.ts-->src/core/output//formatter.ts
     src/converters/json//converter.ts-->src/types.ts
     src/converters/json//converter.ts-->src/converters/json.ts
     src/converters/markdown.ts-->src/types.ts
-    src/converters/markdown//converter.ts-->src/core/output//converter.ts
+    src/converters/markdown//converter.ts-->src/core/output//formatter.ts
     src/converters/markdown//converter.ts-->src/types.ts
     src/converters/markdown//converter.ts-->src/converters/markdown.ts
-    src/core/conversation//converter.ts-->src/converters/json//converter.ts
-    src/core/conversation//converter.ts-->src/converters/markdown//converter.ts
-    src/core/conversation//converter.ts-->src/types.ts
-    src/core/conversation//converter.ts-->src/utils/error//formatter.ts
-    src/core/conversation//converter.ts-->src/utils/options.ts
-    src/core/conversation//converter.ts-->src/core/output//converter.ts
-    src/core/file//writer.ts-->node//modules/zod/index.d.cts
+    src/core/output//manager.ts-->src/converters/json//converter.ts
+    src/core/output//manager.ts-->src/converters/markdown//converter.ts
+    src/core/output//manager.ts-->src/types.ts
+    src/core/output//manager.ts-->src/utils/error//formatter.ts
+    src/core/output//manager.ts-->src/utils/options.ts
+    src/core/output//manager.ts-->src/core/output//formatter.ts
     src/core/file//writer.ts-->src/types.ts
     src/core/file//writer.ts-->src/utils/error//formatter.ts
     src/core/file//writer.ts-->src/utils/filename.ts
     src/core/file//writer.ts-->src/utils/logger.ts
     src/core/file//writer.ts-->src/utils/options.ts
-    src/core/file//writer.ts-->src/utils/type//guards.ts
-    src/core/file//writer.ts-->src/core/conversation//converter.ts
+    src/core/file//writer.ts-->src/core/output//manager.ts
     src/core/filter.ts-->src/types.ts
     src/core/filter.ts-->src/utils/options.ts
     src/utils/schema//validator.ts-->node//modules/zod/index.d.cts
-    src/core/format//handler.ts-->node//modules/zod/index.d.cts
-    src/core/format//handler.ts-->src/types.ts
+    src/core/platform//parser.ts-->node//modules/zod/index.d.cts
+    src/core/platform//parser.ts-->src/types.ts
     src/core/base//handler.ts-->node//modules/zod/index.d.cts
     src/core/base//handler.ts-->src/errors/custom//errors.ts
     src/core/base//handler.ts-->src/types.ts
     src/core/base//handler.ts-->src/utils/logger.ts
     src/core/base//handler.ts-->src/utils/schema//validator.ts
-    src/core/base//handler.ts-->src/core/format//handler.ts
+    src/core/base//handler.ts-->src/core/platform//parser.ts
     src/schemas/chatgpt.ts-->node//modules/zod/index.d.cts
+    src/utils/type//guards.ts-->node//modules/zod/index.d.cts
     src/handlers/chatgpt//handler.ts-->src/core/base//handler.ts
     src/handlers/chatgpt//handler.ts-->src/schemas/chatgpt.ts
     src/handlers/chatgpt//handler.ts-->src/types.ts
@@ -103,11 +101,11 @@ flowchart LR
     src/handlers/claude//handler.ts-->src/schemas/claude.ts
     src/handlers/claude//handler.ts-->src/types.ts
     src/handlers/claude//handler.ts-->src/utils/type//guards.ts
-    src/core/format//detector.ts-->src/errors/custom//errors.ts
-    src/core/format//detector.ts-->src/handlers/chatgpt//handler.ts
-    src/core/format//detector.ts-->src/handlers/claude//handler.ts
-    src/core/format//detector.ts-->src/utils/options.ts
-    src/core/format//detector.ts-->src/core/format//handler.ts
+    src/core/platform//detector.ts-->src/errors/custom//errors.ts
+    src/core/platform//detector.ts-->src/handlers/chatgpt//handler.ts
+    src/core/platform//detector.ts-->src/handlers/claude//handler.ts
+    src/core/platform//detector.ts-->src/utils/options.ts
+    src/core/platform//detector.ts-->src/core/platform//parser.ts
     src/core/processor.ts-->src/types.ts
     src/core/processor.ts-->src/utils/error//formatter.ts
     src/core/processor.ts-->src/utils/logger.ts
@@ -115,7 +113,9 @@ flowchart LR
     src/core/processor.ts-->src/core/file//loader.ts
     src/core/processor.ts-->src/core/file//writer.ts
     src/core/processor.ts-->src/core/filter.ts
-    src/core/processor.ts-->src/core/format//detector.ts
+    src/core/processor.ts-->src/core/output//manager.ts
+    src/core/processor.ts-->src/core/platform//detector.ts
+    src/core/processor.ts-->src/core/platform//parser.ts
     src/cli.ts-->node//modules/commander/typings/index.d.ts
     src/cli.ts-->src/core/processor.ts
     src/cli.ts-->src/utils/error//formatter.ts

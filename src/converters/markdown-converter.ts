@@ -1,10 +1,14 @@
-import type { OutputConverter } from "../core/output-converter.js";
+import type { OutputFormatter } from "../core/output-formatter.js";
 import type { Conversation } from "../types.js";
 import { convertMultipleToMarkdown, convertToMarkdown } from "./markdown.js";
 
-export class MarkdownConverter implements OutputConverter {
-  readonly id = "markdown";
-  readonly name = "Markdown";
+/**
+ * Markdown output formatter
+ *
+ * Formats conversations as Markdown for human-readable
+ * documentation and easy sharing.
+ */
+export class MarkdownConverter implements OutputFormatter {
   readonly extension = ".md";
 
   convertSingle(conversation: Conversation): string {

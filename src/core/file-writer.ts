@@ -1,6 +1,5 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { z } from "zod";
 import type { Conversation } from "../types.js";
 import {
   formatErrorMessage,
@@ -10,23 +9,30 @@ import {
 import { generateFileName } from "../utils/filename.js";
 import { createLogger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
-import { createTypeGuard } from "../utils/type-guards.js";
-import { ConversationConverter } from "./conversation-converter.js";
+import type { OutputManager } from "./output-manager.js";
 
 export interface WriteResult {
   successCount: number;
   errors: Array<{ file: string; error: string }>;
 }
 
-const filenameEncodingSchema = z.enum(["standard", "preserve"]);
-const isFilenameEncoding = createTypeGuard(filenameEncodingSchema);
+/**
+ * Validate filename encoding option
+ */
+function isValidFilenameEncoding(
+  encoding: unknown,
+): encoding is "standard" | "preserve" {
+  return encoding === "standard" || encoding === "preserve";
+}
 
+/**
+ * File writer for conversation data
+ *
+ * Handles writing converted conversations to the file system,
+ * including directory creation, file naming, and error handling.
+ */
 export class FileWriter {
-  private readonly converter: ConversationConverter;
-
-  constructor() {
-    this.converter = new ConversationConverter();
-  }
+  constructor(private readonly outputManager: OutputManager) {}
 
   /**
    * Write conversations to files based on options
@@ -57,9 +63,9 @@ export class FileWriter {
     let successCount = 0;
 
     for (const conv of conversations) {
-      const content = this.converter.convertSingle(conv, options);
-      const extension = this.converter.getExtension(options);
-      const filenameEncoding = isFilenameEncoding(options.filenameEncoding)
+      const content = this.outputManager.convertSingle(conv, options);
+      const extension = this.outputManager.getExtension(options);
+      const filenameEncoding = isValidFilenameEncoding(options.filenameEncoding)
         ? options.filenameEncoding
         : "standard";
       const fileName = generateFileName(
@@ -100,8 +106,8 @@ export class FileWriter {
     const logger = createLogger({ quiet: options.quiet });
     const writeErrors: Array<{ file: string; error: string }> = [];
 
-    const content = this.converter.convertMultiple(conversations, options);
-    const fileName = this.converter.getDefaultFilename(options);
+    const content = this.outputManager.convertMultiple(conversations, options);
+    const fileName = this.outputManager.getDefaultFilename(options);
     const outputPath = path.join(outputDir, fileName);
 
     try {

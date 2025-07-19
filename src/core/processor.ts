@@ -10,7 +10,9 @@ import type { Options } from "../utils/options.js";
 import { FileLoader } from "./file-loader.js";
 import { FileWriter } from "./file-writer.js";
 import { applyFilters } from "./filter.js";
-import { FormatDetector } from "./format-detector.js";
+import { OutputManager } from "./output-manager.js";
+import { PlatformDetector } from "./platform-detector.js";
+import type { PlatformParser } from "./platform-parser.js";
 
 /**
  * Processor configuration
@@ -18,32 +20,42 @@ import { FormatDetector } from "./format-detector.js";
 export interface ProcessorConfig {
   fileLoader?: FileLoader;
   fileWriter?: FileWriter;
-  formatDetector?: FormatDetector;
+  platformDetector?: PlatformDetector;
 }
 
 /**
  * Main processor class with dependency injection
+ *
+ * Orchestrates the entire conversion process from input file
+ * to output files, coordinating all the components.
  */
 export class Processor {
   private readonly fileLoader: FileLoader;
-  private readonly formatDetector: FormatDetector;
+  private readonly platformDetector: PlatformDetector;
   private readonly fileWriter: FileWriter;
 
   constructor(config: ProcessorConfig = {}) {
     // Use provided instances or create defaults
     this.fileLoader = config.fileLoader || new FileLoader();
-    this.fileWriter = config.fileWriter || new FileWriter();
-    this.formatDetector = config.formatDetector || new FormatDetector();
+    this.platformDetector = config.platformDetector || new PlatformDetector();
+
+    // Create OutputManager and inject it into FileWriter
+    const outputManager = new OutputManager();
+    this.fileWriter = config.fileWriter || new FileWriter(outputManager);
   }
 
   async processInput(options: Options): Promise<void> {
     const inputPath = path.resolve(options.input);
     const outputDir = path.resolve(options.output || process.cwd());
 
-    await this.processFile(inputPath, outputDir, options);
+    // Execute the conversion pipeline
+    await this.executePipeline(inputPath, outputDir, options);
   }
 
-  private async processFile(
+  /**
+   * Execute the conversion pipeline with clear steps
+   */
+  private async executePipeline(
     filePath: string,
     outputDir: string,
     options: Options,
@@ -51,16 +63,62 @@ export class Processor {
     const logger = createLogger({ quiet: options.quiet });
     logger.info(`Processing: ${getRelativePath(filePath)}`);
 
-    // Read file content
-    const data = await this.fileLoader.loadJsonFile(filePath);
+    // ========== STEP 1: Load Data ==========
+    const data = await this.step1_loadData(filePath);
 
-    // Detect format handler
-    const handler = this.formatDetector.detectHandler(data, options, filePath);
+    // ========== STEP 2: Detect Platform ==========
+    const parser = this.step2_detectPlatform(data, options, filePath);
 
-    // Load conversations using the handler
-    let conversations: Conversation[];
+    // ========== STEP 3: Parse Conversations ==========
+    const conversations = await this.step3_parseConversations(
+      data,
+      parser,
+      filePath,
+      options,
+    );
+
+    // ========== STEP 4: Filter Conversations ==========
+    const { filteredConversations, stats } = this.step4_filterConversations(
+      conversations,
+      options,
+    );
+
+    // Log filter statistics
+    this.logFilterStats(stats, options, logger);
+
+    // ========== STEP 5: Write Output ==========
+    await this.step5_writeOutput(filteredConversations, outputDir, options);
+  }
+
+  /**
+   * Step 1: Load data from input file
+   */
+  private async step1_loadData(filePath: string): Promise<unknown> {
+    return await this.fileLoader.loadJsonFile(filePath);
+  }
+
+  /**
+   * Step 2: Detect platform and get appropriate parser
+   */
+  private step2_detectPlatform(
+    data: unknown,
+    options: Options,
+    filePath: string,
+  ) {
+    return this.platformDetector.detectPlatform(data, options, filePath);
+  }
+
+  /**
+   * Step 3: Parse platform-specific data into common format
+   */
+  private async step3_parseConversations(
+    data: unknown,
+    parser: PlatformParser,
+    filePath: string,
+    options: Options,
+  ): Promise<Conversation[]> {
     try {
-      conversations = await handler.load(data, { quiet: options.quiet });
+      return await parser.load(data, { quiet: options.quiet });
     } catch (error) {
       if (
         error instanceof Error &&
@@ -69,21 +127,43 @@ export class Processor {
         throw error;
       }
       throw new Error(
-        formatErrorMessage("Failed to load file", {
+        formatErrorMessage("Failed to parse file", {
           file: filePath,
-          format: handler.name,
           reason: getErrorMessage(error),
         }),
       );
     }
+  }
 
-    // Apply filters and get stats
-    const { filteredConversations, stats } = applyFilters(
-      conversations,
-      options,
-    );
+  /**
+   * Step 4: Apply filters to conversations
+   */
+  private step4_filterConversations(
+    conversations: Conversation[],
+    options: Options,
+  ) {
+    return applyFilters(conversations, options);
+  }
 
-    // Log filter stats if not quiet
+  /**
+   * Step 5: Write conversations to output files
+   */
+  private async step5_writeOutput(
+    conversations: Conversation[],
+    outputDir: string,
+    options: Options,
+  ): Promise<void> {
+    await this.fileWriter.writeConversations(conversations, outputDir, options);
+  }
+
+  /**
+   * Log filter statistics if filters were applied
+   */
+  private logFilterStats(
+    stats: { originalCount: number; filteredCount: number },
+    options: Options,
+    logger: ReturnType<typeof createLogger>,
+  ): void {
     if (options.since || options.until || options.search) {
       logger.stat(
         "Filtered",
@@ -103,14 +183,5 @@ export class Processor {
         logger.stat("Filters", filters.join(", "));
       }
     }
-
-    // Write filtered conversations
-    await this.fileWriter.writeConversations(
-      filteredConversations,
-      outputDir,
-      options,
-    );
   }
 }
-
-// Note: Use new Processor().processInput() for processing files

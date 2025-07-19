@@ -1,5 +1,5 @@
 import {
-  BaseFormatHandler,
+  BasePlatformParser,
   type ParsedConversation,
 } from "../core/base-handler.js";
 import {
@@ -9,9 +9,13 @@ import {
 import type { Conversation } from "../types.js";
 import { assertType } from "../utils/type-guards.js";
 
-export class ClaudeHandler extends BaseFormatHandler<ClaudeConversation[]> {
-  readonly id = "claude";
-  readonly name = "Claude";
+/**
+ * Claude platform parser
+ *
+ * Handles parsing and converting Claude export data
+ * to the common conversation format.
+ */
+export class ClaudeHandler extends BasePlatformParser<ClaudeConversation[]> {
   readonly schema = claudeConversationSchema.array();
 
   detect(data: unknown): boolean {

@@ -6,13 +6,17 @@ import {
   formatValidationReport,
   validateWithDetails,
 } from "../utils/schema-validator.js";
-import type { FormatHandler, LoadOptions } from "./format-handler.js";
+import type { LoadOptions, PlatformParser } from "./platform-parser.js";
 
-export abstract class BaseFormatHandler<T = unknown>
-  implements FormatHandler<T>
+/**
+ * Base class for platform-specific parsers
+ *
+ * Provides common functionality for parsing and validating
+ * platform-specific data formats (ChatGPT, Claude, etc.)
+ */
+export abstract class BasePlatformParser<T = unknown>
+  implements PlatformParser<T>
 {
-  abstract readonly id: string;
-  abstract readonly name: string;
   abstract readonly schema: ZodType<T>;
 
   abstract detect(data: unknown): boolean;
