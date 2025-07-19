@@ -61,7 +61,7 @@
     "format": "biome format --write .",
     "format:check": "biome format .",
     "test": "bun test",
-    "test:quiet": "bun test 2>&1 | grep -E '^(✓|✗|[0-9]+ pass|[0-9]+ fail|Ran [0-9]+ tests)' || true",
+    "test:quiet": "bun test > /dev/null 2>&1 && echo '✅ All tests passed' || echo '❌ Tests failed - run \"bun run test\" for details'",
     "test:e2e:npm": "bun run build:npm && bun scripts/test-npm-package.js",
     "test:e2e:binary": "bun run build:binary && bun scripts/test-binary.js",
     "test:all": "bun run test && bun run test:e2e:npm && bun run test:e2e:binary",
