@@ -21,22 +21,22 @@ ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに�
 # 1. ツールをインストール
 npm install -g ai-chat-md-export
 
-# 2. conversations.jsonファイルを取得（Getting conversations.json参照）
-# ChatGPTまたはClaudeからエクスポート
+# 2. ChatGPTまたはClaudeから会話をエクスポート
+# → conversations.jsonファイルを取得（下記の「Getting conversations.json」セクション参照）
 
 # 3. Markdownに変換
 ai-chat-md-export -i conversations.json
 ```
 
-これで会話が美しいMarkdownファイルになりました！
+これで完了！会話が整理され、検索可能なMarkdownファイルになりました。
 
 ### Example Output
 
 上記のコマンドを実行すると、次のようなファイルが生成されます：
 
 ```
-2025-01-15_数学の質問.md
-2025-01-16_レシピのヘルプ.md
+2025-01-15_Math_Question.md
+2025-01-16_Recipe_Help.md
 ```
 
 各ファイルには、タイムスタンプ、ユーザー/アシスタントマーカー、整形された会話が含まれています。
@@ -131,10 +131,10 @@ npm install -g ai-chat-md-export
 
 ### Key benefits
 
-- **AIチャットの保存**: 削除や消失前に大切な会話をエクスポート
+- **AIチャットの保存**: 削除や消失前に大切な会話を保存
 - **読みやすいフォーマット**: どんなMarkdownエディタでも快適に閲覧
 - **履歴の検索・整理**: 標準的なツールでチャット履歴を検索・管理
-- **共有やバージョン管理**: 必要に応じて会話を共有・Gitで管理
+- **共有やバージョン管理**: 必要に応じて会話を共有
 
 ## Privacy & Security
 
@@ -151,56 +151,42 @@ npm install -g ai-chat-md-export
 
 ## Usage
 
-### Basic usage
-
 ```bash
-# 単一のconversations.jsonファイルを変換
+# 基本: conversations.jsonをMarkdownファイルに変換
 ai-chat-md-export -i conversations.json
 
-# ディレクトリ内のすべてのJSONファイルを変換
-ai-chat-md-export -i exports/ -o output/
-
 # 出力ディレクトリを指定
-ai-chat-md-export -i conversations.json -o markdown/
-```
+ai-chat-md-export -i conversations.json -o output/
 
-### Filtering options
-
-```bash
-# 日付範囲でフィルタ
-ai-chat-md-export -i conversations.json --since 2024-01-01 --until 2024-12-31
-
-# 特定のキーワードを検索
-ai-chat-md-export -i conversations.json --search "API"
-
-# フィルタを組み合わせる
+# 日付やキーワードでフィルタ
 ai-chat-md-export -i conversations.json --since 2024-01-01 --search "Python"
+
+# JSON形式でエクスポート
+ai-chat-md-export -i conversations.json -f json
+
+# すべての会話を1つのファイルにまとめる
+ai-chat-md-export -i conversations.json --no-split
 ```
 
-### Other options
-
-```bash
-# ファイルを作成せずに変換内容をプレビュー
-ai-chat-md-export -i conversations.json --dry-run
-
-# 静かなモード（進行状況メッセージを抑制）
-ai-chat-md-export -i conversations.json --quiet
-```
+その他の例については、[examples](examples/)ディレクトリを参照してください。
 
 ## Command-line Options
 
-| オプション                       | 説明                                                | デフォルト |
-| -------------------------------- | --------------------------------------------------- | ---------- |
-| `-v, --version`                  | バージョン番号を表示                                | -          |
-| `-i, --input <path>`             | 入力ファイルまたはディレクトリ（必須）              | -          |
-| `-o, --output <path>`            | 出力ディレクトリ                                    | `.`        |
-| `-f, --format <format>`          | 入力フォーマット（`chatgpt`/`claude`/`auto`）       | `auto`     |
-| `--since <date>`                 | 開始日でフィルタ (YYYY-MM-DD)                       | -          |
-| `--until <date>`                 | 終了日でフィルタ (YYYY-MM-DD)                       | -          |
-| `--search <keyword>`             | 会話内を検索                                        | -          |
-| `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`） | `standard` |
-| `-q, --quiet`                    | 進捗メッセージを抑制                                | -          |
-| `--dry-run`                      | ファイルを作成せずにプレビュー                      | -          |
+| オプション                       | 説明                                                                    | デフォルト |
+| -------------------------------- | ----------------------------------------------------------------------- | ---------- |
+| `-h, --help`                     | ヘルプ情報を表示                                                        | -          |
+| `-v, --version`                  | バージョン番号を表示                                                    | -          |
+| `-i, --input <path>`             | 入力ファイルまたはディレクトリパス（必須）                              | -          |
+| `-o, --output <path>`            | 出力ディレクトリ                                                        | `.`        |
+| `-f, --format <format>`          | 出力フォーマット（`markdown`/`json`）                                   | `markdown` |
+| `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割）        | -          |
+| `--since <date>`                 | 開始日でフィルタ（YYYY-MM-DD）。会話の開始日でフィルタリング            | -          |
+| `--until <date>`                 | 終了日でフィルタ（YYYY-MM-DD）。指定日を含む                            | -          |
+| `--search <keyword>`             | 会話内を検索。大文字小文字を区別せず、タイトルとメッセージを検索        | -          |
+| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`/`auto`）                       | `auto`     |
+| `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`）                     | `standard` |
+| `-q, --quiet`                    | 進捗メッセージを抑制                                                    | -          |
+| `--dry-run`                      | ファイルを作成せずにプレビューモード                                    | -          |
 
 ## Getting conversations.json
 
@@ -209,108 +195,49 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 ### Export from ChatGPT (OpenAI)
 
 1. ChatGPT (https://chat.openai.com) にログイン
-2. 画面右上のプロフィール画像 → Settings を選択
-3. 左メニュー Data Controls を開く
-4. Export Data → Export をクリック
-5. 「Confirm export」で確定
-6. 数分後に届くメール "Your ChatGPT data export is ready" のリンクを 24 時間以内に開き、chatgpt-data.zip をダウンロード
-7. ZIP を展開すると ルートに conversations.json（全スレッドの生 JSON）が含まれている
+2. プロフィール画像をクリック → Settings
+3. 左メニューから「Data Controls」を開く
+4. 「Export Data」→「Export」をクリック
+5. 「Confirm export」をクリックして確認
+6. 数分以内に「Your ChatGPT data export is ready」というメールが届きます
+7. メールのリンクから`chatgpt-data.zip`をダウンロード（24時間で期限切れ）
+8. ZIPファイルを展開すると、ルートディレクトリに`conversations.json`が含まれています
 
-注意: ダウンロードリンクは24時間で失効するため、速やかにダウンロードしてください。
+注意：ダウンロードリンクは24時間後に期限切れになるため、速やかにダウンロードしてください。
 
 ### Export from Claude (Anthropic)
 
-1. https://claude.ai にログイン
-2. 画面左下のイニシャル → Settings を選択
-3. Privacy タブ（エンタープライズの場合は Data management）を開く
-4. Export data をクリックし確認
-5. 数分後に届くメール "Your Claude data export is ready" から claude-export.dms もしくは ZIP を取得
-6. .dms 形式の場合は拡張子を .zip にリネームして展開
-7. 展開先ルートに conversations.json が入っている
-
-
-## How it Works
-
-このツールは、入力がChatGPTかClaudeかを自動的に検出し、適切に変換を処理します。ChatGPTはツリーベースの会話構造を使用し、Claudeはフラットなメッセージ配列を使用しますが、これらの違いを意識する必要はありません - ツールがすべてを処理します。
-
-主な機能:
-- **自動検出**: フォーマットを自動的に識別
-- **フォーマット保持**: コードブロック、リスト、特殊文字を維持
-- **タイムスタンプ**: すべてのタイムスタンプをローカルタイムゾーンに変換
-- **クリーンな出力**: 明確なメッセージ区切りで読みやすいMarkdownを生成
-
-## Date Filtering Details
-
-`--since`と`--until`オプションは、会話が**開始された**日付に基づいてフィルタリングします（最終更新日ではありません）：
-
-- **ChatGPT**: エクスポートの`create_time`フィールドを使用
-- **Claude**: エクスポートの`created_at`フィールドを使用
-- **日付形式**: YYYY-MM-DD（例：2024-01-15）
-- **タイムゾーン**: すべての日付はローカルタイムゾーンで解釈されます
-- **包括的フィルタリング**: --sinceと--untilの両方の日付は包括的です
-
-例：
-```bash
-# 2024年の会話
-ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
-
-# 過去30日間の会話（今日が2024-12-15の場合）
-ai-chat-md-export -i data.json --since 2024-11-15
-
-# 特定の日の会話のみ
-ai-chat-md-export -i data.json --since 2024-06-01 --until 2024-06-01
-```
-
-## Search Functionality
-
-`--search`オプションは強力なフィルタリング機能を提供します：
-
-- **大文字小文字を区別しない**: "API"、"api"、"Api"などすべてにマッチ
-- **どこでも検索**: 会話タイトルとすべてのメッセージ内容の両方
-- **部分一致**: "learn"は"learning"、"machine learning"などにマッチ
-- **複数の単語**: 入力されたとおりの正確なフレーズを検索
-
-例：
-```bash
-# Pythonに関するすべての会話を検索
-ai-chat-md-export -i data.json --search "python"
-
-# 特定のエラーメッセージを検索
-ai-chat-md-export -i data.json --search "TypeError: cannot read property"
-
-# 日付フィルタリングと組み合わせ
-ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
-```
-
-## More Examples
-
-複数の会話を含む完全な例については、[examples](examples/)ディレクトリを参照してください：
-
-- **ChatGPT**: 複数ターンの対話を含む[サンプル会話](examples/chatgpt/)
-- **Claude**: 様々な会話タイプの[サンプル会話](examples/claude/)
+1. Claude (https://claude.ai) にログイン
+2. 左下のイニシャルをクリック → Settings
+3. 「Privacy」タブを開く（エンタープライズの場合は「Data management」）
+4. 「Export data」をクリックして確認
+5. 数分以内に「Your Claude data export is ready」というメールが届きます
+6. `claude-export.dms`またはZIPファイルをダウンロード
+7. `.dms`ファイルを受け取った場合は、`.zip`にリネームして展開
+8. ルートディレクトリに`conversations.json`が含まれています
 
 ## Troubleshooting
 
 ### Large files taking too long to process
 このツールはファイルをバッチで処理します。非常に大きな会話履歴の場合：
-- `--since` と `--until` を使用して特定の日付範囲を処理
+- `--since`と`--until`を使用して特定の日付範囲を処理
 - エクスポートを複数の小さなファイルに分割
-- `--search` を使用して関連する会話のみを抽出
+- `--search`を使用して関連する会話のみを抽出
 
 ### Character encoding issues
 出力に文字化けが表示される場合：
 - ターミナルがUTF-8エンコーディングをサポートしていることを確認
-- `conversations.json` ファイルが適切にエンコードされていることを確認
+- `conversations.json`ファイルが適切にエンコードされていることを確認
 
 ファイル名エンコーディングの問題については：
-- `--filename-encoding standard`（デフォルト）: オペレーティングシステム間で最大の互換性を持つようにファイル名をサニタイズ
-- `--filename-encoding preserve`: 会話タイトルから元の文字を保持しますが、特殊文字を含む場合は一部のシステムで問題が発生する可能性があります
+- `--filename-encoding standard`（デフォルト）：オペレーティングシステム間で最大の互換性を持つようにファイル名をサニタイズ
+- `--filename-encoding preserve`：会話タイトルから元の文字を保持しますが、特殊文字を含む場合は一部のシステムで問題が発生する可能性があります
 
 ### Missing conversations
 一部の会話が出力に表示されない場合：
 - エクスポート日を確認 - エクスポート日までの会話のみが含まれます
 - JSON構造がChatGPTまたはClaudeの形式と一致することを確認
-- `--dry-run` を使用してどの会話が変換されるかをプレビュー
+- `--dry-run`を使用してどの会話が変換されるかをプレビュー
 
 ## Roadmap
 
@@ -318,23 +245,24 @@ ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
 
 - [x] ChatGPT会話エクスポート対応
 - [x] Claude会話エクスポート対応
-- [x] 自動フォーマット検出 (`--format auto`)
-- [x] 日付範囲フィルタリング (`--since`, `--until`)
-- [x] キーワード検索機能 (`--search`)
+- [x] 自動フォーマット検出
+- [x] 日付範囲フィルタリング（`--since`、`--until`）
+- [x] キーワード検索機能（`--search`）
 - [x] タイムゾーン対応のタイムスタンプ変換
-- [x] ドライランモード (`--dry-run`)
+- [x] ドライランモード（`--dry-run`）
+- [x] JSON形式へのエクスポート（`-f json`）
+- [x] 会話を1つのファイルにまとめる（`--no-split`）
 - [x] npmパッケージ配布
-- [x] Homebrewサポート
+- [x] Homebrewフォーミュラサポート
 
 ### 🚧 In Progress
 
-- [ ] **JSON形式へのエクスポート** - 構造化されたJSON出力オプション
 - [ ] **プログレスバー** - 長時間処理時の視覚的フィードバック
 
 ### 📋 Planned Features
 
 - [ ] **Geminiサポート** - Google Geminiからの会話エクスポート
-- [ ] **エクスポート統計** - 会話数、メッセージ数、期間などの表示
+- [ ] **エクスポート統計** - 会話数、メッセージ数、日付範囲を表示
 
 ## Contributing
 

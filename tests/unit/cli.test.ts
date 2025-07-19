@@ -9,7 +9,7 @@ import {
 } from "bun:test";
 import pc from "picocolors";
 import { main } from "../../src/cli.js";
-import * as processor from "../../src/core/processor.js";
+import { Processor } from "../../src/core/processor.js";
 
 describe("CLI main function", () => {
   let originalArgv: string[];
@@ -30,8 +30,11 @@ describe("CLI main function", () => {
     consoleErrorSpy = spyOn(console, "error").mockImplementation(() => {});
     consoleLogSpy = spyOn(console, "log").mockImplementation(() => {});
 
-    // Spy on processInput
-    processInputSpy = spyOn(processor, "processInput").mockResolvedValue();
+    // Spy on Processor.prototype.processInput
+    processInputSpy = spyOn(
+      Processor.prototype,
+      "processInput",
+    ).mockResolvedValue();
   });
 
   afterEach(() => {
@@ -51,7 +54,7 @@ describe("CLI main function", () => {
       "test.json",
       "-o",
       "output",
-      "-f",
+      "-p",
       "chatgpt",
     ];
 
@@ -60,13 +63,15 @@ describe("CLI main function", () => {
     expect(processInputSpy).toHaveBeenCalledWith({
       input: "test.json",
       output: "output",
-      format: "chatgpt",
+      platform: "chatgpt",
       since: undefined,
       until: undefined,
       search: undefined,
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     });
   });
 
@@ -78,13 +83,15 @@ describe("CLI main function", () => {
     expect(processInputSpy).toHaveBeenCalledWith({
       input: "test.json",
       output: undefined,
-      format: "auto",
+      platform: "auto",
       since: undefined,
       until: undefined,
       search: undefined,
       quiet: false,
       dryRun: false,
       filenameEncoding: "standard",
+      format: "markdown",
+      split: true,
     });
   });
 
@@ -97,14 +104,17 @@ describe("CLI main function", () => {
       "-o",
       "output",
       "-f",
-      "claude",
+      "json",
+      "--no-split",
       "--since",
-      "2024-01-01",
+      "2023-01-01",
       "--until",
-      "2024-12-31",
+      "2023-12-31",
       "--search",
-      "test keyword",
-      "--quiet",
+      "test",
+      "-p",
+      "claude",
+      "-q",
       "--dry-run",
       "--filename-encoding",
       "preserve",
@@ -115,10 +125,12 @@ describe("CLI main function", () => {
     expect(processInputSpy).toHaveBeenCalledWith({
       input: "test.json",
       output: "output",
-      format: "claude",
-      since: "2024-01-01",
-      until: "2024-12-31",
-      search: "test keyword",
+      format: "json",
+      split: false,
+      since: "2023-01-01",
+      until: "2023-12-31",
+      search: "test",
+      platform: "claude",
       quiet: true,
       dryRun: true,
       filenameEncoding: "preserve",
@@ -157,20 +169,26 @@ describe("CLI main function", () => {
 
     await main();
 
+    // The error formatter adds "Unexpected error object: " prefix for objects
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      pc.red(pc.bold("✗ An unknown error occurred")),
+      pc.red(pc.bold('✗ Unexpected error object: {\n  "unknown": "error"\n}')),
     );
   });
 
   test("shows friendly error when input is missing", async () => {
     process.argv = ["node", "cli.js"];
 
+    // CommanderError is thrown despite exitOverride, so we need to catch it
     try {
       await main();
     } catch {
-      // Commander throws an error that we handle
+      // Expected to throw CommanderError
     }
 
+    // Check that the exit mock was called with the correct code
+    expect(process.exit).toHaveBeenCalledWith(1);
+
+    // The error message is handled by logger.error in cli.ts
     expect(consoleErrorSpy).toHaveBeenCalledWith(
       pc.red(pc.bold("✗ Input file is required.")),
     );

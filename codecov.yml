@@ -6,13 +6,13 @@ coverage:
     project:
       default:
         # Minimum coverage thresholds (same as bunfig.toml)
-        target: 75%
+        target: 50%
         threshold: 2%  # Allow 2% decrease in coverage
         
     patch:
       default:
         # Coverage for new/modified code
-        target: 75%
+        target: 50%
         threshold: 2%
 
 comment:

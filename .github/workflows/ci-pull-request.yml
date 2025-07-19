@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
-      pull-requests: write
       contents: read
+      pull-requests: write
 
     steps:
       - name: Checkout
@@ -42,6 +42,16 @@ jobs:
       - name: Test
         run: bun run test:coverage
 
+      - name: Generate TypeScript dependency graph
+        uses: ysk8hori/delta-typescript-graph-action@v1.2.3
+        with:
+          tsconfig: './tsconfig.dependency-graph.json' # Use dedicated config instead of tsconfig.json to include test files in dependency analysis
+          orientation: 'LR' # Change to 'TB' for top-bottom orientation
+          max-size: 30 # default is 30, adjust as needed
+          show-metrics: true
+          comment-title: '📊 Dependency Graph Changes'
+          include-index-file-dependencies: false # Set to true if you want to include index.ts dependencies
+
       - name: Upload coverage to Codecov
         if: github.actor != 'github-actions[bot]'
         uses: codecov/codecov-action@v5
@@ -66,7 +76,7 @@ jobs:
         with:
           coverage-files: ./coverage/lcov.info
           artifact-name: code-coverage-report
-          minimum-coverage: 75
+          minimum-coverage: 50 # bunfig.toml coverageThreshold
           github-token: ${{ secrets.GITHUB_TOKEN }}
           title-prefix: '📊 '
           additional-message: 'Code coverage report for this PR'

@@ -151,56 +151,42 @@ npm install -g ai-chat-md-export
 
 ## Usage
 
-### Basic usage
-
 ```bash
-# 转换单个 conversations.json 文件
+# 基本用法：将 conversations.json 转换为 Markdown 文件
 ai-chat-md-export -i conversations.json
 
-# 转换目录中的所有 JSON 文件
-ai-chat-md-export -i exports/ -o output/
-
 # 指定输出目录
-ai-chat-md-export -i conversations.json -o markdown/
-```
+ai-chat-md-export -i conversations.json -o output/
 
-### Filtering options
-
-```bash
-# 按日期范围过滤
-ai-chat-md-export -i conversations.json --since 2024-01-01 --until 2024-12-31
-
-# 搜索特定关键词
-ai-chat-md-export -i conversations.json --search "API"
-
-# 组合过滤器
+# 按日期或关键词过滤
 ai-chat-md-export -i conversations.json --since 2024-01-01 --search "Python"
+
+# 导出为 JSON 格式
+ai-chat-md-export -i conversations.json -f json
+
+# 将所有对话合并到一个文件中
+ai-chat-md-export -i conversations.json --no-split
 ```
 
-### Other options
-
-```bash
-# 预览将要转换的内容而不创建文件
-ai-chat-md-export -i conversations.json --dry-run
-
-# 静默模式（抑制进度消息）
-ai-chat-md-export -i conversations.json --quiet
-```
+更多示例请参见 [examples](examples/) 目录。
 
 ## Command-line Options
 
-| 选项                             | 描述                                      | 默认值     |
-| -------------------------------- | ----------------------------------------- | ---------- |
-| `-v, --version`                  | 显示版本号                                | -          |
-| `-i, --input <path>`             | 输入文件或目录路径（必需）                | -          |
-| `-o, --output <path>`            | 输出目录                                  | `.`        |
-| `-f, --format <format>`          | 输入格式（`chatgpt`/`claude`/`auto`）     | `auto`     |
-| `--since <date>`                 | 从日期过滤（YYYY-MM-DD）                  | -          |
-| `--until <date>`                 | 截止日期过滤（YYYY-MM-DD）                | -          |
-| `--search <keyword>`             | 在对话中搜索                              | -          |
-| `--filename-encoding <encoding>` | 文件名编码（`standard`/`preserve`）       | `standard` |
-| `-q, --quiet`                    | 抑制进度消息                              | -          |
-| `--dry-run`                      | 预览模式，不创建文件                      | -          |
+| 选项                             | 描述                                                             | 默认值     |
+| -------------------------------- | --------------------------------------------------------------- | ---------- |
+| `-h, --help`                     | 显示帮助信息                                                     | -          |
+| `-v, --version`                  | 显示版本号                                                       | -          |
+| `-i, --input <path>`             | 输入文件或目录路径（必需）                                        | -          |
+| `-o, --output <path>`            | 输出目录                                                         | `.`        |
+| `-f, --format <format>`          | 输出格式（`markdown`/`json`）                                    | `markdown` |
+| `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件）                        | -          |
+| `--since <date>`                 | 从日期过滤（YYYY-MM-DD）。按对话开始日期过滤                       | -          |
+| `--until <date>`                 | 截止日期过滤（YYYY-MM-DD）。包含性过滤                            | -          |
+| `--search <keyword>`             | 在对话中搜索。不区分大小写，搜索标题和消息                          | -          |
+| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`/`auto`）                            | `auto`     |
+| `--filename-encoding <encoding>` | 文件名编码（`standard`/`preserve`）                              | `standard` |
+| `-q, --quiet`                    | 抑制进度消息                                                     | -          |
+| `--dry-run`                      | 预览模式，不创建文件                                              | -          |
 
 ## Getting conversations.json
 
@@ -231,66 +217,6 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 8. 在根目录中找到 `conversations.json`
 
 
-## How it Works
-
-该工具会自动检测您的输入是来自 ChatGPT 还是 Claude，并相应地处理转换。ChatGPT 使用基于树的对话结构，而 Claude 使用扁平的消息数组，但您不需要担心这些差异 - 工具会处理一切。
-
-主要功能：
-- **自动检测**：自动识别格式
-- **保留格式**：保持代码块、列表和特殊字符
-- **时间戳**：将所有时间戳转换为您的本地时区
-- **清晰输出**：生成具有清晰消息分隔的可读 Markdown
-
-## Date Filtering Details
-
-`--since` 和 `--until` 选项根据对话**开始**的时间进行过滤，而不是最后更新时间：
-
-- **ChatGPT**：使用导出中的 `create_time` 字段
-- **Claude**：使用导出中的 `created_at` 字段
-- **日期格式**：YYYY-MM-DD（例如：2024-01-15）
-- **时区**：所有日期都在您的本地时区中解释
-- **包含性过滤**：--since 和 --until 日期都是包含的
-
-示例：
-```bash
-# 2024 年的对话
-ai-chat-md-export -i data.json --since 2024-01-01 --until 2024-12-31
-
-# 最近 30 天的对话（如果今天是 2024-12-15）
-ai-chat-md-export -i data.json --since 2024-11-15
-
-# 仅特定日期的对话
-ai-chat-md-export -i data.json --since 2024-06-01 --until 2024-06-01
-```
-
-## Search Functionality
-
-`--search` 选项提供强大的过滤功能：
-
-- **不区分大小写**：匹配"API"、"api"、"Api"等
-- **全面搜索**：搜索对话标题和所有消息内容
-- **部分匹配**："learn"匹配"learning"、"machine learning"等
-- **多个单词**：搜索输入的确切短语
-
-示例：
-```bash
-# 查找所有关于 Python 的对话
-ai-chat-md-export -i data.json --search "python"
-
-# 搜索特定错误消息
-ai-chat-md-export -i data.json --search "TypeError: cannot read property"
-
-# 与日期过滤结合使用
-ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
-```
-
-## More Examples
-
-有关包含多个对话的完整示例，请参见 [examples](examples/) 目录：
-
-- **ChatGPT**：[示例对话](examples/chatgpt/)，包含多轮对话
-- **Claude**：[示例对话](examples/claude/)，包含各种对话类型
-
 ## Troubleshooting
 
 ### Large files taking too long to process
@@ -320,17 +246,18 @@ ai-chat-md-export -i data.json --search "docker" --since 2024-01-01
 
 - [x] ChatGPT 对话导出支持
 - [x] Claude 对话导出支持
-- [x] 自动格式检测（`--format auto`）
+- [x] 自动格式检测
 - [x] 日期范围过滤（`--since`、`--until`）
 - [x] 关键词搜索功能（`--search`）
 - [x] 时区感知的时间戳转换
 - [x] 预览的干运行模式（`--dry-run`）
+- [x] 导出为 JSON 格式（`-f json`）
+- [x] 将对话合并到单个文件（`--no-split`）
 - [x] npm 包分发
 - [x] Homebrew 公式支持
 
 ### 🚧 In Progress
 
-- [ ] **导出为 JSON 格式** - 结构化 JSON 输出选项
 - [ ] **进度条** - 长时间操作的视觉反馈
 
 ### 📋 Planned Features

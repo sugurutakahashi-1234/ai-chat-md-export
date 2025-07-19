@@ -1,4 +1,17 @@
-import type { Conversation } from "./types.js";
+import type { Conversation } from "../types.js";
+
+export function convertMultipleToMarkdown(
+  conversations: Conversation[],
+): string {
+  const sections: string[] = [];
+
+  for (const conversation of conversations) {
+    sections.push(convertToMarkdown(conversation));
+  }
+
+  // Join with triple horizontal rules to clearly separate conversations
+  return sections.join("\n\n---\n\n");
+}
 
 export function convertToMarkdown(conversation: Conversation): string {
   const lines: string[] = [];

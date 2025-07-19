@@ -25,7 +25,7 @@
     "skipChecks": false
   },
   "hooks": {
-    "before:init": ["export HUSKY=0", "bun run ci"],
+    "before:init": ["bun run ci"],
     "after:bump": ["bun run build"],
     "after:release": [
       "echo Successfully released ${name} v${version} to ${repo.repository}",

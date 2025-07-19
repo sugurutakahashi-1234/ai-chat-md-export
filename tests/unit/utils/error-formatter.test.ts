@@ -1,6 +1,12 @@
 import { describe, expect, it } from "bun:test";
 import {
+  FileError,
+  FormatError,
+  ValidationError,
+} from "../../../src/errors/custom-errors.js";
+import {
   formatErrorMessage,
+  formatErrorWithContext,
   getErrorMessage,
   getRelativePath,
 } from "../../../src/utils/error-formatter.js";
@@ -30,11 +36,40 @@ describe("getErrorMessage", () => {
     expect(getErrorMessage(error)).toBe("Test error message");
   });
 
-  it("converts non-Error values to string", () => {
+  it("returns string values as-is", () => {
     expect(getErrorMessage("string error")).toBe("string error");
+  });
+
+  it("extracts message property from objects", () => {
+    expect(getErrorMessage({ message: "Object error" })).toBe("Object error");
+  });
+
+  it("formats objects with content", () => {
+    const result = getErrorMessage({
+      code: "E001",
+      details: "Something failed",
+    });
+    expect(result).toBe(`Unexpected error object: {
+  "code": "E001",
+  "details": "Something failed"
+}`);
+  });
+
+  it("converts primitives to string", () => {
     expect(getErrorMessage(123)).toBe("123");
+    expect(getErrorMessage(true)).toBe("true");
     expect(getErrorMessage(null)).toBe("null");
     expect(getErrorMessage(undefined)).toBe("undefined");
+  });
+
+  it("handles empty objects", () => {
+    expect(getErrorMessage({})).toBe("[object Object]");
+  });
+
+  it("handles circular references gracefully", () => {
+    const circular: Record<string, unknown> = { prop: "value" };
+    circular.self = circular;
+    expect(getErrorMessage(circular)).toBe("[object Object]");
   });
 });
 
@@ -83,5 +118,73 @@ describe("formatErrorMessage", () => {
       file: "/external/path/to/file.json",
     });
     expect(result).toBe("File error\nFile: file.json");
+  });
+});
+
+describe("formatErrorWithContext", () => {
+  it("formats BaseError with context", () => {
+    const error = new FileError(
+      "Failed to read file",
+      "/path/to/file.json",
+      "read",
+      { errno: -2, code: "ENOENT" },
+    );
+
+    const result = formatErrorWithContext(error);
+    expect(result).toContain("Failed to read file");
+    expect(result).toContain("FilePath: /path/to/file.json");
+    expect(result).toContain("Operation: read");
+    expect(result).toContain("Errno: -2");
+    expect(result).toContain("Code: ENOENT");
+  });
+
+  it("formats FormatError with context", () => {
+    const error = new FormatError("Unknown format", "custom", {
+      file: "test.json",
+      supportedFormats: ["chatgpt", "claude"],
+    });
+
+    const result = formatErrorWithContext(error);
+    expect(result).toContain("Unknown format");
+    expect(result).toContain("Format: custom");
+    expect(result).toContain("File: test.json");
+  });
+
+  it("formats ValidationError without context", () => {
+    const error = new ValidationError("Invalid data");
+
+    const result = formatErrorWithContext(error);
+    expect(result).toBe("Invalid data");
+  });
+
+  it("formats regular Error", () => {
+    const error = new Error("Regular error");
+
+    const result = formatErrorWithContext(error);
+    expect(result).toBe("Regular error");
+  });
+
+  it("formats non-Error values", () => {
+    expect(formatErrorWithContext("string error")).toBe("string error");
+    expect(formatErrorWithContext(123)).toBe("123");
+    expect(formatErrorWithContext(null)).toBe("null");
+    expect(
+      formatErrorWithContext({ code: "TEST" }),
+    ).toBe(`Unexpected error object: {
+  "code": "TEST"
+}`);
+  });
+
+  it("ignores null and undefined context values", () => {
+    const error = new FileError("File error", "/path", "read", {
+      value: null,
+      undefinedValue: undefined,
+      validValue: "test",
+    });
+
+    const result = formatErrorWithContext(error);
+    expect(result).toContain("ValidValue: test");
+    expect(result).not.toContain("Value: null");
+    expect(result).not.toContain("UndefinedValue");
   });
 });

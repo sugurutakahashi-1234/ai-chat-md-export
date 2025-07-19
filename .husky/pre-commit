@@ -4,3 +4,28 @@
 bun run lint
 bun run format
 bun run lint:check && git diff --exit-code
+bun run format:check && git diff --exit-code
+
+# Validate codecov.yml if changed
+if git diff --cached --name-only | grep -q "^codecov.yml$"; then
+  bun run validate:codecov
+fi
+
+# Validate renovate.json5 if changed
+if git diff --cached --name-only | grep -q "^renovate.json5$"; then
+  bun run validate:renovate
+fi
+
+# Validate .goreleaser.yaml if changed
+if git diff --cached --name-only | grep -q "^\.goreleaser\.yaml$"; then
+  bun run validate:goreleaser
+fi
+
+# Auto-update dependency graph
+if git diff --cached --name-only | grep -qE "^src/.*\.ts$"; then
+  bun run update:docs:deps-graph
+  git add docs/dependency-graphs/typescript-graph.md
+
+  bun run update:docs:knip
+  git add docs/knip/report.md
+fi

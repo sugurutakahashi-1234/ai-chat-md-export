@@ -1,5 +1,6 @@
 import { Command } from "commander";
-import { processInput } from "./core/processor.js";
+import { Processor } from "./core/processor.js";
+import { formatErrorWithContext } from "./utils/error-formatter.js";
 import { logger } from "./utils/logger.js";
 import { optionsSchema } from "./utils/options.js";
 import { VERSION } from "./version.js";
@@ -17,9 +18,10 @@ export async function main(): Promise<void> {
     )
     .option(
       "-f, --format <format>",
-      "Input format (chatgpt, claude, auto)",
-      "auto",
+      "Output format (markdown, json)",
+      "markdown",
     )
+    .option("--no-split", "Combine all conversations into a single file")
     .option(
       "--since <date>",
       "Include conversations started on or after this date (YYYY-MM-DD)",
@@ -28,25 +30,23 @@ export async function main(): Promise<void> {
       "--until <date>",
       "Include conversations started on or before this date (YYYY-MM-DD)",
     )
-    .option("-q, --quiet", "Suppress progress messages")
-    .option("--dry-run", "Show what would be done without writing files")
     .option("--search <keyword>", "Filter conversations containing keyword")
+    .option(
+      "-p, --platform <platform>",
+      "Input platform (chatgpt, claude, auto)",
+      "auto",
+    )
     .option(
       "--filename-encoding <encoding>",
       "Filename encoding: standard (default) or preserve",
       "standard",
     )
+    .option("-q, --quiet", "Suppress progress messages")
+    .option("--dry-run", "Show what would be done without writing files")
     .addHelpText(
       "after",
-      `\nExamples:
-  # Convert a single export file
+      `\nExample:
   $ ai-chat-md-export -i conversations.json
-
-  # Filter by date and search
-  $ ai-chat-md-export -i data.json --since 2024-01-01 --search "API"
-
-  # Preview without creating files
-  $ ai-chat-md-export -i data.json --dry-run
 
 For more options and detailed documentation:
   https://www.npmjs.com/package/ai-chat-md-export`,
@@ -79,14 +79,10 @@ For more options and detailed documentation:
 
   try {
     const options = optionsSchema.parse(program.opts());
-    await processInput(options);
+    const processor = new Processor();
+    await processor.processInput(options);
   } catch (error) {
-    const errorMessage =
-      error instanceof Error
-        ? error.message
-        : typeof error === "string"
-          ? error
-          : "An unknown error occurred";
+    const errorMessage = formatErrorWithContext(error);
     logger.error(errorMessage);
     process.exit(1);
   }
