@@ -55,14 +55,13 @@ jobs:
         env:
           HUSKY: 0
         with:
-          tsconfig: './tsconfig.dependency-graph.json' # Use dedicated config instead of tsconfig.json to include test files in dependency analysis
+          tsconfig: './tsconfig.json'
           orientation: 'LR' # Change to 'TB' for top-bottom orientation
           max-size: 30 # default is 30, adjust as needed
           # NOTE: show-metrics is set to false because enabling it produced too much output for this repository.
           show-metrics: false # Set to true to include metrics in the graph (output was too large when enabled)
           comment-title: '📊 Dependency Graph Changes'
           include-index-file-dependencies: false # Set to true if you want to include index.ts dependencies
-          in-details: true # Specifies whether to enclose Mermaid in a <details> tag for collapsing.
 
       - name: Upload coverage to Codecov
         if: github.actor != 'github-actions[bot]'
