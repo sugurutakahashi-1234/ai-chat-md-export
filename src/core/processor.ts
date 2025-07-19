@@ -1,4 +1,6 @@
 import path from "node:path";
+import { ChatGPTHandler } from "../handlers/chatgpt-handler.js";
+import { ClaudeHandler } from "../handlers/claude-handler.js";
 import type { Conversation } from "../types.js";
 import {
   formatErrorMessage,
@@ -10,9 +12,9 @@ import type { Options } from "../utils/options.js";
 import { FileLoader } from "./file-loader.js";
 import { FileWriter } from "./file-writer.js";
 import { applyFilters } from "./filter.js";
+import type { PlatformParser } from "./interfaces/platform-parser.js";
 import { OutputManager } from "./output-manager.js";
 import { PlatformDetector } from "./platform-detector.js";
-import type { PlatformParser } from "./platform-parser.js";
 
 /**
  * Processor configuration
@@ -37,7 +39,14 @@ export class Processor {
   constructor(config: ProcessorConfig = {}) {
     // Use provided instances or create defaults
     this.fileLoader = config.fileLoader || new FileLoader();
-    this.platformDetector = config.platformDetector || new PlatformDetector();
+
+    // Create platform parsers and inject them into PlatformDetector
+    const parsers = {
+      chatgpt: new ChatGPTHandler(),
+      claude: new ClaudeHandler(),
+    };
+    this.platformDetector =
+      config.platformDetector || new PlatformDetector(parsers);
 
     // Create OutputManager and inject it into FileWriter
     const outputManager = new OutputManager();

@@ -1,54 +1,41 @@
+import type { OutputFormatter } from "../core/interfaces/output-formatter.js";
 import type { Conversation } from "../types.js";
 
-export function convertMultipleToMarkdown(
-  conversations: Conversation[],
-): string {
-  const sections: string[] = [];
+export function formatTimestamp(timestamp: Date): string {
+  const date = timestamp;
+  // Format with timezone offset only
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
 
-  for (const conversation of conversations) {
-    sections.push(convertToMarkdown(conversation));
-  }
+  // Get timezone offset
+  const tzOffset = -date.getTimezoneOffset();
+  const tzHours = Math.floor(Math.abs(tzOffset) / 60);
+  const tzMinutes = Math.abs(tzOffset) % 60;
+  const tzSign = tzOffset >= 0 ? "+" : "-";
+  const tzString = `${tzSign}${String(tzHours).padStart(2, "0")}:${String(tzMinutes).padStart(2, "0")}`;
 
-  // Join with triple horizontal rules to clearly separate conversations
-  return sections.join("\n\n---\n\n");
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${tzString}`;
 }
 
-export function convertToMarkdown(conversation: Conversation): string {
-  const lines: string[] = [];
-
-  lines.push(`# ${conversation.title}`);
-  lines.push(`Date: ${formatTimestamp(conversation.date)}`);
-  lines.push("");
-  lines.push("---");
-  lines.push("");
-
-  for (const message of conversation.messages) {
-    const roleLabelMap = {
-      user: "👤 User",
-      assistant: "🤖 Assistant",
-      system: "⚙️ System",
-      tool: "🔧 Tool",
-    } as const;
-    const roleLabel = roleLabelMap[message.role] || "🔧 Tool";
-
-    lines.push(`## ${roleLabel}`);
-    if (message.timestamp) {
-      lines.push(`Date: ${formatTimestamp(message.timestamp)}`);
-    }
-    lines.push("");
-
-    const content = message.content.trim();
-    lines.push(processContent(content));
-
-    lines.push("");
-    lines.push("---");
-    lines.push("");
-  }
-
-  return lines.join("\n");
+export function escapeMarkdown(text: string): string {
+  // Escape only HTML tags, preserve markdown syntax
+  return (
+    text
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      // Fix already escaped characters
+      .replace(/\\\*/g, "*")
+      .replace(/\\_/g, "_")
+      .replace(/\\\[/g, "[")
+      .replace(/\\\]/g, "]")
+  );
 }
 
-function processContent(text: string): string {
+export function processContent(text: string): string {
   // Process "This block is not supported" messages - just show the original message
   if (text.includes("This block is not supported")) {
     return text.replace(
@@ -98,36 +85,72 @@ function processContent(text: string): string {
   return processedText;
 }
 
-function escapeMarkdown(text: string): string {
-  // Escape only HTML tags, preserve markdown syntax
-  return (
-    text
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      // Fix already escaped characters
-      .replace(/\\\*/g, "*")
-      .replace(/\\_/g, "_")
-      .replace(/\\\[/g, "[")
-      .replace(/\\\]/g, "]")
-  );
+export function convertToMarkdown(conversation: Conversation): string {
+  const lines: string[] = [];
+
+  lines.push(`# ${conversation.title}`);
+  lines.push(`Date: ${formatTimestamp(conversation.date)}`);
+  lines.push("");
+  lines.push("---");
+  lines.push("");
+
+  for (const message of conversation.messages) {
+    const roleLabelMap = {
+      user: "👤 User",
+      assistant: "🤖 Assistant",
+      system: "⚙️ System",
+      tool: "🔧 Tool",
+    } as const;
+    const roleLabel = roleLabelMap[message.role] || "🔧 Tool";
+
+    lines.push(`## ${roleLabel}`);
+    if (message.timestamp) {
+      lines.push(`Date: ${formatTimestamp(message.timestamp)}`);
+    }
+    lines.push("");
+
+    const content = message.content.trim();
+    lines.push(processContent(content));
+
+    lines.push("");
+    lines.push("---");
+    lines.push("");
+  }
+
+  return lines.join("\n");
 }
 
-function formatTimestamp(timestamp: Date): string {
-  const date = timestamp;
-  // Format with timezone offset only
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const seconds = String(date.getSeconds()).padStart(2, "0");
+export function convertMultipleToMarkdown(
+  conversations: Conversation[],
+): string {
+  const sections: string[] = [];
 
-  // Get timezone offset
-  const tzOffset = -date.getTimezoneOffset();
-  const tzHours = Math.floor(Math.abs(tzOffset) / 60);
-  const tzMinutes = Math.abs(tzOffset) % 60;
-  const tzSign = tzOffset >= 0 ? "+" : "-";
-  const tzString = `${tzSign}${String(tzHours).padStart(2, "0")}:${String(tzMinutes).padStart(2, "0")}`;
+  for (const conversation of conversations) {
+    sections.push(convertToMarkdown(conversation));
+  }
 
-  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${tzString}`;
+  // Join with triple horizontal rules to clearly separate conversations
+  return sections.join("\n\n---\n\n");
+}
+
+/**
+ * Markdown output formatter
+ *
+ * Formats conversations as Markdown for human-readable
+ * documentation and easy sharing.
+ */
+export class MarkdownConverter implements OutputFormatter {
+  readonly extension = ".md";
+
+  convertSingle(conversation: Conversation): string {
+    return convertToMarkdown(conversation);
+  }
+
+  convertMultiple(conversations: Conversation[]): string {
+    return convertMultipleToMarkdown(conversations);
+  }
+
+  getDefaultFilename(): string {
+    return "all-conversations.md";
+  }
 }

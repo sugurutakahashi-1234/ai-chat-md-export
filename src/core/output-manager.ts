@@ -1,9 +1,9 @@
-import { JsonConverter } from "../converters/json-converter.js";
-import { MarkdownConverter } from "../converters/markdown-converter.js";
+import { JsonConverter } from "../converters/json.js";
+import { MarkdownConverter } from "../converters/markdown.js";
 import type { Conversation } from "../types.js";
 import { formatErrorMessage } from "../utils/error-formatter.js";
 import type { Options } from "../utils/options.js";
-import type { OutputFormatter } from "./output-formatter.js";
+import type { OutputFormatter } from "./interfaces/output-formatter.js";
 
 /**
  * Output manager for conversation data

@@ -1,8 +1,6 @@
 import { FormatError } from "../errors/custom-errors.js";
-import { ChatGPTHandler } from "../handlers/chatgpt-handler.js";
-import { ClaudeHandler } from "../handlers/claude-handler.js";
 import type { Options } from "../utils/options.js";
-import type { PlatformParser } from "./platform-parser.js";
+import type { PlatformParser } from "./interfaces/platform-parser.js";
 
 /**
  * Platform detector for AI chat export data
@@ -13,12 +11,8 @@ import type { PlatformParser } from "./platform-parser.js";
 export class PlatformDetector {
   private readonly parsers: Record<string, PlatformParser>;
 
-  constructor() {
-    // Direct implementation instead of registry pattern
-    this.parsers = {
-      chatgpt: new ChatGPTHandler(),
-      claude: new ClaudeHandler(),
-    };
+  constructor(parsers: Record<string, PlatformParser>) {
+    this.parsers = parsers;
   }
 
   /**

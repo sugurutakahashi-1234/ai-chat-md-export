@@ -1,3 +1,4 @@
+import type { OutputFormatter } from "../core/interfaces/output-formatter.js";
 import type { Conversation } from "../types.js";
 
 export interface JsonOutput {
@@ -17,21 +18,7 @@ export interface JsonMessage {
   timestamp?: string;
 }
 
-export function convertToJson(conversations: Conversation[]): string {
-  const jsonOutput: JsonOutput = {
-    conversations: conversations.map(convertConversationToJson),
-  };
-  return JSON.stringify(jsonOutput, null, 2);
-}
-
-export function convertSingleConversationToJson(
-  conversation: Conversation,
-): string {
-  const jsonConversation = convertConversationToJson(conversation);
-  return JSON.stringify(jsonConversation, null, 2);
-}
-
-function convertConversationToJson(
+export function convertConversationToJson(
   conversation: Conversation,
 ): JsonConversation {
   return {
@@ -44,4 +31,40 @@ function convertConversationToJson(
       ...(message.timestamp && { timestamp: message.timestamp.toISOString() }),
     })),
   };
+}
+
+/**
+ * JSON output formatter
+ *
+ * Formats conversations as JSON for data exchange
+ * and programmatic processing.
+ */
+export function convertSingleConversationToJson(
+  conversation: Conversation,
+): string {
+  const jsonConversation = convertConversationToJson(conversation);
+  return JSON.stringify(jsonConversation, null, 2);
+}
+
+export function convertToJson(conversations: Conversation[]): string {
+  const jsonOutput: JsonOutput = {
+    conversations: conversations.map(convertConversationToJson),
+  };
+  return JSON.stringify(jsonOutput, null, 2);
+}
+
+export class JsonConverter implements OutputFormatter {
+  readonly extension = ".json";
+
+  convertSingle(conversation: Conversation): string {
+    return convertSingleConversationToJson(conversation);
+  }
+
+  convertMultiple(conversations: Conversation[]): string {
+    return convertToJson(conversations);
+  }
+
+  getDefaultFilename(): string {
+    return "all-conversations.json";
+  }
 }

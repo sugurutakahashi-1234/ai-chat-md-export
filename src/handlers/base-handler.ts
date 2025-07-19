@@ -1,4 +1,8 @@
 import type { ZodType } from "zod";
+import type {
+  LoadOptions,
+  PlatformParser,
+} from "../core/interfaces/platform-parser.js";
 import { ValidationError } from "../errors/custom-errors.js";
 import type { Conversation } from "../types.js";
 import { createLogger } from "../utils/logger.js";
@@ -6,7 +10,6 @@ import {
   formatValidationReport,
   validateWithDetails,
 } from "../utils/schema-validator.js";
-import type { LoadOptions, PlatformParser } from "./platform-parser.js";
 
 /**
  * Base class for platform-specific parsers
