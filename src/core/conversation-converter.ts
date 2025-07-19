@@ -5,10 +5,25 @@ import type { Options } from "../utils/options.js";
 import { defaultConverterRegistry } from "./converter-registry.js";
 import type { OutputConverter } from "./output-converter.js";
 
-// Initialize default converters on module load
-registerDefaultConverters();
+// Track initialization state
+let isInitialized = false;
+
+/**
+ * Initialize converters if not already initialized
+ */
+function ensureConvertersInitialized(): void {
+  if (!isInitialized) {
+    registerDefaultConverters();
+    isInitialized = true;
+  }
+}
 
 export class ConversationConverter {
+  constructor() {
+    // Ensure converters are initialized when instance is created
+    ensureConvertersInitialized();
+  }
+
   private getConverter(options: Options): OutputConverter {
     const converter = defaultConverterRegistry.getById(options.format);
     if (!converter) {

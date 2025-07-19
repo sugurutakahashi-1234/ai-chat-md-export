@@ -17,7 +17,7 @@ export abstract class BaseFormatHandler<T = unknown>
 
   abstract detect(data: unknown): boolean;
 
-  protected abstract parseConversations(data: T): ParsedConversation[];
+  protected abstract parseConversations(data: T): ParsedConversation<unknown>[];
 
   async load(data: T, options: LoadOptions = {}): Promise<Conversation[]> {
     const conversations: Conversation[] = [];
@@ -73,8 +73,8 @@ export abstract class BaseFormatHandler<T = unknown>
   }
 }
 
-export interface ParsedConversation {
-  data: unknown;
-  schema: ZodType;
-  transform: (validatedData: unknown) => Conversation;
+export interface ParsedConversation<T = unknown> {
+  data: T;
+  schema: ZodType<T>;
+  transform: (validatedData: T) => Conversation;
 }

@@ -13,14 +13,34 @@ import { FileWriter } from "./file-writer.js";
 import { applyFilters } from "./filter.js";
 import { FormatDetector } from "./format-detector.js";
 
-// Initialize default handlers on module load
-registerDefaultHandlers();
-
+// Module-level instances (will be removed in future versions)
 const fileLoader = new FileLoader();
 const formatDetector = new FormatDetector();
 const fileWriter = new FileWriter();
 
+// Track initialization state
+let isInitialized = false;
+
+/**
+ * Initialize the processor with default handlers and converters
+ * This method should be called before using processInput
+ */
+export function initializeProcessor(): void {
+  if (!isInitialized) {
+    registerDefaultHandlers();
+    // Note: registerDefaultConverters is called within FileWriter initialization
+    isInitialized = true;
+  }
+}
+
+// Temporary backward compatibility - initialize on module load
+// @deprecated This automatic initialization will be removed in a future version
+initializeProcessor();
+
 export async function processInput(options: Options): Promise<void> {
+  // Ensure processor is initialized
+  initializeProcessor();
+
   const inputPath = path.resolve(options.input);
   const outputDir = path.resolve(options.output || process.cwd());
 
