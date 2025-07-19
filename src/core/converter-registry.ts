@@ -30,5 +30,4 @@ export class ConverterRegistry {
   }
 }
 
-// Singleton instance
-export const defaultConverterRegistry = new ConverterRegistry();
+// Note: No singleton instance provided. Create your own instance with: new ConverterRegistry()

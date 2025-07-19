@@ -21,8 +21,14 @@ export class FileLoader {
    * Check if path is file or directory
    */
   async isFile(path: string): Promise<boolean> {
-    const stat = await fs.stat(path);
-    return stat.isFile();
+    try {
+      const stat = await fs.stat(path);
+      return stat.isFile();
+    } catch (error) {
+      throw new FileError("Failed to read file or directory", path, "read", {
+        originalError: getErrorMessage(error),
+      });
+    }
   }
 
   /**

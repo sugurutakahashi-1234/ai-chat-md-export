@@ -3,3 +3,4 @@
 
 bun run validate:branch
 bun run ci
+bun run test:all

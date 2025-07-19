@@ -12,15 +12,12 @@ export {
 } from "./converters/markdown.js";
 export type { ParsedConversation } from "./core/base-handler.js";
 export { BaseFormatHandler } from "./core/base-handler.js";
-export {
-  ConverterRegistry,
-  defaultConverterRegistry,
-} from "./core/converter-registry.js";
+export { ConverterRegistry } from "./core/converter-registry.js";
 export type { FormatHandler, LoadOptions } from "./core/format-handler.js";
-export { defaultRegistry, HandlerRegistry } from "./core/handler-registry.js";
+export { HandlerRegistry } from "./core/handler-registry.js";
 export type { OutputConverter } from "./core/output-converter.js";
 // Core functionality
-export { processInput } from "./core/processor.js";
+export { Processor, type ProcessorConfig } from "./core/processor.js";
 // Handlers
 export { ChatGPTHandler, ClaudeHandler } from "./handlers/index.js";
 // Types

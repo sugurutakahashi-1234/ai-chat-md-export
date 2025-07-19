@@ -1,9 +1,14 @@
 import { FormatError } from "../errors/custom-errors.js";
 import type { Options } from "../utils/options.js";
 import type { FormatHandler } from "./format-handler.js";
-import { defaultRegistry } from "./handler-registry.js";
+import type { HandlerRegistry } from "./handler-registry.js";
 
 export class FormatDetector {
+  private readonly handlerRegistry: HandlerRegistry;
+
+  constructor(handlerRegistry: HandlerRegistry) {
+    this.handlerRegistry = handlerRegistry;
+  }
   /**
    * Detect or get format handler based on options
    */
@@ -13,7 +18,7 @@ export class FormatDetector {
     filePath: string,
   ): FormatHandler {
     if (options.platform === "auto") {
-      const detectedHandler = defaultRegistry.detectFormat(data);
+      const detectedHandler = this.handlerRegistry.detectFormat(data);
       if (!detectedHandler) {
         throw new FormatError("Cannot detect file format", "auto", {
           file: filePath,
@@ -24,7 +29,7 @@ export class FormatDetector {
       return detectedHandler;
     }
 
-    const selectedHandler = defaultRegistry.getById(options.platform);
+    const selectedHandler = this.handlerRegistry.getById(options.platform);
     if (!selectedHandler) {
       throw new FormatError(
         `Unsupported format: ${options.platform}`,

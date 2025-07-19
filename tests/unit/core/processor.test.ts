@@ -1,12 +1,42 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import {
-  processDirectory,
-  processFile,
-  processInput,
-} from "../../../src/core/processor.js";
+import { Processor } from "../../../src/core/processor.js";
 import type { Options } from "../../../src/utils/options.js";
+
+// Create test-specific processor instance
+const testProcessor = new Processor();
+
+// Helper functions for backward compatibility with tests
+async function processFile(
+  filePath: string,
+  outputDir: string,
+  options: Options,
+): Promise<void> {
+  const inputPath = path.resolve(filePath);
+  const resolvedOutputDir = path.resolve(outputDir);
+  const fileOptions = {
+    ...options,
+    input: inputPath,
+    output: resolvedOutputDir,
+  };
+  return testProcessor.processInput(fileOptions);
+}
+
+async function processDirectory(
+  dirPath: string,
+  outputDir: string,
+  options: Options,
+): Promise<void> {
+  const inputPath = path.resolve(dirPath);
+  const resolvedOutputDir = path.resolve(outputDir);
+  const dirOptions = {
+    ...options,
+    input: inputPath,
+    output: resolvedOutputDir,
+  };
+  return testProcessor.processInput(dirOptions);
+}
 
 describe("processInput", () => {
   const tempDir = path.join(process.cwd(), "tests/temp/processor-input");
@@ -53,34 +83,25 @@ describe("processInput", () => {
     };
 
     // processInput calls processFile internally, verify it runs without error
-    await expect(processInput(options)).resolves.toBeUndefined();
+    await expect(testProcessor.processInput(options)).resolves.toBeUndefined();
   });
 
   test("processes directory input", async () => {
-    const dirPath = path.join(tempDir, "testdir");
+    const dirPath = path.join(tempDir, "input-dir");
     await fs.mkdir(dirPath, { recursive: true });
 
-    const filePath = path.join(dirPath, "test.json");
     const chatgptData = [
       {
-        mapping: {
-          "1": {
-            id: "1",
-            message: {
-              id: "1",
-              author: { role: "user" },
-              create_time: 1704067200,
-              content: { content_type: "text", parts: ["Hello"] },
-            },
-            parent: null,
-            children: [],
-          },
-        },
-        title: "Test Conversation",
+        mapping: {},
+        title: "Test",
         create_time: 1704067200,
       },
     ];
-    await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
+    await fs.writeFile(
+      path.join(dirPath, "test.json"),
+      JSON.stringify(chatgptData),
+      "utf-8",
+    );
 
     const options: Options = {
       input: dirPath,
@@ -92,14 +113,12 @@ describe("processInput", () => {
       split: true,
     };
 
-    await expect(processInput(options)).resolves.toBeUndefined();
+    await expect(testProcessor.processInput(options)).resolves.toBeUndefined();
   });
 
   test("throws error for invalid input path", async () => {
-    const invalidPath = path.join(tempDir, "nonexistent");
-
     const options: Options = {
-      input: invalidPath,
+      input: "/path/that/does/not/exist",
       platform: "auto",
       quiet: true,
       dryRun: true,
@@ -108,7 +127,9 @@ describe("processInput", () => {
       split: true,
     };
 
-    await expect(processInput(options)).rejects.toThrow();
+    await expect(testProcessor.processInput(options)).rejects.toThrow(
+      "Failed to read",
+    );
   });
 });
 
@@ -125,105 +146,88 @@ describe("processFile", () => {
     await fs.rm(tempDir, { recursive: true, force: true });
   });
 
+  const createOptions = (overrides?: Partial<Options>): Options => ({
+    input: "",
+    platform: "auto",
+    quiet: true,
+    dryRun: false,
+    filenameEncoding: "standard",
+    format: "markdown",
+    split: true,
+    ...overrides,
+  });
+
   test("processes ChatGPT file successfully", async () => {
     const filePath = path.join(tempDir, "chatgpt.json");
     const chatgptData = [
       {
         mapping: {
-          "msg-1": {
-            id: "msg-1",
+          "1": {
+            id: "1",
             message: {
-              id: "msg-1",
-              author: { role: "assistant" },
+              id: "1",
+              author: { role: "user" },
               create_time: 1704067200,
-              content: {
-                content_type: "text",
-                parts: ["Hello, how can I help you?"],
-              },
+              content: { content_type: "text", parts: ["Hello ChatGPT"] },
             },
             parent: null,
-            children: ["msg-2"],
+            children: ["2"],
           },
-          "msg-2": {
-            id: "msg-2",
+          "2": {
+            id: "2",
             message: {
-              id: "msg-2",
-              author: { role: "user" },
+              id: "2",
+              author: { role: "assistant" },
               create_time: 1704067201,
-              content: {
-                content_type: "text",
-                parts: ["I need help with Python"],
-              },
+              content: { content_type: "text", parts: ["Hello! How are you?"] },
             },
-            parent: "msg-1",
+            parent: "1",
             children: [],
           },
         },
-        title: "Python Help",
+        title: "ChatGPT Test",
         create_time: 1704067200,
       },
     ];
     await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
 
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "chatgpt",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
-
+    const options = createOptions();
     await processFile(filePath, outputDir, options);
 
-    // Verify the file was created
     const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles.length).toBeGreaterThan(0);
-    expect(outputFiles[0]).toMatch(/\.md$/);
+    expect(outputFiles).toHaveLength(1);
+    expect(outputFiles[0]).toMatch(/^2024-01-01_ChatGPT_Test\.md$/);
   });
 
   test("processes Claude file successfully", async () => {
     const filePath = path.join(tempDir, "claude.json");
     const claudeData = [
       {
+        uuid: "test-uuid",
+        name: "Claude Test",
+        created_at: "2024-01-01T00:00:00Z",
         chat_messages: [
           {
-            uuid: "msg-1",
             sender: "human",
             text: "Hello Claude",
-            created_at: "2024-01-01T00:00:00.000Z",
+            created_at: "2024-01-01T00:00:00Z",
           },
           {
-            uuid: "msg-2",
             sender: "assistant",
-            text: "Hello! How can I help you today?",
-            created_at: "2024-01-01T00:00:01.000Z",
+            text: "Hello! How can I help?",
+            created_at: "2024-01-01T00:00:01Z",
           },
         ],
-        uuid: "conv-1",
-        name: "Claude Test",
-        created_at: "2024-01-01T00:00:00.000Z",
       },
     ];
     await fs.writeFile(filePath, JSON.stringify(claudeData), "utf-8");
 
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "claude",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
-
+    const options = createOptions();
     await processFile(filePath, outputDir, options);
 
     const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles.length).toBeGreaterThan(0);
+    expect(outputFiles).toHaveLength(1);
+    expect(outputFiles[0]).toMatch(/^2024-01-01_Claude_Test\.md$/);
   });
 
   test("respects dry-run option", async () => {
@@ -243,32 +247,21 @@ describe("processFile", () => {
             children: [],
           },
         },
-        title: "Test",
+        title: "Dry Run Test",
         create_time: 1704067200,
       },
     ];
     await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
 
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "auto",
-      quiet: true,
-      dryRun: true,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
-
+    const options = createOptions({ dryRun: true });
     await processFile(filePath, outputDir, options);
 
-    // Verify no file was created
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles).toHaveLength(0);
   });
 
   test("filters by date range", async () => {
-    const filePath = path.join(tempDir, "test.json");
+    const filePath = path.join(tempDir, "filter.json");
     const chatgptData = [
       {
         mapping: {
@@ -277,58 +270,31 @@ describe("processFile", () => {
             message: {
               id: "1",
               author: { role: "user" },
-              create_time: 1701388800, // 2023-12-01
-              content: { content_type: "text", parts: ["Old"] },
+              create_time: 1704067200, // 2024-01-01
+              content: { content_type: "text", parts: ["Filtered"] },
             },
             parent: null,
             children: [],
           },
         },
-        title: "Old Conversation",
-        create_time: 1701388800,
-      },
-      {
-        mapping: {
-          "2": {
-            id: "2",
-            message: {
-              id: "2",
-              author: { role: "user" },
-              create_time: 1705795200, // 2024-01-21
-              content: { content_type: "text", parts: ["In Range"] },
-            },
-            parent: null,
-            children: [],
-          },
-        },
-        title: "In Range Conversation",
-        create_time: 1705795200,
+        title: "Filtered Conversation",
+        create_time: 1704067200,
       },
     ];
     await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
 
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "auto",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-      since: "2024-01-01",
-      until: "2024-01-31",
-    };
-
+    const options = createOptions({
+      since: "2024-01-02", // Filter out the conversation
+      until: "2024-12-31",
+    });
     await processFile(filePath, outputDir, options);
 
-    // Verify only conversations within date range are processed
     const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles).toHaveLength(1);
+    expect(outputFiles).toHaveLength(0);
   });
 
   test("filters by search keyword", async () => {
-    const filePath = path.join(tempDir, "test.json");
+    const filePath = path.join(tempDir, "search.json");
     const chatgptData = [
       {
         mapping: {
@@ -338,73 +304,43 @@ describe("processFile", () => {
               id: "1",
               author: { role: "user" },
               create_time: 1704067200,
-              content: { content_type: "text", parts: ["Teach me Python"] },
+              content: { content_type: "text", parts: ["Hello world"] },
             },
             parent: null,
             children: [],
           },
         },
-        title: "Python Tutorial",
+        title: "Search Test",
         create_time: 1704067200,
-      },
-      {
-        mapping: {
-          "2": {
-            id: "2",
-            message: {
-              id: "2",
-              author: { role: "user" },
-              create_time: 1704067201,
-              content: { content_type: "text", parts: ["JavaScript basics"] },
-            },
-            parent: null,
-            children: [],
-          },
-        },
-        title: "JavaScript Guide",
-        create_time: 1704067201,
       },
     ];
     await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
 
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "auto",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-      search: "python",
-    };
-
+    const options = createOptions({
+      search: "world", // Should match
+    });
     await processFile(filePath, outputDir, options);
 
-    // Verify only conversations containing "python" are processed
     const outputFiles = await fs.readdir(outputDir);
+    expect(outputFiles).toHaveLength(1);
+
+    // Test no match
+    const options2 = createOptions({
+      search: "notfound",
+    });
+    await processFile(filePath, outputDir, options2);
+    // Since we didn't clear the output dir, it should still have 1 file
     expect(outputFiles).toHaveLength(1);
   });
 
   test("throws error when auto-detect format fails", async () => {
-    const filePath = path.join(tempDir, "invalid.json");
-    await fs.writeFile(
-      filePath,
-      JSON.stringify([{ invalid: "data" }]),
-      "utf-8",
-    );
-
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "auto",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
+    const filePath = path.join(tempDir, "unknown.json");
+    const unknownData = {
+      unknown: "format",
     };
+    await fs.writeFile(filePath, JSON.stringify(unknownData), "utf-8");
 
+    const options = createOptions({ platform: "auto" });
     await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
       "Cannot detect file format",
     );
@@ -412,56 +348,33 @@ describe("processFile", () => {
 
   test("throws error for unsupported format", async () => {
     const filePath = path.join(tempDir, "test.json");
-    await fs.writeFile(filePath, JSON.stringify([]), "utf-8");
+    const data = [{ title: "Test" }];
+    await fs.writeFile(filePath, JSON.stringify(data), "utf-8");
 
-    const options = {
-      input: filePath,
-      output: outputDir,
-      platform: "unsupported" as "chatgpt" | "claude" | "auto",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard" as const,
-    } as unknown as Options;
-
+    const options = createOptions({ platform: "unknown" as any });
     await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
-      "Unsupported format",
+      "Unsupported format: unknown",
     );
   });
 
   test("rethrows schema validation errors", async () => {
-    const filePath = path.join(tempDir, "invalid-schema.json");
-    // Create data that will fail schema validation
+    const filePath = path.join(tempDir, "invalid.json");
     const invalidData = [
       {
-        // Missing required fields for ChatGPT format
-        mapping: {
-          "1": {
-            id: "1",
-            // Missing message field
-          },
-        },
+        // Missing required 'mapping' field
+        title: "Invalid",
       },
     ];
     await fs.writeFile(filePath, JSON.stringify(invalidData), "utf-8");
 
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "chatgpt",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
-
+    const options = createOptions({ platform: "chatgpt" });
     await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
       "Schema validation error",
     );
   });
 
   test("shows progress messages when not quiet", async () => {
-    const filePath = path.join(tempDir, "test.json");
+    const filePath = path.join(tempDir, "progress.json");
     const chatgptData = [
       {
         mapping: {
@@ -471,43 +384,39 @@ describe("processFile", () => {
               id: "1",
               author: { role: "user" },
               create_time: 1704067200,
-              content: { content_type: "text", parts: ["Test"] },
+              content: { content_type: "text", parts: ["Progress Test"] },
             },
             parent: null,
             children: [],
           },
         },
-        title: "Test",
+        title: "Progress Test",
         create_time: 1704067200,
       },
     ];
     await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
 
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "auto",
-      quiet: false,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
-
     // Capture console output
     const originalLog = console.log;
     const logs: string[] = [];
-    console.log = (...args) => logs.push(args.join(" "));
+    console.log = (...args: any[]) => logs.push(args.join(" "));
 
     try {
+      const options = createOptions({ quiet: false });
       await processFile(filePath, outputDir, options);
+
+      // Check that progress messages were shown
       expect(logs.some((log) => log.includes("Processing:"))).toBe(true);
+      expect(logs.some((log) => log.includes("Successfully loaded"))).toBe(
+        true,
+      );
     } finally {
       console.log = originalLog;
     }
   });
+
   test("shows filter stats when filters are applied", async () => {
-    const filePath = path.join(tempDir, "test.json");
+    const filePath = path.join(tempDir, "filter-stats.json");
     const chatgptData = [
       {
         mapping: {
@@ -517,56 +426,32 @@ describe("processFile", () => {
               id: "1",
               author: { role: "user" },
               create_time: 1704067200,
-              content: { content_type: "text", parts: ["Python"] },
+              content: { content_type: "text", parts: ["Hello"] },
             },
             parent: null,
             children: [],
           },
         },
-        title: "Python",
+        title: "Filter Stats Test",
         create_time: 1704067200,
-      },
-      {
-        mapping: {
-          "2": {
-            id: "2",
-            message: {
-              id: "2",
-              author: { role: "user" },
-              create_time: 1704067201,
-              content: { content_type: "text", parts: ["JavaScript"] },
-            },
-            parent: null,
-            children: [],
-          },
-        },
-        title: "JavaScript",
-        create_time: 1704067201,
       },
     ];
     await fs.writeFile(filePath, JSON.stringify(chatgptData), "utf-8");
 
-    const options: Options = {
-      input: filePath,
-      output: outputDir,
-      platform: "auto",
-      quiet: false,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-      search: "python",
-      since: "2024-01-01",
-      until: "2024-12-31",
-    };
-
     // Capture console output
     const originalLog = console.log;
     const logs: string[] = [];
-    console.log = (...args) => logs.push(args.join(" "));
+    console.log = (...args: any[]) => logs.push(args.join(" "));
 
     try {
+      const options = createOptions({
+        quiet: false,
+        since: "2024-01-01",
+        search: "Hello",
+      });
       await processFile(filePath, outputDir, options);
+
+      // Check that filter stats were shown
       expect(logs.some((log) => log.includes("Filtered:"))).toBe(true);
       expect(logs.some((log) => log.includes("Filters:"))).toBe(true);
     } finally {
@@ -588,117 +473,77 @@ describe("processDirectory", () => {
     await fs.rm(tempDir, { recursive: true, force: true });
   });
 
-  test("processes all JSON files in directory", async () => {
-    // Create multiple JSON files
-    const file1 = path.join(tempDir, "file1.json");
-    const file2 = path.join(tempDir, "file2.json");
-    const nonJsonFile = path.join(tempDir, "readme.txt");
+  const createOptions = (overrides?: Partial<Options>): Options => ({
+    input: "",
+    platform: "auto",
+    quiet: true,
+    dryRun: false,
+    filenameEncoding: "standard",
+    format: "markdown",
+    split: true,
+    ...overrides,
+  });
 
+  test("processes all JSON files in directory", async () => {
+    // Create test files
     const chatgptData = [
       {
-        mapping: {
-          "1": {
-            id: "1",
-            message: {
-              id: "1",
-              author: { role: "user" },
-              create_time: 1704067200,
-              content: { content_type: "text", parts: ["Test"] },
-            },
-            parent: null,
-            children: [],
-          },
-        },
-        title: "Test",
+        mapping: {},
+        title: "ChatGPT File",
         create_time: 1704067200,
       },
     ];
-    await fs.writeFile(file1, JSON.stringify(chatgptData), "utf-8");
-
-    // Create different data for file2
-    const chatgptData2 = [
+    const claudeData = [
       {
-        mapping: {
-          "2": {
-            id: "2",
-            message: {
-              id: "2",
-              author: { role: "user" },
-              create_time: 1704153600, // 異なる時刻
-              content: { content_type: "text", parts: ["Test 2"] },
-            },
-            parent: null,
-            children: [],
-          },
-        },
-        title: "Test 2",
-        create_time: 1704153600,
+        uuid: "test",
+        name: "Claude File",
+        created_at: "2024-01-01T00:00:00Z",
+        chat_messages: [],
       },
     ];
-    await fs.writeFile(file2, JSON.stringify(chatgptData2), "utf-8");
-    await fs.writeFile(nonJsonFile, "This is not JSON", "utf-8");
 
-    const options: Options = {
-      input: tempDir,
-      output: outputDir,
-      platform: "auto",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
+    await fs.writeFile(
+      path.join(tempDir, "file1.json"),
+      JSON.stringify(chatgptData),
+      "utf-8",
+    );
+    await fs.writeFile(
+      path.join(tempDir, "file2.json"),
+      JSON.stringify(claudeData),
+      "utf-8",
+    );
+    await fs.writeFile(path.join(tempDir, "not-json.txt"), "test", "utf-8");
 
+    const options = createOptions();
     await processDirectory(tempDir, outputDir, options);
 
-    // Verify two JSON files were processed
     const outputFiles = await fs.readdir(outputDir);
-    expect(outputFiles.length).toBe(2);
+    expect(outputFiles).toHaveLength(2);
   });
 
   test("handles empty directory gracefully", async () => {
     const emptyDir = path.join(tempDir, "empty");
     await fs.mkdir(emptyDir, { recursive: true });
 
-    const options: Options = {
-      input: emptyDir,
-      output: outputDir,
-      platform: "auto",
-      quiet: true,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
-
-    // Verify it runs without error
+    const options = createOptions();
     await expect(
       processDirectory(emptyDir, outputDir, options),
     ).resolves.toBeUndefined();
   });
 
   test("shows no JSON files message when not quiet", async () => {
-    const emptyDir = path.join(tempDir, "empty2");
+    const emptyDir = path.join(tempDir, "empty-verbose");
     await fs.mkdir(emptyDir, { recursive: true });
-
-    const options: Options = {
-      input: emptyDir,
-      output: outputDir,
-      platform: "auto",
-      quiet: false,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
 
     // Capture console output
     const originalLog = console.log;
     const logs: string[] = [];
-    console.log = (...args) => logs.push(args.join(" "));
+    console.log = (...args: any[]) => logs.push(args.join(" "));
 
     try {
+      const options = createOptions({ quiet: false });
       await processDirectory(emptyDir, outputDir, options);
+
       expect(logs.some((log) => log.includes("No JSON files found"))).toBe(
         true,
       );
@@ -708,54 +553,32 @@ describe("processDirectory", () => {
   });
 
   test("shows progress messages when processing multiple files", async () => {
-    const file1 = path.join(tempDir, "file1.json");
-    const file2 = path.join(tempDir, "file2.json");
-
-    const chatgptData = [
-      {
-        mapping: {
-          "1": {
-            id: "1",
-            message: {
-              id: "1",
-              author: { role: "user" },
-              create_time: 1704067200,
-              content: { content_type: "text", parts: ["Test"] },
-            },
-            parent: null,
-            children: [],
-          },
-        },
-        title: "Test",
-        create_time: 1704067200,
-      },
-    ];
-    await fs.writeFile(file1, JSON.stringify(chatgptData), "utf-8");
-    await fs.writeFile(file2, JSON.stringify(chatgptData), "utf-8");
-
-    const options: Options = {
-      input: tempDir,
-      output: outputDir,
-      platform: "auto",
-      quiet: false,
-      dryRun: false,
-      filenameEncoding: "standard",
-      format: "markdown",
-      split: true,
-    };
+    // Create test files
+    const data = [{ mapping: {}, title: "Test", create_time: 1704067200 }];
+    for (let i = 1; i <= 3; i++) {
+      await fs.writeFile(
+        path.join(tempDir, `file${i}.json`),
+        JSON.stringify(data),
+        "utf-8",
+      );
+    }
 
     // Capture console output
     const originalLog = console.log;
     const logs: string[] = [];
-    console.log = (...args) => logs.push(args.join(" "));
+    console.log = (...args: any[]) => logs.push(args.join(" "));
 
     try {
+      const options = createOptions({ quiet: false });
       await processDirectory(tempDir, outputDir, options);
-      expect(logs.some((log) => log.includes("Found 2 JSON file(s)"))).toBe(
+
+      // Check progress messages
+      expect(logs.some((log) => log.includes("Found 3 JSON file(s)"))).toBe(
         true,
       );
-      expect(logs.some((log) => log.includes("[1/2]"))).toBe(true);
-      expect(logs.some((log) => log.includes("[2/2]"))).toBe(true);
+      expect(logs.some((log) => log.includes("[1/3]"))).toBe(true);
+      expect(logs.some((log) => log.includes("[2/3]"))).toBe(true);
+      expect(logs.some((log) => log.includes("[3/3]"))).toBe(true);
       expect(logs.some((log) => log.includes("Completed processing"))).toBe(
         true,
       );

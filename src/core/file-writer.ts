@@ -12,6 +12,7 @@ import { createLogger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
 import { createTypeGuard } from "../utils/type-guards.js";
 import { ConversationConverter } from "./conversation-converter.js";
+import type { ConverterRegistry } from "./converter-registry.js";
 
 export interface WriteResult {
   successCount: number;
@@ -22,7 +23,11 @@ const filenameEncodingSchema = z.enum(["standard", "preserve"]);
 const isFilenameEncoding = createTypeGuard(filenameEncodingSchema);
 
 export class FileWriter {
-  private readonly converter = new ConversationConverter();
+  private readonly converter: ConversationConverter;
+
+  constructor(converterRegistry?: ConverterRegistry) {
+    this.converter = new ConversationConverter(converterRegistry);
+  }
 
   /**
    * Write conversations to files based on options

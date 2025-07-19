@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { processInput } from "./core/processor.js";
+import { Processor } from "./core/processor.js";
 import { formatErrorWithContext } from "./utils/error-formatter.js";
 import { logger } from "./utils/logger.js";
 import { optionsSchema } from "./utils/options.js";
@@ -79,7 +79,8 @@ For more options and detailed documentation:
 
   try {
     const options = optionsSchema.parse(program.opts());
-    await processInput(options);
+    const processor = new Processor();
+    await processor.processInput(options);
   } catch (error) {
     const errorMessage = formatErrorWithContext(error);
     logger.error(errorMessage);

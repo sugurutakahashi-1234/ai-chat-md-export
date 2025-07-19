@@ -40,5 +40,4 @@ export class HandlerRegistry {
   }
 }
 
-// Singleton instance
-export const defaultRegistry = new HandlerRegistry();
+// Note: No singleton instance provided. Create your own instance with: new HandlerRegistry()

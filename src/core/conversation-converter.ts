@@ -1,31 +1,27 @@
-import { registerDefaultConverters } from "../converters/index.js";
+import { JsonConverter } from "../converters/json-converter.js";
+import { MarkdownConverter } from "../converters/markdown-converter.js";
 import type { Conversation } from "../types.js";
 import { formatErrorMessage } from "../utils/error-formatter.js";
 import type { Options } from "../utils/options.js";
-import { defaultConverterRegistry } from "./converter-registry.js";
+import { ConverterRegistry } from "./converter-registry.js";
 import type { OutputConverter } from "./output-converter.js";
 
-// Track initialization state
-let isInitialized = false;
-
-/**
- * Initialize converters if not already initialized
- */
-function ensureConvertersInitialized(): void {
-  if (!isInitialized) {
-    registerDefaultConverters();
-    isInitialized = true;
-  }
-}
-
 export class ConversationConverter {
-  constructor() {
-    // Ensure converters are initialized when instance is created
-    ensureConvertersInitialized();
+  private readonly converterRegistry: ConverterRegistry;
+
+  constructor(converterRegistry?: ConverterRegistry) {
+    if (converterRegistry) {
+      this.converterRegistry = converterRegistry;
+    } else {
+      // Create default registry and register converters
+      this.converterRegistry = new ConverterRegistry();
+      this.converterRegistry.register(new JsonConverter());
+      this.converterRegistry.register(new MarkdownConverter());
+    }
   }
 
   private getConverter(options: Options): OutputConverter {
-    const converter = defaultConverterRegistry.getById(options.format);
+    const converter = this.converterRegistry.getById(options.format);
     if (!converter) {
       throw new Error(
         formatErrorMessage(`Unsupported output format: ${options.format}`, {
