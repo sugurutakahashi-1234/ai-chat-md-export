@@ -1,8 +1,8 @@
 import type { Logger } from "../utils/logger.js";
+import type { OutputFormatter } from "./interfaces/output-formatter.js";
 import type { PlatformParser } from "./interfaces/platform-parser.js";
 import type { FileLoader } from "./io/file-loader.js";
 import type { FileWriter } from "./io/file-writer.js";
-import type { OutputFormatter } from "./io/formatters/base.js";
 import type { ConversationFilter } from "./processing/filter.js";
 
 /**

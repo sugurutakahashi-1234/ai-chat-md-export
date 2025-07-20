@@ -10,7 +10,7 @@ import {
 import { generateFileName } from "../../utils/filename.js";
 import type { Logger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
-import type { OutputFormatter } from "./formatters/base.js";
+import type { OutputFormatter } from "../interfaces/output-formatter.js";
 
 interface WriteResult {
   successCount: number;
