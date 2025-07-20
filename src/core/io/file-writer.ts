@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import type { Conversation } from "../../types.js";
-import { FileError, ValidationError } from "../../utils/errors/errors.js";
+import { FileError } from "../../utils/errors/errors.js";
 import {
   formatErrorMessage,
   getErrorMessage,
@@ -11,8 +11,6 @@ import { generateFileName } from "../../utils/filename.js";
 import type { Logger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
 import type { OutputFormatter } from "./formatters/base.js";
-import { JsonConverter } from "./formatters/json.js";
-import { MarkdownConverter } from "./formatters/markdown.js";
 
 interface WriteResult {
   successCount: number;
@@ -35,7 +33,10 @@ function isValidFilenameEncoding(
  * including directory creation, file naming, and error handling.
  */
 export class FileWriter {
-  constructor(private readonly logger: Logger) {}
+  constructor(
+    private readonly logger: Logger,
+    private readonly formatter: OutputFormatter,
+  ) {}
   /**
    * Write conversations to files based on options
    */
@@ -64,9 +65,8 @@ export class FileWriter {
     let successCount = 0;
 
     for (const conv of conversations) {
-      const formatter = this.getFormatter(options);
-      const content = formatter.convertSingle(conv);
-      const extension = formatter.extension;
+      const content = this.formatter.convertSingle(conv);
+      const extension = this.formatter.extension;
       const filenameEncoding = isValidFilenameEncoding(options.filenameEncoding)
         ? options.filenameEncoding
         : "standard";
@@ -107,9 +107,8 @@ export class FileWriter {
   ): Promise<WriteResult> {
     const writeErrors: Array<{ file: string; error: string }> = [];
 
-    const formatter = this.getFormatter(options);
-    const content = formatter.convertMultiple(conversations);
-    const fileName = formatter.getDefaultFilename();
+    const content = this.formatter.convertMultiple(conversations);
+    const fileName = this.formatter.getDefaultFilename();
     const outputPath = path.join(outputDir, fileName);
 
     try {
@@ -166,25 +165,6 @@ export class FileWriter {
           errors: writeErrors.slice(0, 3),
         },
       );
-    }
-  }
-
-  /**
-   * Get formatter based on output format
-   */
-  private getFormatter(options: Options): OutputFormatter {
-    switch (options.format) {
-      case "json":
-        return new JsonConverter();
-      case "markdown":
-        return new MarkdownConverter();
-      default:
-        throw new ValidationError(
-          formatErrorMessage(`Unsupported output format: ${options.format}`, {
-            reason: "Supported formats are: json, markdown",
-          }),
-          { format: options.format },
-        );
     }
   }
 }

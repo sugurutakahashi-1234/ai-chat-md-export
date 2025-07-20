@@ -64,10 +64,6 @@ flowchart LR
     src/core/io/file//loader.ts-->src/utils/errors/errors.ts
     src/core/io/file//loader.ts-->src/utils/errors/formatter.ts
     src/core/io/formatters/base.ts-->src/types.ts
-    src/core/io/formatters/json.ts-->src/types.ts
-    src/core/io/formatters/json.ts-->src/core/io/formatters/base.ts
-    src/core/io/formatters/markdown.ts-->src/types.ts
-    src/core/io/formatters/markdown.ts-->src/core/io/formatters/base.ts
     src/core/io/file//writer.ts-->src/types.ts
     src/core/io/file//writer.ts-->src/utils/errors/errors.ts
     src/core/io/file//writer.ts-->src/utils/errors/formatter.ts
@@ -75,8 +71,6 @@ flowchart LR
     src/core/io/file//writer.ts-->src/utils/logger.ts
     src/core/io/file//writer.ts-->src/utils/options.ts
     src/core/io/file//writer.ts-->src/core/io/formatters/base.ts
-    src/core/io/file//writer.ts-->src/core/io/formatters/json.ts
-    src/core/io/file//writer.ts-->src/core/io/formatters/markdown.ts
     src/core/processing/filter.ts-->src/types.ts
     src/core/processing/filter.ts-->src/utils/logger.ts
     src/core/processing/filter.ts-->src/utils/options.ts
@@ -84,6 +78,7 @@ flowchart LR
     src/core/processor//depend_encies.ts-->src/core/interfaces/platform//parser.ts
     src/core/processor//depend_encies.ts-->src/core/io/file//loader.ts
     src/core/processor//depend_encies.ts-->src/core/io/file//writer.ts
+    src/core/processor//depend_encies.ts-->src/core/io/formatters/base.ts
     src/core/processor//depend_encies.ts-->src/core/processing/filter.ts
     src/core/processing/processor.ts-->src/utils/errors/formatter.ts
     src/core/processing/processor.ts-->src/utils/options.ts
@@ -108,13 +103,22 @@ flowchart LR
     src/parsers/claude//parser.ts-->src/utils/validator.ts
     src/parsers/claude//parser.ts-->src/parsers/abstract//platform//parser.ts
     src/parsers/claude//parser.ts-->src/parsers/schemas/claude.ts
+    src/core/io/formatters/json.ts-->src/types.ts
+    src/core/io/formatters/json.ts-->src/core/io/formatters/base.ts
+    src/core/io/formatters/markdown.ts-->src/types.ts
+    src/core/io/formatters/markdown.ts-->src/core/io/formatters/base.ts
     src/core/processor//factories.ts-->src/parsers/chatgpt//parser.ts
     src/core/processor//factories.ts-->src/parsers/claude//parser.ts
+    src/core/processor//factories.ts-->src/utils/errors/errors.ts
+    src/core/processor//factories.ts-->src/utils/errors/formatter.ts
     src/core/processor//factories.ts-->src/utils/logger.ts
     src/core/processor//factories.ts-->src/utils/options.ts
     src/core/processor//factories.ts-->src/core/interfaces/platform//parser.ts
     src/core/processor//factories.ts-->src/core/io/file//loader.ts
     src/core/processor//factories.ts-->src/core/io/file//writer.ts
+    src/core/processor//factories.ts-->src/core/io/formatters/base.ts
+    src/core/processor//factories.ts-->src/core/io/formatters/json.ts
+    src/core/processor//factories.ts-->src/core/io/formatters/markdown.ts
     src/core/processor//factories.ts-->src/core/processing/filter.ts
     src/core/processor//factories.ts-->src/core/processor//depend_encies.ts
     src/cli.ts-->node//modules/commander/typings/index.d.ts

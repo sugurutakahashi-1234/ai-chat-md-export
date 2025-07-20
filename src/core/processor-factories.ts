@@ -1,10 +1,15 @@
 import { ChatGPTParser } from "../parsers/chatgpt-parser.js";
 import { ClaudeParser } from "../parsers/claude-parser.js";
+import { ValidationError } from "../utils/errors/errors.js";
+import { formatErrorMessage } from "../utils/errors/formatter.js";
 import { Logger } from "../utils/logger.js";
 import type { Options } from "../utils/options.js";
 import type { PlatformParser } from "./interfaces/platform-parser.js";
 import { FileLoader } from "./io/file-loader.js";
 import { FileWriter } from "./io/file-writer.js";
+import type { OutputFormatter } from "./io/formatters/base.js";
+import { JsonConverter } from "./io/formatters/json.js";
+import { MarkdownConverter } from "./io/formatters/markdown.js";
 import { ConversationFilter } from "./processing/filter.js";
 import type { ProcessorDependencies } from "./processor-dependencies.js";
 
@@ -32,10 +37,29 @@ export function createDefaultDependencies(
       throw new Error(`Unknown platform: ${options.platform}`);
   }
 
+  // Create output formatter based on format option
+  let formatter: OutputFormatter;
+  switch (options.format) {
+    case "json":
+      formatter = new JsonConverter();
+      break;
+    case "markdown":
+      formatter = new MarkdownConverter();
+      break;
+    default:
+      throw new ValidationError(
+        formatErrorMessage(`Unsupported output format: ${options.format}`, {
+          reason: "Supported formats are: json, markdown",
+        }),
+        { format: options.format },
+      );
+  }
+
   return {
     fileLoader: new FileLoader(),
-    fileWriter: new FileWriter(logger),
+    fileWriter: new FileWriter(logger, formatter),
     parser,
+    formatter,
     filter: new ConversationFilter(logger),
     logger,
   };

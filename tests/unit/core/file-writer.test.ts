@@ -2,6 +2,8 @@ import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { FileWriter } from "../../../src/core/io/file-writer.js";
+import { JsonConverter } from "../../../src/core/io/formatters/json.js";
+import { MarkdownConverter } from "../../../src/core/io/formatters/markdown.js";
 import type { Conversation } from "../../../src/types.js";
 import { Logger } from "../../../src/utils/logger.js";
 import type { Options } from "../../../src/utils/options.js";
@@ -9,7 +11,10 @@ import type { Options } from "../../../src/utils/options.js";
 describe("FileWriter", () => {
   const tempDir = path.join(process.cwd(), "tests/temp/file-writer");
   const logger = new Logger({ quiet: true });
-  const fileWriter = new FileWriter(logger);
+  const markdownFormatter = new MarkdownConverter();
+  const jsonFormatter = new JsonConverter();
+  const fileWriter = new FileWriter(logger, markdownFormatter);
+  const jsonFileWriter = new FileWriter(logger, jsonFormatter);
 
   beforeEach(async () => {
     await fs.mkdir(tempDir, { recursive: true });
@@ -87,7 +92,7 @@ describe("FileWriter", () => {
       const conversations = [createConversation("JSON Test")];
       const options = createOptions({ format: "json" });
 
-      await fileWriter.writeConversations(conversations, tempDir, options);
+      await jsonFileWriter.writeConversations(conversations, tempDir, options);
 
       const files = await fs.readdir(tempDir);
       expect(files[0]).toMatch(/\.json$/);
