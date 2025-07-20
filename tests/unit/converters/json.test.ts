@@ -1,11 +1,9 @@
 import { describe, expect, test } from "bun:test";
 import type { Conversation } from "../../../src/domain/models/types.js";
-import {
-  convertSingleConversationToJson,
-  convertToJson,
-} from "../../../src/infrastructure/formatters/json.js";
+import { JsonFormatter } from "../../../src/infrastructure/formatters/json.js";
 
 describe("JSON converters", () => {
+  const formatter = new JsonFormatter();
   const sampleConversation: Conversation = {
     id: "test-123",
     title: "Test Conversation",
@@ -24,9 +22,9 @@ describe("JSON converters", () => {
     ],
   };
 
-  describe("convertSingleConversationToJson", () => {
+  describe("formatSingle", () => {
     test("converts a single conversation to JSON", () => {
-      const json = convertSingleConversationToJson(sampleConversation);
+      const json = formatter.formatSingle(sampleConversation);
       const parsed = JSON.parse(json);
 
       expect(parsed.id).toBe("test-123");
@@ -52,14 +50,14 @@ describe("JSON converters", () => {
         ],
       };
 
-      const json = convertSingleConversationToJson(conversation);
+      const json = formatter.formatSingle(conversation);
       const parsed = JSON.parse(json);
 
       expect(parsed.messages[0].timestamp).toBeUndefined();
     });
   });
 
-  describe("convertToJson", () => {
+  describe("formatMultiple", () => {
     test("converts multiple conversations to JSON", () => {
       const conversations: Conversation[] = [
         sampleConversation,
@@ -76,7 +74,7 @@ describe("JSON converters", () => {
         },
       ];
 
-      const json = convertToJson(conversations);
+      const json = formatter.formatMultiple(conversations);
       const parsed = JSON.parse(json);
 
       expect(parsed.conversations).toHaveLength(2);
@@ -86,7 +84,7 @@ describe("JSON converters", () => {
     });
 
     test("handles empty conversations array", () => {
-      const json = convertToJson([]);
+      const json = formatter.formatMultiple([]);
       const parsed = JSON.parse(json);
 
       expect(parsed.conversations).toHaveLength(0);
@@ -94,7 +92,7 @@ describe("JSON converters", () => {
   });
 
   test("JSON output is properly formatted", () => {
-    const json = convertSingleConversationToJson(sampleConversation);
+    const json = formatter.formatSingle(sampleConversation);
 
     // Check that it's indented (contains newlines and spaces)
     expect(json).toContain("\n");

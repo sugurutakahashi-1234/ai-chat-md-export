@@ -32,53 +32,47 @@ interface JsonMessage {
   timestamp?: string;
 }
 
-function convertConversationToJson(
-  conversation: Conversation,
-): JsonConversation {
-  return {
-    id: conversation.id,
-    title: conversation.title,
-    date: conversation.date.toISOString(),
-    messages: conversation.messages.map((message) => ({
-      role: message.role,
-      content: message.content,
-      ...(message.timestamp && { timestamp: message.timestamp.toISOString() }),
-    })),
-  };
-}
-
 /**
  * JSON output formatter
  *
  * Formats conversations as JSON for data exchange
  * and programmatic processing.
  */
-export function convertSingleConversationToJson(
-  conversation: Conversation,
-): string {
-  const jsonConversation = convertConversationToJson(conversation);
-  return JSON.stringify(jsonConversation, null, 2);
-}
-
-export function convertToJson(conversations: Conversation[]): string {
-  const jsonOutput: JsonOutput = {
-    conversations: conversations.map(convertConversationToJson),
-  };
-  return JSON.stringify(jsonOutput, null, 2);
-}
-
 export class JsonFormatter implements OutputFormatter {
   readonly extension = ".json";
 
   formatSingle(conversation: Conversation): string {
-    return convertSingleConversationToJson(conversation);
+    const jsonConversation = this.convertConversationToJson(conversation);
+    return JSON.stringify(jsonConversation, null, 2);
   }
 
   formatMultiple(conversations: Conversation[]): string {
-    return convertToJson(conversations);
+    const jsonOutput: JsonOutput = {
+      conversations: conversations.map((conv) =>
+        this.convertConversationToJson(conv),
+      ),
+    };
+    return JSON.stringify(jsonOutput, null, 2);
   }
 
   getDefaultFilename(): string {
     return "all-conversations.json";
+  }
+
+  private convertConversationToJson(
+    conversation: Conversation,
+  ): JsonConversation {
+    return {
+      id: conversation.id,
+      title: conversation.title,
+      date: conversation.date.toISOString(),
+      messages: conversation.messages.map((message) => ({
+        role: message.role,
+        content: message.content,
+        ...(message.timestamp && {
+          timestamp: message.timestamp.toISOString(),
+        }),
+      })),
+    };
   }
 }
