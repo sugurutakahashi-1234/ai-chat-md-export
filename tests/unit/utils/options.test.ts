@@ -32,15 +32,25 @@ describe("optionsSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("applies default values", () => {
+  test("requires platform field", () => {
     const minimalOptions = {
       input: "/path/to/file.json",
     };
 
     const result = optionsSchema.safeParse(minimalOptions);
+    expect(result.success).toBe(false);
+  });
+
+  test("applies default values for optional fields", () => {
+    const minimalOptions = {
+      input: "/path/to/file.json",
+      platform: "chatgpt",
+    };
+
+    const result = optionsSchema.safeParse(minimalOptions);
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.platform).toBe("auto");
+      expect(result.data.platform).toBe("chatgpt");
       expect(result.data.quiet).toBe(false);
       expect(result.data.dryRun).toBe(false);
       expect(result.data.filenameEncoding).toBe("standard");
@@ -52,11 +62,13 @@ describe("optionsSchema", () => {
   test("validates format options", () => {
     const markdownOptions = {
       input: "/path/to/file.json",
+      platform: "chatgpt",
       format: "markdown",
     };
 
     const jsonOptions = {
       input: "/path/to/file.json",
+      platform: "claude",
       format: "json",
     };
 
@@ -76,11 +88,13 @@ describe("optionsSchema", () => {
   test("validates split option", () => {
     const splitTrue = {
       input: "/path/to/file.json",
+      platform: "chatgpt",
       split: true,
     };
 
     const splitFalse = {
       input: "/path/to/file.json",
+      platform: "claude",
       split: false,
     };
 

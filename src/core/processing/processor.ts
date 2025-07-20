@@ -2,6 +2,7 @@ import path from "node:path";
 import { ChatGPTHandler } from "../../handlers/chatgpt-handler.js";
 import { ClaudeHandler } from "../../handlers/claude-handler.js";
 import type { Conversation } from "../../types.js";
+import { ValidationError } from "../../utils/errors/errors.js";
 import {
   formatErrorMessage,
   getErrorMessage,
@@ -9,7 +10,6 @@ import {
 } from "../../utils/errors/formatter.js";
 import { createLogger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
-import { PlatformDetector } from "../detection/platform-detector.js";
 import type { PlatformParser } from "../interfaces/platform-parser.js";
 import { FileLoader } from "../io/file-loader.js";
 import { FileWriter } from "../io/file-writer.js";
@@ -22,8 +22,6 @@ import { OutputManager } from "./output-manager.js";
 export interface ProcessorConfig {
   fileLoader?: FileLoader;
   fileWriter?: FileWriter;
-  platformDetector?: PlatformDetector;
-  parsers?: Record<string, PlatformParser>;
 }
 
 /**
@@ -34,24 +32,11 @@ export interface ProcessorConfig {
  */
 export class Processor {
   private readonly fileLoader: FileLoader;
-  private readonly platformDetector: PlatformDetector;
   private readonly fileWriter: FileWriter;
 
   constructor(config: ProcessorConfig = {}) {
     // Use provided instances or create defaults
     this.fileLoader = config.fileLoader || new FileLoader();
-
-    // Use provided parsers or create default PlatformDetector
-    if (config.parsers) {
-      this.platformDetector =
-        config.platformDetector || new PlatformDetector(config.parsers);
-    } else if (config.platformDetector) {
-      this.platformDetector = config.platformDetector;
-    } else {
-      throw new Error(
-        "Either 'parsers' or 'platformDetector' must be provided in ProcessorConfig",
-      );
-    }
 
     // Create OutputManager and inject it into FileWriter
     const outputManager = new OutputManager();
@@ -60,19 +45,9 @@ export class Processor {
 
   /**
    * Factory method to create a Processor with default configuration
-   * This encapsulates the creation of platform-specific handlers
    */
-  static create(config?: Omit<ProcessorConfig, "parsers">): Processor {
-    // Create default parsers internally
-    const defaultParsers = {
-      chatgpt: new ChatGPTHandler(),
-      claude: new ClaudeHandler(),
-    };
-
-    return new Processor({
-      ...config,
-      parsers: defaultParsers,
-    });
+  static create(config?: ProcessorConfig): Processor {
+    return new Processor(config);
   }
 
   async processInput(options: Options): Promise<void> {
@@ -97,8 +72,8 @@ export class Processor {
     // ========== STEP 1: Load Data ==========
     const data = await this.step1_loadData(filePath);
 
-    // ========== STEP 2: Detect Platform ==========
-    const parser = this.step2_detectPlatform(data, options, filePath);
+    // ========== STEP 2: Create Parser ==========
+    const parser = this.step2_createParser(options);
 
     // ========== STEP 3: Parse Conversations ==========
     const conversations = await this.step3_parseConversations(
@@ -129,14 +104,20 @@ export class Processor {
   }
 
   /**
-   * Step 2: Detect platform and get appropriate parser
+   * Step 2: Create parser based on platform option
    */
-  private step2_detectPlatform(
-    data: unknown,
-    options: Options,
-    filePath: string,
-  ) {
-    return this.platformDetector.detectPlatform(data, options, filePath);
+  private step2_createParser(options: Options): PlatformParser {
+    switch (options.platform) {
+      case "chatgpt":
+        return new ChatGPTHandler();
+      case "claude":
+        return new ClaudeHandler();
+      default:
+        // This should never happen due to schema validation
+        throw new ValidationError(`Unsupported platform: ${options.platform}`, {
+          platform: options.platform,
+        });
+    }
   }
 
   /**
@@ -157,11 +138,13 @@ export class Processor {
       ) {
         throw error;
       }
-      throw new Error(
+      throw new ValidationError(
         formatErrorMessage("Failed to parse file", {
           file: filePath,
           reason: getErrorMessage(error),
         }),
+        { file: filePath },
+        error,
       );
     }
   }

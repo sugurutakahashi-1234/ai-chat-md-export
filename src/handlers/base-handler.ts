@@ -22,8 +22,6 @@ export abstract class BasePlatformParser<T = unknown>
 {
   abstract readonly schema: ZodType<T>;
 
-  abstract detect(data: unknown): boolean;
-
   protected abstract parseConversations(data: T): ParsedConversation<unknown>[];
 
   async load(data: T, options: LoadOptions = {}): Promise<Conversation[]> {

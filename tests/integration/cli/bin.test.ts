@@ -64,7 +64,7 @@ describe("CLI Integration Tests", () => {
     } catch (error) {
       const stderr =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(stderr).toContain("✗ Input file is required.");
+      expect(stderr).toContain("✗ Required options missing:");
       const stdout =
         (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
       expect(stdout).toContain(
@@ -161,7 +161,7 @@ describe("CLI Integration Tests", () => {
 
     // Test with date filter - should only get recent conversation
     const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --since 2023-06-01`;
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt --since 2023-06-01`;
 
     expect(result.exitCode).toBe(0);
     expect(result.stdout.toString()).toContain(
@@ -178,7 +178,7 @@ describe("CLI Integration Tests", () => {
     const outputDir = path.join(tempDir, "output");
 
     try {
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir}`.quiet();
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt`.quiet();
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
       const stderr =
@@ -198,9 +198,9 @@ describe("CLI Integration Tests", () => {
     } catch (error) {
       const stderr =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      // The error now comes from Zod validation rather than commander
+      // The error now comes from commander validation
       expect(stderr).toContain("✗");
-      expect(stderr).toContain("expected one of");
+      expect(stderr).toContain("Required options missing: platform");
     }
   });
 
@@ -217,7 +217,7 @@ describe("CLI Integration Tests", () => {
     const outputDir = path.join(tempDir, "output");
 
     const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --dry-run`.quiet();
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt --dry-run`.quiet();
 
     expect(result.exitCode).toBe(0);
 
@@ -237,7 +237,7 @@ describe("CLI Integration Tests", () => {
 
     // Capture stdout to verify quiet mode
     const result =
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} --quiet`;
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt --quiet`;
 
     expect(result.exitCode).toBe(0);
     // In quiet mode, there should be no output
@@ -251,7 +251,7 @@ describe("CLI Integration Tests", () => {
     const outputDir = "/root/forbidden"; // Usually no write permission
 
     try {
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir}`.quiet();
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt`.quiet();
       // If we reach here, the directory might be writable (in CI)
       // So we'll just check that it tried to work
       expect(true).toBe(true);

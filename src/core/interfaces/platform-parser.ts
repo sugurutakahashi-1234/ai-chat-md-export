@@ -14,13 +14,6 @@ export interface PlatformParser<T = unknown> {
   readonly schema: ZodType<T>;
 
   /**
-   * Detect if the given data matches this platform format
-   * @param data Unknown data to check
-   * @returns true if data matches this platform format
-   */
-  detect(data: unknown): boolean;
-
-  /**
    * Parse conversations from the validated platform data
    * @param data Validated data matching the schema
    * @param options Parsing options

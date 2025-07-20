@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import type { Conversation } from "../../types.js";
+import { FileError } from "../../utils/errors/errors.js";
 import {
   formatErrorMessage,
   getErrorMessage,
@@ -155,7 +156,15 @@ export class FileWriter {
         },
       );
 
-      throw new Error(errorSummary);
+      throw new FileError(
+        errorSummary,
+        writeErrors[0]?.file || "multiple",
+        "write",
+        {
+          totalErrors: writeErrors.length,
+          errors: writeErrors.slice(0, 3),
+        },
+      );
     }
   }
 }

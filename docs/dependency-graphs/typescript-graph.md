@@ -15,22 +15,19 @@ flowchart LR
             src/utils/logger.ts["logger.ts"]
             src/utils/options.ts["options.ts"]
             src/utils/filename.ts["filename.ts"]
-            subgraph src/utils/validation["/validation"]
-                src/utils/validation/type//guards.ts["type-guards.ts"]
-                src/utils/validation/schema//validator.ts["schema-validator.ts"]
-            end
             subgraph src/utils/errors["/errors"]
                 src/utils/errors/errors.ts["errors.ts"]
                 src/utils/errors/formatter.ts["formatter.ts"]
+            end
+            subgraph src/utils/validation["/validation"]
+                src/utils/validation/type//guards.ts["type-guards.ts"]
+                src/utils/validation/schema//validator.ts["schema-validator.ts"]
             end
         end
         subgraph src/core["/core"]
             subgraph src/core/interfaces["/interfaces"]
                 src/core/interfaces/platform//parser.ts["platform-parser.ts"]
                 src/core/interfaces/output//formatter.ts["output-formatter.ts"]
-            end
-            subgraph src/core/detection["/detection"]
-                src/core/detection/platform//detector.ts["platform-detector.ts"]
             end
             subgraph src/core/io["/io"]
                 src/core/io/file//loader.ts["file-loader.ts"]
@@ -62,6 +59,7 @@ flowchart LR
         node//modules/commander/typings/index.d.ts["commander"]
     end
     src/utils/validation/type//guards.ts-->node//modules/zod/index.d.cts
+    src/utils/validation/type//guards.ts-->src/utils/errors/errors.ts
     src/core/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/core/interfaces/platform//parser.ts-->src/types.ts
     src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
@@ -84,9 +82,6 @@ flowchart LR
     src/handlers/claude//handler.ts-->src/handlers/schemas/claude.ts
     src/utils/errors/formatter.ts-->src/utils/errors/errors.ts
     src/utils/options.ts-->node//modules/zod/index.d.cts
-    src/core/detection/platform//detector.ts-->src/utils/errors/errors.ts
-    src/core/detection/platform//detector.ts-->src/utils/options.ts
-    src/core/detection/platform//detector.ts-->src/core/interfaces/platform//parser.ts
     src/core/io/file//loader.ts-->src/utils/errors/errors.ts
     src/core/io/file//loader.ts-->src/utils/errors/formatter.ts
     src/core/interfaces/output//formatter.ts-->src/types.ts
@@ -95,12 +90,14 @@ flowchart LR
     src/core/processing/converters/markdown.ts-->src/types.ts
     src/core/processing/converters/markdown.ts-->src/core/interfaces/output//formatter.ts
     src/core/processing/output//manager.ts-->src/types.ts
+    src/core/processing/output//manager.ts-->src/utils/errors/errors.ts
     src/core/processing/output//manager.ts-->src/utils/errors/formatter.ts
     src/core/processing/output//manager.ts-->src/utils/options.ts
     src/core/processing/output//manager.ts-->src/core/interfaces/output//formatter.ts
     src/core/processing/output//manager.ts-->src/core/processing/converters/json.ts
     src/core/processing/output//manager.ts-->src/core/processing/converters/markdown.ts
     src/core/io/file//writer.ts-->src/types.ts
+    src/core/io/file//writer.ts-->src/utils/errors/errors.ts
     src/core/io/file//writer.ts-->src/utils/errors/formatter.ts
     src/core/io/file//writer.ts-->src/utils/filename.ts
     src/core/io/file//writer.ts-->src/utils/logger.ts
@@ -111,10 +108,10 @@ flowchart LR
     src/core/processing/processor.ts-->src/handlers/chatgpt//handler.ts
     src/core/processing/processor.ts-->src/handlers/claude//handler.ts
     src/core/processing/processor.ts-->src/types.ts
+    src/core/processing/processor.ts-->src/utils/errors/errors.ts
     src/core/processing/processor.ts-->src/utils/errors/formatter.ts
     src/core/processing/processor.ts-->src/utils/logger.ts
     src/core/processing/processor.ts-->src/utils/options.ts
-    src/core/processing/processor.ts-->src/core/detection/platform//detector.ts
     src/core/processing/processor.ts-->src/core/interfaces/platform//parser.ts
     src/core/processing/processor.ts-->src/core/io/file//loader.ts
     src/core/processing/processor.ts-->src/core/io/file//writer.ts

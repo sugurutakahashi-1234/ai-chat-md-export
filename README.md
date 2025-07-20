@@ -45,7 +45,7 @@ npm install -g ai-chat-md-export
 # → Get conversations.json file (see "Getting conversations.json" section below)
 
 # 3. Convert to Markdown
-ai-chat-md-export -i conversations.json
+ai-chat-md-export -i conversations.json -p chatgpt
 ```
 
 That's it! Your conversations are now organized, searchable Markdown files.
@@ -139,7 +139,7 @@ Pre-built binaries are available on the [releases page](https://github.com/sugur
 2. Extract the zip file
 3. Add the extracted folder to your PATH, or run directly:
    ```cmd
-   ai-chat-md-export.exe -i conversations.json
+   ai-chat-md-export.exe -i conversations.json -p chatgpt
    ```
 
 #### macOS / Linux
@@ -186,19 +186,19 @@ Ideal for organizations and individuals who prioritize data privacy. You can rev
 
 ```bash
 # Basic: Convert conversations.json to Markdown files
-ai-chat-md-export -i conversations.json
+ai-chat-md-export -i conversations.json -p chatgpt
 
 # Specify output directory
-ai-chat-md-export -i conversations.json -o output/
+ai-chat-md-export -i conversations.json -o output/ -p chatgpt
 
 # Filter by date or keyword
-ai-chat-md-export -i conversations.json --since 2024-01-01 --search "Python"
+ai-chat-md-export -i conversations.json -p chatgpt --since 2024-01-01 --search "Python"
 
 # Export as JSON format
-ai-chat-md-export -i conversations.json -f json
+ai-chat-md-export -i conversations.json -p claude -f json
 
 # Combine all conversations into a single file
-ai-chat-md-export -i conversations.json --no-split
+ai-chat-md-export -i conversations.json -p chatgpt --no-split
 ```
 
 For more examples, see the [examples](examples/) directory.
@@ -210,13 +210,13 @@ For more examples, see the [examples](examples/) directory.
 | `-h, --help`                     | Display help information                                                | -          |
 | `-v, --version`                  | Display version number                                                  | -          |
 | `-i, --input <path>`             | Input file path (required)                                              | -          |
+| `-p, --platform <platform>`      | Input platform (`chatgpt`/`claude`) - Required                          | -          |
 | `-o, --output <path>`            | Output directory                                                        | `.`        |
 | `-f, --format <format>`          | Output format (`markdown`/`json`)                                       | `markdown` |
 | `--no-split`                     | Combine all conversations into one file (default: split files)          | -          |
 | `--since <date>`                 | Filter from date (YYYY-MM-DD). Filters by conversation start date       | -          |
 | `--until <date>`                 | Filter until date (YYYY-MM-DD). Inclusive filtering                     | -          |
 | `--search <keyword>`             | Search in conversations. Case-insensitive, searches titles and messages | -          |
-| `-p, --platform <platform>`      | Input platform (`chatgpt`/`claude`/`auto`)                              | `auto`     |
 | `--filename-encoding <encoding>` | Filename encoding (`standard`/`preserve`)                               | `standard` |
 | `-q, --quiet`                    | Suppress progress messages                                              | -          |
 | `--dry-run`                      | Preview mode without creating files                                     | -          |

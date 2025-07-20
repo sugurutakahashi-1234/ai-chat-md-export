@@ -16,19 +16,6 @@ import {
 export class ChatGPTHandler extends BasePlatformParser<ChatGPTConversation[]> {
   readonly schema = chatGPTConversationSchema.array();
 
-  detect(data: unknown): boolean {
-    if (!Array.isArray(data) || data.length === 0) {
-      return false;
-    }
-    // Check if first element has ChatGPT-specific fields
-    const firstItem = data[0];
-    return (
-      typeof firstItem === "object" &&
-      firstItem !== null &&
-      "mapping" in firstItem
-    );
-  }
-
   protected parseConversations(
     data: ChatGPTConversation[],
   ): ParsedConversation[] {

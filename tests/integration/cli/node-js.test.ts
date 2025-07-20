@@ -95,7 +95,7 @@ describe("Node.js Execution Tests", () => {
     }
 
     try {
-      await $`node ${cliPath} -i /nonexistent/file.json`.quiet();
+      await $`node ${cliPath} -i /nonexistent/file.json -p chatgpt`.quiet();
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
       const stderr =
@@ -115,7 +115,8 @@ describe("Node.js Execution Tests", () => {
     }
 
     const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
-    const result = await $`node ${cliPath} -i ${inputFile} --dry-run`.quiet();
+    const result =
+      await $`node ${cliPath} -i ${inputFile} --dry-run -p chatgpt`.quiet();
 
     expect(result.exitCode).toBe(0);
     const output = result.stdout.toString();

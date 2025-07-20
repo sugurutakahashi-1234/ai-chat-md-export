@@ -29,22 +29,6 @@ export class ValidationError extends BaseError {
 }
 
 /**
- * Error thrown when format detection or parsing fails
- */
-export class FormatError extends BaseError {
-  readonly format: string | undefined;
-
-  constructor(
-    message: string,
-    format?: string,
-    context?: Record<string, unknown>,
-  ) {
-    super(message, { ...context, format });
-    this.format = format;
-  }
-}
-
-/**
  * Error thrown when file operations fail
  */
 export class FileError extends BaseError {

@@ -15,20 +15,6 @@ import {
 export class ClaudeHandler extends BasePlatformParser<ClaudeConversation[]> {
   readonly schema = claudeConversationSchema.array();
 
-  detect(data: unknown): boolean {
-    if (!Array.isArray(data) || data.length === 0) {
-      return false;
-    }
-    // Check if first element has Claude-specific fields
-    const firstItem = data[0];
-    return (
-      typeof firstItem === "object" &&
-      firstItem !== null &&
-      "chat_messages" in firstItem &&
-      "uuid" in firstItem
-    );
-  }
-
   protected parseConversations(
     data: ClaudeConversation[],
   ): ParsedConversation[] {

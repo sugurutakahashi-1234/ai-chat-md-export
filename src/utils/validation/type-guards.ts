@@ -1,4 +1,5 @@
 import type { z } from "zod";
+import { ValidationError } from "../errors/errors.js";
 
 /**
  * Creates a type guard function from a Zod schema
@@ -31,7 +32,7 @@ export function assertType<T>(
     const errorMessage = context
       ? `Type assertion failed in ${context}: ${result.error.message}`
       : `Type assertion failed: ${result.error.message}`;
-    throw new Error(errorMessage);
+    throw new ValidationError(errorMessage, { context }, result.error);
   }
   return result.data;
 }

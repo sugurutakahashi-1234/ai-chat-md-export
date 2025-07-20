@@ -45,7 +45,7 @@ npm install -g ai-chat-md-export
 # → 获取 conversations.json 文件（参见下面的"Getting conversations.json"部分）
 
 # 3. 转换为 Markdown
-ai-chat-md-export -i conversations.json
+ai-chat-md-export -i conversations.json -p chatgpt
 ```
 
 就这么简单！您的对话现在已经变成了组织良好、可搜索的 Markdown 文件。
@@ -139,7 +139,7 @@ npm install -g ai-chat-md-export
 2. 解压缩文件
 3. 将解压后的文件夹添加到PATH，或直接运行：
    ```cmd
-   ai-chat-md-export.exe -i conversations.json
+   ai-chat-md-export.exe -i conversations.json -p chatgpt
    ```
 
 #### macOS / Linux
@@ -186,19 +186,19 @@ npm install -g ai-chat-md-export
 
 ```bash
 # 基本用法：将 conversations.json 转换为 Markdown 文件
-ai-chat-md-export -i conversations.json
+ai-chat-md-export -i conversations.json -p chatgpt
 
 # 指定输出目录
-ai-chat-md-export -i conversations.json -o output/
+ai-chat-md-export -i conversations.json -o output/ -p chatgpt
 
 # 按日期或关键词过滤
-ai-chat-md-export -i conversations.json --since 2024-01-01 --search "Python"
+ai-chat-md-export -i conversations.json -p chatgpt --since 2024-01-01 --search "Python"
 
 # 导出为 JSON 格式
-ai-chat-md-export -i conversations.json -f json
+ai-chat-md-export -i conversations.json -p claude -f json
 
 # 将所有对话合并到一个文件中
-ai-chat-md-export -i conversations.json --no-split
+ai-chat-md-export -i conversations.json -p chatgpt --no-split
 ```
 
 更多示例请参见 [examples](examples/) 目录。
@@ -210,13 +210,13 @@ ai-chat-md-export -i conversations.json --no-split
 | `-h, --help`                     | 显示帮助信息                                                     | -          |
 | `-v, --version`                  | 显示版本号                                                       | -          |
 | `-i, --input <path>`             | 输入文件路径（必需）                                              | -          |
+| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`） - 必需                            | -          |
 | `-o, --output <path>`            | 输出目录                                                         | `.`        |
 | `-f, --format <format>`          | 输出格式（`markdown`/`json`）                                    | `markdown` |
 | `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件）                        | -          |
 | `--since <date>`                 | 从日期过滤（YYYY-MM-DD）。按对话开始日期过滤                       | -          |
 | `--until <date>`                 | 截止日期过滤（YYYY-MM-DD）。包含性过滤                            | -          |
 | `--search <keyword>`             | 在对话中搜索。不区分大小写，搜索标题和消息                          | -          |
-| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`/`auto`）                            | `auto`     |
 | `--filename-encoding <encoding>` | 文件名编码（`standard`/`preserve`）                              | `standard` |
 | `-q, --quiet`                    | 抑制进度消息                                                     | -          |
 | `--dry-run`                      | 预览模式，不创建文件                                              | -          |

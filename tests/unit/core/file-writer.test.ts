@@ -34,7 +34,7 @@ describe("FileWriter", () => {
 
   const createOptions = (overrides?: Partial<Options>): Options => ({
     input: "",
-    platform: "auto",
+    platform: "chatgpt",
     quiet: true,
     dryRun: false,
     filenameEncoding: "standard",

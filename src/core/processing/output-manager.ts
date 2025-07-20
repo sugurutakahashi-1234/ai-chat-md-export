@@ -1,4 +1,5 @@
 import type { Conversation } from "../../types.js";
+import { ValidationError } from "../../utils/errors/errors.js";
 import { formatErrorMessage } from "../../utils/errors/formatter.js";
 import type { Options } from "../../utils/options.js";
 import type { OutputFormatter } from "../interfaces/output-formatter.js";
@@ -26,10 +27,11 @@ export class OutputManager {
   private getFormatter(options: Options): OutputFormatter {
     const formatter = this.formatters[options.format];
     if (!formatter) {
-      throw new Error(
+      throw new ValidationError(
         formatErrorMessage(`Unsupported output format: ${options.format}`, {
           reason: "Supported formats are: json, markdown",
         }),
+        { format: options.format },
       );
     }
     return formatter;

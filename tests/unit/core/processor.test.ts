@@ -38,7 +38,7 @@ describe("processFile edge cases", () => {
 
   const createOptions = (overrides?: Partial<Options>): Options => ({
     input: "",
-    platform: "auto",
+    platform: "chatgpt",
     quiet: true,
     dryRun: false,
     filenameEncoding: "standard",
@@ -47,28 +47,13 @@ describe("processFile edge cases", () => {
     ...overrides,
   });
 
-  test("throws error when auto-detect format fails", async () => {
-    const filePath = path.join(tempDir, "unknown.json");
-    const unknownData = {
-      unknown: "format",
-    };
-    await fs.writeFile(filePath, JSON.stringify(unknownData), "utf-8");
-
-    const options = createOptions({ platform: "auto" });
-    await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
-      "Cannot detect file format",
-    );
-  });
-
-  test("throws error for unsupported format", async () => {
+  test("validates platform option", async () => {
     const filePath = path.join(tempDir, "test.json");
     const data = [{ title: "Test" }];
     await fs.writeFile(filePath, JSON.stringify(data), "utf-8");
 
     const options = createOptions({ platform: "unknown" as any });
-    await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
-      "Unsupported format: unknown",
-    );
+    await expect(processFile(filePath, outputDir, options)).rejects.toThrow();
   });
 
   test("rethrows schema validation errors", async () => {

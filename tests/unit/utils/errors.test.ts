@@ -2,7 +2,6 @@ import { describe, expect, it } from "bun:test";
 import {
   BaseError,
   FileError,
-  FormatError,
   isBaseError,
   ValidationError,
 } from "../../../src/utils/errors/errors.js";
@@ -44,19 +43,6 @@ describe("custom-errors", () => {
       expect(error.name).toBe("ValidationError");
       expect(error.context).toEqual({ input: "test" });
       expect(error.validationErrors).toEqual(validationErrors);
-    });
-  });
-
-  describe("FormatError", () => {
-    it("creates error with format", () => {
-      const error = new FormatError("Invalid format", "json", {
-        file: "test.json",
-      });
-
-      expect(error.message).toBe("Invalid format");
-      expect(error.name).toBe("FormatError");
-      expect(error.format).toBe("json");
-      expect(error.context).toEqual({ file: "test.json", format: "json" });
     });
   });
 

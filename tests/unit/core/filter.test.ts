@@ -148,7 +148,7 @@ describe("applyFilters", () => {
   test("applies date and search filters together", () => {
     const options = {
       input: "",
-      platform: "auto" as const,
+      platform: "chatgpt" as const,
       format: "markdown" as const,
       quiet: false,
       dryRun: false,
@@ -170,7 +170,7 @@ describe("applyFilters", () => {
   test("returns stats with no filters", () => {
     const options = {
       input: "",
-      platform: "auto" as const,
+      platform: "chatgpt" as const,
       format: "markdown" as const,
       quiet: false,
       dryRun: false,

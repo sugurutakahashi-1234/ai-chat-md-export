@@ -60,7 +60,7 @@ describe("Output Options", () => {
     test("suppresses progress messages", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --quiet`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --quiet`.quiet();
 
       expect(result.exitCode).toBe(0);
       expect(result.stdout.toString()).toBe("");
@@ -72,7 +72,7 @@ describe("Output Options", () => {
 
     test("still shows errors when quiet", async () => {
       try {
-        await $`bun ${cliPath} -i /nonexistent/file.json --quiet`.quiet();
+        await $`bun ${cliPath} -i /nonexistent/file.json -p chatgpt --quiet`.quiet();
         expect(true).toBe(false); // Should not reach here
       } catch (error) {
         const stderr =
@@ -88,7 +88,7 @@ describe("Output Options", () => {
     test("shows what would be done without writing files", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --dry-run`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --dry-run`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -103,7 +103,7 @@ describe("Output Options", () => {
     test("dry-run with quiet shows nothing", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --dry-run --quiet`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --dry-run --quiet`.quiet();
 
       expect(result.exitCode).toBe(0);
       expect(result.stdout.toString()).toBe("");
@@ -118,7 +118,7 @@ describe("Output Options", () => {
     test("all options together", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "hello" --dry-run --quiet`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "hello" --dry-run --quiet`.quiet();
 
       expect(result.exitCode).toBe(0);
       expect(result.stdout.toString()).toBe("");

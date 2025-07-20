@@ -1,7 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import {
   FileError,
-  FormatError,
   ValidationError,
 } from "../../../src/utils/errors/errors.js";
 import {
@@ -136,18 +135,6 @@ describe("formatErrorWithContext", () => {
     expect(result).toContain("Operation: read");
     expect(result).toContain("Errno: -2");
     expect(result).toContain("Code: ENOENT");
-  });
-
-  it("formats FormatError with context", () => {
-    const error = new FormatError("Unknown format", "custom", {
-      file: "test.json",
-      supportedFormats: ["chatgpt", "claude"],
-    });
-
-    const result = formatErrorWithContext(error);
-    expect(result).toContain("Unknown format");
-    expect(result).toContain("Format: custom");
-    expect(result).toContain("File: test.json");
   });
 
   it("formats ValidationError without context", () => {

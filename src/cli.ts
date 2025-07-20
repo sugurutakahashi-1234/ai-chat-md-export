@@ -31,10 +31,9 @@ export async function main(): Promise<void> {
       "Include conversations started on or before this date (YYYY-MM-DD)",
     )
     .option("--search <keyword>", "Filter conversations containing keyword")
-    .option(
+    .requiredOption(
       "-p, --platform <platform>",
-      "Input platform (chatgpt, claude, auto)",
-      "auto",
+      "Input platform (chatgpt, claude)",
     )
     .option(
       "--filename-encoding <encoding>",
@@ -53,7 +52,14 @@ For more options and detailed documentation:
     )
     .exitOverride((err) => {
       if (err.code === "commander.missingMandatoryOptionValue") {
-        logger.error("Input file is required.");
+        const missingOptions = [];
+        const opts = program.opts();
+        // biome-ignore lint/complexity/useLiteralKeys: TypeScript requires bracket notation for index signatures
+        if (!opts["input"]) missingOptions.push("input file (-i)");
+        // biome-ignore lint/complexity/useLiteralKeys: TypeScript requires bracket notation for index signatures
+        if (!opts["platform"]) missingOptions.push("platform (-p)");
+
+        logger.error(`Required options missing: ${missingOptions.join(", ")}`);
         logger.info(
           "\nTry 'ai-chat-md-export --help' for usage information.\n",
         );

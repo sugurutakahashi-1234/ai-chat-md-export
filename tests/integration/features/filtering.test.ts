@@ -153,7 +153,7 @@ describe("Filtering Features", () => {
     test("filters conversations with --since", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --since 2024-01-01`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -169,7 +169,7 @@ describe("Filtering Features", () => {
     test("filters conversations with --until", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --until 2024-06-30`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --until 2024-06-30`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -185,7 +185,7 @@ describe("Filtering Features", () => {
     test("filters conversations with both --since and --until", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01 --until 2024-06-30`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --since 2024-01-01 --until 2024-06-30`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -198,7 +198,7 @@ describe("Filtering Features", () => {
 
     test("validates date format", async () => {
       try {
-        await $`bun ${cliPath} -i ${testFile} --since "2024/01/01"`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -p chatgpt --since "2024/01/01"`.quiet();
         expect(true).toBe(false); // Should not reach here
       } catch (error) {
         const stderr =
@@ -214,7 +214,7 @@ describe("Filtering Features", () => {
     test("filters conversations by keyword in title", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "Machine"`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "Machine"`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -230,7 +230,7 @@ describe("Filtering Features", () => {
     test("filters conversations by keyword in content", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "neural"`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "neural"`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -244,7 +244,7 @@ describe("Filtering Features", () => {
     test("search is case-insensitive", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "REST"`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "REST"`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -258,7 +258,7 @@ describe("Filtering Features", () => {
     test("searches across multiple conversations", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "machine learning"`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "machine learning"`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -272,7 +272,7 @@ describe("Filtering Features", () => {
     test("handles no search matches", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --search "nonexistent"`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "nonexistent"`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
@@ -288,7 +288,7 @@ describe("Filtering Features", () => {
     test("search and date filter together", async () => {
       const outputDir = path.join(tempDir, "output");
       const result =
-        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} --since 2024-01-01 --search "machine"`.quiet();
+        await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --since 2024-01-01 --search "machine"`.quiet();
 
       expect(result.exitCode).toBe(0);
       const output = result.stdout.toString();
