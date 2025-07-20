@@ -4,7 +4,7 @@ import {
   chatGPTConversationSchema,
   chatGPTMessageSchema,
   chatGPTNodeSchema,
-} from "../../../src/handlers/schemas/chatgpt.js";
+} from "../../../src/parsers/schemas/chatgpt.js";
 
 describe("ChatGPT Schemas", () => {
   describe("chatGPTContentPartSchema", () => {

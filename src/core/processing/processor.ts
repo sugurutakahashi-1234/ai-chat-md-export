@@ -1,6 +1,4 @@
 import path from "node:path";
-import { ChatGPTHandler } from "../../handlers/chatgpt-handler.js";
-import { ClaudeHandler } from "../../handlers/claude-handler.js";
 import type { Conversation } from "../../types.js";
 import { ValidationError } from "../../utils/errors/errors.js";
 import {
@@ -10,6 +8,7 @@ import {
 } from "../../utils/errors/formatter.js";
 import { createLogger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
+import { createPlatformParser } from "../factories/platform-parser-factory.js";
 import type { PlatformParser } from "../interfaces/platform-parser.js";
 import { FileLoader } from "../io/file-loader.js";
 import { FileWriter } from "../io/file-writer.js";
@@ -104,17 +103,7 @@ export class Processor {
    * Step 2: Create parser based on platform option
    */
   private step2_createParser(options: Options): PlatformParser {
-    switch (options.platform) {
-      case "chatgpt":
-        return new ChatGPTHandler();
-      case "claude":
-        return new ClaudeHandler();
-      default:
-        // This should never happen due to schema validation
-        throw new ValidationError(`Unsupported platform: ${options.platform}`, {
-          platform: options.platform,
-        });
-    }
+    return createPlatformParser(options.platform);
   }
 
   /**

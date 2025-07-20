@@ -29,6 +29,9 @@ flowchart LR
                 src/core/interfaces/platform//parser.ts["platform-parser.ts"]
                 src/core/interfaces/output//formatter.ts["output-formatter.ts"]
             end
+            subgraph src/core/factories["/factories"]
+                src/core/factories/platform//parser//factory.ts["platform-parser-factory.ts"]
+            end
             subgraph src/core/io["/io"]
                 src/core/io/file//loader.ts["file-loader.ts"]
                 src/core/io/file//writer.ts["file-writer.ts"]
@@ -42,45 +45,49 @@ flowchart LR
                 src/core/processing/processor.ts["processor.ts"]
             end
         end
-        subgraph src/handlers["/handlers"]
-            src/handlers/base//handler.ts["base-handler.ts"]
-            src/handlers/chatgpt//handler.ts["chatgpt-handler.ts"]
-            src/handlers/claude//handler.ts["claude-handler.ts"]
-            subgraph src/handlers/schemas["/schemas"]
-                src/handlers/schemas/chatgpt.ts["chatgpt.ts"]
-                src/handlers/schemas/claude.ts["claude.ts"]
+        subgraph src/parsers["/parsers"]
+            src/parsers/base//parser.ts["base-parser.ts"]
+            src/parsers/chatgpt//parser.ts["chatgpt-parser.ts"]
+            src/parsers/claude//parser.ts["claude-parser.ts"]
+            subgraph src/parsers/schemas["/schemas"]
+                src/parsers/schemas/chatgpt.ts["chatgpt.ts"]
+                src/parsers/schemas/claude.ts["claude.ts"]
             end
         end
     end
     subgraph node//modules["node_modules"]
-        node//modules/zod/index.d.cts["zod"]
         node//modules/picocolors/picocolors.d.ts["picocolors"]
+        node//modules/zod/index.d.cts["zod"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
+    src/utils/errors/formatter.ts-->src/utils/errors/errors.ts
+    src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
+    src/utils/options.ts-->node//modules/zod/index.d.cts
     src/utils/validation/type//guards.ts-->node//modules/zod/index.d.cts
     src/utils/validation/type//guards.ts-->src/utils/errors/errors.ts
     src/core/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/core/interfaces/platform//parser.ts-->src/types.ts
-    src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/utils/validation/schema//validator.ts-->node//modules/zod/index.d.cts
-    src/handlers/base//handler.ts-->node//modules/zod/index.d.cts
-    src/handlers/base//handler.ts-->src/core/interfaces/platform//parser.ts
-    src/handlers/base//handler.ts-->src/types.ts
-    src/handlers/base//handler.ts-->src/utils/errors/errors.ts
-    src/handlers/base//handler.ts-->src/utils/logger.ts
-    src/handlers/base//handler.ts-->src/utils/validation/schema//validator.ts
-    src/handlers/schemas/chatgpt.ts-->node//modules/zod/index.d.cts
-    src/handlers/chatgpt//handler.ts-->src/types.ts
-    src/handlers/chatgpt//handler.ts-->src/utils/validation/type//guards.ts
-    src/handlers/chatgpt//handler.ts-->src/handlers/base//handler.ts
-    src/handlers/chatgpt//handler.ts-->src/handlers/schemas/chatgpt.ts
-    src/handlers/schemas/claude.ts-->node//modules/zod/index.d.cts
-    src/handlers/claude//handler.ts-->src/types.ts
-    src/handlers/claude//handler.ts-->src/utils/validation/type//guards.ts
-    src/handlers/claude//handler.ts-->src/handlers/base//handler.ts
-    src/handlers/claude//handler.ts-->src/handlers/schemas/claude.ts
-    src/utils/errors/formatter.ts-->src/utils/errors/errors.ts
-    src/utils/options.ts-->node//modules/zod/index.d.cts
+    src/parsers/base//parser.ts-->node//modules/zod/index.d.cts
+    src/parsers/base//parser.ts-->src/core/interfaces/platform//parser.ts
+    src/parsers/base//parser.ts-->src/types.ts
+    src/parsers/base//parser.ts-->src/utils/errors/errors.ts
+    src/parsers/base//parser.ts-->src/utils/logger.ts
+    src/parsers/base//parser.ts-->src/utils/validation/schema//validator.ts
+    src/parsers/schemas/chatgpt.ts-->node//modules/zod/index.d.cts
+    src/parsers/chatgpt//parser.ts-->src/types.ts
+    src/parsers/chatgpt//parser.ts-->src/utils/validation/type//guards.ts
+    src/parsers/chatgpt//parser.ts-->src/parsers/base//parser.ts
+    src/parsers/chatgpt//parser.ts-->src/parsers/schemas/chatgpt.ts
+    src/parsers/schemas/claude.ts-->node//modules/zod/index.d.cts
+    src/parsers/claude//parser.ts-->src/types.ts
+    src/parsers/claude//parser.ts-->src/utils/validation/type//guards.ts
+    src/parsers/claude//parser.ts-->src/parsers/base//parser.ts
+    src/parsers/claude//parser.ts-->src/parsers/schemas/claude.ts
+    src/core/factories/platform//parser//factory.ts-->src/parsers/chatgpt//parser.ts
+    src/core/factories/platform//parser//factory.ts-->src/parsers/claude//parser.ts
+    src/core/factories/platform//parser//factory.ts-->src/utils/options.ts
+    src/core/factories/platform//parser//factory.ts-->src/core/interfaces/platform//parser.ts
     src/core/io/file//loader.ts-->src/utils/errors/errors.ts
     src/core/io/file//loader.ts-->src/utils/errors/formatter.ts
     src/core/interfaces/output//formatter.ts-->src/types.ts
@@ -99,13 +106,12 @@ flowchart LR
     src/core/io/file//writer.ts-->src/core/interfaces/output//formatter.ts
     src/core/processing/filter.ts-->src/types.ts
     src/core/processing/filter.ts-->src/utils/options.ts
-    src/core/processing/processor.ts-->src/handlers/chatgpt//handler.ts
-    src/core/processing/processor.ts-->src/handlers/claude//handler.ts
     src/core/processing/processor.ts-->src/types.ts
     src/core/processing/processor.ts-->src/utils/errors/errors.ts
     src/core/processing/processor.ts-->src/utils/errors/formatter.ts
     src/core/processing/processor.ts-->src/utils/logger.ts
     src/core/processing/processor.ts-->src/utils/options.ts
+    src/core/processing/processor.ts-->src/core/factories/platform//parser//factory.ts
     src/core/processing/processor.ts-->src/core/interfaces/platform//parser.ts
     src/core/processing/processor.ts-->src/core/io/file//loader.ts
     src/core/processing/processor.ts-->src/core/io/file//writer.ts

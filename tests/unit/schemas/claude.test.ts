@@ -3,7 +3,7 @@ import {
   claudeConversationSchema,
   claudeMessageContentSchema,
   claudeMessageSchema,
-} from "../../../src/handlers/schemas/claude.js";
+} from "../../../src/parsers/schemas/claude.js";
 
 describe("Claude Schemas", () => {
   describe("claudeMessageContentSchema", () => {
