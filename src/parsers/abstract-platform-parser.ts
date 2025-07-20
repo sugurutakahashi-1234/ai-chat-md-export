@@ -80,7 +80,7 @@ export abstract class AbstractPlatformParser<T = unknown>
 
     // Display summary information
     if (!options.quiet) {
-      const logger = new Logger({ quiet: false });
+      const logger = new Logger({ quiet: options.quiet ?? false });
       logger.success(`Successfully loaded ${successCount} conversations`);
     }
 
