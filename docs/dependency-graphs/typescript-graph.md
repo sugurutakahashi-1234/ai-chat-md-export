@@ -23,7 +23,7 @@ flowchart LR
         end
         subgraph src/parsers["/parsers"]
             src/parsers/platform//parser//interface.ts["platform-parser-interface.ts"]
-            src/parsers/base//parser.ts["base-parser.ts"]
+            src/parsers/abstract//platform//parser.ts["abstract-platform-parser.ts"]
             src/parsers/chatgpt//parser.ts["chatgpt-parser.ts"]
             src/parsers/claude//parser.ts["claude-parser.ts"]
             src/parsers/parser//factory.ts["parser-factory.ts"]
@@ -91,21 +91,21 @@ flowchart LR
     src/core/processing/processor.ts-->src/core/processing/filter.ts
     src/utils/validator.ts-->node//modules/zod/index.d.cts
     src/utils/validator.ts-->src/utils/errors/errors.ts
-    src/parsers/base//parser.ts-->node//modules/zod/index.d.cts
-    src/parsers/base//parser.ts-->src/types.ts
-    src/parsers/base//parser.ts-->src/utils/errors/errors.ts
-    src/parsers/base//parser.ts-->src/utils/logger.ts
-    src/parsers/base//parser.ts-->src/utils/validator.ts
-    src/parsers/base//parser.ts-->src/parsers/platform//parser//interface.ts
+    src/parsers/abstract//platform//parser.ts-->node//modules/zod/index.d.cts
+    src/parsers/abstract//platform//parser.ts-->src/types.ts
+    src/parsers/abstract//platform//parser.ts-->src/utils/errors/errors.ts
+    src/parsers/abstract//platform//parser.ts-->src/utils/logger.ts
+    src/parsers/abstract//platform//parser.ts-->src/utils/validator.ts
+    src/parsers/abstract//platform//parser.ts-->src/parsers/platform//parser//interface.ts
     src/parsers/schemas/chatgpt.ts-->node//modules/zod/index.d.cts
     src/parsers/chatgpt//parser.ts-->src/types.ts
     src/parsers/chatgpt//parser.ts-->src/utils/validator.ts
-    src/parsers/chatgpt//parser.ts-->src/parsers/base//parser.ts
+    src/parsers/chatgpt//parser.ts-->src/parsers/abstract//platform//parser.ts
     src/parsers/chatgpt//parser.ts-->src/parsers/schemas/chatgpt.ts
     src/parsers/schemas/claude.ts-->node//modules/zod/index.d.cts
     src/parsers/claude//parser.ts-->src/types.ts
     src/parsers/claude//parser.ts-->src/utils/validator.ts
-    src/parsers/claude//parser.ts-->src/parsers/base//parser.ts
+    src/parsers/claude//parser.ts-->src/parsers/abstract//platform//parser.ts
     src/parsers/claude//parser.ts-->src/parsers/schemas/claude.ts
     src/parsers/parser//factory.ts-->src/utils/options.ts
     src/parsers/parser//factory.ts-->src/parsers/chatgpt//parser.ts

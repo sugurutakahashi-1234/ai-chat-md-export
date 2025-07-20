@@ -12,12 +12,12 @@ import type {
 } from "./platform-parser-interface.js";
 
 /**
- * Base class for platform-specific parsers
+ * Abstract base class for platform-specific parsers
  *
  * Provides common functionality for parsing and validating
  * platform-specific data formats (ChatGPT, Claude, etc.)
  */
-export abstract class BasePlatformParser<T = unknown>
+export abstract class AbstractPlatformParser<T = unknown>
   implements PlatformParser<T>
 {
   abstract readonly schema: ZodType<T>;
