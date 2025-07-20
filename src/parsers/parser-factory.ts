@@ -1,7 +1,7 @@
+import type { PlatformParser } from "../core/interfaces/platform-parser.js";
 import type { Options } from "../utils/options.js";
 import { ChatGPTParser } from "./chatgpt-parser.js";
 import { ClaudeParser } from "./claude-parser.js";
-import type { PlatformParser } from "./platform-parser-interface.js";
 
 /**
  * Create a parser instance based on the platform type

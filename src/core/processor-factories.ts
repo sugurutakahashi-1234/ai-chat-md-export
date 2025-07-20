@@ -1,6 +1,6 @@
 import { createPlatformParser } from "../parsers/parser-factory.js";
-import type { PlatformParser } from "../parsers/platform-parser-interface.js";
 import { createLogger } from "../utils/logger.js";
+import type { PlatformParser } from "./interfaces/platform-parser.js";
 import { FileLoader } from "./io/file-loader.js";
 import { FileWriter } from "./io/file-writer.js";
 import type { ProcessorDependencies } from "./processor-dependencies.js";

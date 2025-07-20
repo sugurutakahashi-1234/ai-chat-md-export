@@ -21,20 +21,12 @@ flowchart LR
                 src/utils/errors/formatter.ts["formatter.ts"]
             end
         end
-        subgraph src/parsers["/parsers"]
-            src/parsers/platform//parser//interface.ts["platform-parser-interface.ts"]
-            src/parsers/abstract//platform//parser.ts["abstract-platform-parser.ts"]
-            src/parsers/chatgpt//parser.ts["chatgpt-parser.ts"]
-            src/parsers/claude//parser.ts["claude-parser.ts"]
-            src/parsers/parser//factory.ts["parser-factory.ts"]
-            subgraph src/parsers/schemas["/schemas"]
-                src/parsers/schemas/chatgpt.ts["chatgpt.ts"]
-                src/parsers/schemas/claude.ts["claude.ts"]
-            end
-        end
         subgraph src/core["/core"]
             src/core/processor//depend_encies.ts["processor-dependencies.ts"]
             src/core/processor//factories.ts["processor-factories.ts"]
+            subgraph src/core/interfaces["/interfaces"]
+                src/core/interfaces/platform//parser.ts["platform-parser.ts"]
+            end
             subgraph src/core/io["/io"]
                 src/core/io/file//loader.ts["file-loader.ts"]
                 src/core/io/file//writer.ts["file-writer.ts"]
@@ -49,6 +41,16 @@ flowchart LR
                 src/core/processing/processor.ts["processor.ts"]
             end
         end
+        subgraph src/parsers["/parsers"]
+            src/parsers/abstract//platform//parser.ts["abstract-platform-parser.ts"]
+            src/parsers/chatgpt//parser.ts["chatgpt-parser.ts"]
+            src/parsers/claude//parser.ts["claude-parser.ts"]
+            src/parsers/parser//factory.ts["parser-factory.ts"]
+            subgraph src/parsers/schemas["/schemas"]
+                src/parsers/schemas/chatgpt.ts["chatgpt.ts"]
+                src/parsers/schemas/claude.ts["claude.ts"]
+            end
+        end
     end
     subgraph node//modules["node_modules"]
         node//modules/picocolors/picocolors.d.ts["picocolors"]
@@ -58,8 +60,8 @@ flowchart LR
     src/utils/errors/formatter.ts-->src/utils/errors/errors.ts
     src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/utils/options.ts-->node//modules/zod/index.d.cts
-    src/parsers/platform//parser//interface.ts-->node//modules/zod/index.d.cts
-    src/parsers/platform//parser//interface.ts-->src/types.ts
+    src/core/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
+    src/core/interfaces/platform//parser.ts-->src/types.ts
     src/core/io/file//loader.ts-->src/utils/errors/errors.ts
     src/core/io/file//loader.ts-->src/utils/errors/formatter.ts
     src/core/io/formatters/base.ts-->src/types.ts
@@ -76,8 +78,8 @@ flowchart LR
     src/core/io/file//writer.ts-->src/core/io/formatters/base.ts
     src/core/io/file//writer.ts-->src/core/io/formatters/json.ts
     src/core/io/file//writer.ts-->src/core/io/formatters/markdown.ts
-    src/core/processor//depend_encies.ts-->src/parsers/platform//parser//interface.ts
     src/core/processor//depend_encies.ts-->src/utils/logger.ts
+    src/core/processor//depend_encies.ts-->src/core/interfaces/platform//parser.ts
     src/core/processor//depend_encies.ts-->src/core/io/file//loader.ts
     src/core/processor//depend_encies.ts-->src/core/io/file//writer.ts
     src/core/processing/filter.ts-->src/types.ts
@@ -92,11 +94,11 @@ flowchart LR
     src/utils/validator.ts-->node//modules/zod/index.d.cts
     src/utils/validator.ts-->src/utils/errors/errors.ts
     src/parsers/abstract//platform//parser.ts-->node//modules/zod/index.d.cts
+    src/parsers/abstract//platform//parser.ts-->src/core/interfaces/platform//parser.ts
     src/parsers/abstract//platform//parser.ts-->src/types.ts
     src/parsers/abstract//platform//parser.ts-->src/utils/errors/errors.ts
     src/parsers/abstract//platform//parser.ts-->src/utils/logger.ts
     src/parsers/abstract//platform//parser.ts-->src/utils/validator.ts
-    src/parsers/abstract//platform//parser.ts-->src/parsers/platform//parser//interface.ts
     src/parsers/schemas/chatgpt.ts-->node//modules/zod/index.d.cts
     src/parsers/chatgpt//parser.ts-->src/types.ts
     src/parsers/chatgpt//parser.ts-->src/utils/validator.ts
@@ -107,13 +109,13 @@ flowchart LR
     src/parsers/claude//parser.ts-->src/utils/validator.ts
     src/parsers/claude//parser.ts-->src/parsers/abstract//platform//parser.ts
     src/parsers/claude//parser.ts-->src/parsers/schemas/claude.ts
+    src/parsers/parser//factory.ts-->src/core/interfaces/platform//parser.ts
     src/parsers/parser//factory.ts-->src/utils/options.ts
     src/parsers/parser//factory.ts-->src/parsers/chatgpt//parser.ts
     src/parsers/parser//factory.ts-->src/parsers/claude//parser.ts
-    src/parsers/parser//factory.ts-->src/parsers/platform//parser//interface.ts
     src/core/processor//factories.ts-->src/parsers/parser//factory.ts
-    src/core/processor//factories.ts-->src/parsers/platform//parser//interface.ts
     src/core/processor//factories.ts-->src/utils/logger.ts
+    src/core/processor//factories.ts-->src/core/interfaces/platform//parser.ts
     src/core/processor//factories.ts-->src/core/io/file//loader.ts
     src/core/processor//factories.ts-->src/core/io/file//writer.ts
     src/core/processor//factories.ts-->src/core/processor//depend_encies.ts
