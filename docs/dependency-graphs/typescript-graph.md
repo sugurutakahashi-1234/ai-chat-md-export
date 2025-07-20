@@ -112,7 +112,6 @@ flowchart LR
     src/core/processing/processor.ts-->src/utils/logger.ts
     src/core/processing/processor.ts-->src/utils/options.ts
     src/core/processing/processor.ts-->src/core/factories/platform//parser//factory.ts
-    src/core/processing/processor.ts-->src/core/interfaces/platform//parser.ts
     src/core/processing/processor.ts-->src/core/io/file//loader.ts
     src/core/processing/processor.ts-->src/core/io/file//writer.ts
     src/core/processing/processor.ts-->src/core/processing/filter.ts

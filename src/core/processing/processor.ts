@@ -9,7 +9,6 @@ import {
 import { createLogger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
 import { createPlatformParser } from "../factories/platform-parser-factory.js";
-import type { PlatformParser } from "../interfaces/platform-parser.js";
 import { FileLoader } from "../io/file-loader.js";
 import { FileWriter } from "../io/file-writer.js";
 import { applyFilters } from "./filter.js";
@@ -66,57 +65,15 @@ export class Processor {
     logger.info(`Processing: ${getRelativePath(filePath)}`);
 
     // ========== STEP 1: Load Data ==========
-    const data = await this.step1_loadData(filePath);
+    const data = await this.fileLoader.loadJsonFile(filePath);
 
     // ========== STEP 2: Create Parser ==========
-    const parser = this.step2_createParser(options);
+    const parser = createPlatformParser(options.platform);
 
     // ========== STEP 3: Parse Conversations ==========
-    const conversations = await this.step3_parseConversations(
-      data,
-      parser,
-      filePath,
-      options,
-    );
-
-    // ========== STEP 4: Filter Conversations ==========
-    const { filteredConversations, stats } = this.step4_filterConversations(
-      conversations,
-      options,
-    );
-
-    // Log filter statistics
-    this.logFilterStats(stats, options, logger);
-
-    // ========== STEP 5: Write Output ==========
-    await this.step5_writeOutput(filteredConversations, outputDir, options);
-  }
-
-  /**
-   * Step 1: Load data from input file
-   */
-  private async step1_loadData(filePath: string): Promise<unknown> {
-    return await this.fileLoader.loadJsonFile(filePath);
-  }
-
-  /**
-   * Step 2: Create parser based on platform option
-   */
-  private step2_createParser(options: Options): PlatformParser {
-    return createPlatformParser(options.platform);
-  }
-
-  /**
-   * Step 3: Parse platform-specific data into common format
-   */
-  private async step3_parseConversations(
-    data: unknown,
-    parser: PlatformParser,
-    filePath: string,
-    options: Options,
-  ): Promise<Conversation[]> {
+    let conversations: Conversation[];
     try {
-      return await parser.load(data, { quiet: options.quiet });
+      conversations = await parser.load(data, { quiet: options.quiet });
     } catch (error) {
       if (
         error instanceof Error &&
@@ -133,27 +90,22 @@ export class Processor {
         error,
       );
     }
-  }
 
-  /**
-   * Step 4: Apply filters to conversations
-   */
-  private step4_filterConversations(
-    conversations: Conversation[],
-    options: Options,
-  ) {
-    return applyFilters(conversations, options);
-  }
+    // ========== STEP 4: Filter Conversations ==========
+    const { filteredConversations, stats } = applyFilters(
+      conversations,
+      options,
+    );
 
-  /**
-   * Step 5: Write conversations to output files
-   */
-  private async step5_writeOutput(
-    conversations: Conversation[],
-    outputDir: string,
-    options: Options,
-  ): Promise<void> {
-    await this.fileWriter.writeConversations(conversations, outputDir, options);
+    // Log filter statistics
+    this.logFilterStats(stats, options, logger);
+
+    // ========== STEP 5: Write Output ==========
+    await this.fileWriter.writeConversations(
+      filteredConversations,
+      outputDir,
+      options,
+    );
   }
 
   /**
