@@ -1,8 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import type { Conversation } from "../../../src/domain/models/types.js";
-import { ConversationFilter } from "../../../src/domain/services/filter.js";
+import { ConversationFilter } from "../../../src/infrastructure/filters/conversation-filter.js";
 import type { Options } from "../../../src/shared/config/options.js";
-import { Logger } from "../../../src/shared/utils/logger.js";
 
 describe("ConversationFilter", () => {
   const conversations: Conversation[] = [
@@ -45,9 +44,8 @@ describe("ConversationFilter", () => {
     split: true,
   };
 
-  // Create filter instance with quiet logger for tests
-  const logger = new Logger({ quiet: true });
-  const filter = new ConversationFilter(logger);
+  // Create filter instance
+  const filter = new ConversationFilter();
 
   describe("Date filtering", () => {
     test("filters conversations after since date", () => {

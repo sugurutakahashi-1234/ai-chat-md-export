@@ -1,15 +1,15 @@
 import type { ProcessorDependencies } from "../../application/dependencies.js";
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import type { PlatformParser } from "../../domain/interfaces/platform-parser.js";
-import { ConversationFilter } from "../../domain/services/filter.js";
 import type { Options } from "../../shared/config/options.js";
 import { ValidationError } from "../../shared/errors/errors.js";
 import { formatErrorMessage } from "../../shared/errors/formatter.js";
-import { Logger } from "../../shared/utils/logger.js";
+import { ConversationFilter } from "../filters/conversation-filter.js";
 import { JsonConverter } from "../formatters/json.js";
 import { MarkdownConverter } from "../formatters/markdown.js";
 import { FileLoader } from "../io/file-loader.js";
 import { FileWriter } from "../io/file-writer.js";
+import { Logger } from "../logging/logger.js";
 import { ChatGPTParser } from "../parsers/chatgpt/parser.js";
 import { ClaudeParser } from "../parsers/claude/parser.js";
 
@@ -60,7 +60,7 @@ export function createDefaultDependencies(
     fileWriter: new FileWriter(logger, formatter),
     parser,
     formatter,
-    filter: new ConversationFilter(logger),
+    filter: new ConversationFilter(),
     logger,
   };
 }

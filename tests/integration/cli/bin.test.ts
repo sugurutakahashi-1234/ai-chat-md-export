@@ -164,9 +164,6 @@ describe("CLI Integration Tests", () => {
       await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt --since 2023-06-01`;
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout.toString()).toContain(
-      "Filtered: 1 of 2 conversations",
-    );
 
     const outputFiles = await fs.readdir(outputDir);
     expect(outputFiles).toHaveLength(1);

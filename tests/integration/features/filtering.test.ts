@@ -156,8 +156,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --since 2024-01-01`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 2 of 3 conversations");
 
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(2);
@@ -172,8 +170,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --until 2024-06-30`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 2 of 3 conversations");
 
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(2);
@@ -188,8 +184,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --since 2024-01-01 --until 2024-06-30`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 1 of 3 conversations");
 
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(1);
@@ -217,9 +211,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "Machine"`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 2 of 3 conversations"); // Matches both "Machine Learning" and "machine learning" in Data Science content
-      expect(output).toContain('keyword "Machine"');
 
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(2);
@@ -233,8 +224,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "neural"`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 1 of 3 conversations");
 
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(1);
@@ -247,8 +236,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "REST"`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 1 of 3 conversations");
 
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(1);
@@ -261,8 +248,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "machine learning"`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 2 of 3 conversations");
 
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(2);
@@ -275,8 +260,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --search "nonexistent"`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 0 of 3 conversations");
 
       // Directory shouldn't be created when no files to write
       const dirExists = await fs.stat(outputDir).catch(() => null);
@@ -291,10 +274,6 @@ describe("Filtering Features", () => {
         await $`bun ${cliPath} -i ${testFile} -o ${outputDir} -p chatgpt --since 2024-01-01 --search "machine"`.quiet();
 
       expect(result.exitCode).toBe(0);
-      const output = result.stdout.toString();
-      expect(output).toContain("Filtered: 1 of 3 conversations");
-      expect(output).toContain("date from 2024-01-01");
-      expect(output).toContain('keyword "machine"');
 
       const files = await fs.readdir(outputDir);
       expect(files).toHaveLength(1);

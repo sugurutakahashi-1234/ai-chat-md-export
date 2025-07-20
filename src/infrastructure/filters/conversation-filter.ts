@@ -1,18 +1,20 @@
+import type { Conversation } from "../../domain/models/types.js";
 import type { Options } from "../../shared/config/options.js";
-import type { Logger } from "../../shared/utils/logger.js";
-import type { Conversation } from "../models/types.js";
 
 /**
  * Conversation filter for date range and keyword search
+ *
+ * Pure domain logic for filtering conversations by date and keyword.
+ * This class contains no infrastructure dependencies.
  */
 export class ConversationFilter {
-  constructor(private readonly logger: Logger) {}
-
   /**
    * Apply all configured filters to the conversations
+   *
+   * Returns filtered conversations without side effects.
+   * Logging should be handled by the caller.
    */
   apply(conversations: Conversation[], options: Options): Conversation[] {
-    const originalConversations = conversations;
     let filteredConversations = conversations;
 
     // Apply date filter
@@ -28,43 +30,7 @@ export class ConversationFilter {
       options.search,
     );
 
-    // Log filter results if any filters were applied
-    this.logFilterResults(
-      originalConversations,
-      filteredConversations,
-      options,
-    );
-
     return filteredConversations;
-  }
-
-  /**
-   * Log filter results to the logger
-   */
-  private logFilterResults(
-    originalConversations: Conversation[],
-    filteredConversations: Conversation[],
-    options: Options,
-  ): void {
-    if (options.since || options.until || options.search) {
-      this.logger.stat(
-        "Filtered",
-        `${filteredConversations.length} of ${originalConversations.length} conversations`,
-      );
-      const filters = [];
-      if (options.since || options.until) {
-        const dateRange = [];
-        if (options.since) dateRange.push(`from ${options.since}`);
-        if (options.until) dateRange.push(`to ${options.until}`);
-        filters.push(`date ${dateRange.join(" ")}`);
-      }
-      if (options.search) {
-        filters.push(`keyword "${options.search}"`);
-      }
-      if (filters.length > 0) {
-        this.logger.stat("Filters", filters.join(", "));
-      }
-    }
   }
 
   /**

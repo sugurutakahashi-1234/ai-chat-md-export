@@ -1,10 +1,10 @@
 import { Command } from "commander";
 import { Processor } from "../application/processor.js";
 import { createDefaultDependencies } from "../infrastructure/factories/processor-factory.js";
+import { Logger } from "../infrastructure/logging/logger.js";
 import { optionsSchema } from "../shared/config/options.js";
 import { VERSION } from "../shared/constants/version.js";
 import { formatErrorWithContext } from "../shared/errors/formatter.js";
-import { Logger } from "../shared/utils/logger.js";
 
 export async function main(): Promise<void> {
   const program = new Command();

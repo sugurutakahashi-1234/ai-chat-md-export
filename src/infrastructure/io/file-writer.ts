@@ -10,7 +10,7 @@ import {
   getRelativePath,
 } from "../../shared/errors/formatter.js";
 import { generateFileName } from "../../shared/utils/filename.js";
-import type { Logger } from "../../shared/utils/logger.js";
+import type { Logger } from "../logging/logger.js";
 
 interface WriteResult {
   successCount: number;

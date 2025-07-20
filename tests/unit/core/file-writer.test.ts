@@ -5,8 +5,8 @@ import type { Conversation } from "../../../src/domain/models/types.js";
 import { JsonConverter } from "../../../src/infrastructure/formatters/json.js";
 import { MarkdownConverter } from "../../../src/infrastructure/formatters/markdown.js";
 import { FileWriter } from "../../../src/infrastructure/io/file-writer.js";
+import { Logger } from "../../../src/infrastructure/logging/logger.js";
 import type { Options } from "../../../src/shared/config/options.js";
-import { Logger } from "../../../src/shared/utils/logger.js";
 
 describe("FileWriter", () => {
   const tempDir = path.join(process.cwd(), "tests/temp/file-writer");

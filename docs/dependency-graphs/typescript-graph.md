@@ -15,31 +15,33 @@ flowchart LR
                 src/domain/interfaces/output//formatter.ts["output-formatter.ts"]
                 src/domain/interfaces/platform//parser.ts["platform-parser.ts"]
             end
-            subgraph src/domain/services["/services"]
-                src/domain/services/filter.ts["filter.ts"]
-            end
         end
         subgraph src/shared["/shared"]
             subgraph src/shared/config["/config"]
                 src/shared/config/options.ts["options.ts"]
             end
-            subgraph src/shared/utils["/utils"]
-                src/shared/utils/logger.ts["logger.ts"]
-                src/shared/utils/filename.ts["filename.ts"]
-                src/shared/utils/validator.ts["validator.ts"]
-            end
             subgraph src/shared/errors["/errors"]
                 src/shared/errors/errors.ts["errors.ts"]
                 src/shared/errors/formatter.ts["formatter.ts"]
+            end
+            subgraph src/shared/utils["/utils"]
+                src/shared/utils/filename.ts["filename.ts"]
+                src/shared/utils/validator.ts["validator.ts"]
             end
             subgraph src/shared/constants["/constants"]
                 src/shared/constants/version.ts["version.ts"]
             end
         end
         subgraph src/infrastructure["/infrastructure"]
+            subgraph src/infrastructure/filters["/filters"]
+                src/infrastructure/filters/conversation//filter.ts["conversation-filter.ts"]
+            end
             subgraph src/infrastructure/io["/io"]
                 src/infrastructure/io/file//loader.ts["file-loader.ts"]
                 src/infrastructure/io/file//writer.ts["file-writer.ts"]
+            end
+            subgraph src/infrastructure/logging["/logging"]
+                src/infrastructure/logging/logger.ts["logger.ts"]
             end
             subgraph src/infrastructure/formatters["/formatters"]
                 src/infrastructure/formatters/json.ts["json.ts"]
@@ -78,26 +80,25 @@ flowchart LR
     src/domain/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/domain/interfaces/platform//parser.ts-->src/domain/models/types.ts
     src/shared/config/options.ts-->node//modules/zod/index.d.cts
-    src/shared/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
-    src/domain/services/filter.ts-->src/shared/config/options.ts
-    src/domain/services/filter.ts-->src/shared/utils/logger.ts
-    src/domain/services/filter.ts-->src/domain/models/types.ts
+    src/infrastructure/filters/conversation//filter.ts-->src/domain/models/types.ts
+    src/infrastructure/filters/conversation//filter.ts-->src/shared/config/options.ts
     src/shared/errors/formatter.ts-->src/shared/errors/errors.ts
     src/infrastructure/io/file//loader.ts-->src/shared/errors/errors.ts
     src/infrastructure/io/file//loader.ts-->src/shared/errors/formatter.ts
+    src/infrastructure/logging/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/output//formatter.ts
     src/infrastructure/io/file//writer.ts-->src/domain/models/types.ts
     src/infrastructure/io/file//writer.ts-->src/shared/config/options.ts
     src/infrastructure/io/file//writer.ts-->src/shared/errors/errors.ts
     src/infrastructure/io/file//writer.ts-->src/shared/errors/formatter.ts
     src/infrastructure/io/file//writer.ts-->src/shared/utils/filename.ts
-    src/infrastructure/io/file//writer.ts-->src/shared/utils/logger.ts
+    src/infrastructure/io/file//writer.ts-->src/infrastructure/logging/logger.ts
     src/application/depend_encies.ts-->src/domain/interfaces/output//formatter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/platform//parser.ts
-    src/application/depend_encies.ts-->src/domain/services/filter.ts
+    src/application/depend_encies.ts-->src/infrastructure/filters/conversation//filter.ts
     src/application/depend_encies.ts-->src/infrastructure/io/file//loader.ts
     src/application/depend_encies.ts-->src/infrastructure/io/file//writer.ts
-    src/application/depend_encies.ts-->src/shared/utils/logger.ts
+    src/application/depend_encies.ts-->src/infrastructure/logging/logger.ts
     src/application/processor.ts-->src/shared/config/options.ts
     src/application/processor.ts-->src/shared/errors/formatter.ts
     src/application/processor.ts-->src/application/depend_encies.ts
@@ -111,8 +112,8 @@ flowchart LR
     src/infrastructure/parsers/abstract//parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/abstract//parser.ts-->src/domain/models/types.ts
     src/infrastructure/parsers/abstract//parser.ts-->src/shared/errors/errors.ts
-    src/infrastructure/parsers/abstract//parser.ts-->src/shared/utils/logger.ts
     src/infrastructure/parsers/abstract//parser.ts-->src/shared/utils/validator.ts
+    src/infrastructure/parsers/abstract//parser.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/models/types.ts
@@ -128,24 +129,24 @@ flowchart LR
     src/infrastructure/factories/processor//factory.ts-->src/application/depend_encies.ts
     src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/output//formatter.ts
     src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/factories/processor//factory.ts-->src/domain/services/filter.ts
     src/infrastructure/factories/processor//factory.ts-->src/shared/config/options.ts
     src/infrastructure/factories/processor//factory.ts-->src/shared/errors/errors.ts
     src/infrastructure/factories/processor//factory.ts-->src/shared/errors/formatter.ts
-    src/infrastructure/factories/processor//factory.ts-->src/shared/utils/logger.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/filters/conversation//filter.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/json.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/markdown.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/io/file//loader.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/io/file//writer.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
     src/presentation/cli.ts-->node//modules/commander/typings/index.d.ts
     src/presentation/cli.ts-->src/application/processor.ts
     src/presentation/cli.ts-->src/infrastructure/factories/processor//factory.ts
+    src/presentation/cli.ts-->src/infrastructure/logging/logger.ts
     src/presentation/cli.ts-->src/shared/config/options.ts
     src/presentation/cli.ts-->src/shared/constants/version.ts
     src/presentation/cli.ts-->src/shared/errors/formatter.ts
-    src/presentation/cli.ts-->src/shared/utils/logger.ts
     src/presentation/index.ts-->src/presentation/cli.ts
 ```
 
