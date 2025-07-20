@@ -88,8 +88,3 @@ export class Logger {
     this.log("info", `  ${pc.gray(`${key}:`)} ${value}`);
   }
 }
-
-// Create logger instance with factory function
-export const createLogger = (options: LoggerOptions = {}) =>
-  new Logger(options);
-export const logger = createLogger();

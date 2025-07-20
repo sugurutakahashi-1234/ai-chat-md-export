@@ -2,7 +2,7 @@ import { Command } from "commander";
 import { Processor } from "./core/processing/processor.js";
 import { createDefaultDependencies } from "./core/processor-factories.js";
 import { formatErrorWithContext } from "./utils/errors/formatter.js";
-import { logger } from "./utils/logger.js";
+import { Logger } from "./utils/logger.js";
 import { optionsSchema } from "./utils/options.js";
 import { VERSION } from "./version.js";
 
@@ -60,6 +60,7 @@ For more options and detailed documentation:
         // biome-ignore lint/complexity/useLiteralKeys: TypeScript requires bracket notation for index signatures
         if (!opts["platform"]) missingOptions.push("platform (-p)");
 
+        const logger = new Logger();
         logger.error(`Required options missing: ${missingOptions.join(", ")}`);
         logger.info(
           "\nTry 'ai-chat-md-export --help' for usage information.\n",
@@ -92,6 +93,7 @@ For more options and detailed documentation:
     await processor.processInput(options);
   } catch (error) {
     const errorMessage = formatErrorWithContext(error);
+    const logger = new Logger();
     logger.error(errorMessage);
     process.exit(1);
   }

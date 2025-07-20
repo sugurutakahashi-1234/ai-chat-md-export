@@ -6,7 +6,7 @@ import type {
 } from "../core/interfaces/platform-parser.js";
 import type { Conversation } from "../types.js";
 import { ValidationError } from "../utils/errors/errors.js";
-import { createLogger } from "../utils/logger.js";
+import { Logger } from "../utils/logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
@@ -80,7 +80,7 @@ export abstract class AbstractPlatformParser<T = unknown>
 
     // Display summary information
     if (!options.quiet) {
-      const logger = createLogger({ quiet: false });
+      const logger = new Logger({ quiet: false });
       logger.success(`Successfully loaded ${successCount} conversations`);
     }
 

@@ -8,7 +8,7 @@ import {
   getRelativePath,
 } from "../../utils/errors/formatter.js";
 import { generateFileName } from "../../utils/filename.js";
-import { createLogger } from "../../utils/logger.js";
+import { Logger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
 import type { OutputFormatter } from "./formatters/base.js";
 import { JsonConverter } from "./formatters/json.js";
@@ -59,7 +59,7 @@ export class FileWriter {
     outputDir: string,
     options: Options,
   ): Promise<WriteResult> {
-    const logger = createLogger({ quiet: options.quiet });
+    const logger = new Logger({ quiet: options.quiet });
     const writeErrors: Array<{ file: string; error: string }> = [];
     let successCount = 0;
 
@@ -105,7 +105,7 @@ export class FileWriter {
     outputDir: string,
     options: Options,
   ): Promise<WriteResult> {
-    const logger = createLogger({ quiet: options.quiet });
+    const logger = new Logger({ quiet: options.quiet });
     const writeErrors: Array<{ file: string; error: string }> = [];
 
     const formatter = this.getFormatter(options);

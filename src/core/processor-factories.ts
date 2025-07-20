@@ -1,6 +1,6 @@
 import { ChatGPTParser } from "../parsers/chatgpt-parser.js";
 import { ClaudeParser } from "../parsers/claude-parser.js";
-import { createLogger } from "../utils/logger.js";
+import { Logger } from "../utils/logger.js";
 import type { PlatformParser } from "./interfaces/platform-parser.js";
 import { FileLoader } from "./io/file-loader.js";
 import { FileWriter } from "./io/file-writer.js";
@@ -26,7 +26,7 @@ export function createDefaultDependencies(): ProcessorDependencies {
           throw new Error(`Unknown platform: ${platform}`);
       }
     },
-    loggerFactory: createLogger,
+    loggerFactory: (options: { quiet?: boolean }) => new Logger(options),
   };
 }
 
