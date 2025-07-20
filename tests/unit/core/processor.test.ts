@@ -5,8 +5,21 @@ import { Processor } from "../../../src/core/processing/processor.js";
 import { createDefaultDependenciesWithOverrides } from "../../../src/core/processor-factories.js";
 import type { Options } from "../../../src/utils/options.js";
 
+// Helper to create default test options
+const defaultTestOptions: Options = {
+  input: "",
+  platform: "chatgpt",
+  format: "markdown",
+  split: true,
+  quiet: true,
+  dryRun: false,
+  filenameEncoding: "standard",
+};
+
 // Create test-specific processor instance with dependency injection
-const testProcessor = new Processor(createDefaultDependenciesWithOverrides());
+const testProcessor = new Processor(
+  createDefaultDependenciesWithOverrides(defaultTestOptions),
+);
 
 // Helper functions for backward compatibility with tests
 async function processFile(
@@ -96,12 +109,6 @@ describe("Processor with dependency injection", () => {
       },
     };
 
-    const processor = new Processor(
-      createDefaultDependenciesWithOverrides({
-        fileLoader: mockFileLoader as any,
-      }),
-    );
-
     const options: Options = {
       input: path.join(tempDir, "test.json"),
       output: outputDir,
@@ -113,33 +120,30 @@ describe("Processor with dependency injection", () => {
       filenameEncoding: "standard",
     };
 
+    const processor = new Processor(
+      createDefaultDependenciesWithOverrides(options, {
+        fileLoader: mockFileLoader as any,
+      }),
+    );
+
     await processor.processInput(options);
     expect(loadJsonFileCalled).toBe(true);
   });
 
-  test("uses injected parserFactory", async () => {
+  test("uses injected parser", async () => {
     const filePath = path.join(tempDir, "test.json");
     await fs.writeFile(filePath, "[]", "utf-8");
 
-    let parserFactoryCalled = false;
-    let platformReceived = "";
+    let parserLoadCalled = false;
 
     const mockParser = {
       schema: {} as any,
-      load: async () => [],
+      load: async () => {
+        parserLoadCalled = true;
+        return [];
+      },
+      parseConversations: () => [],
     };
-
-    const mockParserFactory = (platform: string) => {
-      parserFactoryCalled = true;
-      platformReceived = platform;
-      return mockParser;
-    };
-
-    const processor = new Processor(
-      createDefaultDependenciesWithOverrides({
-        parserFactory: mockParserFactory,
-      }),
-    );
 
     const options: Options = {
       input: filePath,
@@ -152,20 +156,26 @@ describe("Processor with dependency injection", () => {
       filenameEncoding: "standard",
     };
 
+    const processor = new Processor(
+      createDefaultDependenciesWithOverrides(options, {
+        parser: mockParser,
+      }),
+    );
+
     await processor.processInput(options);
-    expect(parserFactoryCalled).toBe(true);
-    expect(platformReceived).toBe("claude");
+    expect(parserLoadCalled).toBe(true);
   });
 
-  test("uses injected loggerFactory", async () => {
+  test("uses injected logger", async () => {
     const filePath = path.join(tempDir, "test.json");
     await fs.writeFile(filePath, "[]", "utf-8");
 
-    let loggerFactoryCalled = false;
-    let quietOptionReceived: boolean | undefined;
+    let loggerInfoCalled = false;
 
     const mockLogger = {
-      info: () => {},
+      info: () => {
+        loggerInfoCalled = true;
+      },
       stat: () => {},
       error: () => {},
       warn: () => {},
@@ -174,18 +184,6 @@ describe("Processor with dependency injection", () => {
       progress: () => {},
       output: () => {},
     };
-
-    const mockLoggerFactory = (options: { quiet?: boolean }) => {
-      loggerFactoryCalled = true;
-      quietOptionReceived = options.quiet;
-      return mockLogger;
-    };
-
-    const processor = new Processor(
-      createDefaultDependenciesWithOverrides({
-        loggerFactory: mockLoggerFactory as any,
-      }),
-    );
 
     const options: Options = {
       input: filePath,
@@ -198,8 +196,13 @@ describe("Processor with dependency injection", () => {
       filenameEncoding: "standard",
     };
 
+    const processor = new Processor(
+      createDefaultDependenciesWithOverrides(options, {
+        logger: mockLogger as any,
+      }),
+    );
+
     await processor.processInput(options);
-    expect(loggerFactoryCalled).toBe(true);
-    expect(quietOptionReceived).toBe(true);
+    expect(loggerInfoCalled).toBe(true);
   });
 });

@@ -8,7 +8,7 @@ import {
   getRelativePath,
 } from "../../utils/errors/formatter.js";
 import { generateFileName } from "../../utils/filename.js";
-import { Logger } from "../../utils/logger.js";
+import type { Logger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
 import type { OutputFormatter } from "./formatters/base.js";
 import { JsonConverter } from "./formatters/json.js";
@@ -35,6 +35,7 @@ function isValidFilenameEncoding(
  * including directory creation, file naming, and error handling.
  */
 export class FileWriter {
+  constructor(private readonly logger: Logger) {}
   /**
    * Write conversations to files based on options
    */
@@ -59,7 +60,6 @@ export class FileWriter {
     outputDir: string,
     options: Options,
   ): Promise<WriteResult> {
-    const logger = new Logger({ quiet: options.quiet });
     const writeErrors: Array<{ file: string; error: string }> = [];
     let successCount = 0;
 
@@ -81,13 +81,13 @@ export class FileWriter {
         if (!options.dryRun) {
           await fs.writeFile(outputPath, content, "utf-8");
         }
-        logger.output(getRelativePath(outputPath), options.dryRun);
+        this.logger.output(getRelativePath(outputPath), options.dryRun);
         successCount++;
       } catch (error) {
         const errorMessage = getErrorMessage(error);
         writeErrors.push({ file: outputPath, error: errorMessage });
 
-        logger.warn(
+        this.logger.warn(
           formatErrorMessage("Failed to write file", {
             file: outputPath,
             reason: errorMessage,
@@ -105,7 +105,6 @@ export class FileWriter {
     outputDir: string,
     options: Options,
   ): Promise<WriteResult> {
-    const logger = new Logger({ quiet: options.quiet });
     const writeErrors: Array<{ file: string; error: string }> = [];
 
     const formatter = this.getFormatter(options);
@@ -117,8 +116,8 @@ export class FileWriter {
       if (!options.dryRun) {
         await fs.writeFile(outputPath, content, "utf-8");
       }
-      logger.output(getRelativePath(outputPath), options.dryRun);
-      logger.stat(
+      this.logger.output(getRelativePath(outputPath), options.dryRun);
+      this.logger.stat(
         "Combined",
         `${conversations.length} conversations into one file`,
       );
@@ -127,7 +126,7 @@ export class FileWriter {
       const errorMessage = getErrorMessage(error);
       writeErrors.push({ file: outputPath, error: errorMessage });
 
-      logger.warn(
+      this.logger.warn(
         formatErrorMessage("Failed to write file", {
           file: outputPath,
           reason: errorMessage,

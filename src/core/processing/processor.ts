@@ -6,7 +6,6 @@ import {
   getErrorMessage,
   getRelativePath,
 } from "../../utils/errors/formatter.js";
-import type { Logger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
 import type { ProcessorDependencies } from "../processor-dependencies.js";
 import { applyFilters } from "./filter.js";
@@ -34,14 +33,13 @@ export class Processor {
     const inputPath = path.resolve(options.input);
     const outputDir = path.resolve(options.output || process.cwd());
 
-    const logger = this.deps.loggerFactory({ quiet: options.quiet });
-    logger.info(`Processing: ${getRelativePath(inputPath)}`);
+    this.deps.logger.info(`Processing: ${getRelativePath(inputPath)}`);
 
     // ========== STEP 1: Load Data ==========
     const data = await this.deps.fileLoader.loadJsonFile(inputPath);
 
-    // ========== STEP 2: Create Parser ==========
-    const parser = this.deps.parserFactory(options.platform);
+    // ========== STEP 2: Use Parser ==========
+    const parser = this.deps.parser;
 
     // ========== STEP 3: Parse Conversations ==========
     let conversations: Conversation[];
@@ -71,7 +69,7 @@ export class Processor {
     );
 
     // Log filter statistics
-    this.logFilterStats(stats, options, logger);
+    this.logFilterStats(stats, options);
 
     // ========== STEP 5: Write Output ==========
     await this.deps.fileWriter.writeConversations(
@@ -87,10 +85,9 @@ export class Processor {
   private logFilterStats(
     stats: { originalCount: number; filteredCount: number },
     options: Options,
-    logger: Logger,
   ): void {
     if (options.since || options.until || options.search) {
-      logger.stat(
+      this.deps.logger.stat(
         "Filtered",
         `${stats.filteredCount} of ${stats.originalCount} conversations`,
       );
@@ -105,7 +102,7 @@ export class Processor {
         filters.push(`keyword "${options.search}"`);
       }
       if (filters.length > 0) {
-        logger.stat("Filters", filters.join(", "));
+        this.deps.logger.stat("Filters", filters.join(", "));
       }
     }
   }

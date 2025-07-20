@@ -1,6 +1,7 @@
 import { ChatGPTParser } from "../parsers/chatgpt-parser.js";
 import { ClaudeParser } from "../parsers/claude-parser.js";
 import { Logger } from "../utils/logger.js";
+import type { Options } from "../utils/options.js";
 import type { PlatformParser } from "./interfaces/platform-parser.js";
 import { FileLoader } from "./io/file-loader.js";
 import { FileWriter } from "./io/file-writer.js";
@@ -12,21 +13,29 @@ import type { ProcessorDependencies } from "./processor-dependencies.js";
  * This factory provides the standard implementations
  * for all processor dependencies.
  */
-export function createDefaultDependencies(): ProcessorDependencies {
+export function createDefaultDependencies(
+  options: Options,
+): ProcessorDependencies {
+  const logger = new Logger({ quiet: options.quiet });
+
+  // Create platform-specific parser
+  let parser: PlatformParser;
+  switch (options.platform) {
+    case "chatgpt":
+      parser = new ChatGPTParser(logger);
+      break;
+    case "claude":
+      parser = new ClaudeParser(logger);
+      break;
+    default:
+      throw new Error(`Unknown platform: ${options.platform}`);
+  }
+
   return {
     fileLoader: new FileLoader(),
-    fileWriter: new FileWriter(),
-    parserFactory: (platform: string): PlatformParser => {
-      switch (platform) {
-        case "chatgpt":
-          return new ChatGPTParser();
-        case "claude":
-          return new ClaudeParser();
-        default:
-          throw new Error(`Unknown platform: ${platform}`);
-      }
-    },
-    loggerFactory: (options: { quiet?: boolean }) => new Logger(options),
+    fileWriter: new FileWriter(logger),
+    parser,
+    logger,
   };
 }
 
@@ -40,9 +49,10 @@ export function createDefaultDependencies(): ProcessorDependencies {
  * @returns Complete processor dependencies
  */
 export function createDefaultDependenciesWithOverrides(
+  options: Options,
   overrides?: Partial<ProcessorDependencies>,
 ): ProcessorDependencies {
-  const defaults = createDefaultDependencies();
+  const defaults = createDefaultDependencies(options);
   return {
     ...defaults,
     ...overrides,

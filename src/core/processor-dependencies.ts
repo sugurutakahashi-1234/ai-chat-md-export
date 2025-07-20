@@ -21,16 +21,12 @@ export interface ProcessorDependencies {
   fileWriter: FileWriter;
 
   /**
-   * Factory function to create platform-specific parsers
-   * @param platform The platform type (chatgpt, claude)
-   * @returns A parser instance for the specified platform
+   * Platform-specific parser instance
    */
-  parserFactory: (platform: string) => PlatformParser;
+  parser: PlatformParser;
 
   /**
-   * Factory function to create loggers
-   * @param options Logger configuration options
-   * @returns A configured logger instance
+   * Logger instance
    */
-  loggerFactory: (options: { quiet?: boolean }) => Logger;
+  logger: Logger;
 }

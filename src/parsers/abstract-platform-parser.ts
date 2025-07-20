@@ -6,7 +6,7 @@ import type {
 } from "../core/interfaces/platform-parser.js";
 import type { Conversation } from "../types.js";
 import { ValidationError } from "../utils/errors/errors.js";
-import { Logger } from "../utils/logger.js";
+import type { Logger } from "../utils/logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
@@ -21,6 +21,7 @@ import {
 export abstract class AbstractPlatformParser<T = unknown>
   implements PlatformParser<T>
 {
+  constructor(protected readonly logger: Logger) {}
   abstract readonly schema: ZodType<T>;
 
   /**
@@ -80,8 +81,7 @@ export abstract class AbstractPlatformParser<T = unknown>
 
     // Display summary information
     if (!options.quiet) {
-      const logger = new Logger({ quiet: options.quiet ?? false });
-      logger.success(`Successfully loaded ${successCount} conversations`);
+      this.logger.success(`Successfully loaded ${successCount} conversations`);
     }
 
     return conversations;

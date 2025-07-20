@@ -3,11 +3,13 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { FileWriter } from "../../../src/core/io/file-writer.js";
 import type { Conversation } from "../../../src/types.js";
+import { Logger } from "../../../src/utils/logger.js";
 import type { Options } from "../../../src/utils/options.js";
 
 describe("FileWriter", () => {
   const tempDir = path.join(process.cwd(), "tests/temp/file-writer");
-  const fileWriter = new FileWriter();
+  const logger = new Logger({ quiet: true });
+  const fileWriter = new FileWriter(logger);
 
   beforeEach(async () => {
     await fs.mkdir(tempDir, { recursive: true });

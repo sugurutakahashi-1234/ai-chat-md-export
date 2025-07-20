@@ -12,8 +12,8 @@ flowchart LR
         src/cli.ts["cli.ts"]
         src/index.ts["index.ts"]
         subgraph src/utils["/utils"]
-            src/utils/logger.ts["logger.ts"]
             src/utils/options.ts["options.ts"]
+            src/utils/logger.ts["logger.ts"]
             src/utils/filename.ts["filename.ts"]
             src/utils/validator.ts["validator.ts"]
             subgraph src/utils/errors["/errors"]
@@ -52,13 +52,13 @@ flowchart LR
         end
     end
     subgraph node//modules["node_modules"]
-        node//modules/picocolors/picocolors.d.ts["picocolors"]
         node//modules/zod/index.d.cts["zod"]
+        node//modules/picocolors/picocolors.d.ts["picocolors"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
     src/utils/errors/formatter.ts-->src/utils/errors/errors.ts
-    src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/utils/options.ts-->node//modules/zod/index.d.cts
+    src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/core/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/core/interfaces/platform//parser.ts-->src/types.ts
     src/core/io/file//loader.ts-->src/utils/errors/errors.ts
@@ -86,7 +86,6 @@ flowchart LR
     src/core/processing/processor.ts-->src/types.ts
     src/core/processing/processor.ts-->src/utils/errors/errors.ts
     src/core/processing/processor.ts-->src/utils/errors/formatter.ts
-    src/core/processing/processor.ts-->src/utils/logger.ts
     src/core/processing/processor.ts-->src/utils/options.ts
     src/core/processing/processor.ts-->src/core/processor//depend_encies.ts
     src/core/processing/processor.ts-->src/core/processing/filter.ts
@@ -113,6 +112,7 @@ flowchart LR
     src/core/processor//factories.ts-->src/parsers/chatgpt//parser.ts
     src/core/processor//factories.ts-->src/parsers/claude//parser.ts
     src/core/processor//factories.ts-->src/utils/logger.ts
+    src/core/processor//factories.ts-->src/utils/options.ts
     src/core/processor//factories.ts-->src/core/interfaces/platform//parser.ts
     src/core/processor//factories.ts-->src/core/io/file//loader.ts
     src/core/processor//factories.ts-->src/core/io/file//writer.ts

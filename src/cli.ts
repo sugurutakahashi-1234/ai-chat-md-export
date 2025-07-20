@@ -89,7 +89,7 @@ For more options and detailed documentation:
     const options = optionsSchema.parse(program.opts());
 
     // Create processor with dependency injection
-    const processor = new Processor(createDefaultDependencies());
+    const processor = new Processor(createDefaultDependencies(options));
     await processor.processInput(options);
   } catch (error) {
     const errorMessage = formatErrorWithContext(error);
