@@ -2,6 +2,11 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import type { Options } from "../../domain/config/options.js";
 import { FileError } from "../../domain/errors/errors.js";
+import type {
+  FileWriter as IFileWriter,
+  WriteResult,
+} from "../../domain/interfaces/file-writer.js";
+import type { Logger } from "../../domain/interfaces/logger.js";
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import type { Conversation } from "../../domain/models/types.js";
 import { generateFileName } from "../../domain/utils/filename.js";
@@ -9,13 +14,7 @@ import {
   extractErrorMessage,
   formatErrorMessage,
   formatRelativePathFromCwd,
-} from "../../shared/errors/formatter.js";
-import type { Logger } from "../logging/logger.js";
-
-interface WriteResult {
-  successCount: number;
-  errors: Array<{ file: string; error: string }>;
-}
+} from "../utils/error-formatter.js";
 
 /**
  * Validate filename encoding option
@@ -32,7 +31,7 @@ function isValidFilenameEncoding(
  * Handles writing converted conversations to the file system,
  * including directory creation, file naming, and error handling.
  */
-export class FileWriter {
+export class FileWriter implements IFileWriter {
   constructor(
     private readonly logger: Logger,
     private readonly formatter: OutputFormatter,

@@ -2,13 +2,13 @@ import { describe, expect, it } from "bun:test";
 import {
   FileError,
   ValidationError,
-} from "../../../src/domain/errors/errors.js";
+} from "../../../../src/domain/errors/errors.js";
 import {
   extractErrorMessage,
   formatErrorMessage,
   formatErrorWithContext,
   formatRelativePathFromCwd,
-} from "../../../src/shared/errors/formatter.js";
+} from "../../../../src/infrastructure/utils/error-formatter.js";
 
 describe("formatRelativePathFromCwd", () => {
   it("returns relative path for files in cwd", () => {

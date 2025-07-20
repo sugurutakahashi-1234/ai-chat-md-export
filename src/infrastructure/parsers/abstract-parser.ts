@@ -6,11 +6,11 @@ import type {
   PlatformParser,
 } from "../../domain/interfaces/platform-parser.js";
 import type { Conversation } from "../../domain/models/types.js";
+import type { Logger } from "../logging/logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
-} from "../../shared/utils/validator.js";
-import type { Logger } from "../logging/logger.js";
+} from "../utils/validator.js";
 
 /**
  * Base class for platform-specific parsers

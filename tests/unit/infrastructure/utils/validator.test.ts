@@ -6,7 +6,7 @@ import {
   formatValidationReport,
   type ValidationResult,
   validateWithDetails,
-} from "../../../src/shared/utils/validator.js";
+} from "../../../../src/infrastructure/utils/validator.js";
 
 describe("validator - type guards", () => {
   const testSchema = z.object({

@@ -1,4 +1,5 @@
 import pc from "picocolors";
+import type { Logger as ILogger } from "../../domain/interfaces/logger.js";
 
 type LogLevel = "error" | "warn" | "info" | "success" | "debug";
 
@@ -6,7 +7,7 @@ interface LoggerOptions {
   quiet?: boolean;
 }
 
-export class Logger {
+export class Logger implements ILogger {
   constructor(private options: LoggerOptions = {}) {}
 
   private shouldLog(level: LogLevel): boolean {

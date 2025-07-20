@@ -1,4 +1,5 @@
 import type { Options } from "../../domain/config/options.js";
+import type { ConversationFilter as IConversationFilter } from "../../domain/interfaces/conversation-filter.js";
 import type { Conversation } from "../../domain/models/types.js";
 
 /**
@@ -7,7 +8,7 @@ import type { Conversation } from "../../domain/models/types.js";
  * Pure domain logic for filtering conversations by date and keyword.
  * This class contains no infrastructure dependencies.
  */
-export class ConversationFilter {
+export class ConversationFilter implements IConversationFilter {
   /**
    * Apply all configured filters to the conversations
    *

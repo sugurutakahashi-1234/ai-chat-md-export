@@ -1,0 +1,22 @@
+import type { Options } from "../config/options.js";
+import type { Conversation } from "../models/types.js";
+
+/**
+ * Interface for conversation filtering
+ *
+ * Defines the contract for filtering conversations by various criteria
+ * such as date range and keyword search.
+ */
+export interface ConversationFilter {
+  /**
+   * Apply all configured filters to the conversations
+   *
+   * @param conversations - Array of conversations to filter
+   * @param options - Options containing filter criteria
+   * @returns Filtered array of conversations
+   */
+  filterConversations(
+    conversations: Conversation[],
+    options: Options,
+  ): Conversation[];
+}

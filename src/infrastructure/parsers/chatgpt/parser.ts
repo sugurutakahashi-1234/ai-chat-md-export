@@ -1,6 +1,6 @@
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
 import type { Conversation } from "../../../domain/models/types.js";
-import { assertType } from "../../../shared/utils/validator.js";
+import { assertType } from "../../utils/validator.js";
 import { BasePlatformParser } from "../abstract-parser.js";
 import {
   type ChatGPTConversation,
