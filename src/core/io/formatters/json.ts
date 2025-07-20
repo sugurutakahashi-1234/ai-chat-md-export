@@ -1,24 +1,24 @@
 import type { Conversation } from "../../../types.js";
 import type { OutputFormatter } from "./base.js";
 
-export interface JsonOutput {
+interface JsonOutput {
   conversations: JsonConversation[];
 }
 
-export interface JsonConversation {
+interface JsonConversation {
   id: string;
   title: string;
   date: string;
   messages: JsonMessage[];
 }
 
-export interface JsonMessage {
+interface JsonMessage {
   role: "user" | "assistant" | "system" | "tool";
   content: string;
   timestamp?: string;
 }
 
-export function convertConversationToJson(
+function convertConversationToJson(
   conversation: Conversation,
 ): JsonConversation {
   return {

@@ -5,7 +5,7 @@ export interface Conversation {
   messages: Message[];
 }
 
-export interface Message {
+interface Message {
   role: "user" | "assistant" | "system" | "tool";
   content: string;
   timestamp?: Date;

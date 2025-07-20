@@ -46,7 +46,7 @@ export function sanitizeFileNamePreserve(fileName: string): string {
   return result;
 }
 
-export type FilenameEncoding = "standard" | "preserve";
+type FilenameEncoding = "standard" | "preserve";
 
 /**
  * Generate a filename

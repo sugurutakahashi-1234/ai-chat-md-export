@@ -1,7 +1,7 @@
 import type { Conversation } from "../../../types.js";
 import type { OutputFormatter } from "./base.js";
 
-export function formatTimestamp(timestamp: Date): string {
+function formatTimestamp(timestamp: Date): string {
   const date = timestamp;
   // Format with timezone offset only
   const year = date.getFullYear();
@@ -21,7 +21,7 @@ export function formatTimestamp(timestamp: Date): string {
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${tzString}`;
 }
 
-export function escapeMarkdown(text: string): string {
+function escapeMarkdown(text: string): string {
   // Escape only HTML tags, preserve markdown syntax
   return (
     text
@@ -35,7 +35,7 @@ export function escapeMarkdown(text: string): string {
   );
 }
 
-export function processContent(text: string): string {
+function processContent(text: string): string {
   // Process "This block is not supported" messages - just show the original message
   if (text.includes("This block is not supported")) {
     return text.replace(

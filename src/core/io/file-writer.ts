@@ -14,7 +14,7 @@ import type { OutputFormatter } from "./formatters/base.js";
 import { JsonConverter } from "./formatters/json.js";
 import { MarkdownConverter } from "./formatters/markdown.js";
 
-export interface WriteResult {
+interface WriteResult {
   successCount: number;
   errors: Array<{ file: string; error: string }>;
 }

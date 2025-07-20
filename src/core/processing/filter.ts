@@ -1,12 +1,12 @@
 import type { Conversation } from "../../types.js";
 import type { Options } from "../../utils/options.js";
 
-export interface FilterStats {
+interface FilterStats {
   originalCount: number;
   filteredCount: number;
 }
 
-export function filterByDate(
+function filterByDate(
   conversations: Conversation[],
   since?: string,
   until?: string,
@@ -23,7 +23,7 @@ export function filterByDate(
   });
 }
 
-export function filterBySearch(
+function filterBySearch(
   conversations: Conversation[],
   keyword?: string,
 ): Conversation[] {

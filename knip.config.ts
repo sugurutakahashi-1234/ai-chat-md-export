@@ -4,11 +4,12 @@ const config: KnipConfig = {
   entry: ["src/cli.ts"],
   project: ["src/**/*.ts"],
   ignore: [
+    "src/index.ts", // Package entry point (main field in package.json) - exports are used by npm package consumers
     "tests/integration/cli/node-js.test.ts", // Uses $`node ${cliPath}` syntax which knip misinterprets
   ],
   ignoreDependencies: ["tslib", "@commitlint/cli"],
   ignoreBinaries: ["du", "awk", "goreleaser", "gh"], // du,awk: deps:size script, goreleaser: build scripts, gh: release scripts
-  ignoreExportsUsedInFile: true,
+  ignoreExportsUsedInFile: false,
   includeEntryExports: true,
   typescript: {
     config: ["tsconfig.json"],

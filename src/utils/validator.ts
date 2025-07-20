@@ -47,14 +47,14 @@ export interface ValidationResult<T> {
   warnings?: ValidationWarning[] | undefined;
 }
 
-export interface ValidationErrorDetail {
+interface ValidationErrorDetail {
   path: string;
   message: string;
   expected?: string | undefined;
   received?: string | undefined;
 }
 
-export interface ValidationWarning {
+interface ValidationWarning {
   message: string;
   unknownFields?: string[] | undefined;
 }
