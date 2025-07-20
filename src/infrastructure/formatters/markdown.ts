@@ -1,6 +1,14 @@
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import type { Conversation } from "../../domain/models/types.js";
 
+/**
+ * Note: Unlike the JSON formatter, the Markdown formatter does not define
+ * separate DTO types. This is intentional because:
+ * 1. Markdown output is for human reading, not data exchange
+ * 2. No structural transformation is needed (dates are formatted inline)
+ * 3. The domain model can be used directly without type conversions
+ */
+
 function formatDateTimeWithTimezone(timestamp: Date): string {
   const date = timestamp;
   // Format with timezone offset only

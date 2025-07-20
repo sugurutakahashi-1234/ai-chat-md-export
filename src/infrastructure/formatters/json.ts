@@ -5,6 +5,13 @@ interface JsonOutput {
   conversations: JsonConversation[];
 }
 
+/**
+ * JSON representation of a conversation (DTO)
+ *
+ * This is a Data Transfer Object for JSON serialization.
+ * Unlike the domain model (Conversation), this uses string types
+ * for dates to ensure proper JSON serialization.
+ */
 interface JsonConversation {
   id: string;
   title: string;
@@ -12,6 +19,13 @@ interface JsonConversation {
   messages: JsonMessage[];
 }
 
+/**
+ * JSON representation of a message (DTO)
+ *
+ * This is a Data Transfer Object for JSON serialization.
+ * Unlike the domain model (Message), this uses string type
+ * for the timestamp to ensure proper JSON serialization.
+ */
 interface JsonMessage {
   role: "user" | "assistant" | "system" | "tool";
   content: string;
