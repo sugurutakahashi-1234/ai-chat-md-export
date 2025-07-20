@@ -2,16 +2,10 @@ import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { Processor } from "../../../src/core/processing/processor.js";
-import { ChatGPTHandler } from "../../../src/handlers/chatgpt-handler.js";
-import { ClaudeHandler } from "../../../src/handlers/claude-handler.js";
 import type { Options } from "../../../src/utils/options.js";
 
-// Create test-specific processor instance with parsers
-const parsers = {
-  chatgpt: new ChatGPTHandler(),
-  claude: new ClaudeHandler(),
-};
-const testProcessor = new Processor({ parsers });
+// Create test-specific processor instance using factory method
+const testProcessor = Processor.create();
 
 // Helper functions for backward compatibility with tests
 async function processFile(

@@ -1,4 +1,6 @@
 import path from "node:path";
+import { ChatGPTHandler } from "../../handlers/chatgpt-handler.js";
+import { ClaudeHandler } from "../../handlers/claude-handler.js";
 import type { Conversation } from "../../types.js";
 import {
   formatErrorMessage,
@@ -54,6 +56,23 @@ export class Processor {
     // Create OutputManager and inject it into FileWriter
     const outputManager = new OutputManager();
     this.fileWriter = config.fileWriter || new FileWriter(outputManager);
+  }
+
+  /**
+   * Factory method to create a Processor with default configuration
+   * This encapsulates the creation of platform-specific handlers
+   */
+  static create(config?: Omit<ProcessorConfig, "parsers">): Processor {
+    // Create default parsers internally
+    const defaultParsers = {
+      chatgpt: new ChatGPTHandler(),
+      claude: new ClaudeHandler(),
+    };
+
+    return new Processor({
+      ...config,
+      parsers: defaultParsers,
+    });
   }
 
   async processInput(options: Options): Promise<void> {
