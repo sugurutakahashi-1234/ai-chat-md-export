@@ -33,13 +33,13 @@ flowchart LR
                 src/core/io/file//loader.ts["file-loader.ts"]
                 src/core/io/file//writer.ts["file-writer.ts"]
             end
+            subgraph src/core/formatters["/formatters"]
+                src/core/formatters/json.ts["json.ts"]
+                src/core/formatters/markdown.ts["markdown.ts"]
+            end
             subgraph src/core/processing["/processing"]
                 src/core/processing/filter.ts["filter.ts"]
                 src/core/processing/processor.ts["processor.ts"]
-                subgraph src/core/processing/converters["/converters"]
-                    src/core/processing/converters/json.ts["json.ts"]
-                    src/core/processing/converters/markdown.ts["markdown.ts"]
-                end
             end
         end
         subgraph src/handlers["/handlers"]
@@ -84,19 +84,19 @@ flowchart LR
     src/core/io/file//loader.ts-->src/utils/errors/errors.ts
     src/core/io/file//loader.ts-->src/utils/errors/formatter.ts
     src/core/interfaces/output//formatter.ts-->src/types.ts
-    src/core/processing/converters/json.ts-->src/types.ts
-    src/core/processing/converters/json.ts-->src/core/interfaces/output//formatter.ts
-    src/core/processing/converters/markdown.ts-->src/types.ts
-    src/core/processing/converters/markdown.ts-->src/core/interfaces/output//formatter.ts
+    src/core/formatters/json.ts-->src/types.ts
+    src/core/formatters/json.ts-->src/core/interfaces/output//formatter.ts
+    src/core/formatters/markdown.ts-->src/types.ts
+    src/core/formatters/markdown.ts-->src/core/interfaces/output//formatter.ts
     src/core/io/file//writer.ts-->src/types.ts
     src/core/io/file//writer.ts-->src/utils/errors/errors.ts
     src/core/io/file//writer.ts-->src/utils/errors/formatter.ts
     src/core/io/file//writer.ts-->src/utils/filename.ts
     src/core/io/file//writer.ts-->src/utils/logger.ts
     src/core/io/file//writer.ts-->src/utils/options.ts
+    src/core/io/file//writer.ts-->src/core/formatters/json.ts
+    src/core/io/file//writer.ts-->src/core/formatters/markdown.ts
     src/core/io/file//writer.ts-->src/core/interfaces/output//formatter.ts
-    src/core/io/file//writer.ts-->src/core/processing/converters/json.ts
-    src/core/io/file//writer.ts-->src/core/processing/converters/markdown.ts
     src/core/processing/filter.ts-->src/types.ts
     src/core/processing/filter.ts-->src/utils/options.ts
     src/core/processing/processor.ts-->src/handlers/chatgpt//handler.ts
