@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { Options } from "../shared/config/options.js";
+import type { Options } from "../domain/config/options.js";
 import { getRelativePath } from "../shared/errors/formatter.js";
 import type { ProcessorDependencies } from "./dependencies.js";
 

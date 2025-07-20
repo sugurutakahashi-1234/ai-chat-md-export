@@ -1,15 +1,15 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import type { Options } from "../../domain/config/options.js";
+import { FileError } from "../../domain/errors/errors.js";
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import type { Conversation } from "../../domain/models/types.js";
-import type { Options } from "../../shared/config/options.js";
-import { FileError } from "../../shared/errors/errors.js";
+import { generateFileName } from "../../domain/utils/filename.js";
 import {
   formatErrorMessage,
   getErrorMessage,
   getRelativePath,
 } from "../../shared/errors/formatter.js";
-import { generateFileName } from "../../shared/utils/filename.js";
 import type { Logger } from "../logging/logger.js";
 
 interface WriteResult {

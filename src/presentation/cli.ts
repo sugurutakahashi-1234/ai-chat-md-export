@@ -1,8 +1,8 @@
 import { Command } from "commander";
 import { Processor } from "../application/processor.js";
+import { optionsSchema } from "../domain/config/options.js";
 import { createDefaultDependencies } from "../infrastructure/factories/processor-factory.js";
 import { Logger } from "../infrastructure/logging/logger.js";
-import { optionsSchema } from "../shared/config/options.js";
 import { VERSION } from "../shared/constants/version.js";
 import { formatErrorWithContext } from "../shared/errors/formatter.js";
 

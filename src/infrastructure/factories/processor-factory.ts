@@ -1,8 +1,8 @@
 import type { ProcessorDependencies } from "../../application/dependencies.js";
+import type { Options } from "../../domain/config/options.js";
+import { ValidationError } from "../../domain/errors/errors.js";
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import type { PlatformParser } from "../../domain/interfaces/platform-parser.js";
-import type { Options } from "../../shared/config/options.js";
-import { ValidationError } from "../../shared/errors/errors.js";
 import { formatErrorMessage } from "../../shared/errors/formatter.js";
 import { ConversationFilter } from "../filters/conversation-filter.js";
 import { JsonConverter } from "../formatters/json.js";

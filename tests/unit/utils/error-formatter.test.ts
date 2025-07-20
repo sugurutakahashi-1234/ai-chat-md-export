@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import {
   FileError,
   ValidationError,
-} from "../../../src/shared/errors/errors.js";
+} from "../../../src/domain/errors/errors.js";
 import {
   formatErrorMessage,
   formatErrorWithContext,

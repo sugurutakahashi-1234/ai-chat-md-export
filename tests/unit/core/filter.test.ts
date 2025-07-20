@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
+import type { Options } from "../../../src/domain/config/options.js";
 import type { Conversation } from "../../../src/domain/models/types.js";
 import { ConversationFilter } from "../../../src/infrastructure/filters/conversation-filter.js";
-import type { Options } from "../../../src/shared/config/options.js";
 
 describe("ConversationFilter", () => {
   const conversations: Conversation[] = [

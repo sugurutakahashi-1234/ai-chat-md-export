@@ -1,5 +1,5 @@
+import type { Options } from "../../domain/config/options.js";
 import type { Conversation } from "../../domain/models/types.js";
-import type { Options } from "../../shared/config/options.js";
 
 /**
  * Conversation filter for date range and keyword search

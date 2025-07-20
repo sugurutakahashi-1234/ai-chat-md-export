@@ -2,8 +2,8 @@ import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { Processor } from "../../../src/application/processor.js";
+import type { Options } from "../../../src/domain/config/options.js";
 import { createDefaultDependenciesWithOverrides } from "../../../src/infrastructure/factories/processor-factory.js";
-import type { Options } from "../../../src/shared/config/options.js";
 
 // Helper to create default test options
 const defaultTestOptions: Options = {
