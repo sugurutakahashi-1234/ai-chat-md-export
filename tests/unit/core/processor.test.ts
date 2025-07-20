@@ -2,10 +2,11 @@ import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { Processor } from "../../../src/core/processing/processor.js";
+import { createDefaultDependenciesWithOverrides } from "../../../src/core/processor-factories.js";
 import type { Options } from "../../../src/utils/options.js";
 
-// Create test-specific processor instance using factory method
-const testProcessor = Processor.create();
+// Create test-specific processor instance with dependency injection
+const testProcessor = new Processor(createDefaultDependenciesWithOverrides());
 
 // Helper functions for backward compatibility with tests
 async function processFile(
@@ -70,5 +71,135 @@ describe("processFile edge cases", () => {
     await expect(processFile(filePath, outputDir, options)).rejects.toThrow(
       "Schema validation error",
     );
+  });
+});
+
+describe("Processor with dependency injection", () => {
+  const tempDir = path.join(process.cwd(), "tests/temp/processor-di");
+  const outputDir = path.join(tempDir, "output");
+
+  beforeEach(async () => {
+    await fs.mkdir(tempDir, { recursive: true });
+    await fs.mkdir(outputDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(tempDir, { recursive: true, force: true });
+  });
+
+  test("uses injected fileLoader", async () => {
+    let loadJsonFileCalled = false;
+    const mockFileLoader = {
+      loadJsonFile: async () => {
+        loadJsonFileCalled = true;
+        return [];
+      },
+    };
+
+    const processor = new Processor(
+      createDefaultDependenciesWithOverrides({
+        fileLoader: mockFileLoader as any,
+      }),
+    );
+
+    const options: Options = {
+      input: path.join(tempDir, "test.json"),
+      output: outputDir,
+      platform: "chatgpt",
+      format: "markdown",
+      split: true,
+      quiet: true,
+      dryRun: false,
+      filenameEncoding: "standard",
+    };
+
+    await processor.processInput(options);
+    expect(loadJsonFileCalled).toBe(true);
+  });
+
+  test("uses injected parserFactory", async () => {
+    const filePath = path.join(tempDir, "test.json");
+    await fs.writeFile(filePath, "[]", "utf-8");
+
+    let parserFactoryCalled = false;
+    let platformReceived = "";
+
+    const mockParser = {
+      schema: {} as any,
+      load: async () => [],
+    };
+
+    const mockParserFactory = (platform: string) => {
+      parserFactoryCalled = true;
+      platformReceived = platform;
+      return mockParser;
+    };
+
+    const processor = new Processor(
+      createDefaultDependenciesWithOverrides({
+        parserFactory: mockParserFactory,
+      }),
+    );
+
+    const options: Options = {
+      input: filePath,
+      output: outputDir,
+      platform: "claude",
+      format: "markdown",
+      split: true,
+      quiet: true,
+      dryRun: false,
+      filenameEncoding: "standard",
+    };
+
+    await processor.processInput(options);
+    expect(parserFactoryCalled).toBe(true);
+    expect(platformReceived).toBe("claude");
+  });
+
+  test("uses injected loggerFactory", async () => {
+    const filePath = path.join(tempDir, "test.json");
+    await fs.writeFile(filePath, "[]", "utf-8");
+
+    let loggerFactoryCalled = false;
+    let quietOptionReceived: boolean | undefined;
+
+    const mockLogger = {
+      info: () => {},
+      stat: () => {},
+      error: () => {},
+      warn: () => {},
+      success: () => {},
+      section: () => {},
+      progress: () => {},
+      output: () => {},
+    };
+
+    const mockLoggerFactory = (options: { quiet?: boolean }) => {
+      loggerFactoryCalled = true;
+      quietOptionReceived = options.quiet;
+      return mockLogger;
+    };
+
+    const processor = new Processor(
+      createDefaultDependenciesWithOverrides({
+        loggerFactory: mockLoggerFactory as any,
+      }),
+    );
+
+    const options: Options = {
+      input: filePath,
+      output: outputDir,
+      platform: "chatgpt",
+      format: "markdown",
+      split: true,
+      quiet: true,
+      dryRun: false,
+      filenameEncoding: "standard",
+    };
+
+    await processor.processInput(options);
+    expect(loggerFactoryCalled).toBe(true);
+    expect(quietOptionReceived).toBe(true);
   });
 });

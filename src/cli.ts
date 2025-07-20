@@ -1,5 +1,6 @@
 import { Command } from "commander";
 import { Processor } from "./core/processing/processor.js";
+import { createDefaultDependencies } from "./core/processor-factories.js";
 import { formatErrorWithContext } from "./utils/errors/formatter.js";
 import { logger } from "./utils/logger.js";
 import { optionsSchema } from "./utils/options.js";
@@ -86,8 +87,8 @@ For more options and detailed documentation:
   try {
     const options = optionsSchema.parse(program.opts());
 
-    // Use factory method to create processor with default configuration
-    const processor = Processor.create();
+    // Create processor with dependency injection
+    const processor = new Processor(createDefaultDependencies());
     await processor.processInput(options);
   } catch (error) {
     const errorMessage = formatErrorWithContext(error);

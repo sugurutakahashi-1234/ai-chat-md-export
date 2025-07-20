@@ -6,7 +6,7 @@ interface LoggerOptions {
   quiet?: boolean;
 }
 
-class Logger {
+export class Logger {
   constructor(private options: LoggerOptions = {}) {}
 
   private shouldLog(level: LogLevel): boolean {
