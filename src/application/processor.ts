@@ -1,7 +1,7 @@
 import path from "node:path";
-import { getRelativePath } from "../../utils/errors/formatter.js";
-import type { Options } from "../../utils/options.js";
-import type { ProcessorDependencies } from "../processor-dependencies.js";
+import type { Options } from "../shared/config/options.js";
+import { getRelativePath } from "../shared/errors/formatter.js";
+import type { ProcessorDependencies } from "./dependencies.js";
 
 /**
  * Main processor class with dependency injection

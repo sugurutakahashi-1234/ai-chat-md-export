@@ -14,7 +14,7 @@ builds:
   - id: ai-chat-md-export
     builder: bun
     binary: ai-chat-md-export
-    main: ./src/cli.ts
+    main: ./src/presentation/cli.ts
     targets:
       - darwin-x64          # macOS Intel
       - darwin-arm64        # macOS Apple Silicon

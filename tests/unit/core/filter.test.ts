@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test";
-import { ConversationFilter } from "../../../src/core/processing/filter.js";
-import type { Conversation } from "../../../src/types.js";
-import { Logger } from "../../../src/utils/logger.js";
-import type { Options } from "../../../src/utils/options.js";
+import type { Conversation } from "../../../src/domain/models/types.js";
+import { ConversationFilter } from "../../../src/domain/services/filter.js";
+import type { Options } from "../../../src/shared/config/options.js";
+import { Logger } from "../../../src/shared/utils/logger.js";
 
 describe("ConversationFilter", () => {
   const conversations: Conversation[] = [

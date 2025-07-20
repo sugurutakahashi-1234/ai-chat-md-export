@@ -7,48 +7,66 @@ tsg --tsconfig ./tsconfig.json --LR --md docs/dependency-graphs/typescript-graph
 ```mermaid
 flowchart LR
     subgraph src["src"]
-        src/types.ts["types.ts"]
-        src/version.ts["version.ts"]
-        src/cli.ts["cli.ts"]
-        src/index.ts["index.ts"]
-        subgraph src/utils["/utils"]
-            src/utils/options.ts["options.ts"]
-            src/utils/logger.ts["logger.ts"]
-            src/utils/filename.ts["filename.ts"]
-            src/utils/validator.ts["validator.ts"]
-            subgraph src/utils/errors["/errors"]
-                src/utils/errors/errors.ts["errors.ts"]
-                src/utils/errors/formatter.ts["formatter.ts"]
+        subgraph src/domain["/domain"]
+            subgraph src/domain/models["/models"]
+                src/domain/models/types.ts["types.ts"]
+            end
+            subgraph src/domain/interfaces["/interfaces"]
+                src/domain/interfaces/output//formatter.ts["output-formatter.ts"]
+                src/domain/interfaces/platform//parser.ts["platform-parser.ts"]
+            end
+            subgraph src/domain/services["/services"]
+                src/domain/services/filter.ts["filter.ts"]
             end
         end
-        subgraph src/core["/core"]
-            src/core/processor//depend_encies.ts["processor-dependencies.ts"]
-            src/core/processor//factories.ts["processor-factories.ts"]
-            subgraph src/core/interfaces["/interfaces"]
-                src/core/interfaces/output//formatter.ts["output-formatter.ts"]
-                src/core/interfaces/platform//parser.ts["platform-parser.ts"]
+        subgraph src/shared["/shared"]
+            subgraph src/shared/config["/config"]
+                src/shared/config/options.ts["options.ts"]
             end
-            subgraph src/core/io["/io"]
-                src/core/io/file//loader.ts["file-loader.ts"]
-                src/core/io/file//writer.ts["file-writer.ts"]
-                subgraph src/core/io/formatters["/formatters"]
-                    src/core/io/formatters/json.ts["json.ts"]
-                    src/core/io/formatters/markdown.ts["markdown.ts"]
+            subgraph src/shared/utils["/utils"]
+                src/shared/utils/logger.ts["logger.ts"]
+                src/shared/utils/filename.ts["filename.ts"]
+                src/shared/utils/validator.ts["validator.ts"]
+            end
+            subgraph src/shared/errors["/errors"]
+                src/shared/errors/errors.ts["errors.ts"]
+                src/shared/errors/formatter.ts["formatter.ts"]
+            end
+            subgraph src/shared/constants["/constants"]
+                src/shared/constants/version.ts["version.ts"]
+            end
+        end
+        subgraph src/infrastructure["/infrastructure"]
+            subgraph src/infrastructure/io["/io"]
+                src/infrastructure/io/file//loader.ts["file-loader.ts"]
+                src/infrastructure/io/file//writer.ts["file-writer.ts"]
+            end
+            subgraph src/infrastructure/formatters["/formatters"]
+                src/infrastructure/formatters/json.ts["json.ts"]
+                src/infrastructure/formatters/markdown.ts["markdown.ts"]
+            end
+            subgraph src/infrastructure/parsers["/parsers"]
+                src/infrastructure/parsers/abstract//parser.ts["abstract-parser.ts"]
+                subgraph src/infrastructure/parsers/chatgpt["/chatgpt"]
+                    src/infrastructure/parsers/chatgpt/schema.ts["schema.ts"]
+                    src/infrastructure/parsers/chatgpt/parser.ts["parser.ts"]
+                end
+                subgraph src/infrastructure/parsers/claude["/claude"]
+                    src/infrastructure/parsers/claude/schema.ts["schema.ts"]
+                    src/infrastructure/parsers/claude/parser.ts["parser.ts"]
                 end
             end
-            subgraph src/core/processing["/processing"]
-                src/core/processing/filter.ts["filter.ts"]
-                src/core/processing/processor.ts["processor.ts"]
+            subgraph src/infrastructure/factories["/factories"]
+                src/infrastructure/factories/processor//factory.ts["processor-factory.ts"]
             end
         end
-        subgraph src/parsers["/parsers"]
-            src/parsers/abstract//platform//parser.ts["abstract-platform-parser.ts"]
-            src/parsers/chatgpt//parser.ts["chatgpt-parser.ts"]
-            src/parsers/claude//parser.ts["claude-parser.ts"]
-            subgraph src/parsers/schemas["/schemas"]
-                src/parsers/schemas/chatgpt.ts["chatgpt.ts"]
-                src/parsers/schemas/claude.ts["claude.ts"]
-            end
+        subgraph src/application["/application"]
+            src/application/depend_encies.ts["dependencies.ts"]
+            src/application/processor.ts["processor.ts"]
+        end
+        subgraph src/presentation["/presentation"]
+            src/presentation/cli.ts["cli.ts"]
+            src/presentation/index.ts["index.ts"]
         end
     end
     subgraph node//modules["node_modules"]
@@ -56,78 +74,78 @@ flowchart LR
         node//modules/picocolors/picocolors.d.ts["picocolors"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
-    src/utils/errors/formatter.ts-->src/utils/errors/errors.ts
-    src/utils/options.ts-->node//modules/zod/index.d.cts
-    src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
-    src/core/interfaces/output//formatter.ts-->src/types.ts
-    src/core/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
-    src/core/interfaces/platform//parser.ts-->src/types.ts
-    src/core/io/file//loader.ts-->src/utils/errors/errors.ts
-    src/core/io/file//loader.ts-->src/utils/errors/formatter.ts
-    src/core/io/file//writer.ts-->src/types.ts
-    src/core/io/file//writer.ts-->src/utils/errors/errors.ts
-    src/core/io/file//writer.ts-->src/utils/errors/formatter.ts
-    src/core/io/file//writer.ts-->src/utils/filename.ts
-    src/core/io/file//writer.ts-->src/utils/logger.ts
-    src/core/io/file//writer.ts-->src/utils/options.ts
-    src/core/io/file//writer.ts-->src/core/interfaces/output//formatter.ts
-    src/core/processing/filter.ts-->src/types.ts
-    src/core/processing/filter.ts-->src/utils/logger.ts
-    src/core/processing/filter.ts-->src/utils/options.ts
-    src/core/processor//depend_encies.ts-->src/utils/logger.ts
-    src/core/processor//depend_encies.ts-->src/core/interfaces/output//formatter.ts
-    src/core/processor//depend_encies.ts-->src/core/interfaces/platform//parser.ts
-    src/core/processor//depend_encies.ts-->src/core/io/file//loader.ts
-    src/core/processor//depend_encies.ts-->src/core/io/file//writer.ts
-    src/core/processor//depend_encies.ts-->src/core/processing/filter.ts
-    src/core/processing/processor.ts-->src/utils/errors/formatter.ts
-    src/core/processing/processor.ts-->src/utils/options.ts
-    src/core/processing/processor.ts-->src/core/processor//depend_encies.ts
-    src/utils/validator.ts-->node//modules/zod/index.d.cts
-    src/utils/validator.ts-->src/utils/errors/errors.ts
-    src/parsers/abstract//platform//parser.ts-->node//modules/zod/index.d.cts
-    src/parsers/abstract//platform//parser.ts-->src/core/interfaces/platform//parser.ts
-    src/parsers/abstract//platform//parser.ts-->src/types.ts
-    src/parsers/abstract//platform//parser.ts-->src/utils/errors/errors.ts
-    src/parsers/abstract//platform//parser.ts-->src/utils/logger.ts
-    src/parsers/abstract//platform//parser.ts-->src/utils/validator.ts
-    src/parsers/schemas/chatgpt.ts-->node//modules/zod/index.d.cts
-    src/parsers/chatgpt//parser.ts-->src/core/interfaces/platform//parser.ts
-    src/parsers/chatgpt//parser.ts-->src/types.ts
-    src/parsers/chatgpt//parser.ts-->src/utils/validator.ts
-    src/parsers/chatgpt//parser.ts-->src/parsers/abstract//platform//parser.ts
-    src/parsers/chatgpt//parser.ts-->src/parsers/schemas/chatgpt.ts
-    src/parsers/schemas/claude.ts-->node//modules/zod/index.d.cts
-    src/parsers/claude//parser.ts-->src/core/interfaces/platform//parser.ts
-    src/parsers/claude//parser.ts-->src/types.ts
-    src/parsers/claude//parser.ts-->src/utils/validator.ts
-    src/parsers/claude//parser.ts-->src/parsers/abstract//platform//parser.ts
-    src/parsers/claude//parser.ts-->src/parsers/schemas/claude.ts
-    src/core/io/formatters/json.ts-->src/types.ts
-    src/core/io/formatters/json.ts-->src/core/interfaces/output//formatter.ts
-    src/core/io/formatters/markdown.ts-->src/types.ts
-    src/core/io/formatters/markdown.ts-->src/core/interfaces/output//formatter.ts
-    src/core/processor//factories.ts-->src/parsers/chatgpt//parser.ts
-    src/core/processor//factories.ts-->src/parsers/claude//parser.ts
-    src/core/processor//factories.ts-->src/utils/errors/errors.ts
-    src/core/processor//factories.ts-->src/utils/errors/formatter.ts
-    src/core/processor//factories.ts-->src/utils/logger.ts
-    src/core/processor//factories.ts-->src/utils/options.ts
-    src/core/processor//factories.ts-->src/core/interfaces/output//formatter.ts
-    src/core/processor//factories.ts-->src/core/interfaces/platform//parser.ts
-    src/core/processor//factories.ts-->src/core/io/file//loader.ts
-    src/core/processor//factories.ts-->src/core/io/file//writer.ts
-    src/core/processor//factories.ts-->src/core/io/formatters/json.ts
-    src/core/processor//factories.ts-->src/core/io/formatters/markdown.ts
-    src/core/processor//factories.ts-->src/core/processing/filter.ts
-    src/core/processor//factories.ts-->src/core/processor//depend_encies.ts
-    src/cli.ts-->node//modules/commander/typings/index.d.ts
-    src/cli.ts-->src/core/processing/processor.ts
-    src/cli.ts-->src/core/processor//factories.ts
-    src/cli.ts-->src/utils/errors/formatter.ts
-    src/cli.ts-->src/utils/logger.ts
-    src/cli.ts-->src/utils/options.ts
-    src/cli.ts-->src/version.ts
-    src/index.ts-->src/cli.ts
+    src/domain/interfaces/output//formatter.ts-->src/domain/models/types.ts
+    src/domain/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
+    src/domain/interfaces/platform//parser.ts-->src/domain/models/types.ts
+    src/shared/config/options.ts-->node//modules/zod/index.d.cts
+    src/shared/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
+    src/domain/services/filter.ts-->src/shared/config/options.ts
+    src/domain/services/filter.ts-->src/shared/utils/logger.ts
+    src/domain/services/filter.ts-->src/domain/models/types.ts
+    src/shared/errors/formatter.ts-->src/shared/errors/errors.ts
+    src/infrastructure/io/file//loader.ts-->src/shared/errors/errors.ts
+    src/infrastructure/io/file//loader.ts-->src/shared/errors/formatter.ts
+    src/infrastructure/io/file//writer.ts-->src/domain/interfaces/output//formatter.ts
+    src/infrastructure/io/file//writer.ts-->src/domain/models/types.ts
+    src/infrastructure/io/file//writer.ts-->src/shared/config/options.ts
+    src/infrastructure/io/file//writer.ts-->src/shared/errors/errors.ts
+    src/infrastructure/io/file//writer.ts-->src/shared/errors/formatter.ts
+    src/infrastructure/io/file//writer.ts-->src/shared/utils/filename.ts
+    src/infrastructure/io/file//writer.ts-->src/shared/utils/logger.ts
+    src/application/depend_encies.ts-->src/domain/interfaces/output//formatter.ts
+    src/application/depend_encies.ts-->src/domain/interfaces/platform//parser.ts
+    src/application/depend_encies.ts-->src/domain/services/filter.ts
+    src/application/depend_encies.ts-->src/infrastructure/io/file//loader.ts
+    src/application/depend_encies.ts-->src/infrastructure/io/file//writer.ts
+    src/application/depend_encies.ts-->src/shared/utils/logger.ts
+    src/application/processor.ts-->src/shared/config/options.ts
+    src/application/processor.ts-->src/shared/errors/formatter.ts
+    src/application/processor.ts-->src/application/depend_encies.ts
+    src/infrastructure/formatters/json.ts-->src/domain/interfaces/output//formatter.ts
+    src/infrastructure/formatters/json.ts-->src/domain/models/types.ts
+    src/infrastructure/formatters/markdown.ts-->src/domain/interfaces/output//formatter.ts
+    src/infrastructure/formatters/markdown.ts-->src/domain/models/types.ts
+    src/shared/utils/validator.ts-->node//modules/zod/index.d.cts
+    src/shared/utils/validator.ts-->src/shared/errors/errors.ts
+    src/infrastructure/parsers/abstract//parser.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/abstract//parser.ts-->src/domain/interfaces/platform//parser.ts
+    src/infrastructure/parsers/abstract//parser.ts-->src/domain/models/types.ts
+    src/infrastructure/parsers/abstract//parser.ts-->src/shared/errors/errors.ts
+    src/infrastructure/parsers/abstract//parser.ts-->src/shared/utils/logger.ts
+    src/infrastructure/parsers/abstract//parser.ts-->src/shared/utils/validator.ts
+    src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/platform//parser.ts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/models/types.ts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/shared/utils/validator.ts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/abstract//parser.ts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/chatgpt/schema.ts
+    src/infrastructure/parsers/claude/schema.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/claude/parser.ts-->src/domain/interfaces/platform//parser.ts
+    src/infrastructure/parsers/claude/parser.ts-->src/domain/models/types.ts
+    src/infrastructure/parsers/claude/parser.ts-->src/shared/utils/validator.ts
+    src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/abstract//parser.ts
+    src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/claude/schema.ts
+    src/infrastructure/factories/processor//factory.ts-->src/application/depend_encies.ts
+    src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/output//formatter.ts
+    src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/platform//parser.ts
+    src/infrastructure/factories/processor//factory.ts-->src/domain/services/filter.ts
+    src/infrastructure/factories/processor//factory.ts-->src/shared/config/options.ts
+    src/infrastructure/factories/processor//factory.ts-->src/shared/errors/errors.ts
+    src/infrastructure/factories/processor//factory.ts-->src/shared/errors/formatter.ts
+    src/infrastructure/factories/processor//factory.ts-->src/shared/utils/logger.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/json.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/markdown.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/io/file//loader.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/io/file//writer.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
+    src/presentation/cli.ts-->node//modules/commander/typings/index.d.ts
+    src/presentation/cli.ts-->src/application/processor.ts
+    src/presentation/cli.ts-->src/infrastructure/factories/processor//factory.ts
+    src/presentation/cli.ts-->src/shared/config/options.ts
+    src/presentation/cli.ts-->src/shared/constants/version.ts
+    src/presentation/cli.ts-->src/shared/errors/formatter.ts
+    src/presentation/cli.ts-->src/shared/utils/logger.ts
+    src/presentation/index.ts-->src/presentation/cli.ts
 ```
 

@@ -1,9 +1,9 @@
-import type { Logger } from "../utils/logger.js";
-import type { OutputFormatter } from "./interfaces/output-formatter.js";
-import type { PlatformParser } from "./interfaces/platform-parser.js";
-import type { FileLoader } from "./io/file-loader.js";
-import type { FileWriter } from "./io/file-writer.js";
-import type { ConversationFilter } from "./processing/filter.js";
+import type { OutputFormatter } from "../domain/interfaces/output-formatter.js";
+import type { PlatformParser } from "../domain/interfaces/platform-parser.js";
+import type { ConversationFilter } from "../domain/services/filter.js";
+import type { FileLoader } from "../infrastructure/io/file-loader.js";
+import type { FileWriter } from "../infrastructure/io/file-writer.js";
+import type { Logger } from "../shared/utils/logger.js";
 
 /**
  * Dependencies required by the Processor class

@@ -1,16 +1,16 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import type { Conversation } from "../../types.js";
-import { FileError } from "../../utils/errors/errors.js";
+import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
+import type { Conversation } from "../../domain/models/types.js";
+import type { Options } from "../../shared/config/options.js";
+import { FileError } from "../../shared/errors/errors.js";
 import {
   formatErrorMessage,
   getErrorMessage,
   getRelativePath,
-} from "../../utils/errors/formatter.js";
-import { generateFileName } from "../../utils/filename.js";
-import type { Logger } from "../../utils/logger.js";
-import type { Options } from "../../utils/options.js";
-import type { OutputFormatter } from "../interfaces/output-formatter.js";
+} from "../../shared/errors/formatter.js";
+import { generateFileName } from "../../shared/utils/filename.js";
+import type { Logger } from "../../shared/utils/logger.js";
 
 interface WriteResult {
   successCount: number;

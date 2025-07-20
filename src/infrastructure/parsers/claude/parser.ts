@@ -1,11 +1,8 @@
-import type { ParsedConversation } from "../core/interfaces/platform-parser.js";
-import type { Conversation } from "../types.js";
-import { assertType } from "../utils/validator.js";
-import { AbstractPlatformParser } from "./abstract-platform-parser.js";
-import {
-  type ClaudeConversation,
-  claudeConversationSchema,
-} from "./schemas/claude.js";
+import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
+import type { Conversation } from "../../../domain/models/types.js";
+import { assertType } from "../../../shared/utils/validator.js";
+import { AbstractPlatformParser } from "../abstract-parser.js";
+import { type ClaudeConversation, claudeConversationSchema } from "./schema.js";
 
 /**
  * Claude platform parser

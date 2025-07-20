@@ -1,10 +1,10 @@
 import { Command } from "commander";
-import { Processor } from "./core/processing/processor.js";
-import { createDefaultDependencies } from "./core/processor-factories.js";
-import { formatErrorWithContext } from "./utils/errors/formatter.js";
-import { Logger } from "./utils/logger.js";
-import { optionsSchema } from "./utils/options.js";
-import { VERSION } from "./version.js";
+import { Processor } from "../application/processor.js";
+import { createDefaultDependencies } from "../infrastructure/factories/processor-factory.js";
+import { optionsSchema } from "../shared/config/options.js";
+import { VERSION } from "../shared/constants/version.js";
+import { formatErrorWithContext } from "../shared/errors/formatter.js";
+import { Logger } from "../shared/utils/logger.js";
 
 export async function main(): Promise<void> {
   const program = new Command();

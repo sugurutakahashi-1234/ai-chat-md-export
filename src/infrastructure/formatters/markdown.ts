@@ -1,5 +1,5 @@
-import type { Conversation } from "../../../types.js";
-import type { OutputFormatter } from "../../interfaces/output-formatter.js";
+import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
+import type { Conversation } from "../../domain/models/types.js";
 
 function formatTimestamp(timestamp: Date): string {
   const date = timestamp;

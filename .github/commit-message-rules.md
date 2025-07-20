@@ -27,7 +27,7 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/).
 ### Subject
 - 5-72 characters
 - Present tense, imperative mood
-- No capital letter at start
+- Must start with lowercase letter (e.g., `add` not `Add`)
 - No period at end
 
 ## Tips

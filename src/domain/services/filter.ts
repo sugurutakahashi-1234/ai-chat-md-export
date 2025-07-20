@@ -1,6 +1,6 @@
-import type { Conversation } from "../../types.js";
-import type { Logger } from "../../utils/logger.js";
-import type { Options } from "../../utils/options.js";
+import type { Options } from "../../shared/config/options.js";
+import type { Logger } from "../../shared/utils/logger.js";
+import type { Conversation } from "../models/types.js";
 
 /**
  * Conversation filter for date range and keyword search

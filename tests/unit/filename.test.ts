@@ -3,7 +3,7 @@ import {
   generateFileName,
   sanitizeFileNamePreserve,
   sanitizeFileNameStandard,
-} from "../../src/utils/filename";
+} from "../../src/shared/utils/filename.js";
 
 describe("sanitizeFileNameStandard", () => {
   it("keeps alphanumeric and safe characters as-is", () => {

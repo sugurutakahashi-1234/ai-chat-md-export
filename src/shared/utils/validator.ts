@@ -1,6 +1,6 @@
 import type { z as zType } from "zod";
 import { ZodError, z } from "zod";
-import { ValidationError } from "./errors/errors.js";
+import { ValidationError } from "../errors/errors.js";
 
 // Type guard functions
 /**

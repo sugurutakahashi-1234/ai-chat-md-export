@@ -3,14 +3,14 @@ import type {
   LoadOptions,
   ParsedConversation,
   PlatformParser,
-} from "../core/interfaces/platform-parser.js";
-import type { Conversation } from "../types.js";
-import { ValidationError } from "../utils/errors/errors.js";
-import type { Logger } from "../utils/logger.js";
+} from "../../domain/interfaces/platform-parser.js";
+import type { Conversation } from "../../domain/models/types.js";
+import { ValidationError } from "../../shared/errors/errors.js";
+import type { Logger } from "../../shared/utils/logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
-} from "../utils/validator.js";
+} from "../../shared/utils/validator.js";
 
 /**
  * Abstract base class for platform-specific parsers

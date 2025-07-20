@@ -1,9 +1,9 @@
 import { describe, expect, test } from "bun:test";
+import type { Conversation } from "../../src/domain/models/types.js";
 import {
   convertMultipleToMarkdown,
   convertToMarkdown,
-} from "../../src/core/io/formatters/markdown.js";
-import type { Conversation } from "../../src/types.js";
+} from "../../src/infrastructure/formatters/markdown.js";
 
 describe("convertToMarkdown", () => {
   test("converts basic conversation", () => {

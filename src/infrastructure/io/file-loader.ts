@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
-import { FileError } from "../../utils/errors/errors.js";
-import { getErrorMessage } from "../../utils/errors/formatter.js";
+import { FileError } from "../../shared/errors/errors.js";
+import { getErrorMessage } from "../../shared/errors/formatter.js";
 
 export class FileLoader {
   /**

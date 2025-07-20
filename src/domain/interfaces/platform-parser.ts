@@ -1,5 +1,5 @@
 import type { ZodType } from "zod";
-import type { Conversation } from "../../types.js";
+import type { Conversation } from "../models/types.js";
 
 /**
  * Interface for platform-specific data parsers

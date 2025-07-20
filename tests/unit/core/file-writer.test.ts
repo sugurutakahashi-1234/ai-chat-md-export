@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { FileWriter } from "../../../src/core/io/file-writer.js";
-import { JsonConverter } from "../../../src/core/io/formatters/json.js";
-import { MarkdownConverter } from "../../../src/core/io/formatters/markdown.js";
-import type { Conversation } from "../../../src/types.js";
-import { Logger } from "../../../src/utils/logger.js";
-import type { Options } from "../../../src/utils/options.js";
+import type { Conversation } from "../../../src/domain/models/types.js";
+import { JsonConverter } from "../../../src/infrastructure/formatters/json.js";
+import { MarkdownConverter } from "../../../src/infrastructure/formatters/markdown.js";
+import { FileWriter } from "../../../src/infrastructure/io/file-writer.js";
+import type { Options } from "../../../src/shared/config/options.js";
+import { Logger } from "../../../src/shared/utils/logger.js";
 
 describe("FileWriter", () => {
   const tempDir = path.join(process.cwd(), "tests/temp/file-writer");

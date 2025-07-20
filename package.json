@@ -34,12 +34,12 @@
   "bin": {
     "ai-chat-md-export": "bin/ai-chat-md-export.js"
   },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./lib/presentation/index.js",
+  "types": "./lib/presentation/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "default": "./lib/index.js"
+      "types": "./lib/presentation/index.d.ts",
+      "default": "./lib/presentation/index.js"
     }
   },
   "files": [

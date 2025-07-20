@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { optionsSchema } from "../../../src/utils/options.js";
+import { optionsSchema } from "../../../src/shared/config/options.js";
 
 describe("optionsSchema", () => {
   test("validates valid options", () => {

@@ -4,7 +4,7 @@ import {
   FileError,
   isBaseError,
   ValidationError,
-} from "../../../src/utils/errors/errors.js";
+} from "../../../src/shared/errors/errors.js";
 
 describe("custom-errors", () => {
   describe("BaseError", () => {
