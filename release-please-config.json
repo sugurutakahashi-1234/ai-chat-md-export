@@ -30,7 +30,7 @@
       "extra-files": [
         {
           "type": "generic",
-          "path": "src/version.ts"
+          "path": "src/domain/constants/version.ts"
         }
       ]
     }
