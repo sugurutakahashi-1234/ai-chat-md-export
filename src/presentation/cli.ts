@@ -90,7 +90,7 @@ For more options and detailed documentation:
 
     // Create processor with dependency injection
     const processor = new Processor(createDefaultDependencies(options));
-    await processor.processInput(options);
+    await processor.convertConversations(options);
   } catch (error) {
     const errorMessage = formatErrorWithContext(error);
     const logger = new Logger();

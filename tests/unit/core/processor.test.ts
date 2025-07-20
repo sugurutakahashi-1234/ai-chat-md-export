@@ -34,7 +34,7 @@ async function processFile(
     input: inputPath,
     output: resolvedOutputDir,
   };
-  return testProcessor.processInput(fileOptions);
+  return testProcessor.convertConversations(fileOptions);
 }
 
 describe("processFile edge cases", () => {
@@ -126,7 +126,7 @@ describe("Processor with dependency injection", () => {
       }),
     );
 
-    await processor.processInput(options);
+    await processor.convertConversations(options);
     expect(loadJsonFileCalled).toBe(true);
   });
 
@@ -162,7 +162,7 @@ describe("Processor with dependency injection", () => {
       }),
     );
 
-    await processor.processInput(options);
+    await processor.convertConversations(options);
     expect(parserLoadCalled).toBe(true);
   });
 
@@ -202,7 +202,7 @@ describe("Processor with dependency injection", () => {
       }),
     );
 
-    await processor.processInput(options);
+    await processor.convertConversations(options);
     expect(loggerInfoCalled).toBe(true);
   });
 });

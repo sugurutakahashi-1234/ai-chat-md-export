@@ -13,7 +13,7 @@ export class Processor {
   constructor(private readonly deps: ProcessorDependencies) {}
 
   /**
-   * Process input file and convert to specified output format
+   * Convert conversations from input file to specified output format
    *
    * Pipeline steps:
    * 1. Load JSON data from input file
@@ -21,7 +21,7 @@ export class Processor {
    * 3. Apply filters (date range, keyword search)
    * 4. Write filtered conversations to output
    */
-  async processInput(options: Options): Promise<void> {
+  async convertConversations(options: Options): Promise<void> {
     const inputPath = path.resolve(options.input);
     const outputDir = path.resolve(options.output || process.cwd());
 
