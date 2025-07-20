@@ -45,7 +45,6 @@ flowchart LR
             src/parsers/abstract//platform//parser.ts["abstract-platform-parser.ts"]
             src/parsers/chatgpt//parser.ts["chatgpt-parser.ts"]
             src/parsers/claude//parser.ts["claude-parser.ts"]
-            src/parsers/parser//factory.ts["parser-factory.ts"]
             subgraph src/parsers/schemas["/schemas"]
                 src/parsers/schemas/chatgpt.ts["chatgpt.ts"]
                 src/parsers/schemas/claude.ts["claude.ts"]
@@ -109,11 +108,8 @@ flowchart LR
     src/parsers/claude//parser.ts-->src/utils/validator.ts
     src/parsers/claude//parser.ts-->src/parsers/abstract//platform//parser.ts
     src/parsers/claude//parser.ts-->src/parsers/schemas/claude.ts
-    src/parsers/parser//factory.ts-->src/core/interfaces/platform//parser.ts
-    src/parsers/parser//factory.ts-->src/utils/options.ts
-    src/parsers/parser//factory.ts-->src/parsers/chatgpt//parser.ts
-    src/parsers/parser//factory.ts-->src/parsers/claude//parser.ts
-    src/core/processor//factories.ts-->src/parsers/parser//factory.ts
+    src/core/processor//factories.ts-->src/parsers/chatgpt//parser.ts
+    src/core/processor//factories.ts-->src/parsers/claude//parser.ts
     src/core/processor//factories.ts-->src/utils/logger.ts
     src/core/processor//factories.ts-->src/core/interfaces/platform//parser.ts
     src/core/processor//factories.ts-->src/core/io/file//loader.ts

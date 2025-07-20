@@ -1,4 +1,5 @@
-import { createPlatformParser } from "../parsers/parser-factory.js";
+import { ChatGPTParser } from "../parsers/chatgpt-parser.js";
+import { ClaudeParser } from "../parsers/claude-parser.js";
 import { createLogger } from "../utils/logger.js";
 import type { PlatformParser } from "./interfaces/platform-parser.js";
 import { FileLoader } from "./io/file-loader.js";
@@ -15,7 +16,16 @@ export function createDefaultDependencies(): ProcessorDependencies {
   return {
     fileLoader: new FileLoader(),
     fileWriter: new FileWriter(),
-    parserFactory: createPlatformParser as (platform: string) => PlatformParser,
+    parserFactory: (platform: string): PlatformParser => {
+      switch (platform) {
+        case "chatgpt":
+          return new ChatGPTParser();
+        case "claude":
+          return new ClaudeParser();
+        default:
+          throw new Error(`Unknown platform: ${platform}`);
+      }
+    },
     loggerFactory: createLogger,
   };
 }
