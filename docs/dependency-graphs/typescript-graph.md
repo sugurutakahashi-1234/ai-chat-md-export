@@ -34,7 +34,6 @@ flowchart LR
                 src/core/io/file//writer.ts["file-writer.ts"]
             end
             subgraph src/core/processing["/processing"]
-                src/core/processing/output//manager.ts["output-manager.ts"]
                 src/core/processing/filter.ts["filter.ts"]
                 src/core/processing/processor.ts["processor.ts"]
                 subgraph src/core/processing/converters["/converters"]
@@ -89,20 +88,15 @@ flowchart LR
     src/core/processing/converters/json.ts-->src/core/interfaces/output//formatter.ts
     src/core/processing/converters/markdown.ts-->src/types.ts
     src/core/processing/converters/markdown.ts-->src/core/interfaces/output//formatter.ts
-    src/core/processing/output//manager.ts-->src/types.ts
-    src/core/processing/output//manager.ts-->src/utils/errors/errors.ts
-    src/core/processing/output//manager.ts-->src/utils/errors/formatter.ts
-    src/core/processing/output//manager.ts-->src/utils/options.ts
-    src/core/processing/output//manager.ts-->src/core/interfaces/output//formatter.ts
-    src/core/processing/output//manager.ts-->src/core/processing/converters/json.ts
-    src/core/processing/output//manager.ts-->src/core/processing/converters/markdown.ts
     src/core/io/file//writer.ts-->src/types.ts
     src/core/io/file//writer.ts-->src/utils/errors/errors.ts
     src/core/io/file//writer.ts-->src/utils/errors/formatter.ts
     src/core/io/file//writer.ts-->src/utils/filename.ts
     src/core/io/file//writer.ts-->src/utils/logger.ts
     src/core/io/file//writer.ts-->src/utils/options.ts
-    src/core/io/file//writer.ts-->src/core/processing/output//manager.ts
+    src/core/io/file//writer.ts-->src/core/interfaces/output//formatter.ts
+    src/core/io/file//writer.ts-->src/core/processing/converters/json.ts
+    src/core/io/file//writer.ts-->src/core/processing/converters/markdown.ts
     src/core/processing/filter.ts-->src/types.ts
     src/core/processing/filter.ts-->src/utils/options.ts
     src/core/processing/processor.ts-->src/handlers/chatgpt//handler.ts
@@ -116,7 +110,6 @@ flowchart LR
     src/core/processing/processor.ts-->src/core/io/file//loader.ts
     src/core/processing/processor.ts-->src/core/io/file//writer.ts
     src/core/processing/processor.ts-->src/core/processing/filter.ts
-    src/core/processing/processor.ts-->src/core/processing/output//manager.ts
     src/cli.ts-->node//modules/commander/typings/index.d.ts
     src/cli.ts-->src/core/processing/processor.ts
     src/cli.ts-->src/utils/errors/formatter.ts

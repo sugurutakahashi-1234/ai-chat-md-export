@@ -14,7 +14,6 @@ import type { PlatformParser } from "../interfaces/platform-parser.js";
 import { FileLoader } from "../io/file-loader.js";
 import { FileWriter } from "../io/file-writer.js";
 import { applyFilters } from "./filter.js";
-import { OutputManager } from "./output-manager.js";
 
 /**
  * Processor configuration
@@ -38,9 +37,7 @@ export class Processor {
     // Use provided instances or create defaults
     this.fileLoader = config.fileLoader || new FileLoader();
 
-    // Create OutputManager and inject it into FileWriter
-    const outputManager = new OutputManager();
-    this.fileWriter = config.fileWriter || new FileWriter(outputManager);
+    this.fileWriter = config.fileWriter || new FileWriter();
   }
 
   /**

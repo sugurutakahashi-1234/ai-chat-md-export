@@ -2,14 +2,12 @@ import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { FileWriter } from "../../../src/core/io/file-writer.js";
-import { OutputManager } from "../../../src/core/processing/output-manager.js";
 import type { Conversation } from "../../../src/types.js";
 import type { Options } from "../../../src/utils/options.js";
 
 describe("FileWriter", () => {
   const tempDir = path.join(process.cwd(), "tests/temp/file-writer");
-  const outputManager = new OutputManager();
-  const fileWriter = new FileWriter(outputManager);
+  const fileWriter = new FileWriter();
 
   beforeEach(async () => {
     await fs.mkdir(tempDir, { recursive: true });
