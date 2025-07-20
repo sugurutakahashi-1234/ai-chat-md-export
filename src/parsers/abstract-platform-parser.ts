@@ -22,6 +22,15 @@ export abstract class AbstractPlatformParser<T = unknown>
 {
   abstract readonly schema: ZodType<T>;
 
+  /**
+   * Parse platform-specific data into a common intermediate format
+   *
+   * This method must be implemented by each platform parser to handle
+   * the specific data structure of that platform (ChatGPT, Claude, etc.)
+   *
+   * @param data The validated platform-specific data
+   * @returns Array of parsed conversations ready for validation and transformation
+   */
   protected abstract parseConversations(data: T): ParsedConversation<unknown>[];
 
   async load(data: T, options: LoadOptions = {}): Promise<Conversation[]> {
