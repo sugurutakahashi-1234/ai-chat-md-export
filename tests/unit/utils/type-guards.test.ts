@@ -1,6 +1,9 @@
 import { describe, expect, it } from "bun:test";
 import { z } from "zod";
-import { assertType, createTypeGuard } from "../../../src/utils/type-guards.js";
+import {
+  assertType,
+  createTypeGuard,
+} from "../../../src/utils/validation/type-guards.js";
 
 describe("type-guards", () => {
   const testSchema = z.object({

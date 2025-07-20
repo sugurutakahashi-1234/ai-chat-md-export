@@ -3,13 +3,13 @@ import {
   FileError,
   FormatError,
   ValidationError,
-} from "../../../src/errors/custom-errors.js";
+} from "../../../src/utils/errors/errors.js";
 import {
   formatErrorMessage,
   formatErrorWithContext,
   getErrorMessage,
   getRelativePath,
-} from "../../../src/utils/error-formatter.js";
+} from "../../../src/utils/errors/formatter.js";
 
 describe("getRelativePath", () => {
   it("returns relative path for files in cwd", () => {

@@ -1,5 +1,5 @@
 import path from "node:path";
-import { isBaseError } from "../errors/custom-errors.js";
+import { isBaseError } from "./errors.js";
 
 /**
  * Get relative path from current working directory

@@ -1,10 +1,10 @@
+import type { Conversation } from "../types.js";
+import { assertType } from "../utils/validation/type-guards.js";
+import { BasePlatformParser, type ParsedConversation } from "./base-handler.js";
 import {
   type ClaudeConversation,
   claudeConversationSchema,
-} from "../schemas/claude.js";
-import type { Conversation } from "../types.js";
-import { assertType } from "../utils/type-guards.js";
-import { BasePlatformParser, type ParsedConversation } from "./base-handler.js";
+} from "./schemas/claude.js";
 
 /**
  * Claude platform parser

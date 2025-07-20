@@ -1,11 +1,11 @@
+import type { Conversation } from "../types.js";
+import { assertType } from "../utils/validation/type-guards.js";
+import { BasePlatformParser, type ParsedConversation } from "./base-handler.js";
 import {
   type ChatGPTConversation,
   type ChatGPTNode,
   chatGPTConversationSchema,
-} from "../schemas/chatgpt.js";
-import type { Conversation } from "../types.js";
-import { assertType } from "../utils/type-guards.js";
-import { BasePlatformParser, type ParsedConversation } from "./base-handler.js";
+} from "./schemas/chatgpt.js";
 
 /**
  * ChatGPT platform parser

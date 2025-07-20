@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "bun:test";
-import { OutputManager } from "../../../src/core/output-manager.js";
+import { OutputManager } from "../../../src/core/processing/output-manager.js";
 import type { Conversation } from "../../../src/types.js";
 
 describe("OutputManager", () => {

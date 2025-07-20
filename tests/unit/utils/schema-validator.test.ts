@@ -4,7 +4,7 @@ import {
   formatValidationReport,
   type ValidationResult,
   validateWithDetails,
-} from "../../../src/utils/schema-validator.js";
+} from "../../../src/utils/validation/schema-validator.js";
 
 describe("validateWithDetails", () => {
   const simpleSchema = z.object({

@@ -1,6 +1,8 @@
 import { Command } from "commander";
-import { Processor } from "./core/processor.js";
-import { formatErrorWithContext } from "./utils/error-formatter.js";
+import { Processor } from "./core/processing/processor.js";
+import { ChatGPTHandler } from "./handlers/chatgpt-handler.js";
+import { ClaudeHandler } from "./handlers/claude-handler.js";
+import { formatErrorWithContext } from "./utils/errors/formatter.js";
 import { logger } from "./utils/logger.js";
 import { optionsSchema } from "./utils/options.js";
 import { VERSION } from "./version.js";
@@ -79,7 +81,14 @@ For more options and detailed documentation:
 
   try {
     const options = optionsSchema.parse(program.opts());
-    const processor = new Processor();
+
+    // Create platform parsers
+    const parsers = {
+      chatgpt: new ChatGPTHandler(),
+      claude: new ClaudeHandler(),
+    };
+
+    const processor = new Processor({ parsers });
     await processor.processInput(options);
   } catch (error) {
     const errorMessage = formatErrorWithContext(error);

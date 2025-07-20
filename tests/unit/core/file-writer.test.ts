@@ -1,8 +1,8 @@
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { FileWriter } from "../../../src/core/file-writer.js";
-import { OutputManager } from "../../../src/core/output-manager.js";
+import { FileWriter } from "../../../src/core/io/file-writer.js";
+import { OutputManager } from "../../../src/core/processing/output-manager.js";
 import type { Conversation } from "../../../src/types.js";
 import type { Options } from "../../../src/utils/options.js";
 

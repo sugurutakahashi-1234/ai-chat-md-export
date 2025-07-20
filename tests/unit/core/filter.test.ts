@@ -3,7 +3,7 @@ import {
   applyFilters,
   filterByDate,
   filterBySearch,
-} from "../../../src/core/filter.js";
+} from "../../../src/core/processing/filter.js";
 import type { Conversation } from "../../../src/types.js";
 
 describe("filterByDate", () => {

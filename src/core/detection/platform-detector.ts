@@ -1,6 +1,6 @@
-import { FormatError } from "../errors/custom-errors.js";
-import type { Options } from "../utils/options.js";
-import type { PlatformParser } from "./interfaces/platform-parser.js";
+import { FormatError } from "../../utils/errors/errors.js";
+import type { Options } from "../../utils/options.js";
+import type { PlatformParser } from "../interfaces/platform-parser.js";
 
 /**
  * Platform detector for AI chat export data

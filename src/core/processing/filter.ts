@@ -1,5 +1,5 @@
-import type { Conversation } from "../types.js";
-import type { Options } from "../utils/options.js";
+import type { Conversation } from "../../types.js";
+import type { Options } from "../../utils/options.js";
 
 export interface FilterStats {
   originalCount: number;

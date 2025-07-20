@@ -1,20 +1,18 @@
 import path from "node:path";
-import { ChatGPTHandler } from "../handlers/chatgpt-handler.js";
-import { ClaudeHandler } from "../handlers/claude-handler.js";
-import type { Conversation } from "../types.js";
+import type { Conversation } from "../../types.js";
 import {
   formatErrorMessage,
   getErrorMessage,
   getRelativePath,
-} from "../utils/error-formatter.js";
-import { createLogger } from "../utils/logger.js";
-import type { Options } from "../utils/options.js";
-import { FileLoader } from "./file-loader.js";
-import { FileWriter } from "./file-writer.js";
+} from "../../utils/errors/formatter.js";
+import { createLogger } from "../../utils/logger.js";
+import type { Options } from "../../utils/options.js";
+import { PlatformDetector } from "../detection/platform-detector.js";
+import type { PlatformParser } from "../interfaces/platform-parser.js";
+import { FileLoader } from "../io/file-loader.js";
+import { FileWriter } from "../io/file-writer.js";
 import { applyFilters } from "./filter.js";
-import type { PlatformParser } from "./interfaces/platform-parser.js";
 import { OutputManager } from "./output-manager.js";
-import { PlatformDetector } from "./platform-detector.js";
 
 /**
  * Processor configuration
@@ -23,6 +21,7 @@ export interface ProcessorConfig {
   fileLoader?: FileLoader;
   fileWriter?: FileWriter;
   platformDetector?: PlatformDetector;
+  parsers?: Record<string, PlatformParser>;
 }
 
 /**
@@ -40,13 +39,17 @@ export class Processor {
     // Use provided instances or create defaults
     this.fileLoader = config.fileLoader || new FileLoader();
 
-    // Create platform parsers and inject them into PlatformDetector
-    const parsers = {
-      chatgpt: new ChatGPTHandler(),
-      claude: new ClaudeHandler(),
-    };
-    this.platformDetector =
-      config.platformDetector || new PlatformDetector(parsers);
+    // Use provided parsers or create default PlatformDetector
+    if (config.parsers) {
+      this.platformDetector =
+        config.platformDetector || new PlatformDetector(config.parsers);
+    } else if (config.platformDetector) {
+      this.platformDetector = config.platformDetector;
+    } else {
+      throw new Error(
+        "Either 'parsers' or 'platformDetector' must be provided in ProcessorConfig",
+      );
+    }
 
     // Create OutputManager and inject it into FileWriter
     const outputManager = new OutputManager();

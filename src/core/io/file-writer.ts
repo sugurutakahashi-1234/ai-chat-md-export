@@ -1,15 +1,15 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import type { Conversation } from "../types.js";
+import type { Conversation } from "../../types.js";
 import {
   formatErrorMessage,
   getErrorMessage,
   getRelativePath,
-} from "../utils/error-formatter.js";
-import { generateFileName } from "../utils/filename.js";
-import { createLogger } from "../utils/logger.js";
-import type { Options } from "../utils/options.js";
-import type { OutputManager } from "./output-manager.js";
+} from "../../utils/errors/formatter.js";
+import { generateFileName } from "../../utils/filename.js";
+import { createLogger } from "../../utils/logger.js";
+import type { Options } from "../../utils/options.js";
+import type { OutputManager } from "../processing/output-manager.js";
 
 export interface WriteResult {
   successCount: number;

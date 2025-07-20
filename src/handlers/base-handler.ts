@@ -3,13 +3,13 @@ import type {
   LoadOptions,
   PlatformParser,
 } from "../core/interfaces/platform-parser.js";
-import { ValidationError } from "../errors/custom-errors.js";
 import type { Conversation } from "../types.js";
+import { ValidationError } from "../utils/errors/errors.js";
 import { createLogger } from "../utils/logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
-} from "../utils/schema-validator.js";
+} from "../utils/validation/schema-validator.js";
 
 /**
  * Base class for platform-specific parsers
