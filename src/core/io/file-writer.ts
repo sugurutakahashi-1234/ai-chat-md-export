@@ -10,9 +10,9 @@ import {
 import { generateFileName } from "../../utils/filename.js";
 import { createLogger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
-import { JsonConverter } from "../formatters/json.js";
-import { MarkdownConverter } from "../formatters/markdown.js";
-import type { OutputFormatter } from "../interfaces/output-formatter.js";
+import type { OutputFormatter } from "./formatters/base.js";
+import { JsonConverter } from "./formatters/json.js";
+import { MarkdownConverter } from "./formatters/markdown.js";
 
 export interface WriteResult {
   successCount: number;

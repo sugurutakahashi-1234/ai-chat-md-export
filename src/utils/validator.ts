@@ -1,13 +1,53 @@
+import type { z as zType } from "zod";
 import { ZodError, z } from "zod";
+import { ValidationError } from "./errors/errors.js";
 
+// Type guard functions
+/**
+ * Creates a type guard function from a Zod schema
+ * @param schema - Zod schema to create type guard from
+ * @returns Type guard function
+ */
+export function createTypeGuard<T>(
+  schema: zType.ZodSchema<T>,
+): (value: unknown) => value is T {
+  return (value: unknown): value is T => {
+    const result = schema.safeParse(value);
+    return result.success;
+  };
+}
+
+/**
+ * Asserts that a value matches a Zod schema, throwing a detailed error if not
+ * @param schema - Zod schema to validate against
+ * @param value - Value to validate
+ * @param context - Optional context for error message
+ * @returns The validated value
+ */
+export function assertType<T>(
+  schema: zType.ZodSchema<T>,
+  value: unknown,
+  context?: string,
+): T {
+  const result = schema.safeParse(value);
+  if (!result.success) {
+    const errorMessage = context
+      ? `Type assertion failed in ${context}: ${result.error.message}`
+      : `Type assertion failed: ${result.error.message}`;
+    throw new ValidationError(errorMessage, { context }, result.error);
+  }
+  return result.data;
+}
+
+// Schema validation types and functions
 export interface ValidationResult<T> {
   success: boolean;
   data?: T | undefined;
-  errors?: ValidationError[] | undefined;
+  errors?: ValidationErrorDetail[] | undefined;
   warnings?: ValidationWarning[] | undefined;
 }
 
-export interface ValidationError {
+export interface ValidationErrorDetail {
   path: string;
   message: string;
   expected?: string | undefined;
@@ -20,7 +60,7 @@ export interface ValidationWarning {
 }
 
 export function validateWithDetails<T>(
-  schema: z.ZodSchema<T>,
+  schema: zType.ZodSchema<T>,
   data: unknown,
   options: { name: string } = { name: "Data" },
 ): ValidationResult<T> {
@@ -46,8 +86,8 @@ export function validateWithDetails<T>(
     };
   } catch (error) {
     if (error instanceof ZodError) {
-      const errors: ValidationError[] = error.issues.map((e) => {
-        const baseError: ValidationError = {
+      const errors: ValidationErrorDetail[] = error.issues.map((e) => {
+        const baseError: ValidationErrorDetail = {
           path: e.path.join("."),
           message: e.message,
         };
@@ -73,7 +113,7 @@ export function validateWithDetails<T>(
   }
 }
 
-function detectUnknownFields(schema: z.ZodSchema, data: unknown): string[] {
+function detectUnknownFields(schema: zType.ZodSchema, data: unknown): string[] {
   // This implementation is simplified. A more complex implementation is needed in practice
   const unknownFields: string[] = [];
 

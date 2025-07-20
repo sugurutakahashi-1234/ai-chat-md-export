@@ -9,7 +9,7 @@ import { createLogger } from "../utils/logger.js";
 import {
   formatValidationReport,
   validateWithDetails,
-} from "../utils/validation/schema-validator.js";
+} from "../utils/validator.js";
 
 /**
  * Base class for platform-specific parsers

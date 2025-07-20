@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import {
   convertSingleConversationToJson,
   convertToJson,
-} from "../../../src/core/formatters/json.js";
+} from "../../../src/core/io/formatters/json.js";
 import type { Conversation } from "../../../src/types.js";
 
 describe("JSON converters", () => {

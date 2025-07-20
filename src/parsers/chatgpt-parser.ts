@@ -1,5 +1,5 @@
 import type { Conversation } from "../types.js";
-import { assertType } from "../utils/validation/type-guards.js";
+import { assertType } from "../utils/validator.js";
 import { BasePlatformParser, type ParsedConversation } from "./base-parser.js";
 import {
   type ChatGPTConversation,

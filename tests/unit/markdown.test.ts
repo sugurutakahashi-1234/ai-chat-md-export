@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import {
   convertMultipleToMarkdown,
   convertToMarkdown,
-} from "../../src/core/formatters/markdown.js";
+} from "../../src/core/io/formatters/markdown.js";
 import type { Conversation } from "../../src/types.js";
 
 describe("convertToMarkdown", () => {
