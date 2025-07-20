@@ -8,7 +8,6 @@ import {
 } from "../../utils/errors/formatter.js";
 import type { Options } from "../../utils/options.js";
 import type { ProcessorDependencies } from "../processor-dependencies.js";
-import { applyFilters } from "./filter.js";
 
 /**
  * Main processor class with dependency injection
@@ -63,47 +62,16 @@ export class Processor {
     }
 
     // ========== STEP 4: Filter Conversations ==========
-    const { filteredConversations, stats } = applyFilters(
-      conversations,
-      options,
-    );
+    const filterResult = this.deps.filter.apply(conversations, options);
 
     // Log filter statistics
-    this.logFilterStats(stats, options);
+    this.deps.filter.logStats(filterResult.stats, options);
 
     // ========== STEP 5: Write Output ==========
     await this.deps.fileWriter.writeConversations(
-      filteredConversations,
+      filterResult.filteredConversations,
       outputDir,
       options,
     );
-  }
-
-  /**
-   * Log filter statistics if filters were applied
-   */
-  private logFilterStats(
-    stats: { originalCount: number; filteredCount: number },
-    options: Options,
-  ): void {
-    if (options.since || options.until || options.search) {
-      this.deps.logger.stat(
-        "Filtered",
-        `${stats.filteredCount} of ${stats.originalCount} conversations`,
-      );
-      const filters = [];
-      if (options.since || options.until) {
-        const dateRange = [];
-        if (options.since) dateRange.push(`from ${options.since}`);
-        if (options.until) dateRange.push(`to ${options.until}`);
-        filters.push(`date ${dateRange.join(" ")}`);
-      }
-      if (options.search) {
-        filters.push(`keyword "${options.search}"`);
-      }
-      if (filters.length > 0) {
-        this.deps.logger.stat("Filters", filters.join(", "));
-      }
-    }
   }
 }

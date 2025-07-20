@@ -5,6 +5,7 @@ import type { Options } from "../utils/options.js";
 import type { PlatformParser } from "./interfaces/platform-parser.js";
 import { FileLoader } from "./io/file-loader.js";
 import { FileWriter } from "./io/file-writer.js";
+import { ConversationFilter } from "./processing/filter.js";
 import type { ProcessorDependencies } from "./processor-dependencies.js";
 
 /**
@@ -35,6 +36,7 @@ export function createDefaultDependencies(
     fileLoader: new FileLoader(),
     fileWriter: new FileWriter(logger),
     parser,
+    filter: new ConversationFilter(logger),
     logger,
   };
 }
