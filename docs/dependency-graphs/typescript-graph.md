@@ -99,11 +99,13 @@ flowchart LR
     src/parsers/abstract//platform//parser.ts-->src/utils/logger.ts
     src/parsers/abstract//platform//parser.ts-->src/utils/validator.ts
     src/parsers/schemas/chatgpt.ts-->node//modules/zod/index.d.cts
+    src/parsers/chatgpt//parser.ts-->src/core/interfaces/platform//parser.ts
     src/parsers/chatgpt//parser.ts-->src/types.ts
     src/parsers/chatgpt//parser.ts-->src/utils/validator.ts
     src/parsers/chatgpt//parser.ts-->src/parsers/abstract//platform//parser.ts
     src/parsers/chatgpt//parser.ts-->src/parsers/schemas/chatgpt.ts
     src/parsers/schemas/claude.ts-->node//modules/zod/index.d.cts
+    src/parsers/claude//parser.ts-->src/core/interfaces/platform//parser.ts
     src/parsers/claude//parser.ts-->src/types.ts
     src/parsers/claude//parser.ts-->src/utils/validator.ts
     src/parsers/claude//parser.ts-->src/parsers/abstract//platform//parser.ts

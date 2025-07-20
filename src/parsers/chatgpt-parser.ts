@@ -1,9 +1,7 @@
+import type { ParsedConversation } from "../core/interfaces/platform-parser.js";
 import type { Conversation } from "../types.js";
 import { assertType } from "../utils/validator.js";
-import {
-  AbstractPlatformParser,
-  type ParsedConversation,
-} from "./abstract-platform-parser.js";
+import { AbstractPlatformParser } from "./abstract-platform-parser.js";
 import {
   type ChatGPTConversation,
   type ChatGPTNode,
@@ -21,9 +19,7 @@ export class ChatGPTParser extends AbstractPlatformParser<
 > {
   readonly schema = chatGPTConversationSchema.array();
 
-  protected parseConversations(
-    data: ChatGPTConversation[],
-  ): ParsedConversation[] {
+  parseConversations(data: ChatGPTConversation[]): ParsedConversation[] {
     return data.map((item) => ({
       data: item,
       schema: chatGPTConversationSchema,

@@ -1,9 +1,7 @@
+import type { ParsedConversation } from "../core/interfaces/platform-parser.js";
 import type { Conversation } from "../types.js";
 import { assertType } from "../utils/validator.js";
-import {
-  AbstractPlatformParser,
-  type ParsedConversation,
-} from "./abstract-platform-parser.js";
+import { AbstractPlatformParser } from "./abstract-platform-parser.js";
 import {
   type ClaudeConversation,
   claudeConversationSchema,
@@ -18,9 +16,7 @@ import {
 export class ClaudeParser extends AbstractPlatformParser<ClaudeConversation[]> {
   readonly schema = claudeConversationSchema.array();
 
-  protected parseConversations(
-    data: ClaudeConversation[],
-  ): ParsedConversation[] {
+  parseConversations(data: ClaudeConversation[]): ParsedConversation[] {
     return data.map((item) => ({
       data: item,
       schema: claudeConversationSchema,

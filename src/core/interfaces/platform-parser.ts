@@ -20,6 +20,29 @@ export interface PlatformParser<T = unknown> {
    * @returns Array of conversations in common format
    */
   load(data: T, options?: LoadOptions): Promise<Conversation[]>;
+
+  /**
+   * Parse platform-specific data into a common intermediate format
+   *
+   * This method handles the specific data structure of each platform
+   * (ChatGPT, Claude, etc.) and prepares it for validation
+   *
+   * @param data The validated platform-specific data
+   * @returns Array of parsed conversations ready for validation and transformation
+   */
+  parseConversations(data: T): ParsedConversation<unknown>[];
+}
+
+/**
+ * Intermediate representation of a conversation during parsing
+ *
+ * Contains the raw data, validation schema, and transformation function
+ * to convert platform-specific data into the common Conversation format
+ */
+export interface ParsedConversation<T = unknown> {
+  data: T;
+  schema: ZodType<T>;
+  transform: (validatedData: T) => Conversation;
 }
 
 export interface LoadOptions {

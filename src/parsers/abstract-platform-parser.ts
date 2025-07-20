@@ -1,6 +1,7 @@
 import type { ZodType } from "zod";
 import type {
   LoadOptions,
+  ParsedConversation,
   PlatformParser,
 } from "../core/interfaces/platform-parser.js";
 import type { Conversation } from "../types.js";
@@ -31,7 +32,7 @@ export abstract class AbstractPlatformParser<T = unknown>
    * @param data The validated platform-specific data
    * @returns Array of parsed conversations ready for validation and transformation
    */
-  protected abstract parseConversations(data: T): ParsedConversation<unknown>[];
+  abstract parseConversations(data: T): ParsedConversation<unknown>[];
 
   async load(data: T, options: LoadOptions = {}): Promise<Conversation[]> {
     const conversations: Conversation[] = [];
@@ -85,10 +86,4 @@ export abstract class AbstractPlatformParser<T = unknown>
 
     return conversations;
   }
-}
-
-export interface ParsedConversation<T = unknown> {
-  data: T;
-  schema: ZodType<T>;
-  transform: (validatedData: T) => Conversation;
 }
