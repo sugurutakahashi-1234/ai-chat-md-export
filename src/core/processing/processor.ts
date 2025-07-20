@@ -20,27 +20,25 @@ import { applyFilters } from "./filter.js";
 export class Processor {
   constructor(private readonly deps: ProcessorDependencies) {}
 
+  /**
+   * Process input file and convert to specified output format
+   *
+   * Pipeline steps:
+   * 1. Load JSON data from input file
+   * 2. Create platform-specific parser
+   * 3. Parse conversations using the parser
+   * 4. Apply filters (date range, keyword search)
+   * 5. Write filtered conversations to output
+   */
   async processInput(options: Options): Promise<void> {
     const inputPath = path.resolve(options.input);
     const outputDir = path.resolve(options.output || process.cwd());
 
-    // Execute the conversion pipeline
-    await this.executePipeline(inputPath, outputDir, options);
-  }
-
-  /**
-   * Execute the conversion pipeline with clear steps
-   */
-  private async executePipeline(
-    filePath: string,
-    outputDir: string,
-    options: Options,
-  ): Promise<void> {
     const logger = this.deps.loggerFactory({ quiet: options.quiet });
-    logger.info(`Processing: ${getRelativePath(filePath)}`);
+    logger.info(`Processing: ${getRelativePath(inputPath)}`);
 
     // ========== STEP 1: Load Data ==========
-    const data = await this.deps.fileLoader.loadJsonFile(filePath);
+    const data = await this.deps.fileLoader.loadJsonFile(inputPath);
 
     // ========== STEP 2: Create Parser ==========
     const parser = this.deps.parserFactory(options.platform);
@@ -58,10 +56,10 @@ export class Processor {
       }
       throw new ValidationError(
         formatErrorMessage("Failed to parse file", {
-          file: filePath,
+          file: inputPath,
           reason: getErrorMessage(error),
         }),
-        { file: filePath },
+        { file: inputPath },
         error,
       );
     }
