@@ -25,7 +25,6 @@ flowchart LR
             src/core/processor//depend_encies.ts["processor-dependencies.ts"]
             src/core/processor//factories.ts["processor-factories.ts"]
             subgraph src/core/interfaces["/interfaces"]
-                src/core/interfaces/filter.ts["filter.ts"]
                 src/core/interfaces/platform//parser.ts["platform-parser.ts"]
             end
             subgraph src/core/io["/io"]
@@ -38,8 +37,8 @@ flowchart LR
                 end
             end
             subgraph src/core/processing["/processing"]
-                src/core/processing/processor.ts["processor.ts"]
                 src/core/processing/filter.ts["filter.ts"]
+                src/core/processing/processor.ts["processor.ts"]
             end
         end
         subgraph src/parsers["/parsers"]
@@ -60,8 +59,6 @@ flowchart LR
     src/utils/errors/formatter.ts-->src/utils/errors/errors.ts
     src/utils/options.ts-->node//modules/zod/index.d.cts
     src/utils/logger.ts-->node//modules/picocolors/picocolors.d.ts
-    src/core/interfaces/filter.ts-->src/types.ts
-    src/core/interfaces/filter.ts-->src/utils/options.ts
     src/core/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/core/interfaces/platform//parser.ts-->src/types.ts
     src/core/io/file//loader.ts-->src/utils/errors/errors.ts
@@ -80,13 +77,14 @@ flowchart LR
     src/core/io/file//writer.ts-->src/core/io/formatters/base.ts
     src/core/io/file//writer.ts-->src/core/io/formatters/json.ts
     src/core/io/file//writer.ts-->src/core/io/formatters/markdown.ts
+    src/core/processing/filter.ts-->src/types.ts
+    src/core/processing/filter.ts-->src/utils/logger.ts
+    src/core/processing/filter.ts-->src/utils/options.ts
     src/core/processor//depend_encies.ts-->src/utils/logger.ts
-    src/core/processor//depend_encies.ts-->src/core/interfaces/filter.ts
     src/core/processor//depend_encies.ts-->src/core/interfaces/platform//parser.ts
     src/core/processor//depend_encies.ts-->src/core/io/file//loader.ts
     src/core/processor//depend_encies.ts-->src/core/io/file//writer.ts
-    src/core/processing/processor.ts-->src/types.ts
-    src/core/processing/processor.ts-->src/utils/errors/errors.ts
+    src/core/processor//depend_encies.ts-->src/core/processing/filter.ts
     src/core/processing/processor.ts-->src/utils/errors/formatter.ts
     src/core/processing/processor.ts-->src/utils/options.ts
     src/core/processing/processor.ts-->src/core/processor//depend_encies.ts
@@ -110,10 +108,6 @@ flowchart LR
     src/parsers/claude//parser.ts-->src/utils/validator.ts
     src/parsers/claude//parser.ts-->src/parsers/abstract//platform//parser.ts
     src/parsers/claude//parser.ts-->src/parsers/schemas/claude.ts
-    src/core/processing/filter.ts-->src/types.ts
-    src/core/processing/filter.ts-->src/utils/logger.ts
-    src/core/processing/filter.ts-->src/utils/options.ts
-    src/core/processing/filter.ts-->src/core/interfaces/filter.ts
     src/core/processor//factories.ts-->src/parsers/chatgpt//parser.ts
     src/core/processor//factories.ts-->src/parsers/claude//parser.ts
     src/core/processor//factories.ts-->src/utils/logger.ts

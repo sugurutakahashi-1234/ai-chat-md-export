@@ -1,8 +1,8 @@
 import type { Logger } from "../utils/logger.js";
-import type { Filter } from "./interfaces/filter.js";
 import type { PlatformParser } from "./interfaces/platform-parser.js";
 import type { FileLoader } from "./io/file-loader.js";
 import type { FileWriter } from "./io/file-writer.js";
+import type { ConversationFilter } from "./processing/filter.js";
 
 /**
  * Dependencies required by the Processor class
@@ -29,7 +29,7 @@ export interface ProcessorDependencies {
   /**
    * Filter for conversation filtering
    */
-  filter: Filter;
+  filter: ConversationFilter;
 
   /**
    * Logger instance

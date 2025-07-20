@@ -1,24 +1,19 @@
 import type { Conversation } from "../../types.js";
 import type { Logger } from "../../utils/logger.js";
 import type { Options } from "../../utils/options.js";
-import type {
-  Filter,
-  FilterResult,
-  FilterStats,
-} from "../interfaces/filter.js";
 
 /**
- * Concrete implementation of the Filter interface for conversations
+ * Conversation filter for date range and keyword search
  */
-export class ConversationFilter implements Filter {
+export class ConversationFilter {
   constructor(private readonly logger: Logger) {}
 
   /**
    * Apply all configured filters to the conversations
    */
-  apply(conversations: Conversation[], options: Options): FilterResult {
+  apply(conversations: Conversation[], options: Options): Conversation[] {
+    const originalConversations = conversations;
     let filteredConversations = conversations;
-    const originalCount = conversations.length;
 
     // Apply date filter
     filteredConversations = this.filterByDate(
@@ -33,23 +28,28 @@ export class ConversationFilter implements Filter {
       options.search,
     );
 
-    return {
+    // Log filter results if any filters were applied
+    this.logFilterResults(
+      originalConversations,
       filteredConversations,
-      stats: {
-        originalCount,
-        filteredCount: filteredConversations.length,
-      },
-    };
+      options,
+    );
+
+    return filteredConversations;
   }
 
   /**
-   * Log filter statistics to the logger
+   * Log filter results to the logger
    */
-  logStats(stats: FilterStats, options: Options): void {
+  private logFilterResults(
+    originalConversations: Conversation[],
+    filteredConversations: Conversation[],
+    options: Options,
+  ): void {
     if (options.since || options.until || options.search) {
       this.logger.stat(
         "Filtered",
-        `${stats.filteredCount} of ${stats.originalCount} conversations`,
+        `${filteredConversations.length} of ${originalConversations.length} conversations`,
       );
       const filters = [];
       if (options.since || options.until) {
