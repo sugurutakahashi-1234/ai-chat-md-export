@@ -1,7 +1,7 @@
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import type { Conversation } from "../../domain/models/types.js";
 
-function formatTimestamp(timestamp: Date): string {
+function formatDateTimeWithTimezone(timestamp: Date): string {
   const date = timestamp;
   // Format with timezone offset only
   const year = date.getFullYear();
@@ -21,7 +21,7 @@ function formatTimestamp(timestamp: Date): string {
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${tzString}`;
 }
 
-function escapeMarkdown(text: string): string {
+function escapeHtmlInMarkdown(text: string): string {
   // Escape only HTML tags, preserve markdown syntax
   return (
     text
@@ -35,7 +35,7 @@ function escapeMarkdown(text: string): string {
   );
 }
 
-function processContent(text: string): string {
+function escapeHtmlPreservingMarkdown(text: string): string {
   // Process "This block is not supported" messages - just show the original message
   if (text.includes("This block is not supported")) {
     return text.replace(
@@ -61,7 +61,7 @@ function processContent(text: string): string {
   });
 
   // Escape processing
-  processedText = escapeMarkdown(processedText);
+  processedText = escapeHtmlInMarkdown(processedText);
 
   // Restore protected code
   processedText = processedText.replace(
@@ -85,11 +85,11 @@ function processContent(text: string): string {
   return processedText;
 }
 
-export function convertToMarkdown(conversation: Conversation): string {
+function formatAsMarkdown(conversation: Conversation): string {
   const lines: string[] = [];
 
   lines.push(`# ${conversation.title}`);
-  lines.push(`Date: ${formatTimestamp(conversation.date)}`);
+  lines.push(`Date: ${formatDateTimeWithTimezone(conversation.date)}`);
   lines.push("");
   lines.push("---");
   lines.push("");
@@ -105,12 +105,12 @@ export function convertToMarkdown(conversation: Conversation): string {
 
     lines.push(`## ${roleLabel}`);
     if (message.timestamp) {
-      lines.push(`Date: ${formatTimestamp(message.timestamp)}`);
+      lines.push(`Date: ${formatDateTimeWithTimezone(message.timestamp)}`);
     }
     lines.push("");
 
     const content = message.content.trim();
-    lines.push(processContent(content));
+    lines.push(escapeHtmlPreservingMarkdown(content));
 
     lines.push("");
     lines.push("---");
@@ -120,13 +120,11 @@ export function convertToMarkdown(conversation: Conversation): string {
   return lines.join("\n");
 }
 
-export function convertMultipleToMarkdown(
-  conversations: Conversation[],
-): string {
+function formatMultipleAsMarkdown(conversations: Conversation[]): string {
   const sections: string[] = [];
 
   for (const conversation of conversations) {
-    sections.push(convertToMarkdown(conversation));
+    sections.push(formatAsMarkdown(conversation));
   }
 
   // Join with triple horizontal rules to clearly separate conversations
@@ -139,15 +137,15 @@ export function convertMultipleToMarkdown(
  * Formats conversations as Markdown for human-readable
  * documentation and easy sharing.
  */
-export class MarkdownConverter implements OutputFormatter {
+export class MarkdownFormatter implements OutputFormatter {
   readonly extension = ".md";
 
-  convertSingle(conversation: Conversation): string {
-    return convertToMarkdown(conversation);
+  formatSingle(conversation: Conversation): string {
+    return formatAsMarkdown(conversation);
   }
 
-  convertMultiple(conversations: Conversation[]): string {
-    return convertMultipleToMarkdown(conversations);
+  formatMultiple(conversations: Conversation[]): string {
+    return formatMultipleAsMarkdown(conversations);
   }
 
   getDefaultFilename(): string {

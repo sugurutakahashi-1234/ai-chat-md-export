@@ -3,16 +3,16 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import type { Options } from "../../../src/domain/config/options.js";
 import type { Conversation } from "../../../src/domain/models/types.js";
-import { JsonConverter } from "../../../src/infrastructure/formatters/json.js";
-import { MarkdownConverter } from "../../../src/infrastructure/formatters/markdown.js";
+import { JsonFormatter } from "../../../src/infrastructure/formatters/json.js";
+import { MarkdownFormatter } from "../../../src/infrastructure/formatters/markdown.js";
 import { FileWriter } from "../../../src/infrastructure/io/file-writer.js";
 import { Logger } from "../../../src/infrastructure/logging/logger.js";
 
 describe("FileWriter", () => {
   const tempDir = path.join(process.cwd(), "tests/temp/file-writer");
   const logger = new Logger({ quiet: true });
-  const markdownFormatter = new MarkdownConverter();
-  const jsonFormatter = new JsonConverter();
+  const markdownFormatter = new MarkdownFormatter();
+  const jsonFormatter = new JsonFormatter();
   const fileWriter = new FileWriter(logger, markdownFormatter);
   const jsonFileWriter = new FileWriter(logger, jsonFormatter);
 

@@ -13,12 +13,12 @@ import {
 import type { Logger } from "../logging/logger.js";
 
 /**
- * Abstract base class for platform-specific parsers
+ * Base class for platform-specific parsers
  *
  * Provides common functionality for parsing and validating
  * platform-specific data formats (ChatGPT, Claude, etc.)
  */
-export abstract class AbstractPlatformParser<T = unknown>
+export abstract class BasePlatformParser<T = unknown>
   implements PlatformParser<T>
 {
   constructor(protected readonly logger: Logger) {}
@@ -35,7 +35,10 @@ export abstract class AbstractPlatformParser<T = unknown>
    */
   abstract parseConversations(data: T): ParsedConversation<unknown>[];
 
-  async load(data: T, options: LoadOptions = {}): Promise<Conversation[]> {
+  async parseAndValidateConversations(
+    data: T,
+    options: LoadOptions = {},
+  ): Promise<Conversation[]> {
     const conversations: Conversation[] = [];
     const validationErrors: string[] = [];
     const skippedFields = new Set<string>();

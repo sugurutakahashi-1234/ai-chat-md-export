@@ -1,7 +1,7 @@
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
 import type { Conversation } from "../../../domain/models/types.js";
 import { assertType } from "../../../shared/utils/validator.js";
-import { AbstractPlatformParser } from "../abstract-parser.js";
+import { BasePlatformParser } from "../abstract-parser.js";
 import { type ClaudeConversation, claudeConversationSchema } from "./schema.js";
 
 /**
@@ -10,7 +10,7 @@ import { type ClaudeConversation, claudeConversationSchema } from "./schema.js";
  * Handles parsing and converting Claude export data
  * to the common conversation format.
  */
-export class ClaudeParser extends AbstractPlatformParser<ClaudeConversation[]> {
+export class ClaudeParser extends BasePlatformParser<ClaudeConversation[]> {
   readonly schema = claudeConversationSchema.array();
 
   parseConversations(data: ClaudeConversation[]): ParsedConversation[] {

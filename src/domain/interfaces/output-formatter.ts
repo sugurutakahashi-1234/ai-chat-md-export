@@ -15,12 +15,12 @@ export interface OutputFormatter {
   /**
    * Format a single conversation to the output format
    */
-  convertSingle(conversation: Conversation): string;
+  formatSingle(conversation: Conversation): string;
 
   /**
    * Format multiple conversations to the output format
    */
-  convertMultiple(conversations: Conversation[]): string;
+  formatMultiple(conversations: Conversation[]): string;
 
   /**
    * Get default filename for combined output

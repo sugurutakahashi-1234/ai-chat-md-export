@@ -1,7 +1,7 @@
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
 import type { Conversation } from "../../../domain/models/types.js";
 import { assertType } from "../../../shared/utils/validator.js";
-import { AbstractPlatformParser } from "../abstract-parser.js";
+import { BasePlatformParser } from "../abstract-parser.js";
 import {
   type ChatGPTConversation,
   type ChatGPTNode,
@@ -14,9 +14,7 @@ import {
  * Handles parsing and converting ChatGPT export data
  * to the common conversation format.
  */
-export class ChatGPTParser extends AbstractPlatformParser<
-  ChatGPTConversation[]
-> {
+export class ChatGPTParser extends BasePlatformParser<ChatGPTConversation[]> {
   readonly schema = chatGPTConversationSchema.array();
 
   parseConversations(data: ChatGPTConversation[]): ParsedConversation[] {

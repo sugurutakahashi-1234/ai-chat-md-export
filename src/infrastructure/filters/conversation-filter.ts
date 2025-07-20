@@ -14,7 +14,10 @@ export class ConversationFilter {
    * Returns filtered conversations without side effects.
    * Logging should be handled by the caller.
    */
-  apply(conversations: Conversation[], options: Options): Conversation[] {
+  filterConversations(
+    conversations: Conversation[],
+    options: Options,
+  ): Conversation[] {
     let filteredConversations = conversations;
 
     // Apply date filter

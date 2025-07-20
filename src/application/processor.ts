@@ -1,6 +1,6 @@
 import path from "node:path";
 import type { Options } from "../domain/config/options.js";
-import { getRelativePath } from "../shared/errors/formatter.js";
+import { formatRelativePathFromCwd } from "../shared/errors/formatter.js";
 import type { ProcessorDependencies } from "./dependencies.js";
 
 /**
@@ -21,17 +21,22 @@ export class Processor {
    * 3. Apply filters (date range, keyword search)
    * 4. Write filtered conversations to output
    */
-  async convertConversations(options: Options): Promise<void> {
+  async executeConversionPipeline(options: Options): Promise<void> {
     const inputPath = path.resolve(options.input);
     const outputDir = path.resolve(options.output || process.cwd());
 
-    this.deps.logger.info(`Processing: ${getRelativePath(inputPath)}`);
+    this.deps.logger.info(
+      `Processing: ${formatRelativePathFromCwd(inputPath)}`,
+    );
 
-    const data = await this.deps.fileLoader.loadJsonFile(inputPath);
-    const conversations = await this.deps.parser.load(data, {
-      quiet: options.quiet,
-    });
-    const filteredConversations = this.deps.filter.apply(
+    const data = await this.deps.fileLoader.readJsonFile(inputPath);
+    const conversations = await this.deps.parser.parseAndValidateConversations(
+      data,
+      {
+        quiet: options.quiet,
+      },
+    );
+    const filteredConversations = this.deps.filter.filterConversations(
       conversations,
       options,
     );

@@ -4,47 +4,49 @@ import {
   ValidationError,
 } from "../../../src/domain/errors/errors.js";
 import {
+  extractErrorMessage,
   formatErrorMessage,
   formatErrorWithContext,
-  getErrorMessage,
-  getRelativePath,
+  formatRelativePathFromCwd,
 } from "../../../src/shared/errors/formatter.js";
 
-describe("getRelativePath", () => {
+describe("formatRelativePathFromCwd", () => {
   it("returns relative path for files in cwd", () => {
     const cwd = process.cwd();
     const filePath = `${cwd}/src/test.ts`;
-    expect(getRelativePath(filePath)).toBe("src/test.ts");
+    expect(formatRelativePathFromCwd(filePath)).toBe("src/test.ts");
   });
 
   it("returns basename for files outside cwd", () => {
     const filePath = "/some/external/path/file.json";
-    expect(getRelativePath(filePath)).toBe("file.json");
+    expect(formatRelativePathFromCwd(filePath)).toBe("file.json");
   });
 
   it("handles same directory", () => {
     const cwd = process.cwd();
     const filePath = `${cwd}/file.json`;
-    expect(getRelativePath(filePath)).toBe("file.json");
+    expect(formatRelativePathFromCwd(filePath)).toBe("file.json");
   });
 });
 
-describe("getErrorMessage", () => {
+describe("extractErrorMessage", () => {
   it("extracts message from Error objects", () => {
     const error = new Error("Test error message");
-    expect(getErrorMessage(error)).toBe("Test error message");
+    expect(extractErrorMessage(error)).toBe("Test error message");
   });
 
   it("returns string values as-is", () => {
-    expect(getErrorMessage("string error")).toBe("string error");
+    expect(extractErrorMessage("string error")).toBe("string error");
   });
 
   it("extracts message property from objects", () => {
-    expect(getErrorMessage({ message: "Object error" })).toBe("Object error");
+    expect(extractErrorMessage({ message: "Object error" })).toBe(
+      "Object error",
+    );
   });
 
   it("formats objects with content", () => {
-    const result = getErrorMessage({
+    const result = extractErrorMessage({
       code: "E001",
       details: "Something failed",
     });
@@ -55,20 +57,20 @@ describe("getErrorMessage", () => {
   });
 
   it("converts primitives to string", () => {
-    expect(getErrorMessage(123)).toBe("123");
-    expect(getErrorMessage(true)).toBe("true");
-    expect(getErrorMessage(null)).toBe("null");
-    expect(getErrorMessage(undefined)).toBe("undefined");
+    expect(extractErrorMessage(123)).toBe("123");
+    expect(extractErrorMessage(true)).toBe("true");
+    expect(extractErrorMessage(null)).toBe("null");
+    expect(extractErrorMessage(undefined)).toBe("undefined");
   });
 
   it("handles empty objects", () => {
-    expect(getErrorMessage({})).toBe("[object Object]");
+    expect(extractErrorMessage({})).toBe("[object Object]");
   });
 
   it("handles circular references gracefully", () => {
     const circular: Record<string, unknown> = { prop: "value" };
     circular.self = circular;
-    expect(getErrorMessage(circular)).toBe("[object Object]");
+    expect(extractErrorMessage(circular)).toBe("[object Object]");
   });
 });
 

@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import { Processor } from "../application/processor.js";
 import { optionsSchema } from "../domain/config/options.js";
-import { createDefaultDependencies } from "../infrastructure/factories/processor-factory.js";
+import { createProcessorDependencies } from "../infrastructure/factories/processor-factory.js";
 import { Logger } from "../infrastructure/logging/logger.js";
 import { VERSION } from "../shared/constants/version.js";
 import { formatErrorWithContext } from "../shared/errors/formatter.js";
@@ -89,8 +89,8 @@ For more options and detailed documentation:
     const options = optionsSchema.parse(program.opts());
 
     // Create processor with dependency injection
-    const processor = new Processor(createDefaultDependencies(options));
-    await processor.convertConversations(options);
+    const processor = new Processor(createProcessorDependencies(options));
+    await processor.executeConversionPipeline(options);
   } catch (error) {
     const errorMessage = formatErrorWithContext(error);
     const logger = new Logger();

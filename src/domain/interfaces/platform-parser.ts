@@ -19,7 +19,10 @@ export interface PlatformParser<T = unknown> {
    * @param options Parsing options
    * @returns Array of conversations in common format
    */
-  load(data: T, options?: LoadOptions): Promise<Conversation[]>;
+  parseAndValidateConversations(
+    data: T,
+    options?: LoadOptions,
+  ): Promise<Conversation[]>;
 
   /**
    * Parse platform-specific data into a common intermediate format

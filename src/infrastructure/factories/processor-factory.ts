@@ -5,8 +5,8 @@ import type { OutputFormatter } from "../../domain/interfaces/output-formatter.j
 import type { PlatformParser } from "../../domain/interfaces/platform-parser.js";
 import { formatErrorMessage } from "../../shared/errors/formatter.js";
 import { ConversationFilter } from "../filters/conversation-filter.js";
-import { JsonConverter } from "../formatters/json.js";
-import { MarkdownConverter } from "../formatters/markdown.js";
+import { JsonFormatter } from "../formatters/json.js";
+import { MarkdownFormatter } from "../formatters/markdown.js";
 import { FileLoader } from "../io/file-loader.js";
 import { FileWriter } from "../io/file-writer.js";
 import { Logger } from "../logging/logger.js";
@@ -14,12 +14,12 @@ import { ChatGPTParser } from "../parsers/chatgpt/parser.js";
 import { ClaudeParser } from "../parsers/claude/parser.js";
 
 /**
- * Create default dependencies for the Processor
+ * Create processor dependencies based on options
  *
  * This factory provides the standard implementations
  * for all processor dependencies.
  */
-export function createDefaultDependencies(
+export function createProcessorDependencies(
   options: Options,
 ): ProcessorDependencies {
   const logger = new Logger({ quiet: options.quiet });
@@ -41,10 +41,10 @@ export function createDefaultDependencies(
   let formatter: OutputFormatter;
   switch (options.format) {
     case "json":
-      formatter = new JsonConverter();
+      formatter = new JsonFormatter();
       break;
     case "markdown":
-      formatter = new MarkdownConverter();
+      formatter = new MarkdownFormatter();
       break;
     default:
       throw new ValidationError(
@@ -74,11 +74,11 @@ export function createDefaultDependencies(
  * @param overrides Partial dependencies to override defaults
  * @returns Complete processor dependencies
  */
-export function createDefaultDependenciesWithOverrides(
+export function createProcessorDependenciesWithOverrides(
   options: Options,
   overrides?: Partial<ProcessorDependencies>,
 ): ProcessorDependencies {
-  const defaults = createDefaultDependencies(options);
+  const defaults = createProcessorDependencies(options);
   return {
     ...defaults,
     ...overrides,

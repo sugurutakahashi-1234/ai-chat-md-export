@@ -3,7 +3,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { Processor } from "../../../src/application/processor.js";
 import type { Options } from "../../../src/domain/config/options.js";
-import { createDefaultDependenciesWithOverrides } from "../../../src/infrastructure/factories/processor-factory.js";
+import { createProcessorDependenciesWithOverrides } from "../../../src/infrastructure/factories/processor-factory.js";
 
 // Helper to create default test options
 const defaultTestOptions: Options = {
@@ -18,7 +18,7 @@ const defaultTestOptions: Options = {
 
 // Create test-specific processor instance with dependency injection
 const testProcessor = new Processor(
-  createDefaultDependenciesWithOverrides(defaultTestOptions),
+  createProcessorDependenciesWithOverrides(defaultTestOptions),
 );
 
 // Helper functions for backward compatibility with tests
@@ -34,7 +34,7 @@ async function processFile(
     input: inputPath,
     output: resolvedOutputDir,
   };
-  return testProcessor.convertConversations(fileOptions);
+  return testProcessor.executeConversionPipeline(fileOptions);
 }
 
 describe("processFile edge cases", () => {
@@ -101,10 +101,10 @@ describe("Processor with dependency injection", () => {
   });
 
   test("uses injected fileLoader", async () => {
-    let loadJsonFileCalled = false;
+    let readJsonFileCalled = false;
     const mockFileLoader = {
-      loadJsonFile: async () => {
-        loadJsonFileCalled = true;
+      readJsonFile: async () => {
+        readJsonFileCalled = true;
         return [];
       },
     };
@@ -121,13 +121,13 @@ describe("Processor with dependency injection", () => {
     };
 
     const processor = new Processor(
-      createDefaultDependenciesWithOverrides(options, {
+      createProcessorDependenciesWithOverrides(options, {
         fileLoader: mockFileLoader as any,
       }),
     );
 
-    await processor.convertConversations(options);
-    expect(loadJsonFileCalled).toBe(true);
+    await processor.executeConversionPipeline(options);
+    expect(readJsonFileCalled).toBe(true);
   });
 
   test("uses injected parser", async () => {
@@ -138,7 +138,7 @@ describe("Processor with dependency injection", () => {
 
     const mockParser = {
       schema: {} as any,
-      load: async () => {
+      parseAndValidateConversations: async () => {
         parserLoadCalled = true;
         return [];
       },
@@ -157,12 +157,12 @@ describe("Processor with dependency injection", () => {
     };
 
     const processor = new Processor(
-      createDefaultDependenciesWithOverrides(options, {
+      createProcessorDependenciesWithOverrides(options, {
         parser: mockParser,
       }),
     );
 
-    await processor.convertConversations(options);
+    await processor.executeConversionPipeline(options);
     expect(parserLoadCalled).toBe(true);
   });
 
@@ -197,12 +197,12 @@ describe("Processor with dependency injection", () => {
     };
 
     const processor = new Processor(
-      createDefaultDependenciesWithOverrides(options, {
+      createProcessorDependenciesWithOverrides(options, {
         logger: mockLogger as any,
       }),
     );
 
-    await processor.convertConversations(options);
+    await processor.executeConversionPipeline(options);
     expect(loggerInfoCalled).toBe(true);
   });
 });

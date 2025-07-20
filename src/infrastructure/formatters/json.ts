@@ -53,14 +53,14 @@ export function convertToJson(conversations: Conversation[]): string {
   return JSON.stringify(jsonOutput, null, 2);
 }
 
-export class JsonConverter implements OutputFormatter {
+export class JsonFormatter implements OutputFormatter {
   readonly extension = ".json";
 
-  convertSingle(conversation: Conversation): string {
+  formatSingle(conversation: Conversation): string {
     return convertSingleConversationToJson(conversation);
   }
 
-  convertMultiple(conversations: Conversation[]): string {
+  formatMultiple(conversations: Conversation[]): string {
     return convertToJson(conversations);
   }
 

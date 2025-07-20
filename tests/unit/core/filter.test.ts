@@ -50,7 +50,7 @@ describe("ConversationFilter", () => {
   describe("Date filtering", () => {
     test("filters conversations after since date", () => {
       const options = { ...baseOptions, since: "2024-01-01" };
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(2);
       expect(result[0]?.title).toBe("Recent JavaScript Guide");
       expect(result[1]?.title).toBe("Future Python Workshop");
@@ -58,7 +58,7 @@ describe("ConversationFilter", () => {
 
     test("filters conversations before until date", () => {
       const options = { ...baseOptions, until: "2024-01-20" };
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(2);
       expect(result[0]?.title).toBe("Old Python Tutorial");
       expect(result[1]?.title).toBe("Recent JavaScript Guide");
@@ -70,13 +70,13 @@ describe("ConversationFilter", () => {
         since: "2024-01-01",
         until: "2024-01-31",
       };
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(1);
       expect(result[0]?.title).toBe("Recent JavaScript Guide");
     });
 
     test("returns all conversations when no dates specified", () => {
-      const result = filter.apply(conversations, baseOptions);
+      const result = filter.filterConversations(conversations, baseOptions);
       expect(result).toHaveLength(3);
     });
 
@@ -86,7 +86,7 @@ describe("ConversationFilter", () => {
         since: "2024-01-15",
         until: "2024-01-15",
       };
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(1);
       expect(result[0]?.title).toBe("Recent JavaScript Guide");
     });
@@ -95,7 +95,7 @@ describe("ConversationFilter", () => {
   describe("Search filtering", () => {
     test("filters by keyword in title", () => {
       const options = { ...baseOptions, search: "python" };
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(2);
       expect(result[0]?.title).toBe("Old Python Tutorial");
       expect(result[1]?.title).toBe("Future Python Workshop");
@@ -103,27 +103,27 @@ describe("ConversationFilter", () => {
 
     test("filters by keyword in messages", () => {
       const options = { ...baseOptions, search: "javascript" };
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(1);
       expect(result[0]?.title).toBe("Recent JavaScript Guide");
     });
 
     test("search is case-insensitive", () => {
       const options = { ...baseOptions, search: "PYTHON" };
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(2);
       expect(result[0]?.title).toBe("Old Python Tutorial");
       expect(result[1]?.title).toBe("Future Python Workshop");
     });
 
     test("returns all conversations when no keyword specified", () => {
-      const result = filter.apply(conversations, baseOptions);
+      const result = filter.filterConversations(conversations, baseOptions);
       expect(result).toHaveLength(3);
     });
 
     test("handles partial matches", () => {
       const options = { ...baseOptions, search: "Script" };
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(1);
       expect(result[0]?.title).toBe("Recent JavaScript Guide");
     });
@@ -137,7 +137,7 @@ describe("ConversationFilter", () => {
         search: "python",
       };
 
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(1);
       expect(result[0]?.title).toBe("Future Python Workshop");
     });
@@ -150,12 +150,12 @@ describe("ConversationFilter", () => {
         search: "python",
       };
 
-      const result = filter.apply(conversations, options);
+      const result = filter.filterConversations(conversations, options);
       expect(result).toHaveLength(0);
     });
 
     test("returns all conversations with no filters", () => {
-      const result = filter.apply(conversations, baseOptions);
+      const result = filter.filterConversations(conversations, baseOptions);
       expect(result).toHaveLength(3);
     });
   });

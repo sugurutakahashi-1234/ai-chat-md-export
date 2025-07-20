@@ -22,14 +22,14 @@ describe("FileLoader", () => {
       const testData = { test: "data", number: 123 };
       await fs.writeFile(filePath, JSON.stringify(testData), "utf-8");
 
-      const result = await fileLoader.loadJsonFile(filePath);
+      const result = await fileLoader.readJsonFile(filePath);
       expect(result).toEqual(testData);
     });
 
     test("throws FileError when file doesn't exist", async () => {
       const filePath = path.join(tempDir, "nonexistent.json");
 
-      await expect(fileLoader.loadJsonFile(filePath)).rejects.toThrow(
+      await expect(fileLoader.readJsonFile(filePath)).rejects.toThrow(
         FileError,
       );
     });
@@ -38,7 +38,7 @@ describe("FileLoader", () => {
       const filePath = path.join(tempDir, "invalid.json");
       await fs.writeFile(filePath, "{ invalid json", "utf-8");
 
-      await expect(fileLoader.loadJsonFile(filePath)).rejects.toThrow(
+      await expect(fileLoader.readJsonFile(filePath)).rejects.toThrow(
         FileError,
       );
     });

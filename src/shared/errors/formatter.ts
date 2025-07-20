@@ -5,7 +5,7 @@ import { isBaseError } from "../../domain/errors/errors.js";
  * Get relative path from current working directory
  * Falls back to basename if path is outside cwd
  */
-export function getRelativePath(filePath: string): string {
+export function formatRelativePathFromCwd(filePath: string): string {
   const cwd = process.cwd();
   const relative = path.relative(cwd, filePath);
 
@@ -27,7 +27,7 @@ export function formatErrorMessage(
   const lines = [message];
 
   if (details?.file) {
-    lines.push(`File: ${getRelativePath(details.file)}`);
+    lines.push(`File: ${formatRelativePathFromCwd(details.file)}`);
   }
 
   if (details?.format) {
@@ -44,7 +44,7 @@ export function formatErrorMessage(
 /**
  * Extract error message from unknown error
  */
-export function getErrorMessage(error: unknown): string {
+export function extractErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
   }
@@ -93,5 +93,5 @@ export function formatErrorWithContext(error: unknown): string {
     return lines.join("\n");
   }
 
-  return getErrorMessage(error);
+  return extractErrorMessage(error);
 }

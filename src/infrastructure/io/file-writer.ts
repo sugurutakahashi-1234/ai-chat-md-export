@@ -6,9 +6,9 @@ import type { OutputFormatter } from "../../domain/interfaces/output-formatter.j
 import type { Conversation } from "../../domain/models/types.js";
 import { generateFileName } from "../../domain/utils/filename.js";
 import {
+  extractErrorMessage,
   formatErrorMessage,
-  getErrorMessage,
-  getRelativePath,
+  formatRelativePathFromCwd,
 } from "../../shared/errors/formatter.js";
 import type { Logger } from "../logging/logger.js";
 
@@ -65,7 +65,7 @@ export class FileWriter {
     let successCount = 0;
 
     for (const conv of conversations) {
-      const content = this.formatter.convertSingle(conv);
+      const content = this.formatter.formatSingle(conv);
       const extension = this.formatter.extension;
       const filenameEncoding = isValidFilenameEncoding(options.filenameEncoding)
         ? options.filenameEncoding
@@ -81,10 +81,13 @@ export class FileWriter {
         if (!options.dryRun) {
           await fs.writeFile(outputPath, content, "utf-8");
         }
-        this.logger.output(getRelativePath(outputPath), options.dryRun);
+        this.logger.output(
+          formatRelativePathFromCwd(outputPath),
+          options.dryRun,
+        );
         successCount++;
       } catch (error) {
-        const errorMessage = getErrorMessage(error);
+        const errorMessage = extractErrorMessage(error);
         writeErrors.push({ file: outputPath, error: errorMessage });
 
         this.logger.warn(
@@ -107,7 +110,7 @@ export class FileWriter {
   ): Promise<WriteResult> {
     const writeErrors: Array<{ file: string; error: string }> = [];
 
-    const content = this.formatter.convertMultiple(conversations);
+    const content = this.formatter.formatMultiple(conversations);
     const fileName = this.formatter.getDefaultFilename();
     const outputPath = path.join(outputDir, fileName);
 
@@ -115,14 +118,14 @@ export class FileWriter {
       if (!options.dryRun) {
         await fs.writeFile(outputPath, content, "utf-8");
       }
-      this.logger.output(getRelativePath(outputPath), options.dryRun);
+      this.logger.output(formatRelativePathFromCwd(outputPath), options.dryRun);
       this.logger.stat(
         "Combined",
         `${conversations.length} conversations into one file`,
       );
       return { successCount: conversations.length, errors: [] };
     } catch (error) {
-      const errorMessage = getErrorMessage(error);
+      const errorMessage = extractErrorMessage(error);
       writeErrors.push({ file: outputPath, error: errorMessage });
 
       this.logger.warn(
@@ -147,11 +150,15 @@ export class FileWriter {
           reason:
             writeErrors.length <= 3
               ? writeErrors
-                  .map((e) => `${getRelativePath(e.file)}: ${e.error}`)
+                  .map(
+                    (e) => `${formatRelativePathFromCwd(e.file)}: ${e.error}`,
+                  )
                   .join("\n")
               : `First 3 errors:\n${writeErrors
                   .slice(0, 3)
-                  .map((e) => `${getRelativePath(e.file)}: ${e.error}`)
+                  .map(
+                    (e) => `${formatRelativePathFromCwd(e.file)}: ${e.error}`,
+                  )
                   .join("\n")}\n...and ${writeErrors.length - 3} more`,
         },
       );
