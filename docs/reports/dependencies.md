@@ -120,6 +120,7 @@ flowchart LR
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/chatgpt/schema.ts-->src/domain/entities.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts

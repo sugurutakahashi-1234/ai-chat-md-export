@@ -1,4 +1,4 @@
-import type { Conversation } from "../../domain/entities.js";
+import type { Conversation, MessageRole } from "../../domain/entities.js";
 import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
 
 interface JsonOutput {
@@ -27,7 +27,7 @@ interface JsonConversation {
  * for the timestamp to ensure proper JSON serialization.
  */
 interface JsonMessage {
-  role: "user" | "assistant" | "system" | "tool";
+  role: MessageRole;
   content: string;
   timestamp?: string;
 }
