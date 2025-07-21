@@ -4,7 +4,7 @@
  * Defines the contract for logging messages with different severity levels
  * and formatting options.
  */
-export interface Logger {
+export interface ILogger {
   /**
    * Log an error message
    * @param message - Error message to log

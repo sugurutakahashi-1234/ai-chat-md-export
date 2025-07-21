@@ -4,11 +4,11 @@ import type { Options } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import { FileError } from "../../domain/errors.js";
 import type {
-  FileWriter as IFileWriter,
+  IFileWriter,
   WriteResult,
 } from "../../domain/interfaces/file-writer.js";
-import type { Logger } from "../../domain/interfaces/logger.js";
-import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
+import type { ILogger } from "../../domain/interfaces/logger.js";
+import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import { generateFileName } from "../../domain/utils/filename.js";
 import {
   extractErrorMessage,
@@ -33,8 +33,8 @@ function isValidFilenameEncoding(
  */
 export class FileWriter implements IFileWriter {
   constructor(
-    private readonly logger: Logger,
-    private readonly formatter: OutputFormatter,
+    private readonly logger: ILogger,
+    private readonly formatter: IOutputFormatter,
   ) {}
   /**
    * Write conversations to files based on options

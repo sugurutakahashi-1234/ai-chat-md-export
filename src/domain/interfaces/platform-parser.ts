@@ -7,7 +7,7 @@ import type { Conversation } from "../entities.js";
  * Each platform (ChatGPT, Claude) implements this interface
  * to handle its specific data format and convert it to the common format.
  */
-export interface PlatformParser<T = unknown> {
+export interface IPlatformParser<T = unknown> {
   /**
    * Zod schema for validating the platform data
    */

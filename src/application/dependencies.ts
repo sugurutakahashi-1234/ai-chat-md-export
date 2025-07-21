@@ -1,10 +1,10 @@
-import type { ConversationFilter } from "../domain/interfaces/conversation-filter.js";
-import type { FileLoader } from "../domain/interfaces/file-loader.js";
-import type { FileWriter } from "../domain/interfaces/file-writer.js";
-import type { Logger } from "../domain/interfaces/logger.js";
-import type { OutputFormatter } from "../domain/interfaces/output-formatter.js";
-import type { PlatformParser } from "../domain/interfaces/platform-parser.js";
-import type { SchemaValidator } from "../domain/interfaces/schema-validator.js";
+import type { IConversationFilter } from "../domain/interfaces/conversation-filter.js";
+import type { IFileLoader } from "../domain/interfaces/file-loader.js";
+import type { IFileWriter } from "../domain/interfaces/file-writer.js";
+import type { ILogger } from "../domain/interfaces/logger.js";
+import type { IOutputFormatter } from "../domain/interfaces/output-formatter.js";
+import type { IPlatformParser } from "../domain/interfaces/platform-parser.js";
+import type { ISchemaValidator } from "../domain/interfaces/schema-validator.js";
 
 /**
  * Dependencies required by the Processor class
@@ -20,35 +20,35 @@ export interface ProcessorDependencies {
   /**
    * File loader for reading input files
    */
-  fileLoader: FileLoader;
+  fileLoader: IFileLoader;
 
   /**
    * File writer for writing output files
    */
-  fileWriter: FileWriter;
+  fileWriter: IFileWriter;
 
   /**
    * Platform-specific parser instance
    */
-  parser: PlatformParser;
+  parser: IPlatformParser;
 
   /**
    * Output format formatter
    */
-  formatter: OutputFormatter;
+  formatter: IOutputFormatter;
 
   /**
    * Filter for conversation filtering
    */
-  filter: ConversationFilter;
+  filter: IConversationFilter;
 
   /**
    * Logger instance
    */
-  logger: Logger;
+  logger: ILogger;
 
   /**
    * Schema validator for data validation
    */
-  schemaValidator: SchemaValidator;
+  schemaValidator: ISchemaValidator;
 }

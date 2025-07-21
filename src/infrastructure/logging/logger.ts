@@ -1,5 +1,5 @@
 import pc from "picocolors";
-import type { Logger as ILogger } from "../../domain/interfaces/logger.js";
+import type { ILogger } from "../../domain/interfaces/logger.js";
 
 type LogLevel = "error" | "warn" | "info" | "success" | "debug";
 

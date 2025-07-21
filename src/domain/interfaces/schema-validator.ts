@@ -6,7 +6,7 @@ import type { z as zType } from "zod";
  * Provides methods for validating data against schemas
  * with detailed error reporting and unknown field detection
  */
-export interface SchemaValidator {
+export interface ISchemaValidator {
   /**
    * Validate data against a schema with detailed reporting
    *

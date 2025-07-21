@@ -6,7 +6,7 @@ import type { Conversation } from "../entities.js";
  * Handles conversion from the common conversation format
  * to various output formats (Markdown, JSON, etc.)
  */
-export interface OutputFormatter {
+export interface IOutputFormatter {
   /**
    * File extension for this format
    */

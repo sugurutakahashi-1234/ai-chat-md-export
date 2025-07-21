@@ -1,6 +1,6 @@
 import type { Options } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
-import type { ConversationFilter as IConversationFilter } from "../../domain/interfaces/conversation-filter.js";
+import type { IConversationFilter } from "../../domain/interfaces/conversation-filter.js";
 
 /**
  * Conversation filter for date range and keyword search

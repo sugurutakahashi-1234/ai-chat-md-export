@@ -1,5 +1,5 @@
 import type { Conversation } from "../../domain/entities.js";
-import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
+import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
 
 interface JsonOutput {
   conversations: JsonConversation[];
@@ -38,7 +38,7 @@ interface JsonMessage {
  * Formats conversations as JSON for data exchange
  * and programmatic processing.
  */
-export class JsonFormatter implements OutputFormatter {
+export class JsonFormatter implements IOutputFormatter {
   readonly extension = ".json";
 
   formatSingle(conversation: Conversation): string {

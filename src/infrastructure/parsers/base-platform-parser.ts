@@ -1,13 +1,13 @@
 import type { ZodType } from "zod";
 import type { Conversation } from "../../domain/entities.js";
 import { ValidationError } from "../../domain/errors.js";
-import type { Logger } from "../../domain/interfaces/logger.js";
+import type { ILogger } from "../../domain/interfaces/logger.js";
 import type {
+  IPlatformParser,
   LoadOptions,
   ParsedConversation,
-  PlatformParser,
 } from "../../domain/interfaces/platform-parser.js";
-import type { SchemaValidator } from "../../domain/interfaces/schema-validator.js";
+import type { ISchemaValidator } from "../../domain/interfaces/schema-validator.js";
 
 /**
  * Base class for platform-specific parsers
@@ -16,11 +16,11 @@ import type { SchemaValidator } from "../../domain/interfaces/schema-validator.j
  * platform-specific data formats (ChatGPT, Claude, etc.)
  */
 export abstract class BasePlatformParser<T = unknown>
-  implements PlatformParser<T>
+  implements IPlatformParser<T>
 {
   constructor(
-    protected readonly logger: Logger,
-    private readonly schemaValidator: SchemaValidator,
+    protected readonly logger: ILogger,
+    private readonly schemaValidator: ISchemaValidator,
   ) {}
   abstract readonly schema: ZodType<T>;
 

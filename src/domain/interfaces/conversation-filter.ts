@@ -7,7 +7,7 @@ import type { Conversation } from "../entities.js";
  * Defines the contract for filtering conversations by various criteria
  * such as date range and keyword search.
  */
-export interface ConversationFilter {
+export interface IConversationFilter {
   /**
    * Apply all configured filters to the conversations
    *

@@ -1,8 +1,8 @@
 import type { ProcessorDependencies } from "../../application/dependencies.js";
 import type { Options } from "../../domain/config.js";
 import { ValidationError } from "../../domain/errors.js";
-import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
-import type { PlatformParser } from "../../domain/interfaces/platform-parser.js";
+import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
+import type { IPlatformParser } from "../../domain/interfaces/platform-parser.js";
 import { ConversationFilter } from "../filters/conversation-filter.js";
 import { JsonFormatter } from "../formatters/json-formatter.js";
 import { MarkdownFormatter } from "../formatters/markdown-formatter.js";
@@ -32,7 +32,7 @@ export function createProcessorDependencies(
   const schemaValidator = new SchemaValidator();
 
   // Create platform-specific parser
-  let parser: PlatformParser;
+  let parser: IPlatformParser;
   switch (options.platform) {
     case "chatgpt":
       parser = new ChatGPTParser(logger, schemaValidator);
@@ -45,7 +45,7 @@ export function createProcessorDependencies(
   }
 
   // Create output formatter based on format option
-  let formatter: OutputFormatter;
+  let formatter: IOutputFormatter;
   switch (options.format) {
     case "json":
       formatter = new JsonFormatter();

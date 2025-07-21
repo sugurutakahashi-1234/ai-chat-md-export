@@ -1,7 +1,7 @@
 import type { z as zType } from "zod";
 import { ZodError, z } from "zod";
 import type {
-  SchemaValidator as ISchemaValidator,
+  ISchemaValidator,
   ValidationErrorDetail,
   ValidationResult,
   ValidationWarning,

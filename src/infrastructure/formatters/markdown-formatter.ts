@@ -1,5 +1,5 @@
 import type { Conversation } from "../../domain/entities.js";
-import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
+import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
 
 /**
  * Markdown output formatter
@@ -13,7 +13,7 @@ import type { OutputFormatter } from "../../domain/interfaces/output-formatter.j
  * 2. No structural transformation is needed (dates are formatted inline)
  * 3. The domain model can be used directly without type conversions
  */
-export class MarkdownFormatter implements OutputFormatter {
+export class MarkdownFormatter implements IOutputFormatter {
   readonly extension = ".md";
 
   formatSingle(conversation: Conversation): string {

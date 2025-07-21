@@ -3,7 +3,7 @@
  *
  * Defines the contract for reading and parsing files from the file system.
  */
-export interface FileLoader {
+export interface IFileLoader {
   /**
    * Read and parse JSON file
    *

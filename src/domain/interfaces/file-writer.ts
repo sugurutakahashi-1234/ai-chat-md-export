@@ -14,7 +14,7 @@ export interface WriteResult {
  *
  * Defines the contract for writing conversation data to the file system.
  */
-export interface FileWriter {
+export interface IFileWriter {
   /**
    * Write conversations to files based on options
    *
