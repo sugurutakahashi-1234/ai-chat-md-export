@@ -7,10 +7,7 @@ import type {
   PlatformParser,
 } from "../../domain/interfaces/platform-parser.js";
 import type { Logger } from "../logging/logger.js";
-import {
-  formatValidationReport,
-  validateWithDetails,
-} from "../utils/validator.js";
+import { SchemaValidator } from "../validation/schema-validator.js";
 
 /**
  * Base class for platform-specific parsers
@@ -21,7 +18,11 @@ import {
 export abstract class BasePlatformParser<T = unknown>
   implements PlatformParser<T>
 {
-  constructor(protected readonly logger: Logger) {}
+  private readonly schemaValidator: SchemaValidator;
+
+  constructor(protected readonly logger: Logger) {
+    this.schemaValidator = new SchemaValidator();
+  }
   abstract readonly schema: ZodType<T>;
 
   /**
@@ -50,12 +51,16 @@ export abstract class BasePlatformParser<T = unknown>
       const item = items[i];
       if (!item) continue;
 
-      const result = validateWithDetails(item.schema, item.data, {
-        name: `Conversation #${i + 1}`,
-      });
+      const result = this.schemaValidator.validateWithDetails(
+        item.schema,
+        item.data,
+        {
+          name: `Conversation #${i + 1}`,
+        },
+      );
 
       if (!result.success) {
-        const report = formatValidationReport(result);
+        const report = this.schemaValidator.formatValidationReport(result);
         validationErrors.push(`Conversation #${i + 1}:\n${report}`);
         continue;
       }

@@ -1,6 +1,5 @@
 import type { Conversation } from "../../../domain/entities.js";
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
-import { assertType } from "../../utils/validator.js";
 import { BasePlatformParser } from "../base-platform-parser.js";
 import { type ClaudeConversation, claudeConversationSchema } from "./schema.js";
 
@@ -18,11 +17,8 @@ export class ClaudeParser extends BasePlatformParser<ClaudeConversation[]> {
       data: item,
       schema: claudeConversationSchema,
       transform: (validatedData: unknown) => {
-        const parsed = assertType(
-          claudeConversationSchema,
-          validatedData,
-          "Claude conversation transform",
-        );
+        // Data has already been validated by base class
+        const parsed = validatedData as ClaudeConversation;
         const date = new Date(parsed.created_at);
 
         return {

@@ -1,6 +1,5 @@
 import type { Conversation } from "../../../domain/entities.js";
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
-import { assertType } from "../../utils/validator.js";
 import { BasePlatformParser } from "../base-platform-parser.js";
 import {
   type ChatGPTConversation,
@@ -22,11 +21,8 @@ export class ChatGPTParser extends BasePlatformParser<ChatGPTConversation[]> {
       data: item,
       schema: chatGPTConversationSchema,
       transform: (validatedData: unknown) => {
-        const parsed = assertType(
-          chatGPTConversationSchema,
-          validatedData,
-          "ChatGPT conversation transform",
-        );
+        // Data has already been validated by base class
+        const parsed = validatedData as ChatGPTConversation;
         const messages = this.extractMessages(parsed.mapping);
 
         const date = parsed.create_time

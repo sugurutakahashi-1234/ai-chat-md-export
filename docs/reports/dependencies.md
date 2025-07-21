@@ -31,7 +31,6 @@ flowchart LR
         subgraph src/infrastructure["/infrastructure"]
             subgraph src/infrastructure/utils["/utils"]
                 src/infrastructure/utils/error//formatter.ts["error-formatter.ts"]
-                src/infrastructure/utils/validator.ts["validator.ts"]
             end
             subgraph src/infrastructure/filters["/filters"]
                 src/infrastructure/filters/conversation//filter.ts["conversation-filter.ts"]
@@ -46,6 +45,9 @@ flowchart LR
             end
             subgraph src/infrastructure/logging["/logging"]
                 src/infrastructure/logging/logger.ts["logger.ts"]
+            end
+            subgraph src/infrastructure/validation["/validation"]
+                src/infrastructure/validation/schema//validator.ts["schema-validator.ts"]
             end
             subgraph src/infrastructure/parsers["/parsers"]
                 src/infrastructure/parsers/base//platform//parser.ts["base-platform-parser.ts"]
@@ -110,24 +112,21 @@ flowchart LR
     src/infrastructure/io/file//writer.ts-->src/infrastructure/utils/error//formatter.ts
     src/infrastructure/logging/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/infrastructure/logging/logger.ts-->src/domain/interfaces/logger.ts
-    src/infrastructure/utils/validator.ts-->node//modules/zod/index.d.cts
-    src/infrastructure/utils/validator.ts-->src/domain/errors.ts
+    src/infrastructure/validation/schema//validator.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/errors.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/logging/logger.ts
-    src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/utils/validator.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/validation/schema//validator.ts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/utils/validator.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/chatgpt/schema.ts
     src/infrastructure/parsers/claude/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/claude/parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/claude/parser.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/utils/validator.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/claude/schema.ts
     src/infrastructure/factories/processor//factory.ts-->src/application/depend_encies.ts
