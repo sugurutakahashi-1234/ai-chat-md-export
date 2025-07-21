@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { MessageRole } from "../../../domain/entities.js";
 
 // Detailed ChatGPT schema definitions
 const chatGPTContentPartSchema = z.union([
@@ -16,7 +17,9 @@ const chatGPTMessageSchema = z
   .object({
     id: z.string(),
     author: z.object({
-      role: z.enum(["user", "assistant", "system", "tool"]),
+      role: z.enum(
+        Object.values(MessageRole) as [MessageRole, ...MessageRole[]],
+      ),
       name: z.string().nullable().optional(),
       metadata: z.record(z.string(), z.unknown()).optional(),
     }),

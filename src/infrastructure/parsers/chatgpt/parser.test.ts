@@ -24,7 +24,7 @@ describe("ChatGPT Parser", () => {
         id: "node-2",
         message: {
           id: "msg-1",
-          author: { role: "user" },
+          author: { role: MessageRole.User },
           content: {
             content_type: "text",
             parts: ["Hello, world!"],
@@ -39,7 +39,7 @@ describe("ChatGPT Parser", () => {
         id: "node-3",
         message: {
           id: "msg-2",
-          author: { role: "assistant" },
+          author: { role: MessageRole.Assistant },
           content: {
             content_type: "text",
             parts: ["Hello! How can I help you?"],
@@ -94,7 +94,7 @@ describe("ChatGPT Parser", () => {
             id: "child1",
             message: {
               id: "msg-1",
-              author: { role: "user" },
+              author: { role: MessageRole.User },
               content: { parts: ["First branch"] },
               create_time: 1704110400,
               update_time: null,
@@ -106,7 +106,7 @@ describe("ChatGPT Parser", () => {
             id: "child2",
             message: {
               id: "msg-2",
-              author: { role: "user" },
+              author: { role: MessageRole.User },
               content: { parts: ["Second branch"] },
               create_time: 1704110400,
               update_time: null,
@@ -118,7 +118,7 @@ describe("ChatGPT Parser", () => {
             id: "response1",
             message: {
               id: "msg-3",
-              author: { role: "assistant" },
+              author: { role: MessageRole.Assistant },
               content: { parts: ["Response to first branch"] },
               create_time: 1704110410,
               update_time: null,
@@ -154,7 +154,7 @@ describe("ChatGPT Parser", () => {
             id: "n2",
             message: {
               id: "m1",
-              author: { role: "system" },
+              author: { role: MessageRole.System },
               content: { parts: ["System prompt"] },
               create_time: null,
               update_time: null,
@@ -165,7 +165,7 @@ describe("ChatGPT Parser", () => {
             id: "n3",
             message: {
               id: "m2",
-              author: { role: "tool" },
+              author: { role: MessageRole.Tool },
               content: { parts: ["Tool output"] },
               create_time: null,
               update_time: null,
@@ -207,7 +207,7 @@ describe("ChatGPT Parser", () => {
             id: "n1",
             message: {
               id: "m1",
-              author: { role: "user" },
+              author: { role: MessageRole.User },
               content: { parts: ["Message"] },
               create_time: null,
               update_time: null,
@@ -233,7 +233,7 @@ describe("ChatGPT Parser", () => {
             id: "n1",
             message: {
               id: "m1",
-              author: { role: "user" },
+              author: { role: MessageRole.User },
               content: {
                 parts: [
                   "Text part",
@@ -271,7 +271,7 @@ describe("ChatGPT Parser", () => {
             id: "n1",
             message: {
               id: "m1",
-              author: { role: "user" },
+              author: { role: MessageRole.User },
               content: { parts: [] }, // Empty parts
               create_time: null,
               update_time: null,
@@ -282,7 +282,7 @@ describe("ChatGPT Parser", () => {
             id: "n2",
             message: {
               id: "m2",
-              author: { role: "assistant" },
+              author: { role: MessageRole.Assistant },
               content: { parts: ["Valid message"] },
               create_time: null,
               update_time: null,

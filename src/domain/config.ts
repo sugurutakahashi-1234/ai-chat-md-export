@@ -15,10 +15,18 @@ export enum FilenameEncoding {
   Preserve = "preserve",
 }
 
+/**
+ * Maps Format enum values to their corresponding file extensions
+ */
+export const FILE_EXTENSIONS = {
+  [Format.Markdown]: ".md",
+  [Format.Json]: ".json",
+} as const;
+
 export const optionsSchema = z.object({
   input: z.string(),
   output: z.string().optional(),
-  platform: z.nativeEnum(Platform),
+  platform: z.enum(Object.values(Platform) as [Platform, ...Platform[]]),
   since: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format")
@@ -31,9 +39,16 @@ export const optionsSchema = z.object({
   dryRun: z.boolean().default(false),
   search: z.string().optional(),
   filenameEncoding: z
-    .nativeEnum(FilenameEncoding)
+    .enum(
+      Object.values(FilenameEncoding) as [
+        FilenameEncoding,
+        ...FilenameEncoding[],
+      ],
+    )
     .default(FilenameEncoding.Standard),
-  format: z.nativeEnum(Format).default(Format.Markdown),
+  format: z
+    .enum(Object.values(Format) as [Format, ...Format[]])
+    .default(Format.Markdown),
   split: z.boolean().default(true),
 });
 

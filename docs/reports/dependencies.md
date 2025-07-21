@@ -77,6 +77,7 @@ flowchart LR
     src/domain/interfaces/conversation//filter.ts-->src/domain/entities.ts
     src/domain/interfaces/file//writer.ts-->src/domain/config.ts
     src/domain/interfaces/file//writer.ts-->src/domain/entities.ts
+    src/domain/interfaces/output//formatter.ts-->src/domain/config.ts
     src/domain/interfaces/output//formatter.ts-->src/domain/entities.ts
     src/domain/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/domain/interfaces/platform//parser.ts-->src/domain/entities.ts
@@ -96,8 +97,10 @@ flowchart LR
     src/infrastructure/filters/conversation//filter.ts-->src/domain/config.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/entities.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/conversation//filter.ts
+    src/infrastructure/formatters/json//formatter.ts-->src/domain/config.ts
     src/infrastructure/formatters/json//formatter.ts-->src/domain/entities.ts
     src/infrastructure/formatters/json//formatter.ts-->src/domain/interfaces/output//formatter.ts
+    src/infrastructure/formatters/markdown//formatter.ts-->src/domain/config.ts
     src/infrastructure/formatters/markdown//formatter.ts-->src/domain/entities.ts
     src/infrastructure/formatters/markdown//formatter.ts-->src/domain/interfaces/output//formatter.ts
     src/infrastructure/io/file//loader.ts-->src/domain/errors.ts
@@ -121,6 +124,7 @@ flowchart LR
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/chatgpt/schema.ts-->src/domain/entities.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts

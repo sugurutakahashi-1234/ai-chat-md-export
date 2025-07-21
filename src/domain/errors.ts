@@ -1,4 +1,12 @@
 /**
+ * File operation types
+ */
+export enum FileOperation {
+  Read = "read",
+  Write = "write",
+}
+
+/**
  * Base error class for all custom errors in the application
  */
 export abstract class BaseError extends Error {
@@ -33,12 +41,12 @@ export class ValidationError extends BaseError {
  */
 export class FileError extends BaseError {
   readonly filePath: string;
-  readonly operation: "read" | "write" | "delete" | "access";
+  readonly operation: FileOperation;
 
   constructor(
     message: string,
     filePath: string,
-    operation: "read" | "write" | "delete" | "access",
+    operation: FileOperation,
     context?: Record<string, unknown>,
   ) {
     super(message, { ...context, filePath, operation });

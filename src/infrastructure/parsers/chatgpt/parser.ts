@@ -17,6 +17,14 @@ import {
 export class ChatGPTParser extends BasePlatformParser<ChatGPTConversation[]> {
   readonly schema = chatGPTConversationSchema.array();
 
+  // Ensure all enum values are covered at compile time
+  private readonly roleMap = {
+    user: MessageRole.User,
+    assistant: MessageRole.Assistant,
+    system: MessageRole.System,
+    tool: MessageRole.Tool,
+  } as const satisfies Record<MessageRole, MessageRole>;
+
   parseConversations(data: ChatGPTConversation[]): ParsedConversation[] {
     return data.map((item) => ({
       data: item,
@@ -102,20 +110,9 @@ export class ChatGPTParser extends BasePlatformParser<ChatGPTConversation[]> {
   }
 
   /**
-   * Map string role to MessageRole enum
+   * Map string role to MessageRole enum with type safety
    */
   private mapRole(role: string): MessageRole {
-    switch (role) {
-      case "user":
-        return MessageRole.User;
-      case "assistant":
-        return MessageRole.Assistant;
-      case "system":
-        return MessageRole.System;
-      case "tool":
-        return MessageRole.Tool;
-      default:
-        return MessageRole.User; // Default to user for unknown roles
-    }
+    return this.roleMap[role as keyof typeof this.roleMap] ?? MessageRole.User;
   }
 }

@@ -1,3 +1,4 @@
+import { FILE_EXTENSIONS, Format } from "../../domain/config.js";
 import type { Conversation, MessageRole } from "../../domain/entities.js";
 import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
 
@@ -39,7 +40,7 @@ interface JsonMessage {
  * and programmatic processing.
  */
 export class JsonFormatter implements IOutputFormatter {
-  readonly extension = ".json";
+  readonly format = Format.Json;
 
   formatSingle(conversation: Conversation): string {
     const jsonConversation = this.convertConversationToJson(conversation);
@@ -56,7 +57,7 @@ export class JsonFormatter implements IOutputFormatter {
   }
 
   getDefaultFilename(): string {
-    return "all-conversations.json";
+    return `all-conversations${FILE_EXTENSIONS[this.format]}`;
   }
 
   private convertConversationToJson(

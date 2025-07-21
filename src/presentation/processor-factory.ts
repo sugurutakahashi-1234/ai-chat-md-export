@@ -39,8 +39,6 @@ export function createProcessorDependencies(
     case Platform.Claude:
       parser = new ClaudeParser(logger, schemaValidator);
       break;
-    default:
-      throw new Error(`Unknown platform: ${options.platform}`);
   }
 
   // Create output formatter based on format option

@@ -1,8 +1,12 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { FilenameEncoding, type Options } from "../../domain/config.js";
+import {
+  FILE_EXTENSIONS,
+  FilenameEncoding,
+  type Options,
+} from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
-import { FileError } from "../../domain/errors.js";
+import { FileError, FileOperation } from "../../domain/errors.js";
 import type {
   IFileWriter,
   WriteResult,
@@ -12,15 +16,6 @@ import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.
 import { extractErrorMessage } from "../../domain/utils/error.js";
 import { generateFileName } from "../../domain/utils/filename.js";
 import { formatRelativePathFromCwd } from "../../domain/utils/path.js";
-
-/**
- * Validate filename encoding option
- */
-function isValidFilenameEncoding(
-  encoding: unknown,
-): encoding is "standard" | "preserve" {
-  return encoding === "standard" || encoding === "preserve";
-}
 
 /**
  * File writer for conversation data
@@ -62,10 +57,9 @@ export class FileWriter implements IFileWriter {
 
     for (const conv of conversations) {
       const content = this.formatter.formatSingle(conv);
-      const extension = this.formatter.extension;
-      const filenameEncoding = isValidFilenameEncoding(options.filenameEncoding)
-        ? options.filenameEncoding
-        : FilenameEncoding.Standard;
+      const extension = FILE_EXTENSIONS[this.formatter.format];
+      const filenameEncoding =
+        options.filenameEncoding ?? FilenameEncoding.Standard;
       const fileName = generateFileName(
         conv.date,
         conv.title,
@@ -149,7 +143,7 @@ export class FileWriter implements IFileWriter {
       throw new FileError(
         errorSummary,
         writeErrors[0]?.file || "multiple",
-        "write",
+        FileOperation.Write,
         {
           totalErrors: writeErrors.length,
           errors: writeErrors.slice(0, 3),

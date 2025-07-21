@@ -1,4 +1,4 @@
-import { FilenameEncoding } from "../config.js";
+import { FILE_EXTENSIONS, FilenameEncoding, Format } from "../config.js";
 
 /**
  * Convert string to a safe filename (standard version)
@@ -68,12 +68,10 @@ export function generateFileName(
     case FilenameEncoding.Preserve:
       sanitizedTitle = sanitizeFileNamePreserve(title);
       break;
-    default:
-      sanitizedTitle = sanitizeFileNameStandard(title);
   }
 
   // Truncate if filename is too long
-  // Consider: date(10) + "_"(1) + ".md"(3) = 14 characters
+  // Consider: date(10) + "_"(1) + extension(3) = 14 characters
   const maxTitleLength = 196; // 210 - 14 = 196
   const truncatedTitle =
     sanitizedTitle.length > maxTitleLength
@@ -83,5 +81,5 @@ export function generateFileName(
   // Extract date part in YYYY-MM-DD format
   const dateString = date.toISOString().split("T")[0];
 
-  return `${dateString}_${truncatedTitle}.md`;
+  return `${dateString}_${truncatedTitle}${FILE_EXTENSIONS[Format.Markdown]}`;
 }

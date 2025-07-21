@@ -1,3 +1,4 @@
+import { FILE_EXTENSIONS, Format } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
 
@@ -14,7 +15,7 @@ import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.
  * 3. The domain model can be used directly without type conversions
  */
 export class MarkdownFormatter implements IOutputFormatter {
-  readonly extension = ".md";
+  readonly format = Format.Markdown;
 
   formatSingle(conversation: Conversation): string {
     const lines: string[] = [];
@@ -65,7 +66,7 @@ export class MarkdownFormatter implements IOutputFormatter {
   }
 
   getDefaultFilename(): string {
-    return "all-conversations.md";
+    return `all-conversations${FILE_EXTENSIONS[this.format]}`;
   }
 
   private formatDateTimeWithTimezone(timestamp: Date): string {

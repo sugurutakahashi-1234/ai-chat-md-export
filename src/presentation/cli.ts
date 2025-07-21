@@ -5,6 +5,13 @@ import { formatErrorWithContext } from "../domain/utils/error.js";
 import { VERSION } from "../domain/version.js";
 import { createProcessorDependencies } from "./processor-factory.js";
 
+// Commander error codes
+const COMMANDER_ERROR_CODES = {
+  MissingMandatoryOption: "commander.missingMandatoryOptionValue",
+  HelpDisplayed: "commander.helpDisplayed",
+  VersionDisplayed: "commander.version",
+} as const;
+
 export async function main(): Promise<void> {
   const program = new Command();
   program
@@ -51,7 +58,7 @@ For more options and detailed documentation:
   https://www.npmjs.com/package/ai-chat-md-export`,
     )
     .exitOverride((err) => {
-      if (err.code === "commander.missingMandatoryOptionValue") {
+      if (err.code === COMMANDER_ERROR_CODES.MissingMandatoryOption) {
         const missingOptions = [];
         const opts = program.opts();
         // biome-ignore lint/complexity/useLiteralKeys: TypeScript requires bracket notation for index signatures
@@ -68,10 +75,10 @@ For more options and detailed documentation:
         );
         process.exit(1);
       }
-      if (err.code === "commander.helpDisplayed") {
+      if (err.code === COMMANDER_ERROR_CODES.HelpDisplayed) {
         process.exit(0);
       }
-      if (err.code === "commander.version") {
+      if (err.code === COMMANDER_ERROR_CODES.VersionDisplayed) {
         process.exit(0);
       }
       throw err;

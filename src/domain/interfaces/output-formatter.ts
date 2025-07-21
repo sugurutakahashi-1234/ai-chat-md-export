@@ -1,3 +1,4 @@
+import type { Format } from "../config.js";
 import type { Conversation } from "../entities.js";
 
 /**
@@ -8,9 +9,9 @@ import type { Conversation } from "../entities.js";
  */
 export interface IOutputFormatter {
   /**
-   * File extension for this format
+   * The format type this formatter handles
    */
-  readonly extension: string;
+  readonly format: Format;
 
   /**
    * Format a single conversation to the output format

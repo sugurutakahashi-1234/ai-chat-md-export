@@ -1,7 +1,13 @@
 import pc from "picocolors";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 
-type LogLevel = "error" | "warn" | "info" | "success" | "debug";
+enum LogLevel {
+  Error = "error",
+  Warn = "warn",
+  Info = "info",
+  Success = "success",
+  Debug = "debug",
+}
 
 interface LoggerOptions {
   quiet?: boolean;
@@ -11,7 +17,7 @@ export class Logger implements ILogger {
   constructor(private options: LoggerOptions = {}) {}
 
   private shouldLog(level: LogLevel): boolean {
-    if (this.options.quiet && level !== "error") return false;
+    if (this.options.quiet && level !== LogLevel.Error) return false;
     return true;
   }
 
@@ -29,11 +35,11 @@ export class Logger implements ILogger {
     if (!useColor) return message;
 
     const formatters: Record<LogLevel, (s: string) => string> = {
-      error: (s) => pc.red(pc.bold(s)),
-      warn: (s) => pc.yellow(s),
-      info: (s) => s, // no color for info
-      success: (s) => pc.green(s),
-      debug: (s) => pc.gray(s),
+      [LogLevel.Error]: (s) => pc.red(pc.bold(s)),
+      [LogLevel.Warn]: (s) => pc.yellow(s),
+      [LogLevel.Info]: (s) => s, // no color for info
+      [LogLevel.Success]: (s) => pc.green(s),
+      [LogLevel.Debug]: (s) => pc.gray(s),
     };
 
     return formatters[level](message);
@@ -45,7 +51,7 @@ export class Logger implements ILogger {
     const formatted = this.format(level, message);
 
     // error goes to stderr, others to stdout
-    if (level === "error") {
+    if (level === LogLevel.Error) {
       console.error(formatted);
     } else {
       console.log(formatted);
@@ -54,38 +60,38 @@ export class Logger implements ILogger {
 
   // Simple method wrappers
   error(message: string): void {
-    this.log("error", `✗ ${message}`);
+    this.log(LogLevel.Error, `✗ ${message}`);
   }
 
   warn(message: string): void {
-    this.log("warn", `⚠ ${message}`);
+    this.log(LogLevel.Warn, `⚠ ${message}`);
   }
 
   info(message: string): void {
-    this.log("info", message);
+    this.log(LogLevel.Info, message);
   }
 
   success(message: string): void {
-    this.log("success", `✓ ${message}`);
+    this.log(LogLevel.Success, `✓ ${message}`);
   }
 
   section(title: string): void {
-    this.log("info", `\n${pc.bold(pc.blue(title))}`);
+    this.log(LogLevel.Info, `\n${pc.bold(pc.blue(title))}`);
   }
 
   // Progress display (special handling)
   progress(current: number, total: number, item: string): void {
-    this.log("info", `${pc.gray(`[${current}/${total}]`)} ${item}`);
+    this.log(LogLevel.Info, `${pc.gray(`[${current}/${total}]`)} ${item}`);
   }
 
   // File output path (with indent)
   output(path: string, dryRun = false): void {
     const prefix = dryRun ? pc.yellow("[DRY RUN] ") : "";
-    this.log("info", `  → ${prefix}${pc.cyan(path)}`);
+    this.log(LogLevel.Info, `  → ${prefix}${pc.cyan(path)}`);
   }
 
   // Statistics (key: value format)
   stat(key: string, value: string | number): void {
-    this.log("info", `  ${pc.gray(`${key}:`)} ${value}`);
+    this.log(LogLevel.Info, `  ${pc.gray(`${key}:`)} ${value}`);
   }
 }
