@@ -60,11 +60,9 @@ flowchart LR
             subgraph src/infrastructure/validation["/validation"]
                 src/infrastructure/validation/schema//validator.ts["schema-validator.ts"]
             end
-            subgraph src/infrastructure/factories["/factories"]
-                src/infrastructure/factories/processor//factory.ts["processor-factory.ts"]
-            end
         end
         subgraph src/presentation["/presentation"]
+            src/presentation/processor//factory.ts["processor-factory.ts"]
             src/presentation/cli.ts["cli.ts"]
             src/presentation/index.ts["index.ts"]
         end
@@ -133,26 +131,26 @@ flowchart LR
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/claude/schema.ts
     src/infrastructure/validation/schema//validator.ts-->node//modules/zod/index.d.cts
     src/infrastructure/validation/schema//validator.ts-->src/domain/interfaces/schema//validator.ts
-    src/infrastructure/factories/processor//factory.ts-->src/application/depend_encies.ts
-    src/infrastructure/factories/processor//factory.ts-->src/domain/config.ts
-    src/infrastructure/factories/processor//factory.ts-->src/domain/errors.ts
-    src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/output//formatter.ts
-    src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/filters/conversation//filter.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/json//formatter.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/markdown//formatter.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/io/file//loader.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/io/file//writer.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/logging/logger.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/validation/schema//validator.ts
+    src/presentation/processor//factory.ts-->src/application/depend_encies.ts
+    src/presentation/processor//factory.ts-->src/domain/config.ts
+    src/presentation/processor//factory.ts-->src/domain/errors.ts
+    src/presentation/processor//factory.ts-->src/domain/interfaces/output//formatter.ts
+    src/presentation/processor//factory.ts-->src/domain/interfaces/platform//parser.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/filters/conversation//filter.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/formatters/json//formatter.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/formatters/markdown//formatter.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/io/file//loader.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/io/file//writer.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/logging/logger.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/validation/schema//validator.ts
     src/presentation/cli.ts-->node//modules/commander/typings/index.d.ts
     src/presentation/cli.ts-->src/application/processor.ts
     src/presentation/cli.ts-->src/domain/config.ts
     src/presentation/cli.ts-->src/domain/utils/error.ts
     src/presentation/cli.ts-->src/domain/version.ts
-    src/presentation/cli.ts-->src/infrastructure/factories/processor//factory.ts
+    src/presentation/cli.ts-->src/presentation/processor//factory.ts
     src/presentation/index.ts-->src/presentation/cli.ts
 ```
 

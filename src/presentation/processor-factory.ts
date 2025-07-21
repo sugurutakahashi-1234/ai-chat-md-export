@@ -1,17 +1,17 @@
-import type { ProcessorDependencies } from "../../application/dependencies.js";
-import type { Options } from "../../domain/config.js";
-import { ValidationError } from "../../domain/errors.js";
-import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
-import type { IPlatformParser } from "../../domain/interfaces/platform-parser.js";
-import { ConversationFilter } from "../filters/conversation-filter.js";
-import { JsonFormatter } from "../formatters/json-formatter.js";
-import { MarkdownFormatter } from "../formatters/markdown-formatter.js";
-import { FileLoader } from "../io/file-loader.js";
-import { FileWriter } from "../io/file-writer.js";
-import { Logger } from "../logging/logger.js";
-import { ChatGPTParser } from "../parsers/chatgpt/parser.js";
-import { ClaudeParser } from "../parsers/claude/parser.js";
-import { SchemaValidator } from "../validation/schema-validator.js";
+import type { ProcessorDependencies } from "../application/dependencies.js";
+import type { Options } from "../domain/config.js";
+import { ValidationError } from "../domain/errors.js";
+import type { IOutputFormatter } from "../domain/interfaces/output-formatter.js";
+import type { IPlatformParser } from "../domain/interfaces/platform-parser.js";
+import { ConversationFilter } from "../infrastructure/filters/conversation-filter.js";
+import { JsonFormatter } from "../infrastructure/formatters/json-formatter.js";
+import { MarkdownFormatter } from "../infrastructure/formatters/markdown-formatter.js";
+import { FileLoader } from "../infrastructure/io/file-loader.js";
+import { FileWriter } from "../infrastructure/io/file-writer.js";
+import { Logger } from "../infrastructure/logging/logger.js";
+import { ChatGPTParser } from "../infrastructure/parsers/chatgpt/parser.js";
+import { ClaudeParser } from "../infrastructure/parsers/claude/parser.js";
+import { SchemaValidator } from "../infrastructure/validation/schema-validator.js";
 
 /**
  * Create processor dependencies based on options

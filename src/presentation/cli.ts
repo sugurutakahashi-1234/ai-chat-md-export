@@ -3,7 +3,7 @@ import { Processor } from "../application/processor.js";
 import { optionsSchema } from "../domain/config.js";
 import { formatErrorWithContext } from "../domain/utils/error.js";
 import { VERSION } from "../domain/version.js";
-import { createProcessorDependencies } from "../infrastructure/factories/processor-factory.js";
+import { createProcessorDependencies } from "./processor-factory.js";
 
 export async function main(): Promise<void> {
   const program = new Command();
