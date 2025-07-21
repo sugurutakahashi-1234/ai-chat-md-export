@@ -36,10 +36,13 @@ export class Processor {
         quiet: options.quiet,
       },
     );
-
-    // Use batch writer for memory-efficient processing
-    await this.deps.conversationBatchWriter.writeInBatches(
+    const filteredConversations = this.deps.filter.filterConversations(
       conversations,
+      options,
+    );
+
+    await this.deps.fileWriter.writeConversations(
+      filteredConversations,
       outputDir,
       options,
     );

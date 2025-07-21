@@ -50,7 +50,6 @@ export const optionsSchema = z.object({
     .enum(Object.values(Format) as [Format, ...Format[]])
     .default(Format.Markdown),
   split: z.boolean().default(true),
-  batchSize: z.number().positive().int().optional(),
 });
 
 export type Options = z.infer<typeof optionsSchema>;

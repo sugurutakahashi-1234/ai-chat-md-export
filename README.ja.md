@@ -220,7 +220,6 @@ ai-chat-md-export -i conversations.json -p chatgpt --no-split
 | `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`）                     | `standard` |
 | `-q, --quiet`                    | 進捗メッセージを抑制                                                    | -          |
 | `--dry-run`                      | ファイルを作成せずにプレビューモード                                    | -          |
-| `--batch-size <number>`          | メモリ効率のためのバッチ処理                                            | -          |
 
 ## Getting conversations.json
 
@@ -254,8 +253,6 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 
 ### Large files taking too long to process
 非常に大きな会話履歴の場合：
-- `--batch-size 100`を使用してバッチ処理を行い、メモリ使用量を削減
-- 50MB以上のファイルや数千の会話がある場合に特に有効
 - `--since`と`--until`を使用して特定の日付範囲を処理
 - メモリ不足の場合は、一度に1つのファイルを処理
 - `--search`を使用して関連する会話のみを抽出

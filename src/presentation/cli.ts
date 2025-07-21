@@ -49,11 +49,6 @@ export async function main(): Promise<void> {
     )
     .option("-q, --quiet", "Suppress progress messages")
     .option("--dry-run", "Show what would be done without writing files")
-    .option(
-      "--batch-size <number>",
-      "Process conversations in batches for memory efficiency",
-      (value) => parseInt(value, 10),
-    )
     .addHelpText(
       "after",
       `\nExample:
