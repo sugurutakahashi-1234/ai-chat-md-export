@@ -26,9 +26,33 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { $ } from "bun";
 
+// Test data creation helper (minimal for Node.js compatibility testing)
+function createChatGPTTestData() {
+  return [
+    {
+      title: "Node.js Test Conversation",
+      create_time: 1703980800,
+      id: "nodejs-test",
+      mapping: {
+        "node-1": {
+          id: "node-1",
+          message: {
+            id: "msg-1",
+            author: { role: "user" },
+            content: {
+              parts: ["Hello from Node.js test!"],
+            },
+            create_time: 1703980800,
+          },
+          children: [],
+        },
+      },
+    },
+  ];
+}
+
 describe("Node.js Execution Tests", () => {
   const tempDir = path.join(process.cwd(), "tests/temp");
-  const fixturesDir = path.join(process.cwd(), "tests/fixtures");
   const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
   const libDir = path.join(process.cwd(), "lib");
 
@@ -71,7 +95,11 @@ describe("Node.js Execution Tests", () => {
       return;
     }
 
-    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
+    // Create test data file
+    const testData = createChatGPTTestData();
+    const inputFile = path.join(tempDir, "nodejs-test.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
     const outputDir = path.join(tempDir, "output");
 
     const result =
@@ -114,7 +142,11 @@ describe("Node.js Execution Tests", () => {
       return;
     }
 
-    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
+    // Create test data file
+    const testData = createChatGPTTestData();
+    const inputFile = path.join(tempDir, "nodejs-dryrun-test.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
     const result =
       await $`node ${cliPath} -i ${inputFile} --dry-run -p chatgpt`.quiet();
 

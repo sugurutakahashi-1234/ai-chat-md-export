@@ -31,9 +31,80 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { $ } from "bun";
 
+// Test data creation helpers
+function createChatGPTConversation(overrides: any = {}) {
+  return {
+    title: "E2E CLI Test Conversation",
+    create_time: 1703980800,
+    id: "e2e-cli-test",
+    mapping: {
+      "node-1": {
+        id: "node-1",
+        message: {
+          id: "msg-1",
+          author: { role: "system" },
+          content: {
+            parts: ["You are a helpful assistant for E2E testing."],
+          },
+          create_time: 1703980800,
+        },
+        children: ["node-2"],
+      },
+      "node-2": {
+        id: "node-2",
+        message: {
+          id: "msg-2",
+          author: { role: "user" },
+          content: {
+            parts: ["Hello, this is an E2E test!"],
+          },
+          create_time: 1703980810,
+        },
+        children: ["node-3"],
+      },
+      "node-3": {
+        id: "node-3",
+        message: {
+          id: "msg-3",
+          author: { role: "assistant" },
+          content: {
+            parts: ["Hello! I'm here to help with E2E testing."],
+          },
+          create_time: 1703980820,
+        },
+        children: [],
+      },
+    },
+    ...overrides,
+  };
+}
+
+function createClaudeConversation(overrides: any = {}) {
+  return {
+    uuid: "conv-123",
+    name: "Test Claude Conversation",
+    created_at: "2024-01-01T12:00:00Z",
+    updated_at: "2024-01-01T12:30:00Z",
+    chat_messages: [
+      {
+        uuid: "msg-1",
+        text: "Hello, Claude!",
+        sender: "human",
+        created_at: "2024-01-01T12:00:00Z",
+      },
+      {
+        uuid: "msg-2",
+        text: "Hello! How can I help you today?",
+        sender: "assistant",
+        created_at: "2024-01-01T12:00:10Z",
+      },
+    ],
+    ...overrides,
+  };
+}
+
 describe("CLI Integration Tests", () => {
   const tempDir = path.join(process.cwd(), "tests/temp");
-  const fixturesDir = path.join(process.cwd(), "tests/fixtures");
   const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
 
   beforeEach(async () => {
@@ -74,7 +145,11 @@ describe("CLI Integration Tests", () => {
   });
 
   test("converts ChatGPT file", async () => {
-    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
+    // Create test data
+    const testData = [createChatGPTConversation()];
+    const inputFile = path.join(tempDir, "chatgpt-test.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
     const outputDir = path.join(tempDir, "output");
 
     const result =
@@ -96,7 +171,11 @@ describe("CLI Integration Tests", () => {
   });
 
   test("converts Claude file", async () => {
-    const inputFile = path.join(fixturesDir, "claude/valid-conversation.json");
+    // Create test data
+    const testData = [createClaudeConversation()];
+    const inputFile = path.join(tempDir, "claude-test.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
     const outputDir = path.join(tempDir, "output");
 
     const result =
@@ -186,7 +265,11 @@ describe("CLI Integration Tests", () => {
   });
 
   test("handles unsupported format", async () => {
-    const inputFile = path.join(fixturesDir, "chatgpt/valid-conversation.json");
+    // Create a dummy file for testing
+    const testData = [createChatGPTConversation()];
+    const inputFile = path.join(tempDir, "test.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
     const outputDir = path.join(tempDir, "output");
 
     try {
@@ -210,7 +293,11 @@ describe("CLI Integration Tests", () => {
   });
 
   test("operates in dry-run mode", async () => {
-    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
+    // Create test data
+    const testData = [createChatGPTConversation()];
+    const inputFile = path.join(tempDir, "dry-run-test.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
     const outputDir = path.join(tempDir, "output");
 
     const result =
@@ -229,7 +316,11 @@ describe("CLI Integration Tests", () => {
   });
 
   test("operates in quiet mode", async () => {
-    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
+    // Create test data
+    const testData = [createChatGPTConversation()];
+    const inputFile = path.join(tempDir, "quiet-test.json");
+    await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
+
     const outputDir = path.join(tempDir, "output");
 
     // Capture stdout to verify quiet mode
