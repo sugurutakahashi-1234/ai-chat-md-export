@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 // Detailed ChatGPT schema definitions
-export const chatGPTContentPartSchema = z.union([
+const chatGPTContentPartSchema = z.union([
   z.string(),
   z
     .object({
@@ -12,7 +12,7 @@ export const chatGPTContentPartSchema = z.union([
     .passthrough(),
 ]) satisfies z.ZodSchema;
 
-export const chatGPTMessageSchema = z
+const chatGPTMessageSchema = z
   .object({
     id: z.string(),
     author: z.object({
@@ -37,7 +37,7 @@ export const chatGPTMessageSchema = z
   })
   .passthrough() satisfies z.ZodSchema; // Allow unknown fields
 
-export const chatGPTNodeSchema = z
+const chatGPTNodeSchema = z
   .object({
     id: z.string(),
     message: chatGPTMessageSchema.nullable(),

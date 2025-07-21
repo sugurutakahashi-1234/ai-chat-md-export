@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 // Claude message content schema
-export const claudeMessageContentSchema = z
+const claudeMessageContentSchema = z
   .object({
     type: z.string(), // Supports multiple types like "text", "thinking"
     text: z.string().optional(),
@@ -10,7 +10,7 @@ export const claudeMessageContentSchema = z
   })
   .passthrough() satisfies z.ZodSchema;
 
-export const claudeMessageSchema = z
+const claudeMessageSchema = z
   .object({
     // Support both new format (using sender) and old format (using role)
     role: z.enum(["user", "assistant", "human"]).optional(),

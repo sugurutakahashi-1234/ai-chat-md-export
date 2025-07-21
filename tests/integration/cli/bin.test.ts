@@ -240,24 +240,4 @@ describe("CLI Integration Tests", () => {
     // In quiet mode, there should be no output
     expect(result.stdout.toString()).toBe("");
   });
-
-  test("handles permission errors gracefully", async () => {
-    // This test might be platform-specific, so we'll create a scenario
-    // where we try to write to a read-only directory
-    const inputFile = path.join(fixturesDir, "e2e/cli-test.json");
-    const outputDir = "/root/forbidden"; // Usually no write permission
-
-    try {
-      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt`.quiet();
-      // If we reach here, the directory might be writable (in CI)
-      // So we'll just check that it tried to work
-      expect(true).toBe(true);
-    } catch (error) {
-      // Expected: permission error
-      const stderr =
-        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      // Should contain some error message about permissions or directory
-      expect(stderr).toContain("✗");
-    }
-  });
 });

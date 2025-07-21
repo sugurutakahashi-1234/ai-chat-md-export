@@ -64,23 +64,3 @@ export function createProcessorDependencies(
     logger,
   };
 }
-
-/**
- * Create dependencies with partial overrides
- *
- * Useful for testing or custom configurations where
- * only specific dependencies need to be replaced.
- *
- * @param overrides Partial dependencies to override defaults
- * @returns Complete processor dependencies
- */
-export function createProcessorDependenciesWithOverrides(
-  options: Options,
-  overrides?: Partial<ProcessorDependencies>,
-): ProcessorDependencies {
-  const defaults = createProcessorDependencies(options);
-  return {
-    ...defaults,
-    ...overrides,
-  };
-}

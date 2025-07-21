@@ -4,20 +4,6 @@ import { ValidationError } from "../../domain/errors/errors.js";
 
 // Type guard functions
 /**
- * Creates a type guard function from a Zod schema
- * @param schema - Zod schema to create type guard from
- * @returns Type guard function
- */
-export function createTypeGuard<T>(
-  schema: zType.ZodSchema<T>,
-): (value: unknown) => value is T {
-  return (value: unknown): value is T => {
-    const result = schema.safeParse(value);
-    return result.success;
-  };
-}
-
-/**
  * Asserts that a value matches a Zod schema, throwing a detailed error if not
  * @param schema - Zod schema to validate against
  * @param value - Value to validate
@@ -40,7 +26,7 @@ export function assertType<T>(
 }
 
 // Schema validation types and functions
-export interface ValidationResult<T> {
+interface ValidationResult<T> {
   success: boolean;
   data?: T | undefined;
   errors?: ValidationErrorDetail[] | undefined;
