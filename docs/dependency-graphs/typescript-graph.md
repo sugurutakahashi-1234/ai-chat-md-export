@@ -45,8 +45,8 @@ flowchart LR
                 src/infrastructure/filters/conversation//filter.ts["conversation-filter.ts"]
             end
             subgraph src/infrastructure/formatters["/formatters"]
-                src/infrastructure/formatters/json.ts["json.ts"]
-                src/infrastructure/formatters/markdown.ts["markdown.ts"]
+                src/infrastructure/formatters/json//formatter.ts["json-formatter.ts"]
+                src/infrastructure/formatters/markdown//formatter.ts["markdown-formatter.ts"]
             end
             subgraph src/infrastructure/io["/io"]
                 src/infrastructure/io/file//loader.ts["file-loader.ts"]
@@ -56,7 +56,7 @@ flowchart LR
                 src/infrastructure/logging/logger.ts["logger.ts"]
             end
             subgraph src/infrastructure/parsers["/parsers"]
-                src/infrastructure/parsers/abstract//parser.ts["abstract-parser.ts"]
+                src/infrastructure/parsers/base//platform//parser.ts["base-platform-parser.ts"]
                 subgraph src/infrastructure/parsers/chatgpt["/chatgpt"]
                     src/infrastructure/parsers/chatgpt/schema.ts["schema.ts"]
                     src/infrastructure/parsers/chatgpt/parser.ts["parser.ts"]
@@ -101,10 +101,10 @@ flowchart LR
     src/infrastructure/filters/conversation//filter.ts-->src/domain/config/options.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/conversation//filter.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/models/types.ts
-    src/infrastructure/formatters/json.ts-->src/domain/interfaces/output//formatter.ts
-    src/infrastructure/formatters/json.ts-->src/domain/models/types.ts
-    src/infrastructure/formatters/markdown.ts-->src/domain/interfaces/output//formatter.ts
-    src/infrastructure/formatters/markdown.ts-->src/domain/models/types.ts
+    src/infrastructure/formatters/json//formatter.ts-->src/domain/interfaces/output//formatter.ts
+    src/infrastructure/formatters/json//formatter.ts-->src/domain/models/types.ts
+    src/infrastructure/formatters/markdown//formatter.ts-->src/domain/interfaces/output//formatter.ts
+    src/infrastructure/formatters/markdown//formatter.ts-->src/domain/models/types.ts
     src/infrastructure/io/file//loader.ts-->src/domain/errors/errors.ts
     src/infrastructure/io/file//loader.ts-->src/domain/interfaces/file//loader.ts
     src/infrastructure/io/file//loader.ts-->src/infrastructure/utils/error//formatter.ts
@@ -120,23 +120,23 @@ flowchart LR
     src/infrastructure/logging/logger.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/utils/validator.ts-->node//modules/zod/index.d.cts
     src/infrastructure/utils/validator.ts-->src/domain/errors/errors.ts
-    src/infrastructure/parsers/abstract//parser.ts-->node//modules/zod/index.d.cts
-    src/infrastructure/parsers/abstract//parser.ts-->src/domain/errors/errors.ts
-    src/infrastructure/parsers/abstract//parser.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/parsers/abstract//parser.ts-->src/domain/models/types.ts
-    src/infrastructure/parsers/abstract//parser.ts-->src/infrastructure/logging/logger.ts
-    src/infrastructure/parsers/abstract//parser.ts-->src/infrastructure/utils/validator.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/errors/errors.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/models/types.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/logging/logger.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/utils/validator.ts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/models/types.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/utils/validator.ts
-    src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/abstract//parser.ts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/chatgpt/schema.ts
     src/infrastructure/parsers/claude/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/claude/parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/claude/parser.ts-->src/domain/models/types.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/utils/validator.ts
-    src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/abstract//parser.ts
+    src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/claude/schema.ts
     src/infrastructure/factories/processor//factory.ts-->src/application/depend_encies.ts
     src/infrastructure/factories/processor//factory.ts-->src/domain/config/options.ts
@@ -144,8 +144,8 @@ flowchart LR
     src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/output//formatter.ts
     src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/filters/conversation//filter.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/json.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/markdown.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/json//formatter.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/formatters/markdown//formatter.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/io/file//loader.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/io/file//writer.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/logging/logger.ts

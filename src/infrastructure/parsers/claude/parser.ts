@@ -1,7 +1,7 @@
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
 import type { Conversation } from "../../../domain/models/types.js";
 import { assertType } from "../../utils/validator.js";
-import { BasePlatformParser } from "../abstract-parser.js";
+import { BasePlatformParser } from "../base-platform-parser.js";
 import { type ClaudeConversation, claudeConversationSchema } from "./schema.js";
 
 /**

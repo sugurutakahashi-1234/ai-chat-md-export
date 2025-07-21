@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import type { Conversation } from "../../../../src/domain/models/types.js";
-import { MarkdownFormatter } from "../../../../src/infrastructure/formatters/markdown.js";
+import { MarkdownFormatter } from "../../../../src/infrastructure/formatters/markdown-formatter.js";
 
 describe("Markdown Formatter", () => {
   const formatter = new MarkdownFormatter();
