@@ -1,6 +1,6 @@
 import type { ProcessorDependencies } from "../../application/dependencies.js";
-import type { Options } from "../../domain/config/options.js";
-import { ValidationError } from "../../domain/errors/errors.js";
+import type { Options } from "../../domain/config.js";
+import { ValidationError } from "../../domain/errors.js";
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import type { PlatformParser } from "../../domain/interfaces/platform-parser.js";
 import { ConversationFilter } from "../filters/conversation-filter.js";

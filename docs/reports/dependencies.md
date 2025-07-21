@@ -8,12 +8,10 @@ tsg --tsconfig tsconfig.build.json --LR --md docs/reports/dependencies.md
 flowchart LR
     subgraph src["src"]
         subgraph src/domain["/domain"]
-            subgraph src/domain/config["/config"]
-                src/domain/config/options.ts["options.ts"]
-            end
-            subgraph src/domain/models["/models"]
-                src/domain/models/types.ts["types.ts"]
-            end
+            src/domain/config.ts["config.ts"]
+            src/domain/entities.ts["entities.ts"]
+            src/domain/errors.ts["errors.ts"]
+            src/domain/version.ts["version.ts"]
             subgraph src/domain/interfaces["/interfaces"]
                 src/domain/interfaces/conversation//filter.ts["conversation-filter.ts"]
                 src/domain/interfaces/file//loader.ts["file-loader.ts"]
@@ -21,12 +19,6 @@ flowchart LR
                 src/domain/interfaces/logger.ts["logger.ts"]
                 src/domain/interfaces/output//formatter.ts["output-formatter.ts"]
                 src/domain/interfaces/platform//parser.ts["platform-parser.ts"]
-            end
-            subgraph src/domain/errors["/errors"]
-                src/domain/errors/errors.ts["errors.ts"]
-            end
-            subgraph src/domain/constants["/constants"]
-                src/domain/constants/version.ts["version.ts"]
             end
             subgraph src/domain/utils["/utils"]
                 src/domain/utils/filename.ts["filename.ts"]
@@ -80,67 +72,67 @@ flowchart LR
         node//modules/picocolors/picocolors.d.ts["picocolors"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
-    src/domain/config/options.ts-->node//modules/zod/index.d.cts
-    src/domain/interfaces/conversation//filter.ts-->src/domain/config/options.ts
-    src/domain/interfaces/conversation//filter.ts-->src/domain/models/types.ts
-    src/domain/interfaces/file//writer.ts-->src/domain/config/options.ts
-    src/domain/interfaces/file//writer.ts-->src/domain/models/types.ts
-    src/domain/interfaces/output//formatter.ts-->src/domain/models/types.ts
+    src/domain/config.ts-->node//modules/zod/index.d.cts
+    src/domain/interfaces/conversation//filter.ts-->src/domain/config.ts
+    src/domain/interfaces/conversation//filter.ts-->src/domain/entities.ts
+    src/domain/interfaces/file//writer.ts-->src/domain/config.ts
+    src/domain/interfaces/file//writer.ts-->src/domain/entities.ts
+    src/domain/interfaces/output//formatter.ts-->src/domain/entities.ts
     src/domain/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
-    src/domain/interfaces/platform//parser.ts-->src/domain/models/types.ts
+    src/domain/interfaces/platform//parser.ts-->src/domain/entities.ts
     src/application/depend_encies.ts-->src/domain/interfaces/conversation//filter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/file//loader.ts
     src/application/depend_encies.ts-->src/domain/interfaces/file//writer.ts
     src/application/depend_encies.ts-->src/domain/interfaces/logger.ts
     src/application/depend_encies.ts-->src/domain/interfaces/output//formatter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/utils/error//formatter.ts-->src/domain/errors/errors.ts
-    src/application/processor.ts-->src/domain/config/options.ts
+    src/infrastructure/utils/error//formatter.ts-->src/domain/errors.ts
+    src/application/processor.ts-->src/domain/config.ts
     src/application/processor.ts-->src/infrastructure/utils/error//formatter.ts
     src/application/processor.ts-->src/application/depend_encies.ts
-    src/infrastructure/filters/conversation//filter.ts-->src/domain/config/options.ts
+    src/infrastructure/filters/conversation//filter.ts-->src/domain/config.ts
+    src/infrastructure/filters/conversation//filter.ts-->src/domain/entities.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/conversation//filter.ts
-    src/infrastructure/filters/conversation//filter.ts-->src/domain/models/types.ts
+    src/infrastructure/formatters/json//formatter.ts-->src/domain/entities.ts
     src/infrastructure/formatters/json//formatter.ts-->src/domain/interfaces/output//formatter.ts
-    src/infrastructure/formatters/json//formatter.ts-->src/domain/models/types.ts
+    src/infrastructure/formatters/markdown//formatter.ts-->src/domain/entities.ts
     src/infrastructure/formatters/markdown//formatter.ts-->src/domain/interfaces/output//formatter.ts
-    src/infrastructure/formatters/markdown//formatter.ts-->src/domain/models/types.ts
-    src/infrastructure/io/file//loader.ts-->src/domain/errors/errors.ts
+    src/infrastructure/io/file//loader.ts-->src/domain/errors.ts
     src/infrastructure/io/file//loader.ts-->src/domain/interfaces/file//loader.ts
     src/infrastructure/io/file//loader.ts-->src/infrastructure/utils/error//formatter.ts
-    src/infrastructure/io/file//writer.ts-->src/domain/config/options.ts
-    src/infrastructure/io/file//writer.ts-->src/domain/errors/errors.ts
+    src/infrastructure/io/file//writer.ts-->src/domain/config.ts
+    src/infrastructure/io/file//writer.ts-->src/domain/entities.ts
+    src/infrastructure/io/file//writer.ts-->src/domain/errors.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/file//writer.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/output//formatter.ts
-    src/infrastructure/io/file//writer.ts-->src/domain/models/types.ts
     src/infrastructure/io/file//writer.ts-->src/domain/utils/filename.ts
     src/infrastructure/io/file//writer.ts-->src/infrastructure/utils/error//formatter.ts
     src/infrastructure/logging/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/infrastructure/logging/logger.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/utils/validator.ts-->node//modules/zod/index.d.cts
-    src/infrastructure/utils/validator.ts-->src/domain/errors/errors.ts
+    src/infrastructure/utils/validator.ts-->src/domain/errors.ts
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
-    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/errors/errors.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/entities.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/errors.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/models/types.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/utils/validator.ts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/models/types.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/utils/validator.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/chatgpt/schema.ts
     src/infrastructure/parsers/claude/schema.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/claude/parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/claude/parser.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/parsers/claude/parser.ts-->src/domain/models/types.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/utils/validator.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/claude/schema.ts
     src/infrastructure/factories/processor//factory.ts-->src/application/depend_encies.ts
-    src/infrastructure/factories/processor//factory.ts-->src/domain/config/options.ts
-    src/infrastructure/factories/processor//factory.ts-->src/domain/errors/errors.ts
+    src/infrastructure/factories/processor//factory.ts-->src/domain/config.ts
+    src/infrastructure/factories/processor//factory.ts-->src/domain/errors.ts
     src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/output//formatter.ts
     src/infrastructure/factories/processor//factory.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/filters/conversation//filter.ts
@@ -154,8 +146,8 @@ flowchart LR
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/utils/error//formatter.ts
     src/presentation/cli.ts-->node//modules/commander/typings/index.d.ts
     src/presentation/cli.ts-->src/application/processor.ts
-    src/presentation/cli.ts-->src/domain/config/options.ts
-    src/presentation/cli.ts-->src/domain/constants/version.ts
+    src/presentation/cli.ts-->src/domain/config.ts
+    src/presentation/cli.ts-->src/domain/version.ts
     src/presentation/cli.ts-->src/infrastructure/factories/processor//factory.ts
     src/presentation/cli.ts-->src/infrastructure/logging/logger.ts
     src/presentation/cli.ts-->src/infrastructure/utils/error//formatter.ts

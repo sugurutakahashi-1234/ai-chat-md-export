@@ -1,5 +1,5 @@
+import type { Conversation } from "../../domain/entities.js";
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
-import type { Conversation } from "../../domain/models/types.js";
 
 interface JsonOutput {
   conversations: JsonConversation[];

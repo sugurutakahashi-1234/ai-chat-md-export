@@ -1,5 +1,5 @@
 import { promises as fs } from "node:fs";
-import { FileError } from "../../domain/errors/errors.js";
+import { FileError } from "../../domain/errors.js";
 import type { FileLoader as IFileLoader } from "../../domain/interfaces/file-loader.js";
 import { extractErrorMessage } from "../utils/error-formatter.js";
 

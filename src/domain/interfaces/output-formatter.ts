@@ -1,4 +1,4 @@
-import type { Conversation } from "../models/types.js";
+import type { Conversation } from "../entities.js";
 
 /**
  * Interface for output format formatters

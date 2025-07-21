@@ -1,5 +1,5 @@
-import type { Options } from "../config/options.js";
-import type { Conversation } from "../models/types.js";
+import type { Options } from "../config.js";
+import type { Conversation } from "../entities.js";
 
 /**
  * Result of file writing operations

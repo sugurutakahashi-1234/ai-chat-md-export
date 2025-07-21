@@ -1,11 +1,11 @@
 import type { ZodType } from "zod";
-import { ValidationError } from "../../domain/errors/errors.js";
+import type { Conversation } from "../../domain/entities.js";
+import { ValidationError } from "../../domain/errors.js";
 import type {
   LoadOptions,
   ParsedConversation,
   PlatformParser,
 } from "../../domain/interfaces/platform-parser.js";
-import type { Conversation } from "../../domain/models/types.js";
 import type { Logger } from "../logging/logger.js";
 import {
   formatValidationReport,

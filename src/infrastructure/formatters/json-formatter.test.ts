@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { Conversation } from "../../domain/models/types.js";
+import type { Conversation } from "../../domain/entities.js";
 import { JsonFormatter } from "./json-formatter.js";
 
 describe("JSON converters", () => {

@@ -1,14 +1,14 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import type { Options } from "../../domain/config/options.js";
-import { FileError } from "../../domain/errors/errors.js";
+import type { Options } from "../../domain/config.js";
+import type { Conversation } from "../../domain/entities.js";
+import { FileError } from "../../domain/errors.js";
 import type {
   FileWriter as IFileWriter,
   WriteResult,
 } from "../../domain/interfaces/file-writer.js";
 import type { Logger } from "../../domain/interfaces/logger.js";
 import type { OutputFormatter } from "../../domain/interfaces/output-formatter.js";
-import type { Conversation } from "../../domain/models/types.js";
 import { generateFileName } from "../../domain/utils/filename.js";
 import {
   extractErrorMessage,
