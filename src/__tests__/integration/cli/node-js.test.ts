@@ -22,7 +22,8 @@
  * If a test passes in bin.test.ts but fails here, it's likely a runtime issue.
  */
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
-import { promises as fs } from "node:fs";
+import { promises as fs, mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import { $ } from "bun";
 
@@ -52,16 +53,22 @@ function createChatGPTTestData() {
 }
 
 describe("Node.js Execution Tests", () => {
-  const tempDir = path.join(process.cwd(), "tests/temp");
+  let tempDir: string;
   const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
   const libDir = path.join(process.cwd(), "lib");
 
   beforeEach(async () => {
-    await fs.mkdir(tempDir, { recursive: true });
+    // Create a unique temporary directory for each test
+    tempDir = mkdtempSync(path.join(tmpdir(), "ai-chat-md-export-test-"));
   });
 
   afterEach(async () => {
-    await fs.rm(tempDir, { recursive: true, force: true });
+    // Clean up the temporary directory
+    if (tempDir) {
+      await fs.rm(tempDir, { recursive: true, force: true }).catch(() => {
+        // Ignore errors during cleanup
+      });
+    }
   });
 
   test("Node.js can execute compiled JavaScript", async () => {
