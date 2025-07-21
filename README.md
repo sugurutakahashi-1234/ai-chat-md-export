@@ -220,6 +220,7 @@ For more examples, see the [examples](examples/) directory.
 | `--filename-encoding <encoding>` | Filename encoding (`standard`/`preserve`)                               | `standard` |
 | `-q, --quiet`                    | Suppress progress messages                                              | -          |
 | `--dry-run`                      | Preview mode without creating files                                     | -          |
+| `--batch-size <number>`          | Process conversations in batches for memory efficiency                  | -          |
 
 ## Getting conversations.json
 
@@ -254,6 +255,8 @@ Note: The download link expires after 24 hours, so download promptly.
 
 ### Large files taking too long to process
 For very large conversation histories:
+- Use `--batch-size 100` to process conversations in batches, reducing memory usage
+- This is especially helpful for files over 50MB or with thousands of conversations
 - Use `--since` and `--until` to process specific date ranges
 - Process one file at a time if experiencing memory issues
 - Use `--search` to extract only relevant conversations

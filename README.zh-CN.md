@@ -220,6 +220,7 @@ ai-chat-md-export -i conversations.json -p chatgpt --no-split
 | `--filename-encoding <encoding>` | 文件名编码（`standard`/`preserve`）                              | `standard` |
 | `-q, --quiet`                    | 抑制进度消息                                                     | -          |
 | `--dry-run`                      | 预览模式，不创建文件                                              | -          |
+| `--batch-size <number>`          | 分批处理对话以提高内存效率                                         | -          |
 
 ## Getting conversations.json
 
@@ -254,6 +255,8 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 
 ### Large files taking too long to process
 对于非常大的对话历史：
+- 使用 `--batch-size 100` 分批处理对话，减少内存使用
+- 对于超过 50MB 的文件或包含数千条对话的文件特别有用
 - 使用 `--since` 和 `--until` 处理特定日期范围
 - 如果遇到内存问题，请一次处理一个文件
 - 使用 `--search` 仅提取相关对话

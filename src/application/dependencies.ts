@@ -1,3 +1,4 @@
+import type { IConversationBatchWriter } from "../domain/interfaces/conversation-batch-writer.js";
 import type { IConversationFilter } from "../domain/interfaces/conversation-filter.js";
 import type { IFileLoader } from "../domain/interfaces/file-loader.js";
 import type { IFileWriter } from "../domain/interfaces/file-writer.js";
@@ -51,4 +52,9 @@ export interface ProcessorDependencies {
    * Schema validator for data validation
    */
   schemaValidator: ISchemaValidator;
+
+  /**
+   * Batch writer for memory-efficient conversation processing
+   */
+  conversationBatchWriter: IConversationBatchWriter;
 }

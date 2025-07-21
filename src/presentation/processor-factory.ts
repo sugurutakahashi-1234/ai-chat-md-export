@@ -12,6 +12,7 @@ import { Logger } from "../infrastructure/logging/logger.js";
 import { ChatGPTParser } from "../infrastructure/parsers/chatgpt/parser.js";
 import { ClaudeParser } from "../infrastructure/parsers/claude/parser.js";
 import { SchemaValidator } from "../infrastructure/validation/schema-validator.js";
+import { ConversationBatchWriter } from "../infrastructure/writers/conversation-batch-writer.js";
 
 /**
  * Create processor dependencies based on options
@@ -57,13 +58,22 @@ export function createProcessorDependencies(
       );
   }
 
+  const filter = new ConversationFilter();
+  const fileWriter = new FileWriter(logger, formatter);
+  const conversationBatchWriter = new ConversationBatchWriter(
+    filter,
+    fileWriter,
+    logger,
+  );
+
   return {
     fileLoader: new FileLoader(),
-    fileWriter: new FileWriter(logger, formatter),
+    fileWriter,
     parser,
     formatter,
-    filter: new ConversationFilter(),
+    filter,
     logger,
     schemaValidator,
+    conversationBatchWriter,
   };
 }
