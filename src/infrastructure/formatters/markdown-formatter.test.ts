@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import type { Conversation } from "../../../../src/domain/models/types.js";
-import { MarkdownFormatter } from "../../../../src/infrastructure/formatters/markdown-formatter.js";
+import type { Conversation } from "../../domain/models/types.js";
+import { MarkdownFormatter } from "./markdown-formatter.js";
 
 describe("Markdown Formatter", () => {
   const formatter = new MarkdownFormatter();
@@ -52,7 +52,8 @@ describe("Markdown Formatter", () => {
       expect(markdown).toContain("No timestamp");
       // Should not contain timestamp line for the message
       expect(
-        markdown.split("\n").filter((line) => line.startsWith("Date:")).length,
+        markdown.split("\n").filter((line: string) => line.startsWith("Date:"))
+          .length,
       ).toBe(1); // Only conversation date
     });
 

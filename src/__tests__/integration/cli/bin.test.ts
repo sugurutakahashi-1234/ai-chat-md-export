@@ -104,7 +104,7 @@ function createClaudeConversation(overrides: any = {}) {
 }
 
 describe("CLI Integration Tests", () => {
-  const tempDir = path.join(process.cwd(), "tests/temp");
+  const tempDir = path.join(process.cwd(), "src/__tests__/temp");
   const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
 
   beforeEach(async () => {

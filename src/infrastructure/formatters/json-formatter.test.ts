@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import type { Conversation } from "../../../../src/domain/models/types.js";
-import { JsonFormatter } from "../../../../src/infrastructure/formatters/json-formatter.js";
+import type { Conversation } from "../../domain/models/types.js";
+import { JsonFormatter } from "./json-formatter.js";
 
 describe("JSON converters", () => {
   const formatter = new JsonFormatter();

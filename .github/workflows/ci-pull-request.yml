@@ -55,7 +55,7 @@ jobs:
         env:
           HUSKY: 0
         with:
-          tsconfig: './tsconfig.json'
+          tsconfig: './tsconfig.build.json' # Path to your TypeScript config file
           orientation: 'LR' # Change to 'TB' for top-bottom orientation
           max-size: 30 # default is 30, adjust as needed
           # NOTE: show-metrics is set to false because enabling it produced too much output for this repository.

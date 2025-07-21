@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
-import { Logger } from "../../../../../src/infrastructure/logging/logger.js";
-import { ClaudeParser } from "../../../../../src/infrastructure/parsers/claude/parser.js";
-import type { ClaudeConversation } from "../../../../../src/infrastructure/parsers/claude/schema.js";
+import { Logger } from "../../logging/logger.js";
+import { ClaudeParser } from "./parser.js";
+import type { ClaudeConversation } from "./schema.js";
 
 describe("Claude Parser", () => {
   const logger = new Logger({ quiet: true });
@@ -35,10 +35,10 @@ describe("Claude Parser", () => {
       });
 
       expect(conversations).toHaveLength(1);
-      expect(conversations[0].id).toBe("conv-123");
-      expect(conversations[0].title).toBe("Test Conversation");
-      expect(conversations[0].date).toEqual(new Date("2024-01-01T12:00:00Z"));
-      expect(conversations[0].messages).toHaveLength(2);
+      expect(conversations[0]!.id).toBe("conv-123");
+      expect(conversations[0]!.title).toBe("Test Conversation");
+      expect(conversations[0]!.date).toEqual(new Date("2024-01-01T12:00:00Z"));
+      expect(conversations[0]!.messages).toHaveLength(2);
     });
 
     test("transforms messages correctly", async () => {
@@ -47,14 +47,14 @@ describe("Claude Parser", () => {
         quiet: true,
       });
 
-      const messages = conversations[0].messages;
-      expect(messages[0].role).toBe("user");
-      expect(messages[0].content).toBe("Hello, Claude!");
-      expect(messages[0].timestamp).toEqual(new Date("2024-01-01T12:00:00Z"));
+      const messages = conversations[0]!.messages;
+      expect(messages[0]!.role).toBe("user");
+      expect(messages[0]!.content).toBe("Hello, Claude!");
+      expect(messages[0]!.timestamp).toEqual(new Date("2024-01-01T12:00:00Z"));
 
-      expect(messages[1].role).toBe("assistant");
-      expect(messages[1].content).toBe("Hello! How can I help you today?");
-      expect(messages[1].timestamp).toEqual(new Date("2024-01-01T12:00:10Z"));
+      expect(messages[1]!.role).toBe("assistant");
+      expect(messages[1]!.content).toBe("Hello! How can I help you today?");
+      expect(messages[1]!.timestamp).toEqual(new Date("2024-01-01T12:00:10Z"));
     });
 
     test("handles old format with role field", async () => {
@@ -79,12 +79,12 @@ describe("Claude Parser", () => {
       const conversations = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
-      const messages = conversations[0].messages;
+      const messages = conversations[0]!.messages;
 
-      expect(messages[0].role).toBe("user"); // human -> user
-      expect(messages[0].content).toBe("Old format message");
-      expect(messages[1].role).toBe("assistant");
-      expect(messages[1].content).toBe("Old format response");
+      expect(messages[0]!.role).toBe("user"); // human -> user
+      expect(messages[0]!.content).toBe("Old format message");
+      expect(messages[1]!.role).toBe("assistant");
+      expect(messages[1]!.content).toBe("Old format response");
     });
 
     test("handles content array format", async () => {
@@ -115,11 +115,11 @@ describe("Claude Parser", () => {
       const conversations = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
-      const messages = conversations[0].messages;
+      const messages = conversations[0]!.messages;
 
-      expect(messages[0].content).toBe("First part\nSecond part");
+      expect(messages[0]!.content).toBe("First part\nSecond part");
       // Thinking content should be filtered out
-      expect(messages[1].content).toBe("Here's my response");
+      expect(messages[1]!.content).toBe("Here's my response");
     });
 
     test("handles empty content array", async () => {
@@ -139,7 +139,7 @@ describe("Claude Parser", () => {
       const conversations = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
-      expect(conversations[0].messages[0].content).toBe("");
+      expect(conversations[0]!.messages[0]!.content).toBe("");
     });
 
     test("handles missing name", async () => {
@@ -153,7 +153,7 @@ describe("Claude Parser", () => {
       const conversations = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
-      expect(conversations[0].title).toBe("Untitled Conversation");
+      expect(conversations[0]!.title).toBe("Untitled Conversation");
     });
 
     test("handles messages without created_at", async () => {
@@ -175,7 +175,7 @@ describe("Claude Parser", () => {
       });
 
       // Should use current date as fallback
-      const messageTimestamp = conversations[0].messages[0].timestamp;
+      const messageTimestamp = conversations[0]!.messages[0]!.timestamp;
       expect(messageTimestamp).toBeInstanceOf(Date);
       // Check that it's recent (within last minute)
       const now = new Date();
@@ -203,7 +203,7 @@ describe("Claude Parser", () => {
       });
 
       // Should default to "user" role
-      expect(conversations[0].messages[0].role).toBe("user");
+      expect(conversations[0]!.messages[0]!.role).toBe("user");
     });
 
     test("handles different content structures", async () => {
@@ -230,8 +230,8 @@ describe("Claude Parser", () => {
         quiet: true,
       });
 
-      expect(conversations[0].messages[0].content).toBe("String content");
-      expect(conversations[0].messages[1].content).toBe("Text field content");
+      expect(conversations[0]!.messages[0]!.content).toBe("String content");
+      expect(conversations[0]!.messages[1]!.content).toBe("Text field content");
     });
 
     test("handles invalid data gracefully", async () => {
@@ -266,9 +266,9 @@ describe("Claude Parser", () => {
       });
 
       expect(conversations).toHaveLength(2);
-      expect(conversations[0].id).toBe("conv-123");
-      expect(conversations[1].id).toBe("conv-456");
-      expect(conversations[1].title).toBe("Second Conversation");
+      expect(conversations[0]!.id).toBe("conv-123");
+      expect(conversations[1]!.id).toBe("conv-456");
+      expect(conversations[1]!.title).toBe("Second Conversation");
     });
   });
 });

@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
-import { Logger } from "../../../../../src/infrastructure/logging/logger.js";
-import { ChatGPTParser } from "../../../../../src/infrastructure/parsers/chatgpt/parser.js";
-import type { ChatGPTConversation } from "../../../../../src/infrastructure/parsers/chatgpt/schema.js";
+import { Logger } from "../../logging/logger.js";
+import { ChatGPTParser } from "./parser.js";
+import type { ChatGPTConversation } from "./schema.js";
 
 describe("ChatGPT Parser", () => {
   const logger = new Logger({ quiet: true });
@@ -58,10 +58,10 @@ describe("ChatGPT Parser", () => {
       });
 
       expect(conversations).toHaveLength(1);
-      expect(conversations[0].id).toBe("test-123");
-      expect(conversations[0].title).toBe("Test Conversation");
-      expect(conversations[0].date).toEqual(new Date("2024-01-01T12:00:00Z"));
-      expect(conversations[0].messages).toHaveLength(2);
+      expect(conversations[0]!.id).toBe("test-123");
+      expect(conversations[0]!.title).toBe("Test Conversation");
+      expect(conversations[0]!.date).toEqual(new Date("2024-01-01T12:00:00Z"));
+      expect(conversations[0]!.messages).toHaveLength(2);
     });
 
     test("extracts messages in correct order", async () => {
@@ -70,11 +70,11 @@ describe("ChatGPT Parser", () => {
         quiet: true,
       });
 
-      const messages = conversations[0].messages;
-      expect(messages[0].role).toBe("user");
-      expect(messages[0].content).toBe("Hello, world!");
-      expect(messages[1].role).toBe("assistant");
-      expect(messages[1].content).toBe("Hello! How can I help you?");
+      const messages = conversations[0]!.messages;
+      expect(messages[0]!.role).toBe("user");
+      expect(messages[0]!.content).toBe("Hello, world!");
+      expect(messages[1]!.role).toBe("assistant");
+      expect(messages[1]!.content).toBe("Hello! How can I help you?");
     });
 
     test("handles nested node structure correctly", async () => {
@@ -131,10 +131,10 @@ describe("ChatGPT Parser", () => {
       });
 
       // Should only follow the first child in branches
-      const messages = conversations[0].messages;
+      const messages = conversations[0]!.messages;
       expect(messages).toHaveLength(2);
-      expect(messages[0].content).toBe("First branch");
-      expect(messages[1].content).toBe("Response to first branch");
+      expect(messages[0]!.content).toBe("First branch");
+      expect(messages[1]!.content).toBe("Response to first branch");
     });
 
     test("handles different message roles", async () => {
@@ -175,10 +175,10 @@ describe("ChatGPT Parser", () => {
       const conversations = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
-      const messages = conversations[0].messages;
+      const messages = conversations[0]!.messages;
 
-      expect(messages[0].role).toBe("system");
-      expect(messages[1].role).toBe("tool");
+      expect(messages[0]!.role).toBe("system");
+      expect(messages[1]!.role).toBe("tool");
     });
 
     test("handles messages with timestamps", async () => {
@@ -187,10 +187,10 @@ describe("ChatGPT Parser", () => {
         quiet: true,
       });
 
-      expect(conversations[0].messages[0].timestamp).toEqual(
+      expect(conversations[0]!.messages[0]!.timestamp).toEqual(
         new Date("2024-01-01T12:00:00Z"),
       );
-      expect(conversations[0].messages[1].timestamp).toEqual(
+      expect(conversations[0]!.messages[1]!.timestamp).toEqual(
         new Date("2024-01-01T12:00:10Z"),
       );
     });
@@ -218,7 +218,7 @@ describe("ChatGPT Parser", () => {
         quiet: true,
       });
 
-      expect(conversations[0].messages[0].timestamp).toBeUndefined();
+      expect(conversations[0]!.messages[0]!.timestamp).toBeUndefined();
     });
 
     test("handles complex content parts", async () => {
@@ -252,7 +252,7 @@ describe("ChatGPT Parser", () => {
       const conversations = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
-      const content = conversations[0].messages[0].content;
+      const content = conversations[0]!.messages[0]!.content;
 
       expect(content).toContain("Text part");
       expect(content).toContain("Object with text");
@@ -293,8 +293,8 @@ describe("ChatGPT Parser", () => {
         quiet: true,
       });
 
-      expect(conversations[0].messages).toHaveLength(1);
-      expect(conversations[0].messages[0].content).toBe("Valid message");
+      expect(conversations[0]!.messages).toHaveLength(1);
+      expect(conversations[0]!.messages[0]!.content).toBe("Valid message");
     });
 
     test("handles missing id and title", async () => {
@@ -314,8 +314,8 @@ describe("ChatGPT Parser", () => {
         quiet: true,
       });
 
-      expect(conversations[0].id).toBe("node-1"); // Uses first mapping key
-      expect(conversations[0].title).toBe("Untitled Conversation");
+      expect(conversations[0]!.id).toBe("node-1"); // Uses first mapping key
+      expect(conversations[0]!.title).toBe("Untitled Conversation");
     });
 
     test("handles invalid data gracefully", async () => {
