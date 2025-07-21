@@ -1,11 +1,13 @@
 import { describe, expect, test } from "bun:test";
 import { Logger } from "../../logging/logger.js";
+import { SchemaValidator } from "../../validation/schema-validator.js";
 import { ClaudeParser } from "./parser.js";
 import type { ClaudeConversation } from "./schema.js";
 
 describe("Claude Parser", () => {
   const logger = new Logger({ quiet: true });
-  const parser = new ClaudeParser(logger);
+  const schemaValidator = new SchemaValidator();
+  const parser = new ClaudeParser(logger, schemaValidator);
 
   const createSampleData = (): ClaudeConversation => ({
     uuid: "conv-123",

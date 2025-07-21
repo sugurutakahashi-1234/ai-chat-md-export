@@ -1,5 +1,7 @@
 import type { Conversation } from "../../../domain/entities.js";
+import type { Logger } from "../../../domain/interfaces/logger.js";
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
+import type { SchemaValidator } from "../../../domain/interfaces/schema-validator.js";
 import { BasePlatformParser } from "../base-platform-parser.js";
 import { type ClaudeConversation, claudeConversationSchema } from "./schema.js";
 
@@ -10,6 +12,9 @@ import { type ClaudeConversation, claudeConversationSchema } from "./schema.js";
  * to the common conversation format.
  */
 export class ClaudeParser extends BasePlatformParser<ClaudeConversation[]> {
+  constructor(logger: Logger, schemaValidator: SchemaValidator) {
+    super(logger, schemaValidator);
+  }
   readonly schema = claudeConversationSchema.array();
 
   parseConversations(data: ClaudeConversation[]): ParsedConversation[] {

@@ -1,25 +1,11 @@
 import type { z as zType } from "zod";
 import { ZodError, z } from "zod";
-
-// Validation result types
-interface ValidationResult<T> {
-  success: boolean;
-  data?: T | undefined;
-  errors?: ValidationErrorDetail[] | undefined;
-  warnings?: ValidationWarning[] | undefined;
-}
-
-interface ValidationErrorDetail {
-  path: string;
-  message: string;
-  expected?: string | undefined;
-  received?: string | undefined;
-}
-
-interface ValidationWarning {
-  message: string;
-  unknownFields?: string[] | undefined;
-}
+import type {
+  SchemaValidator as ISchemaValidator,
+  ValidationErrorDetail,
+  ValidationResult,
+  ValidationWarning,
+} from "../../domain/interfaces/schema-validator.js";
 
 /**
  * Schema validator for handling complex validation logic
@@ -27,7 +13,7 @@ interface ValidationWarning {
  * Provides detailed validation with error reporting
  * and unknown field detection capabilities
  */
-export class SchemaValidator {
+export class SchemaValidator implements ISchemaValidator {
   /**
    * Validate data against a schema with detailed reporting
    * @param schema - Zod schema to validate against

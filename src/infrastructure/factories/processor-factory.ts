@@ -12,26 +12,33 @@ import { Logger } from "../logging/logger.js";
 import { ChatGPTParser } from "../parsers/chatgpt/parser.js";
 import { ClaudeParser } from "../parsers/claude/parser.js";
 import { formatErrorMessage } from "../utils/error-formatter.js";
+import { SchemaValidator } from "../validation/schema-validator.js";
 
 /**
  * Create processor dependencies based on options
  *
  * This factory provides the standard implementations
  * for all processor dependencies.
+ *
+ * Design principle: This is the central place where all concrete
+ * implementations are instantiated and wired together. Following
+ * the Dependency Inversion Principle, the application layer depends
+ * only on interfaces, while this factory handles the concrete classes.
  */
 export function createProcessorDependencies(
   options: Options,
 ): ProcessorDependencies {
   const logger = new Logger({ quiet: options.quiet });
+  const schemaValidator = new SchemaValidator();
 
   // Create platform-specific parser
   let parser: PlatformParser;
   switch (options.platform) {
     case "chatgpt":
-      parser = new ChatGPTParser(logger);
+      parser = new ChatGPTParser(logger, schemaValidator);
       break;
     case "claude":
-      parser = new ClaudeParser(logger);
+      parser = new ClaudeParser(logger, schemaValidator);
       break;
     default:
       throw new Error(`Unknown platform: ${options.platform}`);
@@ -62,5 +69,6 @@ export function createProcessorDependencies(
     formatter,
     filter: new ConversationFilter(),
     logger,
+    schemaValidator,
   };
 }

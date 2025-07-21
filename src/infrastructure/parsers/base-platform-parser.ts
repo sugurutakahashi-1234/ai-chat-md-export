@@ -1,13 +1,13 @@
 import type { ZodType } from "zod";
 import type { Conversation } from "../../domain/entities.js";
 import { ValidationError } from "../../domain/errors.js";
+import type { Logger } from "../../domain/interfaces/logger.js";
 import type {
   LoadOptions,
   ParsedConversation,
   PlatformParser,
 } from "../../domain/interfaces/platform-parser.js";
-import type { Logger } from "../logging/logger.js";
-import { SchemaValidator } from "../validation/schema-validator.js";
+import type { SchemaValidator } from "../../domain/interfaces/schema-validator.js";
 
 /**
  * Base class for platform-specific parsers
@@ -18,11 +18,10 @@ import { SchemaValidator } from "../validation/schema-validator.js";
 export abstract class BasePlatformParser<T = unknown>
   implements PlatformParser<T>
 {
-  private readonly schemaValidator: SchemaValidator;
-
-  constructor(protected readonly logger: Logger) {
-    this.schemaValidator = new SchemaValidator();
-  }
+  constructor(
+    protected readonly logger: Logger,
+    private readonly schemaValidator: SchemaValidator,
+  ) {}
   abstract readonly schema: ZodType<T>;
 
   /**

@@ -1,5 +1,7 @@
 import type { Conversation } from "../../../domain/entities.js";
+import type { Logger } from "../../../domain/interfaces/logger.js";
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
+import type { SchemaValidator } from "../../../domain/interfaces/schema-validator.js";
 import { BasePlatformParser } from "../base-platform-parser.js";
 import {
   type ChatGPTConversation,
@@ -14,6 +16,9 @@ import {
  * to the common conversation format.
  */
 export class ChatGPTParser extends BasePlatformParser<ChatGPTConversation[]> {
+  constructor(logger: Logger, schemaValidator: SchemaValidator) {
+    super(logger, schemaValidator);
+  }
   readonly schema = chatGPTConversationSchema.array();
 
   parseConversations(data: ChatGPTConversation[]): ParsedConversation[] {

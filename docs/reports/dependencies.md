@@ -19,6 +19,7 @@ flowchart LR
                 src/domain/interfaces/logger.ts["logger.ts"]
                 src/domain/interfaces/output//formatter.ts["output-formatter.ts"]
                 src/domain/interfaces/platform//parser.ts["platform-parser.ts"]
+                src/domain/interfaces/schema//validator.ts["schema-validator.ts"]
             end
             subgraph src/domain/utils["/utils"]
                 src/domain/utils/filename.ts["filename.ts"]
@@ -46,9 +47,6 @@ flowchart LR
             subgraph src/infrastructure/logging["/logging"]
                 src/infrastructure/logging/logger.ts["logger.ts"]
             end
-            subgraph src/infrastructure/validation["/validation"]
-                src/infrastructure/validation/schema//validator.ts["schema-validator.ts"]
-            end
             subgraph src/infrastructure/parsers["/parsers"]
                 src/infrastructure/parsers/base//platform//parser.ts["base-platform-parser.ts"]
                 subgraph src/infrastructure/parsers/chatgpt["/chatgpt"]
@@ -59,6 +57,9 @@ flowchart LR
                     src/infrastructure/parsers/claude/schema.ts["schema.ts"]
                     src/infrastructure/parsers/claude/parser.ts["parser.ts"]
                 end
+            end
+            subgraph src/infrastructure/validation["/validation"]
+                src/infrastructure/validation/schema//validator.ts["schema-validator.ts"]
             end
             subgraph src/infrastructure/factories["/factories"]
                 src/infrastructure/factories/processor//factory.ts["processor-factory.ts"]
@@ -82,12 +83,14 @@ flowchart LR
     src/domain/interfaces/output//formatter.ts-->src/domain/entities.ts
     src/domain/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/domain/interfaces/platform//parser.ts-->src/domain/entities.ts
+    src/domain/interfaces/schema//validator.ts-->node//modules/zod/index.d.cts
     src/application/depend_encies.ts-->src/domain/interfaces/conversation//filter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/file//loader.ts
     src/application/depend_encies.ts-->src/domain/interfaces/file//writer.ts
     src/application/depend_encies.ts-->src/domain/interfaces/logger.ts
     src/application/depend_encies.ts-->src/domain/interfaces/output//formatter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/platform//parser.ts
+    src/application/depend_encies.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/utils/error//formatter.ts-->src/domain/errors.ts
     src/application/processor.ts-->src/domain/config.ts
     src/application/processor.ts-->src/infrastructure/utils/error//formatter.ts
@@ -112,23 +115,28 @@ flowchart LR
     src/infrastructure/io/file//writer.ts-->src/infrastructure/utils/error//formatter.ts
     src/infrastructure/logging/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/infrastructure/logging/logger.ts-->src/domain/interfaces/logger.ts
-    src/infrastructure/validation/schema//validator.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/errors.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
-    src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/logging/logger.ts
-    src/infrastructure/parsers/base//platform//parser.ts-->src/infrastructure/validation/schema//validator.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/entities.ts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/platform//parser.ts
+    src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/infrastructure/parsers/chatgpt/schema.ts
     src/infrastructure/parsers/claude/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/claude/parser.ts-->src/domain/entities.ts
+    src/infrastructure/parsers/claude/parser.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/parsers/claude/parser.ts-->src/domain/interfaces/platform//parser.ts
+    src/infrastructure/parsers/claude/parser.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
     src/infrastructure/parsers/claude/parser.ts-->src/infrastructure/parsers/claude/schema.ts
+    src/infrastructure/validation/schema//validator.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/validation/schema//validator.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/factories/processor//factory.ts-->src/application/depend_encies.ts
     src/infrastructure/factories/processor//factory.ts-->src/domain/config.ts
     src/infrastructure/factories/processor//factory.ts-->src/domain/errors.ts
@@ -143,6 +151,7 @@ flowchart LR
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/utils/error//formatter.ts
+    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/validation/schema//validator.ts
     src/presentation/cli.ts-->node//modules/commander/typings/index.d.ts
     src/presentation/cli.ts-->src/application/processor.ts
     src/presentation/cli.ts-->src/domain/config.ts
