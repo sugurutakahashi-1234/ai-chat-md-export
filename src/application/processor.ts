@@ -1,6 +1,6 @@
 import path from "node:path";
 import type { Options } from "../domain/config.js";
-import { formatRelativePathFromCwd } from "../infrastructure/utils/error-formatter.js";
+import { formatRelativePathFromCwd } from "../domain/utils/path.js";
 import type { ProcessorDependencies } from "./dependencies.js";
 
 /**

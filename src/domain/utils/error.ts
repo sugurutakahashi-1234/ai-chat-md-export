@@ -1,48 +1,10 @@
-import path from "node:path";
-import { isBaseError } from "../../domain/errors.js";
-
-/**
- * Get relative path from current working directory
- * Falls back to basename if path is outside cwd
- */
-export function formatRelativePathFromCwd(filePath: string): string {
-  const cwd = process.cwd();
-  const relative = path.relative(cwd, filePath);
-
-  // If the path goes outside cwd (starts with ..), just use filename
-  if (relative.startsWith("..")) {
-    return path.basename(filePath);
-  }
-
-  return relative;
-}
-
-/**
- * Format error message with consistent structure
- */
-export function formatErrorMessage(
-  message: string,
-  details?: { file?: string; format?: string; reason?: string },
-): string {
-  const lines = [message];
-
-  if (details?.file) {
-    lines.push(`File: ${formatRelativePathFromCwd(details.file)}`);
-  }
-
-  if (details?.format) {
-    lines.push(`Format: ${details.format}`);
-  }
-
-  if (details?.reason) {
-    lines.push(`Reason: ${details.reason}`);
-  }
-
-  return lines.join("\n");
-}
+import { isBaseError } from "../errors.js";
 
 /**
  * Extract error message from unknown error
+ *
+ * This is a pure utility function that extracts meaningful error messages
+ * from various error types without any infrastructure concerns
  */
 export function extractErrorMessage(error: unknown): string {
   if (error instanceof Error) {
@@ -77,6 +39,8 @@ export function extractErrorMessage(error: unknown): string {
 
 /**
  * Format error with context information
+ *
+ * Handles BaseError instances with their context information
  */
 export function formatErrorWithContext(error: unknown): string {
   if (isBaseError(error)) {

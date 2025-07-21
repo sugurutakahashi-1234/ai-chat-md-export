@@ -9,12 +9,9 @@ import type {
 } from "../../domain/interfaces/file-writer.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
+import { extractErrorMessage } from "../../domain/utils/error.js";
 import { generateFileName } from "../../domain/utils/filename.js";
-import {
-  extractErrorMessage,
-  formatErrorMessage,
-  formatRelativePathFromCwd,
-} from "../utils/error-formatter.js";
+import { formatRelativePathFromCwd } from "../../domain/utils/path.js";
 
 /**
  * Validate filename encoding option
@@ -90,10 +87,7 @@ export class FileWriter implements IFileWriter {
         writeErrors.push({ file: outputPath, error: errorMessage });
 
         this.logger.warn(
-          formatErrorMessage("Failed to write file", {
-            file: outputPath,
-            reason: errorMessage,
-          }),
+          `Failed to write file: ${formatRelativePathFromCwd(outputPath)}\nReason: ${errorMessage}`,
         );
       }
     }
@@ -128,10 +122,7 @@ export class FileWriter implements IFileWriter {
       writeErrors.push({ file: outputPath, error: errorMessage });
 
       this.logger.warn(
-        formatErrorMessage("Failed to write file", {
-          file: outputPath,
-          reason: errorMessage,
-        }),
+        `Failed to write file: ${formatRelativePathFromCwd(outputPath)}\nReason: ${errorMessage}`,
       );
 
       this.reportErrors(writeErrors);
@@ -143,24 +134,17 @@ export class FileWriter implements IFileWriter {
     writeErrors: Array<{ file: string; error: string }>,
   ): void {
     if (writeErrors.length > 0) {
-      const errorSummary = formatErrorMessage(
-        `Failed to write ${writeErrors.length} file(s)`,
-        {
-          reason:
-            writeErrors.length <= 3
-              ? writeErrors
-                  .map(
-                    (e) => `${formatRelativePathFromCwd(e.file)}: ${e.error}`,
-                  )
-                  .join("\n")
-              : `First 3 errors:\n${writeErrors
-                  .slice(0, 3)
-                  .map(
-                    (e) => `${formatRelativePathFromCwd(e.file)}: ${e.error}`,
-                  )
-                  .join("\n")}\n...and ${writeErrors.length - 3} more`,
-        },
-      );
+      const errorDetails =
+        writeErrors.length <= 3
+          ? writeErrors
+              .map((e) => `${formatRelativePathFromCwd(e.file)}: ${e.error}`)
+              .join("\n")
+          : `First 3 errors:\n${writeErrors
+              .slice(0, 3)
+              .map((e) => `${formatRelativePathFromCwd(e.file)}: ${e.error}`)
+              .join("\n")}\n...and ${writeErrors.length - 3} more`;
+
+      const errorSummary = `Failed to write ${writeErrors.length} file(s)\nReason: ${errorDetails}`;
 
       throw new FileError(
         errorSummary,

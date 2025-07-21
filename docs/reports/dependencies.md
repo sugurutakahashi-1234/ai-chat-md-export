@@ -22,6 +22,8 @@ flowchart LR
                 src/domain/interfaces/schema//validator.ts["schema-validator.ts"]
             end
             subgraph src/domain/utils["/utils"]
+                src/domain/utils/path.ts["path.ts"]
+                src/domain/utils/error.ts["error.ts"]
                 src/domain/utils/filename.ts["filename.ts"]
             end
         end
@@ -30,9 +32,6 @@ flowchart LR
             src/application/processor.ts["processor.ts"]
         end
         subgraph src/infrastructure["/infrastructure"]
-            subgraph src/infrastructure/utils["/utils"]
-                src/infrastructure/utils/error//formatter.ts["error-formatter.ts"]
-            end
             subgraph src/infrastructure/filters["/filters"]
                 src/infrastructure/filters/conversation//filter.ts["conversation-filter.ts"]
             end
@@ -91,10 +90,10 @@ flowchart LR
     src/application/depend_encies.ts-->src/domain/interfaces/output//formatter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/platform//parser.ts
     src/application/depend_encies.ts-->src/domain/interfaces/schema//validator.ts
-    src/infrastructure/utils/error//formatter.ts-->src/domain/errors.ts
     src/application/processor.ts-->src/domain/config.ts
-    src/application/processor.ts-->src/infrastructure/utils/error//formatter.ts
+    src/application/processor.ts-->src/domain/utils/path.ts
     src/application/processor.ts-->src/application/depend_encies.ts
+    src/domain/utils/error.ts-->src/domain/errors.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/config.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/entities.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/conversation//filter.ts
@@ -104,15 +103,16 @@ flowchart LR
     src/infrastructure/formatters/markdown//formatter.ts-->src/domain/interfaces/output//formatter.ts
     src/infrastructure/io/file//loader.ts-->src/domain/errors.ts
     src/infrastructure/io/file//loader.ts-->src/domain/interfaces/file//loader.ts
-    src/infrastructure/io/file//loader.ts-->src/infrastructure/utils/error//formatter.ts
+    src/infrastructure/io/file//loader.ts-->src/domain/utils/error.ts
     src/infrastructure/io/file//writer.ts-->src/domain/config.ts
     src/infrastructure/io/file//writer.ts-->src/domain/entities.ts
     src/infrastructure/io/file//writer.ts-->src/domain/errors.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/file//writer.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/output//formatter.ts
+    src/infrastructure/io/file//writer.ts-->src/domain/utils/error.ts
     src/infrastructure/io/file//writer.ts-->src/domain/utils/filename.ts
-    src/infrastructure/io/file//writer.ts-->src/infrastructure/utils/error//formatter.ts
+    src/infrastructure/io/file//writer.ts-->src/domain/utils/path.ts
     src/infrastructure/logging/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/infrastructure/logging/logger.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
@@ -146,15 +146,14 @@ flowchart LR
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
-    src/infrastructure/factories/processor//factory.ts-->src/infrastructure/utils/error//formatter.ts
     src/infrastructure/factories/processor//factory.ts-->src/infrastructure/validation/schema//validator.ts
     src/presentation/cli.ts-->node//modules/commander/typings/index.d.ts
     src/presentation/cli.ts-->src/application/processor.ts
     src/presentation/cli.ts-->src/domain/config.ts
+    src/presentation/cli.ts-->src/domain/utils/error.ts
     src/presentation/cli.ts-->src/domain/version.ts
     src/presentation/cli.ts-->src/infrastructure/factories/processor//factory.ts
     src/presentation/cli.ts-->src/infrastructure/logging/logger.ts
-    src/presentation/cli.ts-->src/infrastructure/utils/error//formatter.ts
     src/presentation/index.ts-->src/presentation/cli.ts
 ```
 

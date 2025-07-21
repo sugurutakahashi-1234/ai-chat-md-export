@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import { FileError } from "../../domain/errors.js";
 import type { IFileLoader } from "../../domain/interfaces/file-loader.js";
-import { extractErrorMessage } from "../utils/error-formatter.js";
+import { extractErrorMessage } from "../../domain/utils/error.js";
 
 export class FileLoader implements IFileLoader {
   /**

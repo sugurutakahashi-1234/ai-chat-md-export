@@ -11,7 +11,6 @@ import { FileWriter } from "../io/file-writer.js";
 import { Logger } from "../logging/logger.js";
 import { ChatGPTParser } from "../parsers/chatgpt/parser.js";
 import { ClaudeParser } from "../parsers/claude/parser.js";
-import { formatErrorMessage } from "../utils/error-formatter.js";
 import { SchemaValidator } from "../validation/schema-validator.js";
 
 /**
@@ -55,9 +54,7 @@ export function createProcessorDependencies(
       break;
     default:
       throw new ValidationError(
-        formatErrorMessage(`Unsupported output format: ${options.format}`, {
-          reason: "Supported formats are: json, markdown",
-        }),
+        `Unsupported output format: ${options.format}\nReason: Supported formats are: json, markdown`,
         { format: options.format },
       );
   }
