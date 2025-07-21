@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import type { Conversation } from "../../domain/entities.js";
+import { MessageRole } from "../../domain/entities.js";
 import { MarkdownFormatter } from "./markdown-formatter.js";
 
 describe("Markdown Formatter", () => {
@@ -10,12 +11,12 @@ describe("Markdown Formatter", () => {
     date: new Date("2024-01-01T12:00:00Z"),
     messages: [
       {
-        role: "user",
+        role: MessageRole.User,
         content: "Hello, world!",
         timestamp: new Date("2024-01-01T12:00:00Z"),
       },
       {
-        role: "assistant",
+        role: MessageRole.Assistant,
         content: "Hello! How can I help you?",
         timestamp: new Date("2024-01-01T12:00:10Z"),
       },
@@ -40,7 +41,7 @@ describe("Markdown Formatter", () => {
         ...sampleConversation,
         messages: [
           {
-            role: "user",
+            role: MessageRole.User,
             content: "No timestamp",
           },
         ],
@@ -61,10 +62,10 @@ describe("Markdown Formatter", () => {
       const conversation: Conversation = {
         ...sampleConversation,
         messages: [
-          { role: "system", content: "System message" },
-          { role: "user", content: "User message" },
-          { role: "assistant", content: "Assistant message" },
-          { role: "tool", content: "Tool message" },
+          { role: MessageRole.System, content: "System message" },
+          { role: MessageRole.User, content: "User message" },
+          { role: MessageRole.Assistant, content: "Assistant message" },
+          { role: MessageRole.Tool, content: "Tool message" },
         ],
       };
 
@@ -81,12 +82,12 @@ describe("Markdown Formatter", () => {
         ...sampleConversation,
         messages: [
           {
-            role: "user",
+            role: MessageRole.User,
             content:
               "Test <script>alert('XSS')</script> with **bold** and _italic_",
           },
           {
-            role: "assistant",
+            role: MessageRole.Assistant,
             content: "Here's some `inline code` and <div>HTML</div>",
           },
         ],
@@ -109,7 +110,7 @@ describe("Markdown Formatter", () => {
         ...sampleConversation,
         messages: [
           {
-            role: "user",
+            role: MessageRole.User,
             content:
               "Here's code:\n```javascript\nconst html = '<div>test</div>';\nconsole.log(html);\n```",
           },
@@ -129,7 +130,7 @@ describe("Markdown Formatter", () => {
         ...sampleConversation,
         messages: [
           {
-            role: "assistant",
+            role: MessageRole.Assistant,
             content: "```\nThis block is not supported by Claude\n```",
           },
         ],
@@ -168,7 +169,7 @@ describe("Markdown Formatter", () => {
           date: new Date("2024-01-02T12:00:00Z"),
           messages: [
             {
-              role: "system",
+              role: MessageRole.System,
               content: "You are a helpful assistant.",
             },
           ],

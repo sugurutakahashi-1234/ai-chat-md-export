@@ -1,4 +1,5 @@
 import type { Conversation } from "../../../domain/entities.js";
+import { MessageRole } from "../../../domain/entities.js";
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
 import { BasePlatformParser } from "../base-platform-parser.js";
 import {
@@ -82,7 +83,7 @@ export class ChatGPTParser extends BasePlatformParser<ChatGPTConversation[]> {
 
       if (contentParts.length > 0) {
         const message: Conversation["messages"][number] = {
-          role: node.message.author.role,
+          role: this.mapRole(node.message.author.role),
           content: contentParts.join("\n"),
         };
 
@@ -97,6 +98,24 @@ export class ChatGPTParser extends BasePlatformParser<ChatGPTConversation[]> {
 
     if (node.children && node.children.length > 0 && node.children[0]) {
       this.traverseNode(node.children[0], mapping, messages);
+    }
+  }
+
+  /**
+   * Map string role to MessageRole enum
+   */
+  private mapRole(role: string): MessageRole {
+    switch (role) {
+      case "user":
+        return MessageRole.User;
+      case "assistant":
+        return MessageRole.Assistant;
+      case "system":
+        return MessageRole.System;
+      case "tool":
+        return MessageRole.Tool;
+      default:
+        return MessageRole.User; // Default to user for unknown roles
     }
   }
 }

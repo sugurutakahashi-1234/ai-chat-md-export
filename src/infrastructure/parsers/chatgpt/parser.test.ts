@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { MessageRole } from "../../../domain/entities.js";
 import { Logger } from "../../logging/logger.js";
 import { SchemaValidator } from "../../validation/schema-validator.js";
 import { ChatGPTParser } from "./parser.js";
@@ -73,9 +74,9 @@ describe("ChatGPT Parser", () => {
       });
 
       const messages = conversations[0]!.messages;
-      expect(messages[0]!.role).toBe("user");
+      expect(messages[0]!.role).toBe(MessageRole.User);
       expect(messages[0]!.content).toBe("Hello, world!");
-      expect(messages[1]!.role).toBe("assistant");
+      expect(messages[1]!.role).toBe(MessageRole.Assistant);
       expect(messages[1]!.content).toBe("Hello! How can I help you?");
     });
 
@@ -179,8 +180,8 @@ describe("ChatGPT Parser", () => {
       });
       const messages = conversations[0]!.messages;
 
-      expect(messages[0]!.role).toBe("system");
-      expect(messages[1]!.role).toBe("tool");
+      expect(messages[0]!.role).toBe(MessageRole.System);
+      expect(messages[1]!.role).toBe(MessageRole.Tool);
     });
 
     test("handles messages with timestamps", async () => {

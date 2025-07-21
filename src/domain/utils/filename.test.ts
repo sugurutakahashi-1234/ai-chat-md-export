@@ -1,4 +1,5 @@
 import { describe, expect, it } from "bun:test";
+import { FilenameEncoding } from "../config.js";
 import {
   generateFileName,
   sanitizeFileNamePreserve,
@@ -70,10 +71,18 @@ describe("sanitizeFileNamePreserve", () => {
 describe("generateFileName", () => {
   it("generates filename in standard mode", () => {
     expect(
-      generateFileName(new Date("2025-01-01"), "Hello World", "standard"),
+      generateFileName(
+        new Date("2025-01-01"),
+        "Hello World",
+        FilenameEncoding.Standard,
+      ),
     ).toBe("2025-01-01_Hello_World.md");
     expect(
-      generateFileName(new Date("2025-01-01"), "Test File", "standard"),
+      generateFileName(
+        new Date("2025-01-01"),
+        "Test File",
+        FilenameEncoding.Standard,
+      ),
     ).toBe("2025-01-01_Test_File.md");
     expect(generateFileName(new Date("2025-01-01"), "test/file")).toBe(
       "2025-01-01_test_file.md",
@@ -82,13 +91,25 @@ describe("generateFileName", () => {
 
   it("generates filename in preserve mode with Japanese", () => {
     expect(
-      generateFileName(new Date("2025-01-01"), "日本語のテスト", "preserve"),
+      generateFileName(
+        new Date("2025-01-01"),
+        "日本語のテスト",
+        FilenameEncoding.Preserve,
+      ),
     ).toBe("2025-01-01_日本語のテスト.md");
     expect(
-      generateFileName(new Date("2025-01-01"), "こんにちは世界", "preserve"),
+      generateFileName(
+        new Date("2025-01-01"),
+        "こんにちは世界",
+        FilenameEncoding.Preserve,
+      ),
     ).toBe("2025-01-01_こんにちは世界.md");
     expect(
-      generateFileName(new Date("2025-01-01"), "明日の天気は？", "preserve"),
+      generateFileName(
+        new Date("2025-01-01"),
+        "明日の天気は？",
+        FilenameEncoding.Preserve,
+      ),
     ).toBe("2025-01-01_明日の天気は？.md");
   });
 

@@ -1,5 +1,5 @@
 import type { ProcessorDependencies } from "../application/dependencies.js";
-import type { Options } from "../domain/config.js";
+import { Format, type Options, Platform } from "../domain/config.js";
 import { ValidationError } from "../domain/errors.js";
 import type { IOutputFormatter } from "../domain/interfaces/output-formatter.js";
 import type { IPlatformParser } from "../domain/interfaces/platform-parser.js";
@@ -33,10 +33,10 @@ export function createProcessorDependencies(
   // Create platform-specific parser
   let parser: IPlatformParser;
   switch (options.platform) {
-    case "chatgpt":
+    case Platform.ChatGPT:
       parser = new ChatGPTParser(logger, schemaValidator);
       break;
-    case "claude":
+    case Platform.Claude:
       parser = new ClaudeParser(logger, schemaValidator);
       break;
     default:
@@ -46,10 +46,10 @@ export function createProcessorDependencies(
   // Create output formatter based on format option
   let formatter: IOutputFormatter;
   switch (options.format) {
-    case "json":
+    case Format.Json:
       formatter = new JsonFormatter();
       break;
-    case "markdown":
+    case Format.Markdown:
       formatter = new MarkdownFormatter();
       break;
     default:

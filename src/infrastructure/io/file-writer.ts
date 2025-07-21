@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import type { Options } from "../../domain/config.js";
+import { FilenameEncoding, type Options } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import { FileError } from "../../domain/errors.js";
 import type {
@@ -65,7 +65,7 @@ export class FileWriter implements IFileWriter {
       const extension = this.formatter.extension;
       const filenameEncoding = isValidFilenameEncoding(options.filenameEncoding)
         ? options.filenameEncoding
-        : "standard";
+        : FilenameEncoding.Standard;
       const fileName = generateFileName(
         conv.date,
         conv.title,

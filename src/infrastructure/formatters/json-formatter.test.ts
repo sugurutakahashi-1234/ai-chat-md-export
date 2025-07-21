@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import type { Conversation } from "../../domain/entities.js";
+import { MessageRole } from "../../domain/entities.js";
 import { JsonFormatter } from "./json-formatter.js";
 
 describe("JSON converters", () => {
@@ -10,12 +11,12 @@ describe("JSON converters", () => {
     date: new Date("2024-01-01T12:00:00Z"),
     messages: [
       {
-        role: "user",
+        role: MessageRole.User,
         content: "Hello, world!",
         timestamp: new Date("2024-01-01T12:00:00Z"),
       },
       {
-        role: "assistant",
+        role: MessageRole.Assistant,
         content: "Hello! How can I help you?",
         timestamp: new Date("2024-01-01T12:00:10Z"),
       },
@@ -44,7 +45,7 @@ describe("JSON converters", () => {
         ...sampleConversation,
         messages: [
           {
-            role: "user",
+            role: MessageRole.User,
             content: "No timestamp",
           },
         ],
@@ -67,7 +68,7 @@ describe("JSON converters", () => {
           date: new Date("2024-01-02T12:00:00Z"),
           messages: [
             {
-              role: "system",
+              role: MessageRole.System,
               content: "You are a helpful assistant.",
             },
           ],

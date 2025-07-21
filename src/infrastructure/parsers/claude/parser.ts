@@ -1,4 +1,4 @@
-import type { Conversation } from "../../../domain/entities.js";
+import { type Conversation, MessageRole } from "../../../domain/entities.js";
 import type { ParsedConversation } from "../../../domain/interfaces/platform-parser.js";
 import { BasePlatformParser } from "../base-platform-parser.js";
 import { type ClaudeConversation, claudeConversationSchema } from "./schema.js";
@@ -63,15 +63,16 @@ export class ClaudeParser extends BasePlatformParser<ClaudeConversation[]> {
       }
 
       // Determine role from sender field
-      let role: "user" | "assistant";
+      let role: MessageRole;
       if ("sender" in msg) {
-        role = msg.sender === "human" ? "user" : "assistant";
+        role =
+          msg.sender === "human" ? MessageRole.User : MessageRole.Assistant;
       } else if ("role" in msg && msg.role) {
         // Convert old format role field (human -> user)
-        role = msg.role === "human" ? "user" : "assistant";
+        role = msg.role === "human" ? MessageRole.User : MessageRole.Assistant;
       } else {
         // Default value
-        role = "user";
+        role = MessageRole.User;
       }
 
       return {

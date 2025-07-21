@@ -1,9 +1,24 @@
 import { z } from "zod";
 
+export enum Platform {
+  ChatGPT = "chatgpt",
+  Claude = "claude",
+}
+
+export enum Format {
+  Markdown = "markdown",
+  Json = "json",
+}
+
+export enum FilenameEncoding {
+  Standard = "standard",
+  Preserve = "preserve",
+}
+
 export const optionsSchema = z.object({
   input: z.string(),
   output: z.string().optional(),
-  platform: z.enum(["chatgpt", "claude"]),
+  platform: z.nativeEnum(Platform),
   since: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format")
@@ -15,8 +30,10 @@ export const optionsSchema = z.object({
   quiet: z.boolean().default(false),
   dryRun: z.boolean().default(false),
   search: z.string().optional(),
-  filenameEncoding: z.enum(["standard", "preserve"]).default("standard"),
-  format: z.enum(["markdown", "json"]).default("markdown"),
+  filenameEncoding: z
+    .nativeEnum(FilenameEncoding)
+    .default(FilenameEncoding.Standard),
+  format: z.nativeEnum(Format).default(Format.Markdown),
   split: z.boolean().default(true),
 });
 

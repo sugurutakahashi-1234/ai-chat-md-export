@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import type { Conversation, MessageRole } from "../../domain/entities.js";
+import { FilenameEncoding, Format, Platform } from "../../domain/config.js";
+import { type Conversation, MessageRole } from "../../domain/entities.js";
 import { ConversationFilter } from "./conversation-filter.js";
 
 describe("ConversationFilter", () => {
@@ -34,12 +35,12 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         since: "2024-03-01",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2);
@@ -51,12 +52,12 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         until: "2024-02-28",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2);
@@ -69,12 +70,12 @@ describe("ConversationFilter", () => {
         since: "2024-02-01",
         until: "2024-03-31",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2);
@@ -87,12 +88,12 @@ describe("ConversationFilter", () => {
         since: "2024-02-14",
         until: "2024-02-14",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
@@ -102,12 +103,12 @@ describe("ConversationFilter", () => {
     test("returns all conversations when no date filters", () => {
       const result = filter.filterConversations(conversations, {
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(4);
@@ -117,16 +118,22 @@ describe("ConversationFilter", () => {
   describe("filterBySearch", () => {
     const conversations: Conversation[] = [
       createConversation("2024-01-01", "JavaScript Tutorial", [
-        { role: "user", content: "Tell me about JavaScript" },
-        { role: "assistant", content: "JavaScript is a programming language" },
+        { role: MessageRole.User, content: "Tell me about JavaScript" },
+        {
+          role: MessageRole.Assistant,
+          content: "JavaScript is a programming language",
+        },
       ]),
       createConversation("2024-02-01", "Python Guide", [
-        { role: "user", content: "Explain Python basics" },
-        { role: "assistant", content: "Python is easy to learn" },
+        { role: MessageRole.User, content: "Explain Python basics" },
+        { role: MessageRole.Assistant, content: "Python is easy to learn" },
       ]),
       createConversation("2024-03-01", "TypeScript Introduction", [
-        { role: "user", content: "What is TypeScript?" },
-        { role: "assistant", content: "TypeScript is JavaScript with types" },
+        { role: MessageRole.User, content: "What is TypeScript?" },
+        {
+          role: MessageRole.Assistant,
+          content: "TypeScript is JavaScript with types",
+        },
       ]),
     ];
 
@@ -134,12 +141,12 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         search: "Tutorial",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
@@ -150,12 +157,12 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         search: "programming",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
@@ -166,12 +173,12 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         search: "PYTHON",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
@@ -182,12 +189,12 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         search: "JavaScript",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2); // Found in both conversations
@@ -196,12 +203,12 @@ describe("ConversationFilter", () => {
     test("returns all conversations when no search keyword", () => {
       const result = filter.filterConversations(conversations, {
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(3);
@@ -211,16 +218,16 @@ describe("ConversationFilter", () => {
   describe("combined filters", () => {
     const conversations: Conversation[] = [
       createConversation("2024-01-01", "Early JavaScript", [
-        { role: "user", content: "JavaScript basics" },
+        { role: MessageRole.User, content: "JavaScript basics" },
       ]),
       createConversation("2024-06-01", "Advanced JavaScript", [
-        { role: "user", content: "JavaScript advanced topics" },
+        { role: MessageRole.User, content: "JavaScript advanced topics" },
       ]),
       createConversation("2024-03-01", "Python Tutorial", [
-        { role: "user", content: "Python programming" },
+        { role: MessageRole.User, content: "Python programming" },
       ]),
       createConversation("2024-08-01", "TypeScript Guide", [
-        { role: "user", content: "TypeScript with JavaScript" },
+        { role: MessageRole.User, content: "TypeScript with JavaScript" },
       ]),
     ];
 
@@ -229,12 +236,12 @@ describe("ConversationFilter", () => {
         since: "2024-05-01",
         search: "JavaScript",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2);
@@ -247,12 +254,12 @@ describe("ConversationFilter", () => {
         since: "2024-12-01",
         search: "Rust",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(0);
@@ -265,12 +272,12 @@ describe("ConversationFilter", () => {
         since: "2024-01-01",
         search: "test",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(0);
@@ -284,12 +291,12 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         search: "nothing",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(0);
@@ -298,19 +305,19 @@ describe("ConversationFilter", () => {
     test("handles special characters in search", () => {
       const conversations = [
         createConversation("2024-01-01", "C++ Tutorial", [
-          { role: "user", content: "Learn C++ programming" },
+          { role: MessageRole.User, content: "Learn C++ programming" },
         ]),
       ];
 
       const result = filter.filterConversations(conversations, {
         search: "C++",
         input: "",
-        platform: "chatgpt",
-        format: "markdown",
+        platform: Platform.ChatGPT,
+        format: Format.Markdown,
         split: true,
         quiet: false,
         dryRun: false,
-        filenameEncoding: "standard",
+        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);

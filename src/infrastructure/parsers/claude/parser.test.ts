@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { MessageRole } from "../../../domain/entities.js";
 import { Logger } from "../../logging/logger.js";
 import { SchemaValidator } from "../../validation/schema-validator.js";
 import { ClaudeParser } from "./parser.js";
@@ -50,11 +51,11 @@ describe("Claude Parser", () => {
       });
 
       const messages = conversations[0]!.messages;
-      expect(messages[0]!.role).toBe("user");
+      expect(messages[0]!.role).toBe(MessageRole.User);
       expect(messages[0]!.content).toBe("Hello, Claude!");
       expect(messages[0]!.timestamp).toEqual(new Date("2024-01-01T12:00:00Z"));
 
-      expect(messages[1]!.role).toBe("assistant");
+      expect(messages[1]!.role).toBe(MessageRole.Assistant);
       expect(messages[1]!.content).toBe("Hello! How can I help you today?");
       expect(messages[1]!.timestamp).toEqual(new Date("2024-01-01T12:00:10Z"));
     });
@@ -83,9 +84,9 @@ describe("Claude Parser", () => {
       });
       const messages = conversations[0]!.messages;
 
-      expect(messages[0]!.role).toBe("user"); // human -> user
+      expect(messages[0]!.role).toBe(MessageRole.User); // human -> user
       expect(messages[0]!.content).toBe("Old format message");
-      expect(messages[1]!.role).toBe("assistant");
+      expect(messages[1]!.role).toBe(MessageRole.Assistant);
       expect(messages[1]!.content).toBe("Old format response");
     });
 
@@ -205,7 +206,7 @@ describe("Claude Parser", () => {
       });
 
       // Should default to "user" role
-      expect(conversations[0]!.messages[0]!.role).toBe("user");
+      expect(conversations[0]!.messages[0]!.role).toBe(MessageRole.User);
     });
 
     test("handles different content structures", async () => {

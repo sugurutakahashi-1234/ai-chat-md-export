@@ -1,3 +1,5 @@
+import { FilenameEncoding } from "../config.js";
+
 /**
  * Convert string to a safe filename (standard version)
  * Replaces dangerous characters with underscores for maximum readability
@@ -46,8 +48,6 @@ export function sanitizeFileNamePreserve(fileName: string): string {
   return result;
 }
 
-type FilenameEncoding = "standard" | "preserve";
-
 /**
  * Generate a filename
  * @param date - Date object
@@ -57,15 +57,15 @@ type FilenameEncoding = "standard" | "preserve";
 export function generateFileName(
   date: Date,
   title: string,
-  encoding: FilenameEncoding = "standard",
+  encoding: FilenameEncoding = FilenameEncoding.Standard,
 ): string {
   let sanitizedTitle: string;
 
   switch (encoding) {
-    case "standard":
+    case FilenameEncoding.Standard:
       sanitizedTitle = sanitizeFileNameStandard(title);
       break;
-    case "preserve":
+    case FilenameEncoding.Preserve:
       sanitizedTitle = sanitizeFileNamePreserve(title);
       break;
     default:

@@ -1,4 +1,9 @@
-export type MessageRole = "user" | "assistant" | "system" | "tool";
+export enum MessageRole {
+  User = "user",
+  Assistant = "assistant",
+  System = "system",
+  Tool = "tool",
+}
 
 export interface Conversation {
   id: string;
