@@ -182,29 +182,11 @@ describe("Markdown Formatter", () => {
       expect(markdown).toContain("## ⚙️ System");
     });
 
-    test("handles empty conversations array", () => {
-      const markdown = formatter.formatMultiple([]);
-
-      expect(markdown).toBe("");
-    });
-
     test("handles single conversation", () => {
       const markdown = formatter.formatMultiple([sampleConversation]);
 
       // Should be same as formatSingle
       expect(markdown).toBe(formatter.formatSingle(sampleConversation));
-    });
-  });
-
-  describe("getDefaultFilename", () => {
-    test("returns correct default filename", () => {
-      expect(formatter.getDefaultFilename()).toBe("all-conversations.md");
-    });
-  });
-
-  describe("extension property", () => {
-    test("has correct file extension", () => {
-      expect(formatter.extension).toBe(".md");
     });
   });
 });

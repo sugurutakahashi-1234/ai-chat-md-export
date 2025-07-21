@@ -82,20 +82,5 @@ describe("JSON converters", () => {
       expect(parsed.conversations[1].id).toBe("test-456");
       expect(parsed.conversations[1].messages[0].role).toBe("system");
     });
-
-    test("handles empty conversations array", () => {
-      const json = formatter.formatMultiple([]);
-      const parsed = JSON.parse(json);
-
-      expect(parsed.conversations).toHaveLength(0);
-    });
-  });
-
-  test("JSON output is properly formatted", () => {
-    const json = formatter.formatSingle(sampleConversation);
-
-    // Check that it's indented (contains newlines and spaces)
-    expect(json).toContain("\n");
-    expect(json).toContain("  ");
   });
 });

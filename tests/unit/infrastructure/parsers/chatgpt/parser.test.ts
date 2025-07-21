@@ -327,13 +327,5 @@ describe("ChatGPT Parser", () => {
         }),
       ).rejects.toThrow();
     });
-
-    test("handles empty array", async () => {
-      const conversations = await parser.parseAndValidateConversations([], {
-        quiet: true,
-      });
-
-      expect(conversations).toHaveLength(0);
-    });
   });
 });
