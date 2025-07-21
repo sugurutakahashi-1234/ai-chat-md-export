@@ -104,7 +104,7 @@ function createClaudeConversation(overrides: any = {}) {
 }
 
 describe("CLI Integration Tests", () => {
-  const tempDir = path.join(process.cwd(), "src/__tests__/temp");
+  const tempDir = path.join(process.cwd(), "tests/temp");
   const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
 
   beforeEach(async () => {
@@ -330,5 +330,60 @@ describe("CLI Integration Tests", () => {
     expect(result.exitCode).toBe(0);
     // In quiet mode, there should be no output
     expect(result.stdout.toString()).toBe("");
+  });
+
+  test("filters with --until date", async () => {
+    const inputFile = path.join(tempDir, "multi-dates.json");
+    const conversations = [
+      createChatGPTConversation({
+        title: "Early conversation",
+        create_time: 1672531200, // 2023-01-01
+      }),
+      createChatGPTConversation({
+        title: "Later conversation",
+        create_time: 1703980800, // 2023-12-31
+      }),
+    ];
+    await fs.writeFile(inputFile, JSON.stringify(conversations), "utf-8");
+
+    const outputDir = path.join(tempDir, "output");
+    const result =
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt --until 2023-06-01`.quiet();
+
+    expect(result.exitCode).toBe(0);
+    const outputFiles = await fs.readdir(outputDir);
+    expect(outputFiles).toHaveLength(1);
+    expect(outputFiles[0]).toContain("2023-01-01");
+  });
+
+  test("handles no matches with filters gracefully", async () => {
+    const inputFile = path.join(tempDir, "no-match.json");
+    const conversations = [createChatGPTConversation()];
+    await fs.writeFile(inputFile, JSON.stringify(conversations), "utf-8");
+
+    const outputDir = path.join(tempDir, "output");
+    const result =
+      await $`bun ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt --search "nonexistent"`.quiet();
+
+    expect(result.exitCode).toBe(0);
+    // Directory shouldn't be created when no files to write
+    const dirExists = await fs.stat(outputDir).catch(() => null);
+    expect(dirExists).toBeNull();
+  });
+
+  test("validates date format", async () => {
+    const inputFile = path.join(tempDir, "date-test.json");
+    const conversations = [createChatGPTConversation()];
+    await fs.writeFile(inputFile, JSON.stringify(conversations), "utf-8");
+
+    try {
+      await $`bun ${cliPath} -i ${inputFile} -p chatgpt --since "2024/01/01"`.quiet();
+      expect(true).toBe(false); // Should not reach here
+    } catch (error) {
+      const stderr =
+        (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
+      expect(stderr).toContain("✗");
+      expect(stderr).toContain("Date must be in YYYY-MM-DD format");
+    }
   });
 });

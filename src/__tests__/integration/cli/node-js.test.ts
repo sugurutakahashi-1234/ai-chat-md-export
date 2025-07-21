@@ -52,7 +52,7 @@ function createChatGPTTestData() {
 }
 
 describe("Node.js Execution Tests", () => {
-  const tempDir = path.join(process.cwd(), "src/__tests__/temp");
+  const tempDir = path.join(process.cwd(), "tests/temp");
   const cliPath = path.join(process.cwd(), "bin/ai-chat-md-export.js");
   const libDir = path.join(process.cwd(), "lib");
 
