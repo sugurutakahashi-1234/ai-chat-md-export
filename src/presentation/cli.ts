@@ -4,7 +4,6 @@ import { optionsSchema } from "../domain/config.js";
 import { formatErrorWithContext } from "../domain/utils/error.js";
 import { VERSION } from "../domain/version.js";
 import { createProcessorDependencies } from "../infrastructure/factories/processor-factory.js";
-import { Logger } from "../infrastructure/logging/logger.js";
 
 export async function main(): Promise<void> {
   const program = new Command();
@@ -60,9 +59,11 @@ For more options and detailed documentation:
         // biome-ignore lint/complexity/useLiteralKeys: TypeScript requires bracket notation for index signatures
         if (!opts["platform"]) missingOptions.push("platform (-p)");
 
-        const logger = new Logger();
-        logger.error(`Required options missing: ${missingOptions.join(", ")}`);
-        logger.info(
+        // Use standard console methods instead of infrastructure layer Logger
+        console.error(
+          `Error: Required options missing: ${missingOptions.join(", ")}`,
+        );
+        console.log(
           "\nTry 'ai-chat-md-export --help' for usage information.\n",
         );
         process.exit(1);
@@ -93,8 +94,8 @@ For more options and detailed documentation:
     await processor.executeConversionPipeline(options);
   } catch (error) {
     const errorMessage = formatErrorWithContext(error);
-    const logger = new Logger();
-    logger.error(errorMessage);
+    // Use standard console.error instead of infrastructure layer Logger
+    console.error(`Error: ${errorMessage}`);
     process.exit(1);
   }
 }

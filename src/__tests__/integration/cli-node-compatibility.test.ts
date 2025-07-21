@@ -135,7 +135,7 @@ describe("Node.js Execution Tests", () => {
     } catch (error) {
       const stderr =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(stderr).toContain("✗");
+      expect(stderr).toContain("Error:");
       expect(stderr).toContain("ENOENT");
     }
   });

@@ -153,7 +153,6 @@ flowchart LR
     src/presentation/cli.ts-->src/domain/utils/error.ts
     src/presentation/cli.ts-->src/domain/version.ts
     src/presentation/cli.ts-->src/infrastructure/factories/processor//factory.ts
-    src/presentation/cli.ts-->src/infrastructure/logging/logger.ts
     src/presentation/index.ts-->src/presentation/cli.ts
 ```
 

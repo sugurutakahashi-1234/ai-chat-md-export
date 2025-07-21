@@ -142,7 +142,7 @@ describe("CLI Integration Tests", () => {
     } catch (error) {
       const stderr =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(stderr).toContain("✗ Required options missing:");
+      expect(stderr).toContain("Error: Required options missing:");
       const stdout =
         (error as { stdout?: { toString(): string } }).stdout?.toString() || "";
       expect(stdout).toContain(
@@ -266,7 +266,7 @@ describe("CLI Integration Tests", () => {
     } catch (error) {
       const stderr =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(stderr).toContain("✗");
+      expect(stderr).toContain("Error:");
       expect(stderr).toContain("ENOENT");
     }
   });
@@ -286,7 +286,7 @@ describe("CLI Integration Tests", () => {
       const stderr =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
       // The error now comes from commander validation
-      expect(stderr).toContain("✗");
+      expect(stderr).toContain("Error:");
       expect(stderr).toContain("Required options missing: platform");
     }
   });
@@ -389,7 +389,7 @@ describe("CLI Integration Tests", () => {
     } catch (error) {
       const stderr =
         (error as { stderr?: { toString(): string } }).stderr?.toString() || "";
-      expect(stderr).toContain("✗");
+      expect(stderr).toContain("Error:");
       expect(stderr).toContain("Date must be in YYYY-MM-DD format");
     }
   });
