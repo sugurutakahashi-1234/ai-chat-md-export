@@ -98,6 +98,18 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
           HOMEBREW_TAP_PUSH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
+      - name: Pre-compress Windows executables for artifact upload
+        if: failure()
+        run: |
+          echo "🗜️ Pre-compressing Windows executables to avoid permission issues..."
+          find dist -name "*.exe" -type f | while read exe; do
+            echo "Compressing: $exe"
+            tar -czf "${exe}.tar.gz" -C "$(dirname "$exe")" "$(basename "$exe")"
+            echo "Created: ${exe}.tar.gz"
+            rm -f "$exe"
+            echo "Removed original: $exe"
+          done
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         if: failure()
