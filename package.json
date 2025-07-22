@@ -34,12 +34,12 @@
   "bin": {
     "ai-chat-md-export": "bin/ai-chat-md-export.js"
   },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./lib/presentation/index.js",
+  "types": "./lib/presentation/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "default": "./lib/index.js"
+      "types": "./lib/presentation/index.d.ts",
+      "default": "./lib/presentation/index.js"
     }
   },
   "files": [
@@ -52,11 +52,12 @@
   "scripts": {
     "prepare": "husky",
     "help": "bun run bin/ai-chat-md-export.js -h",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "bun run build:npm",
-    "build:npm": "tsc",
+    "build:npm": "tsc -p tsconfig.build.json",
     "build:binary": "goreleaser build --snapshot --clean --skip=validate && rm -f .*.bun-build",
     "lint": "biome check --write .",
+    "lint:unsafe": "biome check --write --unsafe .",
     "lint:check": "biome check .",
     "format": "biome format --write .",
     "format:check": "biome format .",
@@ -76,10 +77,15 @@
     "deps:size": "du -sk node_modules/* node_modules/@*/* 2>/dev/null | sort -nr | head -30 | awk 'BEGIN{print \"Package                                        Size    Visual\"} {kb=$1; path=$2; gsub(/node_modules\\//, \"\", path); if(kb>1024) {mb=kb/1024; size=sprintf(\"%.1fM\", mb)} else {size=sprintf(\"%dK\", kb)} printf \"%-45s %7s  \", path, size; bar_len=int(kb/1000); if(bar_len<1) bar_len=1; if(bar_len>40) bar_len=40; for(i=0; i<bar_len; i++) printf \"█\"; print \"\"}' && echo && echo \"Total: $(du -sh node_modules 2>/dev/null | awk '{print $1}')\"",
     "knip": "knip -c knip.config.ts",
     "knip:fix": "knip -c knip.config.ts --fix",
-    "update:docs": "bun run update:docs:knip && bun run update:docs:deps-graph",
-    "update:docs:knip": "knip -c knip.config.ts --reporter markdown > docs/knip/report.md",
-    "update:docs:deps-graph": "tsg --tsconfig ./tsconfig.json --LR --md docs/dependency-graphs/typescript-graph.md",
-    "ci": "bun run lint && bun run format && bun run typecheck && bun run lint:check && bun run build && bun run knip && bun run test:quiet",
+    "update:docs:knip": "knip -c knip.config.ts --reporter markdown > docs/reports/code-quality/unused-code.md",
+    "update:docs:deps-graph:prod": "tsg --tsconfig tsconfig.build.json --LR --md docs/reports/dependencies/prod.md",
+    "update:docs:deps-graph:test": "tsg --tsconfig tsconfig.json --LR --md docs/reports/dependencies/with-tests.md",
+    "update:docs:deps-graph:layers": "tsg --tsconfig tsconfig.build.json --LR --abstraction src/domain --abstraction src/application --abstraction src/infrastructure --abstraction src/presentation --md docs/reports/dependencies/layers.md",
+    "update:docs:deps-graph:flow": "tsg --tsconfig tsconfig.build.json --LR --include src/presentation/cli.ts --include src/presentation/processor-factory.ts --include src/application/processor.ts --exclude src/domain --exclude node_modules --md docs/reports/dependencies/flow.md",
+    "update:docs:deps-graph:external": "tsg --tsconfig tsconfig.json --LR --include node_modules --md docs/reports/dependencies/external.md",
+    "update:docs:deps-graph:all": "bun run update:docs:deps-graph:prod && bun run update:docs:deps-graph:test && bun run update:docs:deps-graph:layers && bun run update:docs:deps-graph:flow && bun run update:docs:deps-graph:external",
+    "update:docs:all": "bun run update:docs:knip && bun run update:docs:deps-graph:all",
+    "ci": "bun run lint && bun run format && bun run typecheck && bun run lint:check && bun run format:check && bun run build && bun run knip && bun run test:quiet && bun run update:docs:all",
     "clean": "rm -rf bun.lock node_modules releases dist coverage .*.bun-build tsconfig.tsbuildinfo output/chatgpt/*.md output/claude/*.md",
     "clean:install": "bun run clean && bun install",
     "clean:build": "bun run clean:install && bun run ci",
@@ -95,7 +101,7 @@
   },
   "dependencies": {
     "commander": "14.0.0",
-    "picocolors": "^1.1.1",
+    "picocolors": "1.1.1",
     "zod": "4.0.5"
   },
   "devDependencies": {
@@ -106,9 +112,9 @@
     "@elsikora/git-branch-lint": "1.1.2",
     "@release-it/bumper": "7.0.5",
     "@release-it/conventional-changelog": "10.0.1",
-    "@types/bun": "1.2.18",
+    "@types/bun": "1.2.19",
     "@types/node": "24.0.15",
-    "@ysk8hori/typescript-graph": "^0.26.3",
+    "@ysk8hori/typescript-graph": "0.26.3",
     "husky": "9.1.7",
     "knip": "5.62.0",
     "release-it": "19.0.4",

@@ -55,9 +55,9 @@ jobs:
         env:
           HUSKY: 0
         with:
-          tsconfig: './tsconfig.json'
+          tsconfig: './tsconfig.json' # Path to your TypeScript config file
           orientation: 'LR' # Change to 'TB' for top-bottom orientation
-          max-size: 30 # default is 30, adjust as needed
+          max-size: 50 # default is 30, adjust as needed
           # NOTE: show-metrics is set to false because enabling it produced too much output for this repository.
           show-metrics: false # Set to true to include metrics in the graph (output was too large when enabled)
           comment-title: '📊 Dependency Graph Changes'

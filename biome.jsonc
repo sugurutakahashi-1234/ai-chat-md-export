@@ -52,12 +52,16 @@
         "**/*.test.ts",
         "**/*.test.tsx",
         "**/tests/**/*.ts",
-        "**/tests/**/*.tsx"
+        "**/tests/**/*.tsx",
+        "src/__tests__/**"
       ],
       "linter": {
         "rules": {
           "suspicious": {
             "noExplicitAny": "off"
+          },
+          "style": {
+            "noNonNullAssertion": "off"
           }
         }
       }

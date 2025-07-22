@@ -45,7 +45,7 @@ npm install -g ai-chat-md-export
 # → conversations.jsonファイルを取得（下記の「Getting conversations.json」セクション参照）
 
 # 3. Markdownに変換
-ai-chat-md-export -i conversations.json
+ai-chat-md-export -i conversations.json -p chatgpt
 ```
 
 これで完了！会話が整理され、検索可能なMarkdownファイルになりました。
@@ -139,7 +139,7 @@ npm install -g ai-chat-md-export
 2. ZIPファイルを展開
 3. 展開したフォルダをPATHに追加するか、直接実行:
    ```cmd
-   ai-chat-md-export.exe -i conversations.json
+   ai-chat-md-export.exe -i conversations.json -p chatgpt
    ```
 
 #### macOS / Linux
@@ -186,19 +186,19 @@ ChatGPTやClaudeの会話履歴を整理された読みやすいMarkdownファ�
 
 ```bash
 # 基本: conversations.jsonをMarkdownファイルに変換
-ai-chat-md-export -i conversations.json
+ai-chat-md-export -i conversations.json -p chatgpt
 
 # 出力ディレクトリを指定
-ai-chat-md-export -i conversations.json -o output/
+ai-chat-md-export -i conversations.json -o output/ -p chatgpt
 
 # 日付やキーワードでフィルタ
-ai-chat-md-export -i conversations.json --since 2024-01-01 --search "Python"
+ai-chat-md-export -i conversations.json -p chatgpt --since 2024-01-01 --search "Python"
 
 # JSON形式でエクスポート
-ai-chat-md-export -i conversations.json -f json
+ai-chat-md-export -i conversations.json -p claude -f json
 
 # すべての会話を1つのファイルにまとめる
-ai-chat-md-export -i conversations.json --no-split
+ai-chat-md-export -i conversations.json -p chatgpt --no-split
 ```
 
 その他の例については、[examples](examples/)ディレクトリを参照してください。
@@ -210,13 +210,13 @@ ai-chat-md-export -i conversations.json --no-split
 | `-h, --help`                     | ヘルプ情報を表示                                                        | -          |
 | `-v, --version`                  | バージョン番号を表示                                                    | -          |
 | `-i, --input <path>`             | 入力ファイルパス（必須）                                                | -          |
+| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`） - 必須                       | -          |
 | `-o, --output <path>`            | 出力ディレクトリ                                                        | `.`        |
 | `-f, --format <format>`          | 出力フォーマット（`markdown`/`json`）                                   | `markdown` |
 | `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割）        | -          |
 | `--since <date>`                 | 開始日でフィルタ（YYYY-MM-DD）。会話の開始日でフィルタリング            | -          |
 | `--until <date>`                 | 終了日でフィルタ（YYYY-MM-DD）。指定日を含む                            | -          |
 | `--search <keyword>`             | 会話内を検索。大文字小文字を区別せず、タイトルとメッセージを検索        | -          |
-| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`/`auto`）                       | `auto`     |
 | `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`）                     | `standard` |
 | `-q, --quiet`                    | 進捗メッセージを抑制                                                    | -          |
 | `--dry-run`                      | ファイルを作成せずにプレビューモード                                    | -          |
@@ -288,13 +288,9 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 - [x] npmパッケージ配布
 - [x] Homebrewフォーミュラサポート
 
-### 🚧 In Progress
-
-- [ ] **プログレスバー** - 長時間処理時の視覚的フィードバック
-
 ### 📋 Planned Features
 
-- [ ] **Geminiサポート** - Google Geminiからの会話エクスポート
+- [ ] **JSONストリーミング処理** - 大きなファイルをメモリに全て読み込まずに処理
 - [ ] **エクスポート統計** - 会話数、メッセージ数、日付範囲を表示
 
 ## Contributing

@@ -10,6 +10,9 @@
   
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   
+  // Disable config migration
+  "configMigration": false,
+  
   // Inherit basic settings
   // "config:best-practices" includes:
   // - rangeStrategy: "pin" (fully pinned versions)

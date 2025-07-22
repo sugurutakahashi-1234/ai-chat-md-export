@@ -23,9 +23,6 @@ fi
 
 # Auto-update dependency graph
 if git diff --cached --name-only | grep -qE "^src/.*\.ts$"; then
-  bun run update:docs:deps-graph
-  git add docs/dependency-graphs/typescript-graph.md
-
-  bun run update:docs:knip
-  git add docs/knip/report.md
+  bun run update:docs:all
+  git add docs/reports/
 fi

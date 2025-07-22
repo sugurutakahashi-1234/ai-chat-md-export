@@ -31,30 +31,30 @@ Generate the example outputs using these commands:
 
 ```bash
 # Markdown format (default: split into individual files)
-ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/output/markdown/
+ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/output/markdown/ -p chatgpt
 
 # Markdown format (combined into single file)
-ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/output/markdown-no-split/ --no-split
+ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/output/markdown-no-split/ -p chatgpt --no-split
 
 # JSON format (default: split into individual files)
-ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/output/json/ -f json
+ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/output/json/ -p chatgpt -f json
 
 # JSON format (combined into single file)
-ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/output/json-no-split/ -f json --no-split
+ai-chat-md-export -i examples/chatgpt/conversations.json -o examples/chatgpt/output/json-no-split/ -p chatgpt -f json --no-split
 ```
 
 ### Claude Examples
 
 ```bash
 # Markdown format (default: split into individual files)
-ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/markdown/
+ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/markdown/ -p claude
 
 # Markdown format (combined into single file)
-ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/markdown-no-split/ --no-split
+ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/markdown-no-split/ -p claude --no-split
 
 # JSON format (default: split into individual files)
-ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/json/ -f json
+ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/json/ -p claude -f json
 
 # JSON format (combined into single file)
-ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/json-no-split/ -f json --no-split
+ai-chat-md-export -i examples/claude/conversations.json -o examples/claude/output/json-no-split/ -p claude -f json --no-split
 ```
