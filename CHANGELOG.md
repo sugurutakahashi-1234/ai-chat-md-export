@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.0...v0.8.1) (2025-07-22)
+
+
+### 🐛 Bug Fixes
+
+* add GitHub Actions permissions for artifact upload ([#57](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/57)) ([a0f993e](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/a0f993e4b16517b1ba2f1fdf07be5ff3df5c4ab7))
+
 ## [0.8.0](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.7.6...v0.8.0) (2025-07-22)
 
 
