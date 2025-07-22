@@ -115,20 +115,6 @@ jobs:
           ls -la dist/
           find dist -type d -exec ls -ld {} \;
 
-      - name: Pre-compress Windows executables
-        run: |
-          echo "🗜️ Pre-compressing Windows executables to avoid permission issues..."
-          find dist -name "*.exe" -type f | while read exe; do
-            echo "Compressing: $exe"
-            tar -czf "${exe}.tar.gz" -C "$(dirname "$exe")" "$(basename "$exe")"
-            echo "Created: ${exe}.tar.gz"
-            rm -f "$exe"
-            echo "Removed original: $exe"
-          done
-          echo ""
-          echo "📦 Files after compression:"
-          find dist -type f -name "*.tar.gz" -o -name "*.exe" | sort
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         if: always()
