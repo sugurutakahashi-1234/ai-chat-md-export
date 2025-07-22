@@ -1,14 +1,15 @@
 import type { Options } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import type { IConversationFilter } from "../../domain/interfaces/conversation-filter.js";
+import type { ILogger } from "../../domain/interfaces/logger.js";
 
 /**
  * Conversation filter for date range and keyword search
  *
- * Pure domain logic for filtering conversations by date and keyword.
- * This class contains no infrastructure dependencies.
+ * Filters conversations by date and keyword with detailed logging.
  */
 export class ConversationFilter implements IConversationFilter {
+  constructor(private readonly logger: ILogger) {}
   /**
    * Apply all configured filters to the conversations
    *
@@ -22,17 +23,31 @@ export class ConversationFilter implements IConversationFilter {
     let filteredConversations = conversations;
 
     // Apply date filter
-    filteredConversations = this.filterByDate(
-      filteredConversations,
-      options.since,
-      options.until,
-    );
+    if (options.since || options.until) {
+      const before = filteredConversations.length;
+      filteredConversations = this.filterByDate(
+        filteredConversations,
+        options.since,
+        options.until,
+      );
+      const after = filteredConversations.length;
+      this.logger.info(
+        `Date filter (${options.since || "∞"} to ${options.until || "∞"}): ${before} → ${after} conversations`,
+      );
+    }
 
     // Apply search filter
-    filteredConversations = this.filterBySearch(
-      filteredConversations,
-      options.search,
-    );
+    if (options.search) {
+      const before = filteredConversations.length;
+      filteredConversations = this.filterBySearch(
+        filteredConversations,
+        options.search,
+      );
+      const after = filteredConversations.length;
+      this.logger.info(
+        `Search filter "${options.search}": ${before} → ${after} conversations`,
+      );
+    }
 
     return filteredConversations;
   }

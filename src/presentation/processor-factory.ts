@@ -11,6 +11,7 @@ import { FileWriter } from "../infrastructure/io/file-writer.js";
 import { Logger } from "../infrastructure/logging/logger.js";
 import { ChatGPTParser } from "../infrastructure/parsers/chatgpt/parser.js";
 import { ClaudeParser } from "../infrastructure/parsers/claude/parser.js";
+import { Spinner } from "../infrastructure/progress/spinner.js";
 import { SchemaValidator } from "../infrastructure/validation/schema-validator.js";
 
 /**
@@ -27,17 +28,18 @@ import { SchemaValidator } from "../infrastructure/validation/schema-validator.j
 export function createProcessorDependencies(
   options: Options,
 ): ProcessorDependencies {
-  const logger = new Logger({ quiet: options.quiet });
+  const logger = new Logger(options);
+  const spinner = new Spinner(logger, options);
   const schemaValidator = new SchemaValidator();
 
   // Create platform-specific parser
   let parser: IPlatformParser;
   switch (options.platform) {
     case Platform.ChatGPT:
-      parser = new ChatGPTParser(logger, schemaValidator);
+      parser = new ChatGPTParser(logger, schemaValidator, spinner);
       break;
     case Platform.Claude:
-      parser = new ClaudeParser(logger, schemaValidator);
+      parser = new ClaudeParser(logger, schemaValidator, spinner);
       break;
   }
 
@@ -58,12 +60,13 @@ export function createProcessorDependencies(
   }
 
   return {
-    fileLoader: new FileLoader(),
-    fileWriter: new FileWriter(logger, formatter),
+    fileLoader: new FileLoader(logger),
+    fileWriter: new FileWriter(logger, formatter, spinner),
     parser,
     formatter,
-    filter: new ConversationFilter(),
+    filter: new ConversationFilter(logger),
     logger,
     schemaValidator,
+    spinner,
   };
 }

@@ -84,13 +84,25 @@ describe("Node.js Execution Tests", () => {
     const result = await $`node ${cliPath} -h`.quiet();
     const output = result.text();
 
+    // Basic CLI info
     expect(output).toContain("ai-chat-md-export");
     expect(output).toContain(
       "Convert ChatGPT and Claude export data to Markdown",
     );
+
+    // Required options
     expect(output).toContain("-i, --input");
+    expect(output).toContain("-p, --platform");
+
+    // Optional options
     expect(output).toContain("-o, --output");
     expect(output).toContain("-f, --format");
+    expect(output).toContain("--dry-run");
+    expect(output).toContain("--quiet");
+
+    // Platform choices
+    expect(output).toContain("chatgpt");
+    expect(output).toContain("claude");
   });
 
   test("Node.js can convert ChatGPT file", async () => {
@@ -149,16 +161,53 @@ describe("Node.js Execution Tests", () => {
       return;
     }
 
-    // Create test data file
+    // Create test data file with actual content
     const testData = createChatGPTTestData();
     const inputFile = path.join(tempDir, "nodejs-dryrun-test.json");
     await fs.writeFile(inputFile, JSON.stringify(testData), "utf-8");
 
-    const result =
-      await $`node ${cliPath} -i ${inputFile} --dry-run -p chatgpt`.quiet();
+    // Create a specific output directory
+    const outputDir = path.join(tempDir, "dry-run-output");
 
-    expect(result.exitCode).toBe(0);
-    const output = result.stdout.toString();
-    expect(output).toContain("[DRY RUN]");
+    // Test 1: Dry-run mode doesn't create files
+    const dryRunResult =
+      await $`node ${cliPath} -i ${inputFile} -o ${outputDir} --dry-run -p chatgpt`.quiet();
+
+    // Command should exit successfully
+    expect(dryRunResult.exitCode).toBe(0);
+
+    // No files should be created
+    const dirExists = await fs
+      .access(outputDir)
+      .then(() => true)
+      .catch(() => false);
+    expect(dirExists).toBe(false);
+
+    // Test 2: Dry-run with quiet mode still doesn't create files
+    const quietDryRunResult =
+      await $`node ${cliPath} -i ${inputFile} -o ${outputDir} --dry-run --quiet -p chatgpt`.quiet();
+
+    expect(quietDryRunResult.exitCode).toBe(0);
+
+    // Still no files should be created
+    const dirExistsAfterQuiet = await fs
+      .access(outputDir)
+      .then(() => true)
+      .catch(() => false);
+    expect(dirExistsAfterQuiet).toBe(false);
+
+    // Test 3: Normal run (without dry-run) should create files
+    await $`node ${cliPath} -i ${inputFile} -o ${outputDir} -p chatgpt`.quiet();
+
+    // Now files should be created
+    const dirExistsAfterNormal = await fs
+      .access(outputDir)
+      .then(() => true)
+      .catch(() => false);
+    expect(dirExistsAfterNormal).toBe(true);
+
+    const files = await fs.readdir(outputDir);
+    const mdFiles = files.filter((f) => f.endsWith(".md"));
+    expect(mdFiles.length).toBeGreaterThan(0);
   });
 });

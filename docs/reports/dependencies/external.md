@@ -9,7 +9,8 @@ flowchart LR
     subgraph node//modules["node_modules"]
         node//modules///types/bun/index.d.ts["@types/bun"]
         node//modules/zod/index.d.cts["zod"]
-        node//modules/picocolors/picocolors.d.ts["picocolors"]
+        node//modules/consola/dist/index.d.cts["consola"]
+        node//modules/ora/index.d.ts["ora"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
     subgraph src["src"]
@@ -37,6 +38,9 @@ flowchart LR
                     src/infrastructure/parsers/claude/schema.ts["schema.ts"]
                 end
             end
+            subgraph src/infrastructure/progress["/progress"]
+                src/infrastructure/progress/spinner.ts["spinner.ts"]
+            end
             subgraph src/infrastructure/validation["/validation"]
                 src/infrastructure/validation/schema//validator.ts["schema-validator.ts"]
                 src/infrastructure/validation/schema//validator.test.ts["schema-validator.test.ts"]
@@ -51,15 +55,20 @@ flowchart LR
     src/domain/config.ts-->node//modules/zod/index.d.cts
     src/domain/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/domain/interfaces/schema//validator.ts-->node//modules/zod/index.d.cts
-    src/infrastructure/logging/logger.ts-->node//modules/picocolors/picocolors.d.ts
+    src/infrastructure/logging/logger.ts-->node//modules/consola/dist/index.d.cts
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/progress/spinner.ts-->node//modules/ora/index.d.ts
     src/infrastructure/validation/schema//validator.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/claude/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/validation/schema//validator.test.ts-->node//modules/zod/index.d.cts
     src/presentation/cli.ts-->node//modules/commander/typings/index.d.ts
+    src/domain/interfaces/platform//parser.ts-->src/domain/config.ts
+    src/infrastructure/logging/logger.ts-->src/domain/config.ts
+    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/config.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/schema//validator.ts
+    src/infrastructure/progress/spinner.ts-->src/domain/config.ts
     src/infrastructure/validation/schema//validator.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/validation/schema//validator.test.ts-->src/infrastructure/validation/schema//validator.ts
     src/presentation/cli.ts-->src/domain/config.ts

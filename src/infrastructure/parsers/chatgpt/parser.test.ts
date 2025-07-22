@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { MessageRole } from "../../../domain/entities.js";
 import { Logger } from "../../logging/logger.js";
+import { Spinner } from "../../progress/spinner.js";
 import { SchemaValidator } from "../../validation/schema-validator.js";
 import { ChatGPTParser } from "./parser.js";
 import type { ChatGPTConversation } from "./schema.js";
@@ -8,7 +9,8 @@ import type { ChatGPTConversation } from "./schema.js";
 describe("ChatGPT Parser", () => {
   const logger = new Logger({ quiet: true });
   const schemaValidator = new SchemaValidator();
-  const parser = new ChatGPTParser(logger, schemaValidator);
+  const spinner = new Spinner(logger, { quiet: true });
+  const parser = new ChatGPTParser(logger, schemaValidator, spinner);
 
   const createSampleData = (): ChatGPTConversation => ({
     id: "test-123",

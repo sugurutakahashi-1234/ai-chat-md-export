@@ -1,13 +1,14 @@
 import type { ZodType } from "zod";
+import type { Options } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import { ValidationError } from "../../domain/errors.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 import type {
   IPlatformParser,
-  LoadOptions,
   ParsedConversation,
 } from "../../domain/interfaces/platform-parser.js";
 import type { ISchemaValidator } from "../../domain/interfaces/schema-validator.js";
+import type { ISpinner } from "../../domain/interfaces/spinner.js";
 
 /**
  * Base class for platform-specific parsers
@@ -21,6 +22,7 @@ export abstract class BasePlatformParser<T = unknown>
   constructor(
     protected readonly logger: ILogger,
     private readonly schemaValidator: ISchemaValidator,
+    private readonly spinner: ISpinner,
   ) {}
   abstract readonly schema: ZodType<T>;
 
@@ -37,7 +39,7 @@ export abstract class BasePlatformParser<T = unknown>
 
   async parseAndValidateConversations(
     data: T,
-    options: LoadOptions = {},
+    options?: Partial<Options>,
   ): Promise<Conversation[]> {
     const conversations: Conversation[] = [];
     const validationErrors: string[] = [];
@@ -45,10 +47,21 @@ export abstract class BasePlatformParser<T = unknown>
     let successCount = 0;
 
     const items = this.parseConversations(data);
+    this.logger.debug(`Parsing ${items.length} items from platform data`);
+
+    // Start spinner
+    if (items.length > 0) {
+      this.spinner.start(`Parsing conversations (0/${items.length})`);
+    }
 
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       if (!item) continue;
+
+      // Update spinner text with progress
+      if (items.length > 0) {
+        this.spinner.update(`Parsing conversations (${i + 1}/${items.length})`);
+      }
 
       const result = this.schemaValidator.validateWithDetails(
         item.schema,
@@ -78,6 +91,17 @@ export abstract class BasePlatformParser<T = unknown>
       conversations.push(conversation);
     }
 
+    // Stop spinner
+    if (items.length > 0) {
+      if (validationErrors.length === 0) {
+        this.spinner.succeed(
+          `Parsed ${successCount} conversations successfully`,
+        );
+      } else {
+        this.spinner.fail(`Failed to parse some conversations`);
+      }
+    }
+
     if (validationErrors.length > 0) {
       throw new ValidationError(
         `Schema validation error:\n${validationErrors.join("\n\n")}`,
@@ -86,8 +110,15 @@ export abstract class BasePlatformParser<T = unknown>
       );
     }
 
+    // Log skipped fields if any
+    if (skippedFields.size > 0) {
+      this.logger.warn(
+        `Skipped unknown fields: ${Array.from(skippedFields).join(", ")}`,
+      );
+    }
+
     // Display summary information
-    if (!options.quiet) {
+    if (!options?.quiet) {
       this.logger.success(`Successfully loaded ${successCount} conversations`);
     }
 
