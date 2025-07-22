@@ -288,13 +288,9 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 - [x] npmパッケージ配布
 - [x] Homebrewフォーミュラサポート
 
-### 🚧 In Progress
-
-- [ ] **プログレスバー** - 長時間処理時の視覚的フィードバック
-
 ### 📋 Planned Features
 
-- [ ] **Geminiサポート** - Google Geminiからの会話エクスポート
+- [ ] **JSONストリーミング処理** - 大きなファイルをメモリに全て読み込まずに処理
 - [ ] **エクスポート統計** - 会話数、メッセージ数、日付範囲を表示
 
 ## Contributing

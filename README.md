@@ -289,13 +289,9 @@ If some conversations don't appear in the output:
 - [x] npm package distribution
 - [x] Homebrew formula support
 
-### 🚧 In Progress
-
-- [ ] **Progress bar** - Visual feedback for long operations
-
 ### 📋 Planned Features
 
-- [ ] **Gemini support** - Export conversations from Google Gemini
+- [ ] **Streaming JSON processing** - Process large files without loading entire content into memory
 - [ ] **Export statistics** - Display conversation count, message count, date range
 
 ## Contributing
