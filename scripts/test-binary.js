@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 import { execSync } from "node:child_process";
-import { chmodSync, existsSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 const projectRoot = join(import.meta.dir, "..");
@@ -53,12 +53,6 @@ try {
   }
 
   console.log(`📦 Binary found: ${binaryPath}`);
-
-  // Unix系OS（Linux, macOS）では実行権限を付与
-  if (platform === "linux" || platform === "darwin") {
-    chmodSync(binaryPath, 0o755);
-    console.log("   ✅ Set execute permission for binary");
-  }
 
   // Test 1: Version
   console.log("\n1️⃣ Testing --version:");

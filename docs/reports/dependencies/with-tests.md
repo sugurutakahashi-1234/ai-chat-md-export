@@ -16,6 +16,7 @@ flowchart LR
             src/domain/entities.ts["entities.ts"]
             src/domain/errors.ts["errors.ts"]
             src/domain/version.ts["version.ts"]
+            src/domain/version.test.ts["version.test.ts"]
             subgraph src/domain/interfaces["/interfaces"]
                 src/domain/interfaces/conversation//filter.ts["conversation-filter.ts"]
                 src/domain/interfaces/file//loader.ts["file-loader.ts"]
@@ -106,6 +107,7 @@ flowchart LR
     src/application/processor.ts-->src/domain/config.ts
     src/application/processor.ts-->src/domain/utils/path.ts
     src/application/processor.ts-->src/application/depend_encies.ts
+    src/domain/version.test.ts-->src/domain/version.ts
     src/domain/utils/error.ts-->src/domain/errors.ts
     src/domain/utils/filename.ts-->src/domain/config.ts
     src/domain/utils/filename.test.ts-->src/domain/config.ts
