@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.5](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.4...v0.8.5) (2025-07-22)
+
+
+### 🐛 Bug Fixes
+
+* ubuntu binary permission error in CI ([#65](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/65)) ([c60f2f6](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/c60f2f6376445980d0dc1dea6d50b08d6cb82c3f))
+
 ## [0.8.4](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.3...v0.8.4) (2025-07-22)
 
 
