@@ -7,5 +7,5 @@
 // - release-please-config.json: extra-files[0].path
 // - .release-it.json: plugins["@release-it/bumper"].out.file
 // x-release-please-start-version
-export const VERSION = "0.8.4";
+export const VERSION = "0.8.5";
 // x-release-please-end
