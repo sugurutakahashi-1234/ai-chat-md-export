@@ -145,5 +145,14 @@ jobs:
           name: goreleaser-test-artifacts
           path: dist
 
+      # Set execute permissions for binaries on Unix-like systems
+      # This is necessary because GitHub Actions' upload-artifact/download-artifact
+      # does NOT preserve file permissions. Even though GoReleaser already sets
+      # proper permissions (755) during build, they are lost during artifact transfer.
+      # Windows doesn't need this step as .exe files are automatically executable.
+      - name: Set binary permissions
+        run: chmod +x dist/*/ai-chat-md-export*
+        if: runner.os != 'Windows'
+
       - name: Test binary
         run: bun scripts/test-binary.js
