@@ -50,6 +50,13 @@ bun test
 bun run ci
 ```
 
+### Understanding the Codebase
+
+To better understand the project structure and dependencies:
+
+- **[Dependency Graphs](./docs/reports/dependencies/README.md)** - Visual representations of code dependencies
+- **[Code Quality Reports](./docs/reports/code-quality/README.md)** - Automated code analysis results
+
 ## Pull Request Process
 
 1. Fork and clone the repository
