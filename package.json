@@ -106,7 +106,7 @@
     "@elsikora/git-branch-lint": "1.1.2",
     "@release-it/bumper": "7.0.5",
     "@release-it/conventional-changelog": "10.0.1",
-    "@types/bun": "1.2.18",
+    "@types/bun": "1.2.19",
     "@types/node": "24.0.15",
     "@ysk8hori/typescript-graph": "^0.26.3",
     "husky": "9.1.7",
