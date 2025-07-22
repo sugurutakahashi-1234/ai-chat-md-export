@@ -1,7 +1,7 @@
 # TypeScript Graph
 
 ```bash
-tsg --tsconfig tsconfig.json --LR --md docs/reports/dependencies-with-tests.md
+tsg --tsconfig tsconfig.json --LR --md docs/reports/dependencies/with-tests.md
 ```
 
 ```mermaid

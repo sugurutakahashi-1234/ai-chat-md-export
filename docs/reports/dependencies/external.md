@@ -1,7 +1,7 @@
 # TypeScript Graph
 
 ```bash
-tsg --tsconfig tsconfig.json --LR --include node_modules --md docs/reports/dependencies-external.md
+tsg --tsconfig tsconfig.json --LR --include node_modules --md docs/reports/dependencies/external.md
 ```
 
 ```mermaid
