@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.3](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.2...v0.8.3) (2025-07-22)
+
+
+### 🐛 Bug Fixes
+
+* set proper permissions for all binaries in GoReleaser ([#61](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/61)) ([f2db3ca](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/f2db3ca0c503ae6870daa2b0c7c13c34e8f07a17))
+
 ## [0.8.2](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.1...v0.8.2) (2025-07-22)
 
 
