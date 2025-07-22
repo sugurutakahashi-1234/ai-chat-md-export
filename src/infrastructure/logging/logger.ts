@@ -1,172 +1,123 @@
-import ora, { type Ora } from "ora";
-import pc from "picocolors";
+import { type ConsolaInstance, createConsola } from "consola";
+import type { Options } from "../../domain/config.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 
-enum LogLevel {
-  Error = "error",
-  Warn = "warn",
-  Info = "info",
-  Success = "success",
-  Debug = "debug",
-}
-
-interface LoggerOptions {
-  quiet?: boolean;
-}
-
+/**
+ * Logger implementation using consola
+ *
+ * ## Consola Log Levels:
+ * - -999: Silent (no output)
+ * - 0: Fatal and Error
+ * - 1: Warnings
+ * - 2: Normal logs
+ * - 3: Informational logs, Success, Fail (default)
+ * - 4: Debug logs
+ * - 5: Trace logs
+ * - 999: Verbose
+ *
+ * ## Environment Variables:
+ * - `CONSOLA_LEVEL`: Set log level (e.g., `CONSOLA_LEVEL=5` for debug/trace)
+ *
+ * ## Output Format:
+ * - TTY environment: Colorful output with icons (ℹ, ✔, ⚙, etc.)
+ * - Non-TTY/CI environment: Plain text format ([info], [error], etc.)
+ *
+ * ## CI Environment Behavior:
+ * Consola automatically detects CI environments (GitHub Actions, Jenkins, etc.)
+ * using the `std-env` library and switches to a basic reporter without colors.
+ * You don't need to set `NO_COLOR=1` in CI - it's handled automatically.
+ * Detection is based on environment variables like `CI=true`, `GITHUB_ACTIONS=true`, etc.
+ *
+ * ## Testing Policy:
+ * This logger does NOT test log output content. Reasons:
+ * - Log output is a side effect that depends on environment settings
+ * - Testing log output is fragile and often fails in CI environments
+ * - We trust consola to work correctly (no need to test external libraries)
+ * - Focus on testing business logic, not logging side effects
+ * - Output format varies between TTY/non-TTY/CI environments
+ * - Even in test environments, consola may suppress or alter output
+ *
+ * Tests only verify that logger methods don't throw errors.
+ * DO NOT write tests that check log output content - they will be unreliable.
+ *
+ * @example
+ * // Normal execution
+ * const logger = new Logger();
+ *
+ * // Silent mode
+ * const logger = new Logger({ quiet: true });
+ *
+ * // Debug mode (via environment variable)
+ * // CONSOLA_LEVEL=5 bun run your-script.js
+ */
 export class Logger implements ILogger {
-  private spinner: Ora | null = null;
+  private consola: ConsolaInstance;
 
-  constructor(private options: LoggerOptions = {}) {}
-
-  private shouldLog(level: LogLevel): boolean {
-    if (this.options.quiet && level !== LogLevel.Error) return false;
-    return true;
+  constructor(options?: Partial<Options>) {
+    const consolaOptions: Parameters<typeof createConsola>[0] = {};
+    if (options?.quiet) {
+      consolaOptions.level = -999; // Silent level
+    }
+    // Note: When CONSOLA_LEVEL env var is set, it overrides the default level
+    this.consola = createConsola(consolaOptions);
   }
 
-  private format(level: LogLevel, message: string): string {
-    // Check NO_COLOR environment variable (industry standard)
-    // biome-ignore lint/complexity/useLiteralKeys: TypeScript's noUncheckedIndexedAccess requires bracket notation
-    const noColorEnv = process.env["NO_COLOR"];
-    const hasNoColor = noColorEnv !== undefined && noColorEnv !== "";
-
-    // NO_COLOR takes precedence
-    if (hasNoColor) return message;
-
-    // Otherwise check TTY
-    const useColor = process.stdout.isTTY;
-    if (!useColor) return message;
-
-    const formatters: Record<LogLevel, (s: string) => string> = {
-      [LogLevel.Error]: (s) => pc.red(pc.bold(s)),
-      [LogLevel.Warn]: (s) => pc.yellow(s),
-      [LogLevel.Info]: (s) => s, // no color for info
-      [LogLevel.Success]: (s) => pc.green(s),
-      [LogLevel.Debug]: (s) => pc.gray(s),
-    };
-
-    return formatters[level](message);
+  // Level 0 - Fatal/Error
+  fatal(message: string): void {
+    this.consola.fatal(message);
   }
 
-  log(level: LogLevel, message: string): void {
-    if (!this.shouldLog(level)) return;
-
-    // Stop spinner temporarily if active
-    const wasSpinning = this.spinner?.isSpinning;
-    if (wasSpinning) {
-      this.spinner?.stop();
-    }
-
-    const formatted = this.format(level, message);
-
-    // error goes to stderr, others to stdout
-    if (level === LogLevel.Error) {
-      console.error(formatted);
-    } else {
-      console.log(formatted);
-    }
-
-    // Restart spinner if it was active
-    if (wasSpinning && this.spinner) {
-      this.spinner.start();
-    }
-  }
-
-  // Simple method wrappers
   error(message: string): void {
-    this.log(LogLevel.Error, `✗ ${message}`);
+    this.consola.error(message);
   }
 
+  // Level 1 - Warning
   warn(message: string): void {
-    this.log(LogLevel.Warn, `⚠ ${message}`);
+    this.consola.warn(message);
   }
 
+  // Level 2 - Log
+  log(message: string): void {
+    this.consola.log(message);
+  }
+
+  // Level 3 - Info/Success/Fail/Box/Start/Ready
   info(message: string): void {
-    this.log(LogLevel.Info, message);
+    this.consola.info(message);
   }
 
   success(message: string): void {
-    this.log(LogLevel.Success, `✓ ${message}`);
+    this.consola.success(message);
   }
 
-  section(title: string): void {
-    this.log(LogLevel.Info, `\n${pc.bold(pc.blue(title))}`);
+  fail(message: string): void {
+    this.consola.fail(message);
   }
 
-  // Progress display (special handling)
-  progress(current: number, total: number, item: string): void {
-    this.log(LogLevel.Info, `${pc.gray(`[${current}/${total}]`)} ${item}`);
+  box(message: string): void {
+    this.consola.box(message);
   }
 
-  // File output path (with indent)
-  output(path: string, dryRun = false): void {
-    const prefix = dryRun ? pc.yellow("[DRY RUN] ") : "";
-    this.log(LogLevel.Info, `  → ${prefix}${pc.cyan(path)}`);
+  start(message: string): void {
+    this.consola.start(message);
   }
 
-  // Statistics (key: value format)
-  stat(key: string, value: string | number): void {
-    this.log(LogLevel.Info, `  ${pc.gray(`${key}:`)} ${value}`);
+  ready(message: string): void {
+    this.consola.ready(message);
   }
 
-  // Spinner methods
-  startSpinner(text?: string): void {
-    if (this.options.quiet) return;
-
-    // Stop any existing spinner
-    if (this.spinner) {
-      this.spinner.stop();
-    }
-
-    // Create new spinner
-    this.spinner = ora({
-      text: text || "Processing...",
-      spinner: "dots",
-      color: "cyan",
-      stream: process.stdout,
-    });
-
-    if (process.stdout.isTTY) {
-      this.spinner.start();
-    } else {
-      // In non-TTY environment, just log the text
-      if (text) {
-        this.info(text);
-      }
-    }
+  // Level 4 - Debug
+  debug(message: string): void {
+    this.consola.debug(message);
   }
 
-  updateSpinner(text: string): void {
-    if (this.spinner && process.stdout.isTTY) {
-      this.spinner.text = text;
-    } else if (!this.options.quiet) {
-      // In non-TTY environment, log updates
-      this.info(text);
-    }
+  // Level 5 - Trace
+  trace(message: string): void {
+    this.consola.trace(message);
   }
 
-  succeedSpinner(text?: string): void {
-    if (this.spinner && process.stdout.isTTY) {
-      this.spinner.succeed(text);
-      this.spinner = null;
-    } else if (!this.options.quiet && text) {
-      this.success(text);
-    }
-  }
-
-  failSpinner(text?: string): void {
-    if (this.spinner && process.stdout.isTTY) {
-      this.spinner.fail(text);
-      this.spinner = null;
-    } else if (!this.options.quiet && text) {
-      this.error(text);
-    }
-  }
-
-  stopSpinner(): void {
-    if (this.spinner) {
-      this.spinner.stop();
-      this.spinner = null;
-    }
+  // Level Infinity - Verbose
+  verbose(message: string): void {
+    this.consola.verbose(message);
   }
 }

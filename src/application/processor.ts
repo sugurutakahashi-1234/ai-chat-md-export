@@ -29,22 +29,41 @@ export class Processor {
       `Processing: ${formatRelativePathFromCwd(inputPath)}`,
     );
 
+    // Step 1: Load input file
+    this.deps.logger.start("Loading input file...");
     const data = await this.deps.fileLoader.readJsonFile(inputPath);
+    this.deps.logger.success("Input file loaded successfully");
+
+    // Step 2: Parse and validate conversations
     const conversations = await this.deps.parser.parseAndValidateConversations(
       data,
-      {
-        quiet: options.quiet,
-      },
-    );
-    const filteredConversations = this.deps.filter.filterConversations(
-      conversations,
       options,
     );
 
-    await this.deps.fileWriter.writeConversations(
-      filteredConversations,
-      outputDir,
-      options,
-    );
+    // Step 3: Apply filters
+    if (options.since || options.until || options.search) {
+      this.deps.logger.start("Filtering conversations...");
+      const filteredConversations = this.deps.filter.filterConversations(
+        conversations,
+        options,
+      );
+      this.deps.logger.success(
+        `Filtered: ${filteredConversations.length}/${conversations.length} conversations`,
+      );
+
+      // Step 4: Write output files
+      await this.deps.fileWriter.writeConversations(
+        filteredConversations,
+        outputDir,
+        options,
+      );
+    } else {
+      // No filters applied, write all conversations
+      await this.deps.fileWriter.writeConversations(
+        conversations,
+        outputDir,
+        options,
+      );
+    }
   }
 }

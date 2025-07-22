@@ -1,4 +1,5 @@
 import type { ZodType } from "zod";
+import type { Options } from "../config.js";
 import type { Conversation } from "../entities.js";
 
 /**
@@ -21,7 +22,7 @@ export interface IPlatformParser<T = unknown> {
    */
   parseAndValidateConversations(
     data: T,
-    options?: LoadOptions,
+    options?: Partial<Options>,
   ): Promise<Conversation[]>;
 
   /**
@@ -46,11 +47,4 @@ export interface ParsedConversation<T = unknown> {
   data: T;
   schema: ZodType<T>;
   transform: (validatedData: T) => Conversation;
-}
-
-export interface LoadOptions {
-  /**
-   * Whether to suppress loading summary output
-   */
-  quiet?: boolean;
 }

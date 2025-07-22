@@ -51,8 +51,6 @@ jobs:
       - name: Run CI
         if: ${{ steps.release.outputs.release_created }}
         run: bun run ci
-        env:
-          NO_COLOR: 1
 
       - name: Build
         if: ${{ steps.release.outputs.release_created }}

@@ -15,16 +15,16 @@ flowchart LR
     end
     subgraph node//modules["node_modules"]
         node//modules/zod/index.d.cts["zod"]
+        node//modules/consola/dist/index.d.cts["consola"]
         node//modules/ora/index.d.ts["ora"]
-        node//modules/picocolors/picocolors.d.ts["picocolors"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
     src/domain-->node//modules/zod/index.d.cts
     src/application-->src/domain
     src/infrastructure-->src/domain
-    src/infrastructure-->node//modules/ora/index.d.ts
-    src/infrastructure-->node//modules/picocolors/picocolors.d.ts
+    src/infrastructure-->node//modules/consola/dist/index.d.cts
     src/infrastructure-->node//modules/zod/index.d.cts
+    src/infrastructure-->node//modules/ora/index.d.ts
     src/presentation-->src/application
     src/presentation-->src/domain
     src/presentation-->src/infrastructure

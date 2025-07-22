@@ -41,13 +41,9 @@ jobs:
 
       - name: Test
         run: bun run test
-        env:
-          NO_COLOR: 1
 
       - name: Test
         run: bun run test:coverage
-        env:
-          NO_COLOR: 1
         continue-on-error: true  # TODO: Remove once test output format bug is fixed
 
       - name: Generate TypeScript dependency graph

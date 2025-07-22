@@ -13,6 +13,7 @@ import type {
 } from "../../domain/interfaces/file-writer.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
+import type { ISpinner } from "../../domain/interfaces/spinner.js";
 import { extractErrorMessage } from "../../domain/utils/error.js";
 import { generateFileName } from "../../domain/utils/filename.js";
 import { formatRelativePathFromCwd } from "../../domain/utils/path.js";
@@ -27,6 +28,7 @@ export class FileWriter implements IFileWriter {
   constructor(
     private readonly logger: ILogger,
     private readonly formatter: IOutputFormatter,
+    private readonly spinner?: ISpinner,
   ) {}
   /**
    * Write conversations to files based on options
@@ -55,9 +57,9 @@ export class FileWriter implements IFileWriter {
     const writeErrors: Array<{ file: string; error: string }> = [];
     let successCount = 0;
 
-    // Start spinner if not in quiet mode
-    if (!options.quiet && conversations.length > 0) {
-      this.logger.startSpinner(`Writing files (0/${conversations.length})`);
+    // Start spinner if provided
+    if (this.spinner && !options.quiet && conversations.length > 0) {
+      this.spinner.start(`Writing files (0/${conversations.length})`);
     }
 
     for (let i = 0; i < conversations.length; i++) {
@@ -65,10 +67,8 @@ export class FileWriter implements IFileWriter {
       if (!conv) continue;
 
       // Update spinner text with progress
-      if (!options.quiet && conversations.length > 0) {
-        this.logger.updateSpinner(
-          `Writing files (${i + 1}/${conversations.length})`,
-        );
+      if (this.spinner && !options.quiet && conversations.length > 0) {
+        this.spinner.update(`Writing files (${i + 1}/${conversations.length})`);
       }
       const content = this.formatter.formatSingle(conv);
       const extension = FILE_EXTENSIONS[this.formatter.format];
@@ -85,9 +85,9 @@ export class FileWriter implements IFileWriter {
         if (!options.dryRun) {
           await fs.writeFile(outputPath, content, "utf-8");
         }
-        this.logger.output(
-          formatRelativePathFromCwd(outputPath),
-          options.dryRun,
+        const prefix = options.dryRun ? "[DRY RUN] " : "";
+        this.logger.info(
+          `  → ${prefix}${formatRelativePathFromCwd(outputPath)}`,
         );
         successCount++;
       } catch (error) {
@@ -101,13 +101,11 @@ export class FileWriter implements IFileWriter {
     }
 
     // Stop spinner
-    if (!options.quiet && conversations.length > 0) {
+    if (this.spinner && !options.quiet && conversations.length > 0) {
       if (writeErrors.length === 0) {
-        this.logger.succeedSpinner(
-          `Written ${successCount} files successfully`,
-        );
+        this.spinner.succeed(`Written ${successCount} files successfully`);
       } else {
-        this.logger.failSpinner(`Failed to write some files`);
+        this.spinner.fail(`Failed to write some files`);
       }
     }
 
@@ -130,10 +128,10 @@ export class FileWriter implements IFileWriter {
       if (!options.dryRun) {
         await fs.writeFile(outputPath, content, "utf-8");
       }
-      this.logger.output(formatRelativePathFromCwd(outputPath), options.dryRun);
-      this.logger.stat(
-        "Combined",
-        `${conversations.length} conversations into one file`,
+      const prefix = options.dryRun ? "[DRY RUN] " : "";
+      this.logger.info(`  → ${prefix}${formatRelativePathFromCwd(outputPath)}`);
+      this.logger.info(
+        `  Combined: ${conversations.length} conversations into one file`,
       );
       return { successCount: conversations.length, errors: [] };
     } catch (error) {

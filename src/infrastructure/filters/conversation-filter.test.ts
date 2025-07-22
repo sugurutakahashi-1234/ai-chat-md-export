@@ -1,10 +1,12 @@
 import { describe, expect, test } from "bun:test";
 import { FilenameEncoding, Format, Platform } from "../../domain/config.js";
 import { type Conversation, MessageRole } from "../../domain/entities.js";
+import { Logger } from "../logging/logger.js";
 import { ConversationFilter } from "./conversation-filter.js";
 
 describe("ConversationFilter", () => {
-  const filter = new ConversationFilter();
+  const logger = new Logger({ quiet: true });
+  const filter = new ConversationFilter(logger);
 
   const createConversation = (
     date: string,

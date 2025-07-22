@@ -2,21 +2,40 @@
  * Interface for logging operations
  *
  * Defines the contract for logging messages with different severity levels
- * and formatting options.
+ * and additional formatting options. Methods are ordered by log level.
+ *
+ * Based on consola's log levels:
+ * @see https://github.com/unjs/consola/blob/main/src/constants.ts
  */
 export interface ILogger {
+  // Level 0 - Fatal/Error
+  /**
+   * Log a fatal error message
+   * @param message - Fatal error message to log
+   */
+  fatal(message: string): void;
+
   /**
    * Log an error message
    * @param message - Error message to log
    */
   error(message: string): void;
 
+  // Level 1 - Warning
   /**
    * Log a warning message
    * @param message - Warning message to log
    */
   warn(message: string): void;
 
+  // Level 2 - Log
+  /**
+   * Log a general message
+   * @param message - General message to log
+   */
+  log(message: string): void;
+
+  // Level 3 - Info/Success/Fail/Box/Start/Ready
   /**
    * Log an informational message
    * @param message - Info message to log
@@ -30,59 +49,47 @@ export interface ILogger {
   success(message: string): void;
 
   /**
-   * Log a section header
-   * @param title - Section title to display
+   * Log a failure message
+   * @param message - Failure message to log
    */
-  section(title: string): void;
+  fail(message: string): void;
 
   /**
-   * Log progress information
-   * @param current - Current item number
-   * @param total - Total number of items
-   * @param item - Description of current item
+   * Display a message in a box
+   * @param message - Message to display in a box
    */
-  progress(current: number, total: number, item: string): void;
+  box(message: string): void;
 
   /**
-   * Log a file output path
-   * @param path - File path being written
-   * @param dryRun - Whether this is a dry run
+   * Start a new log task/section
+   * @param message - Task message to display
    */
-  output(path: string, dryRun?: boolean): void;
+  start(message: string): void;
 
   /**
-   * Log a statistic
-   * @param key - Statistic name
-   * @param value - Statistic value
+   * Mark a task as ready/done
+   * @param message - Ready message to display
    */
-  stat(key: string, value: string | number): void;
+  ready(message: string): void;
 
+  // Level 4 - Debug
   /**
-   * Start a spinner with optional text
-   * @param text - Initial text to display with the spinner
+   * Log a debug message
+   * @param message - Debug message to log
    */
-  startSpinner(text?: string): void;
+  debug(message: string): void;
 
+  // Level 5 - Trace
   /**
-   * Update the spinner text
-   * @param text - New text to display
+   * Log a trace message
+   * @param message - Trace message to log
    */
-  updateSpinner(text: string): void;
+  trace(message: string): void;
 
+  // Level Infinity - Verbose
   /**
-   * Stop the spinner and mark as successful
-   * @param text - Optional success message
+   * Log a verbose message
+   * @param message - Verbose message to log
    */
-  succeedSpinner(text?: string): void;
-
-  /**
-   * Stop the spinner and mark as failed
-   * @param text - Optional failure message
-   */
-  failSpinner(text?: string): void;
-
-  /**
-   * Stop the spinner without any status
-   */
-  stopSpinner(): void;
+  verbose(message: string): void;
 }

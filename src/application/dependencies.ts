@@ -5,6 +5,7 @@ import type { ILogger } from "../domain/interfaces/logger.js";
 import type { IOutputFormatter } from "../domain/interfaces/output-formatter.js";
 import type { IPlatformParser } from "../domain/interfaces/platform-parser.js";
 import type { ISchemaValidator } from "../domain/interfaces/schema-validator.js";
+import type { ISpinner } from "../domain/interfaces/spinner.js";
 
 /**
  * Dependencies required by the Processor class
@@ -51,4 +52,9 @@ export interface ProcessorDependencies {
    * Schema validator for data validation
    */
   schemaValidator: ISchemaValidator;
+
+  /**
+   * Spinner for progress display
+   */
+  spinner: ISpinner;
 }

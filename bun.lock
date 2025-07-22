@@ -5,8 +5,8 @@
       "name": "ai-chat-md-export",
       "dependencies": {
         "commander": "14.0.0",
+        "consola": "3.4.2",
         "ora": "8.2.0",
-        "picocolors": "1.1.1",
         "zod": "4.0.5",
       },
       "devDependencies": {
