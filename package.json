@@ -101,7 +101,7 @@
   },
   "dependencies": {
     "commander": "14.0.0",
-    "picocolors": "^1.1.1",
+    "picocolors": "1.1.1",
     "zod": "4.0.5"
   },
   "devDependencies": {
@@ -114,7 +114,7 @@
     "@release-it/conventional-changelog": "10.0.1",
     "@types/bun": "1.2.19",
     "@types/node": "24.0.15",
-    "@ysk8hori/typescript-graph": "^0.26.3",
+    "@ysk8hori/typescript-graph": "0.26.3",
     "husky": "9.1.7",
     "knip": "5.62.0",
     "release-it": "19.0.4",

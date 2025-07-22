@@ -1,3 +1,7 @@
+[install]
+# Always save exact versions (without ^ or ~ prefix) to package.json
+exact = true
+
 [test]
 # Ref: https://bun.com/docs/test/coverage
 
