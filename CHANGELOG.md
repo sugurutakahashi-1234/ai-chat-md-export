@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.1...v0.8.2) (2025-07-22)
+
+
+### 🐛 Bug Fixes
+
+* debug and workaround for Windows artifact upload permission issue ([#59](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/59)) ([e3cadc5](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/e3cadc508d5b3299c0548c1c2e97c8df0e829efc))
+
 ## [0.8.1](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.0...v0.8.1) (2025-07-22)
 
 
