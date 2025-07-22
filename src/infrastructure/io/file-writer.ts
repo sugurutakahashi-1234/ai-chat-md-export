@@ -55,7 +55,21 @@ export class FileWriter implements IFileWriter {
     const writeErrors: Array<{ file: string; error: string }> = [];
     let successCount = 0;
 
-    for (const conv of conversations) {
+    // Start spinner if not in quiet mode
+    if (!options.quiet && conversations.length > 0) {
+      this.logger.startSpinner(`Writing files (0/${conversations.length})`);
+    }
+
+    for (let i = 0; i < conversations.length; i++) {
+      const conv = conversations[i];
+      if (!conv) continue;
+
+      // Update spinner text with progress
+      if (!options.quiet && conversations.length > 0) {
+        this.logger.updateSpinner(
+          `Writing files (${i + 1}/${conversations.length})`,
+        );
+      }
       const content = this.formatter.formatSingle(conv);
       const extension = FILE_EXTENSIONS[this.formatter.format];
       const filenameEncoding =
@@ -83,6 +97,17 @@ export class FileWriter implements IFileWriter {
         this.logger.warn(
           `Failed to write file: ${formatRelativePathFromCwd(outputPath)}\nReason: ${errorMessage}`,
         );
+      }
+    }
+
+    // Stop spinner
+    if (!options.quiet && conversations.length > 0) {
+      if (writeErrors.length === 0) {
+        this.logger.succeedSpinner(
+          `Written ${successCount} files successfully`,
+        );
+      } else {
+        this.logger.failSpinner(`Failed to write some files`);
       }
     }
 

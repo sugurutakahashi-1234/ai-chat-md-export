@@ -56,4 +56,33 @@ export interface ILogger {
    * @param value - Statistic value
    */
   stat(key: string, value: string | number): void;
+
+  /**
+   * Start a spinner with optional text
+   * @param text - Initial text to display with the spinner
+   */
+  startSpinner(text?: string): void;
+
+  /**
+   * Update the spinner text
+   * @param text - New text to display
+   */
+  updateSpinner(text: string): void;
+
+  /**
+   * Stop the spinner and mark as successful
+   * @param text - Optional success message
+   */
+  succeedSpinner(text?: string): void;
+
+  /**
+   * Stop the spinner and mark as failed
+   * @param text - Optional failure message
+   */
+  failSpinner(text?: string): void;
+
+  /**
+   * Stop the spinner without any status
+   */
+  stopSpinner(): void;
 }

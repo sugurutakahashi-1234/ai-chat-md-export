@@ -46,9 +46,21 @@ export abstract class BasePlatformParser<T = unknown>
 
     const items = this.parseConversations(data);
 
+    // Start spinner if not in quiet mode
+    if (!options.quiet && items.length > 0) {
+      this.logger.startSpinner(`Parsing conversations (0/${items.length})`);
+    }
+
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       if (!item) continue;
+
+      // Update spinner text with progress
+      if (!options.quiet && items.length > 0) {
+        this.logger.updateSpinner(
+          `Parsing conversations (${i + 1}/${items.length})`,
+        );
+      }
 
       const result = this.schemaValidator.validateWithDetails(
         item.schema,
@@ -76,6 +88,17 @@ export abstract class BasePlatformParser<T = unknown>
 
       const conversation = item.transform(result.data);
       conversations.push(conversation);
+    }
+
+    // Stop spinner
+    if (!options.quiet && items.length > 0) {
+      if (validationErrors.length === 0) {
+        this.logger.succeedSpinner(
+          `Parsed ${successCount} conversations successfully`,
+        );
+      } else {
+        this.logger.failSpinner(`Failed to parse some conversations`);
+      }
     }
 
     if (validationErrors.length > 0) {

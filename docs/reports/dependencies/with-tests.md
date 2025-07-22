@@ -54,6 +54,7 @@ flowchart LR
             end
             subgraph src/infrastructure/logging["/logging"]
                 src/infrastructure/logging/logger.ts["logger.ts"]
+                src/infrastructure/logging/logger.test.ts["logger.test.ts"]
             end
             subgraph src/infrastructure/parsers["/parsers"]
                 src/infrastructure/parsers/base//platform//parser.ts["base-platform-parser.ts"]
@@ -82,6 +83,7 @@ flowchart LR
     subgraph node//modules["node_modules"]
         node//modules///types/bun/index.d.ts["@types/bun"]
         node//modules/zod/index.d.cts["zod"]
+        node//modules/ora/index.d.ts["ora"]
         node//modules/picocolors/picocolors.d.ts["picocolors"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
@@ -140,8 +142,10 @@ flowchart LR
     src/infrastructure/io/file//writer.ts-->src/domain/utils/error.ts
     src/infrastructure/io/file//writer.ts-->src/domain/utils/filename.ts
     src/infrastructure/io/file//writer.ts-->src/domain/utils/path.ts
+    src/infrastructure/logging/logger.ts-->node//modules/ora/index.d.ts
     src/infrastructure/logging/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/infrastructure/logging/logger.ts-->src/domain/interfaces/logger.ts
+    src/infrastructure/logging/logger.test.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/entities.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/errors.ts

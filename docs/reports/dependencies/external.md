@@ -9,6 +9,7 @@ flowchart LR
     subgraph node//modules["node_modules"]
         node//modules///types/bun/index.d.ts["@types/bun"]
         node//modules/zod/index.d.cts["zod"]
+        node//modules/ora/index.d.ts["ora"]
         node//modules/picocolors/picocolors.d.ts["picocolors"]
         node//modules/commander/typings/index.d.ts["commander"]
     end
@@ -51,6 +52,7 @@ flowchart LR
     src/domain/config.ts-->node//modules/zod/index.d.cts
     src/domain/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/domain/interfaces/schema//validator.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/logging/logger.ts-->node//modules/ora/index.d.ts
     src/infrastructure/logging/logger.ts-->node//modules/picocolors/picocolors.d.ts
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
     src/infrastructure/validation/schema//validator.ts-->node//modules/zod/index.d.cts

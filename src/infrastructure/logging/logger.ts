@@ -1,3 +1,4 @@
+import ora, { type Ora } from "ora";
 import pc from "picocolors";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 
@@ -14,6 +15,8 @@ interface LoggerOptions {
 }
 
 export class Logger implements ILogger {
+  private spinner: Ora | null = null;
+
   constructor(private options: LoggerOptions = {}) {}
 
   private shouldLog(level: LogLevel): boolean {
@@ -48,6 +51,12 @@ export class Logger implements ILogger {
   log(level: LogLevel, message: string): void {
     if (!this.shouldLog(level)) return;
 
+    // Stop spinner temporarily if active
+    const wasSpinning = this.spinner?.isSpinning;
+    if (wasSpinning) {
+      this.spinner?.stop();
+    }
+
     const formatted = this.format(level, message);
 
     // error goes to stderr, others to stdout
@@ -55,6 +64,11 @@ export class Logger implements ILogger {
       console.error(formatted);
     } else {
       console.log(formatted);
+    }
+
+    // Restart spinner if it was active
+    if (wasSpinning && this.spinner) {
+      this.spinner.start();
     }
   }
 
@@ -93,5 +107,66 @@ export class Logger implements ILogger {
   // Statistics (key: value format)
   stat(key: string, value: string | number): void {
     this.log(LogLevel.Info, `  ${pc.gray(`${key}:`)} ${value}`);
+  }
+
+  // Spinner methods
+  startSpinner(text?: string): void {
+    if (this.options.quiet) return;
+
+    // Stop any existing spinner
+    if (this.spinner) {
+      this.spinner.stop();
+    }
+
+    // Create new spinner
+    this.spinner = ora({
+      text: text || "Processing...",
+      spinner: "dots",
+      color: "cyan",
+      stream: process.stdout,
+    });
+
+    if (process.stdout.isTTY) {
+      this.spinner.start();
+    } else {
+      // In non-TTY environment, just log the text
+      if (text) {
+        this.info(text);
+      }
+    }
+  }
+
+  updateSpinner(text: string): void {
+    if (this.spinner && process.stdout.isTTY) {
+      this.spinner.text = text;
+    } else if (!this.options.quiet) {
+      // In non-TTY environment, log updates
+      this.info(text);
+    }
+  }
+
+  succeedSpinner(text?: string): void {
+    if (this.spinner && process.stdout.isTTY) {
+      this.spinner.succeed(text);
+      this.spinner = null;
+    } else if (!this.options.quiet && text) {
+      this.success(text);
+    }
+  }
+
+  failSpinner(text?: string): void {
+    if (this.spinner && process.stdout.isTTY) {
+      this.spinner.fail(text);
+      this.spinner = null;
+    } else if (!this.options.quiet && text) {
+      this.error(text);
+    }
+  }
+
+  stopSpinner(): void {
+    if (this.spinner) {
+      this.spinner.stop();
+      this.spinner = null;
+    }
   }
 }
