@@ -16,6 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -61,6 +66,9 @@ jobs:
     name: Test GoReleaser Build
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: write  # Required for upload-artifact action
     
     steps:
       - name: Checkout
@@ -68,6 +76,11 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -109,6 +122,9 @@ jobs:
   test-binaries:
     name: Test Binary on ${{ matrix.os }}
     needs: goreleaser-build
+    permissions:
+      contents: read
+      actions: read  # Required for download-artifact action
     strategy:
       matrix:
         # Test all supported platforms natively
@@ -126,6 +142,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2

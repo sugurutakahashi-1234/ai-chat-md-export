@@ -18,6 +18,11 @@ jobs:
           # Checkout the actual branch instead of detached HEAD
           ref: ${{ github.head_ref }}
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:

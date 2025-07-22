@@ -72,6 +72,11 @@ jobs:
           echo "Error: Tag v${{ steps.validate_tag.outputs.version }} does not exist"
           exit 1
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
