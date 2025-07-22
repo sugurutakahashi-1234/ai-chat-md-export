@@ -39,11 +39,6 @@ jobs:
           fetch-depth: 0
           ref: main
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'latest'
-
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
