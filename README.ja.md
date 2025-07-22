@@ -20,12 +20,11 @@ ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに�
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
 
-## 目次
+## Table of Contents
 
+- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
 - [Quick Start](#quick-start)
 - [Installation](#installation)
-- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
-- [Privacy & Security](#privacy--security)
 - [Usage](#usage)
 - [Command-line Options](#command-line-options)
 - [Getting conversations.json](#getting-conversationsjson)
@@ -34,6 +33,35 @@ ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに�
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [License](#license)
+
+## What is ai-chat-md-export?
+
+`ai-chat-md-export`は、ChatGPTとClaudeの会話を整理された読みやすいMarkdownファイルに変換する**プライバシー最優先**のCLIツールです。完全にオフラインで動作します。
+
+### 🔒 Privacy-First Design
+
+このツールはお使いのデバイス上でローカルに動作します：
+
+- **ローカル処理** - ファイルをお使いのマシン上で直接変換
+- **データ送信なし** - 会話データはデバイス外に出ません
+- **オープンソース** - [コード](https://github.com/sugurutakahashi-1234/ai-chat-md-export)を確認して、何をしているか正確に把握できます
+
+AI会話を自分の管理下に置きたいプライバシーを重視するユーザー向けのシンプルなツールです。
+
+### Key Features
+
+- 🚀 **高速で効率的** - 数千の会話を数秒で処理
+- 📝 **クリーンなMarkdown出力** - タイムスタンプと視覚的マーカー付きの整形されたファイル
+- 🔍 **高度なフィルタリング** - 日付範囲、キーワードでフィルタ
+- 📅 **スマートな整理** - サニタイズされた会話タイトルで日付別にファイル名を付与
+- 💻 **クロスプラットフォーム** - Windows、macOS、Linuxで利用可能
+
+### Why Use This Tool?
+
+- **プレーンテキストで扱える** - お気に入りのテキストエディタ、grep、あらゆるテキスト処理ツールを使用可能
+- **データを完全にコントロール** - 標準ツールで編集、検索、バージョン管理、分析が可能
+- **AI会話を保存** - 消失や削除前に永続的な記録を保持
+- **ワークフローに統合** - スクリプトで処理、ノートアプリにインポート、カスタムツールで分析
 
 ## Quick Start
 
@@ -65,7 +93,7 @@ ai-chat-md-export -i conversations.json -p chatgpt
 
 複雑なJSONエクスポートをクリーンで読みやすいMarkdownに変換：
 
-### Input (ChatGPTからのconversations.json)
+### Input (conversations.json from ChatGPT)
 ```json
 {
   "title": "Hello World",
@@ -130,7 +158,7 @@ brew install ai-chat-md-export
 npm install -g ai-chat-md-export
 ```
 
-### 直接ダウンロード (Windows / その他)
+### Direct Download (Windows / Others)
 
 ビルド済みバイナリは[リリースページ](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases/latest)から入手できます。
 
@@ -145,42 +173,6 @@ npm install -g ai-chat-md-export
 #### macOS / Linux
 リリースページから適切な`.tar.gz`ファイルをダウンロードしてください。
 
-## What is ai-chat-md-export?
-
-ChatGPTやClaudeの会話履歴を整理された読みやすいMarkdownファイルに変換するCLIツールです。
-
-### Key Features
-
-**Core Functionality**
-- 🚀 **高速で効率的** - 数千の会話を数秒で処理
-- 📝 **クリーンなMarkdown出力** - 整形された読みやすいMarkdownファイル
-- 🔍 **高度なフィルタリング** - 日付範囲、キーワードでフィルタリング
-- 🌍 **マルチプラットフォーム対応** - ChatGPTとClaudeのエクスポートに対応
-
-**Convenience**
-- 📅 **スマートなファイル命名** - 日付で整理され、サニタイズされた会話タイトル
-- 💻 **クロスプラットフォーム** - Windows、macOS、Linuxで利用可能
-- 🎯 **柔軟な出力** - 会話を分割または単一ファイルに結合
-- 🛠️ **開発者フレンドリー** - TypeScript、完全な型安全性、十分なテスト
-
-**Key Benefits**
-- **AIチャットの保存** - 削除や消失前に大切な会話を保存
-- **読みやすいフォーマット** - どんなMarkdownエディタでも快適に閲覧
-- **履歴の検索・整理** - 標準的なツールでチャット履歴を検索・管理
-- **共有やバージョン管理** - 必要に応じて会話を共有
-
-## Privacy & Security
-
-### 🔒 Offline-First Design
-
-このツールは**インターネット接続を必要とせず**、お使いのデバイス上でローカルに動作するよう設計されています：
-
-- **ネットワークリクエストなし**: ツール自体は外部APIコールやネットワーク接続を行いません
-- **ローカル処理のみ**: すべての変換処理はお使いのマシン上で完結します
-- **データ収集なし**: 分析、テレメトリ、トラッキング機能は一切含まれていません
-- **データはローカルに保持**: 会話データはローカルファイルシステムからの読み込みと書き込みのみ
-
-データプライバシーを重視する組織や個人に適しています。[ソースコード](https://github.com/sugurutakahashi-1234/ai-chat-md-export)をご確認いただければ、ネットワーク関連のコードが含まれていないことを検証できます。なお、私たちのコードは外部接続を行いませんが、すべての依存関係の動作を保証することはできません。
 
 ## Usage
 
