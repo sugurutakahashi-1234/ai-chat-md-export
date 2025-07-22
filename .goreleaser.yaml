@@ -21,6 +21,12 @@ builds:
       - linux-x64-modern    # Linux x64 (modern CPUs with AVX2)
       - linux-arm64         # Linux ARM64 (Raspberry Pi, AWS Graviton, etc.)
       - windows-x64-modern  # Windows x64 (modern CPUs with AVX2)
+    hooks:
+      post:
+        # Set proper permissions for all binaries
+        # Bun builder creates Windows .exe with 0000 and Unix binaries with 0777
+        # Set all to 0755 (standard executable permissions)
+        - sh -c 'find dist -name "{{ .ProjectName }}*" -type f -exec chmod 755 {} \;'
 
 # Archive configuration
 # https://goreleaser.com/customization/archive/
