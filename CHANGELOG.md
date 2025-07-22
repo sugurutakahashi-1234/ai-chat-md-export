@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.4](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.3...v0.8.4) (2025-07-22)
+
+
+### 🐛 Bug Fixes
+
+* remove Pre-compress Windows executables step to fix binary tests ([#63](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/63)) ([44f2865](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/44f2865d902c7dceec635ea72c03f975a79d129c))
+
 ## [0.8.3](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.2...v0.8.3) (2025-07-22)
 
 
