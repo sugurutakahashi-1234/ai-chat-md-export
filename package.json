@@ -74,7 +74,9 @@
     "validate:branch": "git-branch-lint",
     "deps:check": "bunx ncu --deep",
     "deps:update": "bunx ncu -u --deep && bun install",
-    "deps:size": "du -sk node_modules/* node_modules/@*/* 2>/dev/null | sort -nr | head -30 | awk 'BEGIN{print \"Package                                        Size    Visual\"} {kb=$1; path=$2; gsub(/node_modules\\//, \"\", path); if(kb>1024) {mb=kb/1024; size=sprintf(\"%.1fM\", mb)} else {size=sprintf(\"%dK\", kb)} printf \"%-45s %7s  \", path, size; bar_len=int(kb/1000); if(bar_len<1) bar_len=1; if(bar_len>40) bar_len=40; for(i=0; i<bar_len; i++) printf \"█\"; print \"\"}' && echo && echo \"Total: $(du -sh node_modules 2>/dev/null | awk '{print $1}')\"",
+    "deps:size:prod": "echo 'Package                                        Size    Visual' && echo '(Production dependencies only)' && echo && npm ls --omit=dev --all --depth=Infinity 2>/dev/null | grep -E '^[│├└─┬ ]+' | sed 's/[│├└─┬ ]//g' | sed 's/@[0-9].*//' | grep -v '^$' | sort -u | while read pkg; do [ -d \"node_modules/$pkg\" ] && du -sk \"node_modules/$pkg\" 2>/dev/null | awk -v pkg=\"$pkg\" '{kb=$1; if(kb>1024) {mb=kb/1024; size=sprintf(\"%.1fM\", mb)} else {size=sprintf(\"%dK\", kb)} printf \"%-45s %7s  \", pkg, size; bar_len=int(kb/1000); if(bar_len<1) bar_len=1; if(bar_len>40) bar_len=40; for(i=0; i<bar_len; i++) printf \"█\"; print \"\"}'; done | sort -k2 -hr | head -30 && echo && echo \"Total prod deps: $(npm ls --omit=dev --all --depth=Infinity 2>/dev/null | grep -E '^[│├└─┬ ]+' | sed 's/[│├└─┬ ]//g' | sed 's/@[0-9].*//' | grep -v '^$' | sort -u | wc -l | xargs) packages\"",
+    "deps:size:dev": "echo 'Package                                        Size    Visual' && echo '(Dev dependencies only - excluding production)' && echo && comm -13 <(npm ls --omit=dev --all --depth=Infinity 2>/dev/null | grep -E '^[│├└─┬ ]+' | sed 's/[│├└─┬ ]//g' | sed 's/@[0-9].*//' | grep -v '^$' | sort -u) <(npm ls --all --depth=Infinity 2>/dev/null | grep -E '^[│├└─┬ ]+' | sed 's/[│├└─┬ ]//g' | sed 's/@[0-9].*//' | grep -v '^$' | sort -u) | while read pkg; do [ -d \"node_modules/$pkg\" ] && du -sk \"node_modules/$pkg\" 2>/dev/null | awk -v pkg=\"$pkg\" '{kb=$1; if(kb>1024) {mb=kb/1024; size=sprintf(\"%.1fM\", mb)} else {size=sprintf(\"%dK\", kb)} printf \"%-45s %7s  \", pkg, size; bar_len=int(kb/1000); if(bar_len<1) bar_len=1; if(bar_len>40) bar_len=40; for(i=0; i<bar_len; i++) printf \"█\"; print \"\"}'; done | sort -k2 -hr | head -30 && echo && echo \"Total dev-only deps: $(comm -13 <(npm ls --omit=dev --all --depth=Infinity 2>/dev/null | grep -E '^[│├└─┬ ]+' | sed 's/[│├└─┬ ]//g' | sed 's/@[0-9].*//' | grep -v '^$' | sort -u) <(npm ls --all --depth=Infinity 2>/dev/null | grep -E '^[│├└─┬ ]+' | sed 's/[│├└─┬ ]//g' | sed 's/@[0-9].*//' | grep -v '^$' | sort -u) | wc -l | xargs) packages\"",
+    "deps:size:all": "du -sk node_modules/* node_modules/@*/* 2>/dev/null | sort -nr | head -80 | awk 'BEGIN{print \"Package                                        Size    Visual\"} {kb=$1; path=$2; gsub(/node_modules\\//, \"\", path); if(kb>1024) {mb=kb/1024; size=sprintf(\"%.1fM\", mb)} else {size=sprintf(\"%dK\", kb)} printf \"%-45s %7s  \", path, size; bar_len=int(kb/1000); if(bar_len<1) bar_len=1; if(bar_len>40) bar_len=40; for(i=0; i<bar_len; i++) printf \"█\"; print \"\"}' && echo && echo \"Total: $(du -sh node_modules 2>/dev/null | awk '{print $1}')\"",
     "knip": "knip -c knip.config.ts",
     "knip:fix": "knip -c knip.config.ts --fix",
     "update:docs:knip": "knip -c knip.config.ts --reporter markdown > docs/reports/code-quality/unused-code.md",
@@ -104,26 +106,26 @@
     "example:all": "bun run example:chatgpt && bun run example:claude"
   },
   "dependencies": {
-    "commander": "14.0.0",
-    "consola": "3.4.2",
-    "ora": "8.2.0",
-    "zod": "4.0.5"
+    "commander": "^14.0.0",
+    "consola": "^3.4.2",
+    "ora": "^8.2.0",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.6",
-    "@commitlint/cli": "19.8.1",
-    "@commitlint/config-conventional": "19.8.1",
-    "@commitlint/types": "19.8.1",
-    "@elsikora/git-branch-lint": "1.1.2",
-    "@release-it/bumper": "7.0.5",
-    "@release-it/conventional-changelog": "10.0.1",
-    "@types/bun": "1.2.19",
-    "@types/node": "24.1.0",
-    "@ysk8hori/typescript-graph": "0.26.3",
-    "husky": "9.1.7",
-    "knip": "5.62.0",
-    "release-it": "19.0.4",
-    "tsuml2": "0.17.1",
-    "typescript": "5.8.3"
+    "@biomejs/biome": "^2.1.2",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
+    "@elsikora/git-branch-lint": "^1.1.2",
+    "@release-it/bumper": "^7.0.5",
+    "@release-it/conventional-changelog": "^10.0.1",
+    "@types/bun": "^1.2.19",
+    "@types/node": "^24.1.0",
+    "@ysk8hori/typescript-graph": "^0.26.3",
+    "husky": "^9.1.7",
+    "knip": "^5.62.0",
+    "release-it": "^19.0.4",
+    "tsuml2": "^0.17.1",
+    "typescript": "^5.8.3"
   }
 }
