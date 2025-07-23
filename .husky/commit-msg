@@ -1,1 +1,24 @@
+# Run existing commitlint
 bunx --no-install commitlint --edit $1 --config commitlint.config.ts
+
+# Check layers.md changes
+TARGET='docs/reports/dependencies/layers.md'
+TOKEN='[deps-change]'
+
+if git diff --cached --name-only | grep -qx "$TARGET"; then
+  if ! grep -q "$TOKEN" "$1"; then
+    printf '\n❌ Dependency graph changed\n\n'
+    printf 'File %s has been modified.\n' "$TARGET"
+    printf 'This may indicate:\n'
+    printf '  - New library/dependency added\n'
+    printf '  - Architecture layer changes\n'
+    printf '  - Module reorganization\n\n'
+    printf 'Please review the dependency changes and add "%s"\n' "$TOKEN"
+    printf 'to your commit message to acknowledge this impact.\n\n'
+    printf 'Examples:\n'
+    printf '  feat: add consola for better logging [deps-change]\n'
+    printf '  refactor: move validators to domain layer [deps-change]\n'
+    printf '  chore: update typescript to v5.8 [deps-change]\n\n'
+    exit 1
+  fi
+fi

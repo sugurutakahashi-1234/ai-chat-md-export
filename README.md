@@ -22,10 +22,9 @@ Convert ChatGPT and Claude chat history to readable Markdown files
 
 ## Table of Contents
 
+- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
 - [Quick Start](#quick-start)
 - [Installation](#installation)
-- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
-- [Privacy & Security](#privacy--security)
 - [Usage](#usage)
 - [Command-line Options](#command-line-options)
 - [Getting conversations.json](#getting-conversationsjson)
@@ -34,6 +33,35 @@ Convert ChatGPT and Claude chat history to readable Markdown files
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [License](#license)
+
+## What is ai-chat-md-export?
+
+`ai-chat-md-export` is a **privacy-first** CLI tool that converts ChatGPT and Claude conversations into organized, readable Markdown files—completely offline on your device.
+
+### 🔒 Privacy-First Design
+
+This tool runs locally on your device:
+
+- **Local processing** - Convert files directly on your machine
+- **No data transmission** - Your conversations never leave your device
+- **Open source** - Review our [code](https://github.com/sugurutakahashi-1234/ai-chat-md-export) to see exactly what it does
+
+A straightforward tool designed for privacy-conscious users who want to keep their AI conversations under their control.
+
+### Key Features
+
+- 🚀 **Fast & Efficient** - Process thousands of conversations in seconds
+- 📝 **Clean Markdown Output** - Well-formatted, readable files with timestamps and visual markers
+- 🔍 **Advanced Filtering** - Filter by date range, search keywords
+- 📅 **Smart Organization** - Files named by date with sanitized conversation titles
+- 💻 **Cross-Platform** - Available for Windows, macOS, and Linux
+
+### Why Use This Tool?
+
+- **Work with plain text files** - Use your favorite text editor, grep, or any text processing tools
+- **Full control over your data** - Edit, search, version control, or analyze with standard tools
+- **Preserve your AI conversations** - Keep a permanent record before they're lost or deleted
+- **Integrate with your workflow** - Process with scripts, import to note-taking apps, or analyze with custom tools
 
 ## Quick Start
 
@@ -145,42 +173,6 @@ Pre-built binaries are available on the [releases page](https://github.com/sugur
 #### macOS / Linux
 Download the appropriate `.tar.gz` file from the releases page for your platform.
 
-## What is ai-chat-md-export?
-
-`ai-chat-md-export` is a CLI tool that converts your ChatGPT and Claude conversations into organized, readable Markdown files.
-
-### Key Features
-
-**Core Functionality**
-- 🚀 **Fast & Efficient** - Process thousands of conversations in seconds
-- 📝 **Clean Markdown Output** - Well-formatted, readable Markdown files
-- 🔍 **Advanced Filtering** - Filter by date range, search keywords
-- 🌍 **Multi-platform Support** - Works with ChatGPT and Claude exports
-
-**Convenience**
-- 📅 **Smart File Naming** - Organized by date with sanitized conversation titles
-- 💻 **Cross-Platform** - Available for Windows, macOS, and Linux
-- 🎯 **Flexible Output** - Split conversations or combine into single file
-- 🛠️ **Developer Friendly** - TypeScript, full type safety, well-tested
-
-**Key Benefits**
-- **Preserve your AI chats** - Before they're lost or deleted
-- **Readable formatting** - Easy viewing in any Markdown editor
-- **Search and organize** - Your chat history with standard tools
-- **Share or version control** - Conversations as needed
-
-## Privacy & Security
-
-### 🔒 Offline-First Design
-
-This tool is designed to operate **locally on your device** without requiring internet connectivity:
-
-- **No network requests**: The tool itself does not make any external API calls or network connections
-- **Local processing only**: All conversion operations are performed entirely on your machine
-- **No data collection**: We don't include any analytics, telemetry, or tracking functionality
-- **Your data stays local**: Conversations are read from and written to your local filesystem only
-
-Ideal for organizations and individuals who prioritize data privacy. You can review our [source code](https://github.com/sugurutakahashi-1234/ai-chat-md-export) to verify that the tool contains no network-related code. Note that while our code doesn't make external connections, we cannot guarantee the behavior of all dependencies.
 
 ## Usage
 

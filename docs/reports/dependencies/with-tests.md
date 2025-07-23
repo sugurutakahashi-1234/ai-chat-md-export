@@ -128,7 +128,6 @@ flowchart LR
     src/infrastructure/filters/conversation//filter.ts-->src/domain/entities.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/conversation//filter.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/logger.ts
-    src/infrastructure/filters/conversation//filter.test.ts-->src/domain/config.ts
     src/infrastructure/filters/conversation//filter.test.ts-->src/domain/entities.ts
     src/infrastructure/filters/conversation//filter.test.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/filters/conversation//filter.test.ts-->src/infrastructure/filters/conversation//filter.ts

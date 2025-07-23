@@ -1,0 +1,162 @@
+
+classDiagram
+direction TB
+
+class Platform {
+        <<enumeration>>
+        ChatGPT
+Claude
+      }
+class Format {
+        <<enumeration>>
+        Markdown
+Json
+      }
+class FilenameEncoding {
+        <<enumeration>>
+        Standard
+Preserve
+      }
+class Conversation {
+            <<interface>>
+            +id: string
++title: string
++date: Date
++messages: Message[]
+            
+        }
+class Message {
+            <<interface>>
+            +role: MessageRole
++content: string
++timestamp?: Date
+            
+        }
+class MessageRole {
+        <<enumeration>>
+        User
+Assistant
+System
+Tool
+      }
+Conversation  -- "0..*" Message
+Message  --  MessageRole
+class BaseError{
+            +context: Record~string, unknown~ | undefined
+            
+        }
+class ValidationError{
+            +validationErrors?: unknown
+            
+        }
+class FileError{
+            +filePath: string
++operation: FileOperation
+            
+        }
+class FileOperation {
+        <<enumeration>>
+        Read
+Write
+      }
+BaseError<|--ValidationError
+BaseError<|--FileError
+FileError  --  FileOperation
+class IConversationFilter {
+            <<interface>>
+            
+            +filterConversations() Conversation[]
+        }
+class IFileLoader {
+            <<interface>>
+            
+            +readJsonFile() Promise~unknown~
+        }
+class WriteResult {
+            <<interface>>
+            +successCount: number
++errors: #123; file: string; error: string; #125;[]
+            
+        }
+class IFileWriter {
+            <<interface>>
+            
+            +writeConversations() Promise~WriteResult~
+        }
+class ILogger {
+            <<interface>>
+            
+            +fatal() void
++error() void
++warn() void
++log() void
++info() void
++success() void
++fail() void
++box() void
++start() void
++ready() void
++debug() void
++trace() void
++verbose() void
+        }
+class IOutputFormatter {
+            <<interface>>
+            +format: Format
+            +formatSingle() string
++formatMultiple() string
++getDefaultFilename() string
+        }
+IOutputFormatter  --  Format
+class IPlatformParser~T~ {
+            <<interface>>
+            +schema: ZodType~T, unknown, $ZodTypeInternals~T, unknown~~
+            +parseAndValidateConversations() Promise~Conversation[]~
++parseConversations() ParsedConversation~unknown~[]
+        }
+class ParsedConversation~T~ {
+            <<interface>>
+            +data: T
++schema: ZodType~T, unknown, $ZodTypeInternals~T, unknown~~
++transform: (validatedData: T) =~ Conversation
+            
+        }
+class ISchemaValidator {
+            <<interface>>
+            
+            +validateWithDetails() ValidationResult~T~
++formatValidationReport() string
+        }
+class ValidationResult~T~ {
+            <<interface>>
+            +success: boolean
++data?: T
++errors?: ValidationErrorDetail[]
++warnings?: ValidationWarning[]
+            
+        }
+class ValidationErrorDetail {
+            <<interface>>
+            +path: string
++message: string
++expected?: string
++received?: string
+            
+        }
+class ValidationWarning {
+            <<interface>>
+            +message: string
++unknownFields?: string[]
+            
+        }
+ValidationResult~T~  -- "0..*" ValidationErrorDetail
+ValidationResult~T~  -- "0..*" ValidationWarning
+class ISpinner {
+            <<interface>>
+            
+            +start() void
++update() void
++succeed() void
++fail() void
++stop() void
+        }

@@ -1,5 +1,5 @@
 import ora, { type Ora } from "ora";
-import type { Options } from "../../domain/config.js";
+import type { LoggingOptions } from "../../domain/config.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 import type { ISpinner } from "../../domain/interfaces/spinner.js";
 
@@ -28,7 +28,7 @@ export class Spinner implements ISpinner {
 
   constructor(
     private readonly logger: ILogger,
-    private readonly options?: Partial<Options>,
+    private readonly options?: LoggingOptions,
   ) {}
 
   start(text?: string): void {

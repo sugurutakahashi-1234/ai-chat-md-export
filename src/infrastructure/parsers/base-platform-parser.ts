@@ -1,5 +1,5 @@
 import type { ZodType } from "zod";
-import type { Options } from "../../domain/config.js";
+import type { ParsingOptions } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import { ValidationError } from "../../domain/errors.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
@@ -39,7 +39,7 @@ export abstract class BasePlatformParser<T = unknown>
 
   async parseAndValidateConversations(
     data: T,
-    options?: Partial<Options>,
+    options?: ParsingOptions,
   ): Promise<Conversation[]> {
     const conversations: Conversation[] = [];
     const validationErrors: string[] = [];

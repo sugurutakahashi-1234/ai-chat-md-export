@@ -70,3 +70,5 @@ CLAUDE.md
 /sandbox/*/*.json
 /sandbox/*/output/
 
+# tsuml2 output
+out.svg

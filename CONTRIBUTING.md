@@ -54,6 +54,7 @@ bun run ci
 
 To better understand the project structure and dependencies:
 
+- **[UML Diagrams](./docs/reports/diagrams/README.md)** - Class diagrams showing the architecture and relationships
 - **[Dependency Graphs](./docs/reports/dependencies/README.md)** - Visual representations of code dependencies
 - **[Code Quality Reports](./docs/reports/code-quality/README.md)** - Automated code analysis results
 

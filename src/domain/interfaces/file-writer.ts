@@ -1,4 +1,4 @@
-import type { Options } from "../config.js";
+import type { WriteOptions } from "../config.js";
 import type { Conversation } from "../entities.js";
 
 /**
@@ -27,6 +27,6 @@ export interface IFileWriter {
   writeConversations(
     conversations: Conversation[],
     outputDir: string,
-    options: Options,
+    options: WriteOptions,
   ): Promise<WriteResult>;
 }

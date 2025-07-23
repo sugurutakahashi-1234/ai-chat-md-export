@@ -28,8 +28,8 @@ import { SchemaValidator } from "../infrastructure/validation/schema-validator.j
 export function createProcessorDependencies(
   options: Options,
 ): ProcessorDependencies {
-  const logger = new Logger(options);
-  const spinner = new Spinner(logger, options);
+  const logger = new Logger({ quiet: options.quiet });
+  const spinner = new Spinner(logger, { quiet: options.quiet });
   const schemaValidator = new SchemaValidator();
 
   // Create platform-specific parser

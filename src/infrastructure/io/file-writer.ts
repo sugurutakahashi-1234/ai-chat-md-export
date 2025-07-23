@@ -3,7 +3,7 @@ import path from "node:path";
 import {
   FILE_EXTENSIONS,
   FilenameEncoding,
-  type Options,
+  type WriteOptions,
 } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import { FileError, FileOperation } from "../../domain/errors.js";
@@ -36,7 +36,7 @@ export class FileWriter implements IFileWriter {
   async writeConversations(
     conversations: Conversation[],
     outputDir: string,
-    options: Options,
+    options: WriteOptions,
   ): Promise<WriteResult> {
     // Only create output directory if we have files to write
     if (!options.dryRun && conversations.length > 0) {
@@ -52,13 +52,13 @@ export class FileWriter implements IFileWriter {
   private async writeSplitFiles(
     conversations: Conversation[],
     outputDir: string,
-    options: Options,
+    options: WriteOptions,
   ): Promise<WriteResult> {
     const writeErrors: Array<{ file: string; error: string }> = [];
     let successCount = 0;
 
     // Start spinner if provided
-    if (this.spinner && !options.quiet && conversations.length > 0) {
+    if (this.spinner && conversations.length > 0) {
       this.spinner.start(`Writing files (0/${conversations.length})`);
     }
 
@@ -67,7 +67,7 @@ export class FileWriter implements IFileWriter {
       if (!conv) continue;
 
       // Update spinner text with progress
-      if (this.spinner && !options.quiet && conversations.length > 0) {
+      if (this.spinner && conversations.length > 0) {
         this.spinner.update(`Writing files (${i + 1}/${conversations.length})`);
       }
       const content = this.formatter.formatSingle(conv);
@@ -101,7 +101,7 @@ export class FileWriter implements IFileWriter {
     }
 
     // Stop spinner
-    if (this.spinner && !options.quiet && conversations.length > 0) {
+    if (this.spinner && conversations.length > 0) {
       if (writeErrors.length === 0) {
         this.spinner.succeed(`Written ${successCount} files successfully`);
       } else {
@@ -116,7 +116,7 @@ export class FileWriter implements IFileWriter {
   private async writeCombinedFile(
     conversations: Conversation[],
     outputDir: string,
-    options: Options,
+    options: WriteOptions,
   ): Promise<WriteResult> {
     const writeErrors: Array<{ file: string; error: string }> = [];
 

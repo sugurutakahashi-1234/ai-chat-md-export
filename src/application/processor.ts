@@ -37,7 +37,7 @@ export class Processor {
     // Step 2: Parse and validate conversations
     const conversations = await this.deps.parser.parseAndValidateConversations(
       data,
-      options,
+      { quiet: options.quiet },
     );
 
     // Step 3: Apply filters

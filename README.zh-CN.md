@@ -20,12 +20,11 @@
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
 
-## 目录
+## Table of Contents
 
+- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
 - [Quick Start](#quick-start)
 - [Installation](#installation)
-- [What is ai-chat-md-export?](#what-is-ai-chat-md-export)
-- [Privacy & Security](#privacy--security)
 - [Usage](#usage)
 - [Command-line Options](#command-line-options)
 - [Getting conversations.json](#getting-conversationsjson)
@@ -34,6 +33,35 @@
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [License](#license)
+
+## What is ai-chat-md-export?
+
+`ai-chat-md-export` 是一个**隐私优先**的 CLI 工具，可以将 ChatGPT 和 Claude 对话转换为有组织、可读的 Markdown 文件——完全在您的设备上离线运行。
+
+### 🔒 Privacy-First Design
+
+此工具在您的设备上本地运行：
+
+- **本地处理** - 直接在您的机器上转换文件
+- **无数据传输** - 您的对话永远不会离开您的设备
+- **开源** - 查看我们的[代码](https://github.com/sugurutakahashi-1234/ai-chat-md-export)以准确了解它的功能
+
+为希望将 AI 对话保持在自己控制下的注重隐私的用户设计的简单工具。
+
+### Key Features
+
+- 🚀 **快速高效** - 在几秒钟内处理数千个对话
+- 📝 **清晰的 Markdown 输出** - 格式良好、可读的文件，带有时间戳和可视化标记
+- 🔍 **高级过滤** - 按日期范围、搜索关键词过滤
+- 📅 **智能组织** - 按日期命名文件，使用清理后的对话标题
+- 💻 **跨平台** - 适用于 Windows、macOS 和 Linux
+
+### Why Use This Tool?
+
+- **使用纯文本文件** - 使用您最喜欢的文本编辑器、grep 或任何文本处理工具
+- **完全控制您的数据** - 使用标准工具进行编辑、搜索、版本控制或分析
+- **保存您的 AI 对话** - 在它们丢失或被删除之前保留永久记录
+- **集成到您的工作流程** - 使用脚本处理、导入到笔记应用或使用自定义工具分析
 
 ## Quick Start
 
@@ -65,7 +93,7 @@ ai-chat-md-export -i conversations.json -p chatgpt
 
 将复杂的 JSON 导出转换为清晰、可读的 Markdown：
 
-### Input (来自 ChatGPT 的 conversations.json)
+### Input (conversations.json from ChatGPT)
 ```json
 {
   "title": "Hello World",
@@ -130,7 +158,7 @@ brew install ai-chat-md-export
 npm install -g ai-chat-md-export
 ```
 
-### 直接下载 (Windows / 其他)
+### Direct Download (Windows / Others)
 
 预构建的二进制文件可从[发布页面](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases/latest)获取。
 
@@ -145,42 +173,6 @@ npm install -g ai-chat-md-export
 #### macOS / Linux
 从发布页面下载适合您平台的`.tar.gz`文件。
 
-## What is ai-chat-md-export?
-
-`ai-chat-md-export` 是一个 CLI 工具，可以将您的 ChatGPT 和 Claude 对话转换为组织良好、可读的 Markdown 文件。
-
-### Key Features
-
-**Core Functionality**
-- 🚀 **快速高效** - 在几秒钟内处理数千个对话
-- 📝 **清晰的 Markdown 输出** - 格式良好、易读的 Markdown 文件
-- 🔍 **高级过滤** - 按日期范围、搜索关键字过滤
-- 🌍 **多平台支持** - 支持 ChatGPT 和 Claude 导出
-
-**Convenience**
-- 📅 **智能文件命名** - 按日期组织，使用清理后的对话标题
-- 💻 **跨平台** - 适用于 Windows、macOS 和 Linux
-- 🎯 **灵活的输出** - 分割对话或合并到单个文件
-- 🛠️ **开发者友好** - TypeScript、完全类型安全、充分测试
-
-**Key Benefits**
-- **保存您的 AI 聊天记录** - 在它们丢失或被删除之前保存下来
-- **可读格式** - 在任何 Markdown 编辑器中轻松查看
-- **搜索和组织** - 使用标准工具搜索和管理您的聊天历史
-- **共享或版本控制** - 根据需要共享或管理对话
-
-## Privacy & Security
-
-### 🔒 Offline-First Design
-
-此工具设计为**在您的设备上本地运行**，无需互联网连接：
-
-- **无网络请求**：工具本身不会进行任何外部 API 调用或网络连接
-- **仅本地处理**：所有转换操作都在您的机器上完成
-- **无数据收集**：我们不包含任何分析、遥测或跟踪功能
-- **您的数据保持本地**：对话仅从本地文件系统读取和写入
-
-非常适合重视数据隐私的组织和个人。您可以查看我们的[源代码](https://github.com/sugurutakahashi-1234/ai-chat-md-export)来验证该工具不包含任何网络相关代码。请注意，虽然我们的代码不会进行外部连接，但我们无法保证所有依赖项的行为。
 
 ## Usage
 

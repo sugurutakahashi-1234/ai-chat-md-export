@@ -1,5 +1,4 @@
 import { describe, expect, test } from "bun:test";
-import { FilenameEncoding, Format, Platform } from "../../domain/config.js";
 import { type Conversation, MessageRole } from "../../domain/entities.js";
 import { Logger } from "../logging/logger.js";
 import { ConversationFilter } from "./conversation-filter.js";
@@ -36,13 +35,6 @@ describe("ConversationFilter", () => {
     test("filters conversations by since date", () => {
       const result = filter.filterConversations(conversations, {
         since: "2024-03-01",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2);
@@ -53,13 +45,6 @@ describe("ConversationFilter", () => {
     test("filters conversations by until date", () => {
       const result = filter.filterConversations(conversations, {
         until: "2024-02-28",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2);
@@ -71,13 +56,6 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         since: "2024-02-01",
         until: "2024-03-31",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2);
@@ -89,13 +67,6 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         since: "2024-02-14",
         until: "2024-02-14",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
@@ -103,15 +74,7 @@ describe("ConversationFilter", () => {
     });
 
     test("returns all conversations when no date filters", () => {
-      const result = filter.filterConversations(conversations, {
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
-      });
+      const result = filter.filterConversations(conversations, {});
 
       expect(result).toHaveLength(4);
     });
@@ -142,13 +105,6 @@ describe("ConversationFilter", () => {
     test("filters by keyword in title", () => {
       const result = filter.filterConversations(conversations, {
         search: "Tutorial",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
@@ -158,13 +114,6 @@ describe("ConversationFilter", () => {
     test("filters by keyword in messages", () => {
       const result = filter.filterConversations(conversations, {
         search: "programming",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
@@ -174,13 +123,6 @@ describe("ConversationFilter", () => {
     test("search is case-insensitive", () => {
       const result = filter.filterConversations(conversations, {
         search: "PYTHON",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
@@ -190,28 +132,13 @@ describe("ConversationFilter", () => {
     test("searches across both title and content", () => {
       const result = filter.filterConversations(conversations, {
         search: "JavaScript",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2); // Found in both conversations
     });
 
     test("returns all conversations when no search keyword", () => {
-      const result = filter.filterConversations(conversations, {
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
-      });
+      const result = filter.filterConversations(conversations, {});
 
       expect(result).toHaveLength(3);
     });
@@ -237,13 +164,6 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         since: "2024-05-01",
         search: "JavaScript",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(2);
@@ -255,13 +175,6 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations(conversations, {
         since: "2024-12-01",
         search: "Rust",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(0);
@@ -273,13 +186,6 @@ describe("ConversationFilter", () => {
       const result = filter.filterConversations([], {
         since: "2024-01-01",
         search: "test",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(0);
@@ -292,13 +198,6 @@ describe("ConversationFilter", () => {
 
       const result = filter.filterConversations(conversations, {
         search: "nothing",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(0);
@@ -313,13 +212,6 @@ describe("ConversationFilter", () => {
 
       const result = filter.filterConversations(conversations, {
         search: "C++",
-        input: "",
-        platform: Platform.ChatGPT,
-        format: Format.Markdown,
-        split: true,
-        quiet: false,
-        dryRun: false,
-        filenameEncoding: FilenameEncoding.Standard,
       });
 
       expect(result).toHaveLength(1);
