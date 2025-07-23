@@ -21,9 +21,14 @@
   // - :pinAllExceptPeerDependencies (pin everything except peerDependencies)
   // - :pinDevDependencies (pin devDependencies)
   // - helpers:pinGitHubActionDigests (pin GitHub Actions by digest)
+  //
+  // NOTE: Override to use caret (^) ranges for OSS flexibility
   "extends": [
     "config:best-practices"
   ],
+  
+  // Use caret ranges (e.g., "^5.3.2" allows 5.x.x)
+  "rangeStrategy": "bump",
   
   "timezone": "Asia/Tokyo",
   "enabled": true,

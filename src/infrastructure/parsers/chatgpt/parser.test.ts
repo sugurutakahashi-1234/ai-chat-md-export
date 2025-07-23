@@ -58,24 +58,29 @@ describe("ChatGPT Parser", () => {
   describe("parseAndValidateConversations", () => {
     test("parses valid ChatGPT data", async () => {
       const data = [createSampleData()];
-      const conversations = await parser.parseAndValidateConversations(data, {
+      const result = await parser.parseAndValidateConversations(data, {
         quiet: true,
       });
 
-      expect(conversations).toHaveLength(1);
-      expect(conversations[0]!.id).toBe("test-123");
-      expect(conversations[0]!.title).toBe("Test Conversation");
-      expect(conversations[0]!.date).toEqual(new Date("2024-01-01T12:00:00Z"));
-      expect(conversations[0]!.messages).toHaveLength(2);
+      expect(result.conversations).toHaveLength(1);
+      expect(result.conversations[0]!.id).toBe("test-123");
+      expect(result.conversations[0]!.title).toBe("Test Conversation");
+      expect(result.conversations[0]!.date).toEqual(
+        new Date("2024-01-01T12:00:00Z"),
+      );
+      expect(result.conversations[0]!.messages).toHaveLength(2);
+      expect(result.successCount).toBe(1);
+      expect(result.skippedFields).toEqual([]);
+      expect(result.validationErrors).toEqual([]);
     });
 
     test("extracts messages in correct order", async () => {
       const data = [createSampleData()];
-      const conversations = await parser.parseAndValidateConversations(data, {
+      const result = await parser.parseAndValidateConversations(data, {
         quiet: true,
       });
 
-      const messages = conversations[0]!.messages;
+      const messages = result.conversations[0]!.messages;
       expect(messages[0]!.role).toBe(MessageRole.User);
       expect(messages[0]!.content).toBe("Hello, world!");
       expect(messages[1]!.role).toBe(MessageRole.Assistant);
@@ -131,12 +136,12 @@ describe("ChatGPT Parser", () => {
         },
       };
 
-      const conversations = await parser.parseAndValidateConversations([data], {
+      const result = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
 
       // Should only follow the first child in branches
-      const messages = conversations[0]!.messages;
+      const messages = result.conversations[0]!.messages;
       expect(messages).toHaveLength(2);
       expect(messages[0]!.content).toBe("First branch");
       expect(messages[1]!.content).toBe("Response to first branch");
@@ -177,10 +182,10 @@ describe("ChatGPT Parser", () => {
         },
       };
 
-      const conversations = await parser.parseAndValidateConversations([data], {
+      const result = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
-      const messages = conversations[0]!.messages;
+      const messages = result.conversations[0]!.messages;
 
       expect(messages[0]!.role).toBe(MessageRole.System);
       expect(messages[1]!.role).toBe(MessageRole.Tool);
@@ -188,14 +193,14 @@ describe("ChatGPT Parser", () => {
 
     test("handles messages with timestamps", async () => {
       const data = [createSampleData()];
-      const conversations = await parser.parseAndValidateConversations(data, {
+      const result = await parser.parseAndValidateConversations(data, {
         quiet: true,
       });
 
-      expect(conversations[0]!.messages[0]!.timestamp).toEqual(
+      expect(result.conversations[0]!.messages[0]!.timestamp).toEqual(
         new Date("2024-01-01T12:00:00Z"),
       );
-      expect(conversations[0]!.messages[1]!.timestamp).toEqual(
+      expect(result.conversations[0]!.messages[1]!.timestamp).toEqual(
         new Date("2024-01-01T12:00:10Z"),
       );
     });
@@ -219,11 +224,11 @@ describe("ChatGPT Parser", () => {
         },
       };
 
-      const conversations = await parser.parseAndValidateConversations([data], {
+      const result = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
 
-      expect(conversations[0]!.messages[0]!.timestamp).toBeUndefined();
+      expect(result.conversations[0]!.messages[0]!.timestamp).toBeUndefined();
     });
 
     test("handles complex content parts", async () => {
@@ -254,10 +259,10 @@ describe("ChatGPT Parser", () => {
         },
       };
 
-      const conversations = await parser.parseAndValidateConversations([data], {
+      const result = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
-      const content = conversations[0]!.messages[0]!.content;
+      const content = result.conversations[0]!.messages[0]!.content;
 
       expect(content).toContain("Text part");
       expect(content).toContain("Object with text");
@@ -294,12 +299,14 @@ describe("ChatGPT Parser", () => {
         },
       };
 
-      const conversations = await parser.parseAndValidateConversations([data], {
+      const result = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
 
-      expect(conversations[0]!.messages).toHaveLength(1);
-      expect(conversations[0]!.messages[0]!.content).toBe("Valid message");
+      expect(result.conversations[0]!.messages).toHaveLength(1);
+      expect(result.conversations[0]!.messages[0]!.content).toBe(
+        "Valid message",
+      );
     });
 
     test("handles missing id and title", async () => {
@@ -315,22 +322,27 @@ describe("ChatGPT Parser", () => {
         },
       };
 
-      const conversations = await parser.parseAndValidateConversations([data], {
+      const result = await parser.parseAndValidateConversations([data], {
         quiet: true,
       });
 
-      expect(conversations[0]!.id).toBe("node-1"); // Uses first mapping key
-      expect(conversations[0]!.title).toBe("Untitled Conversation");
+      expect(result.conversations[0]!.id).toBe("node-1"); // Uses first mapping key
+      expect(result.conversations[0]!.title).toBe("Untitled Conversation");
     });
 
     test("handles invalid data gracefully", async () => {
       const invalidData = { not: "valid" };
 
-      await expect(
-        parser.parseAndValidateConversations([invalidData as any], {
+      const result = await parser.parseAndValidateConversations(
+        [invalidData as any],
+        {
           quiet: true,
-        }),
-      ).rejects.toThrow();
+        },
+      );
+
+      expect(result.conversations).toHaveLength(0);
+      expect(result.successCount).toBe(0);
+      expect(result.validationErrors.length).toBeGreaterThan(0);
     });
   });
 });

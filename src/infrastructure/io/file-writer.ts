@@ -6,17 +6,15 @@ import {
   type WriteOptions,
 } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
-import { FileError, FileOperation } from "../../domain/errors.js";
 import type {
   IFileWriter,
   WriteResult,
+  WrittenFile,
 } from "../../domain/interfaces/file-writer.js";
-import type { ILogger } from "../../domain/interfaces/logger.js";
 import type { IOutputFormatter } from "../../domain/interfaces/output-formatter.js";
 import type { ISpinner } from "../../domain/interfaces/spinner.js";
 import { extractErrorMessage } from "../../domain/utils/error.js";
 import { generateFileName } from "../../domain/utils/filename.js";
-import { formatRelativePathFromCwd } from "../../domain/utils/path.js";
 
 /**
  * File writer for conversation data
@@ -26,7 +24,6 @@ import { formatRelativePathFromCwd } from "../../domain/utils/path.js";
  */
 export class FileWriter implements IFileWriter {
   constructor(
-    private readonly logger: ILogger,
     private readonly formatter: IOutputFormatter,
     private readonly spinner?: ISpinner,
   ) {}
@@ -55,6 +52,7 @@ export class FileWriter implements IFileWriter {
     options: WriteOptions,
   ): Promise<WriteResult> {
     const writeErrors: Array<{ file: string; error: string }> = [];
+    const writtenFiles: WrittenFile[] = [];
     let successCount = 0;
 
     // Start spinner if provided
@@ -85,32 +83,32 @@ export class FileWriter implements IFileWriter {
         if (!options.dryRun) {
           await fs.writeFile(outputPath, content, "utf-8");
         }
-        const prefix = options.dryRun ? "[DRY RUN] " : "";
-        this.logger.info(
-          `  → ${prefix}${formatRelativePathFromCwd(outputPath)}`,
-        );
+        // Collect success information
+        writtenFiles.push({
+          path: outputPath,
+          conversationTitle: conv.title,
+          date: conv.date,
+        });
         successCount++;
       } catch (error) {
         const errorMessage = extractErrorMessage(error);
         writeErrors.push({ file: outputPath, error: errorMessage });
 
-        this.logger.warn(
-          `Failed to write file: ${formatRelativePathFromCwd(outputPath)}\nReason: ${errorMessage}`,
-        );
+        // Collect errors without logging to avoid spinner conflicts
       }
     }
 
-    // Stop spinner
-    if (this.spinner && conversations.length > 0) {
-      if (writeErrors.length === 0) {
-        this.spinner.succeed(`Written ${successCount} files successfully`);
-      } else {
-        this.spinner.fail(`Failed to write some files`);
-      }
-    }
+    // Don't stop spinner here - let ResultReporter handle it
 
-    this.reportErrors(writeErrors);
-    return { successCount, errors: writeErrors };
+    return {
+      successCount,
+      errors: writeErrors,
+      writtenFiles,
+      outputFormat: this.formatter.format,
+      splitMode: true,
+      outputDir,
+      dryRun: options.dryRun ?? false,
+    };
   }
 
   private async writeCombinedFile(
@@ -119,6 +117,7 @@ export class FileWriter implements IFileWriter {
     options: WriteOptions,
   ): Promise<WriteResult> {
     const writeErrors: Array<{ file: string; error: string }> = [];
+    const writtenFiles: WrittenFile[] = [];
 
     const content = this.formatter.formatMultiple(conversations);
     const fileName = this.formatter.getDefaultFilename();
@@ -128,50 +127,37 @@ export class FileWriter implements IFileWriter {
       if (!options.dryRun) {
         await fs.writeFile(outputPath, content, "utf-8");
       }
-      const prefix = options.dryRun ? "[DRY RUN] " : "";
-      this.logger.info(`  → ${prefix}${formatRelativePathFromCwd(outputPath)}`);
-      this.logger.info(
-        `  Combined: ${conversations.length} conversations into one file`,
-      );
-      return { successCount: conversations.length, errors: [] };
+      // Collect success information for combined file
+      writtenFiles.push({
+        path: outputPath,
+        conversationTitle: `Combined ${conversations.length} conversations`,
+        date: new Date(),
+      });
+
+      return {
+        successCount: conversations.length,
+        errors: [],
+        writtenFiles,
+        outputFormat: this.formatter.format,
+        splitMode: false,
+        outputDir,
+        dryRun: options.dryRun ?? false,
+      };
     } catch (error) {
       const errorMessage = extractErrorMessage(error);
       writeErrors.push({ file: outputPath, error: errorMessage });
 
-      this.logger.warn(
-        `Failed to write file: ${formatRelativePathFromCwd(outputPath)}\nReason: ${errorMessage}`,
-      );
+      // Collect errors without logging to avoid spinner conflicts
 
-      this.reportErrors(writeErrors);
-      return { successCount: 0, errors: writeErrors };
-    }
-  }
-
-  private reportErrors(
-    writeErrors: Array<{ file: string; error: string }>,
-  ): void {
-    if (writeErrors.length > 0) {
-      const errorDetails =
-        writeErrors.length <= 3
-          ? writeErrors
-              .map((e) => `${formatRelativePathFromCwd(e.file)}: ${e.error}`)
-              .join("\n")
-          : `First 3 errors:\n${writeErrors
-              .slice(0, 3)
-              .map((e) => `${formatRelativePathFromCwd(e.file)}: ${e.error}`)
-              .join("\n")}\n...and ${writeErrors.length - 3} more`;
-
-      const errorSummary = `Failed to write ${writeErrors.length} file(s)\nReason: ${errorDetails}`;
-
-      throw new FileError(
-        errorSummary,
-        writeErrors[0]?.file || "multiple",
-        FileOperation.Write,
-        {
-          totalErrors: writeErrors.length,
-          errors: writeErrors.slice(0, 3),
-        },
-      );
+      return {
+        successCount: 0,
+        errors: writeErrors,
+        writtenFiles: [],
+        outputFormat: this.formatter.format,
+        splitMode: false,
+        outputDir,
+        dryRun: options.dryRun ?? false,
+      };
     }
   }
 }

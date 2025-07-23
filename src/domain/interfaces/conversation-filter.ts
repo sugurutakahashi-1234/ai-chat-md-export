@@ -1,5 +1,6 @@
 import type { FilterOptions } from "../config.js";
 import type { Conversation } from "../entities.js";
+import type { FilterResult } from "./results/filter-result.js";
 
 /**
  * Interface for conversation filtering
@@ -13,10 +14,10 @@ export interface IConversationFilter {
    *
    * @param conversations - Array of conversations to filter
    * @param options - Options containing filter criteria
-   * @returns Filtered array of conversations
+   * @returns Filter result containing filtered conversations and metadata
    */
   filterConversations(
     conversations: Conversation[],
     options: FilterOptions,
-  ): Conversation[];
+  ): FilterResult;
 }

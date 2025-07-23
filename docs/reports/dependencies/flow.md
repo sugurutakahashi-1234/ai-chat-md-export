@@ -42,6 +42,9 @@ flowchart LR
             subgraph src/infrastructure/progress["/progress"]
                 src/infrastructure/progress/spinner.ts["spinner.ts"]
             end
+            subgraph src/infrastructure/reporting["/reporting"]
+                src/infrastructure/reporting/result//reporter.ts["result-reporter.ts"]
+            end
             subgraph src/infrastructure/validation["/validation"]
                 src/infrastructure/validation/schema//validator.ts["schema-validator.ts"]
             end
@@ -58,6 +61,7 @@ flowchart LR
     src/presentation/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/progress/spinner.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/reporting/result//reporter.ts
     src/presentation/processor//factory.ts-->src/infrastructure/validation/schema//validator.ts
     src/presentation/cli.ts-->src/application/processor.ts
     src/presentation/cli.ts-->src/presentation/processor//factory.ts

@@ -199,16 +199,16 @@ ai-chat-md-export -i conversations.json -p chatgpt --no-split
 | `-h, --help`                     | 显示帮助信息                                 | -          |
 | `-v, --version`                  | 显示版本号                                   | -          |
 | `-i, --input <path>`             | 输入文件路径（必需）                         | -          |
-| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`） - 必需        | -          |
+| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`）（必需）       | -          |
 | `-o, --output <path>`            | 输出目录                                     | `.`        |
 | `-f, --format <format>`          | 输出格式（`markdown`/`json`）                | `markdown` |
-| `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件） | -          |
-| `--since <date>`                 | 从日期过滤（YYYY-MM-DD）。按对话开始日期过滤 | -          |
-| `--until <date>`                 | 截止日期过滤（YYYY-MM-DD）。包含性过滤       | -          |
+| `--since <date>`                 | 从日期过滤（YYYY-MM-DD）                     | -          |
+| `--until <date>`                 | 截止日期过滤（YYYY-MM-DD）                   | -          |
 | `--search <keyword>`             | 在对话中搜索。不区分大小写，搜索标题和消息   | -          |
 | `--filename-encoding <encoding>` | 文件名编码（`standard`/`preserve`）          | `standard` |
-| `-q, --quiet`                    | 抑制进度消息                                 | -          |
+| `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件） | -          |
 | `--dry-run`                      | 预览模式，不创建文件                         | -          |
+| `-q, --quiet`                    | 抑制进度消息                                 | -          |
 
 ## Getting conversations.json
 
@@ -281,7 +281,6 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 ### 📋 Planned Features
 
 - [ ] **JSON流式处理** - 处理大文件而无需将整个内容加载到内存中
-- [ ] **导出统计** - 显示对话计数、消息计数、日期范围
 
 ## Contributing
 

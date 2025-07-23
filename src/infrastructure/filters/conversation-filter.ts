@@ -2,6 +2,7 @@ import type { FilterOptions } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import type { IConversationFilter } from "../../domain/interfaces/conversation-filter.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
+import type { FilterResult } from "../../domain/interfaces/results/filter-result.js";
 
 /**
  * Conversation filter for date range and keyword search
@@ -19,8 +20,22 @@ export class ConversationFilter implements IConversationFilter {
   filterConversations(
     conversations: Conversation[],
     options: FilterOptions,
-  ): Conversation[] {
+  ): FilterResult {
+    const originalCount = conversations.length;
+    const result: FilterResult = {
+      conversations: conversations,
+      originalCount,
+      filteredCount: originalCount,
+      appliedFilters: {},
+    };
+
+    // Return original array if no filters are specified
+    if (!options.since && !options.until && !options.search) {
+      return result;
+    }
+
     let filteredConversations = conversations;
+    const appliedFilters: string[] = [];
 
     // Apply date filter
     if (options.since || options.until) {
@@ -31,9 +46,22 @@ export class ConversationFilter implements IConversationFilter {
         options.until,
       );
       const after = filteredConversations.length;
-      this.logger.info(
-        `Date filter (${options.since || "∞"} to ${options.until || "∞"}): ${before} → ${after} conversations`,
-      );
+      const removed = before - after;
+
+      if (removed > 0) {
+        result.appliedFilters.dateRange = {
+          removed,
+        };
+        if (options.since) {
+          result.appliedFilters.dateRange.since = options.since;
+        }
+        if (options.until) {
+          result.appliedFilters.dateRange.until = options.until;
+        }
+        appliedFilters.push(
+          `date (${options.since || "∞"} to ${options.until || "∞"}): ${before} → ${after}`,
+        );
+      }
     }
 
     // Apply search filter
@@ -44,12 +72,32 @@ export class ConversationFilter implements IConversationFilter {
         options.search,
       );
       const after = filteredConversations.length;
-      this.logger.info(
-        `Search filter "${options.search}": ${before} → ${after} conversations`,
+      const removed = before - after;
+
+      if (removed > 0) {
+        result.appliedFilters.search = {
+          keyword: options.search,
+          removed,
+        };
+        appliedFilters.push(`search "${options.search}": ${before} → ${after}`);
+      }
+    }
+
+    // Update result
+    result.conversations = filteredConversations;
+    result.filteredCount = filteredConversations.length;
+
+    // Log filter results only if filtering actually happened
+    if (filteredConversations.length !== originalCount) {
+      appliedFilters.forEach((filter) => {
+        this.logger.info(`Applied ${filter}`);
+      });
+      this.logger.success(
+        `Filtered: ${filteredConversations.length}/${originalCount} conversations`,
       );
     }
 
-    return filteredConversations;
+    return result;
   }
 
   /**

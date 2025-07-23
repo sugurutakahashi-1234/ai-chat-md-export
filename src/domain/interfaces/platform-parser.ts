@@ -1,6 +1,7 @@
 import type { ZodType } from "zod";
 import type { ParsingOptions } from "../config.js";
 import type { Conversation } from "../entities.js";
+import type { ParseResult } from "./results/parse-result.js";
 
 /**
  * Interface for platform-specific data parsers
@@ -18,12 +19,12 @@ export interface IPlatformParser<T = unknown> {
    * Parse conversations from the validated platform data
    * @param data Validated data matching the schema
    * @param options Parsing options
-   * @returns Array of conversations in common format
+   * @returns Parse result containing conversations and metadata
    */
   parseAndValidateConversations(
     data: T,
     options?: ParsingOptions,
-  ): Promise<Conversation[]>;
+  ): Promise<ParseResult>;
 
   /**
    * Parse platform-specific data into a common intermediate format
@@ -36,6 +37,8 @@ export interface IPlatformParser<T = unknown> {
    */
   parseConversations(data: T): ParsedConversation<unknown>[];
 }
+
+export type { ParseResult };
 
 /**
  * Intermediate representation of a conversation during parsing

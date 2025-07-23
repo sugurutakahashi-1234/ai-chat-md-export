@@ -3,4 +3,6 @@
 
 bun run validate:branch
 bun run ci
-bun run test:all
+
+# Run all tests quietly, show output only on failure
+bun run test:all > /dev/null 2>&1 && echo "✅ All tests passed" || (echo "❌ Tests failed! Re-running with output:" && bun run test:all)

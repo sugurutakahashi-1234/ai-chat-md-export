@@ -199,16 +199,16 @@ ai-chat-md-export -i conversations.json -p chatgpt --no-split
 | `-h, --help`                     | ヘルプ情報を表示                                                  | -          |
 | `-v, --version`                  | バージョン番号を表示                                              | -          |
 | `-i, --input <path>`             | 入力ファイルパス（必須）                                          | -          |
-| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`） - 必須                 | -          |
+| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`）（必須）                | -          |
 | `-o, --output <path>`            | 出力ディレクトリ                                                  | `.`        |
 | `-f, --format <format>`          | 出力フォーマット（`markdown`/`json`）                             | `markdown` |
-| `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割） | -          |
-| `--since <date>`                 | 開始日でフィルタ（YYYY-MM-DD）。会話の開始日でフィルタリング      | -          |
-| `--until <date>`                 | 終了日でフィルタ（YYYY-MM-DD）。指定日を含む                      | -          |
+| `--since <date>`                 | 開始日でフィルタ（YYYY-MM-DD）                                    | -          |
+| `--until <date>`                 | 終了日でフィルタ（YYYY-MM-DD）                                    | -          |
 | `--search <keyword>`             | 会話内を検索。大文字小文字を区別せず、タイトルとメッセージを検索  | -          |
 | `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`）               | `standard` |
-| `-q, --quiet`                    | 進捗メッセージを抑制                                              | -          |
+| `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割） | -          |
 | `--dry-run`                      | ファイルを作成せずにプレビューモード                              | -          |
+| `-q, --quiet`                    | 進捗メッセージを抑制                                              | -          |
 
 ## Getting conversations.json
 
@@ -280,7 +280,6 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 ### 📋 Planned Features
 
 - [ ] **JSONストリーミング処理** - 大きなファイルをメモリに全て読み込まずに処理
-- [ ] **エクスポート統計** - 会話数、メッセージ数、日付範囲を表示
 
 ## Contributing
 
