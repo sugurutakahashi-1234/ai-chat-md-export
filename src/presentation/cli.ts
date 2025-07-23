@@ -35,23 +35,17 @@ export async function main(): Promise<void> {
       "Output format (markdown, json)",
       "markdown",
     )
-    .option("--no-split", "Combine all conversations into a single file")
-    .option(
-      "--since <date>",
-      "Include conversations started on or after this date (YYYY-MM-DD)",
-    )
-    .option(
-      "--until <date>",
-      "Include conversations started on or before this date (YYYY-MM-DD)",
-    )
+    .option("--since <date>", "Filter from date (YYYY-MM-DD)")
+    .option("--until <date>", "Filter until date (YYYY-MM-DD)")
     .option("--search <keyword>", "Filter conversations containing keyword")
     .option(
       "--filename-encoding <encoding>",
       "Filename encoding: standard (default) or preserve",
       "standard",
     )
-    .option("-q, --quiet", "Suppress progress messages")
+    .option("--no-split", "Combine all conversations into a single file")
     .option("--dry-run", "Show what would be done without writing files")
+    .option("-q, --quiet", "Suppress progress messages")
     .addHelpText(
       "after",
       `\nExample:
