@@ -1,4 +1,4 @@
-import type { Options } from "../config.js";
+import type { FilterOptions } from "../config.js";
 import type { Conversation } from "../entities.js";
 
 /**
@@ -17,6 +17,6 @@ export interface IConversationFilter {
    */
   filterConversations(
     conversations: Conversation[],
-    options: Options,
+    options: FilterOptions,
   ): Conversation[];
 }

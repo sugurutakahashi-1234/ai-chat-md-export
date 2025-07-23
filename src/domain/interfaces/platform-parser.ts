@@ -1,5 +1,5 @@
 import type { ZodType } from "zod";
-import type { Options } from "../config.js";
+import type { ParsingOptions } from "../config.js";
 import type { Conversation } from "../entities.js";
 
 /**
@@ -22,7 +22,7 @@ export interface IPlatformParser<T = unknown> {
    */
   parseAndValidateConversations(
     data: T,
-    options?: Partial<Options>,
+    options?: ParsingOptions,
   ): Promise<Conversation[]>;
 
   /**

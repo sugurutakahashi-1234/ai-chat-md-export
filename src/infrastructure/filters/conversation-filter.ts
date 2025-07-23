@@ -1,4 +1,4 @@
-import type { Options } from "../../domain/config.js";
+import type { FilterOptions } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
 import type { IConversationFilter } from "../../domain/interfaces/conversation-filter.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
@@ -18,7 +18,7 @@ export class ConversationFilter implements IConversationFilter {
    */
   filterConversations(
     conversations: Conversation[],
-    options: Options,
+    options: FilterOptions,
   ): Conversation[] {
     let filteredConversations = conversations;
 

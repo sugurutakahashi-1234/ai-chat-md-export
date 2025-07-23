@@ -1,5 +1,5 @@
 import { type ConsolaInstance, createConsola } from "consola";
-import type { Options } from "../../domain/config.js";
+import type { LoggingOptions } from "../../domain/config.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 
 /**
@@ -53,7 +53,7 @@ import type { ILogger } from "../../domain/interfaces/logger.js";
 export class Logger implements ILogger {
   private consola: ConsolaInstance;
 
-  constructor(options?: Partial<Options>) {
+  constructor(options?: LoggingOptions) {
     const consolaOptions: Parameters<typeof createConsola>[0] = {};
     if (options?.quiet) {
       consolaOptions.level = -999; // Silent level

@@ -53,3 +53,12 @@ export const optionsSchema = z.object({
 });
 
 export type Options = z.infer<typeof optionsSchema>;
+
+// Component-specific option types using Pick utility
+export type LoggingOptions = Pick<Options, "quiet">;
+export type FilterOptions = Pick<Options, "since" | "until" | "search">;
+export type WriteOptions = Pick<
+  Options,
+  "format" | "split" | "dryRun" | "filenameEncoding"
+>;
+export type ParsingOptions = Pick<Options, "quiet">;
