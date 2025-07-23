@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.0.0](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.5...v1.0.0) (2025-07-23)
+
+
+### ✨ Features
+
+* add demo GIF to README files ([#71](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/71)) ([f069bc6](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/f069bc6ae40fd6a2ea37869e338028eab2381007))
+
+
+### ♻️ Code Refactoring
+
+* replace picocolors with consola and separate logger/spinner concerns ([#67](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/67)) ([5359e8d](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/5359e8d367b595ac8583e0f97c989c677a7c726c))
+* update options handling in filters and writers ([#69](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/69)) ([94b5483](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/94b5483e2fad8ee1534b7580ff4fb428be95a836))
+
+
+### 🔧 Maintenance
+
+* bump version to 1.0.0 ([7fb472d](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/7fb472d7cd9b74be7455daff7f7debdccc6c94c6))
+
 ## [0.8.5](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.4...v0.8.5) (2025-07-22)
 
 
