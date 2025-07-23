@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.1](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.0...v1.0.1) (2025-07-23)
+
+
+### 📚 Documentation
+
+* reorganize README badges for better information hierarchy ([#72](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/72)) ([e2c2b6b](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/e2c2b6b1c43096799ce1e0d363414c49fc93dc06))
+
+
+### 🔧 Maintenance
+
+* pin exact dependency versions and update schemas ([#74](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/74)) ([d2a6454](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/d2a6454790349fff06e8abdc5f22e84154091dd8))
+
 ## [1.0.0](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v0.8.5...v1.0.0) (2025-07-23)
 
 
