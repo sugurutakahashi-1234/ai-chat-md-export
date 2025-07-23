@@ -198,8 +198,8 @@ For more examples, see the [examples](examples/) directory.
 | -------------------------------- | ----------------------------------------------------------------------- | ---------- |
 | `-h, --help`                     | Display help information                                                | -          |
 | `-v, --version`                  | Display version number                                                  | -          |
-| `-i, --input <path>`             | Input file path [required]                                              | -          |
-| `-p, --platform <platform>`      | Input platform (`chatgpt`/`claude`) [required]                          | -          |
+| `-i, --input <path>`             | Input file path (required)                                              | -          |
+| `-p, --platform <platform>`      | Input platform (`chatgpt`/`claude`) (required)                          | -          |
 | `-o, --output <path>`            | Output directory                                                        | `.`        |
 | `-f, --format <format>`          | Output format (`markdown`/`json`)                                       | `markdown` |
 | `--no-split`                     | Combine all conversations into one file (default: split files)          | -          |

@@ -199,7 +199,7 @@ ai-chat-md-export -i conversations.json -p chatgpt --no-split
 | `-h, --help`                     | ヘルプ情報を表示                                                  | -          |
 | `-v, --version`                  | バージョン番号を表示                                              | -          |
 | `-i, --input <path>`             | 入力ファイルパス（必須）                                          | -          |
-| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`） - 必須                 | -          |
+| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`）（必須）                | -          |
 | `-o, --output <path>`            | 出力ディレクトリ                                                  | `.`        |
 | `-f, --format <format>`          | 出力フォーマット（`markdown`/`json`）                             | `markdown` |
 | `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割） | -          |

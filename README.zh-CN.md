@@ -199,7 +199,7 @@ ai-chat-md-export -i conversations.json -p chatgpt --no-split
 | `-h, --help`                     | 显示帮助信息                                 | -          |
 | `-v, --version`                  | 显示版本号                                   | -          |
 | `-i, --input <path>`             | 输入文件路径（必需）                         | -          |
-| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`） - 必需        | -          |
+| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`）（必需）       | -          |
 | `-o, --output <path>`            | 输出目录                                     | `.`        |
 | `-f, --format <format>`          | 输出格式（`markdown`/`json`）                | `markdown` |
 | `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件） | -          |
