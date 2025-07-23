@@ -1,7 +1,7 @@
 {
   "name": "ai-chat-md-export",
   "version": "0.8.5",
-  "description": "CLI tool to convert ChatGPT and Claude chat history to Markdown",
+  "description": "Convert ChatGPT and Claude chat history to readable Markdown files",
   "publishConfig": {
     "access": "public"
   },

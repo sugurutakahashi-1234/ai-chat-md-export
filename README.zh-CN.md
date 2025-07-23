@@ -4,7 +4,6 @@
 [![Homebrew](https://img.shields.io/badge/Homebrew-tap-orange.svg)](https://github.com/sugurutakahashi-1234/homebrew-tap)
 [![CI](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci-push-main.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci-push-main.yml)
 [![npm Release](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-npm-release.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-npm-release.yml)
-[![Homebrew Release](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-homebrew-release.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-homebrew-release.yml)
 [![codecov](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export/graph/badge.svg?token=KPN7UZ7ATY)](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
@@ -17,6 +16,8 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/contributors)
 
 将 ChatGPT 和 Claude 聊天记录转换为可读的 Markdown 文件
+
+![Demo](docs/assets/demo.gif)
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
 
@@ -197,21 +198,21 @@ ai-chat-md-export -i conversations.json -p chatgpt --no-split
 
 ## Command-line Options
 
-| 选项                             | 描述                                                             | 默认值     |
-| -------------------------------- | --------------------------------------------------------------- | ---------- |
-| `-h, --help`                     | 显示帮助信息                                                     | -          |
-| `-v, --version`                  | 显示版本号                                                       | -          |
-| `-i, --input <path>`             | 输入文件路径（必需）                                              | -          |
-| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`） - 必需                            | -          |
-| `-o, --output <path>`            | 输出目录                                                         | `.`        |
-| `-f, --format <format>`          | 输出格式（`markdown`/`json`）                                    | `markdown` |
-| `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件）                        | -          |
-| `--since <date>`                 | 从日期过滤（YYYY-MM-DD）。按对话开始日期过滤                       | -          |
-| `--until <date>`                 | 截止日期过滤（YYYY-MM-DD）。包含性过滤                            | -          |
-| `--search <keyword>`             | 在对话中搜索。不区分大小写，搜索标题和消息                          | -          |
-| `--filename-encoding <encoding>` | 文件名编码（`standard`/`preserve`）                              | `standard` |
-| `-q, --quiet`                    | 抑制进度消息                                                     | -          |
-| `--dry-run`                      | 预览模式，不创建文件                                              | -          |
+| 选项                             | 描述                                         | 默认值     |
+| -------------------------------- | -------------------------------------------- | ---------- |
+| `-h, --help`                     | 显示帮助信息                                 | -          |
+| `-v, --version`                  | 显示版本号                                   | -          |
+| `-i, --input <path>`             | 输入文件路径（必需）                         | -          |
+| `-p, --platform <platform>`      | 输入平台（`chatgpt`/`claude`） - 必需        | -          |
+| `-o, --output <path>`            | 输出目录                                     | `.`        |
+| `-f, --format <format>`          | 输出格式（`markdown`/`json`）                | `markdown` |
+| `--no-split`                     | 将所有对话合并到一个文件中（默认：分割文件） | -          |
+| `--since <date>`                 | 从日期过滤（YYYY-MM-DD）。按对话开始日期过滤 | -          |
+| `--until <date>`                 | 截止日期过滤（YYYY-MM-DD）。包含性过滤       | -          |
+| `--search <keyword>`             | 在对话中搜索。不区分大小写，搜索标题和消息   | -          |
+| `--filename-encoding <encoding>` | 文件名编码（`standard`/`preserve`）          | `standard` |
+| `-q, --quiet`                    | 抑制进度消息                                 | -          |
+| `--dry-run`                      | 预览模式，不创建文件                         | -          |
 
 ## Getting conversations.json
 

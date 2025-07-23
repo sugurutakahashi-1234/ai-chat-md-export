@@ -4,7 +4,6 @@
 [![Homebrew](https://img.shields.io/badge/Homebrew-tap-orange.svg)](https://github.com/sugurutakahashi-1234/homebrew-tap)
 [![CI](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci-push-main.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/ci-push-main.yml)
 [![npm Release](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-npm-release.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-npm-release.yml)
-[![Homebrew Release](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-homebrew-release.yml/badge.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/actions/workflows/cd-homebrew-release.yml)
 [![codecov](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export/graph/badge.svg?token=KPN7UZ7ATY)](https://codecov.io/gh/sugurutakahashi-1234/ai-chat-md-export)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm downloads](https://img.shields.io/npm/dm/ai-chat-md-export.svg)](https://www.npmjs.com/package/ai-chat-md-export)
@@ -17,6 +16,8 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/graphs/contributors)
 
 ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに変換
+
+![Demo](docs/assets/demo.gif)
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
 
@@ -197,21 +198,21 @@ ai-chat-md-export -i conversations.json -p chatgpt --no-split
 
 ## Command-line Options
 
-| オプション                       | 説明                                                                    | デフォルト |
-| -------------------------------- | ----------------------------------------------------------------------- | ---------- |
-| `-h, --help`                     | ヘルプ情報を表示                                                        | -          |
-| `-v, --version`                  | バージョン番号を表示                                                    | -          |
-| `-i, --input <path>`             | 入力ファイルパス（必須）                                                | -          |
-| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`） - 必須                       | -          |
-| `-o, --output <path>`            | 出力ディレクトリ                                                        | `.`        |
-| `-f, --format <format>`          | 出力フォーマット（`markdown`/`json`）                                   | `markdown` |
-| `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割）        | -          |
-| `--since <date>`                 | 開始日でフィルタ（YYYY-MM-DD）。会話の開始日でフィルタリング            | -          |
-| `--until <date>`                 | 終了日でフィルタ（YYYY-MM-DD）。指定日を含む                            | -          |
-| `--search <keyword>`             | 会話内を検索。大文字小文字を区別せず、タイトルとメッセージを検索        | -          |
-| `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`）                     | `standard` |
-| `-q, --quiet`                    | 進捗メッセージを抑制                                                    | -          |
-| `--dry-run`                      | ファイルを作成せずにプレビューモード                                    | -          |
+| オプション                       | 説明                                                              | デフォルト |
+| -------------------------------- | ----------------------------------------------------------------- | ---------- |
+| `-h, --help`                     | ヘルプ情報を表示                                                  | -          |
+| `-v, --version`                  | バージョン番号を表示                                              | -          |
+| `-i, --input <path>`             | 入力ファイルパス（必須）                                          | -          |
+| `-p, --platform <platform>`      | 入力プラットフォーム（`chatgpt`/`claude`） - 必須                 | -          |
+| `-o, --output <path>`            | 出力ディレクトリ                                                  | `.`        |
+| `-f, --format <format>`          | 出力フォーマット（`markdown`/`json`）                             | `markdown` |
+| `--no-split`                     | すべての会話を1つのファイルにまとめる（デフォルト：ファイル分割） | -          |
+| `--since <date>`                 | 開始日でフィルタ（YYYY-MM-DD）。会話の開始日でフィルタリング      | -          |
+| `--until <date>`                 | 終了日でフィルタ（YYYY-MM-DD）。指定日を含む                      | -          |
+| `--search <keyword>`             | 会話内を検索。大文字小文字を区別せず、タイトルとメッセージを検索  | -          |
+| `--filename-encoding <encoding>` | ファイル名エンコーディング（`standard`/`preserve`）               | `standard` |
+| `-q, --quiet`                    | 進捗メッセージを抑制                                              | -          |
+| `--dry-run`                      | ファイルを作成せずにプレビューモード                              | -          |
 
 ## Getting conversations.json
 
