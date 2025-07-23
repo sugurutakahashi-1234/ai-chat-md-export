@@ -84,7 +84,11 @@
     "update:docs:deps-graph:flow": "tsg --tsconfig tsconfig.build.json --LR --include src/presentation/cli.ts --include src/presentation/processor-factory.ts --include src/application/processor.ts --exclude src/domain --exclude node_modules --md docs/reports/dependencies/flow.md",
     "update:docs:deps-graph:external": "tsg --tsconfig tsconfig.json --LR --include node_modules --md docs/reports/dependencies/external.md",
     "update:docs:deps-graph:all": "bun run update:docs:deps-graph:prod && bun run update:docs:deps-graph:test && bun run update:docs:deps-graph:layers && bun run update:docs:deps-graph:flow && bun run update:docs:deps-graph:external",
-    "update:docs:all": "bun run update:docs:knip && bun run update:docs:deps-graph:all",
+    "update:docs:uml:all-layers": "tsuml2 -g \"src/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/all-layers.mmd && rm -f out.svg",
+    "update:docs:uml:core": "tsuml2 -g \"src/domain/**/*.ts\" \"src/application/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/core.mmd && rm -f out.svg",
+    "update:docs:uml:infra": "tsuml2 -g \"src/infrastructure/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/infra-detailed.mmd && rm -f out.svg",
+    "update:docs:uml:all": "bun run update:docs:uml:all-layers && bun run update:docs:uml:core && bun run update:docs:uml:infra",
+    "update:docs:all": "bun run update:docs:knip && bun run update:docs:deps-graph:all && bun run update:docs:uml:all",
     "ci": "bun run lint && bun run format && bun run typecheck && bun run lint:check && bun run format:check && bun run build && bun run knip && bun run test:quiet && bun run update:docs:all",
     "clean": "rm -rf bun.lock node_modules releases dist coverage .*.bun-build tsconfig.tsbuildinfo output/chatgpt/*.md output/claude/*.md",
     "clean:install": "bun run clean && bun install",
@@ -114,11 +118,12 @@
     "@release-it/bumper": "7.0.5",
     "@release-it/conventional-changelog": "10.0.1",
     "@types/bun": "1.2.19",
-    "@types/node": "24.0.15",
+    "@types/node": "24.1.0",
     "@ysk8hori/typescript-graph": "0.26.3",
     "husky": "9.1.7",
     "knip": "5.62.0",
     "release-it": "19.0.4",
+    "tsuml2": "0.17.1",
     "typescript": "5.8.3"
   }
 }
