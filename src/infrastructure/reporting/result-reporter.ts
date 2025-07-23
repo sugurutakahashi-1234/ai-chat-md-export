@@ -139,72 +139,69 @@ export class ResultReporter implements IResultReporter {
     writeResult: WriteResult,
     options: Options,
   ): void {
-    this.logger.info("");
-    this.logger.info("=== Conversion Summary ===");
-    this.logger.info("");
+    const lines: string[] = [];
+
+    // Title
+    lines.push("=== Conversion Summary ===");
+    lines.push("");
 
     // Command-line options
-    this.logger.info("Options:");
-    this.logger.info(
-      `  - Input:    ${formatRelativePathFromCwd(options.input)}`,
-    );
-    this.logger.info(`  - Platform: ${options.platform || "auto-detected"}`);
-    this.logger.info(`  - Format:   ${options.format}`);
+    lines.push("Options:");
+    lines.push(`  - Input:    ${formatRelativePathFromCwd(options.input)}`);
+    lines.push(`  - Platform: ${options.platform || "auto-detected"}`);
+    lines.push(`  - Format:   ${options.format}`);
+
     if (options.output) {
-      this.logger.info(
-        `  - Output:   ${formatRelativePathFromCwd(options.output)}`,
-      );
+      lines.push(`  - Output:   ${formatRelativePathFromCwd(options.output)}`);
     }
     if (options.split !== undefined) {
-      this.logger.info(`  - Split:    ${options.split ? "yes" : "no"}`);
+      lines.push(`  - Split:    ${options.split ? "yes" : "no"}`);
     }
     if (options.since || options.until || options.search) {
-      this.logger.info("  - Filters:");
-      if (options.since) this.logger.info(`      Since: ${options.since}`);
-      if (options.until) this.logger.info(`      Until: ${options.until}`);
-      if (options.search) this.logger.info(`      Search: "${options.search}"`);
+      lines.push("  - Filters:");
+      if (options.since) lines.push(`      Since: ${options.since}`);
+      if (options.until) lines.push(`      Until: ${options.until}`);
+      if (options.search) lines.push(`      Search: "${options.search}"`);
     }
     if (options.quiet) {
-      this.logger.info(`  - Quiet:    yes`);
+      lines.push(`  - Quiet:    yes`);
     }
     if (options.dryRun) {
-      this.logger.info(`  - Dry-run:  yes`);
+      lines.push(`  - Dry-run:  yes`);
     }
-    this.logger.info("");
+    lines.push("");
 
     // Parsing results
     const parseErrors = parseResult.validationErrors.length;
-    this.logger.info(
+    lines.push(
       `Parsing:  ${parseResult.conversations.length} found, ${parseResult.successCount} parsed`,
     );
 
     if (parseResult.skippedFields.length > 0) {
-      this.logger.info(
-        `  - Skipped fields: ${parseResult.skippedFields.join(", ")}`,
-      );
+      lines.push(`  - Skipped fields: ${parseResult.skippedFields.join(", ")}`);
     }
 
     if (parseErrors > 0) {
-      this.logger.info(`  - Validation errors: ${parseErrors}`);
+      lines.push(`  - Validation errors: ${parseErrors}`);
     }
 
     // Filtering results (if applied)
     if (filterResult.originalCount !== filterResult.filteredCount) {
-      this.logger.info("");
-      this.logger.info(
+      lines.push("");
+      lines.push(
         `Filtering: ${filterResult.originalCount} → ${filterResult.filteredCount} conversations`,
       );
 
       if (filterResult.appliedFilters.dateRange) {
         const { since, until, removed } = filterResult.appliedFilters.dateRange;
-        this.logger.info(
+        lines.push(
           `  - Date: ${since || "any"} to ${until || "any"} (removed ${removed})`,
         );
       }
 
       if (filterResult.appliedFilters.search) {
         const { keyword, removed } = filterResult.appliedFilters.search;
-        this.logger.info(`  - Search: "${keyword}" (removed ${removed})`);
+        lines.push(`  - Search: "${keyword}" (removed ${removed})`);
       }
     }
 
@@ -213,30 +210,32 @@ export class ResultReporter implements IResultReporter {
     const fileWord = writeResult.splitMode ? "files" : "file";
     const action = writeResult.dryRun ? "would write" : "written";
 
-    this.logger.info("");
-    this.logger.info(
-      `Output:   ${writeResult.successCount} ${fileWord} ${action}`,
-    );
+    lines.push("");
+    lines.push(`Output:   ${writeResult.successCount} ${fileWord} ${action}`);
 
     // Add details about split mode and dry-run
     if (!writeResult.splitMode || writeResult.dryRun) {
       const details: string[] = [];
       if (!writeResult.splitMode) details.push("no-split");
       if (writeResult.dryRun) details.push("dry-run");
-      this.logger.info(`  - Mode: ${details.join(", ")}`);
+      lines.push(`  - Mode: ${details.join(", ")}`);
     }
 
     if (writeErrors > 0) {
-      this.logger.info(`  - Errors: ${writeErrors} files failed`);
+      lines.push(`  - Errors: ${writeErrors} files failed`);
     }
 
     // Final status
     const hasErrors = parseErrors > 0 || writeErrors > 0;
-    this.logger.info("");
+    lines.push("");
     if (hasErrors) {
-      this.logger.error("Conversion completed with errors");
+      lines.push("✗ Conversion completed with errors");
     } else {
-      this.logger.success("Conversion completed successfully");
+      lines.push("✔ Conversion completed successfully");
     }
+
+    // Display as box
+    const summaryContent = lines.join("\n");
+    this.logger.box(summaryContent);
   }
 }

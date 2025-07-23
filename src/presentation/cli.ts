@@ -14,11 +14,18 @@ const COMMANDER_ERROR_CODES = {
 
 export async function main(): Promise<void> {
   const program = new Command();
+
+  // Note: Commander.js always displays -h, --help option at the end of the options list.
+  // This is a framework constraint and cannot be easily changed to display it first.
   program
     .name("ai-chat-md-export")
-    .version(VERSION, "-v, --version")
     .description("Convert ChatGPT and Claude export data to Markdown")
-    .requiredOption("-i, --input <path>", "Input file path")
+    .version(VERSION, "-v, --version")
+    .requiredOption("-i, --input <path>", "Input file path (required)")
+    .requiredOption(
+      "-p, --platform <platform>",
+      "Input platform (chatgpt, claude) (required)",
+    )
     .option(
       "-o, --output <path>",
       "Output directory (default: current directory)",
@@ -38,10 +45,6 @@ export async function main(): Promise<void> {
       "Include conversations started on or before this date (YYYY-MM-DD)",
     )
     .option("--search <keyword>", "Filter conversations containing keyword")
-    .requiredOption(
-      "-p, --platform <platform>",
-      "Input platform (chatgpt, claude)",
-    )
     .option(
       "--filename-encoding <encoding>",
       "Filename encoding: standard (default) or preserve",
@@ -52,10 +55,11 @@ export async function main(): Promise<void> {
     .addHelpText(
       "after",
       `\nExample:
-  $ ai-chat-md-export -i conversations.json
+  $ ai-chat-md-export -i conversations.json -p chatgpt
 
 For more options and detailed documentation:
-  https://www.npmjs.com/package/ai-chat-md-export`,
+  https://www.npmjs.com/package/ai-chat-md-export
+  `,
     )
     .exitOverride((err) => {
       if (err.code === COMMANDER_ERROR_CODES.MissingMandatoryOption) {

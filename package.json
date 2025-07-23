@@ -51,7 +51,7 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "help": "bun run bin/ai-chat-md-export.js -h",
+    "help": "bun run src/presentation/cli.ts -h",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "bun run build:npm",
     "build:npm": "tsc -p tsconfig.build.json",
@@ -99,8 +99,8 @@
     "release:it:dry-run": "release-it --dry-run",
     "release:please:dry-run": "bunx release-please release-pr --token=$(gh auth token) --repo-url=sugurutakahashi-1234/ai-chat-md-export --debug --dry-run",
     "trigger:workflow:cd-homebrew-release": "gh workflow run cd-homebrew-release.yml -f tag_name=v$(jq -r .version package.json)",
-    "example:chatgpt": "rm -rf sandbox/chatgpt/output && bun bin/ai-chat-md-export.js -i sandbox/chatgpt/chatgpt-conversations.json -o sandbox/chatgpt/output -p chatgpt",
-    "example:claude": "rm -rf sandbox/claude/output && bun bin/ai-chat-md-export.js -i sandbox/claude/claude-conversations.json -o sandbox/claude/output -p claude --since 2025-06-01 --no-split --dry-run",
+    "example:chatgpt": "rm -rf sandbox/chatgpt/output && bun src/presentation/cli.ts -i sandbox/chatgpt/chatgpt-conversations.json -o sandbox/chatgpt/output -p chatgpt",
+    "example:claude": "rm -rf sandbox/claude/output && bun src/presentation/cli.ts -i sandbox/claude/claude-conversations.json -o sandbox/claude/output -p claude --since 2025-06-01 --no-split --dry-run",
     "example:all": "bun run example:chatgpt && bun run example:claude"
   },
   "dependencies": {
