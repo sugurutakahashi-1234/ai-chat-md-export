@@ -3,7 +3,6 @@
  */
 export enum FileOperation {
   Read = "read",
-  Write = "write",
 }
 
 /**

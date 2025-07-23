@@ -12,6 +12,7 @@ class ProcessorDependencies {
 +logger: ILogger
 +schemaValidator: ISchemaValidator
 +spinner: ISpinner
++resultReporter: IResultReporter
             
         }
 ProcessorDependencies  --  IFileLoader
@@ -21,6 +22,7 @@ ProcessorDependencies  --  IConversationFilter
 ProcessorDependencies  --  ILogger
 ProcessorDependencies  --  ISchemaValidator
 ProcessorDependencies  --  ISpinner
+ProcessorDependencies  --  IResultReporter
 class Processor{
             -deps: ProcessorDependencies
             +executeConversionPipeline() Promise~void~
@@ -81,14 +83,12 @@ class FileError{
 class FileOperation {
         <<enumeration>>
         Read
-Write
       }
 BaseError<|--ValidationError
 BaseError<|--FileError
-FileError  --  FileOperation
 class ConversationFilter{
             -logger: ILogger
-            +filterConversations() Conversation[]
+            +filterConversations() FilterResult
 -filterByDate() Conversation[]
 -filterBySearch() Conversation[]
         }
@@ -142,16 +142,13 @@ class FileLoader{
 IFileLoader<|..FileLoader
 FileLoader  --  ILogger
 class FileWriter{
-            -logger: ILogger
--formatter: IOutputFormatter
+            -formatter: IOutputFormatter
 -spinner?: ISpinner
             +writeConversations() Promise~WriteResult~
 -writeSplitFiles() Promise~WriteResult~
 -writeCombinedFile() Promise~WriteResult~
--reportErrors() void
         }
 IFileWriter<|..FileWriter
-FileWriter  --  ILogger
 FileWriter  --  IOutputFormatter
 FileWriter  --  ISpinner
 class Logger{
@@ -177,7 +174,7 @@ class BasePlatformParser~T~{
 -schemaValidator: ISchemaValidator
 -spinner: ISpinner
             +parseConversations() ParsedConversation~unknown~[]*
-+parseAndValidateConversations() Promise~Conversation[]~
++parseAndValidateConversations() Promise~ParseResult~
         }
 IPlatformParser~T~<|..BasePlatformParser~T~
 BasePlatformParser~T~  --  ILogger
@@ -195,6 +192,18 @@ class Spinner{
         }
 ISpinner<|..Spinner
 Spinner  --  ILogger
+class ResultReporter{
+            -logger: ILogger
+-spinner: ISpinner
+            -reportErrors() void
++reportWriteResult() void
++reportParseResult() void
++reportFilterResult() void
++reportFinalSummary() void
+        }
+IResultReporter<|..ResultReporter
+ResultReporter  --  ILogger
+ResultReporter  --  ISpinner
 class SchemaValidator{
             
             +validateWithDetails() ValidationResult~T~
@@ -205,18 +214,12 @@ ISchemaValidator<|..SchemaValidator
 class IConversationFilter {
             <<interface>>
             
-            +filterConversations() Conversation[]
+            +filterConversations() FilterResult
         }
 class IFileLoader {
             <<interface>>
             
             +readJsonFile() Promise~unknown~
-        }
-class WriteResult {
-            <<interface>>
-            +successCount: number
-+errors: #123; file: string; error: string; #125;[]
-            
         }
 class IFileWriter {
             <<interface>>
@@ -251,7 +254,7 @@ IOutputFormatter  --  Format
 class IPlatformParser~T~ {
             <<interface>>
             +schema: ZodType~T, unknown, $ZodTypeInternals~T, unknown~~
-            +parseAndValidateConversations() Promise~Conversation[]~
+            +parseAndValidateConversations() Promise~ParseResult~
 +parseConversations() ParsedConversation~unknown~[]
         }
 class ParsedConversation~T~ {
@@ -260,6 +263,14 @@ class ParsedConversation~T~ {
 +schema: ZodType~T, unknown, $ZodTypeInternals~T, unknown~~
 +transform: (validatedData: T) =~ Conversation
             
+        }
+class IResultReporter {
+            <<interface>>
+            
+            +reportWriteResult() void
++reportParseResult() void
++reportFilterResult() void
++reportFinalSummary() void
         }
 class ISchemaValidator {
             <<interface>>
@@ -315,3 +326,48 @@ class ClaudeParser{
 -transformMessages() Message[]
         }
 BasePlatformParser~T~<|--ClaudeParser
+class BaseResult {
+            <<interface>>
+            +errors?: #123; message: string; details?: unknown; #125;[]
+            
+        }
+class FilterResult {
+            <<interface>>
+            +conversations: Conversation[]
++originalCount: number
++filteredCount: number
++appliedFilters: #123; dateRange?: { since?: string; until?: string; removed: number; #125;; search?: { keyword: string; removed: number; }; }
+            
+        }
+BaseResult<|..FilterResult
+FilterResult  -- "0..*" Conversation
+class ParseResult {
+            <<interface>>
+            +conversations: Conversation[]
++skippedFields: string[]
++validationErrors: string[]
++successCount: number
+            
+        }
+BaseResult<|..ParseResult
+ParseResult  -- "0..*" Conversation
+class WrittenFile {
+            <<interface>>
+            +path: string
++conversationTitle: string
++date: Date
+            
+        }
+class WriteResult {
+            <<interface>>
+            +successCount: number
++writtenFiles: WrittenFile[]
++outputFormat: Format
++splitMode: boolean
++outputDir: string
++dryRun: boolean
++errors: #123; file: string; error: string; #125;[]
+            
+        }
+WriteResult  -- "0..*" WrittenFile
+WriteResult  --  Format

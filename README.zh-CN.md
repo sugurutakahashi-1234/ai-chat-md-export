@@ -285,7 +285,6 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 ### 📋 Planned Features
 
 - [ ] **JSON流式处理** - 处理大文件而无需将整个内容加载到内存中
-- [ ] **导出统计** - 显示对话计数、消息计数、日期范围
 
 ## Contributing
 

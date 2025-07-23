@@ -285,7 +285,6 @@ If some conversations don't appear in the output:
 ### 📋 Planned Features
 
 - [ ] **Streaming JSON processing** - Process large files without loading entire content into memory
-- [ ] **Export statistics** - Display conversation count, message count, date range
 
 ## Contributing
 

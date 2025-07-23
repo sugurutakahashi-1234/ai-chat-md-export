@@ -1,13 +1,6 @@
 import type { WriteOptions } from "../config.js";
 import type { Conversation } from "../entities.js";
-
-/**
- * Result of file writing operations
- */
-export interface WriteResult {
-  successCount: number;
-  errors: Array<{ file: string; error: string }>;
-}
+import type { WriteResult, WrittenFile } from "./results/write-result.js";
 
 /**
  * Interface for file writing operations
@@ -30,3 +23,5 @@ export interface IFileWriter {
     options: WriteOptions,
   ): Promise<WriteResult>;
 }
+
+export type { WriteResult, WrittenFile };

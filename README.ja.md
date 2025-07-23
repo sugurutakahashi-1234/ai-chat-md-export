@@ -284,7 +284,6 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 ### 📋 Planned Features
 
 - [ ] **JSONストリーミング処理** - 大きなファイルをメモリに全て読み込まずに処理
-- [ ] **エクスポート統計** - 会話数、メッセージ数、日付範囲を表示
 
 ## Contributing
 

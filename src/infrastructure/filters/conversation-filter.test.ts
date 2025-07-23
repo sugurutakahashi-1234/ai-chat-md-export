@@ -37,9 +37,12 @@ describe("ConversationFilter", () => {
         since: "2024-03-01",
       });
 
-      expect(result).toHaveLength(2);
-      expect(result[0]?.title).toBe("Mid March Chat");
-      expect(result[1]?.title).toBe("Christmas Chat");
+      expect(result.conversations).toHaveLength(2);
+      expect(result.conversations[0]?.title).toBe("Mid March Chat");
+      expect(result.conversations[1]?.title).toBe("Christmas Chat");
+      expect(result.originalCount).toBe(4);
+      expect(result.filteredCount).toBe(2);
+      expect(result.appliedFilters.dateRange?.removed).toBe(2);
     });
 
     test("filters conversations by until date", () => {
@@ -47,9 +50,9 @@ describe("ConversationFilter", () => {
         until: "2024-02-28",
       });
 
-      expect(result).toHaveLength(2);
-      expect(result[0]?.title).toBe("New Year Chat");
-      expect(result[1]?.title).toBe("Valentine Chat");
+      expect(result.conversations).toHaveLength(2);
+      expect(result.conversations[0]?.title).toBe("New Year Chat");
+      expect(result.conversations[1]?.title).toBe("Valentine Chat");
     });
 
     test("filters conversations by date range", () => {
@@ -58,9 +61,9 @@ describe("ConversationFilter", () => {
         until: "2024-03-31",
       });
 
-      expect(result).toHaveLength(2);
-      expect(result[0]?.title).toBe("Valentine Chat");
-      expect(result[1]?.title).toBe("Mid March Chat");
+      expect(result.conversations).toHaveLength(2);
+      expect(result.conversations[0]?.title).toBe("Valentine Chat");
+      expect(result.conversations[1]?.title).toBe("Mid March Chat");
     });
 
     test("includes conversations on boundary dates", () => {
@@ -69,14 +72,15 @@ describe("ConversationFilter", () => {
         until: "2024-02-14",
       });
 
-      expect(result).toHaveLength(1);
-      expect(result[0]?.title).toBe("Valentine Chat");
+      expect(result.conversations).toHaveLength(1);
+      expect(result.conversations[0]?.title).toBe("Valentine Chat");
     });
 
     test("returns all conversations when no date filters", () => {
       const result = filter.filterConversations(conversations, {});
 
-      expect(result).toHaveLength(4);
+      expect(result.conversations).toHaveLength(4);
+      expect(result.filteredCount).toBe(4);
     });
   });
 
@@ -107,8 +111,9 @@ describe("ConversationFilter", () => {
         search: "Tutorial",
       });
 
-      expect(result).toHaveLength(1);
-      expect(result[0]?.title).toBe("JavaScript Tutorial");
+      expect(result.conversations).toHaveLength(1);
+      expect(result.conversations[0]?.title).toBe("JavaScript Tutorial");
+      expect(result.appliedFilters.search?.removed).toBe(2);
     });
 
     test("filters by keyword in messages", () => {
@@ -116,8 +121,8 @@ describe("ConversationFilter", () => {
         search: "programming",
       });
 
-      expect(result).toHaveLength(1);
-      expect(result[0]?.title).toBe("JavaScript Tutorial");
+      expect(result.conversations).toHaveLength(1);
+      expect(result.conversations[0]?.title).toBe("JavaScript Tutorial");
     });
 
     test("search is case-insensitive", () => {
@@ -125,8 +130,8 @@ describe("ConversationFilter", () => {
         search: "PYTHON",
       });
 
-      expect(result).toHaveLength(1);
-      expect(result[0]?.title).toBe("Python Guide");
+      expect(result.conversations).toHaveLength(1);
+      expect(result.conversations[0]?.title).toBe("Python Guide");
     });
 
     test("searches across both title and content", () => {
@@ -134,13 +139,13 @@ describe("ConversationFilter", () => {
         search: "JavaScript",
       });
 
-      expect(result).toHaveLength(2); // Found in both conversations
+      expect(result.conversations).toHaveLength(2); // Found in both conversations
     });
 
     test("returns all conversations when no search keyword", () => {
       const result = filter.filterConversations(conversations, {});
 
-      expect(result).toHaveLength(3);
+      expect(result.conversations).toHaveLength(3);
     });
   });
 
@@ -166,9 +171,9 @@ describe("ConversationFilter", () => {
         search: "JavaScript",
       });
 
-      expect(result).toHaveLength(2);
-      expect(result[0]?.title).toBe("Advanced JavaScript");
-      expect(result[1]?.title).toBe("TypeScript Guide");
+      expect(result.conversations).toHaveLength(2);
+      expect(result.conversations[0]?.title).toBe("Advanced JavaScript");
+      expect(result.conversations[1]?.title).toBe("TypeScript Guide");
     });
 
     test("returns empty array when no matches", () => {
@@ -177,7 +182,7 @@ describe("ConversationFilter", () => {
         search: "Rust",
       });
 
-      expect(result).toHaveLength(0);
+      expect(result.conversations).toHaveLength(0);
     });
   });
 
@@ -188,7 +193,7 @@ describe("ConversationFilter", () => {
         search: "test",
       });
 
-      expect(result).toHaveLength(0);
+      expect(result.conversations).toHaveLength(0);
     });
 
     test("handles conversations with empty messages", () => {
@@ -200,7 +205,7 @@ describe("ConversationFilter", () => {
         search: "nothing",
       });
 
-      expect(result).toHaveLength(0);
+      expect(result.conversations).toHaveLength(0);
     });
 
     test("handles special characters in search", () => {
@@ -214,7 +219,7 @@ describe("ConversationFilter", () => {
         search: "C++",
       });
 
-      expect(result).toHaveLength(1);
+      expect(result.conversations).toHaveLength(1);
     });
   });
 });

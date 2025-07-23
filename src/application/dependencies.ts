@@ -4,6 +4,7 @@ import type { IFileWriter } from "../domain/interfaces/file-writer.js";
 import type { ILogger } from "../domain/interfaces/logger.js";
 import type { IOutputFormatter } from "../domain/interfaces/output-formatter.js";
 import type { IPlatformParser } from "../domain/interfaces/platform-parser.js";
+import type { IResultReporter } from "../domain/interfaces/result-reporter.js";
 import type { ISchemaValidator } from "../domain/interfaces/schema-validator.js";
 import type { ISpinner } from "../domain/interfaces/spinner.js";
 
@@ -57,4 +58,9 @@ export interface ProcessorDependencies {
    * Spinner for progress display
    */
   spinner: ISpinner;
+
+  /**
+   * Result reporter for detailed output
+   */
+  resultReporter: IResultReporter;
 }

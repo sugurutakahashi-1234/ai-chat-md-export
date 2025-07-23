@@ -84,9 +84,9 @@
     "update:docs:deps-graph:flow": "tsg --tsconfig tsconfig.build.json --LR --include src/presentation/cli.ts --include src/presentation/processor-factory.ts --include src/application/processor.ts --exclude src/domain --exclude node_modules --md docs/reports/dependencies/flow.md",
     "update:docs:deps-graph:external": "tsg --tsconfig tsconfig.json --LR --include node_modules --md docs/reports/dependencies/external.md",
     "update:docs:deps-graph:all": "bun run update:docs:deps-graph:prod && bun run update:docs:deps-graph:test && bun run update:docs:deps-graph:layers && bun run update:docs:deps-graph:flow && bun run update:docs:deps-graph:external",
-    "update:docs:uml:all-layers": "tsuml2 -g \"src/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/all-layers.mmd && rm -f out.svg",
-    "update:docs:uml:core": "tsuml2 -g \"src/domain/**/*.ts\" \"src/application/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/core.mmd && rm -f out.svg",
-    "update:docs:uml:infra": "tsuml2 -g \"src/infrastructure/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/infra-detailed.mmd && rm -f out.svg",
+    "update:docs:uml:all-layers": "tsuml2 -g \"src/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/all-layers.mmd > /dev/null 2>&1 || echo \"❌ Error generating all-layers diagram\" && rm -f out.svg",
+    "update:docs:uml:core": "tsuml2 -g \"src/domain/**/*.ts\" \"src/application/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/core.mmd > /dev/null 2>&1 || echo \"❌ Error generating core diagram\" && rm -f out.svg",
+    "update:docs:uml:infra": "tsuml2 -g \"src/infrastructure/**/*.ts\" --tsconfig tsconfig.build.json --mermaid \"direction TB\" --memberAssociations --outMermaidDsl docs/reports/diagrams/infra-detailed.mmd > /dev/null 2>&1 || echo \"❌ Error generating infra diagram\" && rm -f out.svg",
     "update:docs:uml:all": "bun run update:docs:uml:all-layers && bun run update:docs:uml:core && bun run update:docs:uml:infra",
     "update:docs:all": "bun run update:docs:knip && bun run update:docs:deps-graph:all && bun run update:docs:uml:all",
     "ci": "bun run lint && bun run format && bun run typecheck && bun run lint:check && bun run format:check && bun run build && bun run knip && bun run test:quiet && bun run update:docs:all",
@@ -100,7 +100,7 @@
     "release:please:dry-run": "bunx release-please release-pr --token=$(gh auth token) --repo-url=sugurutakahashi-1234/ai-chat-md-export --debug --dry-run",
     "trigger:workflow:cd-homebrew-release": "gh workflow run cd-homebrew-release.yml -f tag_name=v$(jq -r .version package.json)",
     "example:chatgpt": "rm -rf sandbox/chatgpt/output && bun bin/ai-chat-md-export.js -i sandbox/chatgpt/chatgpt-conversations.json -o sandbox/chatgpt/output -p chatgpt",
-    "example:claude": "rm -rf sandbox/claude/output && bun bin/ai-chat-md-export.js -i sandbox/claude/claude-conversations.json -o sandbox/claude/output -p claude",
+    "example:claude": "rm -rf sandbox/claude/output && bun bin/ai-chat-md-export.js -i sandbox/claude/claude-conversations.json -o sandbox/claude/output -p claude --since 2025-06-01 --no-split --dry-run",
     "example:all": "bun run example:chatgpt && bun run example:claude"
   },
   "dependencies": {

@@ -4,7 +4,7 @@ direction TB
 
 class ConversationFilter{
             -logger: ILogger
-            +filterConversations() Conversation[]
+            +filterConversations() FilterResult
 -filterByDate() Conversation[]
 -filterBySearch() Conversation[]
         }
@@ -55,13 +55,11 @@ class FileLoader{
         }
 IFileLoader<|..FileLoader
 class FileWriter{
-            -logger: ILogger
--formatter: IOutputFormatter
+            -formatter: IOutputFormatter
 -spinner?: ISpinner
             +writeConversations() Promise~WriteResult~
 -writeSplitFiles() Promise~WriteResult~
 -writeCombinedFile() Promise~WriteResult~
--reportErrors() void
         }
 IFileWriter<|..FileWriter
 class Logger{
@@ -87,7 +85,7 @@ class BasePlatformParser~T~{
 -schemaValidator: ISchemaValidator
 -spinner: ISpinner
             +parseConversations() ParsedConversation~unknown~[]*
-+parseAndValidateConversations() Promise~Conversation[]~
++parseAndValidateConversations() Promise~ParseResult~
         }
 IPlatformParser~T~<|..BasePlatformParser~T~
 class Spinner{
@@ -101,6 +99,16 @@ class Spinner{
 +stop() void
         }
 ISpinner<|..Spinner
+class ResultReporter{
+            -logger: ILogger
+-spinner: ISpinner
+            -reportErrors() void
++reportWriteResult() void
++reportParseResult() void
++reportFilterResult() void
++reportFinalSummary() void
+        }
+IResultReporter<|..ResultReporter
 class SchemaValidator{
             
             +validateWithDetails() ValidationResult~T~

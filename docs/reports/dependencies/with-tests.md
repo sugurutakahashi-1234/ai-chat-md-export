@@ -24,14 +24,21 @@ flowchart LR
                 src/domain/interfaces/logger.ts["logger.ts"]
                 src/domain/interfaces/output//formatter.ts["output-formatter.ts"]
                 src/domain/interfaces/platform//parser.ts["platform-parser.ts"]
+                src/domain/interfaces/result//reporter.ts["result-reporter.ts"]
                 src/domain/interfaces/schema//validator.ts["schema-validator.ts"]
                 src/domain/interfaces/spinner.ts["spinner.ts"]
+                subgraph src/domain/interfaces/results["/results"]
+                    src/domain/interfaces/results/base//result.ts["base-result.ts"]
+                    src/domain/interfaces/results/filter//result.ts["filter-result.ts"]
+                    src/domain/interfaces/results/write//result.ts["write-result.ts"]
+                    src/domain/interfaces/results/parse//result.ts["parse-result.ts"]
+                end
             end
             subgraph src/domain/utils["/utils"]
-                src/domain/utils/path.ts["path.ts"]
                 src/domain/utils/error.ts["error.ts"]
                 src/domain/utils/filename.ts["filename.ts"]
                 src/domain/utils/filename.test.ts["filename.test.ts"]
+                src/domain/utils/path.ts["path.ts"]
             end
         end
         subgraph src/application["/application"]
@@ -78,6 +85,9 @@ flowchart LR
                 src/infrastructure/validation/schema//validator.ts["schema-validator.ts"]
                 src/infrastructure/validation/schema//validator.test.ts["schema-validator.test.ts"]
             end
+            subgraph src/infrastructure/reporting["/reporting"]
+                src/infrastructure/reporting/result//reporter.ts["result-reporter.ts"]
+            end
         end
         subgraph src/presentation["/presentation"]
             src/presentation/processor//factory.ts["processor-factory.ts"]
@@ -95,15 +105,27 @@ flowchart LR
     src/////tests/////integration/cli//integration.test.ts-->node//modules///types/bun/index.d.ts
     src/////tests/////integration/cli//node//compatibility.test.ts-->node//modules///types/bun/index.d.ts
     src/domain/config.ts-->node//modules/zod/index.d.cts
+    src/domain/interfaces/results/filter//result.ts-->src/domain/entities.ts
+    src/domain/interfaces/results/filter//result.ts-->src/domain/interfaces/results/base//result.ts
     src/domain/interfaces/conversation//filter.ts-->src/domain/config.ts
     src/domain/interfaces/conversation//filter.ts-->src/domain/entities.ts
+    src/domain/interfaces/conversation//filter.ts-->src/domain/interfaces/results/filter//result.ts
+    src/domain/interfaces/results/write//result.ts-->src/domain/config.ts
     src/domain/interfaces/file//writer.ts-->src/domain/config.ts
     src/domain/interfaces/file//writer.ts-->src/domain/entities.ts
+    src/domain/interfaces/file//writer.ts-->src/domain/interfaces/results/write//result.ts
     src/domain/interfaces/output//formatter.ts-->src/domain/config.ts
     src/domain/interfaces/output//formatter.ts-->src/domain/entities.ts
+    src/domain/interfaces/results/parse//result.ts-->src/domain/entities.ts
+    src/domain/interfaces/results/parse//result.ts-->src/domain/interfaces/results/base//result.ts
     src/domain/interfaces/platform//parser.ts-->node//modules/zod/index.d.cts
     src/domain/interfaces/platform//parser.ts-->src/domain/config.ts
     src/domain/interfaces/platform//parser.ts-->src/domain/entities.ts
+    src/domain/interfaces/platform//parser.ts-->src/domain/interfaces/results/parse//result.ts
+    src/domain/interfaces/result//reporter.ts-->src/domain/config.ts
+    src/domain/interfaces/result//reporter.ts-->src/domain/interfaces/results/filter//result.ts
+    src/domain/interfaces/result//reporter.ts-->src/domain/interfaces/results/parse//result.ts
+    src/domain/interfaces/result//reporter.ts-->src/domain/interfaces/results/write//result.ts
     src/domain/interfaces/schema//validator.ts-->node//modules/zod/index.d.cts
     src/application/depend_encies.ts-->src/domain/interfaces/conversation//filter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/file//loader.ts
@@ -111,10 +133,10 @@ flowchart LR
     src/application/depend_encies.ts-->src/domain/interfaces/logger.ts
     src/application/depend_encies.ts-->src/domain/interfaces/output//formatter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/platform//parser.ts
+    src/application/depend_encies.ts-->src/domain/interfaces/result//reporter.ts
     src/application/depend_encies.ts-->src/domain/interfaces/schema//validator.ts
     src/application/depend_encies.ts-->src/domain/interfaces/spinner.ts
     src/application/processor.ts-->src/domain/config.ts
-    src/application/processor.ts-->src/domain/utils/path.ts
     src/application/processor.ts-->src/application/depend_encies.ts
     src/domain/version.test.ts-->src/domain/version.ts
     src/domain/utils/error.ts-->src/domain/errors.ts
@@ -128,6 +150,7 @@ flowchart LR
     src/infrastructure/filters/conversation//filter.ts-->src/domain/entities.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/conversation//filter.ts
     src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/logger.ts
+    src/infrastructure/filters/conversation//filter.ts-->src/domain/interfaces/results/filter//result.ts
     src/infrastructure/filters/conversation//filter.test.ts-->src/domain/entities.ts
     src/infrastructure/filters/conversation//filter.test.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/filters/conversation//filter.test.ts-->src/infrastructure/filters/conversation//filter.ts
@@ -147,19 +170,15 @@ flowchart LR
     src/infrastructure/io/file//loader.ts-->src/domain/utils/error.ts
     src/infrastructure/io/file//writer.ts-->src/domain/config.ts
     src/infrastructure/io/file//writer.ts-->src/domain/entities.ts
-    src/infrastructure/io/file//writer.ts-->src/domain/errors.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/file//writer.ts
-    src/infrastructure/io/file//writer.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/output//formatter.ts
     src/infrastructure/io/file//writer.ts-->src/domain/interfaces/spinner.ts
     src/infrastructure/io/file//writer.ts-->src/domain/utils/error.ts
     src/infrastructure/io/file//writer.ts-->src/domain/utils/filename.ts
-    src/infrastructure/io/file//writer.ts-->src/domain/utils/path.ts
     src/infrastructure/logging/logger.test.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/config.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/entities.ts
-    src/infrastructure/parsers/base//platform//parser.ts-->src/domain/errors.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/logger.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/schema//validator.ts
@@ -195,6 +214,14 @@ flowchart LR
     src/infrastructure/parsers/claude/parser.test.ts-->src/infrastructure/parsers/claude/schema.ts
     src/infrastructure/progress/spinner.test.ts-->src/infrastructure/logging/logger.ts
     src/infrastructure/progress/spinner.test.ts-->src/infrastructure/progress/spinner.ts
+    src/infrastructure/reporting/result//reporter.ts-->src/domain/config.ts
+    src/infrastructure/reporting/result//reporter.ts-->src/domain/interfaces/logger.ts
+    src/infrastructure/reporting/result//reporter.ts-->src/domain/interfaces/result//reporter.ts
+    src/infrastructure/reporting/result//reporter.ts-->src/domain/interfaces/results/filter//result.ts
+    src/infrastructure/reporting/result//reporter.ts-->src/domain/interfaces/results/parse//result.ts
+    src/infrastructure/reporting/result//reporter.ts-->src/domain/interfaces/results/write//result.ts
+    src/infrastructure/reporting/result//reporter.ts-->src/domain/interfaces/spinner.ts
+    src/infrastructure/reporting/result//reporter.ts-->src/domain/utils/path.ts
     src/infrastructure/validation/schema//validator.test.ts-->node//modules/zod/index.d.cts
     src/infrastructure/validation/schema//validator.test.ts-->src/infrastructure/validation/schema//validator.ts
     src/presentation/processor//factory.ts-->src/application/depend_encies.ts
@@ -211,6 +238,7 @@ flowchart LR
     src/presentation/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/progress/spinner.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/reporting/result//reporter.ts
     src/presentation/processor//factory.ts-->src/infrastructure/validation/schema//validator.ts
     src/presentation/cli.ts-->node//modules/commander/typings/index.d.ts
     src/presentation/cli.ts-->src/application/processor.ts

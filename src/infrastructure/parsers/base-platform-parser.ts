@@ -1,11 +1,11 @@
 import type { ZodType } from "zod";
 import type { ParsingOptions } from "../../domain/config.js";
 import type { Conversation } from "../../domain/entities.js";
-import { ValidationError } from "../../domain/errors.js";
 import type { ILogger } from "../../domain/interfaces/logger.js";
 import type {
   IPlatformParser,
   ParsedConversation,
+  ParseResult,
 } from "../../domain/interfaces/platform-parser.js";
 import type { ISchemaValidator } from "../../domain/interfaces/schema-validator.js";
 import type { ISpinner } from "../../domain/interfaces/spinner.js";
@@ -39,8 +39,8 @@ export abstract class BasePlatformParser<T = unknown>
 
   async parseAndValidateConversations(
     data: T,
-    options?: ParsingOptions,
-  ): Promise<Conversation[]> {
+    _options?: ParsingOptions,
+  ): Promise<ParseResult> {
     const conversations: Conversation[] = [];
     const validationErrors: string[] = [];
     const skippedFields = new Set<string>();
@@ -91,37 +91,14 @@ export abstract class BasePlatformParser<T = unknown>
       conversations.push(conversation);
     }
 
-    // Stop spinner
-    if (items.length > 0) {
-      if (validationErrors.length === 0) {
-        this.spinner.succeed(
-          `Parsed ${successCount} conversations successfully`,
-        );
-      } else {
-        this.spinner.fail(`Failed to parse some conversations`);
-      }
-    }
+    // Don't stop spinner here - let ResultReporter handle it
 
-    if (validationErrors.length > 0) {
-      throw new ValidationError(
-        `Schema validation error:\n${validationErrors.join("\n\n")}`,
-        { errorCount: validationErrors.length },
-        validationErrors,
-      );
-    }
-
-    // Log skipped fields if any
-    if (skippedFields.size > 0) {
-      this.logger.warn(
-        `Skipped unknown fields: ${Array.from(skippedFields).join(", ")}`,
-      );
-    }
-
-    // Display summary information
-    if (!options?.quiet) {
-      this.logger.success(`Successfully loaded ${successCount} conversations`);
-    }
-
-    return conversations;
+    // Return structured result
+    return {
+      conversations,
+      skippedFields: Array.from(skippedFields),
+      validationErrors,
+      successCount,
+    };
   }
 }

@@ -12,6 +12,7 @@ import { Logger } from "../infrastructure/logging/logger.js";
 import { ChatGPTParser } from "../infrastructure/parsers/chatgpt/parser.js";
 import { ClaudeParser } from "../infrastructure/parsers/claude/parser.js";
 import { Spinner } from "../infrastructure/progress/spinner.js";
+import { ResultReporter } from "../infrastructure/reporting/result-reporter.js";
 import { SchemaValidator } from "../infrastructure/validation/schema-validator.js";
 
 /**
@@ -61,12 +62,13 @@ export function createProcessorDependencies(
 
   return {
     fileLoader: new FileLoader(logger),
-    fileWriter: new FileWriter(logger, formatter, spinner),
+    fileWriter: new FileWriter(formatter, spinner),
     parser,
     formatter,
     filter: new ConversationFilter(logger),
     logger,
     schemaValidator,
     spinner,
+    resultReporter: new ResultReporter(logger, spinner),
   };
 }

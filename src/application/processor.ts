@@ -1,6 +1,5 @@
 import path from "node:path";
 import type { Options } from "../domain/config.js";
-import { formatRelativePathFromCwd } from "../domain/utils/path.js";
 import type { ProcessorDependencies } from "./dependencies.js";
 
 /**
@@ -25,45 +24,40 @@ export class Processor {
     const inputPath = path.resolve(options.input);
     const outputDir = path.resolve(options.output || process.cwd());
 
-    this.deps.logger.info(
-      `Processing: ${formatRelativePathFromCwd(inputPath)}`,
-    );
-
     // Step 1: Load input file
-    this.deps.logger.start("Loading input file...");
     const data = await this.deps.fileLoader.readJsonFile(inputPath);
-    this.deps.logger.success("Input file loaded successfully");
 
     // Step 2: Parse and validate conversations
-    const conversations = await this.deps.parser.parseAndValidateConversations(
+    const parseResult = await this.deps.parser.parseAndValidateConversations(
       data,
       { quiet: options.quiet },
     );
 
-    // Step 3: Apply filters
-    if (options.since || options.until || options.search) {
-      this.deps.logger.start("Filtering conversations...");
-      const filteredConversations = this.deps.filter.filterConversations(
-        conversations,
-        options,
-      );
-      this.deps.logger.success(
-        `Filtered: ${filteredConversations.length}/${conversations.length} conversations`,
-      );
+    // Report parse results
+    this.deps.resultReporter.reportParseResult(parseResult);
 
-      // Step 4: Write output files
-      await this.deps.fileWriter.writeConversations(
-        filteredConversations,
-        outputDir,
-        options,
-      );
-    } else {
-      // No filters applied, write all conversations
-      await this.deps.fileWriter.writeConversations(
-        conversations,
-        outputDir,
-        options,
-      );
-    }
+    // Step 3: Apply filters (always run, returns original array if no filters)
+    const filterResult = this.deps.filter.filterConversations(
+      parseResult.conversations,
+      options,
+    );
+
+    // Step 4: Write output files
+    const writeResult = await this.deps.fileWriter.writeConversations(
+      filterResult.conversations,
+      outputDir,
+      options,
+    );
+
+    // Report detailed results
+    this.deps.resultReporter.reportWriteResult(writeResult);
+
+    // Report final summary
+    this.deps.resultReporter.reportFinalSummary(
+      parseResult,
+      filterResult,
+      writeResult,
+      options,
+    );
   }
 }
