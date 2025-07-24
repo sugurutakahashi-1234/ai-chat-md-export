@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.1...v1.0.2) (2025-07-24)
+
+
+### 📚 Documentation
+
+* clarify that ai-chat-md-export is a CLI tool ([#75](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/75)) ([5ef48a6](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/5ef48a64e3b77caf2ec76d2504d5be144dc93fc4))
+
 ## [1.0.1](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.0...v1.0.1) (2025-07-23)
 
 
