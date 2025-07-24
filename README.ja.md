@@ -11,7 +11,7 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
 
-ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに変換
+ChatGPTとClaudeのチャット履歴を読みやすいMarkdownファイルに変換するコマンドラインツール
 
 ![Demo](docs/assets/demo.gif)
 

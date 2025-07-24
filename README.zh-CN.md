@@ -11,7 +11,7 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
 
-将 ChatGPT 和 Claude 聊天记录转换为可读的 Markdown 文件
+用于将 ChatGPT 和 Claude 聊天记录转换为可读 Markdown 文件的命令行工具
 
 ![Demo](docs/assets/demo.gif)
 
