@@ -216,27 +216,33 @@ ChatGPTとClaudeはどちらも、チャット履歴を`conversations.json`フ�
 
 ### Export from ChatGPT (OpenAI)
 
-1. ChatGPT (https://chat.openai.com) にログイン
-2. プロフィール画像をクリック → Settings
-3. 左メニューから「Data Controls」を開く
-4. 「Export Data」→「Export」をクリック
-5. 「Confirm export」をクリックして確認
-6. 数分以内に「Your ChatGPT data export is ready」というメールが届きます
-7. メールのリンクから`chatgpt-data.zip`をダウンロード（24時間で期限切れ）
-8. ZIPファイルを展開すると、ルートディレクトリに`conversations.json`が含まれています
+1. ChatGPT (https://chat.openai.com) にサインイン
+2. ページ右上のプロフィールアイコンをクリック
+3. 「Settings」をクリック
+4. 「Data Controls」メニューをクリック
+5. 「Export Data」の下の「Export」をクリック
+6. 確認画面で「Confirm export」をクリック
+7. データエクスポートが記載されたメールが届きます
+8. 「Download data export」をクリックして.zipファイルをダウンロード
+9. ZIPファイルを展開すると、`conversations.json`が含まれています
 
-注意：ダウンロードリンクは24時間後に期限切れになるため、速やかにダウンロードしてください。
+注意：メール内のリンクは24時間後に期限切れになります。
+
+最新の公式手順については、以下を参照してください：
+https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data
 
 ### Export from Claude (Anthropic)
 
-1. Claude (https://claude.ai) にログイン
-2. 左下のイニシャルをクリック → Settings
-3. 「Privacy」タブを開く（エンタープライズの場合は「Data management」）
-4. 「Export data」をクリックして確認
-5. 数分以内に「Your Claude data export is ready」というメールが届きます
-6. `claude-export.dms`またはZIPファイルをダウンロード
-7. `.dms`ファイルを受け取った場合は、`.zip`にリネームして展開
-8. ルートディレクトリに`conversations.json`が含まれています
+1. Claude (https://claude.ai) にアクセス
+2. 左下のイニシャルをクリック
+3. メニューから「Settings」を選択
+4. 「Privacy」セクション（またはEnterpriseの場合は「Data management」）に移動
+5. 「Export data」ボタンをクリック
+6. ダウンロードリンクが記載されたメールが届きます
+7. ファイルをダウンロードして展開すると、`conversations.json`が含まれています
+
+最新の公式手順については、以下を参照してください：
+https://support.anthropic.com/en/articles/9450526-how-can-i-export-my-claude-data
 
 ## Troubleshooting
 

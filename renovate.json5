@@ -28,6 +28,7 @@
   ],
   
   // Use caret ranges (e.g., "^5.3.2" allows 5.x.x)
+  // "bump" = preserve semver ranges when updating
   "rangeStrategy": "bump",
   
   "timezone": "Asia/Tokyo",
@@ -49,6 +50,12 @@
         "docker-compose"
       ],
       "pinDigests": false
+    },
+    
+    // Explicitly disable pin updates for all packages
+    {
+      "matchUpdateTypes": ["pin"],
+      "enabled": false
     },
   ],
   
