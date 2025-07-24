@@ -70,6 +70,13 @@
       "matchPackageNames": ["node"],
       "enabled": false
     },
+    
+    // Disable .nvmrc file updates
+    // Node version is intentionally set to minimum supported version for OSS compatibility
+    {
+      "matchManagers": ["nvm"],
+      "enabled": false
+    },
   ],
   
   // Schedule: weekdays 10:00-17:00
