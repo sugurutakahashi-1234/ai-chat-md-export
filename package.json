@@ -1,7 +1,7 @@
 {
   "name": "ai-chat-md-export",
   "version": "1.0.1",
-  "description": "Convert ChatGPT and Claude chat history to readable Markdown files",
+  "description": "Command-line tool for converting ChatGPT and Claude chat history to readable Markdown files",
   "publishConfig": {
     "access": "public"
   },
@@ -29,8 +29,9 @@
   "homepage": "https://github.com/sugurutakahashi-1234/ai-chat-md-export#readme",
   "type": "module",
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=20.0.0"
   },
+  "packageManager": "bun@1.2.19",
   "bin": {
     "ai-chat-md-export": "bin/ai-chat-md-export.js"
   },
@@ -109,7 +110,7 @@
     "commander": "^14.0.0",
     "consola": "^3.4.2",
     "ora": "^8.2.0",
-    "zod": "^4.0.5"
+    "zod": "^4.0.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",

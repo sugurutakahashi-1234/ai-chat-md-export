@@ -11,7 +11,7 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
 
-Convert ChatGPT and Claude chat history to readable Markdown files
+Command-line tool for converting ChatGPT and Claude chat history to readable Markdown files
 
 ![Demo](docs/assets/demo.gif)
 
@@ -216,27 +216,33 @@ Both ChatGPT and Claude allow you to export your chat history as a `conversation
 
 ### Export from ChatGPT (OpenAI)
 
-1. Log in to ChatGPT (https://chat.openai.com)
-2. Click your profile picture → Settings
-3. Open "Data Controls" from the left menu
-4. Click "Export Data" → "Export"
-5. Confirm by clicking "Confirm export"
-6. Within minutes, you'll receive an email "Your ChatGPT data export is ready"
-7. Download `chatgpt-data.zip` from the link (expires in 24 hours)
-8. Extract the ZIP file to find `conversations.json` in the root directory
+1. Sign in to ChatGPT (https://chat.openai.com)
+2. In the top right corner of the page, click on your profile icon
+3. Click Settings
+4. Click Data Controls menu
+5. Under Export Data, click Export
+6. In the confirmation screen, click Confirm export
+7. You should receive an email with your data export
+8. Click "Download data export" to download a .zip file
+9. Extract the ZIP file to find `conversations.json`
 
-Note: The download link expires after 24 hours, so download promptly.
+Note: The link in the email expires after 24 hours.
+
+For the latest official instructions, please refer to:
+https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data
 
 ### Export from Claude (Anthropic)
 
-1. Log in to Claude (https://claude.ai)
-2. Click your initials in the bottom left → Settings
-3. Open the "Privacy" tab (or "Data management" for enterprise)
-4. Click "Export data" and confirm
-5. Within minutes, you'll receive an email "Your Claude data export is ready"
-6. Download the `claude-export.dms` or ZIP file
-7. If you received a `.dms` file, rename it to `.zip` and extract
-8. Find `conversations.json` in the root directory
+1. Go to Claude (https://claude.ai)
+2. Click your initials in the lower left corner
+3. Select "Settings" from the menu
+4. Navigate to the "Privacy" section (or "Data management" for Enterprise)
+5. Click the "Export data" button
+6. You will receive an email with a download link
+7. Download and extract the file to find `conversations.json`
+
+For the latest official instructions, please refer to:
+https://support.anthropic.com/en/articles/9450526-how-can-i-export-my-claude-data
 
 
 ## Troubleshooting

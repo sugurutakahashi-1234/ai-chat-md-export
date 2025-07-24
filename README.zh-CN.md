@@ -11,7 +11,7 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
 
-将 ChatGPT 和 Claude 聊天记录转换为可读的 Markdown 文件
+用于将 ChatGPT 和 Claude 聊天记录转换为可读 Markdown 文件的命令行工具
 
 ![Demo](docs/assets/demo.gif)
 
@@ -217,26 +217,32 @@ ChatGPT 和 Claude 都允许您将聊天历史导出为 `conversations.json` 文
 ### Export from ChatGPT (OpenAI)
 
 1. 登录 ChatGPT (https://chat.openai.com)
-2. 点击您的头像 → Settings
-3. 从左侧菜单打开"Data Controls"
-4. 点击"Export Data" → "Export"
-5. 点击"Confirm export"确认
-6. 几分钟内，您将收到一封邮件"Your ChatGPT data export is ready"
-7. 从链接下载 `chatgpt-data.zip`（24 小时内有效）
-8. 解压 ZIP 文件，在根目录中找到 `conversations.json`
+2. 点击页面右上角的用户头像
+3. 点击"Settings"
+4. 点击"Data Controls"菜单
+5. 在"Export Data"下，点击"Export"
+6. 在确认界面中，点击"Confirm export"
+7. 您将收到一封包含数据导出的邮件
+8. 点击"Download data export"下载.zip文件
+9. 解压 ZIP 文件，找到 `conversations.json`
 
-注意：下载链接在 24 小时后过期，请及时下载。
+注意：邮件中的链接在 24 小时后过期。
+
+有关最新的官方说明，请参阅：
+https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data
 
 ### Export from Claude (Anthropic)
 
-1. 登录 Claude (https://claude.ai)
-2. 点击左下角的首字母缩写 → Settings
-3. 打开"Privacy"标签（企业版为"Data management"）
-4. 点击"Export data"并确认
-5. 几分钟内，您将收到一封邮件"Your Claude data export is ready"
-6. 下载 `claude-export.dms` 或 ZIP 文件
-7. 如果收到的是 `.dms` 文件，将其重命名为 `.zip` 并解压
-8. 在根目录中找到 `conversations.json`
+1. 访问 Claude (https://claude.ai)
+2. 点击左下角的首字母缩写
+3. 从菜单中选择"Settings"
+4. 导航到"Privacy"部分（或 Enterprise 的"Data management"）
+5. 点击"Export data"按钮
+6. 您将收到包含下载链接的电子邮件
+7. 下载并解压文件，找到 `conversations.json`
+
+有关最新的官方说明，请参阅：
+https://support.anthropic.com/en/articles/9450526-how-can-i-export-my-claude-data
 
 
 ## Troubleshooting

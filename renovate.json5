@@ -27,7 +27,10 @@
     "config:best-practices"
   ],
   
-  // Use caret ranges (e.g., "^5.3.2" allows 5.x.x)
+  // Use caret ranges (e.g., "^5.3.2" allows 5.x.x) for OSS flexibility
+  // "bump" = preserve semver ranges when updating
+  // This allows downstream users to benefit from minor/patch updates
+  // while maintaining compatibility within major versions
   "rangeStrategy": "bump",
   
   "timezone": "Asia/Tokyo",
@@ -49,6 +52,23 @@
         "docker-compose"
       ],
       "pinDigests": false
+    },
+    
+    // Explicitly disable pin updates for all packages
+    // OSS packages should use ranges (^) not pinned versions
+    // to allow flexibility for end users
+    {
+      "matchUpdateTypes": ["pin"],
+      "enabled": false
+    },
+    
+    // Disable Node.js engine updates
+    // Engine version is intentionally set to minimum supported version
+    // to maximize compatibility for OSS users
+    {
+      "matchDepTypes": ["engines"],
+      "matchPackageNames": ["node"],
+      "enabled": false
     },
   ],
   
