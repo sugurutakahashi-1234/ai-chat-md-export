@@ -109,7 +109,7 @@
     "commander": "^14.0.0",
     "consola": "^3.4.2",
     "ora": "^8.2.0",
-    "zod": "^4.0.5"
+    "zod": "^4.0.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
