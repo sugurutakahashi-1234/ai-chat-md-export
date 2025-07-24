@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.2...v1.0.3) (2025-07-24)
+
+
+### 🐛 Bug Fixes
+
+* disable Renovate updates for Node.js version constraints ([#78](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/78)) ([e98a030](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/e98a030d9e62f3e5d94a63e76004f922de44b5fd))
+
 ## [1.0.2](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.1...v1.0.2) (2025-07-24)
 
 
