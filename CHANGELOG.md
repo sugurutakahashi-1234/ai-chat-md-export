@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.3...v1.0.4) (2025-07-30)
+
+
+### 🔧 Maintenance
+
+* update dependencies and bundle size badge ([#80](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/80)) ([e2cff4f](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/e2cff4f1bb04d3a0b59bd70520ebd6afb2261656))
+
 ## [1.0.3](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.2...v1.0.3) (2025-07-24)
 
 
