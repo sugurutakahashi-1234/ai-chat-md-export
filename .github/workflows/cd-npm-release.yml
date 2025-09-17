@@ -60,7 +60,7 @@ jobs:
       # Although we use Bun for development, npm publish requires Node.js environment
       - name: Setup Node.js
         if: ${{ steps.release.outputs.release_created }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 'latest'
           registry-url: 'https://registry.npmjs.org'
