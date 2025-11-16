@@ -88,10 +88,6 @@ homebrew_casks:
     # Formula folder inside the tap repository
     directory: Casks
     
-    # Conflicts with existing formula (if any)
-    conflicts:
-      - formula: ai-chat-md-export
-    
     # Homepage for the formula
     homepage: "https://github.com/sugurutakahashi-1234/{{ .ProjectName }}"
     
