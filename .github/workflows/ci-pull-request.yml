@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -44,29 +44,29 @@ jobs:
 
       - name: Test
         run: bun run test:coverage
-        continue-on-error: true  # TODO: Remove once test output format bug is fixed
+        continue-on-error: true # TODO: Remove once test output format bug is fixed
 
       - name: Generate TypeScript dependency graph
-        uses: ysk8hori/delta-typescript-graph-action@v1.2.3
+        uses: ysk8hori/delta-typescript-graph-action@v1.2.4
         env:
           HUSKY: 0
         with:
-          tsconfig: './tsconfig.json' # Path to your TypeScript config file
-          orientation: 'LR' # Change to 'TB' for top-bottom orientation
+          tsconfig: "./tsconfig.json" # Path to your TypeScript config file
+          orientation: "LR" # Change to 'TB' for top-bottom orientation
           max-size: 50 # default is 30, adjust as needed
           # NOTE: show-metrics is set to false because enabling it produced too much output for this repository.
           show-metrics: false # Set to true to include metrics in the graph (output was too large when enabled)
-          comment-title: '📊 Dependency Graph Changes'
+          comment-title: "📊 Dependency Graph Changes"
           include-index-file-dependencies: false # Set to true if you want to include index.ts dependencies
 
       - name: Upload coverage to Codecov
         if: github.actor != 'github-actions[bot]'
         uses: codecov/codecov-action@v5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}     # Required for private repos
-          files: ./coverage/lcov.info             # Path to coverage report
-          verbose: true                           # Enable verbose logging for debugging
-          fail_ci_if_error: false                 # Don't fail CI if upload fails
-          flags: unittests                        # Tag coverage as unit tests
-          disable_search: false                   # Enable automatic coverage file search
-          report_type: coverage                   # Specify coverage report type
+          token: ${{ secrets.CODECOV_TOKEN }} # Required for private repos
+          files: ./coverage/lcov.info # Path to coverage report
+          verbose: true # Enable verbose logging for debugging
+          fail_ci_if_error: false # Don't fail CI if upload fails
+          flags: unittests # Tag coverage as unit tests
+          disable_search: false # Enable automatic coverage file search
+          report_type: coverage # Specify coverage report type

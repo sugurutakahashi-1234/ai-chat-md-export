@@ -81,7 +81,9 @@ export abstract class BasePlatformParser<T = unknown>
         // Collect unknown fields
         for (const warning of result.warnings) {
           if (warning.unknownFields) {
-            warning.unknownFields.forEach((field) => skippedFields.add(field));
+            for (const field of warning.unknownFields) {
+              skippedFields.add(field);
+            }
           }
         }
       }

@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -59,11 +59,11 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: read
-      actions: write  # Required for upload-artifact action
-    
+      actions: write # Required for upload-artifact action
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -74,10 +74,10 @@ jobs:
           bun-version: latest
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: stable
-          cache: false  # Disable Go module caching since this is not a Go project
+          cache: false # Disable Go module caching since this is not a Go project
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -85,7 +85,7 @@ jobs:
       - name: Run GoReleaser (snapshot)
         uses: goreleaser/goreleaser-action@v6
         with:
-          version: '~> v2'
+          version: "~> v2"
           args: build --snapshot --clean --skip=validate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -95,9 +95,8 @@ jobs:
           echo "📦 Built binaries:"
           find dist -name "ai-chat-md-export*" -type f ! -name "*.tar.gz" ! -name "*.zip" -exec ls -lh {} \;
 
-
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: goreleaser-test-artifacts
@@ -111,7 +110,7 @@ jobs:
     needs: goreleaser-build
     permissions:
       contents: read
-      actions: read  # Required for download-artifact action
+      actions: read # Required for download-artifact action
     strategy:
       matrix:
         # Test all supported platforms natively
@@ -125,10 +124,10 @@ jobs:
         os: [ubuntu-latest, ubuntu-24.04-arm, windows-latest] # macos-13, macos-latest commented out for cost reasons
     runs-on: ${{ matrix.os }}
     timeout-minutes: 5
-    
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -136,7 +135,7 @@ jobs:
           bun-version: latest
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: goreleaser-test-artifacts
           path: dist
