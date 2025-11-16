@@ -78,7 +78,7 @@ jobs:
           bun-version: latest
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: stable
           cache: false  # Disable Go module caching since this is not a Go project
