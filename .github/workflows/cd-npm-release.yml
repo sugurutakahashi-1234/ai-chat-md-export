@@ -36,7 +36,7 @@ jobs:
       # The following steps only run if a release was created
       - name: Checkout
         if: ${{ steps.release.outputs.release_created }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Bun
         if: ${{ steps.release.outputs.release_created }}
@@ -60,10 +60,10 @@ jobs:
       # Although we use Bun for development, npm publish requires Node.js environment
       - name: Setup Node.js
         if: ${{ steps.release.outputs.release_created }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 'latest'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "latest"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Publish to npm
         if: ${{ steps.release.outputs.release_created }}

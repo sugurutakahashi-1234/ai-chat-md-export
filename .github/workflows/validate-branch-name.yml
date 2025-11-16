@@ -5,8 +5,8 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
-  contents: read        # Required to read repository contents
-  pull-requests: read   # Required to read PR information
+  contents: read # Required to read repository contents
+  pull-requests: read # Required to read PR information
 
 jobs:
   validate-branch-name:
@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # Checkout the actual branch instead of detached HEAD
           ref: ${{ github.head_ref }}

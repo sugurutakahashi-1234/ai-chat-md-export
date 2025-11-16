@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       tag_name:
-        description: 'Release tag WITH v prefix (e.g., v1.2.3, NOT 1.2.3)'
+        description: "Release tag WITH v prefix (e.g., v1.2.3, NOT 1.2.3)"
         required: true
         type: string
   workflow_call:
     inputs:
       tag_name:
-        description: 'Release tag WITH v prefix (e.g., v1.2.3, NOT 1.2.3)'
+        description: "Release tag WITH v prefix (e.g., v1.2.3, NOT 1.2.3)"
         required: true
         type: string
 
@@ -54,7 +54,7 @@ jobs:
           version: ${{ env.TAG_NAME }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -78,15 +78,15 @@ jobs:
           bun-version: latest
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: stable
-          cache: false  # Disable Go module caching since this is not a Go project
+          cache: false # Disable Go module caching since this is not a Go project
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
-          version: '~> v2'
+          version: "~> v2"
           args: release --clean
         env:
           # Use GitHub App token instead of default GITHUB_TOKEN for cross-repo access
@@ -94,7 +94,7 @@ jobs:
           HOMEBREW_TAP_PUSH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: failure()
         with:
           name: goreleaser-artifacts

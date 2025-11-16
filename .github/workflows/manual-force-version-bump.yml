@@ -4,16 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       version_type:
-        description: 'Version bump type'
+        description: "Version bump type"
         required: false
-        default: 'patch'
+        default: "patch"
         type: choice
         options:
           - patch
           - minor
           - major
       custom_version:
-        description: 'Custom version WITHOUT v prefix (e.g., 1.2.3, NOT v1.2.3) - If provided, this takes precedence; if empty, version_type will be used'
+        description: "Custom version WITHOUT v prefix (e.g., 1.2.3, NOT v1.2.3) - If provided, this takes precedence; if empty, version_type will be used"
         required: false
         type: string
 
@@ -33,7 +33,7 @@ jobs:
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ steps.generate-token.outputs.token }}
           fetch-depth: 0
@@ -77,7 +77,7 @@ jobs:
         run: |
           CURRENT="${{ steps.current_version.outputs.version }}"
           echo "Current version: $CURRENT"
-          
+
           if [ -n "${{ github.event.inputs.custom_version }}" ]; then
             NEXT="${{ steps.validate_version.outputs.version }}"
           else
@@ -87,7 +87,7 @@ jobs:
               exit 1
             }
           fi
-          
+
           echo "Next version: $NEXT"
           echo "version=$NEXT" >> $GITHUB_OUTPUT
 
