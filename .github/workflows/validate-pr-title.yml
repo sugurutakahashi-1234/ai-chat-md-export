@@ -5,6 +5,7 @@ on:
     types: [opened, edited, synchronize, reopened, ready_for_review]
 
 permissions:
+  contents: read        # Required to read repository contents
   pull-requests: write  # Required to read PR information
   statuses: write       # Required for WIP status updates
 
