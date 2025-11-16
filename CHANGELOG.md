@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.6](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.5...v1.0.6) (2025-11-16)
+
+
+### 🐛 Bug Fixes
+
+* add missing permissions to validation workflows ([#95](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/95)) ([1e59611](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/1e596110ba25ab3c9d80311988741cdd0fc0472a))
+
+
+### 🔧 Maintenance
+
+* update dependencies and fix lint issues ([#97](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/97)) ([f6148a1](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/f6148a15d122bd70322460a5c1040fe80d30ee11))
+
 ## [1.0.5](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.4...v1.0.5) (2025-11-16)
 
 
