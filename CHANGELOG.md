@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.4...v1.0.5) (2025-11-16)
+
+
+### 🐛 Bug Fixes
+
+* remove deprecated "conflicts: formula" for Homebrew ([#93](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/93)) ([410f1b3](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/410f1b315c8404aa49dca13208d7f6d2c7126ddf))
+
 ## [1.0.4](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.3...v1.0.4) (2025-07-30)
 
 
