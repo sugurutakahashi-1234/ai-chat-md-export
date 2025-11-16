@@ -97,7 +97,7 @@
   
   // Branch settings
   "branchPrefix": "feature/renovate-",
-  "baseBranches": [
+  "baseBranchPatterns": [
     "$default"
   ],
   "branchNameStrict": true,
