@@ -107,7 +107,7 @@
     "example:all": "bun run example:chatgpt && bun run example:claude"
   },
   "dependencies": {
-    "commander": "^14.0.0",
+    "commander": "^14.0.2",
     "consola": "^3.4.2",
     "ora": "^8.2.0",
     "zod": "^4.0.14"
