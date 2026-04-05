@@ -56,6 +56,10 @@ flowchart LR
             end
             subgraph src/infrastructure/parsers["/parsers"]
                 src/infrastructure/parsers/base//platform//parser.ts["base-platform-parser.ts"]
+                subgraph src/infrastructure/parsers/aistudio["/aistudio"]
+                    src/infrastructure/parsers/aistudio/schema.ts["schema.ts"]
+                    src/infrastructure/parsers/aistudio/parser.ts["parser.ts"]
+                end
                 subgraph src/infrastructure/parsers/chatgpt["/chatgpt"]
                     src/infrastructure/parsers/chatgpt/schema.ts["schema.ts"]
                     src/infrastructure/parsers/chatgpt/parser.ts["parser.ts"]
@@ -155,6 +159,11 @@ flowchart LR
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/platform//parser.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/schema//validator.ts
     src/infrastructure/parsers/base//platform//parser.ts-->src/domain/interfaces/spinner.ts
+    src/infrastructure/parsers/aistudio/schema.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/aistudio/parser.ts-->src/domain/entities.ts
+    src/infrastructure/parsers/aistudio/parser.ts-->src/domain/interfaces/platform//parser.ts
+    src/infrastructure/parsers/aistudio/parser.ts-->src/infrastructure/parsers/base//platform//parser.ts
+    src/infrastructure/parsers/aistudio/parser.ts-->src/infrastructure/parsers/aistudio/schema.ts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/chatgpt/schema.ts-->src/domain/entities.ts
     src/infrastructure/parsers/chatgpt/parser.ts-->src/domain/entities.ts
@@ -191,6 +200,7 @@ flowchart LR
     src/presentation/processor//factory.ts-->src/infrastructure/io/file//loader.ts
     src/presentation/processor//factory.ts-->src/infrastructure/io/file//writer.ts
     src/presentation/processor//factory.ts-->src/infrastructure/logging/logger.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/parsers/aistudio/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/progress/spinner.ts

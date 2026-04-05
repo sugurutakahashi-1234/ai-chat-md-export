@@ -24,8 +24,11 @@ export class Processor {
     const inputPath = path.resolve(options.input);
     const outputDir = path.resolve(options.output || process.cwd());
 
-    // Step 1: Load input file
-    const data = await this.deps.fileLoader.readJsonFile(inputPath);
+    // Step 1: Load input (single file or directory depending on platform)
+    const data =
+      this.deps.parser.inputKind === "directory"
+        ? await this.deps.fileLoader.readJsonDir(inputPath)
+        : await this.deps.fileLoader.readJsonFile(inputPath);
 
     // Step 2: Parse and validate conversations
     const parseResult = await this.deps.parser.parseAndValidateConversations(

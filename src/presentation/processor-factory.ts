@@ -9,6 +9,7 @@ import { MarkdownFormatter } from "../infrastructure/formatters/markdown-formatt
 import { FileLoader } from "../infrastructure/io/file-loader.js";
 import { FileWriter } from "../infrastructure/io/file-writer.js";
 import { Logger } from "../infrastructure/logging/logger.js";
+import { AIStudioParser } from "../infrastructure/parsers/aistudio/parser.js";
 import { ChatGPTParser } from "../infrastructure/parsers/chatgpt/parser.js";
 import { ClaudeParser } from "../infrastructure/parsers/claude/parser.js";
 import { Spinner } from "../infrastructure/progress/spinner.js";
@@ -41,6 +42,9 @@ export function createProcessorDependencies(
       break;
     case Platform.Claude:
       parser = new ClaudeParser(logger, schemaValidator, spinner);
+      break;
+    case Platform.AIStudio:
+      parser = new AIStudioParser(logger, schemaValidator, spinner);
       break;
   }
 

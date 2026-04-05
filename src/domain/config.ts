@@ -3,6 +3,7 @@ import { z } from "zod";
 export enum Platform {
   ChatGPT = "chatgpt",
   Claude = "claude",
+  AIStudio = "aistudio",
 }
 
 export enum Format {

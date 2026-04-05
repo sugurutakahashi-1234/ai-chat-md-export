@@ -19,12 +19,17 @@ export async function main(): Promise<void> {
   // This is a framework constraint and cannot be easily changed to display it first.
   program
     .name("ai-chat-md-export")
-    .description("Convert ChatGPT and Claude export data to Markdown")
+    .description(
+      "Convert ChatGPT, Claude and AI Studio export data to Markdown",
+    )
     .version(VERSION, "-v, --version")
-    .requiredOption("-i, --input <path>", "Input file path (required)")
+    .requiredOption(
+      "-i, --input <path>",
+      "Input file path, or directory for aistudio (required)",
+    )
     .requiredOption(
       "-p, --platform <platform>",
-      "Input platform (chatgpt, claude) (required)",
+      "Input platform (chatgpt, claude, aistudio) (required)",
     )
     .option(
       "-o, --output <path>",
