@@ -31,6 +31,9 @@ flowchart LR
             end
             subgraph src/infrastructure/parsers["/parsers"]
                 src/infrastructure/parsers/base//platform//parser.ts["base-platform-parser.ts"]
+                subgraph src/infrastructure/parsers/aistudio["/aistudio"]
+                    src/infrastructure/parsers/aistudio/schema.ts["schema.ts"]
+                end
                 subgraph src/infrastructure/parsers/chatgpt["/chatgpt"]
                     src/infrastructure/parsers/chatgpt/schema.ts["schema.ts"]
                 end
@@ -59,6 +62,7 @@ flowchart LR
     src/infrastructure/parsers/base//platform//parser.ts-->node//modules/zod/index.d.cts
     src/infrastructure/progress/spinner.ts-->node//modules/ora/index.d.ts
     src/infrastructure/validation/schema//validator.ts-->node//modules/zod/index.d.cts
+    src/infrastructure/parsers/aistudio/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/chatgpt/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/parsers/claude/schema.ts-->node//modules/zod/index.d.cts
     src/infrastructure/validation/schema//validator.test.ts-->node//modules/zod/index.d.cts

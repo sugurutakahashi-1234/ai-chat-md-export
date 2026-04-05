@@ -25,6 +25,7 @@ export abstract class BasePlatformParser<T = unknown>
     private readonly spinner: ISpinner,
   ) {}
   abstract readonly schema: ZodType<T>;
+  readonly inputKind: "file" | "directory" = "file";
 
   /**
    * Parse platform-specific data into a common intermediate format
