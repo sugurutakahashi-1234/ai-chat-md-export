@@ -119,7 +119,7 @@
     "@commitlint/types": "^20.0.0",
     "@elsikora/git-branch-lint": "^1.1.2",
     "@release-it/bumper": "^7.0.5",
-    "@release-it/conventional-changelog": "^10.0.1",
+    "@release-it/conventional-changelog": "^11.0.0",
     "@types/bun": "^1.3.2",
     "@types/node": "^24.10.1",
     "@ysk8hori/typescript-graph": "^0.26.5",
