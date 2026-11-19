@@ -151,6 +151,8 @@ brew install ai-chat-md-export
 
 ### npm
 
+Requires Node.js 26 or later.
+
 ```bash
 npm install -g ai-chat-md-export
 ```
