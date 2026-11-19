@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.7](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.6...v1.0.7) (2026-11-19)
+
+
+### 📚 Documentation
+
+* 連絡先を現在のXユーザー名に更新 ([c5778db](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/c5778db53668030bd1bec1d96e03377c5fe0fcc9))
+
 ## [1.0.6](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.5...v1.0.6) (2025-11-16)
 
 
