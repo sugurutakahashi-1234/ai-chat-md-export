@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.8...v2.0.0) (2026-11-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* npm パッケージの実行には Node.js 26 以上が必要です。
+
+### ✨ Features
+
+* 最低対応を Node.js 26 に引き上げる ([be6877d](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/be6877d7d994e5bceb641c74714d159c786e7854))
+
 ## [1.0.8](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.7...v1.0.8) (2026-11-19)
 
 
