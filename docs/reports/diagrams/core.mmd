@@ -6,6 +6,7 @@ class Platform {
         <<enumeration>>
         ChatGPT
 Claude
+AIStudio
       }
 class Format {
         <<enumeration>>
@@ -65,10 +66,18 @@ class IConversationFilter {
             
             +filterConversations() FilterResult
         }
+class JsonDirEntry {
+            <<interface>>
+            +filename: string
++mtime: Date
++content: unknown
+            
+        }
 class IFileLoader {
             <<interface>>
             
             +readJsonFile() Promise~unknown~
++readJsonDir() Promise~JsonDirEntry[]~
         }
 class IFileWriter {
             <<interface>>
@@ -103,6 +112,7 @@ IOutputFormatter  --  Format
 class IPlatformParser~T~ {
             <<interface>>
             +schema: ZodType~T, unknown, $ZodTypeInternals~T, unknown~~
++inputKind: "file" | "directory"
             +parseAndValidateConversations() Promise~ParseResult~
 +parseConversations() ParsedConversation~unknown~[]
         }

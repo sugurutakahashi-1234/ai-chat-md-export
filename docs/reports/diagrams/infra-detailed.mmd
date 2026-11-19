@@ -52,6 +52,7 @@ IOutputFormatter<|..MarkdownFormatter
 class FileLoader{
             -logger: ILogger
             +readJsonFile() Promise~unknown~
++readJsonDir() Promise~JsonDirEntry[]~
         }
 IFileLoader<|..FileLoader
 class FileWriter{
@@ -81,6 +82,7 @@ class Logger{
 ILogger<|..Logger
 class BasePlatformParser~T~{
             +schema: ZodType~T, unknown, $ZodTypeInternals~T, unknown~~*
++inputKind: "file" | "directory"
 #logger: ILogger
 -schemaValidator: ISchemaValidator
 -spinner: ISpinner
@@ -116,6 +118,12 @@ class SchemaValidator{
 -detectUnknownFields() string[]
         }
 ISchemaValidator<|..SchemaValidator
+class AIStudioParser{
+            +schema: ZodArray~ZodObject~#123; filename: ZodString; mtime: ZodDate; content: ZodObject~{ runSettings: ZodOptional~ZodObject~{ model: ZodOptional~ZodString~; #125;, $loose~~; systemInstruction: ZodOptional~...~; chunkedPrompt: ZodObject~...~; }, $loose~; }, $strip~~
++inputKind: "directory"
+            +parseConversations() ParsedConversation~unknown~[]
+        }
+BasePlatformParser~T~<|--AIStudioParser
 class ChatGPTParser{
             +schema: ZodArray~ZodObject~#123; title: ZodOptional~ZodNullable~ZodString~~; create_time: ZodNullable~ZodNumber~; update_time: ZodOptional~ZodNumber~; ... 6 more ...; id: ZodOptional~...~; #125;, $loose~~
 -roleMap: #123; readonly user: MessageRole.User; readonly assistant: MessageRole.Assistant; readonly system: MessageRole.System; readonly tool: MessageRole.Tool; #125;

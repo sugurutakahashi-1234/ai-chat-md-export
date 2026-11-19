@@ -7,6 +7,8 @@ export enum FileOperation {
 
 /**
  * Base error class for all custom errors in the application
+ *
+ * @public
  */
 export abstract class BaseError extends Error {
   readonly context: Record<string, unknown> | undefined;

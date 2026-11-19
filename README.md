@@ -11,7 +11,7 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/sugurutakahashi-1234/ai-chat-md-export)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sugurutakahashi-1234/ai-chat-md-export/pulls)
 
-Command-line tool for converting ChatGPT and Claude chat history to readable Markdown files
+Command-line tool for converting ChatGPT, Claude, and Google AI Studio chat history to readable Markdown files
 
 ![Demo](docs/assets/demo.gif)
 
@@ -33,7 +33,7 @@ Command-line tool for converting ChatGPT and Claude chat history to readable Mar
 
 ## What is ai-chat-md-export?
 
-`ai-chat-md-export` is a **privacy-first** CLI tool that converts ChatGPT and Claude conversations into organized, readable Markdown files—completely offline on your device.
+`ai-chat-md-export` is a **privacy-first** CLI tool that converts AI assistant conversations into organized, readable Markdown files—completely offline on your device.
 
 ### 🔒 Privacy-First Design
 
@@ -68,6 +68,7 @@ npm install -g ai-chat-md-export
 
 # 2. Export your conversations from ChatGPT or Claude
 # → Get conversations.json file (see "Getting conversations.json" section below)
+# → Or for AI Studio, the conversation folder from Google Drive
 
 # 3. Convert to Markdown
 ai-chat-md-export -i conversations.json -p chatgpt
@@ -171,11 +172,24 @@ Pre-built binaries are available on the [releases page](https://github.com/sugur
 Download the appropriate `.tar.gz` file from the releases page for your platform.
 
 
+### From Source
+
+```shell
+bun install
+bun run build
+bun install -g "$PWD"
+# make sure ~/.bun/bin is in $PATH
+```
+
+
 ## Usage
 
 ```bash
 # Basic: Convert conversations.json to Markdown files
 ai-chat-md-export -i conversations.json -p chatgpt
+
+# AI Studio: Convert conversation folder to Markdown files
+ai-chat-md-export -i '.../Google AI Studio' -p aistudio
 
 # Specify output directory
 ai-chat-md-export -i conversations.json -o output/ -p chatgpt
@@ -213,6 +227,8 @@ For more examples, see the [examples](examples/) directory.
 ## Getting conversations.json
 
 Both ChatGPT and Claude allow you to export your chat history as a `conversations.json` file. This file contains all your conversations in a structured format that our tool can process.
+
+AI Studio saves conversations as individual files on Google Drive. You can download the whole folder as a ZIP or synchronize your Drive to your computer and point the tool there.
 
 ### Export from ChatGPT (OpenAI)
 

@@ -128,7 +128,7 @@ describe("CLI Integration Tests", () => {
 
     expect(output).toContain("ai-chat-md-export");
     expect(output).toContain(
-      "Convert ChatGPT and Claude export data to Markdown",
+      "Convert ChatGPT, Claude and AI Studio export data to Markdown",
     );
     expect(output).toContain("-i, --input");
     expect(output).toContain("-o, --output");
