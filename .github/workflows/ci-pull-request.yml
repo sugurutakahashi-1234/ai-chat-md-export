@@ -19,6 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -35,6 +40,9 @@ jobs:
 
       - name: Build
         run: bun run build
+
+      - name: Test CLI on Node.js 26
+        run: node bin/ai-chat-md-export.js --version
 
       - name: Check dependencies
         run: bun run knip
