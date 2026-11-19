@@ -83,7 +83,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Run GoReleaser (snapshot)
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           version: "~> v2"
           args: build --snapshot --clean --skip=validate
