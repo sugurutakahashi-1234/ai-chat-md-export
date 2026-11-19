@@ -294,7 +294,7 @@ https://support.anthropic.com/en/articles/9450526-how-can-i-export-my-claude-dat
 
 ## Contact
 
-如果您有任何问题或反馈，可以在 X/Twitter 上联系我：[@ikuraikuraaaaaa](https://x.com/ikuraikuraaaaaa)
+如果您有任何问题或反馈，可以在 X/Twitter 上联系我：[@suguru_takaha4](https://x.com/suguru_takaha4)
 
 ## License
 

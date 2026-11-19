@@ -293,7 +293,7 @@ https://support.anthropic.com/en/articles/9450526-how-can-i-export-my-claude-dat
 
 ## Contact
 
-ご質問やフィードバックがございましたら、X/Twitterでお気軽にご連絡ください: [@ikuraikuraaaaaa](https://x.com/ikuraikuraaaaaa)
+ご質問やフィードバックがございましたら、X/Twitterでお気軽にご連絡ください: [@suguru_takaha4](https://x.com/suguru_takaha4)
 
 ## License
 

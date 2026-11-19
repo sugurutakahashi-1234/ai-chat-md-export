@@ -84,7 +84,7 @@ If you have questions or need help:
 - Check existing issues - someone might have asked the same question
 - Be patient and respectful - we're all volunteers here
 
-You can also reach out to the maintainer on X/Twitter: [@ikuraikuraaaaaa](https://x.com/ikuraikuraaaaaa)
+You can also reach out to the maintainer on X/Twitter: [@suguru_takaha4](https://x.com/suguru_takaha4)
 
 ## Community Guidelines
 
