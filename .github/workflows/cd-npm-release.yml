@@ -13,8 +13,6 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
-  packages: write
-  # Required for the cd-homebrew-release workflow that uses GitHub App authentication
   id-token: write
 
 jobs:
@@ -63,12 +61,9 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "latest"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Publish to npm
         if: ${{ steps.release.outputs.release_created }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish
 
       - name: Get created tag
