@@ -94,7 +94,7 @@ jobs:
           HOMEBREW_TAP_PUSH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: goreleaser-artifacts
