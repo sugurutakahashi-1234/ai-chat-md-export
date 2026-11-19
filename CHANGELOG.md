@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.8](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.7...v1.0.8) (2026-11-19)
+
+
+### 🐛 Bug Fixes
+
+* npm の自動公開を OIDC に移行し依存ライブラリを更新 ([#114](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/114)) ([9a32a31](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/9a32a31b95bfb5e69450fb16301ede66f9048bbc))
+* リリース時に Homebrew 用の権限を渡す ([#115](https://github.com/sugurutakahashi-1234/ai-chat-md-export/issues/115)) ([18102df](https://github.com/sugurutakahashi-1234/ai-chat-md-export/commit/18102dfff70c12149a9c457bea8e02f0d0978282))
+
 ## [1.0.7](https://github.com/sugurutakahashi-1234/ai-chat-md-export/compare/v1.0.6...v1.0.7) (2026-11-19)
 
 
