@@ -32,6 +32,7 @@ class Platform {
         <<enumeration>>
         ChatGPT
 Claude
+AIStudio
       }
 class Format {
         <<enumeration>>
@@ -138,6 +139,7 @@ IOutputFormatter<|..MarkdownFormatter
 class FileLoader{
             -logger: ILogger
             +readJsonFile() Promise~unknown~
++readJsonDir() Promise~JsonDirEntry[]~
         }
 IFileLoader<|..FileLoader
 FileLoader  --  ILogger
@@ -170,6 +172,7 @@ class Logger{
 ILogger<|..Logger
 class BasePlatformParser~T~{
             +schema: ZodType~T, unknown, $ZodTypeInternals~T, unknown~~*
++inputKind: "file" | "directory"
 #logger: ILogger
 -schemaValidator: ISchemaValidator
 -spinner: ISpinner
@@ -216,10 +219,18 @@ class IConversationFilter {
             
             +filterConversations() FilterResult
         }
+class JsonDirEntry {
+            <<interface>>
+            +filename: string
++mtime: Date
++content: unknown
+            
+        }
 class IFileLoader {
             <<interface>>
             
             +readJsonFile() Promise~unknown~
++readJsonDir() Promise~JsonDirEntry[]~
         }
 class IFileWriter {
             <<interface>>
@@ -254,6 +265,7 @@ IOutputFormatter  --  Format
 class IPlatformParser~T~ {
             <<interface>>
             +schema: ZodType~T, unknown, $ZodTypeInternals~T, unknown~~
++inputKind: "file" | "directory"
             +parseAndValidateConversations() Promise~ParseResult~
 +parseConversations() ParsedConversation~unknown~[]
         }
@@ -311,6 +323,12 @@ class ISpinner {
 +fail() void
 +stop() void
         }
+class AIStudioParser{
+            +schema: ZodArray~ZodObject~#123; filename: ZodString; mtime: ZodDate; content: ZodObject~{ runSettings: ZodOptional~ZodObject~{ model: ZodOptional~ZodString~; #125;, $loose~~; systemInstruction: ZodOptional~...~; chunkedPrompt: ZodObject~...~; }, $loose~; }, $strip~~
++inputKind: "directory"
+            +parseConversations() ParsedConversation~unknown~[]
+        }
+BasePlatformParser~T~<|--AIStudioParser
 class ChatGPTParser{
             +schema: ZodArray~ZodObject~#123; title: ZodOptional~ZodNullable~ZodString~~; create_time: ZodNullable~ZodNumber~; update_time: ZodOptional~ZodNumber~; ... 6 more ...; id: ZodOptional~...~; #125;, $loose~~
 -roleMap: #123; readonly user: MessageRole.User; readonly assistant: MessageRole.Assistant; readonly system: MessageRole.System; readonly tool: MessageRole.Tool; #125;

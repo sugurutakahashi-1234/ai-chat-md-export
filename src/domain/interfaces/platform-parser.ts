@@ -16,6 +16,13 @@ export interface IPlatformParser<T = unknown> {
   readonly schema: ZodType<T>;
 
   /**
+   * Whether the parser expects a single input file or a directory
+   * of files. Defaults to "file" for platforms whose export is a
+   * single JSON blob (ChatGPT, Claude).
+   */
+  readonly inputKind: "file" | "directory";
+
+  /**
    * Parse conversations from the validated platform data
    * @param data Validated data matching the schema
    * @param options Parsing options

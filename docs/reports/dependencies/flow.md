@@ -32,6 +32,9 @@ flowchart LR
                 src/infrastructure/logging/logger.ts["logger.ts"]
             end
             subgraph src/infrastructure/parsers["/parsers"]
+                subgraph src/infrastructure/parsers/aistudio["/aistudio"]
+                    src/infrastructure/parsers/aistudio/parser.ts["parser.ts"]
+                end
                 subgraph src/infrastructure/parsers/chatgpt["/chatgpt"]
                     src/infrastructure/parsers/chatgpt/parser.ts["parser.ts"]
                 end
@@ -58,6 +61,7 @@ flowchart LR
     src/presentation/processor//factory.ts-->src/infrastructure/io/file//loader.ts
     src/presentation/processor//factory.ts-->src/infrastructure/io/file//writer.ts
     src/presentation/processor//factory.ts-->src/infrastructure/logging/logger.ts
+    src/presentation/processor//factory.ts-->src/infrastructure/parsers/aistudio/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/parsers/chatgpt/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/parsers/claude/parser.ts
     src/presentation/processor//factory.ts-->src/infrastructure/progress/spinner.ts

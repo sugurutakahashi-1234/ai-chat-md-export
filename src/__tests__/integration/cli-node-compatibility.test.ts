@@ -87,7 +87,7 @@ describe("Node.js Execution Tests", () => {
     // Basic CLI info
     expect(output).toContain("ai-chat-md-export");
     expect(output).toContain(
-      "Convert ChatGPT and Claude export data to Markdown",
+      "Convert ChatGPT, Claude and AI Studio export data to Markdown",
     );
 
     // Required options
